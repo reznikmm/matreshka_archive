@@ -43,9 +43,11 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with AMF.Internals.Collections;
+
 generic
-   type Element is limited interface;
-   type Element_Access is access all Element'Class;
+   type Abstract_Element is limited interface;
+   type Element_Access is access all Abstract_Element'Class;
 
 package AMF.Generic_Collections is
 
@@ -61,10 +63,36 @@ package AMF.Generic_Collections is
 
    type Sequence is new Collection with private;
 
+   --  XXX These subprograms must be reviewed.
+
+   function Length (Self : Collection'Class) return Natural;
+
+   function Element
+    (Self : Collection'Class; Index : Positive) return not null Element_Access;
+
+   --  XXX These subprograms must be removed after complete of the
+   --  implementation.
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access) return Set;
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access)
+       return Ordered_Set;
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access) return Bag;
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access)
+       return Sequence;
+
 private
 
    type Collection is
-     abstract new Ada.Finalization.Controlled with null record;
+     abstract new Ada.Finalization.Controlled with record
+      Collection : AMF.Internals.Collections.Collection_Access;
+   end record;
 
    type Set is new Collection with null record;
 

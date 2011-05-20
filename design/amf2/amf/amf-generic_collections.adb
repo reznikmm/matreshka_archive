@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,117 +41,70 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Internals.Tables;
+with AMF.Elements;
 
-package body CMOF.Internals.Collections is
-
-   use CMOF.Internals.Tables;
+package body AMF.Generic_Collections is
 
    -------------
    -- Element --
    -------------
 
    function Element
-    (Self  : Collection_Of_CMOF_Element;
-     Index : Positive) return CMOF_Element
-   is
-      Current : Collection_Element_Identifier
-        := Tables.Collections.Table (Self).Head;
-
+    (Self  : Collection'Class;
+     Index : Positive) return not null Element_Access is
    begin
-      for J in 2 .. Index loop
-         exit when Current = 0;
-
-         Current := Collection_Elements.Table (Current).Next;
-      end loop;
-
-      if Current = 0 then
-         raise Constraint_Error;
-
-      else
-         return Collection_Elements.Table (Current).Element;
-      end if;
+      return Element_Access (Self.Collection.Element (Index));
    end Element;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : not null access constant CMOF_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access is
-   begin
-      return Elements.Table (Element (Self.Collection, Index)).Proxy;
-   end Element;
-
-   ---------------------
-   -- Internal_Append --
-   ---------------------
-
-   procedure Internal_Append
-    (Collection : Collection_Of_CMOF_Element;
-     Element    : CMOF_Element;
-     Link       : CMOF_Link)
-   is
-      Head        : Collection_Element_Identifier
-        := Tables.Collections.Table (Collection).Head;
-      Tail        : Collection_Element_Identifier
-        := Tables.Collections.Table (Collection).Tail;
-      Previous    : Collection_Element_Identifier
-        := Tables.Collections.Table (Collection).Tail;
-      Next        : Collection_Element_Identifier := 0;
-      New_Element : Collection_Element_Identifier;
-
-   begin
-      Collection_Elements.Increment_Last;
-      New_Element := Collection_Elements.Last;
-
-      if Head = 0 then
-         --  List is empty.
-
-         Head := New_Element;
-         Tail := New_Element;
-
-         Tables.Collections.Table (Collection).Head := Head;
-         Tables.Collections.Table (Collection).Tail := Tail;
-
-      else
-         Tail := New_Element;
-
-         Tables.Collections.Table (Collection).Tail := Tail;
-         Collection_Elements.Table (Previous).Next := New_Element;
-      end if;
-
-      Collection_Elements.Table (New_Element) :=
-       (Element, Link, Previous, Next);
-   end Internal_Append;
 
    ------------
    -- Length --
    ------------
 
-   function Length (Self : Collection_Of_CMOF_Element) return Natural is
-      Current : Collection_Element_Identifier
-        := Tables.Collections.Table (Self).Head;
-      Aux     : Natural := 0;
-
+   function Length (Self : Collection'Class) return Natural is
    begin
-      while Current /= 0 loop
-         Aux     := Aux + 1;
-         Current := Collection_Elements.Table (Current).Next;
-      end loop;
-
-      return Aux;
+      return Self.Collection.Length;
    end Length;
 
-   ------------
-   -- Length --
-   ------------
+   ----------
+   -- Wrap --
+   ----------
 
-   function Length
-    (Self : not null access constant CMOF_Collection) return Natural is
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access) return Bag is
    begin
-      return Length (Self.Collection);
-   end Length;
+      return Bag'(Ada.Finalization.Controlled with Collection => Item);
+   end Wrap;
 
-end CMOF.Internals.Collections;
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access)
+       return Ordered_Set is
+   begin
+      return Ordered_Set'(Ada.Finalization.Controlled with Collection => Item);
+   end Wrap;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access)
+       return Sequence is
+   begin
+      return Sequence'(Ada.Finalization.Controlled with Collection => Item);
+   end Wrap;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Item : not null AMF.Internals.Collections.Collection_Access) return Set is
+   begin
+      return Set'(Ada.Finalization.Controlled with Collection => Item);
+   end Wrap;
+
+end AMF.Generic_Collections;

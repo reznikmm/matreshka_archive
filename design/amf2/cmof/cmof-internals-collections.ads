@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Collections;
+with AMF.Elements;
 
 package CMOF.Internals.Collections is
 
@@ -54,5 +56,17 @@ package CMOF.Internals.Collections is
      Element    : CMOF_Element;
      Link       : CMOF_Link);
    --  Appends element to collection. This subprogram doesn't construct link.
+
+   type CMOF_Collection is
+     new AMF.Internals.Collections.Abstract_Collection with record
+      Collection : Collection_Of_CMOF_Element;
+   end record;
+
+   function Length
+    (Self : not null access constant CMOF_Collection) return Natural;
+
+   function Element
+    (Self  : not null access constant CMOF_Collection;
+     Index : Positive) return not null AMF.Elements.Element_Access;
 
 end CMOF.Internals.Collections;
