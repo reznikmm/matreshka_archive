@@ -248,16 +248,10 @@ package body XMI.Handlers is
          --  even when order of ends is reversed.
 
          if Element (Get_Member_End (Association), 1) = Attribute then
-            Self.Factory.Create_Link
-             (Association,
-              CMOF_Element_Of (One_Element),
-              CMOF_Element_Of (Other_Element));
+            Self.Factory.Create_Link (Association, One_Element, Other_Element);
 
          else
-            Self.Factory.Create_Link
-             (Association,
-              CMOF_Element_Of (Other_Element),
-              CMOF_Element_Of (One_Element));
+            Self.Factory.Create_Link (Association, Other_Element, One_Element);
          end if;
 
       else
@@ -266,10 +260,7 @@ package body XMI.Handlers is
          --  duplicate links.
 
          if Element (Get_Member_End (Association), 1) = Attribute then
-            Self.Factory.Create_Link
-             (Association,
-              CMOF_Element_Of (One_Element),
-              CMOF_Element_Of (Other_Element));
+            Self.Factory.Create_Link (Association, One_Element, Other_Element);
          end if;
       end if;
    end Establish_Link;

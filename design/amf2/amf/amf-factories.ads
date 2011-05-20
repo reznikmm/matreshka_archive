@@ -64,8 +64,8 @@ package AMF.Factories is
    not overriding procedure Create_Link
     (Self           : not null access AMF_Factory;
      Association    : CMOF.CMOF_Association;
-     First_Element  : CMOF.CMOF_Element;
-     Second_Element : CMOF.CMOF_Element) is abstract;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access) is abstract;
 
    not overriding function Create_From_String
     (Self      : not null access AMF_Factory;

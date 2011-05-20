@@ -294,18 +294,23 @@ package body CMOF.Internals.Factories is
    procedure Create_Link
     (Self           : not null access CMOF_Factory;
      Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element)
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access)
    is
       Member_End : constant Ordered_Set_Of_CMOF_Property
         := CMOF.Internals.Attributes.Internal_Get_Member_End (Association);
 
    begin
+      --  XXX This implementation is limit links to connect elements from the
+      --  same metamodel.
+
       CMOF.Internals.Links.Internal_Create_Link
        (Association,
-        First_Element,
+        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+         (First_Element.all).Id,
         CMOF.Internals.Collections.Element (Member_End, 1),
-        Second_Element,
+        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+         (Second_Element.all).Id,
         CMOF.Internals.Collections.Element (Member_End, 2));
    end Create_Link;
 

@@ -62,8 +62,8 @@ package CMOF.Internals.Factories is
    overriding procedure Create_Link
     (Self           : not null access CMOF_Factory;
      Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access);
 
    overriding function Create_From_String
     (Self      : not null access CMOF_Factory;
