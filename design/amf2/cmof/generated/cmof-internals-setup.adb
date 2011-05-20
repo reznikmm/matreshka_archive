@@ -4659,7 +4659,7 @@ begin
    Initialize_Comment (668, Extent);
    Internal_Set_Body
     (668,
-     League.Strings.To_Universal_String ("Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned URIs to their outermost package. The package URI appears in XMI files when instances of the package["2019"]s classes are serialized."));
+     League.Strings.To_Universal_String ("Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned URIs to their outermost package. The package URI appears in XMI files when instances of the package’s classes are serialized."));
    Initialize_Operation (669, Extent);
    Internal_Set_Is_Leaf (669, False);
    Internal_Set_Is_Ordered (669, False);
@@ -7045,18 +7045,6 @@ begin
      207,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     4,
-     MP_CMOF_Namespace_Owned_Member,
-     208,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     4,
-     MP_CMOF_Namespace_Owned_Member,
-     211,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
@@ -7315,12 +7303,6 @@ begin
      220,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     219,
-     MP_CMOF_Namespace_Owned_Member,
-     221,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      219,
      MP_CMOF_Operation_Owned_Parameter,
@@ -7387,12 +7369,6 @@ begin
      226,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     225,
-     MP_CMOF_Namespace_Owned_Member,
-     227,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      225,
      MP_CMOF_Operation_Owned_Parameter,
@@ -7440,12 +7416,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      231,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     230,
-     MP_CMOF_Namespace_Owned_Member,
-     232,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      230,
@@ -7501,12 +7471,6 @@ begin
      236,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     235,
-     MP_CMOF_Namespace_Owned_Member,
-     237,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      235,
      MP_CMOF_Operation_Owned_Parameter,
@@ -7554,12 +7518,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      241,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     240,
-     MP_CMOF_Namespace_Owned_Member,
-     242,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      240,
@@ -7615,12 +7573,6 @@ begin
      246,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     245,
-     MP_CMOF_Namespace_Owned_Member,
-     247,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      245,
      MP_CMOF_Operation_Owned_Parameter,
@@ -7668,18 +7620,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      251,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     250,
-     MP_CMOF_Namespace_Owned_Member,
-     252,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     250,
-     MP_CMOF_Namespace_Owned_Member,
-     254,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      250,
@@ -7765,18 +7705,6 @@ begin
      259,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     258,
-     MP_CMOF_Namespace_Owned_Member,
-     260,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     258,
-     MP_CMOF_Namespace_Owned_Member,
-     262,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      258,
      MP_CMOF_Operation_Owned_Parameter,
@@ -7861,12 +7789,6 @@ begin
      267,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     266,
-     MP_CMOF_Namespace_Owned_Member,
-     268,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      266,
      MP_CMOF_Operation_Owned_Parameter,
@@ -7926,12 +7848,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      273,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     272,
-     MP_CMOF_Namespace_Owned_Member,
-     274,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      272,
@@ -8083,18 +7999,6 @@ begin
      281,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     9,
-     MP_CMOF_Namespace_Owned_Member,
-     282,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     9,
-     MP_CMOF_Namespace_Owned_Member,
-     285,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      9,
      MP_CMOF_Class_Owned_Operation,
@@ -8245,12 +8149,6 @@ begin
      292,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     291,
-     MP_CMOF_Namespace_Owned_Member,
-     293,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      291,
      MP_CMOF_Operation_Owned_Parameter,
@@ -8298,12 +8196,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      297,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     296,
-     MP_CMOF_Namespace_Owned_Member,
-     298,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      296,
@@ -8412,18 +8304,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      303,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     15,
-     MP_CMOF_Namespace_Owned_Member,
-     304,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     15,
-     MP_CMOF_Namespace_Owned_Member,
-     307,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      15,
@@ -8611,18 +8491,6 @@ begin
      315,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     314,
-     MP_CMOF_Namespace_Owned_Member,
-     316,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     314,
-     MP_CMOF_Namespace_Owned_Member,
-     318,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      314,
      MP_CMOF_Operation_Owned_Parameter,
@@ -8694,18 +8562,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      322,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     321,
-     MP_CMOF_Namespace_Owned_Member,
-     323,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     321,
-     MP_CMOF_Namespace_Owned_Member,
-     325,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      321,
@@ -8791,18 +8647,6 @@ begin
      330,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     329,
-     MP_CMOF_Namespace_Owned_Member,
-     331,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     329,
-     MP_CMOF_Namespace_Owned_Member,
-     333,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      329,
      MP_CMOF_Operation_Owned_Parameter,
@@ -8887,12 +8731,6 @@ begin
      338,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     337,
-     MP_CMOF_Namespace_Owned_Member,
-     339,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      337,
      MP_CMOF_Operation_Owned_Parameter,
@@ -8940,12 +8778,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      343,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     342,
-     MP_CMOF_Namespace_Owned_Member,
-     344,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      342,
@@ -9024,12 +8856,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      347,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     17,
-     MP_CMOF_Namespace_Owned_Member,
-     348,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      17,
@@ -9247,12 +9073,6 @@ begin
      357,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     356,
-     MP_CMOF_Namespace_Owned_Member,
-     358,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      356,
      MP_CMOF_Operation_Owned_Parameter,
@@ -9306,12 +9126,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      362,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     361,
-     MP_CMOF_Namespace_Owned_Member,
-     363,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      361,
@@ -9373,12 +9187,6 @@ begin
      368,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     367,
-     MP_CMOF_Namespace_Owned_Member,
-     369,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      367,
      MP_CMOF_Operation_Owned_Parameter,
@@ -9439,12 +9247,6 @@ begin
      374,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     373,
-     MP_CMOF_Namespace_Owned_Member,
-     375,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      373,
      MP_CMOF_Operation_Owned_Parameter,
@@ -9504,12 +9306,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      380,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     379,
-     MP_CMOF_Namespace_Owned_Member,
-     381,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      379,
@@ -9588,24 +9384,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      385,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     27,
-     MP_CMOF_Namespace_Owned_Member,
-     386,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     27,
-     MP_CMOF_Namespace_Owned_Member,
-     389,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     27,
-     MP_CMOF_Namespace_Owned_Member,
-     392,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      27,
@@ -9787,18 +9565,6 @@ begin
      399,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     398,
-     MP_CMOF_Namespace_Owned_Member,
-     400,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     398,
-     MP_CMOF_Namespace_Owned_Member,
-     402,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      398,
      MP_CMOF_Operation_Owned_Parameter,
@@ -9882,12 +9648,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      407,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     406,
-     MP_CMOF_Namespace_Owned_Member,
-     408,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      406,
@@ -10123,12 +9883,6 @@ begin
      419,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     418,
-     MP_CMOF_Namespace_Owned_Member,
-     420,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      418,
      MP_CMOF_Operation_Owned_Parameter,
@@ -10176,12 +9930,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      424,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     423,
-     MP_CMOF_Namespace_Owned_Member,
-     425,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      423,
@@ -10231,12 +9979,6 @@ begin
      429,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     428,
-     MP_CMOF_Namespace_Owned_Member,
-     430,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      428,
      MP_CMOF_Operation_Owned_Parameter,
@@ -10284,12 +10026,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      434,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     433,
-     MP_CMOF_Namespace_Owned_Member,
-     435,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      433,
@@ -10339,12 +10075,6 @@ begin
      439,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     438,
-     MP_CMOF_Namespace_Owned_Member,
-     440,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      438,
      MP_CMOF_Operation_Owned_Parameter,
@@ -10392,12 +10122,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      444,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     443,
-     MP_CMOF_Namespace_Owned_Member,
-     445,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      443,
@@ -10470,30 +10194,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      448,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     1,
-     MP_CMOF_Namespace_Owned_Member,
-     449,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     1,
-     MP_CMOF_Namespace_Owned_Member,
-     452,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     1,
-     MP_CMOF_Namespace_Owned_Member,
-     455,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     1,
-     MP_CMOF_Namespace_Owned_Member,
-     458,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      1,
@@ -10777,12 +10477,6 @@ begin
      467,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     466,
-     MP_CMOF_Namespace_Owned_Member,
-     468,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      466,
      MP_CMOF_Operation_Owned_Parameter,
@@ -10987,12 +10681,6 @@ begin
      477,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     476,
-     MP_CMOF_Namespace_Owned_Member,
-     478,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      476,
      MP_CMOF_Operation_Owned_Parameter,
@@ -11124,48 +10812,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      482,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     483,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     486,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     489,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     492,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     495,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     498,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     26,
-     MP_CMOF_Namespace_Owned_Member,
-     501,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      26,
@@ -11707,12 +11353,6 @@ begin
      517,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     516,
-     MP_CMOF_Namespace_Owned_Member,
-     518,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      516,
      MP_CMOF_Operation_Owned_Parameter,
@@ -11766,18 +11406,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      522,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     521,
-     MP_CMOF_Namespace_Owned_Member,
-     523,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     521,
-     MP_CMOF_Namespace_Owned_Member,
-     525,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      521,
@@ -11869,12 +11497,6 @@ begin
      530,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     529,
-     MP_CMOF_Namespace_Owned_Member,
-     531,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      529,
      MP_CMOF_Operation_Owned_Parameter,
@@ -11923,12 +11545,6 @@ begin
      535,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     534,
-     MP_CMOF_Namespace_Owned_Member,
-     536,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      534,
      MP_CMOF_Operation_Owned_Parameter,
@@ -11976,12 +11592,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      540,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     539,
-     MP_CMOF_Namespace_Owned_Member,
-     541,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      539,
@@ -12138,12 +11748,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      549,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     548,
-     MP_CMOF_Namespace_Owned_Member,
-     550,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      548,
@@ -12337,18 +11941,6 @@ begin
      559,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     6,
-     MP_CMOF_Namespace_Owned_Member,
-     560,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     6,
-     MP_CMOF_Namespace_Owned_Member,
-     563,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      6,
      MP_CMOF_Namespace_Owned_Rule,
@@ -12492,12 +12084,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      568,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     18,
-     MP_CMOF_Namespace_Owned_Member,
-     569,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      18,
@@ -12666,18 +12252,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      574,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     19,
-     MP_CMOF_Namespace_Owned_Member,
-     575,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     19,
-     MP_CMOF_Namespace_Owned_Member,
-     578,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
@@ -13093,12 +12667,6 @@ begin
      593,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     592,
-     MP_CMOF_Namespace_Owned_Member,
-     594,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      592,
      MP_CMOF_Operation_Owned_Parameter,
@@ -13152,12 +12720,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      598,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     597,
-     MP_CMOF_Namespace_Owned_Member,
-     599,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      597,
@@ -13213,12 +12775,6 @@ begin
      603,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     602,
-     MP_CMOF_Namespace_Owned_Member,
-     604,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      602,
      MP_CMOF_Operation_Owned_Parameter,
@@ -13272,12 +12828,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      608,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     607,
-     MP_CMOF_Namespace_Owned_Member,
-     609,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      607,
@@ -13333,12 +12883,6 @@ begin
      613,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     612,
-     MP_CMOF_Namespace_Owned_Member,
-     614,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      612,
      MP_CMOF_Operation_Owned_Parameter,
@@ -13392,18 +12936,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      618,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     617,
-     MP_CMOF_Namespace_Owned_Member,
-     619,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     617,
-     MP_CMOF_Namespace_Owned_Member,
-     621,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      617,
@@ -13488,12 +13020,6 @@ begin
      MP_CMOF_Operation_Body_Condition,
      626,
      MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     625,
-     MP_CMOF_Namespace_Owned_Member,
-     626,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      625,
@@ -13723,12 +13249,6 @@ begin
      637,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     636,
-     MP_CMOF_Namespace_Owned_Member,
-     638,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      636,
      MP_CMOF_Operation_Owned_Parameter,
@@ -13824,18 +13344,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      643,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     10,
-     MP_CMOF_Namespace_Owned_Member,
-     644,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     10,
-     MP_CMOF_Namespace_Owned_Member,
-     647,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      10,
@@ -14017,12 +13525,6 @@ begin
      655,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     654,
-     MP_CMOF_Namespace_Owned_Member,
-     656,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      654,
      MP_CMOF_Operation_Owned_Parameter,
@@ -14100,12 +13602,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      659,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     20,
-     MP_CMOF_Namespace_Owned_Member,
-     660,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      20,
@@ -14323,12 +13819,6 @@ begin
      670,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     669,
-     MP_CMOF_Namespace_Owned_Member,
-     671,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      669,
      MP_CMOF_Operation_Owned_Parameter,
@@ -14383,12 +13873,6 @@ begin
      675,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     674,
-     MP_CMOF_Namespace_Owned_Member,
-     676,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      674,
      MP_CMOF_Operation_Owned_Parameter,
@@ -14436,18 +13920,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      680,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     679,
-     MP_CMOF_Namespace_Owned_Member,
-     681,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     679,
-     MP_CMOF_Namespace_Owned_Member,
-     683,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      679,
@@ -14544,12 +14016,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      687,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     21,
-     MP_CMOF_Namespace_Owned_Member,
-     688,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      21,
@@ -14821,12 +14287,6 @@ begin
      700,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     699,
-     MP_CMOF_Namespace_Owned_Member,
-     701,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      699,
      MP_CMOF_Operation_Owned_Parameter,
@@ -14904,24 +14364,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      705,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     16,
-     MP_CMOF_Namespace_Owned_Member,
-     706,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     16,
-     MP_CMOF_Namespace_Owned_Member,
-     709,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     16,
-     MP_CMOF_Namespace_Owned_Member,
-     712,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      16,
@@ -15139,12 +14581,6 @@ begin
      720,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     719,
-     MP_CMOF_Namespace_Owned_Member,
-     721,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      719,
      MP_CMOF_Operation_Owned_Parameter,
@@ -15192,12 +14628,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      725,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     724,
-     MP_CMOF_Namespace_Owned_Member,
-     726,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      724,
@@ -15271,12 +14701,6 @@ begin
      732,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     731,
-     MP_CMOF_Namespace_Owned_Member,
-     733,
-     MP_CMOF_Named_Element_Namespace);
-   Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      731,
      MP_CMOF_Operation_Owned_Parameter,
@@ -15324,12 +14748,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      737,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     736,
-     MP_CMOF_Namespace_Owned_Member,
-     738,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      736,
@@ -15618,12 +15036,6 @@ begin
      MP_CMOF_Element_Owned_Comment,
      759,
      MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Member_Namespace,
-     758,
-     MP_CMOF_Namespace_Owned_Member,
-     760,
-     MP_CMOF_Named_Element_Namespace);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
      758,
