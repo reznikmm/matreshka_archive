@@ -3,11 +3,14 @@ all:
 	make -C ../..
 	gprbuild -p -Pcmof/cmof.gpr
 	gprbuild -p -Pxmi/xmi.gpr
+	gprbuild -p -Puml/uml.gpr
 	gprbuild -p -Pgui/gui_moc.gpr
 	gprbuild -p -Pgui/gui.gpr
+	gprbuild -p -Pgen-stage1/generator.gpr
+	gprbuild -p -Pgen-stage2/gens.gpr
 #	time ./demo-reader data/cmof.xml
-	(cd data/2.4 && ../../demo-viewer UML.cmof)
 #	./demo-viewer data/cmof.xml
+	(cd data/2.4 && ../../demo-viewer UML.cmof)
 
 gen:
 	gprbuild -p -Pgen-stage1/generator.gpr
@@ -37,6 +40,8 @@ gen-uml:
 	(cd data/2.4 && ../../gen-stage2/.obj/gen_api UML.cmof UML) > uml/generated/sources.ada
 	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
 	rm uml/generated/sources.ada
+#	(cd data/2.4 && ../../gen-stage2/.obj/gen_init UML.cmof) > uml/generated/sources.ada
+#	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
 	gnatmake -p -Puml/uml.gpr
 
 clean:
