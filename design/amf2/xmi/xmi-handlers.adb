@@ -617,6 +617,9 @@ package body XMI.Handlers is
 
          if Get_Association (Property) /= Null_CMOF_Element then
             if Attributes.Index (XMI_Namespace, Type_Name) /= 0 then
+               --  Metaclass of the element is specified explicitly, resolve
+               --  it.
+
                Name := Attributes.Value (XMI_Namespace, Type_Name);
                Meta :=
                  CMOF.XMI_Helper.Resolve
@@ -627,7 +630,9 @@ package body XMI.Handlers is
                end if;
 
             else
-               raise Program_Error;
+               --  Fallback to default metaclass - type of the property.
+
+               Meta := Get_Type (Property);
             end if;
 
             Analyze_Object_Element
