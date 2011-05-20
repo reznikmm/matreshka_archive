@@ -64,14 +64,6 @@ package body CMOF.XMI_Helper is
         AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Element.all).Id;
    end CMOF_Element_Of;
 
-   ------------
-   -- Get_Id --
-   ------------
-
-   function Get_Id
-    (Element : CMOF_Element) return League.Strings.Universal_String
-       renames CMOF.Internals.Extents.Get_Id;
-
    --------------------
    -- Is_Association --
    --------------------

@@ -50,16 +50,13 @@ package CMOF.XMI_Helper is
    function Resolve
     (Name : League.Strings.Universal_String) return CMOF_Element;
 
-   function Is_Association (Element : CMOF_Element) return Boolean;
-
    function Is_Data_Type (Element : CMOF_Element) return Boolean;
+
+   function Is_Association (Element : CMOF_Element) return Boolean;
 
    function Is_Class (Element : CMOF_Element) return Boolean;
 
    function Is_Package (Element : CMOF_Element) return Boolean;
-
-   function Get_Id
-    (Element : CMOF_Element) return League.Strings.Universal_String;
 
    procedure Set_Id
     (Element : not null access AMF.Elements.Abstract_Element'Class;
