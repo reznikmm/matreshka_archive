@@ -644,18 +644,20 @@ package body XMI.Handlers is
             Self.Text.Clear;
          end if;
 
-      elsif Namespace_URI = CMOF_Namespace then
-         --  XXX Only root element is processed now; tags are ignored,
-         --  not more than one root element is tested now. All these
-         --  limitations must be removed.
+      elsif Namespace_URI = CMOF_Namespace
+        and Local_Name = Tag_Class_Name
+      then
+         --  XXX CMOF:Tags are ignored now.
 
-         if Local_Name = Tag_Class_Name then
---            Put_Line (Namespace_URI.To_Wide_Wide_String);
---            Put_Line (Local_Name.To_Wide_Wide_String);
+         return;
 
-            return;
-         end if;
+      elsif Namespace_URI = XMI_Namespace then
+         --  XXX XMI namespace is not processed now.
 
+         null;
+
+      else
+         Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
          Meta := CMOF.XMI_Helper.Resolve (Local_Name);
 
          Analyze_Object_Element
