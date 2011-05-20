@@ -50,8 +50,6 @@ with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Enumeration_Literals is
 
-   pragma Preelaborate;
-
    type CMOF_Enumeration_Literal_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Interface

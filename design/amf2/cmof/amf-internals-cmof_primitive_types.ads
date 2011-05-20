@@ -59,8 +59,6 @@ with AMF.CMOF.Properties.Collections;
 
 package AMF.Internals.CMOF_Primitive_Types is
 
-   pragma Preelaborate;
-
    type CMOF_Primitive_Type_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Interface

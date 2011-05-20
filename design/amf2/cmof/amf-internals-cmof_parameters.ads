@@ -51,8 +51,6 @@ with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Parameters is
 
-   pragma Preelaborate;
-
    type CMOF_Parameter_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Parameters.CMOF_Parameter_Interface

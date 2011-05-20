@@ -50,8 +50,6 @@ with AMF.CMOF.Packages;
 
 package AMF.Internals.CMOF_Package_Imports is
 
-   pragma Preelaborate;
-
    type CMOF_Package_Import_proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Package_Imports.CMOF_Package_Import_Interface

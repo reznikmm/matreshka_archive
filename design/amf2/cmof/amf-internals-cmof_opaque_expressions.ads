@@ -50,8 +50,6 @@ with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Opaque_Expressions is
 
-   pragma Preelaborate;
-
    type CMOF_Opaque_Expression_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Interface

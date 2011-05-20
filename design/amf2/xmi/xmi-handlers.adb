@@ -57,7 +57,6 @@ with CMOF.Extents;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Properties;
-with CMOF.Reflection;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 
@@ -68,7 +67,6 @@ package body XMI.Handlers is
    use CMOF.Associations;
    use CMOF.Collections;
    use CMOF.Extents;
-   use CMOF.Reflection;
    use CMOF.Multiplicity_Elements;
    use CMOF.Properties;
    use CMOF.Typed_Elements;
@@ -185,9 +183,8 @@ package body XMI.Handlers is
 
             if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Self.Attribute)) then
                if not Is_Multivalued (Self.Attribute) then
-                  Set
-                   (CMOF_Element_Of (Self.Current),
-                    Self.Attribute,
+                  Self.Current.Set
+                   (Self.Attribute,
                     Self.Factory.Create_From_String
                      (Get_Type (Self.Attribute), Self.Text));
 
@@ -446,9 +443,8 @@ package body XMI.Handlers is
          end if;
 
          if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
-            Set
-             (CMOF_Element_Of (Self.Current),
-              Property,
+            Self.Current.Set
+             (Property,
               Self.Factory.Create_From_String (Get_Type (Property), Value));
 
          else
@@ -524,8 +520,7 @@ package body XMI.Handlers is
 
                Property :=
                  Resolve_Owned_Attribute
-                  (Get_Meta_Class
-                    (CMOF_Element_Of (Self.Current)), Qualified_Name);
+                  (Self.Current.Get_Meta_Class, Qualified_Name);
 
                if Property = Null_CMOF_Element then
                   raise Program_Error;
@@ -536,21 +531,21 @@ package body XMI.Handlers is
             end;
 
          else
-         Property :=
-           Resolve_Owned_Attribute
-            (Get_Meta_Class (CMOF_Element_Of (Self.Current)), Qualified_Name);
+            Property :=
+              Resolve_Owned_Attribute
+               (Self.Current.Get_Meta_Class, Qualified_Name);
 
-         if Property = Null_CMOF_Element then
-            Self.Diagnosis :=
-              "Unknown property '"
-                & Get_Name (Get_Meta_Class (CMOF_Element_Of (Self.Current)))
-                & ":"
-                & Qualified_Name
-                & ''';
-            Success := False;
+            if Property = Null_CMOF_Element then
+               Self.Diagnosis :=
+                 "Unknown property '"
+                   & Get_Name (Self.Current.Get_Meta_Class)
+                   & ":"
+                   & Qualified_Name
+                   & ''';
+               Success := False;
 
-            return;
-         end if;
+               return;
+            end if;
 
          Association := Get_Association (Property);
 

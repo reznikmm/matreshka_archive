@@ -60,8 +60,6 @@ with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Enumerations is
 
-   pragma Preelaborate;
-
    type CMOF_Enumeration_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Enumerations.CMOF_Enumeration_Interface

@@ -57,8 +57,6 @@ with CMOF;
 
 package AMF.Internals.CMOF_Packages is
 
-   pragma Preelaborate;
-
    type CMOF_Package_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Packages.CMOF_Package_Interface with null record;

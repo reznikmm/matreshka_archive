@@ -43,11 +43,10 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 with AMF.Elements;
+with AMF.Values;
 with CMOF;
 
 package AMF.Internals.CMOF_Elements is
-
-   pragma Preelaborate;
 
    type CMOF_Element_Proxy is
      abstract limited new AMF.Elements.Abstract_Element
@@ -55,5 +54,14 @@ package AMF.Internals.CMOF_Elements is
    record
       Id : Standard.CMOF.CMOF_Element;
    end record;
+
+   overriding procedure Set
+    (Self     : not null access CMOF_Element_Proxy;
+     Property : Standard.CMOF.CMOF_Property;
+     Value    : AMF.Values.Value);
+
+   overriding function Get_Meta_Class
+    (Self : not null access constant CMOF_Element_Proxy)
+       return Standard.CMOF.CMOF_Class;
 
 end AMF.Internals.CMOF_Elements;

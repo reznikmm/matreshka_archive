@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Values;
+with CMOF;
 
 package AMF.Elements is
 
@@ -49,5 +51,37 @@ package AMF.Elements is
    type Abstract_Element is limited interface;
 
    type Element_Access is access all Abstract_Element'Class;
+
+   not overriding function Get_Meta_Class
+    (Self : not null access constant Abstract_Element)
+       return CMOF.CMOF_Class is abstract;
+   --  Returns the Class that describes this element.
+
+   not overriding procedure Set
+    (Self     : not null access Abstract_Element;
+     Property : CMOF.CMOF_Property;
+     Value    : AMF.Values.Value) is abstract;
+   --  If the Property has multiplicity upper bound = 1, set() atomically
+   --  updates the value of the Property to the object parameter. If Property
+   --  has multiplicity upper bound >1, the Object must be a kind of
+   --  ReflectiveCollection. The behavior is identical to the following
+   --  operations performed atomically:
+   --
+   --     ReflectiveSequence list = element.get(property);
+   --     list.clear();
+   --     list.addAll((ReflectiveCollection) object);
+   --
+   --  There is no return value. Exception: throws IllegalArgumentException if
+   --  Property is not a member of the Class from getMetaClass().
+   --
+   --  Exception: throws ClassCastException if the Property’s type
+   --  isInstance(element) returns false and Property has multi-plicity upper
+   --  bound = 1.
+   --
+   --  Exception: throws ClassCastException if Element is not a
+   --  ReflectiveCollection and Property has multiplicity upper bound > 1.
+   --
+   --  Exception: throws IllegalArgumentException if element is null, Property
+   --  is of type Class, and the multiplicity upper bound > 1.
 
 end AMF.Elements;

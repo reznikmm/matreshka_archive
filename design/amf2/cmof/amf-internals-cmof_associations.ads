@@ -59,8 +59,6 @@ with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Associations is
 
-   pragma Preelaborate;
-
    type CMOF_Association_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Associations.CMOF_Association_Interface

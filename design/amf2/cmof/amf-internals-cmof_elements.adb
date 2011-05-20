@@ -41,76 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Comments.Collections;
-with AMF.CMOF.Element_Imports;
-with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Namespaces;
-with AMF.CMOF.Packageable_Elements;
-with AMF.Internals.CMOF_Elements;
+with CMOF.Reflection;
 
-package AMF.Internals.CMOF_Element_Imports is
+package body AMF.Internals.CMOF_Elements is
 
-   type CMOF_Element_Import_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Element_Imports.CMOF_Element_Import_Interface
-         with null record;
+   --------------------
+   -- Get_Meta_Class --
+   --------------------
 
-   --  XXX These subprograms are stubs
+   overriding function Get_Meta_Class
+    (Self : not null access constant CMOF_Element_Proxy)
+       return Standard.CMOF.CMOF_Class is
+   begin
+      return Standard.CMOF.Reflection.Get_Meta_Class (Self.Id);
+   end Get_Meta_Class;
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+   ---------
+   -- Set --
+   ---------
 
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+   overriding procedure Set
+    (Self     : not null access CMOF_Element_Proxy;
+     Property : Standard.CMOF.CMOF_Property;
+     Value    : AMF.Values.Value) is
+   begin
+      Standard.CMOF.Reflection.Set (Self.Id, Property, Value);
+   end Set;
 
-   overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
-
-   overriding function Get_Related_Element
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Source
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Target
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return CMOF.CMOF_Visibility_Kind;
-
-   overriding procedure Set_Visibility
-    (Self : not null access CMOF_Element_Import_Proxy;
-     To   : CMOF.CMOF_Visibility_Kind);
-
-   overriding function Get_Alias
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return Optional_String;
-
-   overriding procedure Set_Alias
-    (Self : not null access CMOF_Element_Import_Proxy;
-     To   : Optional_String);
-
-   overriding function Get_Imported_Element
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element;
-
-   overriding procedure Set_Imported_Element
-    (Self : not null access CMOF_Element_Import_Proxy;
-     To   : AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element);
-
-   overriding function Get_Importing_Namespace
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
-
-   overriding procedure Set_Importing_Namespace
-    (Self : not null access CMOF_Element_Import_Proxy;
-     To   : AMF.CMOF.Namespaces.CMOF_Namespace);
-
-end AMF.Internals.CMOF_Element_Imports;
+end AMF.Internals.CMOF_Elements;

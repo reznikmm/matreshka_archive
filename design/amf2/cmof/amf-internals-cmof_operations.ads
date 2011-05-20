@@ -60,8 +60,6 @@ with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Operations is
 
-   pragma Preelaborate;
-
    type CMOF_Operation_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
        and AMF.CMOF.Operations.CMOF_Operation_Interface
