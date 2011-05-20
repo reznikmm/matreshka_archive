@@ -49,6 +49,24 @@ with CMOF.Internals.Collections;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Links;
+with CMOF.Internals.Tables;
+with AMF.Internals.CMOF_Associations;
+with AMF.Internals.CMOF_Classes;
+with AMF.Internals.CMOF_Comments;
+with AMF.Internals.CMOF_Constraints;
+with AMF.Internals.CMOF_Data_Types;
+with AMF.Internals.CMOF_Element_Imports;
+with AMF.Internals.CMOF_Enumeration_Literals;
+with AMF.Internals.CMOF_Enumerations;
+with AMF.Internals.CMOF_Expressions;
+with AMF.Internals.CMOF_Opaque_Expressions;
+with AMF.Internals.CMOF_Operations;
+with AMF.Internals.CMOF_Packages;
+with AMF.Internals.CMOF_Package_Imports;
+with AMF.Internals.CMOF_Package_Merges;
+with AMF.Internals.CMOF_Parameters;
+with AMF.Internals.CMOF_Primitive_Types;
+with AMF.Internals.CMOF_Properties;
 
 package body CMOF.Internals.Factories is
 
@@ -116,6 +134,115 @@ package body CMOF.Internals.Factories is
       end if;
 
       raise Program_Error with "Unknown CMOF class";
+   end Create;
+
+   ------------
+   -- Create --
+   ------------
+
+   overriding function Create
+    (Self       : not null access CMOF_Factory;
+     Extent     : CMOF.CMOF_Extent;
+     Meta_Class : CMOF.CMOF_Class)
+       return not null AMF.Elements.Element_Access
+   is
+      Element : constant CMOF_Element := Self.Create (Extent, Meta_Class);
+      Result  : AMF.Elements.Element_Access;
+
+   begin
+      --  Create corresponding proxy element.
+
+      if Meta_Class = MC_CMOF_Association then
+         Result :=
+           new AMF.Internals.CMOF_Associations.CMOF_Association_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Class then
+         Result :=
+           new AMF.Internals.CMOF_Classes.CMOF_Class_Proxy'(Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Comment then
+         Result :=
+           new AMF.Internals.CMOF_Comments.CMOF_Comment_Proxy'(Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Constraint then
+         Result :=
+           new AMF.Internals.CMOF_Constraints.CMOF_Constraint_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Data_Type then
+         Result :=
+           new AMF.Internals.CMOF_Data_Types.CMOF_Data_Type_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Element_Import then
+         Result :=
+           new AMF.Internals.CMOF_Element_Imports.CMOF_Element_Import_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Enumeration then
+         Result :=
+           new AMF.Internals.CMOF_Enumerations.CMOF_Enumeration_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Enumeration_Literal then
+         Result :=
+           new AMF.Internals.CMOF_Enumeration_Literals.CMOF_Enumeration_Literal_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Expression then
+         Result :=
+           new AMF.Internals.CMOF_Expressions.CMOF_Expression_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Opaque_Expression then
+         Result :=
+           new AMF.Internals.CMOF_Opaque_Expressions.CMOF_Opaque_Expression_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Operation then
+         Result :=
+           new AMF.Internals.CMOF_Operations.CMOF_Operation_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Package then
+         Result :=
+           new AMF.Internals.CMOF_Packages.CMOF_Package_Proxy'(Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Package_Import then
+         Result :=
+           new AMF.Internals.CMOF_Package_Imports.CMOF_Package_Import_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Package_Merge then
+         Result :=
+           new AMF.Internals.CMOF_Package_Merges.CMOF_Package_Merge_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Parameter then
+         Result :=
+           new AMF.Internals.CMOF_Parameters.CMOF_Parameter_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Primitive_Type then
+         Result :=
+           new AMF.Internals.CMOF_Primitive_Types.CMOF_Primitive_Type_Proxy'
+                (Id => Element);
+
+      elsif Meta_Class = MC_CMOF_Property then
+         Result :=
+           new AMF.Internals.CMOF_Properties.CMOF_Property_Proxy'
+                (Id => Element);
+
+      else
+         raise Program_Error with CMOF_Element'Image (Meta_Class);
+      end if;
+
+      --  Register proxy element.
+
+      CMOF.Internals.Tables.Elements.Table (Element).Proxy := Result;
+
+      return Result;
    end Create;
 
    ------------------------

@@ -46,7 +46,7 @@ with GNAT.Table;
 with Matreshka.Internals.Strings;
 
 with AMF;
-with AMF.CMOF.Elements;
+with AMF.Elements;
 with CMOF.Internals.Types;
 
 private package CMOF.Internals.Tables is
@@ -104,7 +104,7 @@ private package CMOF.Internals.Tables is
             Next     : CMOF_Element;
             Previous : CMOF_Element;
             --  Doubly linked list of elements in the extent.
-            Proxy    : AMF.CMOF.Elements.CMOF_Element;
+            Proxy    : AMF.Elements.Element_Access;
             Member   : Member_Array;
             --  First element (with index 0) contains index of first collection
             --  of class instance. To save space all class's collections have

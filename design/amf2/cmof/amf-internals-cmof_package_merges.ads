@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,43 +41,62 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for CMOF classes.
-------------------------------------------------------------------------------
-with League.Strings;
+with AMF.CMOF.Comments.Collections;
+with AMF.CMOF.Elements.Collections;
+with AMF.CMOF.Namespaces;
+with AMF.CMOF.Package_Merges;
+with AMF.CMOF.Packages;
+with AMF.Internals.CMOF_Elements;
 
-with AMF.Elements;
-with AMF.Factories;
-with AMF.Values;
+package AMF.Internals.CMOF_Package_Merges is
 
-package CMOF.Internals.Factories is
+   pragma Preelaborate;
 
-   type CMOF_Factory is limited new AMF.Factories.AMF_Factory with null record;
+   type CMOF_Package_Merge_Proxy is
+     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+       and AMF.CMOF.Package_Merges.CMOF_Package_Merge_Interface
+         with null record;
 
-   overriding function Create
-    (Self       : not null access CMOF_Factory;
-     Extent     : CMOF_Extent;
-     Meta_Class : CMOF_Class) return CMOF_Element;
+   --  XXX These subprograms are stubs
 
-   overriding function Create
-    (Self       : not null access CMOF_Factory;
-     Extent     : CMOF.CMOF_Extent;
-     Meta_Class : CMOF.CMOF_Class)
-       return not null AMF.Elements.Element_Access;
+   overriding function Get_Owned_Element
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding procedure Create_Link
-    (Self           : not null access CMOF_Factory;
-     Association    : CMOF_Association;
-     First_Element  : CMOF_Element;
-     Second_Element : CMOF_Element);
+   overriding function Get_Owner
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element;
 
-   overriding function Create_From_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
+   overriding function Get_Owned_Comment
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
 
-   overriding function Convert_To_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
+   overriding function Get_Related_Element
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-end CMOF.Internals.Factories;
+   overriding function Get_Source
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Get_Target
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Get_Receiving_Package
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Packages.CMOF_Package;
+
+   overriding procedure Set_Receiving_Package
+    (Self : not null access CMOF_Package_Merge_Proxy;
+     To   : AMF.CMOF.Packages.CMOF_Package);
+
+   overriding function Get_Merged_Package
+    (Self : not null access constant CMOF_Package_Merge_Proxy)
+       return AMF.CMOF.Packages.CMOF_Package;
+
+   overriding procedure Set_Merged_Package
+    (Self : not null access CMOF_Package_Merge_Proxy;
+     To   : AMF.CMOF.Packages.CMOF_Package);
+
+end AMF.Internals.CMOF_Package_Merges;
