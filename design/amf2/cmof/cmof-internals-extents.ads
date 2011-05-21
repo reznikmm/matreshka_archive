@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with AMF.Internals.Collections;
 with AMF.Elements;
 
 package CMOF.Internals.Extents is
@@ -56,6 +57,11 @@ package CMOF.Internals.Extents is
    function Length (Self : CMOF_Extent) return Natural;
 
    function Element (Self : CMOF_Extent; Index : Positive) return CMOF_Element;
+
+   function All_Elements
+    (Self : CMOF_Extent)
+       return not null AMF.Internals.Collections.Collection_Access;
+   --  Returns all elements in the specified extent.
 
    function Object
     (Self       : CMOF_Extent;

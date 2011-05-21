@@ -46,6 +46,8 @@ with Ada.Text_IO;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
+with AMF.Internals.Containers;
+with AMF.Internals.Tables;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
@@ -73,7 +75,8 @@ package body CMOF.Internals.Extents is
       Meta_Class  : constant CMOF_Class := Reflection.Get_Meta_Class (Self);
       Meta_Extent : constant CMOF_Extent
         := Tables.Elements.Table (Meta_Class).Extent;
-      Current     : CMOF_Element := Tables.Extents.Table (Meta_Extent).Head;
+      Current     : CMOF_Element
+        := AMF.Internals.Tables.Extents.Table (Meta_Extent).Head;
       Association : CMOF_Association;
       Member_End  : Ordered_Set_Of_CMOF_Property;
       Opposite    : CMOF_Property;
@@ -179,10 +182,11 @@ package body CMOF.Internals.Extents is
 
    function Create_Extent return CMOF_Extent is
    begin
-      Tables.Extents.Increment_Last;
-      Tables.Extents.Table (Tables.Extents.Last) := (0, 0);
+      AMF.Internals.Tables.Extents.Increment_Last;
+      AMF.Internals.Tables.Extents.Table (AMF.Internals.Tables.Extents.Last) :=
+       (0, 0);
 
-      return Tables.Extents.Last;
+      return AMF.Internals.Tables.Extents.Last;
    end Create_Extent;
 
    -------------
@@ -193,7 +197,7 @@ package body CMOF.Internals.Extents is
     (Self  : CMOF_Extent;
      Index : Positive) return CMOF_Element
    is
-      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+      Current : CMOF_Element := AMF.Internals.Tables.Extents.Table (Self).Head;
 
    begin
       for J in 2 .. Index loop
@@ -209,6 +213,29 @@ package body CMOF.Internals.Extents is
          return Current;
       end if;
    end Element;
+
+   --------------
+   -- Elements --
+   --------------
+
+   function All_Elements
+    (Self : CMOF_Extent)
+       return not null AMF.Internals.Collections.Collection_Access
+   is
+      Current  : CMOF_Element := AMF.Internals.Tables.Extents.Table (Self).Head;
+      Result   : not null AMF.Internals.Collections.Collection_Access
+        := new AMF.Internals.Containers.Collection;
+      Elements : AMF.Internals.Containers.Vectors.Vector
+        renames AMF.Internals.Containers.Collection (Result.all).Elements;
+
+   begin
+      while Current /= 0 loop
+         Elements.Append (Tables.Elements.Table (Current).Proxy);
+         Current := Tables.Elements.Table (Current).Next;
+      end loop;
+
+      return Result;
+   end All_Elements;
 
    ------------
    -- Get_Id --
@@ -229,10 +256,13 @@ package body CMOF.Internals.Extents is
     (Extent  : CMOF_Extent;
      Element : CMOF_Element)
    is
-      Head        : CMOF_Element := Tables.Extents.Table (Extent).Head;
-      Tail        : CMOF_Element := Tables.Extents.Table (Extent).Tail;
-      Previous    : CMOF_Element := Tables.Extents.Table (Extent).Tail;
-      Next        : CMOF_Element := 0;
+      Head     : CMOF_Element
+        := AMF.Internals.Tables.Extents.Table (Extent).Head;
+      Tail     : CMOF_Element
+        := AMF.Internals.Tables.Extents.Table (Extent).Tail;
+      Previous : CMOF_Element
+        := AMF.Internals.Tables.Extents.Table (Extent).Tail;
+      Next     : CMOF_Element := 0;
 
    begin
       if Head = 0 then
@@ -241,13 +271,13 @@ package body CMOF.Internals.Extents is
          Head := Element;
          Tail := Element;
 
-         Tables.Extents.Table (Extent).Head := Head;
-         Tables.Extents.Table (Extent).Tail := Tail;
+         AMF.Internals.Tables.Extents.Table (Extent).Head := Head;
+         AMF.Internals.Tables.Extents.Table (Extent).Tail := Tail;
 
       else
          Tail := Element;
 
-         Tables.Extents.Table (Extent).Tail := Tail;
+         AMF.Internals.Tables.Extents.Table (Extent).Tail := Tail;
          Tables.Elements.Table (Previous).Next := Element;
       end if;
 
@@ -262,8 +292,8 @@ package body CMOF.Internals.Extents is
 
    procedure Initialize_CMOF_Metamodel_Extent is
    begin
-      Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
-      Tables.Extents.Table (CMOF_Metamodel_Extent) := (0, 0);
+      AMF.Internals.Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
+      AMF.Internals.Tables.Extents.Table (CMOF_Metamodel_Extent) := (0, 0);
    end Initialize_CMOF_Metamodel_Extent;
 
    ------------
@@ -271,7 +301,7 @@ package body CMOF.Internals.Extents is
    ------------
 
    function Length (Self : CMOF_Extent) return Natural is
-      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+      Current : CMOF_Element := AMF.Internals.Tables.Extents.Table (Self).Head;
       Aux     : Natural := 0;
 
    begin
@@ -293,7 +323,7 @@ package body CMOF.Internals.Extents is
    is
       use type League.Strings.Universal_String;
 
-      Current : CMOF_Element := Tables.Extents.Table (Self).Head;
+      Current : CMOF_Element := AMF.Internals.Tables.Extents.Table (Self).Head;
 
    begin
       while Current /= Null_CMOF_Element loop

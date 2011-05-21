@@ -57,6 +57,19 @@ package body CMOF.Extents is
    -- Elements --
    --------------
 
+   function Elements
+    (Self : CMOF_Extent)
+       return AMF.Elements.Collections.Reflective_Collection is
+   begin
+      return
+        AMF.Elements.Collections.Wrap
+         (CMOF.Internals.Extents.All_Elements (Self));
+   end Elements;
+
+   --------------
+   -- Elements --
+   --------------
+
    function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set is
       use CMOF.Internals.Extents;
 
@@ -64,7 +77,7 @@ package body CMOF.Extents is
 
    begin
       for J in 1 .. Length (Extent) loop
-          Result.Insert (Element (Extent, J));
+         Result.Insert (Element (Extent, J));
       end loop;
 
       return Result;

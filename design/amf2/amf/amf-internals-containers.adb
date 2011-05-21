@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,41 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Sets;
 
-with AMF.Elements.Collections;
-with AMF.Factories;
-with League.Strings;
+package body AMF.Internals.Containers is
 
-package CMOF.Extents is
+   -------------
+   -- Element --
+   -------------
 
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+   overriding function Element
+    (Self  : not null access constant Collection;
+     Index : Positive) return not null AMF.Elements.Element_Access is
+   begin
+      return Self.Elements.Element (Index);
+   end Element;
 
-   package CMOF_Element_Sets is
-     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
+   ------------
+   -- Length --
+   ------------
 
-   function Create_Extent return CMOF_Extent;
+   overriding function Length
+    (Self : not null access constant Collection) return Natural is
+   begin
+      return Natural (Self.Elements.Length);
+   end Length;
 
-   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
-
-   function Elements
-    (Self : CMOF_Extent)
-       return AMF.Elements.Collections.Reflective_Collection;
-   --  Returns all elements in the specified extent.
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
-   --  CMOF::Store class will be provided in the future, and it will implement
-   --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is
-   --  provided to return factory.
-
-end CMOF.Extents;
+end AMF.Internals.Containers;

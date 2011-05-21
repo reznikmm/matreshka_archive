@@ -193,11 +193,6 @@ private package CMOF.Internals.Tables is
       Next       : Collection_Element_Identifier;
    end record;
 
-   type Extent_Record is record
-      Head : CMOF_Element;
-      Tail : CMOF_Element;
-   end record;
-
    package Links is new GNAT.Table (Link_Record, CMOF_Link, 1, 2_000, 100);
 
    package Elements is
@@ -210,9 +205,6 @@ private package CMOF.Internals.Tables is
    package Collection_Elements is
      new GNAT.Table
        (Collection_Element_Record, Collection_Element_Identifier, 1, 3_000, 100);
-
-   package Extents is
-     new GNAT.Table (Extent_Record, CMOF_Extent, 1, 100, 100);
 
    function Is_Null (Self : Cmof_Element) return Boolean;
    pragma Inline (Is_Null);

@@ -41,41 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Hashed_Sets;
+with GNAT.Table;
 
-with AMF.Elements.Collections;
-with AMF.Factories;
-with League.Strings;
+with CMOF;
 
-package CMOF.Extents is
+package AMF.Internals.Tables is
+--  private package AMF.Internals.Tables is
 
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+   type Extent_Record is record
+      Head : CMOF.CMOF_Element;
+      Tail : CMOF.CMOF_Element;
+   end record;
 
-   package CMOF_Element_Sets is
-     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
+   package Extents is
+     new GNAT.Table (Extent_Record, CMOF.CMOF_Extent, 1, 100, 100);
 
-   function Create_Extent return CMOF_Extent;
-
-   function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
-
-   function Elements
-    (Self : CMOF_Extent)
-       return AMF.Elements.Collections.Reflective_Collection;
-   --  Returns all elements in the specified extent.
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
-   --  CMOF::Store class will be provided in the future, and it will implement
-   --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is
-   --  provided to return factory.
-
-end CMOF.Extents;
+end AMF.Internals.Tables;
