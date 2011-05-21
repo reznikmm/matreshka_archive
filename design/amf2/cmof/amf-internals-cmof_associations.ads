@@ -55,12 +55,12 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types.Collections;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Classifiers;
 
 package AMF.Internals.CMOF_Associations is
 
    type CMOF_Association_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Classifiers.CMOF_Classifier_Proxy
        and AMF.CMOF.Associations.CMOF_Association_Interface
          with null record;
 
@@ -77,10 +77,6 @@ package AMF.Internals.CMOF_Associations is
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Association_Proxy)
        return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
-
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Association_Proxy)
-       return Optional_String;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Association_Proxy;
