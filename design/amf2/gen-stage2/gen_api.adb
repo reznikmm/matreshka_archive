@@ -391,7 +391,8 @@ procedure Gen_API is
                      (Get_Type (Attribute)).To_Wide_Wide_String
                       & "."
                       & Ada_API_Type_Name
-                         (Get_Type (Attribute)).To_Wide_Wide_String;
+                         (Get_Type (Attribute)).To_Wide_Wide_String
+                      & "_Access";
                end if;
             end if;
          end Type_Qualified_Name;
@@ -422,7 +423,7 @@ procedure Gen_API is
          Put_Line
           ("    (Self : not null access constant "
              & Class_Type_Name
-             & "_Interface)");
+             & ")");
          Put_Line ("       return " & Type_Qualified_Name & " is abstract;");
 
          --  Generate comment.
@@ -462,7 +463,7 @@ procedure Gen_API is
          end if;
 
          Put_Line
-          ("    (Self : not null access " & Class_Type_Name & "_Interface;");
+          ("    (Self : not null access " & Class_Type_Name & ";");
          Put_Line
           ("     To   : " & Type_Qualified_Name & ") is abstract;");
       end Generate_Attribute;
@@ -529,7 +530,7 @@ procedure Gen_API is
 
       --  Generate interface type.
 
-      Put ("   type " & Type_Name & "_Interface is limited interface");
+      Put ("   type " & Type_Name & " is limited interface");
 
       for J in 1 .. Length (Super_Classes) loop
          New_Line;
@@ -539,8 +540,7 @@ procedure Gen_API is
                 (Element (Super_Classes, J)).To_Wide_Wide_String
              & "."
              & Ada_API_Type_Name
-                (Element (Super_Classes, J)).To_Wide_Wide_String
-             & "_Interface");
+                (Element (Super_Classes, J)).To_Wide_Wide_String);
       end loop;
 
       Put_Line (";");
@@ -548,9 +548,9 @@ procedure Gen_API is
       --  Generate access type.
 
       New_Line;
-      Put_Line ("   type " & Type_Name & " is");
-      Put_Line ("     access all " & Type_Name & "_Interface'Class;");
-      Put_Line ("   for " & Type_Name & "'Storage_Size use 0;");
+      Put_Line ("   type " & Type_Name & "_Access is");
+      Put_Line ("     access all " & Type_Name & "'Class;");
+      Put_Line ("   for " & Type_Name & "_Access'Storage_Size use 0;");
 
       --  Generate setters and getters.
 
@@ -583,8 +583,8 @@ procedure Gen_API is
       New_Line;
       Put_Line ("   package " & Type_Name & "_Collections is");
       Put_Line ("     new AMF.Generic_Collections");
-      Put_Line ("          (" & Type_Name & "_Interface,");
-      Put_Line ("           " & Type_Name & ");");
+      Put_Line ("          (" & Type_Name & ",");
+      Put_Line ("           " & Type_Name & "_Access);");
       New_Line;
       Put_Line ("   type Set_Of_" & Type_Name & " is");
       Put_Line
