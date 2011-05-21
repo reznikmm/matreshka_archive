@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classifiers.Collections;
-with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Element_Imports.Collections;
@@ -73,10 +72,6 @@ package AMF.Internals.CMOF_Data_Types is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Data_Type_Proxy)
-       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Data_Type_Proxy;

@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classifiers.Collections;
-with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
@@ -74,10 +73,6 @@ package AMF.Internals.CMOF_Enumerations is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Enumeration_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Enumeration_Proxy)
-       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Enumeration_Proxy)

@@ -74,21 +74,6 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
       return Get_Owner (Self);
    end Get_Owner;
 
-   -----------------------
-   -- Get_Owned_Comment --
-   -----------------------
-
-   overriding function Get_Owned_Comment
-     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-      return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error;
-      return Get_Owned_Comment (Self);
-   end Get_Owned_Comment;
-
    --------------
    -- Get_Name --
    --------------

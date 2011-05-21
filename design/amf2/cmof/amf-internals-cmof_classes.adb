@@ -41,11 +41,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Collections;
 with CMOF.Internals.Attributes;
+with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Classes is
 
    use Standard.CMOF.Internals.Attributes;
+   use Standard.CMOF.Internals.Collections;
+
+   -------------------------
+   -- Get_Owned_Attribute --
+   -------------------------
+
+   overriding function Get_Owned_Attribute
+    (Self : not null access constant CMOF_Class_Proxy)
+       return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is
+   begin
+      return
+        AMF.CMOF.Properties.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Internal_Get_Owned_Attribute (Self.Id)));
+   end Get_Owned_Attribute;
+
+   ---------------------
+   -- Get_Super_Class --
+   ---------------------
+
+   overriding function Get_Super_Class
+    (Self : not null access constant CMOF_Class_Proxy)
+       return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class is
+   begin
+      return
+        AMF.CMOF.Classes.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Internal_Get_Super_Class (Self.Id)));
+   end Get_Super_Class;
 
    -----------------------
    -- Get_Owned_Element --
@@ -76,21 +109,6 @@ package body AMF.Internals.CMOF_Classes is
       raise Program_Error;
       return Get_Owner (Self);
    end Get_Owner;
-
-   -----------------------
-   -- Get_Owned_Comment --
-   -----------------------
-
-   overriding function Get_Owned_Comment
-     (Self : not null access constant CMOF_Class_Proxy)
-      return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error;
-      return Get_Owned_Comment (Self);
-   end Get_Owned_Comment;
 
    --------------
    -- Set_Name --
@@ -398,21 +416,6 @@ package body AMF.Internals.CMOF_Classes is
    end Set_Is_Abstract;
 
    -------------------------
-   -- Get_Owned_Attribute --
-   -------------------------
-
-   overriding function Get_Owned_Attribute
-     (Self : not null access constant CMOF_Class_Proxy)
-      return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Attribute unimplemented");
-      raise Program_Error;
-      return Get_Owned_Attribute (Self);
-   end Get_Owned_Attribute;
-
-   -------------------------
    -- Get_Owned_Operation --
    -------------------------
 
@@ -426,20 +429,5 @@ package body AMF.Internals.CMOF_Classes is
       raise Program_Error;
       return Get_Owned_Operation (Self);
    end Get_Owned_Operation;
-
-   ---------------------
-   -- Get_Super_Class --
-   ---------------------
-
-   overriding function Get_Super_Class
-     (Self : not null access constant CMOF_Class_Proxy)
-      return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Super_Class unimplemented");
-      raise Program_Error;
-      return Get_Super_Class (Self);
-   end Get_Super_Class;
 
 end AMF.Internals.CMOF_Classes;

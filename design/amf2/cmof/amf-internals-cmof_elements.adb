@@ -41,9 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Collections;
+with CMOF.Internals.Attributes;
+with CMOF.Internals.Collections;
 with CMOF.Reflection;
 
 package body AMF.Internals.CMOF_Elements is
+
+   use Standard.CMOF.Internals.Attributes;
+   use Standard.CMOF.Internals.Collections;
 
    --------------------
    -- Get_Meta_Class --
@@ -55,6 +61,21 @@ package body AMF.Internals.CMOF_Elements is
    begin
       return Standard.CMOF.Reflection.Get_Meta_Class (Self.Id);
    end Get_Meta_Class;
+
+   -----------------------
+   -- Get_Owned_Comment --
+   -----------------------
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment is
+   begin
+      return
+        AMF.CMOF.Comments.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Internal_Get_Owned_Comment (Self.Id)));
+   end Get_Owned_Comment;
 
    ---------
    -- Set --

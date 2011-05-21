@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Namespaces;
 with AMF.CMOF.Expressions;
@@ -65,10 +64,6 @@ package AMF.Internals.CMOF_Expressions is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Expression_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Expression_Proxy)

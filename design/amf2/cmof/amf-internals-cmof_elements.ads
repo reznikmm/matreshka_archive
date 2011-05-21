@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Elements;
 with AMF.Elements;
 with AMF.Values;
@@ -55,13 +56,17 @@ package AMF.Internals.CMOF_Elements is
       Id : Standard.CMOF.CMOF_Element;
    end record;
 
+   overriding function Get_Meta_Class
+    (Self : not null access constant CMOF_Element_Proxy)
+       return Standard.CMOF.CMOF_Class;
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
+
    overriding procedure Set
     (Self     : not null access CMOF_Element_Proxy;
      Property : Standard.CMOF.CMOF_Property;
      Value    : AMF.Values.Value);
-
-   overriding function Get_Meta_Class
-    (Self : not null access constant CMOF_Element_Proxy)
-       return Standard.CMOF.CMOF_Class;
 
 end AMF.Internals.CMOF_Elements;

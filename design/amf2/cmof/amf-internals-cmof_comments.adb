@@ -41,8 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with CMOF.Internals.Attributes;
 
 package body AMF.Internals.CMOF_Comments is
+
+   use Standard.CMOF.Internals.Attributes;
+
+   --------------
+   -- Get_Body --
+   --------------
+
+   overriding function Get_Body
+    (Self : not null access constant CMOF_Comment_Proxy)
+       return Optional_String is
+   begin
+      return (True, Internal_Get_Body (Self.Id));
+   end Get_Body;
 
    -----------------------
    -- Get_Owned_Element --
@@ -73,36 +87,6 @@ package body AMF.Internals.CMOF_Comments is
       raise Program_Error;
       return Get_Owner (Self);
    end Get_Owner;
-
-   -----------------------
-   -- Get_Owned_Comment --
-   -----------------------
-
-   overriding function Get_Owned_Comment
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error;
-      return Get_Owned_Comment (Self);
-   end Get_Owned_Comment;
-
-   --------------
-   -- Get_Body --
-   --------------
-
-   overriding function Get_Body
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Body unimplemented");
-      raise Program_Error;
-      return Get_Body (Self);
-   end Get_Body;
 
    --------------
    -- Set_Body --

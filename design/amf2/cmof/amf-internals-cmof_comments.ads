@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Comments.Collections;
+with AMF.CMOF.Comments;
 with AMF.CMOF.Elements.Collections;
 with AMF.Internals.CMOF_Elements;
 
@@ -61,10 +61,6 @@ package AMF.Internals.CMOF_Comments is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Comment_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Comment_Proxy)
-       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
 
    overriding function Get_Body
     (Self : not null access constant CMOF_Comment_Proxy)
