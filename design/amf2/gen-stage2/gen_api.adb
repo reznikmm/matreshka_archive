@@ -47,6 +47,10 @@ with Ada.Containers.Ordered_Sets;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Comments.Collections;
+with AMF.CMOF.Properties.Collections;
+with AMF.Elements.Collections;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Comments;
@@ -96,14 +100,13 @@ procedure Gen_API is
     (Element : CMOF_Class) return League.Strings.Universal_String;
    --  Returns name of the type.
 
-   procedure Generate_Class (Class : CMOF.CMOF_Element);
+   procedure Generate_Class
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Generates specification of interface package.
 
-   procedure Generate_Collections (Class : CMOF.CMOF_Element);
+   procedure Generate_Collections
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Generates collections package.
-
-   procedure Generate_Element
-    (Position : CMOF.Extents.CMOF_Element_Sets.Cursor);
 
    package Universal_String_Sets is
      new Ada.Containers.Ordered_Sets
@@ -161,10 +164,14 @@ procedure Gen_API is
    -- Generate_Class --
    --------------------
 
-   procedure Generate_Class (Class : CMOF.CMOF_Element) is
-      Super_Classes : constant Set_Of_CMOF_Class := Get_Super_Class (Class);
-      Attributes    : constant Ordered_Set_Of_CMOF_Property
-        := Get_Owned_Attribute (Class);
+   procedure Generate_Class
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+   is
+      Super_Classes : constant AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+        := Class.Get_Super_Class;
+      Attributes    : constant
+        AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+          := Class.Get_Owned_Attribute;
 --      Operations    : constant Ordered_Set_Of_CMOF_Operation
 --        := Get_Owned_Operation (Class);
       Ordinary_With : Universal_String_Sets.Set;
@@ -183,19 +190,20 @@ procedure Gen_API is
       ---------------------------------
 
       procedure Compute_With_For_Attributes is
-         Attribute : CMOF_Property;
+         Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
          The_Type  : CMOF_Classifier;
          Name      : League.Strings.Universal_String;
 
       begin
-         for J in 1 .. Length (Attributes) loop
-            Attribute := Element (Attributes, J);
-            The_Type := Get_Type (Attribute);
+         for J in 1 .. Attributes.Length loop
+            Attribute := Attributes.Element (J);
+            The_Type := Get_Type (CMOF_Element_Of (Attribute));
 
             if not Is_Data_Type (The_Type)
-              and (The_Type /= Class or Is_Multivalued (Attribute))
+              and (The_Type /= CMOF_Element_Of (Class)
+                     or Is_Multivalued (CMOF_Element_Of (Attribute)))
             then
-               if Is_Multivalued (Attribute) then
+               if Is_Multivalued (CMOF_Element_Of (Attribute)) then
                   Name := Ada_API_Package_Name (The_Type);
 
                   --  Remove with clause for interface package when it is not
@@ -228,8 +236,10 @@ procedure Gen_API is
          Name : League.Strings.Universal_String;
 
       begin
-         for J in 1 .. Length (Super_Classes) loop
-            Name := Ada_API_Package_Name (Element (Super_Classes, J));
+         for J in 1 .. Super_Classes.Length loop
+            Name :=
+              Ada_API_Package_Name
+               (CMOF_Element_Of (Super_Classes.Element (J)));
             Ordinary_With.Insert (Name);
             All_With.Insert (Name);
          end loop;
@@ -243,7 +253,7 @@ procedure Gen_API is
          Redefines       : constant Set_Of_CMOF_Property
            := Get_Redefined_Property (Attribute);
          Class_Type_Name : constant Wide_Wide_String
-           := Ada_API_Type_Name (Class).To_Wide_Wide_String;
+           := Ada_API_Type_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
          Attribute_Name  : constant Wide_Wide_String
            := To_Ada_Identifier (Get_Name (Attribute));
          Ada_Overriding  : Boolean := False;
@@ -488,29 +498,30 @@ procedure Gen_API is
       end Generate_With_Clause;
 
       Package_Name  : constant Wide_Wide_String
-        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
+        := Ada_API_Package_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
       Type_Name     : constant Wide_Wide_String
-        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
+        := Ada_API_Type_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
 
    begin
       Compute_With_For_Super_Classes;
       Compute_With_For_Attributes;
 
-      Put_Line (Standard_Error, Get_Name (Class).To_Wide_Wide_String);
+      Put_Line (Standard_Error, Class.Get_Name.Value.To_Wide_Wide_String);
 
       Put_Header (Year_2010 => False);
 
       --  Generate comment.
 
       declare
-         Owned_Comments : constant Set_Of_CMOF_Comment
-           := Get_Owned_Comment (Class);
+         Owned_Comments : constant
+           AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
+             := Class.Get_Owned_Comment;
          Lines          : Universal_String_Vector;
 
       begin
-         for J in 1 .. Length (Owned_Comments) loop
+         for J in 1 .. Owned_Comments.Length loop
             Lines :=
-              Split_Text (Get_Body (Element (Owned_Comments, J)), 74);
+              Split_Text (Owned_Comments.Element (J).Get_Body.Value, 74);
 
             for J in 1 .. Lines.Length loop
                Put_Line ("--  " & Lines.Element (J).To_Wide_Wide_String);
@@ -532,15 +543,17 @@ procedure Gen_API is
 
       Put ("   type " & Type_Name & " is limited interface");
 
-      for J in 1 .. Length (Super_Classes) loop
+      for J in 1 .. Super_Classes.Length loop
          New_Line;
          Put
           ("     and "
              & Ada_API_Package_Name
-                (Element (Super_Classes, J)).To_Wide_Wide_String
+                (CMOF_Element_Of
+                  (Super_Classes.Element (J))).To_Wide_Wide_String
              & "."
              & Ada_API_Type_Name
-                (Element (Super_Classes, J)).To_Wide_Wide_String);
+                (CMOF_Element_Of
+                  (Super_Classes.Element (J))).To_Wide_Wide_String);
       end loop;
 
       Put_Line (";");
@@ -554,8 +567,8 @@ procedure Gen_API is
 
       --  Generate setters and getters.
 
-      for J in 1 .. Length (Attributes) loop
-         Generate_Attribute (Element (Attributes, J));
+      for J in 1 .. Attributes.Length loop
+         Generate_Attribute (CMOF_Element_Of (Attributes.Element (J)));
       end loop;
 
       New_Line;
@@ -566,11 +579,13 @@ procedure Gen_API is
    -- Generate_Collections --
    --------------------------
 
-   procedure Generate_Collections (Class : CMOF.CMOF_Element) is
+   procedure Generate_Collections
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+   is
       Package_Name  : constant Wide_Wide_String
-        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
+        := Ada_API_Package_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
       Type_Name     : constant Wide_Wide_String
-        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
+        := Ada_API_Type_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
 
    begin
       Put_Header (Year_2010 => False);
@@ -605,23 +620,6 @@ procedure Gen_API is
       Put_Line ("end " & Package_Name & ".Collections;");
    end Generate_Collections;
 
-   ----------------------
-   -- Generate_Element --
-   ----------------------
-
-   procedure Generate_Element
-    (Position : CMOF.Extents.CMOF_Element_Sets.Cursor)
-   is
-      Element : constant CMOF.CMOF_Element
-        := CMOF.Extents.CMOF_Element_Sets.Element (Position);
-
-   begin
-      if Is_Class (Element) then
-         Generate_Class (Element);
-         Generate_Collections (Element);
-      end if;
-   end Generate_Element;
-
    ----------------
    -- Split_Text --
    ----------------
@@ -655,9 +653,16 @@ procedure Gen_API is
 
    Extent   : constant CMOF.CMOF_Extent
      := XMI.Reader (Ada.Command_Line.Argument (1));
-   Elements : CMOF.Extents.CMOF_Element_Sets.Set
+   Elements : AMF.Elements.Collections.Reflective_Collection
      := CMOF.Extents.Elements (Extent);
 
 begin
-   Elements.Iterate (Generate_Element'Access);
+   for J in 1 .. Elements.Length loop
+      if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then
+         Generate_Class
+          (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
+         Generate_Collections
+          (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
+      end if;
+   end loop;
 end Gen_API;
