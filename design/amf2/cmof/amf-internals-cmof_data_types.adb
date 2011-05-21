@@ -65,7 +65,7 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding function Get_Owner
      (Self : not null access constant CMOF_Data_Type_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element
+      return AMF.CMOF.Elements.CMOF_Element_Access
    is
    begin
       --  Generated stub: replace with real body!
@@ -138,7 +138,7 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding function Get_Namespace
      (Self : not null access constant CMOF_Data_Type_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace
+      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
    is
    begin
       --  Generated stub: replace with real body!
@@ -168,7 +168,7 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding function Get_Package
      (Self : not null access constant CMOF_Data_Type_Proxy)
-      return AMF.CMOF.Packages.CMOF_Package
+      return AMF.CMOF.Packages.CMOF_Package_Access
    is
    begin
       --  Generated stub: replace with real body!
@@ -183,7 +183,7 @@ package body AMF.Internals.CMOF_Data_Types is
 
    overriding procedure Set_Package
      (Self : not null access CMOF_Data_Type_Proxy;
-      To   : AMF.CMOF.Packages.CMOF_Package)
+      To   : AMF.CMOF.Packages.CMOF_Package_Access)
    is
    begin
       --  Generated stub: replace with real body!

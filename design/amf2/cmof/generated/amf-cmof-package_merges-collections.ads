@@ -51,8 +51,8 @@ package AMF.CMOF.Package_Merges.Collections is
 
    package CMOF_Package_Merge_Collections is
      new AMF.Generic_Collections
-          (CMOF_Package_Merge_Interface,
-           CMOF_Package_Merge);
+          (CMOF_Package_Merge,
+           CMOF_Package_Merge_Access);
 
    type Set_Of_CMOF_Package_Merge is
      new CMOF_Package_Merge_Collections.Set with null record;

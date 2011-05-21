@@ -53,12 +53,12 @@ package AMF.CMOF.Value_Specifications is
 
    pragma Preelaborate;
 
-   type CMOF_Value_Specification_Interface is limited interface
-     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element_Interface
-     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Interface;
+   type CMOF_Value_Specification is limited interface
+     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element
+     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element;
 
-   type CMOF_Value_Specification is
-     access all CMOF_Value_Specification_Interface'Class;
-   for CMOF_Value_Specification'Storage_Size use 0;
+   type CMOF_Value_Specification_Access is
+     access all CMOF_Value_Specification'Class;
+   for CMOF_Value_Specification_Access'Storage_Size use 0;
 
 end AMF.CMOF.Value_Specifications;

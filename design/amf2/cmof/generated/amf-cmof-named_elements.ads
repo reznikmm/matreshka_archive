@@ -52,39 +52,39 @@ package AMF.CMOF.Named_Elements is
 
    pragma Preelaborate;
 
-   type CMOF_Named_Element_Interface is limited interface
-     and AMF.CMOF.Elements.CMOF_Element_Interface;
+   type CMOF_Named_Element is limited interface
+     and AMF.CMOF.Elements.CMOF_Element;
 
-   type CMOF_Named_Element is
-     access all CMOF_Named_Element_Interface'Class;
-   for CMOF_Named_Element'Storage_Size use 0;
+   type CMOF_Named_Element_Access is
+     access all CMOF_Named_Element'Class;
+   for CMOF_Named_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Name
-    (Self : not null access constant CMOF_Named_Element_Interface)
+    (Self : not null access constant CMOF_Named_Element)
        return Optional_String is abstract;
    --  The name of the NamedElement.
 
    not overriding procedure Set_Name
-    (Self : not null access CMOF_Named_Element_Interface;
+    (Self : not null access CMOF_Named_Element;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Visibility
-    (Self : not null access constant CMOF_Named_Element_Interface)
+    (Self : not null access constant CMOF_Named_Element)
        return Optional_CMOF_Visibility_Kind is abstract;
    --  Determines where the NamedElement appears within different Namespaces 
    --  within the overall model, and its accessibility.
 
    not overriding procedure Set_Visibility
-    (Self : not null access CMOF_Named_Element_Interface;
+    (Self : not null access CMOF_Named_Element;
      To   : Optional_CMOF_Visibility_Kind) is abstract;
 
    not overriding function Get_Namespace
-    (Self : not null access constant CMOF_Named_Element_Interface)
-       return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+    (Self : not null access constant CMOF_Named_Element)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access is abstract;
    --  Specifies the namespace that owns the NamedElement.
 
    not overriding function Get_Qualified_Name
-    (Self : not null access constant CMOF_Named_Element_Interface)
+    (Self : not null access constant CMOF_Named_Element)
        return Optional_String is abstract;
    --  A name which allows the NamedElement to be identified within a 
    --  hierarchy of nested Namespaces. It is constructed from the names of the 

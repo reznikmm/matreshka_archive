@@ -52,20 +52,20 @@ package AMF.CMOF.Enumeration_Literals is
 
    pragma Preelaborate;
 
-   type CMOF_Enumeration_Literal_Interface is limited interface
-     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
+   type CMOF_Enumeration_Literal is limited interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element;
 
-   type CMOF_Enumeration_Literal is
-     access all CMOF_Enumeration_Literal_Interface'Class;
-   for CMOF_Enumeration_Literal'Storage_Size use 0;
+   type CMOF_Enumeration_Literal_Access is
+     access all CMOF_Enumeration_Literal'Class;
+   for CMOF_Enumeration_Literal_Access'Storage_Size use 0;
 
    not overriding function Get_Enumeration
-    (Self : not null access constant CMOF_Enumeration_Literal_Interface)
-       return AMF.CMOF.Enumerations.CMOF_Enumeration is abstract;
+    (Self : not null access constant CMOF_Enumeration_Literal)
+       return AMF.CMOF.Enumerations.CMOF_Enumeration_Access is abstract;
    --  The Enumeration that this EnumerationLiteral is a member of.
 
    not overriding procedure Set_Enumeration
-    (Self : not null access CMOF_Enumeration_Literal_Interface;
-     To   : AMF.CMOF.Enumerations.CMOF_Enumeration) is abstract;
+    (Self : not null access CMOF_Enumeration_Literal;
+     To   : AMF.CMOF.Enumerations.CMOF_Enumeration_Access) is abstract;
 
 end AMF.CMOF.Enumeration_Literals;

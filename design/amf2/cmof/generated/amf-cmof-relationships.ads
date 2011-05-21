@@ -53,15 +53,15 @@ package AMF.CMOF.Relationships is
 
    pragma Preelaborate;
 
-   type CMOF_Relationship_Interface is limited interface
-     and AMF.CMOF.Elements.CMOF_Element_Interface;
+   type CMOF_Relationship is limited interface
+     and AMF.CMOF.Elements.CMOF_Element;
 
-   type CMOF_Relationship is
-     access all CMOF_Relationship_Interface'Class;
-   for CMOF_Relationship'Storage_Size use 0;
+   type CMOF_Relationship_Access is
+     access all CMOF_Relationship'Class;
+   for CMOF_Relationship_Access'Storage_Size use 0;
 
    not overriding function Get_Related_Element
-    (Self : not null access constant CMOF_Relationship_Interface)
+    (Self : not null access constant CMOF_Relationship)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  Specifies the elements related by the Relationship.
 

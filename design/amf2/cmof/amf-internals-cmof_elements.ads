@@ -50,7 +50,7 @@ package AMF.Internals.CMOF_Elements is
 
    type CMOF_Element_Proxy is
      abstract limited new AMF.Elements.Abstract_Element
-       and AMF.CMOF.Elements.CMOF_Element_Interface with
+       and AMF.CMOF.Elements.CMOF_Element with
    record
       Id : Standard.CMOF.CMOF_Element;
    end record;

@@ -51,8 +51,8 @@ package AMF.CMOF.Properties.Collections is
 
    package CMOF_Property_Collections is
      new AMF.Generic_Collections
-          (CMOF_Property_Interface,
-           CMOF_Property);
+          (CMOF_Property,
+           CMOF_Property_Access);
 
    type Set_Of_CMOF_Property is
      new CMOF_Property_Collections.Set with null record;

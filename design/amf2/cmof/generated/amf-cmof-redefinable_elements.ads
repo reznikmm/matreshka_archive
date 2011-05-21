@@ -56,25 +56,25 @@ package AMF.CMOF.Redefinable_Elements is
 
    pragma Preelaborate;
 
-   type CMOF_Redefinable_Element_Interface is limited interface
-     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
+   type CMOF_Redefinable_Element is limited interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element;
 
-   type CMOF_Redefinable_Element is
-     access all CMOF_Redefinable_Element_Interface'Class;
-   for CMOF_Redefinable_Element'Storage_Size use 0;
+   type CMOF_Redefinable_Element_Access is
+     access all CMOF_Redefinable_Element'Class;
+   for CMOF_Redefinable_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Redefinition_Context
-    (Self : not null access constant CMOF_Redefinable_Element_Interface)
+    (Self : not null access constant CMOF_Redefinable_Element)
        return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
    --  References the contexts that this element may be redefined from.
 
    not overriding function Get_Redefined_Element
-    (Self : not null access constant CMOF_Redefinable_Element_Interface)
+    (Self : not null access constant CMOF_Redefinable_Element)
        return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element is abstract;
    --  The redefinable element that is being redefined by this element.
 
    not overriding function Get_Is_Leaf
-    (Self : not null access constant CMOF_Redefinable_Element_Interface)
+    (Self : not null access constant CMOF_Redefinable_Element)
        return Boolean is abstract;
    --  Indicates whether it is possible to further redefine a 
    --  RedefinableElement. If the value is true, then it is not possible to 
@@ -87,7 +87,7 @@ package AMF.CMOF.Redefinable_Elements is
    --  will have isLeaf=false. Default value is false.
 
    not overriding procedure Set_Is_Leaf
-    (Self : not null access CMOF_Redefinable_Element_Interface;
+    (Self : not null access CMOF_Redefinable_Element;
      To   : Boolean) is abstract;
 
 end AMF.CMOF.Redefinable_Elements;

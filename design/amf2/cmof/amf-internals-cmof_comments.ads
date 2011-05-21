@@ -49,7 +49,7 @@ package AMF.Internals.CMOF_Comments is
 
    type CMOF_Comment_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Comments.CMOF_Comment_Interface
+       and AMF.CMOF.Comments.CMOF_Comment
          with null record;
 
    --  XXX These subprograms are stubs
@@ -60,7 +60,7 @@ package AMF.Internals.CMOF_Comments is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Comment_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Comment_Proxy)

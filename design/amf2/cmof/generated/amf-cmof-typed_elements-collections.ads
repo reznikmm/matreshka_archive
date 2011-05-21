@@ -51,8 +51,8 @@ package AMF.CMOF.Typed_Elements.Collections is
 
    package CMOF_Typed_Element_Collections is
      new AMF.Generic_Collections
-          (CMOF_Typed_Element_Interface,
-           CMOF_Typed_Element);
+          (CMOF_Typed_Element,
+           CMOF_Typed_Element_Access);
 
    type Set_Of_CMOF_Typed_Element is
      new CMOF_Typed_Element_Collections.Set with null record;

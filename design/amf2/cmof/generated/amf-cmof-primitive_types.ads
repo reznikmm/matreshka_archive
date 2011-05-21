@@ -54,11 +54,11 @@ package AMF.CMOF.Primitive_Types is
 
    pragma Preelaborate;
 
-   type CMOF_Primitive_Type_Interface is limited interface
-     and AMF.CMOF.Data_Types.CMOF_Data_Type_Interface;
+   type CMOF_Primitive_Type is limited interface
+     and AMF.CMOF.Data_Types.CMOF_Data_Type;
 
-   type CMOF_Primitive_Type is
-     access all CMOF_Primitive_Type_Interface'Class;
-   for CMOF_Primitive_Type'Storage_Size use 0;
+   type CMOF_Primitive_Type_Access is
+     access all CMOF_Primitive_Type'Class;
+   for CMOF_Primitive_Type_Access'Storage_Size use 0;
 
 end AMF.CMOF.Primitive_Types;

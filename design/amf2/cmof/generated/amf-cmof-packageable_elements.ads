@@ -52,11 +52,11 @@ package AMF.CMOF.Packageable_Elements is
 
    pragma Preelaborate;
 
-   type CMOF_Packageable_Element_Interface is limited interface
-     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
+   type CMOF_Packageable_Element is limited interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element;
 
-   type CMOF_Packageable_Element is
-     access all CMOF_Packageable_Element_Interface'Class;
-   for CMOF_Packageable_Element'Storage_Size use 0;
+   type CMOF_Packageable_Element_Access is
+     access all CMOF_Packageable_Element'Class;
+   for CMOF_Packageable_Element_Access'Storage_Size use 0;
 
 end AMF.CMOF.Packageable_Elements;

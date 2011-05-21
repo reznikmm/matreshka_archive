@@ -54,49 +54,49 @@ package AMF.CMOF.Multiplicity_Elements is
 
    pragma Preelaborate;
 
-   type CMOF_Multiplicity_Element_Interface is limited interface
-     and AMF.CMOF.Elements.CMOF_Element_Interface;
+   type CMOF_Multiplicity_Element is limited interface
+     and AMF.CMOF.Elements.CMOF_Element;
 
-   type CMOF_Multiplicity_Element is
-     access all CMOF_Multiplicity_Element_Interface'Class;
-   for CMOF_Multiplicity_Element'Storage_Size use 0;
+   type CMOF_Multiplicity_Element_Access is
+     access all CMOF_Multiplicity_Element'Class;
+   for CMOF_Multiplicity_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Ordered
-    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+    (Self : not null access constant CMOF_Multiplicity_Element)
        return Boolean is abstract;
    --  For a multivalued multiplicity, this attribute specifies whether the 
    --  values in an instantiation of this element are sequentially ordered.
 
    not overriding procedure Set_Is_Ordered
-    (Self : not null access CMOF_Multiplicity_Element_Interface;
+    (Self : not null access CMOF_Multiplicity_Element;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Unique
-    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+    (Self : not null access constant CMOF_Multiplicity_Element)
        return Boolean is abstract;
    --  For a multivalued multiplicity, this attributes specifies whether the 
    --  values in an instantiation of this element are unique.
 
    not overriding procedure Set_Is_Unique
-    (Self : not null access CMOF_Multiplicity_Element_Interface;
+    (Self : not null access CMOF_Multiplicity_Element;
      To   : Boolean) is abstract;
 
    not overriding function Get_Lower
-    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+    (Self : not null access constant CMOF_Multiplicity_Element)
        return Optional_Integer is abstract;
    --  Specifies the lower bound of the multiplicity interval.
 
    not overriding procedure Set_Lower
-    (Self : not null access CMOF_Multiplicity_Element_Interface;
+    (Self : not null access CMOF_Multiplicity_Element;
      To   : Optional_Integer) is abstract;
 
    not overriding function Get_Upper
-    (Self : not null access constant CMOF_Multiplicity_Element_Interface)
+    (Self : not null access constant CMOF_Multiplicity_Element)
        return Optional_Unlimited_Natural is abstract;
    --  Specifies the upper bound of the multiplicity interval.
 
    not overriding procedure Set_Upper
-    (Self : not null access CMOF_Multiplicity_Element_Interface;
+    (Self : not null access CMOF_Multiplicity_Element;
      To   : Optional_Unlimited_Natural) is abstract;
 
 end AMF.CMOF.Multiplicity_Elements;

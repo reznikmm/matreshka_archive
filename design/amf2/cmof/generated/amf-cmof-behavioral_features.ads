@@ -55,22 +55,22 @@ package AMF.CMOF.Behavioral_Features is
 
    pragma Preelaborate;
 
-   type CMOF_Behavioral_Feature_Interface is limited interface
-     and AMF.CMOF.Features.CMOF_Feature_Interface
-     and AMF.CMOF.Namespaces.CMOF_Namespace_Interface;
+   type CMOF_Behavioral_Feature is limited interface
+     and AMF.CMOF.Features.CMOF_Feature
+     and AMF.CMOF.Namespaces.CMOF_Namespace;
 
-   type CMOF_Behavioral_Feature is
-     access all CMOF_Behavioral_Feature_Interface'Class;
-   for CMOF_Behavioral_Feature'Storage_Size use 0;
+   type CMOF_Behavioral_Feature_Access is
+     access all CMOF_Behavioral_Feature'Class;
+   for CMOF_Behavioral_Feature_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Parameter
-    (Self : not null access constant CMOF_Behavioral_Feature_Interface)
+    (Self : not null access constant CMOF_Behavioral_Feature)
        return AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter is abstract;
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
 
    not overriding function Get_Raised_Exception
-    (Self : not null access constant CMOF_Behavioral_Feature_Interface)
+    (Self : not null access constant CMOF_Behavioral_Feature)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this feature.

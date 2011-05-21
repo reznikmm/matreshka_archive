@@ -51,8 +51,8 @@ package AMF.CMOF.Enumerations.Collections is
 
    package CMOF_Enumeration_Collections is
      new AMF.Generic_Collections
-          (CMOF_Enumeration_Interface,
-           CMOF_Enumeration);
+          (CMOF_Enumeration,
+           CMOF_Enumeration_Access);
 
    type Set_Of_CMOF_Enumeration is
      new CMOF_Enumeration_Collections.Set with null record;

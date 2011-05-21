@@ -51,8 +51,8 @@ package AMF.CMOF.Multiplicity_Elements.Collections is
 
    package CMOF_Multiplicity_Element_Collections is
      new AMF.Generic_Collections
-          (CMOF_Multiplicity_Element_Interface,
-           CMOF_Multiplicity_Element);
+          (CMOF_Multiplicity_Element,
+           CMOF_Multiplicity_Element_Access);
 
    type Set_Of_CMOF_Multiplicity_Element is
      new CMOF_Multiplicity_Element_Collections.Set with null record;

@@ -54,41 +54,41 @@ package AMF.CMOF.Parameters is
 
    pragma Preelaborate;
 
-   type CMOF_Parameter_Interface is limited interface
-     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element_Interface
-     and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Interface;
+   type CMOF_Parameter is limited interface
+     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element
+     and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element;
 
-   type CMOF_Parameter is
-     access all CMOF_Parameter_Interface'Class;
-   for CMOF_Parameter'Storage_Size use 0;
+   type CMOF_Parameter_Access is
+     access all CMOF_Parameter'Class;
+   for CMOF_Parameter_Access'Storage_Size use 0;
 
    not overriding function Get_Default
-    (Self : not null access constant CMOF_Parameter_Interface)
+    (Self : not null access constant CMOF_Parameter)
        return Optional_String is abstract;
    --  Specifies a String that represents a value to be used when no argument 
    --  is supplied for the Parameter.
 
    not overriding procedure Set_Default
-    (Self : not null access CMOF_Parameter_Interface;
+    (Self : not null access CMOF_Parameter;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Direction
-    (Self : not null access constant CMOF_Parameter_Interface)
+    (Self : not null access constant CMOF_Parameter)
        return CMOF_Parameter_Direction_Kind is abstract;
    --  Indicates whether a parameter is being sent into or out of a behavioral 
    --  element.
 
    not overriding procedure Set_Direction
-    (Self : not null access CMOF_Parameter_Interface;
+    (Self : not null access CMOF_Parameter;
      To   : CMOF_Parameter_Direction_Kind) is abstract;
 
    not overriding function Get_Operation
-    (Self : not null access constant CMOF_Parameter_Interface)
-       return AMF.CMOF.Operations.CMOF_Operation is abstract;
+    (Self : not null access constant CMOF_Parameter)
+       return AMF.CMOF.Operations.CMOF_Operation_Access is abstract;
    --  References the Operation owning this parameter.
 
    not overriding procedure Set_Operation
-    (Self : not null access CMOF_Parameter_Interface;
-     To   : AMF.CMOF.Operations.CMOF_Operation) is abstract;
+    (Self : not null access CMOF_Parameter;
+     To   : AMF.CMOF.Operations.CMOF_Operation_Access) is abstract;
 
 end AMF.CMOF.Parameters;

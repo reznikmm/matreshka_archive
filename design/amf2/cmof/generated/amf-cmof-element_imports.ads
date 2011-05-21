@@ -54,15 +54,15 @@ package AMF.CMOF.Element_Imports is
 
    pragma Preelaborate;
 
-   type CMOF_Element_Import_Interface is limited interface
-     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship_Interface;
+   type CMOF_Element_Import is limited interface
+     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship;
 
-   type CMOF_Element_Import is
-     access all CMOF_Element_Import_Interface'Class;
-   for CMOF_Element_Import'Storage_Size use 0;
+   type CMOF_Element_Import_Access is
+     access all CMOF_Element_Import'Class;
+   for CMOF_Element_Import_Access'Storage_Size use 0;
 
    not overriding function Get_Visibility
-    (Self : not null access constant CMOF_Element_Import_Interface)
+    (Self : not null access constant CMOF_Element_Import)
        return CMOF_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElement within the 
    --  importing Package. The default visibility is the same as that of the 
@@ -70,11 +70,11 @@ package AMF.CMOF.Element_Imports is
    --  it is possible to add visibility to the element import.
 
    not overriding procedure Set_Visibility
-    (Self : not null access CMOF_Element_Import_Interface;
+    (Self : not null access CMOF_Element_Import;
      To   : CMOF_Visibility_Kind) is abstract;
 
    not overriding function Get_Alias
-    (Self : not null access constant CMOF_Element_Import_Interface)
+    (Self : not null access constant CMOF_Element_Import)
        return Optional_String is abstract;
    --  Specifies the name that should be added to the namespace of the 
    --  importing package in lieu of the name of the imported packagable 
@@ -82,27 +82,27 @@ package AMF.CMOF.Element_Imports is
    --  the importing package. By default, no alias is used.
 
    not overriding procedure Set_Alias
-    (Self : not null access CMOF_Element_Import_Interface;
+    (Self : not null access CMOF_Element_Import;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Imported_Element
-    (Self : not null access constant CMOF_Element_Import_Interface)
-       return AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element is abstract;
+    (Self : not null access constant CMOF_Element_Import)
+       return AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access is abstract;
    --  Specifies the PackageableElement whose name is to be added to a 
    --  Namespace.
 
    not overriding procedure Set_Imported_Element
-    (Self : not null access CMOF_Element_Import_Interface;
-     To   : AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element) is abstract;
+    (Self : not null access CMOF_Element_Import;
+     To   : AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access) is abstract;
 
    not overriding function Get_Importing_Namespace
-    (Self : not null access constant CMOF_Element_Import_Interface)
-       return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+    (Self : not null access constant CMOF_Element_Import)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access is abstract;
    --  Specifies the Namespace that imports a PackageableElement from another 
    --  Package.
 
    not overriding procedure Set_Importing_Namespace
-    (Self : not null access CMOF_Element_Import_Interface;
-     To   : AMF.CMOF.Namespaces.CMOF_Namespace) is abstract;
+    (Self : not null access CMOF_Element_Import;
+     To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access) is abstract;
 
 end AMF.CMOF.Element_Imports;

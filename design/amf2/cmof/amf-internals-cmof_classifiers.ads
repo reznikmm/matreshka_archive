@@ -48,7 +48,7 @@ package AMF.Internals.CMOF_Classifiers is
 
    type CMOF_Classifier_Proxy is
      abstract limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Classifiers.CMOF_Classifier_Interface
+       and AMF.CMOF.Classifiers.CMOF_Classifier
          with null record;
 
    overriding function Get_Name

@@ -51,8 +51,8 @@ package AMF.CMOF.Enumeration_Literals.Collections is
 
    package CMOF_Enumeration_Literal_Collections is
      new AMF.Generic_Collections
-          (CMOF_Enumeration_Literal_Interface,
-           CMOF_Enumeration_Literal);
+          (CMOF_Enumeration_Literal,
+           CMOF_Enumeration_Literal_Access);
 
    type Set_Of_CMOF_Enumeration_Literal is
      new CMOF_Enumeration_Literal_Collections.Set with null record;

@@ -52,7 +52,7 @@ package AMF.Internals.CMOF_Package_Imports is
 
    type CMOF_Package_Import_proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Package_Imports.CMOF_Package_Import_Interface
+       and AMF.CMOF.Package_Imports.CMOF_Package_Import
          with null record;
 
    --  XXX These subprograms are stubs
@@ -63,7 +63,7 @@ package AMF.Internals.CMOF_Package_Imports is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Package_Import_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Package_Import_Proxy)
@@ -91,18 +91,18 @@ package AMF.Internals.CMOF_Package_Imports is
 
    overriding function Get_Imported_Package
     (Self : not null access constant CMOF_Package_Import_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package;
+       return AMF.CMOF.Packages.CMOF_Package_Access;
 
    overriding procedure Set_Imported_Package
     (Self : not null access CMOF_Package_Import_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package);
+     To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
    overriding function Get_Importing_Namespace
     (Self : not null access constant CMOF_Package_Import_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding procedure Set_Importing_Namespace
     (Self : not null access CMOF_Package_Import_Proxy;
-     To   : AMF.CMOF.Namespaces.CMOF_Namespace);
+     To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access);
 
 end AMF.Internals.CMOF_Package_Imports;

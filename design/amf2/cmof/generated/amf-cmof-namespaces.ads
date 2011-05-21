@@ -57,42 +57,42 @@ package AMF.CMOF.Namespaces is
 
    pragma Preelaborate;
 
-   type CMOF_Namespace_Interface is limited interface
-     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
+   type CMOF_Namespace is limited interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element;
 
-   type CMOF_Namespace is
-     access all CMOF_Namespace_Interface'Class;
-   for CMOF_Namespace'Storage_Size use 0;
+   type CMOF_Namespace_Access is
+     access all CMOF_Namespace'Class;
+   for CMOF_Namespace_Access'Storage_Size use 0;
 
    not overriding function Get_Imported_Member
-    (Self : not null access constant CMOF_Namespace_Interface)
+    (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
    --  References the PackageableElements that are members of this Namespace 
    --  as a result of either PackageImports or ElementImports.
 
    not overriding function Get_Element_Import
-    (Self : not null access constant CMOF_Namespace_Interface)
+    (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import is abstract;
    --  References the ElementImports owned by the Namespace.
 
    not overriding function Get_Package_Import
-    (Self : not null access constant CMOF_Namespace_Interface)
+    (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import is abstract;
    --  References the PackageImports owned by the Namespace.
 
    not overriding function Get_Owned_Member
-    (Self : not null access constant CMOF_Namespace_Interface)
+    (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
    --  A collection of NamedElements owned by the Namespace.
 
    not overriding function Get_Member
-    (Self : not null access constant CMOF_Namespace_Interface)
+    (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
    --  A collection of NamedElements identifiable within the Namespace, either 
    --  by being owned or by being introduced by importing or inheritance.
 
    not overriding function Get_Owned_Rule
-    (Self : not null access constant CMOF_Namespace_Interface)
+    (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
 
 end AMF.CMOF.Namespaces;

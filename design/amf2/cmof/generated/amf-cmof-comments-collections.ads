@@ -51,8 +51,8 @@ package AMF.CMOF.Comments.Collections is
 
    package CMOF_Comment_Collections is
      new AMF.Generic_Collections
-          (CMOF_Comment_Interface,
-           CMOF_Comment);
+          (CMOF_Comment,
+           CMOF_Comment_Access);
 
    type Set_Of_CMOF_Comment is
      new CMOF_Comment_Collections.Set with null record;

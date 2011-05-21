@@ -51,8 +51,8 @@ package AMF.CMOF.Operations.Collections is
 
    package CMOF_Operation_Collections is
      new AMF.Generic_Collections
-          (CMOF_Operation_Interface,
-           CMOF_Operation);
+          (CMOF_Operation,
+           CMOF_Operation_Access);
 
    type Set_Of_CMOF_Operation is
      new CMOF_Operation_Collections.Set with null record;

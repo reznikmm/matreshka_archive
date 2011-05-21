@@ -51,8 +51,8 @@ package AMF.CMOF.Features.Collections is
 
    package CMOF_Feature_Collections is
      new AMF.Generic_Collections
-          (CMOF_Feature_Interface,
-           CMOF_Feature);
+          (CMOF_Feature,
+           CMOF_Feature_Access);
 
    type Set_Of_CMOF_Feature is
      new CMOF_Feature_Collections.Set with null record;

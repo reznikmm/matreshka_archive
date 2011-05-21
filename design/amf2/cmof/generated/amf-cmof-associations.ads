@@ -57,43 +57,43 @@ package AMF.CMOF.Associations is
 
    pragma Preelaborate;
 
-   type CMOF_Association_Interface is limited interface
-     and AMF.CMOF.Classifiers.CMOF_Classifier_Interface
-     and AMF.CMOF.Relationships.CMOF_Relationship_Interface;
+   type CMOF_Association is limited interface
+     and AMF.CMOF.Classifiers.CMOF_Classifier
+     and AMF.CMOF.Relationships.CMOF_Relationship;
 
-   type CMOF_Association is
-     access all CMOF_Association_Interface'Class;
-   for CMOF_Association'Storage_Size use 0;
+   type CMOF_Association_Access is
+     access all CMOF_Association'Class;
+   for CMOF_Association_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Derived
-    (Self : not null access constant CMOF_Association_Interface)
+    (Self : not null access constant CMOF_Association)
        return Boolean is abstract;
    --  Specifies whether the association is derived from other model elements 
    --  such as other associations or constraints.
 
    not overriding procedure Set_Is_Derived
-    (Self : not null access CMOF_Association_Interface;
+    (Self : not null access CMOF_Association;
      To   : Boolean) is abstract;
 
    not overriding function Get_Owned_End
-    (Self : not null access constant CMOF_Association_Interface)
+    (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  The ends that are owned by the association itself.
 
    not overriding function Get_End_Type
-    (Self : not null access constant CMOF_Association_Interface)
+    (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the classifiers that are used as types of the ends of the 
    --  association.
 
    not overriding function Get_Member_End
-    (Self : not null access constant CMOF_Association_Interface)
+    (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  Each end represents participation of instances of the classifier 
    --  connected to the end in links of the association.
 
    not overriding function Get_Navigable_Owned_End
-    (Self : not null access constant CMOF_Association_Interface)
+    (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  The navigable ends that are owned by the association itself.
 

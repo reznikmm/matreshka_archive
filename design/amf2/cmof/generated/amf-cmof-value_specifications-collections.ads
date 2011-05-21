@@ -51,8 +51,8 @@ package AMF.CMOF.Value_Specifications.Collections is
 
    package CMOF_Value_Specification_Collections is
      new AMF.Generic_Collections
-          (CMOF_Value_Specification_Interface,
-           CMOF_Value_Specification);
+          (CMOF_Value_Specification,
+           CMOF_Value_Specification_Access);
 
    type Set_Of_CMOF_Value_Specification is
      new CMOF_Value_Specification_Collections.Set with null record;

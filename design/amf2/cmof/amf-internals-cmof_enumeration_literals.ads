@@ -52,7 +52,7 @@ package AMF.Internals.CMOF_Enumeration_Literals is
 
    type CMOF_Enumeration_Literal_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Interface
+       and AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal
          with null record;
 
    --  XXX These subprograms are stubs
@@ -63,7 +63,7 @@ package AMF.Internals.CMOF_Enumeration_Literals is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
@@ -87,7 +87,7 @@ package AMF.Internals.CMOF_Enumeration_Literals is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
@@ -95,10 +95,10 @@ package AMF.Internals.CMOF_Enumeration_Literals is
 
    overriding function Get_Enumeration
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Enumerations.CMOF_Enumeration;
+       return AMF.CMOF.Enumerations.CMOF_Enumeration_Access;
 
    overriding procedure Set_Enumeration
     (Self : not null access CMOF_Enumeration_Literal_Proxy;
-     To   : AMF.CMOF.Enumerations.CMOF_Enumeration);
+     To   : AMF.CMOF.Enumerations.CMOF_Enumeration_Access);
 
 end AMF.Internals.CMOF_Enumeration_Literals;

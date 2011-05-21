@@ -51,8 +51,8 @@ package AMF.CMOF.Primitive_Types.Collections is
 
    package CMOF_Primitive_Type_Collections is
      new AMF.Generic_Collections
-          (CMOF_Primitive_Type_Interface,
-           CMOF_Primitive_Type);
+          (CMOF_Primitive_Type,
+           CMOF_Primitive_Type_Access);
 
    type Set_Of_CMOF_Primitive_Type is
      new CMOF_Primitive_Type_Collections.Set with null record;

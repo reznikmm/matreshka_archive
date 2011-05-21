@@ -52,7 +52,7 @@ package AMF.Internals.CMOF_Package_Merges is
 
    type CMOF_Package_Merge_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Package_Merges.CMOF_Package_Merge_Interface
+       and AMF.CMOF.Package_Merges.CMOF_Package_Merge
          with null record;
 
    --  XXX These subprograms are stubs
@@ -63,7 +63,7 @@ package AMF.Internals.CMOF_Package_Merges is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Package_Merge_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Package_Merge_Proxy)
@@ -83,18 +83,18 @@ package AMF.Internals.CMOF_Package_Merges is
 
    overriding function Get_Receiving_Package
     (Self : not null access constant CMOF_Package_Merge_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package;
+       return AMF.CMOF.Packages.CMOF_Package_Access;
 
    overriding procedure Set_Receiving_Package
     (Self : not null access CMOF_Package_Merge_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package);
+     To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
    overriding function Get_Merged_Package
     (Self : not null access constant CMOF_Package_Merge_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package;
+       return AMF.CMOF.Packages.CMOF_Package_Access;
 
    overriding procedure Set_Merged_Package
     (Self : not null access CMOF_Package_Merge_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package);
+     To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
 end AMF.Internals.CMOF_Package_Merges;

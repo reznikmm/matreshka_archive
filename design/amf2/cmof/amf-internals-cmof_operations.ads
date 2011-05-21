@@ -62,7 +62,7 @@ package AMF.Internals.CMOF_Operations is
 
    type CMOF_Operation_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Operations.CMOF_Operation_Interface
+       and AMF.CMOF.Operations.CMOF_Operation
          with null record;
 
    --  XXX These subprograms are stubs
@@ -73,7 +73,7 @@ package AMF.Internals.CMOF_Operations is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -97,7 +97,7 @@ package AMF.Internals.CMOF_Operations is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -189,19 +189,19 @@ package AMF.Internals.CMOF_Operations is
 
    overriding function Get_Class
     (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Classes.CMOF_Class;
+       return AMF.CMOF.Classes.CMOF_Class_Access;
 
    overriding procedure Set_Class
     (Self : not null access CMOF_Operation_Proxy;
-     To   : AMF.CMOF.Classes.CMOF_Class);
+     To   : AMF.CMOF.Classes.CMOF_Class_Access);
 
    overriding function Get_Datatype
     (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Data_Types.CMOF_Data_Type;
+       return AMF.CMOF.Data_Types.CMOF_Data_Type_Access;
 
    overriding procedure Set_Datatype
     (Self : not null access CMOF_Operation_Proxy;
-     To   : AMF.CMOF.Data_Types.CMOF_Data_Type);
+     To   : AMF.CMOF.Data_Types.CMOF_Data_Type_Access);
 
    overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -213,11 +213,11 @@ package AMF.Internals.CMOF_Operations is
 
    overriding function Get_Type
     (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Types.CMOF_Type;
+       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Operation_Proxy;
-     To   : AMF.CMOF.Types.CMOF_Type);
+     To   : AMF.CMOF.Types.CMOF_Type_Access);
 
    overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -233,10 +233,10 @@ package AMF.Internals.CMOF_Operations is
 
    overriding function Get_Body_Condition
     (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Constraints.CMOF_Constraint;
+       return AMF.CMOF.Constraints.CMOF_Constraint_Access;
 
    overriding procedure Set_Body_Condition
     (Self : not null access CMOF_Operation_Proxy;
-     To   : AMF.CMOF.Constraints.CMOF_Constraint);
+     To   : AMF.CMOF.Constraints.CMOF_Constraint_Access);
 
 end AMF.Internals.CMOF_Operations;

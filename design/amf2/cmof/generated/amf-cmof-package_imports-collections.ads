@@ -51,8 +51,8 @@ package AMF.CMOF.Package_Imports.Collections is
 
    package CMOF_Package_Import_Collections is
      new AMF.Generic_Collections
-          (CMOF_Package_Import_Interface,
-           CMOF_Package_Import);
+          (CMOF_Package_Import,
+           CMOF_Package_Import_Access);
 
    type Set_Of_CMOF_Package_Import is
      new CMOF_Package_Import_Collections.Set with null record;

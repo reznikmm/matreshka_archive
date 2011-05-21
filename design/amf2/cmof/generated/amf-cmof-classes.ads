@@ -55,34 +55,34 @@ package AMF.CMOF.Classes is
 
    pragma Preelaborate;
 
-   type CMOF_Class_Interface is limited interface
-     and AMF.CMOF.Classifiers.CMOF_Classifier_Interface;
+   type CMOF_Class is limited interface
+     and AMF.CMOF.Classifiers.CMOF_Classifier;
 
-   type CMOF_Class is
-     access all CMOF_Class_Interface'Class;
-   for CMOF_Class'Storage_Size use 0;
+   type CMOF_Class_Access is
+     access all CMOF_Class'Class;
+   for CMOF_Class_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Abstract
-    (Self : not null access constant CMOF_Class_Interface)
+    (Self : not null access constant CMOF_Class)
        return Boolean is abstract;
    --  True when a class is abstract.
 
    not overriding procedure Set_Is_Abstract
-    (Self : not null access CMOF_Class_Interface;
+    (Self : not null access CMOF_Class;
      To   : Boolean) is abstract;
 
    not overriding function Get_Owned_Attribute
-    (Self : not null access constant CMOF_Class_Interface)
+    (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
-    (Self : not null access constant CMOF_Class_Interface)
+    (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is abstract;
    --  The operations owned by the class.
 
    not overriding function Get_Super_Class
-    (Self : not null access constant CMOF_Class_Interface)
+    (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class is abstract;
    --  This gives the superclasses of a class.
 

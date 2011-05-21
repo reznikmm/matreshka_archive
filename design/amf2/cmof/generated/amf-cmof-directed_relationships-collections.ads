@@ -51,8 +51,8 @@ package AMF.CMOF.Directed_Relationships.Collections is
 
    package CMOF_Directed_Relationship_Collections is
      new AMF.Generic_Collections
-          (CMOF_Directed_Relationship_Interface,
-           CMOF_Directed_Relationship);
+          (CMOF_Directed_Relationship,
+           CMOF_Directed_Relationship_Access);
 
    type Set_Of_CMOF_Directed_Relationship is
      new CMOF_Directed_Relationship_Collections.Set with null record;

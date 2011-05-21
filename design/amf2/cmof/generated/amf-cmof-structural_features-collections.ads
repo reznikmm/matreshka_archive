@@ -51,8 +51,8 @@ package AMF.CMOF.Structural_Features.Collections is
 
    package CMOF_Structural_Feature_Collections is
      new AMF.Generic_Collections
-          (CMOF_Structural_Feature_Interface,
-           CMOF_Structural_Feature);
+          (CMOF_Structural_Feature,
+           CMOF_Structural_Feature_Access);
 
    type Set_Of_CMOF_Structural_Feature is
      new CMOF_Structural_Feature_Collections.Set with null record;

@@ -57,45 +57,45 @@ package AMF.CMOF.Packages is
 
    pragma Preelaborate;
 
-   type CMOF_Package_Interface is limited interface
-     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Interface
-     and AMF.CMOF.Namespaces.CMOF_Namespace_Interface;
+   type CMOF_Package is limited interface
+     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element
+     and AMF.CMOF.Namespaces.CMOF_Namespace;
 
-   type CMOF_Package is
-     access all CMOF_Package_Interface'Class;
-   for CMOF_Package'Storage_Size use 0;
+   type CMOF_Package_Access is
+     access all CMOF_Package'Class;
+   for CMOF_Package_Access'Storage_Size use 0;
 
    not overriding function Get_Packaged_Element
-    (Self : not null access constant CMOF_Package_Interface)
+    (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
    --  Specifies the packageable elements that are owned by this Package.
 
    not overriding function Get_Owned_Type
-    (Self : not null access constant CMOF_Package_Interface)
+    (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the packaged elements that are Types.
 
    not overriding function Get_Nested_Package
-    (Self : not null access constant CMOF_Package_Interface)
+    (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is abstract;
    --  References the packaged elements that are Packages.
 
    not overriding function Get_Nesting_Package
-    (Self : not null access constant CMOF_Package_Interface)
-       return AMF.CMOF.Packages.CMOF_Package is abstract;
+    (Self : not null access constant CMOF_Package)
+       return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  References the Package that owns this Package.
 
    not overriding procedure Set_Nesting_Package
-    (Self : not null access CMOF_Package_Interface;
-     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+    (Self : not null access CMOF_Package;
+     To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
 
    not overriding function Get_Package_Merge
-    (Self : not null access constant CMOF_Package_Interface)
+    (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Package_Merges.Collections.Set_Of_CMOF_Package_Merge is abstract;
    --  References the PackageMerges that are owned by this Package.
 
    not overriding function Get_Uri
-    (Self : not null access constant CMOF_Package_Interface)
+    (Self : not null access constant CMOF_Package)
        return Optional_String is abstract;
    --  Provides an identifier for the package that can be used for many 
    --  purposes. A URI is the universally unique identification of the package 
@@ -105,7 +105,7 @@ package AMF.CMOF.Packages is
    --  when instances of the package’s classes are serialized.
 
    not overriding procedure Set_Uri
-    (Self : not null access CMOF_Package_Interface;
+    (Self : not null access CMOF_Package;
      To   : Optional_String) is abstract;
 
 end AMF.CMOF.Packages;

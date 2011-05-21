@@ -55,20 +55,20 @@ package AMF.CMOF.Data_Types is
 
    pragma Preelaborate;
 
-   type CMOF_Data_Type_Interface is limited interface
-     and AMF.CMOF.Classifiers.CMOF_Classifier_Interface;
+   type CMOF_Data_Type is limited interface
+     and AMF.CMOF.Classifiers.CMOF_Classifier;
 
-   type CMOF_Data_Type is
-     access all CMOF_Data_Type_Interface'Class;
-   for CMOF_Data_Type'Storage_Size use 0;
+   type CMOF_Data_Type_Access is
+     access all CMOF_Data_Type'Class;
+   for CMOF_Data_Type_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Attribute
-    (Self : not null access constant CMOF_Data_Type_Interface)
+    (Self : not null access constant CMOF_Data_Type)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
    --  The Attributes owned by the DataType.
 
    not overriding function Get_Owned_Operation
-    (Self : not null access constant CMOF_Data_Type_Interface)
+    (Self : not null access constant CMOF_Data_Type)
        return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is abstract;
    --  The Operations owned by the DataType.
 

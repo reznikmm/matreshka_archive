@@ -58,40 +58,40 @@ package AMF.CMOF.Classifiers is
 
    pragma Preelaborate;
 
-   type CMOF_Classifier_Interface is limited interface
-     and AMF.CMOF.Namespaces.CMOF_Namespace_Interface
-     and AMF.CMOF.Types.CMOF_Type_Interface;
+   type CMOF_Classifier is limited interface
+     and AMF.CMOF.Namespaces.CMOF_Namespace
+     and AMF.CMOF.Types.CMOF_Type;
 
-   type CMOF_Classifier is
-     access all CMOF_Classifier_Interface'Class;
-   for CMOF_Classifier'Storage_Size use 0;
+   type CMOF_Classifier_Access is
+     access all CMOF_Classifier'Class;
+   for CMOF_Classifier_Access'Storage_Size use 0;
 
    not overriding function Get_Attribute
-    (Self : not null access constant CMOF_Classifier_Interface)
+    (Self : not null access constant CMOF_Classifier)
        return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  Refers to all of the Properties that are direct (i.e. not inherited or 
    --  imported) attributes of the classifier.
 
    not overriding function Get_Feature
-    (Self : not null access constant CMOF_Classifier_Interface)
+    (Self : not null access constant CMOF_Classifier)
        return AMF.CMOF.Features.Collections.Set_Of_CMOF_Feature is abstract;
    --  Note that there may be members of the Classifier that are of the type 
    --  Feature but are not included in this association, e.g. inherited 
    --  features.
 
    not overriding function Get_General
-    (Self : not null access constant CMOF_Classifier_Interface)
+    (Self : not null access constant CMOF_Classifier)
        return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
    --  References the general classifier in the Generalization relationship.
 
    not overriding function Get_Inherited_Member
-    (Self : not null access constant CMOF_Classifier_Interface)
+    (Self : not null access constant CMOF_Classifier)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
    --  Specifies all elements inherited by this classifier from the general 
    --  classifiers.
 
    not overriding function Get_Is_Final_Specialization
-    (Self : not null access constant CMOF_Classifier_Interface)
+    (Self : not null access constant CMOF_Classifier)
        return Boolean is abstract;
    --  If true, the Classifier cannot be specialized by generalization. Note 
    --  that this property is preserved through package merge operations; that 
@@ -103,7 +103,7 @@ package AMF.CMOF.Classifiers is
    --  isFinalSpecialization =false.
 
    not overriding procedure Set_Is_Final_Specialization
-    (Self : not null access CMOF_Classifier_Interface;
+    (Self : not null access CMOF_Classifier;
      To   : Boolean) is abstract;
 
 end AMF.CMOF.Classifiers;

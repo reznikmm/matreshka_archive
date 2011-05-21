@@ -53,15 +53,15 @@ package AMF.CMOF.Features is
 
    pragma Preelaborate;
 
-   type CMOF_Feature_Interface is limited interface
-     and AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Interface;
+   type CMOF_Feature is limited interface
+     and AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element;
 
-   type CMOF_Feature is
-     access all CMOF_Feature_Interface'Class;
-   for CMOF_Feature'Storage_Size use 0;
+   type CMOF_Feature_Access is
+     access all CMOF_Feature'Class;
+   for CMOF_Feature_Access'Storage_Size use 0;
 
    not overriding function Get_Featuring_Classifier
-    (Self : not null access constant CMOF_Feature_Interface)
+    (Self : not null access constant CMOF_Feature)
        return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
    --  The Classifiers that have this Feature as a feature.
 

@@ -51,8 +51,8 @@ package AMF.CMOF.Packageable_Elements.Collections is
 
    package CMOF_Packageable_Element_Collections is
      new AMF.Generic_Collections
-          (CMOF_Packageable_Element_Interface,
-           CMOF_Packageable_Element);
+          (CMOF_Packageable_Element,
+           CMOF_Packageable_Element_Access);
 
    type Set_Of_CMOF_Packageable_Element is
      new CMOF_Packageable_Element_Collections.Set with null record;

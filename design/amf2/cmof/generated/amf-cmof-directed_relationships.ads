@@ -53,20 +53,20 @@ package AMF.CMOF.Directed_Relationships is
 
    pragma Preelaborate;
 
-   type CMOF_Directed_Relationship_Interface is limited interface
-     and AMF.CMOF.Relationships.CMOF_Relationship_Interface;
+   type CMOF_Directed_Relationship is limited interface
+     and AMF.CMOF.Relationships.CMOF_Relationship;
 
-   type CMOF_Directed_Relationship is
-     access all CMOF_Directed_Relationship_Interface'Class;
-   for CMOF_Directed_Relationship'Storage_Size use 0;
+   type CMOF_Directed_Relationship_Access is
+     access all CMOF_Directed_Relationship'Class;
+   for CMOF_Directed_Relationship_Access'Storage_Size use 0;
 
    not overriding function Get_Source
-    (Self : not null access constant CMOF_Directed_Relationship_Interface)
+    (Self : not null access constant CMOF_Directed_Relationship)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  Specifies the sources of the DirectedRelationship.
 
    not overriding function Get_Target
-    (Self : not null access constant CMOF_Directed_Relationship_Interface)
+    (Self : not null access constant CMOF_Directed_Relationship)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  Specifies the targets of the DirectedRelationship.
 

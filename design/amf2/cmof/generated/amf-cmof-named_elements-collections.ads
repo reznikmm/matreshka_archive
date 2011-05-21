@@ -51,8 +51,8 @@ package AMF.CMOF.Named_Elements.Collections is
 
    package CMOF_Named_Element_Collections is
      new AMF.Generic_Collections
-          (CMOF_Named_Element_Interface,
-           CMOF_Named_Element);
+          (CMOF_Named_Element,
+           CMOF_Named_Element_Access);
 
    type Set_Of_CMOF_Named_Element is
      new CMOF_Named_Element_Collections.Set with null record;

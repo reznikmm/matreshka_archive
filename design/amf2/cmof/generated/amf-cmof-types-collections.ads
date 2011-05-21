@@ -51,8 +51,8 @@ package AMF.CMOF.Types.Collections is
 
    package CMOF_Type_Collections is
      new AMF.Generic_Collections
-          (CMOF_Type_Interface,
-           CMOF_Type);
+          (CMOF_Type,
+           CMOF_Type_Access);
 
    type Set_Of_CMOF_Type is
      new CMOF_Type_Collections.Set with null record;

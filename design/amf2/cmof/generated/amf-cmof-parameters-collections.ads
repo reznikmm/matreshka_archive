@@ -51,8 +51,8 @@ package AMF.CMOF.Parameters.Collections is
 
    package CMOF_Parameter_Collections is
      new AMF.Generic_Collections
-          (CMOF_Parameter_Interface,
-           CMOF_Parameter);
+          (CMOF_Parameter,
+           CMOF_Parameter_Access);
 
    type Set_Of_CMOF_Parameter is
      new CMOF_Parameter_Collections.Set with null record;

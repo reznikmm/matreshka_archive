@@ -61,7 +61,7 @@ package AMF.Internals.CMOF_Primitive_Types is
 
    type CMOF_Primitive_Type_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Interface
+       and AMF.CMOF.Primitive_Types.CMOF_Primitive_Type
          with null record;
 
    --  XXX These subprograms are stubs
@@ -72,7 +72,7 @@ package AMF.Internals.CMOF_Primitive_Types is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Primitive_Type_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Primitive_Type_Proxy)
@@ -96,7 +96,7 @@ package AMF.Internals.CMOF_Primitive_Types is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Primitive_Type_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Primitive_Type_Proxy)
@@ -104,11 +104,11 @@ package AMF.Internals.CMOF_Primitive_Types is
 
    overriding function Get_Package
     (Self : not null access constant CMOF_Primitive_Type_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package;
+       return AMF.CMOF.Packages.CMOF_Package_Access;
 
    overriding procedure Set_Package
     (Self : not null access CMOF_Primitive_Type_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package);
+     To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
    overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Primitive_Type_Proxy)

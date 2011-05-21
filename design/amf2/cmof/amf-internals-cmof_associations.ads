@@ -61,7 +61,7 @@ package AMF.Internals.CMOF_Associations is
 
    type CMOF_Association_Proxy is
      limited new AMF.Internals.CMOF_Classifiers.CMOF_Classifier_Proxy
-       and AMF.CMOF.Associations.CMOF_Association_Interface
+       and AMF.CMOF.Associations.CMOF_Association
          with null record;
 
    --  XXX These subprograms are stubs
@@ -72,7 +72,7 @@ package AMF.Internals.CMOF_Associations is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Association_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Association_Proxy)
@@ -92,7 +92,7 @@ package AMF.Internals.CMOF_Associations is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Association_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Association_Proxy)
@@ -100,11 +100,11 @@ package AMF.Internals.CMOF_Associations is
 
    overriding function Get_Package
     (Self : not null access constant CMOF_Association_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package;
+       return AMF.CMOF.Packages.CMOF_Package_Access;
 
    overriding procedure Set_Package
     (Self : not null access CMOF_Association_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package);
+     To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
    overriding function Get_Related_Element
     (Self : not null access constant CMOF_Association_Proxy)

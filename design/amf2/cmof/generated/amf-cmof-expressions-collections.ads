@@ -51,8 +51,8 @@ package AMF.CMOF.Expressions.Collections is
 
    package CMOF_Expression_Collections is
      new AMF.Generic_Collections
-          (CMOF_Expression_Interface,
-           CMOF_Expression);
+          (CMOF_Expression,
+           CMOF_Expression_Access);
 
    type Set_Of_CMOF_Expression is
      new CMOF_Expression_Collections.Set with null record;

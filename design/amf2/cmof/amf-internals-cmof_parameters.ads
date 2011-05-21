@@ -53,7 +53,7 @@ package AMF.Internals.CMOF_Parameters is
 
    type CMOF_Parameter_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Parameters.CMOF_Parameter_Interface
+       and AMF.CMOF.Parameters.CMOF_Parameter
          with null record;
 
    --  XXX These subprograms are stubs
@@ -64,7 +64,7 @@ package AMF.Internals.CMOF_Parameters is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Parameter_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Parameter_Proxy)
@@ -120,7 +120,7 @@ package AMF.Internals.CMOF_Parameters is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Parameter_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Parameter_Proxy)
@@ -128,11 +128,11 @@ package AMF.Internals.CMOF_Parameters is
 
    overriding function Get_Type
     (Self : not null access constant CMOF_Parameter_Proxy)
-       return AMF.CMOF.Types.CMOF_Type;
+       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Parameter_Proxy;
-     To   : AMF.CMOF.Types.CMOF_Type);
+     To   : AMF.CMOF.Types.CMOF_Type_Access);
 
    overriding function Get_Default
     (Self : not null access constant CMOF_Parameter_Proxy)
@@ -152,10 +152,10 @@ package AMF.Internals.CMOF_Parameters is
 
    overriding function Get_Operation
     (Self : not null access constant CMOF_Parameter_Proxy)
-       return AMF.CMOF.Operations.CMOF_Operation;
+       return AMF.CMOF.Operations.CMOF_Operation_Access;
 
    overriding procedure Set_Operation
     (Self : not null access CMOF_Parameter_Proxy;
-     To   : AMF.CMOF.Operations.CMOF_Operation);
+     To   : AMF.CMOF.Operations.CMOF_Operation_Access);
 
 end AMF.Internals.CMOF_Parameters;

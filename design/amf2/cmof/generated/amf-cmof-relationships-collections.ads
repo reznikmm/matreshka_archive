@@ -51,8 +51,8 @@ package AMF.CMOF.Relationships.Collections is
 
    package CMOF_Relationship_Collections is
      new AMF.Generic_Collections
-          (CMOF_Relationship_Interface,
-           CMOF_Relationship);
+          (CMOF_Relationship,
+           CMOF_Relationship_Access);
 
    type Set_Of_CMOF_Relationship is
      new CMOF_Relationship_Collections.Set with null record;

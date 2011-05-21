@@ -51,8 +51,8 @@ package AMF.CMOF.Redefinable_Elements.Collections is
 
    package CMOF_Redefinable_Element_Collections is
      new AMF.Generic_Collections
-          (CMOF_Redefinable_Element_Interface,
-           CMOF_Redefinable_Element);
+          (CMOF_Redefinable_Element,
+           CMOF_Redefinable_Element_Access);
 
    type Set_Of_CMOF_Redefinable_Element is
      new CMOF_Redefinable_Element_Collections.Set with null record;

@@ -52,20 +52,20 @@ package AMF.CMOF.Opaque_Expressions is
 
    pragma Preelaborate;
 
-   type CMOF_Opaque_Expression_Interface is limited interface
-     and AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Interface;
+   type CMOF_Opaque_Expression is limited interface
+     and AMF.CMOF.Value_Specifications.CMOF_Value_Specification;
 
-   type CMOF_Opaque_Expression is
-     access all CMOF_Opaque_Expression_Interface'Class;
-   for CMOF_Opaque_Expression'Storage_Size use 0;
+   type CMOF_Opaque_Expression_Access is
+     access all CMOF_Opaque_Expression'Class;
+   for CMOF_Opaque_Expression_Access'Storage_Size use 0;
 
    not overriding function Get_Body
-    (Self : not null access constant CMOF_Opaque_Expression_Interface)
+    (Self : not null access constant CMOF_Opaque_Expression)
        return Sequence_Of_String is abstract;
    --  The text of the expression, possibly in multiple languages.
 
    not overriding function Get_Language
-    (Self : not null access constant CMOF_Opaque_Expression_Interface)
+    (Self : not null access constant CMOF_Opaque_Expression)
        return Ordered_Set_Of_String is abstract;
    --  Specifies the languages in which the expression is stated. The 
    --  interpretation of the expression body depends on the languages. If the 

@@ -61,7 +61,7 @@ package AMF.Internals.CMOF_Classes is
 
    type CMOF_Class_Proxy is
      limited new AMF.Internals.CMOF_Classifiers.CMOF_Classifier_Proxy
-       and AMF.CMOF.Classes.CMOF_Class_Interface
+       and AMF.CMOF.Classes.CMOF_Class
          with null record;
 
    --  XXX These subprograms are stubs
@@ -72,7 +72,7 @@ package AMF.Internals.CMOF_Classes is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Class_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Class_Proxy)
@@ -92,7 +92,7 @@ package AMF.Internals.CMOF_Classes is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Class_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Class_Proxy)
@@ -100,11 +100,11 @@ package AMF.Internals.CMOF_Classes is
 
    overriding function Get_Package
     (Self : not null access constant CMOF_Class_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package;
+       return AMF.CMOF.Packages.CMOF_Package_Access;
 
    overriding procedure Set_Package
     (Self : not null access CMOF_Class_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package);
+     To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
    overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Class_Proxy)

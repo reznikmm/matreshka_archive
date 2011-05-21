@@ -53,15 +53,15 @@ package AMF.CMOF.Expressions is
 
    pragma Preelaborate;
 
-   type CMOF_Expression_Interface is limited interface
-     and AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Interface;
+   type CMOF_Expression is limited interface
+     and AMF.CMOF.Value_Specifications.CMOF_Value_Specification;
 
-   type CMOF_Expression is
-     access all CMOF_Expression_Interface'Class;
-   for CMOF_Expression'Storage_Size use 0;
+   type CMOF_Expression_Access is
+     access all CMOF_Expression'Class;
+   for CMOF_Expression_Access'Storage_Size use 0;
 
    not overriding function Get_Operand
-    (Self : not null access constant CMOF_Expression_Interface)
+    (Self : not null access constant CMOF_Expression)
        return AMF.CMOF.Value_Specifications.Collections.Ordered_Set_Of_CMOF_Value_Specification is abstract;
    --  Specifies a sequence of operands.
 

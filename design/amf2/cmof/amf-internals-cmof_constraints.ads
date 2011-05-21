@@ -52,7 +52,7 @@ package AMF.Internals.CMOF_Constraints is
 
    type CMOF_Constraint_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Constraints.CMOF_Constraint_Interface
+       and AMF.CMOF.Constraints.CMOF_Constraint
          with null record;
 
    --  XXX These subprograms are stubs
@@ -63,7 +63,7 @@ package AMF.Internals.CMOF_Constraints is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Constraint_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Constraint_Proxy)
@@ -87,7 +87,7 @@ package AMF.Internals.CMOF_Constraints is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Constraint_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Constraint_Proxy)
@@ -99,18 +99,18 @@ package AMF.Internals.CMOF_Constraints is
 
    overriding function Get_Specification
     (Self : not null access constant CMOF_Constraint_Proxy)
-       return AMF.CMOF.Value_Specifications.CMOF_Value_Specification;
+       return AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access;
 
    overriding procedure Set_Specification
     (Self : not null access CMOF_Constraint_Proxy;
-     To   : AMF.CMOF.Value_Specifications.CMOF_Value_Specification);
+     To   : AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access);
 
    overriding function Get_Context
     (Self : not null access constant CMOF_Constraint_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding procedure Set_Context
     (Self : not null access CMOF_Constraint_Proxy;
-     To   : AMF.CMOF.Namespaces.CMOF_Namespace);
+     To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access);
 
 end AMF.Internals.CMOF_Constraints;

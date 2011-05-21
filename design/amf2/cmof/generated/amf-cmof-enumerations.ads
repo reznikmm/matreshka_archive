@@ -53,15 +53,15 @@ package AMF.CMOF.Enumerations is
 
    pragma Preelaborate;
 
-   type CMOF_Enumeration_Interface is limited interface
-     and AMF.CMOF.Data_Types.CMOF_Data_Type_Interface;
+   type CMOF_Enumeration is limited interface
+     and AMF.CMOF.Data_Types.CMOF_Data_Type;
 
-   type CMOF_Enumeration is
-     access all CMOF_Enumeration_Interface'Class;
-   for CMOF_Enumeration'Storage_Size use 0;
+   type CMOF_Enumeration_Access is
+     access all CMOF_Enumeration'Class;
+   for CMOF_Enumeration_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Literal
-    (Self : not null access constant CMOF_Enumeration_Interface)
+    (Self : not null access constant CMOF_Enumeration)
        return AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal is abstract;
    --  The ordered set of literals for this Enumeration.
 

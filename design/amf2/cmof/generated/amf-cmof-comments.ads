@@ -53,24 +53,24 @@ package AMF.CMOF.Comments is
 
    pragma Preelaborate;
 
-   type CMOF_Comment_Interface is limited interface
-     and AMF.CMOF.Elements.CMOF_Element_Interface;
+   type CMOF_Comment is limited interface
+     and AMF.CMOF.Elements.CMOF_Element;
 
-   type CMOF_Comment is
-     access all CMOF_Comment_Interface'Class;
-   for CMOF_Comment'Storage_Size use 0;
+   type CMOF_Comment_Access is
+     access all CMOF_Comment'Class;
+   for CMOF_Comment_Access'Storage_Size use 0;
 
    not overriding function Get_Body
-    (Self : not null access constant CMOF_Comment_Interface)
+    (Self : not null access constant CMOF_Comment)
        return Optional_String is abstract;
    --  Specifies a string that is the comment.
 
    not overriding procedure Set_Body
-    (Self : not null access CMOF_Comment_Interface;
+    (Self : not null access CMOF_Comment;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Annotated_Element
-    (Self : not null access constant CMOF_Comment_Interface)
+    (Self : not null access constant CMOF_Comment)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  References the Element(s) being commented.
 

@@ -53,31 +53,31 @@ package AMF.CMOF.Package_Merges is
 
    pragma Preelaborate;
 
-   type CMOF_Package_Merge_Interface is limited interface
-     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship_Interface;
+   type CMOF_Package_Merge is limited interface
+     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship;
 
-   type CMOF_Package_Merge is
-     access all CMOF_Package_Merge_Interface'Class;
-   for CMOF_Package_Merge'Storage_Size use 0;
+   type CMOF_Package_Merge_Access is
+     access all CMOF_Package_Merge'Class;
+   for CMOF_Package_Merge_Access'Storage_Size use 0;
 
    not overriding function Get_Receiving_Package
-    (Self : not null access constant CMOF_Package_Merge_Interface)
-       return AMF.CMOF.Packages.CMOF_Package is abstract;
+    (Self : not null access constant CMOF_Package_Merge)
+       return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  References the Package that is being extended with the contents of the 
    --  merged package of the PackageMerge.
 
    not overriding procedure Set_Receiving_Package
-    (Self : not null access CMOF_Package_Merge_Interface;
-     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+    (Self : not null access CMOF_Package_Merge;
+     To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
 
    not overriding function Get_Merged_Package
-    (Self : not null access constant CMOF_Package_Merge_Interface)
-       return AMF.CMOF.Packages.CMOF_Package is abstract;
+    (Self : not null access constant CMOF_Package_Merge)
+       return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  References the Package that is to be merged with the receiving package 
    --  of the PackageMerge.
 
    not overriding procedure Set_Merged_Package
-    (Self : not null access CMOF_Package_Merge_Interface;
-     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+    (Self : not null access CMOF_Package_Merge;
+     To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
 
 end AMF.CMOF.Package_Merges;

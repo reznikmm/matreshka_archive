@@ -51,8 +51,8 @@ package AMF.CMOF.Namespaces.Collections is
 
    package CMOF_Namespace_Collections is
      new AMF.Generic_Collections
-          (CMOF_Namespace_Interface,
-           CMOF_Namespace);
+          (CMOF_Namespace,
+           CMOF_Namespace_Access);
 
    type Set_Of_CMOF_Namespace is
      new CMOF_Namespace_Collections.Set with null record;

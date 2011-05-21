@@ -53,7 +53,7 @@ package AMF.Internals.CMOF_Expressions is
 
    type CMOF_Expression_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Expressions.CMOF_Expression_Interface
+       and AMF.CMOF.Expressions.CMOF_Expression
          with null record;
 
    --  XXX These subprograms are stubs
@@ -64,7 +64,7 @@ package AMF.Internals.CMOF_Expressions is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Expression_Proxy)
@@ -88,7 +88,7 @@ package AMF.Internals.CMOF_Expressions is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Expression_Proxy)
@@ -96,11 +96,11 @@ package AMF.Internals.CMOF_Expressions is
 
    overriding function Get_Type
     (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Types.CMOF_Type;
+       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Expression_Proxy;
-     To   : AMF.CMOF.Types.CMOF_Type);
+     To   : AMF.CMOF.Types.CMOF_Type_Access);
 
    overriding function Get_Operand
     (Self : not null access constant CMOF_Expression_Proxy)

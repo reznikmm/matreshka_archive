@@ -54,13 +54,13 @@ package AMF.CMOF.Structural_Features is
 
    pragma Preelaborate;
 
-   type CMOF_Structural_Feature_Interface is limited interface
-     and AMF.CMOF.Features.CMOF_Feature_Interface
-     and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Interface
-     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element_Interface;
+   type CMOF_Structural_Feature is limited interface
+     and AMF.CMOF.Features.CMOF_Feature
+     and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element
+     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element;
 
-   type CMOF_Structural_Feature is
-     access all CMOF_Structural_Feature_Interface'Class;
-   for CMOF_Structural_Feature'Storage_Size use 0;
+   type CMOF_Structural_Feature_Access is
+     access all CMOF_Structural_Feature'Class;
+   for CMOF_Structural_Feature_Access'Storage_Size use 0;
 
 end AMF.CMOF.Structural_Features;

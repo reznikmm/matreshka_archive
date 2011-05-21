@@ -51,8 +51,8 @@ package AMF.CMOF.Opaque_Expressions.Collections is
 
    package CMOF_Opaque_Expression_Collections is
      new AMF.Generic_Collections
-          (CMOF_Opaque_Expression_Interface,
-           CMOF_Opaque_Expression);
+          (CMOF_Opaque_Expression,
+           CMOF_Opaque_Expression_Access);
 
    type Set_Of_CMOF_Opaque_Expression is
      new CMOF_Opaque_Expression_Collections.Set with null record;

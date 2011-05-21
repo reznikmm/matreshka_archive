@@ -51,8 +51,8 @@ package AMF.CMOF.Behavioral_Features.Collections is
 
    package CMOF_Behavioral_Feature_Collections is
      new AMF.Generic_Collections
-          (CMOF_Behavioral_Feature_Interface,
-           CMOF_Behavioral_Feature);
+          (CMOF_Behavioral_Feature,
+           CMOF_Behavioral_Feature_Access);
 
    type Set_Of_CMOF_Behavioral_Feature is
      new CMOF_Behavioral_Feature_Collections.Set with null record;

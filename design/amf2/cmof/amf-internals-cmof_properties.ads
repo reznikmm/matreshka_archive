@@ -57,7 +57,7 @@ package AMF.Internals.CMOF_Properties is
 
    type CMOF_Property_Proxy is
      limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
-       and AMF.CMOF.Properties.CMOF_Property_Interface
+       and AMF.CMOF.Properties.CMOF_Property
          with null record;
 
    --  XXX These subprograms are stubs
@@ -68,7 +68,7 @@ package AMF.Internals.CMOF_Properties is
 
    overriding function Get_Owner
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element;
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Property_Proxy)
@@ -124,7 +124,7 @@ package AMF.Internals.CMOF_Properties is
 
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace;
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Property_Proxy)
@@ -132,11 +132,11 @@ package AMF.Internals.CMOF_Properties is
 
    overriding function Get_Type
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Types.CMOF_Type;
+       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Property_Proxy;
-     To   : AMF.CMOF.Types.CMOF_Type);
+     To   : AMF.CMOF.Types.CMOF_Type_Access);
 
    overriding function Get_Redefinition_Context
     (Self : not null access constant CMOF_Property_Proxy)
@@ -200,19 +200,19 @@ package AMF.Internals.CMOF_Properties is
 
    overriding function Get_Class
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Classes.CMOF_Class;
+       return AMF.CMOF.Classes.CMOF_Class_Access;
 
    overriding procedure Set_Class
     (Self : not null access CMOF_Property_Proxy;
-     To   : AMF.CMOF.Classes.CMOF_Class);
+     To   : AMF.CMOF.Classes.CMOF_Class_Access);
 
    overriding function Get_Owning_Association
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Associations.CMOF_Association;
+       return AMF.CMOF.Associations.CMOF_Association_Access;
 
    overriding procedure Set_Owning_Association
     (Self : not null access CMOF_Property_Proxy;
-     To   : AMF.CMOF.Associations.CMOF_Association);
+     To   : AMF.CMOF.Associations.CMOF_Association_Access);
 
    overriding function Get_Redefined_Property
     (Self : not null access constant CMOF_Property_Proxy)
@@ -224,26 +224,26 @@ package AMF.Internals.CMOF_Properties is
 
    overriding function Get_Opposite
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Properties.CMOF_Property;
+       return AMF.CMOF.Properties.CMOF_Property_Access;
 
    overriding procedure Set_Opposite
     (Self : not null access CMOF_Property_Proxy;
-     To   : AMF.CMOF.Properties.CMOF_Property);
+     To   : AMF.CMOF.Properties.CMOF_Property_Access);
 
    overriding function Get_Datatype
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Data_Types.CMOF_Data_Type;
+       return AMF.CMOF.Data_Types.CMOF_Data_Type_Access;
 
    overriding procedure Set_Datatype
     (Self : not null access CMOF_Property_Proxy;
-     To   : AMF.CMOF.Data_Types.CMOF_Data_Type);
+     To   : AMF.CMOF.Data_Types.CMOF_Data_Type_Access);
 
    overriding function Get_Association
     (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Associations.CMOF_Association;
+       return AMF.CMOF.Associations.CMOF_Association_Access;
 
    overriding procedure Set_Association
     (Self : not null access CMOF_Property_Proxy;
-     To   : AMF.CMOF.Associations.CMOF_Association);
+     To   : AMF.CMOF.Associations.CMOF_Association_Access);
 
 end AMF.Internals.CMOF_Properties;

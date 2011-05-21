@@ -53,20 +53,20 @@ package AMF.CMOF.Typed_Elements is
 
    pragma Preelaborate;
 
-   type CMOF_Typed_Element_Interface is limited interface
-     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
+   type CMOF_Typed_Element is limited interface
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element;
 
-   type CMOF_Typed_Element is
-     access all CMOF_Typed_Element_Interface'Class;
-   for CMOF_Typed_Element'Storage_Size use 0;
+   type CMOF_Typed_Element_Access is
+     access all CMOF_Typed_Element'Class;
+   for CMOF_Typed_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Type
-    (Self : not null access constant CMOF_Typed_Element_Interface)
-       return AMF.CMOF.Types.CMOF_Type is abstract;
+    (Self : not null access constant CMOF_Typed_Element)
+       return AMF.CMOF.Types.CMOF_Type_Access is abstract;
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Type
-    (Self : not null access CMOF_Typed_Element_Interface;
-     To   : AMF.CMOF.Types.CMOF_Type) is abstract;
+    (Self : not null access CMOF_Typed_Element;
+     To   : AMF.CMOF.Types.CMOF_Type_Access) is abstract;
 
 end AMF.CMOF.Typed_Elements;

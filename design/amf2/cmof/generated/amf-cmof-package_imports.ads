@@ -54,15 +54,15 @@ package AMF.CMOF.Package_Imports is
 
    pragma Preelaborate;
 
-   type CMOF_Package_Import_Interface is limited interface
-     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship_Interface;
+   type CMOF_Package_Import is limited interface
+     and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship;
 
-   type CMOF_Package_Import is
-     access all CMOF_Package_Import_Interface'Class;
-   for CMOF_Package_Import'Storage_Size use 0;
+   type CMOF_Package_Import_Access is
+     access all CMOF_Package_Import'Class;
+   for CMOF_Package_Import_Access'Storage_Size use 0;
 
    not overriding function Get_Visibility
-    (Self : not null access constant CMOF_Package_Import_Interface)
+    (Self : not null access constant CMOF_Package_Import)
        return CMOF_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElements within the 
    --  importing Namespace, i.e., whether imported elements will in turn be 
@@ -72,25 +72,25 @@ package AMF.CMOF.Package_Imports is
    --  not.
 
    not overriding procedure Set_Visibility
-    (Self : not null access CMOF_Package_Import_Interface;
+    (Self : not null access CMOF_Package_Import;
      To   : CMOF_Visibility_Kind) is abstract;
 
    not overriding function Get_Imported_Package
-    (Self : not null access constant CMOF_Package_Import_Interface)
-       return AMF.CMOF.Packages.CMOF_Package is abstract;
+    (Self : not null access constant CMOF_Package_Import)
+       return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  Specifies the Package whose members are imported into a Namespace.
 
    not overriding procedure Set_Imported_Package
-    (Self : not null access CMOF_Package_Import_Interface;
-     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+    (Self : not null access CMOF_Package_Import;
+     To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
 
    not overriding function Get_Importing_Namespace
-    (Self : not null access constant CMOF_Package_Import_Interface)
-       return AMF.CMOF.Namespaces.CMOF_Namespace is abstract;
+    (Self : not null access constant CMOF_Package_Import)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access is abstract;
    --  Specifies the Namespace that imports the members from a Package.
 
    not overriding procedure Set_Importing_Namespace
-    (Self : not null access CMOF_Package_Import_Interface;
-     To   : AMF.CMOF.Namespaces.CMOF_Namespace) is abstract;
+    (Self : not null access CMOF_Package_Import;
+     To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access) is abstract;
 
 end AMF.CMOF.Package_Imports;

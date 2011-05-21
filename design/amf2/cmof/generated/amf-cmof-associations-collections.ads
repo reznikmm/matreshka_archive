@@ -51,8 +51,8 @@ package AMF.CMOF.Associations.Collections is
 
    package CMOF_Association_Collections is
      new AMF.Generic_Collections
-          (CMOF_Association_Interface,
-           CMOF_Association);
+          (CMOF_Association,
+           CMOF_Association_Access);
 
    type Set_Of_CMOF_Association is
      new CMOF_Association_Collections.Set with null record;

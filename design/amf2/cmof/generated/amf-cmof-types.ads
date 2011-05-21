@@ -54,21 +54,21 @@ package AMF.CMOF.Types is
 
    pragma Preelaborate;
 
-   type CMOF_Type_Interface is limited interface
-     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Interface
-     and AMF.CMOF.Named_Elements.CMOF_Named_Element_Interface;
+   type CMOF_Type is limited interface
+     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element
+     and AMF.CMOF.Named_Elements.CMOF_Named_Element;
 
-   type CMOF_Type is
-     access all CMOF_Type_Interface'Class;
-   for CMOF_Type'Storage_Size use 0;
+   type CMOF_Type_Access is
+     access all CMOF_Type'Class;
+   for CMOF_Type_Access'Storage_Size use 0;
 
    not overriding function Get_Package
-    (Self : not null access constant CMOF_Type_Interface)
-       return AMF.CMOF.Packages.CMOF_Package is abstract;
+    (Self : not null access constant CMOF_Type)
+       return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  Specifies the owning package of this classifier, if any.
 
    not overriding procedure Set_Package
-    (Self : not null access CMOF_Type_Interface;
-     To   : AMF.CMOF.Packages.CMOF_Package) is abstract;
+    (Self : not null access CMOF_Type;
+     To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
 
 end AMF.CMOF.Types;

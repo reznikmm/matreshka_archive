@@ -53,24 +53,24 @@ package AMF.CMOF.Elements is
 
    pragma Preelaborate;
 
-   type CMOF_Element_Interface is limited interface;
+   type CMOF_Element is limited interface;
 
-   type CMOF_Element is
-     access all CMOF_Element_Interface'Class;
-   for CMOF_Element'Storage_Size use 0;
+   type CMOF_Element_Access is
+     access all CMOF_Element'Class;
+   for CMOF_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Element_Interface)
+    (Self : not null access constant CMOF_Element)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
    --  The Elements owned by this element.
 
    not overriding function Get_Owner
-    (Self : not null access constant CMOF_Element_Interface)
-       return AMF.CMOF.Elements.CMOF_Element is abstract;
+    (Self : not null access constant CMOF_Element)
+       return AMF.CMOF.Elements.CMOF_Element_Access is abstract;
    --  The Element that owns this element.
 
    not overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Element_Interface)
+    (Self : not null access constant CMOF_Element)
        return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment is abstract;
    --  The Comments owned by this element.
 

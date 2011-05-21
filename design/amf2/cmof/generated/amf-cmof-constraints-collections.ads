@@ -51,8 +51,8 @@ package AMF.CMOF.Constraints.Collections is
 
    package CMOF_Constraint_Collections is
      new AMF.Generic_Collections
-          (CMOF_Constraint_Interface,
-           CMOF_Constraint);
+          (CMOF_Constraint,
+           CMOF_Constraint_Access);
 
    type Set_Of_CMOF_Constraint is
      new CMOF_Constraint_Collections.Set with null record;
