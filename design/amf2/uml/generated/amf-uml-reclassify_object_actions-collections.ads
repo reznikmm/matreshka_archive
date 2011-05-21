@@ -51,8 +51,8 @@ package AMF.UML.Reclassify_Object_Actions.Collections is
 
    package UML_Reclassify_Object_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Reclassify_Object_Action_Interface,
-           UML_Reclassify_Object_Action);
+          (UML_Reclassify_Object_Action,
+           UML_Reclassify_Object_Action_Access);
 
    type Set_Of_UML_Reclassify_Object_Action is
      new UML_Reclassify_Object_Action_Collections.Set with null record;

@@ -55,67 +55,67 @@ package AMF.UML.Multiplicity_Elements is
 
    pragma Preelaborate;
 
-   type UML_Multiplicity_Element_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Multiplicity_Element is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Multiplicity_Element is
-     access all UML_Multiplicity_Element_Interface'Class;
-   for UML_Multiplicity_Element'Storage_Size use 0;
+   type UML_Multiplicity_Element_Access is
+     access all UML_Multiplicity_Element'Class;
+   for UML_Multiplicity_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Multiplicity_Element_Interface)
+    (Self : not null access constant UML_Multiplicity_Element)
        return Boolean is abstract;
    --  For a multivalued multiplicity, this attribute specifies whether the 
    --  values in an instantiation of this element are sequentially ordered.
 
    not overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Multiplicity_Element_Interface;
+    (Self : not null access UML_Multiplicity_Element;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Unique
-    (Self : not null access constant UML_Multiplicity_Element_Interface)
+    (Self : not null access constant UML_Multiplicity_Element)
        return Boolean is abstract;
    --  For a multivalued multiplicity, this attributes specifies whether the 
    --  values in an instantiation of this element are unique.
 
    not overriding procedure Set_Is_Unique
-    (Self : not null access UML_Multiplicity_Element_Interface;
+    (Self : not null access UML_Multiplicity_Element;
      To   : Boolean) is abstract;
 
    not overriding function Get_Lower
-    (Self : not null access constant UML_Multiplicity_Element_Interface)
+    (Self : not null access constant UML_Multiplicity_Element)
        return Optional_Integer is abstract;
    --  Specifies the lower bound of the multiplicity interval.
 
    not overriding procedure Set_Lower
-    (Self : not null access UML_Multiplicity_Element_Interface;
+    (Self : not null access UML_Multiplicity_Element;
      To   : Optional_Integer) is abstract;
 
    not overriding function Get_Lower_Value
-    (Self : not null access constant UML_Multiplicity_Element_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Multiplicity_Element)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The specification of the lower bound for this multiplicity.
 
    not overriding procedure Set_Lower_Value
-    (Self : not null access UML_Multiplicity_Element_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Multiplicity_Element;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Upper
-    (Self : not null access constant UML_Multiplicity_Element_Interface)
+    (Self : not null access constant UML_Multiplicity_Element)
        return Optional_Unlimited_Natural is abstract;
    --  Specifies the upper bound of the multiplicity interval.
 
    not overriding procedure Set_Upper
-    (Self : not null access UML_Multiplicity_Element_Interface;
+    (Self : not null access UML_Multiplicity_Element;
      To   : Optional_Unlimited_Natural) is abstract;
 
    not overriding function Get_Upper_Value
-    (Self : not null access constant UML_Multiplicity_Element_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Multiplicity_Element)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The specification of the upper bound for this multiplicity.
 
    not overriding procedure Set_Upper_Value
-    (Self : not null access UML_Multiplicity_Element_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Multiplicity_Element;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Multiplicity_Elements;

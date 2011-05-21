@@ -51,8 +51,8 @@ package AMF.UML.Literal_Nulls.Collections is
 
    package UML_Literal_Null_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_Null_Interface,
-           UML_Literal_Null);
+          (UML_Literal_Null,
+           UML_Literal_Null_Access);
 
    type Set_Of_UML_Literal_Null is
      new UML_Literal_Null_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Activities.Collections is
 
    package UML_Activity_Collections is
      new AMF.Generic_Collections
-          (UML_Activity_Interface,
-           UML_Activity);
+          (UML_Activity,
+           UML_Activity_Access);
 
    type Set_Of_UML_Activity is
      new UML_Activity_Collections.Set with null record;

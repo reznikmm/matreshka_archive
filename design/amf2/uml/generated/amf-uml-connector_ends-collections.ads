@@ -51,8 +51,8 @@ package AMF.UML.Connector_Ends.Collections is
 
    package UML_Connector_End_Collections is
      new AMF.Generic_Collections
-          (UML_Connector_End_Interface,
-           UML_Connector_End);
+          (UML_Connector_End,
+           UML_Connector_End_Access);
 
    type Set_Of_UML_Connector_End is
      new UML_Connector_End_Collections.Set with null record;

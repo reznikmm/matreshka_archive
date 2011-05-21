@@ -55,15 +55,15 @@ package AMF.UML.Executable_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Executable_Node_Interface is limited interface
-     and AMF.UML.Activity_Nodes.UML_Activity_Node_Interface;
+   type UML_Executable_Node is limited interface
+     and AMF.UML.Activity_Nodes.UML_Activity_Node;
 
-   type UML_Executable_Node is
-     access all UML_Executable_Node_Interface'Class;
-   for UML_Executable_Node'Storage_Size use 0;
+   type UML_Executable_Node_Access is
+     access all UML_Executable_Node'Class;
+   for UML_Executable_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Handler
-    (Self : not null access constant UML_Executable_Node_Interface)
+    (Self : not null access constant UML_Executable_Node)
        return AMF.UML.Exception_Handlers.Collections.Set_Of_UML_Exception_Handler is abstract;
    --  A set of exception handlers that are examined if an uncaught exception 
    --  propagates to the outer level of the executable node.

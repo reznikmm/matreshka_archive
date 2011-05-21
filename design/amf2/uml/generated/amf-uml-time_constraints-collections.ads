@@ -51,8 +51,8 @@ package AMF.UML.Time_Constraints.Collections is
 
    package UML_Time_Constraint_Collections is
      new AMF.Generic_Collections
-          (UML_Time_Constraint_Interface,
-           UML_Time_Constraint);
+          (UML_Time_Constraint,
+           UML_Time_Constraint_Access);
 
    type Set_Of_UML_Time_Constraint is
      new UML_Time_Constraint_Collections.Set with null record;

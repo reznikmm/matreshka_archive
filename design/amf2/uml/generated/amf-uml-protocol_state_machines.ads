@@ -61,15 +61,15 @@ package AMF.UML.Protocol_State_Machines is
 
    pragma Preelaborate;
 
-   type UML_Protocol_State_Machine_Interface is limited interface
-     and AMF.UML.State_Machines.UML_State_Machine_Interface;
+   type UML_Protocol_State_Machine is limited interface
+     and AMF.UML.State_Machines.UML_State_Machine;
 
-   type UML_Protocol_State_Machine is
-     access all UML_Protocol_State_Machine_Interface'Class;
-   for UML_Protocol_State_Machine'Storage_Size use 0;
+   type UML_Protocol_State_Machine_Access is
+     access all UML_Protocol_State_Machine'Class;
+   for UML_Protocol_State_Machine_Access'Storage_Size use 0;
 
    not overriding function Get_Conformance
-    (Self : not null access constant UML_Protocol_State_Machine_Interface)
+    (Self : not null access constant UML_Protocol_State_Machine)
        return AMF.UML.Protocol_Conformances.Collections.Set_Of_UML_Protocol_Conformance is abstract;
    --  Conformance between protocol state machines.
 

@@ -51,8 +51,8 @@ package AMF.UML.Value_Pins.Collections is
 
    package UML_Value_Pin_Collections is
      new AMF.Generic_Collections
-          (UML_Value_Pin_Interface,
-           UML_Value_Pin);
+          (UML_Value_Pin,
+           UML_Value_Pin_Access);
 
    type Set_Of_UML_Value_Pin is
      new UML_Value_Pin_Collections.Set with null record;

@@ -51,15 +51,15 @@ package AMF.UML.Images is
 
    pragma Preelaborate;
 
-   type UML_Image_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Image is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Image is
-     access all UML_Image_Interface'Class;
-   for UML_Image'Storage_Size use 0;
+   type UML_Image_Access is
+     access all UML_Image'Class;
+   for UML_Image_Access'Storage_Size use 0;
 
    not overriding function Get_Content
-    (Self : not null access constant UML_Image_Interface)
+    (Self : not null access constant UML_Image)
        return Optional_String is abstract;
    --  This contains the serialization of the image according to the format. 
    --  The value could represent a bitmap, image such as a GIF file, or 
@@ -67,11 +67,11 @@ package AMF.UML.Images is
    --  (SVG) (which is XML based).
 
    not overriding procedure Set_Content
-    (Self : not null access UML_Image_Interface;
+    (Self : not null access UML_Image;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Format
-    (Self : not null access constant UML_Image_Interface)
+    (Self : not null access constant UML_Image)
        return Optional_String is abstract;
    --  This indicates the format of the content - which is how the string 
    --  content should be interpreted. The following values are reserved: SVG, 
@@ -81,17 +81,17 @@ package AMF.UML.Images is
    --  "MIME: image/svg+xml".
 
    not overriding procedure Set_Format
-    (Self : not null access UML_Image_Interface;
+    (Self : not null access UML_Image;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Location
-    (Self : not null access constant UML_Image_Interface)
+    (Self : not null access constant UML_Image)
        return Optional_String is abstract;
    --  This contains a location that can be used by a tool to locate the image 
    --  as an alternative to embedding it in the stereotype.
 
    not overriding procedure Set_Location
-    (Self : not null access UML_Image_Interface;
+    (Self : not null access UML_Image;
      To   : Optional_String) is abstract;
 
 end AMF.UML.Images;

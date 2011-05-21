@@ -51,11 +51,11 @@ package AMF.UML.Destruction_Occurrence_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Destruction_Occurrence_Specification_Interface is limited interface
-     and AMF.UML.Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Interface;
+   type UML_Destruction_Occurrence_Specification is limited interface
+     and AMF.UML.Message_Occurrence_Specifications.UML_Message_Occurrence_Specification;
 
-   type UML_Destruction_Occurrence_Specification is
-     access all UML_Destruction_Occurrence_Specification_Interface'Class;
-   for UML_Destruction_Occurrence_Specification'Storage_Size use 0;
+   type UML_Destruction_Occurrence_Specification_Access is
+     access all UML_Destruction_Occurrence_Specification'Class;
+   for UML_Destruction_Occurrence_Specification_Access'Storage_Size use 0;
 
 end AMF.UML.Destruction_Occurrence_Specifications;

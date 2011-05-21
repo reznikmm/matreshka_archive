@@ -58,56 +58,56 @@ package AMF.UML.Regions is
 
    pragma Preelaborate;
 
-   type UML_Region_Interface is limited interface
-     and AMF.UML.Namespaces.UML_Namespace_Interface
-     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Interface;
+   type UML_Region is limited interface
+     and AMF.UML.Namespaces.UML_Namespace
+     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element;
 
-   type UML_Region is
-     access all UML_Region_Interface'Class;
-   for UML_Region'Storage_Size use 0;
+   type UML_Region_Access is
+     access all UML_Region'Class;
+   for UML_Region_Access'Storage_Size use 0;
 
    not overriding function Get_Extended_Region
-    (Self : not null access constant UML_Region_Interface)
-       return AMF.UML.Regions.UML_Region is abstract;
+    (Self : not null access constant UML_Region)
+       return AMF.UML.Regions.UML_Region_Access is abstract;
    --  The region of which this region is an extension.
 
    not overriding procedure Set_Extended_Region
-    (Self : not null access UML_Region_Interface;
-     To   : AMF.UML.Regions.UML_Region) is abstract;
+    (Self : not null access UML_Region;
+     To   : AMF.UML.Regions.UML_Region_Access) is abstract;
 
    not overriding function Get_Redefinition_Context
-    (Self : not null access constant UML_Region_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Region)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  References the classifier in which context this element may be 
    --  redefined.
 
    not overriding function Get_State
-    (Self : not null access constant UML_Region_Interface)
-       return AMF.UML.States.UML_State is abstract;
+    (Self : not null access constant UML_Region)
+       return AMF.UML.States.UML_State_Access is abstract;
    --  The State that owns the Region. If a Region is owned by a State, then 
    --  it cannot also be owned by a StateMachine.
 
    not overriding procedure Set_State
-    (Self : not null access UML_Region_Interface;
-     To   : AMF.UML.States.UML_State) is abstract;
+    (Self : not null access UML_Region;
+     To   : AMF.UML.States.UML_State_Access) is abstract;
 
    not overriding function Get_State_Machine
-    (Self : not null access constant UML_Region_Interface)
-       return AMF.UML.State_Machines.UML_State_Machine is abstract;
+    (Self : not null access constant UML_Region)
+       return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
    --  The StateMachine that owns the Region. If a Region is owned by a 
    --  StateMachine, then it cannot also be owned by a State.
 
    not overriding procedure Set_State_Machine
-    (Self : not null access UML_Region_Interface;
-     To   : AMF.UML.State_Machines.UML_State_Machine) is abstract;
+    (Self : not null access UML_Region;
+     To   : AMF.UML.State_Machines.UML_State_Machine_Access) is abstract;
 
    not overriding function Get_Subvertex
-    (Self : not null access constant UML_Region_Interface)
+    (Self : not null access constant UML_Region)
        return AMF.UML.Vertexs.Collections.Set_Of_UML_Vertex is abstract;
    --  The set of vertices that are owned by this region.
 
    not overriding function Get_Transition
-    (Self : not null access constant UML_Region_Interface)
+    (Self : not null access constant UML_Region)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  The set of transitions owned by the region.
 

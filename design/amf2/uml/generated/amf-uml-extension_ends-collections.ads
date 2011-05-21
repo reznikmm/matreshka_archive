@@ -51,8 +51,8 @@ package AMF.UML.Extension_Ends.Collections is
 
    package UML_Extension_End_Collections is
      new AMF.Generic_Collections
-          (UML_Extension_End_Interface,
-           UML_Extension_End);
+          (UML_Extension_End,
+           UML_Extension_End_Access);
 
    type Set_Of_UML_Extension_End is
      new UML_Extension_End_Collections.Set with null record;

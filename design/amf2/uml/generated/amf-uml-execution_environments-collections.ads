@@ -51,8 +51,8 @@ package AMF.UML.Execution_Environments.Collections is
 
    package UML_Execution_Environment_Collections is
      new AMF.Generic_Collections
-          (UML_Execution_Environment_Interface,
-           UML_Execution_Environment);
+          (UML_Execution_Environment,
+           UML_Execution_Environment_Access);
 
    type Set_Of_UML_Execution_Environment is
      new UML_Execution_Environment_Collections.Set with null record;

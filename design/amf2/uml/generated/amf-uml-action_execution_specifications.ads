@@ -53,20 +53,20 @@ package AMF.UML.Action_Execution_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Action_Execution_Specification_Interface is limited interface
-     and AMF.UML.Execution_Specifications.UML_Execution_Specification_Interface;
+   type UML_Action_Execution_Specification is limited interface
+     and AMF.UML.Execution_Specifications.UML_Execution_Specification;
 
-   type UML_Action_Execution_Specification is
-     access all UML_Action_Execution_Specification_Interface'Class;
-   for UML_Action_Execution_Specification'Storage_Size use 0;
+   type UML_Action_Execution_Specification_Access is
+     access all UML_Action_Execution_Specification'Class;
+   for UML_Action_Execution_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Action
-    (Self : not null access constant UML_Action_Execution_Specification_Interface)
-       return AMF.UML.Actions.UML_Action is abstract;
+    (Self : not null access constant UML_Action_Execution_Specification)
+       return AMF.UML.Actions.UML_Action_Access is abstract;
    --  Action whose execution is occurring.
 
    not overriding procedure Set_Action
-    (Self : not null access UML_Action_Execution_Specification_Interface;
-     To   : AMF.UML.Actions.UML_Action) is abstract;
+    (Self : not null access UML_Action_Execution_Specification;
+     To   : AMF.UML.Actions.UML_Action_Access) is abstract;
 
 end AMF.UML.Action_Execution_Specifications;

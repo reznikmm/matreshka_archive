@@ -51,8 +51,8 @@ package AMF.UML.Instance_Values.Collections is
 
    package UML_Instance_Value_Collections is
      new AMF.Generic_Collections
-          (UML_Instance_Value_Interface,
-           UML_Instance_Value);
+          (UML_Instance_Value,
+           UML_Instance_Value_Access);
 
    type Set_Of_UML_Instance_Value is
      new UML_Instance_Value_Collections.Set with null record;

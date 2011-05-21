@@ -53,11 +53,11 @@ package AMF.UML.Execution_Environments is
 
    pragma Preelaborate;
 
-   type UML_Execution_Environment_Interface is limited interface
-     and AMF.UML.Nodes.UML_Node_Interface;
+   type UML_Execution_Environment is limited interface
+     and AMF.UML.Nodes.UML_Node;
 
-   type UML_Execution_Environment is
-     access all UML_Execution_Environment_Interface'Class;
-   for UML_Execution_Environment'Storage_Size use 0;
+   type UML_Execution_Environment_Access is
+     access all UML_Execution_Environment'Class;
+   for UML_Execution_Environment_Access'Storage_Size use 0;
 
 end AMF.UML.Execution_Environments;

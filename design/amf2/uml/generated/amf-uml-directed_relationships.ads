@@ -53,20 +53,20 @@ package AMF.UML.Directed_Relationships is
 
    pragma Preelaborate;
 
-   type UML_Directed_Relationship_Interface is limited interface
-     and AMF.UML.Relationships.UML_Relationship_Interface;
+   type UML_Directed_Relationship is limited interface
+     and AMF.UML.Relationships.UML_Relationship;
 
-   type UML_Directed_Relationship is
-     access all UML_Directed_Relationship_Interface'Class;
-   for UML_Directed_Relationship'Storage_Size use 0;
+   type UML_Directed_Relationship_Access is
+     access all UML_Directed_Relationship'Class;
+   for UML_Directed_Relationship_Access'Storage_Size use 0;
 
    not overriding function Get_Source
-    (Self : not null access constant UML_Directed_Relationship_Interface)
+    (Self : not null access constant UML_Directed_Relationship)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  Specifies the sources of the DirectedRelationship.
 
    not overriding function Get_Target
-    (Self : not null access constant UML_Directed_Relationship_Interface)
+    (Self : not null access constant UML_Directed_Relationship)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  Specifies the targets of the DirectedRelationship.
 

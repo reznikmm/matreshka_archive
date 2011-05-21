@@ -55,49 +55,49 @@ package AMF.UML.Read_Is_Classified_Object_Actions is
 
    pragma Preelaborate;
 
-   type UML_Read_Is_Classified_Object_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Read_Is_Classified_Object_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Read_Is_Classified_Object_Action is
-     access all UML_Read_Is_Classified_Object_Action_Interface'Class;
-   for UML_Read_Is_Classified_Object_Action'Storage_Size use 0;
+   type UML_Read_Is_Classified_Object_Action_Access is
+     access all UML_Read_Is_Classified_Object_Action'Class;
+   for UML_Read_Is_Classified_Object_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier
-    (Self : not null access constant UML_Read_Is_Classified_Object_Action_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Read_Is_Classified_Object_Action)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  The classifier against which the classification of the input object is 
    --  tested.
 
    not overriding procedure Set_Classifier
-    (Self : not null access UML_Read_Is_Classified_Object_Action_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Read_Is_Classified_Object_Action;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
    not overriding function Get_Is_Direct
-    (Self : not null access constant UML_Read_Is_Classified_Object_Action_Interface)
+    (Self : not null access constant UML_Read_Is_Classified_Object_Action)
        return Boolean is abstract;
    --  Indicates whether the classifier must directly classify the input 
    --  object.
 
    not overriding procedure Set_Is_Direct
-    (Self : not null access UML_Read_Is_Classified_Object_Action_Interface;
+    (Self : not null access UML_Read_Is_Classified_Object_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Read_Is_Classified_Object_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Read_Is_Classified_Object_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Holds the object whose classification is to be tested.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Read_Is_Classified_Object_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Read_Is_Classified_Object_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Read_Is_Classified_Object_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Read_Is_Classified_Object_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  After termination of the action, will hold the result of the test.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Read_Is_Classified_Object_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Read_Is_Classified_Object_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Read_Is_Classified_Object_Actions;

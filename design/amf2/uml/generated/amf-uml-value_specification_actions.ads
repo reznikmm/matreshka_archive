@@ -54,29 +54,29 @@ package AMF.UML.Value_Specification_Actions is
 
    pragma Preelaborate;
 
-   type UML_Value_Specification_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Value_Specification_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Value_Specification_Action is
-     access all UML_Value_Specification_Action_Interface'Class;
-   for UML_Value_Specification_Action'Storage_Size use 0;
+   type UML_Value_Specification_Action_Access is
+     access all UML_Value_Specification_Action'Class;
+   for UML_Value_Specification_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Value_Specification_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Value_Specification_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Value_Specification_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Value_Specification_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Value_Specification_Action_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Value_Specification_Action)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  Value specification to be evaluated.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Value_Specification_Action_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Value_Specification_Action;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Value_Specification_Actions;

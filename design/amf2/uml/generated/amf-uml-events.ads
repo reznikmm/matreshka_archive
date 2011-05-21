@@ -52,11 +52,11 @@ package AMF.UML.Events is
 
    pragma Preelaborate;
 
-   type UML_Event_Interface is limited interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Event is limited interface
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Event is
-     access all UML_Event_Interface'Class;
-   for UML_Event'Storage_Size use 0;
+   type UML_Event_Access is
+     access all UML_Event'Class;
+   for UML_Event_Access'Storage_Size use 0;
 
 end AMF.UML.Events;

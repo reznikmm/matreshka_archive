@@ -59,29 +59,29 @@ package AMF.UML.Send_Signal_Actions is
 
    pragma Preelaborate;
 
-   type UML_Send_Signal_Action_Interface is limited interface
-     and AMF.UML.Invocation_Actions.UML_Invocation_Action_Interface;
+   type UML_Send_Signal_Action is limited interface
+     and AMF.UML.Invocation_Actions.UML_Invocation_Action;
 
-   type UML_Send_Signal_Action is
-     access all UML_Send_Signal_Action_Interface'Class;
-   for UML_Send_Signal_Action'Storage_Size use 0;
+   type UML_Send_Signal_Action_Access is
+     access all UML_Send_Signal_Action'Class;
+   for UML_Send_Signal_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Signal
-    (Self : not null access constant UML_Send_Signal_Action_Interface)
-       return AMF.UML.Signals.UML_Signal is abstract;
+    (Self : not null access constant UML_Send_Signal_Action)
+       return AMF.UML.Signals.UML_Signal_Access is abstract;
    --  The type of signal transmitted to the target object.
 
    not overriding procedure Set_Signal
-    (Self : not null access UML_Send_Signal_Action_Interface;
-     To   : AMF.UML.Signals.UML_Signal) is abstract;
+    (Self : not null access UML_Send_Signal_Action;
+     To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
 
    not overriding function Get_Target
-    (Self : not null access constant UML_Send_Signal_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Send_Signal_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The target object to which the signal is sent.
 
    not overriding procedure Set_Target
-    (Self : not null access UML_Send_Signal_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Send_Signal_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Send_Signal_Actions;

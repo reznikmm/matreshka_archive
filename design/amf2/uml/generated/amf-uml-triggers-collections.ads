@@ -51,8 +51,8 @@ package AMF.UML.Triggers.Collections is
 
    package UML_Trigger_Collections is
      new AMF.Generic_Collections
-          (UML_Trigger_Interface,
-           UML_Trigger);
+          (UML_Trigger,
+           UML_Trigger_Access);
 
    type Set_Of_UML_Trigger is
      new UML_Trigger_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Remove_Variable_Value_Actions.Collections is
 
    package UML_Remove_Variable_Value_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Remove_Variable_Value_Action_Interface,
-           UML_Remove_Variable_Value_Action);
+          (UML_Remove_Variable_Value_Action,
+           UML_Remove_Variable_Value_Action_Access);
 
    type Set_Of_UML_Remove_Variable_Value_Action is
      new UML_Remove_Variable_Value_Action_Collections.Set with null record;

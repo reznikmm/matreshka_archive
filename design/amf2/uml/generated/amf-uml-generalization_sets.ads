@@ -54,21 +54,21 @@ package AMF.UML.Generalization_Sets is
 
    pragma Preelaborate;
 
-   type UML_Generalization_Set_Interface is limited interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Generalization_Set is limited interface
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Generalization_Set is
-     access all UML_Generalization_Set_Interface'Class;
-   for UML_Generalization_Set'Storage_Size use 0;
+   type UML_Generalization_Set_Access is
+     access all UML_Generalization_Set'Class;
+   for UML_Generalization_Set_Access'Storage_Size use 0;
 
    not overriding function Get_Generalization
-    (Self : not null access constant UML_Generalization_Set_Interface)
+    (Self : not null access constant UML_Generalization_Set)
        return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization is abstract;
    --  Designates the instances of Generalization which are members of a given 
    --  GeneralizationSet.
 
    not overriding function Get_Is_Covering
-    (Self : not null access constant UML_Generalization_Set_Interface)
+    (Self : not null access constant UML_Generalization_Set)
        return Boolean is abstract;
    --  Indicates (via the associated Generalizations) whether or not the set 
    --  of specific Classifiers are covering for a particular general 
@@ -80,11 +80,11 @@ package AMF.UML.Generalization_Sets is
    --  the GeneralizationSet.
 
    not overriding procedure Set_Is_Covering
-    (Self : not null access UML_Generalization_Set_Interface;
+    (Self : not null access UML_Generalization_Set;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Disjoint
-    (Self : not null access constant UML_Generalization_Set_Interface)
+    (Self : not null access constant UML_Generalization_Set)
        return Boolean is abstract;
    --  Indicates whether or not the set of specific Classifiers in a 
    --  Generalization relationship have instance in common. If isDisjoint is 
@@ -102,17 +102,17 @@ package AMF.UML.Generalization_Sets is
    --  Person which can be a Sales Person and a Manager.
 
    not overriding procedure Set_Is_Disjoint
-    (Self : not null access UML_Generalization_Set_Interface;
+    (Self : not null access UML_Generalization_Set;
      To   : Boolean) is abstract;
 
    not overriding function Get_Powertype
-    (Self : not null access constant UML_Generalization_Set_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Generalization_Set)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  Designates the Classifier that is defined as the power type for the 
    --  associated GeneralizationSet.
 
    not overriding procedure Set_Powertype
-    (Self : not null access UML_Generalization_Set_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Generalization_Set;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
 end AMF.UML.Generalization_Sets;

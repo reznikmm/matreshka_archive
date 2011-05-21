@@ -51,8 +51,8 @@ package AMF.UML.Regions.Collections is
 
    package UML_Region_Collections is
      new AMF.Generic_Collections
-          (UML_Region_Interface,
-           UML_Region);
+          (UML_Region,
+           UML_Region_Access);
 
    type Set_Of_UML_Region is
      new UML_Region_Collections.Set with null record;

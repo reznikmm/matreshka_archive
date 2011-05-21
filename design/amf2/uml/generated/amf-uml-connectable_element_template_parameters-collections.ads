@@ -51,8 +51,8 @@ package AMF.UML.Connectable_Element_Template_Parameters.Collections is
 
    package UML_Connectable_Element_Template_Parameter_Collections is
      new AMF.Generic_Collections
-          (UML_Connectable_Element_Template_Parameter_Interface,
-           UML_Connectable_Element_Template_Parameter);
+          (UML_Connectable_Element_Template_Parameter,
+           UML_Connectable_Element_Template_Parameter_Access);
 
    type Set_Of_UML_Connectable_Element_Template_Parameter is
      new UML_Connectable_Element_Template_Parameter_Collections.Set with null record;

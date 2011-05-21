@@ -51,8 +51,8 @@ package AMF.UML.Enumeration_Literals.Collections is
 
    package UML_Enumeration_Literal_Collections is
      new AMF.Generic_Collections
-          (UML_Enumeration_Literal_Interface,
-           UML_Enumeration_Literal);
+          (UML_Enumeration_Literal,
+           UML_Enumeration_Literal_Access);
 
    type Set_Of_UML_Enumeration_Literal is
      new UML_Enumeration_Literal_Collections.Set with null record;

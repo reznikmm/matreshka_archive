@@ -52,15 +52,15 @@ package AMF.UML.Time_Constraints is
 
    pragma Preelaborate;
 
-   type UML_Time_Constraint_Interface is limited interface
-     and AMF.UML.Interval_Constraints.UML_Interval_Constraint_Interface;
+   type UML_Time_Constraint is limited interface
+     and AMF.UML.Interval_Constraints.UML_Interval_Constraint;
 
-   type UML_Time_Constraint is
-     access all UML_Time_Constraint_Interface'Class;
-   for UML_Time_Constraint'Storage_Size use 0;
+   type UML_Time_Constraint_Access is
+     access all UML_Time_Constraint'Class;
+   for UML_Time_Constraint_Access'Storage_Size use 0;
 
    not overriding function Get_First_Event
-    (Self : not null access constant UML_Time_Constraint_Interface)
+    (Self : not null access constant UML_Time_Constraint)
        return Optional_Boolean is abstract;
    --  The value of firstEvent is related to constrainedElement. If firstEvent 
    --  is true, then the corresponding observation event is the first time 
@@ -69,17 +69,17 @@ package AMF.UML.Time_Constraints is
    --  instant the execution is within constrainedElement.
 
    not overriding procedure Set_First_Event
-    (Self : not null access UML_Time_Constraint_Interface;
+    (Self : not null access UML_Time_Constraint;
      To   : Optional_Boolean) is abstract;
 
    not overriding function Get_Specification
-    (Self : not null access constant UML_Time_Constraint_Interface)
-       return AMF.UML.Time_Intervals.UML_Time_Interval is abstract;
+    (Self : not null access constant UML_Time_Constraint)
+       return AMF.UML.Time_Intervals.UML_Time_Interval_Access is abstract;
    --  A condition that must be true when evaluated in order for the 
    --  constraint to be satisfied.
 
    not overriding procedure Set_Specification
-    (Self : not null access UML_Time_Constraint_Interface;
-     To   : AMF.UML.Time_Intervals.UML_Time_Interval) is abstract;
+    (Self : not null access UML_Time_Constraint;
+     To   : AMF.UML.Time_Intervals.UML_Time_Interval_Access) is abstract;
 
 end AMF.UML.Time_Constraints;

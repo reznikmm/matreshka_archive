@@ -54,38 +54,38 @@ package AMF.UML.Test_Identity_Actions is
 
    pragma Preelaborate;
 
-   type UML_Test_Identity_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Test_Identity_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Test_Identity_Action is
-     access all UML_Test_Identity_Action_Interface'Class;
-   for UML_Test_Identity_Action'Storage_Size use 0;
+   type UML_Test_Identity_Action_Access is
+     access all UML_Test_Identity_Action'Class;
+   for UML_Test_Identity_Action_Access'Storage_Size use 0;
 
    not overriding function Get_First
-    (Self : not null access constant UML_Test_Identity_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Test_Identity_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Gives the pin on which an object is placed.
 
    not overriding procedure Set_First
-    (Self : not null access UML_Test_Identity_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Test_Identity_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Test_Identity_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Test_Identity_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Tells whether the two input objects are identical.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Test_Identity_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Test_Identity_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
    not overriding function Get_Second
-    (Self : not null access constant UML_Test_Identity_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Test_Identity_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Gives the pin on which an object is placed.
 
    not overriding procedure Set_Second
-    (Self : not null access UML_Test_Identity_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Test_Identity_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Test_Identity_Actions;

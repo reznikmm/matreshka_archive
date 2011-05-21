@@ -51,8 +51,8 @@ package AMF.UML.Interaction_Constraints.Collections is
 
    package UML_Interaction_Constraint_Collections is
      new AMF.Generic_Collections
-          (UML_Interaction_Constraint_Interface,
-           UML_Interaction_Constraint);
+          (UML_Interaction_Constraint,
+           UML_Interaction_Constraint_Access);
 
    type Set_Of_UML_Interaction_Constraint is
      new UML_Interaction_Constraint_Collections.Set with null record;

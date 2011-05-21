@@ -51,8 +51,8 @@ package AMF.UML.Behaviors.Collections is
 
    package UML_Behavior_Collections is
      new AMF.Generic_Collections
-          (UML_Behavior_Interface,
-           UML_Behavior);
+          (UML_Behavior,
+           UML_Behavior_Access);
 
    type Set_Of_UML_Behavior is
      new UML_Behavior_Collections.Set with null record;

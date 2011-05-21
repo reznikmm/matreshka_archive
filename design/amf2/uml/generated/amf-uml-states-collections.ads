@@ -51,8 +51,8 @@ package AMF.UML.States.Collections is
 
    package UML_State_Collections is
      new AMF.Generic_Collections
-          (UML_State_Interface,
-           UML_State);
+          (UML_State,
+           UML_State_Access);
 
    type Set_Of_UML_State is
      new UML_State_Collections.Set with null record;

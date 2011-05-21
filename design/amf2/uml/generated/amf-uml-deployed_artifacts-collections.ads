@@ -51,8 +51,8 @@ package AMF.UML.Deployed_Artifacts.Collections is
 
    package UML_Deployed_Artifact_Collections is
      new AMF.Generic_Collections
-          (UML_Deployed_Artifact_Interface,
-           UML_Deployed_Artifact);
+          (UML_Deployed_Artifact,
+           UML_Deployed_Artifact_Access);
 
    type Set_Of_UML_Deployed_Artifact is
      new UML_Deployed_Artifact_Collections.Set with null record;

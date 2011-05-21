@@ -58,43 +58,43 @@ package AMF.UML.Named_Elements is
 
    pragma Preelaborate;
 
-   type UML_Named_Element_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Named_Element is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Named_Element is
-     access all UML_Named_Element_Interface'Class;
-   for UML_Named_Element'Storage_Size use 0;
+   type UML_Named_Element_Access is
+     access all UML_Named_Element'Class;
+   for UML_Named_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Client_Dependency
-    (Self : not null access constant UML_Named_Element_Interface)
+    (Self : not null access constant UML_Named_Element)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is abstract;
    --  Indicates the dependencies that reference the client.
 
    not overriding function Get_Name
-    (Self : not null access constant UML_Named_Element_Interface)
+    (Self : not null access constant UML_Named_Element)
        return Optional_String is abstract;
    --  The name of the NamedElement.
 
    not overriding procedure Set_Name
-    (Self : not null access UML_Named_Element_Interface;
+    (Self : not null access UML_Named_Element;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Name_Expression
-    (Self : not null access constant UML_Named_Element_Interface)
-       return AMF.UML.String_Expressions.UML_String_Expression is abstract;
+    (Self : not null access constant UML_Named_Element)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access is abstract;
    --  The string expression used to define the name of this named element.
 
    not overriding procedure Set_Name_Expression
-    (Self : not null access UML_Named_Element_Interface;
-     To   : AMF.UML.String_Expressions.UML_String_Expression) is abstract;
+    (Self : not null access UML_Named_Element;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is abstract;
 
    not overriding function Get_Namespace
-    (Self : not null access constant UML_Named_Element_Interface)
-       return AMF.UML.Namespaces.UML_Namespace is abstract;
+    (Self : not null access constant UML_Named_Element)
+       return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
    --  Specifies the namespace that owns the NamedElement.
 
    not overriding function Get_Qualified_Name
-    (Self : not null access constant UML_Named_Element_Interface)
+    (Self : not null access constant UML_Named_Element)
        return Optional_String is abstract;
    --  A name which allows the NamedElement to be identified within a 
    --  hierarchy of nested Namespaces. It is constructed from the names of the 
@@ -102,13 +102,13 @@ package AMF.UML.Named_Elements is
    --  with the name of the NamedElement itself.
 
    not overriding function Get_Visibility
-    (Self : not null access constant UML_Named_Element_Interface)
+    (Self : not null access constant UML_Named_Element)
        return Optional_UML_Visibility_Kind is abstract;
    --  Determines where the NamedElement appears within different Namespaces 
    --  within the overall model, and its accessibility.
 
    not overriding procedure Set_Visibility
-    (Self : not null access UML_Named_Element_Interface;
+    (Self : not null access UML_Named_Element;
      To   : Optional_UML_Visibility_Kind) is abstract;
 
 end AMF.UML.Named_Elements;

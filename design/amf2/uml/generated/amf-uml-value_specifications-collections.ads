@@ -51,8 +51,8 @@ package AMF.UML.Value_Specifications.Collections is
 
    package UML_Value_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Value_Specification_Interface,
-           UML_Value_Specification);
+          (UML_Value_Specification,
+           UML_Value_Specification_Access);
 
    type Set_Of_UML_Value_Specification is
      new UML_Value_Specification_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Final_States.Collections is
 
    package UML_Final_State_Collections is
      new AMF.Generic_Collections
-          (UML_Final_State_Interface,
-           UML_Final_State);
+          (UML_Final_State,
+           UML_Final_State_Access);
 
    type Set_Of_UML_Final_State is
      new UML_Final_State_Collections.Set with null record;

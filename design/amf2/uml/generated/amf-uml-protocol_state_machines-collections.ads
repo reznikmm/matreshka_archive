@@ -51,8 +51,8 @@ package AMF.UML.Protocol_State_Machines.Collections is
 
    package UML_Protocol_State_Machine_Collections is
      new AMF.Generic_Collections
-          (UML_Protocol_State_Machine_Interface,
-           UML_Protocol_State_Machine);
+          (UML_Protocol_State_Machine,
+           UML_Protocol_State_Machine_Access);
 
    type Set_Of_UML_Protocol_State_Machine is
      new UML_Protocol_State_Machine_Collections.Set with null record;

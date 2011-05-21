@@ -51,8 +51,8 @@ package AMF.UML.Expressions.Collections is
 
    package UML_Expression_Collections is
      new AMF.Generic_Collections
-          (UML_Expression_Interface,
-           UML_Expression);
+          (UML_Expression,
+           UML_Expression_Access);
 
    type Set_Of_UML_Expression is
      new UML_Expression_Collections.Set with null record;

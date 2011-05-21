@@ -55,31 +55,31 @@ package AMF.UML.Execution_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Execution_Specification_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_Execution_Specification is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_Execution_Specification is
-     access all UML_Execution_Specification_Interface'Class;
-   for UML_Execution_Specification'Storage_Size use 0;
+   type UML_Execution_Specification_Access is
+     access all UML_Execution_Specification'Class;
+   for UML_Execution_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Finish
-    (Self : not null access constant UML_Execution_Specification_Interface)
-       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification is abstract;
+    (Self : not null access constant UML_Execution_Specification)
+       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
    --  References the OccurrenceSpecification that designates the finish of 
    --  the Action or Behavior.
 
    not overriding procedure Set_Finish
-    (Self : not null access UML_Execution_Specification_Interface;
-     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification) is abstract;
+    (Self : not null access UML_Execution_Specification;
+     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
 
    not overriding function Get_Start
-    (Self : not null access constant UML_Execution_Specification_Interface)
-       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification is abstract;
+    (Self : not null access constant UML_Execution_Specification)
+       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
    --  References the OccurrenceSpecification that designates the start of the 
    --  Action or Behavior
 
    not overriding procedure Set_Start
-    (Self : not null access UML_Execution_Specification_Interface;
-     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification) is abstract;
+    (Self : not null access UML_Execution_Specification;
+     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
 
 end AMF.UML.Execution_Specifications;

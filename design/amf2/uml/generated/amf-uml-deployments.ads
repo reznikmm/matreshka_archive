@@ -58,32 +58,32 @@ package AMF.UML.Deployments is
 
    pragma Preelaborate;
 
-   type UML_Deployment_Interface is limited interface
-     and AMF.UML.Dependencies.UML_Dependency_Interface;
+   type UML_Deployment is limited interface
+     and AMF.UML.Dependencies.UML_Dependency;
 
-   type UML_Deployment is
-     access all UML_Deployment_Interface'Class;
-   for UML_Deployment'Storage_Size use 0;
+   type UML_Deployment_Access is
+     access all UML_Deployment'Class;
+   for UML_Deployment_Access'Storage_Size use 0;
 
    not overriding function Get_Configuration
-    (Self : not null access constant UML_Deployment_Interface)
+    (Self : not null access constant UML_Deployment)
        return AMF.UML.Deployment_Specifications.Collections.Set_Of_UML_Deployment_Specification is abstract;
    --  The specification of properties that parameterize the deployment and 
    --  execution of one or more Artifacts.
 
    not overriding function Get_Deployed_Artifact
-    (Self : not null access constant UML_Deployment_Interface)
+    (Self : not null access constant UML_Deployment)
        return AMF.UML.Deployed_Artifacts.Collections.Set_Of_UML_Deployed_Artifact is abstract;
    --  The Artifacts that are deployed onto a Node. This association 
    --  specializes the supplier association.
 
    not overriding function Get_Location
-    (Self : not null access constant UML_Deployment_Interface)
-       return AMF.UML.Deployment_Targets.UML_Deployment_Target is abstract;
+    (Self : not null access constant UML_Deployment)
+       return AMF.UML.Deployment_Targets.UML_Deployment_Target_Access is abstract;
    --  The DeployedTarget which is the target of a Deployment.
 
    not overriding procedure Set_Location
-    (Self : not null access UML_Deployment_Interface;
-     To   : AMF.UML.Deployment_Targets.UML_Deployment_Target) is abstract;
+    (Self : not null access UML_Deployment;
+     To   : AMF.UML.Deployment_Targets.UML_Deployment_Target_Access) is abstract;
 
 end AMF.UML.Deployments;

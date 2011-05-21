@@ -55,47 +55,47 @@ package AMF.UML.Template_Parameter_Substitutions is
 
    pragma Preelaborate;
 
-   type UML_Template_Parameter_Substitution_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Template_Parameter_Substitution is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Template_Parameter_Substitution is
-     access all UML_Template_Parameter_Substitution_Interface'Class;
-   for UML_Template_Parameter_Substitution'Storage_Size use 0;
+   type UML_Template_Parameter_Substitution_Access is
+     access all UML_Template_Parameter_Substitution'Class;
+   for UML_Template_Parameter_Substitution_Access'Storage_Size use 0;
 
    not overriding function Get_Actual
-    (Self : not null access constant UML_Template_Parameter_Substitution_Interface)
-       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element is abstract;
+    (Self : not null access constant UML_Template_Parameter_Substitution)
+       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access is abstract;
    --  The element that is the actual parameter for this substitution.
 
    not overriding procedure Set_Actual
-    (Self : not null access UML_Template_Parameter_Substitution_Interface;
-     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element) is abstract;
+    (Self : not null access UML_Template_Parameter_Substitution;
+     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is abstract;
 
    not overriding function Get_Formal
-    (Self : not null access constant UML_Template_Parameter_Substitution_Interface)
-       return AMF.UML.Template_Parameters.UML_Template_Parameter is abstract;
+    (Self : not null access constant UML_Template_Parameter_Substitution)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is abstract;
    --  The formal template parameter that is associated with this substitution.
 
    not overriding procedure Set_Formal
-    (Self : not null access UML_Template_Parameter_Substitution_Interface;
-     To   : AMF.UML.Template_Parameters.UML_Template_Parameter) is abstract;
+    (Self : not null access UML_Template_Parameter_Substitution;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is abstract;
 
    not overriding function Get_Owned_Actual
-    (Self : not null access constant UML_Template_Parameter_Substitution_Interface)
-       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element is abstract;
+    (Self : not null access constant UML_Template_Parameter_Substitution)
+       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access is abstract;
    --  The actual parameter that is owned by this substitution.
 
    not overriding procedure Set_Owned_Actual
-    (Self : not null access UML_Template_Parameter_Substitution_Interface;
-     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element) is abstract;
+    (Self : not null access UML_Template_Parameter_Substitution;
+     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is abstract;
 
    not overriding function Get_Template_Binding
-    (Self : not null access constant UML_Template_Parameter_Substitution_Interface)
-       return AMF.UML.Template_Bindings.UML_Template_Binding is abstract;
+    (Self : not null access constant UML_Template_Parameter_Substitution)
+       return AMF.UML.Template_Bindings.UML_Template_Binding_Access is abstract;
    --  The optional bindings from this element to templates.
 
    not overriding procedure Set_Template_Binding
-    (Self : not null access UML_Template_Parameter_Substitution_Interface;
-     To   : AMF.UML.Template_Bindings.UML_Template_Binding) is abstract;
+    (Self : not null access UML_Template_Parameter_Substitution;
+     To   : AMF.UML.Template_Bindings.UML_Template_Binding_Access) is abstract;
 
 end AMF.UML.Template_Parameter_Substitutions;

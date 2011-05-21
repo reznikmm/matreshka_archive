@@ -52,40 +52,40 @@ package AMF.UML.Destroy_Object_Actions is
 
    pragma Preelaborate;
 
-   type UML_Destroy_Object_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Destroy_Object_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Destroy_Object_Action is
-     access all UML_Destroy_Object_Action_Interface'Class;
-   for UML_Destroy_Object_Action'Storage_Size use 0;
+   type UML_Destroy_Object_Action_Access is
+     access all UML_Destroy_Object_Action'Class;
+   for UML_Destroy_Object_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Destroy_Links
-    (Self : not null access constant UML_Destroy_Object_Action_Interface)
+    (Self : not null access constant UML_Destroy_Object_Action)
        return Boolean is abstract;
    --  Specifies whether links in which the object participates are destroyed 
    --  along with the object.
 
    not overriding procedure Set_Is_Destroy_Links
-    (Self : not null access UML_Destroy_Object_Action_Interface;
+    (Self : not null access UML_Destroy_Object_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Destroy_Owned_Objects
-    (Self : not null access constant UML_Destroy_Object_Action_Interface)
+    (Self : not null access constant UML_Destroy_Object_Action)
        return Boolean is abstract;
    --  Specifies whether objects owned by the object are destroyed along with 
    --  the object.
 
    not overriding procedure Set_Is_Destroy_Owned_Objects
-    (Self : not null access UML_Destroy_Object_Action_Interface;
+    (Self : not null access UML_Destroy_Object_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_Target
-    (Self : not null access constant UML_Destroy_Object_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Destroy_Object_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The input pin providing the object to be destroyed.
 
    not overriding procedure Set_Target
-    (Self : not null access UML_Destroy_Object_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Destroy_Object_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Destroy_Object_Actions;

@@ -53,11 +53,11 @@ package AMF.UML.Devices is
 
    pragma Preelaborate;
 
-   type UML_Device_Interface is limited interface
-     and AMF.UML.Nodes.UML_Node_Interface;
+   type UML_Device is limited interface
+     and AMF.UML.Nodes.UML_Node;
 
-   type UML_Device is
-     access all UML_Device_Interface'Class;
-   for UML_Device'Storage_Size use 0;
+   type UML_Device_Access is
+     access all UML_Device'Class;
+   for UML_Device_Access'Storage_Size use 0;
 
 end AMF.UML.Devices;

@@ -51,8 +51,8 @@ package AMF.UML.Time_Intervals.Collections is
 
    package UML_Time_Interval_Collections is
      new AMF.Generic_Collections
-          (UML_Time_Interval_Interface,
-           UML_Time_Interval);
+          (UML_Time_Interval,
+           UML_Time_Interval_Access);
 
    type Set_Of_UML_Time_Interval is
      new UML_Time_Interval_Collections.Set with null record;

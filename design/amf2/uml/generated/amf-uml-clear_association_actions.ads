@@ -54,30 +54,30 @@ package AMF.UML.Clear_Association_Actions is
 
    pragma Preelaborate;
 
-   type UML_Clear_Association_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Clear_Association_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Clear_Association_Action is
-     access all UML_Clear_Association_Action_Interface'Class;
-   for UML_Clear_Association_Action'Storage_Size use 0;
+   type UML_Clear_Association_Action_Access is
+     access all UML_Clear_Association_Action'Class;
+   for UML_Clear_Association_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Association
-    (Self : not null access constant UML_Clear_Association_Action_Interface)
-       return AMF.UML.Associations.UML_Association is abstract;
+    (Self : not null access constant UML_Clear_Association_Action)
+       return AMF.UML.Associations.UML_Association_Access is abstract;
    --  Association to be cleared.
 
    not overriding procedure Set_Association
-    (Self : not null access UML_Clear_Association_Action_Interface;
-     To   : AMF.UML.Associations.UML_Association) is abstract;
+    (Self : not null access UML_Clear_Association_Action;
+     To   : AMF.UML.Associations.UML_Association_Access) is abstract;
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Clear_Association_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Clear_Association_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Gives the input pin from which is obtained the object whose 
    --  participation in the association is to be cleared.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Clear_Association_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Clear_Association_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Clear_Association_Actions;

@@ -60,48 +60,48 @@ package AMF.UML.Interaction_Uses is
 
    pragma Preelaborate;
 
-   type UML_Interaction_Use_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_Interaction_Use is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_Interaction_Use is
-     access all UML_Interaction_Use_Interface'Class;
-   for UML_Interaction_Use'Storage_Size use 0;
+   type UML_Interaction_Use_Access is
+     access all UML_Interaction_Use'Class;
+   for UML_Interaction_Use_Access'Storage_Size use 0;
 
    not overriding function Get_Actual_Gate
-    (Self : not null access constant UML_Interaction_Use_Interface)
+    (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
    --  The actual gates of the InteractionUse
 
    not overriding function Get_Argument
-    (Self : not null access constant UML_Interaction_Use_Interface)
+    (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  The actual arguments of the Interaction
 
    not overriding function Get_Refers_To
-    (Self : not null access constant UML_Interaction_Use_Interface)
-       return AMF.UML.Interactions.UML_Interaction is abstract;
+    (Self : not null access constant UML_Interaction_Use)
+       return AMF.UML.Interactions.UML_Interaction_Access is abstract;
    --  Refers to the Interaction that defines its meaning
 
    not overriding procedure Set_Refers_To
-    (Self : not null access UML_Interaction_Use_Interface;
-     To   : AMF.UML.Interactions.UML_Interaction) is abstract;
+    (Self : not null access UML_Interaction_Use;
+     To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
 
    not overriding function Get_Return_Value
-    (Self : not null access constant UML_Interaction_Use_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Interaction_Use)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The value of the executed Interaction.
 
    not overriding procedure Set_Return_Value
-    (Self : not null access UML_Interaction_Use_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Interaction_Use;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Return_Value_Recipient
-    (Self : not null access constant UML_Interaction_Use_Interface)
-       return AMF.UML.Properties.UML_Property is abstract;
+    (Self : not null access constant UML_Interaction_Use)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
    --  The recipient of the return value.
 
    not overriding procedure Set_Return_Value_Recipient
-    (Self : not null access UML_Interaction_Use_Interface;
-     To   : AMF.UML.Properties.UML_Property) is abstract;
+    (Self : not null access UML_Interaction_Use;
+     To   : AMF.UML.Properties.UML_Property_Access) is abstract;
 
 end AMF.UML.Interaction_Uses;

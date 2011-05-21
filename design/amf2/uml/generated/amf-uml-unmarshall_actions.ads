@@ -56,34 +56,34 @@ package AMF.UML.Unmarshall_Actions is
 
    pragma Preelaborate;
 
-   type UML_Unmarshall_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Unmarshall_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Unmarshall_Action is
-     access all UML_Unmarshall_Action_Interface'Class;
-   for UML_Unmarshall_Action'Storage_Size use 0;
+   type UML_Unmarshall_Action_Access is
+     access all UML_Unmarshall_Action'Class;
+   for UML_Unmarshall_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Unmarshall_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Unmarshall_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The object to be unmarshalled.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Unmarshall_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Unmarshall_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Unmarshall_Action_Interface)
+    (Self : not null access constant UML_Unmarshall_Action)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
    --  The values of the structural features of the input object.
 
    not overriding function Get_Unmarshall_Type
-    (Self : not null access constant UML_Unmarshall_Action_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Unmarshall_Action)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  The type of the object to be unmarshalled.
 
    not overriding procedure Set_Unmarshall_Type
-    (Self : not null access UML_Unmarshall_Action_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Unmarshall_Action;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
 end AMF.UML.Unmarshall_Actions;

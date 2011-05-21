@@ -55,15 +55,15 @@ package AMF.UML.Stereotypes is
 
    pragma Preelaborate;
 
-   type UML_Stereotype_Interface is limited interface
-     and AMF.UML.Classes.UML_Class_Interface;
+   type UML_Stereotype is limited interface
+     and AMF.UML.Classes.UML_Class;
 
-   type UML_Stereotype is
-     access all UML_Stereotype_Interface'Class;
-   for UML_Stereotype'Storage_Size use 0;
+   type UML_Stereotype_Access is
+     access all UML_Stereotype'Class;
+   for UML_Stereotype_Access'Storage_Size use 0;
 
    not overriding function Get_Icon
-    (Self : not null access constant UML_Stereotype_Interface)
+    (Self : not null access constant UML_Stereotype)
        return AMF.UML.Images.Collections.Set_Of_UML_Image is abstract;
    --  Stereotype can change the graphical appearance of the extended model 
    --  element by using attached icons. When this association is not null, it 
@@ -71,8 +71,8 @@ package AMF.UML.Stereotypes is
    --  diagrams presenting the extended model elements.
 
    not overriding function Get_Profile
-    (Self : not null access constant UML_Stereotype_Interface)
-       return AMF.UML.Profiles.UML_Profile is abstract;
+    (Self : not null access constant UML_Stereotype)
+       return AMF.UML.Profiles.UML_Profile_Access is abstract;
    --  The profile that directly or indirectly contains this stereotype.
 
 end AMF.UML.Stereotypes;

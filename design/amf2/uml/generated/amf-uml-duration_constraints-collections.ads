@@ -51,8 +51,8 @@ package AMF.UML.Duration_Constraints.Collections is
 
    package UML_Duration_Constraint_Collections is
      new AMF.Generic_Collections
-          (UML_Duration_Constraint_Interface,
-           UML_Duration_Constraint);
+          (UML_Duration_Constraint,
+           UML_Duration_Constraint_Access);
 
    type Set_Of_UML_Duration_Constraint is
      new UML_Duration_Constraint_Collections.Set with null record;

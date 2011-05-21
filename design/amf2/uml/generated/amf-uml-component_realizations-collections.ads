@@ -51,8 +51,8 @@ package AMF.UML.Component_Realizations.Collections is
 
    package UML_Component_Realization_Collections is
      new AMF.Generic_Collections
-          (UML_Component_Realization_Interface,
-           UML_Component_Realization);
+          (UML_Component_Realization,
+           UML_Component_Realization_Access);
 
    type Set_Of_UML_Component_Realization is
      new UML_Component_Realization_Collections.Set with null record;

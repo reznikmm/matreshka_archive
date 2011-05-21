@@ -52,11 +52,11 @@ package AMF.UML.Observations is
 
    pragma Preelaborate;
 
-   type UML_Observation_Interface is limited interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Observation is limited interface
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Observation is
-     access all UML_Observation_Interface'Class;
-   for UML_Observation'Storage_Size use 0;
+   type UML_Observation_Access is
+     access all UML_Observation'Class;
+   for UML_Observation_Access'Storage_Size use 0;
 
 end AMF.UML.Observations;

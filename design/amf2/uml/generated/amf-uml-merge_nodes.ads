@@ -53,11 +53,11 @@ package AMF.UML.Merge_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Merge_Node_Interface is limited interface
-     and AMF.UML.Control_Nodes.UML_Control_Node_Interface;
+   type UML_Merge_Node is limited interface
+     and AMF.UML.Control_Nodes.UML_Control_Node;
 
-   type UML_Merge_Node is
-     access all UML_Merge_Node_Interface'Class;
-   for UML_Merge_Node'Storage_Size use 0;
+   type UML_Merge_Node_Access is
+     access all UML_Merge_Node'Class;
+   for UML_Merge_Node_Access'Storage_Size use 0;
 
 end AMF.UML.Merge_Nodes;

@@ -61,15 +61,15 @@ package AMF.UML.Ports is
 
    pragma Preelaborate;
 
-   type UML_Port_Interface is limited interface
-     and AMF.UML.Properties.UML_Property_Interface;
+   type UML_Port is limited interface
+     and AMF.UML.Properties.UML_Property;
 
-   type UML_Port is
-     access all UML_Port_Interface'Class;
-   for UML_Port'Storage_Size use 0;
+   type UML_Port_Access is
+     access all UML_Port'Class;
+   for UML_Port_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Behavior
-    (Self : not null access constant UML_Port_Interface)
+    (Self : not null access constant UML_Port)
        return Boolean is abstract;
    --  Specifies whether requests arriving at this port are sent to the 
    --  classifier behavior of this classifier. Such ports are referred to as 
@@ -78,21 +78,21 @@ package AMF.UML.Ports is
    --  itself, rather than by any instances that this classifier may contain.
 
    not overriding procedure Set_Is_Behavior
-    (Self : not null access UML_Port_Interface;
+    (Self : not null access UML_Port;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Conjugated
-    (Self : not null access constant UML_Port_Interface)
+    (Self : not null access constant UML_Port)
        return Boolean is abstract;
    --  Specifies the way that the provided and required interfaces are derived 
    --  from the Port’s Type. The default value is false.
 
    not overriding procedure Set_Is_Conjugated
-    (Self : not null access UML_Port_Interface;
+    (Self : not null access UML_Port;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Service
-    (Self : not null access constant UML_Port_Interface)
+    (Self : not null access constant UML_Port)
        return Boolean is abstract;
    --  If true indicates that this port is used to provide the published 
    --  functionality of a classifier; if false, this port is used to implement 
@@ -102,21 +102,21 @@ package AMF.UML.Ports is
    --  other properties that are considered part of its implementation.
 
    not overriding procedure Set_Is_Service
-    (Self : not null access UML_Port_Interface;
+    (Self : not null access UML_Port;
      To   : Boolean) is abstract;
 
    not overriding function Get_Protocol
-    (Self : not null access constant UML_Port_Interface)
-       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine is abstract;
+    (Self : not null access constant UML_Port)
+       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
    --  References an optional protocol state machine which describes valid 
    --  interactions at this interaction point.
 
    not overriding procedure Set_Protocol
-    (Self : not null access UML_Port_Interface;
-     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine) is abstract;
+    (Self : not null access UML_Port;
+     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
 
    not overriding function Get_Provided
-    (Self : not null access constant UML_Port_Interface)
+    (Self : not null access constant UML_Port)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
    --  References the interfaces specifying the set of operations and 
    --  receptions that the classifier offers to its environment via this port, 
@@ -130,7 +130,7 @@ package AMF.UML.Ports is
    --  supertypes.
 
    not overriding function Get_Redefined_Port
-    (Self : not null access constant UML_Port_Interface)
+    (Self : not null access constant UML_Port)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
    --  A port may be redefined when its containing classifier is specialized. 
    --  The redefining port may have additional interfaces to those that are 
@@ -138,7 +138,7 @@ package AMF.UML.Ports is
    --  one of its subtypes.
 
    not overriding function Get_Required
-    (Self : not null access constant UML_Port_Interface)
+    (Self : not null access constant UML_Port)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
    --  References the interfaces specifying the set of operations and 
    --  receptions that the classifier expects its environment to handle via 

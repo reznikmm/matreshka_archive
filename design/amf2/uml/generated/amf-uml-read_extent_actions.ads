@@ -54,29 +54,29 @@ package AMF.UML.Read_Extent_Actions is
 
    pragma Preelaborate;
 
-   type UML_Read_Extent_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Read_Extent_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Read_Extent_Action is
-     access all UML_Read_Extent_Action_Interface'Class;
-   for UML_Read_Extent_Action'Storage_Size use 0;
+   type UML_Read_Extent_Action_Access is
+     access all UML_Read_Extent_Action'Class;
+   for UML_Read_Extent_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier
-    (Self : not null access constant UML_Read_Extent_Action_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Read_Extent_Action)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  The classifier whose instances are to be retrieved.
 
    not overriding procedure Set_Classifier
-    (Self : not null access UML_Read_Extent_Action_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Read_Extent_Action;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Read_Extent_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Read_Extent_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  The runtime instances of the classifier.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Read_Extent_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Read_Extent_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Read_Extent_Actions;

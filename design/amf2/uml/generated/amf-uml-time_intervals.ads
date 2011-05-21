@@ -52,29 +52,29 @@ package AMF.UML.Time_Intervals is
 
    pragma Preelaborate;
 
-   type UML_Time_Interval_Interface is limited interface
-     and AMF.UML.Intervals.UML_Interval_Interface;
+   type UML_Time_Interval is limited interface
+     and AMF.UML.Intervals.UML_Interval;
 
-   type UML_Time_Interval is
-     access all UML_Time_Interval_Interface'Class;
-   for UML_Time_Interval'Storage_Size use 0;
+   type UML_Time_Interval_Access is
+     access all UML_Time_Interval'Class;
+   for UML_Time_Interval_Access'Storage_Size use 0;
 
    not overriding function Get_Max
-    (Self : not null access constant UML_Time_Interval_Interface)
-       return AMF.UML.Time_Expressions.UML_Time_Expression is abstract;
+    (Self : not null access constant UML_Time_Interval)
+       return AMF.UML.Time_Expressions.UML_Time_Expression_Access is abstract;
    --  Refers to the TimeExpression denoting the maximum value of the range.
 
    not overriding procedure Set_Max
-    (Self : not null access UML_Time_Interval_Interface;
-     To   : AMF.UML.Time_Expressions.UML_Time_Expression) is abstract;
+    (Self : not null access UML_Time_Interval;
+     To   : AMF.UML.Time_Expressions.UML_Time_Expression_Access) is abstract;
 
    not overriding function Get_Min
-    (Self : not null access constant UML_Time_Interval_Interface)
-       return AMF.UML.Time_Expressions.UML_Time_Expression is abstract;
+    (Self : not null access constant UML_Time_Interval)
+       return AMF.UML.Time_Expressions.UML_Time_Expression_Access is abstract;
    --  Refers to the TimeExpression denoting the minimum value of the range.
 
    not overriding procedure Set_Min
-    (Self : not null access UML_Time_Interval_Interface;
-     To   : AMF.UML.Time_Expressions.UML_Time_Expression) is abstract;
+    (Self : not null access UML_Time_Interval;
+     To   : AMF.UML.Time_Expressions.UML_Time_Expression_Access) is abstract;
 
 end AMF.UML.Time_Intervals;

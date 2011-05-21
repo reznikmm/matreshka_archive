@@ -54,20 +54,20 @@ package AMF.UML.Extension_Points is
 
    pragma Preelaborate;
 
-   type UML_Extension_Point_Interface is limited interface
-     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Interface;
+   type UML_Extension_Point is limited interface
+     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element;
 
-   type UML_Extension_Point is
-     access all UML_Extension_Point_Interface'Class;
-   for UML_Extension_Point'Storage_Size use 0;
+   type UML_Extension_Point_Access is
+     access all UML_Extension_Point'Class;
+   for UML_Extension_Point_Access'Storage_Size use 0;
 
    not overriding function Get_Use_Case
-    (Self : not null access constant UML_Extension_Point_Interface)
-       return AMF.UML.Use_Cases.UML_Use_Case is abstract;
+    (Self : not null access constant UML_Extension_Point)
+       return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
    --  References the use case that owns this extension point.
 
    not overriding procedure Set_Use_Case
-    (Self : not null access UML_Extension_Point_Interface;
-     To   : AMF.UML.Use_Cases.UML_Use_Case) is abstract;
+    (Self : not null access UML_Extension_Point;
+     To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
 
 end AMF.UML.Extension_Points;

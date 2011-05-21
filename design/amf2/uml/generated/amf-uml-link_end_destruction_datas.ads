@@ -54,32 +54,32 @@ package AMF.UML.Link_End_Destruction_Datas is
 
    pragma Preelaborate;
 
-   type UML_Link_End_Destruction_Data_Interface is limited interface
-     and AMF.UML.Link_End_Datas.UML_Link_End_Data_Interface;
+   type UML_Link_End_Destruction_Data is limited interface
+     and AMF.UML.Link_End_Datas.UML_Link_End_Data;
 
-   type UML_Link_End_Destruction_Data is
-     access all UML_Link_End_Destruction_Data_Interface'Class;
-   for UML_Link_End_Destruction_Data'Storage_Size use 0;
+   type UML_Link_End_Destruction_Data_Access is
+     access all UML_Link_End_Destruction_Data'Class;
+   for UML_Link_End_Destruction_Data_Access'Storage_Size use 0;
 
    not overriding function Get_Destroy_At
-    (Self : not null access constant UML_Link_End_Destruction_Data_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Link_End_Destruction_Data)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Specifies the position of an existing link to be destroyed in ordered 
    --  nonunique association ends. The type of the pin is UnlimitedNatural, 
    --  but the value cannot be zero or unlimited.
 
    not overriding procedure Set_Destroy_At
-    (Self : not null access UML_Link_End_Destruction_Data_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Link_End_Destruction_Data;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Is_Destroy_Duplicates
-    (Self : not null access constant UML_Link_End_Destruction_Data_Interface)
+    (Self : not null access constant UML_Link_End_Destruction_Data)
        return Boolean is abstract;
    --  Specifies whether to destroy duplicates of the value in nonunique 
    --  association ends.
 
    not overriding procedure Set_Is_Destroy_Duplicates
-    (Self : not null access UML_Link_End_Destruction_Data_Interface;
+    (Self : not null access UML_Link_End_Destruction_Data;
      To   : Boolean) is abstract;
 
 end AMF.UML.Link_End_Destruction_Datas;

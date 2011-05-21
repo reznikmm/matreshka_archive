@@ -51,8 +51,8 @@ package AMF.UML.Parameterable_Elements.Collections is
 
    package UML_Parameterable_Element_Collections is
      new AMF.Generic_Collections
-          (UML_Parameterable_Element_Interface,
-           UML_Parameterable_Element);
+          (UML_Parameterable_Element,
+           UML_Parameterable_Element_Access);
 
    type Set_Of_UML_Parameterable_Element is
      new UML_Parameterable_Element_Collections.Set with null record;

@@ -54,15 +54,15 @@ package AMF.UML.Element_Imports is
 
    pragma Preelaborate;
 
-   type UML_Element_Import_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface;
+   type UML_Element_Import is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship;
 
-   type UML_Element_Import is
-     access all UML_Element_Import_Interface'Class;
-   for UML_Element_Import'Storage_Size use 0;
+   type UML_Element_Import_Access is
+     access all UML_Element_Import'Class;
+   for UML_Element_Import_Access'Storage_Size use 0;
 
    not overriding function Get_Alias
-    (Self : not null access constant UML_Element_Import_Interface)
+    (Self : not null access constant UML_Element_Import)
        return Optional_String is abstract;
    --  Specifies the name that should be added to the namespace of the 
    --  importing package in lieu of the name of the imported packagable 
@@ -70,31 +70,31 @@ package AMF.UML.Element_Imports is
    --  the importing package. By default, no alias is used.
 
    not overriding procedure Set_Alias
-    (Self : not null access UML_Element_Import_Interface;
+    (Self : not null access UML_Element_Import;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Imported_Element
-    (Self : not null access constant UML_Element_Import_Interface)
-       return AMF.UML.Packageable_Elements.UML_Packageable_Element is abstract;
+    (Self : not null access constant UML_Element_Import)
+       return AMF.UML.Packageable_Elements.UML_Packageable_Element_Access is abstract;
    --  Specifies the PackageableElement whose name is to be added to a 
    --  Namespace.
 
    not overriding procedure Set_Imported_Element
-    (Self : not null access UML_Element_Import_Interface;
-     To   : AMF.UML.Packageable_Elements.UML_Packageable_Element) is abstract;
+    (Self : not null access UML_Element_Import;
+     To   : AMF.UML.Packageable_Elements.UML_Packageable_Element_Access) is abstract;
 
    not overriding function Get_Importing_Namespace
-    (Self : not null access constant UML_Element_Import_Interface)
-       return AMF.UML.Namespaces.UML_Namespace is abstract;
+    (Self : not null access constant UML_Element_Import)
+       return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
    --  Specifies the Namespace that imports a PackageableElement from another 
    --  Package.
 
    not overriding procedure Set_Importing_Namespace
-    (Self : not null access UML_Element_Import_Interface;
-     To   : AMF.UML.Namespaces.UML_Namespace) is abstract;
+    (Self : not null access UML_Element_Import;
+     To   : AMF.UML.Namespaces.UML_Namespace_Access) is abstract;
 
    not overriding function Get_Visibility
-    (Self : not null access constant UML_Element_Import_Interface)
+    (Self : not null access constant UML_Element_Import)
        return UML_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElement within the 
    --  importing Package. The default visibility is the same as that of the 
@@ -102,7 +102,7 @@ package AMF.UML.Element_Imports is
    --  it is possible to add visibility to the element import.
 
    not overriding procedure Set_Visibility
-    (Self : not null access UML_Element_Import_Interface;
+    (Self : not null access UML_Element_Import;
      To   : UML_Visibility_Kind) is abstract;
 
 end AMF.UML.Element_Imports;

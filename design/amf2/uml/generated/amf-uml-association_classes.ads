@@ -56,12 +56,12 @@ package AMF.UML.Association_Classes is
 
    pragma Preelaborate;
 
-   type UML_Association_Class_Interface is limited interface
-     and AMF.UML.Associations.UML_Association_Interface
-     and AMF.UML.Classes.UML_Class_Interface;
+   type UML_Association_Class is limited interface
+     and AMF.UML.Associations.UML_Association
+     and AMF.UML.Classes.UML_Class;
 
-   type UML_Association_Class is
-     access all UML_Association_Class_Interface'Class;
-   for UML_Association_Class'Storage_Size use 0;
+   type UML_Association_Class_Access is
+     access all UML_Association_Class'Class;
+   for UML_Association_Class_Access'Storage_Size use 0;
 
 end AMF.UML.Association_Classes;

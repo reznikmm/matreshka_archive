@@ -54,25 +54,25 @@ package AMF.UML.Classifier_Template_Parameters is
 
    pragma Preelaborate;
 
-   type UML_Classifier_Template_Parameter_Interface is limited interface
-     and AMF.UML.Template_Parameters.UML_Template_Parameter_Interface;
+   type UML_Classifier_Template_Parameter is limited interface
+     and AMF.UML.Template_Parameters.UML_Template_Parameter;
 
-   type UML_Classifier_Template_Parameter is
-     access all UML_Classifier_Template_Parameter_Interface'Class;
-   for UML_Classifier_Template_Parameter'Storage_Size use 0;
+   type UML_Classifier_Template_Parameter_Access is
+     access all UML_Classifier_Template_Parameter'Class;
+   for UML_Classifier_Template_Parameter_Access'Storage_Size use 0;
 
    not overriding function Get_Allow_Substitutable
-    (Self : not null access constant UML_Classifier_Template_Parameter_Interface)
+    (Self : not null access constant UML_Classifier_Template_Parameter)
        return Boolean is abstract;
    --  Constrains the required relationship between an actual parameter and 
    --  the parameteredElement for this formal parameter.
 
    not overriding procedure Set_Allow_Substitutable
-    (Self : not null access UML_Classifier_Template_Parameter_Interface;
+    (Self : not null access UML_Classifier_Template_Parameter;
      To   : Boolean) is abstract;
 
    not overriding function Get_Constraining_Classifier
-    (Self : not null access constant UML_Classifier_Template_Parameter_Interface)
+    (Self : not null access constant UML_Classifier_Template_Parameter)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The classifiers that constrain the argument that can be used for the 
    --  parameter. If the allowSubstitutable attribute is true, then any 
@@ -82,12 +82,12 @@ package AMF.UML.Classifier_Template_Parameters is
    --  classifier that can be used as an argument.
 
    not overriding function Get_Parametered_Element
-    (Self : not null access constant UML_Classifier_Template_Parameter_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Classifier_Template_Parameter)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  The parameterable classifier for this template parameter.
 
    not overriding procedure Set_Parametered_Element
-    (Self : not null access UML_Classifier_Template_Parameter_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Classifier_Template_Parameter;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
 end AMF.UML.Classifier_Template_Parameters;

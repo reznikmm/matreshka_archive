@@ -55,34 +55,34 @@ package AMF.UML.Slots is
 
    pragma Preelaborate;
 
-   type UML_Slot_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Slot is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Slot is
-     access all UML_Slot_Interface'Class;
-   for UML_Slot'Storage_Size use 0;
+   type UML_Slot_Access is
+     access all UML_Slot'Class;
+   for UML_Slot_Access'Storage_Size use 0;
 
    not overriding function Get_Defining_Feature
-    (Self : not null access constant UML_Slot_Interface)
-       return AMF.UML.Structural_Features.UML_Structural_Feature is abstract;
+    (Self : not null access constant UML_Slot)
+       return AMF.UML.Structural_Features.UML_Structural_Feature_Access is abstract;
    --  The structural feature that specifies the values that may be held by 
    --  the slot.
 
    not overriding procedure Set_Defining_Feature
-    (Self : not null access UML_Slot_Interface;
-     To   : AMF.UML.Structural_Features.UML_Structural_Feature) is abstract;
+    (Self : not null access UML_Slot;
+     To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access) is abstract;
 
    not overriding function Get_Owning_Instance
-    (Self : not null access constant UML_Slot_Interface)
-       return AMF.UML.Instance_Specifications.UML_Instance_Specification is abstract;
+    (Self : not null access constant UML_Slot)
+       return AMF.UML.Instance_Specifications.UML_Instance_Specification_Access is abstract;
    --  The instance specification that owns this slot.
 
    not overriding procedure Set_Owning_Instance
-    (Self : not null access UML_Slot_Interface;
-     To   : AMF.UML.Instance_Specifications.UML_Instance_Specification) is abstract;
+    (Self : not null access UML_Slot;
+     To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access) is abstract;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Slot_Interface)
+    (Self : not null access constant UML_Slot)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  The value or values corresponding to the defining feature for the 
    --  owning instance specification.

@@ -51,8 +51,8 @@ package AMF.UML.Object_Flows.Collections is
 
    package UML_Object_Flow_Collections is
      new AMF.Generic_Collections
-          (UML_Object_Flow_Interface,
-           UML_Object_Flow);
+          (UML_Object_Flow,
+           UML_Object_Flow_Access);
 
    type Set_Of_UML_Object_Flow is
      new UML_Object_Flow_Collections.Set with null record;

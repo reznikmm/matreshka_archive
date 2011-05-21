@@ -54,33 +54,33 @@ package AMF.UML.Link_End_Creation_Datas is
 
    pragma Preelaborate;
 
-   type UML_Link_End_Creation_Data_Interface is limited interface
-     and AMF.UML.Link_End_Datas.UML_Link_End_Data_Interface;
+   type UML_Link_End_Creation_Data is limited interface
+     and AMF.UML.Link_End_Datas.UML_Link_End_Data;
 
-   type UML_Link_End_Creation_Data is
-     access all UML_Link_End_Creation_Data_Interface'Class;
-   for UML_Link_End_Creation_Data'Storage_Size use 0;
+   type UML_Link_End_Creation_Data_Access is
+     access all UML_Link_End_Creation_Data'Class;
+   for UML_Link_End_Creation_Data_Access'Storage_Size use 0;
 
    not overriding function Get_Insert_At
-    (Self : not null access constant UML_Link_End_Creation_Data_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Link_End_Creation_Data)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Specifies where the new link should be inserted for ordered association 
    --  ends, or where an existing link should be moved to. The type of the 
    --  input is UnlimitedNatural, but the input cannot be zero. This pin is 
    --  omitted for association ends that are not ordered.
 
    not overriding procedure Set_Insert_At
-    (Self : not null access UML_Link_End_Creation_Data_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Link_End_Creation_Data;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Is_Replace_All
-    (Self : not null access constant UML_Link_End_Creation_Data_Interface)
+    (Self : not null access constant UML_Link_End_Creation_Data)
        return Boolean is abstract;
    --  Specifies whether the existing links emanating from the object on this 
    --  end should be destroyed before creating a new link.
 
    not overriding procedure Set_Is_Replace_All
-    (Self : not null access UML_Link_End_Creation_Data_Interface;
+    (Self : not null access UML_Link_End_Creation_Data;
      To   : Boolean) is abstract;
 
 end AMF.UML.Link_End_Creation_Datas;

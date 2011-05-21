@@ -51,8 +51,8 @@ package AMF.UML.Qualifier_Values.Collections is
 
    package UML_Qualifier_Value_Collections is
      new AMF.Generic_Collections
-          (UML_Qualifier_Value_Interface,
-           UML_Qualifier_Value);
+          (UML_Qualifier_Value,
+           UML_Qualifier_Value_Access);
 
    type Set_Of_UML_Qualifier_Value is
      new UML_Qualifier_Value_Collections.Set with null record;

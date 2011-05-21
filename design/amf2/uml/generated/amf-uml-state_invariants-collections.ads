@@ -51,8 +51,8 @@ package AMF.UML.State_Invariants.Collections is
 
    package UML_State_Invariant_Collections is
      new AMF.Generic_Collections
-          (UML_State_Invariant_Interface,
-           UML_State_Invariant);
+          (UML_State_Invariant,
+           UML_State_Invariant_Access);
 
    type Set_Of_UML_State_Invariant is
      new UML_State_Invariant_Collections.Set with null record;

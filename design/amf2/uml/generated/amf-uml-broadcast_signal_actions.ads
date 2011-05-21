@@ -58,20 +58,20 @@ package AMF.UML.Broadcast_Signal_Actions is
 
    pragma Preelaborate;
 
-   type UML_Broadcast_Signal_Action_Interface is limited interface
-     and AMF.UML.Invocation_Actions.UML_Invocation_Action_Interface;
+   type UML_Broadcast_Signal_Action is limited interface
+     and AMF.UML.Invocation_Actions.UML_Invocation_Action;
 
-   type UML_Broadcast_Signal_Action is
-     access all UML_Broadcast_Signal_Action_Interface'Class;
-   for UML_Broadcast_Signal_Action'Storage_Size use 0;
+   type UML_Broadcast_Signal_Action_Access is
+     access all UML_Broadcast_Signal_Action'Class;
+   for UML_Broadcast_Signal_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Signal
-    (Self : not null access constant UML_Broadcast_Signal_Action_Interface)
-       return AMF.UML.Signals.UML_Signal is abstract;
+    (Self : not null access constant UML_Broadcast_Signal_Action)
+       return AMF.UML.Signals.UML_Signal_Access is abstract;
    --  The specification of signal object transmitted to the target objects.
 
    not overriding procedure Set_Signal
-    (Self : not null access UML_Broadcast_Signal_Action_Interface;
-     To   : AMF.UML.Signals.UML_Signal) is abstract;
+    (Self : not null access UML_Broadcast_Signal_Action;
+     To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
 
 end AMF.UML.Broadcast_Signal_Actions;

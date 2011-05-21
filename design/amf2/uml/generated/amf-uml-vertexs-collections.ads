@@ -51,8 +51,8 @@ package AMF.UML.Vertexs.Collections is
 
    package UML_Vertex_Collections is
      new AMF.Generic_Collections
-          (UML_Vertex_Interface,
-           UML_Vertex);
+          (UML_Vertex,
+           UML_Vertex_Access);
 
    type Set_Of_UML_Vertex is
      new UML_Vertex_Collections.Set with null record;

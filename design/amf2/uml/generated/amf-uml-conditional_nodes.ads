@@ -54,38 +54,38 @@ package AMF.UML.Conditional_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Conditional_Node_Interface is limited interface
-     and AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Interface;
+   type UML_Conditional_Node is limited interface
+     and AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node;
 
-   type UML_Conditional_Node is
-     access all UML_Conditional_Node_Interface'Class;
-   for UML_Conditional_Node'Storage_Size use 0;
+   type UML_Conditional_Node_Access is
+     access all UML_Conditional_Node'Class;
+   for UML_Conditional_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Clause
-    (Self : not null access constant UML_Conditional_Node_Interface)
+    (Self : not null access constant UML_Conditional_Node)
        return AMF.UML.Clauses.Collections.Set_Of_UML_Clause is abstract;
    --  Set of clauses composing the conditional.
 
    not overriding function Get_Is_Assured
-    (Self : not null access constant UML_Conditional_Node_Interface)
+    (Self : not null access constant UML_Conditional_Node)
        return Boolean is abstract;
    --  If true, the modeler asserts that at least one test will succeed.
 
    not overriding procedure Set_Is_Assured
-    (Self : not null access UML_Conditional_Node_Interface;
+    (Self : not null access UML_Conditional_Node;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Determinate
-    (Self : not null access constant UML_Conditional_Node_Interface)
+    (Self : not null access constant UML_Conditional_Node)
        return Boolean is abstract;
    --  If true, the modeler asserts that at most one test will succeed.
 
    not overriding procedure Set_Is_Determinate
-    (Self : not null access UML_Conditional_Node_Interface;
+    (Self : not null access UML_Conditional_Node;
      To   : Boolean) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Conditional_Node_Interface)
+    (Self : not null access constant UML_Conditional_Node)
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
    --  A list of output pins that constitute the data flow outputs of the 
    --  conditional.

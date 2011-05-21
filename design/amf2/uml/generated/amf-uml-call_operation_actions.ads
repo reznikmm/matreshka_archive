@@ -64,31 +64,31 @@ package AMF.UML.Call_Operation_Actions is
 
    pragma Preelaborate;
 
-   type UML_Call_Operation_Action_Interface is limited interface
-     and AMF.UML.Call_Actions.UML_Call_Action_Interface;
+   type UML_Call_Operation_Action is limited interface
+     and AMF.UML.Call_Actions.UML_Call_Action;
 
-   type UML_Call_Operation_Action is
-     access all UML_Call_Operation_Action_Interface'Class;
-   for UML_Call_Operation_Action'Storage_Size use 0;
+   type UML_Call_Operation_Action_Access is
+     access all UML_Call_Operation_Action'Class;
+   for UML_Call_Operation_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Operation
-    (Self : not null access constant UML_Call_Operation_Action_Interface)
-       return AMF.UML.Operations.UML_Operation is abstract;
+    (Self : not null access constant UML_Call_Operation_Action)
+       return AMF.UML.Operations.UML_Operation_Access is abstract;
    --  The operation to be invoked by the action execution.
 
    not overriding procedure Set_Operation
-    (Self : not null access UML_Call_Operation_Action_Interface;
-     To   : AMF.UML.Operations.UML_Operation) is abstract;
+    (Self : not null access UML_Call_Operation_Action;
+     To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
 
    not overriding function Get_Target
-    (Self : not null access constant UML_Call_Operation_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Call_Operation_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The target object to which the request is sent. The classifier of the 
    --  target object is used to dynamically determine a behavior to invoke. 
    --  This object constitutes the context of the execution of the operation.
 
    not overriding procedure Set_Target
-    (Self : not null access UML_Call_Operation_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Call_Operation_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Call_Operation_Actions;

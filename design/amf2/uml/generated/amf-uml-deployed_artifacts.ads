@@ -52,11 +52,11 @@ package AMF.UML.Deployed_Artifacts is
 
    pragma Preelaborate;
 
-   type UML_Deployed_Artifact_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Deployed_Artifact is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Deployed_Artifact is
-     access all UML_Deployed_Artifact_Interface'Class;
-   for UML_Deployed_Artifact'Storage_Size use 0;
+   type UML_Deployed_Artifact_Access is
+     access all UML_Deployed_Artifact'Class;
+   for UML_Deployed_Artifact_Access'Storage_Size use 0;
 
 end AMF.UML.Deployed_Artifacts;

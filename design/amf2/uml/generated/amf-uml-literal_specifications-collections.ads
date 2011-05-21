@@ -51,8 +51,8 @@ package AMF.UML.Literal_Specifications.Collections is
 
    package UML_Literal_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_Specification_Interface,
-           UML_Literal_Specification);
+          (UML_Literal_Specification,
+           UML_Literal_Specification_Access);
 
    type Set_Of_UML_Literal_Specification is
      new UML_Literal_Specification_Collections.Set with null record;

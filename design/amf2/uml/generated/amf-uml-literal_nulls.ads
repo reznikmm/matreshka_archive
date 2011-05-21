@@ -51,11 +51,11 @@ package AMF.UML.Literal_Nulls is
 
    pragma Preelaborate;
 
-   type UML_Literal_Null_Interface is limited interface
-     and AMF.UML.Literal_Specifications.UML_Literal_Specification_Interface;
+   type UML_Literal_Null is limited interface
+     and AMF.UML.Literal_Specifications.UML_Literal_Specification;
 
-   type UML_Literal_Null is
-     access all UML_Literal_Null_Interface'Class;
-   for UML_Literal_Null'Storage_Size use 0;
+   type UML_Literal_Null_Access is
+     access all UML_Literal_Null'Class;
+   for UML_Literal_Null_Access'Storage_Size use 0;
 
 end AMF.UML.Literal_Nulls;

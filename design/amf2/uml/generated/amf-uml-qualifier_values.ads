@@ -54,30 +54,30 @@ package AMF.UML.Qualifier_Values is
 
    pragma Preelaborate;
 
-   type UML_Qualifier_Value_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Qualifier_Value is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Qualifier_Value is
-     access all UML_Qualifier_Value_Interface'Class;
-   for UML_Qualifier_Value'Storage_Size use 0;
+   type UML_Qualifier_Value_Access is
+     access all UML_Qualifier_Value'Class;
+   for UML_Qualifier_Value_Access'Storage_Size use 0;
 
    not overriding function Get_Qualifier
-    (Self : not null access constant UML_Qualifier_Value_Interface)
-       return AMF.UML.Properties.UML_Property is abstract;
+    (Self : not null access constant UML_Qualifier_Value)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
    --  Attribute representing the qualifier for which the value is to be 
    --  specified.
 
    not overriding procedure Set_Qualifier
-    (Self : not null access UML_Qualifier_Value_Interface;
-     To   : AMF.UML.Properties.UML_Property) is abstract;
+    (Self : not null access UML_Qualifier_Value;
+     To   : AMF.UML.Properties.UML_Property_Access) is abstract;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Qualifier_Value_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Qualifier_Value)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Input pin from which the specified value for the qualifier is taken.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Qualifier_Value_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Qualifier_Value;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Qualifier_Values;

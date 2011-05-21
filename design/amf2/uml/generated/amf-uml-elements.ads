@@ -53,25 +53,25 @@ package AMF.UML.Elements is
 
    pragma Preelaborate;
 
-   type UML_Element_Interface is limited interface;
+   type UML_Element is limited interface;
 
-   type UML_Element is
-     access all UML_Element_Interface'Class;
-   for UML_Element'Storage_Size use 0;
+   type UML_Element_Access is
+     access all UML_Element'Class;
+   for UML_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Comment
-    (Self : not null access constant UML_Element_Interface)
+    (Self : not null access constant UML_Element)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment is abstract;
    --  The Comments owned by this element.
 
    not overriding function Get_Owned_Element
-    (Self : not null access constant UML_Element_Interface)
+    (Self : not null access constant UML_Element)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  The Elements owned by this element.
 
    not overriding function Get_Owner
-    (Self : not null access constant UML_Element_Interface)
-       return AMF.UML.Elements.UML_Element is abstract;
+    (Self : not null access constant UML_Element)
+       return AMF.UML.Elements.UML_Element_Access is abstract;
    --  The Element that owns this element.
 
 end AMF.UML.Elements;

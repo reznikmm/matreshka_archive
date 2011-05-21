@@ -51,8 +51,8 @@ package AMF.UML.Data_Types.Collections is
 
    package UML_Data_Type_Collections is
      new AMF.Generic_Collections
-          (UML_Data_Type_Interface,
-           UML_Data_Type);
+          (UML_Data_Type,
+           UML_Data_Type_Access);
 
    type Set_Of_UML_Data_Type is
      new UML_Data_Type_Collections.Set with null record;

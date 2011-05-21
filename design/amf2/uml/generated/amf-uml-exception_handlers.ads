@@ -56,48 +56,48 @@ package AMF.UML.Exception_Handlers is
 
    pragma Preelaborate;
 
-   type UML_Exception_Handler_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Exception_Handler is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Exception_Handler is
-     access all UML_Exception_Handler_Interface'Class;
-   for UML_Exception_Handler'Storage_Size use 0;
+   type UML_Exception_Handler_Access is
+     access all UML_Exception_Handler'Class;
+   for UML_Exception_Handler_Access'Storage_Size use 0;
 
    not overriding function Get_Exception_Input
-    (Self : not null access constant UML_Exception_Handler_Interface)
-       return AMF.UML.Object_Nodes.UML_Object_Node is abstract;
+    (Self : not null access constant UML_Exception_Handler)
+       return AMF.UML.Object_Nodes.UML_Object_Node_Access is abstract;
    --  An object node within the handler body. When the handler catches an 
    --  exception, the exception token is placed in this node, causing the body 
    --  to execute.
 
    not overriding procedure Set_Exception_Input
-    (Self : not null access UML_Exception_Handler_Interface;
-     To   : AMF.UML.Object_Nodes.UML_Object_Node) is abstract;
+    (Self : not null access UML_Exception_Handler;
+     To   : AMF.UML.Object_Nodes.UML_Object_Node_Access) is abstract;
 
    not overriding function Get_Exception_Type
-    (Self : not null access constant UML_Exception_Handler_Interface)
+    (Self : not null access constant UML_Exception_Handler)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The kind of instances that the handler catches. If an exception occurs 
    --  whose type is any of the classifiers in the set, the handler catches 
    --  the exception and executes its body.
 
    not overriding function Get_Handler_Body
-    (Self : not null access constant UML_Exception_Handler_Interface)
-       return AMF.UML.Executable_Nodes.UML_Executable_Node is abstract;
+    (Self : not null access constant UML_Exception_Handler)
+       return AMF.UML.Executable_Nodes.UML_Executable_Node_Access is abstract;
    --  A node that is executed if the handler satisfies an uncaught exception.
 
    not overriding procedure Set_Handler_Body
-    (Self : not null access UML_Exception_Handler_Interface;
-     To   : AMF.UML.Executable_Nodes.UML_Executable_Node) is abstract;
+    (Self : not null access UML_Exception_Handler;
+     To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is abstract;
 
    not overriding function Get_Protected_Node
-    (Self : not null access constant UML_Exception_Handler_Interface)
-       return AMF.UML.Executable_Nodes.UML_Executable_Node is abstract;
+    (Self : not null access constant UML_Exception_Handler)
+       return AMF.UML.Executable_Nodes.UML_Executable_Node_Access is abstract;
    --  The node protected by the handler. The handler is examined if an 
    --  exception propagates to the outside of the node.
 
    not overriding procedure Set_Protected_Node
-    (Self : not null access UML_Exception_Handler_Interface;
-     To   : AMF.UML.Executable_Nodes.UML_Executable_Node) is abstract;
+    (Self : not null access UML_Exception_Handler;
+     To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is abstract;
 
 end AMF.UML.Exception_Handlers;

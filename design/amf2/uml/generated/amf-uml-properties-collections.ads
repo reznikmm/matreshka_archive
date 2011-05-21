@@ -51,8 +51,8 @@ package AMF.UML.Properties.Collections is
 
    package UML_Property_Collections is
      new AMF.Generic_Collections
-          (UML_Property_Interface,
-           UML_Property);
+          (UML_Property,
+           UML_Property_Access);
 
    type Set_Of_UML_Property is
      new UML_Property_Collections.Set with null record;

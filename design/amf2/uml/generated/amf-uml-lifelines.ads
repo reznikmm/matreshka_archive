@@ -58,54 +58,54 @@ package AMF.UML.Lifelines is
 
    pragma Preelaborate;
 
-   type UML_Lifeline_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Lifeline is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Lifeline is
-     access all UML_Lifeline_Interface'Class;
-   for UML_Lifeline'Storage_Size use 0;
+   type UML_Lifeline_Access is
+     access all UML_Lifeline'Class;
+   for UML_Lifeline_Access'Storage_Size use 0;
 
    not overriding function Get_Covered_By
-    (Self : not null access constant UML_Lifeline_Interface)
+    (Self : not null access constant UML_Lifeline)
        return AMF.UML.Interaction_Fragments.Collections.Set_Of_UML_Interaction_Fragment is abstract;
    --  References the InteractionFragments in which this Lifeline takes part.
 
    not overriding function Get_Decomposed_As
-    (Self : not null access constant UML_Lifeline_Interface)
-       return AMF.UML.Part_Decompositions.UML_Part_Decomposition is abstract;
+    (Self : not null access constant UML_Lifeline)
+       return AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access is abstract;
    --  References the Interaction that represents the decomposition.
 
    not overriding procedure Set_Decomposed_As
-    (Self : not null access UML_Lifeline_Interface;
-     To   : AMF.UML.Part_Decompositions.UML_Part_Decomposition) is abstract;
+    (Self : not null access UML_Lifeline;
+     To   : AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access) is abstract;
 
    not overriding function Get_Interaction
-    (Self : not null access constant UML_Lifeline_Interface)
-       return AMF.UML.Interactions.UML_Interaction is abstract;
+    (Self : not null access constant UML_Lifeline)
+       return AMF.UML.Interactions.UML_Interaction_Access is abstract;
    --  References the Interaction enclosing this Lifeline.
 
    not overriding procedure Set_Interaction
-    (Self : not null access UML_Lifeline_Interface;
-     To   : AMF.UML.Interactions.UML_Interaction) is abstract;
+    (Self : not null access UML_Lifeline;
+     To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
 
    not overriding function Get_Represents
-    (Self : not null access constant UML_Lifeline_Interface)
-       return AMF.UML.Connectable_Elements.UML_Connectable_Element is abstract;
+    (Self : not null access constant UML_Lifeline)
+       return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access is abstract;
    --  References the ConnectableElement within the classifier that contains 
    --  the enclosing interaction.
 
    not overriding procedure Set_Represents
-    (Self : not null access UML_Lifeline_Interface;
-     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element) is abstract;
+    (Self : not null access UML_Lifeline;
+     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
 
    not overriding function Get_Selector
-    (Self : not null access constant UML_Lifeline_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Lifeline)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  If the referenced ConnectableElement is multivalued, then this 
    --  specifies the specific individual part within that set.
 
    not overriding procedure Set_Selector
-    (Self : not null access UML_Lifeline_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Lifeline;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Lifelines;

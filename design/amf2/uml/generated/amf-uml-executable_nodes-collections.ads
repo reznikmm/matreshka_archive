@@ -51,8 +51,8 @@ package AMF.UML.Executable_Nodes.Collections is
 
    package UML_Executable_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Executable_Node_Interface,
-           UML_Executable_Node);
+          (UML_Executable_Node,
+           UML_Executable_Node_Access);
 
    type Set_Of_UML_Executable_Node is
      new UML_Executable_Node_Collections.Set with null record;

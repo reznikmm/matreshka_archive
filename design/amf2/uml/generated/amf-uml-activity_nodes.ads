@@ -59,58 +59,58 @@ package AMF.UML.Activity_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Activity_Node_Interface is limited interface
-     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Interface;
+   type UML_Activity_Node is limited interface
+     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element;
 
-   type UML_Activity_Node is
-     access all UML_Activity_Node_Interface'Class;
-   for UML_Activity_Node'Storage_Size use 0;
+   type UML_Activity_Node_Access is
+     access all UML_Activity_Node'Class;
+   for UML_Activity_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Activity
-    (Self : not null access constant UML_Activity_Node_Interface)
-       return AMF.UML.Activities.UML_Activity is abstract;
+    (Self : not null access constant UML_Activity_Node)
+       return AMF.UML.Activities.UML_Activity_Access is abstract;
    --  Activity containing the node.
 
    not overriding procedure Set_Activity
-    (Self : not null access UML_Activity_Node_Interface;
-     To   : AMF.UML.Activities.UML_Activity) is abstract;
+    (Self : not null access UML_Activity_Node;
+     To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
 
    not overriding function Get_In_Group
-    (Self : not null access constant UML_Activity_Node_Interface)
+    (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
    --  Groups containing the node.
 
    not overriding function Get_In_Interruptible_Region
-    (Self : not null access constant UML_Activity_Node_Interface)
+    (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Interruptible_Activity_Regions.Collections.Set_Of_UML_Interruptible_Activity_Region is abstract;
    --  Interruptible regions containing the node.
 
    not overriding function Get_In_Partition
-    (Self : not null access constant UML_Activity_Node_Interface)
+    (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
    --  Partitions containing the node.
 
    not overriding function Get_In_Structured_Node
-    (Self : not null access constant UML_Activity_Node_Interface)
-       return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node is abstract;
+    (Self : not null access constant UML_Activity_Node)
+       return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access is abstract;
    --  Structured activity node containing the node.
 
    not overriding procedure Set_In_Structured_Node
-    (Self : not null access UML_Activity_Node_Interface;
-     To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node) is abstract;
+    (Self : not null access UML_Activity_Node;
+     To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is abstract;
 
    not overriding function Get_Incoming
-    (Self : not null access constant UML_Activity_Node_Interface)
+    (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges that have the node as target.
 
    not overriding function Get_Outgoing
-    (Self : not null access constant UML_Activity_Node_Interface)
+    (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges that have the node as source.
 
    not overriding function Get_Redefined_Node
-    (Self : not null access constant UML_Activity_Node_Interface)
+    (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Inherited nodes replaced by this node in a specialization of the 
    --  activity.

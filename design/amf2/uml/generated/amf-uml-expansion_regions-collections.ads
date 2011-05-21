@@ -51,8 +51,8 @@ package AMF.UML.Expansion_Regions.Collections is
 
    package UML_Expansion_Region_Collections is
      new AMF.Generic_Collections
-          (UML_Expansion_Region_Interface,
-           UML_Expansion_Region);
+          (UML_Expansion_Region,
+           UML_Expansion_Region_Access);
 
    type Set_Of_UML_Expansion_Region is
      new UML_Expansion_Region_Collections.Set with null record;

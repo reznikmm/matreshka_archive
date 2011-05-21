@@ -51,8 +51,8 @@ package AMF.UML.Extension_Points.Collections is
 
    package UML_Extension_Point_Collections is
      new AMF.Generic_Collections
-          (UML_Extension_Point_Interface,
-           UML_Extension_Point);
+          (UML_Extension_Point,
+           UML_Extension_Point_Access);
 
    type Set_Of_UML_Extension_Point is
      new UML_Extension_Point_Collections.Set with null record;

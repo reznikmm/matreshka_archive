@@ -51,11 +51,11 @@ package AMF.UML.Output_Pins is
 
    pragma Preelaborate;
 
-   type UML_Output_Pin_Interface is limited interface
-     and AMF.UML.Pins.UML_Pin_Interface;
+   type UML_Output_Pin is limited interface
+     and AMF.UML.Pins.UML_Pin;
 
-   type UML_Output_Pin is
-     access all UML_Output_Pin_Interface'Class;
-   for UML_Output_Pin'Storage_Size use 0;
+   type UML_Output_Pin_Access is
+     access all UML_Output_Pin'Class;
+   for UML_Output_Pin_Access'Storage_Size use 0;
 
 end AMF.UML.Output_Pins;

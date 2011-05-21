@@ -51,8 +51,8 @@ package AMF.UML.Events.Collections is
 
    package UML_Event_Collections is
      new AMF.Generic_Collections
-          (UML_Event_Interface,
-           UML_Event);
+          (UML_Event,
+           UML_Event_Access);
 
    type Set_Of_UML_Event is
      new UML_Event_Collections.Set with null record;

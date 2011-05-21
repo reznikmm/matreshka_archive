@@ -53,20 +53,20 @@ package AMF.UML.Behavior_Execution_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Behavior_Execution_Specification_Interface is limited interface
-     and AMF.UML.Execution_Specifications.UML_Execution_Specification_Interface;
+   type UML_Behavior_Execution_Specification is limited interface
+     and AMF.UML.Execution_Specifications.UML_Execution_Specification;
 
-   type UML_Behavior_Execution_Specification is
-     access all UML_Behavior_Execution_Specification_Interface'Class;
-   for UML_Behavior_Execution_Specification'Storage_Size use 0;
+   type UML_Behavior_Execution_Specification_Access is
+     access all UML_Behavior_Execution_Specification'Class;
+   for UML_Behavior_Execution_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Behavior
-    (Self : not null access constant UML_Behavior_Execution_Specification_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Behavior_Execution_Specification)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  Behavior whose execution is occurring.
 
    not overriding procedure Set_Behavior
-    (Self : not null access UML_Behavior_Execution_Specification_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Behavior_Execution_Specification;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
 end AMF.UML.Behavior_Execution_Specifications;

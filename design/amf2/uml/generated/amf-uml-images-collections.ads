@@ -51,8 +51,8 @@ package AMF.UML.Images.Collections is
 
    package UML_Image_Collections is
      new AMF.Generic_Collections
-          (UML_Image_Interface,
-           UML_Image);
+          (UML_Image,
+           UML_Image_Access);
 
    type Set_Of_UML_Image is
      new UML_Image_Collections.Set with null record;

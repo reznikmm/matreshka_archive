@@ -51,20 +51,20 @@ package AMF.UML.Literal_Integers is
 
    pragma Preelaborate;
 
-   type UML_Literal_Integer_Interface is limited interface
-     and AMF.UML.Literal_Specifications.UML_Literal_Specification_Interface;
+   type UML_Literal_Integer is limited interface
+     and AMF.UML.Literal_Specifications.UML_Literal_Specification;
 
-   type UML_Literal_Integer is
-     access all UML_Literal_Integer_Interface'Class;
-   for UML_Literal_Integer'Storage_Size use 0;
+   type UML_Literal_Integer_Access is
+     access all UML_Literal_Integer'Class;
+   for UML_Literal_Integer_Access'Storage_Size use 0;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Literal_Integer_Interface)
+    (Self : not null access constant UML_Literal_Integer)
        return Integer is abstract;
    --  The specified Integer value.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Literal_Integer_Interface;
+    (Self : not null access UML_Literal_Integer;
      To   : Integer) is abstract;
 
 end AMF.UML.Literal_Integers;

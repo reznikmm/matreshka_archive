@@ -53,20 +53,20 @@ package AMF.UML.Operation_Template_Parameters is
 
    pragma Preelaborate;
 
-   type UML_Operation_Template_Parameter_Interface is limited interface
-     and AMF.UML.Template_Parameters.UML_Template_Parameter_Interface;
+   type UML_Operation_Template_Parameter is limited interface
+     and AMF.UML.Template_Parameters.UML_Template_Parameter;
 
-   type UML_Operation_Template_Parameter is
-     access all UML_Operation_Template_Parameter_Interface'Class;
-   for UML_Operation_Template_Parameter'Storage_Size use 0;
+   type UML_Operation_Template_Parameter_Access is
+     access all UML_Operation_Template_Parameter'Class;
+   for UML_Operation_Template_Parameter_Access'Storage_Size use 0;
 
    not overriding function Get_Parametered_Element
-    (Self : not null access constant UML_Operation_Template_Parameter_Interface)
-       return AMF.UML.Operations.UML_Operation is abstract;
+    (Self : not null access constant UML_Operation_Template_Parameter)
+       return AMF.UML.Operations.UML_Operation_Access is abstract;
    --  The operation for this template parameter.
 
    not overriding procedure Set_Parametered_Element
-    (Self : not null access UML_Operation_Template_Parameter_Interface;
-     To   : AMF.UML.Operations.UML_Operation) is abstract;
+    (Self : not null access UML_Operation_Template_Parameter;
+     To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
 
 end AMF.UML.Operation_Template_Parameters;

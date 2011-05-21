@@ -54,15 +54,15 @@ package AMF.UML.Consider_Ignore_Fragments is
 
    pragma Preelaborate;
 
-   type UML_Consider_Ignore_Fragment_Interface is limited interface
-     and AMF.UML.Combined_Fragments.UML_Combined_Fragment_Interface;
+   type UML_Consider_Ignore_Fragment is limited interface
+     and AMF.UML.Combined_Fragments.UML_Combined_Fragment;
 
-   type UML_Consider_Ignore_Fragment is
-     access all UML_Consider_Ignore_Fragment_Interface'Class;
-   for UML_Consider_Ignore_Fragment'Storage_Size use 0;
+   type UML_Consider_Ignore_Fragment_Access is
+     access all UML_Consider_Ignore_Fragment'Class;
+   for UML_Consider_Ignore_Fragment_Access'Storage_Size use 0;
 
    not overriding function Get_Message
-    (Self : not null access constant UML_Consider_Ignore_Fragment_Interface)
+    (Self : not null access constant UML_Consider_Ignore_Fragment)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The set of messages that apply to this fragment
 

@@ -51,8 +51,8 @@ package AMF.UML.Artifacts.Collections is
 
    package UML_Artifact_Collections is
      new AMF.Generic_Collections
-          (UML_Artifact_Interface,
-           UML_Artifact);
+          (UML_Artifact,
+           UML_Artifact_Access);
 
    type Set_Of_UML_Artifact is
      new UML_Artifact_Collections.Set with null record;

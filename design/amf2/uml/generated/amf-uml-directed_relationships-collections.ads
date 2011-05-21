@@ -51,8 +51,8 @@ package AMF.UML.Directed_Relationships.Collections is
 
    package UML_Directed_Relationship_Collections is
      new AMF.Generic_Collections
-          (UML_Directed_Relationship_Interface,
-           UML_Directed_Relationship);
+          (UML_Directed_Relationship,
+           UML_Directed_Relationship_Access);
 
    type Set_Of_UML_Directed_Relationship is
      new UML_Directed_Relationship_Collections.Set with null record;

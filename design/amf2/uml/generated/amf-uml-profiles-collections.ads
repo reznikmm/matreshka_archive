@@ -51,8 +51,8 @@ package AMF.UML.Profiles.Collections is
 
    package UML_Profile_Collections is
      new AMF.Generic_Collections
-          (UML_Profile_Interface,
-           UML_Profile);
+          (UML_Profile,
+           UML_Profile_Access);
 
    type Set_Of_UML_Profile is
      new UML_Profile_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Consider_Ignore_Fragments.Collections is
 
    package UML_Consider_Ignore_Fragment_Collections is
      new AMF.Generic_Collections
-          (UML_Consider_Ignore_Fragment_Interface,
-           UML_Consider_Ignore_Fragment);
+          (UML_Consider_Ignore_Fragment,
+           UML_Consider_Ignore_Fragment_Access);
 
    type Set_Of_UML_Consider_Ignore_Fragment is
      new UML_Consider_Ignore_Fragment_Collections.Set with null record;

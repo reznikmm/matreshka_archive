@@ -56,35 +56,35 @@ package AMF.UML.Constraints is
 
    pragma Preelaborate;
 
-   type UML_Constraint_Interface is limited interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Constraint is limited interface
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Constraint is
-     access all UML_Constraint_Interface'Class;
-   for UML_Constraint'Storage_Size use 0;
+   type UML_Constraint_Access is
+     access all UML_Constraint'Class;
+   for UML_Constraint_Access'Storage_Size use 0;
 
    not overriding function Get_Constrained_Element
-    (Self : not null access constant UML_Constraint_Interface)
+    (Self : not null access constant UML_Constraint)
        return AMF.UML.Elements.Collections.Ordered_Set_Of_UML_Element is abstract;
    --  The ordered set of Elements referenced by this Constraint.
 
    not overriding function Get_Context
-    (Self : not null access constant UML_Constraint_Interface)
-       return AMF.UML.Namespaces.UML_Namespace is abstract;
+    (Self : not null access constant UML_Constraint)
+       return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
    --  Specifies the namespace that owns the NamedElement.
 
    not overriding procedure Set_Context
-    (Self : not null access UML_Constraint_Interface;
-     To   : AMF.UML.Namespaces.UML_Namespace) is abstract;
+    (Self : not null access UML_Constraint;
+     To   : AMF.UML.Namespaces.UML_Namespace_Access) is abstract;
 
    not overriding function Get_Specification
-    (Self : not null access constant UML_Constraint_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Constraint)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  A condition that must be true when evaluated in order for the 
    --  constraint to be satisfied.
 
    not overriding procedure Set_Specification
-    (Self : not null access UML_Constraint_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Constraint;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Constraints;

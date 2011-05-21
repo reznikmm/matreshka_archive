@@ -51,8 +51,8 @@ package AMF.UML.Abstractions.Collections is
 
    package UML_Abstraction_Collections is
      new AMF.Generic_Collections
-          (UML_Abstraction_Interface,
-           UML_Abstraction);
+          (UML_Abstraction,
+           UML_Abstraction_Access);
 
    type Set_Of_UML_Abstraction is
      new UML_Abstraction_Collections.Set with null record;

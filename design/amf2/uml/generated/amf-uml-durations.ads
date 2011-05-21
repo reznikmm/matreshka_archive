@@ -53,24 +53,24 @@ package AMF.UML.Durations is
 
    pragma Preelaborate;
 
-   type UML_Duration_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Duration is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Duration is
-     access all UML_Duration_Interface'Class;
-   for UML_Duration'Storage_Size use 0;
+   type UML_Duration_Access is
+     access all UML_Duration'Class;
+   for UML_Duration_Access'Storage_Size use 0;
 
    not overriding function Get_Expr
-    (Self : not null access constant UML_Duration_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Duration)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The value of the Duration.
 
    not overriding procedure Set_Expr
-    (Self : not null access UML_Duration_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Duration;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Observation
-    (Self : not null access constant UML_Duration_Interface)
+    (Self : not null access constant UML_Duration)
        return AMF.UML.Observations.Collections.Set_Of_UML_Observation is abstract;
    --  Refers to the time and duration observations that are involved in expr.
 

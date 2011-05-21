@@ -56,26 +56,26 @@ package AMF.UML.Interaction_Operands is
 
    pragma Preelaborate;
 
-   type UML_Interaction_Operand_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface
-     and AMF.UML.Namespaces.UML_Namespace_Interface;
+   type UML_Interaction_Operand is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment
+     and AMF.UML.Namespaces.UML_Namespace;
 
-   type UML_Interaction_Operand is
-     access all UML_Interaction_Operand_Interface'Class;
-   for UML_Interaction_Operand'Storage_Size use 0;
+   type UML_Interaction_Operand_Access is
+     access all UML_Interaction_Operand'Class;
+   for UML_Interaction_Operand_Access'Storage_Size use 0;
 
    not overriding function Get_Fragment
-    (Self : not null access constant UML_Interaction_Operand_Interface)
+    (Self : not null access constant UML_Interaction_Operand)
        return AMF.UML.Interaction_Fragments.Collections.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
    --  The fragments of the operand.
 
    not overriding function Get_Guard
-    (Self : not null access constant UML_Interaction_Operand_Interface)
-       return AMF.UML.Interaction_Constraints.UML_Interaction_Constraint is abstract;
+    (Self : not null access constant UML_Interaction_Operand)
+       return AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access is abstract;
    --  Constraint of the operand.
 
    not overriding procedure Set_Guard
-    (Self : not null access UML_Interaction_Operand_Interface;
-     To   : AMF.UML.Interaction_Constraints.UML_Interaction_Constraint) is abstract;
+    (Self : not null access UML_Interaction_Operand;
+     To   : AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access) is abstract;
 
 end AMF.UML.Interaction_Operands;

@@ -51,8 +51,8 @@ package AMF.UML.Literal_Unlimited_Naturals.Collections is
 
    package UML_Literal_Unlimited_Natural_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_Unlimited_Natural_Interface,
-           UML_Literal_Unlimited_Natural);
+          (UML_Literal_Unlimited_Natural,
+           UML_Literal_Unlimited_Natural_Access);
 
    type Set_Of_UML_Literal_Unlimited_Natural is
      new UML_Literal_Unlimited_Natural_Collections.Set with null record;

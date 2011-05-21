@@ -51,8 +51,8 @@ package AMF.UML.Instance_Specifications.Collections is
 
    package UML_Instance_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Instance_Specification_Interface,
-           UML_Instance_Specification);
+          (UML_Instance_Specification,
+           UML_Instance_Specification_Access);
 
    type Set_Of_UML_Instance_Specification is
      new UML_Instance_Specification_Collections.Set with null record;

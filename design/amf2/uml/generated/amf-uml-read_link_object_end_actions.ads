@@ -55,38 +55,38 @@ package AMF.UML.Read_Link_Object_End_Actions is
 
    pragma Preelaborate;
 
-   type UML_Read_Link_Object_End_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Read_Link_Object_End_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Read_Link_Object_End_Action is
-     access all UML_Read_Link_Object_End_Action_Interface'Class;
-   for UML_Read_Link_Object_End_Action'Storage_Size use 0;
+   type UML_Read_Link_Object_End_Action_Access is
+     access all UML_Read_Link_Object_End_Action'Class;
+   for UML_Read_Link_Object_End_Action_Access'Storage_Size use 0;
 
    not overriding function Get_End
-    (Self : not null access constant UML_Read_Link_Object_End_Action_Interface)
-       return AMF.UML.Properties.UML_Property is abstract;
+    (Self : not null access constant UML_Read_Link_Object_End_Action)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
    --  Link end to be read.
 
    not overriding procedure Set_End
-    (Self : not null access UML_Read_Link_Object_End_Action_Interface;
-     To   : AMF.UML.Properties.UML_Property) is abstract;
+    (Self : not null access UML_Read_Link_Object_End_Action;
+     To   : AMF.UML.Properties.UML_Property_Access) is abstract;
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Read_Link_Object_End_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Read_Link_Object_End_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Gives the input pin from which the link object is obtained.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Read_Link_Object_End_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Read_Link_Object_End_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Read_Link_Object_End_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Read_Link_Object_End_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Pin where the result value is placed.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Read_Link_Object_End_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Read_Link_Object_End_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Read_Link_Object_End_Actions;

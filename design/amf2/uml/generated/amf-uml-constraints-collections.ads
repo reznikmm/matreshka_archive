@@ -51,8 +51,8 @@ package AMF.UML.Constraints.Collections is
 
    package UML_Constraint_Collections is
      new AMF.Generic_Collections
-          (UML_Constraint_Interface,
-           UML_Constraint);
+          (UML_Constraint,
+           UML_Constraint_Access);
 
    type Set_Of_UML_Constraint is
      new UML_Constraint_Collections.Set with null record;

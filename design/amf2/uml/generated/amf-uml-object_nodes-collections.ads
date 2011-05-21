@@ -51,8 +51,8 @@ package AMF.UML.Object_Nodes.Collections is
 
    package UML_Object_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Object_Node_Interface,
-           UML_Object_Node);
+          (UML_Object_Node,
+           UML_Object_Node_Access);
 
    type Set_Of_UML_Object_Node is
      new UML_Object_Node_Collections.Set with null record;

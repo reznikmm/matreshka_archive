@@ -57,39 +57,39 @@ package AMF.UML.Interaction_Fragments is
 
    pragma Preelaborate;
 
-   type UML_Interaction_Fragment_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Interaction_Fragment is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Interaction_Fragment is
-     access all UML_Interaction_Fragment_Interface'Class;
-   for UML_Interaction_Fragment'Storage_Size use 0;
+   type UML_Interaction_Fragment_Access is
+     access all UML_Interaction_Fragment'Class;
+   for UML_Interaction_Fragment_Access'Storage_Size use 0;
 
    not overriding function Get_Covered
-    (Self : not null access constant UML_Interaction_Fragment_Interface)
+    (Self : not null access constant UML_Interaction_Fragment)
        return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline is abstract;
    --  References the Lifelines that the InteractionFragment involves.
 
    not overriding function Get_Enclosing_Interaction
-    (Self : not null access constant UML_Interaction_Fragment_Interface)
-       return AMF.UML.Interactions.UML_Interaction is abstract;
+    (Self : not null access constant UML_Interaction_Fragment)
+       return AMF.UML.Interactions.UML_Interaction_Access is abstract;
    --  The Interaction enclosing this InteractionFragment.
 
    not overriding procedure Set_Enclosing_Interaction
-    (Self : not null access UML_Interaction_Fragment_Interface;
-     To   : AMF.UML.Interactions.UML_Interaction) is abstract;
+    (Self : not null access UML_Interaction_Fragment;
+     To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
 
    not overriding function Get_Enclosing_Operand
-    (Self : not null access constant UML_Interaction_Fragment_Interface)
-       return AMF.UML.Interaction_Operands.UML_Interaction_Operand is abstract;
+    (Self : not null access constant UML_Interaction_Fragment)
+       return AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access is abstract;
    --  The operand enclosing this InteractionFragment (they may nest 
    --  recursively)
 
    not overriding procedure Set_Enclosing_Operand
-    (Self : not null access UML_Interaction_Fragment_Interface;
-     To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand) is abstract;
+    (Self : not null access UML_Interaction_Fragment;
+     To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access) is abstract;
 
    not overriding function Get_General_Ordering
-    (Self : not null access constant UML_Interaction_Fragment_Interface)
+    (Self : not null access constant UML_Interaction_Fragment)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
    --  The general ordering relationships contained in this fragment.
 

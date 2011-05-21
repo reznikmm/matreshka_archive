@@ -57,46 +57,46 @@ package AMF.UML.Extends is
 
    pragma Preelaborate;
 
-   type UML_Extend_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Extend is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Extend is
-     access all UML_Extend_Interface'Class;
-   for UML_Extend'Storage_Size use 0;
+   type UML_Extend_Access is
+     access all UML_Extend'Class;
+   for UML_Extend_Access'Storage_Size use 0;
 
    not overriding function Get_Condition
-    (Self : not null access constant UML_Extend_Interface)
-       return AMF.UML.Constraints.UML_Constraint is abstract;
+    (Self : not null access constant UML_Extend)
+       return AMF.UML.Constraints.UML_Constraint_Access is abstract;
    --  References the condition that must hold when the first extension point 
    --  is reached for the extension to take place. If no constraint is 
    --  associated with the extend relationship, the extension is unconditional.
 
    not overriding procedure Set_Condition
-    (Self : not null access UML_Extend_Interface;
-     To   : AMF.UML.Constraints.UML_Constraint) is abstract;
+    (Self : not null access UML_Extend;
+     To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
 
    not overriding function Get_Extended_Case
-    (Self : not null access constant UML_Extend_Interface)
-       return AMF.UML.Use_Cases.UML_Use_Case is abstract;
+    (Self : not null access constant UML_Extend)
+       return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
    --  References the use case that is being extended.
 
    not overriding procedure Set_Extended_Case
-    (Self : not null access UML_Extend_Interface;
-     To   : AMF.UML.Use_Cases.UML_Use_Case) is abstract;
+    (Self : not null access UML_Extend;
+     To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
 
    not overriding function Get_Extension
-    (Self : not null access constant UML_Extend_Interface)
-       return AMF.UML.Use_Cases.UML_Use_Case is abstract;
+    (Self : not null access constant UML_Extend)
+       return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
    --  References the use case that represents the extension and owns the 
    --  extend relationship.
 
    not overriding procedure Set_Extension
-    (Self : not null access UML_Extend_Interface;
-     To   : AMF.UML.Use_Cases.UML_Use_Case) is abstract;
+    (Self : not null access UML_Extend;
+     To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
 
    not overriding function Get_Extension_Location
-    (Self : not null access constant UML_Extend_Interface)
+    (Self : not null access constant UML_Extend)
        return AMF.UML.Extension_Points.Collections.Ordered_Set_Of_UML_Extension_Point is abstract;
    --  An ordered list of extension points belonging to the extended use case, 
    --  specifying where the respective behavioral fragments of the extending 

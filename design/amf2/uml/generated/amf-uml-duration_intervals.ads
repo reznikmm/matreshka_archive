@@ -52,29 +52,29 @@ package AMF.UML.Duration_Intervals is
 
    pragma Preelaborate;
 
-   type UML_Duration_Interval_Interface is limited interface
-     and AMF.UML.Intervals.UML_Interval_Interface;
+   type UML_Duration_Interval is limited interface
+     and AMF.UML.Intervals.UML_Interval;
 
-   type UML_Duration_Interval is
-     access all UML_Duration_Interval_Interface'Class;
-   for UML_Duration_Interval'Storage_Size use 0;
+   type UML_Duration_Interval_Access is
+     access all UML_Duration_Interval'Class;
+   for UML_Duration_Interval_Access'Storage_Size use 0;
 
    not overriding function Get_Max
-    (Self : not null access constant UML_Duration_Interval_Interface)
-       return AMF.UML.Durations.UML_Duration is abstract;
+    (Self : not null access constant UML_Duration_Interval)
+       return AMF.UML.Durations.UML_Duration_Access is abstract;
    --  Refers to the Duration denoting the maximum value of the range.
 
    not overriding procedure Set_Max
-    (Self : not null access UML_Duration_Interval_Interface;
-     To   : AMF.UML.Durations.UML_Duration) is abstract;
+    (Self : not null access UML_Duration_Interval;
+     To   : AMF.UML.Durations.UML_Duration_Access) is abstract;
 
    not overriding function Get_Min
-    (Self : not null access constant UML_Duration_Interval_Interface)
-       return AMF.UML.Durations.UML_Duration is abstract;
+    (Self : not null access constant UML_Duration_Interval)
+       return AMF.UML.Durations.UML_Duration_Access is abstract;
    --  Refers to the Duration denoting the minimum value of the range.
 
    not overriding procedure Set_Min
-    (Self : not null access UML_Duration_Interval_Interface;
-     To   : AMF.UML.Durations.UML_Duration) is abstract;
+    (Self : not null access UML_Duration_Interval;
+     To   : AMF.UML.Durations.UML_Duration_Access) is abstract;
 
 end AMF.UML.Duration_Intervals;

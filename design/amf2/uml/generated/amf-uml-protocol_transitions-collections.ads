@@ -51,8 +51,8 @@ package AMF.UML.Protocol_Transitions.Collections is
 
    package UML_Protocol_Transition_Collections is
      new AMF.Generic_Collections
-          (UML_Protocol_Transition_Interface,
-           UML_Protocol_Transition);
+          (UML_Protocol_Transition,
+           UML_Protocol_Transition_Access);
 
    type Set_Of_UML_Protocol_Transition is
      new UML_Protocol_Transition_Collections.Set with null record;

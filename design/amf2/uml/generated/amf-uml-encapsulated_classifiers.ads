@@ -53,15 +53,15 @@ package AMF.UML.Encapsulated_Classifiers is
 
    pragma Preelaborate;
 
-   type UML_Encapsulated_Classifier_Interface is limited interface
-     and AMF.UML.Structured_Classifiers.UML_Structured_Classifier_Interface;
+   type UML_Encapsulated_Classifier is limited interface
+     and AMF.UML.Structured_Classifiers.UML_Structured_Classifier;
 
-   type UML_Encapsulated_Classifier is
-     access all UML_Encapsulated_Classifier_Interface'Class;
-   for UML_Encapsulated_Classifier'Storage_Size use 0;
+   type UML_Encapsulated_Classifier_Access is
+     access all UML_Encapsulated_Classifier'Class;
+   for UML_Encapsulated_Classifier_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Port
-    (Self : not null access constant UML_Encapsulated_Classifier_Interface)
+    (Self : not null access constant UML_Encapsulated_Classifier)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
    --  References a set of ports that an encapsulated classifier owns.
 

@@ -51,8 +51,8 @@ package AMF.UML.Relationships.Collections is
 
    package UML_Relationship_Collections is
      new AMF.Generic_Collections
-          (UML_Relationship_Interface,
-           UML_Relationship);
+          (UML_Relationship,
+           UML_Relationship_Access);
 
    type Set_Of_UML_Relationship is
      new UML_Relationship_Collections.Set with null record;

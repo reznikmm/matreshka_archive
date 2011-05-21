@@ -58,23 +58,23 @@ package AMF.UML.Accept_Call_Actions is
 
    pragma Preelaborate;
 
-   type UML_Accept_Call_Action_Interface is limited interface
-     and AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Interface;
+   type UML_Accept_Call_Action is limited interface
+     and AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action;
 
-   type UML_Accept_Call_Action is
-     access all UML_Accept_Call_Action_Interface'Class;
-   for UML_Accept_Call_Action'Storage_Size use 0;
+   type UML_Accept_Call_Action_Access is
+     access all UML_Accept_Call_Action'Class;
+   for UML_Accept_Call_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Return_Information
-    (Self : not null access constant UML_Accept_Call_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Accept_Call_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Pin where a value is placed containing sufficient information to 
    --  perform a subsequent reply and return control to the caller. The 
    --  contents of this value are opaque. It can be passed and copied but it 
    --  cannot be manipulated by the model.
 
    not overriding procedure Set_Return_Information
-    (Self : not null access UML_Accept_Call_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Accept_Call_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Accept_Call_Actions;

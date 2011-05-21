@@ -55,21 +55,21 @@ package AMF.UML.Models is
 
    pragma Preelaborate;
 
-   type UML_Model_Interface is limited interface
-     and AMF.UML.Packages.UML_Package_Interface;
+   type UML_Model is limited interface
+     and AMF.UML.Packages.UML_Package;
 
-   type UML_Model is
-     access all UML_Model_Interface'Class;
-   for UML_Model'Storage_Size use 0;
+   type UML_Model_Access is
+     access all UML_Model'Class;
+   for UML_Model_Access'Storage_Size use 0;
 
    not overriding function Get_Viewpoint
-    (Self : not null access constant UML_Model_Interface)
+    (Self : not null access constant UML_Model)
        return Optional_String is abstract;
    --  The name of the viewpoint that is expressed by a model (This name may 
    --  refer to a profile definition).
 
    not overriding procedure Set_Viewpoint
-    (Self : not null access UML_Model_Interface;
+    (Self : not null access UML_Model;
      To   : Optional_String) is abstract;
 
 end AMF.UML.Models;

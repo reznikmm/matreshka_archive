@@ -52,11 +52,11 @@ package AMF.UML.Message_Events is
 
    pragma Preelaborate;
 
-   type UML_Message_Event_Interface is limited interface
-     and AMF.UML.Events.UML_Event_Interface;
+   type UML_Message_Event is limited interface
+     and AMF.UML.Events.UML_Event;
 
-   type UML_Message_Event is
-     access all UML_Message_Event_Interface'Class;
-   for UML_Message_Event'Storage_Size use 0;
+   type UML_Message_Event_Access is
+     access all UML_Message_Event'Class;
+   for UML_Message_Event_Access'Storage_Size use 0;
 
 end AMF.UML.Message_Events;

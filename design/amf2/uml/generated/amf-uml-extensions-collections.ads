@@ -51,8 +51,8 @@ package AMF.UML.Extensions.Collections is
 
    package UML_Extension_Collections is
      new AMF.Generic_Collections
-          (UML_Extension_Interface,
-           UML_Extension);
+          (UML_Extension,
+           UML_Extension_Access);
 
    type Set_Of_UML_Extension is
      new UML_Extension_Collections.Set with null record;

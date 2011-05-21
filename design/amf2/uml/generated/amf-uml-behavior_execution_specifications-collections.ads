@@ -51,8 +51,8 @@ package AMF.UML.Behavior_Execution_Specifications.Collections is
 
    package UML_Behavior_Execution_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Behavior_Execution_Specification_Interface,
-           UML_Behavior_Execution_Specification);
+          (UML_Behavior_Execution_Specification,
+           UML_Behavior_Execution_Specification_Access);
 
    type Set_Of_UML_Behavior_Execution_Specification is
      new UML_Behavior_Execution_Specification_Collections.Set with null record;

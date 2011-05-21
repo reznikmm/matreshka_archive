@@ -56,20 +56,20 @@ package AMF.UML.Receptions is
 
    pragma Preelaborate;
 
-   type UML_Reception_Interface is limited interface
-     and AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Interface;
+   type UML_Reception is limited interface
+     and AMF.UML.Behavioral_Features.UML_Behavioral_Feature;
 
-   type UML_Reception is
-     access all UML_Reception_Interface'Class;
-   for UML_Reception'Storage_Size use 0;
+   type UML_Reception_Access is
+     access all UML_Reception'Class;
+   for UML_Reception_Access'Storage_Size use 0;
 
    not overriding function Get_Signal
-    (Self : not null access constant UML_Reception_Interface)
-       return AMF.UML.Signals.UML_Signal is abstract;
+    (Self : not null access constant UML_Reception)
+       return AMF.UML.Signals.UML_Signal_Access is abstract;
    --  The signal that this reception handles.
 
    not overriding procedure Set_Signal
-    (Self : not null access UML_Reception_Interface;
-     To   : AMF.UML.Signals.UML_Signal) is abstract;
+    (Self : not null access UML_Reception;
+     To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
 
 end AMF.UML.Receptions;

@@ -51,8 +51,8 @@ package AMF.UML.Accept_Event_Actions.Collections is
 
    package UML_Accept_Event_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Accept_Event_Action_Interface,
-           UML_Accept_Event_Action);
+          (UML_Accept_Event_Action,
+           UML_Accept_Event_Action_Access);
 
    type Set_Of_UML_Accept_Event_Action is
      new UML_Accept_Event_Action_Collections.Set with null record;

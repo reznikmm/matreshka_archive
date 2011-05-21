@@ -51,8 +51,8 @@ package AMF.UML.Redefinable_Template_Signatures.Collections is
 
    package UML_Redefinable_Template_Signature_Collections is
      new AMF.Generic_Collections
-          (UML_Redefinable_Template_Signature_Interface,
-           UML_Redefinable_Template_Signature);
+          (UML_Redefinable_Template_Signature,
+           UML_Redefinable_Template_Signature_Access);
 
    type Set_Of_UML_Redefinable_Template_Signature is
      new UML_Redefinable_Template_Signature_Collections.Set with null record;

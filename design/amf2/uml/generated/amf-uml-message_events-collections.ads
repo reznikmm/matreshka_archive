@@ -51,8 +51,8 @@ package AMF.UML.Message_Events.Collections is
 
    package UML_Message_Event_Collections is
      new AMF.Generic_Collections
-          (UML_Message_Event_Interface,
-           UML_Message_Event);
+          (UML_Message_Event,
+           UML_Message_Event_Access);
 
    type Set_Of_UML_Message_Event is
      new UML_Message_Event_Collections.Set with null record;

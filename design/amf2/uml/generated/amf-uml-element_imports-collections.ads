@@ -51,8 +51,8 @@ package AMF.UML.Element_Imports.Collections is
 
    package UML_Element_Import_Collections is
      new AMF.Generic_Collections
-          (UML_Element_Import_Interface,
-           UML_Element_Import);
+          (UML_Element_Import,
+           UML_Element_Import_Access);
 
    type Set_Of_UML_Element_Import is
      new UML_Element_Import_Collections.Set with null record;

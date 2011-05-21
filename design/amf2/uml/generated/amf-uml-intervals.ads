@@ -51,31 +51,31 @@ package AMF.UML.Intervals is
 
    pragma Preelaborate;
 
-   type UML_Interval_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Interval is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Interval is
-     access all UML_Interval_Interface'Class;
-   for UML_Interval'Storage_Size use 0;
+   type UML_Interval_Access is
+     access all UML_Interval'Class;
+   for UML_Interval_Access'Storage_Size use 0;
 
    not overriding function Get_Max
-    (Self : not null access constant UML_Interval_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Interval)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  Refers to the ValueSpecification denoting the maximum value of the 
    --  range.
 
    not overriding procedure Set_Max
-    (Self : not null access UML_Interval_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Interval;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Min
-    (Self : not null access constant UML_Interval_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Interval)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  Refers to the ValueSpecification denoting the minimum value of the 
    --  range.
 
    not overriding procedure Set_Min
-    (Self : not null access UML_Interval_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Interval;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Intervals;

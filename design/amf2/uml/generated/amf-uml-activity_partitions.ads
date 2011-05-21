@@ -56,63 +56,63 @@ package AMF.UML.Activity_Partitions is
 
    pragma Preelaborate;
 
-   type UML_Activity_Partition_Interface is limited interface
-     and AMF.UML.Activity_Groups.UML_Activity_Group_Interface;
+   type UML_Activity_Partition is limited interface
+     and AMF.UML.Activity_Groups.UML_Activity_Group;
 
-   type UML_Activity_Partition is
-     access all UML_Activity_Partition_Interface'Class;
-   for UML_Activity_Partition'Storage_Size use 0;
+   type UML_Activity_Partition_Access is
+     access all UML_Activity_Partition'Class;
+   for UML_Activity_Partition_Access'Storage_Size use 0;
 
    not overriding function Get_Edge
-    (Self : not null access constant UML_Activity_Partition_Interface)
+    (Self : not null access constant UML_Activity_Partition)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges immediately contained in the group.
 
    not overriding function Get_Is_Dimension
-    (Self : not null access constant UML_Activity_Partition_Interface)
+    (Self : not null access constant UML_Activity_Partition)
        return Boolean is abstract;
    --  Tells whether the partition groups other partitions along a dimension.
 
    not overriding procedure Set_Is_Dimension
-    (Self : not null access UML_Activity_Partition_Interface;
+    (Self : not null access UML_Activity_Partition;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_External
-    (Self : not null access constant UML_Activity_Partition_Interface)
+    (Self : not null access constant UML_Activity_Partition)
        return Boolean is abstract;
    --  Tells whether the partition represents an entity to which the 
    --  partitioning structure does not apply.
 
    not overriding procedure Set_Is_External
-    (Self : not null access UML_Activity_Partition_Interface;
+    (Self : not null access UML_Activity_Partition;
      To   : Boolean) is abstract;
 
    not overriding function Get_Node
-    (Self : not null access constant UML_Activity_Partition_Interface)
+    (Self : not null access constant UML_Activity_Partition)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 
    not overriding function Get_Represents
-    (Self : not null access constant UML_Activity_Partition_Interface)
-       return AMF.UML.Elements.UML_Element is abstract;
+    (Self : not null access constant UML_Activity_Partition)
+       return AMF.UML.Elements.UML_Element_Access is abstract;
    --  An element constraining behaviors invoked by nodes in the partition.
 
    not overriding procedure Set_Represents
-    (Self : not null access UML_Activity_Partition_Interface;
-     To   : AMF.UML.Elements.UML_Element) is abstract;
+    (Self : not null access UML_Activity_Partition;
+     To   : AMF.UML.Elements.UML_Element_Access) is abstract;
 
    not overriding function Get_Subpartition
-    (Self : not null access constant UML_Activity_Partition_Interface)
+    (Self : not null access constant UML_Activity_Partition)
        return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
    --  Partitions immediately contained in the partition.
 
    not overriding function Get_Super_Partition
-    (Self : not null access constant UML_Activity_Partition_Interface)
-       return AMF.UML.Activity_Partitions.UML_Activity_Partition is abstract;
+    (Self : not null access constant UML_Activity_Partition)
+       return AMF.UML.Activity_Partitions.UML_Activity_Partition_Access is abstract;
    --  Partition immediately containing the partition.
 
    not overriding procedure Set_Super_Partition
-    (Self : not null access UML_Activity_Partition_Interface;
-     To   : AMF.UML.Activity_Partitions.UML_Activity_Partition) is abstract;
+    (Self : not null access UML_Activity_Partition;
+     To   : AMF.UML.Activity_Partitions.UML_Activity_Partition_Access) is abstract;
 
 end AMF.UML.Activity_Partitions;

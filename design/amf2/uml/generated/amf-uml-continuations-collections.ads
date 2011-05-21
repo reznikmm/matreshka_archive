@@ -51,8 +51,8 @@ package AMF.UML.Continuations.Collections is
 
    package UML_Continuation_Collections is
      new AMF.Generic_Collections
-          (UML_Continuation_Interface,
-           UML_Continuation);
+          (UML_Continuation,
+           UML_Continuation_Access);
 
    type Set_Of_UML_Continuation is
      new UML_Continuation_Collections.Set with null record;

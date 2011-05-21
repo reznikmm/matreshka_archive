@@ -53,20 +53,20 @@ package AMF.UML.Manifestations is
 
    pragma Preelaborate;
 
-   type UML_Manifestation_Interface is limited interface
-     and AMF.UML.Abstractions.UML_Abstraction_Interface;
+   type UML_Manifestation is limited interface
+     and AMF.UML.Abstractions.UML_Abstraction;
 
-   type UML_Manifestation is
-     access all UML_Manifestation_Interface'Class;
-   for UML_Manifestation'Storage_Size use 0;
+   type UML_Manifestation_Access is
+     access all UML_Manifestation'Class;
+   for UML_Manifestation_Access'Storage_Size use 0;
 
    not overriding function Get_Utilized_Element
-    (Self : not null access constant UML_Manifestation_Interface)
-       return AMF.UML.Packageable_Elements.UML_Packageable_Element is abstract;
+    (Self : not null access constant UML_Manifestation)
+       return AMF.UML.Packageable_Elements.UML_Packageable_Element_Access is abstract;
    --  The model element that is utilized in the manifestation in an Artifact.
 
    not overriding procedure Set_Utilized_Element
-    (Self : not null access UML_Manifestation_Interface;
-     To   : AMF.UML.Packageable_Elements.UML_Packageable_Element) is abstract;
+    (Self : not null access UML_Manifestation;
+     To   : AMF.UML.Packageable_Elements.UML_Packageable_Element_Access) is abstract;
 
 end AMF.UML.Manifestations;

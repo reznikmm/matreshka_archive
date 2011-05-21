@@ -54,11 +54,11 @@ package AMF.UML.Final_States is
 
    pragma Preelaborate;
 
-   type UML_Final_State_Interface is limited interface
-     and AMF.UML.States.UML_State_Interface;
+   type UML_Final_State is limited interface
+     and AMF.UML.States.UML_State;
 
-   type UML_Final_State is
-     access all UML_Final_State_Interface'Class;
-   for UML_Final_State'Storage_Size use 0;
+   type UML_Final_State_Access is
+     access all UML_Final_State'Class;
+   for UML_Final_State_Access'Storage_Size use 0;
 
 end AMF.UML.Final_States;

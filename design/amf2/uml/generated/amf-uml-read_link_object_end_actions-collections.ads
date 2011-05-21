@@ -51,8 +51,8 @@ package AMF.UML.Read_Link_Object_End_Actions.Collections is
 
    package UML_Read_Link_Object_End_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Read_Link_Object_End_Action_Interface,
-           UML_Read_Link_Object_End_Action);
+          (UML_Read_Link_Object_End_Action,
+           UML_Read_Link_Object_End_Action_Access);
 
    type Set_Of_UML_Read_Link_Object_End_Action is
      new UML_Read_Link_Object_End_Action_Collections.Set with null record;

@@ -62,46 +62,46 @@ package AMF.UML.Artifacts is
 
    pragma Preelaborate;
 
-   type UML_Artifact_Interface is limited interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface
-     and AMF.UML.Deployed_Artifacts.UML_Deployed_Artifact_Interface;
+   type UML_Artifact is limited interface
+     and AMF.UML.Classifiers.UML_Classifier
+     and AMF.UML.Deployed_Artifacts.UML_Deployed_Artifact;
 
-   type UML_Artifact is
-     access all UML_Artifact_Interface'Class;
-   for UML_Artifact'Storage_Size use 0;
+   type UML_Artifact_Access is
+     access all UML_Artifact'Class;
+   for UML_Artifact_Access'Storage_Size use 0;
 
    not overriding function Get_File_Name
-    (Self : not null access constant UML_Artifact_Interface)
+    (Self : not null access constant UML_Artifact)
        return Optional_String is abstract;
    --  A concrete name that is used to refer to the Artifact in a physical 
    --  context. Example: file system name, universal resource locator.
 
    not overriding procedure Set_File_Name
-    (Self : not null access UML_Artifact_Interface;
+    (Self : not null access UML_Artifact;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Manifestation
-    (Self : not null access constant UML_Artifact_Interface)
+    (Self : not null access constant UML_Artifact)
        return AMF.UML.Manifestations.Collections.Set_Of_UML_Manifestation is abstract;
    --  The set of model elements that are manifested in the Artifact. That is, 
    --  these model elements are utilized in the construction (or generation) 
    --  of the artifact.
 
    not overriding function Get_Nested_Artifact
-    (Self : not null access constant UML_Artifact_Interface)
+    (Self : not null access constant UML_Artifact)
        return AMF.UML.Artifacts.Collections.Set_Of_UML_Artifact is abstract;
    --  The Artifacts that are defined (nested) within the Artifact. The 
    --  association is a specialization of the ownedMember association from 
    --  Namespace to NamedElement.
 
    not overriding function Get_Owned_Attribute
-    (Self : not null access constant UML_Artifact_Interface)
+    (Self : not null access constant UML_Artifact)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The attributes or association ends defined for the Artifact. The 
    --  association is a specialization of the ownedMember association.
 
    not overriding function Get_Owned_Operation
-    (Self : not null access constant UML_Artifact_Interface)
+    (Self : not null access constant UML_Artifact)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
    --  The Operations defined for the Artifact. The association is a 
    --  specialization of the ownedMember association.

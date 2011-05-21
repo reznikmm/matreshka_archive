@@ -51,8 +51,8 @@ package AMF.UML.Opaque_Expressions.Collections is
 
    package UML_Opaque_Expression_Collections is
      new AMF.Generic_Collections
-          (UML_Opaque_Expression_Interface,
-           UML_Opaque_Expression);
+          (UML_Opaque_Expression,
+           UML_Opaque_Expression_Access);
 
    type Set_Of_UML_Opaque_Expression is
      new UML_Opaque_Expression_Collections.Set with null record;

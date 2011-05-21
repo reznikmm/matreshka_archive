@@ -68,47 +68,47 @@ package AMF.UML.Information_Flows is
 
    pragma Preelaborate;
 
-   type UML_Information_Flow_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Information_Flow is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Information_Flow is
-     access all UML_Information_Flow_Interface'Class;
-   for UML_Information_Flow'Storage_Size use 0;
+   type UML_Information_Flow_Access is
+     access all UML_Information_Flow'Class;
+   for UML_Information_Flow_Access'Storage_Size use 0;
 
    not overriding function Get_Conveyed
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  Specifies the information items that may circulate on this information 
    --  flow.
 
    not overriding function Get_Information_Source
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  Defines from which source the conveyed InformationItems are initiated.
 
    not overriding function Get_Information_Target
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  Defines to which target the conveyed InformationItems are directed.
 
    not overriding function Get_Realization
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Relationships.Collections.Set_Of_UML_Relationship is abstract;
    --  Determines which Relationship will realize the specified flow
 
    not overriding function Get_Realizing_Activity_Edge
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Determines which ActivityEdges will realize the specified flow.
 
    not overriding function Get_Realizing_Connector
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
    --  Determines which Connectors will realize the specified flow.
 
    not overriding function Get_Realizing_Message
-    (Self : not null access constant UML_Information_Flow_Interface)
+    (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Messages.Collections.Set_Of_UML_Message is abstract;
    --  Determines which Messages will realize the specified flow.
 

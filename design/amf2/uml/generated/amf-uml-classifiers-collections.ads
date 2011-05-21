@@ -51,8 +51,8 @@ package AMF.UML.Classifiers.Collections is
 
    package UML_Classifier_Collections is
      new AMF.Generic_Collections
-          (UML_Classifier_Interface,
-           UML_Classifier);
+          (UML_Classifier,
+           UML_Classifier_Access);
 
    type Set_Of_UML_Classifier is
      new UML_Classifier_Collections.Set with null record;

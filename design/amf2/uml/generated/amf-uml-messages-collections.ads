@@ -51,8 +51,8 @@ package AMF.UML.Messages.Collections is
 
    package UML_Message_Collections is
      new AMF.Generic_Collections
-          (UML_Message_Interface,
-           UML_Message);
+          (UML_Message,
+           UML_Message_Access);
 
    type Set_Of_UML_Message is
      new UML_Message_Collections.Set with null record;

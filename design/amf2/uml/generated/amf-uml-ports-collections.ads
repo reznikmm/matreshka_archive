@@ -51,8 +51,8 @@ package AMF.UML.Ports.Collections is
 
    package UML_Port_Collections is
      new AMF.Generic_Collections
-          (UML_Port_Interface,
-           UML_Port);
+          (UML_Port,
+           UML_Port_Access);
 
    type Set_Of_UML_Port is
      new UML_Port_Collections.Set with null record;

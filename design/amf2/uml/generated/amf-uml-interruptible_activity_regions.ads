@@ -54,21 +54,21 @@ package AMF.UML.Interruptible_Activity_Regions is
 
    pragma Preelaborate;
 
-   type UML_Interruptible_Activity_Region_Interface is limited interface
-     and AMF.UML.Activity_Groups.UML_Activity_Group_Interface;
+   type UML_Interruptible_Activity_Region is limited interface
+     and AMF.UML.Activity_Groups.UML_Activity_Group;
 
-   type UML_Interruptible_Activity_Region is
-     access all UML_Interruptible_Activity_Region_Interface'Class;
-   for UML_Interruptible_Activity_Region'Storage_Size use 0;
+   type UML_Interruptible_Activity_Region_Access is
+     access all UML_Interruptible_Activity_Region'Class;
+   for UML_Interruptible_Activity_Region_Access'Storage_Size use 0;
 
    not overriding function Get_Interrupting_Edge
-    (Self : not null access constant UML_Interruptible_Activity_Region_Interface)
+    (Self : not null access constant UML_Interruptible_Activity_Region)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  The edges leaving the region that will abort other tokens flowing in 
    --  the region.
 
    not overriding function Get_Node
-    (Self : not null access constant UML_Interruptible_Activity_Region_Interface)
+    (Self : not null access constant UML_Interruptible_Activity_Region)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 

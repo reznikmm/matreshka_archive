@@ -55,32 +55,32 @@ package AMF.UML.Behaviored_Classifiers is
 
    pragma Preelaborate;
 
-   type UML_Behaviored_Classifier_Interface is limited interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface;
+   type UML_Behaviored_Classifier is limited interface
+     and AMF.UML.Classifiers.UML_Classifier;
 
-   type UML_Behaviored_Classifier is
-     access all UML_Behaviored_Classifier_Interface'Class;
-   for UML_Behaviored_Classifier'Storage_Size use 0;
+   type UML_Behaviored_Classifier_Access is
+     access all UML_Behaviored_Classifier'Class;
+   for UML_Behaviored_Classifier_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier_Behavior
-    (Self : not null access constant UML_Behaviored_Classifier_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Behaviored_Classifier)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  A behavior specification that specifies the behavior of the classifier 
    --  itself.
 
    not overriding procedure Set_Classifier_Behavior
-    (Self : not null access UML_Behaviored_Classifier_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Behaviored_Classifier;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
    not overriding function Get_Interface_Realization
-    (Self : not null access constant UML_Behaviored_Classifier_Interface)
+    (Self : not null access constant UML_Behaviored_Classifier)
        return AMF.UML.Interface_Realizations.Collections.Set_Of_UML_Interface_Realization is abstract;
    --  The set of InterfaceRealizations owned by the BehavioredClassifier. 
    --  Interface realizations reference the Interfaces of which the 
    --  BehavioredClassifier is an implementation.
 
    not overriding function Get_Owned_Behavior
-    (Self : not null access constant UML_Behaviored_Classifier_Interface)
+    (Self : not null access constant UML_Behaviored_Classifier)
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
    --  References behavior specifications owned by a classifier.
 

@@ -51,8 +51,8 @@ package AMF.UML.Value_Specification_Actions.Collections is
 
    package UML_Value_Specification_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Value_Specification_Action_Interface,
-           UML_Value_Specification_Action);
+          (UML_Value_Specification_Action,
+           UML_Value_Specification_Action_Access);
 
    type Set_Of_UML_Value_Specification_Action is
      new UML_Value_Specification_Action_Collections.Set with null record;

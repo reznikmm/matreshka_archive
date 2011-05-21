@@ -51,8 +51,8 @@ package AMF.UML.Interruptible_Activity_Regions.Collections is
 
    package UML_Interruptible_Activity_Region_Collections is
      new AMF.Generic_Collections
-          (UML_Interruptible_Activity_Region_Interface,
-           UML_Interruptible_Activity_Region);
+          (UML_Interruptible_Activity_Region,
+           UML_Interruptible_Activity_Region_Access);
 
    type Set_Of_UML_Interruptible_Activity_Region is
      new UML_Interruptible_Activity_Region_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Clear_Association_Actions.Collections is
 
    package UML_Clear_Association_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Clear_Association_Action_Interface,
-           UML_Clear_Association_Action);
+          (UML_Clear_Association_Action,
+           UML_Clear_Association_Action_Access);
 
    type Set_Of_UML_Clear_Association_Action is
      new UML_Clear_Association_Action_Collections.Set with null record;

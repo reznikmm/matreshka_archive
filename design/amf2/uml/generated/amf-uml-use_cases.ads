@@ -57,30 +57,30 @@ package AMF.UML.Use_Cases is
 
    pragma Preelaborate;
 
-   type UML_Use_Case_Interface is limited interface
-     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Interface;
+   type UML_Use_Case is limited interface
+     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier;
 
-   type UML_Use_Case is
-     access all UML_Use_Case_Interface'Class;
-   for UML_Use_Case'Storage_Size use 0;
+   type UML_Use_Case_Access is
+     access all UML_Use_Case'Class;
+   for UML_Use_Case_Access'Storage_Size use 0;
 
    not overriding function Get_Extend
-    (Self : not null access constant UML_Use_Case_Interface)
+    (Self : not null access constant UML_Use_Case)
        return AMF.UML.Extends.Collections.Set_Of_UML_Extend is abstract;
    --  References the Extend relationships owned by this use case.
 
    not overriding function Get_Extension_Point
-    (Self : not null access constant UML_Use_Case_Interface)
+    (Self : not null access constant UML_Use_Case)
        return AMF.UML.Extension_Points.Collections.Set_Of_UML_Extension_Point is abstract;
    --  References the ExtensionPoints owned by the use case.
 
    not overriding function Get_Include
-    (Self : not null access constant UML_Use_Case_Interface)
+    (Self : not null access constant UML_Use_Case)
        return AMF.UML.Includes.Collections.Set_Of_UML_Include is abstract;
    --  References the Include relationships owned by this use case.
 
    not overriding function Get_Subject
-    (Self : not null access constant UML_Use_Case_Interface)
+    (Self : not null access constant UML_Use_Case)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  References the subjects to which this use case applies. The subject or 
    --  its parts realize all the use cases that apply to this subject. Use 

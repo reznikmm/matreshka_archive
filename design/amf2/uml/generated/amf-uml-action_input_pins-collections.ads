@@ -51,8 +51,8 @@ package AMF.UML.Action_Input_Pins.Collections is
 
    package UML_Action_Input_Pin_Collections is
      new AMF.Generic_Collections
-          (UML_Action_Input_Pin_Interface,
-           UML_Action_Input_Pin);
+          (UML_Action_Input_Pin,
+           UML_Action_Input_Pin_Access);
 
    type Set_Of_UML_Action_Input_Pin is
      new UML_Action_Input_Pin_Collections.Set with null record;

@@ -52,11 +52,11 @@ package AMF.UML.Write_Link_Actions is
 
    pragma Preelaborate;
 
-   type UML_Write_Link_Action_Interface is limited interface
-     and AMF.UML.Link_Actions.UML_Link_Action_Interface;
+   type UML_Write_Link_Action is limited interface
+     and AMF.UML.Link_Actions.UML_Link_Action;
 
-   type UML_Write_Link_Action is
-     access all UML_Write_Link_Action_Interface'Class;
-   for UML_Write_Link_Action'Storage_Size use 0;
+   type UML_Write_Link_Action_Access is
+     access all UML_Write_Link_Action'Class;
+   for UML_Write_Link_Action_Access'Storage_Size use 0;
 
 end AMF.UML.Write_Link_Actions;

@@ -51,8 +51,8 @@ package AMF.UML.Collaborations.Collections is
 
    package UML_Collaboration_Collections is
      new AMF.Generic_Collections
-          (UML_Collaboration_Interface,
-           UML_Collaboration);
+          (UML_Collaboration,
+           UML_Collaboration_Access);
 
    type Set_Of_UML_Collaboration is
      new UML_Collaboration_Collections.Set with null record;

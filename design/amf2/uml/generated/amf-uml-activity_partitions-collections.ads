@@ -51,8 +51,8 @@ package AMF.UML.Activity_Partitions.Collections is
 
    package UML_Activity_Partition_Collections is
      new AMF.Generic_Collections
-          (UML_Activity_Partition_Interface,
-           UML_Activity_Partition);
+          (UML_Activity_Partition,
+           UML_Activity_Partition_Access);
 
    type Set_Of_UML_Activity_Partition is
      new UML_Activity_Partition_Collections.Set with null record;

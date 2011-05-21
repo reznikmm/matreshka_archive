@@ -54,33 +54,33 @@ package AMF.UML.Package_Imports is
 
    pragma Preelaborate;
 
-   type UML_Package_Import_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface;
+   type UML_Package_Import is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship;
 
-   type UML_Package_Import is
-     access all UML_Package_Import_Interface'Class;
-   for UML_Package_Import'Storage_Size use 0;
+   type UML_Package_Import_Access is
+     access all UML_Package_Import'Class;
+   for UML_Package_Import_Access'Storage_Size use 0;
 
    not overriding function Get_Imported_Package
-    (Self : not null access constant UML_Package_Import_Interface)
-       return AMF.UML.Packages.UML_Package is abstract;
+    (Self : not null access constant UML_Package_Import)
+       return AMF.UML.Packages.UML_Package_Access is abstract;
    --  Specifies the Package whose members are imported into a Namespace.
 
    not overriding procedure Set_Imported_Package
-    (Self : not null access UML_Package_Import_Interface;
-     To   : AMF.UML.Packages.UML_Package) is abstract;
+    (Self : not null access UML_Package_Import;
+     To   : AMF.UML.Packages.UML_Package_Access) is abstract;
 
    not overriding function Get_Importing_Namespace
-    (Self : not null access constant UML_Package_Import_Interface)
-       return AMF.UML.Namespaces.UML_Namespace is abstract;
+    (Self : not null access constant UML_Package_Import)
+       return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
    --  Specifies the Namespace that imports the members from a Package.
 
    not overriding procedure Set_Importing_Namespace
-    (Self : not null access UML_Package_Import_Interface;
-     To   : AMF.UML.Namespaces.UML_Namespace) is abstract;
+    (Self : not null access UML_Package_Import;
+     To   : AMF.UML.Namespaces.UML_Namespace_Access) is abstract;
 
    not overriding function Get_Visibility
-    (Self : not null access constant UML_Package_Import_Interface)
+    (Self : not null access constant UML_Package_Import)
        return UML_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElements within the 
    --  importing Namespace, i.e., whether imported elements will in turn be 
@@ -90,7 +90,7 @@ package AMF.UML.Package_Imports is
    --  not.
 
    not overriding procedure Set_Visibility
-    (Self : not null access UML_Package_Import_Interface;
+    (Self : not null access UML_Package_Import;
      To   : UML_Visibility_Kind) is abstract;
 
 end AMF.UML.Package_Imports;

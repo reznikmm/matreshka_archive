@@ -56,40 +56,40 @@ package AMF.UML.Deployment_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Deployment_Specification_Interface is limited interface
-     and AMF.UML.Artifacts.UML_Artifact_Interface;
+   type UML_Deployment_Specification is limited interface
+     and AMF.UML.Artifacts.UML_Artifact;
 
-   type UML_Deployment_Specification is
-     access all UML_Deployment_Specification_Interface'Class;
-   for UML_Deployment_Specification'Storage_Size use 0;
+   type UML_Deployment_Specification_Access is
+     access all UML_Deployment_Specification'Class;
+   for UML_Deployment_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Deployment
-    (Self : not null access constant UML_Deployment_Specification_Interface)
-       return AMF.UML.Deployments.UML_Deployment is abstract;
+    (Self : not null access constant UML_Deployment_Specification)
+       return AMF.UML.Deployments.UML_Deployment_Access is abstract;
    --  The deployment with which the DeploymentSpecification is associated.
 
    not overriding procedure Set_Deployment
-    (Self : not null access UML_Deployment_Specification_Interface;
-     To   : AMF.UML.Deployments.UML_Deployment) is abstract;
+    (Self : not null access UML_Deployment_Specification;
+     To   : AMF.UML.Deployments.UML_Deployment_Access) is abstract;
 
    not overriding function Get_Deployment_Location
-    (Self : not null access constant UML_Deployment_Specification_Interface)
+    (Self : not null access constant UML_Deployment_Specification)
        return Optional_String is abstract;
    --  The location where an Artifact is deployed onto a Node. This is 
    --  typically a 'directory' or 'memory address'.
 
    not overriding procedure Set_Deployment_Location
-    (Self : not null access UML_Deployment_Specification_Interface;
+    (Self : not null access UML_Deployment_Specification;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Execution_Location
-    (Self : not null access constant UML_Deployment_Specification_Interface)
+    (Self : not null access constant UML_Deployment_Specification)
        return Optional_String is abstract;
    --  The location where a component Artifact executes. This may be a local 
    --  or remote location.
 
    not overriding procedure Set_Execution_Location
-    (Self : not null access UML_Deployment_Specification_Interface;
+    (Self : not null access UML_Deployment_Specification;
      To   : Optional_String) is abstract;
 
 end AMF.UML.Deployment_Specifications;

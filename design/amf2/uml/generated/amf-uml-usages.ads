@@ -53,11 +53,11 @@ package AMF.UML.Usages is
 
    pragma Preelaborate;
 
-   type UML_Usage_Interface is limited interface
-     and AMF.UML.Dependencies.UML_Dependency_Interface;
+   type UML_Usage is limited interface
+     and AMF.UML.Dependencies.UML_Dependency;
 
-   type UML_Usage is
-     access all UML_Usage_Interface'Class;
-   for UML_Usage'Storage_Size use 0;
+   type UML_Usage_Access is
+     access all UML_Usage'Class;
+   for UML_Usage_Access'Storage_Size use 0;
 
 end AMF.UML.Usages;

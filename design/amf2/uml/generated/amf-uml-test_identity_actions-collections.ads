@@ -51,8 +51,8 @@ package AMF.UML.Test_Identity_Actions.Collections is
 
    package UML_Test_Identity_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Test_Identity_Action_Interface,
-           UML_Test_Identity_Action);
+          (UML_Test_Identity_Action,
+           UML_Test_Identity_Action_Access);
 
    type Set_Of_UML_Test_Identity_Action is
      new UML_Test_Identity_Action_Collections.Set with null record;

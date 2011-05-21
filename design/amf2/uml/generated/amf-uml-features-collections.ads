@@ -51,8 +51,8 @@ package AMF.UML.Features.Collections is
 
    package UML_Feature_Collections is
      new AMF.Generic_Collections
-          (UML_Feature_Interface,
-           UML_Feature);
+          (UML_Feature,
+           UML_Feature_Access);
 
    type Set_Of_UML_Feature is
      new UML_Feature_Collections.Set with null record;

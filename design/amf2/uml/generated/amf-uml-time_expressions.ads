@@ -53,24 +53,24 @@ package AMF.UML.Time_Expressions is
 
    pragma Preelaborate;
 
-   type UML_Time_Expression_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Time_Expression is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Time_Expression is
-     access all UML_Time_Expression_Interface'Class;
-   for UML_Time_Expression'Storage_Size use 0;
+   type UML_Time_Expression_Access is
+     access all UML_Time_Expression'Class;
+   for UML_Time_Expression_Access'Storage_Size use 0;
 
    not overriding function Get_Expr
-    (Self : not null access constant UML_Time_Expression_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Time_Expression)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The value of the time expression.
 
    not overriding procedure Set_Expr
-    (Self : not null access UML_Time_Expression_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Time_Expression;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Observation
-    (Self : not null access constant UML_Time_Expression_Interface)
+    (Self : not null access constant UML_Time_Expression)
        return AMF.UML.Observations.Collections.Set_Of_UML_Observation is abstract;
    --  Refers to the time and duration observations that are involved in expr.
 

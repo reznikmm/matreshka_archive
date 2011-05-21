@@ -54,31 +54,31 @@ package AMF.UML.Includes is
 
    pragma Preelaborate;
 
-   type UML_Include_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Include is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Include is
-     access all UML_Include_Interface'Class;
-   for UML_Include'Storage_Size use 0;
+   type UML_Include_Access is
+     access all UML_Include'Class;
+   for UML_Include_Access'Storage_Size use 0;
 
    not overriding function Get_Addition
-    (Self : not null access constant UML_Include_Interface)
-       return AMF.UML.Use_Cases.UML_Use_Case is abstract;
+    (Self : not null access constant UML_Include)
+       return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
    --  References the use case that is to be included.
 
    not overriding procedure Set_Addition
-    (Self : not null access UML_Include_Interface;
-     To   : AMF.UML.Use_Cases.UML_Use_Case) is abstract;
+    (Self : not null access UML_Include;
+     To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
 
    not overriding function Get_Including_Case
-    (Self : not null access constant UML_Include_Interface)
-       return AMF.UML.Use_Cases.UML_Use_Case is abstract;
+    (Self : not null access constant UML_Include)
+       return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
    --  References the use case which will include the addition and owns the 
    --  include relationship.
 
    not overriding procedure Set_Including_Case
-    (Self : not null access UML_Include_Interface;
-     To   : AMF.UML.Use_Cases.UML_Use_Case) is abstract;
+    (Self : not null access UML_Include;
+     To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
 
 end AMF.UML.Includes;

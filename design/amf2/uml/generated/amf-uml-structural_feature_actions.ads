@@ -54,30 +54,30 @@ package AMF.UML.Structural_Feature_Actions is
 
    pragma Preelaborate;
 
-   type UML_Structural_Feature_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Structural_Feature_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Structural_Feature_Action is
-     access all UML_Structural_Feature_Action_Interface'Class;
-   for UML_Structural_Feature_Action'Storage_Size use 0;
+   type UML_Structural_Feature_Action_Access is
+     access all UML_Structural_Feature_Action'Class;
+   for UML_Structural_Feature_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Structural_Feature_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Structural_Feature_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Gives the input pin from which the object whose structural feature is 
    --  to be read or written is obtained.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Structural_Feature_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Structural_Feature_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Structural_Feature
-    (Self : not null access constant UML_Structural_Feature_Action_Interface)
-       return AMF.UML.Structural_Features.UML_Structural_Feature is abstract;
+    (Self : not null access constant UML_Structural_Feature_Action)
+       return AMF.UML.Structural_Features.UML_Structural_Feature_Access is abstract;
    --  Structural feature to be read.
 
    not overriding procedure Set_Structural_Feature
-    (Self : not null access UML_Structural_Feature_Action_Interface;
-     To   : AMF.UML.Structural_Features.UML_Structural_Feature) is abstract;
+    (Self : not null access UML_Structural_Feature_Action;
+     To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access) is abstract;
 
 end AMF.UML.Structural_Feature_Actions;

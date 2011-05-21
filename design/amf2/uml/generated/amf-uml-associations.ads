@@ -61,43 +61,43 @@ package AMF.UML.Associations is
 
    pragma Preelaborate;
 
-   type UML_Association_Interface is limited interface
-     and AMF.UML.Relationships.UML_Relationship_Interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface;
+   type UML_Association is limited interface
+     and AMF.UML.Relationships.UML_Relationship
+     and AMF.UML.Classifiers.UML_Classifier;
 
-   type UML_Association is
-     access all UML_Association_Interface'Class;
-   for UML_Association'Storage_Size use 0;
+   type UML_Association_Access is
+     access all UML_Association'Class;
+   for UML_Association_Access'Storage_Size use 0;
 
    not overriding function Get_End_Type
-    (Self : not null access constant UML_Association_Interface)
+    (Self : not null access constant UML_Association)
        return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type is abstract;
    --  References the classifiers that are used as types of the ends of the 
    --  association.
 
    not overriding function Get_Is_Derived
-    (Self : not null access constant UML_Association_Interface)
+    (Self : not null access constant UML_Association)
        return Boolean is abstract;
    --  Specifies whether the association is derived from other model elements 
    --  such as other associations or constraints.
 
    not overriding procedure Set_Is_Derived
-    (Self : not null access UML_Association_Interface;
+    (Self : not null access UML_Association;
      To   : Boolean) is abstract;
 
    not overriding function Get_Member_End
-    (Self : not null access constant UML_Association_Interface)
+    (Self : not null access constant UML_Association)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  Each end represents participation of instances of the classifier 
    --  connected to the end in links of the association.
 
    not overriding function Get_Navigable_Owned_End
-    (Self : not null access constant UML_Association_Interface)
+    (Self : not null access constant UML_Association)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  The navigable ends that are owned by the association itself.
 
    not overriding function Get_Owned_End
-    (Self : not null access constant UML_Association_Interface)
+    (Self : not null access constant UML_Association)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The ends that are owned by the association itself.
 

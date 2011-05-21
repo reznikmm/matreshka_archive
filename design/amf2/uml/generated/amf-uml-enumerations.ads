@@ -53,15 +53,15 @@ package AMF.UML.Enumerations is
 
    pragma Preelaborate;
 
-   type UML_Enumeration_Interface is limited interface
-     and AMF.UML.Data_Types.UML_Data_Type_Interface;
+   type UML_Enumeration is limited interface
+     and AMF.UML.Data_Types.UML_Data_Type;
 
-   type UML_Enumeration is
-     access all UML_Enumeration_Interface'Class;
-   for UML_Enumeration'Storage_Size use 0;
+   type UML_Enumeration_Access is
+     access all UML_Enumeration'Class;
+   for UML_Enumeration_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Literal
-    (Self : not null access constant UML_Enumeration_Interface)
+    (Self : not null access constant UML_Enumeration)
        return AMF.UML.Enumeration_Literals.Collections.Ordered_Set_Of_UML_Enumeration_Literal is abstract;
    --  The ordered set of literals for this Enumeration.
 

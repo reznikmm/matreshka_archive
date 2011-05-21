@@ -51,8 +51,8 @@ package AMF.UML.Signals.Collections is
 
    package UML_Signal_Collections is
      new AMF.Generic_Collections
-          (UML_Signal_Interface,
-           UML_Signal);
+          (UML_Signal,
+           UML_Signal_Access);
 
    type Set_Of_UML_Signal is
      new UML_Signal_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Operations.Collections is
 
    package UML_Operation_Collections is
      new AMF.Generic_Collections
-          (UML_Operation_Interface,
-           UML_Operation);
+          (UML_Operation,
+           UML_Operation_Access);
 
    type Set_Of_UML_Operation is
      new UML_Operation_Collections.Set with null record;

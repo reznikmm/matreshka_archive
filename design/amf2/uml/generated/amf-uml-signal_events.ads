@@ -54,20 +54,20 @@ package AMF.UML.Signal_Events is
 
    pragma Preelaborate;
 
-   type UML_Signal_Event_Interface is limited interface
-     and AMF.UML.Message_Events.UML_Message_Event_Interface;
+   type UML_Signal_Event is limited interface
+     and AMF.UML.Message_Events.UML_Message_Event;
 
-   type UML_Signal_Event is
-     access all UML_Signal_Event_Interface'Class;
-   for UML_Signal_Event'Storage_Size use 0;
+   type UML_Signal_Event_Access is
+     access all UML_Signal_Event'Class;
+   for UML_Signal_Event_Access'Storage_Size use 0;
 
    not overriding function Get_Signal
-    (Self : not null access constant UML_Signal_Event_Interface)
-       return AMF.UML.Signals.UML_Signal is abstract;
+    (Self : not null access constant UML_Signal_Event)
+       return AMF.UML.Signals.UML_Signal_Access is abstract;
    --  The specific signal that is associated with this event.
 
    not overriding procedure Set_Signal
-    (Self : not null access UML_Signal_Event_Interface;
-     To   : AMF.UML.Signals.UML_Signal) is abstract;
+    (Self : not null access UML_Signal_Event;
+     To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
 
 end AMF.UML.Signal_Events;

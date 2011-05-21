@@ -62,35 +62,35 @@ package AMF.UML.Link_End_Datas is
 
    pragma Preelaborate;
 
-   type UML_Link_End_Data_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Link_End_Data is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Link_End_Data is
-     access all UML_Link_End_Data_Interface'Class;
-   for UML_Link_End_Data'Storage_Size use 0;
+   type UML_Link_End_Data_Access is
+     access all UML_Link_End_Data'Class;
+   for UML_Link_End_Data_Access'Storage_Size use 0;
 
    not overriding function Get_End
-    (Self : not null access constant UML_Link_End_Data_Interface)
-       return AMF.UML.Properties.UML_Property is abstract;
+    (Self : not null access constant UML_Link_End_Data)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
    --  Association end for which this link-end data specifies values.
 
    not overriding procedure Set_End
-    (Self : not null access UML_Link_End_Data_Interface;
-     To   : AMF.UML.Properties.UML_Property) is abstract;
+    (Self : not null access UML_Link_End_Data;
+     To   : AMF.UML.Properties.UML_Property_Access) is abstract;
 
    not overriding function Get_Qualifier
-    (Self : not null access constant UML_Link_End_Data_Interface)
+    (Self : not null access constant UML_Link_End_Data)
        return AMF.UML.Qualifier_Values.Collections.Set_Of_UML_Qualifier_Value is abstract;
    --  List of qualifier values
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Link_End_Data_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Link_End_Data)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Input pin that provides the specified object for the given end. This 
    --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Link_End_Data_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Link_End_Data;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Link_End_Datas;

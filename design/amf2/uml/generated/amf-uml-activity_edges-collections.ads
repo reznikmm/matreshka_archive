@@ -51,8 +51,8 @@ package AMF.UML.Activity_Edges.Collections is
 
    package UML_Activity_Edge_Collections is
      new AMF.Generic_Collections
-          (UML_Activity_Edge_Interface,
-           UML_Activity_Edge);
+          (UML_Activity_Edge,
+           UML_Activity_Edge_Access);
 
    type Set_Of_UML_Activity_Edge is
      new UML_Activity_Edge_Collections.Set with null record;

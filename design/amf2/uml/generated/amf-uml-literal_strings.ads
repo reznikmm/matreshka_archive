@@ -51,20 +51,20 @@ package AMF.UML.Literal_Strings is
 
    pragma Preelaborate;
 
-   type UML_Literal_String_Interface is limited interface
-     and AMF.UML.Literal_Specifications.UML_Literal_Specification_Interface;
+   type UML_Literal_String is limited interface
+     and AMF.UML.Literal_Specifications.UML_Literal_Specification;
 
-   type UML_Literal_String is
-     access all UML_Literal_String_Interface'Class;
-   for UML_Literal_String'Storage_Size use 0;
+   type UML_Literal_String_Access is
+     access all UML_Literal_String'Class;
+   for UML_Literal_String_Access'Storage_Size use 0;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Literal_String_Interface)
+    (Self : not null access constant UML_Literal_String)
        return Optional_String is abstract;
    --  The specified String value.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Literal_String_Interface;
+    (Self : not null access UML_Literal_String;
      To   : Optional_String) is abstract;
 
 end AMF.UML.Literal_Strings;

@@ -51,8 +51,8 @@ package AMF.UML.Connection_Point_References.Collections is
 
    package UML_Connection_Point_Reference_Collections is
      new AMF.Generic_Collections
-          (UML_Connection_Point_Reference_Interface,
-           UML_Connection_Point_Reference);
+          (UML_Connection_Point_Reference,
+           UML_Connection_Point_Reference_Access);
 
    type Set_Of_UML_Connection_Point_Reference is
      new UML_Connection_Point_Reference_Collections.Set with null record;

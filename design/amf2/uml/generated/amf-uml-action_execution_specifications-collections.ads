@@ -51,8 +51,8 @@ package AMF.UML.Action_Execution_Specifications.Collections is
 
    package UML_Action_Execution_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Action_Execution_Specification_Interface,
-           UML_Action_Execution_Specification);
+          (UML_Action_Execution_Specification,
+           UML_Action_Execution_Specification_Access);
 
    type Set_Of_UML_Action_Execution_Specification is
      new UML_Action_Execution_Specification_Collections.Set with null record;

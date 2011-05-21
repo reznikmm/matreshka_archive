@@ -55,30 +55,30 @@ package AMF.UML.Interface_Realizations is
 
    pragma Preelaborate;
 
-   type UML_Interface_Realization_Interface is limited interface
-     and AMF.UML.Realizations.UML_Realization_Interface;
+   type UML_Interface_Realization is limited interface
+     and AMF.UML.Realizations.UML_Realization;
 
-   type UML_Interface_Realization is
-     access all UML_Interface_Realization_Interface'Class;
-   for UML_Interface_Realization'Storage_Size use 0;
+   type UML_Interface_Realization_Access is
+     access all UML_Interface_Realization'Class;
+   for UML_Interface_Realization_Access'Storage_Size use 0;
 
    not overriding function Get_Contract
-    (Self : not null access constant UML_Interface_Realization_Interface)
-       return AMF.UML.Interfaces.UML_Interface is abstract;
+    (Self : not null access constant UML_Interface_Realization)
+       return AMF.UML.Interfaces.UML_Interface_Access is abstract;
    --  References the Interface specifying the conformance contract.
 
    not overriding procedure Set_Contract
-    (Self : not null access UML_Interface_Realization_Interface;
-     To   : AMF.UML.Interfaces.UML_Interface) is abstract;
+    (Self : not null access UML_Interface_Realization;
+     To   : AMF.UML.Interfaces.UML_Interface_Access) is abstract;
 
    not overriding function Get_Implementing_Classifier
-    (Self : not null access constant UML_Interface_Realization_Interface)
-       return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier is abstract;
+    (Self : not null access constant UML_Interface_Realization)
+       return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access is abstract;
    --  References the BehavioredClassifier that owns this Interfacerealization 
    --  (i.e., the classifier that realizes the Interface to which it points).
 
    not overriding procedure Set_Implementing_Classifier
-    (Self : not null access UML_Interface_Realization_Interface;
-     To   : AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier) is abstract;
+    (Self : not null access UML_Interface_Realization;
+     To   : AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access) is abstract;
 
 end AMF.UML.Interface_Realizations;

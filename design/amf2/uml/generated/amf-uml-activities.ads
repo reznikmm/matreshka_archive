@@ -59,25 +59,25 @@ package AMF.UML.Activities is
 
    pragma Preelaborate;
 
-   type UML_Activity_Interface is limited interface
-     and AMF.UML.Behaviors.UML_Behavior_Interface;
+   type UML_Activity is limited interface
+     and AMF.UML.Behaviors.UML_Behavior;
 
-   type UML_Activity is
-     access all UML_Activity_Interface'Class;
-   for UML_Activity'Storage_Size use 0;
+   type UML_Activity_Access is
+     access all UML_Activity'Class;
+   for UML_Activity_Access'Storage_Size use 0;
 
    not overriding function Get_Edge
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges expressing flow between nodes of the activity.
 
    not overriding function Get_Group
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
    --  Top-level groups in the activity.
 
    not overriding function Get_Is_Read_Only
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return Boolean is abstract;
    --  If true, this activity must not make any changes to variables outside 
    --  the activity or to objects. (This is an assertion, not an executable 
@@ -87,36 +87,36 @@ package AMF.UML.Activities is
    --  changes).
 
    not overriding procedure Set_Is_Read_Only
-    (Self : not null access UML_Activity_Interface;
+    (Self : not null access UML_Activity;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Single_Execution
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return Boolean is abstract;
    --  If true, all invocations of the activity are handled by the same 
    --  execution.
 
    not overriding procedure Set_Is_Single_Execution
-    (Self : not null access UML_Activity_Interface;
+    (Self : not null access UML_Activity;
      To   : Boolean) is abstract;
 
    not overriding function Get_Node
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes coordinated by the activity.
 
    not overriding function Get_Partition
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
    --  Top-level partitions in the activity.
 
    not overriding function Get_Structured_Node
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return AMF.UML.Structured_Activity_Nodes.Collections.Set_Of_UML_Structured_Activity_Node is abstract;
    --  Top-level structured nodes in the activity.
 
    not overriding function Get_Variable
-    (Self : not null access constant UML_Activity_Interface)
+    (Self : not null access constant UML_Activity)
        return AMF.UML.Variables.Collections.Set_Of_UML_Variable is abstract;
    --  Top-level variables in the activity.
 

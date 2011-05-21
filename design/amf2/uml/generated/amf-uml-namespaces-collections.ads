@@ -51,8 +51,8 @@ package AMF.UML.Namespaces.Collections is
 
    package UML_Namespace_Collections is
      new AMF.Generic_Collections
-          (UML_Namespace_Interface,
-           UML_Namespace);
+          (UML_Namespace,
+           UML_Namespace_Access);
 
    type Set_Of_UML_Namespace is
      new UML_Namespace_Collections.Set with null record;

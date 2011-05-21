@@ -51,8 +51,8 @@ package AMF.UML.Information_Items.Collections is
 
    package UML_Information_Item_Collections is
      new AMF.Generic_Collections
-          (UML_Information_Item_Interface,
-           UML_Information_Item);
+          (UML_Information_Item,
+           UML_Information_Item_Access);
 
    type Set_Of_UML_Information_Item is
      new UML_Information_Item_Collections.Set with null record;

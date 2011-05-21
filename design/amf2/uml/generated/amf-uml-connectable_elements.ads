@@ -59,28 +59,28 @@ package AMF.UML.Connectable_Elements is
 
    pragma Preelaborate;
 
-   type UML_Connectable_Element_Interface is limited interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element_Interface
-     and AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Interface;
+   type UML_Connectable_Element is limited interface
+     and AMF.UML.Typed_Elements.UML_Typed_Element
+     and AMF.UML.Parameterable_Elements.UML_Parameterable_Element;
 
-   type UML_Connectable_Element is
-     access all UML_Connectable_Element_Interface'Class;
-   for UML_Connectable_Element'Storage_Size use 0;
+   type UML_Connectable_Element_Access is
+     access all UML_Connectable_Element'Class;
+   for UML_Connectable_Element_Access'Storage_Size use 0;
 
    not overriding function Get_End
-    (Self : not null access constant UML_Connectable_Element_Interface)
+    (Self : not null access constant UML_Connectable_Element)
        return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End is abstract;
    --  Denotes a set of connector ends that attaches to this connectable 
    --  element.
 
    not overriding function Get_Template_Parameter
-    (Self : not null access constant UML_Connectable_Element_Interface)
-       return AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter is abstract;
+    (Self : not null access constant UML_Connectable_Element)
+       return AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access is abstract;
    --  The ConnectableElementTemplateParameter for this ConnectableElement 
    --  parameter.
 
    not overriding procedure Set_Template_Parameter
-    (Self : not null access UML_Connectable_Element_Interface;
-     To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter) is abstract;
+    (Self : not null access UML_Connectable_Element;
+     To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access) is abstract;
 
 end AMF.UML.Connectable_Elements;

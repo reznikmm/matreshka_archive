@@ -56,24 +56,24 @@ package AMF.UML.Triggers is
 
    pragma Preelaborate;
 
-   type UML_Trigger_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Trigger is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Trigger is
-     access all UML_Trigger_Interface'Class;
-   for UML_Trigger'Storage_Size use 0;
+   type UML_Trigger_Access is
+     access all UML_Trigger'Class;
+   for UML_Trigger_Access'Storage_Size use 0;
 
    not overriding function Get_Event
-    (Self : not null access constant UML_Trigger_Interface)
-       return AMF.UML.Events.UML_Event is abstract;
+    (Self : not null access constant UML_Trigger)
+       return AMF.UML.Events.UML_Event_Access is abstract;
    --  The event that causes the trigger.
 
    not overriding procedure Set_Event
-    (Self : not null access UML_Trigger_Interface;
-     To   : AMF.UML.Events.UML_Event) is abstract;
+    (Self : not null access UML_Trigger;
+     To   : AMF.UML.Events.UML_Event_Access) is abstract;
 
    not overriding function Get_Port
-    (Self : not null access constant UML_Trigger_Interface)
+    (Self : not null access constant UML_Trigger)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
    --  A optional port of the receiver object on which the behavioral feature 
    --  is invoked.

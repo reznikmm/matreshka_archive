@@ -51,8 +51,8 @@ package AMF.UML.Behaviored_Classifiers.Collections is
 
    package UML_Behaviored_Classifier_Collections is
      new AMF.Generic_Collections
-          (UML_Behaviored_Classifier_Interface,
-           UML_Behaviored_Classifier);
+          (UML_Behaviored_Classifier,
+           UML_Behaviored_Classifier_Access);
 
    type Set_Of_UML_Behaviored_Classifier is
      new UML_Behaviored_Classifier_Collections.Set with null record;

@@ -57,29 +57,29 @@ package AMF.UML.Opaque_Expressions is
 
    pragma Preelaborate;
 
-   type UML_Opaque_Expression_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Opaque_Expression is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Opaque_Expression is
-     access all UML_Opaque_Expression_Interface'Class;
-   for UML_Opaque_Expression'Storage_Size use 0;
+   type UML_Opaque_Expression_Access is
+     access all UML_Opaque_Expression'Class;
+   for UML_Opaque_Expression_Access'Storage_Size use 0;
 
    not overriding function Get_Behavior
-    (Self : not null access constant UML_Opaque_Expression_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Opaque_Expression)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  Specifies the behavior of the opaque expression.
 
    not overriding procedure Set_Behavior
-    (Self : not null access UML_Opaque_Expression_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Opaque_Expression;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
    not overriding function Get_Body
-    (Self : not null access constant UML_Opaque_Expression_Interface)
+    (Self : not null access constant UML_Opaque_Expression)
        return Sequence_Of_String is abstract;
    --  The text of the expression, possibly in multiple languages.
 
    not overriding function Get_Language
-    (Self : not null access constant UML_Opaque_Expression_Interface)
+    (Self : not null access constant UML_Opaque_Expression)
        return Ordered_Set_Of_String is abstract;
    --  Specifies the languages in which the expression is stated. The 
    --  interpretation of the expression body depends on the languages. If the 
@@ -87,8 +87,8 @@ package AMF.UML.Opaque_Expressions is
    --  body or the context. Languages are matched to body strings by order.
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Opaque_Expression_Interface)
-       return AMF.UML.Parameters.UML_Parameter is abstract;
+    (Self : not null access constant UML_Opaque_Expression)
+       return AMF.UML.Parameters.UML_Parameter_Access is abstract;
    --  Restricts an opaque expression to return exactly one return result. 
    --  When the invocation of the opaque expression completes, a single set of 
    --  values is returned to its owner. This association is derived from the 

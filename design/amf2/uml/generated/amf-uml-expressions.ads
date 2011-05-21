@@ -56,25 +56,25 @@ package AMF.UML.Expressions is
 
    pragma Preelaborate;
 
-   type UML_Expression_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Expression is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Expression is
-     access all UML_Expression_Interface'Class;
-   for UML_Expression'Storage_Size use 0;
+   type UML_Expression_Access is
+     access all UML_Expression'Class;
+   for UML_Expression_Access'Storage_Size use 0;
 
    not overriding function Get_Operand
-    (Self : not null access constant UML_Expression_Interface)
+    (Self : not null access constant UML_Expression)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
    --  Specifies a sequence of operands.
 
    not overriding function Get_Symbol
-    (Self : not null access constant UML_Expression_Interface)
+    (Self : not null access constant UML_Expression)
        return Optional_String is abstract;
    --  The symbol associated with the node in the expression tree.
 
    not overriding procedure Set_Symbol
-    (Self : not null access UML_Expression_Interface;
+    (Self : not null access UML_Expression;
      To   : Optional_String) is abstract;
 
 end AMF.UML.Expressions;

@@ -51,8 +51,8 @@ package AMF.UML.Comments.Collections is
 
    package UML_Comment_Collections is
      new AMF.Generic_Collections
-          (UML_Comment_Interface,
-           UML_Comment);
+          (UML_Comment,
+           UML_Comment_Access);
 
    type Set_Of_UML_Comment is
      new UML_Comment_Collections.Set with null record;

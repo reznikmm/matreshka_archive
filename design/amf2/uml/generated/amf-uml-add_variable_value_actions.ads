@@ -53,32 +53,32 @@ package AMF.UML.Add_Variable_Value_Actions is
 
    pragma Preelaborate;
 
-   type UML_Add_Variable_Value_Action_Interface is limited interface
-     and AMF.UML.Write_Variable_Actions.UML_Write_Variable_Action_Interface;
+   type UML_Add_Variable_Value_Action is limited interface
+     and AMF.UML.Write_Variable_Actions.UML_Write_Variable_Action;
 
-   type UML_Add_Variable_Value_Action is
-     access all UML_Add_Variable_Value_Action_Interface'Class;
-   for UML_Add_Variable_Value_Action'Storage_Size use 0;
+   type UML_Add_Variable_Value_Action_Access is
+     access all UML_Add_Variable_Value_Action'Class;
+   for UML_Add_Variable_Value_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Insert_At
-    (Self : not null access constant UML_Add_Variable_Value_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Add_Variable_Value_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Gives the position at which to insert a new value or move an existing 
    --  value in ordered variables. The types is UnlimitedINatural, but the 
    --  value cannot be zero. This pin is omitted for unordered variables.
 
    not overriding procedure Set_Insert_At
-    (Self : not null access UML_Add_Variable_Value_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Add_Variable_Value_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Is_Replace_All
-    (Self : not null access constant UML_Add_Variable_Value_Action_Interface)
+    (Self : not null access constant UML_Add_Variable_Value_Action)
        return Boolean is abstract;
    --  Specifies whether existing values of the variable should be removed 
    --  before adding the new value.
 
    not overriding procedure Set_Is_Replace_All
-    (Self : not null access UML_Add_Variable_Value_Action_Interface;
+    (Self : not null access UML_Add_Variable_Value_Action;
      To   : Boolean) is abstract;
 
 end AMF.UML.Add_Variable_Value_Actions;

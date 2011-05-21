@@ -51,8 +51,8 @@ package AMF.UML.Communication_Paths.Collections is
 
    package UML_Communication_Path_Collections is
      new AMF.Generic_Collections
-          (UML_Communication_Path_Interface,
-           UML_Communication_Path);
+          (UML_Communication_Path,
+           UML_Communication_Path_Access);
 
    type Set_Of_UML_Communication_Path is
      new UML_Communication_Path_Collections.Set with null record;

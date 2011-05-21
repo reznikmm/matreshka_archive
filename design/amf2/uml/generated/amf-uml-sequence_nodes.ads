@@ -53,15 +53,15 @@ package AMF.UML.Sequence_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Sequence_Node_Interface is limited interface
-     and AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Interface;
+   type UML_Sequence_Node is limited interface
+     and AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node;
 
-   type UML_Sequence_Node is
-     access all UML_Sequence_Node_Interface'Class;
-   for UML_Sequence_Node'Storage_Size use 0;
+   type UML_Sequence_Node_Access is
+     access all UML_Sequence_Node'Class;
+   for UML_Sequence_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Executable_Node
-    (Self : not null access constant UML_Sequence_Node_Interface)
+    (Self : not null access constant UML_Sequence_Node)
        return AMF.UML.Executable_Nodes.Collections.Ordered_Set_Of_UML_Executable_Node is abstract;
    --  An ordered set of executable nodes.
 

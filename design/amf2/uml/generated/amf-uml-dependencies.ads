@@ -57,16 +57,16 @@ package AMF.UML.Dependencies is
 
    pragma Preelaborate;
 
-   type UML_Dependency_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Dependency is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Dependency is
-     access all UML_Dependency_Interface'Class;
-   for UML_Dependency'Storage_Size use 0;
+   type UML_Dependency_Access is
+     access all UML_Dependency'Class;
+   for UML_Dependency_Access'Storage_Size use 0;
 
    not overriding function Get_Client
-    (Self : not null access constant UML_Dependency_Interface)
+    (Self : not null access constant UML_Dependency)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The element(s) dependent on the supplier element(s). In some cases 
    --  (such as a Trace Abstraction) the assignment of direction (that is, the 
@@ -74,7 +74,7 @@ package AMF.UML.Dependencies is
    --  and is a stipulation.
 
    not overriding function Get_Supplier
-    (Self : not null access constant UML_Dependency_Interface)
+    (Self : not null access constant UML_Dependency)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The element(s) independent of the client element(s), in the same 
    --  respect and the same dependency relationship. In some directed 

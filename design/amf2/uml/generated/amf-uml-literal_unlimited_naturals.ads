@@ -52,20 +52,20 @@ package AMF.UML.Literal_Unlimited_Naturals is
 
    pragma Preelaborate;
 
-   type UML_Literal_Unlimited_Natural_Interface is limited interface
-     and AMF.UML.Literal_Specifications.UML_Literal_Specification_Interface;
+   type UML_Literal_Unlimited_Natural is limited interface
+     and AMF.UML.Literal_Specifications.UML_Literal_Specification;
 
-   type UML_Literal_Unlimited_Natural is
-     access all UML_Literal_Unlimited_Natural_Interface'Class;
-   for UML_Literal_Unlimited_Natural'Storage_Size use 0;
+   type UML_Literal_Unlimited_Natural_Access is
+     access all UML_Literal_Unlimited_Natural'Class;
+   for UML_Literal_Unlimited_Natural_Access'Storage_Size use 0;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Interface)
+    (Self : not null access constant UML_Literal_Unlimited_Natural)
        return Unlimited_Natural is abstract;
    --  The specified UnlimitedNatural value.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Literal_Unlimited_Natural_Interface;
+    (Self : not null access UML_Literal_Unlimited_Natural;
      To   : Unlimited_Natural) is abstract;
 
 end AMF.UML.Literal_Unlimited_Naturals;

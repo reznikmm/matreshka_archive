@@ -54,21 +54,21 @@ package AMF.UML.Typed_Elements is
 
    pragma Preelaborate;
 
-   type UML_Typed_Element_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Typed_Element is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Typed_Element is
-     access all UML_Typed_Element_Interface'Class;
-   for UML_Typed_Element'Storage_Size use 0;
+   type UML_Typed_Element_Access is
+     access all UML_Typed_Element'Class;
+   for UML_Typed_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Type
-    (Self : not null access constant UML_Typed_Element_Interface)
-       return AMF.UML.Types.UML_Type is abstract;
+    (Self : not null access constant UML_Typed_Element)
+       return AMF.UML.Types.UML_Type_Access is abstract;
    --  The type of the TypedElement.
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Type
-    (Self : not null access UML_Typed_Element_Interface;
-     To   : AMF.UML.Types.UML_Type) is abstract;
+    (Self : not null access UML_Typed_Element;
+     To   : AMF.UML.Types.UML_Type_Access) is abstract;
 
 end AMF.UML.Typed_Elements;

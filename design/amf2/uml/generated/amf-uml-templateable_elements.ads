@@ -54,25 +54,25 @@ package AMF.UML.Templateable_Elements is
 
    pragma Preelaborate;
 
-   type UML_Templateable_Element_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Templateable_Element is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Templateable_Element is
-     access all UML_Templateable_Element_Interface'Class;
-   for UML_Templateable_Element'Storage_Size use 0;
+   type UML_Templateable_Element_Access is
+     access all UML_Templateable_Element'Class;
+   for UML_Templateable_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Template_Signature
-    (Self : not null access constant UML_Templateable_Element_Interface)
-       return AMF.UML.Template_Signatures.UML_Template_Signature is abstract;
+    (Self : not null access constant UML_Templateable_Element)
+       return AMF.UML.Template_Signatures.UML_Template_Signature_Access is abstract;
    --  The optional template signature specifying the formal template 
    --  parameters.
 
    not overriding procedure Set_Owned_Template_Signature
-    (Self : not null access UML_Templateable_Element_Interface;
-     To   : AMF.UML.Template_Signatures.UML_Template_Signature) is abstract;
+    (Self : not null access UML_Templateable_Element;
+     To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is abstract;
 
    not overriding function Get_Template_Binding
-    (Self : not null access constant UML_Templateable_Element_Interface)
+    (Self : not null access constant UML_Templateable_Element)
        return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding is abstract;
    --  The optional bindings from this element to templates.
 

@@ -54,22 +54,22 @@ package AMF.UML.Pins is
 
    pragma Preelaborate;
 
-   type UML_Pin_Interface is limited interface
-     and AMF.UML.Object_Nodes.UML_Object_Node_Interface
-     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Interface;
+   type UML_Pin is limited interface
+     and AMF.UML.Object_Nodes.UML_Object_Node
+     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element;
 
-   type UML_Pin is
-     access all UML_Pin_Interface'Class;
-   for UML_Pin'Storage_Size use 0;
+   type UML_Pin_Access is
+     access all UML_Pin'Class;
+   for UML_Pin_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Control
-    (Self : not null access constant UML_Pin_Interface)
+    (Self : not null access constant UML_Pin)
        return Boolean is abstract;
    --  Tells whether the pins provide data to the actions, or just controls 
    --  when it executes it.
 
    not overriding procedure Set_Is_Control
-    (Self : not null access UML_Pin_Interface;
+    (Self : not null access UML_Pin;
      To   : Boolean) is abstract;
 
 end AMF.UML.Pins;

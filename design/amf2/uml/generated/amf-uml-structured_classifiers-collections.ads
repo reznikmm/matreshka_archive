@@ -51,8 +51,8 @@ package AMF.UML.Structured_Classifiers.Collections is
 
    package UML_Structured_Classifier_Collections is
      new AMF.Generic_Collections
-          (UML_Structured_Classifier_Interface,
-           UML_Structured_Classifier);
+          (UML_Structured_Classifier,
+           UML_Structured_Classifier_Access);
 
    type Set_Of_UML_Structured_Classifier is
      new UML_Structured_Classifier_Collections.Set with null record;

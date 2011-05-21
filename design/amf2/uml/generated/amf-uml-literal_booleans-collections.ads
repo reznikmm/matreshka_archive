@@ -51,8 +51,8 @@ package AMF.UML.Literal_Booleans.Collections is
 
    package UML_Literal_Boolean_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_Boolean_Interface,
-           UML_Literal_Boolean);
+          (UML_Literal_Boolean,
+           UML_Literal_Boolean_Access);
 
    type Set_Of_UML_Literal_Boolean is
      new UML_Literal_Boolean_Collections.Set with null record;

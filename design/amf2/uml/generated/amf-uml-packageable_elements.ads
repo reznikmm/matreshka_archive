@@ -54,22 +54,22 @@ package AMF.UML.Packageable_Elements is
 
    pragma Preelaborate;
 
-   type UML_Packageable_Element_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface
-     and AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Interface;
+   type UML_Packageable_Element is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element
+     and AMF.UML.Parameterable_Elements.UML_Parameterable_Element;
 
-   type UML_Packageable_Element is
-     access all UML_Packageable_Element_Interface'Class;
-   for UML_Packageable_Element'Storage_Size use 0;
+   type UML_Packageable_Element_Access is
+     access all UML_Packageable_Element'Class;
+   for UML_Packageable_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Visibility
-    (Self : not null access constant UML_Packageable_Element_Interface)
+    (Self : not null access constant UML_Packageable_Element)
        return UML_Visibility_Kind is abstract;
    --  Indicates that packageable elements must always have a visibility, 
    --  i.e., visibility is not optional.
 
    not overriding procedure Set_Visibility
-    (Self : not null access UML_Packageable_Element_Interface;
+    (Self : not null access UML_Packageable_Element;
      To   : UML_Visibility_Kind) is abstract;
 
 end AMF.UML.Packageable_Elements;

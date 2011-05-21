@@ -51,8 +51,8 @@ package AMF.UML.Activity_Final_Nodes.Collections is
 
    package UML_Activity_Final_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Activity_Final_Node_Interface,
-           UML_Activity_Final_Node);
+          (UML_Activity_Final_Node,
+           UML_Activity_Final_Node_Access);
 
    type Set_Of_UML_Activity_Final_Node is
      new UML_Activity_Final_Node_Collections.Set with null record;

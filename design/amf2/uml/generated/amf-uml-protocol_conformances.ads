@@ -56,30 +56,30 @@ package AMF.UML.Protocol_Conformances is
 
    pragma Preelaborate;
 
-   type UML_Protocol_Conformance_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface;
+   type UML_Protocol_Conformance is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship;
 
-   type UML_Protocol_Conformance is
-     access all UML_Protocol_Conformance_Interface'Class;
-   for UML_Protocol_Conformance'Storage_Size use 0;
+   type UML_Protocol_Conformance_Access is
+     access all UML_Protocol_Conformance'Class;
+   for UML_Protocol_Conformance_Access'Storage_Size use 0;
 
    not overriding function Get_General_Machine
-    (Self : not null access constant UML_Protocol_Conformance_Interface)
-       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine is abstract;
+    (Self : not null access constant UML_Protocol_Conformance)
+       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
    --  Specifies the protocol state machine to which the specific state 
    --  machine conforms.
 
    not overriding procedure Set_General_Machine
-    (Self : not null access UML_Protocol_Conformance_Interface;
-     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine) is abstract;
+    (Self : not null access UML_Protocol_Conformance;
+     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
 
    not overriding function Get_Specific_Machine
-    (Self : not null access constant UML_Protocol_Conformance_Interface)
-       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine is abstract;
+    (Self : not null access constant UML_Protocol_Conformance)
+       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
    --  Specifies the state machine which conforms to the general state machine.
 
    not overriding procedure Set_Specific_Machine
-    (Self : not null access UML_Protocol_Conformance_Interface;
-     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine) is abstract;
+    (Self : not null access UML_Protocol_Conformance;
+     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
 
 end AMF.UML.Protocol_Conformances;

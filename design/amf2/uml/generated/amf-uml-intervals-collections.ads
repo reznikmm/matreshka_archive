@@ -51,8 +51,8 @@ package AMF.UML.Intervals.Collections is
 
    package UML_Interval_Collections is
      new AMF.Generic_Collections
-          (UML_Interval_Interface,
-           UML_Interval);
+          (UML_Interval,
+           UML_Interval_Access);
 
    type Set_Of_UML_Interval is
      new UML_Interval_Collections.Set with null record;

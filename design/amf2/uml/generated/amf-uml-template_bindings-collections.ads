@@ -51,8 +51,8 @@ package AMF.UML.Template_Bindings.Collections is
 
    package UML_Template_Binding_Collections is
      new AMF.Generic_Collections
-          (UML_Template_Binding_Interface,
-           UML_Template_Binding);
+          (UML_Template_Binding,
+           UML_Template_Binding_Access);
 
    type Set_Of_UML_Template_Binding is
      new UML_Template_Binding_Collections.Set with null record;

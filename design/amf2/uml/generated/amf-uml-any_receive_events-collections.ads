@@ -51,8 +51,8 @@ package AMF.UML.Any_Receive_Events.Collections is
 
    package UML_Any_Receive_Event_Collections is
      new AMF.Generic_Collections
-          (UML_Any_Receive_Event_Interface,
-           UML_Any_Receive_Event);
+          (UML_Any_Receive_Event,
+           UML_Any_Receive_Event_Access);
 
    type Set_Of_UML_Any_Receive_Event is
      new UML_Any_Receive_Event_Collections.Set with null record;

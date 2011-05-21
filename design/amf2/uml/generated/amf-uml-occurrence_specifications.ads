@@ -55,30 +55,30 @@ package AMF.UML.Occurrence_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Occurrence_Specification_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_Occurrence_Specification is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_Occurrence_Specification is
-     access all UML_Occurrence_Specification_Interface'Class;
-   for UML_Occurrence_Specification'Storage_Size use 0;
+   type UML_Occurrence_Specification_Access is
+     access all UML_Occurrence_Specification'Class;
+   for UML_Occurrence_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Covered
-    (Self : not null access constant UML_Occurrence_Specification_Interface)
-       return AMF.UML.Lifelines.UML_Lifeline is abstract;
+    (Self : not null access constant UML_Occurrence_Specification)
+       return AMF.UML.Lifelines.UML_Lifeline_Access is abstract;
    --  References the Lifeline on which the OccurrenceSpecification appears.
 
    not overriding procedure Set_Covered
-    (Self : not null access UML_Occurrence_Specification_Interface;
-     To   : AMF.UML.Lifelines.UML_Lifeline) is abstract;
+    (Self : not null access UML_Occurrence_Specification;
+     To   : AMF.UML.Lifelines.UML_Lifeline_Access) is abstract;
 
    not overriding function Get_To_After
-    (Self : not null access constant UML_Occurrence_Specification_Interface)
+    (Self : not null access constant UML_Occurrence_Specification)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
    --  References the GeneralOrderings that specify EventOcurrences that must 
    --  occur after this OccurrenceSpecification
 
    not overriding function Get_To_Before
-    (Self : not null access constant UML_Occurrence_Specification_Interface)
+    (Self : not null access constant UML_Occurrence_Specification)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
    --  References the GeneralOrderings that specify EventOcurrences that must 
    --  occur before this OccurrenceSpecification

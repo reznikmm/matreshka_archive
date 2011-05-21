@@ -54,32 +54,32 @@ package AMF.UML.Extension_Ends is
 
    pragma Preelaborate;
 
-   type UML_Extension_End_Interface is limited interface
-     and AMF.UML.Properties.UML_Property_Interface;
+   type UML_Extension_End is limited interface
+     and AMF.UML.Properties.UML_Property;
 
-   type UML_Extension_End is
-     access all UML_Extension_End_Interface'Class;
-   for UML_Extension_End'Storage_Size use 0;
+   type UML_Extension_End_Access is
+     access all UML_Extension_End'Class;
+   for UML_Extension_End_Access'Storage_Size use 0;
 
    overriding function Get_Lower
-    (Self : not null access constant UML_Extension_End_Interface)
+    (Self : not null access constant UML_Extension_End)
        return Optional_Integer is abstract;
    --  This redefinition changes the default multiplicity of association ends, 
    --  since model elements are usually extended by 0 or 1 instance of the 
    --  extension stereotype.
 
    overriding procedure Set_Lower
-    (Self : not null access UML_Extension_End_Interface;
+    (Self : not null access UML_Extension_End;
      To   : Optional_Integer) is abstract;
 
    not overriding function Get_Type
-    (Self : not null access constant UML_Extension_End_Interface)
-       return AMF.UML.Stereotypes.UML_Stereotype is abstract;
+    (Self : not null access constant UML_Extension_End)
+       return AMF.UML.Stereotypes.UML_Stereotype_Access is abstract;
    --  References the type of the ExtensionEnd. Note that this association 
    --  restricts the possible types of an ExtensionEnd to only be Stereotypes.
 
    not overriding procedure Set_Type
-    (Self : not null access UML_Extension_End_Interface;
-     To   : AMF.UML.Stereotypes.UML_Stereotype) is abstract;
+    (Self : not null access UML_Extension_End;
+     To   : AMF.UML.Stereotypes.UML_Stereotype_Access) is abstract;
 
 end AMF.UML.Extension_Ends;

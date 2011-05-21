@@ -53,30 +53,30 @@ package AMF.UML.Opaque_Actions is
 
    pragma Preelaborate;
 
-   type UML_Opaque_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Opaque_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Opaque_Action is
-     access all UML_Opaque_Action_Interface'Class;
-   for UML_Opaque_Action'Storage_Size use 0;
+   type UML_Opaque_Action_Access is
+     access all UML_Opaque_Action'Class;
+   for UML_Opaque_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Body
-    (Self : not null access constant UML_Opaque_Action_Interface)
+    (Self : not null access constant UML_Opaque_Action)
        return Sequence_Of_String is abstract;
    --  Specifies the action in one or more languages.
 
    not overriding function Get_Input_Value
-    (Self : not null access constant UML_Opaque_Action_Interface)
+    (Self : not null access constant UML_Opaque_Action)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
    --  Provides input to the action.
 
    not overriding function Get_Language
-    (Self : not null access constant UML_Opaque_Action_Interface)
+    (Self : not null access constant UML_Opaque_Action)
        return Ordered_Set_Of_String is abstract;
    --  Languages the body strings use, in the same order as the body strings
 
    not overriding function Get_Output_Value
-    (Self : not null access constant UML_Opaque_Action_Interface)
+    (Self : not null access constant UML_Opaque_Action)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
    --  Takes output from the action.
 

@@ -51,8 +51,8 @@ package AMF.UML.Devices.Collections is
 
    package UML_Device_Collections is
      new AMF.Generic_Collections
-          (UML_Device_Interface,
-           UML_Device);
+          (UML_Device,
+           UML_Device_Access);
 
    type Set_Of_UML_Device is
      new UML_Device_Collections.Set with null record;

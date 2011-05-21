@@ -51,8 +51,8 @@ package AMF.UML.Output_Pins.Collections is
 
    package UML_Output_Pin_Collections is
      new AMF.Generic_Collections
-          (UML_Output_Pin_Interface,
-           UML_Output_Pin);
+          (UML_Output_Pin,
+           UML_Output_Pin_Access);
 
    type Set_Of_UML_Output_Pin is
      new UML_Output_Pin_Collections.Set with null record;

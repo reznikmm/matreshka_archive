@@ -51,8 +51,8 @@ package AMF.UML.Data_Store_Nodes.Collections is
 
    package UML_Data_Store_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Data_Store_Node_Interface,
-           UML_Data_Store_Node);
+          (UML_Data_Store_Node,
+           UML_Data_Store_Node_Access);
 
    type Set_Of_UML_Data_Store_Node is
      new UML_Data_Store_Node_Collections.Set with null record;

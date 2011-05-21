@@ -51,8 +51,8 @@ package AMF.UML.Components.Collections is
 
    package UML_Component_Collections is
      new AMF.Generic_Collections
-          (UML_Component_Interface,
-           UML_Component);
+          (UML_Component,
+           UML_Component_Access);
 
    type Set_Of_UML_Component is
      new UML_Component_Collections.Set with null record;

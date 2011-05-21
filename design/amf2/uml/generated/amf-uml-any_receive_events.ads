@@ -52,11 +52,11 @@ package AMF.UML.Any_Receive_Events is
 
    pragma Preelaborate;
 
-   type UML_Any_Receive_Event_Interface is limited interface
-     and AMF.UML.Message_Events.UML_Message_Event_Interface;
+   type UML_Any_Receive_Event is limited interface
+     and AMF.UML.Message_Events.UML_Message_Event;
 
-   type UML_Any_Receive_Event is
-     access all UML_Any_Receive_Event_Interface'Class;
-   for UML_Any_Receive_Event'Storage_Size use 0;
+   type UML_Any_Receive_Event_Access is
+     access all UML_Any_Receive_Event'Class;
+   for UML_Any_Receive_Event_Access'Storage_Size use 0;
 
 end AMF.UML.Any_Receive_Events;

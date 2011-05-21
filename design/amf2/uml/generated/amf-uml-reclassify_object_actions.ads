@@ -54,39 +54,39 @@ package AMF.UML.Reclassify_Object_Actions is
 
    pragma Preelaborate;
 
-   type UML_Reclassify_Object_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Reclassify_Object_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Reclassify_Object_Action is
-     access all UML_Reclassify_Object_Action_Interface'Class;
-   for UML_Reclassify_Object_Action'Storage_Size use 0;
+   type UML_Reclassify_Object_Action_Access is
+     access all UML_Reclassify_Object_Action'Class;
+   for UML_Reclassify_Object_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Replace_All
-    (Self : not null access constant UML_Reclassify_Object_Action_Interface)
+    (Self : not null access constant UML_Reclassify_Object_Action)
        return Boolean is abstract;
    --  Specifies whether existing classifiers should be removed before adding 
    --  the new classifiers.
 
    not overriding procedure Set_Is_Replace_All
-    (Self : not null access UML_Reclassify_Object_Action_Interface;
+    (Self : not null access UML_Reclassify_Object_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_New_Classifier
-    (Self : not null access constant UML_Reclassify_Object_Action_Interface)
+    (Self : not null access constant UML_Reclassify_Object_Action)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  A set of classifiers to be added to the classifiers of the object.
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Reclassify_Object_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Reclassify_Object_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Holds the object to be reclassified.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Reclassify_Object_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Reclassify_Object_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Old_Classifier
-    (Self : not null access constant UML_Reclassify_Object_Action_Interface)
+    (Self : not null access constant UML_Reclassify_Object_Action)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  A set of classifiers to be removed from the classifiers of the object.
 

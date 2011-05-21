@@ -51,8 +51,8 @@ package AMF.UML.Join_Nodes.Collections is
 
    package UML_Join_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Join_Node_Interface,
-           UML_Join_Node);
+          (UML_Join_Node,
+           UML_Join_Node_Access);
 
    type Set_Of_UML_Join_Node is
      new UML_Join_Node_Collections.Set with null record;

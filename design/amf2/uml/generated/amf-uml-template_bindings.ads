@@ -56,35 +56,35 @@ package AMF.UML.Template_Bindings is
 
    pragma Preelaborate;
 
-   type UML_Template_Binding_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface;
+   type UML_Template_Binding is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship;
 
-   type UML_Template_Binding is
-     access all UML_Template_Binding_Interface'Class;
-   for UML_Template_Binding'Storage_Size use 0;
+   type UML_Template_Binding_Access is
+     access all UML_Template_Binding'Class;
+   for UML_Template_Binding_Access'Storage_Size use 0;
 
    not overriding function Get_Bound_Element
-    (Self : not null access constant UML_Template_Binding_Interface)
-       return AMF.UML.Templateable_Elements.UML_Templateable_Element is abstract;
+    (Self : not null access constant UML_Template_Binding)
+       return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access is abstract;
    --  The element that is bound by this binding.
 
    not overriding procedure Set_Bound_Element
-    (Self : not null access UML_Template_Binding_Interface;
-     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element) is abstract;
+    (Self : not null access UML_Template_Binding;
+     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is abstract;
 
    not overriding function Get_Parameter_Substitution
-    (Self : not null access constant UML_Template_Binding_Interface)
+    (Self : not null access constant UML_Template_Binding)
        return AMF.UML.Template_Parameter_Substitutions.Collections.Set_Of_UML_Template_Parameter_Substitution is abstract;
    --  The parameter substitutions owned by this template binding.
 
    not overriding function Get_Signature
-    (Self : not null access constant UML_Template_Binding_Interface)
-       return AMF.UML.Template_Signatures.UML_Template_Signature is abstract;
+    (Self : not null access constant UML_Template_Binding)
+       return AMF.UML.Template_Signatures.UML_Template_Signature_Access is abstract;
    --  The template signature for the template that is the target of the 
    --  binding.
 
    not overriding procedure Set_Signature
-    (Self : not null access UML_Template_Binding_Interface;
-     To   : AMF.UML.Template_Signatures.UML_Template_Signature) is abstract;
+    (Self : not null access UML_Template_Binding;
+     To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is abstract;
 
 end AMF.UML.Template_Bindings;

@@ -57,29 +57,29 @@ package AMF.UML.State_Invariants is
 
    pragma Preelaborate;
 
-   type UML_State_Invariant_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_State_Invariant is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_State_Invariant is
-     access all UML_State_Invariant_Interface'Class;
-   for UML_State_Invariant'Storage_Size use 0;
+   type UML_State_Invariant_Access is
+     access all UML_State_Invariant'Class;
+   for UML_State_Invariant_Access'Storage_Size use 0;
 
    not overriding function Get_Covered
-    (Self : not null access constant UML_State_Invariant_Interface)
-       return AMF.UML.Lifelines.UML_Lifeline is abstract;
+    (Self : not null access constant UML_State_Invariant)
+       return AMF.UML.Lifelines.UML_Lifeline_Access is abstract;
    --  References the Lifeline on which the StateInvariant appears.
 
    not overriding procedure Set_Covered
-    (Self : not null access UML_State_Invariant_Interface;
-     To   : AMF.UML.Lifelines.UML_Lifeline) is abstract;
+    (Self : not null access UML_State_Invariant;
+     To   : AMF.UML.Lifelines.UML_Lifeline_Access) is abstract;
 
    not overriding function Get_Invariant
-    (Self : not null access constant UML_State_Invariant_Interface)
-       return AMF.UML.Constraints.UML_Constraint is abstract;
+    (Self : not null access constant UML_State_Invariant)
+       return AMF.UML.Constraints.UML_Constraint_Access is abstract;
    --  A Constraint that should hold at runtime for this StateInvariant
 
    not overriding procedure Set_Invariant
-    (Self : not null access UML_State_Invariant_Interface;
-     To   : AMF.UML.Constraints.UML_Constraint) is abstract;
+    (Self : not null access UML_State_Invariant;
+     To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
 
 end AMF.UML.State_Invariants;

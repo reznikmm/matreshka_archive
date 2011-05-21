@@ -51,8 +51,8 @@ package AMF.UML.Time_Observations.Collections is
 
    package UML_Time_Observation_Collections is
      new AMF.Generic_Collections
-          (UML_Time_Observation_Interface,
-           UML_Time_Observation);
+          (UML_Time_Observation,
+           UML_Time_Observation_Access);
 
    type Set_Of_UML_Time_Observation is
      new UML_Time_Observation_Collections.Set with null record;

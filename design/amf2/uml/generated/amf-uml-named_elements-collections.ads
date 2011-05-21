@@ -51,8 +51,8 @@ package AMF.UML.Named_Elements.Collections is
 
    package UML_Named_Element_Collections is
      new AMF.Generic_Collections
-          (UML_Named_Element_Interface,
-           UML_Named_Element);
+          (UML_Named_Element,
+           UML_Named_Element_Access);
 
    type Set_Of_UML_Named_Element is
      new UML_Named_Element_Collections.Set with null record;

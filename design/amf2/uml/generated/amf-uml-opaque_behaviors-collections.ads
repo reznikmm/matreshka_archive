@@ -51,8 +51,8 @@ package AMF.UML.Opaque_Behaviors.Collections is
 
    package UML_Opaque_Behavior_Collections is
      new AMF.Generic_Collections
-          (UML_Opaque_Behavior_Interface,
-           UML_Opaque_Behavior);
+          (UML_Opaque_Behavior,
+           UML_Opaque_Behavior_Access);
 
    type Set_Of_UML_Opaque_Behavior is
      new UML_Opaque_Behavior_Collections.Set with null record;

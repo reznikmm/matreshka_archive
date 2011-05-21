@@ -51,8 +51,8 @@ package AMF.UML.Literal_Reals.Collections is
 
    package UML_Literal_Real_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_Real_Interface,
-           UML_Literal_Real);
+          (UML_Literal_Real,
+           UML_Literal_Real_Access);
 
    type Set_Of_UML_Literal_Real is
      new UML_Literal_Real_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Interface_Realizations.Collections is
 
    package UML_Interface_Realization_Collections is
      new AMF.Generic_Collections
-          (UML_Interface_Realization_Interface,
-           UML_Interface_Realization);
+          (UML_Interface_Realization,
+           UML_Interface_Realization_Access);
 
    type Set_Of_UML_Interface_Realization is
      new UML_Interface_Realization_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Exception_Handlers.Collections is
 
    package UML_Exception_Handler_Collections is
      new AMF.Generic_Collections
-          (UML_Exception_Handler_Interface,
-           UML_Exception_Handler);
+          (UML_Exception_Handler,
+           UML_Exception_Handler_Access);
 
    type Set_Of_UML_Exception_Handler is
      new UML_Exception_Handler_Collections.Set with null record;

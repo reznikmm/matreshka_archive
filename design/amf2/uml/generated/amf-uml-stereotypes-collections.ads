@@ -51,8 +51,8 @@ package AMF.UML.Stereotypes.Collections is
 
    package UML_Stereotype_Collections is
      new AMF.Generic_Collections
-          (UML_Stereotype_Interface,
-           UML_Stereotype);
+          (UML_Stereotype,
+           UML_Stereotype_Access);
 
    type Set_Of_UML_Stereotype is
      new UML_Stereotype_Collections.Set with null record;

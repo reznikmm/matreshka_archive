@@ -51,8 +51,8 @@ package AMF.UML.Write_Link_Actions.Collections is
 
    package UML_Write_Link_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Write_Link_Action_Interface,
-           UML_Write_Link_Action);
+          (UML_Write_Link_Action,
+           UML_Write_Link_Action_Access);
 
    type Set_Of_UML_Write_Link_Action is
      new UML_Write_Link_Action_Collections.Set with null record;

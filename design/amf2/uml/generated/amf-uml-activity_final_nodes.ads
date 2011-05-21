@@ -51,11 +51,11 @@ package AMF.UML.Activity_Final_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Activity_Final_Node_Interface is limited interface
-     and AMF.UML.Final_Nodes.UML_Final_Node_Interface;
+   type UML_Activity_Final_Node is limited interface
+     and AMF.UML.Final_Nodes.UML_Final_Node;
 
-   type UML_Activity_Final_Node is
-     access all UML_Activity_Final_Node_Interface'Class;
-   for UML_Activity_Final_Node'Storage_Size use 0;
+   type UML_Activity_Final_Node_Access is
+     access all UML_Activity_Final_Node'Class;
+   for UML_Activity_Final_Node_Access'Storage_Size use 0;
 
 end AMF.UML.Activity_Final_Nodes;

@@ -51,8 +51,8 @@ package AMF.UML.Clauses.Collections is
 
    package UML_Clause_Collections is
      new AMF.Generic_Collections
-          (UML_Clause_Interface,
-           UML_Clause);
+          (UML_Clause,
+           UML_Clause_Access);
 
    type Set_Of_UML_Clause is
      new UML_Clause_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Generalizations.Collections is
 
    package UML_Generalization_Collections is
      new AMF.Generic_Collections
-          (UML_Generalization_Interface,
-           UML_Generalization);
+          (UML_Generalization,
+           UML_Generalization_Access);
 
    type Set_Of_UML_Generalization is
      new UML_Generalization_Collections.Set with null record;

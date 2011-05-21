@@ -51,11 +51,11 @@ package AMF.UML.Data_Store_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Data_Store_Node_Interface is limited interface
-     and AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Interface;
+   type UML_Data_Store_Node is limited interface
+     and AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node;
 
-   type UML_Data_Store_Node is
-     access all UML_Data_Store_Node_Interface'Class;
-   for UML_Data_Store_Node'Storage_Size use 0;
+   type UML_Data_Store_Node_Access is
+     access all UML_Data_Store_Node'Class;
+   for UML_Data_Store_Node_Access'Storage_Size use 0;
 
 end AMF.UML.Data_Store_Nodes;

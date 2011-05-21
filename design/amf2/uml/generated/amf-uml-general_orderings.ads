@@ -56,31 +56,31 @@ package AMF.UML.General_Orderings is
 
    pragma Preelaborate;
 
-   type UML_General_Ordering_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_General_Ordering is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_General_Ordering is
-     access all UML_General_Ordering_Interface'Class;
-   for UML_General_Ordering'Storage_Size use 0;
+   type UML_General_Ordering_Access is
+     access all UML_General_Ordering'Class;
+   for UML_General_Ordering_Access'Storage_Size use 0;
 
    not overriding function Get_After
-    (Self : not null access constant UML_General_Ordering_Interface)
-       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification is abstract;
+    (Self : not null access constant UML_General_Ordering)
+       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
    --  The OccurrenceSpecification referenced comes after the 
    --  OccurrenceSpecification referenced by before.
 
    not overriding procedure Set_After
-    (Self : not null access UML_General_Ordering_Interface;
-     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification) is abstract;
+    (Self : not null access UML_General_Ordering;
+     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
 
    not overriding function Get_Before
-    (Self : not null access constant UML_General_Ordering_Interface)
-       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification is abstract;
+    (Self : not null access constant UML_General_Ordering)
+       return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
    --  The OccurrenceSpecification referenced comes before the 
    --  OccurrenceSpecification referenced by after.
 
    not overriding procedure Set_Before
-    (Self : not null access UML_General_Ordering_Interface;
-     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification) is abstract;
+    (Self : not null access UML_General_Ordering;
+     To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
 
 end AMF.UML.General_Orderings;

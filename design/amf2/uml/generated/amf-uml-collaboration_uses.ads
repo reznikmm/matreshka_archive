@@ -65,15 +65,15 @@ package AMF.UML.Collaboration_Uses is
 
    pragma Preelaborate;
 
-   type UML_Collaboration_Use_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Collaboration_Use is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Collaboration_Use is
-     access all UML_Collaboration_Use_Interface'Class;
-   for UML_Collaboration_Use'Storage_Size use 0;
+   type UML_Collaboration_Use_Access is
+     access all UML_Collaboration_Use'Class;
+   for UML_Collaboration_Use_Access'Storage_Size use 0;
 
    not overriding function Get_Role_Binding
-    (Self : not null access constant UML_Collaboration_Use_Interface)
+    (Self : not null access constant UML_Collaboration_Use)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is abstract;
    --  A mapping between features of the collaboration type and features of 
    --  the owning classifier. This mapping indicates which connectable element 
@@ -82,14 +82,14 @@ package AMF.UML.Collaboration_Uses is
    --  collaboration use (that is, it may play multiple roles).
 
    not overriding function Get_Type
-    (Self : not null access constant UML_Collaboration_Use_Interface)
-       return AMF.UML.Collaborations.UML_Collaboration is abstract;
+    (Self : not null access constant UML_Collaboration_Use)
+       return AMF.UML.Collaborations.UML_Collaboration_Access is abstract;
    --  The collaboration which is used in this occurrence. The collaboration 
    --  defines the cooperation between its roles which are mapped to 
    --  properties of the classifier owning the collaboration use.
 
    not overriding procedure Set_Type
-    (Self : not null access UML_Collaboration_Use_Interface;
-     To   : AMF.UML.Collaborations.UML_Collaboration) is abstract;
+    (Self : not null access UML_Collaboration_Use;
+     To   : AMF.UML.Collaborations.UML_Collaboration_Access) is abstract;
 
 end AMF.UML.Collaboration_Uses;

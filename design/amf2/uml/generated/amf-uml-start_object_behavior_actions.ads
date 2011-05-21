@@ -56,21 +56,21 @@ package AMF.UML.Start_Object_Behavior_Actions is
 
    pragma Preelaborate;
 
-   type UML_Start_Object_Behavior_Action_Interface is limited interface
-     and AMF.UML.Call_Actions.UML_Call_Action_Interface;
+   type UML_Start_Object_Behavior_Action is limited interface
+     and AMF.UML.Call_Actions.UML_Call_Action;
 
-   type UML_Start_Object_Behavior_Action is
-     access all UML_Start_Object_Behavior_Action_Interface'Class;
-   for UML_Start_Object_Behavior_Action'Storage_Size use 0;
+   type UML_Start_Object_Behavior_Action_Access is
+     access all UML_Start_Object_Behavior_Action'Class;
+   for UML_Start_Object_Behavior_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Object
-    (Self : not null access constant UML_Start_Object_Behavior_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Start_Object_Behavior_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Holds the object which is either a behavior to be started or has a 
    --  classifier behavior to be started.
 
    not overriding procedure Set_Object
-    (Self : not null access UML_Start_Object_Behavior_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Start_Object_Behavior_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Start_Object_Behavior_Actions;

@@ -51,8 +51,8 @@ package AMF.UML.Accept_Call_Actions.Collections is
 
    package UML_Accept_Call_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Accept_Call_Action_Interface,
-           UML_Accept_Call_Action);
+          (UML_Accept_Call_Action,
+           UML_Accept_Call_Action_Access);
 
    type Set_Of_UML_Accept_Call_Action is
      new UML_Accept_Call_Action_Collections.Set with null record;

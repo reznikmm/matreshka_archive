@@ -51,8 +51,8 @@ package AMF.UML.Lifelines.Collections is
 
    package UML_Lifeline_Collections is
      new AMF.Generic_Collections
-          (UML_Lifeline_Interface,
-           UML_Lifeline);
+          (UML_Lifeline,
+           UML_Lifeline_Access);
 
    type Set_Of_UML_Lifeline is
      new UML_Lifeline_Collections.Set with null record;

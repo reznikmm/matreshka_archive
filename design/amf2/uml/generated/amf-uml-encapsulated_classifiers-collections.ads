@@ -51,8 +51,8 @@ package AMF.UML.Encapsulated_Classifiers.Collections is
 
    package UML_Encapsulated_Classifier_Collections is
      new AMF.Generic_Collections
-          (UML_Encapsulated_Classifier_Interface,
-           UML_Encapsulated_Classifier);
+          (UML_Encapsulated_Classifier,
+           UML_Encapsulated_Classifier_Access);
 
    type Set_Of_UML_Encapsulated_Classifier is
      new UML_Encapsulated_Classifier_Collections.Set with null record;

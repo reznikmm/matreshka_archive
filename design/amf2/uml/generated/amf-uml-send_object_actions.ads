@@ -57,31 +57,31 @@ package AMF.UML.Send_Object_Actions is
 
    pragma Preelaborate;
 
-   type UML_Send_Object_Action_Interface is limited interface
-     and AMF.UML.Invocation_Actions.UML_Invocation_Action_Interface;
+   type UML_Send_Object_Action is limited interface
+     and AMF.UML.Invocation_Actions.UML_Invocation_Action;
 
-   type UML_Send_Object_Action is
-     access all UML_Send_Object_Action_Interface'Class;
-   for UML_Send_Object_Action'Storage_Size use 0;
+   type UML_Send_Object_Action_Access is
+     access all UML_Send_Object_Action'Class;
+   for UML_Send_Object_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Request
-    (Self : not null access constant UML_Send_Object_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Send_Object_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The request object, which is transmitted to the target object. The 
    --  object may be copied in transmission, so identity might not be 
    --  preserved.
 
    not overriding procedure Set_Request
-    (Self : not null access UML_Send_Object_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Send_Object_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Target
-    (Self : not null access constant UML_Send_Object_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Send_Object_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The target object to which the object is sent.
 
    not overriding procedure Set_Target
-    (Self : not null access UML_Send_Object_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Send_Object_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Send_Object_Actions;

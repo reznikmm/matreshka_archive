@@ -55,29 +55,29 @@ package AMF.UML.Create_Object_Actions is
 
    pragma Preelaborate;
 
-   type UML_Create_Object_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Create_Object_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Create_Object_Action is
-     access all UML_Create_Object_Action_Interface'Class;
-   for UML_Create_Object_Action'Storage_Size use 0;
+   type UML_Create_Object_Action_Access is
+     access all UML_Create_Object_Action'Class;
+   for UML_Create_Object_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier
-    (Self : not null access constant UML_Create_Object_Action_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Create_Object_Action)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  Classifier to be instantiated.
 
    not overriding procedure Set_Classifier
-    (Self : not null access UML_Create_Object_Action_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Create_Object_Action;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Create_Object_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Create_Object_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Create_Object_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Create_Object_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Create_Object_Actions;

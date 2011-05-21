@@ -51,8 +51,8 @@ package AMF.UML.Enumerations.Collections is
 
    package UML_Enumeration_Collections is
      new AMF.Generic_Collections
-          (UML_Enumeration_Interface,
-           UML_Enumeration);
+          (UML_Enumeration,
+           UML_Enumeration_Access);
 
    type Set_Of_UML_Enumeration is
      new UML_Enumeration_Collections.Set with null record;

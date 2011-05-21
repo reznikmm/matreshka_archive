@@ -53,32 +53,32 @@ package AMF.UML.Remove_Structural_Feature_Value_Actions is
 
    pragma Preelaborate;
 
-   type UML_Remove_Structural_Feature_Value_Action_Interface is limited interface
-     and AMF.UML.Write_Structural_Feature_Actions.UML_Write_Structural_Feature_Action_Interface;
+   type UML_Remove_Structural_Feature_Value_Action is limited interface
+     and AMF.UML.Write_Structural_Feature_Actions.UML_Write_Structural_Feature_Action;
 
-   type UML_Remove_Structural_Feature_Value_Action is
-     access all UML_Remove_Structural_Feature_Value_Action_Interface'Class;
-   for UML_Remove_Structural_Feature_Value_Action'Storage_Size use 0;
+   type UML_Remove_Structural_Feature_Value_Action_Access is
+     access all UML_Remove_Structural_Feature_Value_Action'Class;
+   for UML_Remove_Structural_Feature_Value_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Remove_Duplicates
-    (Self : not null access constant UML_Remove_Structural_Feature_Value_Action_Interface)
+    (Self : not null access constant UML_Remove_Structural_Feature_Value_Action)
        return Boolean is abstract;
    --  Specifies whether to remove duplicates of the value in nonunique 
    --  structural features.
 
    not overriding procedure Set_Is_Remove_Duplicates
-    (Self : not null access UML_Remove_Structural_Feature_Value_Action_Interface;
+    (Self : not null access UML_Remove_Structural_Feature_Value_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_Remove_At
-    (Self : not null access constant UML_Remove_Structural_Feature_Value_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Remove_Structural_Feature_Value_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Specifies the position of an existing value to remove in ordered 
    --  nonunique structural features. The type of the pin is UnlimitedNatural, 
    --  but the value cannot be zero or unlimited.
 
    not overriding procedure Set_Remove_At
-    (Self : not null access UML_Remove_Structural_Feature_Value_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Remove_Structural_Feature_Value_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Remove_Structural_Feature_Value_Actions;

@@ -51,8 +51,8 @@ package AMF.UML.Includes.Collections is
 
    package UML_Include_Collections is
      new AMF.Generic_Collections
-          (UML_Include_Interface,
-           UML_Include);
+          (UML_Include,
+           UML_Include_Access);
 
    type Set_Of_UML_Include is
      new UML_Include_Collections.Set with null record;

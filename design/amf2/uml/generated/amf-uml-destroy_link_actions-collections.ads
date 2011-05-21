@@ -51,8 +51,8 @@ package AMF.UML.Destroy_Link_Actions.Collections is
 
    package UML_Destroy_Link_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Destroy_Link_Action_Interface,
-           UML_Destroy_Link_Action);
+          (UML_Destroy_Link_Action,
+           UML_Destroy_Link_Action_Access);
 
    type Set_Of_UML_Destroy_Link_Action is
      new UML_Destroy_Link_Action_Collections.Set with null record;

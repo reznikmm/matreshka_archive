@@ -56,29 +56,29 @@ package AMF.UML.Expansion_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Expansion_Node_Interface is limited interface
-     and AMF.UML.Object_Nodes.UML_Object_Node_Interface;
+   type UML_Expansion_Node is limited interface
+     and AMF.UML.Object_Nodes.UML_Object_Node;
 
-   type UML_Expansion_Node is
-     access all UML_Expansion_Node_Interface'Class;
-   for UML_Expansion_Node'Storage_Size use 0;
+   type UML_Expansion_Node_Access is
+     access all UML_Expansion_Node'Class;
+   for UML_Expansion_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Region_As_Input
-    (Self : not null access constant UML_Expansion_Node_Interface)
-       return AMF.UML.Expansion_Regions.UML_Expansion_Region is abstract;
+    (Self : not null access constant UML_Expansion_Node)
+       return AMF.UML.Expansion_Regions.UML_Expansion_Region_Access is abstract;
    --  The expansion region for which the node is an input.
 
    not overriding procedure Set_Region_As_Input
-    (Self : not null access UML_Expansion_Node_Interface;
-     To   : AMF.UML.Expansion_Regions.UML_Expansion_Region) is abstract;
+    (Self : not null access UML_Expansion_Node;
+     To   : AMF.UML.Expansion_Regions.UML_Expansion_Region_Access) is abstract;
 
    not overriding function Get_Region_As_Output
-    (Self : not null access constant UML_Expansion_Node_Interface)
-       return AMF.UML.Expansion_Regions.UML_Expansion_Region is abstract;
+    (Self : not null access constant UML_Expansion_Node)
+       return AMF.UML.Expansion_Regions.UML_Expansion_Region_Access is abstract;
    --  The expansion region for which the node is an output.
 
    not overriding procedure Set_Region_As_Output
-    (Self : not null access UML_Expansion_Node_Interface;
-     To   : AMF.UML.Expansion_Regions.UML_Expansion_Region) is abstract;
+    (Self : not null access UML_Expansion_Node;
+     To   : AMF.UML.Expansion_Regions.UML_Expansion_Region_Access) is abstract;
 
 end AMF.UML.Expansion_Nodes;

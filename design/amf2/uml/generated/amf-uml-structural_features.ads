@@ -57,22 +57,22 @@ package AMF.UML.Structural_Features is
 
    pragma Preelaborate;
 
-   type UML_Structural_Feature_Interface is limited interface
-     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Interface
-     and AMF.UML.Features.UML_Feature_Interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element_Interface;
+   type UML_Structural_Feature is limited interface
+     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element
+     and AMF.UML.Features.UML_Feature
+     and AMF.UML.Typed_Elements.UML_Typed_Element;
 
-   type UML_Structural_Feature is
-     access all UML_Structural_Feature_Interface'Class;
-   for UML_Structural_Feature'Storage_Size use 0;
+   type UML_Structural_Feature_Access is
+     access all UML_Structural_Feature'Class;
+   for UML_Structural_Feature_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Read_Only
-    (Self : not null access constant UML_Structural_Feature_Interface)
+    (Self : not null access constant UML_Structural_Feature)
        return Boolean is abstract;
    --  States whether the feature's value may be modified by a client.
 
    not overriding procedure Set_Is_Read_Only
-    (Self : not null access UML_Structural_Feature_Interface;
+    (Self : not null access UML_Structural_Feature;
      To   : Boolean) is abstract;
 
 end AMF.UML.Structural_Features;

@@ -51,8 +51,8 @@ package AMF.UML.Connectors.Collections is
 
    package UML_Connector_Collections is
      new AMF.Generic_Collections
-          (UML_Connector_Interface,
-           UML_Connector);
+          (UML_Connector,
+           UML_Connector_Access);
 
    type Set_Of_UML_Connector is
      new UML_Connector_Collections.Set with null record;

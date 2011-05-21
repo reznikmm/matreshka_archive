@@ -55,48 +55,48 @@ package AMF.UML.Object_Flows is
 
    pragma Preelaborate;
 
-   type UML_Object_Flow_Interface is limited interface
-     and AMF.UML.Activity_Edges.UML_Activity_Edge_Interface;
+   type UML_Object_Flow is limited interface
+     and AMF.UML.Activity_Edges.UML_Activity_Edge;
 
-   type UML_Object_Flow is
-     access all UML_Object_Flow_Interface'Class;
-   for UML_Object_Flow'Storage_Size use 0;
+   type UML_Object_Flow_Access is
+     access all UML_Object_Flow'Class;
+   for UML_Object_Flow_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Multicast
-    (Self : not null access constant UML_Object_Flow_Interface)
+    (Self : not null access constant UML_Object_Flow)
        return Boolean is abstract;
    --  Tells whether the objects in the flow are passed by multicasting.
 
    not overriding procedure Set_Is_Multicast
-    (Self : not null access UML_Object_Flow_Interface;
+    (Self : not null access UML_Object_Flow;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Multireceive
-    (Self : not null access constant UML_Object_Flow_Interface)
+    (Self : not null access constant UML_Object_Flow)
        return Boolean is abstract;
    --  Tells whether the objects in the flow are gathered from respondents to 
    --  multicasting.
 
    not overriding procedure Set_Is_Multireceive
-    (Self : not null access UML_Object_Flow_Interface;
+    (Self : not null access UML_Object_Flow;
      To   : Boolean) is abstract;
 
    not overriding function Get_Selection
-    (Self : not null access constant UML_Object_Flow_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Object_Flow)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  Selects tokens from a source object node.
 
    not overriding procedure Set_Selection
-    (Self : not null access UML_Object_Flow_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Object_Flow;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
    not overriding function Get_Transformation
-    (Self : not null access constant UML_Object_Flow_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Object_Flow)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  Changes or replaces data tokens flowing along edge.
 
    not overriding procedure Set_Transformation
-    (Self : not null access UML_Object_Flow_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Object_Flow;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
 end AMF.UML.Object_Flows;

@@ -59,15 +59,15 @@ package AMF.UML.Components is
 
    pragma Preelaborate;
 
-   type UML_Component_Interface is limited interface
-     and AMF.UML.Classes.UML_Class_Interface;
+   type UML_Component is limited interface
+     and AMF.UML.Classes.UML_Class;
 
-   type UML_Component is
-     access all UML_Component_Interface'Class;
-   for UML_Component'Storage_Size use 0;
+   type UML_Component_Access is
+     access all UML_Component'Class;
+   for UML_Component_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Indirectly_Instantiated
-    (Self : not null access constant UML_Component_Interface)
+    (Self : not null access constant UML_Component)
        return Boolean is abstract;
    --  isIndirectlyInstantiated : Boolean {default = true} The kind of 
    --  instantiation that applies to a Component. If false, the component is 
@@ -79,11 +79,11 @@ package AMF.UML.Components is
    --  attribute (e.g., «specification», «focus», «subsystem»).
 
    not overriding procedure Set_Is_Indirectly_Instantiated
-    (Self : not null access UML_Component_Interface;
+    (Self : not null access UML_Component;
      To   : Boolean) is abstract;
 
    not overriding function Get_Packaged_Element
-    (Self : not null access constant UML_Component_Interface)
+    (Self : not null access constant UML_Component)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
    --  The set of PackageableElements that a Component owns. In the namespace 
    --  of a component, all model elements that are involved in or related to 
@@ -92,7 +92,7 @@ package AMF.UML.Components is
    --  (e.g. mappings), and Artifacts.
 
    not overriding function Get_Provided
-    (Self : not null access constant UML_Component_Interface)
+    (Self : not null access constant UML_Component)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
    --  The interfaces that the component exposes to its environment. These 
    --  interfaces may be Realized by the Component or any of its 
@@ -100,14 +100,14 @@ package AMF.UML.Components is
    --  by its public Ports.
 
    not overriding function Get_Realization
-    (Self : not null access constant UML_Component_Interface)
+    (Self : not null access constant UML_Component)
        return AMF.UML.Component_Realizations.Collections.Set_Of_UML_Component_Realization is abstract;
    --  The set of Realizations owned by the Component. Realizations reference 
    --  the Classifiers of which the Component is an abstraction; i.e., that 
    --  realize its behavior.
 
    not overriding function Get_Required
-    (Self : not null access constant UML_Component_Interface)
+    (Self : not null access constant UML_Component)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
    --  The interfaces that the component requires from other components in its 
    --  environment in order to be able to offer its full set of provided 

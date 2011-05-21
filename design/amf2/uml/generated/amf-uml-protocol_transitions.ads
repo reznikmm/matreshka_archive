@@ -58,28 +58,28 @@ package AMF.UML.Protocol_Transitions is
 
    pragma Preelaborate;
 
-   type UML_Protocol_Transition_Interface is limited interface
-     and AMF.UML.Transitions.UML_Transition_Interface;
+   type UML_Protocol_Transition is limited interface
+     and AMF.UML.Transitions.UML_Transition;
 
-   type UML_Protocol_Transition is
-     access all UML_Protocol_Transition_Interface'Class;
-   for UML_Protocol_Transition'Storage_Size use 0;
+   type UML_Protocol_Transition_Access is
+     access all UML_Protocol_Transition'Class;
+   for UML_Protocol_Transition_Access'Storage_Size use 0;
 
    not overriding function Get_Post_Condition
-    (Self : not null access constant UML_Protocol_Transition_Interface)
-       return AMF.UML.Constraints.UML_Constraint is abstract;
+    (Self : not null access constant UML_Protocol_Transition)
+       return AMF.UML.Constraints.UML_Constraint_Access is abstract;
    --  Specifies the post condition of the transition which is the condition 
    --  that should be obtained once the transition is triggered. This post 
    --  condition is part of the post condition of the operation connected to 
    --  the transition.
 
    not overriding procedure Set_Post_Condition
-    (Self : not null access UML_Protocol_Transition_Interface;
-     To   : AMF.UML.Constraints.UML_Constraint) is abstract;
+    (Self : not null access UML_Protocol_Transition;
+     To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
 
    not overriding function Get_Pre_Condition
-    (Self : not null access constant UML_Protocol_Transition_Interface)
-       return AMF.UML.Constraints.UML_Constraint is abstract;
+    (Self : not null access constant UML_Protocol_Transition)
+       return AMF.UML.Constraints.UML_Constraint_Access is abstract;
    --  Specifies the precondition of the transition. It specifies the 
    --  condition that should be verified before triggering the transition. 
    --  This guard condition added to the source state will be evaluated as 
@@ -87,11 +87,11 @@ package AMF.UML.Protocol_Transitions is
    --  any.
 
    not overriding procedure Set_Pre_Condition
-    (Self : not null access UML_Protocol_Transition_Interface;
-     To   : AMF.UML.Constraints.UML_Constraint) is abstract;
+    (Self : not null access UML_Protocol_Transition;
+     To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
 
    not overriding function Get_Referred
-    (Self : not null access constant UML_Protocol_Transition_Interface)
+    (Self : not null access constant UML_Protocol_Transition)
        return AMF.UML.Operations.Collections.Set_Of_UML_Operation is abstract;
    --  This association refers to the associated operation. It is derived from 
    --  the operation of the call trigger when applicable.

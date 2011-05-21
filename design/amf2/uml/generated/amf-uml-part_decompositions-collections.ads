@@ -51,8 +51,8 @@ package AMF.UML.Part_Decompositions.Collections is
 
    package UML_Part_Decomposition_Collections is
      new AMF.Generic_Collections
-          (UML_Part_Decomposition_Interface,
-           UML_Part_Decomposition);
+          (UML_Part_Decomposition,
+           UML_Part_Decomposition_Access);
 
    type Set_Of_UML_Part_Decomposition is
      new UML_Part_Decomposition_Collections.Set with null record;

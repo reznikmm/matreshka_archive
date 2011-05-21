@@ -55,15 +55,15 @@ package AMF.UML.Information_Items is
 
    pragma Preelaborate;
 
-   type UML_Information_Item_Interface is limited interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface;
+   type UML_Information_Item is limited interface
+     and AMF.UML.Classifiers.UML_Classifier;
 
-   type UML_Information_Item is
-     access all UML_Information_Item_Interface'Class;
-   for UML_Information_Item'Storage_Size use 0;
+   type UML_Information_Item_Access is
+     access all UML_Information_Item'Class;
+   for UML_Information_Item_Access'Storage_Size use 0;
 
    not overriding function Get_Represented
-    (Self : not null access constant UML_Information_Item_Interface)
+    (Self : not null access constant UML_Information_Item)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  Determines the classifiers that will specify the structure and nature 
    --  of the information. An information item represents all its represented 

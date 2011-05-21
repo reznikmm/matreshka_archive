@@ -51,8 +51,8 @@ package AMF.UML.Broadcast_Signal_Actions.Collections is
 
    package UML_Broadcast_Signal_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Broadcast_Signal_Action_Interface,
-           UML_Broadcast_Signal_Action);
+          (UML_Broadcast_Signal_Action,
+           UML_Broadcast_Signal_Action_Access);
 
    type Set_Of_UML_Broadcast_Signal_Action is
      new UML_Broadcast_Signal_Action_Collections.Set with null record;

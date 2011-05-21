@@ -51,8 +51,8 @@ package AMF.UML.Interval_Constraints.Collections is
 
    package UML_Interval_Constraint_Collections is
      new AMF.Generic_Collections
-          (UML_Interval_Constraint_Interface,
-           UML_Interval_Constraint);
+          (UML_Interval_Constraint,
+           UML_Interval_Constraint_Access);
 
    type Set_Of_UML_Interval_Constraint is
      new UML_Interval_Constraint_Collections.Set with null record;

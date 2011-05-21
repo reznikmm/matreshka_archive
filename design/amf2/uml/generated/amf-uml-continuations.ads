@@ -53,21 +53,21 @@ package AMF.UML.Continuations is
 
    pragma Preelaborate;
 
-   type UML_Continuation_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_Continuation is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_Continuation is
-     access all UML_Continuation_Interface'Class;
-   for UML_Continuation'Storage_Size use 0;
+   type UML_Continuation_Access is
+     access all UML_Continuation'Class;
+   for UML_Continuation_Access'Storage_Size use 0;
 
    not overriding function Get_Setting
-    (Self : not null access constant UML_Continuation_Interface)
+    (Self : not null access constant UML_Continuation)
        return Boolean is abstract;
    --  True: when the Continuation is at the end of the enclosing 
    --  InteractionFragment and False when it is in the beginning.
 
    not overriding procedure Set_Setting
-    (Self : not null access UML_Continuation_Interface;
+    (Self : not null access UML_Continuation;
      To   : Boolean) is abstract;
 
 end AMF.UML.Continuations;

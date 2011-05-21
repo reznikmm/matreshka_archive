@@ -51,20 +51,20 @@ package AMF.UML.Opaque_Behaviors is
 
    pragma Preelaborate;
 
-   type UML_Opaque_Behavior_Interface is limited interface
-     and AMF.UML.Behaviors.UML_Behavior_Interface;
+   type UML_Opaque_Behavior is limited interface
+     and AMF.UML.Behaviors.UML_Behavior;
 
-   type UML_Opaque_Behavior is
-     access all UML_Opaque_Behavior_Interface'Class;
-   for UML_Opaque_Behavior'Storage_Size use 0;
+   type UML_Opaque_Behavior_Access is
+     access all UML_Opaque_Behavior'Class;
+   for UML_Opaque_Behavior_Access'Storage_Size use 0;
 
    not overriding function Get_Body
-    (Self : not null access constant UML_Opaque_Behavior_Interface)
+    (Self : not null access constant UML_Opaque_Behavior)
        return Sequence_Of_String is abstract;
    --  Specifies the behavior in one or more languages.
 
    not overriding function Get_Language
-    (Self : not null access constant UML_Opaque_Behavior_Interface)
+    (Self : not null access constant UML_Opaque_Behavior)
        return Ordered_Set_Of_String is abstract;
    --  Languages the body strings use in the same order as the body strings.
 

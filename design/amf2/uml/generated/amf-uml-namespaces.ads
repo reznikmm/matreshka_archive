@@ -57,42 +57,42 @@ package AMF.UML.Namespaces is
 
    pragma Preelaborate;
 
-   type UML_Namespace_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Namespace is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Namespace is
-     access all UML_Namespace_Interface'Class;
-   for UML_Namespace'Storage_Size use 0;
+   type UML_Namespace_Access is
+     access all UML_Namespace'Class;
+   for UML_Namespace_Access'Storage_Size use 0;
 
    not overriding function Get_Element_Import
-    (Self : not null access constant UML_Namespace_Interface)
+    (Self : not null access constant UML_Namespace)
        return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import is abstract;
    --  References the ElementImports owned by the Namespace.
 
    not overriding function Get_Imported_Member
-    (Self : not null access constant UML_Namespace_Interface)
+    (Self : not null access constant UML_Namespace)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
    --  References the PackageableElements that are members of this Namespace 
    --  as a result of either PackageImports or ElementImports.
 
    not overriding function Get_Member
-    (Self : not null access constant UML_Namespace_Interface)
+    (Self : not null access constant UML_Namespace)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  A collection of NamedElements identifiable within the Namespace, either 
    --  by being owned or by being introduced by importing or inheritance.
 
    not overriding function Get_Owned_Member
-    (Self : not null access constant UML_Namespace_Interface)
+    (Self : not null access constant UML_Namespace)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  A collection of NamedElements owned by the Namespace.
 
    not overriding function Get_Owned_Rule
-    (Self : not null access constant UML_Namespace_Interface)
+    (Self : not null access constant UML_Namespace)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  Specifies a set of Constraints owned by this Namespace.
 
    not overriding function Get_Package_Import
-    (Self : not null access constant UML_Namespace_Interface)
+    (Self : not null access constant UML_Namespace)
        return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is abstract;
    --  References the PackageImports owned by the Namespace.
 

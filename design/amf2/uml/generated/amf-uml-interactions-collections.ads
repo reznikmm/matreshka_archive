@@ -51,8 +51,8 @@ package AMF.UML.Interactions.Collections is
 
    package UML_Interaction_Collections is
      new AMF.Generic_Collections
-          (UML_Interaction_Interface,
-           UML_Interaction);
+          (UML_Interaction,
+           UML_Interaction_Access);
 
    type Set_Of_UML_Interaction is
      new UML_Interaction_Collections.Set with null record;

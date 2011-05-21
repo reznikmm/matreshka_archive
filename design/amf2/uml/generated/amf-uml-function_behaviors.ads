@@ -52,11 +52,11 @@ package AMF.UML.Function_Behaviors is
 
    pragma Preelaborate;
 
-   type UML_Function_Behavior_Interface is limited interface
-     and AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Interface;
+   type UML_Function_Behavior is limited interface
+     and AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior;
 
-   type UML_Function_Behavior is
-     access all UML_Function_Behavior_Interface'Class;
-   for UML_Function_Behavior'Storage_Size use 0;
+   type UML_Function_Behavior_Access is
+     access all UML_Function_Behavior'Class;
+   for UML_Function_Behavior_Access'Storage_Size use 0;
 
 end AMF.UML.Function_Behaviors;

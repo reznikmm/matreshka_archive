@@ -56,30 +56,30 @@ package AMF.UML.Substitutions is
 
    pragma Preelaborate;
 
-   type UML_Substitution_Interface is limited interface
-     and AMF.UML.Realizations.UML_Realization_Interface;
+   type UML_Substitution is limited interface
+     and AMF.UML.Realizations.UML_Realization;
 
-   type UML_Substitution is
-     access all UML_Substitution_Interface'Class;
-   for UML_Substitution'Storage_Size use 0;
+   type UML_Substitution_Access is
+     access all UML_Substitution'Class;
+   for UML_Substitution_Access'Storage_Size use 0;
 
    not overriding function Get_Contract
-    (Self : not null access constant UML_Substitution_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Substitution)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  The contract with which the substituting classifier complies.
 
    not overriding procedure Set_Contract
-    (Self : not null access UML_Substitution_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Substitution;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
    not overriding function Get_Substituting_Classifier
-    (Self : not null access constant UML_Substitution_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Substitution)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  Instances of the substituting classifier are runtime substitutable 
    --  where instances of the contract classifier are expected.
 
    not overriding procedure Set_Substituting_Classifier
-    (Self : not null access UML_Substitution_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Substitution;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
 end AMF.UML.Substitutions;

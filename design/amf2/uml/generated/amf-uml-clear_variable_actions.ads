@@ -52,11 +52,11 @@ package AMF.UML.Clear_Variable_Actions is
 
    pragma Preelaborate;
 
-   type UML_Clear_Variable_Action_Interface is limited interface
-     and AMF.UML.Variable_Actions.UML_Variable_Action_Interface;
+   type UML_Clear_Variable_Action is limited interface
+     and AMF.UML.Variable_Actions.UML_Variable_Action;
 
-   type UML_Clear_Variable_Action is
-     access all UML_Clear_Variable_Action_Interface'Class;
-   for UML_Clear_Variable_Action'Storage_Size use 0;
+   type UML_Clear_Variable_Action_Access is
+     access all UML_Clear_Variable_Action'Class;
+   for UML_Clear_Variable_Action_Access'Storage_Size use 0;
 
 end AMF.UML.Clear_Variable_Actions;

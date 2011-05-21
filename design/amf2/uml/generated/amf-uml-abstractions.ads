@@ -54,16 +54,16 @@ package AMF.UML.Abstractions is
 
    pragma Preelaborate;
 
-   type UML_Abstraction_Interface is limited interface
-     and AMF.UML.Dependencies.UML_Dependency_Interface;
+   type UML_Abstraction is limited interface
+     and AMF.UML.Dependencies.UML_Dependency;
 
-   type UML_Abstraction is
-     access all UML_Abstraction_Interface'Class;
-   for UML_Abstraction'Storage_Size use 0;
+   type UML_Abstraction_Access is
+     access all UML_Abstraction'Class;
+   for UML_Abstraction_Access'Storage_Size use 0;
 
    not overriding function Get_Mapping
-    (Self : not null access constant UML_Abstraction_Interface)
-       return AMF.UML.Opaque_Expressions.UML_Opaque_Expression is abstract;
+    (Self : not null access constant UML_Abstraction)
+       return AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access is abstract;
    --  An composition of an Expression that states the abstraction 
    --  relationship between the supplier and the client. In some cases, such 
    --  as Derivation, it is usually formal and unidirectional; in other cases, 
@@ -72,7 +72,7 @@ package AMF.UML.Abstractions is
    --  between the elements is not specified.
 
    not overriding procedure Set_Mapping
-    (Self : not null access UML_Abstraction_Interface;
-     To   : AMF.UML.Opaque_Expressions.UML_Opaque_Expression) is abstract;
+    (Self : not null access UML_Abstraction;
+     To   : AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access) is abstract;
 
 end AMF.UML.Abstractions;

@@ -61,23 +61,23 @@ package AMF.UML.Instance_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Instance_Specification_Interface is limited interface
-     and AMF.UML.Deployment_Targets.UML_Deployment_Target_Interface
-     and AMF.UML.Deployed_Artifacts.UML_Deployed_Artifact_Interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Instance_Specification is limited interface
+     and AMF.UML.Deployment_Targets.UML_Deployment_Target
+     and AMF.UML.Deployed_Artifacts.UML_Deployed_Artifact
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Instance_Specification is
-     access all UML_Instance_Specification_Interface'Class;
-   for UML_Instance_Specification'Storage_Size use 0;
+   type UML_Instance_Specification_Access is
+     access all UML_Instance_Specification'Class;
+   for UML_Instance_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier
-    (Self : not null access constant UML_Instance_Specification_Interface)
+    (Self : not null access constant UML_Instance_Specification)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The classifier or classifiers of the represented instance. If multiple 
    --  classifiers are specified, the instance is classified by all of them.
 
    not overriding function Get_Slot
-    (Self : not null access constant UML_Instance_Specification_Interface)
+    (Self : not null access constant UML_Instance_Specification)
        return AMF.UML.Slots.Collections.Set_Of_UML_Slot is abstract;
    --  A slot giving the value or values of a structural feature of the 
    --  instance. An instance specification can have one slot per structural 
@@ -86,12 +86,12 @@ package AMF.UML.Instance_Specifications is
    --  the instance specification is a partial description.
 
    not overriding function Get_Specification
-    (Self : not null access constant UML_Instance_Specification_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Instance_Specification)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  A specification of how to compute, derive, or construct the instance.
 
    not overriding procedure Set_Specification
-    (Self : not null access UML_Instance_Specification_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Instance_Specification;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Instance_Specifications;

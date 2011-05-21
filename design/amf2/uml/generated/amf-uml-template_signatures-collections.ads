@@ -51,8 +51,8 @@ package AMF.UML.Template_Signatures.Collections is
 
    package UML_Template_Signature_Collections is
      new AMF.Generic_Collections
-          (UML_Template_Signature_Interface,
-           UML_Template_Signature);
+          (UML_Template_Signature,
+           UML_Template_Signature_Access);
 
    type Set_Of_UML_Template_Signature is
      new UML_Template_Signature_Collections.Set with null record;

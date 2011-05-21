@@ -54,29 +54,29 @@ package AMF.UML.Write_Structural_Feature_Actions is
 
    pragma Preelaborate;
 
-   type UML_Write_Structural_Feature_Action_Interface is limited interface
-     and AMF.UML.Structural_Feature_Actions.UML_Structural_Feature_Action_Interface;
+   type UML_Write_Structural_Feature_Action is limited interface
+     and AMF.UML.Structural_Feature_Actions.UML_Structural_Feature_Action;
 
-   type UML_Write_Structural_Feature_Action is
-     access all UML_Write_Structural_Feature_Action_Interface'Class;
-   for UML_Write_Structural_Feature_Action'Storage_Size use 0;
+   type UML_Write_Structural_Feature_Action_Access is
+     access all UML_Write_Structural_Feature_Action'Class;
+   for UML_Write_Structural_Feature_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Write_Structural_Feature_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Write_Structural_Feature_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Write_Structural_Feature_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Write_Structural_Feature_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Write_Structural_Feature_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Write_Structural_Feature_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  Value to be added or removed from the structural feature.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Write_Structural_Feature_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Write_Structural_Feature_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
 end AMF.UML.Write_Structural_Feature_Actions;

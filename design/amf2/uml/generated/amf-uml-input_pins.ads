@@ -51,11 +51,11 @@ package AMF.UML.Input_Pins is
 
    pragma Preelaborate;
 
-   type UML_Input_Pin_Interface is limited interface
-     and AMF.UML.Pins.UML_Pin_Interface;
+   type UML_Input_Pin is limited interface
+     and AMF.UML.Pins.UML_Pin;
 
-   type UML_Input_Pin is
-     access all UML_Input_Pin_Interface'Class;
-   for UML_Input_Pin'Storage_Size use 0;
+   type UML_Input_Pin_Access is
+     access all UML_Input_Pin'Class;
+   for UML_Input_Pin_Access'Storage_Size use 0;
 
 end AMF.UML.Input_Pins;

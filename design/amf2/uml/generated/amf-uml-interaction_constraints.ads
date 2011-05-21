@@ -53,29 +53,29 @@ package AMF.UML.Interaction_Constraints is
 
    pragma Preelaborate;
 
-   type UML_Interaction_Constraint_Interface is limited interface
-     and AMF.UML.Constraints.UML_Constraint_Interface;
+   type UML_Interaction_Constraint is limited interface
+     and AMF.UML.Constraints.UML_Constraint;
 
-   type UML_Interaction_Constraint is
-     access all UML_Interaction_Constraint_Interface'Class;
-   for UML_Interaction_Constraint'Storage_Size use 0;
+   type UML_Interaction_Constraint_Access is
+     access all UML_Interaction_Constraint'Class;
+   for UML_Interaction_Constraint_Access'Storage_Size use 0;
 
    not overriding function Get_Maxint
-    (Self : not null access constant UML_Interaction_Constraint_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Interaction_Constraint)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The maximum number of iterations of a loop
 
    not overriding procedure Set_Maxint
-    (Self : not null access UML_Interaction_Constraint_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Interaction_Constraint;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Minint
-    (Self : not null access constant UML_Interaction_Constraint_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Interaction_Constraint)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The minimum number of iterations of a loop
 
    not overriding procedure Set_Minint
-    (Self : not null access UML_Interaction_Constraint_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Interaction_Constraint;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Interaction_Constraints;

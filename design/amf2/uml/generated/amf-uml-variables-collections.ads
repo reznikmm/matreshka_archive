@@ -51,8 +51,8 @@ package AMF.UML.Variables.Collections is
 
    package UML_Variable_Collections is
      new AMF.Generic_Collections
-          (UML_Variable_Interface,
-           UML_Variable);
+          (UML_Variable,
+           UML_Variable_Access);
 
    type Set_Of_UML_Variable is
      new UML_Variable_Collections.Set with null record;

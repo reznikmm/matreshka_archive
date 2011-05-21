@@ -72,21 +72,21 @@ package AMF.UML.Connectors is
 
    pragma Preelaborate;
 
-   type UML_Connector_Interface is limited interface
-     and AMF.UML.Features.UML_Feature_Interface;
+   type UML_Connector is limited interface
+     and AMF.UML.Features.UML_Feature;
 
-   type UML_Connector is
-     access all UML_Connector_Interface'Class;
-   for UML_Connector'Storage_Size use 0;
+   type UML_Connector_Access is
+     access all UML_Connector'Class;
+   for UML_Connector_Access'Storage_Size use 0;
 
    not overriding function Get_Contract
-    (Self : not null access constant UML_Connector_Interface)
+    (Self : not null access constant UML_Connector)
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
    --  The set of Behaviors that specify the valid interaction patterns across 
    --  the connector.
 
    not overriding function Get_End
-    (Self : not null access constant UML_Connector_Interface)
+    (Self : not null access constant UML_Connector)
        return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End is abstract;
    --  A connector consists of at least two connector ends, each representing 
    --  the participation of instances of the classifiers typing the 
@@ -94,14 +94,14 @@ package AMF.UML.Connectors is
    --  ordered.
 
    not overriding function Get_Kind
-    (Self : not null access constant UML_Connector_Interface)
+    (Self : not null access constant UML_Connector)
        return UML_Connector_Kind is abstract;
    --  Indicates the kind of connector. This is derived: a connector with one 
    --  or more ends connected to a Port which is not on a Part and which is 
    --  not a behavior port is a delegation; otherwise it is an assembly.
 
    not overriding function Get_Redefined_Connector
-    (Self : not null access constant UML_Connector_Interface)
+    (Self : not null access constant UML_Connector)
        return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
    --  A connector may be redefined when its containing classifier is 
    --  specialized. The redefining connector may have a type that specializes 
@@ -111,13 +111,13 @@ package AMF.UML.Connectors is
    --  redefining connector may be replaced.
 
    not overriding function Get_Type
-    (Self : not null access constant UML_Connector_Interface)
-       return AMF.UML.Associations.UML_Association is abstract;
+    (Self : not null access constant UML_Connector)
+       return AMF.UML.Associations.UML_Association_Access is abstract;
    --  An optional association that specifies the link corresponding to this 
    --  connector.
 
    not overriding procedure Set_Type
-    (Self : not null access UML_Connector_Interface;
-     To   : AMF.UML.Associations.UML_Association) is abstract;
+    (Self : not null access UML_Connector;
+     To   : AMF.UML.Associations.UML_Association_Access) is abstract;
 
 end AMF.UML.Connectors;

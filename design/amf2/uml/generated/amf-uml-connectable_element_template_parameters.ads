@@ -53,20 +53,20 @@ package AMF.UML.Connectable_Element_Template_Parameters is
 
    pragma Preelaborate;
 
-   type UML_Connectable_Element_Template_Parameter_Interface is limited interface
-     and AMF.UML.Template_Parameters.UML_Template_Parameter_Interface;
+   type UML_Connectable_Element_Template_Parameter is limited interface
+     and AMF.UML.Template_Parameters.UML_Template_Parameter;
 
-   type UML_Connectable_Element_Template_Parameter is
-     access all UML_Connectable_Element_Template_Parameter_Interface'Class;
-   for UML_Connectable_Element_Template_Parameter'Storage_Size use 0;
+   type UML_Connectable_Element_Template_Parameter_Access is
+     access all UML_Connectable_Element_Template_Parameter'Class;
+   for UML_Connectable_Element_Template_Parameter_Access'Storage_Size use 0;
 
    not overriding function Get_Parametered_Element
-    (Self : not null access constant UML_Connectable_Element_Template_Parameter_Interface)
-       return AMF.UML.Connectable_Elements.UML_Connectable_Element is abstract;
+    (Self : not null access constant UML_Connectable_Element_Template_Parameter)
+       return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access is abstract;
    --  The ConnectableElement for this template parameter.
 
    not overriding procedure Set_Parametered_Element
-    (Self : not null access UML_Connectable_Element_Template_Parameter_Interface;
-     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element) is abstract;
+    (Self : not null access UML_Connectable_Element_Template_Parameter;
+     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
 
 end AMF.UML.Connectable_Element_Template_Parameters;

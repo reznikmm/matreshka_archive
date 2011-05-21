@@ -51,8 +51,8 @@ package AMF.UML.Message_Ends.Collections is
 
    package UML_Message_End_Collections is
      new AMF.Generic_Collections
-          (UML_Message_End_Interface,
-           UML_Message_End);
+          (UML_Message_End,
+           UML_Message_End_Access);
 
    type Set_Of_UML_Message_End is
      new UML_Message_End_Collections.Set with null record;

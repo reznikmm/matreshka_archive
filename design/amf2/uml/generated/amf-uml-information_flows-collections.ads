@@ -51,8 +51,8 @@ package AMF.UML.Information_Flows.Collections is
 
    package UML_Information_Flow_Collections is
      new AMF.Generic_Collections
-          (UML_Information_Flow_Interface,
-           UML_Information_Flow);
+          (UML_Information_Flow,
+           UML_Information_Flow_Access);
 
    type Set_Of_UML_Information_Flow is
      new UML_Information_Flow_Collections.Set with null record;

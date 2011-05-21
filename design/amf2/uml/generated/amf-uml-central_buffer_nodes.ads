@@ -52,11 +52,11 @@ package AMF.UML.Central_Buffer_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Central_Buffer_Node_Interface is limited interface
-     and AMF.UML.Object_Nodes.UML_Object_Node_Interface;
+   type UML_Central_Buffer_Node is limited interface
+     and AMF.UML.Object_Nodes.UML_Object_Node;
 
-   type UML_Central_Buffer_Node is
-     access all UML_Central_Buffer_Node_Interface'Class;
-   for UML_Central_Buffer_Node'Storage_Size use 0;
+   type UML_Central_Buffer_Node_Access is
+     access all UML_Central_Buffer_Node'Class;
+   for UML_Central_Buffer_Node_Access'Storage_Size use 0;
 
 end AMF.UML.Central_Buffer_Nodes;

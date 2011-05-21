@@ -51,8 +51,8 @@ package AMF.UML.Change_Events.Collections is
 
    package UML_Change_Event_Collections is
      new AMF.Generic_Collections
-          (UML_Change_Event_Interface,
-           UML_Change_Event);
+          (UML_Change_Event,
+           UML_Change_Event_Access);
 
    type Set_Of_UML_Change_Event is
      new UML_Change_Event_Collections.Set with null record;

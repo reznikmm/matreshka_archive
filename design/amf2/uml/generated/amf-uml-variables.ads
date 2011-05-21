@@ -63,30 +63,30 @@ package AMF.UML.Variables is
 
    pragma Preelaborate;
 
-   type UML_Variable_Interface is limited interface
-     and AMF.UML.Connectable_Elements.UML_Connectable_Element_Interface
-     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Interface;
+   type UML_Variable is limited interface
+     and AMF.UML.Connectable_Elements.UML_Connectable_Element
+     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element;
 
-   type UML_Variable is
-     access all UML_Variable_Interface'Class;
-   for UML_Variable'Storage_Size use 0;
+   type UML_Variable_Access is
+     access all UML_Variable'Class;
+   for UML_Variable_Access'Storage_Size use 0;
 
    not overriding function Get_Activity_Scope
-    (Self : not null access constant UML_Variable_Interface)
-       return AMF.UML.Activities.UML_Activity is abstract;
+    (Self : not null access constant UML_Variable)
+       return AMF.UML.Activities.UML_Activity_Access is abstract;
    --  An activity that owns the variable.
 
    not overriding procedure Set_Activity_Scope
-    (Self : not null access UML_Variable_Interface;
-     To   : AMF.UML.Activities.UML_Activity) is abstract;
+    (Self : not null access UML_Variable;
+     To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
 
    not overriding function Get_Scope
-    (Self : not null access constant UML_Variable_Interface)
-       return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node is abstract;
+    (Self : not null access constant UML_Variable)
+       return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access is abstract;
    --  A structured activity node that owns the variable.
 
    not overriding procedure Set_Scope
-    (Self : not null access UML_Variable_Interface;
-     To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node) is abstract;
+    (Self : not null access UML_Variable;
+     To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is abstract;
 
 end AMF.UML.Variables;

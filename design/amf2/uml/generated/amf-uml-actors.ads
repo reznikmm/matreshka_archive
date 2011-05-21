@@ -52,11 +52,11 @@ package AMF.UML.Actors is
 
    pragma Preelaborate;
 
-   type UML_Actor_Interface is limited interface
-     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Interface;
+   type UML_Actor is limited interface
+     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier;
 
-   type UML_Actor is
-     access all UML_Actor_Interface'Class;
-   for UML_Actor'Storage_Size use 0;
+   type UML_Actor_Access is
+     access all UML_Actor'Class;
+   for UML_Actor_Access'Storage_Size use 0;
 
 end AMF.UML.Actors;

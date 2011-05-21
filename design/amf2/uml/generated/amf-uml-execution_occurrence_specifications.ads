@@ -53,21 +53,21 @@ package AMF.UML.Execution_Occurrence_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Execution_Occurrence_Specification_Interface is limited interface
-     and AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Interface;
+   type UML_Execution_Occurrence_Specification is limited interface
+     and AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification;
 
-   type UML_Execution_Occurrence_Specification is
-     access all UML_Execution_Occurrence_Specification_Interface'Class;
-   for UML_Execution_Occurrence_Specification'Storage_Size use 0;
+   type UML_Execution_Occurrence_Specification_Access is
+     access all UML_Execution_Occurrence_Specification'Class;
+   for UML_Execution_Occurrence_Specification_Access'Storage_Size use 0;
 
    not overriding function Get_Execution
-    (Self : not null access constant UML_Execution_Occurrence_Specification_Interface)
-       return AMF.UML.Execution_Specifications.UML_Execution_Specification is abstract;
+    (Self : not null access constant UML_Execution_Occurrence_Specification)
+       return AMF.UML.Execution_Specifications.UML_Execution_Specification_Access is abstract;
    --  References the execution specification describing the execution that is 
    --  started or finished at this execution event.
 
    not overriding procedure Set_Execution
-    (Self : not null access UML_Execution_Occurrence_Specification_Interface;
-     To   : AMF.UML.Execution_Specifications.UML_Execution_Specification) is abstract;
+    (Self : not null access UML_Execution_Occurrence_Specification;
+     To   : AMF.UML.Execution_Specifications.UML_Execution_Specification_Access) is abstract;
 
 end AMF.UML.Execution_Occurrence_Specifications;

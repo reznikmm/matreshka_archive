@@ -55,49 +55,49 @@ package AMF.UML.Reduce_Actions is
 
    pragma Preelaborate;
 
-   type UML_Reduce_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Reduce_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Reduce_Action is
-     access all UML_Reduce_Action_Interface'Class;
-   for UML_Reduce_Action'Storage_Size use 0;
+   type UML_Reduce_Action_Access is
+     access all UML_Reduce_Action'Class;
+   for UML_Reduce_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Collection
-    (Self : not null access constant UML_Reduce_Action_Interface)
-       return AMF.UML.Input_Pins.UML_Input_Pin is abstract;
+    (Self : not null access constant UML_Reduce_Action)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
    --  The collection to be reduced.
 
    not overriding procedure Set_Collection
-    (Self : not null access UML_Reduce_Action_Interface;
-     To   : AMF.UML.Input_Pins.UML_Input_Pin) is abstract;
+    (Self : not null access UML_Reduce_Action;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
 
    not overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Reduce_Action_Interface)
+    (Self : not null access constant UML_Reduce_Action)
        return Boolean is abstract;
    --  Tells whether the order of the input collection should determine the 
    --  order in which the behavior is applied to its elements.
 
    not overriding procedure Set_Is_Ordered
-    (Self : not null access UML_Reduce_Action_Interface;
+    (Self : not null access UML_Reduce_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_Reducer
-    (Self : not null access constant UML_Reduce_Action_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Reduce_Action)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  Behavior that is applied to two elements of the input collection to 
    --  produce a value that is the same type as elements of the collection.
 
    not overriding procedure Set_Reducer
-    (Self : not null access UML_Reduce_Action_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Reduce_Action;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Reduce_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Reduce_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Reduce_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Reduce_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Reduce_Actions;

@@ -55,11 +55,11 @@ package AMF.UML.Realizations is
 
    pragma Preelaborate;
 
-   type UML_Realization_Interface is limited interface
-     and AMF.UML.Abstractions.UML_Abstraction_Interface;
+   type UML_Realization is limited interface
+     and AMF.UML.Abstractions.UML_Abstraction;
 
-   type UML_Realization is
-     access all UML_Realization_Interface'Class;
-   for UML_Realization'Storage_Size use 0;
+   type UML_Realization_Access is
+     access all UML_Realization'Class;
+   for UML_Realization_Access'Storage_Size use 0;
 
 end AMF.UML.Realizations;

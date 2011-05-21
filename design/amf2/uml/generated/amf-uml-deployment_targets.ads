@@ -53,21 +53,21 @@ package AMF.UML.Deployment_Targets is
 
    pragma Preelaborate;
 
-   type UML_Deployment_Target_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Deployment_Target is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Deployment_Target is
-     access all UML_Deployment_Target_Interface'Class;
-   for UML_Deployment_Target'Storage_Size use 0;
+   type UML_Deployment_Target_Access is
+     access all UML_Deployment_Target'Class;
+   for UML_Deployment_Target_Access'Storage_Size use 0;
 
    not overriding function Get_Deployed_Element
-    (Self : not null access constant UML_Deployment_Target_Interface)
+    (Self : not null access constant UML_Deployment_Target)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
    --  The set of elements that are manifested in an Artifact that is involved 
    --  in Deployment to a DeploymentTarget.
 
    not overriding function Get_Deployment
-    (Self : not null access constant UML_Deployment_Target_Interface)
+    (Self : not null access constant UML_Deployment_Target)
        return AMF.UML.Deployments.Collections.Set_Of_UML_Deployment is abstract;
    --  The set of Deployments for a DeploymentTarget.
 

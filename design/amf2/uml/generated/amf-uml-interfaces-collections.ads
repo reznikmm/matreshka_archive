@@ -51,8 +51,8 @@ package AMF.UML.Interfaces.Collections is
 
    package UML_Interface_Collections is
      new AMF.Generic_Collections
-          (UML_Interface_Interface,
-           UML_Interface);
+          (UML_Interface,
+           UML_Interface_Access);
 
    type Set_Of_UML_Interface is
      new UML_Interface_Collections.Set with null record;

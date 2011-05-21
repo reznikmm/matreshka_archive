@@ -51,8 +51,8 @@ package AMF.UML.Time_Events.Collections is
 
    package UML_Time_Event_Collections is
      new AMF.Generic_Collections
-          (UML_Time_Event_Interface,
-           UML_Time_Event);
+          (UML_Time_Event,
+           UML_Time_Event_Access);
 
    type Set_Of_UML_Time_Event is
      new UML_Time_Event_Collections.Set with null record;

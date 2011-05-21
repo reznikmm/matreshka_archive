@@ -52,20 +52,20 @@ package AMF.UML.Instance_Values is
 
    pragma Preelaborate;
 
-   type UML_Instance_Value_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Instance_Value is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Instance_Value is
-     access all UML_Instance_Value_Interface'Class;
-   for UML_Instance_Value'Storage_Size use 0;
+   type UML_Instance_Value_Access is
+     access all UML_Instance_Value'Class;
+   for UML_Instance_Value_Access'Storage_Size use 0;
 
    not overriding function Get_Instance
-    (Self : not null access constant UML_Instance_Value_Interface)
-       return AMF.UML.Instance_Specifications.UML_Instance_Specification is abstract;
+    (Self : not null access constant UML_Instance_Value)
+       return AMF.UML.Instance_Specifications.UML_Instance_Specification_Access is abstract;
    --  The instance that is the specified value.
 
    not overriding procedure Set_Instance
-    (Self : not null access UML_Instance_Value_Interface;
-     To   : AMF.UML.Instance_Specifications.UML_Instance_Specification) is abstract;
+    (Self : not null access UML_Instance_Value;
+     To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access) is abstract;
 
 end AMF.UML.Instance_Values;

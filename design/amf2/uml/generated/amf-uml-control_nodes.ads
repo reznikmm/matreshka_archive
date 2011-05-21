@@ -52,11 +52,11 @@ package AMF.UML.Control_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Control_Node_Interface is limited interface
-     and AMF.UML.Activity_Nodes.UML_Activity_Node_Interface;
+   type UML_Control_Node is limited interface
+     and AMF.UML.Activity_Nodes.UML_Activity_Node;
 
-   type UML_Control_Node is
-     access all UML_Control_Node_Interface'Class;
-   for UML_Control_Node'Storage_Size use 0;
+   type UML_Control_Node_Access is
+     access all UML_Control_Node'Class;
+   for UML_Control_Node_Access'Storage_Size use 0;
 
 end AMF.UML.Control_Nodes;

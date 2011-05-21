@@ -51,8 +51,8 @@ package AMF.UML.Deployment_Specifications.Collections is
 
    package UML_Deployment_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Deployment_Specification_Interface,
-           UML_Deployment_Specification);
+          (UML_Deployment_Specification,
+           UML_Deployment_Specification_Access);
 
    type Set_Of_UML_Deployment_Specification is
      new UML_Deployment_Specification_Collections.Set with null record;

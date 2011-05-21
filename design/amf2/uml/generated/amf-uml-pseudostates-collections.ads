@@ -51,8 +51,8 @@ package AMF.UML.Pseudostates.Collections is
 
    package UML_Pseudostate_Collections is
      new AMF.Generic_Collections
-          (UML_Pseudostate_Interface,
-           UML_Pseudostate);
+          (UML_Pseudostate,
+           UML_Pseudostate_Access);
 
    type Set_Of_UML_Pseudostate is
      new UML_Pseudostate_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Opaque_Actions.Collections is
 
    package UML_Opaque_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Opaque_Action_Interface,
-           UML_Opaque_Action);
+          (UML_Opaque_Action,
+           UML_Opaque_Action_Access);
 
    type Set_Of_UML_Opaque_Action is
      new UML_Opaque_Action_Collections.Set with null record;

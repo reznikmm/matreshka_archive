@@ -51,8 +51,8 @@ package AMF.UML.Control_Nodes.Collections is
 
    package UML_Control_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Control_Node_Interface,
-           UML_Control_Node);
+          (UML_Control_Node,
+           UML_Control_Node_Access);
 
    type Set_Of_UML_Control_Node is
      new UML_Control_Node_Collections.Set with null record;

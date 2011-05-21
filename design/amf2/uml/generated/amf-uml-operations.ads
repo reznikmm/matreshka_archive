@@ -71,128 +71,128 @@ package AMF.UML.Operations is
 
    pragma Preelaborate;
 
-   type UML_Operation_Interface is limited interface
-     and AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Interface
-     and AMF.UML.Templateable_Elements.UML_Templateable_Element_Interface
-     and AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Interface;
+   type UML_Operation is limited interface
+     and AMF.UML.Behavioral_Features.UML_Behavioral_Feature
+     and AMF.UML.Templateable_Elements.UML_Templateable_Element
+     and AMF.UML.Parameterable_Elements.UML_Parameterable_Element;
 
-   type UML_Operation is
-     access all UML_Operation_Interface'Class;
-   for UML_Operation'Storage_Size use 0;
+   type UML_Operation_Access is
+     access all UML_Operation'Class;
+   for UML_Operation_Access'Storage_Size use 0;
 
    not overriding function Get_Body_Condition
-    (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Constraints.UML_Constraint is abstract;
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Constraints.UML_Constraint_Access is abstract;
    --  An optional Constraint on the result values of an invocation of this 
    --  Operation.
 
    not overriding procedure Set_Body_Condition
-    (Self : not null access UML_Operation_Interface;
-     To   : AMF.UML.Constraints.UML_Constraint) is abstract;
+    (Self : not null access UML_Operation;
+     To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
 
    not overriding function Get_Class
-    (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Classes.UML_Class is abstract;
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Classes.UML_Class_Access is abstract;
    --  The class that owns the operation.
 
    not overriding procedure Set_Class
-    (Self : not null access UML_Operation_Interface;
-     To   : AMF.UML.Classes.UML_Class) is abstract;
+    (Self : not null access UML_Operation;
+     To   : AMF.UML.Classes.UML_Class_Access) is abstract;
 
    not overriding function Get_Datatype
-    (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Data_Types.UML_Data_Type is abstract;
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Data_Types.UML_Data_Type_Access is abstract;
    --  The DataType that owns this Operation.
 
    not overriding procedure Set_Datatype
-    (Self : not null access UML_Operation_Interface;
-     To   : AMF.UML.Data_Types.UML_Data_Type) is abstract;
+    (Self : not null access UML_Operation;
+     To   : AMF.UML.Data_Types.UML_Data_Type_Access) is abstract;
 
    not overriding function Get_Interface
-    (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Interfaces.UML_Interface is abstract;
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Interfaces.UML_Interface_Access is abstract;
    --  The Interface that owns this Operation.
 
    not overriding procedure Set_Interface
-    (Self : not null access UML_Operation_Interface;
-     To   : AMF.UML.Interfaces.UML_Interface) is abstract;
+    (Self : not null access UML_Operation;
+     To   : AMF.UML.Interfaces.UML_Interface_Access) is abstract;
 
    not overriding function Get_Is_Ordered
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return Boolean is abstract;
    --  This information is derived from the return result for this Operation.
    --  Specifies whether the return parameter is ordered or not, if present.
 
    not overriding function Get_Is_Query
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return Boolean is abstract;
    --  Specifies whether an execution of the BehavioralFeature leaves the 
    --  state of the system unchanged (isQuery=true) or whether side effects 
    --  may occur (isQuery=false).
 
    not overriding procedure Set_Is_Query
-    (Self : not null access UML_Operation_Interface;
+    (Self : not null access UML_Operation;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Unique
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return Boolean is abstract;
    --  This information is derived from the return result for this Operation.
    --  Specifies whether the return parameter is unique or not, if present.
 
    not overriding function Get_Lower
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return Optional_Integer is abstract;
    --  Specifies the lower multiplicity of the return parameter, if present.
    --  This information is derived from the return result for this Operation.
 
    overriding function Get_Owned_Parameter
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter is abstract;
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
    --  Specifies the parameters owned by this Operation.
 
    not overriding function Get_Postcondition
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  An optional set of Constraints specifying the state of the system when 
    --  the Operation is completed.
 
    not overriding function Get_Precondition
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  An optional set of Constraints on the state of the system when the 
    --  Operation is invoked.
 
    overriding function Get_Raised_Exception
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this operation.
 
    not overriding function Get_Redefined_Operation
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return AMF.UML.Operations.Collections.Set_Of_UML_Operation is abstract;
    --  References the Operations that are redefined by this Operation.
 
    not overriding function Get_Template_Parameter
-    (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter is abstract;
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access is abstract;
    --  The template parameter that exposes this element as a formal parameter.
 
    not overriding procedure Set_Template_Parameter
-    (Self : not null access UML_Operation_Interface;
-     To   : AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter) is abstract;
+    (Self : not null access UML_Operation;
+     To   : AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access) is abstract;
 
    not overriding function Get_Type
-    (Self : not null access constant UML_Operation_Interface)
-       return AMF.UML.Types.UML_Type is abstract;
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Types.UML_Type_Access is abstract;
    --  This information is derived from the return result for this Operation.
    --  Specifies the return result of the operation, if present.
 
    not overriding function Get_Upper
-    (Self : not null access constant UML_Operation_Interface)
+    (Self : not null access constant UML_Operation)
        return Optional_Unlimited_Natural is abstract;
    --  Specifies the upper multiplicity of the return parameter, if present.
    --  This information is derived from the return result for this Operation.

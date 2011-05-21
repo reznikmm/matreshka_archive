@@ -51,8 +51,8 @@ package AMF.UML.Primitive_Types.Collections is
 
    package UML_Primitive_Type_Collections is
      new AMF.Generic_Collections
-          (UML_Primitive_Type_Interface,
-           UML_Primitive_Type);
+          (UML_Primitive_Type,
+           UML_Primitive_Type_Access);
 
    type Set_Of_UML_Primitive_Type is
      new UML_Primitive_Type_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Connectable_Elements.Collections is
 
    package UML_Connectable_Element_Collections is
      new AMF.Generic_Collections
-          (UML_Connectable_Element_Interface,
-           UML_Connectable_Element);
+          (UML_Connectable_Element,
+           UML_Connectable_Element_Access);
 
    type Set_Of_UML_Connectable_Element is
      new UML_Connectable_Element_Collections.Set with null record;

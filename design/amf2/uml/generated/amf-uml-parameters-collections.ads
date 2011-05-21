@@ -51,8 +51,8 @@ package AMF.UML.Parameters.Collections is
 
    package UML_Parameter_Collections is
      new AMF.Generic_Collections
-          (UML_Parameter_Interface,
-           UML_Parameter);
+          (UML_Parameter,
+           UML_Parameter_Access);
 
    type Set_Of_UML_Parameter is
      new UML_Parameter_Collections.Set with null record;

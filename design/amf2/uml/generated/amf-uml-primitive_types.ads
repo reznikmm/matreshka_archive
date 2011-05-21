@@ -54,11 +54,11 @@ package AMF.UML.Primitive_Types is
 
    pragma Preelaborate;
 
-   type UML_Primitive_Type_Interface is limited interface
-     and AMF.UML.Data_Types.UML_Data_Type_Interface;
+   type UML_Primitive_Type is limited interface
+     and AMF.UML.Data_Types.UML_Data_Type;
 
-   type UML_Primitive_Type is
-     access all UML_Primitive_Type_Interface'Class;
-   for UML_Primitive_Type'Storage_Size use 0;
+   type UML_Primitive_Type_Access is
+     access all UML_Primitive_Type'Class;
+   for UML_Primitive_Type_Access'Storage_Size use 0;
 
 end AMF.UML.Primitive_Types;

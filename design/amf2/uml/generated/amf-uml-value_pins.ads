@@ -53,20 +53,20 @@ package AMF.UML.Value_Pins is
 
    pragma Preelaborate;
 
-   type UML_Value_Pin_Interface is limited interface
-     and AMF.UML.Input_Pins.UML_Input_Pin_Interface;
+   type UML_Value_Pin is limited interface
+     and AMF.UML.Input_Pins.UML_Input_Pin;
 
-   type UML_Value_Pin is
-     access all UML_Value_Pin_Interface'Class;
-   for UML_Value_Pin'Storage_Size use 0;
+   type UML_Value_Pin_Access is
+     access all UML_Value_Pin'Class;
+   for UML_Value_Pin_Access'Storage_Size use 0;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Value_Pin_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Value_Pin)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  Value that the pin will provide.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Value_Pin_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Value_Pin;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Value_Pins;

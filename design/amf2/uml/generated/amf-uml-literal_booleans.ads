@@ -51,20 +51,20 @@ package AMF.UML.Literal_Booleans is
 
    pragma Preelaborate;
 
-   type UML_Literal_Boolean_Interface is limited interface
-     and AMF.UML.Literal_Specifications.UML_Literal_Specification_Interface;
+   type UML_Literal_Boolean is limited interface
+     and AMF.UML.Literal_Specifications.UML_Literal_Specification;
 
-   type UML_Literal_Boolean is
-     access all UML_Literal_Boolean_Interface'Class;
-   for UML_Literal_Boolean'Storage_Size use 0;
+   type UML_Literal_Boolean_Access is
+     access all UML_Literal_Boolean'Class;
+   for UML_Literal_Boolean_Access'Storage_Size use 0;
 
    not overriding function Get_Value
-    (Self : not null access constant UML_Literal_Boolean_Interface)
+    (Self : not null access constant UML_Literal_Boolean)
        return Boolean is abstract;
    --  The specified Boolean value.
 
    not overriding procedure Set_Value
-    (Self : not null access UML_Literal_Boolean_Interface;
+    (Self : not null access UML_Literal_Boolean;
      To   : Boolean) is abstract;
 
 end AMF.UML.Literal_Booleans;

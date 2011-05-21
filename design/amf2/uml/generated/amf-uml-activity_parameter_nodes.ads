@@ -53,20 +53,20 @@ package AMF.UML.Activity_Parameter_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Activity_Parameter_Node_Interface is limited interface
-     and AMF.UML.Object_Nodes.UML_Object_Node_Interface;
+   type UML_Activity_Parameter_Node is limited interface
+     and AMF.UML.Object_Nodes.UML_Object_Node;
 
-   type UML_Activity_Parameter_Node is
-     access all UML_Activity_Parameter_Node_Interface'Class;
-   for UML_Activity_Parameter_Node'Storage_Size use 0;
+   type UML_Activity_Parameter_Node_Access is
+     access all UML_Activity_Parameter_Node'Class;
+   for UML_Activity_Parameter_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Parameter
-    (Self : not null access constant UML_Activity_Parameter_Node_Interface)
-       return AMF.UML.Parameters.UML_Parameter is abstract;
+    (Self : not null access constant UML_Activity_Parameter_Node)
+       return AMF.UML.Parameters.UML_Parameter_Access is abstract;
    --  The parameter the object node will be accepting or providing values for.
 
    not overriding procedure Set_Parameter
-    (Self : not null access UML_Activity_Parameter_Node_Interface;
-     To   : AMF.UML.Parameters.UML_Parameter) is abstract;
+    (Self : not null access UML_Activity_Parameter_Node;
+     To   : AMF.UML.Parameters.UML_Parameter_Access) is abstract;
 
 end AMF.UML.Activity_Parameter_Nodes;

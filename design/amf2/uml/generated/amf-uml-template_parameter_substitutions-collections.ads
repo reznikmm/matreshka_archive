@@ -51,8 +51,8 @@ package AMF.UML.Template_Parameter_Substitutions.Collections is
 
    package UML_Template_Parameter_Substitution_Collections is
      new AMF.Generic_Collections
-          (UML_Template_Parameter_Substitution_Interface,
-           UML_Template_Parameter_Substitution);
+          (UML_Template_Parameter_Substitution,
+           UML_Template_Parameter_Substitution_Access);
 
    type Set_Of_UML_Template_Parameter_Substitution is
      new UML_Template_Parameter_Substitution_Collections.Set with null record;

@@ -56,40 +56,40 @@ package AMF.UML.Activity_Groups is
 
    pragma Preelaborate;
 
-   type UML_Activity_Group_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Activity_Group is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Activity_Group is
-     access all UML_Activity_Group_Interface'Class;
-   for UML_Activity_Group'Storage_Size use 0;
+   type UML_Activity_Group_Access is
+     access all UML_Activity_Group'Class;
+   for UML_Activity_Group_Access'Storage_Size use 0;
 
    not overriding function Get_Contained_Edge
-    (Self : not null access constant UML_Activity_Group_Interface)
+    (Self : not null access constant UML_Activity_Group)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges immediately contained in the group.
 
    not overriding function Get_Contained_Node
-    (Self : not null access constant UML_Activity_Group_Interface)
+    (Self : not null access constant UML_Activity_Group)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 
    not overriding function Get_In_Activity
-    (Self : not null access constant UML_Activity_Group_Interface)
-       return AMF.UML.Activities.UML_Activity is abstract;
+    (Self : not null access constant UML_Activity_Group)
+       return AMF.UML.Activities.UML_Activity_Access is abstract;
    --  Activity containing the group.
 
    not overriding procedure Set_In_Activity
-    (Self : not null access UML_Activity_Group_Interface;
-     To   : AMF.UML.Activities.UML_Activity) is abstract;
+    (Self : not null access UML_Activity_Group;
+     To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
 
    not overriding function Get_Subgroup
-    (Self : not null access constant UML_Activity_Group_Interface)
+    (Self : not null access constant UML_Activity_Group)
        return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
    --  Groups immediately contained in the group.
 
    not overriding function Get_Super_Group
-    (Self : not null access constant UML_Activity_Group_Interface)
-       return AMF.UML.Activity_Groups.UML_Activity_Group is abstract;
+    (Self : not null access constant UML_Activity_Group)
+       return AMF.UML.Activity_Groups.UML_Activity_Group_Access is abstract;
    --  Group immediately containing the group.
 
 end AMF.UML.Activity_Groups;

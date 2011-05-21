@@ -51,8 +51,8 @@ package AMF.UML.Durations.Collections is
 
    package UML_Duration_Collections is
      new AMF.Generic_Collections
-          (UML_Duration_Interface,
-           UML_Duration);
+          (UML_Duration,
+           UML_Duration_Access);
 
    type Set_Of_UML_Duration is
      new UML_Duration_Collections.Set with null record;

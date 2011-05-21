@@ -55,32 +55,32 @@ package AMF.UML.Connection_Point_References is
 
    pragma Preelaborate;
 
-   type UML_Connection_Point_Reference_Interface is limited interface
-     and AMF.UML.Vertexs.UML_Vertex_Interface;
+   type UML_Connection_Point_Reference is limited interface
+     and AMF.UML.Vertexs.UML_Vertex;
 
-   type UML_Connection_Point_Reference is
-     access all UML_Connection_Point_Reference_Interface'Class;
-   for UML_Connection_Point_Reference'Storage_Size use 0;
+   type UML_Connection_Point_Reference_Access is
+     access all UML_Connection_Point_Reference'Class;
+   for UML_Connection_Point_Reference_Access'Storage_Size use 0;
 
    not overriding function Get_Entry
-    (Self : not null access constant UML_Connection_Point_Reference_Interface)
+    (Self : not null access constant UML_Connection_Point_Reference)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The entryPoint kind pseudo states corresponding to this connection 
    --  point.
 
    not overriding function Get_Exit
-    (Self : not null access constant UML_Connection_Point_Reference_Interface)
+    (Self : not null access constant UML_Connection_Point_Reference)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The exitPoints kind pseudo states corresponding to this connection 
    --  point.
 
    not overriding function Get_State
-    (Self : not null access constant UML_Connection_Point_Reference_Interface)
-       return AMF.UML.States.UML_State is abstract;
+    (Self : not null access constant UML_Connection_Point_Reference)
+       return AMF.UML.States.UML_State_Access is abstract;
    --  The State in which the connection point refreshens are defined.
 
    not overriding procedure Set_State
-    (Self : not null access UML_Connection_Point_Reference_Interface;
-     To   : AMF.UML.States.UML_State) is abstract;
+    (Self : not null access UML_Connection_Point_Reference;
+     To   : AMF.UML.States.UML_State_Access) is abstract;
 
 end AMF.UML.Connection_Point_References;

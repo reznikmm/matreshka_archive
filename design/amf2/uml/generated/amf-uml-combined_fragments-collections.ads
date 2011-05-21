@@ -51,8 +51,8 @@ package AMF.UML.Combined_Fragments.Collections is
 
    package UML_Combined_Fragment_Collections is
      new AMF.Generic_Collections
-          (UML_Combined_Fragment_Interface,
-           UML_Combined_Fragment);
+          (UML_Combined_Fragment,
+           UML_Combined_Fragment_Access);
 
    type Set_Of_UML_Combined_Fragment is
      new UML_Combined_Fragment_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Occurrence_Specifications.Collections is
 
    package UML_Occurrence_Specification_Collections is
      new AMF.Generic_Collections
-          (UML_Occurrence_Specification_Interface,
-           UML_Occurrence_Specification);
+          (UML_Occurrence_Specification,
+           UML_Occurrence_Specification_Access);
 
    type Set_Of_UML_Occurrence_Specification is
      new UML_Occurrence_Specification_Collections.Set with null record;

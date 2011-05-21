@@ -51,8 +51,8 @@ package AMF.UML.Actors.Collections is
 
    package UML_Actor_Collections is
      new AMF.Generic_Collections
-          (UML_Actor_Interface,
-           UML_Actor);
+          (UML_Actor,
+           UML_Actor_Access);
 
    type Set_Of_UML_Actor is
      new UML_Actor_Collections.Set with null record;

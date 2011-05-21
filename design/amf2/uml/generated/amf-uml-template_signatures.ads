@@ -54,32 +54,32 @@ package AMF.UML.Template_Signatures is
 
    pragma Preelaborate;
 
-   type UML_Template_Signature_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Template_Signature is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Template_Signature is
-     access all UML_Template_Signature_Interface'Class;
-   for UML_Template_Signature'Storage_Size use 0;
+   type UML_Template_Signature_Access is
+     access all UML_Template_Signature'Class;
+   for UML_Template_Signature_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Parameter
-    (Self : not null access constant UML_Template_Signature_Interface)
+    (Self : not null access constant UML_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter is abstract;
    --  The formal template parameters that are owned by this template 
    --  signature.
 
    not overriding function Get_Parameter
-    (Self : not null access constant UML_Template_Signature_Interface)
+    (Self : not null access constant UML_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter is abstract;
    --  The ordered set of all formal template parameters for this template 
    --  signature.
 
    not overriding function Get_Template
-    (Self : not null access constant UML_Template_Signature_Interface)
-       return AMF.UML.Templateable_Elements.UML_Templateable_Element is abstract;
+    (Self : not null access constant UML_Template_Signature)
+       return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access is abstract;
    --  The element that owns this template signature.
 
    not overriding procedure Set_Template
-    (Self : not null access UML_Template_Signature_Interface;
-     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element) is abstract;
+    (Self : not null access UML_Template_Signature;
+     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is abstract;
 
 end AMF.UML.Template_Signatures;

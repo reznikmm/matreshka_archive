@@ -53,21 +53,21 @@ package AMF.UML.Change_Events is
 
    pragma Preelaborate;
 
-   type UML_Change_Event_Interface is limited interface
-     and AMF.UML.Events.UML_Event_Interface;
+   type UML_Change_Event is limited interface
+     and AMF.UML.Events.UML_Event;
 
-   type UML_Change_Event is
-     access all UML_Change_Event_Interface'Class;
-   for UML_Change_Event'Storage_Size use 0;
+   type UML_Change_Event_Access is
+     access all UML_Change_Event'Class;
+   for UML_Change_Event_Access'Storage_Size use 0;
 
    not overriding function Get_Change_Expression
-    (Self : not null access constant UML_Change_Event_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Change_Event)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  A Boolean-valued expression that will result in a change event whenever 
    --  its value changes from false to true.
 
    not overriding procedure Set_Change_Expression
-    (Self : not null access UML_Change_Event_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Change_Event;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Change_Events;

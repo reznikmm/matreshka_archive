@@ -58,86 +58,86 @@ package AMF.UML.Parameters is
 
    pragma Preelaborate;
 
-   type UML_Parameter_Interface is limited interface
-     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Interface
-     and AMF.UML.Connectable_Elements.UML_Connectable_Element_Interface;
+   type UML_Parameter is limited interface
+     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element
+     and AMF.UML.Connectable_Elements.UML_Connectable_Element;
 
-   type UML_Parameter is
-     access all UML_Parameter_Interface'Class;
-   for UML_Parameter'Storage_Size use 0;
+   type UML_Parameter_Access is
+     access all UML_Parameter'Class;
+   for UML_Parameter_Access'Storage_Size use 0;
 
    not overriding function Get_Default
-    (Self : not null access constant UML_Parameter_Interface)
+    (Self : not null access constant UML_Parameter)
        return Optional_String is abstract;
    --  Specifies a String that represents a value to be used when no argument 
    --  is supplied for the Parameter.
 
    not overriding procedure Set_Default
-    (Self : not null access UML_Parameter_Interface;
+    (Self : not null access UML_Parameter;
      To   : Optional_String) is abstract;
 
    not overriding function Get_Default_Value
-    (Self : not null access constant UML_Parameter_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Parameter)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  Specifies a ValueSpecification that represents a value to be used when 
    --  no argument is supplied for the Parameter.
 
    not overriding procedure Set_Default_Value
-    (Self : not null access UML_Parameter_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Parameter;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
    not overriding function Get_Direction
-    (Self : not null access constant UML_Parameter_Interface)
+    (Self : not null access constant UML_Parameter)
        return UML_Parameter_Direction_Kind is abstract;
    --  Indicates whether a parameter is being sent into or out of a behavioral 
    --  element.
 
    not overriding procedure Set_Direction
-    (Self : not null access UML_Parameter_Interface;
+    (Self : not null access UML_Parameter;
      To   : UML_Parameter_Direction_Kind) is abstract;
 
    not overriding function Get_Effect
-    (Self : not null access constant UML_Parameter_Interface)
+    (Self : not null access constant UML_Parameter)
        return Optional_UML_Parameter_Effect_Kind is abstract;
    --  Specifies the effect that the owner of the parameter has on values 
    --  passed in or out of the parameter.
 
    not overriding procedure Set_Effect
-    (Self : not null access UML_Parameter_Interface;
+    (Self : not null access UML_Parameter;
      To   : Optional_UML_Parameter_Effect_Kind) is abstract;
 
    not overriding function Get_Is_Exception
-    (Self : not null access constant UML_Parameter_Interface)
+    (Self : not null access constant UML_Parameter)
        return Boolean is abstract;
    --  Tells whether an output parameter may emit a value to the exclusion of 
    --  the other outputs.
 
    not overriding procedure Set_Is_Exception
-    (Self : not null access UML_Parameter_Interface;
+    (Self : not null access UML_Parameter;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Stream
-    (Self : not null access constant UML_Parameter_Interface)
+    (Self : not null access constant UML_Parameter)
        return Boolean is abstract;
    --  Tells whether an input parameter may accept values while its behavior 
    --  is executing, or whether an output parameter post values while the 
    --  behavior is executing.
 
    not overriding procedure Set_Is_Stream
-    (Self : not null access UML_Parameter_Interface;
+    (Self : not null access UML_Parameter;
      To   : Boolean) is abstract;
 
    not overriding function Get_Operation
-    (Self : not null access constant UML_Parameter_Interface)
-       return AMF.UML.Operations.UML_Operation is abstract;
+    (Self : not null access constant UML_Parameter)
+       return AMF.UML.Operations.UML_Operation_Access is abstract;
    --  References the Operation owning this parameter.
 
    not overriding procedure Set_Operation
-    (Self : not null access UML_Parameter_Interface;
-     To   : AMF.UML.Operations.UML_Operation) is abstract;
+    (Self : not null access UML_Parameter;
+     To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
 
    not overriding function Get_Parameter_Set
-    (Self : not null access constant UML_Parameter_Interface)
+    (Self : not null access constant UML_Parameter)
        return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is abstract;
    --  The parameter sets containing the parameter. See ParameterSet.
 

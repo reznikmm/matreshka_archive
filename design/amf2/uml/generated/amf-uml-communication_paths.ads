@@ -52,11 +52,11 @@ package AMF.UML.Communication_Paths is
 
    pragma Preelaborate;
 
-   type UML_Communication_Path_Interface is limited interface
-     and AMF.UML.Associations.UML_Association_Interface;
+   type UML_Communication_Path is limited interface
+     and AMF.UML.Associations.UML_Association;
 
-   type UML_Communication_Path is
-     access all UML_Communication_Path_Interface'Class;
-   for UML_Communication_Path'Storage_Size use 0;
+   type UML_Communication_Path_Access is
+     access all UML_Communication_Path'Class;
+   for UML_Communication_Path_Access'Storage_Size use 0;
 
 end AMF.UML.Communication_Paths;

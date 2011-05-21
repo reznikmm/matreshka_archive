@@ -56,31 +56,31 @@ package AMF.UML.Combined_Fragments is
 
    pragma Preelaborate;
 
-   type UML_Combined_Fragment_Interface is limited interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_Combined_Fragment is limited interface
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_Combined_Fragment is
-     access all UML_Combined_Fragment_Interface'Class;
-   for UML_Combined_Fragment'Storage_Size use 0;
+   type UML_Combined_Fragment_Access is
+     access all UML_Combined_Fragment'Class;
+   for UML_Combined_Fragment_Access'Storage_Size use 0;
 
    not overriding function Get_Cfragment_Gate
-    (Self : not null access constant UML_Combined_Fragment_Interface)
+    (Self : not null access constant UML_Combined_Fragment)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
    --  Specifies the gates that form the interface between this 
    --  CombinedFragment and its surroundings
 
    not overriding function Get_Interaction_Operator
-    (Self : not null access constant UML_Combined_Fragment_Interface)
+    (Self : not null access constant UML_Combined_Fragment)
        return UML_Interaction_Operator_Kind is abstract;
    --  Specifies the operation which defines the semantics of this combination 
    --  of InteractionFragments.
 
    not overriding procedure Set_Interaction_Operator
-    (Self : not null access UML_Combined_Fragment_Interface;
+    (Self : not null access UML_Combined_Fragment;
      To   : UML_Interaction_Operator_Kind) is abstract;
 
    not overriding function Get_Operand
-    (Self : not null access constant UML_Combined_Fragment_Interface)
+    (Self : not null access constant UML_Combined_Fragment)
        return AMF.UML.Interaction_Operands.Collections.Ordered_Set_Of_UML_Interaction_Operand is abstract;
    --  The set of operands of the combined fragment.
 

@@ -74,54 +74,54 @@ package AMF.UML.Structured_Activity_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Structured_Activity_Node_Interface is limited interface
-     and AMF.UML.Namespaces.UML_Namespace_Interface
-     and AMF.UML.Activity_Groups.UML_Activity_Group_Interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Structured_Activity_Node is limited interface
+     and AMF.UML.Namespaces.UML_Namespace
+     and AMF.UML.Activity_Groups.UML_Activity_Group
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Structured_Activity_Node is
-     access all UML_Structured_Activity_Node_Interface'Class;
-   for UML_Structured_Activity_Node'Storage_Size use 0;
+   type UML_Structured_Activity_Node_Access is
+     access all UML_Structured_Activity_Node'Class;
+   for UML_Structured_Activity_Node_Access'Storage_Size use 0;
 
    overriding function Get_Activity
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
-       return AMF.UML.Activities.UML_Activity is abstract;
+    (Self : not null access constant UML_Structured_Activity_Node)
+       return AMF.UML.Activities.UML_Activity_Access is abstract;
    --  Activity immediately containing the node.
 
    overriding procedure Set_Activity
-    (Self : not null access UML_Structured_Activity_Node_Interface;
-     To   : AMF.UML.Activities.UML_Activity) is abstract;
+    (Self : not null access UML_Structured_Activity_Node;
+     To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
 
    not overriding function Get_Edge
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
+    (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
    --  Edges immediately contained in the structured node.
 
    not overriding function Get_Must_Isolate
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
+    (Self : not null access constant UML_Structured_Activity_Node)
        return Boolean is abstract;
    --  If true, then the actions in the node execute in isolation from actions 
    --  outside the node.
 
    not overriding procedure Set_Must_Isolate
-    (Self : not null access UML_Structured_Activity_Node_Interface;
+    (Self : not null access UML_Structured_Activity_Node;
      To   : Boolean) is abstract;
 
    not overriding function Get_Node
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
+    (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
    --  Nodes immediately contained in the group.
 
    not overriding function Get_Structured_Node_Input
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
+    (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
 
    not overriding function Get_Structured_Node_Output
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
+    (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
 
    not overriding function Get_Variable
-    (Self : not null access constant UML_Structured_Activity_Node_Interface)
+    (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Variables.Collections.Set_Of_UML_Variable is abstract;
    --  A variable defined in the scope of the structured activity node. It has 
    --  no value and may not be accessed

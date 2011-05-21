@@ -51,8 +51,8 @@ package AMF.UML.Substitutions.Collections is
 
    package UML_Substitution_Collections is
      new AMF.Generic_Collections
-          (UML_Substitution_Interface,
-           UML_Substitution);
+          (UML_Substitution,
+           UML_Substitution_Access);
 
    type Set_Of_UML_Substitution is
      new UML_Substitution_Collections.Set with null record;

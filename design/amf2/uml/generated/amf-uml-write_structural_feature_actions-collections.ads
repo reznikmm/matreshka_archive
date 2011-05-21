@@ -51,8 +51,8 @@ package AMF.UML.Write_Structural_Feature_Actions.Collections is
 
    package UML_Write_Structural_Feature_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Write_Structural_Feature_Action_Interface,
-           UML_Write_Structural_Feature_Action);
+          (UML_Write_Structural_Feature_Action,
+           UML_Write_Structural_Feature_Action_Access);
 
    type Set_Of_UML_Write_Structural_Feature_Action is
      new UML_Write_Structural_Feature_Action_Collections.Set with null record;

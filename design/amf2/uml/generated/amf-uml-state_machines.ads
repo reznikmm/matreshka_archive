@@ -60,32 +60,32 @@ package AMF.UML.State_Machines is
 
    pragma Preelaborate;
 
-   type UML_State_Machine_Interface is limited interface
-     and AMF.UML.Behaviors.UML_Behavior_Interface;
+   type UML_State_Machine is limited interface
+     and AMF.UML.Behaviors.UML_Behavior;
 
-   type UML_State_Machine is
-     access all UML_State_Machine_Interface'Class;
-   for UML_State_Machine'Storage_Size use 0;
+   type UML_State_Machine_Access is
+     access all UML_State_Machine'Class;
+   for UML_State_Machine_Access'Storage_Size use 0;
 
    not overriding function Get_Connection_Point
-    (Self : not null access constant UML_State_Machine_Interface)
+    (Self : not null access constant UML_State_Machine)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
    --  The connection points defined for this state machine. They represent 
    --  the interface of the state machine when used as part of submachine 
    --  state.
 
    not overriding function Get_Extended_State_Machine
-    (Self : not null access constant UML_State_Machine_Interface)
+    (Self : not null access constant UML_State_Machine)
        return AMF.UML.State_Machines.Collections.Set_Of_UML_State_Machine is abstract;
    --  The state machines of which this is an extension.
 
    not overriding function Get_Region
-    (Self : not null access constant UML_State_Machine_Interface)
+    (Self : not null access constant UML_State_Machine)
        return AMF.UML.Regions.Collections.Set_Of_UML_Region is abstract;
    --  The regions owned directly by the state machine.
 
    not overriding function Get_Submachine_State
-    (Self : not null access constant UML_State_Machine_Interface)
+    (Self : not null access constant UML_State_Machine)
        return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
    --  References the submachine(s) in case of a submachine state. Multiple 
    --  machines are referenced in case of a concurrent state.

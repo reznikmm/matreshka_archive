@@ -51,8 +51,8 @@ package AMF.UML.Usages.Collections is
 
    package UML_Usage_Collections is
      new AMF.Generic_Collections
-          (UML_Usage_Interface,
-           UML_Usage);
+          (UML_Usage,
+           UML_Usage_Access);
 
    type Set_Of_UML_Usage is
      new UML_Usage_Collections.Set with null record;

@@ -52,26 +52,26 @@ package AMF.UML.Enumeration_Literals is
 
    pragma Preelaborate;
 
-   type UML_Enumeration_Literal_Interface is limited interface
-     and AMF.UML.Instance_Specifications.UML_Instance_Specification_Interface;
+   type UML_Enumeration_Literal is limited interface
+     and AMF.UML.Instance_Specifications.UML_Instance_Specification;
 
-   type UML_Enumeration_Literal is
-     access all UML_Enumeration_Literal_Interface'Class;
-   for UML_Enumeration_Literal'Storage_Size use 0;
+   type UML_Enumeration_Literal_Access is
+     access all UML_Enumeration_Literal'Class;
+   for UML_Enumeration_Literal_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier
-    (Self : not null access constant UML_Enumeration_Literal_Interface)
-       return AMF.UML.Enumerations.UML_Enumeration is abstract;
+    (Self : not null access constant UML_Enumeration_Literal)
+       return AMF.UML.Enumerations.UML_Enumeration_Access is abstract;
    --  The classifier of this EnumerationLiteral derived to be equal to its 
    --  enumeration.
 
    not overriding function Get_Enumeration
-    (Self : not null access constant UML_Enumeration_Literal_Interface)
-       return AMF.UML.Enumerations.UML_Enumeration is abstract;
+    (Self : not null access constant UML_Enumeration_Literal)
+       return AMF.UML.Enumerations.UML_Enumeration_Access is abstract;
    --  The Enumeration that this EnumerationLiteral is a member of.
 
    not overriding procedure Set_Enumeration
-    (Self : not null access UML_Enumeration_Literal_Interface;
-     To   : AMF.UML.Enumerations.UML_Enumeration) is abstract;
+    (Self : not null access UML_Enumeration_Literal;
+     To   : AMF.UML.Enumerations.UML_Enumeration_Access) is abstract;
 
 end AMF.UML.Enumeration_Literals;

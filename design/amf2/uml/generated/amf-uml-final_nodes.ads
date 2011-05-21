@@ -52,11 +52,11 @@ package AMF.UML.Final_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Final_Node_Interface is limited interface
-     and AMF.UML.Control_Nodes.UML_Control_Node_Interface;
+   type UML_Final_Node is limited interface
+     and AMF.UML.Control_Nodes.UML_Control_Node;
 
-   type UML_Final_Node is
-     access all UML_Final_Node_Interface'Class;
-   for UML_Final_Node'Storage_Size use 0;
+   type UML_Final_Node_Access is
+     access all UML_Final_Node'Class;
+   for UML_Final_Node_Access'Storage_Size use 0;
 
 end AMF.UML.Final_Nodes;

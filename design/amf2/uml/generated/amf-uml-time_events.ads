@@ -55,29 +55,29 @@ package AMF.UML.Time_Events is
 
    pragma Preelaborate;
 
-   type UML_Time_Event_Interface is limited interface
-     and AMF.UML.Events.UML_Event_Interface;
+   type UML_Time_Event is limited interface
+     and AMF.UML.Events.UML_Event;
 
-   type UML_Time_Event is
-     access all UML_Time_Event_Interface'Class;
-   for UML_Time_Event'Storage_Size use 0;
+   type UML_Time_Event_Access is
+     access all UML_Time_Event'Class;
+   for UML_Time_Event_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Relative
-    (Self : not null access constant UML_Time_Event_Interface)
+    (Self : not null access constant UML_Time_Event)
        return Boolean is abstract;
    --  Specifies whether it is relative or absolute time.
 
    not overriding procedure Set_Is_Relative
-    (Self : not null access UML_Time_Event_Interface;
+    (Self : not null access UML_Time_Event;
      To   : Boolean) is abstract;
 
    not overriding function Get_When
-    (Self : not null access constant UML_Time_Event_Interface)
-       return AMF.UML.Time_Expressions.UML_Time_Expression is abstract;
+    (Self : not null access constant UML_Time_Event)
+       return AMF.UML.Time_Expressions.UML_Time_Expression_Access is abstract;
    --  Specifies the corresponding time deadline.
 
    not overriding procedure Set_When
-    (Self : not null access UML_Time_Event_Interface;
-     To   : AMF.UML.Time_Expressions.UML_Time_Expression) is abstract;
+    (Self : not null access UML_Time_Event;
+     To   : AMF.UML.Time_Expressions.UML_Time_Expression_Access) is abstract;
 
 end AMF.UML.Time_Events;

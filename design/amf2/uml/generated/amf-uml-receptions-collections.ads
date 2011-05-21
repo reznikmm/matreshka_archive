@@ -51,8 +51,8 @@ package AMF.UML.Receptions.Collections is
 
    package UML_Reception_Collections is
      new AMF.Generic_Collections
-          (UML_Reception_Interface,
-           UML_Reception);
+          (UML_Reception,
+           UML_Reception_Access);
 
    type Set_Of_UML_Reception is
      new UML_Reception_Collections.Set with null record;

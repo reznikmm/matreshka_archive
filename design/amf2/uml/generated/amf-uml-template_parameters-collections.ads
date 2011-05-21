@@ -51,8 +51,8 @@ package AMF.UML.Template_Parameters.Collections is
 
    package UML_Template_Parameter_Collections is
      new AMF.Generic_Collections
-          (UML_Template_Parameter_Interface,
-           UML_Template_Parameter);
+          (UML_Template_Parameter,
+           UML_Template_Parameter_Access);
 
    type Set_Of_UML_Template_Parameter is
      new UML_Template_Parameter_Collections.Set with null record;

@@ -54,20 +54,20 @@ package AMF.UML.Types is
 
    pragma Preelaborate;
 
-   type UML_Type_Interface is limited interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Type is limited interface
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Type is
-     access all UML_Type_Interface'Class;
-   for UML_Type'Storage_Size use 0;
+   type UML_Type_Access is
+     access all UML_Type'Class;
+   for UML_Type_Access'Storage_Size use 0;
 
    not overriding function Get_Package
-    (Self : not null access constant UML_Type_Interface)
-       return AMF.UML.Packages.UML_Package is abstract;
+    (Self : not null access constant UML_Type)
+       return AMF.UML.Packages.UML_Package_Access is abstract;
    --  Specifies the owning package of this classifier, if any.
 
    not overriding procedure Set_Package
-    (Self : not null access UML_Type_Interface;
-     To   : AMF.UML.Packages.UML_Package) is abstract;
+    (Self : not null access UML_Type;
+     To   : AMF.UML.Packages.UML_Package_Access) is abstract;
 
 end AMF.UML.Types;

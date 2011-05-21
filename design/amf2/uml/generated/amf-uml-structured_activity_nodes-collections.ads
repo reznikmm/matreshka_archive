@@ -51,8 +51,8 @@ package AMF.UML.Structured_Activity_Nodes.Collections is
 
    package UML_Structured_Activity_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Structured_Activity_Node_Interface,
-           UML_Structured_Activity_Node);
+          (UML_Structured_Activity_Node,
+           UML_Structured_Activity_Node_Access);
 
    type Set_Of_UML_Structured_Activity_Node is
      new UML_Structured_Activity_Node_Collections.Set with null record;

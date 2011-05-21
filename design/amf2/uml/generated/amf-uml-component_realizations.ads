@@ -56,25 +56,25 @@ package AMF.UML.Component_Realizations is
 
    pragma Preelaborate;
 
-   type UML_Component_Realization_Interface is limited interface
-     and AMF.UML.Realizations.UML_Realization_Interface;
+   type UML_Component_Realization is limited interface
+     and AMF.UML.Realizations.UML_Realization;
 
-   type UML_Component_Realization is
-     access all UML_Component_Realization_Interface'Class;
-   for UML_Component_Realization'Storage_Size use 0;
+   type UML_Component_Realization_Access is
+     access all UML_Component_Realization'Class;
+   for UML_Component_Realization_Access'Storage_Size use 0;
 
    not overriding function Get_Abstraction
-    (Self : not null access constant UML_Component_Realization_Interface)
-       return AMF.UML.Components.UML_Component is abstract;
+    (Self : not null access constant UML_Component_Realization)
+       return AMF.UML.Components.UML_Component_Access is abstract;
    --  The Component that owns this ComponentRealization and which is 
    --  implemented by its realizing classifiers.
 
    not overriding procedure Set_Abstraction
-    (Self : not null access UML_Component_Realization_Interface;
-     To   : AMF.UML.Components.UML_Component) is abstract;
+    (Self : not null access UML_Component_Realization;
+     To   : AMF.UML.Components.UML_Component_Access) is abstract;
 
    not overriding function Get_Realizing_Classifier
-    (Self : not null access constant UML_Component_Realization_Interface)
+    (Self : not null access constant UML_Component_Realization)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The classifiers that are involved in the implementation of the 
    --  Component that owns this Realization.

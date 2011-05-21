@@ -51,8 +51,8 @@ package AMF.UML.Control_Flows.Collections is
 
    package UML_Control_Flow_Collections is
      new AMF.Generic_Collections
-          (UML_Control_Flow_Interface,
-           UML_Control_Flow);
+          (UML_Control_Flow,
+           UML_Control_Flow_Access);
 
    type Set_Of_UML_Control_Flow is
      new UML_Control_Flow_Collections.Set with null record;

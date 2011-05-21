@@ -53,20 +53,20 @@ package AMF.UML.Variable_Actions is
 
    pragma Preelaborate;
 
-   type UML_Variable_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Variable_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Variable_Action is
-     access all UML_Variable_Action_Interface'Class;
-   for UML_Variable_Action'Storage_Size use 0;
+   type UML_Variable_Action_Access is
+     access all UML_Variable_Action'Class;
+   for UML_Variable_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Variable
-    (Self : not null access constant UML_Variable_Action_Interface)
-       return AMF.UML.Variables.UML_Variable is abstract;
+    (Self : not null access constant UML_Variable_Action)
+       return AMF.UML.Variables.UML_Variable_Access is abstract;
    --  Variable to be read.
 
    not overriding procedure Set_Variable
-    (Self : not null access UML_Variable_Action_Interface;
-     To   : AMF.UML.Variables.UML_Variable) is abstract;
+    (Self : not null access UML_Variable_Action;
+     To   : AMF.UML.Variables.UML_Variable_Access) is abstract;
 
 end AMF.UML.Variable_Actions;

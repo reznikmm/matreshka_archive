@@ -53,20 +53,20 @@ package AMF.UML.Read_Self_Actions is
 
    pragma Preelaborate;
 
-   type UML_Read_Self_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Read_Self_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Read_Self_Action is
-     access all UML_Read_Self_Action_Interface'Class;
-   for UML_Read_Self_Action'Storage_Size use 0;
+   type UML_Read_Self_Action_Access is
+     access all UML_Read_Self_Action'Class;
+   for UML_Read_Self_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Read_Self_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Read_Self_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  Gives the output pin on which the hosting object is placed.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Read_Self_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Read_Self_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Read_Self_Actions;

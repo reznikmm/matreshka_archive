@@ -53,15 +53,15 @@ package AMF.UML.Relationships is
 
    pragma Preelaborate;
 
-   type UML_Relationship_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Relationship is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Relationship is
-     access all UML_Relationship_Interface'Class;
-   for UML_Relationship'Storage_Size use 0;
+   type UML_Relationship_Access is
+     access all UML_Relationship'Class;
+   for UML_Relationship_Access'Storage_Size use 0;
 
    not overriding function Get_Related_Element
-    (Self : not null access constant UML_Relationship_Interface)
+    (Self : not null access constant UML_Relationship)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  Specifies the elements related by the Relationship.
 

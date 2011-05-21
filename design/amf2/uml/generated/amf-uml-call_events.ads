@@ -53,20 +53,20 @@ package AMF.UML.Call_Events is
 
    pragma Preelaborate;
 
-   type UML_Call_Event_Interface is limited interface
-     and AMF.UML.Message_Events.UML_Message_Event_Interface;
+   type UML_Call_Event is limited interface
+     and AMF.UML.Message_Events.UML_Message_Event;
 
-   type UML_Call_Event is
-     access all UML_Call_Event_Interface'Class;
-   for UML_Call_Event'Storage_Size use 0;
+   type UML_Call_Event_Access is
+     access all UML_Call_Event'Class;
+   for UML_Call_Event_Access'Storage_Size use 0;
 
    not overriding function Get_Operation
-    (Self : not null access constant UML_Call_Event_Interface)
-       return AMF.UML.Operations.UML_Operation is abstract;
+    (Self : not null access constant UML_Call_Event)
+       return AMF.UML.Operations.UML_Operation_Access is abstract;
    --  Designates the operation whose invocation raised the call event.
 
    not overriding procedure Set_Operation
-    (Self : not null access UML_Call_Event_Interface;
-     To   : AMF.UML.Operations.UML_Operation) is abstract;
+    (Self : not null access UML_Call_Event;
+     To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
 
 end AMF.UML.Call_Events;

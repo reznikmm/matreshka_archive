@@ -56,30 +56,30 @@ package AMF.UML.Redefinable_Template_Signatures is
 
    pragma Preelaborate;
 
-   type UML_Redefinable_Template_Signature_Interface is limited interface
-     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Interface
-     and AMF.UML.Template_Signatures.UML_Template_Signature_Interface;
+   type UML_Redefinable_Template_Signature is limited interface
+     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element
+     and AMF.UML.Template_Signatures.UML_Template_Signature;
 
-   type UML_Redefinable_Template_Signature is
-     access all UML_Redefinable_Template_Signature_Interface'Class;
-   for UML_Redefinable_Template_Signature'Storage_Size use 0;
+   type UML_Redefinable_Template_Signature_Access is
+     access all UML_Redefinable_Template_Signature'Class;
+   for UML_Redefinable_Template_Signature_Access'Storage_Size use 0;
 
    not overriding function Get_Classifier
-    (Self : not null access constant UML_Redefinable_Template_Signature_Interface)
-       return AMF.UML.Classifiers.UML_Classifier is abstract;
+    (Self : not null access constant UML_Redefinable_Template_Signature)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
    --  The classifier that owns this template signature.
 
    not overriding procedure Set_Classifier
-    (Self : not null access UML_Redefinable_Template_Signature_Interface;
-     To   : AMF.UML.Classifiers.UML_Classifier) is abstract;
+    (Self : not null access UML_Redefinable_Template_Signature;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
 
    not overriding function Get_Extended_Signature
-    (Self : not null access constant UML_Redefinable_Template_Signature_Interface)
+    (Self : not null access constant UML_Redefinable_Template_Signature)
        return AMF.UML.Redefinable_Template_Signatures.Collections.Set_Of_UML_Redefinable_Template_Signature is abstract;
    --  The template signature that is extended by this template signature.
 
    not overriding function Get_Inherited_Parameter
-    (Self : not null access constant UML_Redefinable_Template_Signature_Interface)
+    (Self : not null access constant UML_Redefinable_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Set_Of_UML_Template_Parameter is abstract;
    --  The formal template parameters of the extendedSignature.
 

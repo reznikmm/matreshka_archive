@@ -51,8 +51,8 @@ package AMF.UML.Models.Collections is
 
    package UML_Model_Collections is
      new AMF.Generic_Collections
-          (UML_Model_Interface,
-           UML_Model);
+          (UML_Model,
+           UML_Model_Access);
 
    type Set_Of_UML_Model is
      new UML_Model_Collections.Set with null record;

@@ -80,29 +80,29 @@ package AMF.UML.Classifiers is
 
    pragma Preelaborate;
 
-   type UML_Classifier_Interface is limited interface
-     and AMF.UML.Namespaces.UML_Namespace_Interface
-     and AMF.UML.Types.UML_Type_Interface
-     and AMF.UML.Templateable_Elements.UML_Templateable_Element_Interface
-     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Interface;
+   type UML_Classifier is limited interface
+     and AMF.UML.Namespaces.UML_Namespace
+     and AMF.UML.Types.UML_Type
+     and AMF.UML.Templateable_Elements.UML_Templateable_Element
+     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element;
 
-   type UML_Classifier is
-     access all UML_Classifier_Interface'Class;
-   for UML_Classifier'Storage_Size use 0;
+   type UML_Classifier_Access is
+     access all UML_Classifier'Class;
+   for UML_Classifier_Access'Storage_Size use 0;
 
    not overriding function Get_Attribute
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  Refers to all of the Properties that are direct (i.e. not inherited or 
    --  imported) attributes of the classifier.
 
    not overriding function Get_Collaboration_Use
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Collaboration_Uses.Collections.Set_Of_UML_Collaboration_Use is abstract;
    --  References the collaboration uses owned by the classifier.
 
    not overriding function Get_Feature
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Features.Collections.Set_Of_UML_Feature is abstract;
    --  Specifies each feature defined in the classifier.
    --  Note that there may be members of the Classifier that are of the type 
@@ -110,26 +110,26 @@ package AMF.UML.Classifiers is
    --  features.
 
    not overriding function Get_General
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  Specifies the general Classifiers for this Classifier.
    --  References the general classifier in the Generalization relationship.
 
    not overriding function Get_Generalization
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization is abstract;
    --  Specifies the Generalization relationships for this Classifier. These 
    --  Generalizations navigaten to more general classifiers in the 
    --  generalization hierarchy.
 
    not overriding function Get_Inherited_Member
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  Specifies all elements inherited by this classifier from the general 
    --  classifiers.
 
    not overriding function Get_Is_Abstract
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return Boolean is abstract;
    --  If true, the Classifier does not provide a complete declaration and can 
    --  typically not be instantiated. An abstract classifier is intended to be 
@@ -137,11 +137,11 @@ package AMF.UML.Classifiers is
    --  metarelationships or generalization relationships.
 
    not overriding procedure Set_Is_Abstract
-    (Self : not null access UML_Classifier_Interface;
+    (Self : not null access UML_Classifier;
      To   : Boolean) is abstract;
 
    not overriding function Get_Is_Final_Specialization
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return Boolean is abstract;
    --  If true, the Classifier cannot be specialized by generalization. Note 
    --  that this property is preserved through package merge operations; that 
@@ -153,61 +153,61 @@ package AMF.UML.Classifiers is
    --  isFinalSpecialization =false.
 
    not overriding procedure Set_Is_Final_Specialization
-    (Self : not null access UML_Classifier_Interface;
+    (Self : not null access UML_Classifier;
      To   : Boolean) is abstract;
 
    not overriding function Get_Owned_Template_Signature
-    (Self : not null access constant UML_Classifier_Interface)
-       return AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature is abstract;
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access is abstract;
    --  The optional template signature specifying the formal template 
    --  parameters.
 
    not overriding procedure Set_Owned_Template_Signature
-    (Self : not null access UML_Classifier_Interface;
-     To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature) is abstract;
+    (Self : not null access UML_Classifier;
+     To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access) is abstract;
 
    not overriding function Get_Owned_Use_Case
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
    --  References the use cases owned by this classifier.
 
    not overriding function Get_Powertype_Extent
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set is abstract;
    --  Designates the GeneralizationSet of which the associated Classifier is 
    --  a power type.
 
    not overriding function Get_Redefined_Classifier
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  References the Classifiers that are redefined by this Classifier.
 
    not overriding function Get_Representation
-    (Self : not null access constant UML_Classifier_Interface)
-       return AMF.UML.Collaboration_Uses.UML_Collaboration_Use is abstract;
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access is abstract;
    --  References a collaboration use which indicates the collaboration that 
    --  represents this classifier.
 
    not overriding procedure Set_Representation
-    (Self : not null access UML_Classifier_Interface;
-     To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use) is abstract;
+    (Self : not null access UML_Classifier;
+     To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access) is abstract;
 
    not overriding function Get_Substitution
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Substitutions.Collections.Set_Of_UML_Substitution is abstract;
    --  References the substitutions that are owned by this Classifier.
 
    not overriding function Get_Template_Parameter
-    (Self : not null access constant UML_Classifier_Interface)
-       return AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter is abstract;
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access is abstract;
    --  The template parameter that exposes this element as a formal parameter.
 
    not overriding procedure Set_Template_Parameter
-    (Self : not null access UML_Classifier_Interface;
-     To   : AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter) is abstract;
+    (Self : not null access UML_Classifier;
+     To   : AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access) is abstract;
 
    not overriding function Get_Use_Case
-    (Self : not null access constant UML_Classifier_Interface)
+    (Self : not null access constant UML_Classifier)
        return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
    --  The set of use cases for which this Classifier is the subject.
 

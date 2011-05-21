@@ -53,32 +53,32 @@ package AMF.UML.Expansion_Regions is
 
    pragma Preelaborate;
 
-   type UML_Expansion_Region_Interface is limited interface
-     and AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Interface;
+   type UML_Expansion_Region is limited interface
+     and AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node;
 
-   type UML_Expansion_Region is
-     access all UML_Expansion_Region_Interface'Class;
-   for UML_Expansion_Region'Storage_Size use 0;
+   type UML_Expansion_Region_Access is
+     access all UML_Expansion_Region'Class;
+   for UML_Expansion_Region_Access'Storage_Size use 0;
 
    not overriding function Get_Input_Element
-    (Self : not null access constant UML_Expansion_Region_Interface)
+    (Self : not null access constant UML_Expansion_Region)
        return AMF.UML.Expansion_Nodes.Collections.Set_Of_UML_Expansion_Node is abstract;
    --  An object node that holds a separate element of the input collection 
    --  during each of the multiple executions of the region.
 
    not overriding function Get_Mode
-    (Self : not null access constant UML_Expansion_Region_Interface)
+    (Self : not null access constant UML_Expansion_Region)
        return UML_Expansion_Kind is abstract;
    --  The way in which the executions interact: parallel: all interactions 
    --  are independent iterative: the interactions occur in order of the 
    --  elements stream: a stream of values flows into a single execution
 
    not overriding procedure Set_Mode
-    (Self : not null access UML_Expansion_Region_Interface;
+    (Self : not null access UML_Expansion_Region;
      To   : UML_Expansion_Kind) is abstract;
 
    not overriding function Get_Output_Element
-    (Self : not null access constant UML_Expansion_Region_Interface)
+    (Self : not null access constant UML_Expansion_Region)
        return AMF.UML.Expansion_Nodes.Collections.Set_Of_UML_Expansion_Node is abstract;
    --  An object node that accepts a separate element of the output collection 
    --  during each of the multiple executions of the region. The values are 

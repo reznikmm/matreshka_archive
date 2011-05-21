@@ -68,46 +68,46 @@ package AMF.UML.Interfaces is
 
    pragma Preelaborate;
 
-   type UML_Interface_Interface is limited interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface;
+   type UML_Interface is limited interface
+     and AMF.UML.Classifiers.UML_Classifier;
 
-   type UML_Interface is
-     access all UML_Interface_Interface'Class;
-   for UML_Interface'Storage_Size use 0;
+   type UML_Interface_Access is
+     access all UML_Interface'Class;
+   for UML_Interface_Access'Storage_Size use 0;
 
    not overriding function Get_Nested_Classifier
-    (Self : not null access constant UML_Interface_Interface)
+    (Self : not null access constant UML_Interface)
        return AMF.UML.Classifiers.Collections.Ordered_Set_Of_UML_Classifier is abstract;
    --  References all the Classifiers that are defined (nested) within the 
    --  Class.
 
    not overriding function Get_Owned_Attribute
-    (Self : not null access constant UML_Interface_Interface)
+    (Self : not null access constant UML_Interface)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
-    (Self : not null access constant UML_Interface_Interface)
+    (Self : not null access constant UML_Interface)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
    --  The operations owned by the class.
 
    not overriding function Get_Owned_Reception
-    (Self : not null access constant UML_Interface_Interface)
+    (Self : not null access constant UML_Interface)
        return AMF.UML.Receptions.Collections.Set_Of_UML_Reception is abstract;
    --  Receptions that objects providing this interface are willing to accept.
 
    not overriding function Get_Protocol
-    (Self : not null access constant UML_Interface_Interface)
-       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine is abstract;
+    (Self : not null access constant UML_Interface)
+       return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
    --  References a protocol state machine specifying the legal sequences of 
    --  the invocation of the behavioral features described in the interface.
 
    not overriding procedure Set_Protocol
-    (Self : not null access UML_Interface_Interface;
-     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine) is abstract;
+    (Self : not null access UML_Interface;
+     To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
 
    not overriding function Get_Redefined_Interface
-    (Self : not null access constant UML_Interface_Interface)
+    (Self : not null access constant UML_Interface)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
    --  References all the Interfaces redefined by this Interface.
 

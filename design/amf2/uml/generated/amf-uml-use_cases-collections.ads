@@ -51,8 +51,8 @@ package AMF.UML.Use_Cases.Collections is
 
    package UML_Use_Case_Collections is
      new AMF.Generic_Collections
-          (UML_Use_Case_Interface,
-           UML_Use_Case);
+          (UML_Use_Case,
+           UML_Use_Case_Access);
 
    type Set_Of_UML_Use_Case is
      new UML_Use_Case_Collections.Set with null record;

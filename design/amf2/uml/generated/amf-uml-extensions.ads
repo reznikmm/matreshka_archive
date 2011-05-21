@@ -55,15 +55,15 @@ package AMF.UML.Extensions is
 
    pragma Preelaborate;
 
-   type UML_Extension_Interface is limited interface
-     and AMF.UML.Associations.UML_Association_Interface;
+   type UML_Extension is limited interface
+     and AMF.UML.Associations.UML_Association;
 
-   type UML_Extension is
-     access all UML_Extension_Interface'Class;
-   for UML_Extension'Storage_Size use 0;
+   type UML_Extension_Access is
+     access all UML_Extension'Class;
+   for UML_Extension_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Required
-    (Self : not null access constant UML_Extension_Interface)
+    (Self : not null access constant UML_Extension)
        return Boolean is abstract;
    --  Indicates whether an instance of the extending stereotype must be 
    --  created when an instance of the extended class is created. The 
@@ -74,19 +74,19 @@ package AMF.UML.Extensions is
    --  isRequired is false.
 
    not overriding function Get_Metaclass
-    (Self : not null access constant UML_Extension_Interface)
-       return AMF.UML.Classes.UML_Class is abstract;
+    (Self : not null access constant UML_Extension)
+       return AMF.UML.Classes.UML_Class_Access is abstract;
    --  References the Class that is extended through an Extension. The 
    --  property is derived from the type of the memberEnd that is not the 
    --  ownedEnd.
 
    not overriding function Get_Owned_End
-    (Self : not null access constant UML_Extension_Interface)
-       return AMF.UML.Extension_Ends.UML_Extension_End is abstract;
+    (Self : not null access constant UML_Extension)
+       return AMF.UML.Extension_Ends.UML_Extension_End_Access is abstract;
    --  References the end of the extension that is typed by a Stereotype.
 
    not overriding procedure Set_Owned_End
-    (Self : not null access UML_Extension_Interface;
-     To   : AMF.UML.Extension_Ends.UML_Extension_End) is abstract;
+    (Self : not null access UML_Extension;
+     To   : AMF.UML.Extension_Ends.UML_Extension_End_Access) is abstract;
 
 end AMF.UML.Extensions;

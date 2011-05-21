@@ -54,20 +54,20 @@ package AMF.UML.Profiles is
 
    pragma Preelaborate;
 
-   type UML_Profile_Interface is limited interface
-     and AMF.UML.Packages.UML_Package_Interface;
+   type UML_Profile is limited interface
+     and AMF.UML.Packages.UML_Package;
 
-   type UML_Profile is
-     access all UML_Profile_Interface'Class;
-   for UML_Profile'Storage_Size use 0;
+   type UML_Profile_Access is
+     access all UML_Profile'Class;
+   for UML_Profile_Access'Storage_Size use 0;
 
    not overriding function Get_Metaclass_Reference
-    (Self : not null access constant UML_Profile_Interface)
+    (Self : not null access constant UML_Profile)
        return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import is abstract;
    --  References a metaclass that may be extended.
 
    not overriding function Get_Metamodel_Reference
-    (Self : not null access constant UML_Profile_Interface)
+    (Self : not null access constant UML_Profile)
        return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is abstract;
    --  References a package containing (directly or indirectly) metaclasses 
    --  that may be extended.

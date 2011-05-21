@@ -51,8 +51,8 @@ package AMF.UML.Package_Merges.Collections is
 
    package UML_Package_Merge_Collections is
      new AMF.Generic_Collections
-          (UML_Package_Merge_Interface,
-           UML_Package_Merge);
+          (UML_Package_Merge,
+           UML_Package_Merge_Access);
 
    type Set_Of_UML_Package_Merge is
      new UML_Package_Merge_Collections.Set with null record;

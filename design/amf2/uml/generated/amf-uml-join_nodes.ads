@@ -55,31 +55,31 @@ package AMF.UML.Join_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Join_Node_Interface is limited interface
-     and AMF.UML.Control_Nodes.UML_Control_Node_Interface;
+   type UML_Join_Node is limited interface
+     and AMF.UML.Control_Nodes.UML_Control_Node;
 
-   type UML_Join_Node is
-     access all UML_Join_Node_Interface'Class;
-   for UML_Join_Node'Storage_Size use 0;
+   type UML_Join_Node_Access is
+     access all UML_Join_Node'Class;
+   for UML_Join_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Combine_Duplicate
-    (Self : not null access constant UML_Join_Node_Interface)
+    (Self : not null access constant UML_Join_Node)
        return Boolean is abstract;
    --  Tells whether tokens having objects with the same identity are combined 
    --  into one by the join.
 
    not overriding procedure Set_Is_Combine_Duplicate
-    (Self : not null access UML_Join_Node_Interface;
+    (Self : not null access UML_Join_Node;
      To   : Boolean) is abstract;
 
    not overriding function Get_Join_Spec
-    (Self : not null access constant UML_Join_Node_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Join_Node)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  A specification giving the conditions under which the join with emit a 
    --  token. Default is "and".
 
    not overriding procedure Set_Join_Spec
-    (Self : not null access UML_Join_Node_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Join_Node;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Join_Nodes;

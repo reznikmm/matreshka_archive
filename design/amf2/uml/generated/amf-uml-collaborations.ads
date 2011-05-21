@@ -55,16 +55,16 @@ package AMF.UML.Collaborations is
 
    pragma Preelaborate;
 
-   type UML_Collaboration_Interface is limited interface
-     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Interface
-     and AMF.UML.Structured_Classifiers.UML_Structured_Classifier_Interface;
+   type UML_Collaboration is limited interface
+     and AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier
+     and AMF.UML.Structured_Classifiers.UML_Structured_Classifier;
 
-   type UML_Collaboration is
-     access all UML_Collaboration_Interface'Class;
-   for UML_Collaboration'Storage_Size use 0;
+   type UML_Collaboration_Access is
+     access all UML_Collaboration'Class;
+   for UML_Collaboration_Access'Storage_Size use 0;
 
    not overriding function Get_Collaboration_Role
-    (Self : not null access constant UML_Collaboration_Interface)
+    (Self : not null access constant UML_Collaboration)
        return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
    --  References connectable elements (possibly owned by other classifiers) 
    --  which represent roles that instances may play in this collaboration.

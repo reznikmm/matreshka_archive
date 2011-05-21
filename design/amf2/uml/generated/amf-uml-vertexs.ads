@@ -54,29 +54,29 @@ package AMF.UML.Vertexs is
 
    pragma Preelaborate;
 
-   type UML_Vertex_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Vertex is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Vertex is
-     access all UML_Vertex_Interface'Class;
-   for UML_Vertex'Storage_Size use 0;
+   type UML_Vertex_Access is
+     access all UML_Vertex'Class;
+   for UML_Vertex_Access'Storage_Size use 0;
 
    not overriding function Get_Container
-    (Self : not null access constant UML_Vertex_Interface)
-       return AMF.UML.Regions.UML_Region is abstract;
+    (Self : not null access constant UML_Vertex)
+       return AMF.UML.Regions.UML_Region_Access is abstract;
    --  The region that contains this vertex.
 
    not overriding procedure Set_Container
-    (Self : not null access UML_Vertex_Interface;
-     To   : AMF.UML.Regions.UML_Region) is abstract;
+    (Self : not null access UML_Vertex;
+     To   : AMF.UML.Regions.UML_Region_Access) is abstract;
 
    not overriding function Get_Incoming
-    (Self : not null access constant UML_Vertex_Interface)
+    (Self : not null access constant UML_Vertex)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  Specifies the transitions entering this vertex.
 
    not overriding function Get_Outgoing
-    (Self : not null access constant UML_Vertex_Interface)
+    (Self : not null access constant UML_Vertex)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  Specifies the transitions departing from this vertex.
 

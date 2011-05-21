@@ -58,37 +58,37 @@ package AMF.UML.Interactions is
 
    pragma Preelaborate;
 
-   type UML_Interaction_Interface is limited interface
-     and AMF.UML.Behaviors.UML_Behavior_Interface
-     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment_Interface;
+   type UML_Interaction is limited interface
+     and AMF.UML.Behaviors.UML_Behavior
+     and AMF.UML.Interaction_Fragments.UML_Interaction_Fragment;
 
-   type UML_Interaction is
-     access all UML_Interaction_Interface'Class;
-   for UML_Interaction'Storage_Size use 0;
+   type UML_Interaction_Access is
+     access all UML_Interaction'Class;
+   for UML_Interaction_Access'Storage_Size use 0;
 
    not overriding function Get_Action
-    (Self : not null access constant UML_Interaction_Interface)
+    (Self : not null access constant UML_Interaction)
        return AMF.UML.Actions.Collections.Set_Of_UML_Action is abstract;
    --  Actions owned by the Interaction.
 
    not overriding function Get_Formal_Gate
-    (Self : not null access constant UML_Interaction_Interface)
+    (Self : not null access constant UML_Interaction)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
    --  Specifies the gates that form the message interface between this 
    --  Interaction and any InteractionUses which reference it.
 
    not overriding function Get_Fragment
-    (Self : not null access constant UML_Interaction_Interface)
+    (Self : not null access constant UML_Interaction)
        return AMF.UML.Interaction_Fragments.Collections.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
    --  The ordered set of fragments in the Interaction.
 
    not overriding function Get_Lifeline
-    (Self : not null access constant UML_Interaction_Interface)
+    (Self : not null access constant UML_Interaction)
        return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline is abstract;
    --  Specifies the participants in this Interaction.
 
    not overriding function Get_Message
-    (Self : not null access constant UML_Interaction_Interface)
+    (Self : not null access constant UML_Interaction)
        return AMF.UML.Messages.Collections.Set_Of_UML_Message is abstract;
    --  The Messages contained in this Interaction.
 

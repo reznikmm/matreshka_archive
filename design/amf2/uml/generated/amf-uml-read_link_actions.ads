@@ -53,21 +53,21 @@ package AMF.UML.Read_Link_Actions is
 
    pragma Preelaborate;
 
-   type UML_Read_Link_Action_Interface is limited interface
-     and AMF.UML.Link_Actions.UML_Link_Action_Interface;
+   type UML_Read_Link_Action is limited interface
+     and AMF.UML.Link_Actions.UML_Link_Action;
 
-   type UML_Read_Link_Action is
-     access all UML_Read_Link_Action_Interface'Class;
-   for UML_Read_Link_Action'Storage_Size use 0;
+   type UML_Read_Link_Action_Access is
+     access all UML_Read_Link_Action'Class;
+   for UML_Read_Link_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Read_Link_Action_Interface)
-       return AMF.UML.Output_Pins.UML_Output_Pin is abstract;
+    (Self : not null access constant UML_Read_Link_Action)
+       return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
    --  The pin on which are put the objects participating in the association 
    --  at the end not specified by the inputs.
 
    not overriding procedure Set_Result
-    (Self : not null access UML_Read_Link_Action_Interface;
-     To   : AMF.UML.Output_Pins.UML_Output_Pin) is abstract;
+    (Self : not null access UML_Read_Link_Action;
+     To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
 
 end AMF.UML.Read_Link_Actions;

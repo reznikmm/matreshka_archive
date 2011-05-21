@@ -52,11 +52,11 @@ package AMF.UML.Control_Flows is
 
    pragma Preelaborate;
 
-   type UML_Control_Flow_Interface is limited interface
-     and AMF.UML.Activity_Edges.UML_Activity_Edge_Interface;
+   type UML_Control_Flow is limited interface
+     and AMF.UML.Activity_Edges.UML_Activity_Edge;
 
-   type UML_Control_Flow is
-     access all UML_Control_Flow_Interface'Class;
-   for UML_Control_Flow'Storage_Size use 0;
+   type UML_Control_Flow_Access is
+     access all UML_Control_Flow'Class;
+   for UML_Control_Flow_Access'Storage_Size use 0;
 
 end AMF.UML.Control_Flows;

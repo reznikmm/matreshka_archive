@@ -52,15 +52,15 @@ package AMF.UML.Duration_Constraints is
 
    pragma Preelaborate;
 
-   type UML_Duration_Constraint_Interface is limited interface
-     and AMF.UML.Interval_Constraints.UML_Interval_Constraint_Interface;
+   type UML_Duration_Constraint is limited interface
+     and AMF.UML.Interval_Constraints.UML_Interval_Constraint;
 
-   type UML_Duration_Constraint is
-     access all UML_Duration_Constraint_Interface'Class;
-   for UML_Duration_Constraint'Storage_Size use 0;
+   type UML_Duration_Constraint_Access is
+     access all UML_Duration_Constraint'Class;
+   for UML_Duration_Constraint_Access'Storage_Size use 0;
 
    not overriding function Get_First_Event
-    (Self : not null access constant UML_Duration_Constraint_Interface)
+    (Self : not null access constant UML_Duration_Constraint)
        return Set_Of_Boolean is abstract;
    --  The value of firstEvent[i] is related to constrainedElement[i] (where i 
    --  is 1 or 2). If firstEvent[i] is true, then the corresponding 
@@ -72,12 +72,12 @@ package AMF.UML.Duration_Constraints is
    --  instant.
 
    not overriding function Get_Specification
-    (Self : not null access constant UML_Duration_Constraint_Interface)
-       return AMF.UML.Duration_Intervals.UML_Duration_Interval is abstract;
+    (Self : not null access constant UML_Duration_Constraint)
+       return AMF.UML.Duration_Intervals.UML_Duration_Interval_Access is abstract;
    --  The interval constraining the duration.
 
    not overriding procedure Set_Specification
-    (Self : not null access UML_Duration_Constraint_Interface;
-     To   : AMF.UML.Duration_Intervals.UML_Duration_Interval) is abstract;
+    (Self : not null access UML_Duration_Constraint;
+     To   : AMF.UML.Duration_Intervals.UML_Duration_Interval_Access) is abstract;
 
 end AMF.UML.Duration_Constraints;

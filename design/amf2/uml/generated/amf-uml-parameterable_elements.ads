@@ -54,29 +54,29 @@ package AMF.UML.Parameterable_Elements is
 
    pragma Preelaborate;
 
-   type UML_Parameterable_Element_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Parameterable_Element is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Parameterable_Element is
-     access all UML_Parameterable_Element_Interface'Class;
-   for UML_Parameterable_Element'Storage_Size use 0;
+   type UML_Parameterable_Element_Access is
+     access all UML_Parameterable_Element'Class;
+   for UML_Parameterable_Element_Access'Storage_Size use 0;
 
    not overriding function Get_Owning_Template_Parameter
-    (Self : not null access constant UML_Parameterable_Element_Interface)
-       return AMF.UML.Template_Parameters.UML_Template_Parameter is abstract;
+    (Self : not null access constant UML_Parameterable_Element)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is abstract;
    --  The formal template parameter that owns this element.
 
    not overriding procedure Set_Owning_Template_Parameter
-    (Self : not null access UML_Parameterable_Element_Interface;
-     To   : AMF.UML.Template_Parameters.UML_Template_Parameter) is abstract;
+    (Self : not null access UML_Parameterable_Element;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is abstract;
 
    not overriding function Get_Template_Parameter
-    (Self : not null access constant UML_Parameterable_Element_Interface)
-       return AMF.UML.Template_Parameters.UML_Template_Parameter is abstract;
+    (Self : not null access constant UML_Parameterable_Element)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is abstract;
    --  The template parameter that exposes this element as a formal parameter.
 
    not overriding procedure Set_Template_Parameter
-    (Self : not null access UML_Parameterable_Element_Interface;
-     To   : AMF.UML.Template_Parameters.UML_Template_Parameter) is abstract;
+    (Self : not null access UML_Parameterable_Element;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is abstract;
 
 end AMF.UML.Parameterable_Elements;

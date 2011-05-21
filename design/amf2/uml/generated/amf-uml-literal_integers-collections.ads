@@ -51,8 +51,8 @@ package AMF.UML.Literal_Integers.Collections is
 
    package UML_Literal_Integer_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_Integer_Interface,
-           UML_Literal_Integer);
+          (UML_Literal_Integer,
+           UML_Literal_Integer_Access);
 
    type Set_Of_UML_Literal_Integer is
      new UML_Literal_Integer_Collections.Set with null record;

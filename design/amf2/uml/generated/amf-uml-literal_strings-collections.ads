@@ -51,8 +51,8 @@ package AMF.UML.Literal_Strings.Collections is
 
    package UML_Literal_String_Collections is
      new AMF.Generic_Collections
-          (UML_Literal_String_Interface,
-           UML_Literal_String);
+          (UML_Literal_String,
+           UML_Literal_String_Access);
 
    type Set_Of_UML_Literal_String is
      new UML_Literal_String_Collections.Set with null record;

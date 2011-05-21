@@ -51,8 +51,8 @@ package AMF.UML.Duration_Observations.Collections is
 
    package UML_Duration_Observation_Collections is
      new AMF.Generic_Collections
-          (UML_Duration_Observation_Interface,
-           UML_Duration_Observation);
+          (UML_Duration_Observation,
+           UML_Duration_Observation_Access);
 
    type Set_Of_UML_Duration_Observation is
      new UML_Duration_Observation_Collections.Set with null record;

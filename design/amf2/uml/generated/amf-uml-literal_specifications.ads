@@ -51,11 +51,11 @@ package AMF.UML.Literal_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Literal_Specification_Interface is limited interface
-     and AMF.UML.Value_Specifications.UML_Value_Specification_Interface;
+   type UML_Literal_Specification is limited interface
+     and AMF.UML.Value_Specifications.UML_Value_Specification;
 
-   type UML_Literal_Specification is
-     access all UML_Literal_Specification_Interface'Class;
-   for UML_Literal_Specification'Storage_Size use 0;
+   type UML_Literal_Specification_Access is
+     access all UML_Literal_Specification'Class;
+   for UML_Literal_Specification_Access'Storage_Size use 0;
 
 end AMF.UML.Literal_Specifications;

@@ -53,15 +53,15 @@ package AMF.UML.Destroy_Link_Actions is
 
    pragma Preelaborate;
 
-   type UML_Destroy_Link_Action_Interface is limited interface
-     and AMF.UML.Write_Link_Actions.UML_Write_Link_Action_Interface;
+   type UML_Destroy_Link_Action is limited interface
+     and AMF.UML.Write_Link_Actions.UML_Write_Link_Action;
 
-   type UML_Destroy_Link_Action is
-     access all UML_Destroy_Link_Action_Interface'Class;
-   for UML_Destroy_Link_Action'Storage_Size use 0;
+   type UML_Destroy_Link_Action_Access is
+     access all UML_Destroy_Link_Action'Class;
+   for UML_Destroy_Link_Action_Access'Storage_Size use 0;
 
    not overriding function Get_End_Data
-    (Self : not null access constant UML_Destroy_Link_Action_Interface)
+    (Self : not null access constant UML_Destroy_Link_Action)
        return AMF.UML.Link_End_Destruction_Datas.Collections.Set_Of_UML_Link_End_Destruction_Data is abstract;
    --  Specifies ends of association and inputs.
 

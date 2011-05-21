@@ -52,11 +52,11 @@ package AMF.UML.Part_Decompositions is
 
    pragma Preelaborate;
 
-   type UML_Part_Decomposition_Interface is limited interface
-     and AMF.UML.Interaction_Uses.UML_Interaction_Use_Interface;
+   type UML_Part_Decomposition is limited interface
+     and AMF.UML.Interaction_Uses.UML_Interaction_Use;
 
-   type UML_Part_Decomposition is
-     access all UML_Part_Decomposition_Interface'Class;
-   for UML_Part_Decomposition'Storage_Size use 0;
+   type UML_Part_Decomposition_Access is
+     access all UML_Part_Decomposition'Class;
+   for UML_Part_Decomposition_Access'Storage_Size use 0;
 
 end AMF.UML.Part_Decompositions;

@@ -54,32 +54,32 @@ package AMF.UML.Accept_Event_Actions is
 
    pragma Preelaborate;
 
-   type UML_Accept_Event_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Accept_Event_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Accept_Event_Action is
-     access all UML_Accept_Event_Action_Interface'Class;
-   for UML_Accept_Event_Action'Storage_Size use 0;
+   type UML_Accept_Event_Action_Access is
+     access all UML_Accept_Event_Action'Class;
+   for UML_Accept_Event_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Is_Unmarshall
-    (Self : not null access constant UML_Accept_Event_Action_Interface)
+    (Self : not null access constant UML_Accept_Event_Action)
        return Boolean is abstract;
    --  Indicates whether there is a single output pin for the event, or 
    --  multiple output pins for attributes of the event.
 
    not overriding procedure Set_Is_Unmarshall
-    (Self : not null access UML_Accept_Event_Action_Interface;
+    (Self : not null access UML_Accept_Event_Action;
      To   : Boolean) is abstract;
 
    not overriding function Get_Result
-    (Self : not null access constant UML_Accept_Event_Action_Interface)
+    (Self : not null access constant UML_Accept_Event_Action)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
    --  Pins holding the received event objects or their attributes. Event 
    --  objects may be copied in transmission, so identity might not be 
    --  preserved.
 
    not overriding function Get_Trigger
-    (Self : not null access constant UML_Accept_Event_Action_Interface)
+    (Self : not null access constant UML_Accept_Event_Action)
        return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
    --  The type of events accepted by the action, as specified by triggers. 
    --  For triggers with signal events, a signal of the specified type or any 

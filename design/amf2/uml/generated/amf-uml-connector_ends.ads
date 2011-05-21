@@ -55,41 +55,41 @@ package AMF.UML.Connector_Ends is
 
    pragma Preelaborate;
 
-   type UML_Connector_End_Interface is limited interface
-     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Interface;
+   type UML_Connector_End is limited interface
+     and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element;
 
-   type UML_Connector_End is
-     access all UML_Connector_End_Interface'Class;
-   for UML_Connector_End'Storage_Size use 0;
+   type UML_Connector_End_Access is
+     access all UML_Connector_End'Class;
+   for UML_Connector_End_Access'Storage_Size use 0;
 
    not overriding function Get_Defining_End
-    (Self : not null access constant UML_Connector_End_Interface)
-       return AMF.UML.Properties.UML_Property is abstract;
+    (Self : not null access constant UML_Connector_End)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
    --  A derived association referencing the corresponding association end on 
    --  the association which types the connector owing this connector end. 
    --  This association is derived by selecting the association end at the 
    --  same place in the ordering of association ends as this connector end.
 
    not overriding function Get_Part_With_Port
-    (Self : not null access constant UML_Connector_End_Interface)
-       return AMF.UML.Properties.UML_Property is abstract;
+    (Self : not null access constant UML_Connector_End)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
    --  Indicates the role of the internal structure of a classifier with the 
    --  port to which the connector end is attached.
 
    not overriding procedure Set_Part_With_Port
-    (Self : not null access UML_Connector_End_Interface;
-     To   : AMF.UML.Properties.UML_Property) is abstract;
+    (Self : not null access UML_Connector_End;
+     To   : AMF.UML.Properties.UML_Property_Access) is abstract;
 
    not overriding function Get_Role
-    (Self : not null access constant UML_Connector_End_Interface)
-       return AMF.UML.Connectable_Elements.UML_Connectable_Element is abstract;
+    (Self : not null access constant UML_Connector_End)
+       return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access is abstract;
    --  The connectable element attached at this connector end. When an 
    --  instance of the containing classifier is created, a link may (depending 
    --  on the multiplicities) be created to an instance of the classifier that 
    --  types this connectable element.
 
    not overriding procedure Set_Role
-    (Self : not null access UML_Connector_End_Interface;
-     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element) is abstract;
+    (Self : not null access UML_Connector_End;
+     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
 
 end AMF.UML.Connector_Ends;

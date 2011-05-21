@@ -56,12 +56,12 @@ package AMF.UML.Value_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Value_Specification_Interface is limited interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element_Interface
-     and AMF.UML.Packageable_Elements.UML_Packageable_Element_Interface;
+   type UML_Value_Specification is limited interface
+     and AMF.UML.Typed_Elements.UML_Typed_Element
+     and AMF.UML.Packageable_Elements.UML_Packageable_Element;
 
-   type UML_Value_Specification is
-     access all UML_Value_Specification_Interface'Class;
-   for UML_Value_Specification'Storage_Size use 0;
+   type UML_Value_Specification_Access is
+     access all UML_Value_Specification'Class;
+   for UML_Value_Specification_Access'Storage_Size use 0;
 
 end AMF.UML.Value_Specifications;

@@ -51,8 +51,8 @@ package AMF.UML.Packages.Collections is
 
    package UML_Package_Collections is
      new AMF.Generic_Collections
-          (UML_Package_Interface,
-           UML_Package);
+          (UML_Package,
+           UML_Package_Access);
 
    type Set_Of_UML_Package is
      new UML_Package_Collections.Set with null record;

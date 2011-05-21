@@ -51,8 +51,8 @@ package AMF.UML.Link_End_Creation_Datas.Collections is
 
    package UML_Link_End_Creation_Data_Collections is
      new AMF.Generic_Collections
-          (UML_Link_End_Creation_Data_Interface,
-           UML_Link_End_Creation_Data);
+          (UML_Link_End_Creation_Data,
+           UML_Link_End_Creation_Data_Access);
 
    type Set_Of_UML_Link_End_Creation_Data is
      new UML_Link_End_Creation_Data_Collections.Set with null record;

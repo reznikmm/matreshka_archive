@@ -53,20 +53,20 @@ package AMF.UML.Message_Ends is
 
    pragma Preelaborate;
 
-   type UML_Message_End_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Message_End is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Message_End is
-     access all UML_Message_End_Interface'Class;
-   for UML_Message_End'Storage_Size use 0;
+   type UML_Message_End_Access is
+     access all UML_Message_End'Class;
+   for UML_Message_End_Access'Storage_Size use 0;
 
    not overriding function Get_Message
-    (Self : not null access constant UML_Message_End_Interface)
-       return AMF.UML.Messages.UML_Message is abstract;
+    (Self : not null access constant UML_Message_End)
+       return AMF.UML.Messages.UML_Message_Access is abstract;
    --  References a Message.
 
    not overriding procedure Set_Message
-    (Self : not null access UML_Message_End_Interface;
-     To   : AMF.UML.Messages.UML_Message) is abstract;
+    (Self : not null access UML_Message_End;
+     To   : AMF.UML.Messages.UML_Message_Access) is abstract;
 
 end AMF.UML.Message_Ends;

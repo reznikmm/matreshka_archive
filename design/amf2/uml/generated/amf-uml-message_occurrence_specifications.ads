@@ -57,12 +57,12 @@ package AMF.UML.Message_Occurrence_Specifications is
 
    pragma Preelaborate;
 
-   type UML_Message_Occurrence_Specification_Interface is limited interface
-     and AMF.UML.Message_Ends.UML_Message_End_Interface
-     and AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Interface;
+   type UML_Message_Occurrence_Specification is limited interface
+     and AMF.UML.Message_Ends.UML_Message_End
+     and AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification;
 
-   type UML_Message_Occurrence_Specification is
-     access all UML_Message_Occurrence_Specification_Interface'Class;
-   for UML_Message_Occurrence_Specification'Storage_Size use 0;
+   type UML_Message_Occurrence_Specification_Access is
+     access all UML_Message_Occurrence_Specification'Class;
+   for UML_Message_Occurrence_Specification_Access'Storage_Size use 0;
 
 end AMF.UML.Message_Occurrence_Specifications;

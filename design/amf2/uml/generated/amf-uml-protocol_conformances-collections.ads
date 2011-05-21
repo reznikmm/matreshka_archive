@@ -51,8 +51,8 @@ package AMF.UML.Protocol_Conformances.Collections is
 
    package UML_Protocol_Conformance_Collections is
      new AMF.Generic_Collections
-          (UML_Protocol_Conformance_Interface,
-           UML_Protocol_Conformance);
+          (UML_Protocol_Conformance,
+           UML_Protocol_Conformance_Access);
 
    type Set_Of_UML_Protocol_Conformance is
      new UML_Protocol_Conformance_Collections.Set with null record;

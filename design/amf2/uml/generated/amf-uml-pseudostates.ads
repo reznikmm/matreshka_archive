@@ -54,41 +54,41 @@ package AMF.UML.Pseudostates is
 
    pragma Preelaborate;
 
-   type UML_Pseudostate_Interface is limited interface
-     and AMF.UML.Vertexs.UML_Vertex_Interface;
+   type UML_Pseudostate is limited interface
+     and AMF.UML.Vertexs.UML_Vertex;
 
-   type UML_Pseudostate is
-     access all UML_Pseudostate_Interface'Class;
-   for UML_Pseudostate'Storage_Size use 0;
+   type UML_Pseudostate_Access is
+     access all UML_Pseudostate'Class;
+   for UML_Pseudostate_Access'Storage_Size use 0;
 
    not overriding function Get_Kind
-    (Self : not null access constant UML_Pseudostate_Interface)
+    (Self : not null access constant UML_Pseudostate)
        return UML_Pseudostate_Kind is abstract;
    --  Determines the precise type of the Pseudostate and can be one of: 
    --  entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, 
    --  fork, junction, terminate or choice.
 
    not overriding procedure Set_Kind
-    (Self : not null access UML_Pseudostate_Interface;
+    (Self : not null access UML_Pseudostate;
      To   : UML_Pseudostate_Kind) is abstract;
 
    not overriding function Get_State
-    (Self : not null access constant UML_Pseudostate_Interface)
-       return AMF.UML.States.UML_State is abstract;
+    (Self : not null access constant UML_Pseudostate)
+       return AMF.UML.States.UML_State_Access is abstract;
    --  The State that owns this pseudostate and in which it appears.
 
    not overriding procedure Set_State
-    (Self : not null access UML_Pseudostate_Interface;
-     To   : AMF.UML.States.UML_State) is abstract;
+    (Self : not null access UML_Pseudostate;
+     To   : AMF.UML.States.UML_State_Access) is abstract;
 
    not overriding function Get_State_Machine
-    (Self : not null access constant UML_Pseudostate_Interface)
-       return AMF.UML.State_Machines.UML_State_Machine is abstract;
+    (Self : not null access constant UML_Pseudostate)
+       return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
    --  The StateMachine in which this Pseudostate is defined. This only 
    --  applies to Pseudostates of the kind entryPoint or exitPoint.
 
    not overriding procedure Set_State_Machine
-    (Self : not null access UML_Pseudostate_Interface;
-     To   : AMF.UML.State_Machines.UML_State_Machine) is abstract;
+    (Self : not null access UML_Pseudostate;
+     To   : AMF.UML.State_Machines.UML_State_Machine_Access) is abstract;
 
 end AMF.UML.Pseudostates;

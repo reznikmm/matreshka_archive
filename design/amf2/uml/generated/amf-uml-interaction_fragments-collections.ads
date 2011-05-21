@@ -51,8 +51,8 @@ package AMF.UML.Interaction_Fragments.Collections is
 
    package UML_Interaction_Fragment_Collections is
      new AMF.Generic_Collections
-          (UML_Interaction_Fragment_Interface,
-           UML_Interaction_Fragment);
+          (UML_Interaction_Fragment,
+           UML_Interaction_Fragment_Access);
 
    type Set_Of_UML_Interaction_Fragment is
      new UML_Interaction_Fragment_Collections.Set with null record;

@@ -51,8 +51,8 @@ package AMF.UML.Packageable_Elements.Collections is
 
    package UML_Packageable_Element_Collections is
      new AMF.Generic_Collections
-          (UML_Packageable_Element_Interface,
-           UML_Packageable_Element);
+          (UML_Packageable_Element,
+           UML_Packageable_Element_Access);
 
    type Set_Of_UML_Packageable_Element is
      new UML_Packageable_Element_Collections.Set with null record;

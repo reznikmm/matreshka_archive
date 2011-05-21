@@ -51,8 +51,8 @@ package AMF.UML.Function_Behaviors.Collections is
 
    package UML_Function_Behavior_Collections is
      new AMF.Generic_Collections
-          (UML_Function_Behavior_Interface,
-           UML_Function_Behavior);
+          (UML_Function_Behavior,
+           UML_Function_Behavior_Access);
 
    type Set_Of_UML_Function_Behavior is
      new UML_Function_Behavior_Collections.Set with null record;

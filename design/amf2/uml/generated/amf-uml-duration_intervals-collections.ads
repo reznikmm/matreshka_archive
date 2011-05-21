@@ -51,8 +51,8 @@ package AMF.UML.Duration_Intervals.Collections is
 
    package UML_Duration_Interval_Collections is
      new AMF.Generic_Collections
-          (UML_Duration_Interval_Interface,
-           UML_Duration_Interval);
+          (UML_Duration_Interval,
+           UML_Duration_Interval_Access);
 
    type Set_Of_UML_Duration_Interval is
      new UML_Duration_Interval_Collections.Set with null record;

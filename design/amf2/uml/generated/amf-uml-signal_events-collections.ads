@@ -51,8 +51,8 @@ package AMF.UML.Signal_Events.Collections is
 
    package UML_Signal_Event_Collections is
      new AMF.Generic_Collections
-          (UML_Signal_Event_Interface,
-           UML_Signal_Event);
+          (UML_Signal_Event,
+           UML_Signal_Event_Access);
 
    type Set_Of_UML_Signal_Event is
      new UML_Signal_Event_Collections.Set with null record;

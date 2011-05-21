@@ -53,26 +53,26 @@ package AMF.UML.Features is
 
    pragma Preelaborate;
 
-   type UML_Feature_Interface is limited interface
-     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Interface;
+   type UML_Feature is limited interface
+     and AMF.UML.Redefinable_Elements.UML_Redefinable_Element;
 
-   type UML_Feature is
-     access all UML_Feature_Interface'Class;
-   for UML_Feature'Storage_Size use 0;
+   type UML_Feature_Access is
+     access all UML_Feature'Class;
+   for UML_Feature_Access'Storage_Size use 0;
 
    not overriding function Get_Featuring_Classifier
-    (Self : not null access constant UML_Feature_Interface)
+    (Self : not null access constant UML_Feature)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  The Classifiers that have this Feature as a feature.
 
    not overriding function Get_Is_Static
-    (Self : not null access constant UML_Feature_Interface)
+    (Self : not null access constant UML_Feature)
        return Boolean is abstract;
    --  Specifies whether this feature characterizes individual instances 
    --  classified by the classifier (false) or the classifier itself (true).
 
    not overriding procedure Set_Is_Static
-    (Self : not null access UML_Feature_Interface;
+    (Self : not null access UML_Feature;
      To   : Boolean) is abstract;
 
 end AMF.UML.Features;

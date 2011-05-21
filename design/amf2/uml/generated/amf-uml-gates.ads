@@ -52,11 +52,11 @@ package AMF.UML.Gates is
 
    pragma Preelaborate;
 
-   type UML_Gate_Interface is limited interface
-     and AMF.UML.Message_Ends.UML_Message_End_Interface;
+   type UML_Gate is limited interface
+     and AMF.UML.Message_Ends.UML_Message_End;
 
-   type UML_Gate is
-     access all UML_Gate_Interface'Class;
-   for UML_Gate'Storage_Size use 0;
+   type UML_Gate_Access is
+     access all UML_Gate'Class;
+   for UML_Gate_Access'Storage_Size use 0;
 
 end AMF.UML.Gates;

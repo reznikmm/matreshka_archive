@@ -51,8 +51,8 @@ package AMF.UML.Associations.Collections is
 
    package UML_Association_Collections is
      new AMF.Generic_Collections
-          (UML_Association_Interface,
-           UML_Association);
+          (UML_Association,
+           UML_Association_Access);
 
    type Set_Of_UML_Association is
      new UML_Association_Collections.Set with null record;

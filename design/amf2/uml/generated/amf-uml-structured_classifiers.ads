@@ -56,32 +56,32 @@ package AMF.UML.Structured_Classifiers is
 
    pragma Preelaborate;
 
-   type UML_Structured_Classifier_Interface is limited interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface;
+   type UML_Structured_Classifier is limited interface
+     and AMF.UML.Classifiers.UML_Classifier;
 
-   type UML_Structured_Classifier is
-     access all UML_Structured_Classifier_Interface'Class;
-   for UML_Structured_Classifier'Storage_Size use 0;
+   type UML_Structured_Classifier_Access is
+     access all UML_Structured_Classifier'Class;
+   for UML_Structured_Classifier_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Attribute
-    (Self : not null access constant UML_Structured_Classifier_Interface)
+    (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  References the properties owned by the classifier.
 
    not overriding function Get_Owned_Connector
-    (Self : not null access constant UML_Structured_Classifier_Interface)
+    (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
    --  References the connectors owned by the classifier.
 
    not overriding function Get_Part
-    (Self : not null access constant UML_Structured_Classifier_Interface)
+    (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  References the properties specifying instances that the classifier owns 
    --  by composition. This association is derived, selecting those owned 
    --  properties where isComposite is true.
 
    not overriding function Get_Role
-    (Self : not null access constant UML_Structured_Classifier_Interface)
+    (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
    --  References the roles that instances may play in this classifier.
 

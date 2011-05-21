@@ -51,8 +51,8 @@ package AMF.UML.Manifestations.Collections is
 
    package UML_Manifestation_Collections is
      new AMF.Generic_Collections
-          (UML_Manifestation_Interface,
-           UML_Manifestation);
+          (UML_Manifestation,
+           UML_Manifestation_Access);
 
    type Set_Of_UML_Manifestation is
      new UML_Manifestation_Collections.Set with null record;

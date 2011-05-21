@@ -51,8 +51,8 @@ package AMF.UML.Structural_Feature_Actions.Collections is
 
    package UML_Structural_Feature_Action_Collections is
      new AMF.Generic_Collections
-          (UML_Structural_Feature_Action_Interface,
-           UML_Structural_Feature_Action);
+          (UML_Structural_Feature_Action,
+           UML_Structural_Feature_Action_Access);
 
    type Set_Of_UML_Structural_Feature_Action is
      new UML_Structural_Feature_Action_Collections.Set with null record;

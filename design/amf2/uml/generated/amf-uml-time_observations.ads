@@ -54,25 +54,25 @@ package AMF.UML.Time_Observations is
 
    pragma Preelaborate;
 
-   type UML_Time_Observation_Interface is limited interface
-     and AMF.UML.Observations.UML_Observation_Interface;
+   type UML_Time_Observation is limited interface
+     and AMF.UML.Observations.UML_Observation;
 
-   type UML_Time_Observation is
-     access all UML_Time_Observation_Interface'Class;
-   for UML_Time_Observation'Storage_Size use 0;
+   type UML_Time_Observation_Access is
+     access all UML_Time_Observation'Class;
+   for UML_Time_Observation_Access'Storage_Size use 0;
 
    not overriding function Get_Event
-    (Self : not null access constant UML_Time_Observation_Interface)
-       return AMF.UML.Named_Elements.UML_Named_Element is abstract;
+    (Self : not null access constant UML_Time_Observation)
+       return AMF.UML.Named_Elements.UML_Named_Element_Access is abstract;
    --  The observation is determined by the entering or exiting of the event 
    --  element during execution.
 
    not overriding procedure Set_Event
-    (Self : not null access UML_Time_Observation_Interface;
-     To   : AMF.UML.Named_Elements.UML_Named_Element) is abstract;
+    (Self : not null access UML_Time_Observation;
+     To   : AMF.UML.Named_Elements.UML_Named_Element_Access) is abstract;
 
    not overriding function Get_First_Event
-    (Self : not null access constant UML_Time_Observation_Interface)
+    (Self : not null access constant UML_Time_Observation)
        return Boolean is abstract;
    --  The value of firstEvent is related to event. If firstEvent is true, 
    --  then the corresponding observation event is the first time instant the 
@@ -80,7 +80,7 @@ package AMF.UML.Time_Observations is
    --  observation event is the time instant the execution exits event.
 
    not overriding procedure Set_First_Event
-    (Self : not null access UML_Time_Observation_Interface;
+    (Self : not null access UML_Time_Observation;
      To   : Boolean) is abstract;
 
 end AMF.UML.Time_Observations;

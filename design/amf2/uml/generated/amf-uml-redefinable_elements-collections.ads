@@ -51,8 +51,8 @@ package AMF.UML.Redefinable_Elements.Collections is
 
    package UML_Redefinable_Element_Collections is
      new AMF.Generic_Collections
-          (UML_Redefinable_Element_Interface,
-           UML_Redefinable_Element);
+          (UML_Redefinable_Element,
+           UML_Redefinable_Element_Access);
 
    type Set_Of_UML_Redefinable_Element is
      new UML_Redefinable_Element_Collections.Set with null record;

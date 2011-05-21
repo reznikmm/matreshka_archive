@@ -53,25 +53,25 @@ package AMF.UML.Comments is
 
    pragma Preelaborate;
 
-   type UML_Comment_Interface is limited interface
-     and AMF.UML.Elements.UML_Element_Interface;
+   type UML_Comment is limited interface
+     and AMF.UML.Elements.UML_Element;
 
-   type UML_Comment is
-     access all UML_Comment_Interface'Class;
-   for UML_Comment'Storage_Size use 0;
+   type UML_Comment_Access is
+     access all UML_Comment'Class;
+   for UML_Comment_Access'Storage_Size use 0;
 
    not overriding function Get_Annotated_Element
-    (Self : not null access constant UML_Comment_Interface)
+    (Self : not null access constant UML_Comment)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
    --  References the Element(s) being commented.
 
    not overriding function Get_Body
-    (Self : not null access constant UML_Comment_Interface)
+    (Self : not null access constant UML_Comment)
        return Optional_String is abstract;
    --  Specifies a string that is the comment.
 
    not overriding procedure Set_Body
-    (Self : not null access UML_Comment_Interface;
+    (Self : not null access UML_Comment;
      To   : Optional_String) is abstract;
 
 end AMF.UML.Comments;

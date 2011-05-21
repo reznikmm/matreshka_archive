@@ -59,56 +59,56 @@ package AMF.UML.Object_Nodes is
 
    pragma Preelaborate;
 
-   type UML_Object_Node_Interface is limited interface
-     and AMF.UML.Activity_Nodes.UML_Activity_Node_Interface
-     and AMF.UML.Typed_Elements.UML_Typed_Element_Interface;
+   type UML_Object_Node is limited interface
+     and AMF.UML.Activity_Nodes.UML_Activity_Node
+     and AMF.UML.Typed_Elements.UML_Typed_Element;
 
-   type UML_Object_Node is
-     access all UML_Object_Node_Interface'Class;
-   for UML_Object_Node'Storage_Size use 0;
+   type UML_Object_Node_Access is
+     access all UML_Object_Node'Class;
+   for UML_Object_Node_Access'Storage_Size use 0;
 
    not overriding function Get_In_State
-    (Self : not null access constant UML_Object_Node_Interface)
+    (Self : not null access constant UML_Object_Node)
        return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
    --  The required states of the object available at this point in the 
    --  activity.
 
    not overriding function Get_Is_Control_Type
-    (Self : not null access constant UML_Object_Node_Interface)
+    (Self : not null access constant UML_Object_Node)
        return Boolean is abstract;
    --  Tells whether the type of the object node is to be treated as control.
 
    not overriding procedure Set_Is_Control_Type
-    (Self : not null access UML_Object_Node_Interface;
+    (Self : not null access UML_Object_Node;
      To   : Boolean) is abstract;
 
    not overriding function Get_Ordering
-    (Self : not null access constant UML_Object_Node_Interface)
+    (Self : not null access constant UML_Object_Node)
        return UML_Object_Node_Ordering_Kind is abstract;
    --  Tells whether and how the tokens in the object node are ordered for 
    --  selection to traverse edges outgoing from the object node.
 
    not overriding procedure Set_Ordering
-    (Self : not null access UML_Object_Node_Interface;
+    (Self : not null access UML_Object_Node;
      To   : UML_Object_Node_Ordering_Kind) is abstract;
 
    not overriding function Get_Selection
-    (Self : not null access constant UML_Object_Node_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Object_Node)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  Selects tokens for outgoing edges.
 
    not overriding procedure Set_Selection
-    (Self : not null access UML_Object_Node_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Object_Node;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
    not overriding function Get_Upper_Bound
-    (Self : not null access constant UML_Object_Node_Interface)
-       return AMF.UML.Value_Specifications.UML_Value_Specification is abstract;
+    (Self : not null access constant UML_Object_Node)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  The maximum number of tokens allowed in the node. Objects cannot flow 
    --  into the node if the upper bound is reached.
 
    not overriding procedure Set_Upper_Bound
-    (Self : not null access UML_Object_Node_Interface;
-     To   : AMF.UML.Value_Specifications.UML_Value_Specification) is abstract;
+    (Self : not null access UML_Object_Node;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
 end AMF.UML.Object_Nodes;

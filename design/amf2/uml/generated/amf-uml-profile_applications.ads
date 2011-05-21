@@ -54,40 +54,40 @@ package AMF.UML.Profile_Applications is
 
    pragma Preelaborate;
 
-   type UML_Profile_Application_Interface is limited interface
-     and AMF.UML.Directed_Relationships.UML_Directed_Relationship_Interface;
+   type UML_Profile_Application is limited interface
+     and AMF.UML.Directed_Relationships.UML_Directed_Relationship;
 
-   type UML_Profile_Application is
-     access all UML_Profile_Application_Interface'Class;
-   for UML_Profile_Application'Storage_Size use 0;
+   type UML_Profile_Application_Access is
+     access all UML_Profile_Application'Class;
+   for UML_Profile_Application_Access'Storage_Size use 0;
 
    not overriding function Get_Applied_Profile
-    (Self : not null access constant UML_Profile_Application_Interface)
-       return AMF.UML.Profiles.UML_Profile is abstract;
+    (Self : not null access constant UML_Profile_Application)
+       return AMF.UML.Profiles.UML_Profile_Access is abstract;
    --  References the Profiles that are applied to a Package through this 
    --  ProfileApplication.
 
    not overriding procedure Set_Applied_Profile
-    (Self : not null access UML_Profile_Application_Interface;
-     To   : AMF.UML.Profiles.UML_Profile) is abstract;
+    (Self : not null access UML_Profile_Application;
+     To   : AMF.UML.Profiles.UML_Profile_Access) is abstract;
 
    not overriding function Get_Applying_Package
-    (Self : not null access constant UML_Profile_Application_Interface)
-       return AMF.UML.Packages.UML_Package is abstract;
+    (Self : not null access constant UML_Profile_Application)
+       return AMF.UML.Packages.UML_Package_Access is abstract;
    --  The package that owns the profile application.
 
    not overriding procedure Set_Applying_Package
-    (Self : not null access UML_Profile_Application_Interface;
-     To   : AMF.UML.Packages.UML_Package) is abstract;
+    (Self : not null access UML_Profile_Application;
+     To   : AMF.UML.Packages.UML_Package_Access) is abstract;
 
    not overriding function Get_Is_Strict
-    (Self : not null access constant UML_Profile_Application_Interface)
+    (Self : not null access constant UML_Profile_Application)
        return Boolean is abstract;
    --  Specifies that the Profile filtering rules for the metaclasses of the 
    --  referenced metamodel shall be strictly applied.
 
    not overriding procedure Set_Is_Strict
-    (Self : not null access UML_Profile_Application_Interface;
+    (Self : not null access UML_Profile_Application;
      To   : Boolean) is abstract;
 
 end AMF.UML.Profile_Applications;

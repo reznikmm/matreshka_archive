@@ -57,15 +57,15 @@ package AMF.UML.Signals is
 
    pragma Preelaborate;
 
-   type UML_Signal_Interface is limited interface
-     and AMF.UML.Classifiers.UML_Classifier_Interface;
+   type UML_Signal is limited interface
+     and AMF.UML.Classifiers.UML_Classifier;
 
-   type UML_Signal is
-     access all UML_Signal_Interface'Class;
-   for UML_Signal'Storage_Size use 0;
+   type UML_Signal_Access is
+     access all UML_Signal'Class;
+   for UML_Signal_Access'Storage_Size use 0;
 
    not overriding function Get_Owned_Attribute
-    (Self : not null access constant UML_Signal_Interface)
+    (Self : not null access constant UML_Signal)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The attributes owned by the signal.
 

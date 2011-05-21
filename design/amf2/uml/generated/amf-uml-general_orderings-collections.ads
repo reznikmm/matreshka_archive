@@ -51,8 +51,8 @@ package AMF.UML.General_Orderings.Collections is
 
    package UML_General_Ordering_Collections is
      new AMF.Generic_Collections
-          (UML_General_Ordering_Interface,
-           UML_General_Ordering);
+          (UML_General_Ordering,
+           UML_General_Ordering_Access);
 
    type Set_Of_UML_General_Ordering is
      new UML_General_Ordering_Collections.Set with null record;

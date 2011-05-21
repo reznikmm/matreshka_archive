@@ -55,25 +55,25 @@ package AMF.UML.String_Expressions is
 
    pragma Preelaborate;
 
-   type UML_String_Expression_Interface is limited interface
-     and AMF.UML.Expressions.UML_Expression_Interface
-     and AMF.UML.Templateable_Elements.UML_Templateable_Element_Interface;
+   type UML_String_Expression is limited interface
+     and AMF.UML.Expressions.UML_Expression
+     and AMF.UML.Templateable_Elements.UML_Templateable_Element;
 
-   type UML_String_Expression is
-     access all UML_String_Expression_Interface'Class;
-   for UML_String_Expression'Storage_Size use 0;
+   type UML_String_Expression_Access is
+     access all UML_String_Expression'Class;
+   for UML_String_Expression_Access'Storage_Size use 0;
 
    not overriding function Get_Owning_Expression
-    (Self : not null access constant UML_String_Expression_Interface)
-       return AMF.UML.String_Expressions.UML_String_Expression is abstract;
+    (Self : not null access constant UML_String_Expression)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access is abstract;
    --  The string expression of which this expression is a substring.
 
    not overriding procedure Set_Owning_Expression
-    (Self : not null access UML_String_Expression_Interface;
-     To   : AMF.UML.String_Expressions.UML_String_Expression) is abstract;
+    (Self : not null access UML_String_Expression;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is abstract;
 
    not overriding function Get_Sub_Expression
-    (Self : not null access constant UML_String_Expression_Interface)
+    (Self : not null access constant UML_String_Expression)
        return AMF.UML.String_Expressions.Collections.Set_Of_UML_String_Expression is abstract;
    --  The StringExpressions that constitute this StringExpression.
 

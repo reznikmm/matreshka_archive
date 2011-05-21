@@ -54,21 +54,21 @@ package AMF.UML.Duration_Observations is
 
    pragma Preelaborate;
 
-   type UML_Duration_Observation_Interface is limited interface
-     and AMF.UML.Observations.UML_Observation_Interface;
+   type UML_Duration_Observation is limited interface
+     and AMF.UML.Observations.UML_Observation;
 
-   type UML_Duration_Observation is
-     access all UML_Duration_Observation_Interface'Class;
-   for UML_Duration_Observation'Storage_Size use 0;
+   type UML_Duration_Observation_Access is
+     access all UML_Duration_Observation'Class;
+   for UML_Duration_Observation_Access'Storage_Size use 0;
 
    not overriding function Get_Event
-    (Self : not null access constant UML_Duration_Observation_Interface)
+    (Self : not null access constant UML_Duration_Observation)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
    --  The observation is determined by the entering or exiting of the event 
    --  element during execution.
 
    not overriding function Get_First_Event
-    (Self : not null access constant UML_Duration_Observation_Interface)
+    (Self : not null access constant UML_Duration_Observation)
        return Set_Of_Boolean is abstract;
    --  The value of firstEvent[i] is related to event[i] (where i is 1 or 2). 
    --  If firstEvent[i] is true, then the corresponding observation event is 

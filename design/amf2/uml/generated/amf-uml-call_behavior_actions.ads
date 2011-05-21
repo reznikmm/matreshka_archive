@@ -59,21 +59,21 @@ package AMF.UML.Call_Behavior_Actions is
 
    pragma Preelaborate;
 
-   type UML_Call_Behavior_Action_Interface is limited interface
-     and AMF.UML.Call_Actions.UML_Call_Action_Interface;
+   type UML_Call_Behavior_Action is limited interface
+     and AMF.UML.Call_Actions.UML_Call_Action;
 
-   type UML_Call_Behavior_Action is
-     access all UML_Call_Behavior_Action_Interface'Class;
-   for UML_Call_Behavior_Action'Storage_Size use 0;
+   type UML_Call_Behavior_Action_Access is
+     access all UML_Call_Behavior_Action'Class;
+   for UML_Call_Behavior_Action_Access'Storage_Size use 0;
 
    not overriding function Get_Behavior
-    (Self : not null access constant UML_Call_Behavior_Action_Interface)
-       return AMF.UML.Behaviors.UML_Behavior is abstract;
+    (Self : not null access constant UML_Call_Behavior_Action)
+       return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
    --  The invoked behavior. It must be capable of accepting and returning 
    --  control.
 
    not overriding procedure Set_Behavior
-    (Self : not null access UML_Call_Behavior_Action_Interface;
-     To   : AMF.UML.Behaviors.UML_Behavior) is abstract;
+    (Self : not null access UML_Call_Behavior_Action;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
 
 end AMF.UML.Call_Behavior_Actions;

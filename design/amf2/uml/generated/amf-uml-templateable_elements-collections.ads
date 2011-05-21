@@ -51,8 +51,8 @@ package AMF.UML.Templateable_Elements.Collections is
 
    package UML_Templateable_Element_Collections is
      new AMF.Generic_Collections
-          (UML_Templateable_Element_Interface,
-           UML_Templateable_Element);
+          (UML_Templateable_Element,
+           UML_Templateable_Element_Access);
 
    type Set_Of_UML_Templateable_Element is
      new UML_Templateable_Element_Collections.Set with null record;

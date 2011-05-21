@@ -51,8 +51,8 @@ package AMF.UML.Loop_Nodes.Collections is
 
    package UML_Loop_Node_Collections is
      new AMF.Generic_Collections
-          (UML_Loop_Node_Interface,
-           UML_Loop_Node);
+          (UML_Loop_Node,
+           UML_Loop_Node_Access);
 
    type Set_Of_UML_Loop_Node is
      new UML_Loop_Node_Collections.Set with null record;

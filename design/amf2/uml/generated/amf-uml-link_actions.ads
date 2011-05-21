@@ -55,21 +55,21 @@ package AMF.UML.Link_Actions is
 
    pragma Preelaborate;
 
-   type UML_Link_Action_Interface is limited interface
-     and AMF.UML.Actions.UML_Action_Interface;
+   type UML_Link_Action is limited interface
+     and AMF.UML.Actions.UML_Action;
 
-   type UML_Link_Action is
-     access all UML_Link_Action_Interface'Class;
-   for UML_Link_Action'Storage_Size use 0;
+   type UML_Link_Action_Access is
+     access all UML_Link_Action'Class;
+   for UML_Link_Action_Access'Storage_Size use 0;
 
    not overriding function Get_End_Data
-    (Self : not null access constant UML_Link_Action_Interface)
+    (Self : not null access constant UML_Link_Action)
        return AMF.UML.Link_End_Datas.Collections.Set_Of_UML_Link_End_Data is abstract;
    --  Data identifying one end of a link by the objects on its ends and 
    --  qualifiers.
 
    not overriding function Get_Input_Value
-    (Self : not null access constant UML_Link_Action_Interface)
+    (Self : not null access constant UML_Link_Action)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
    --  Pins taking end objects and qualifier values as input.
 

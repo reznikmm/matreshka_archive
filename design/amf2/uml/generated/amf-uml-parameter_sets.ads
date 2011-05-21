@@ -54,15 +54,15 @@ package AMF.UML.Parameter_Sets is
 
    pragma Preelaborate;
 
-   type UML_Parameter_Set_Interface is limited interface
-     and AMF.UML.Named_Elements.UML_Named_Element_Interface;
+   type UML_Parameter_Set is limited interface
+     and AMF.UML.Named_Elements.UML_Named_Element;
 
-   type UML_Parameter_Set is
-     access all UML_Parameter_Set_Interface'Class;
-   for UML_Parameter_Set'Storage_Size use 0;
+   type UML_Parameter_Set_Access is
+     access all UML_Parameter_Set'Class;
+   for UML_Parameter_Set_Access'Storage_Size use 0;
 
    not overriding function Get_Condition
-    (Self : not null access constant UML_Parameter_Set_Interface)
+    (Self : not null access constant UML_Parameter_Set)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
    --  Constraint that should be satisfied for the owner of the parameters in 
    --  an input parameter set to start execution using the values provided for 
@@ -71,7 +71,7 @@ package AMF.UML.Parameter_Sets is
    --  preconditions and conditions on input parameter sets were satisfied.
 
    not overriding function Get_Parameter
-    (Self : not null access constant UML_Parameter_Set_Interface)
+    (Self : not null access constant UML_Parameter_Set)
        return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter is abstract;
    --  Parameters in the parameter set.
 

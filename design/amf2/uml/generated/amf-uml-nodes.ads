@@ -55,16 +55,16 @@ package AMF.UML.Nodes is
 
    pragma Preelaborate;
 
-   type UML_Node_Interface is limited interface
-     and AMF.UML.Classes.UML_Class_Interface
-     and AMF.UML.Deployment_Targets.UML_Deployment_Target_Interface;
+   type UML_Node is limited interface
+     and AMF.UML.Classes.UML_Class
+     and AMF.UML.Deployment_Targets.UML_Deployment_Target;
 
-   type UML_Node is
-     access all UML_Node_Interface'Class;
-   for UML_Node'Storage_Size use 0;
+   type UML_Node_Access is
+     access all UML_Node'Class;
+   for UML_Node_Access'Storage_Size use 0;
 
    not overriding function Get_Nested_Node
-    (Self : not null access constant UML_Node_Interface)
+    (Self : not null access constant UML_Node)
        return AMF.UML.Nodes.Collections.Set_Of_UML_Node is abstract;
    --  The Nodes that are defined (nested) within the Node.
 
