@@ -47,6 +47,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 limited with AMF.CMOF.Namespaces;
+limited with AMF.CMOF.Namespaces.Collections;
 
 package AMF.CMOF.Named_Elements is
 
@@ -90,5 +91,34 @@ package AMF.CMOF.Named_Elements is
    --  hierarchy of nested Namespaces. It is constructed from the names of the 
    --  containing namespaces starting at the root of the hierarchy and ending 
    --  with the name of the NamedElement itself.
+
+   not overriding function All_Namespaces
+    (Self : not null access constant CMOF_Named_Element)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace is abstract;
+   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  NamedElement is nested, working outwards.
+
+   not overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Named_Element;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean is abstract;
+   --  The query isDistinguishableFrom() determines whether two NamedElements 
+   --  may logically co-exist within a Namespace. By default, two named 
+   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  they have related types but different names.
+
+   not overriding function Separator
+    (Self : not null access constant CMOF_Named_Element)
+       return League.Strings.Universal_String is abstract;
+   --  The query separator() gives the string that is used to separate names 
+   --  when constructing a qualified name.
+
+   not overriding function Qualified_Name
+    (Self : not null access constant CMOF_Named_Element)
+       return League.Strings.Universal_String is abstract;
+   --  When there is a name, and all of the containing namespaces have a name, 
+   --  the qualified name is constructed from the names of the containing 
+   --  namespaces.
 
 end AMF.CMOF.Named_Elements;

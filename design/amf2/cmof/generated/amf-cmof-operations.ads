@@ -54,6 +54,7 @@ limited with AMF.CMOF.Constraints.Collections;
 limited with AMF.CMOF.Data_Types;
 limited with AMF.CMOF.Operations.Collections;
 limited with AMF.CMOF.Parameters.Collections;
+limited with AMF.CMOF.Redefinable_Elements;
 limited with AMF.CMOF.Types;
 limited with AMF.CMOF.Types.Collections;
 
@@ -174,5 +175,45 @@ package AMF.CMOF.Operations is
    not overriding procedure Set_Body_Condition
     (Self : not null access CMOF_Operation;
      To   : AMF.CMOF.Constraints.CMOF_Constraint_Access) is abstract;
+
+   not overriding function Is_Ordered
+    (Self : not null access constant CMOF_Operation)
+       return Boolean is abstract;
+   --  If this operation has a return parameter, isOrdered equals the value of 
+   --  isOrdered for that parameter. Otherwise isOrdered is false.
+
+   not overriding function Is_Unique
+    (Self : not null access constant CMOF_Operation)
+       return Boolean is abstract;
+   --  If this operation has a return parameter, isUnique equals the value of 
+   --  isUnique for that parameter. Otherwise isUnique is true.
+
+   not overriding function Lower
+    (Self : not null access constant CMOF_Operation)
+       return Integer is abstract;
+   --  If this operation has a return parameter, lower equals the value of 
+   --  lower for that parameter. Otherwise lower is not defined.
+
+   not overriding function Upper
+    (Self : not null access constant CMOF_Operation)
+       return Unlimited_Natural is abstract;
+   --  If this operation has a return parameter, upper equals the value of 
+   --  upper for that parameter. Otherwise upper is not defined.
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant CMOF_Operation;
+     Redefinee : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies, for any two Operations in a 
+   --  context in which redefinition is possible, whether redefinition would 
+   --  be consistent in the sense of maintaining type covariance. Other senses 
+   --  of consistency may be required, for example to determine consistency in 
+   --  the sense of contravariance. Users may define alternative queries under 
+   --  names different from 'isConsistentWith()', as for example, users may 
+   --  define a query named 'isContravariantWith()'.
+
+   not overriding function Return_Result
+    (Self : not null access constant CMOF_Operation)
+       return AMF.CMOF.Parameters.Collections.Set_Of_CMOF_Parameter is abstract;
 
 end AMF.CMOF.Operations;

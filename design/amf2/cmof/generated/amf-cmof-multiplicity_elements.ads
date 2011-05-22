@@ -99,4 +99,36 @@ package AMF.CMOF.Multiplicity_Elements is
     (Self : not null access CMOF_Multiplicity_Element;
      To   : Optional_Unlimited_Natural) is abstract;
 
+   not overriding function Is_Multivalued
+    (Self : not null access constant CMOF_Multiplicity_Element)
+       return Boolean is abstract;
+   --  The query isMultivalued() checks whether this multiplicity has an upper 
+   --  bound greater than one.
+
+   not overriding function Includes_Multiplicity
+    (Self : not null access constant CMOF_Multiplicity_Element;
+     M : AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Access)
+       return Boolean is abstract;
+   --  The query includesMultiplicity() checks whether this multiplicity 
+   --  includes all the cardinalities allowed by the specified multiplicity.
+
+   not overriding function Includes_Cardinality
+    (Self : not null access constant CMOF_Multiplicity_Element;
+     C : Integer)
+       return Boolean is abstract;
+   --  The query includesCardinality() checks whether the specified 
+   --  cardinality is valid for this multiplicity.
+
+   not overriding function Lower_Bound
+    (Self : not null access constant CMOF_Multiplicity_Element)
+       return Integer is abstract;
+   --  The query lowerBound() returns the lower bound of the multiplicity as 
+   --  an integer.
+
+   not overriding function Upper_Bound
+    (Self : not null access constant CMOF_Multiplicity_Element)
+       return Unlimited_Natural is abstract;
+   --  The query upperBound() returns the upper bound of the multiplicity for 
+   --  a bounded multiplicity as an unlimited natural.
+
 end AMF.CMOF.Multiplicity_Elements;

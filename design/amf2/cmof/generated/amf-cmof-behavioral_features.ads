@@ -47,6 +47,7 @@
 --  of the behavior of its instances.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Features;
+limited with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces;
 limited with AMF.CMOF.Parameters.Collections;
 limited with AMF.CMOF.Types.Collections;
@@ -74,5 +75,14 @@ package AMF.CMOF.Behavioral_Features is
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this feature.
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Behavioral_Feature;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean is abstract;
+   --  The query isDistinguishableFrom() determines whether two 
+   --  BehavioralFeatures may coexist in the same Namespace. It specifies that 
+   --  they have to have different signatures.
 
 end AMF.CMOF.Behavioral_Features;

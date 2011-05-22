@@ -97,4 +97,9 @@ package AMF.CMOF.Associations is
        return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
    --  The navigable ends that are owned by the association itself.
 
+   not overriding function End_Type
+    (Self : not null access constant CMOF_Association)
+       return AMF.CMOF.Types.Collections.Ordered_Set_Of_CMOF_Type is abstract;
+   --  endType is derived from the types of the member ends.
+
 end AMF.CMOF.Associations;

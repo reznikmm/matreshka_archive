@@ -74,4 +74,17 @@ package AMF.CMOF.Elements is
        return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment is abstract;
    --  The Comments owned by this element.
 
+   not overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Element)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
+
+   not overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Element)
+       return Boolean is abstract;
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
+
 end AMF.CMOF.Elements;

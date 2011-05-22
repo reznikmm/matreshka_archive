@@ -48,6 +48,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Classifiers;
+limited with AMF.CMOF.Named_Elements.Collections;
 limited with AMF.CMOF.Operations.Collections;
 limited with AMF.CMOF.Properties.Collections;
 
@@ -85,5 +86,11 @@ package AMF.CMOF.Classes is
     (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class is abstract;
    --  This gives the superclasses of a class.
+
+   overriding function Inherit
+    (Self : not null access constant CMOF_Class;
+     Inhs : AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
+   --  The inherit operation is overridden to exclude redefined properties.
 
 end AMF.CMOF.Classes;

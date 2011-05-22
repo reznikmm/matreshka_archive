@@ -105,4 +105,10 @@ package AMF.CMOF.Element_Imports is
     (Self : not null access CMOF_Element_Import;
      To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access) is abstract;
 
+   not overriding function Get_Name
+    (Self : not null access constant CMOF_Element_Import)
+       return League.Strings.Universal_String is abstract;
+   --  The query getName() returns the name under which the imported 
+   --  PackageableElement will be known in the importing namespace.
+
 end AMF.CMOF.Element_Imports;

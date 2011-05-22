@@ -95,4 +95,43 @@ package AMF.CMOF.Namespaces is
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
 
+   not overriding function Imported_Member
+    (Self : not null access constant CMOF_Namespace)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  The importedMember property is derived from the ElementImports and the 
+   --  PackageImports. References the PackageableElements that are members of 
+   --  this Namespace as a result of either PackageImports or ElementImports.
+
+   not overriding function Get_Names_Of_Member
+    (Self : not null access constant CMOF_Namespace;
+     Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return Set_Of_String is abstract;
+   --  The query getNamesOfMember() takes importing into account. It gives 
+   --  back the set of names that an element would have in an importing 
+   --  namespace, either because it is owned, or if not owned then imported 
+   --  individually, or if not individually then from a package.
+
+   not overriding function Import_Members
+    (Self : not null access constant CMOF_Namespace;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  The query importMembers() defines which of a set of PackageableElements 
+   --  are actually imported into the namespace. This excludes hidden ones, 
+   --  i.e., those which have names that conflict with names of owned members, 
+   --  and also excludes elements which would have the same name when imported.
+
+   not overriding function Exclude_Collisions
+    (Self : not null access constant CMOF_Namespace;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  The query excludeCollisions() excludes from a set of 
+   --  PackageableElements any that would not be distinguishable from each 
+   --  other in this namespace.
+
+   not overriding function Members_Are_Distinguishable
+    (Self : not null access constant CMOF_Namespace)
+       return Boolean is abstract;
+   --  The Boolean query membersAreDistinguishable() determines whether all of 
+   --  the namespace's members are distinguishable within it.
+
 end AMF.CMOF.Namespaces;

@@ -46,6 +46,7 @@
 --  A package is used to group elements, and provides a namespace for the 
 --  grouped elements.
 ------------------------------------------------------------------------------
+limited with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces;
 limited with AMF.CMOF.Package_Merges.Collections;
 with AMF.CMOF.Packageable_Elements;
@@ -107,5 +108,25 @@ package AMF.CMOF.Packages is
    not overriding procedure Set_Uri
     (Self : not null access CMOF_Package;
      To   : Optional_String) is abstract;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Package)
+       return Boolean is abstract;
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner.
+
+   not overriding function Visible_Members
+    (Self : not null access constant CMOF_Package)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  The query visibleMembers() defines which members of a Package can be 
+   --  accessed outside it.
+
+   not overriding function Makes_Visible
+    (Self : not null access constant CMOF_Package;
+     El : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return Boolean is abstract;
+   --  The query makesVisible() defines whether a Package makes an element 
+   --  visible outside itself. Elements with no visibility and elements with 
+   --  public visibility are made visible.
 
 end AMF.CMOF.Packages;

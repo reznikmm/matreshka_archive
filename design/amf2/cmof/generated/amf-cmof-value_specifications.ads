@@ -61,4 +61,45 @@ package AMF.CMOF.Value_Specifications is
      access all CMOF_Value_Specification'Class;
    for CMOF_Value_Specification_Access'Storage_Size use 0;
 
+   not overriding function Is_Computable
+    (Self : not null access constant CMOF_Value_Specification)
+       return Boolean is abstract;
+   --  The query isComputable() determines whether a value specification can 
+   --  be computed in a model. This operation cannot be fully defined in OCL. 
+   --  A conforming implementation is expected to deliver true for this 
+   --  operation for all value specifications that it can compute, and to 
+   --  compute all of those for which the operation is true. A conforming 
+   --  implementation is expected to be able to compute the value of all 
+   --  literals.
+
+   not overriding function Integer_Value
+    (Self : not null access constant CMOF_Value_Specification)
+       return Integer is abstract;
+   --  The query integerValue() gives a single Integer value when one can be 
+   --  computed.
+
+   not overriding function Boolean_Value
+    (Self : not null access constant CMOF_Value_Specification)
+       return Boolean is abstract;
+   --  The query booleanValue() gives a single Boolean value when one can be 
+   --  computed.
+
+   not overriding function String_Value
+    (Self : not null access constant CMOF_Value_Specification)
+       return League.Strings.Universal_String is abstract;
+   --  The query stringValue() gives a single String value when one can be 
+   --  computed.
+
+   not overriding function Unlimited_Value
+    (Self : not null access constant CMOF_Value_Specification)
+       return Unlimited_Natural is abstract;
+   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
+   --  one can be computed.
+
+   not overriding function Is_Null
+    (Self : not null access constant CMOF_Value_Specification)
+       return Boolean is abstract;
+   --  The query isNull() returns true when it can be computed that the value 
+   --  is null.
+
 end AMF.CMOF.Value_Specifications;

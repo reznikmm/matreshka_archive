@@ -48,6 +48,7 @@
 --  data types.
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classifiers;
+limited with AMF.CMOF.Named_Elements.Collections;
 limited with AMF.CMOF.Operations.Collections;
 limited with AMF.CMOF.Properties.Collections;
 
@@ -71,5 +72,11 @@ package AMF.CMOF.Data_Types is
     (Self : not null access constant CMOF_Data_Type)
        return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is abstract;
    --  The Operations owned by the DataType.
+
+   overriding function Inherit
+    (Self : not null access constant CMOF_Data_Type;
+     Inhs : AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
+   --  The inherit operation is overridden to exclude redefined properties.
 
 end AMF.CMOF.Data_Types;

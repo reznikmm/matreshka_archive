@@ -54,8 +54,10 @@
 ------------------------------------------------------------------------------
 limited with AMF.CMOF.Associations;
 limited with AMF.CMOF.Classes;
+limited with AMF.CMOF.Classifiers.Collections;
 limited with AMF.CMOF.Data_Types;
 limited with AMF.CMOF.Properties.Collections;
+limited with AMF.CMOF.Redefinable_Elements;
 with AMF.CMOF.Structural_Features;
 
 package AMF.CMOF.Properties is
@@ -175,5 +177,46 @@ package AMF.CMOF.Properties is
    not overriding procedure Set_Association
     (Self : not null access CMOF_Property;
      To   : AMF.CMOF.Associations.CMOF_Association_Access) is abstract;
+
+   not overriding function Opposite
+    (Self : not null access constant CMOF_Property)
+       return AMF.CMOF.Properties.CMOF_Property_Access is abstract;
+   --  If this property is owned by a class, associated with a binary 
+   --  association, and the other end of the association is also owned by a 
+   --  class, then opposite gives the other end.
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant CMOF_Property;
+     Redefinee : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies, for any two Properties in a 
+   --  context in which redefinition is possible, whether redefinition would 
+   --  be logically consistent. A redefining property is consistent with a 
+   --  redefined property if the type of the redefining property conforms to 
+   --  the type of the redefined property, the multiplicity of the redefining 
+   --  property (if specified) is contained in the multiplicity of the 
+   --  redefined property, and the redefining property is derived if the 
+   --  redefined property is derived.
+
+   not overriding function Subsetting_Context
+    (Self : not null access constant CMOF_Property)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
+   --  The query subsettingContext() gives the context for subsetting a 
+   --  property. It consists, in the case of an attribute, of the 
+   --  corresponding classifier, and in the case of an association end, all of 
+   --  the classifiers at the other ends.
+
+   not overriding function Is_Navigable
+    (Self : not null access constant CMOF_Property)
+       return Boolean is abstract;
+   --  The query isNavigable() indicates whether it is possible to navigate 
+   --  across the property.
+
+   not overriding function Is_Attribute
+    (Self : not null access constant CMOF_Property;
+     P : AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean is abstract;
+   --  The query isAttribute() is true if the Property is defined as an 
+   --  attribute of some classifier.
 
 end AMF.CMOF.Properties;
