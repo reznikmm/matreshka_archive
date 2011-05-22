@@ -71,4 +71,10 @@ package AMF.UML.Deployment_Targets is
        return AMF.UML.Deployments.Collections.Set_Of_UML_Deployment is abstract;
    --  The set of Deployments for a DeploymentTarget.
 
+   not overriding function Deployed_Element
+    (Self : not null access constant UML_Deployment_Target)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Missing derivation for DeploymentTarget::/deployedElement : 
+   --  PackageableElement
+
 end AMF.UML.Deployment_Targets;

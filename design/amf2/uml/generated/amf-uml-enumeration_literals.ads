@@ -74,4 +74,9 @@ package AMF.UML.Enumeration_Literals is
     (Self : not null access UML_Enumeration_Literal;
      To   : AMF.UML.Enumerations.UML_Enumeration_Access) is abstract;
 
+   not overriding function Classifier
+    (Self : not null access constant UML_Enumeration_Literal)
+       return AMF.UML.Enumerations.UML_Enumeration_Access is abstract;
+   --  Missing derivation for EnumerationLiteral::/classifier : Enumeration
+
 end AMF.UML.Enumeration_Literals;

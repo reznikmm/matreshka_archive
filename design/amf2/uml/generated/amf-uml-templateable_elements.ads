@@ -47,6 +47,7 @@
 --  template and bound to other templates.
 ------------------------------------------------------------------------------
 with AMF.UML.Elements;
+limited with AMF.UML.Parameterable_Elements.Collections;
 limited with AMF.UML.Template_Bindings.Collections;
 limited with AMF.UML.Template_Signatures;
 
@@ -75,5 +76,20 @@ package AMF.UML.Templateable_Elements is
     (Self : not null access constant UML_Templateable_Element)
        return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding is abstract;
    --  The optional bindings from this element to templates.
+
+   not overriding function Is_Template
+    (Self : not null access constant UML_Templateable_Element)
+       return Boolean is abstract;
+   --  The query isTemplate() returns whether this templateable element is 
+   --  actually a template.
+
+   not overriding function Parameterable_Elements
+    (Self : not null access constant UML_Templateable_Element)
+       return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element is abstract;
+   --  The query parameterableElements() returns the set of elements that may 
+   --  be used as the parametered elements for a template parameter of this 
+   --  templateable element. By default, this set includes all the owned 
+   --  elements. Subclasses may override this operation if they choose to 
+   --  restrict the set of parameterable elements.
 
 end AMF.UML.Templateable_Elements;

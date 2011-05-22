@@ -48,6 +48,7 @@
 ------------------------------------------------------------------------------
 with AMF.UML.Named_Elements;
 limited with AMF.UML.Regions;
+limited with AMF.UML.State_Machines;
 limited with AMF.UML.Transitions.Collections;
 
 package AMF.UML.Vertexs is
@@ -79,5 +80,21 @@ package AMF.UML.Vertexs is
     (Self : not null access constant UML_Vertex)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  Specifies the transitions departing from this vertex.
+
+   not overriding function Containing_State_Machine
+    (Self : not null access constant UML_Vertex)
+       return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  The operation containingStateMachine() returns the state machine in 
+   --  which this Vertex is defined
+
+   not overriding function Incoming
+    (Self : not null access constant UML_Vertex)
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
+   --  Missing derivation for Vertex::/incoming : Transition
+
+   not overriding function Outgoing
+    (Self : not null access constant UML_Vertex)
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
+   --  Missing derivation for Vertex::/outgoing : Transition
 
 end AMF.UML.Vertexs;

@@ -150,4 +150,14 @@ package AMF.UML.Ports is
    --  or directly from the type of the port if the port is typed by an 
    --  interface.
 
+   not overriding function Provided
+    (Self : not null access constant UML_Port)
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Missing derivation for Port::/provided : Interface
+
+   not overriding function Required
+    (Self : not null access constant UML_Port)
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Missing derivation for Port::/required : Interface
+
 end AMF.UML.Ports;

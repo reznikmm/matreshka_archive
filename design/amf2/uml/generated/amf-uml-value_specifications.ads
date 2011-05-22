@@ -50,6 +50,7 @@
 --  instances, including both objects and data values.
 ------------------------------------------------------------------------------
 with AMF.UML.Packageable_Elements;
+limited with AMF.UML.Parameterable_Elements;
 with AMF.UML.Typed_Elements;
 
 package AMF.UML.Value_Specifications is
@@ -63,5 +64,63 @@ package AMF.UML.Value_Specifications is
    type UML_Value_Specification_Access is
      access all UML_Value_Specification'Class;
    for UML_Value_Specification_Access'Storage_Size use 0;
+
+   not overriding function Boolean_Value
+    (Self : not null access constant UML_Value_Specification)
+       return Optional_Boolean is abstract;
+   --  The query booleanValue() gives a single Boolean value when one can be 
+   --  computed.
+
+   not overriding function Integer_Value
+    (Self : not null access constant UML_Value_Specification)
+       return Optional_Integer is abstract;
+   --  The query integerValue() gives a single Integer value when one can be 
+   --  computed.
+
+   overriding function Is_Compatible_With
+    (Self : not null access constant UML_Value_Specification;
+     P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
+       return Boolean is abstract;
+   --  The query isCompatibleWith() determines if this parameterable element 
+   --  is compatible with the specified parameterable element. By default 
+   --  parameterable element P is compatible with parameterable element Q if 
+   --  the kind of P is the same or a subtype as the kind of Q. In addition, 
+   --  for ValueSpecification, the type must be conformant with the type of 
+   --  the specified parameterable element.
+
+   not overriding function Is_Computable
+    (Self : not null access constant UML_Value_Specification)
+       return Boolean is abstract;
+   --  The query isComputable() determines whether a value specification can 
+   --  be computed in a model. This operation cannot be fully defined in OCL. 
+   --  A conforming implementation is expected to deliver true for this 
+   --  operation for all value specifications that it can compute, and to 
+   --  compute all of those for which the operation is true. A conforming 
+   --  implementation is expected to be able to compute the value of all 
+   --  literals.
+
+   not overriding function Is_Null
+    (Self : not null access constant UML_Value_Specification)
+       return Boolean is abstract;
+   --  The query isNull() returns true when it can be computed that the value 
+   --  is null.
+
+   not overriding function Real_Value
+    (Self : not null access constant UML_Value_Specification)
+       return Optional_Real is abstract;
+   --  The query realValue() gives a single Real value when one can be 
+   --  computed.
+
+   not overriding function String_Value
+    (Self : not null access constant UML_Value_Specification)
+       return Optional_String is abstract;
+   --  The query stringValue() gives a single String value when one can be 
+   --  computed.
+
+   not overriding function Unlimited_Value
+    (Self : not null access constant UML_Value_Specification)
+       return Optional_Unlimited_Natural is abstract;
+   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
+   --  one can be computed.
 
 end AMF.UML.Value_Specifications;

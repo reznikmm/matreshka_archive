@@ -70,4 +70,12 @@ package AMF.UML.Types is
     (Self : not null access UML_Type;
      To   : AMF.UML.Packages.UML_Package_Access) is abstract;
 
+   not overriding function Conforms_To
+    (Self : not null access constant UML_Type;
+     Other : AMF.UML.Types.UML_Type_Access)
+       return Boolean is abstract;
+   --  The query conformsTo() gives true for a type that conforms to another. 
+   --  By default, two types do not conform to each other. This query is 
+   --  intended to be redefined for specific conformance situations.
+
 end AMF.UML.Types;

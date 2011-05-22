@@ -51,9 +51,12 @@
 --  elements of the state machine.
 ------------------------------------------------------------------------------
 with AMF.UML.Behaviors;
+limited with AMF.UML.Namespaces;
 limited with AMF.UML.Pseudostates.Collections;
+limited with AMF.UML.Redefinable_Elements;
 limited with AMF.UML.Regions.Collections;
 limited with AMF.UML.State_Machines.Collections;
+limited with AMF.UML.States;
 limited with AMF.UML.States.Collections;
 
 package AMF.UML.State_Machines is
@@ -89,5 +92,45 @@ package AMF.UML.State_Machines is
        return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
    --  References the submachine(s) in case of a submachine state. Multiple 
    --  machines are referenced in case of a concurrent state.
+
+   not overriding function L_C_A
+    (Self : not null access constant UML_State_Machine;
+     S1 : AMF.UML.States.UML_State_Access;
+     S2 : AMF.UML.States.UML_State_Access)
+       return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  The operation LCA(s1,s2) returns an orthogonal state or region which is 
+   --  the least common ancestor of states s1 and s2, based on the 
+   --  statemachine containment hierarchy.
+
+   not overriding function Ancestor
+    (Self : not null access constant UML_State_Machine;
+     S1 : AMF.UML.States.UML_State_Access;
+     S2 : AMF.UML.States.UML_State_Access)
+       return Boolean is abstract;
+   --  The query ancestor(s1, s2) checks whether s1 is an ancestor state of 
+   --  state s2.
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_State_Machine;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies that a redefining state machine 
+   --  is consistent with a redefined state machine provided that the 
+   --  redefining state machine is an extension of the redefined state 
+   --  machine: Regions are inherited and regions can be added, inherited 
+   --  regions can be redefined. In case of multiple redefining state 
+   --  machines, extension implies that the redefining state machine gets 
+   --  orthogonal regions for each of the redefined state machines.
+
+   not overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_State_Machine;
+     Redefined : AMF.UML.State_Machines.UML_State_Machine_Access)
+       return Boolean is abstract;
+   --  The query isRedefinitionContextValid() specifies whether the 
+   --  redefinition contexts of a statemachine are properly related to the 
+   --  redefinition contexts of the specified statemachine to allow this 
+   --  element to redefine the other. The containing classifier of a 
+   --  redefining statemachine must redefine the containing classifier of the 
+   --  redefined statemachine.
 
 end AMF.UML.State_Machines;

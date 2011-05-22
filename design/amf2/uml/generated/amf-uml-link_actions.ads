@@ -48,6 +48,7 @@
 --  ends of the links.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
+limited with AMF.UML.Associations;
 limited with AMF.UML.Input_Pins.Collections;
 limited with AMF.UML.Link_End_Datas.Collections;
 
@@ -72,5 +73,11 @@ package AMF.UML.Link_Actions is
     (Self : not null access constant UML_Link_Action)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
    --  Pins taking end objects and qualifier values as input.
+
+   not overriding function Association
+    (Self : not null access constant UML_Link_Action)
+       return AMF.UML.Associations.UML_Association_Access is abstract;
+   --  The association operates on LinkAction. It returns the association of 
+   --  the action.
 
 end AMF.UML.Link_Actions;

@@ -74,8 +74,11 @@ with AMF.UML.Connectable_Elements;
 limited with AMF.UML.Data_Types;
 with AMF.UML.Deployment_Targets;
 limited with AMF.UML.Interfaces;
+limited with AMF.UML.Parameterable_Elements;
 limited with AMF.UML.Properties.Collections;
+limited with AMF.UML.Redefinable_Elements;
 with AMF.UML.Structural_Features;
+limited with AMF.UML.Types.Collections;
 limited with AMF.UML.Value_Specifications;
 
 package AMF.UML.Properties is
@@ -258,5 +261,73 @@ package AMF.UML.Properties is
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
    --  References the properties of which this property is constrained to be a 
    --  subset.
+
+   not overriding function Default
+    (Self : not null access constant UML_Property)
+       return Optional_String is abstract;
+   --  Missing derivation for Property::/default : String
+
+   not overriding function Is_Attribute
+    (Self : not null access constant UML_Property;
+     P : AMF.UML.Properties.UML_Property_Access)
+       return Boolean is abstract;
+   --  The query isAttribute() is true if the Property is defined as an 
+   --  attribute of some classifier.
+
+   overriding function Is_Compatible_With
+    (Self : not null access constant UML_Property;
+     P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
+       return Boolean is abstract;
+   --  The query isCompatibleWith() determines if this parameterable element 
+   --  is compatible with the specified parameterable element. By default 
+   --  parameterable element P is compatible with parameterable element Q if 
+   --  the kind of P is the same or a subtype as the kind of Q. In addition, 
+   --  for properties, the type must be conformant with the type of the 
+   --  specified parameterable element.
+
+   not overriding function Is_Composite
+    (Self : not null access constant UML_Property)
+       return Boolean is abstract;
+   --  The value of isComposite is true only if aggregation is composite.
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_Property;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies, for any two Properties in a 
+   --  context in which redefinition is possible, whether redefinition would 
+   --  be logically consistent. A redefining property is consistent with a 
+   --  redefined property if the type of the redefining property conforms to 
+   --  the type of the redefined property, the multiplicity of the redefining 
+   --  property (if specified) is contained in the multiplicity of the 
+   --  redefined property.
+   --  The query isConsistentWith() specifies, for any two Properties in a 
+   --  context in which redefinition is possible, whether redefinition would 
+   --  be logically consistent. A redefining property is consistent with a 
+   --  redefined property if the type of the redefining property conforms to 
+   --  the type of the redefined property, and the multiplicity of the 
+   --  redefining property (if specified) is contained in the multiplicity of 
+   --  the redefined property.
+
+   not overriding function Is_Navigable
+    (Self : not null access constant UML_Property)
+       return Boolean is abstract;
+   --  The query isNavigable() indicates whether it is possible to navigate 
+   --  across the property.
+
+   not overriding function Opposite
+    (Self : not null access constant UML_Property)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  If this property is owned by a class, associated with a binary 
+   --  association, and the other end of the association is also owned by a 
+   --  class, then opposite gives the other end.
+
+   not overriding function Subsetting_Context
+    (Self : not null access constant UML_Property)
+       return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
+   --  The query subsettingContext() gives the context for subsetting a 
+   --  property. It consists, in the case of an attribute, of the 
+   --  corresponding classifier, and in the case of an association end, all of 
+   --  the classifiers at the other ends.
 
 end AMF.UML.Properties;

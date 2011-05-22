@@ -79,4 +79,21 @@ package AMF.UML.Parameterable_Elements is
     (Self : not null access UML_Parameterable_Element;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is abstract;
 
+   not overriding function Is_Compatible_With
+    (Self : not null access constant UML_Parameterable_Element;
+     P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
+       return Boolean is abstract;
+   --  The query isCompatibleWith() determines if this parameterable element 
+   --  is compatible with the specified parameterable element. By default 
+   --  parameterable element P is compatible with parameterable element Q if 
+   --  the kind of P is the same or a subtype as the kind of Q. Subclasses 
+   --  should override this operation to specify different compatibility 
+   --  constraints.
+
+   not overriding function Is_Template_Parameter
+    (Self : not null access constant UML_Parameterable_Element)
+       return Boolean is abstract;
+   --  The query isTemplateParameter() determines if this parameterable 
+   --  element is exposed as a formal template parameter.
+
 end AMF.UML.Parameterable_Elements;

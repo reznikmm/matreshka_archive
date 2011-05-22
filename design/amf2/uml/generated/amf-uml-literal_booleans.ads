@@ -67,4 +67,14 @@ package AMF.UML.Literal_Booleans is
     (Self : not null access UML_Literal_Boolean;
      To   : Boolean) is abstract;
 
+   not overriding function Boolean_Value
+    (Self : not null access constant UML_Literal_Boolean)
+       return Boolean is abstract;
+   --  The query booleanValue() gives the value.
+
+   overriding function Is_Computable
+    (Self : not null access constant UML_Literal_Boolean)
+       return Boolean is abstract;
+   --  The query isComputable() is redefined to be true.
+
 end AMF.UML.Literal_Booleans;

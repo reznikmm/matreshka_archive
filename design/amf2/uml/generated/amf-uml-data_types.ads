@@ -48,6 +48,7 @@
 --  data types.
 ------------------------------------------------------------------------------
 with AMF.UML.Classifiers;
+limited with AMF.UML.Named_Elements.Collections;
 limited with AMF.UML.Operations.Collections;
 limited with AMF.UML.Properties.Collections;
 
@@ -71,5 +72,11 @@ package AMF.UML.Data_Types is
     (Self : not null access constant UML_Data_Type)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
    --  The Operations owned by the DataType.
+
+   overriding function Inherit
+    (Self : not null access constant UML_Data_Type;
+     Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  The inherit operation is overridden to exclude redefined properties.
 
 end AMF.UML.Data_Types;

@@ -111,4 +111,43 @@ package AMF.UML.Regions is
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  The set of transitions owned by the region.
 
+   not overriding function Belongs_To_P_S_M
+    (Self : not null access constant UML_Region)
+       return Boolean is abstract;
+   --  The operation belongsToPSM () checks if the region belongs to a 
+   --  protocol state machine
+
+   not overriding function Containing_State_Machine
+    (Self : not null access constant UML_Region)
+       return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  The operation containingStateMachine() returns the sate machine in 
+   --  which this Region is defined
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_Region;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies that a redefining region is 
+   --  consistent with a redefined region provided that the redefining region 
+   --  is an extension of the redefined region, i.e. it adds vertices and 
+   --  transitions and it redefines states and transitions of the redefined 
+   --  region.
+
+   not overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_Region;
+     Redefined : AMF.UML.Regions.UML_Region_Access)
+       return Boolean is abstract;
+   --  The query isRedefinitionContextValid() specifies whether the 
+   --  redefinition contexts of a region are properly related to the 
+   --  redefinition contexts of the specified region to allow this element to 
+   --  redefine the other. The containing statemachine/state of a redefining 
+   --  region must redefine the containing statemachine/state of the redefined 
+   --  region.
+
+   not overriding function Redefinition_Context
+    (Self : not null access constant UML_Region)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  The redefinition context of a region is the nearest containing 
+   --  statemachine
+
 end AMF.UML.Regions;

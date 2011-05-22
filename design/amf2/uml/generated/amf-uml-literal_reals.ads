@@ -66,4 +66,14 @@ package AMF.UML.Literal_Reals is
     (Self : not null access UML_Literal_Real;
      To   : Real) is abstract;
 
+   overriding function Is_Computable
+    (Self : not null access constant UML_Literal_Real)
+       return Boolean is abstract;
+   --  The query isComputable() is redefined to be true.
+
+   not overriding function Real_Value
+    (Self : not null access constant UML_Literal_Real)
+       return Real is abstract;
+   --  The query realValue() gives the value.
+
 end AMF.UML.Literal_Reals;

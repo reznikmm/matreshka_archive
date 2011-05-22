@@ -54,6 +54,7 @@
 --  conditions that may occur between actions that read or write the same 
 --  variable.
 ------------------------------------------------------------------------------
+limited with AMF.UML.Actions;
 limited with AMF.UML.Activities;
 with AMF.UML.Connectable_Elements;
 with AMF.UML.Multiplicity_Elements;
@@ -88,5 +89,13 @@ package AMF.UML.Variables is
    not overriding procedure Set_Scope
     (Self : not null access UML_Variable;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is abstract;
+
+   not overriding function Is_Accessible_By
+    (Self : not null access constant UML_Variable;
+     A : AMF.UML.Actions.UML_Action_Access)
+       return Boolean is abstract;
+   --  The isAccessibleBy() operation is not defined in standard UML. 
+   --  Implementations should define it to specify which actions can access a 
+   --  variable.
 
 end AMF.UML.Variables;

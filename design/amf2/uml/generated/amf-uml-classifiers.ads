@@ -211,4 +211,87 @@ package AMF.UML.Classifiers is
        return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
    --  The set of use cases for which this Classifier is the subject.
 
+   not overriding function All_Features
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Features.Collections.Set_Of_UML_Feature is abstract;
+   --  The query allFeatures() gives all of the features in the namespace of 
+   --  the classifier. In general, through mechanisms such as inheritance, 
+   --  this will be a larger set than feature.
+
+   not overriding function All_Parents
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  The query allParents() gives all of the direct and indirect ancestors 
+   --  of a generalized Classifier.
+
+   not overriding function Conforms_To
+    (Self : not null access constant UML_Classifier;
+     Other : AMF.UML.Classifiers.UML_Classifier_Access)
+       return Boolean is abstract;
+   --  The query conformsTo() gives true for a classifier that defines a type 
+   --  that conforms to another. This is used, for example, in the 
+   --  specification of signature conformance for operations.
+
+   not overriding function General
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  The general classifiers are the classifiers referenced by the 
+   --  generalization relationships.
+
+   not overriding function Has_Visibility_Of
+    (Self : not null access constant UML_Classifier;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access)
+       return Boolean is abstract;
+   --  The query hasVisibilityOf() determines whether a named element is 
+   --  visible in the classifier. By default all are visible. It is only 
+   --  called when the argument is something owned by a parent.
+
+   not overriding function Inherit
+    (Self : not null access constant UML_Classifier;
+     Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  The query inherit() defines how to inherit a set of elements. Here the 
+   --  operation is defined to inherit them all. It is intended to be 
+   --  redefined in circumstances where inheritance is affected by 
+   --  redefinition.
+   --  The inherit operation is overridden to exclude redefined properties.
+
+   not overriding function Inheritable_Members
+    (Self : not null access constant UML_Classifier;
+     C : AMF.UML.Classifiers.UML_Classifier_Access)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  The query inheritableMembers() gives all of the members of a classifier 
+   --  that may be inherited in one of its descendants, subject to whatever 
+   --  visibility restrictions apply.
+
+   not overriding function Inherited_Member
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  The inheritedMember association is derived by inheriting the 
+   --  inheritable members of the parents.
+   --  The inheritedMember association is derived by inheriting the 
+   --  inheritable members of the parents.
+
+   overriding function Is_Template
+    (Self : not null access constant UML_Classifier)
+       return Boolean is abstract;
+   --  The query isTemplate() returns whether this templateable element is 
+   --  actually a template.
+
+   not overriding function May_Specialize_Type
+    (Self : not null access constant UML_Classifier;
+     C : AMF.UML.Classifiers.UML_Classifier_Access)
+       return Boolean is abstract;
+   --  The query maySpecializeType() determines whether this classifier may 
+   --  have a generalization relationship to classifiers of the specified 
+   --  type. By default a classifier may specialize classifiers of the same or 
+   --  a more general type. It is intended to be redefined by classifiers that 
+   --  have different specialization constraints.
+
+   not overriding function Parents
+    (Self : not null access constant UML_Classifier)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  The query parents() gives all of the immediate ancestors of a 
+   --  generalized Classifier.
+
 end AMF.UML.Classifiers;

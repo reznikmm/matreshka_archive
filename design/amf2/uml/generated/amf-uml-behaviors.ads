@@ -141,4 +141,9 @@ package AMF.UML.Behaviors is
     (Self : not null access UML_Behavior;
      To   : AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access) is abstract;
 
+   not overriding function Context
+    (Self : not null access constant UML_Behavior)
+       return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access is abstract;
+   --  Missing derivation for Behavior::/context : BehavioredClassifier
+
 end AMF.UML.Behaviors;

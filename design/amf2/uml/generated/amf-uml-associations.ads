@@ -101,4 +101,9 @@ package AMF.UML.Associations is
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
    --  The ends that are owned by the association itself.
 
+   not overriding function End_Type
+    (Self : not null access constant UML_Association)
+       return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type is abstract;
+   --  endType is derived from the types of the member ends.
+
 end AMF.UML.Associations;

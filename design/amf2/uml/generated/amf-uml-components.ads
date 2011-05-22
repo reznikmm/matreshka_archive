@@ -51,6 +51,7 @@
 --  packages, components, and artifacts.
 ------------------------------------------------------------------------------
 with AMF.UML.Classes;
+limited with AMF.UML.Classifiers;
 limited with AMF.UML.Component_Realizations.Collections;
 limited with AMF.UML.Interfaces.Collections;
 limited with AMF.UML.Packageable_Elements.Collections;
@@ -114,5 +115,27 @@ package AMF.UML.Components is
    --  functionality. These interfaces may be used by the Component or any of 
    --  its realizingClassifiers, or they may be the Interfaces that are 
    --  required by its public Ports.
+
+   not overriding function Provided
+    (Self : not null access constant UML_Component)
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Missing derivation for Component::/provided : Interface
+
+   not overriding function Realized_Interfaces
+    (Self : not null access constant UML_Component;
+     Classifier : AMF.UML.Classifiers.UML_Classifier_Access)
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Utility returning the set of realized interfaces of a component.
+
+   not overriding function Required
+    (Self : not null access constant UML_Component)
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Missing derivation for Component::/required : Interface
+
+   not overriding function Used_Interfaces
+    (Self : not null access constant UML_Component;
+     Classifier : AMF.UML.Classifiers.UML_Classifier_Access)
+       return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Utility returning the set of used interfaces of a component.
 
 end AMF.UML.Components;

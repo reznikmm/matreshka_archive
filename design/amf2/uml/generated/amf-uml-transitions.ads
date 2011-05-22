@@ -55,6 +55,7 @@ limited with AMF.UML.Constraints;
 with AMF.UML.Namespaces;
 with AMF.UML.Redefinable_Elements;
 limited with AMF.UML.Regions;
+limited with AMF.UML.State_Machines;
 limited with AMF.UML.Triggers.Collections;
 limited with AMF.UML.Vertexs;
 
@@ -151,5 +152,27 @@ package AMF.UML.Transitions is
     (Self : not null access constant UML_Transition)
        return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
    --  Specifies the triggers that may fire the transition.
+
+   not overriding function Containing_State_Machine
+    (Self : not null access constant UML_Transition)
+       return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  The query containingStateMachine() returns the state machine that 
+   --  contains the transition either directly or transitively.
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_Transition;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies that a redefining transition is 
+   --  consistent with a redefined transition provided that the redefining 
+   --  transition has the following relation to the redefined transition: A 
+   --  redefining transition redefines all properties of the corresponding 
+   --  redefined transition, except the source state and the trigger.
+
+   not overriding function Redefinition_Context
+    (Self : not null access constant UML_Transition)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  The redefinition context of a transition is the nearest containing 
+   --  statemachine.
 
 end AMF.UML.Transitions;

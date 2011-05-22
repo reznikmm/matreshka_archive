@@ -85,4 +85,9 @@ package AMF.UML.Structured_Classifiers is
        return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
    --  References the roles that instances may play in this classifier.
 
+   not overriding function Part
+    (Self : not null access constant UML_Structured_Classifier)
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
+   --  Missing derivation for StructuredClassifier::/part : Property
+
 end AMF.UML.Structured_Classifiers;

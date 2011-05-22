@@ -67,4 +67,14 @@ package AMF.UML.Literal_Integers is
     (Self : not null access UML_Literal_Integer;
      To   : Integer) is abstract;
 
+   not overriding function Integer_Value
+    (Self : not null access constant UML_Literal_Integer)
+       return Integer is abstract;
+   --  The query integerValue() gives the value.
+
+   overriding function Is_Computable
+    (Self : not null access constant UML_Literal_Integer)
+       return Boolean is abstract;
+   --  The query isComputable() is redefined to be true.
+
 end AMF.UML.Literal_Integers;

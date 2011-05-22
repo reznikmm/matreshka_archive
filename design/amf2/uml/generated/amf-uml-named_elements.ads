@@ -52,6 +52,8 @@
 limited with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements;
 limited with AMF.UML.Namespaces;
+limited with AMF.UML.Namespaces.Collections;
+limited with AMF.UML.Packages.Collections;
 limited with AMF.UML.String_Expressions;
 
 package AMF.UML.Named_Elements is
@@ -110,5 +112,45 @@ package AMF.UML.Named_Elements is
    not overriding procedure Set_Visibility
     (Self : not null access UML_Named_Element;
      To   : Optional_UML_Visibility_Kind) is abstract;
+
+   not overriding function All_Namespaces
+    (Self : not null access constant UML_Named_Element)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is abstract;
+   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  NamedElement is nested, working outwards.
+
+   not overriding function All_Owning_Packages
+    (Self : not null access constant UML_Named_Element)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package is abstract;
+   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  owning packages.
+
+   not overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Named_Element;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean is abstract;
+   --  The query isDistinguishableFrom() determines whether two NamedElements 
+   --  may logically co-exist within a Namespace. By default, two named 
+   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  they have related types but different names.
+
+   not overriding function Namespace
+    (Self : not null access constant UML_Named_Element)
+       return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  Missing derivation for NamedElement::/namespace : Namespace
+
+   not overriding function Qualified_Name
+    (Self : not null access constant UML_Named_Element)
+       return League.Strings.Universal_String is abstract;
+   --  When there is a name, and all of the containing namespaces have a name, 
+   --  the qualified name is constructed from the names of the containing 
+   --  namespaces.
+
+   not overriding function Separator
+    (Self : not null access constant UML_Named_Element)
+       return League.Strings.Universal_String is abstract;
+   --  The query separator() gives the string that is used to separate names 
+   --  when constructing a qualified name.
 
 end AMF.UML.Named_Elements;

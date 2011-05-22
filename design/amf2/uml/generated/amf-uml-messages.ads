@@ -128,4 +128,9 @@ package AMF.UML.Messages is
     (Self : not null access UML_Message;
      To   : AMF.UML.Named_Elements.UML_Named_Element_Access) is abstract;
 
+   not overriding function Message_Kind
+    (Self : not null access constant UML_Message)
+       return UML_Message_Kind is abstract;
+   --  Missing derivation for Message::/messageKind : MessageKind
+
 end AMF.UML.Messages;

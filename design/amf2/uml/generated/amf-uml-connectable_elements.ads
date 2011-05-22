@@ -83,4 +83,9 @@ package AMF.UML.Connectable_Elements is
     (Self : not null access UML_Connectable_Element;
      To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access) is abstract;
 
+   not overriding function Ends
+    (Self : not null access constant UML_Connectable_Element)
+       return AMF.UML.Connector_Ends.Collections.Set_Of_UML_Connector_End is abstract;
+   --  Missing derivation for ConnectableElement::/end : ConnectorEnd
+
 end AMF.UML.Connectable_Elements;

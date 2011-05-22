@@ -141,4 +141,9 @@ package AMF.UML.Parameters is
        return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is abstract;
    --  The parameter sets containing the parameter. See ParameterSet.
 
+   not overriding function Default
+    (Self : not null access constant UML_Parameter)
+       return Optional_String is abstract;
+   --  Missing derivation for Parameter::/default : String
+
 end AMF.UML.Parameters;

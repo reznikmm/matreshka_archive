@@ -77,4 +77,11 @@ package AMF.UML.String_Expressions is
        return AMF.UML.String_Expressions.Collections.Set_Of_UML_String_Expression is abstract;
    --  The StringExpressions that constitute this StringExpression.
 
+   not overriding function String_Value
+    (Self : not null access constant UML_String_Expression)
+       return League.Strings.Universal_String is abstract;
+   --  The query stringValue() returns the string that concatenates, in order, 
+   --  all the component string literals of all the subexpressions that are 
+   --  part of the StringExpression.
+
 end AMF.UML.String_Expressions;

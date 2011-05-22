@@ -65,4 +65,9 @@ package AMF.UML.Encapsulated_Classifiers is
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
    --  References a set of ports that an encapsulated classifier owns.
 
+   not overriding function Owned_Port
+    (Self : not null access constant UML_Encapsulated_Classifier)
+       return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
+   --  Missing derivation for EncapsulatedClassifier::/ownedPort : Port
+
 end AMF.UML.Encapsulated_Classifiers;

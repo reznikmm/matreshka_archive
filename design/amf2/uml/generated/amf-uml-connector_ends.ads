@@ -92,4 +92,9 @@ package AMF.UML.Connector_Ends is
     (Self : not null access UML_Connector_End;
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
 
+   not overriding function Defining_End
+    (Self : not null access constant UML_Connector_End)
+       return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Missing derivation for ConnectorEnd::/definingEnd : Property
+
 end AMF.UML.Connector_Ends;

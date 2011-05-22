@@ -120,4 +120,10 @@ package AMF.UML.Activities is
        return AMF.UML.Variables.Collections.Set_Of_UML_Variable is abstract;
    --  Top-level variables in the activity.
 
+   not overriding function Structured_Node
+    (Self : not null access constant UML_Activity)
+       return AMF.UML.Structured_Activity_Nodes.Collections.Set_Of_UML_Structured_Activity_Node is abstract;
+   --  Missing derivation for Activity::/structuredNode : 
+   --  StructuredActivityNode
+
 end AMF.UML.Activities;

@@ -52,6 +52,7 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Behaviors.Collections;
 with AMF.UML.Features;
+limited with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces;
 limited with AMF.UML.Parameter_Sets.Collections;
 limited with AMF.UML.Parameters.Collections;
@@ -117,5 +118,14 @@ package AMF.UML.Behavioral_Features is
        return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this feature.
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Behavioral_Feature;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean is abstract;
+   --  The query isDistinguishableFrom() determines whether two 
+   --  BehavioralFeatures may coexist in the same Namespace. It specifies that 
+   --  they have to have different signatures.
 
 end AMF.UML.Behavioral_Features;

@@ -52,6 +52,7 @@ limited with AMF.UML.Classifiers.Collections;
 limited with AMF.UML.Extends.Collections;
 limited with AMF.UML.Extension_Points.Collections;
 limited with AMF.UML.Includes.Collections;
+limited with AMF.UML.Use_Cases.Collections;
 
 package AMF.UML.Use_Cases is
 
@@ -86,5 +87,11 @@ package AMF.UML.Use_Cases is
    --  its parts realize all the use cases that apply to this subject. Use 
    --  cases need not be attached to any specific subject, however. The 
    --  subject may, but need not, own the use cases that apply to it.
+
+   not overriding function All_Included_Use_Cases
+    (Self : not null access constant UML_Use_Case)
+       return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
+   --  The query allIncludedUseCases() returns the transitive closure of all 
+   --  use cases (directly or indirectly) included by this use case.
 
 end AMF.UML.Use_Cases;

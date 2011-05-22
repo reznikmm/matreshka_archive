@@ -120,4 +120,9 @@ package AMF.UML.Connectors is
     (Self : not null access UML_Connector;
      To   : AMF.UML.Associations.UML_Association_Access) is abstract;
 
+   not overriding function Kind
+    (Self : not null access constant UML_Connector)
+       return UML_Connector_Kind is abstract;
+   --  Missing derivation for Connector::/kind : ConnectorKind
+
 end AMF.UML.Connectors;

@@ -96,4 +96,55 @@ package AMF.UML.Namespaces is
        return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is abstract;
    --  References the PackageImports owned by the Namespace.
 
+   not overriding function Exclude_Collisions
+    (Self : not null access constant UML_Namespace;
+     Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  The query excludeCollisions() excludes from a set of 
+   --  PackageableElements any that would not be distinguishable from each 
+   --  other in this namespace.
+
+   not overriding function Get_Names_Of_Member
+    (Self : not null access constant UML_Namespace;
+     Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
+       return Set_Of_String is abstract;
+   --  The query getNamesOfMember() takes importing into account. It gives 
+   --  back the set of names that an element would have in an importing 
+   --  namespace, either because it is owned, or if not owned then imported 
+   --  individually, or if not individually then from a package.
+   --  The query getNamesOfMember() gives a set of all of the names that a 
+   --  member would have in a Namespace. In general a member can have multiple 
+   --  names in a Namespace if it is imported more than once with different 
+   --  aliases. The query takes account of importing. It gives back the set of 
+   --  names that an element would have in an importing namespace, either 
+   --  because it is owned, or if not owned then imported individually, or if 
+   --  not individually then from a package.
+
+   not overriding function Import_Members
+    (Self : not null access constant UML_Namespace;
+     Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  The query importMembers() defines which of a set of PackageableElements 
+   --  are actually imported into the namespace. This excludes hidden ones, 
+   --  i.e., those which have names that conflict with names of owned members, 
+   --  and also excludes elements which would have the same name when imported.
+
+   not overriding function Imported_Member
+    (Self : not null access constant UML_Namespace)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  The importedMember property is derived from the ElementImports and the 
+   --  PackageImports. References the PackageableElements that are members of 
+   --  this Namespace as a result of either PackageImports or ElementImports.
+
+   not overriding function Members_Are_Distinguishable
+    (Self : not null access constant UML_Namespace)
+       return Boolean is abstract;
+   --  The Boolean query membersAreDistinguishable() determines whether all of 
+   --  the namespace's members are distinguishable within it.
+
+   not overriding function Owned_Member
+    (Self : not null access constant UML_Namespace)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Missing derivation for Namespace::/ownedMember : NamedElement
+
 end AMF.UML.Namespaces;

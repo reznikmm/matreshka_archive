@@ -106,4 +106,9 @@ package AMF.UML.Actions is
    --  The ordered set of output pins connected to the Action. The action 
    --  places its results onto pins in this set.
 
+   not overriding function Context
+    (Self : not null access constant UML_Action)
+       return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Missing derivation for Action::/context : Classifier
+
 end AMF.UML.Actions;

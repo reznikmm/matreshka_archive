@@ -90,4 +90,25 @@ package AMF.UML.Redefinable_Elements is
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
    --  References the contexts that this element may be redefined from.
 
+   not overriding function Is_Consistent_With
+    (Self : not null access constant UML_Redefinable_Element;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isConsistentWith() specifies, for any two RedefinableElements 
+   --  in a context in which redefinition is possible, whether redefinition 
+   --  would be logically consistent. By default, this is false; this 
+   --  operation must be overridden for subclasses of RedefinableElement to 
+   --  define the consistency conditions.
+
+   not overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_Redefinable_Element;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is abstract;
+   --  The query isRedefinitionContextValid() specifies whether the 
+   --  redefinition contexts of this RedefinableElement are properly related 
+   --  to the redefinition contexts of the specified RedefinableElement to 
+   --  allow this element to redefine the other. By default at least one of 
+   --  the redefinition contexts of this element must be a specialization of 
+   --  at least one of the redefinition contexts of the specified element.
+
 end AMF.UML.Redefinable_Elements;

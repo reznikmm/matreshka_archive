@@ -118,4 +118,61 @@ package AMF.UML.Multiplicity_Elements is
     (Self : not null access UML_Multiplicity_Element;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
 
+   not overriding function Compatible_With
+    (Self : not null access constant UML_Multiplicity_Element;
+     Other : AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access)
+       return Boolean is abstract;
+   --  The operation compatibleWith takes another multiplicity as input. It 
+   --  checks if one multiplicity is compatible with another.
+
+   not overriding function Includes_Cardinality
+    (Self : not null access constant UML_Multiplicity_Element;
+     C : Integer)
+       return Boolean is abstract;
+   --  The query includesCardinality() checks whether the specified 
+   --  cardinality is valid for this multiplicity.
+
+   not overriding function Includes_Multiplicity
+    (Self : not null access constant UML_Multiplicity_Element;
+     M : AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access)
+       return Boolean is abstract;
+   --  The query includesMultiplicity() checks whether this multiplicity 
+   --  includes all the cardinalities allowed by the specified multiplicity.
+
+   not overriding function Iss
+    (Self : not null access constant UML_Multiplicity_Element;
+     Lowerbound : Integer;
+     Upperbound : Integer)
+       return Boolean is abstract;
+   --  The operation is determines if the upper and lower bound of the ranges 
+   --  are the ones given.
+
+   not overriding function Is_Multivalued
+    (Self : not null access constant UML_Multiplicity_Element)
+       return Boolean is abstract;
+   --  The query isMultivalued() checks whether this multiplicity has an upper 
+   --  bound greater than one.
+
+   not overriding function Lower
+    (Self : not null access constant UML_Multiplicity_Element)
+       return Optional_Integer is abstract;
+   --  The derived lower attribute must equal the lowerBound.
+
+   not overriding function Lower_Bound
+    (Self : not null access constant UML_Multiplicity_Element)
+       return Optional_Integer is abstract;
+   --  The query lowerBound() returns the lower bound of the multiplicity as 
+   --  an integer.
+
+   not overriding function Upper
+    (Self : not null access constant UML_Multiplicity_Element)
+       return Optional_Unlimited_Natural is abstract;
+   --  The derived upper attribute must equal the upperBound.
+
+   not overriding function Upper_Bound
+    (Self : not null access constant UML_Multiplicity_Element)
+       return Optional_Unlimited_Natural is abstract;
+   --  The query upperBound() returns the upper bound of the multiplicity for 
+   --  a bounded multiplicity as an unlimited natural.
+
 end AMF.UML.Multiplicity_Elements;

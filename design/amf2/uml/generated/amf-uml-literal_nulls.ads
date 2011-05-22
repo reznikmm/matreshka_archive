@@ -58,4 +58,14 @@ package AMF.UML.Literal_Nulls is
      access all UML_Literal_Null'Class;
    for UML_Literal_Null_Access'Storage_Size use 0;
 
+   overriding function Is_Computable
+    (Self : not null access constant UML_Literal_Null)
+       return Boolean is abstract;
+   --  The query isComputable() is redefined to be true.
+
+   overriding function Is_Null
+    (Self : not null access constant UML_Literal_Null)
+       return Boolean is abstract;
+   --  The query isNull() returns true.
+
 end AMF.UML.Literal_Nulls;

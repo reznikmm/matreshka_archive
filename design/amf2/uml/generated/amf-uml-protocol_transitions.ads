@@ -96,4 +96,9 @@ package AMF.UML.Protocol_Transitions is
    --  This association refers to the associated operation. It is derived from 
    --  the operation of the call trigger when applicable.
 
+   not overriding function Referred
+    (Self : not null access constant UML_Protocol_Transition)
+       return AMF.UML.Operations.Collections.Set_Of_UML_Operation is abstract;
+   --  Missing derivation for ProtocolTransition::/referred : Operation
+
 end AMF.UML.Protocol_Transitions;

@@ -59,6 +59,7 @@ limited with AMF.UML.Classes.Collections;
 limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Encapsulated_Classifiers;
 limited with AMF.UML.Extensions.Collections;
+limited with AMF.UML.Named_Elements.Collections;
 limited with AMF.UML.Operations.Collections;
 limited with AMF.UML.Properties.Collections;
 limited with AMF.UML.Receptions.Collections;
@@ -131,5 +132,21 @@ package AMF.UML.Classes is
     (Self : not null access constant UML_Class)
        return AMF.UML.Classes.Collections.Set_Of_UML_Class is abstract;
    --  This gives the superclasses of a class.
+
+   not overriding function Extension
+    (Self : not null access constant UML_Class)
+       return AMF.UML.Extensions.Collections.Set_Of_UML_Extension is abstract;
+   --  Missing derivation for Class::/extension : Extension
+
+   overriding function Inherit
+    (Self : not null access constant UML_Class;
+     Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  The inherit operation is overridden to exclude redefined properties.
+
+   not overriding function Super_Class
+    (Self : not null access constant UML_Class)
+       return AMF.UML.Classes.Collections.Set_Of_UML_Class is abstract;
+   --  Missing derivation for Class::/superClass : Class
 
 end AMF.UML.Classes;
