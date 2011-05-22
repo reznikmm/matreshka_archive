@@ -352,9 +352,9 @@ procedure Gen_API is
 
             if not Is_Data_Type (The_Type)
               and (The_Type /= CMOF_Element_Of (Class)
-                     or Is_Multivalued (CMOF_Element_Of (Attribute)))
+                     or Attribute.Is_Multivalued)
             then
-               if Is_Multivalued (CMOF_Element_Of (Attribute)) then
+               if Attribute.Is_Multivalued then
                   Name := Ada_API_Package_Name (The_Type);
 
                   --  Remove with clause for interface package when it is not
@@ -400,9 +400,9 @@ procedure Gen_API is
 
                if not Is_Data_Type (The_Type)
                  and (The_Type /= CMOF_Element_Of (Class)
-                        or Is_Multivalued (CMOF_Element_Of (Parameter)))
+                        or Parameter.Is_Multivalued)
                then
-                  if Is_Multivalued (CMOF_Element_Of (Parameter)) then
+                  if Parameter.Is_Multivalued then
                      Name := Ada_API_Package_Name (The_Type);
 
                      --  Remove with clause for interface package when it is
@@ -465,8 +465,8 @@ procedure Gen_API is
          begin
             return
               Ada_Type_Qualified_Name
-               (Is_Multivalued (CMOF_Element_Of (Attribute)),
-                Get_Lower (CMOF_Element_Of (Attribute)),
+               (Attribute.Is_Multivalued,
+                Attribute.Lower_Bound,
                 Get_Type (CMOF_Element_Of (Attribute)),
                 Get_Is_Ordered (CMOF_Element_Of (Attribute)),
                 Get_Is_Unique (CMOF_Element_Of (Attribute)));
@@ -479,8 +479,8 @@ procedure Gen_API is
             then
                if Get_Type (CMOF_Element_Of (Redefines.Element (J)))
                     = Get_Type (CMOF_Element_Of (Attribute))
-                 and then Get_Lower (CMOF_Element_Of (Redefines.Element (J)))
-                            = Get_Lower (CMOF_Element_Of (Attribute))
+                 and then Redefines.Element (J).Lower_Bound
+                            = Attribute.Lower_Bound
                then
                   Ada_Overriding := True;
                end if;
@@ -528,9 +528,7 @@ procedure Gen_API is
          --  collection, which is returned by getter automatically applied to
          --  attribute's value.
 
-         if Attribute.Get_Is_Read_Only
-           or Is_Multivalued (CMOF_Element_Of (Attribute))
-         then
+         if Attribute.Get_Is_Read_Only or Attribute.Is_Multivalued then
             return;
          end if;
 
@@ -617,8 +615,8 @@ procedure Gen_API is
          begin
             return
               Ada_Type_Qualified_Name
-               (Is_Multivalued (CMOF_Element_Of (Parameter)),
-                Get_Lower (CMOF_Element_Of (Parameter)),
+               (Parameter.Is_Multivalued,
+                Parameter.Lower_Bound,
                 Get_Type (CMOF_Element_Of (Parameter)),
                 Get_Is_Ordered (CMOF_Element_Of (Parameter)),
                 Get_Is_Unique (CMOF_Element_Of (Parameter)));
@@ -652,6 +650,17 @@ procedure Gen_API is
             --  XXX Don't generate this operation, it conflicts with getter.
 
             return;
+
+         elsif Name = League.Strings.To_Universal_String ("end") then
+            --  UML:ConnectableElement:end
+
+            Name := League.Strings.To_Universal_String ("Ends");
+
+         elsif Name = League.Strings.To_Universal_String ("is") then
+            --  UML:MultiplicityElement:is
+
+            Name := League.Strings.To_Universal_String ("Iss");
+
          end if;
 
          New_Line;

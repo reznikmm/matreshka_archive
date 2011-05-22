@@ -49,11 +49,17 @@ with AMF.CMOF.Operations;
 with AMF.CMOF.Parameters;
 with AMF.CMOF.Types;
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Multiplicity_Elements;
+pragma Elaborate (AMF.Internals.CMOF_Multiplicity_Elements);
 
 package AMF.Internals.CMOF_Parameters is
 
+   package Multiplicity_Elements is
+     new AMF.Internals.CMOF_Multiplicity_Elements
+          (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy);
+
    type CMOF_Parameter_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new Multiplicity_Elements.CMOF_Multiplicity_Element_Proxy
        and AMF.CMOF.Parameters.CMOF_Parameter
          with null record;
 
@@ -91,21 +97,13 @@ package AMF.Internals.CMOF_Parameters is
     (Self : not null access CMOF_Parameter_Proxy;
      To   : Boolean);
 
-   overriding function Get_Lower
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Optional_Integer;
-
    overriding procedure Set_Lower
     (Self : not null access CMOF_Parameter_Proxy;
      To   : Optional_Integer);
 
-   overriding function Get_Upper
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Optional_Unlimited_Natural;
-
-   overriding function Is_Multivalued
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Boolean;
+   overriding procedure Set_Upper
+    (Self : not null access CMOF_Parameter_Proxy;
+     To   : Optional_Unlimited_Natural);
 
    overriding function Includes_Multiplicity
     (Self : not null access constant CMOF_Parameter_Proxy;
@@ -116,18 +114,6 @@ package AMF.Internals.CMOF_Parameters is
     (Self : not null access constant CMOF_Parameter_Proxy;
      C : Integer)
        return Boolean;
-
-   overriding function Lower_Bound
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Integer;
-
-   overriding function Upper_Bound
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Unlimited_Natural;
-
-   overriding procedure Set_Upper
-    (Self : not null access CMOF_Parameter_Proxy;
-     To   : Optional_Unlimited_Natural);
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Parameter_Proxy)

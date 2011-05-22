@@ -108,40 +108,40 @@ package AMF is
 
    type Optional_String (Is_Empty : Boolean := True) is record
       case Is_Empty is
-         when False =>
+         when True =>
             null;
 
-         when True =>
+         when False =>
             Value : League.Strings.Universal_String;
       end case;
    end record;
 
    type Optional_Boolean (Is_Empty : Boolean := True) is record
       case Is_Empty is
-         when False =>
+         when True =>
             null;
 
-         when True =>
+         when False =>
             Value : Boolean;
       end case;
    end record;
 
    type Optional_Integer (Is_Empty : Boolean := True) is record
       case Is_Empty is
-         when False =>
+         when True =>
             null;
 
-         when True =>
+         when False =>
             Value : Integer;
       end case;
    end record;
 
    type Optional_Unlimited_Natural (Is_Empty : Boolean := True) is record
       case Is_Empty is
-         when False =>
+         when True =>
             null;
 
-         when True =>
+         when False =>
             Value : Unlimited_Natural;
       end case;
    end record;

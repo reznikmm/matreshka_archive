@@ -41,110 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Internals.Attributes;
+with AMF.CMOF.Multiplicity_Elements;
+with AMF.Internals.CMOF_Elements;
 
-package body AMF.Internals.CMOF_Comments is
+generic
+   type Element_Proxy is
+     abstract new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy with private;
 
-   use Standard.CMOF.Internals.Attributes;
+package AMF.Internals.CMOF_Multiplicity_Elements is
 
-   --------------
-   -- Get_Body --
-   --------------
+   type CMOF_Multiplicity_Element_Proxy is
+     abstract limited new Element_Proxy
+       and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element
+         with null record;
 
-   overriding function Get_Body
-    (Self : not null access constant CMOF_Comment_Proxy)
-       return Optional_String is
-   begin
-      return (False, Internal_Get_Body (Self.Id));
-   end Get_Body;
+   overriding function Get_Lower
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Optional_Integer;
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
+   overriding function Get_Upper
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Optional_Unlimited_Natural;
 
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
+   overriding function Is_Multivalued
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Boolean;
 
-   ---------------
-   -- Get_Owner --
-   ---------------
+   overriding function Lower_Bound
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Integer;
 
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
+   overriding function Upper_Bound
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Unlimited_Natural;
 
-   ------------------------
-   -- All_Owned_Elements --
-   ------------------------
-
-   overriding function All_Owned_Elements
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error;
-      return All_Owned_Elements (Self);
-   end All_Owned_Elements;
-
-   -------------------
-   -- Must_Be_Owned --
-   -------------------
-
-   overriding function Must_Be_Owned
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error;
-      return Must_Be_Owned (Self);
-   end Must_Be_Owned;
-
-   --------------
-   -- Set_Body --
-   --------------
-
-   overriding procedure Set_Body
-     (Self : not null access CMOF_Comment_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Body unimplemented");
-      raise Program_Error;
-   end Set_Body;
-
-   ---------------------------
-   -- Get_Annotated_Element --
-   ---------------------------
-
-   overriding function Get_Annotated_Element
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Annotated_Element unimplemented");
-      raise Program_Error;
-      return Get_Annotated_Element (Self);
-   end Get_Annotated_Element;
-
-end AMF.Internals.CMOF_Comments;
+end AMF.Internals.CMOF_Multiplicity_Elements;

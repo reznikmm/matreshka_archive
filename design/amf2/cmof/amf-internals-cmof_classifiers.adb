@@ -55,7 +55,7 @@ package body AMF.Internals.CMOF_Classifiers is
     (Self : not null access constant CMOF_Classifier_Proxy)
        return Optional_String is
    begin
-      return (True, Internal_Get_Name (Self.Id));
+      return (False, Internal_Get_Name (Self.Id));
    end Get_Name;
 
 end AMF.Internals.CMOF_Classifiers;

@@ -43,108 +43,114 @@
 ------------------------------------------------------------------------------
 with CMOF.Internals.Attributes;
 
-package body AMF.Internals.CMOF_Comments is
+package body AMF.Internals.CMOF_Multiplicity_Elements is
 
    use Standard.CMOF.Internals.Attributes;
 
-   --------------
-   -- Get_Body --
-   --------------
-
-   overriding function Get_Body
-    (Self : not null access constant CMOF_Comment_Proxy)
-       return Optional_String is
-   begin
-      return (False, Internal_Get_Body (Self.Id));
-   end Get_Body;
-
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
-
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
-
    ---------------
-   -- Get_Owner --
+   -- Get_Lower --
    ---------------
 
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
+   overriding function Get_Lower
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Optional_Integer is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
+      --  lower : Integer [0..1]
+      --
+      --  Specifies the lower bound of the multiplicity interval, if it is
+      --  expressed as an integer.
 
-   ------------------------
-   -- All_Owned_Elements --
-   ------------------------
+      return (False, Internal_Get_Lower (Self.Id));
+   end Get_Lower;
 
-   overriding function All_Owned_Elements
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
+   ---------------
+   -- Get_Upper --
+   ---------------
+
+   overriding function Get_Upper
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Optional_Unlimited_Natural is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error;
-      return All_Owned_Elements (Self);
-   end All_Owned_Elements;
+      --  upper : UnlimitedNatural [0..1]
+      --
+      --  Specifies the upper bound of the multiplicity interval, if it is
+      --  expressed as an unlimited natural.
 
-   -------------------
-   -- Must_Be_Owned --
-   -------------------
+      return (False, Internal_Get_Upper (Self.Id));
+   end Get_Upper;
 
-   overriding function Must_Be_Owned
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return Boolean
-   is
+   --------------------
+   -- Is_Multivalued --
+   --------------------
+
+   overriding function Is_Multivalued
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error;
-      return Must_Be_Owned (Self);
-   end Must_Be_Owned;
+      --  The query isMultivalued() checks whether this multiplicity has an
+      --  upper bound greater than one.
 
-   --------------
-   -- Set_Body --
-   --------------
+      --  MultiplicityElement::isMultivalued() : Boolean;
+      --  pre: upperBound()->notEmpty()
+      --  isMultivalued = (upperBound() > 1)
 
-   overriding procedure Set_Body
-     (Self : not null access CMOF_Comment_Proxy;
-      To   : Optional_String)
+      return CMOF_Multiplicity_Element_Proxy'Class (Self.all).Upper_Bound > 1;
+   end Is_Multivalued;
+
+   -----------------
+   -- Lower_Bound --
+   -----------------
+
+   overriding function Lower_Bound
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Integer
    is
+      Lower : constant Optional_Integer
+        := CMOF_Multiplicity_Element_Proxy'Class (Self.all).Get_Lower;
+
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Body unimplemented");
-      raise Program_Error;
-   end Set_Body;
+      --  The query lowerBound() returns the lower bound of the multiplicity as
+      --  an integer.
+      --
+      --  MultiplicityElement::lowerBound() : [Integer];
+      --  lowerBound =
+      --    if lowerValue->isEmpty() then 1
+      --      else lowerValue.integerValue() endif
 
-   ---------------------------
-   -- Get_Annotated_Element --
-   ---------------------------
+      if Lower.Is_Empty then
+         return 1;
 
-   overriding function Get_Annotated_Element
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+      else
+         return Lower.Value;
+      end if;
+   end Lower_Bound;
+
+   -----------------
+   -- Upper_Bound --
+   -----------------
+
+   overriding function Upper_Bound
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Unlimited_Natural
    is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Annotated_Element unimplemented");
-      raise Program_Error;
-      return Get_Annotated_Element (Self);
-   end Get_Annotated_Element;
+      Upper : constant Optional_Unlimited_Natural
+        := CMOF_Multiplicity_Element_Proxy'Class (Self.all).Get_Upper;
 
-end AMF.Internals.CMOF_Comments;
+   begin
+      --  The query upperBound() returns the upper bound of the multiplicity
+      --  for a bounded multiplicity as an unlimited natural.
+      --
+      --  MultiplicityElement::upperBound() : [UnlimitedNatural];
+      --  upperBound =
+      --    if upperValue->isEmpty() then 1
+      --      else upperValue.unlimitedValue() endif
+
+      if Upper.Is_Empty then
+         return (False, 1);
+
+      else
+         return Upper.Value;
+      end if;
+   end Upper_Bound;
+
+end AMF.Internals.CMOF_Multiplicity_Elements;

@@ -195,21 +195,6 @@ package body AMF.Internals.CMOF_Properties is
    end Set_Is_Unique;
 
    ---------------
-   -- Get_Lower --
-   ---------------
-
-   overriding function Get_Lower
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Optional_Integer
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Lower unimplemented");
-      raise Program_Error;
-      return Get_Lower (Self);
-   end Get_Lower;
-
-   ---------------
    -- Set_Lower --
    ---------------
 
@@ -224,21 +209,6 @@ package body AMF.Internals.CMOF_Properties is
    end Set_Lower;
 
    ---------------
-   -- Get_Upper --
-   ---------------
-
-   overriding function Get_Upper
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Optional_Unlimited_Natural
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Upper unimplemented");
-      raise Program_Error;
-      return Get_Upper (Self);
-   end Get_Upper;
-
-   ---------------
    -- Set_Upper --
    ---------------
 
@@ -251,21 +221,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Upper unimplemented");
       raise Program_Error;
    end Set_Upper;
-
-   --------------------
-   -- Is_Multivalued --
-   --------------------
-
-   overriding function Is_Multivalued
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Is_Multivalued unimplemented");
-      raise Program_Error;
-      return Is_Multivalued (Self);
-   end Is_Multivalued;
 
    ---------------------------
    -- Includes_Multiplicity --
@@ -298,36 +253,6 @@ package body AMF.Internals.CMOF_Properties is
       raise Program_Error;
       return Includes_Cardinality (Self, C);
    end Includes_Cardinality;
-
-   -----------------
-   -- Lower_Bound --
-   -----------------
-
-   overriding function Lower_Bound
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Integer
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Lower_Bound unimplemented");
-      raise Program_Error;
-      return Lower_Bound (Self);
-   end Lower_Bound;
-
-   -----------------
-   -- Upper_Bound --
-   -----------------
-
-   overriding function Upper_Bound
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Unlimited_Natural
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Upper_Bound unimplemented");
-      raise Program_Error;
-      return Upper_Bound (Self);
-   end Upper_Bound;
 
    --------------
    -- Get_Name --
