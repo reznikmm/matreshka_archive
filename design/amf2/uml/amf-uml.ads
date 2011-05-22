@@ -78,8 +78,12 @@ package AMF.UML is
 
    type Set_Of_Boolean is null record;
 
+   type Set_Of_String is null record;
+
    type Sequence_Of_String is null record;
 
    type Ordered_Set_Of_String is null record;
+
+   type Optional_Real is null record;
 
 end AMF.UML;
