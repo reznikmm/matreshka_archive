@@ -55,6 +55,14 @@ package AMF.Internals.CMOF_Multiplicity_Elements is
        and AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element
          with null record;
 
+   overriding function Get_Is_Ordered
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Boolean;
+
+   overriding function Get_Is_Unique
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Boolean;
+
    overriding function Get_Lower
     (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
        return Optional_Integer;

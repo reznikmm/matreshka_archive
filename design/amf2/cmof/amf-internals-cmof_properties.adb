@@ -137,21 +137,6 @@ package body AMF.Internals.CMOF_Properties is
    end Must_Be_Owned;
 
    --------------------
-   -- Get_Is_Ordered --
-   --------------------
-
-   overriding function Get_Is_Ordered
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Ordered unimplemented");
-      raise Program_Error;
-      return Get_Is_Ordered (Self);
-   end Get_Is_Ordered;
-
-   --------------------
    -- Set_Is_Ordered --
    --------------------
 
@@ -164,21 +149,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Is_Ordered unimplemented");
       raise Program_Error;
    end Set_Is_Ordered;
-
-   -------------------
-   -- Get_Is_Unique --
-   -------------------
-
-   overriding function Get_Is_Unique
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Unique unimplemented");
-      raise Program_Error;
-      return Get_Is_Unique (Self);
-   end Get_Is_Unique;
 
    -------------------
    -- Set_Is_Unique --

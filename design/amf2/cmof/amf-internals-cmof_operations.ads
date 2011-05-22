@@ -313,4 +313,8 @@ package AMF.Internals.CMOF_Operations is
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Parameters.Collections.Set_Of_CMOF_Parameter;
 
+   overriding function Types
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Types.CMOF_Type_Access;
+
 end AMF.Internals.CMOF_Operations;

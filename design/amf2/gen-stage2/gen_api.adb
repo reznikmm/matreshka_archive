@@ -53,14 +53,7 @@ with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.Elements.Collections;
-with CMOF.Classes;
-with CMOF.Collections;
-with CMOF.Comments;
-with CMOF.Elements;
 with CMOF.Extents;
-with CMOF.Properties;
-with CMOF.Reflection;
-with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
@@ -76,13 +69,6 @@ procedure Gen_API is
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use CMOF;
-   use CMOF.Classes;
-   use CMOF.Collections;
-   use CMOF.Comments;
-   use CMOF.Elements;
-   use CMOF.Properties;
-   use CMOF.Reflection;
-   use CMOF.Multiplicity_Elements;
    use CMOF.Named_Elements;
    use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
@@ -468,8 +454,8 @@ procedure Gen_API is
                (Attribute.Is_Multivalued,
                 Attribute.Lower_Bound,
                 Get_Type (CMOF_Element_Of (Attribute)),
-                Get_Is_Ordered (CMOF_Element_Of (Attribute)),
-                Get_Is_Unique (CMOF_Element_Of (Attribute)));
+                Attribute.Get_Is_Ordered,
+                Attribute.Get_Is_Unique);
          end Type_Qualified_Name;
 
       begin
@@ -588,7 +574,10 @@ procedure Gen_API is
 
                   for J in 1 .. Parameters.Length loop
                      if Get_Type (CMOF_Element_Of (Parameters.Element (J)))
-                       /= Get_Type (CMOF_Element_Of (Parameters_2.Element (J)))
+                          /= Get_Type
+                              (CMOF_Element_Of (Parameters_2.Element (J)))
+                       or Parameters.Element (J).Lower_Bound
+                            /= Parameters_2.Element (J).Lower_Bound
                      then
                         Result := False;
 
@@ -618,8 +607,8 @@ procedure Gen_API is
                (Parameter.Is_Multivalued,
                 Parameter.Lower_Bound,
                 Get_Type (CMOF_Element_Of (Parameter)),
-                Get_Is_Ordered (CMOF_Element_Of (Parameter)),
-                Get_Is_Unique (CMOF_Element_Of (Parameter)));
+                Parameter.Get_Is_Ordered,
+                Parameter.Get_Is_Unique);
          end Type_Qualified_Name;
 
          Class_Type_Name : constant Wide_Wide_String
@@ -645,11 +634,7 @@ procedure Gen_API is
          Name := Get_Name (CMOF_Element_Of (Operation));
 
          if Name = League.Strings.To_Universal_String ("type") then
-            Name := League.Strings.To_Universal_String ("getType");
-
-            --  XXX Don't generate this operation, it conflicts with getter.
-
-            return;
+            Name := League.Strings.To_Universal_String ("Types");
 
          elsif Name = League.Strings.To_Universal_String ("end") then
             --  UML:ConnectableElement:end

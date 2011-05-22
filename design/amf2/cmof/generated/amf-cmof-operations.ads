@@ -200,6 +200,12 @@ package AMF.CMOF.Operations is
    --  If this operation has a return parameter, upper equals the value of 
    --  upper for that parameter. Otherwise upper is not defined.
 
+   not overriding function Types
+    (Self : not null access constant CMOF_Operation)
+       return AMF.CMOF.Types.CMOF_Type_Access is abstract;
+   --  If this operation has a return parameter, type equals the value of type 
+   --  for that parameter. Otherwise type is not defined.
+
    overriding function Is_Consistent_With
     (Self : not null access constant CMOF_Operation;
      Redefinee : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)

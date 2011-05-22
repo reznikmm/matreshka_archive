@@ -81,17 +81,9 @@ package AMF.Internals.CMOF_Parameters is
     (Self : not null access constant CMOF_Parameter_Proxy)
        return Boolean;
 
-   overriding function Get_Is_Ordered
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Boolean;
-
    overriding procedure Set_Is_Ordered
     (Self : not null access CMOF_Parameter_Proxy;
      To   : Boolean);
-
-   overriding function Get_Is_Unique
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Boolean;
 
    overriding procedure Set_Is_Unique
     (Self : not null access CMOF_Parameter_Proxy;

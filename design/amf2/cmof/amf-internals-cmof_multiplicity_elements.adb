@@ -47,6 +47,40 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
 
    use Standard.CMOF.Internals.Attributes;
 
+   --------------------
+   -- Get_Is_Ordered --
+   --------------------
+
+   overriding function Get_Is_Ordered
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Boolean is
+   begin
+      --  isOrdered : Boolean
+      --
+      --  For a multivalued multiplicity, this attribute specifies whether the
+      --  values in an instantiation of this element are sequentially ordered.
+      --  Default is false.
+
+      return Internal_Get_Is_Ordered (Self.Id);
+   end Get_Is_Ordered;
+
+   -------------------
+   -- Get_Is_Unique --
+   -------------------
+
+   overriding function Get_Is_Unique
+    (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
+       return Boolean is
+   begin
+      --  isUnique : Boolean
+      --
+      --  For a multivalued multiplicity, this attributes specifies whether the
+      --  values in an instantiation of this element are unique. Default is
+      --  true.
+
+      return Internal_Get_Is_Unique (Self.Id);
+   end Get_Is_Unique;
+
    ---------------
    -- Get_Lower --
    ---------------

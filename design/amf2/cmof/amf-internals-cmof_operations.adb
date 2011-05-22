@@ -946,4 +946,19 @@ package body AMF.Internals.CMOF_Operations is
       return Return_Result (Self);
    end Return_Result;
 
+   -----------
+   -- Types --
+   -----------
+
+   overriding function Types
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Types.CMOF_Type_Access
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Types unimplemented");
+      raise Program_Error;
+      return Types (Self);
+   end Types;
+
 end AMF.Internals.CMOF_Operations;
