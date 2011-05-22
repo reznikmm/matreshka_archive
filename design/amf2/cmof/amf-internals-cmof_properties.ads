@@ -46,7 +46,9 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Classifiers.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Multiplicity_Elements;
+with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types;
@@ -68,6 +70,14 @@ package AMF.Internals.CMOF_Properties is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Property_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Boolean;
 
    overriding function Get_Is_Ordered
     (Self : not null access constant CMOF_Property_Proxy)
@@ -101,6 +111,28 @@ package AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : Optional_Unlimited_Natural);
 
+   overriding function Is_Multivalued
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Boolean;
+
+   overriding function Includes_Multiplicity
+    (Self : not null access constant CMOF_Property_Proxy;
+     M : AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Access)
+       return Boolean;
+
+   overriding function Includes_Cardinality
+    (Self : not null access constant CMOF_Property_Proxy;
+     C : Integer)
+       return Boolean;
+
+   overriding function Lower_Bound
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Integer;
+
+   overriding function Upper_Bound
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Unlimited_Natural;
+
    overriding function Get_Name
     (Self : not null access constant CMOF_Property_Proxy)
        return Optional_String;
@@ -125,6 +157,24 @@ package AMF.Internals.CMOF_Properties is
     (Self : not null access constant CMOF_Property_Proxy)
        return Optional_String;
 
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Property_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean;
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Property_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Property_Proxy)
+       return League.Strings.Universal_String;
+
    overriding function Get_Type
     (Self : not null access constant CMOF_Property_Proxy)
        return AMF.CMOF.Types.CMOF_Type_Access;
@@ -148,6 +198,11 @@ package AMF.Internals.CMOF_Properties is
    overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Property_Proxy;
      To   : Boolean);
+
+   overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant CMOF_Property_Proxy;
+     Redefined : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
+       return Boolean;
 
    overriding function Get_Featuring_Classifier
     (Self : not null access constant CMOF_Property_Proxy)
@@ -240,5 +295,27 @@ package AMF.Internals.CMOF_Properties is
    overriding procedure Set_Association
     (Self : not null access CMOF_Property_Proxy;
      To   : AMF.CMOF.Associations.CMOF_Association_Access);
+
+   overriding function Opposite
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Properties.CMOF_Property_Access;
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant CMOF_Property_Proxy;
+     Redefinee : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function Subsetting_Context
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
+
+   overriding function Is_Navigable
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Boolean;
+
+   overriding function Is_Attribute
+    (Self : not null access constant CMOF_Property_Proxy;
+     P : AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean;
 
 end AMF.Internals.CMOF_Properties;

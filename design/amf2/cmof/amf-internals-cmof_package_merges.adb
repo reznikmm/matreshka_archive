@@ -74,6 +74,36 @@ package body AMF.Internals.CMOF_Package_Merges is
       return Get_Owner (Self);
    end Get_Owner;
 
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+     (Self : not null access constant CMOF_Package_Merge_Proxy)
+      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+     (Self : not null access constant CMOF_Package_Merge_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
+
    -------------------------
    -- Get_Related_Element --
    -------------------------

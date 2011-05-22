@@ -48,7 +48,7 @@ with AMF.CMOF.Data_Types;
 with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Named_Elements.Collections;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Package_Imports.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
@@ -74,6 +74,14 @@ package AMF.Internals.CMOF_Operations is
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
 
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return Boolean;
+
    overriding function Get_Name
     (Self : not null access constant CMOF_Operation_Proxy)
        return Optional_String;
@@ -97,6 +105,24 @@ package AMF.Internals.CMOF_Operations is
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Operation_Proxy)
        return Optional_String;
+
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Operation_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean;
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return League.Strings.Universal_String;
 
    overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -122,6 +148,29 @@ package AMF.Internals.CMOF_Operations is
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
 
+   overriding function Imported_Member
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Get_Names_Of_Member
+    (Self : not null access constant CMOF_Operation_Proxy;
+     Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return AMF.CMOF.Set_Of_String;
+
+   overriding function Import_Members
+    (Self : not null access constant CMOF_Operation_Proxy;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Exclude_Collisions
+    (Self : not null access constant CMOF_Operation_Proxy;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Members_Are_Distinguishable
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return Boolean;
+
    overriding function Get_Redefinition_Context
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
@@ -137,6 +186,11 @@ package AMF.Internals.CMOF_Operations is
    overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Operation_Proxy;
      To   : Boolean);
+
+   overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant CMOF_Operation_Proxy;
+     Redefined : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
+       return Boolean;
 
    overriding function Get_Featuring_Classifier
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -233,5 +287,30 @@ package AMF.Internals.CMOF_Operations is
    overriding procedure Set_Body_Condition
     (Self : not null access CMOF_Operation_Proxy;
      To   : AMF.CMOF.Constraints.CMOF_Constraint_Access);
+
+   overriding function Is_Ordered
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return Boolean;
+
+   overriding function Is_Unique
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return Boolean;
+
+   overriding function Lower
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return Integer;
+
+   overriding function Upper
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return Unlimited_Natural;
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant CMOF_Operation_Proxy;
+     Redefinee : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function Return_Result
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Parameters.Collections.Set_Of_CMOF_Parameter;
 
 end AMF.Internals.CMOF_Operations;

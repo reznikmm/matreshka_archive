@@ -74,6 +74,36 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
       return Get_Owner (Self);
    end Get_Owner;
 
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
+
    --------------
    -- Get_Name --
    --------------
@@ -161,6 +191,158 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
       raise Program_Error;
       return Get_Qualified_Name (Self);
    end Get_Qualified_Name;
+
+   --------------------
+   -- All_Namespaces --
+   --------------------
+
+   overriding function All_Namespaces
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
+      raise Program_Error;
+      return All_Namespaces (Self);
+   end All_Namespaces;
+
+   -----------------------------
+   -- Is_Distinguishable_From --
+   -----------------------------
+
+   overriding function Is_Distinguishable_From
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy;
+      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Distinguishable_From unimplemented");
+      raise Program_Error;
+      return Is_Distinguishable_From (Self, N, Ns);
+   end Is_Distinguishable_From;
+
+   ---------------
+   -- Separator --
+   ---------------
+
+   overriding function Separator
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
+      raise Program_Error;
+      return Separator (Self);
+   end Separator;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   overriding function Qualified_Name
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
+      raise Program_Error;
+      return Qualified_Name (Self);
+   end Qualified_Name;
+
+   -------------------
+   -- Is_Computable --
+   -------------------
+
+   overriding function Is_Computable
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Computable unimplemented");
+      raise Program_Error;
+      return Is_Computable (Self);
+   end Is_Computable;
+
+   -------------------
+   -- Integer_Value --
+   -------------------
+
+   overriding function Integer_Value
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return Integer
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Integer_Value unimplemented");
+      raise Program_Error;
+      return Integer_Value (Self);
+   end Integer_Value;
+
+   -------------------
+   -- Boolean_Value --
+   -------------------
+
+   overriding function Boolean_Value
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Boolean_Value unimplemented");
+      raise Program_Error;
+      return Boolean_Value (Self);
+   end Boolean_Value;
+
+   ------------------
+   -- String_Value --
+   ------------------
+
+   overriding function String_Value
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "String_Value unimplemented");
+      raise Program_Error;
+      return String_Value (Self);
+   end String_Value;
+
+   ---------------------
+   -- Unlimited_Value --
+   ---------------------
+
+   overriding function Unlimited_Value
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return Unlimited_Natural
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Unlimited_Value unimplemented");
+      raise Program_Error;
+      return Unlimited_Value (Self);
+   end Unlimited_Value;
+
+   -------------
+   -- Is_Null --
+   -------------
+
+   overriding function Is_Null
+     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Null unimplemented");
+      raise Program_Error;
+      return Is_Null (Self);
+   end Is_Null;
 
    --------------
    -- Get_Type --

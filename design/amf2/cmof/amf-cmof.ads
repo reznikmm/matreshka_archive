@@ -41,16 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with CMOF;
 
 package AMF.CMOF is
 
    pragma Preelaborate;
 
-   type CMOF_Parameter_Direction_Kind is
-    (In_Direction,
-     In_Out_Direction,
-     Out_Direction,
-     Return_Direction);
+   subtype CMOF_Parameter_Direction_Kind
+     is Standard.CMOF.CMOF_Parameter_Direction_Kind;
+--   type CMOF_Parameter_Direction_Kind is
+--    (In_Direction,
+--     In_Out_Direction,
+--     Out_Direction,
+--     Return_Direction);
 
    type CMOF_Visibility_Kind is
     (Public_Visibility,
@@ -61,6 +64,7 @@ package AMF.CMOF is
    type Optional_CMOF_Visibility_Kind is null record;
 
    type Sequence_Of_String is null record;
+   type Set_Of_String is null record;
    type Ordered_Set_Of_String is null record;
 
 end AMF.CMOF;

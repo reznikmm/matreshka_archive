@@ -64,6 +64,14 @@ package AMF.Internals.CMOF_Package_Imports is
     (Self : not null access constant CMOF_Package_Import_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
 
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Package_Import_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Package_Import_Proxy)
+       return Boolean;
+
    overriding function Get_Related_Element
     (Self : not null access constant CMOF_Package_Import_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;

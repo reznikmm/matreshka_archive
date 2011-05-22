@@ -74,6 +74,36 @@ package body AMF.Internals.CMOF_Element_Imports is
       return Get_Owner (Self);
    end Get_Owner;
 
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+     (Self : not null access constant CMOF_Element_Import_Proxy)
+      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+     (Self : not null access constant CMOF_Element_Import_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
+
    -------------------------
    -- Get_Related_Element --
    -------------------------
@@ -234,5 +264,20 @@ package body AMF.Internals.CMOF_Element_Imports is
       pragma Compile_Time_Warning (Standard.True, "Set_Importing_Namespace unimplemented");
       raise Program_Error;
    end Set_Importing_Namespace;
+
+   --------------
+   -- Get_Name --
+   --------------
+
+   overriding function Get_Name
+     (Self : not null access constant CMOF_Element_Import_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
+      raise Program_Error;
+      return Get_Name (Self);
+   end Get_Name;
 
 end AMF.Internals.CMOF_Element_Imports;

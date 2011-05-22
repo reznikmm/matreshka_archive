@@ -65,6 +65,21 @@ package body AMF.Internals.CMOF_Classes is
                   Collection => Internal_Get_Owned_Attribute (Self.Id)));
    end Get_Owned_Attribute;
 
+   -------------------------
+   -- Get_Owned_Operation --
+   -------------------------
+
+   overriding function Get_Owned_Operation
+    (Self : not null access constant CMOF_Class_Proxy)
+       return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is
+   begin
+      return
+        AMF.CMOF.Operations.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Internal_Get_Owned_Operation (Self.Id)));
+   end Get_Owned_Operation;
+
    ---------------------
    -- Get_Super_Class --
    ---------------------
@@ -79,6 +94,7 @@ package body AMF.Internals.CMOF_Classes is
                (AMF.Internals.Collections.Abstract_Collection with
                   Collection => Internal_Get_Super_Class (Self.Id)));
    end Get_Super_Class;
+
 
    -----------------------
    -- Get_Owned_Element --
@@ -109,6 +125,36 @@ package body AMF.Internals.CMOF_Classes is
       raise Program_Error;
       return Get_Owner (Self);
    end Get_Owner;
+
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+     (Self : not null access constant CMOF_Class_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
 
    --------------
    -- Set_Name --
@@ -183,6 +229,68 @@ package body AMF.Internals.CMOF_Classes is
       return Get_Qualified_Name (Self);
    end Get_Qualified_Name;
 
+   --------------------
+   -- All_Namespaces --
+   --------------------
+
+   overriding function All_Namespaces
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
+      raise Program_Error;
+      return All_Namespaces (Self);
+   end All_Namespaces;
+
+   -----------------------------
+   -- Is_Distinguishable_From --
+   -----------------------------
+
+   overriding function Is_Distinguishable_From
+     (Self : not null access constant CMOF_Class_Proxy;
+      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Distinguishable_From unimplemented");
+      raise Program_Error;
+      return Is_Distinguishable_From (Self, N, Ns);
+   end Is_Distinguishable_From;
+
+   ---------------
+   -- Separator --
+   ---------------
+
+   overriding function Separator
+     (Self : not null access constant CMOF_Class_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
+      raise Program_Error;
+      return Separator (Self);
+   end Separator;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   overriding function Qualified_Name
+     (Self : not null access constant CMOF_Class_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
+      raise Program_Error;
+      return Qualified_Name (Self);
+   end Qualified_Name;
+
    -----------------
    -- Get_Package --
    -----------------
@@ -211,6 +319,22 @@ package body AMF.Internals.CMOF_Classes is
       pragma Compile_Time_Warning (Standard.True, "Set_Package unimplemented");
       raise Program_Error;
    end Set_Package;
+
+   -----------------
+   -- Conforms_To --
+   -----------------
+
+   overriding function Conforms_To
+     (Self : not null access constant CMOF_Class_Proxy;
+      Other : AMF.CMOF.Types.CMOF_Type_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Conforms_To unimplemented");
+      raise Program_Error;
+      return Conforms_To (Self, Other);
+   end Conforms_To;
 
    -------------------------
    -- Get_Imported_Member --
@@ -302,6 +426,84 @@ package body AMF.Internals.CMOF_Classes is
       return Get_Owned_Rule (Self);
    end Get_Owned_Rule;
 
+   ---------------------
+   -- Imported_Member --
+   ---------------------
+
+   overriding function Imported_Member
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Imported_Member unimplemented");
+      raise Program_Error;
+      return Imported_Member (Self);
+   end Imported_Member;
+
+   -------------------------
+   -- Get_Names_Of_Member --
+   -------------------------
+
+   overriding function Get_Names_Of_Member
+     (Self : not null access constant CMOF_Class_Proxy;
+      Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+      return AMF.CMOF.Set_Of_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Get_Names_Of_Member unimplemented");
+      raise Program_Error;
+      return Get_Names_Of_Member (Self, Element);
+   end Get_Names_Of_Member;
+
+   --------------------
+   -- Import_Members --
+   --------------------
+
+   overriding function Import_Members
+     (Self : not null access constant CMOF_Class_Proxy;
+      Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Import_Members unimplemented");
+      raise Program_Error;
+      return Import_Members (Self, Imps);
+   end Import_Members;
+
+   ------------------------
+   -- Exclude_Collisions --
+   ------------------------
+
+   overriding function Exclude_Collisions
+     (Self : not null access constant CMOF_Class_Proxy;
+      Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Exclude_Collisions unimplemented");
+      raise Program_Error;
+      return Exclude_Collisions (Self, Imps);
+   end Exclude_Collisions;
+
+   ---------------------------------
+   -- Members_Are_Distinguishable --
+   ---------------------------------
+
+   overriding function Members_Are_Distinguishable
+     (Self : not null access constant CMOF_Class_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Members_Are_Distinguishable unimplemented");
+      raise Program_Error;
+      return Members_Are_Distinguishable (Self);
+   end Members_Are_Distinguishable;
+
    -------------------
    -- Get_Attribute --
    -------------------
@@ -391,14 +593,174 @@ package body AMF.Internals.CMOF_Classes is
       raise Program_Error;
    end Set_Is_Final_Specialization;
 
+   -----------------
+   -- Conforms_To --
+   -----------------
+
+   overriding function Conforms_To
+     (Self : not null access constant CMOF_Class_Proxy;
+      Other : AMF.CMOF.Classifiers.CMOF_Classifier_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Conforms_To unimplemented");
+      raise Program_Error;
+      return Conforms_To (Self, Other);
+   end Conforms_To;
+
+   ------------------
+   -- All_Features --
+   ------------------
+
+   overriding function All_Features
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Features.Collections.Set_Of_CMOF_Feature
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Features unimplemented");
+      raise Program_Error;
+      return All_Features (Self);
+   end All_Features;
+
+   -------------
+   -- General --
+   -------------
+
+   overriding function General
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "General unimplemented");
+      raise Program_Error;
+      return General (Self);
+   end General;
+
+   -------------
+   -- Parents --
+   -------------
+
+   overriding function Parents
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Parents unimplemented");
+      raise Program_Error;
+      return Parents (Self);
+   end Parents;
+
+   ----------------------
+   -- Inherited_Member --
+   ----------------------
+
+   overriding function Inherited_Member
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Inherited_Member unimplemented");
+      raise Program_Error;
+      return Inherited_Member (Self);
+   end Inherited_Member;
+
+   -----------------
+   -- All_Parents --
+   -----------------
+
+   overriding function All_Parents
+     (Self : not null access constant CMOF_Class_Proxy)
+      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Parents unimplemented");
+      raise Program_Error;
+      return All_Parents (Self);
+   end All_Parents;
+
+   -------------------------
+   -- Inheritable_Members --
+   -------------------------
+
+   overriding function Inheritable_Members
+     (Self : not null access constant CMOF_Class_Proxy;
+      C : AMF.CMOF.Classifiers.CMOF_Classifier_Access)
+      return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Inheritable_Members unimplemented");
+      raise Program_Error;
+      return Inheritable_Members (Self, C);
+   end Inheritable_Members;
+
+   -----------------------
+   -- Has_Visibility_Of --
+   -----------------------
+
+   overriding function Has_Visibility_Of
+     (Self : not null access constant CMOF_Class_Proxy;
+      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Has_Visibility_Of unimplemented");
+      raise Program_Error;
+      return Has_Visibility_Of (Self, N);
+   end Has_Visibility_Of;
+
+   -------------
+   -- Inherit --
+   -------------
+
+   overriding function Inherit
+     (Self : not null access constant CMOF_Class_Proxy;
+      Inhs : AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element)
+      return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Inherit unimplemented");
+      raise Program_Error;
+      return Inherit (Self, Inhs);
+   end Inherit;
+
+   -------------------------
+   -- May_Specialize_Type --
+   -------------------------
+
+   overriding function May_Specialize_Type
+     (Self : not null access constant CMOF_Class_Proxy;
+      C : AMF.CMOF.Classifiers.CMOF_Classifier_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "May_Specialize_Type unimplemented");
+      raise Program_Error;
+      return May_Specialize_Type (Self, C);
+   end May_Specialize_Type;
+
    ---------------------
    -- Get_Is_Abstract --
    ---------------------
 
    overriding function Get_Is_Abstract
-    (Self : not null access constant CMOF_Class_Proxy) return Boolean is
+     (Self : not null access constant CMOF_Class_Proxy)
+      return Boolean
+   is
    begin
-      return Internal_Get_Is_Abstract (Self.Id);
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Get_Is_Abstract unimplemented");
+      raise Program_Error;
+      return Get_Is_Abstract (Self);
    end Get_Is_Abstract;
 
    ---------------------
@@ -414,20 +776,5 @@ package body AMF.Internals.CMOF_Classes is
       pragma Compile_Time_Warning (Standard.True, "Set_Is_Abstract unimplemented");
       raise Program_Error;
    end Set_Is_Abstract;
-
-   -------------------------
-   -- Get_Owned_Operation --
-   -------------------------
-
-   overriding function Get_Owned_Operation
-     (Self : not null access constant CMOF_Class_Proxy)
-      return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Operation unimplemented");
-      raise Program_Error;
-      return Get_Owned_Operation (Self);
-   end Get_Owned_Operation;
 
 end AMF.Internals.CMOF_Classes;

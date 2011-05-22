@@ -42,7 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Multiplicity_Elements;
+with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations;
 with AMF.CMOF.Parameters;
 with AMF.CMOF.Types;
@@ -64,6 +66,14 @@ package AMF.Internals.CMOF_Parameters is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Parameter_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return Boolean;
 
    overriding function Get_Is_Ordered
     (Self : not null access constant CMOF_Parameter_Proxy)
@@ -93,6 +103,28 @@ package AMF.Internals.CMOF_Parameters is
     (Self : not null access constant CMOF_Parameter_Proxy)
        return Optional_Unlimited_Natural;
 
+   overriding function Is_Multivalued
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return Boolean;
+
+   overriding function Includes_Multiplicity
+    (Self : not null access constant CMOF_Parameter_Proxy;
+     M : AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Access)
+       return Boolean;
+
+   overriding function Includes_Cardinality
+    (Self : not null access constant CMOF_Parameter_Proxy;
+     C : Integer)
+       return Boolean;
+
+   overriding function Lower_Bound
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return Integer;
+
+   overriding function Upper_Bound
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return Unlimited_Natural;
+
    overriding procedure Set_Upper
     (Self : not null access CMOF_Parameter_Proxy;
      To   : Optional_Unlimited_Natural);
@@ -120,6 +152,24 @@ package AMF.Internals.CMOF_Parameters is
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Parameter_Proxy)
        return Optional_String;
+
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Parameter_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean;
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return League.Strings.Universal_String;
 
    overriding function Get_Type
     (Self : not null access constant CMOF_Parameter_Proxy)

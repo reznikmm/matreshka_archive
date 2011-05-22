@@ -44,7 +44,8 @@
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Enumeration_Literals;
 with AMF.CMOF.Enumerations;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Enumeration_Literals is
@@ -63,6 +64,14 @@ package AMF.Internals.CMOF_Enumeration_Literals is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
+       return Boolean;
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
@@ -87,6 +96,24 @@ package AMF.Internals.CMOF_Enumeration_Literals is
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return Optional_String;
+
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean;
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
+       return League.Strings.Universal_String;
 
    overriding function Get_Enumeration
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)

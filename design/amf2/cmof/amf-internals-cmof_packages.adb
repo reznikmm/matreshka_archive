@@ -74,6 +74,36 @@ package body AMF.Internals.CMOF_Packages is
       return Get_Owner (Self);
    end Get_Owner;
 
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+     (Self : not null access constant CMOF_Package_Proxy)
+      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+     (Self : not null access constant CMOF_Package_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
+
    --------------
    -- Get_Name --
    --------------
@@ -161,6 +191,68 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return Get_Qualified_Name (Self);
    end Get_Qualified_Name;
+
+   --------------------
+   -- All_Namespaces --
+   --------------------
+
+   overriding function All_Namespaces
+     (Self : not null access constant CMOF_Package_Proxy)
+      return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
+      raise Program_Error;
+      return All_Namespaces (Self);
+   end All_Namespaces;
+
+   -----------------------------
+   -- Is_Distinguishable_From --
+   -----------------------------
+
+   overriding function Is_Distinguishable_From
+     (Self : not null access constant CMOF_Package_Proxy;
+      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Distinguishable_From unimplemented");
+      raise Program_Error;
+      return Is_Distinguishable_From (Self, N, Ns);
+   end Is_Distinguishable_From;
+
+   ---------------
+   -- Separator --
+   ---------------
+
+   overriding function Separator
+     (Self : not null access constant CMOF_Package_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
+      raise Program_Error;
+      return Separator (Self);
+   end Separator;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   overriding function Qualified_Name
+     (Self : not null access constant CMOF_Package_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
+      raise Program_Error;
+      return Qualified_Name (Self);
+   end Qualified_Name;
 
    -------------------------
    -- Get_Imported_Member --
@@ -251,6 +343,84 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return Get_Owned_Rule (Self);
    end Get_Owned_Rule;
+
+   ---------------------
+   -- Imported_Member --
+   ---------------------
+
+   overriding function Imported_Member
+     (Self : not null access constant CMOF_Package_Proxy)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Imported_Member unimplemented");
+      raise Program_Error;
+      return Imported_Member (Self);
+   end Imported_Member;
+
+   -------------------------
+   -- Get_Names_Of_Member --
+   -------------------------
+
+   overriding function Get_Names_Of_Member
+     (Self : not null access constant CMOF_Package_Proxy;
+      Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+      return AMF.CMOF.Set_Of_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Get_Names_Of_Member unimplemented");
+      raise Program_Error;
+      return Get_Names_Of_Member (Self, Element);
+   end Get_Names_Of_Member;
+
+   --------------------
+   -- Import_Members --
+   --------------------
+
+   overriding function Import_Members
+     (Self : not null access constant CMOF_Package_Proxy;
+      Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Import_Members unimplemented");
+      raise Program_Error;
+      return Import_Members (Self, Imps);
+   end Import_Members;
+
+   ------------------------
+   -- Exclude_Collisions --
+   ------------------------
+
+   overriding function Exclude_Collisions
+     (Self : not null access constant CMOF_Package_Proxy;
+      Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Exclude_Collisions unimplemented");
+      raise Program_Error;
+      return Exclude_Collisions (Self, Imps);
+   end Exclude_Collisions;
+
+   ---------------------------------
+   -- Members_Are_Distinguishable --
+   ---------------------------------
+
+   overriding function Members_Are_Distinguishable
+     (Self : not null access constant CMOF_Package_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Members_Are_Distinguishable unimplemented");
+      raise Program_Error;
+      return Members_Are_Distinguishable (Self);
+   end Members_Are_Distinguishable;
 
    --------------------------
    -- Get_Packaged_Element --
@@ -369,5 +539,36 @@ package body AMF.Internals.CMOF_Packages is
       pragma Compile_Time_Warning (Standard.True, "Set_Uri unimplemented");
       raise Program_Error;
    end Set_Uri;
+
+   ---------------------
+   -- Visible_Members --
+   ---------------------
+
+   overriding function Visible_Members
+     (Self : not null access constant CMOF_Package_Proxy)
+      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Visible_Members unimplemented");
+      raise Program_Error;
+      return Visible_Members (Self);
+   end Visible_Members;
+
+   -------------------
+   -- Makes_Visible --
+   -------------------
+
+   overriding function Makes_Visible
+     (Self : not null access constant CMOF_Package_Proxy;
+      El : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Makes_Visible unimplemented");
+      raise Program_Error;
+      return Makes_Visible (Self, El);
+   end Makes_Visible;
 
 end AMF.Internals.CMOF_Packages;

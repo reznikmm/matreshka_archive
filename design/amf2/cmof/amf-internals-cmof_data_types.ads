@@ -48,12 +48,13 @@ with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Features.Collections;
 with AMF.CMOF.Named_Elements.Collections;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Package_Imports.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Internals.CMOF_Classifiers;
 
 package AMF.Internals.CMOF_Data_Types is
@@ -72,6 +73,14 @@ package AMF.Internals.CMOF_Data_Types is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return Boolean;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Data_Type_Proxy;
@@ -93,6 +102,24 @@ package AMF.Internals.CMOF_Data_Types is
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return Optional_String;
 
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean;
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return League.Strings.Universal_String;
+
    overriding function Get_Package
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Packages.CMOF_Package_Access;
@@ -100,6 +127,11 @@ package AMF.Internals.CMOF_Data_Types is
    overriding procedure Set_Package
     (Self : not null access CMOF_Data_Type_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);
+
+   overriding function Conforms_To
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Other : AMF.CMOF.Types.CMOF_Type_Access)
+       return Boolean;
 
    overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Data_Type_Proxy)
@@ -125,6 +157,29 @@ package AMF.Internals.CMOF_Data_Types is
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
 
+   overriding function Imported_Member
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Get_Names_Of_Member
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return AMF.CMOF.Set_Of_String;
+
+   overriding function Import_Members
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Exclude_Collisions
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Members_Are_Distinguishable
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return Boolean;
+
    overriding function Get_Attribute
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property;
@@ -148,6 +203,51 @@ package AMF.Internals.CMOF_Data_Types is
    overriding procedure Set_Is_Final_Specialization
     (Self : not null access CMOF_Data_Type_Proxy;
      To   : Boolean);
+
+   overriding function Conforms_To
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Other : AMF.CMOF.Classifiers.CMOF_Classifier_Access)
+       return Boolean;
+
+   overriding function All_Features
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Features.Collections.Set_Of_CMOF_Feature;
+
+   overriding function General
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
+
+   overriding function Parents
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
+
+   overriding function Inherited_Member
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
+
+   overriding function All_Parents
+    (Self : not null access constant CMOF_Data_Type_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
+
+   overriding function Inheritable_Members
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     C : AMF.CMOF.Classifiers.CMOF_Classifier_Access)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
+
+   overriding function Has_Visibility_Of
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return Boolean;
+
+   overriding function Inherit
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Inhs : AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
+
+   overriding function May_Specialize_Type
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     C : AMF.CMOF.Classifiers.CMOF_Classifier_Access)
+       return Boolean;
 
    overriding function Get_Owned_Attribute
     (Self : not null access constant CMOF_Data_Type_Proxy)

@@ -46,7 +46,7 @@ with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Named_Elements.Collections;
-with AMF.CMOF.Namespaces;
+with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Package_Imports.Collections;
 with AMF.CMOF.Package_Merges.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
@@ -69,6 +69,14 @@ package AMF.Internals.CMOF_Packages is
    overriding function Get_Owner
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Package_Proxy)
+       return Boolean;
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Package_Proxy)
@@ -94,6 +102,24 @@ package AMF.Internals.CMOF_Packages is
     (Self : not null access constant CMOF_Package_Proxy)
        return Optional_String;
 
+   overriding function All_Namespaces
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant CMOF_Package_Proxy;
+     N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return Boolean;
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Package_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Qualified_Name
+    (Self : not null access constant CMOF_Package_Proxy)
+       return League.Strings.Universal_String;
+
    overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
@@ -117,6 +143,29 @@ package AMF.Internals.CMOF_Packages is
    overriding function Get_Owned_Rule
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
+
+   overriding function Imported_Member
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Get_Names_Of_Member
+    (Self : not null access constant CMOF_Package_Proxy;
+     Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return AMF.CMOF.Set_Of_String;
+
+   overriding function Import_Members
+    (Self : not null access constant CMOF_Package_Proxy;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Exclude_Collisions
+    (Self : not null access constant CMOF_Package_Proxy;
+     Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Members_Are_Distinguishable
+    (Self : not null access constant CMOF_Package_Proxy)
+       return Boolean;
 
    overriding function Get_Packaged_Element
     (Self : not null access constant CMOF_Package_Proxy)
@@ -149,5 +198,14 @@ package AMF.Internals.CMOF_Packages is
    overriding procedure Set_Uri
     (Self : not null access CMOF_Package_Proxy;
      To   : Optional_String);
+
+   overriding function Visible_Members
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+
+   overriding function Makes_Visible
+    (Self : not null access constant CMOF_Package_Proxy;
+     El : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return Boolean;
 
 end AMF.Internals.CMOF_Packages;

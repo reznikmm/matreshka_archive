@@ -41,8 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with CMOF.Internals.Attributes;
 
 package body AMF.Internals.CMOF_Parameters is
+
+   use Standard.CMOF.Internals.Attributes;
+
+   -------------------
+   -- Get_Direction --
+   -------------------
+
+   overriding function Get_Direction
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return CMOF.CMOF_Parameter_Direction_Kind is
+   begin
+      return Internal_Get_Direction (Self.Id);
+   end Get_Direction;
+
 
    -----------------------
    -- Get_Owned_Element --
@@ -73,6 +88,36 @@ package body AMF.Internals.CMOF_Parameters is
       raise Program_Error;
       return Get_Owner (Self);
    end Get_Owner;
+
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
 
    --------------------
    -- Get_Is_Ordered --
@@ -176,6 +221,83 @@ package body AMF.Internals.CMOF_Parameters is
       return Get_Upper (Self);
    end Get_Upper;
 
+   --------------------
+   -- Is_Multivalued --
+   --------------------
+
+   overriding function Is_Multivalued
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Multivalued unimplemented");
+      raise Program_Error;
+      return Is_Multivalued (Self);
+   end Is_Multivalued;
+
+   ---------------------------
+   -- Includes_Multiplicity --
+   ---------------------------
+
+   overriding function Includes_Multiplicity
+     (Self : not null access constant CMOF_Parameter_Proxy;
+      M : AMF.CMOF.Multiplicity_Elements.CMOF_Multiplicity_Element_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Includes_Multiplicity unimplemented");
+      raise Program_Error;
+      return Includes_Multiplicity (Self, M);
+   end Includes_Multiplicity;
+
+   --------------------------
+   -- Includes_Cardinality --
+   --------------------------
+
+   overriding function Includes_Cardinality
+     (Self : not null access constant CMOF_Parameter_Proxy;
+      C : Integer)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Includes_Cardinality unimplemented");
+      raise Program_Error;
+      return Includes_Cardinality (Self, C);
+   end Includes_Cardinality;
+
+   -----------------
+   -- Lower_Bound --
+   -----------------
+
+   overriding function Lower_Bound
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return Integer
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Lower_Bound unimplemented");
+      raise Program_Error;
+      return Lower_Bound (Self);
+   end Lower_Bound;
+
+   -----------------
+   -- Upper_Bound --
+   -----------------
+
+   overriding function Upper_Bound
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return Unlimited_Natural
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Upper_Bound unimplemented");
+      raise Program_Error;
+      return Upper_Bound (Self);
+   end Upper_Bound;
+
    ---------------
    -- Set_Upper --
    ---------------
@@ -278,6 +400,68 @@ package body AMF.Internals.CMOF_Parameters is
       return Get_Qualified_Name (Self);
    end Get_Qualified_Name;
 
+   --------------------
+   -- All_Namespaces --
+   --------------------
+
+   overriding function All_Namespaces
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
+      raise Program_Error;
+      return All_Namespaces (Self);
+   end All_Namespaces;
+
+   -----------------------------
+   -- Is_Distinguishable_From --
+   -----------------------------
+
+   overriding function Is_Distinguishable_From
+     (Self : not null access constant CMOF_Parameter_Proxy;
+      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Distinguishable_From unimplemented");
+      raise Program_Error;
+      return Is_Distinguishable_From (Self, N, Ns);
+   end Is_Distinguishable_From;
+
+   ---------------
+   -- Separator --
+   ---------------
+
+   overriding function Separator
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
+      raise Program_Error;
+      return Separator (Self);
+   end Separator;
+
+   --------------------
+   -- Qualified_Name --
+   --------------------
+
+   overriding function Qualified_Name
+     (Self : not null access constant CMOF_Parameter_Proxy)
+      return League.Strings.Universal_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
+      raise Program_Error;
+      return Qualified_Name (Self);
+   end Qualified_Name;
+
    --------------
    -- Get_Type --
    --------------
@@ -335,21 +519,6 @@ package body AMF.Internals.CMOF_Parameters is
       pragma Compile_Time_Warning (Standard.True, "Set_Default unimplemented");
       raise Program_Error;
    end Set_Default;
-
-   -------------------
-   -- Get_Direction --
-   -------------------
-
-   overriding function Get_Direction
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return CMOF.CMOF_Parameter_Direction_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Direction unimplemented");
-      raise Program_Error;
-      return Get_Direction (Self);
-   end Get_Direction;
 
    -------------------
    -- Set_Direction --
