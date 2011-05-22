@@ -68,6 +68,18 @@ package body CMOF.XMI_Helper is
         AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Element.all).Id;
    end CMOF_Element_Of;
 
+   ---------------------
+   -- CMOF_Element_Of --
+   ---------------------
+
+   function CMOF_Element_Of
+    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return CMOF_Element is
+   begin
+      return
+        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Element.all).Id;
+   end CMOF_Element_Of;
+
    --------------------
    -- Is_Association --
    --------------------
