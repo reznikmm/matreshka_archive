@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with Interfaces.C.Pointers;
 
+with League.Characters;
 with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Windows;
@@ -120,7 +121,7 @@ begin
               := Matreshka.Internals.Strings.C.To_Valid_Universal_String
                   (Envp);
             Index : constant Natural
-              := Pair.Index (League.Strings.To_Universal_Character ('='));
+              := Pair.Index (League.Characters.To_Universal_Character ('='));
 
          begin
             Env.Insert

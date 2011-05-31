@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Application;
+with League.Characters;
 with Matreshka.Internals.Settings.Fallbacks;
 with Matreshka.Internals.Settings.Registry;
 
@@ -190,7 +191,7 @@ package body Matreshka.Internals.Settings.Registry_Managers is
      Key  : League.Strings.Universal_String)
        return League.Strings.Universal_String
    is
-      use type League.Strings.Universal_Character;
+      use type League.Characters.Universal_Character;
 
       Backslash : Boolean := False;
 

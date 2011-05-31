@@ -44,6 +44,7 @@
 with Ada.Unchecked_Conversion;
 with Interfaces.C;
 
+with League.Characters;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.C;
 with Matreshka.Internals.Utf16;
@@ -51,7 +52,7 @@ with Matreshka.Internals.Windows;
 
 package body Matreshka.Internals.Settings.Registry is
 
-   use type League.Strings.Universal_Character;
+   use type League.Characters.Universal_Character;
 
    -----------------
    -- Windows API --
