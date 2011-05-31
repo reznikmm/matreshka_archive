@@ -41,7 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_league";
+with "matreshka_common.gpr";
+with "matreshka_league.gpr";
 
 project Matreshka_League_Tests is
 
@@ -73,7 +74,9 @@ project Matreshka_League_Tests is
      "../tools");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8", "-gnatn");
+      for Default_Switches ("Ada") use
+        Matreshka_Common.Common_Ada_Switches
+          & ("-gnatW8");
    end Compiler;
 
 end Matreshka_League_Tests;
