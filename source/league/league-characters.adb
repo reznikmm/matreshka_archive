@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,107 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package is indended to be used by implementation only. Applications
---  must not use it.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
+with Matreshka.Internals.Unicode.Properties;
 
-package League.Strings.Internals is
+package body League.Characters is
 
-   pragma Preelaborate;
+   use type Matreshka.Internals.Unicode.Code_Unit_32;
 
-   function Wrap
-    (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return Universal_String;
-   --  Creates instance of Universal_String as wrapper for the specified
-   --  shared string. Reference counter is untouched, thus once instance will
-   --  be finalized it will be decremented and shared strings freed.
+   ---------
+   -- "=" --
+   ---------
 
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return Universal_String;
-   --  Creates instance of Universal_String by reusing specified shared string.
-   --  Reference counter is incremented.
+   overriding function "="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Left.Code = Right.Code;
+   end "=";
 
-   function Internal (Item : Universal_String'Class)
-     return not null Matreshka.Internals.Strings.Shared_String_Access;
-   --  Returns shared string. Reference counter of the returned string is
-   --  not changed.
+   ---------
+   -- "=" --
+   ---------
 
-end League.Strings.Internals;
+   not overriding function "="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
+   begin
+      return Left.Code = Wide_Wide_Character'Pos (Right);
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   not overriding function "="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Wide_Wide_Character'Pos (Left) = Right.Code;
+   end "=";
+
+   --------------------
+   -- Is_ID_Continue --
+   --------------------
+
+   function Is_ID_Continue (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Matreshka.Internals.Unicode.Code_Point
+          and then Matreshka.Internals.Unicode.Properties.Is_ID_Continue
+                    (Self.Code);
+   end Is_ID_Continue;
+
+   -----------------
+   -- Is_ID_Start --
+   -----------------
+
+   function Is_ID_Start (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Matreshka.Internals.Unicode.Code_Point
+          and then Matreshka.Internals.Unicode.Properties.Is_ID_Start
+                    (Self.Code);
+   end Is_ID_Start;
+
+   --------------------------------
+   -- Is_Noncharacter_Code_Point --
+   --------------------------------
+
+   function Is_Noncharacter_Code_Point
+    (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Matreshka.Internals.Unicode.Code_Point
+          and then
+            Matreshka.Internals.Unicode.Properties.Is_Noncharacter_Code_Point
+             (Self.Code);
+   end Is_Noncharacter_Code_Point;
+
+   --------------
+   -- Is_Valid --
+   --------------
+
+   function Is_Valid (Self : Universal_Character'Class) return Boolean is
+   begin
+      return Matreshka.Internals.Unicode.Is_Valid (Self.Code);
+   end Is_Valid;
+
+   ----------------------------
+   -- To_Universal_Character --
+   ----------------------------
+
+   function To_Universal_Character
+    (Self : Wide_Wide_Character) return Universal_Character is
+   begin
+      return Universal_Character'(Code => Wide_Wide_Character'Pos (Self));
+   end To_Universal_Character;
+
+   ----------------------------
+   -- To_Wide_Wide_Character --
+   ----------------------------
+
+   function To_Wide_Wide_Character
+    (Self : Universal_Character'Class) return Wide_Wide_Character is
+   begin
+      return Wide_Wide_Character'Val (Self.Code);
+   end To_Wide_Wide_Character;
+
+end League.Characters;

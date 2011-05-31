@@ -111,7 +111,7 @@ package body Matreshka.Internals.SQL_Parameter_Rewriters is
 
                Index := Index + 1;
 
-	       --  Copy all characters till end of statement or single
+               --  Copy all characters till end of statement or single
                --  apostrophe character (two sequential apostrophe characters
                --  is escape sequence in SQL) is reached.
 

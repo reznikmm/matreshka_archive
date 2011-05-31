@@ -45,6 +45,7 @@ with Ada.Characters.Conversions;
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Containers.Ordered_Maps;
 
+with League.Characters;
 with XML.SAX.Input_Sources.Streams.Files;
 
 package body SAX_Events_Writers is
@@ -57,7 +58,7 @@ package body SAX_Events_Writers is
           (League.Strings.Universal_String, Positive);
 
    function Escape_Character
-    (Item : League.Strings.Universal_Character)
+    (Item : League.Characters.Universal_Character)
        return League.Strings.Universal_String;
    --  Escapes control and special characters.
 
@@ -204,7 +205,7 @@ package body SAX_Events_Writers is
    ----------------------
 
    function Escape_Character
-    (Item : League.Strings.Universal_Character)
+    (Item : League.Characters.Universal_Character)
        return League.Strings.Universal_String
    is
       function Image (Item : Wide_Wide_Character)

@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Characters.Internals;
 with League.Strings.Internals;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.Configuration;
@@ -48,7 +49,6 @@ with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
-with Matreshka.Internals.Unicode.Properties;
 with Matreshka.Internals.Unicode.Ucd;
 
 package body League.Strings is
@@ -59,7 +59,6 @@ package body League.Strings is
    use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode;
-   use Matreshka.Internals.Unicode.Properties;
    use Matreshka.Internals.Utf16;
 
    procedure To_Utf16_String
@@ -115,8 +114,8 @@ package body League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_Character'Class) return Universal_String
-   is
+     Right : League.Characters.Universal_Character'Class)
+       return Universal_String is
    begin
       return Left & Right.To_Wide_Wide_Character;
    end "&";
@@ -126,9 +125,8 @@ package body League.Strings is
    ---------
 
    function "&"
-    (Left  : Universal_Character'Class;
-     Right : Universal_String'Class) return Universal_String
-   is
+    (Left  : League.Characters.Universal_Character'Class;
+     Right : Universal_String'Class) return Universal_String is
    begin
       return Left.To_Wide_Wide_Character & Right;
    end "&";
@@ -286,26 +284,6 @@ package body League.Strings is
    ---------
 
    overriding function "="
-    (Left : Universal_Character; Right : Universal_Character) return Boolean is
-   begin
-      return Left.Code = Right.Code;
-   end "=";
-
-   ---------
-   -- "=" --
-   ---------
-
-   not overriding function "="
-    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
-   begin
-      return Left.Code = Wide_Wide_Character'Pos (Right);
-   end "=";
-
-   ---------
-   -- "=" --
-   ---------
-
-   overriding function "="
     (Left : Universal_String; Right : Universal_String) return Boolean
    is
       L_D : constant not null Shared_String_Access := Left.Data;
@@ -313,16 +291,6 @@ package body League.Strings is
 
    begin
       return String_Handler.Is_Equal (L_D, R_D);
-   end "=";
-
-   ---------
-   -- "=" --
-   ---------
-
-   not overriding function "="
-    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
-   begin
-      return Wide_Wide_Character'Pos (Left) = Right.Code;
    end "=";
 
    ---------
@@ -459,16 +427,19 @@ package body League.Strings is
    ------------
 
    procedure Append
-    (Self : in out Universal_String'Class; Item : Universal_Character'Class)
+    (Self : in out Universal_String'Class;
+     Item : League.Characters.Universal_Character'Class)
    is
       P : constant Utf16_String_Index := Self.Data.Unused;
+      C : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := League.Characters.Internals.Internal (Item);
 
    begin
-      if not Is_Valid (Item.Code) then
+      if not Is_Valid (C) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      Append (Self.Data, Item.Code);
+      Append (Self.Data, C);
       Emit_Changed (Self, P, Utf16_String_Index'Last, Self.Data.Unused - 1);
    end Append;
 
@@ -612,16 +583,17 @@ package body League.Strings is
 
    function Count
     (Self      : Universal_String'Class;
-     Character : Universal_Character'Class) return Natural
+     Character : League.Characters.Universal_Character'Class) return Natural
    is
-      Code : constant Code_Unit_32 := Character.Code;
+      C : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := League.Characters.Internals.Internal (Character);
 
    begin
-      if not Is_Valid (Code) then
+      if not Is_Valid (C) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      return String_Handler.Count (Self.Data, Code);
+      return String_Handler.Count (Self.Data, C);
    end Count;
 
    -----------
@@ -672,7 +644,7 @@ package body League.Strings is
 
    function Element
     (Self  : Universal_String'Class;
-     Index : Positive) return Universal_Character
+     Index : Positive) return League.Characters.Universal_Character
    is
       D : constant Shared_String_Access := Self.Data;
 
@@ -683,14 +655,14 @@ package body League.Strings is
 
       if D.Unused = Utf16_String_Index (D.Length) then
          return
-           Universal_Character'
-            (Code => Code_Unit_32 (D.Value (Utf16_String_Index (Index - 1))));
+           League.Characters.Internals.Create
+            (Code_Unit_32 (D.Value (Utf16_String_Index (Index - 1))));
 
       elsif D.Unused = Utf16_String_Index (D.Length) * 2 then
          return
-           Universal_Character'
-            (Code => Unchecked_To_Code_Point
-                      (D.Value, Utf16_String_Index (Index - 1) * 2));
+           League.Characters.Internals.Create
+            (Unchecked_To_Code_Point
+              (D.Value, Utf16_String_Index (Index - 1) * 2));
 
       else
          declare
@@ -705,9 +677,9 @@ package body League.Strings is
             end if;
 
             return
-              Universal_Character'
-               (Code => Unchecked_To_Code_Point
-                         (D.Value, M.Map (Utf16_String_Index (Index - 1))));
+              League.Characters.Internals.Create
+               (Unchecked_To_Code_Point
+                 (D.Value, M.Map (Utf16_String_Index (Index - 1))));
          end;
       end if;
    end Element;
@@ -851,16 +823,17 @@ package body League.Strings is
 
    function Index
     (Self      : Universal_String'Class;
-     Character : Universal_Character'Class) return Natural
+     Character : League.Characters.Universal_Character'Class) return Natural
    is
-      Code : constant Code_Unit_32 := Character.Code;
+      C : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := League.Characters.Internals.Internal (Character);
 
    begin
-      if not Is_Valid (Code) then
+      if not Is_Valid (C) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      return String_Handler.Index (Self.Data, Code);
+      return String_Handler.Index (Self.Data, C);
    end Index;
 
    -----------
@@ -908,49 +881,6 @@ package body League.Strings is
    begin
       return Self.Data.Length = 0;
    end Is_Empty;
-
-   --------------------
-   -- Is_ID_Continue --
-   --------------------
-
-   function Is_ID_Continue (Self : Universal_Character'Class) return Boolean is
-   begin
-      return
-        Self.Code in Code_Point
-          and then Is_ID_Continue (Self.Code);
-   end Is_ID_Continue;
-
-   -----------------
-   -- Is_ID_Start --
-   -----------------
-
-   function Is_ID_Start (Self : Universal_Character'Class) return Boolean is
-   begin
-      return
-        Self.Code in Code_Point
-          and then Is_ID_Start (Self.Code);
-   end Is_ID_Start;
-
-   --------------------------------
-   -- Is_Noncharacter_Code_Point --
-   --------------------------------
-
-   function Is_Noncharacter_Code_Point
-    (Self : Universal_Character'Class) return Boolean is
-   begin
-      return
-        Self.Code in Code_Point
-          and then Is_Noncharacter_Code_Point (Self.Code);
-   end Is_Noncharacter_Code_Point;
-
-   --------------
-   -- Is_Valid --
-   --------------
-
-   function Is_Valid (Self : Universal_Character'Class) return Boolean is
-   begin
-      return Is_Valid (Self.Code);
-   end Is_Valid;
 
    ------------
    -- Length --
@@ -1229,7 +1159,11 @@ package body League.Strings is
      Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector
    is
    begin
-      return Split (Self, To_Universal_Character (Separator), Behavior);
+      return
+        Split
+         (Self,
+          League.Characters.To_Universal_Character (Separator),
+          Behavior);
    end Split;
 
    -----------
@@ -1237,12 +1171,13 @@ package body League.Strings is
    -----------
 
    function Split
-    (Self       : Universal_String'Class;
-     Separator  : Universal_Character'Class;
+    (Self      : Universal_String'Class;
+     Separator : League.Characters.Universal_Character'Class;
      Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector
    is
       D : constant not null Shared_String_Access := Self.Data;
-      C : constant Code_Unit_32                  := Separator.Code;
+      C : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := League.Characters.Internals.Internal (Separator);
 
       First_Position   : Utf16_String_Index := 0;
       First_Index      : Positive := 1;
@@ -1410,16 +1345,6 @@ package body League.Strings is
       return Wrap (Data);
    end To_NFKD;
 
-   ----------------------------
-   -- To_Universal_Character --
-   ----------------------------
-
-   function To_Universal_Character
-    (Self : Wide_Wide_Character) return Universal_Character is
-   begin
-      return Universal_Character'(Code => Wide_Wide_Character'Pos (Self));
-   end To_Universal_Character;
-
    -------------------------
    -- To_Universal_String --
    -------------------------
@@ -1508,16 +1433,6 @@ package body League.Strings is
 
          raise;
    end To_Utf16_String;
-
-   ----------------------------
-   -- To_Wide_Wide_Character --
-   ----------------------------
-
-   function To_Wide_Wide_Character
-    (Self : Universal_Character'Class) return Wide_Wide_Character is
-   begin
-      return Wide_Wide_Character'Val (Self.Code);
-   end To_Wide_Wide_Character;
 
    -------------------------
    -- To_Wide_Wide_String --

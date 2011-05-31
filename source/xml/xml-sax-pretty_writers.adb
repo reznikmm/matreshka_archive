@@ -41,13 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
+with League.Characters.Internals;
 with Matreshka.Internals.Unicode;
 
 package body XML.SAX.Pretty_Writers is
 
    use Matreshka.Internals.Unicode;
-   use League.Strings.Internals;
    use type Mappings.Cursor;
    use type Banks.Cursor;
 
@@ -279,7 +278,7 @@ package body XML.SAX.Pretty_Writers is
    begin
       return Result : League.Strings.Universal_String do
          for J in 1 .. Text.Length loop
-            Code := Get_Code (Text.Element (J));
+            Code := League.Characters.Internals.Internal (Text.Element (J));
 
             case Text.Element (J).To_Wide_Wide_Character is
                when '&' =>

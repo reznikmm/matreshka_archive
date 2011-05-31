@@ -49,6 +49,7 @@ with Ada.Strings.Wide_Unbounded;
 with Ada.Text_IO;
 
 with League.Application;
+with League.Characters;
 with League.Strings;
 
 procedure String_Performance is
@@ -60,6 +61,7 @@ procedure String_Performance is
    use Ada.Strings.Wide_Unbounded;
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Text_IO;
+   use League.Characters;
    use League.Strings;
 
    procedure Test_Copy_Of_Empty_String;

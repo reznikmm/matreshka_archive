@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,27 +44,22 @@
 --  This package is indended to be used by implementation only. Applications
 --  must not use it.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
+with Matreshka.Internals.Unicode;
 
-package League.Strings.Internals is
+package League.Characters.Internals is
 
    pragma Preelaborate;
 
-   function Wrap
-    (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return Universal_String;
-   --  Creates instance of Universal_String as wrapper for the specified
-   --  shared string. Reference counter is untouched, thus once instance will
-   --  be finalized it will be decremented and shared strings freed.
+   function Internal
+    (Item : Universal_Character'Class)
+       return Matreshka.Internals.Unicode.Code_Unit_32;
+   --  Returns internal code from Universal_Character.
 
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return Universal_String;
-   --  Creates instance of Universal_String by reusing specified shared string.
-   --  Reference counter is incremented.
+   function Create
+    (Item : Matreshka.Internals.Unicode.Code_Unit_32)
+       return Universal_Character;
 
-   function Internal (Item : Universal_String'Class)
-     return not null Matreshka.Internals.Strings.Shared_String_Access;
-   --  Returns shared string. Reference counter of the returned string is
-   --  not changed.
+   pragma Inline (Internal);
+   pragma Inline (Create);
 
-end League.Strings.Internals;
+end League.Characters.Internals;

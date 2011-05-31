@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Application;
+with League.Characters;
 with Matreshka.Internals.Settings.Ini_Files;
 with Matreshka.Internals.Settings.Fallbacks;
 
@@ -249,7 +250,7 @@ package body Matreshka.Internals.Settings.Ini_Managers is
    is
       pragma Unreferenced (Self);
 
-      use type League.Strings.Universal_Character;
+      use type League.Characters.Universal_Character;
 
       Slash : Boolean := False;
 

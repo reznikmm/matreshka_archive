@@ -41,13 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides abstractions for Unicode characters (code points),
---  strings (sequences of Unicode code points), string's slices, and vectors
---  of strings. Many operations in this package and its children packages
---  depends from the current or explicitly specified locale.
---
---  Primary purpose of Universal_Character type is provide the gateway to
---  Unicode Character Database.
+--  This package provides abstractions for strings (sequences of Unicode code
+--  points), string's slices, and vectors of strings. Many operations in this
+--  package and its children packages depends from the current or explicitly
+--  specified locale.
 --
 --  Universal_String type provides unbounded strings of Unicode characters.
 --  It utilizes implicit sharing technology (also known as copy-on-write), so
@@ -68,9 +65,9 @@
 private with Ada.Finalization;
 private with Ada.Streams;
 
+with League.Characters;
 private with Matreshka.Internals.String_Vectors;
 private with Matreshka.Internals.Strings;
-private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 
 package League.Strings is
@@ -79,9 +76,6 @@ package League.Strings is
 --   pragma Remote_Types;
 
    type Split_Behavior is (Keep_Empty, Skip_Empty);
-
-   type Universal_Character is tagged private;
-   pragma Preelaborable_Initialization (Universal_Character);
 
    type Universal_String is tagged private;
 
@@ -97,52 +91,6 @@ package League.Strings is
 
    Empty_Universal_String        : constant Universal_String;
    Empty_Universal_String_Vector : constant Universal_String_Vector;
-
-   -------------------------
-   -- Universal_Character --
-   -------------------------
-
-   function To_Wide_Wide_Character
-    (Self : Universal_Character'Class)
-       return Wide_Wide_Character;
-
-   function To_Universal_Character
-    (Self : Wide_Wide_Character)
-       return Universal_Character;
-
-   function Is_Valid (Self : Universal_Character'Class) return Boolean;
-   --  Returns True when code point of the specified character is inside valid
-   --  code point range and it is not a surrogate code point.
-
-   function Is_Noncharacter_Code_Point
-    (Self : Universal_Character'Class) return Boolean;
-   --  Code points permanently reserved for internal use.
-
-   function Is_ID_Start (Self : Universal_Character'Class) return Boolean;
-   --  Returns True when character is start character of identifier:
-   --
-   --  "Character having the Unicode General_Category of uppercase letters
-   --  (Lu), lowercase letters (Ll), titlecase letters (Lt), modifier letters
-   --  (Lm), other letters (Lo), letter numbers (Nl), minus Pattern_Syntax and
-   --  Pattern_White_Space code points, plus stability extensions. Note that
-   --  “other letters” includes ideographs."
-
-   function Is_ID_Continue (Self : Universal_Character'Class) return Boolean;
-   --  Returns True when character is continue of identifier:
-   --
-   --  "All of the start character of identifier characters, plus characters
-   --  having the Unicode General_Category of nonspacing marks (Mn), spacing
-   --  combining marks (Mc), decimal number (Nd), connector punctuations (Pc),
-   --  plus stability extensions, minus Pattern_Syntax and Pattern_White_Space
-   --  code points."
-
-   overriding function "="
-    (Left : Universal_Character; Right : Universal_Character) return Boolean;
-   not overriding function "="
-    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
-   not overriding function "="
-    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
-   --  Compare subprograms.
 
    ----------------------
    -- Universal_String --
@@ -164,7 +112,7 @@ package League.Strings is
 
    function Element
     (Self  : Universal_String'Class;
-     Index : Positive) return Universal_Character;
+     Index : Positive) return League.Characters.Universal_Character;
 
    function Slice
     (Self : Universal_String'Class;
@@ -177,10 +125,11 @@ package League.Strings is
 
    function "&"
     (Left  : Universal_String'Class;
-     Right : Universal_Character'Class) return Universal_String;
+     Right : League.Characters.Universal_Character'Class)
+       return Universal_String;
 
    function "&"
-    (Left  : Universal_Character'Class;
+    (Left  : League.Characters.Universal_Character'Class;
      Right : Universal_String'Class) return Universal_String;
 
    function "&"
@@ -205,7 +154,7 @@ package League.Strings is
 
    procedure Append
     (Self : in out Universal_String'Class;
-     Item : Universal_Character'Class);
+     Item : League.Characters.Universal_Character'Class);
 
    procedure Append
     (Self : in out Universal_String'Class;
@@ -255,7 +204,7 @@ package League.Strings is
 
    function Split
     (Self      : Universal_String'Class;
-     Separator : Universal_Character'Class;
+     Separator : League.Characters.Universal_Character'Class;
      Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
@@ -271,7 +220,7 @@ package League.Strings is
 
    function Index
     (Self      : Universal_String'Class;
-     Character : Universal_Character'Class) return Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural;
    function Index
     (Self      : Universal_String'Class;
      Character : Wide_Wide_Character) return Natural;
@@ -280,7 +229,7 @@ package League.Strings is
 
    function Count
     (Self      : Universal_String'Class;
-     Character : Universal_Character'Class) return Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural;
    function Count
     (Self      : Universal_String'Class;
      Character : Wide_Wide_Character) return Natural;
@@ -375,14 +324,6 @@ private
 
    type Abstract_Cursor is tagged;
    type Cursor_Access is access all Abstract_Cursor'Class;
-
-   -------------------------
-   -- Universal_Character --
-   -------------------------
-
-   type Universal_Character is tagged record
-      Code : Matreshka.Internals.Unicode.Code_Unit_32 := 16#FFFF_FFFF#;
-   end record;
 
    ----------------------
    -- Universal_String --
@@ -541,6 +482,5 @@ private
    pragma Inline (Finalize);
    pragma Inline (Is_Empty);
    pragma Inline (Length);
-   pragma Inline (To_Wide_Wide_Character);
 
 end League.Strings;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package is indended to be used by implementation only. Applications
---  must not use it.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
 
-package League.Strings.Internals is
+package body League.Characters.Internals is
 
-   pragma Preelaborate;
+   ------------
+   -- Create --
+   ------------
 
-   function Wrap
-    (Data : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return Universal_String;
-   --  Creates instance of Universal_String as wrapper for the specified
-   --  shared string. Reference counter is untouched, thus once instance will
-   --  be finalized it will be decremented and shared strings freed.
+   function Create
+    (Item : Matreshka.Internals.Unicode.Code_Unit_32)
+       return Universal_Character is
+   begin
+      return (Code => Item);
+   end Create;
 
-   function Create (Item : Matreshka.Internals.Strings.Shared_String_Access)
-     return Universal_String;
-   --  Creates instance of Universal_String by reusing specified shared string.
-   --  Reference counter is incremented.
+   --------------
+   -- Internal --
+   --------------
 
-   function Internal (Item : Universal_String'Class)
-     return not null Matreshka.Internals.Strings.Shared_String_Access;
-   --  Returns shared string. Reference counter of the returned string is
-   --  not changed.
+   function Internal
+    (Item : Universal_Character'Class)
+       return Matreshka.Internals.Unicode.Code_Unit_32 is
+   begin
+      return Item.Code;
+   end Internal;
 
-end League.Strings.Internals;
+end League.Characters.Internals;

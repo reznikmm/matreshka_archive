@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Characters;
 
 package body Matreshka.Internals.URI_Utilities is
 
@@ -97,7 +98,7 @@ package body Matreshka.Internals.URI_Utilities is
     (Base : League.Strings.Universal_String)
        return League.Strings.Universal_String
    is
-      use type League.Strings.Universal_Character;
+      use type League.Characters.Universal_Character;
 
    begin
       for J in reverse 1 .. Base.Length loop

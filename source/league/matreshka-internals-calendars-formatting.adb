@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Characters;
 with Matreshka.Internals.Calendars.Times;
 
 package body Matreshka.Internals.Calendars.Formatting is
@@ -57,7 +58,7 @@ package body Matreshka.Internals.Calendars.Formatting is
      Zone         : not null Time_Zone_Access)
        return League.Strings.Universal_String
    is
-      use type League.Strings.Universal_Character;
+      use type League.Characters.Universal_Character;
 
       procedure Parse_Field
        (Max_Length : Positive;
@@ -76,7 +77,7 @@ package body Matreshka.Internals.Calendars.Formatting is
        (Index : in out Positive;
         Count : out Positive)
       is
-         Delimiter : constant League.Strings.Universal_Character
+         Delimiter : constant League.Characters.Universal_Character
            := Pattern.Element (Index);
 
       begin
@@ -102,7 +103,7 @@ package body Matreshka.Internals.Calendars.Formatting is
         Index      : in out Positive;
         Count      : out Positive)
       is
-         Delimiter : constant League.Strings.Universal_Character
+         Delimiter : constant League.Characters.Universal_Character
            := Pattern.Element (Index);
 
       begin
