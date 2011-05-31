@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Streams;
+
 with Matreshka.Internals.Unicode.Characters.Latin;
 
 package body Matreshka.FastCGI.Query_Items is
