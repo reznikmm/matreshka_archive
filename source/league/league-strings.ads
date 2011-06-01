@@ -66,7 +66,7 @@ private with Ada.Finalization;
 private with Ada.Streams;
 
 with League.Characters;
-private with Matreshka.Internals.String_Vectors;
+limited with League.String_Vectors;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Utf16;
 
@@ -81,16 +81,12 @@ package League.Strings is
 
    type Universal_Slice is tagged private;
 
-   type Universal_String_Vector is tagged private;
-   pragma Preelaborable_Initialization (Universal_String_Vector);
-
    type Sort_Key is private;
    pragma Preelaborable_Initialization (Sort_Key);
 
    type Hash_Type is mod 2 ** 32;
 
-   Empty_Universal_String        : constant Universal_String;
-   Empty_Universal_String_Vector : constant Universal_String_Vector;
+   Empty_Universal_String : constant Universal_String;
 
    ----------------------
    -- Universal_String --
@@ -205,7 +201,8 @@ package League.Strings is
    function Split
     (Self      : Universal_String'Class;
      Separator : League.Characters.Universal_Character'Class;
-     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
+     Behavior  : Split_Behavior := Keep_Empty)
+       return League.String_Vectors.Universal_String_Vector;
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
    --  string, returns a single-element list containing this string.
@@ -213,7 +210,8 @@ package League.Strings is
    function Split
     (Self      : Universal_String'Class;
      Separator : Wide_Wide_Character;
-     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector;
+     Behavior  : Split_Behavior := Keep_Empty)
+       return League.String_Vectors.Universal_String_Vector;
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
    --  string, returns a single-element list containing this string.
@@ -301,24 +299,6 @@ package League.Strings is
    function "<=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function ">" (Left : Sort_Key; Right : Sort_Key) return Boolean;
    function ">=" (Left : Sort_Key; Right : Sort_Key) return Boolean;
-
-   -----------------------------
-   -- Universal_String_Vector --
-   -----------------------------
-
-   function Is_Empty (Self : Universal_String_Vector'Class) return Boolean;
-
-   function Length (Self : Universal_String_Vector'Class) return Natural;
-
-   function Element
-    (Self  : Universal_String_Vector'Class;
-     Index : Positive) return League.Strings.Universal_String;
-
-   procedure Clear (Self : in out Universal_String_Vector'Class);
-
-   procedure Append
-    (Self : in out Universal_String_Vector'Class;
-     Item : Universal_String'Class);
 
 private
 
@@ -445,32 +425,6 @@ private
    overriding procedure Adjust (Self : in out Sort_Key);
 
    overriding procedure Finalize (Self : in out Sort_Key);
-
-   -----------------------------
-   -- Universal_String_Vector --
-   -----------------------------
-
-   procedure Read
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : out Universal_String_Vector);
-
-   procedure Write
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : Universal_String_Vector);
-
-   type Universal_String_Vector is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
-       := Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
-   end record;
-   for Universal_String_Vector'Read use Read;
-   for Universal_String_Vector'Write use Write;
-
-   overriding procedure Adjust (Self : in out Universal_String_Vector);
-
-   overriding procedure Finalize (Self : in out Universal_String_Vector);
-
-   Empty_Universal_String_Vector : constant Universal_String_Vector
-     := (Ada.Finalization.Controlled with others => <>);
 
    pragma Inline ("=");
    pragma Inline ("<");

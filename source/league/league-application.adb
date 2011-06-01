@@ -48,7 +48,7 @@ package body League.Application is
    procedure Initialize_Arguments_Environment;
    --  Initialize arguments list and process environment.
 
-   Args        : League.Strings.Universal_String_Vector;
+   Args        : League.String_Vectors.Universal_String_Vector;
    Env         : League.Environment_Variables.Environment_Variable_Set;
    App_Name    : League.Strings.Universal_String;
    App_Version : League.Strings.Universal_String;

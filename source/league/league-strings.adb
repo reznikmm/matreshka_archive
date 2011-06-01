@@ -43,9 +43,11 @@
 ------------------------------------------------------------------------------
 with League.Characters.Internals;
 with League.Strings.Internals;
+with League.String_Vectors.Internals;
 with Matreshka.Internals.Locales;
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.String_Vectors;
 with Matreshka.Internals.Unicode.Casing;
 with Matreshka.Internals.Unicode.Collation;
 with Matreshka.Internals.Unicode.Normalization;
@@ -400,15 +402,6 @@ package body League.Strings is
    end Adjust;
 
    ------------
-   -- Adjust --
-   ------------
-
-   overriding procedure Adjust (Self : in out Universal_String_Vector) is
-   begin
-      Matreshka.Internals.String_Vectors.Reference (Self.Data);
-   end Adjust;
-
-   ------------
    -- Append --
    ------------
 
@@ -472,18 +465,6 @@ package body League.Strings is
    end Append;
 
    ------------
-   -- Append --
-   ------------
-
-   procedure Append
-    (Self : in out Universal_String_Vector'Class;
-     Item : Universal_String'Class) is
-   begin
-      Append (Self.Data, Item.Data);
-      Reference (Item.Data);
-   end Append;
-
-   ------------
    -- Attach --
    ------------
 
@@ -520,17 +501,6 @@ package body League.Strings is
    begin
       Matreshka.Internals.Strings.Dereference (Self.Data);
       Self.Data := Matreshka.Internals.Strings.Shared_Empty'Access;
-   end Clear;
-
-   -----------
-   -- Clear --
-   -----------
-
-   procedure Clear (Self : in out Universal_String_Vector'Class) is
-   begin
-      Matreshka.Internals.String_Vectors.Dereference (Self.Data);
-      Self.Data :=
-        Matreshka.Internals.String_Vectors.Empty_Shared_String_Vector'Access;
    end Clear;
 
    ---------------
@@ -684,21 +654,6 @@ package body League.Strings is
       end if;
    end Element;
 
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : Universal_String_Vector'Class;
-     Index : Positive) return League.Strings.Universal_String is
-   begin
-      if Index > Self.Data.Length then
-         raise Constraint_Error with "Index is out of range";
-      end if;
-
-      return Create (Self.Data.Value (Index));
-   end Element;
-
    ------------------
    -- Emit_Changed --
    ------------------
@@ -793,21 +748,6 @@ package body League.Strings is
       end if;
    end Finalize;
 
-   --------------
-   -- Finalize --
-   --------------
-
-   overriding procedure Finalize (Self : in out Universal_String_Vector) is
-   begin
-      --  Finalize can be called more than once (as specified by language
-      --  standard), thus implementation should provide protection from
-      --  multiple finalization.
-
-      if Self.Data /= null then
-         Dereference (Self.Data);
-      end if;
-   end Finalize;
-
    ----------
    -- Hash --
    ----------
@@ -873,29 +813,11 @@ package body League.Strings is
       return Self.Data.Length = 0;
    end Is_Empty;
 
-   --------------
-   -- Is_Empty --
-   --------------
-
-   function Is_Empty (Self : Universal_String_Vector'Class) return Boolean is
-   begin
-      return Self.Data.Length = 0;
-   end Is_Empty;
-
    ------------
    -- Length --
    ------------
 
    function Length (Self : Universal_String'Class) return Natural is
-   begin
-      return Self.Data.Length;
-   end Length;
-
-   ------------
-   -- Length --
-   ------------
-
-   function Length (Self : Universal_String_Vector'Class) return Natural is
    begin
       return Self.Data.Length;
    end Length;
@@ -1005,28 +927,6 @@ package body League.Strings is
           (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
          String_Handler.Fill_Null_Terminator (Item.Data);
       end if;
-   end Read;
-
-   ----------
-   -- Read --
-   ----------
-
-   procedure Read
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : out Universal_String_Vector)
-   is
-      Aux    : Universal_String;
-      Length : Natural;
-
-   begin
-      Natural'Read (Stream, Length);
-
-      Item.Clear;
-
-      for J in 1 .. Length loop
-         Universal_String'Read (Stream, Aux);
-         Item.Append (Aux);
-      end loop;
    end Read;
 
    -------------
@@ -1156,8 +1056,8 @@ package body League.Strings is
    function Split
     (Self      : Universal_String'Class;
      Separator : Wide_Wide_Character;
-     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector
-   is
+     Behavior  : Split_Behavior := Keep_Empty)
+       return League.String_Vectors.Universal_String_Vector is
    begin
       return
         Split
@@ -1173,7 +1073,8 @@ package body League.Strings is
    function Split
     (Self      : Universal_String'Class;
      Separator : League.Characters.Universal_Character'Class;
-     Behavior  : Split_Behavior := Keep_Empty) return Universal_String_Vector
+     Behavior  : Split_Behavior := Keep_Empty)
+       return League.String_Vectors.Universal_String_Vector
    is
       D : constant not null Shared_String_Access := Self.Data;
       C : constant Matreshka.Internals.Unicode.Code_Unit_32
@@ -1195,7 +1096,7 @@ package body League.Strings is
       end if;
 
       if D.Length = 0 then
-         return Empty_Universal_String_Vector;
+         return League.String_Vectors.Empty_Universal_String_Vector;
       end if;
 
       while Current_Position < D.Unused loop
@@ -1232,7 +1133,7 @@ package body League.Strings is
          end if;
       end if;
 
-      return (Ada.Finalization.Controlled with Data => R);
+      return League.String_Vectors.Internals.Wrap (R);
    end Split;
 
    -----------------
@@ -1487,21 +1388,6 @@ package body League.Strings is
          Matreshka.Internals.Utf16.Utf16_String'Write
           (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
       end if;
-   end Write;
-
-   -----------
-   -- Write --
-   -----------
-
-   procedure Write
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : Universal_String_Vector) is
-   begin
-      Natural'Write (Stream, Item.Data.Length);
-
-      for J in 1 .. Item.Length loop
-         Universal_String'Write (Stream, Item.Element (J));
-      end loop;
    end Write;
 
 end League.Strings;

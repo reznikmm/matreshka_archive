@@ -62,10 +62,12 @@ package body Paths is
    -- System_Paths --
    ------------------
 
-   function System_Paths return League.Strings.Universal_String_Vector is
-      Dirs  : League.Strings.Universal_String_Vector;
+   function System_Paths
+     return League.String_Vectors.Universal_String_Vector
+   is
+      Dirs  : League.String_Vectors.Universal_String_Vector;
       Path  : League.Strings.Universal_String;
-      Paths : League.Strings.Universal_String_Vector;
+      Paths : League.String_Vectors.Universal_String_Vector;
 
    begin
       --  Looking for XDG_CONFIG_DIRS environment variable and construct list

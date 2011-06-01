@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Application;
 with League.Characters;
+with League.String_Vectors;
 with Matreshka.Internals.Settings.Ini_Files;
 with Matreshka.Internals.Settings.Fallbacks;
 
@@ -56,7 +57,8 @@ package body Matreshka.Internals.Settings.Ini_Managers is
       --  Returns path where user's settings are stored. Returned path has
       --  trailing path separator.
 
-      function System_Paths return League.Strings.Universal_String_Vector;
+      function System_Paths
+        return League.String_Vectors.Universal_String_Vector;
       --  Returns paths where system settings are stored. Returned path has
       --  trailing path separator.
 
@@ -97,8 +99,9 @@ package body Matreshka.Internals.Settings.Ini_Managers is
          declare
             Proxy        : Fallbacks.Fallback_Settings'Class
               renames Fallbacks.Fallback_Settings'Class (Aux.all);
-            System_Paths : constant League.Strings.Universal_String_Vector
-              := Paths.System_Paths;
+            System_Paths : constant
+              League.String_Vectors.Universal_String_Vector
+                := Paths.System_Paths;
 
          begin
             --  Append user's application and organization files.
