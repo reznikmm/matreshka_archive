@@ -103,8 +103,10 @@ package body Paths is
    -- System_Paths --
    ------------------
 
-   function System_Paths return League.Strings.Universal_String_Vector is
-      Paths : League.Strings.Universal_String_Vector;
+   function System_Paths
+     return League.String_Vectors.Universal_String_Vector
+   is
+      Paths : League.String_Vectors.Universal_String_Vector;
 
    begin
       Paths.Append (Get_Special_Folder (CSIDL_COMMON_APPDATA) & '/');
