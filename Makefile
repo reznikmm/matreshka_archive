@@ -13,7 +13,7 @@ TOKEN_TRANSFORMER = ../../../tools/token_transformer/token_transformer
 PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
-all: gnat/matreshka_config.gpr
+all: Makefile.config
 	make -f Makefile.build
 
 check: all
@@ -87,13 +87,14 @@ yy_tools:
 clean:
 	rm -rf .objs .libs .gens-regexp .gens-xml
 
-gnat/matreshka_config.gpr:
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_configure.gpr
+Makefile.config:
+	make reconfig
+
+reconfig: config
 	./configure
 
 config:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_configure.gpr
-	./configure
 
 install:
 	make -f Makefile.install
