@@ -53,7 +53,7 @@ private with Matreshka.Internals.Unicode;
 package League.Characters is
 
    pragma Preelaborate;
---   pragma Remote_Types;
+   pragma Remote_Types;
 
    type Universal_Character is tagged private;
    pragma Preelaborable_Initialization (Universal_Character);

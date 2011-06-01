@@ -73,7 +73,7 @@ private with Matreshka.Internals.Utf16;
 package League.Strings is
 
    pragma Preelaborate;
---   pragma Remote_Types;
+   pragma Remote_Types;
 
    type Split_Behavior is (Keep_Empty, Skip_Empty);
 
