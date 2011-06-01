@@ -59,12 +59,10 @@ package League.Characters is
    pragma Preelaborable_Initialization (Universal_Character);
 
    function To_Wide_Wide_Character
-    (Self : Universal_Character'Class)
-       return Wide_Wide_Character;
+    (Self : Universal_Character'Class) return Wide_Wide_Character;
 
    function To_Universal_Character
-    (Self : Wide_Wide_Character)
-       return Universal_Character;
+    (Self : Wide_Wide_Character) return Universal_Character;
 
    function Is_Valid (Self : Universal_Character'Class) return Boolean;
    --  Returns True when code point of the specified character is inside valid
