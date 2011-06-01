@@ -3,8 +3,9 @@ UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
 CLDR = unicode/cldr/1.9.0
 
+override SMP_MFLAGS ?=
 GPRBUILD = gnatmake
-GPRBUILD_FLAGS = -p
+GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
 CPP = cpp -undef -nostdinc -fdirectives-only -P -E
 AFLEX = ../tools/aflex/src/aflex
@@ -14,7 +15,7 @@ PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
 all: Makefile.config
-	make -f Makefile.build
+	make -f Makefile.build SMP_MFLAGS=$(SMP_MFLAGS)
 
 check: all
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
