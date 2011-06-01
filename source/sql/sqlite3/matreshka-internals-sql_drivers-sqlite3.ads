@@ -119,7 +119,7 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
 --#define SQLITE_CONFIG_MEMSTATUS     9  /* boolean */
 --#define SQLITE_CONFIG_MUTEX        10  /* sqlite3_mutex_methods* */
 --#define SQLITE_CONFIG_GETMUTEX     11  /* sqlite3_mutex_methods* */
---/* previously SQLITE_CONFIG_CHUNKALLOC 12 which is now unused. */ 
+--/* previously SQLITE_CONFIG_CHUNKALLOC 12 which is now unused. */
 --#define SQLITE_CONFIG_LOOKASIDE    13  /* int int */
 --#define SQLITE_CONFIG_PCACHE       14  /* sqlite3_pcache_methods* */
 --#define SQLITE_CONFIG_GETPCACHE    15  /* sqlite3_pcache_methods* */

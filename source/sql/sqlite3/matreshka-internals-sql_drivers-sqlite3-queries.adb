@@ -379,7 +379,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       pragma Import (Ada, Source);
       Position : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
       Code     : Matreshka.Internals.Unicode.Code_Point;
-      Aux      : Matreshka.Internals.Strings.Shared_String_Access
+      Aux      : constant Matreshka.Internals.Strings.Shared_String_Access
         := Matreshka.Internals.Strings.Allocate (Length);
 
    begin

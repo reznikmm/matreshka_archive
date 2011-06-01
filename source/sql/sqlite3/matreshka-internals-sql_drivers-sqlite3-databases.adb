@@ -46,14 +46,10 @@ with Interfaces.C;
 with League.Strings.Internals;
 with Matreshka.Internals.SQL_Drivers.SQLite3.Queries;
 with Matreshka.Internals.Strings.C;
-with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
    use type Interfaces.C.int;
-
---   procedure puts (Item : String);
---   pragma Import (C, puts);
 
    procedure Call
     (Self : not null access SQLite3_Database'Class;
