@@ -23,7 +23,7 @@ Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
-Group:          Development/Languages/Ada
+Group:          System/Libraries
 Source:         matreshka-0.1.0.tar.gz
 ##  Patch:
 BuildRequires:  gcc-ada sqlite3-devel
@@ -41,23 +41,27 @@ Matreshka is a set of Ada components.
 %build
 make config
 %configure
-make %{?_smp_mflags}
+make SMP_MFLAGS=%{?_smp_mflags}
 
 %install
 %make_install
 export NO_BRP_CHECK_RPATH=true
 
-##  %clean
-##  %{?buildroot:%__rm -rf "%{buildroot}"}
-##  
-##  %post
-##  
-##  %postun
+##  %%clean
+##  %%{?buildroot:%__rm -rf "%{buildroot}"}
+##
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
 
 %files
-##  %defattr(-,root,root)
-##  %doc ChangeLog README COPYING
-/usr
+%defattr(-,root,root)
+##  %%doc ChangeLog README COPYING
+/usr/include/matreshka
+/usr/lib/gnat
+%_libdir
+%attr(0444, root, root) %_libdir/matreshka
 
-##  %changelog
-##  
+%changelog
