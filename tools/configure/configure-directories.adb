@@ -2,9 +2,9 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                           SQL Database Access                            --
+--         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,18 +41,81 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka/config.gpr";
-with "league.gpr";
+with Ada.Command_Line;
+with Ada.Directories;
 
-library project SQL_SQLite3 is
+procedure Configure.Directories is
 
-   Library_Name := "matreshka-sql-sqlite3" & Config.RTL_Version_Suffix;
+   function Starts_With (Item : String; Prefix : String) return Boolean;
 
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Source_Dirs use ("../../include/matreshka/sql/sqlite3");
-   for Library_Dir use Config.Library_Dir;
-   for Library_ALI_Dir use Config.Library_ALI_Dir;
-   for Externally_Built use "True";
+   Prefix_Switch : constant String := "--prefix=";
+   Libdir_Switch : constant String := "--libdir=";
 
-end SQL_SQLite3;
+   Prefix_Name : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("PREFIX");
+   Libdir_Name : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("LIBDIR");
+
+   -----------------
+   -- Starts_With --
+   -----------------
+
+   function Starts_With (Item : String; Prefix : String) return Boolean is
+   begin
+      return
+        Item'Length >= Prefix'Length
+          and then Item (Item'First .. Item'First + Prefix'Length - 1)
+                     = Prefix;
+   end Starts_With;
+
+begin
+   --  Set default value for PREFIX.
+
+   Substitutions.Insert
+    (Prefix_Name, Ada.Strings.Unbounded.To_Unbounded_String ("/usr/local"));
+
+   --  Looking for '--prefix=' and otherwrite default value when found.
+
+   for J in 1 .. Ada.Command_Line.Argument_Count loop
+      declare
+         Arg : constant String := Ada.Command_Line.Argument (J);
+
+      begin
+         if Starts_With (Arg, Prefix_Switch) then
+            Substitutions.Replace
+             (Prefix_Name,
+              Ada.Strings.Unbounded.To_Unbounded_String
+               (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
+
+            exit;
+         end if;
+      end;
+   end loop;
+
+   --  Compute other directories.
+
+   Substitutions.Insert
+    (Libdir_Name,
+     Ada.Strings.Unbounded.To_Unbounded_String
+      (Ada.Directories.Compose
+        (Ada.Strings.Unbounded.To_String (Substitutions.Element (Prefix_Name)),
+         "lib")));
+
+   --  Looking for '--libdir=' and otherwrite default value when found.
+
+   for J in 1 .. Ada.Command_Line.Argument_Count loop
+      declare
+         Arg : constant String := Ada.Command_Line.Argument (J);
+
+      begin
+         if Starts_With (Arg, Libdir_Switch) then
+            Substitutions.Replace
+             (Libdir_Name,
+              Ada.Strings.Unbounded.To_Unbounded_String
+               (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
+
+            exit;
+         end if;
+      end;
+   end loop;
+end Configure.Directories;

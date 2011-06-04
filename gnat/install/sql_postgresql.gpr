@@ -51,8 +51,8 @@ library project SQL_PostgreSQL is
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Source_Dirs use ("../../include/matreshka/sql/postgresql");
-   for Library_Dir use "../../lib";
-   for Library_ALI_Dir use "../../lib/matreshka";
+   for Library_Dir use Config.Library_Dir;
+   for Library_ALI_Dir use Config.Library_ALI_Dir;
    for Externally_Built use "True";
 
 end SQL_PostgreSQL;

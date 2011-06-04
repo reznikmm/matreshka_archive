@@ -47,6 +47,8 @@ abstract project Config is
    Version := "0.1.0";
 
    RTL_Version_Suffix := "@RTL_VERSION_SUFFIX@";
+   Library_Dir := "@LIBDIR@";
+   Library_ALI_Dir := "@LIBDIR@/matreshka";
 
    type Architectures is
     ("portable_32_be",

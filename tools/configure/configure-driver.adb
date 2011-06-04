@@ -47,6 +47,7 @@ with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
 with Configure.Architecture;
+with Configure.Directories;
 with Configure.Instantiate;
 with Configure.OCI;
 with Configure.Operating_System;
@@ -58,6 +59,7 @@ procedure Configure.Driver is
    use Ada.Command_Line;
 
 begin
+   Configure.Directories;
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;
