@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+with CMOF;
 
-project Gens is
+package Generator.Reflection is
 
-   for Main use ("gen_api.adb", "gen_init.adb", "gen_refl.adb");
-   for Object_Dir use ".obj";
+   procedure Generate_Reflection_Implementation (Extent : CMOF.CMOF_Extent);
+   --  Generates implementation of reflection package.
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
-   end Compiler;
-
-end Gens;
+end Generator.Reflection;

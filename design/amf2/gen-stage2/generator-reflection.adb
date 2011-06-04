@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../cmof/cmof.gpr";
-with "../xmi/xmi.gpr";
+with Ada.Wide_Wide_Text_IO;
 
-project Gens is
+with AMF.CMOF.Classes;
+with AMF.Elements.Collections;
 
-   for Main use ("gen_api.adb", "gen_init.adb", "gen_refl.adb");
-   for Object_Dir use ".obj";
+package body Generator.Reflection is
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
-   end Compiler;
+   use Ada.Wide_Wide_Text_IO;
 
-end Gens;
+   ----------------------------------------
+   -- Generate_Reflection_Implementation --
+   ----------------------------------------
+
+   procedure Generate_Reflection_Implementation (Extent : CMOF.CMOF_Extent) is
+      Elements : AMF.Elements.Collections.Reflective_Collection
+        := CMOF.Extents.Elements (Extent);
+
+   begin
+      Put_Line ("Analyzing...");
+
+      for J in 1 .. Elements.Length loop
+         if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then
+            declare
+               Class : AMF.CMOF.Classes.CMOF_Class_Access
+                 := AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J));
+
+            begin
+               Put_Line
+                ("  Class "
+                   & Class.Get_Name.Value.To_Wide_Wide_String
+                   & " "
+                   & Boolean'Wide_Wide_Image (Class.Get_Is_Abstract));
+               null;
+            end;
+         end if;
+      end loop;
+   end Generate_Reflection_Implementation;
+
+end Generator.Reflection;
