@@ -58,6 +58,8 @@ with CMOF.Named_Elements;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 with League.Application;
+with League.Characters;
+with League.String_Vectors;
 with League.Strings;
 with XMI.Reader;
 
@@ -112,7 +114,8 @@ procedure Gen_API is
            League.Strings."=");
 
    function Split_Text
-    (Text : Universal_String; Width : Positive) return Universal_String_Vector;
+    (Text : Universal_String; Width : Positive)
+       return League.String_Vectors.Universal_String_Vector;
 
    Model_Name : League.Strings.Universal_String
      := League.Application.Arguments.Element (2);
@@ -496,7 +499,7 @@ procedure Gen_API is
             Owned_Comments : constant
               AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
                 := Attribute.Get_Owned_Comment;
-            Lines          : Universal_String_Vector;
+            Lines          : League.String_Vectors.Universal_String_Vector;
 
          begin
             for J in 1 .. Owned_Comments.Length loop
@@ -702,7 +705,7 @@ procedure Gen_API is
             Owned_Comments : constant
               AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
                 := Operation.Get_Owned_Comment;
-            Lines          : Universal_String_Vector;
+            Lines          : League.String_Vectors.Universal_String_Vector;
 
          begin
             for J in 1 .. Owned_Comments.Length loop
@@ -755,7 +758,7 @@ procedure Gen_API is
          Owned_Comments : constant
            AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
              := Class.Get_Owned_Comment;
-         Lines          : Universal_String_Vector;
+         Lines          : League.String_Vectors.Universal_String_Vector;
 
       begin
          for J in 1 .. Owned_Comments.Length loop
@@ -870,12 +873,15 @@ procedure Gen_API is
    ----------------
 
    function Split_Text
-    (Text : Universal_String; Width : Positive) return Universal_String_Vector
+    (Text : Universal_String; Width : Positive)
+       return League.String_Vectors.Universal_String_Vector
    is
+      use type League.Characters.Universal_Character;
+
       --  XXX It would be interesting to use line break iterator here to
       --  look for places of potencial line breaks.
 
-      Result : Universal_String_Vector;
+      Result : League.String_Vectors.Universal_String_Vector;
       First  : Positive := 1;
       Last   : Natural  := 0;
 

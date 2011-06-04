@@ -45,6 +45,7 @@ with Ada.Characters.Conversions;
 with Ada.Containers.Hashed_Maps;
 with Ada.Wide_Wide_Text_IO;
 
+with League.Characters;
 with League.String_Vectors;
 with XMI.Reader;
 
@@ -93,10 +94,6 @@ package body XMI.Handlers is
     (Class : CMOF.CMOF_Class;
      Name  : League.Strings.Universal_String) return CMOF.CMOF_Property;
    --  Resolves class's owned attribute by its name.
-
-   function Index
-    (String    : League.Strings.Universal_String;
-     Character : Wide_Wide_Character) return Natural;
 
    procedure Analyze_Object_Element
     (Self       : in out XMI_Handler;
@@ -230,7 +227,7 @@ package body XMI.Handlers is
 
             URI       : constant League.Strings.Universal_String
               := Attributes.Value (Href_Index);
-            Separator : constant Positive := Index (URI, '#');
+            Separator : constant Positive := URI.Index ('#');
             File_Name : constant League.Strings.Universal_String
               := URI.Slice (1, Separator - 1);
             Name      : constant League.Strings.Universal_String
@@ -480,26 +477,6 @@ package body XMI.Handlers is
 --     Text    : League.Strings.Universal_String;
 --     Success : in out Boolean) is null;
 
-   -----------
-   -- Index --
-   -----------
-
-   function Index
-    (String    : League.Strings.Universal_String;
-     Character : Wide_Wide_Character) return Natural
-   is
-      use type League.Strings.Universal_Character;
-
-   begin
-      for J in 1 .. String.Length loop
-         if String.Element (J) = Character then
-            return J;
-         end if;
-      end loop;
-
-      return 0;
-   end Index;
-
 --   overriding procedure Processing_Instruction
 --    (Self    : in out XMI_Handler;
 --     Target  : League.Strings.Universal_String;
@@ -623,7 +600,7 @@ package body XMI.Handlers is
                Name := Attributes.Value (XMI_Namespace, Type_Name);
                Meta :=
                  CMOF.XMI_Helper.Resolve
-                  (Name.Slice (Index (Name, ':') + 1, Name.Length));
+                  (Name.Slice (Name.Index (':') + 1, Name.Length));
 
                if Meta = Null_CMOF_Element then
                   raise Program_Error;
