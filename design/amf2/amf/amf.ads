@@ -116,6 +116,47 @@ package AMF is
       end case;
    end record;
 
+   function "="
+    (Left : Optional_String; Right : Optional_String) return Boolean;
+   function "="
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean;
+   function "="
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean;
+   function "<"
+    (Left : Optional_String; Right : Optional_String) return Boolean;
+   function "<"
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean;
+   function "<"
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean;
+   function "<="
+    (Left : Optional_String; Right : Optional_String) return Boolean;
+   function "<="
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean;
+   function "<="
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean;
+   function ">"
+    (Left : Optional_String; Right : Optional_String) return Boolean;
+   function ">"
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean;
+   function ">"
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean;
+   function ">="
+    (Left : Optional_String; Right : Optional_String) return Boolean;
+   function ">="
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean;
+   function ">="
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean;
+
    type Optional_Boolean (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when True =>

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,58 @@
 ------------------------------------------------------------------------------
 
 package body AMF is
+
+   use type League.Strings.Universal_String;
+
+   ---------
+   -- "<" --
+   ---------
+
+   function "<"
+    (Left : Optional_String; Right : Optional_String) return Boolean is
+   begin
+      if Left.Is_Empty xor Right.Is_Empty then
+         return Left.Is_Empty;
+
+      elsif Left.Is_Empty or Right.Is_Empty then
+         return False;
+
+      else
+         return Left.Value < Right.Value;
+      end if;
+   end "<";
+
+   ---------
+   -- "<" --
+   ---------
+
+   function "<"
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean is
+   begin
+      if Left.Is_Empty then
+         return True;
+
+      else
+         return Left.Value < Right;
+      end if;
+   end "<";
+
+   ---------
+   -- "<" --
+   ---------
+
+   function "<"
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean is
+   begin
+      if Right.Is_Empty then
+         return False;
+
+      else
+         return Left < Right.Value;
+      end if;
+   end "<";
 
    ---------
    -- "<" --
@@ -95,6 +147,56 @@ package body AMF is
    ----------
 
    function "<="
+    (Left : Optional_String; Right : Optional_String) return Boolean is
+   begin
+      if Left.Is_Empty xor Right.Is_Empty then
+         return Left.Is_Empty;
+
+      elsif Left.Is_Empty or Right.Is_Empty then
+         return True;
+
+      else
+         return Left.Value <= Right.Value;
+      end if;
+   end "<=";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   function "<="
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean is
+   begin
+      if Left.Is_Empty then
+         return True;
+
+      else
+         return Left.Value <= Right;
+      end if;
+   end "<=";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   function "<="
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean is
+   begin
+      if Right.Is_Empty then
+         return False;
+
+      else
+         return Left <= Right.Value;
+      end if;
+   end "<=";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   function "<="
     (Left : Unlimited_Natural; Right : Unlimited_Natural) return Boolean is
    begin
       if Left.Unlimited xor Right.Unlimited then
@@ -140,9 +242,50 @@ package body AMF is
    -- "=" --
    ---------
 
-   function "=" (Left : Unlimited_Natural; Right : Integer) return Boolean is
+   function "="
+    (Left : Optional_String; Right : Optional_String) return Boolean is
    begin
-      return not Left.Unlimited and then Left.Value = Right;
+      if Left.Is_Empty xor Right.Is_Empty then
+         return False;
+
+      elsif Left.Is_Empty then
+         return True;
+
+      else
+         return Left.Value = Right.Value;
+      end if;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean is
+   begin
+      if Left.Is_Empty then
+         return False;
+
+      else
+         return Left.Value = Right;
+      end if;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "="
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean is
+   begin
+      if Right.Is_Empty then
+         return False;
+
+      else
+         return Left = Right.Value;
+      end if;
    end "=";
 
    ---------
@@ -153,6 +296,65 @@ package body AMF is
    begin
       return not Right.Unlimited and then Left = Right.Value;
    end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "=" (Left : Unlimited_Natural; Right : Integer) return Boolean is
+   begin
+      return not Left.Unlimited and then Left.Value = Right;
+   end "=";
+
+   ---------
+   -- ">" --
+   ---------
+
+   function ">"
+    (Left : Optional_String; Right : Optional_String) return Boolean is
+   begin
+      if Left.Is_Empty xor Right.Is_Empty then
+         return Right.Is_Empty;
+
+      elsif Left.Is_Empty or Right.Is_Empty then
+         return False;
+
+      else
+         return Left.Value > Right.Value;
+      end if;
+   end ">";
+
+   ---------
+   -- ">" --
+   ---------
+
+   function ">"
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean is
+   begin
+      if Left.Is_Empty then
+         return False;
+
+      else
+         return Left.Value > Right;
+      end if;
+   end ">";
+
+   ---------
+   -- ">" --
+   ---------
+
+   function ">"
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean is
+   begin
+      if Right.Is_Empty then
+         return True;
+
+      else
+         return Left > Right.Value;
+      end if;
+   end ">";
 
    ---------
    -- ">" --
@@ -199,6 +401,56 @@ package body AMF is
          return Left > Right.Value;
       end if;
    end ">";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   function ">="
+    (Left : Optional_String; Right : Optional_String) return Boolean is
+   begin
+      if Left.Is_Empty xor Right.Is_Empty then
+         return Right.Is_Empty;
+
+      elsif Left.Is_Empty or Right.Is_Empty then
+         return True;
+
+      else
+         return Left.Value >= Right.Value;
+      end if;
+   end ">=";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   function ">="
+    (Left  : Optional_String;
+     Right : League.Strings.Universal_String) return Boolean is
+   begin
+      if Left.Is_Empty then
+         return False;
+
+      else
+         return Left.Value >= Right;
+      end if;
+   end ">=";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   function ">="
+    (Left  : League.Strings.Universal_String;
+     Right : Optional_String) return Boolean is
+   begin
+      if Right.Is_Empty then
+         return True;
+
+      else
+         return Left >= Right.Value;
+      end if;
+   end ">=";
 
    ----------
    -- ">=" --
