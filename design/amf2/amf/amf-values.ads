@@ -62,6 +62,7 @@ package AMF.Values is
      Value_Optional_Boolean,
      Value_Optional_Integer,
      Value_Optional_Unlimited_Natural,
+     Value_Collection_Of_String,
      Value_Element,
      Value_Collection_Of_Element,
      Value_CMOF_Parameter_Direction_Kind,
@@ -95,6 +96,9 @@ package AMF.Values is
 
          when Value_Optional_Unlimited_Natural =>
             Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;
+
+         when Value_Collection_Of_String =>
+            Collection_String_Value : CMOF.Collection_Of_CMOF_String;
 
          when Value_Element =>
             Element_Value : CMOF.CMOF_Element;

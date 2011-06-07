@@ -657,6 +657,7 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
+                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                      3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                                                            --  name
                      4      => (M_Element, 0),             --  namespace

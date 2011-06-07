@@ -41,22 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with CMOF.Internals.Attributes;
+with CMOF.Internals.Proxies;
 
-package body AMF.Internals.CMOF_Enumerations is
+package body AMF.Internals.CMOF_Typed_Elements is
 
-   -----------------------
-   -- Get_Owned_Literal --
-   -----------------------
+   use Standard.CMOF.Internals.Attributes;
 
-   overriding function Get_Owned_Literal
-     (Self : not null access constant CMOF_Enumeration_Proxy)
-      return AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
-   is
+   --------------
+   -- Get_Type --
+   --------------
+
+   overriding function Get_Type
+    (Self : not null access constant CMOF_Typed_Element_Proxy)
+       return AMF.CMOF.Types.CMOF_Type_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Literal unimplemented");
-      raise Program_Error;
-      return Get_Owned_Literal (Self);
-   end Get_Owned_Literal;
+      return
+        AMF.CMOF.Types.CMOF_Type_Access
+         (Standard.CMOF.Internals.Proxies.Get_Proxy
+           (Internal_Get_Type (Self.Id)));
+   end Get_Type;
 
-end AMF.Internals.CMOF_Enumerations;
+end AMF.Internals.CMOF_Typed_Elements;

@@ -41,22 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with CMOF.Internals.Attributes;
 
-package body AMF.Internals.CMOF_Enumerations is
+package body AMF.Internals.CMOF_Named_Elements is
 
-   -----------------------
-   -- Get_Owned_Literal --
-   -----------------------
+   use Standard.CMOF.Internals.Attributes;
 
-   overriding function Get_Owned_Literal
-     (Self : not null access constant CMOF_Enumeration_Proxy)
-      return AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
-   is
+   --------------
+   -- Get_Name --
+   --------------
+
+   overriding function Get_Name
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return Optional_String is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Literal unimplemented");
-      raise Program_Error;
-      return Get_Owned_Literal (Self);
-   end Get_Owned_Literal;
+      return (False, Internal_Get_Name (Self.Id));
+   end Get_Name;
 
-end AMF.Internals.CMOF_Enumerations;
+end AMF.Internals.CMOF_Named_Elements;

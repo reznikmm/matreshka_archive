@@ -44,11 +44,36 @@
 with AMF.Internals.Collections;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
+with CMOF.Internals.Proxies;
 
 package body AMF.Internals.CMOF_Properties is
 
    use Standard.CMOF.Internals.Attributes;
    use Standard.CMOF.Internals.Collections;
+
+   ---------------
+   -- Get_Class --
+   ---------------
+
+   overriding function Get_Class
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Classes.CMOF_Class_Access is
+   begin
+      return
+        AMF.CMOF.Classes.CMOF_Class_Access
+         (Standard.CMOF.Internals.Proxies.Get_Proxy
+           (Internal_Get_Class (Self.Id)));
+   end Get_Class;
+
+   --------------------
+   -- Get_Is_Derived --
+   --------------------
+
+   overriding function Get_Is_Derived
+    (Self : not null access constant CMOF_Property_Proxy) return Boolean is
+   begin
+      return Internal_Get_Is_Derived (Self.Id);
+   end Get_Is_Derived;
 
    ----------------------
    -- Get_Is_Read_Only --
@@ -59,6 +84,20 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return Internal_Get_Is_Read_Only (Self.Id);
    end Get_Is_Read_Only;
+
+   ----------------------------
+   -- Get_Owning_Association --
+   ----------------------------
+
+   overriding function Get_Owning_Association
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Associations.CMOF_Association_Access is
+   begin
+      return
+        AMF.CMOF.Associations.CMOF_Association_Access
+         (Standard.CMOF.Internals.Proxies.Get_Proxy
+           (Internal_Get_Owning_Association (Self.Id)));
+   end Get_Owning_Association;
 
    ----------------------------
    -- Get_Redefined_Property --
@@ -74,7 +113,6 @@ package body AMF.Internals.CMOF_Properties is
                (AMF.Internals.Collections.Abstract_Collection with
                   Collection => Internal_Get_Redefined_Property (Self.Id)));
    end Get_Redefined_Property;
-
 
    -----------------------
    -- Get_Owned_Element --
@@ -225,21 +263,6 @@ package body AMF.Internals.CMOF_Properties is
    end Includes_Cardinality;
 
    --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error;
-      return Get_Name (Self);
-   end Get_Name;
-
-   --------------
    -- Set_Name --
    --------------
 
@@ -373,21 +396,6 @@ package body AMF.Internals.CMOF_Properties is
       raise Program_Error;
       return Qualified_Name (Self);
    end Qualified_Name;
-
-   --------------
-   -- Get_Type --
-   --------------
-
-   overriding function Get_Type
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Types.CMOF_Type_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Type unimplemented");
-      raise Program_Error;
-      return Get_Type (Self);
-   end Get_Type;
 
    --------------
    -- Set_Type --
@@ -566,21 +574,6 @@ package body AMF.Internals.CMOF_Properties is
    end Set_Is_Composite;
 
    --------------------
-   -- Get_Is_Derived --
-   --------------------
-
-   overriding function Get_Is_Derived
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Derived unimplemented");
-      raise Program_Error;
-      return Get_Is_Derived (Self);
-   end Get_Is_Derived;
-
-   --------------------
    -- Set_Is_Derived --
    --------------------
 
@@ -624,21 +617,6 @@ package body AMF.Internals.CMOF_Properties is
    end Set_Is_Derived_Union;
 
    ---------------
-   -- Get_Class --
-   ---------------
-
-   overriding function Get_Class
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Classes.CMOF_Class_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Class unimplemented");
-      raise Program_Error;
-      return Get_Class (Self);
-   end Get_Class;
-
-   ---------------
    -- Set_Class --
    ---------------
 
@@ -651,21 +629,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Class unimplemented");
       raise Program_Error;
    end Set_Class;
-
-   ----------------------------
-   -- Get_Owning_Association --
-   ----------------------------
-
-   overriding function Get_Owning_Association
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Associations.CMOF_Association_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owning_Association unimplemented");
-      raise Program_Error;
-      return Get_Owning_Association (Self);
-   end Get_Owning_Association;
 
    ----------------------------
    -- Set_Owning_Association --

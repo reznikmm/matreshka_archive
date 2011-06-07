@@ -753,14 +753,9 @@ package body AMF.Internals.CMOF_Classes is
    ---------------------
 
    overriding function Get_Is_Abstract
-     (Self : not null access constant CMOF_Class_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant CMOF_Class_Proxy) return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Abstract unimplemented");
-      raise Program_Error;
-      return Get_Is_Abstract (Self);
+      return Internal_Get_Is_Abstract (Self.Id);
    end Get_Is_Abstract;
 
    ---------------------

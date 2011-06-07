@@ -1,3 +1,48 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
@@ -19,279 +64,452 @@ package body CMOF.Internals.Reflection is
      Property : CMOF_Property) return AMF.Values.Value
    is
 
-      function Get_Association return AMF.Values.Value is
+      function Association_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Association class.
+
+      function Class_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Class class.
+
+      function Comment_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Comment class.
+
+      function Constraint_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Constraint class.
+
+      function Data_Type_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of DataType class.
+
+      function Element_Import_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of ElementImport class.
+
+      function Enumeration_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Enumeration class.
+
+      function Enumeration_Literal_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of EnumerationLiteral class.
+
+      function Expression_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Expression class.
+
+      function Opaque_Expression_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of OpaqueExpression class.
+
+      function Operation_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Operation class.
+
+      function Package_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Package class.
+
+      function Package_Import_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of PackageImport class.
+
+      function Package_Merge_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of PackageMerge class.
+
+      function Parameter_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Parameter class.
+
+      function Primitive_Type_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of PrimitiveType class.
+
+      function Property_Get return AMF.Values.Value;
+      --  Returns attribute's value of instance of Property class.
+
+      ---------------------
+      -- Association_Get --
+      ---------------------
+
+      function Association_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Classifier_Attribute then
+            --  Classifier::attribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Attribute (Self));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Association_End_Type then
+            --  Association::endType : Type
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_End_Type (Self));
 
          elsif Property = MP_CMOF_Classifier_Feature then
+            --  Classifier::feature : Feature
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Feature (Self));
 
          elsif Property = MP_CMOF_Classifier_General then
+            --  Classifier::general : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_General (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
+            --  Classifier::inheritedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Inherited_Member (Self));
 
          elsif Property = MP_CMOF_Association_Is_Derived then
+            --  Association::isDerived : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Derived (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Association_Member_End then
+            --  Association::memberEnd : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member_End (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Association_Navigable_Owned_End then
+            --  Association::navigableOwnedEnd : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Navigable_Owned_End (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Association_Owned_End then
+            --  Association::ownedEnd : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_End (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Package (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
+            --  Relationship::relatedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Related_Element (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Association;
+      end Association_Get;
 
-      function Get_Class return AMF.Values.Value is
+      ---------------
+      -- Class_Get --
+      ---------------
+
+      function Class_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Classifier_Attribute then
+            --  Classifier::attribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Attribute (Self));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Classifier_Feature then
+            --  Classifier::feature : Feature
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Feature (Self));
 
          elsif Property = MP_CMOF_Classifier_General then
+            --  Classifier::general : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_General (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
+            --  Classifier::inheritedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Inherited_Member (Self));
 
          elsif Property = MP_CMOF_Class_Is_Abstract then
+            --  Class::isAbstract : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Abstract (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Class_Owned_Attribute then
+            --  Class::ownedAttribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Attribute (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
          elsif Property = MP_CMOF_Class_Owned_Operation then
+            --  Class::ownedOperation : Operation
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Operation (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Package (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Class_Super_Class then
+            --  Class::superClass : Class
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Super_Class (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Class;
+      end Class_Get;
 
-      function Get_Comment return AMF.Values.Value is
+      -----------------
+      -- Comment_Get --
+      -----------------
+
+      function Comment_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Comment_Annotated_Element then
+            --  Comment::annotatedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Annotated_Element (Self));
 
          elsif Property = MP_CMOF_Comment_Body then
+            --  Comment::body : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Body (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
@@ -299,847 +517,1233 @@ package body CMOF.Internals.Reflection is
          else
             raise Program_Error;
          end if;
-      end Get_Comment;
+      end Comment_Get;
 
-      function Get_Constraint return AMF.Values.Value is
+      --------------------
+      -- Constraint_Get --
+      --------------------
+
+      function Constraint_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Constraint_Constrained_Element then
+            --  Constraint::constrainedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Constrained_Element (Self));
 
          elsif Property = MP_CMOF_Constraint_Context then
+            --  Constraint::context : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Context (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Constraint_Specification then
+            --  Constraint::specification : ValueSpecification
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Specification (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Constraint;
+      end Constraint_Get;
 
-      function Get_Data_Type return AMF.Values.Value is
+      -------------------
+      -- Data_Type_Get --
+      -------------------
+
+      function Data_Type_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Classifier_Attribute then
+            --  Classifier::attribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Attribute (Self));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Classifier_Feature then
+            --  Classifier::feature : Feature
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Feature (Self));
 
          elsif Property = MP_CMOF_Classifier_General then
+            --  Classifier::general : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_General (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
+            --  Classifier::inheritedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Inherited_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Attribute then
+            --  DataType::ownedAttribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Attribute (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
+            --  DataType::ownedOperation : Operation
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Operation (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Package (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Data_Type;
+      end Data_Type_Get;
 
-      function Get_Element_Import return AMF.Values.Value is
+      ------------------------
+      -- Element_Import_Get --
+      ------------------------
+
+      function Element_Import_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Element_Import_Alias then
+            --  ElementImport::alias : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Alias (Self));
 
          elsif Property = MP_CMOF_Element_Import_Imported_Element then
+            --  ElementImport::importedElement : PackageableElement
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Imported_Element (Self));
 
          elsif Property = MP_CMOF_Element_Import_Importing_Namespace then
+            --  ElementImport::importingNamespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Importing_Namespace (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
+            --  Relationship::relatedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Related_Element (Self));
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
+            --  DirectedRelationship::source : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Source (Self));
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
+            --  DirectedRelationship::target : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Target (Self));
 
          elsif Property = MP_CMOF_Element_Import_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  ElementImport::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Element_Import;
+      end Element_Import_Get;
 
-      function Get_Enumeration return AMF.Values.Value is
+      ---------------------
+      -- Enumeration_Get --
+      ---------------------
+
+      function Enumeration_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Classifier_Attribute then
+            --  Classifier::attribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Attribute (Self));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Classifier_Feature then
+            --  Classifier::feature : Feature
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Feature (Self));
 
          elsif Property = MP_CMOF_Classifier_General then
+            --  Classifier::general : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_General (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
+            --  Classifier::inheritedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Inherited_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Attribute then
+            --  DataType::ownedAttribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Attribute (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Enumeration_Owned_Literal then
+            --  Enumeration::ownedLiteral : EnumerationLiteral
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Literal (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
+            --  DataType::ownedOperation : Operation
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Operation (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Package (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Enumeration;
+      end Enumeration_Get;
 
-      function Get_Enumeration_Literal return AMF.Values.Value is
+      -----------------------------
+      -- Enumeration_Literal_Get --
+      -----------------------------
+
+      function Enumeration_Literal_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Enumeration_Literal_Enumeration then
+            --  EnumerationLiteral::enumeration : Enumeration
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Enumeration (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Enumeration_Literal;
+      end Enumeration_Literal_Get;
 
-      function Get_Expression return AMF.Values.Value is
+      --------------------
+      -- Expression_Get --
+      --------------------
+
+      function Expression_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Expression_Operand then
+            --  Expression::operand : ValueSpecification
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Operand (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Expression;
+      end Expression_Get;
 
-      function Get_Opaque_Expression return AMF.Values.Value is
+      ---------------------------
+      -- Opaque_Expression_Get --
+      ---------------------------
+
+      function Opaque_Expression_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Opaque_Expression_Body then
-            return (Kind => AMF.Values.Value_None);
+            --  OpaqueExpression::body : String
+
+            return
+             (AMF.Values.Value_String,
+              Internal_Get_Body (Self));
 
          elsif Property = MP_CMOF_Opaque_Expression_Language then
-            return (Kind => AMF.Values.Value_None);
+            --  OpaqueExpression::language : String
+
+            return
+             (AMF.Values.Value_Collection_Of_String,
+              Internal_Get_Language (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Opaque_Expression;
+      end Opaque_Expression_Get;
 
-      function Get_Operation return AMF.Values.Value is
+      -------------------
+      -- Operation_Get --
+      -------------------
+
+      function Operation_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Operation_Body_Condition then
+            --  Operation::bodyCondition : Constraint
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Body_Condition (Self));
 
          elsif Property = MP_CMOF_Operation_Class then
+            --  Operation::class : Class
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Class (Self));
 
          elsif Property = MP_CMOF_Operation_Datatype then
+            --  Operation::datatype : DataType
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Datatype (Self));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Feature_Featuring_Classifier then
+            --  Feature::featuringClassifier : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Featuring_Classifier (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
+            --  RedefinableElement::isLeaf : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Leaf (Self));
 
          elsif Property = MP_CMOF_Operation_Is_Ordered then
+            --  Operation::isOrdered : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Ordered (Self));
 
          elsif Property = MP_CMOF_Operation_Is_Query then
+            --  Operation::isQuery : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Query (Self));
 
          elsif Property = MP_CMOF_Operation_Is_Unique then
+            --  Operation::isUnique : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Unique (Self));
 
          elsif Property = MP_CMOF_Operation_Lower then
+            --  Operation::lower : Integer
+
             return
              (AMF.Values.Value_Integer,
               Internal_Get_Lower (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
-         elsif Property = MP_CMOF_Behavioral_Feature_Owned_Parameter then
+         elsif Property = MP_CMOF_Operation_Owned_Parameter then
+            --  Operation::ownedParameter : Parameter
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Parameter (Self));
 
-         elsif Property = MP_CMOF_Operation_Owned_Parameter then
+         elsif Property = MP_CMOF_Behavioral_Feature_Owned_Parameter then
+            --  BehavioralFeature::ownedParameter : Parameter
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Parameter (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Operation_Postcondition then
+            --  Operation::postcondition : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Postcondition (Self));
 
          elsif Property = MP_CMOF_Operation_Precondition then
+            --  Operation::precondition : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Precondition (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
-         elsif Property = MP_CMOF_Behavioral_Feature_Raised_Exception then
+         elsif Property = MP_CMOF_Operation_Raised_Exception then
+            --  Operation::raisedException : Type
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Raised_Exception (Self));
 
-         elsif Property = MP_CMOF_Operation_Raised_Exception then
+         elsif Property = MP_CMOF_Behavioral_Feature_Raised_Exception then
+            --  BehavioralFeature::raisedException : Type
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Raised_Exception (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefined_Element then
+            --  RedefinableElement::redefinedElement : RedefinableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Redefined_Element (Self));
 
          elsif Property = MP_CMOF_Operation_Redefined_Operation then
+            --  Operation::redefinedOperation : Operation
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Redefined_Operation (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefinition_Context then
+            --  RedefinableElement::redefinitionContext : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Redefinition_Context (Self));
 
          elsif Property = MP_CMOF_Operation_Type then
+            --  Operation::type : Type
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Operation_Upper then
+            --  Operation::upper : UnlimitedNatural
+
             return
              (AMF.Values.Value_Unlimited_Natural,
               Internal_Get_Upper (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Operation;
+      end Operation_Get;
 
-      function Get_Package return AMF.Values.Value is
+      -----------------
+      -- Package_Get --
+      -----------------
+
+      function Package_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Package_Nested_Package then
+            --  Package::nestedPackage : Package
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Nested_Package (Self));
 
          elsif Property = MP_CMOF_Package_Nesting_Package then
+            --  Package::nestingPackage : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Nesting_Package (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Package_Owned_Type then
+            --  Package::ownedType : Type
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Type (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Package_Package_Merge then
+            --  Package::packageMerge : PackageMerge
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Merge (Self));
 
          elsif Property = MP_CMOF_Package_Packaged_Element then
+            --  Package::packagedElement : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Packaged_Element (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
-         elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
-
          elsif Property = MP_CMOF_Package_Uri then
+            --  Package::uri : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Uri (Self));
 
+         elsif Property = MP_CMOF_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
+
          else
             raise Program_Error;
          end if;
-      end Get_Package;
+      end Package_Get;
 
-      function Get_Package_Import return AMF.Values.Value is
+      ------------------------
+      -- Package_Import_Get --
+      ------------------------
+
+      function Package_Import_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Package_Import_Imported_Package then
+            --  PackageImport::importedPackage : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Imported_Package (Self));
 
          elsif Property = MP_CMOF_Package_Import_Importing_Namespace then
+            --  PackageImport::importingNamespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Importing_Namespace (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
+            --  Relationship::relatedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Related_Element (Self));
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
+            --  DirectedRelationship::source : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Source (Self));
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
+            --  DirectedRelationship::target : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Target (Self));
 
          elsif Property = MP_CMOF_Package_Import_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  PackageImport::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Package_Import;
+      end Package_Import_Get;
 
-      function Get_Package_Merge return AMF.Values.Value is
+      -----------------------
+      -- Package_Merge_Get --
+      -----------------------
+
+      function Package_Merge_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Package_Merge_Merged_Package then
+            --  PackageMerge::mergedPackage : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Merged_Package (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Package_Merge_Receiving_Package then
+            --  PackageMerge::receivingPackage : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Receiving_Package (Self));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
+            --  Relationship::relatedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Related_Element (Self));
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
+            --  DirectedRelationship::source : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Source (Self));
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
+            --  DirectedRelationship::target : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Target (Self));
@@ -1147,398 +1751,544 @@ package body CMOF.Internals.Reflection is
          else
             raise Program_Error;
          end if;
-      end Get_Package_Merge;
+      end Package_Merge_Get;
 
-      function Get_Parameter return AMF.Values.Value is
+      -------------------
+      -- Parameter_Get --
+      -------------------
+
+      function Parameter_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Parameter_Default then
+            --  Parameter::default : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Default (Self));
 
          elsif Property = MP_CMOF_Parameter_Direction then
+            --  Parameter::direction : ParameterDirectionKind
+
             return
              (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
               Internal_Get_Direction (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
+            --  MultiplicityElement::isOrdered : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Ordered (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
+            --  MultiplicityElement::isUnique : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Unique (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
+            --  MultiplicityElement::lower : Integer
+
             return
              (AMF.Values.Value_Integer,
               Internal_Get_Lower (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Parameter_Operation then
+            --  Parameter::operation : Operation
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Operation (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
+            --  MultiplicityElement::upper : UnlimitedNatural
+
             return
              (AMF.Values.Value_Unlimited_Natural,
               Internal_Get_Upper (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Parameter;
+      end Parameter_Get;
 
-      function Get_Primitive_Type return AMF.Values.Value is
+      ------------------------
+      -- Primitive_Type_Get --
+      ------------------------
+
+      function Primitive_Type_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Classifier_Attribute then
+            --  Classifier::attribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Attribute (Self));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
+            --  Namespace::elementImport : ElementImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Element_Import (Self));
 
          elsif Property = MP_CMOF_Classifier_Feature then
+            --  Classifier::feature : Feature
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Feature (Self));
 
          elsif Property = MP_CMOF_Classifier_General then
+            --  Classifier::general : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_General (Self));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
+            --  Namespace::importedMember : PackageableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Imported_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
+            --  Classifier::inheritedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Inherited_Member (Self));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Final_Specialization (Self));
 
          elsif Property = MP_CMOF_Namespace_Member then
+            --  Namespace::member : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Member (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Attribute then
+            --  DataType::ownedAttribute : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Attribute (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
+            --  Namespace::ownedMember : NamedElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Member (Self));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
+            --  DataType::ownedOperation : Operation
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Operation (Self));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
+            --  Namespace::ownedRule : Constraint
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Rule (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Package (Self));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
+            --  Namespace::packageImport : PackageImport
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Package_Import (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Primitive_Type;
+      end Primitive_Type_Get;
 
-      function Get_Property return AMF.Values.Value is
+      ------------------
+      -- Property_Get --
+      ------------------
+
+      function Property_Get return AMF.Values.Value is
       begin
          if Property = MP_CMOF_Property_Association then
+            --  Property::association : Association
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Association (Self));
 
          elsif Property = MP_CMOF_Property_Class then
+            --  Property::class : Class
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Class (Self));
 
          elsif Property = MP_CMOF_Property_Datatype then
+            --  Property::datatype : DataType
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Datatype (Self));
 
          elsif Property = MP_CMOF_Property_Default then
+            --  Property::default : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Default (Self));
 
          elsif Property = MP_CMOF_Feature_Featuring_Classifier then
+            --  Feature::featuringClassifier : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Featuring_Classifier (Self));
 
          elsif Property = MP_CMOF_Property_Is_Composite then
+            --  Property::isComposite : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Composite (Self));
 
          elsif Property = MP_CMOF_Property_Is_Derived then
+            --  Property::isDerived : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Derived (Self));
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
+            --  Property::isDerivedUnion : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Derived_Union (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
+            --  RedefinableElement::isLeaf : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Leaf (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
+            --  MultiplicityElement::isOrdered : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Ordered (Self));
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
+            --  Property::isReadOnly : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Read_Only (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
+            --  MultiplicityElement::isUnique : Boolean
+
             return
              (AMF.Values.Value_Boolean,
               Internal_Get_Is_Unique (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
+            --  MultiplicityElement::lower : Integer
+
             return
              (AMF.Values.Value_Integer,
               Internal_Get_Lower (Self));
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Name (Self));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
+            --  NamedElement::namespace : Namespace
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Namespace (Self));
 
          elsif Property = MP_CMOF_Property_Opposite then
+            --  Property::opposite : Property
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Opposite (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Comment (Self));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Owned_Element (Self));
 
          elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owner (Self));
 
          elsif Property = MP_CMOF_Property_Owning_Association then
+            --  Property::owningAssociation : Association
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Owning_Association (Self));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
+            --  NamedElement::qualifiedName : String
+
             return
              (AMF.Values.Value_String,
               Internal_Get_Qualified_Name (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefined_Element then
+            --  RedefinableElement::redefinedElement : RedefinableElement
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Redefined_Element (Self));
 
          elsif Property = MP_CMOF_Property_Redefined_Property then
+            --  Property::redefinedProperty : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Redefined_Property (Self));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefinition_Context then
+            --  RedefinableElement::redefinitionContext : Classifier
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Redefinition_Context (Self));
 
          elsif Property = MP_CMOF_Property_Subsetted_Property then
+            --  Property::subsettedProperty : Property
+
             return
              (AMF.Values.Value_Collection_Of_Element,
               Internal_Get_Subsetted_Property (Self));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             return
              (AMF.Values.Value_Element,
               Internal_Get_Type (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
+            --  MultiplicityElement::upper : UnlimitedNatural
+
             return
              (AMF.Values.Value_Unlimited_Natural,
               Internal_Get_Upper (Self));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            return (Kind => AMF.Values.Value_None);
+            --  NamedElement::visibility : VisibilityKind
+
+            return
+             (AMF.Values.Value_Element,
+              Internal_Get_Visibility (Self));
 
          else
             raise Program_Error;
          end if;
-      end Get_Property;
+      end Property_Get;
 
    begin
       case Elements.Table (Self).Kind is
          when E_None =>
-            return (Kind => AMF.Values.Value_None);
+            raise Program_Error;
 
          when E_Association =>
-            return Get_Association;
+            return Association_Get;
 
          when E_Class =>
-            return Get_Class;
+            return Class_Get;
 
          when E_Comment =>
-            return Get_Comment;
+            return Comment_Get;
 
          when E_Constraint =>
-            return Get_Constraint;
+            return Constraint_Get;
 
          when E_Data_Type =>
-            return Get_Data_Type;
+            return Data_Type_Get;
 
          when E_Element_Import =>
-            return Get_Element_Import;
+            return Element_Import_Get;
 
          when E_Enumeration =>
-            return Get_Enumeration;
+            return Enumeration_Get;
 
          when E_Enumeration_Literal =>
-            return Get_Enumeration_Literal;
+            return Enumeration_Literal_Get;
 
          when E_Expression =>
-            return Get_Expression;
+            return Expression_Get;
 
          when E_Opaque_Expression =>
-            return Get_Opaque_Expression;
+            return Opaque_Expression_Get;
 
          when E_Operation =>
-            return Get_Operation;
+            return Operation_Get;
 
          when E_Package =>
-            return Get_Package;
+            return Package_Get;
 
          when E_Package_Import =>
-            return Get_Package_Import;
+            return Package_Import_Get;
 
          when E_Package_Merge =>
-            return Get_Package_Merge;
+            return Package_Merge_Get;
 
          when E_Parameter =>
-            return Get_Parameter;
+            return Parameter_Get;
 
          when E_Primitive_Type =>
-            return Get_Primitive_Type;
+            return Primitive_Type_Get;
 
          when E_Property =>
-            return Get_Property;
+            return Property_Get;
       end case;
    end Get;
 
@@ -1615,429 +2365,713 @@ package body CMOF.Internals.Reflection is
      Value    : AMF.Values.Value)
    is
 
-      procedure Set_Association is
+      procedure Association_Set;
+      --  Sets attribute's value of instance of Association class.
+
+      procedure Class_Set;
+      --  Sets attribute's value of instance of Class class.
+
+      procedure Comment_Set;
+      --  Sets attribute's value of instance of Comment class.
+
+      procedure Constraint_Set;
+      --  Sets attribute's value of instance of Constraint class.
+
+      procedure Data_Type_Set;
+      --  Sets attribute's value of instance of DataType class.
+
+      procedure Element_Import_Set;
+      --  Sets attribute's value of instance of ElementImport class.
+
+      procedure Enumeration_Set;
+      --  Sets attribute's value of instance of Enumeration class.
+
+      procedure Enumeration_Literal_Set;
+      --  Sets attribute's value of instance of EnumerationLiteral class.
+
+      procedure Expression_Set;
+      --  Sets attribute's value of instance of Expression class.
+
+      procedure Opaque_Expression_Set;
+      --  Sets attribute's value of instance of OpaqueExpression class.
+
+      procedure Operation_Set;
+      --  Sets attribute's value of instance of Operation class.
+
+      procedure Package_Set;
+      --  Sets attribute's value of instance of Package class.
+
+      procedure Package_Import_Set;
+      --  Sets attribute's value of instance of PackageImport class.
+
+      procedure Package_Merge_Set;
+      --  Sets attribute's value of instance of PackageMerge class.
+
+      procedure Parameter_Set;
+      --  Sets attribute's value of instance of Parameter class.
+
+      procedure Primitive_Type_Set;
+      --  Sets attribute's value of instance of PrimitiveType class.
+
+      procedure Property_Set;
+      --  Sets attribute's value of instance of Property class.
+
+      ---------------------
+      -- Association_Set --
+      ---------------------
+
+      procedure Association_Set is
       begin
          if Property = MP_CMOF_Association_Is_Derived then
+            --  Association::isDerived : Boolean
+
             Internal_Set_Is_Derived (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             Internal_Set_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Association;
+      end Association_Set;
 
-      procedure Set_Class is
+      ---------------
+      -- Class_Set --
+      ---------------
+
+      procedure Class_Set is
       begin
          if Property = MP_CMOF_Class_Is_Abstract then
+            --  Class::isAbstract : Boolean
+
             Internal_Set_Is_Abstract (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             Internal_Set_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Class;
+      end Class_Set;
 
-      procedure Set_Comment is
+      -----------------
+      -- Comment_Set --
+      -----------------
+
+      procedure Comment_Set is
       begin
          if Property = MP_CMOF_Comment_Body then
+            --  Comment::body : String
+
             Internal_Set_Body (Self, Value.String_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Comment;
+      end Comment_Set;
 
-      procedure Set_Constraint is
+      --------------------
+      -- Constraint_Set --
+      --------------------
+
+      procedure Constraint_Set is
       begin
          if Property = MP_CMOF_Constraint_Context then
+            --  Constraint::context : Namespace
+
             Internal_Set_Context (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Constraint_Specification then
+            --  Constraint::specification : ValueSpecification
+
             Internal_Set_Specification (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Constraint;
+      end Constraint_Set;
 
-      procedure Set_Data_Type is
+      -------------------
+      -- Data_Type_Set --
+      -------------------
+
+      procedure Data_Type_Set is
       begin
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             Internal_Set_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Data_Type;
+      end Data_Type_Set;
 
-      procedure Set_Element_Import is
+      ------------------------
+      -- Element_Import_Set --
+      ------------------------
+
+      procedure Element_Import_Set is
       begin
          if Property = MP_CMOF_Element_Import_Alias then
+            --  ElementImport::alias : String
+
             Internal_Set_Alias (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Element_Import_Imported_Element then
+            --  ElementImport::importedElement : PackageableElement
+
             Internal_Set_Imported_Element (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Element_Import_Importing_Namespace then
+            --  ElementImport::importingNamespace : Namespace
+
             Internal_Set_Importing_Namespace (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Element_Import_Visibility then
-            null;
+            --  ElementImport::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Element_Import;
+      end Element_Import_Set;
 
-      procedure Set_Enumeration is
+      ---------------------
+      -- Enumeration_Set --
+      ---------------------
+
+      procedure Enumeration_Set is
       begin
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             Internal_Set_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Enumeration;
+      end Enumeration_Set;
 
-      procedure Set_Enumeration_Literal is
+      -----------------------------
+      -- Enumeration_Literal_Set --
+      -----------------------------
+
+      procedure Enumeration_Literal_Set is
       begin
          if Property = MP_CMOF_Enumeration_Literal_Enumeration then
+            --  EnumerationLiteral::enumeration : Enumeration
+
             Internal_Set_Enumeration (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Enumeration_Literal;
+      end Enumeration_Literal_Set;
 
-      procedure Set_Expression is
+      --------------------
+      -- Expression_Set --
+      --------------------
+
+      procedure Expression_Set is
       begin
          if Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             Internal_Set_Type (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Expression;
+      end Expression_Set;
 
-      procedure Set_Opaque_Expression is
+      ---------------------------
+      -- Opaque_Expression_Set --
+      ---------------------------
+
+      procedure Opaque_Expression_Set is
       begin
          if Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             Internal_Set_Type (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Opaque_Expression;
+      end Opaque_Expression_Set;
 
-      procedure Set_Operation is
+      -------------------
+      -- Operation_Set --
+      -------------------
+
+      procedure Operation_Set is
       begin
          if Property = MP_CMOF_Operation_Body_Condition then
+            --  Operation::bodyCondition : Constraint
+
             Internal_Set_Body_Condition (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Operation_Class then
+            --  Operation::class : Class
+
             Internal_Set_Class (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Operation_Datatype then
+            --  Operation::datatype : DataType
+
             Internal_Set_Datatype (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
+            --  RedefinableElement::isLeaf : Boolean
+
             Internal_Set_Is_Leaf (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Operation_Is_Query then
+            --  Operation::isQuery : Boolean
+
             Internal_Set_Is_Query (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Operation;
+      end Operation_Set;
 
-      procedure Set_Package is
+      -----------------
+      -- Package_Set --
+      -----------------
+
+      procedure Package_Set is
       begin
          if Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Package_Nesting_Package then
+            --  Package::nestingPackage : Package
+
             Internal_Set_Nesting_Package (Self, Value.Element_Value);
 
-         elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
-
          elsif Property = MP_CMOF_Package_Uri then
+            --  Package::uri : String
+
             Internal_Set_Uri (Self, Value.String_Value);
+
+         elsif Property = MP_CMOF_Named_Element_Visibility then
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Package;
+      end Package_Set;
 
-      procedure Set_Package_Import is
+      ------------------------
+      -- Package_Import_Set --
+      ------------------------
+
+      procedure Package_Import_Set is
       begin
          if Property = MP_CMOF_Package_Import_Imported_Package then
+            --  PackageImport::importedPackage : Package
+
             Internal_Set_Imported_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Package_Import_Importing_Namespace then
+            --  PackageImport::importingNamespace : Namespace
+
             Internal_Set_Importing_Namespace (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Package_Import_Visibility then
-            null;
+            --  PackageImport::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Package_Import;
+      end Package_Import_Set;
 
-      procedure Set_Package_Merge is
+      -----------------------
+      -- Package_Merge_Set --
+      -----------------------
+
+      procedure Package_Merge_Set is
       begin
          if Property = MP_CMOF_Package_Merge_Merged_Package then
+            --  PackageMerge::mergedPackage : Package
+
             Internal_Set_Merged_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Package_Merge_Receiving_Package then
+            --  PackageMerge::receivingPackage : Package
+
             Internal_Set_Receiving_Package (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Package_Merge;
+      end Package_Merge_Set;
 
-      procedure Set_Parameter is
+      -------------------
+      -- Parameter_Set --
+      -------------------
+
+      procedure Parameter_Set is
       begin
          if Property = MP_CMOF_Parameter_Default then
+            --  Parameter::default : String
+
             Internal_Set_Default (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Parameter_Direction then
+            --  Parameter::direction : ParameterDirectionKind
+
             Internal_Set_Direction (Self, Value.Parameter_Direction_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
+            --  MultiplicityElement::isOrdered : Boolean
+
             Internal_Set_Is_Ordered (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
+            --  MultiplicityElement::isUnique : Boolean
+
             Internal_Set_Is_Unique (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
+            --  MultiplicityElement::lower : Integer
+
             Internal_Set_Lower (Self, Value.Integer_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Parameter_Operation then
+            --  Parameter::operation : Operation
+
             Internal_Set_Operation (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             Internal_Set_Type (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
+            --  MultiplicityElement::upper : UnlimitedNatural
+
             Internal_Set_Upper (Self, Value.Unlimited_Natural_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Parameter;
+      end Parameter_Set;
 
-      procedure Set_Primitive_Type is
+      ------------------------
+      -- Primitive_Type_Set --
+      ------------------------
+
+      procedure Primitive_Type_Set is
       begin
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
+            --  Classifier::isFinalSpecialization : Boolean
+
             Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Type_Package then
+            --  Type::package : Package
+
             Internal_Set_Package (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Primitive_Type;
+      end Primitive_Type_Set;
 
-      procedure Set_Property is
+      ------------------
+      -- Property_Set --
+      ------------------
+
+      procedure Property_Set is
       begin
          if Property = MP_CMOF_Property_Association then
+            --  Property::association : Association
+
             Internal_Set_Association (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Property_Class then
+            --  Property::class : Class
+
             Internal_Set_Class (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Property_Datatype then
+            --  Property::datatype : DataType
+
             Internal_Set_Datatype (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Property_Default then
+            --  Property::default : String
+
             Internal_Set_Default (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Property_Is_Composite then
+            --  Property::isComposite : Boolean
+
             Internal_Set_Is_Composite (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Property_Is_Derived then
+            --  Property::isDerived : Boolean
+
             Internal_Set_Is_Derived (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
+            --  Property::isDerivedUnion : Boolean
+
             Internal_Set_Is_Derived_Union (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
+            --  RedefinableElement::isLeaf : Boolean
+
             Internal_Set_Is_Leaf (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
+            --  MultiplicityElement::isOrdered : Boolean
+
             Internal_Set_Is_Ordered (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
+            --  Property::isReadOnly : Boolean
+
             Internal_Set_Is_Read_Only (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
+            --  MultiplicityElement::isUnique : Boolean
+
             Internal_Set_Is_Unique (Self, Value.Boolean_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
+            --  MultiplicityElement::lower : Integer
+
             Internal_Set_Lower (Self, Value.Integer_Value);
 
          elsif Property = MP_CMOF_Named_Element_Name then
+            --  NamedElement::name : String
+
             Internal_Set_Name (Self, Value.String_Value);
 
          elsif Property = MP_CMOF_Property_Owning_Association then
+            --  Property::owningAssociation : Association
+
             Internal_Set_Owning_Association (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
+            --  TypedElement::type : Type
+
             Internal_Set_Type (Self, Value.Element_Value);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
+            --  MultiplicityElement::upper : UnlimitedNatural
+
             Internal_Set_Upper (Self, Value.Unlimited_Natural_Value);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
-            null;
+            --  NamedElement::visibility : VisibilityKind
+
+            Internal_Set_Visibility (Self, Value.Element_Value);
 
          else
             raise Program_Error;
          end if;
-      end Set_Property;
-
+      end Property_Set;
    begin
       case Elements.Table (Self).Kind is
          when E_None =>
-            null;
+            raise Program_Error;
 
          when E_Association =>
-            Set_Association;
+            Association_Set;
 
          when E_Class =>
-            Set_Class;
+            Class_Set;
 
          when E_Comment =>
-            Set_Comment;
+            Comment_Set;
 
          when E_Constraint =>
-            Set_Constraint;
+            Constraint_Set;
 
          when E_Data_Type =>
-            Set_Data_Type;
+            Data_Type_Set;
 
          when E_Element_Import =>
-            Set_Element_Import;
+            Element_Import_Set;
 
          when E_Enumeration =>
-            Set_Enumeration;
+            Enumeration_Set;
 
          when E_Enumeration_Literal =>
-            Set_Enumeration_Literal;
+            Enumeration_Literal_Set;
 
          when E_Expression =>
-            Set_Expression;
+            Expression_Set;
 
          when E_Opaque_Expression =>
-            Set_Opaque_Expression;
+            Opaque_Expression_Set;
 
          when E_Operation =>
-            Set_Operation;
+            Operation_Set;
 
          when E_Package =>
-            Set_Package;
+            Package_Set;
 
          when E_Package_Import =>
-            Set_Package_Import;
+            Package_Import_Set;
 
          when E_Package_Merge =>
-            Set_Package_Merge;
+            Package_Merge_Set;
 
          when E_Parameter =>
-            Set_Parameter;
+            Parameter_Set;
 
          when E_Primitive_Type =>
-            Set_Primitive_Type;
+            Primitive_Type_Set;
 
          when E_Property =>
-            Set_Property;
+            Property_Set;
       end case;
    end Set;
 

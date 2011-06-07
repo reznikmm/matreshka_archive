@@ -52,7 +52,12 @@ package body CMOF.Internals.Proxies is
    function Get_Proxy
     (Element : CMOF_Element) return AMF.Elements.Element_Access is
    begin
-      return CMOF.Internals.Tables.Elements.Table (Element).Proxy;
+      if Element = Null_CMOF_Element then
+         return null;
+
+      else
+         return CMOF.Internals.Tables.Elements.Table (Element).Proxy;
+      end if;
    end Get_Proxy;
 
 end CMOF.Internals.Proxies;

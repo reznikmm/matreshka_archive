@@ -42,17 +42,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classifiers;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Named_Elements;
 
 package AMF.Internals.CMOF_Classifiers is
 
    type CMOF_Classifier_Proxy is
-     abstract limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     abstract limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
        and AMF.CMOF.Classifiers.CMOF_Classifier
          with null record;
-
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Classifier_Proxy)
-       return Optional_String;
 
 end AMF.Internals.CMOF_Classifiers;

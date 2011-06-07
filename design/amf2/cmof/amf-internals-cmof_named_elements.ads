@@ -41,21 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Internals.Attributes;
+with AMF.CMOF.Named_Elements;
+with AMF.Internals.CMOF_Elements;
 
-package body AMF.Internals.CMOF_Classifiers is
+package AMF.Internals.CMOF_Named_Elements is
 
-   use Standard.CMOF.Internals.Attributes;
-
-   --------------
-   -- Get_Name --
-   --------------
+   type CMOF_Named_Element_Proxy is
+     abstract new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+       and AMF.CMOF.Named_Elements.CMOF_Named_Element with null record;
 
    overriding function Get_Name
-    (Self : not null access constant CMOF_Classifier_Proxy)
-       return Optional_String is
-   begin
-      return (False, Internal_Get_Name (Self.Id));
-   end Get_Name;
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return Optional_String;
 
-end AMF.Internals.CMOF_Classifiers;
+end AMF.Internals.CMOF_Named_Elements;
