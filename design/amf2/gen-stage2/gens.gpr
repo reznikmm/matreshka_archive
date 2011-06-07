@@ -46,7 +46,7 @@ with "../xmi/xmi.gpr";
 
 project Gens is
 
-   for Main use ("gen_api.adb", "gen_init.adb", "gen_refl.adb");
+   for Main use ("gen_api.adb", "gen2.adb");
    for Object_Dir use ".obj";
 
    package Compiler is

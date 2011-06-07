@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -65,11 +65,13 @@ with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 with XMI.Reader;
 
+with Generator.Analyzer;
 with Generator.Initialization;
 with Generator.Names;
+with Generator.Reflection;
 with Generator.Wide_Wide_Text_IO;
 
-procedure Gen_Init is
+procedure Gen2 is
 
    use Ada.Strings;
    use Ada.Strings.Wide_Wide_Fixed;
@@ -330,7 +332,7 @@ procedure Gen_Init is
 ----         is
 ----            Property : constant CMOF_Class
 ----              := CMOF_Element_Sets.Element (Position);
---
+
          begin
             Put ("   " & Association_Constant_Name (Association));
             Set_Col (Association_Constant_Name_Max + 5);
@@ -589,9 +591,15 @@ procedure Gen_Init is
    Elements : CMOF_Element_Sets.Set := CMOF.Extents.Elements (Extent);
 
 begin
+   Put_Line (Standard_Error, "Analyzing...");
+   Generator.Analyzer.Analyze_Model (Extent);
    Assign_Numbers (Extent);
 
+   Put_Line (Standard_Error, "Generating metamodel initialization...");
    Generate_Metamodel_Specification;
    Generate_Metamodel_Initialization_Implementation
     (Elements, Element_Numbers, Last_Metamodel_Element);
-end Gen_Init;
+
+   Put_Line (Standard_Error, "Generating relfection...");
+   Generator.Reflection.Generate_Reflection_Implementation;
+end Gen2;

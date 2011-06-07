@@ -44,6 +44,9 @@
 with Ada.Characters.Conversions;
 with Ada.Characters.Handling;
 
+with AMF.CMOF.Associations;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with CMOF.Associations;
 with CMOF.Collections;
 with CMOF.Named_Elements;
@@ -100,6 +103,19 @@ package body Generator.Names is
 
       return "MA_CMOF_" & Ada_Name.To_Wide_Wide_String;
    end Association_Constant_Name;
+
+   -------------------------
+   -- Class_Constant_Name --
+   -------------------------
+
+   function Class_Constant_Name
+    (Class : AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Strings.Universal_String is
+   begin
+      return
+        League.Strings.To_Universal_String
+         ("MC_CMOF_" & To_Ada_Identifier (Class.Get_Name.Value));
+   end Class_Constant_Name;
 
    ------------
    -- Plural --
@@ -169,6 +185,82 @@ package body Generator.Names is
             (To_Ada_Identifier (Get_Name (Get_Class (Property)))
                & '_'
                & To_Ada_Identifier (Get_Name (Property)));
+      end if;
+
+      return "MP_CMOF_" & Ada_Name.To_Wide_Wide_String;
+   end Property_Constant_Name;
+
+   ----------------------------
+   -- Property_Constant_Name --
+   ----------------------------
+
+   function Property_Constant_Name
+    (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Wide_Wide_String
+   is
+      use type AMF.CMOF.Associations.CMOF_Association_Access;
+
+      Association : constant AMF.CMOF.Associations.CMOF_Association_Access
+        := Property.Get_Owning_Association;
+      Ada_Name    : League.Strings.Universal_String;
+
+   begin
+      if Association /= null then
+         declare
+            Member_End  : constant
+              AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+                := Association.Get_Member_End;
+            First_End   : constant
+              not null AMF.CMOF.Properties.CMOF_Property_Access
+                := Member_End.Element (1);
+            Second_End  : constant
+              not null AMF.CMOF.Properties.CMOF_Property_Access
+                := Member_End.Element (2);
+            First_Name  : constant League.Strings.Universal_String
+              := League.Strings.To_Universal_String
+                  (To_Ada_Identifier (First_End.Get_Name.Value));
+            Second_Name : constant League.Strings.Universal_String
+              := League.Strings.To_Universal_String
+                  (To_Ada_Identifier (Second_End.Get_Name.Value));
+            First_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
+              := First_End.Get_Type;
+            Second_Type : constant not null AMF.CMOF.Types.CMOF_Type_Access
+              := Second_End.Get_Type;
+
+         begin
+            if First_Name.Is_Empty then
+               Ada_Name :=
+                 League.Strings.To_Universal_String
+                  (To_Ada_Identifier (First_Type.Get_Name.Value));
+
+            else
+               Ada_Name := First_Name;
+            end if;
+
+            Ada_Name.Append ('_');
+
+            if Second_Name.Is_Empty then
+               Ada_Name.Append
+                (League.Strings.To_Universal_String
+                  (To_Ada_Identifier (Second_Type.Get_Name.Value)));
+
+            else
+               Ada_Name.Append (Second_Name);
+            end if;
+         end;
+
+      else
+         declare
+            Class : constant not null AMF.CMOF.Classes.CMOF_Class_Access
+              := Property.Get_Class;
+
+         begin
+            Ada_Name :=
+              League.Strings.To_Universal_String
+               (To_Ada_Identifier (Class.Get_Name.Value)
+                  & '_'
+                  & To_Ada_Identifier (Property.Get_Name.Value));
+         end;
       end if;
 
       return "MP_CMOF_" & Ada_Name.To_Wide_Wide_String;

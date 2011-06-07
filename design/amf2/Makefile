@@ -21,14 +21,13 @@ gen:
 
 gen2:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen_init data/cmof-bootstrap.xml > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen2 data/cmof-bootstrap.xml > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen_init data/cmof.xml > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen2 data/cmof.xml > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
-#	./gen-stage2/.obj/gen_refl data/cmof.xml # > cmof/generated/sources.ada
 
 gen2-api:
 	gprbuild -j2 -p -Pgen-stage2/gens.gpr

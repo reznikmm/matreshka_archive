@@ -41,11 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF;
 
 package Generator.Reflection is
 
-   procedure Generate_Reflection_Implementation (Extent : CMOF.CMOF_Extent);
+   procedure Generate_Reflection_Implementation;
    --  Generates implementation of reflection package.
 
 end Generator.Reflection;

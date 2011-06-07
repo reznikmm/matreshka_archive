@@ -46,13 +46,14 @@ with Interfaces;
 
 with League.Strings;
 
-with AMF;
+with AMF.Internals.CMOF_Elements;
 with CMOF.Named_Elements;
 
 package body Generator is
 
    use CMOF;
    use CMOF.Named_Elements;
+   use type AMF.Optional_String;
 
    ---------
    -- "<" --
@@ -73,6 +74,51 @@ package body Generator is
           or (Get_Name (Left) = Get_Name (Right)
                 and To_Integer_32 (Left) < To_Integer_32 (Right));
    end "<";
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash
+    (Item : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return Ada.Containers.Hash_Type is
+   begin
+      return
+        Ada.Containers.Hash_Type
+         (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id);
+   end Hash;
+
+   ----------
+   -- Less --
+   ----------
+
+   function Less
+    (Left  : not null AMF.CMOF.Classes.CMOF_Class_Access;
+     Right : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return Boolean is
+   begin
+      return Left.Get_Name < Right.Get_Name;
+   end Less;
+
+   ----------
+   -- Less --
+   ----------
+
+   function Less
+    (Left  : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Right : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean is
+   begin
+      if Left.Get_Name /= Right.Get_Name then
+         return Left.Get_Name < Right.Get_Name;
+
+      else
+         return
+           AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Left.all).Id
+             < AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+                (Right.all).Id;
+      end if;
+   end Less;
 
    ----------
    -- Sort --

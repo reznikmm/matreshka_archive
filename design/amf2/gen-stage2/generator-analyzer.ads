@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,17 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
 
-with CMOF;
-with XMI.Reader;
+package Generator.Analyzer is
 
-with Generator.Reflection;
+   procedure Analyze_Model (Extent : CMOF.CMOF_Extent);
 
-procedure Gen_Refl is
-   Extent : constant CMOF.CMOF_Extent
-     := XMI.Reader (Ada.Command_Line.Argument (1));
-
-begin
-   Generator.Reflection.Generate_Reflection_Implementation (Extent);
-end Gen_Refl;
+end Generator.Analyzer;

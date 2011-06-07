@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
+with AMF.CMOF.Properties;
 
 package Generator.Names is
 
@@ -54,8 +55,16 @@ package Generator.Names is
    function Association_Constant_Name
     (Association : CMOF_Association) return Wide_Wide_String;
 
+   function Class_Constant_Name
+    (Class : AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Strings.Universal_String;
+
    function Property_Constant_Name
     (Property : CMOF_Property) return Wide_Wide_String;
+
+   function Property_Constant_Name
+    (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Wide_Wide_String;
 
    function Plural (Name : Wide_Wide_String) return Wide_Wide_String;
 

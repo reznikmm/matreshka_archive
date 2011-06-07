@@ -43,10 +43,11 @@
 ------------------------------------------------------------------------------
 --  Text output utilities.
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
+with Ada.Strings.Wide_Wide_Fixed;
 
 package body Generator.Wide_Wide_Text_IO is
 
+   use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
 
    ----------------
@@ -197,6 +198,25 @@ package body Generator.Wide_Wide_Text_IO is
       Put_Line
        ("--------------------------------------------------------------------"
           & "----------");
+   end Put_Header;
+
+   ----------------
+   -- Put_Header --
+   ----------------
+
+   procedure Put_Header
+    (Name   : Wide_Wide_String;
+     Column : Ada.Wide_Wide_Text_IO.Positive_Count)
+   is
+      Indent    : constant Wide_Wide_String := Integer (Column) * ' ';
+      Separator : constant Wide_Wide_String
+        := Indent & (Integer (Name'Length + 6) * '-');
+
+   begin
+      New_Line;
+      Put_Line (Separator);
+      Put_Line (Indent & "-- " & Name & " --");
+      Put_Line (Separator);
    end Put_Header;
 
 end Generator.Wide_Wide_Text_IO;
