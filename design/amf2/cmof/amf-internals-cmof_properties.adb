@@ -65,6 +65,22 @@ package body AMF.Internals.CMOF_Properties is
            (Internal_Get_Class (Self.Id)));
    end Get_Class;
 
+   -----------------
+   -- Get_Default --
+   -----------------
+
+   overriding function Get_Default
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Optional_String is
+   begin
+      if Internal_Get_Default (Self.Id).Is_Empty then
+         return (Is_Empty => True);
+
+      else
+         return (False, Internal_Get_Default (Self.Id));
+      end if;
+   end Get_Default;
+
    --------------------
    -- Get_Is_Derived --
    --------------------
@@ -514,21 +530,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Is_Read_Only unimplemented");
       raise Program_Error;
    end Set_Is_Read_Only;
-
-   -----------------
-   -- Get_Default --
-   -----------------
-
-   overriding function Get_Default
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Default unimplemented");
-      raise Program_Error;
-      return Get_Default (Self);
-   end Get_Default;
 
    -----------------
    -- Set_Default --
