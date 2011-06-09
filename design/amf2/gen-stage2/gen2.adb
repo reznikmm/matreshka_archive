@@ -67,6 +67,7 @@ with XMI.Reader;
 
 with Generator.Analyzer;
 with Generator.Attributes;
+with Generator.Constructors;
 with Generator.Initialization;
 with Generator.Names;
 with Generator.Reflection;
@@ -596,9 +597,14 @@ begin
    Generator.Analyzer.Analyze_Model (Extent);
    Assign_Numbers (Extent);
 
---   Put_Line (Standard_Error, "Generating attributes...");
---   Generator.Attributes.Generate_Attributes_Specification;
---   Generator.Attributes.Generate_Attributes_Implementation;
+   Put_Line (Standard_Error, "Generating attributes...");
+   Generator.Attributes.Generate_Attributes_Mapping_Specification;
+   Generator.Attributes.Generate_Attributes_Specification;
+   Generator.Attributes.Generate_Attributes_Implementation;
+
+   Put_Line (Standard_Error, "Generating constructors...");
+   Generator.Constructors.Generate_Constructors_Specification;
+   Generator.Constructors.Generate_Constructors_Implementation;
 
    Put_Line (Standard_Error, "Generating metamodel initialization...");
    Generate_Metamodel_Specification;

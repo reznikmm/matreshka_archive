@@ -77,7 +77,7 @@ package body AMF.Internals.CMOF_Properties is
          return (Is_Empty => True);
 
       else
-         return (False, Internal_Get_Default (Self.Id));
+         return Internal_Get_Default (Self.Id);
       end if;
    end Get_Default;
 

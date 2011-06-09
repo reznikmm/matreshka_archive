@@ -222,31 +222,43 @@ package body Generator.Initialization is
 --               end if;
 
             elsif Has_Integer_Type (Property) then
-               Put_Line
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
-                   & " (");
-               Put (Numbers.Element (Element), Width => 0);
-               Put
-                (","
-                   & Integer'Wide_Wide_Image (Value.Integer_Value)
-                   & ");");
-
-            elsif Has_Unlimited_Natural_Type (Property) then
-               Put
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
-                   & " (");
-               Put (Numbers.Element (Element), Width => 0);
-               Put (", ");
-
-               if Value.Unlimited_Natural_Value.Unlimited then
-                  Put_Line ("(Unlimited => True));");
+               if Get_Lower (Property) = 0 then
+                  Put_Line
+                   ("   Internal_Set_"
+                      & To_Ada_Identifier (Get_Name (Property))
+                      & " (");
+                  Put (Numbers.Element (Element), Width => 0);
+                  Put
+                   (", (False,"
+                      & Integer'Wide_Wide_Image (Value.Integer_Value)
+                      & "));");
 
                else
-                  Put_Line
-                   ("(False,"
-                      & Integer'Wide_Wide_Image
-                         (Value.Unlimited_Natural_Value.Value)
-                      & "));");
+                  raise Program_Error;
+               end if;
+
+            elsif Has_Unlimited_Natural_Type (Property) then
+               if Get_Lower (Property) = 0 then
+                  Put
+                   ("   Internal_Set_"
+                      & To_Ada_Identifier (Get_Name (Property))
+                      & " (");
+                  Put (Numbers.Element (Element), Width => 0);
+                  Put (", ");
+
+                  if Value.Unlimited_Natural_Value.Unlimited then
+                     Put_Line ("(False, (Unlimited => True)));");
+
+                  else
+                     Put_Line
+                      ("(False, (False,"
+                         & Integer'Wide_Wide_Image
+                            (Value.Unlimited_Natural_Value.Value)
+                         & ")));");
+                  end if;
+
+               else
+                  raise Program_Error;
                end if;
 
             elsif Has_String_Type (Property) then
@@ -263,7 +275,7 @@ package body Generator.Initialization is
                elsif Is_Multivalued (Property) then
                   Put_Line (Standard_Error, "Multivalued string value");
 
-               else
+               elsif Get_Lower (Property) = 0 then
                   Put_Line
                    ("   Internal_Set_"
                       & To_Ada_Identifier (Get_Name (Property)));
@@ -271,9 +283,12 @@ package body Generator.Initialization is
                   Put (Numbers.Element (Element), Width => 0);
                   Put_Line (",");
                   Put_Line
-                   ("     League.Strings.To_Universal_String ("""
+                   ("     (False, League.Strings.To_Universal_String ("""
                       & Value.String_Value.To_Wide_Wide_String
-                      & """));");
+                      & """)));");
+
+               else
+                  raise Program_Error;
                end if;
 
             elsif Has_Parameter_Direction_Kind_Type (Property) then

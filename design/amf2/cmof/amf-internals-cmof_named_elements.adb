@@ -55,7 +55,7 @@ package body AMF.Internals.CMOF_Named_Elements is
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return Optional_String is
    begin
-      return (False, Internal_Get_Name (Self.Id));
+      return Internal_Get_Name (Self.Id);
    end Get_Name;
 
 end AMF.Internals.CMOF_Named_Elements;

@@ -1,26 +1,64 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with Cmof.Internals.Extents;
+with CMOF.Internals.Tables;
+with CMOF.Internals.Types;
 with Matreshka.Internals.Strings;
 
-with AMF;
-with Cmof.Internals.Attributes;
-with Cmof.Internals.Extents;
-with Cmof.Internals.Metamodel;
-with Cmof.Internals.Tables;
-with Cmof.Internals.Types;
+package body CMOF.Internals.Constructors is
 
-package body Cmof.Internals.Constructors is
-
-   use Cmof.Internals.Attributes;
    use Cmof.Internals.Extents;
-   use Cmof.Internals.Metamodel;
-   use Cmof.Internals.Tables;
-   use Cmof.Internals.Types;
+   use CMOF.Internals.Tables;
+   use CMOF.Internals.Types;
 
    ------------------------
    -- Create_Association --
    ------------------------
 
-   function Create_Association
-    (Extent : CMOF_Extent) return Cmof_Association is
+   function Create_Association (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Association (Elements.Last, Extent);
@@ -32,8 +70,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Class --
    ------------------
 
-   function Create_Class
-    (Extent : CMOF_Extent) return Cmof_Class is
+   function Create_Class (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Class (Elements.Last, Extent);
@@ -45,8 +82,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Comment --
    --------------------
 
-   function Create_Comment
-    (Extent : CMOF_Extent) return Cmof_Comment is
+   function Create_Comment (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Comment (Elements.Last, Extent);
@@ -58,8 +94,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Constraint --
    -----------------------
 
-   function Create_Constraint
-    (Extent : CMOF_Extent) return Cmof_Constraint is
+   function Create_Constraint (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Constraint (Elements.Last, Extent);
@@ -71,8 +106,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Data_Type --
    ----------------------
 
-   function Create_Data_Type
-    (Extent : CMOF_Extent) return Cmof_Data_Type is
+   function Create_Data_Type (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Data_Type (Elements.Last, Extent);
@@ -84,8 +118,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Element_Import --
    ---------------------------
 
-   function Create_Element_Import
-    (Extent : CMOF_Extent) return Cmof_Element_Import is
+   function Create_Element_Import (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Element_Import (Elements.Last, Extent);
@@ -97,8 +130,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Enumeration --
    ------------------------
 
-   function Create_Enumeration
-    (Extent : CMOF_Extent) return Cmof_Enumeration is
+   function Create_Enumeration (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Enumeration (Elements.Last, Extent);
@@ -110,8 +142,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Enumeration_Literal --
    --------------------------------
 
-   function Create_Enumeration_Literal
-    (Extent : CMOF_Extent) return Cmof_Enumeration_Literal is
+   function Create_Enumeration_Literal (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Enumeration_Literal (Elements.Last, Extent);
@@ -123,8 +154,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Expression --
    -----------------------
 
-   function Create_Expression
-    (Extent : CMOF_Extent) return Cmof_Expression is
+   function Create_Expression (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Expression (Elements.Last, Extent);
@@ -136,8 +166,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Opaque_Expression --
    ------------------------------
 
-   function Create_Opaque_Expression
-    (Extent : CMOF_Extent) return Cmof_Opaque_Expression is
+   function Create_Opaque_Expression (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Opaque_Expression (Elements.Last, Extent);
@@ -149,8 +178,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Operation --
    ----------------------
 
-   function Create_Operation
-    (Extent : CMOF_Extent) return Cmof_Operation is
+   function Create_Operation (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Operation (Elements.Last, Extent);
@@ -162,8 +190,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Package --
    --------------------
 
-   function Create_Package
-    (Extent : CMOF_Extent) return Cmof_Package is
+   function Create_Package (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Package (Elements.Last, Extent);
@@ -175,8 +202,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Package_Import --
    ---------------------------
 
-   function Create_Package_Import
-    (Extent : CMOF_Extent) return Cmof_Package_Import is
+   function Create_Package_Import (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Package_Import (Elements.Last, Extent);
@@ -188,8 +214,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Package_Merge --
    --------------------------
 
-   function Create_Package_Merge
-    (Extent : CMOF_Extent) return Cmof_Package_Merge is
+   function Create_Package_Merge (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Package_Merge (Elements.Last, Extent);
@@ -201,8 +226,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Parameter --
    ----------------------
 
-   function Create_Parameter
-    (Extent : CMOF_Extent) return Cmof_Parameter is
+   function Create_Parameter (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Parameter (Elements.Last, Extent);
@@ -214,8 +238,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Primitive_Type --
    ---------------------------
 
-   function Create_Primitive_Type
-    (Extent : CMOF_Extent) return Cmof_Primitive_Type is
+   function Create_Primitive_Type (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Primitive_Type (Elements.Last, Extent);
@@ -227,8 +250,7 @@ package body Cmof.Internals.Constructors is
    -- Create_Property --
    ---------------------
 
-   function Create_Property
-    (Extent : CMOF_Extent) return Cmof_Property is
+   function Create_Property (Extent : CMOF_Extent) return CMOF_Element is
    begin
       Elements.Increment_Last;
       Initialize_Property (Elements.Last, Extent);
@@ -241,7 +263,7 @@ package body Cmof.Internals.Constructors is
    ----------------------------
 
    procedure Initialize_Association
-    (Self   : CMOF_Association;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -252,50 +274,57 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Boolean, False),         --  isDerived
-                     2      => (M_Boolean, False),         --  isFinalSpecialization
-                     3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     4      => (M_Element, 0),             --  namespace
-                     5      => (M_Element, 0),             --  owner
-                     6      => (M_Element, 0),             --  package
-                     7      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  package
+                     7      => (M_Boolean, False),
+                       --  isFinalSpecialization
+                     8      => (M_Boolean, False),
+                       --  isDerived
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 17);
-      Initialize_Set_Collection          --  attribute
-       (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  endType
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 4);
-      Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 5);
-      Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
-      Initialize_Set_Collection          --  inheritedMember
-       (Elements.Table (Self).Member (0).Collection + 7);
-      Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Ordered_Set_Collection  --  memberEnd
-       (Elements.Table (Self).Member (0).Collection + 9);
-      Initialize_Set_Collection          --  navigableOwnedEnd
-       (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 12);
-      Initialize_Ordered_Set_Collection  --  ownedEnd
-       (Elements.Table (Self).Member (0).Collection + 13);
-      Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 14);
-      Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 15);
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
+       (Elements.Table (Self).Member (0).Collection + 2);
+      Initialize_Set_Collection          --  importedMember
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  elementImport
+       (Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 16);
+       (Elements.Table (Self).Member (0).Collection + 5);
+      Initialize_Set_Collection          --  ownedMember
+       (Elements.Table (Self).Member (0).Collection + 6);
+      Initialize_Set_Collection          --  member
+       (Elements.Table (Self).Member (0).Collection + 7);
+      Initialize_Set_Collection          --  ownedRule
+       (Elements.Table (Self).Member (0).Collection + 8);
+      Initialize_Set_Collection          --  attribute
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  feature
+       (Elements.Table (Self).Member (0).Collection + 10);
+      Initialize_Set_Collection          --  general
+       (Elements.Table (Self).Member (0).Collection + 11);
+      Initialize_Set_Collection          --  inheritedMember
+       (Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  relatedElement
+       (Elements.Table (Self).Member (0).Collection + 13);
+      Initialize_Ordered_Set_Collection  --  ownedEnd
+       (Elements.Table (Self).Member (0).Collection + 14);
+      Initialize_Set_Collection          --  endType
+       (Elements.Table (Self).Member (0).Collection + 15);
+      Initialize_Ordered_Set_Collection  --  memberEnd
+       (Elements.Table (Self).Member (0).Collection + 16);
+      Initialize_Set_Collection          --  navigableOwnedEnd
        (Elements.Table (Self).Member (0).Collection + 17);
       Internal_Append (Extent, Self);
    end Initialize_Association;
@@ -305,7 +334,7 @@ package body Cmof.Internals.Constructors is
    ----------------------
 
    procedure Initialize_Class
-    (Self   : CMOF_Class;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -316,44 +345,51 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Boolean, False),         --  isAbstract
-                     2      => (M_Boolean, False),         --  isFinalSpecialization
-                     3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     4      => (M_Element, 0),             --  namespace
-                     5      => (M_Element, 0),             --  owner
-                     6      => (M_Element, 0),             --  package
-                     7      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  package
+                     7      => (M_Boolean, False),
+                       --  isFinalSpecialization
+                     8      => (M_Boolean, False),
+                       --  isAbstract
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 14);
-      Initialize_Set_Collection          --  attribute
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  elementImport
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  importedMember
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  elementImport
+       (Elements.Table (Self).Member (0).Collection + 4);
+      Initialize_Set_Collection          --  packageImport
        (Elements.Table (Self).Member (0).Collection + 5);
-      Initialize_Set_Collection          --  inheritedMember
+      Initialize_Set_Collection          --  ownedMember
        (Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
        (Elements.Table (Self).Member (0).Collection + 7);
-      Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 9);
-      Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 11);
-      Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  ownedRule
+       (Elements.Table (Self).Member (0).Collection + 8);
+      Initialize_Set_Collection          --  attribute
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  feature
+       (Elements.Table (Self).Member (0).Collection + 10);
+      Initialize_Set_Collection          --  general
+       (Elements.Table (Self).Member (0).Collection + 11);
+      Initialize_Set_Collection          --  inheritedMember
+       (Elements.Table (Self).Member (0).Collection + 12);
+      Initialize_Ordered_Set_Collection  --  ownedAttribute
        (Elements.Table (Self).Member (0).Collection + 13);
-      Initialize_Set_Collection          --  packageImport
+      Initialize_Ordered_Set_Collection  --  ownedOperation
        (Elements.Table (Self).Member (0).Collection + 14);
       Internal_Append (Extent, Self);
    end Initialize_Class;
@@ -363,7 +399,7 @@ package body Cmof.Internals.Constructors is
    ------------------------
 
    procedure Initialize_Comment
-    (Self   : CMOF_Comment;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -374,16 +410,17 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  body
-                     2      => (M_Element, 0),             --  owner
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  body
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
-      Initialize_Set_Collection          --  annotatedElement
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  ownedElement
+      Initialize_Set_Collection          --  annotatedElement
        (Elements.Table (Self).Member (0).Collection + 3);
       Internal_Append (Extent, Self);
    end Initialize_Comment;
@@ -393,7 +430,7 @@ package body Cmof.Internals.Constructors is
    ---------------------------
 
    procedure Initialize_Constraint
-    (Self   : CMOF_Constraint;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -404,21 +441,27 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, 0),             --  context
-                     2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     3      => (M_Element, 0),             --  namespace
-                     4      => (M_Element, 0),             --  owner
-                     5      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     6      => (M_Element, 0),             --  specification
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  specification
+                     7      => (M_Element, 0),
+                       --  context
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
-      Initialize_Ordered_Set_Collection  --  constrainedElement
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  ownedElement
+      Initialize_Ordered_Set_Collection  --  constrainedElement
        (Elements.Table (Self).Member (0).Collection + 3);
       Internal_Append (Extent, Self);
    end Initialize_Constraint;
@@ -428,7 +471,7 @@ package body Cmof.Internals.Constructors is
    --------------------------
 
    procedure Initialize_Data_Type
-    (Self   : CMOF_Data_Type;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -439,43 +482,49 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Boolean, False),         --  isFinalSpecialization
-                     2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     3      => (M_Element, 0),             --  namespace
-                     4      => (M_Element, 0),             --  owner
-                     5      => (M_Element, 0),             --  package
-                     6      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  package
+                     7      => (M_Boolean, False),
+                       --  isFinalSpecialization
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 14);
-      Initialize_Set_Collection          --  attribute
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  elementImport
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  importedMember
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  elementImport
+       (Elements.Table (Self).Member (0).Collection + 4);
+      Initialize_Set_Collection          --  packageImport
        (Elements.Table (Self).Member (0).Collection + 5);
-      Initialize_Set_Collection          --  inheritedMember
+      Initialize_Set_Collection          --  ownedMember
        (Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
        (Elements.Table (Self).Member (0).Collection + 7);
-      Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 9);
-      Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 11);
-      Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  ownedRule
+       (Elements.Table (Self).Member (0).Collection + 8);
+      Initialize_Set_Collection          --  attribute
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  feature
+       (Elements.Table (Self).Member (0).Collection + 10);
+      Initialize_Set_Collection          --  general
+       (Elements.Table (Self).Member (0).Collection + 11);
+      Initialize_Set_Collection          --  inheritedMember
+       (Elements.Table (Self).Member (0).Collection + 12);
+      Initialize_Ordered_Set_Collection  --  ownedAttribute
        (Elements.Table (Self).Member (0).Collection + 13);
-      Initialize_Set_Collection          --  packageImport
+      Initialize_Ordered_Set_Collection  --  ownedOperation
        (Elements.Table (Self).Member (0).Collection + 14);
       Internal_Append (Extent, Self);
    end Initialize_Data_Type;
@@ -485,7 +534,7 @@ package body Cmof.Internals.Constructors is
    -------------------------------
 
    procedure Initialize_Element_Import
-    (Self   : CMOF_Element_Import;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -496,16 +545,21 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  alias
-                     2      => (M_Element, 0),             --  importedElement
-                     3      => (M_Element, 0),             --  importingNamespace
-                     4      => (M_Element, 0),             --  owner
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_Visibility_Kind, CMOF.Public_Visibility),
+                       --  visibility
+                     3      => (M_String, null),
+                       --  alias
+                     4      => (M_Element, 0),
+                       --  importedElement
+                     5      => (M_Element, 0),
+                       --  importingNamespace
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 5);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  relatedElement
        (Elements.Table (Self).Member (0).Collection + 3);
@@ -521,7 +575,7 @@ package body Cmof.Internals.Constructors is
    ----------------------------
 
    procedure Initialize_Enumeration
-    (Self   : CMOF_Enumeration;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -532,45 +586,51 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Boolean, False),         --  isFinalSpecialization
-                     2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     3      => (M_Element, 0),             --  namespace
-                     4      => (M_Element, 0),             --  owner
-                     5      => (M_Element, 0),             --  package
-                     6      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  package
+                     7      => (M_Boolean, False),
+                       --  isFinalSpecialization
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 15);
-      Initialize_Set_Collection          --  attribute
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  elementImport
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  importedMember
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  elementImport
+       (Elements.Table (Self).Member (0).Collection + 4);
+      Initialize_Set_Collection          --  packageImport
        (Elements.Table (Self).Member (0).Collection + 5);
-      Initialize_Set_Collection          --  inheritedMember
+      Initialize_Set_Collection          --  ownedMember
        (Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
        (Elements.Table (Self).Member (0).Collection + 7);
-      Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 9);
-      Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Ordered_Set_Collection  --  ownedLiteral
-       (Elements.Table (Self).Member (0).Collection + 11);
-      Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 12);
-      Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Set_Collection          --  ownedRule
+       (Elements.Table (Self).Member (0).Collection + 8);
+      Initialize_Set_Collection          --  attribute
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  feature
+       (Elements.Table (Self).Member (0).Collection + 10);
+      Initialize_Set_Collection          --  general
+       (Elements.Table (Self).Member (0).Collection + 11);
+      Initialize_Set_Collection          --  inheritedMember
+       (Elements.Table (Self).Member (0).Collection + 12);
+      Initialize_Ordered_Set_Collection  --  ownedAttribute
+       (Elements.Table (Self).Member (0).Collection + 13);
+      Initialize_Ordered_Set_Collection  --  ownedOperation
        (Elements.Table (Self).Member (0).Collection + 14);
-      Initialize_Set_Collection          --  packageImport
+      Initialize_Ordered_Set_Collection  --  ownedLiteral
        (Elements.Table (Self).Member (0).Collection + 15);
       Internal_Append (Extent, Self);
    end Initialize_Enumeration;
@@ -580,7 +640,7 @@ package body Cmof.Internals.Constructors is
    ------------------------------------
 
    procedure Initialize_Enumeration_Literal
-    (Self   : CMOF_Enumeration_Literal;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -591,18 +651,23 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, 0),             --  enumeration
-                     2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     3      => (M_Element, 0),             --  namespace
-                     4      => (M_Element, 0),             --  owner
-                     5      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  enumeration
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
       Internal_Append (Extent, Self);
    end Initialize_Enumeration_Literal;
@@ -612,7 +677,7 @@ package body Cmof.Internals.Constructors is
    ---------------------------
 
    procedure Initialize_Expression
-    (Self   : CMOF_Expression;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -623,20 +688,25 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     2      => (M_Element, 0),             --  namespace
-                     3      => (M_Element, 0),             --  owner
-                     4      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     5      => (M_Element, 0),             --  type
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  type
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
-      Initialize_Ordered_Set_Collection  --  operand
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  ownedElement
+      Initialize_Ordered_Set_Collection  --  operand
        (Elements.Table (Self).Member (0).Collection + 3);
       Internal_Append (Extent, Self);
    end Initialize_Expression;
@@ -646,7 +716,7 @@ package body Cmof.Internals.Constructors is
    ----------------------------------
 
    procedure Initialize_Opaque_Expression
-    (Self   : CMOF_Opaque_Expression;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -657,19 +727,27 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                     3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     4      => (M_Element, 0),             --  namespace
-                     5      => (M_Element, 0),             --  owner
-                     6      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     7      => (M_Element, 0),             --  type
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  type
+                     7      => (M_Collection_Of_String, 0),
+                       --  body
+                     8      => (M_Collection_Of_String, 0),
+                       --  language
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
       Internal_Append (Extent, Self);
    end Initialize_Opaque_Expression;
@@ -679,7 +757,7 @@ package body Cmof.Internals.Constructors is
    --------------------------
 
    procedure Initialize_Operation
-    (Self   : CMOF_Operation;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -690,56 +768,70 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, 0),             --  bodyCondition
-                     2      => (M_Element, 0),             --  class
-                     3      => (M_Element, 0),             --  datatype
-                     4      => (M_Boolean, False),         --  isLeaf
-                     5      => (M_Boolean, False),         --  isOrdered
-                     6      => (M_Boolean, False),         --  isQuery
-                     7      => (M_Boolean, True),          --  isUnique
-                     8      => (M_Integer, 1),             --  lower
-                     9      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     10     => (M_Element, 0),             --  namespace
-                     11     => (M_Element, 0),             --  owner
-                     12     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     13     => (M_Element, 0),             --  type
-                     14     => (M_Unlimited_Natural, (False, 1)),
-                                                           --  upper
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Boolean, False),
+                       --  isLeaf
+                     7      => (M_Boolean, False),
+                       --  isQuery
+                     8      => (M_Boolean, False),
+                       --  isOrdered
+                     9      => (M_Boolean, True),
+                       --  isUnique
+                     10     => (M_Integer_Holder, (False, 1)),
+                       --  lower
+                     11     =>
+                      (M_Unlimited_Natural_Holder, (False, (False, 1))),
+                       --  upper
+                     12     => (M_Element, 0),
+                       --  class
+                     13     => (M_Element, 0),
+                       --  datatype
+                     14     => (M_Element, 0),
+                       --  type
+                     15     => (M_Element, 0),
+                       --  bodyCondition
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 16);
-      Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  featuringClassifier
-       (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 4);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
+       (Elements.Table (Self).Member (0).Collection + 2);
+      Initialize_Set_Collection          --  redefinitionContext
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  redefinedElement
+       (Elements.Table (Self).Member (0).Collection + 4);
+      Initialize_Set_Collection          --  featuringClassifier
+       (Elements.Table (Self).Member (0).Collection + 5);
+      Initialize_Set_Collection          --  importedMember
        (Elements.Table (Self).Member (0).Collection + 6);
-      Initialize_Set_Collection          --  ownedMember
+      Initialize_Set_Collection          --  elementImport
        (Elements.Table (Self).Member (0).Collection + 7);
-      Initialize_Ordered_Set_Collection  --  ownedParameter
-       (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  packageImport
+       (Elements.Table (Self).Member (0).Collection + 8);
+      Initialize_Set_Collection          --  ownedMember
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  member
        (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Set_Collection          --  postcondition
+      Initialize_Set_Collection          --  ownedRule
        (Elements.Table (Self).Member (0).Collection + 11);
-      Initialize_Set_Collection          --  precondition
+      Initialize_Ordered_Set_Collection  --  ownedParameter
        (Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  raisedException
        (Elements.Table (Self).Member (0).Collection + 13);
-      Initialize_Set_Collection          --  redefinedElement
-       (Elements.Table (Self).Member (0).Collection + 14);
       Initialize_Set_Collection          --  redefinedOperation
+       (Elements.Table (Self).Member (0).Collection + 14);
+      Initialize_Set_Collection          --  precondition
        (Elements.Table (Self).Member (0).Collection + 15);
-      Initialize_Set_Collection          --  redefinitionContext
+      Initialize_Set_Collection          --  postcondition
        (Elements.Table (Self).Member (0).Collection + 16);
       Internal_Append (Extent, Self);
    end Initialize_Operation;
@@ -749,7 +841,7 @@ package body Cmof.Internals.Constructors is
    ------------------------
 
    procedure Initialize_Package
-    (Self   : CMOF_Package;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -760,40 +852,45 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     2      => (M_Element, 0),             --  namespace
-                     3      => (M_Element, 0),             --  nestingPackage
-                     4      => (M_Element, 0),             --  owner
-                     5      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     7      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  uri
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  nestingPackage
+                     7      => (M_String, null),
+                       --  uri
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 12);
-      Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  nestedPackage
-       (Elements.Table (Self).Member (0).Collection + 4);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
+       (Elements.Table (Self).Member (0).Collection + 2);
+      Initialize_Set_Collection          --  importedMember
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  elementImport
+       (Elements.Table (Self).Member (0).Collection + 4);
+      Initialize_Set_Collection          --  packageImport
+       (Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
+       (Elements.Table (Self).Member (0).Collection + 6);
+      Initialize_Set_Collection          --  member
        (Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
        (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Set_Collection          --  ownedType
-       (Elements.Table (Self).Member (0).Collection + 9);
-      Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Set_Collection          --  packageMerge
-       (Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  packagedElement
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  ownedType
+       (Elements.Table (Self).Member (0).Collection + 10);
+      Initialize_Set_Collection          --  nestedPackage
+       (Elements.Table (Self).Member (0).Collection + 11);
+      Initialize_Set_Collection          --  packageMerge
        (Elements.Table (Self).Member (0).Collection + 12);
       Internal_Append (Extent, Self);
    end Initialize_Package;
@@ -803,7 +900,7 @@ package body Cmof.Internals.Constructors is
    -------------------------------
 
    procedure Initialize_Package_Import
-    (Self   : CMOF_Package_Import;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -814,14 +911,19 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, 0),             --  importedPackage
-                     2      => (M_Element, 0),             --  importingNamespace
-                     3      => (M_Element, 0),             --  owner
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_Visibility_Kind, CMOF.Public_Visibility),
+                       --  visibility
+                     3      => (M_Element, 0),
+                       --  importedPackage
+                     4      => (M_Element, 0),
+                       --  importingNamespace
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 5);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  relatedElement
        (Elements.Table (Self).Member (0).Collection + 3);
@@ -837,7 +939,7 @@ package body Cmof.Internals.Constructors is
    ------------------------------
 
    procedure Initialize_Package_Merge
-    (Self   : CMOF_Package_Merge;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -848,14 +950,17 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, 0),             --  mergedPackage
-                     2      => (M_Element, 0),             --  owner
-                     3      => (M_Element, 0),             --  receivingPackage
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_Element, 0),
+                       --  receivingPackage
+                     3      => (M_Element, 0),
+                       --  mergedPackage
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 5);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  relatedElement
        (Elements.Table (Self).Member (0).Collection + 3);
@@ -871,7 +976,7 @@ package body Cmof.Internals.Constructors is
    --------------------------
 
    procedure Initialize_Parameter
-    (Self   : CMOF_Parameter;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -882,28 +987,38 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  default
-                     2      => (M_Parameter_Direction_Kind, In_Direction),
-                                                           --  direction
-                     3      => (M_Boolean, False),         --  isOrdered
-                     4      => (M_Boolean, True),          --  isUnique
-                     5      => (M_Integer, 1),             --  lower
-                     6      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     7      => (M_Element, 0),             --  namespace
-                     8      => (M_Element, 0),             --  operation
-                     9      => (M_Element, 0),             --  owner
-                     10     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     11     => (M_Element, 0),             --  type
-                     12     => (M_Unlimited_Natural, (False, 1)),
-                                                           --  upper
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  type
+                     7      => (M_Boolean, False),
+                       --  isOrdered
+                     8      => (M_Boolean, True),
+                       --  isUnique
+                     9      => (M_Integer_Holder, (False, 1)),
+                       --  lower
+                     10     =>
+                      (M_Unlimited_Natural_Holder, (False, (False, 1))),
+                       --  upper
+                     11     => (M_String, null),
+                       --  default
+                     12     => (M_Parameter_Direction_Kind, CMOF.In_Direction),
+                       --  direction
+                     13     => (M_Element, 0),
+                       --  operation
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedElement
+       (Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
       Internal_Append (Extent, Self);
    end Initialize_Parameter;
@@ -913,7 +1028,7 @@ package body Cmof.Internals.Constructors is
    -------------------------------
 
    procedure Initialize_Primitive_Type
-    (Self   : CMOF_Primitive_Type;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -924,43 +1039,49 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Boolean, False),         --  isFinalSpecialization
-                     2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     3      => (M_Element, 0),             --  namespace
-                     4      => (M_Element, 0),             --  owner
-                     5      => (M_Element, 0),             --  package
-                     6      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Element, 0),
+                       --  package
+                     7      => (M_Boolean, False),
+                       --  isFinalSpecialization
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 14);
-      Initialize_Set_Collection          --  attribute
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
-      Initialize_Set_Collection          --  elementImport
+      Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 3);
-      Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  importedMember
+       (Elements.Table (Self).Member (0).Collection + 3);
+      Initialize_Set_Collection          --  elementImport
+       (Elements.Table (Self).Member (0).Collection + 4);
+      Initialize_Set_Collection          --  packageImport
        (Elements.Table (Self).Member (0).Collection + 5);
-      Initialize_Set_Collection          --  inheritedMember
+      Initialize_Set_Collection          --  ownedMember
        (Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
        (Elements.Table (Self).Member (0).Collection + 7);
-      Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 8);
-      Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 9);
-      Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 10);
-      Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 11);
-      Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  ownedRule
+       (Elements.Table (Self).Member (0).Collection + 8);
+      Initialize_Set_Collection          --  attribute
+       (Elements.Table (Self).Member (0).Collection + 9);
+      Initialize_Set_Collection          --  feature
+       (Elements.Table (Self).Member (0).Collection + 10);
+      Initialize_Set_Collection          --  general
+       (Elements.Table (Self).Member (0).Collection + 11);
+      Initialize_Set_Collection          --  inheritedMember
+       (Elements.Table (Self).Member (0).Collection + 12);
+      Initialize_Ordered_Set_Collection  --  ownedAttribute
        (Elements.Table (Self).Member (0).Collection + 13);
-      Initialize_Set_Collection          --  packageImport
+      Initialize_Ordered_Set_Collection  --  ownedOperation
        (Elements.Table (Self).Member (0).Collection + 14);
       Internal_Append (Extent, Self);
    end Initialize_Primitive_Type;
@@ -970,7 +1091,7 @@ package body Cmof.Internals.Constructors is
    -------------------------
 
    procedure Initialize_Property
-    (Self   : CMOF_Property;
+    (Self   : CMOF_Element;
      Extent : CMOF_Extent) is
    begin
       Elements.Table (Self) :=
@@ -981,47 +1102,66 @@ package body Cmof.Internals.Constructors is
         Next     => 0,
         Proxy    => null,
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, 0),             --  association
-                     2      => (M_Element, 0),             --  class
-                     3      => (M_Element, 0),             --  datatype
-                     4      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  default
-                     5      => (M_Boolean, False),         --  isComposite
-                     6      => (M_Boolean, False),         --  isDerived
-                     7      => (M_Boolean, False),         --  isDerivedUnion
-                     8      => (M_Boolean, False),         --  isLeaf
-                     9      => (M_Boolean, False),         --  isOrdered
-                     10     => (M_Boolean, False),         --  isReadOnly
-                     11     => (M_Boolean, True),          --  isUnique
-                     12     => (M_Integer, 1),             --  lower
-                     13     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  name
-                     14     => (M_Element, 0),             --  namespace
-                     15     => (M_Element, 0),             --  opposite
-                     16     => (M_Element, 0),             --  owner
-                     17     => (M_Element, 0),             --  owningAssociation
-                     18     => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                                                           --  qualifiedName
-                     19     => (M_Element, 0),             --  type
-                     20     => (M_Unlimited_Natural, (False, 1)),
-                                                           --  upper
+                     1      => (M_Element, 0),
+                       --  owner
+                     2      => (M_String, null),
+                       --  name
+                     3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
+                       --  visibility
+                     4      => (M_Element, 0),
+                       --  namespace
+                     5      => (M_String, null),
+                       --  qualifiedName
+                     6      => (M_Boolean, False),
+                       --  isLeaf
+                     7      => (M_Boolean, False),
+                       --  isOrdered
+                     8      => (M_Boolean, True),
+                       --  isUnique
+                     9      => (M_Integer_Holder, (False, 1)),
+                       --  lower
+                     10     =>
+                      (M_Unlimited_Natural_Holder, (False, (False, 1))),
+                       --  upper
+                     11     => (M_Element, 0),
+                       --  type
+                     12     => (M_Boolean, False),
+                       --  isReadOnly
+                     13     => (M_String, null),
+                       --  default
+                     14     => (M_Boolean, False),
+                       --  isComposite
+                     15     => (M_Boolean, False),
+                       --  isDerived
+                     16     => (M_Boolean, False),
+                       --  isDerivedUnion
+                     17     => (M_Element, 0),
+                       --  class
+                     18     => (M_Element, 0),
+                       --  owningAssociation
+                     19     => (M_Element, 0),
+                       --  opposite
+                     20     => (M_Element, 0),
+                       --  datatype
+                     21     => (M_Element, 0),
+                       --  association
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 7);
-      Initialize_Set_Collection          --  featuringClassifier
+      Initialize_Set_Collection          --  ownedElement
        (Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
        (Elements.Table (Self).Member (0).Collection + 2);
-      Initialize_Set_Collection          --  ownedElement
+      Initialize_Set_Collection          --  redefinitionContext
        (Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  redefinedElement
        (Elements.Table (Self).Member (0).Collection + 4);
-      Initialize_Set_Collection          --  redefinedProperty
+      Initialize_Set_Collection          --  featuringClassifier
        (Elements.Table (Self).Member (0).Collection + 5);
-      Initialize_Set_Collection          --  redefinitionContext
+      Initialize_Set_Collection          --  redefinedProperty
        (Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  subsettedProperty
        (Elements.Table (Self).Member (0).Collection + 7);
       Internal_Append (Extent, Self);
    end Initialize_Property;
 
-end Cmof.Internals.Constructors;
+end CMOF.Internals.Constructors;

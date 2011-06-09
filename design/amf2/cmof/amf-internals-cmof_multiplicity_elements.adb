@@ -94,7 +94,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       --  Specifies the lower bound of the multiplicity interval, if it is
       --  expressed as an integer.
 
-      return (False, Internal_Get_Lower (Self.Id));
+      return Internal_Get_Lower (Self.Id);
    end Get_Lower;
 
    ---------------
@@ -110,7 +110,7 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       --  Specifies the upper bound of the multiplicity interval, if it is
       --  expressed as an unlimited natural.
 
-      return (False, Internal_Get_Upper (Self.Id));
+      return Internal_Get_Upper (Self.Id);
    end Get_Upper;
 
    --------------------

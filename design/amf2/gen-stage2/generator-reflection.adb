@@ -220,9 +220,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     --  XXX Must be fixed
-
-                     Put_Line ("AMF.Values.Value_Integer,");
+                     Put_Line ("AMF.Values.Value_Optional_Integer,");
 
                   when Set =>
                      raise Program_Error;
@@ -265,9 +263,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     --  XXX must be fixed
-
-                     Put_Line ("AMF.Values.Value_String,");
+                     Put_Line ("AMF.Values.Value_Optional_String,");
 
                   when Set =>
                      raise Program_Error;
@@ -279,14 +275,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Sequence =>
-                     if Attribute.Get_Name = Body_Name then
-                        --  XXX For compatibility with stage one generator only
-
-                        Put_Line ("AMF.Values.Value_String,");
-
-                     else
-                        Put_Line ("AMF.Values.Value_Collection_Of_String,");
-                     end if;
+                     Put_Line ("AMF.Values.Value_Collection_Of_String,");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
@@ -295,9 +284,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     --  XXX Must be fixed
-
-                     Put_Line ("AMF.Values.Value_Unlimited_Natural,");
+                     Put_Line ("AMF.Values.Value_Optional_Unlimited_Natural,");
 
                   when Set =>
                      raise Program_Error;
@@ -315,15 +302,11 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put_Line ("AMF.Values.Value_Element,");
---                     Put_Line ("AMF.Values.Value_CMOF_Visibility_Kind,");
+                     Put_Line ("AMF.Values.Value_CMOF_Visibility_Kind,");
 
                   when Holder =>
-                     --  XXX Must be fixed
-
-                     Put_Line ("AMF.Values.Value_Element,");
---                     Put_Line
---                      ("AMF.Values.Value_Optional_CMOF_Visibility_Kind,");
+                     Put_Line
+                      ("AMF.Values.Value_Optional_CMOF_Visibility_Kind,");
 
                   when Set =>
                      raise Program_Error;
@@ -536,9 +519,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     --  XXX Must be fixed
-
-                     Put ("Integer_Value");
+                     Put ("Optional_Integer_Value");
 
                   when Set =>
                      raise Program_Error;
@@ -580,9 +561,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     --  XXX must be fixed
-
-                     Put ("String_Value");
+                     Put ("Optional_String_Value");
 
                   when Set =>
                      raise Program_Error;
@@ -594,14 +573,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Sequence =>
-                     if Attribute.Get_Name = Body_Name then
-                        --  XXX For compatibility with stage one generator only
-
-                        Put ("String_Value");
-
-                     else
-                        Put ("Collection_Of_String_Value");
-                     end if;
+                     Put ("Collection_Of_String_Value");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
@@ -610,9 +582,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     --  XXX Must be fixed
-
-                     Put ("Unlimited_Natural_Value");
+                     Put ("Optional_Unlimited_Natural_Value");
 
                   when Set =>
                      raise Program_Error;
@@ -630,16 +600,10 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
                case Representation (Attribute) is
                   when Value =>
-                     --  XXX Must be fixed
-
-                     Put ("Element_Value");
---                     Put ("Visibility_Value");
+                     Put ("Visibility_Value");
 
                   when Holder =>
-                     --  XXX Must be fixed
-
-                     Put ("Element_Value");
---                     Put ("Visibility_Value");
+                     Put ("Visibility_Holder_Value");
 
                   when Set =>
                      raise Program_Error;

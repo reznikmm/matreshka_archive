@@ -50,7 +50,9 @@ package body CMOF.Comments is
    --------------
 
    function Get_Body
-    (Self : CMOF_Comment) return League.Strings.Universal_String
-       renames CMOF.Internals.Attributes.Internal_Get_Body;
+    (Self : CMOF_Comment) return League.Strings.Universal_String is
+   begin
+      return CMOF.Internals.Attributes.Internal_Get_Body (Self).Value;
+   end Get_Body;
 
 end CMOF.Comments;

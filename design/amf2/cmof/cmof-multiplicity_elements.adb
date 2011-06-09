@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -66,16 +66,20 @@ package body CMOF.Multiplicity_Elements is
    -- Get_Lower --
    ---------------
 
-   function Get_Lower (Self : CMOF_Multiplicity_Element) return Integer
-     renames Internal_Get_Lower;
+   function Get_Lower (Self : CMOF_Multiplicity_Element) return Integer is
+   begin
+      return Internal_Get_Lower (Self).Value;
+   end Get_Lower;
 
    ---------------
    -- Get_Upper --
    ---------------
 
    function Get_Upper
-    (Self : CMOF_Multiplicity_Element) return AMF.Unlimited_Natural
-       renames Internal_Get_Upper;
+    (Self : CMOF_Multiplicity_Element) return AMF.Unlimited_Natural is
+   begin
+      return Internal_Get_Upper (Self).Value;
+   end Get_Upper;
 
    --------------------
    -- Is_Multivalued --
@@ -84,7 +88,7 @@ package body CMOF.Multiplicity_Elements is
    function Is_Multivalued
     (Self : CMOF_Multiplicity_Element) return Boolean is
    begin
-      return Internal_Get_Upper (Self) > 1;
+      return Internal_Get_Upper (Self).Value > 1;
    end Is_Multivalued;
 
 end CMOF.Multiplicity_Elements;

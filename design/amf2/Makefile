@@ -6,22 +6,22 @@ all:
 	gprbuild -p -Puml/uml.gpr
 	gprbuild -p -Pgui/gui_moc.gpr
 	gprbuild -p -Pgui/gui.gpr
-	gprbuild -p -Pgen-stage1/generator.gpr
+#	gprbuild -p -Pgen-stage1/generator.gpr
 	gprbuild -p -Pgen-stage2/gens.gpr
 #	time ./demo-reader data/cmof.xml
 #	./demo-viewer data/cmof.xml
 	(cd data/2.4 && ../../demo-viewer UML.cmof)
 
-gen:
-	gprbuild -p -Pgen-stage1/generator.gpr
-	./gen-stage1/.objs/gen data/Infrastructure.cmof > cmof/generated/sources.ada
-	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
-	rm cmof/generated/sources.ada
-	(cd cmof/generated && patch < uri-1.patch)
+#gen:
+#	gprbuild -p -Pgen-stage1/generator.gpr
+#	./gen-stage1/.objs/gen data/Infrastructure.cmof > cmof/generated/sources.ada
+#	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
+#	rm cmof/generated/sources.ada
+#	(cd cmof/generated && patch < uri-1.patch)
 
 gen2:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen2 data/cmof-bootstrap.xml > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen2 data/cmof.xml > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 	gprbuild -p -Pgen-stage2/gens.gpr

@@ -203,6 +203,7 @@ package body CMOF.Internals.Factories is
    function Create_From_String
     (Self      : not null access CMOF_Factory;
      Data_Type : CMOF_Data_Type;
+     Optional  : Boolean;
      Image     : League.Strings.Universal_String) return AMF.Values.Value
    is
       use type League.Strings.Universal_String;
@@ -214,23 +215,52 @@ package body CMOF.Internals.Factories is
            Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
 
       elsif Data_Type = MC_CMOF_Integer then
-         return
-          (AMF.Values.Value_Integer,
-           Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
-
-      elsif Data_Type = MC_CMOF_Unlimited_Natural then
-         if Image = League.Strings.To_Universal_String ("*") then
-            return (AMF.Values.Value_Unlimited_Natural, (Unlimited => True));
+         if Optional then
+            return
+             (AMF.Values.Value_Optional_Integer,
+              (False,
+               Integer'Wide_Wide_Value (Image.To_Wide_Wide_String)));
 
          else
             return
-             (AMF.Values.Value_Unlimited_Natural,
-              (False,
-               Natural'Wide_Wide_Value (Image.To_Wide_Wide_String)));
+             (AMF.Values.Value_Integer,
+              Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
+         end if;
+
+      elsif Data_Type = MC_CMOF_Unlimited_Natural then
+         if Optional then
+            if Image = League.Strings.To_Universal_String ("*") then
+               return
+                (AMF.Values.Value_Optional_Unlimited_Natural,
+                 (False, (Unlimited => True)));
+
+            else
+               return
+                (AMF.Values.Value_Optional_Unlimited_Natural,
+                 (False,
+                  (False,
+                   Natural'Wide_Wide_Value (Image.To_Wide_Wide_String))));
+            end if;
+
+         else
+            if Image = League.Strings.To_Universal_String ("*") then
+               return (AMF.Values.Value_Unlimited_Natural, (Unlimited => True));
+
+            else
+               return
+                (AMF.Values.Value_Unlimited_Natural,
+                 (False,
+                  Natural'Wide_Wide_Value (Image.To_Wide_Wide_String)));
+            end if;
          end if;
 
       elsif Data_Type = MC_CMOF_String then
-         return (AMF.Values.Value_String, Image);
+         if Optional then
+            return (AMF.Values.Value_Optional_String, (False, Image));
+
+         else
+            return (AMF.Values.Value_String, Image);
+         end if;
 
       elsif Data_Type = MC_CMOF_Parameter_Direction_Kind then
          if Image = League.Strings.To_Universal_String ("in") then
@@ -259,9 +289,16 @@ package body CMOF.Internals.Factories is
 
       elsif Data_Type = MC_CMOF_Visibility_Kind then
          if Image = League.Strings.To_Universal_String ("public") then
-            return
-             (AMF.Values.Value_CMOF_Visibility_Kind,
-              CMOF.Public_Visibility);
+            if Optional then
+               return
+                (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
+                 (False, CMOF.Public_Visibility));
+
+            else
+               return
+                (AMF.Values.Value_CMOF_Visibility_Kind,
+                 CMOF.Public_Visibility);
+            end if;
 
          elsif Image = League.Strings.To_Universal_String ("private") then
             return
@@ -325,6 +362,7 @@ package body CMOF.Internals.Factories is
    is
       use Ada.Strings;
       use Ada.Strings.Wide_Wide_Fixed;
+      use type AMF.Values.Value_Kinds;
 
    begin
       if Data_Type = MC_CMOF_Boolean then
@@ -356,7 +394,12 @@ package body CMOF.Internals.Factories is
          end if;
 
       elsif Data_Type = MC_CMOF_String then
-         return Value.String_Value;
+         if Value.Kind = AMF.Values.Value_Optional_String then
+            return Value.Optional_String_Value.Value;
+
+         else
+            return Value.String_Value;
+         end if;
 
       else
          return League.Strings.To_Universal_String ("Value must be here");

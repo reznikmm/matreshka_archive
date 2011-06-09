@@ -68,6 +68,7 @@ package CMOF.Internals.Factories is
    overriding function Create_From_String
     (Self      : not null access CMOF_Factory;
      Data_Type : CMOF_Data_Type;
+     Optional  : Boolean;
      Image     : League.Strings.Universal_String) return AMF.Values.Value;
 
    overriding function Convert_To_String

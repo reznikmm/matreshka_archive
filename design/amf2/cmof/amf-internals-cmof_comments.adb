@@ -55,7 +55,7 @@ package body AMF.Internals.CMOF_Comments is
     (Self : not null access constant CMOF_Comment_Proxy)
        return Optional_String is
    begin
-      return (False, Internal_Get_Body (Self.Id));
+      return Internal_Get_Body (Self.Id);
    end Get_Body;
 
    -----------------------

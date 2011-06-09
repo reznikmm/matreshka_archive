@@ -1,72 +1,441 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with CMOF.Internals.Tables;
+with CMOF.Internals.Types;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
-with Cmof.Internals.Attribute_Mappings;
-with Cmof.Internals.Metamodel;
-with Cmof.Internals.Subclassing;
-with Cmof.Internals.Tables;
+package body CMOF.Internals.Attributes is
 
-package body Cmof.Internals.Attributes is
+   use CMOF.Internals.Tables;
+   use CMOF.Internals.Types;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
-   use Cmof.Internals.Attribute_Mappings;
-   use Cmof.Internals.Metamodel;
-   use Cmof.Internals.Subclassing;
-   use Cmof.Internals.Tables;
+   --  Association
+   --
+   --     8  Association::isDerived
+   --     7  Classifier::isFinalSpecialization
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     6  Type::package
+   --     5  NamedElement::qualifiedName
+   --     3  NamedElement::visibility
+   --
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --    15  Association::endType
+   --    10  Classifier::feature
+   --    11  Classifier::general
+   --     3  Namespace::importedMember
+   --    12  Classifier::inheritedMember
+   --     7  Namespace::member
+   --    16  Association::memberEnd
+   --    17  Association::navigableOwnedEnd
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --    14  Association::ownedEnd
+   --     6  Namespace::ownedMember
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+   --    13  Relationship::relatedElement
+
+   --  Class
+   --
+   --     8  Class::isAbstract
+   --     7  Classifier::isFinalSpecialization
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     6  Type::package
+   --     5  NamedElement::qualifiedName
+   --     3  NamedElement::visibility
+   --
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --    10  Classifier::feature
+   --    11  Classifier::general
+   --     3  Namespace::importedMember
+   --    12  Classifier::inheritedMember
+   --     7  Namespace::member
+   --    13  Class::ownedAttribute
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     6  Namespace::ownedMember
+   --    14  Class::ownedOperation
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+   --    11  Class::superClass
+
+   --  Comment
+   --
+   --     2  Comment::body
+   --     1  Element::owner
+   --
+   --     3  Comment::annotatedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  Constraint
+   --
+   --     7  Constraint::context
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --     6  Constraint::specification
+   --     3  NamedElement::visibility
+   --
+   --     3  Constraint::constrainedElement
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  DataType
+   --
+   --     7  Classifier::isFinalSpecialization
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     6  Type::package
+   --     5  NamedElement::qualifiedName
+   --     3  NamedElement::visibility
+   --
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --    10  Classifier::feature
+   --    11  Classifier::general
+   --     3  Namespace::importedMember
+   --    12  Classifier::inheritedMember
+   --     7  Namespace::member
+   --    13  DataType::ownedAttribute
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     6  Namespace::ownedMember
+   --    14  DataType::ownedOperation
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+
+   --  ElementImport
+   --
+   --     3  ElementImport::alias
+   --     4  ElementImport::importedElement
+   --     5  ElementImport::importingNamespace
+   --     1  Element::owner
+   --     2  ElementImport::visibility
+   --
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     3  Relationship::relatedElement
+   --     4  DirectedRelationship::source
+   --     5  DirectedRelationship::target
+
+   --  Enumeration
+   --
+   --     7  Classifier::isFinalSpecialization
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     6  Type::package
+   --     5  NamedElement::qualifiedName
+   --     3  NamedElement::visibility
+   --
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --    10  Classifier::feature
+   --    11  Classifier::general
+   --     3  Namespace::importedMember
+   --    12  Classifier::inheritedMember
+   --     7  Namespace::member
+   --    13  DataType::ownedAttribute
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --    15  Enumeration::ownedLiteral
+   --     6  Namespace::ownedMember
+   --    14  DataType::ownedOperation
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+
+   --  EnumerationLiteral
+   --
+   --     6  EnumerationLiteral::enumeration
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --     3  NamedElement::visibility
+   --
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  Expression
+   --
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --     6  TypedElement::type
+   --     3  NamedElement::visibility
+   --
+   --     3  Expression::operand
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  OpaqueExpression
+   --
+   --     7  OpaqueExpression::body
+   --     8  OpaqueExpression::language
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --     6  TypedElement::type
+   --     3  NamedElement::visibility
+   --
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  Operation
+   --
+   --    15  Operation::bodyCondition
+   --    12  Operation::class
+   --    13  Operation::datatype
+   --     6  RedefinableElement::isLeaf
+   --     8  Operation::isOrdered
+   --     7  Operation::isQuery
+   --     9  Operation::isUnique
+   --    10  Operation::lower
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --    14  Operation::type
+   --    11  Operation::upper
+   --     3  NamedElement::visibility
+   --
+   --     7  Namespace::elementImport
+   --     5  Feature::featuringClassifier
+   --     6  Namespace::importedMember
+   --    10  Namespace::member
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     9  Namespace::ownedMember
+   --    12  Operation::ownedParameter
+   --    12  BehavioralFeature::ownedParameter
+   --    11  Namespace::ownedRule
+   --     8  Namespace::packageImport
+   --    16  Operation::postcondition
+   --    15  Operation::precondition
+   --    13  Operation::raisedException
+   --    13  BehavioralFeature::raisedException
+   --     4  RedefinableElement::redefinedElement
+   --    14  Operation::redefinedOperation
+   --     3  RedefinableElement::redefinitionContext
+
+   --  Package
+   --
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     6  Package::nestingPackage
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --     7  Package::uri
+   --     3  NamedElement::visibility
+   --
+   --     4  Namespace::elementImport
+   --     3  Namespace::importedMember
+   --     7  Namespace::member
+   --    11  Package::nestedPackage
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     6  Namespace::ownedMember
+   --     8  Namespace::ownedRule
+   --    10  Package::ownedType
+   --     5  Namespace::packageImport
+   --    12  Package::packageMerge
+   --     9  Package::packagedElement
+
+   --  PackageImport
+   --
+   --     3  PackageImport::importedPackage
+   --     4  PackageImport::importingNamespace
+   --     1  Element::owner
+   --     2  PackageImport::visibility
+   --
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     3  Relationship::relatedElement
+   --     4  DirectedRelationship::source
+   --     5  DirectedRelationship::target
+
+   --  PackageMerge
+   --
+   --     3  PackageMerge::mergedPackage
+   --     1  Element::owner
+   --     2  PackageMerge::receivingPackage
+   --
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     3  Relationship::relatedElement
+   --     4  DirectedRelationship::source
+   --     5  DirectedRelationship::target
+
+   --  Parameter
+   --
+   --    11  Parameter::default
+   --    12  Parameter::direction
+   --     7  MultiplicityElement::isOrdered
+   --     8  MultiplicityElement::isUnique
+   --     9  MultiplicityElement::lower
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --    13  Parameter::operation
+   --     1  Element::owner
+   --     5  NamedElement::qualifiedName
+   --     6  TypedElement::type
+   --    10  MultiplicityElement::upper
+   --     3  NamedElement::visibility
+   --
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+
+   --  PrimitiveType
+   --
+   --     7  Classifier::isFinalSpecialization
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --     1  Element::owner
+   --     6  Type::package
+   --     5  NamedElement::qualifiedName
+   --     3  NamedElement::visibility
+   --
+   --     9  Classifier::attribute
+   --     4  Namespace::elementImport
+   --    10  Classifier::feature
+   --    11  Classifier::general
+   --     3  Namespace::importedMember
+   --    12  Classifier::inheritedMember
+   --     7  Namespace::member
+   --    13  DataType::ownedAttribute
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     6  Namespace::ownedMember
+   --    14  DataType::ownedOperation
+   --     8  Namespace::ownedRule
+   --     5  Namespace::packageImport
+
+   --  Property
+   --
+   --    21  Property::association
+   --    17  Property::class
+   --    20  Property::datatype
+   --    13  Property::default
+   --    14  Property::isComposite
+   --    15  Property::isDerived
+   --    16  Property::isDerivedUnion
+   --     6  RedefinableElement::isLeaf
+   --     7  MultiplicityElement::isOrdered
+   --    12  Property::isReadOnly
+   --     8  MultiplicityElement::isUnique
+   --     9  MultiplicityElement::lower
+   --     2  NamedElement::name
+   --     4  NamedElement::namespace
+   --    19  Property::opposite
+   --     1  Element::owner
+   --    18  Property::owningAssociation
+   --     5  NamedElement::qualifiedName
+   --    11  TypedElement::type
+   --    10  MultiplicityElement::upper
+   --     3  NamedElement::visibility
+   --
+   --     5  Feature::featuringClassifier
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
+   --     4  RedefinableElement::redefinedElement
+   --     6  Property::redefinedProperty
+   --     3  RedefinableElement::redefinitionContext
+   --     7  Property::subsettedProperty
 
    ------------------------
    -- Internal_Get_Alias --
    ------------------------
 
    function Internal_Get_Alias
-     (Self : CMOF_Element) return League.Strings.Universal_String
-   is
+    (Self : CMOF_Element) return AMF.Optional_String is
    begin
-      return
-        League.Strings.Internals.Create
-         (Elements.Table (Self).Member
-           (Member_Offset
-             (Elements.Table (Self).Kind,
-              MP_CMOF_Element_Import_Alias)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            if Elements.Table (Self).Member (3).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (3).String_Value));
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Alias;
-
-   ------------------------
-   -- Internal_Set_Alias --
-   ------------------------
-
-   procedure Internal_Set_Alias
-     (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
-   begin
-      Matreshka.Internals.Strings.Dereference
-       (Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Element_Import_Alias)).String_Value);
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-            MP_CMOF_Element_Import_Alias)).String_Value := League.Strings.Internals.Internal (To);
-      Matreshka.Internals.Strings.Reference
-       (Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Element_Import_Alias)).String_Value);
-   end Internal_Set_Alias;
 
    ------------------------------------
    -- Internal_Get_Annotated_Element --
    ------------------------------------
 
    function Internal_Get_Annotated_Element
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Comment_Annotated_Element));
+      case Elements.Table (Self).Kind is
+         when E_Comment =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Annotated_Element;
 
    ------------------------------
@@ -74,44 +443,43 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Association
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Property_Association)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (21).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Association;
-
-   ------------------------------
-   -- Internal_Set_Association --
-   ------------------------------
-
-   procedure Internal_Set_Association
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Property_Association)).Element := To;
-   end Internal_Set_Association;
 
    ----------------------------
    -- Internal_Get_Attribute --
    ----------------------------
 
    function Internal_Get_Attribute
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Classifier_Attribute));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Attribute;
 
    -----------------------
@@ -119,158 +487,89 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Body
-     (Self : CMOF_Element) return League.Strings.Universal_String
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_String is
    begin
-      if Is_Comment (Self) then
-         return
-           League.Strings.Internals.Create
-            (Elements.Table (Self).Member
-              (Member_Offset
-                (Elements.Table (Self).Kind,
-                 MP_CMOF_Comment_Body)).String_Value);
-
-      elsif Is_Opaque_Expression (Self) then
-         return
-           League.Strings.Internals.Create
-            (Elements.Table (Self).Member
-              (Member_Offset
-                (Elements.Table (Self).Kind,
-                 MP_CMOF_Opaque_Expression_Body)).String_Value);
-      end if;
+      case Elements.Table (Self).Kind is
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (7).String_Collection_Value;
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Body;
 
    -----------------------
-   -- Internal_Set_Body --
+   -- Internal_Get_Body --
    -----------------------
 
-   procedure Internal_Set_Body
-     (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
+   function Internal_Get_Body
+    (Self : CMOF_Element) return AMF.Optional_String is
    begin
-      if Is_Comment (Self) then
-         Matreshka.Internals.Strings.Dereference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Comment_Body)).String_Value);
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-               MP_CMOF_Comment_Body)).String_Value := League.Strings.Internals.Internal (To);
-         Matreshka.Internals.Strings.Reference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Comment_Body)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Comment =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
 
-      elsif Is_Opaque_Expression (Self) then
-         Matreshka.Internals.Strings.Dereference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Opaque_Expression_Body)).String_Value);
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-               MP_CMOF_Opaque_Expression_Body)).String_Value := League.Strings.Internals.Internal (To);
-         Matreshka.Internals.Strings.Reference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Opaque_Expression_Body)).String_Value);
-      end if;
-   end Internal_Set_Body;
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Body;
 
    ---------------------------------
    -- Internal_Get_Body_Condition --
    ---------------------------------
 
    function Internal_Get_Body_Condition
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Operation_Body_Condition)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (15).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Body_Condition;
-
-   ---------------------------------
-   -- Internal_Set_Body_Condition --
-   ---------------------------------
-
-   procedure Internal_Set_Body_Condition
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Operation_Body_Condition)).Element := To;
-   end Internal_Set_Body_Condition;
 
    ------------------------
    -- Internal_Get_Class --
    ------------------------
 
    function Internal_Get_Class
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      if Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Class)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (12).Element;
 
-      elsif Is_Property (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Class)).Element;
-      end if;
+         when E_Property =>
+            return Elements.Table (Self).Member (17).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Class;
-
-   ------------------------
-   -- Internal_Set_Class --
-   ------------------------
-
-   procedure Internal_Set_Class
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      if Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Class)).Element := To;
-
-      elsif Is_Property (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Property_Class)).Element := To;
-      end if;
-   end Internal_Set_Class;
 
    --------------------------------------
    -- Internal_Get_Constrained_Element --
    --------------------------------------
 
    function Internal_Get_Constrained_Element
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Constraint_Constrained_Element));
+      case Elements.Table (Self).Kind is
+         when E_Constraint =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Constrained_Element;
 
    --------------------------
@@ -278,187 +577,119 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_Context
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Constraint_Context)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Constraint =>
+            return Elements.Table (Self).Member (7).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Context;
-
-   --------------------------
-   -- Internal_Set_Context --
-   --------------------------
-
-   procedure Internal_Set_Context
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Constraint_Context)).Element := To;
-   end Internal_Set_Context;
 
    ---------------------------
    -- Internal_Get_Datatype --
    ---------------------------
 
    function Internal_Get_Datatype
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      if Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Datatype)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (13).Element;
 
-      elsif Is_Property (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Datatype)).Element;
-      end if;
+         when E_Property =>
+            return Elements.Table (Self).Member (20).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Datatype;
-
-   ---------------------------
-   -- Internal_Set_Datatype --
-   ---------------------------
-
-   procedure Internal_Set_Datatype
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      if Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Datatype)).Element := To;
-
-      elsif Is_Property (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Property_Datatype)).Element := To;
-      end if;
-   end Internal_Set_Datatype;
 
    --------------------------
    -- Internal_Get_Default --
    --------------------------
 
    function Internal_Get_Default
-     (Self : CMOF_Element) return League.Strings.Universal_String
-   is
+    (Self : CMOF_Element) return AMF.Optional_String is
    begin
-      if Is_Parameter (Self) then
-         return
-           League.Strings.Internals.Create
-            (Elements.Table (Self).Member
-              (Member_Offset
-                (Elements.Table (Self).Kind,
-                 MP_CMOF_Parameter_Default)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Parameter =>
+            if Elements.Table (Self).Member (11).String_Value = null then
+               return (Is_Empty => True);
 
-      elsif Is_Property (Self) then
-         return
-           League.Strings.Internals.Create
-            (Elements.Table (Self).Member
-              (Member_Offset
-                (Elements.Table (Self).Kind,
-                 MP_CMOF_Property_Default)).String_Value);
-      end if;
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (11).String_Value));
+            end if;
+
+         when E_Property =>
+            if Elements.Table (Self).Member (13).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (13).String_Value));
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Default;
-
-   --------------------------
-   -- Internal_Set_Default --
-   --------------------------
-
-   procedure Internal_Set_Default
-     (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
-   begin
-      if Is_Parameter (Self) then
-         Matreshka.Internals.Strings.Dereference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Parameter_Default)).String_Value);
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-               MP_CMOF_Parameter_Default)).String_Value := League.Strings.Internals.Internal (To);
-         Matreshka.Internals.Strings.Reference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Parameter_Default)).String_Value);
-
-      elsif Is_Property (Self) then
-         Matreshka.Internals.Strings.Dereference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Default)).String_Value);
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Default)).String_Value := League.Strings.Internals.Internal (To);
-         Matreshka.Internals.Strings.Reference
-          (Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Default)).String_Value);
-      end if;
-   end Internal_Set_Default;
 
    ----------------------------
    -- Internal_Get_Direction --
    ----------------------------
 
    function Internal_Get_Direction
-     (Self : CMOF_Element) return CMOF_Parameter_Direction_Kind
-   is
+    (Self : CMOF_Element) return CMOF_Parameter_Direction_Kind is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Parameter_Direction)).Parameter_Direction_Value;
+      case Elements.Table (Self).Kind is
+         when E_Parameter =>
+            return Elements.Table (Self).Member (12).Parameter_Direction_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Direction;
-
-   ----------------------------
-   -- Internal_Set_Direction --
-   ----------------------------
-
-   procedure Internal_Set_Direction
-     (Self : CMOF_Element;
-      To   : CMOF_Parameter_Direction_Kind) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Parameter_Direction)).Parameter_Direction_Value := To;
-   end Internal_Set_Direction;
 
    ---------------------------------
    -- Internal_Get_Element_Import --
    ---------------------------------
 
    function Internal_Get_Element_Import
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Namespace_Element_Import));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Element_Import;
 
    ---------------------------
@@ -466,15 +697,15 @@ package body Cmof.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_End_Type
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Association_End_Type));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_End_Type;
 
    ------------------------------
@@ -482,44 +713,43 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Enumeration
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Enumeration_Literal_Enumeration)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Enumeration_Literal =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Enumeration;
-
-   ------------------------------
-   -- Internal_Set_Enumeration --
-   ------------------------------
-
-   procedure Internal_Set_Enumeration
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Enumeration_Literal_Enumeration)).Element := To;
-   end Internal_Set_Enumeration;
 
    --------------------------
    -- Internal_Get_Feature --
    --------------------------
 
    function Internal_Get_Feature
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Classifier_Feature));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Feature;
 
    ---------------------------------------
@@ -527,15 +757,18 @@ package body Cmof.Internals.Attributes is
    ---------------------------------------
 
    function Internal_Get_Featuring_Classifier
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Feature_Featuring_Classifier));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Featuring_Classifier;
 
    --------------------------
@@ -543,15 +776,27 @@ package body Cmof.Internals.Attributes is
    --------------------------
 
    function Internal_Get_General
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Classifier_General));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_General;
 
    -----------------------------------
@@ -559,44 +804,49 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Imported_Element
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Element_Import_Imported_Element)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Imported_Element;
-
-   -----------------------------------
-   -- Internal_Set_Imported_Element --
-   -----------------------------------
-
-   procedure Internal_Set_Imported_Element
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Element_Import_Imported_Element)).Element := To;
-   end Internal_Set_Imported_Element;
 
    ----------------------------------
    -- Internal_Get_Imported_Member --
    ----------------------------------
 
    function Internal_Get_Imported_Member
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Namespace_Imported_Member));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Imported_Member;
 
    -----------------------------------
@@ -604,90 +854,62 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Imported_Package
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Import_Imported_Package)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (3).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Imported_Package;
-
-   -----------------------------------
-   -- Internal_Set_Imported_Package --
-   -----------------------------------
-
-   procedure Internal_Set_Imported_Package
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Package_Import_Imported_Package)).Element := To;
-   end Internal_Set_Imported_Package;
 
    --------------------------------------
    -- Internal_Get_Importing_Namespace --
    --------------------------------------
 
    function Internal_Get_Importing_Namespace
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      if Is_Element_Import (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Element_Import_Importing_Namespace)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (5).Element;
 
-      elsif Is_Package_Import (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Package_Import_Importing_Namespace)).Element;
-      end if;
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Importing_Namespace;
-
-   --------------------------------------
-   -- Internal_Set_Importing_Namespace --
-   --------------------------------------
-
-   procedure Internal_Set_Importing_Namespace
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      if Is_Element_Import (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Element_Import_Importing_Namespace)).Element := To;
-
-      elsif Is_Package_Import (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Package_Import_Importing_Namespace)).Element := To;
-      end if;
-   end Internal_Set_Importing_Namespace;
 
    -----------------------------------
    -- Internal_Get_Inherited_Member --
    -----------------------------------
 
    function Internal_Get_Inherited_Member
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Classifier_Inherited_Member));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 12;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 12;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 12;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 12;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 12;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Inherited_Member;
 
    ------------------------------
@@ -695,352 +917,204 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Is_Abstract
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Class_Is_Abstract)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Class =>
+            return Elements.Table (Self).Member (8).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Abstract;
-
-   ------------------------------
-   -- Internal_Set_Is_Abstract --
-   ------------------------------
-
-   procedure Internal_Set_Is_Abstract
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Class_Is_Abstract)).Boolean_Value := To;
-   end Internal_Set_Is_Abstract;
 
    -------------------------------
    -- Internal_Get_Is_Composite --
    -------------------------------
 
    function Internal_Get_Is_Composite
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Property_Is_Composite)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (14).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Composite;
-
-   -------------------------------
-   -- Internal_Set_Is_Composite --
-   -------------------------------
-
-   procedure Internal_Set_Is_Composite
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Property_Is_Composite)).Boolean_Value := To;
-   end Internal_Set_Is_Composite;
 
    -----------------------------
    -- Internal_Get_Is_Derived --
    -----------------------------
 
    function Internal_Get_Is_Derived
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      if Is_Association (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Association_Is_Derived)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (8).Boolean_Value;
 
-      elsif Is_Property (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Property_Is_Derived)).Boolean_Value;
-      end if;
+         when E_Property =>
+            return Elements.Table (Self).Member (15).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Derived;
-
-   -----------------------------
-   -- Internal_Set_Is_Derived --
-   -----------------------------
-
-   procedure Internal_Set_Is_Derived
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      if Is_Association (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Association_Is_Derived)).Boolean_Value := To;
-
-      elsif Is_Property (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Property_Is_Derived)).Boolean_Value := To;
-      end if;
-   end Internal_Set_Is_Derived;
 
    -----------------------------------
    -- Internal_Get_Is_Derived_Union --
    -----------------------------------
 
    function Internal_Get_Is_Derived_Union
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Property_Is_Derived_Union)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (16).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Derived_Union;
-
-   -----------------------------------
-   -- Internal_Set_Is_Derived_Union --
-   -----------------------------------
-
-   procedure Internal_Set_Is_Derived_Union
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Property_Is_Derived_Union)).Boolean_Value := To;
-   end Internal_Set_Is_Derived_Union;
 
    ------------------------------------------
    -- Internal_Get_Is_Final_Specialization --
    ------------------------------------------
 
    function Internal_Get_Is_Final_Specialization
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Classifier_Is_Final_Specialization)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Final_Specialization;
-
-   ------------------------------------------
-   -- Internal_Set_Is_Final_Specialization --
-   ------------------------------------------
-
-   procedure Internal_Set_Is_Final_Specialization
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Classifier_Is_Final_Specialization)).Boolean_Value := To;
-   end Internal_Set_Is_Final_Specialization;
 
    --------------------------
    -- Internal_Get_Is_Leaf --
    --------------------------
 
    function Internal_Get_Is_Leaf
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Redefinable_Element_Is_Leaf)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (6).Boolean_Value;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (6).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Leaf;
-
-   --------------------------
-   -- Internal_Set_Is_Leaf --
-   --------------------------
-
-   procedure Internal_Set_Is_Leaf
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Redefinable_Element_Is_Leaf)).Boolean_Value := To;
-   end Internal_Set_Is_Leaf;
 
    -----------------------------
    -- Internal_Get_Is_Ordered --
    -----------------------------
 
    function Internal_Get_Is_Ordered
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      if Is_Multiplicity_Element (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Multiplicity_Element_Is_Ordered)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (8).Boolean_Value;
 
-      elsif Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Is_Ordered)).Boolean_Value;
-      end if;
+         when E_Parameter =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Ordered;
-
-   -----------------------------
-   -- Internal_Set_Is_Ordered --
-   -----------------------------
-
-   procedure Internal_Set_Is_Ordered
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      if Is_Multiplicity_Element (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Multiplicity_Element_Is_Ordered)).Boolean_Value := To;
-
-      elsif Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Is_Ordered)).Boolean_Value := To;
-      end if;
-   end Internal_Set_Is_Ordered;
 
    ---------------------------
    -- Internal_Get_Is_Query --
    ---------------------------
 
    function Internal_Get_Is_Query
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Operation_Is_Query)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (7).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Query;
-
-   ---------------------------
-   -- Internal_Set_Is_Query --
-   ---------------------------
-
-   procedure Internal_Set_Is_Query
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Operation_Is_Query)).Boolean_Value := To;
-   end Internal_Set_Is_Query;
 
    -------------------------------
    -- Internal_Get_Is_Read_Only --
    -------------------------------
 
    function Internal_Get_Is_Read_Only
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Property_Is_Read_Only)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (12).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Read_Only;
-
-   -------------------------------
-   -- Internal_Set_Is_Read_Only --
-   -------------------------------
-
-   procedure Internal_Set_Is_Read_Only
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Property_Is_Read_Only)).Boolean_Value := To;
-   end Internal_Set_Is_Read_Only;
 
    ----------------------------
    -- Internal_Get_Is_Unique --
    ----------------------------
 
    function Internal_Get_Is_Unique
-     (Self : CMOF_Element) return Boolean
-   is
+    (Self : CMOF_Element) return Boolean is
    begin
-      if Is_Multiplicity_Element (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Multiplicity_Element_Is_Unique)).Boolean_Value;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (9).Boolean_Value;
 
-      elsif Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Is_Unique)).Boolean_Value;
-      end if;
+         when E_Parameter =>
+            return Elements.Table (Self).Member (8).Boolean_Value;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (8).Boolean_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Is_Unique;
-
-   ----------------------------
-   -- Internal_Set_Is_Unique --
-   ----------------------------
-
-   procedure Internal_Set_Is_Unique
-     (Self : CMOF_Element;
-      To   : Boolean) is
-   begin
-      if Is_Multiplicity_Element (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Multiplicity_Element_Is_Unique)).Boolean_Value := To;
-
-      elsif Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Is_Unique)).Boolean_Value := To;
-      end if;
-   end Internal_Set_Is_Unique;
 
    ---------------------------
    -- Internal_Get_Language --
    ---------------------------
 
    function Internal_Get_Language
-     (Self : CMOF_Element) return Collection_Of_CMOF_String
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_String is
    begin
-      return
-0;
+      case Elements.Table (Self).Kind is
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (8).String_Collection_Value;
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Language;
 
    ------------------------
@@ -1048,61 +1122,55 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Lower
-     (Self : CMOF_Element) return Integer
-   is
+    (Self : CMOF_Element) return AMF.Optional_Integer is
    begin
-      if Is_Multiplicity_Element (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Multiplicity_Element_Lower)).Integer_Value;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (10).Integer_Holder_Value;
 
-      elsif Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Lower)).Integer_Value;
-      end if;
+         when E_Parameter =>
+            return Elements.Table (Self).Member (9).Integer_Holder_Value;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (9).Integer_Holder_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Lower;
-
-   ------------------------
-   -- Internal_Set_Lower --
-   ------------------------
-
-   procedure Internal_Set_Lower
-     (Self : CMOF_Element;
-      To   : Integer) is
-   begin
-      if Is_Multiplicity_Element (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Multiplicity_Element_Lower)).Integer_Value := To;
-
-      elsif Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Lower)).Integer_Value := To;
-      end if;
-   end Internal_Set_Lower;
 
    -------------------------
    -- Internal_Get_Member --
    -------------------------
 
    function Internal_Get_Member
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Namespace_Member));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Member;
 
    -----------------------------
@@ -1110,15 +1178,15 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Member_End
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Association_Member_End));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 16;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Member_End;
 
    ---------------------------------
@@ -1126,83 +1194,223 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Merged_Package
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Merge_Merged_Package)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (3).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Merged_Package;
-
-   ---------------------------------
-   -- Internal_Set_Merged_Package --
-   ---------------------------------
-
-   procedure Internal_Set_Merged_Package
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Package_Merge_Merged_Package)).Element := To;
-   end Internal_Set_Merged_Package;
 
    -----------------------
    -- Internal_Get_Name --
    -----------------------
 
    function Internal_Get_Name
-     (Self : CMOF_Element) return League.Strings.Universal_String
-   is
+    (Self : CMOF_Element) return AMF.Optional_String is
    begin
-      return
-        League.Strings.Internals.Create
-         (Elements.Table (Self).Member
-           (Member_Offset
-             (Elements.Table (Self).Kind,
-              MP_CMOF_Named_Element_Name)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Class =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Constraint =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Data_Type =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Enumeration =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Enumeration_Literal =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Expression =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Opaque_Expression =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Operation =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Package =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Parameter =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Primitive_Type =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when E_Property =>
+            if Elements.Table (Self).Member (2).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (2).String_Value));
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Name;
-
-   -----------------------
-   -- Internal_Set_Name --
-   -----------------------
-
-   procedure Internal_Set_Name
-     (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
-   begin
-      Matreshka.Internals.Strings.Dereference
-       (Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Named_Element_Name)).String_Value);
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-            MP_CMOF_Named_Element_Name)).String_Value := League.Strings.Internals.Internal (To);
-      Matreshka.Internals.Strings.Reference
-       (Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Named_Element_Name)).String_Value);
-   end Internal_Set_Name;
 
    ----------------------------
    -- Internal_Get_Namespace --
    ----------------------------
 
    function Internal_Get_Namespace
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Named_Element_Namespace)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Constraint =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Enumeration_Literal =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Expression =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Parameter =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (4).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Namespace;
 
    --------------------------------------
@@ -1210,15 +1418,15 @@ package body Cmof.Internals.Attributes is
    --------------------------------------
 
    function Internal_Get_Navigable_Owned_End
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Association_Navigable_Owned_End));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 17;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Navigable_Owned_End;
 
    ---------------------------------
@@ -1226,15 +1434,15 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Nested_Package
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Package_Nested_Package));
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Nested_Package;
 
    ----------------------------------
@@ -1242,44 +1450,31 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Nesting_Package
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Nesting_Package)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Nesting_Package;
-
-   ----------------------------------
-   -- Internal_Set_Nesting_Package --
-   ----------------------------------
-
-   procedure Internal_Set_Nesting_Package
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Package_Nesting_Package)).Element := To;
-   end Internal_Set_Nesting_Package;
 
    --------------------------
    -- Internal_Get_Operand --
    --------------------------
 
    function Internal_Get_Operand
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Expression_Operand));
+      case Elements.Table (Self).Kind is
+         when E_Expression =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Operand;
 
    ----------------------------
@@ -1287,43 +1482,31 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Operation
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Parameter_Operation)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Parameter =>
+            return Elements.Table (Self).Member (13).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Operation;
-
-   ----------------------------
-   -- Internal_Set_Operation --
-   ----------------------------
-
-   procedure Internal_Set_Operation
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Parameter_Operation)).Element := To;
-   end Internal_Set_Operation;
 
    ---------------------------
    -- Internal_Get_Opposite --
    ---------------------------
 
    function Internal_Get_Opposite
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Property_Opposite)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (19).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Opposite;
 
    ----------------------------------
@@ -1331,25 +1514,24 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Attribute
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      if Is_Class (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Class_Owned_Attribute));
+      case Elements.Table (Self).Kind is
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 13;
 
-      elsif Is_Data_Type (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Data_Type_Owned_Attribute));
-      end if;
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 13;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 13;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 13;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Attribute;
 
    --------------------------------
@@ -1357,15 +1539,63 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Comment
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Element_Owned_Comment));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Comment =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Constraint =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Enumeration_Literal =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Expression =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Parameter =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Comment;
 
    --------------------------------
@@ -1373,15 +1603,63 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Element
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Element_Owned_Element));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Comment =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Constraint =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Enumeration_Literal =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Expression =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Parameter =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Element;
 
    ----------------------------
@@ -1389,15 +1667,15 @@ package body Cmof.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Owned_End
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Association_Owned_End));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 14;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_End;
 
    --------------------------------
@@ -1405,15 +1683,15 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Owned_Literal
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Enumeration_Owned_Literal));
+      case Elements.Table (Self).Kind is
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Literal;
 
    -------------------------------
@@ -1421,15 +1699,33 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Owned_Member
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Namespace_Owned_Member));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Member;
 
    ----------------------------------
@@ -1437,25 +1733,24 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Operation
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      if Is_Class (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Class_Owned_Operation));
+      case Elements.Table (Self).Kind is
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 14;
 
-      elsif Is_Data_Type (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Data_Type_Owned_Operation));
-      end if;
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 14;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 14;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 14;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Operation;
 
    ----------------------------------
@@ -1463,25 +1758,15 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Owned_Parameter
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      if Is_Behavioral_Feature (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Behavioral_Feature_Owned_Parameter));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 12;
 
-      elsif Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Operation_Owned_Parameter));
-      end if;
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Parameter;
 
    -----------------------------
@@ -1489,15 +1774,33 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Rule
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Namespace_Owned_Rule));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Rule;
 
    -----------------------------
@@ -1505,15 +1808,15 @@ package body Cmof.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Owned_Type
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Package_Owned_Type));
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 10;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Type;
 
    ------------------------
@@ -1521,14 +1824,63 @@ package body Cmof.Internals.Attributes is
    ------------------------
 
    function Internal_Get_Owner
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Element_Owner)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Comment =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Constraint =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Enumeration_Literal =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Expression =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Parameter =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owner;
 
    -------------------------------------
@@ -1536,73 +1888,77 @@ package body Cmof.Internals.Attributes is
    -------------------------------------
 
    function Internal_Get_Owning_Association
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Property_Owning_Association)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (18).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owning_Association;
-
-   -------------------------------------
-   -- Internal_Set_Owning_Association --
-   -------------------------------------
-
-   procedure Internal_Set_Owning_Association
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Property_Owning_Association)).Element := To;
-   end Internal_Set_Owning_Association;
 
    --------------------------
    -- Internal_Get_Package --
    --------------------------
 
    function Internal_Get_Package
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Type_Package)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Package;
-
-   --------------------------
-   -- Internal_Set_Package --
-   --------------------------
-
-   procedure Internal_Set_Package
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Type_Package)).Element := To;
-   end Internal_Set_Package;
 
    ---------------------------------
    -- Internal_Get_Package_Import --
    ---------------------------------
 
    function Internal_Get_Package_Import
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Namespace_Package_Import));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 8;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Package_Import;
 
    --------------------------------
@@ -1610,15 +1966,15 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Package_Merge
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Package_Package_Merge));
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 12;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Package_Merge;
 
    -----------------------------------
@@ -1626,15 +1982,15 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Packaged_Element
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Package_Packaged_Element));
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            return Elements.Table (Self).Member (0).Collection + 9;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Packaged_Element;
 
    --------------------------------
@@ -1642,15 +1998,15 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Postcondition
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Operation_Postcondition));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 16;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Postcondition;
 
    -------------------------------
@@ -1658,15 +2014,15 @@ package body Cmof.Internals.Attributes is
    -------------------------------
 
    function Internal_Get_Precondition
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Operation_Precondition));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Precondition;
 
    ---------------------------------
@@ -1674,15 +2030,155 @@ package body Cmof.Internals.Attributes is
    ---------------------------------
 
    function Internal_Get_Qualified_Name
-     (Self : CMOF_Element) return League.Strings.Universal_String
-   is
+    (Self : CMOF_Element) return AMF.Optional_String is
    begin
-      return
-        League.Strings.Internals.Create
-         (Elements.Table (Self).Member
-           (Member_Offset
-             (Elements.Table (Self).Kind,
-              MP_CMOF_Named_Element_Qualified_Name)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Class =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Constraint =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Data_Type =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Enumeration =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Enumeration_Literal =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Expression =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Opaque_Expression =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Operation =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Package =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Parameter =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Primitive_Type =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when E_Property =>
+            if Elements.Table (Self).Member (5).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (5).String_Value));
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Qualified_Name;
 
    -----------------------------------
@@ -1690,25 +2186,15 @@ package body Cmof.Internals.Attributes is
    -----------------------------------
 
    function Internal_Get_Raised_Exception
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      if Is_Behavioral_Feature (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Behavioral_Feature_Raised_Exception));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 13;
 
-      elsif Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member (0).Collection
-             + Collection_Of_CMOF_Element
-                (Collection_Offset
-                  (Elements.Table (Self).Kind,
-                   MP_CMOF_Operation_Raised_Exception));
-      end if;
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Raised_Exception;
 
    ------------------------------------
@@ -1716,44 +2202,34 @@ package body Cmof.Internals.Attributes is
    ------------------------------------
 
    function Internal_Get_Receiving_Package
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Merge_Receiving_Package)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (2).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Receiving_Package;
-
-   ------------------------------------
-   -- Internal_Set_Receiving_Package --
-   ------------------------------------
-
-   procedure Internal_Set_Receiving_Package
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Package_Merge_Receiving_Package)).Element := To;
-   end Internal_Set_Receiving_Package;
 
    ------------------------------------
    -- Internal_Get_Redefined_Element --
    ------------------------------------
 
    function Internal_Get_Redefined_Element
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Redefinable_Element_Redefined_Element));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefined_Element;
 
    --------------------------------------
@@ -1761,15 +2237,15 @@ package body Cmof.Internals.Attributes is
    --------------------------------------
 
    function Internal_Get_Redefined_Operation
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Operation_Redefined_Operation));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 14;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefined_Operation;
 
    -------------------------------------
@@ -1777,15 +2253,15 @@ package body Cmof.Internals.Attributes is
    -------------------------------------
 
    function Internal_Get_Redefined_Property
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Property_Redefined_Property));
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 6;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefined_Property;
 
    ---------------------------------------
@@ -1793,15 +2269,18 @@ package body Cmof.Internals.Attributes is
    ---------------------------------------
 
    function Internal_Get_Redefinition_Context
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Redefinable_Element_Redefinition_Context));
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefinition_Context;
 
    ----------------------------------
@@ -1809,15 +2288,24 @@ package body Cmof.Internals.Attributes is
    ----------------------------------
 
    function Internal_Get_Related_Element
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Relationship_Related_Element));
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (0).Collection + 13;
+
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Related_Element;
 
    -------------------------
@@ -1825,15 +2313,21 @@ package body Cmof.Internals.Attributes is
    -------------------------
 
    function Internal_Get_Source
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Directed_Relationship_Source));
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Source;
 
    --------------------------------
@@ -1841,44 +2335,31 @@ package body Cmof.Internals.Attributes is
    --------------------------------
 
    function Internal_Get_Specification
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Constraint_Specification)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Constraint =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Specification;
-
-   --------------------------------
-   -- Internal_Set_Specification --
-   --------------------------------
-
-   procedure Internal_Set_Specification
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-          MP_CMOF_Constraint_Specification)).Element := To;
-   end Internal_Set_Specification;
 
    -------------------------------------
    -- Internal_Get_Subsetted_Property --
    -------------------------------------
 
    function Internal_Get_Subsetted_Property
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Property_Subsetted_Property));
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 7;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Subsetted_Property;
 
    ------------------------------
@@ -1886,15 +2367,15 @@ package body Cmof.Internals.Attributes is
    ------------------------------
 
    function Internal_Get_Super_Class
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Class_Super_Class));
+      case Elements.Table (Self).Kind is
+         when E_Class =>
+            return Elements.Table (Self).Member (0).Collection + 11;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Super_Class;
 
    -------------------------
@@ -1902,15 +2383,21 @@ package body Cmof.Internals.Attributes is
    -------------------------
 
    function Internal_Get_Target
-     (Self : CMOF_Element) return Collection_Of_CMOF_Element
-   is
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
    begin
-      return
-        Elements.Table (Self).Member (0).Collection
-          + Collection_Of_CMOF_Element
-             (Collection_Offset
-               (Elements.Table (Self).Kind,
-                MP_CMOF_Directed_Relationship_Target));
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when E_Package_Merge =>
+            return Elements.Table (Self).Member (0).Collection + 5;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Target;
 
    -----------------------
@@ -1918,172 +2405,1177 @@ package body Cmof.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Type
-     (Self : CMOF_Element) return CMOF_Element
-   is
+    (Self : CMOF_Element) return CMOF_Element is
    begin
-      if Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Type)).Element;
+      case Elements.Table (Self).Kind is
+         when E_Expression =>
+            return Elements.Table (Self).Member (6).Element;
 
-      elsif Is_Typed_Element (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Typed_Element_Type)).Element;
-      end if;
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (14).Element;
+
+         when E_Parameter =>
+            return Elements.Table (Self).Member (6).Element;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (11).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Type;
-
-   -----------------------
-   -- Internal_Set_Type --
-   -----------------------
-
-   procedure Internal_Set_Type
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      if Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Type)).Element := To;
-
-      elsif Is_Typed_Element (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Typed_Element_Type)).Element := To;
-      end if;
-   end Internal_Set_Type;
 
    ------------------------
    -- Internal_Get_Upper --
    ------------------------
 
    function Internal_Get_Upper
-     (Self : CMOF_Element) return AMF.Unlimited_Natural
-   is
+    (Self : CMOF_Element) return AMF.Optional_Unlimited_Natural is
    begin
-      if Is_Multiplicity_Element (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Multiplicity_Element_Upper)).Natural_Value;
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            return Elements.Table (Self).Member (11).Natural_Holder_Value;
 
-      elsif Is_Operation (Self) then
-         return
-           Elements.Table (Self).Member
-            (Member_Offset
-              (Elements.Table (Self).Kind,
-               MP_CMOF_Operation_Upper)).Natural_Value;
-      end if;
+         when E_Parameter =>
+            return Elements.Table (Self).Member (10).Natural_Holder_Value;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (10).Natural_Holder_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Upper;
-
-   ------------------------
-   -- Internal_Set_Upper --
-   ------------------------
-
-   procedure Internal_Set_Upper
-     (Self : CMOF_Element;
-      To   : AMF.Unlimited_Natural) is
-   begin
-      if Is_Multiplicity_Element (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Multiplicity_Element_Upper)).Natural_Value := To;
-
-      elsif Is_Operation (Self) then
-         Elements.Table (Self).Member
-          (Member_Offset
-            (Elements.Table (Self).Kind,
-             MP_CMOF_Operation_Upper)).Natural_Value := To;
-      end if;
-   end Internal_Set_Upper;
-
-   -----------------------------
-   -- Internal_Get_Visibility --
-   -----------------------------
-
-   function Internal_Get_Visibility
-     (Self : CMOF_Element) return CMOF_Element
-   is
-   begin
-      if Is_Element_Import (Self) then
-         return
-           0;
-
-      elsif Is_Named_Element (Self) then
-         return
-           0;
-
-      elsif Is_Package_Import (Self) then
-         return
-           0;
-      end if;
-   end Internal_Get_Visibility;
-
-   -----------------------------
-   -- Internal_Set_Visibility --
-   -----------------------------
-
-   procedure Internal_Set_Visibility
-     (Self : CMOF_Element;
-      To   : CMOF_Element) is
-   begin
-      if Is_Element_Import (Self) then
-         null;
-
-      elsif Is_Named_Element (Self) then
-         null;
-
-      elsif Is_Package_Import (Self) then
-         null;
-      end if;
-   end Internal_Set_Visibility;
 
    ----------------------
    -- Internal_Get_Uri --
    ----------------------
 
    function Internal_Get_Uri
-     (Self : CMOF_Element) return League.Strings.Universal_String
-   is
+    (Self : CMOF_Element) return AMF.Optional_String is
    begin
-      return
-        League.Strings.Internals.Create
-         (Elements.Table (Self).Member
-           (Member_Offset
-             (Elements.Table (Self).Kind,
-              MP_CMOF_Package_Uri)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            if Elements.Table (Self).Member (7).String_Value = null then
+               return (Is_Empty => True);
+
+            else
+               return
+                (False,
+                 League.Strings.Internals.Create
+                  (Elements.Table (Self).Member (7).String_Value));
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Uri;
+
+   -----------------------------
+   -- Internal_Get_Visibility --
+   -----------------------------
+
+   function Internal_Get_Visibility
+    (Self : CMOF_Element) return CMOF_Visibility_Kind is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            return Elements.Table (Self).Member (2).Visibility_Value;
+
+         when E_Package_Import =>
+            return Elements.Table (Self).Member (2).Visibility_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Visibility;
+
+   -----------------------------
+   -- Internal_Get_Visibility --
+   -----------------------------
+
+   function Internal_Get_Visibility
+    (Self : CMOF_Element) return AMF.CMOF.Optional_CMOF_Visibility_Kind is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Class =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Constraint =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Data_Type =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Enumeration =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Enumeration_Literal =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Expression =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Opaque_Expression =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Operation =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Package =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Parameter =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Primitive_Type =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when E_Property =>
+            return Elements.Table (Self).Member (3).Visibility_Holder_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Visibility;
+
+   ------------------------
+   -- Internal_Set_Alias --
+   ------------------------
+
+   procedure Internal_Set_Alias
+    (Self : CMOF_Element;
+     To   : AMF.Optional_String) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            if Elements.Table (Self).Member (3).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (3).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (3).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (3).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (3).String_Value);
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Alias;
+
+   ------------------------------
+   -- Internal_Set_Association --
+   ------------------------------
+
+   procedure Internal_Set_Association
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            Elements.Table (Self).Member (21).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Association;
+
+   -----------------------
+   -- Internal_Set_Body --
+   -----------------------
+
+   procedure Internal_Set_Body
+    (Self : CMOF_Element;
+     To   : AMF.Optional_String) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Comment =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Body;
+
+   ---------------------------------
+   -- Internal_Set_Body_Condition --
+   ---------------------------------
+
+   procedure Internal_Set_Body_Condition
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (15).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Body_Condition;
+
+   ------------------------
+   -- Internal_Set_Class --
+   ------------------------
+
+   procedure Internal_Set_Class
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (12).Element := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (17).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Class;
+
+   --------------------------
+   -- Internal_Set_Context --
+   --------------------------
+
+   procedure Internal_Set_Context
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Constraint =>
+            Elements.Table (Self).Member (7).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Context;
+
+   ---------------------------
+   -- Internal_Set_Datatype --
+   ---------------------------
+
+   procedure Internal_Set_Datatype
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (13).Element := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (20).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Datatype;
+
+   --------------------------
+   -- Internal_Set_Default --
+   --------------------------
+
+   procedure Internal_Set_Default
+    (Self : CMOF_Element;
+     To   : AMF.Optional_String) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Parameter =>
+            if Elements.Table (Self).Member (11).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (11).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (11).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (11).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (11).String_Value);
+            end if;
+
+         when E_Property =>
+            if Elements.Table (Self).Member (13).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (13).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (13).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (13).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (13).String_Value);
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Default;
+
+   ----------------------------
+   -- Internal_Set_Direction --
+   ----------------------------
+
+   procedure Internal_Set_Direction
+    (Self : CMOF_Element;
+     To   : CMOF_Parameter_Direction_Kind) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Parameter =>
+            Elements.Table (Self).Member (12).Parameter_Direction_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Direction;
+
+   ------------------------------
+   -- Internal_Set_Enumeration --
+   ------------------------------
+
+   procedure Internal_Set_Enumeration
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Enumeration_Literal =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Enumeration;
+
+   -----------------------------------
+   -- Internal_Set_Imported_Element --
+   -----------------------------------
+
+   procedure Internal_Set_Imported_Element
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            Elements.Table (Self).Member (4).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Imported_Element;
+
+   -----------------------------------
+   -- Internal_Set_Imported_Package --
+   -----------------------------------
+
+   procedure Internal_Set_Imported_Package
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Package_Import =>
+            Elements.Table (Self).Member (3).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Imported_Package;
+
+   --------------------------------------
+   -- Internal_Set_Importing_Namespace --
+   --------------------------------------
+
+   procedure Internal_Set_Importing_Namespace
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            Elements.Table (Self).Member (5).Element := To;
+
+         when E_Package_Import =>
+            Elements.Table (Self).Member (4).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Importing_Namespace;
+
+   ------------------------------
+   -- Internal_Set_Is_Abstract --
+   ------------------------------
+
+   procedure Internal_Set_Is_Abstract
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Class =>
+            Elements.Table (Self).Member (8).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Abstract;
+
+   -------------------------------
+   -- Internal_Set_Is_Composite --
+   -------------------------------
+
+   procedure Internal_Set_Is_Composite
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            Elements.Table (Self).Member (14).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Composite;
+
+   -----------------------------
+   -- Internal_Set_Is_Derived --
+   -----------------------------
+
+   procedure Internal_Set_Is_Derived
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            Elements.Table (Self).Member (8).Boolean_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (15).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Derived;
+
+   -----------------------------------
+   -- Internal_Set_Is_Derived_Union --
+   -----------------------------------
+
+   procedure Internal_Set_Is_Derived_Union
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            Elements.Table (Self).Member (16).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Derived_Union;
+
+   ------------------------------------------
+   -- Internal_Set_Is_Final_Specialization --
+   ------------------------------------------
+
+   procedure Internal_Set_Is_Final_Specialization
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when E_Class =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when E_Data_Type =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when E_Enumeration =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when E_Primitive_Type =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Final_Specialization;
+
+   --------------------------
+   -- Internal_Set_Is_Leaf --
+   --------------------------
+
+   procedure Internal_Set_Is_Leaf
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (6).Boolean_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (6).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Leaf;
+
+   -----------------------------
+   -- Internal_Set_Is_Ordered --
+   -----------------------------
+
+   procedure Internal_Set_Is_Ordered
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (8).Boolean_Value := To;
+
+         when E_Parameter =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Ordered;
+
+   ---------------------------
+   -- Internal_Set_Is_Query --
+   ---------------------------
+
+   procedure Internal_Set_Is_Query
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (7).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Query;
+
+   -------------------------------
+   -- Internal_Set_Is_Read_Only --
+   -------------------------------
+
+   procedure Internal_Set_Is_Read_Only
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            Elements.Table (Self).Member (12).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Read_Only;
+
+   ----------------------------
+   -- Internal_Set_Is_Unique --
+   ----------------------------
+
+   procedure Internal_Set_Is_Unique
+    (Self : CMOF_Element;
+     To   : Boolean) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (9).Boolean_Value := To;
+
+         when E_Parameter =>
+            Elements.Table (Self).Member (8).Boolean_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (8).Boolean_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Is_Unique;
+
+   ------------------------
+   -- Internal_Set_Lower --
+   ------------------------
+
+   procedure Internal_Set_Lower
+    (Self : CMOF_Element;
+     To   : AMF.Optional_Integer) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (10).Integer_Holder_Value := To;
+
+         when E_Parameter =>
+            Elements.Table (Self).Member (9).Integer_Holder_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (9).Integer_Holder_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Lower;
+
+   ---------------------------------
+   -- Internal_Set_Merged_Package --
+   ---------------------------------
+
+   procedure Internal_Set_Merged_Package
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Package_Merge =>
+            Elements.Table (Self).Member (3).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Merged_Package;
+
+   -----------------------
+   -- Internal_Set_Name --
+   -----------------------
+
+   procedure Internal_Set_Name
+    (Self : CMOF_Element;
+     To   : AMF.Optional_String) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Class =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Constraint =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Data_Type =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Enumeration =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Enumeration_Literal =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Expression =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Opaque_Expression =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Operation =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Package =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Parameter =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Primitive_Type =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when E_Property =>
+            if Elements.Table (Self).Member (2).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (2).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (2).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (2).String_Value);
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Name;
+
+   ----------------------------------
+   -- Internal_Set_Nesting_Package --
+   ----------------------------------
+
+   procedure Internal_Set_Nesting_Package
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Nesting_Package;
+
+   ----------------------------
+   -- Internal_Set_Operation --
+   ----------------------------
+
+   procedure Internal_Set_Operation
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Parameter =>
+            Elements.Table (Self).Member (13).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Operation;
+
+   ---------------------------
+   -- Internal_Set_Opposite --
+   ---------------------------
+
+   procedure Internal_Set_Opposite
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            Elements.Table (Self).Member (19).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Opposite;
+
+   -------------------------------------
+   -- Internal_Set_Owning_Association --
+   -------------------------------------
+
+   procedure Internal_Set_Owning_Association
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Property =>
+            Elements.Table (Self).Member (18).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Owning_Association;
+
+   --------------------------
+   -- Internal_Set_Package --
+   --------------------------
+
+   procedure Internal_Set_Package
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Class =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Data_Type =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Enumeration =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Primitive_Type =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Package;
+
+   ------------------------------------
+   -- Internal_Set_Receiving_Package --
+   ------------------------------------
+
+   procedure Internal_Set_Receiving_Package
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Package_Merge =>
+            Elements.Table (Self).Member (2).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Receiving_Package;
+
+   --------------------------------
+   -- Internal_Set_Specification --
+   --------------------------------
+
+   procedure Internal_Set_Specification
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Constraint =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Specification;
+
+   -----------------------
+   -- Internal_Set_Type --
+   -----------------------
+
+   procedure Internal_Set_Type
+    (Self : CMOF_Element;
+     To   : CMOF_Element) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Expression =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Opaque_Expression =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Operation =>
+            Elements.Table (Self).Member (14).Element := To;
+
+         when E_Parameter =>
+            Elements.Table (Self).Member (6).Element := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (11).Element := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Type;
+
+   ------------------------
+   -- Internal_Set_Upper --
+   ------------------------
+
+   procedure Internal_Set_Upper
+    (Self : CMOF_Element;
+     To   : AMF.Optional_Unlimited_Natural) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Operation =>
+            Elements.Table (Self).Member (11).Natural_Holder_Value := To;
+
+         when E_Parameter =>
+            Elements.Table (Self).Member (10).Natural_Holder_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (10).Natural_Holder_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Upper;
 
    ----------------------
    -- Internal_Set_Uri --
    ----------------------
 
    procedure Internal_Set_Uri
-     (Self : CMOF_Element;
-      To   : League.Strings.Universal_String) is
+    (Self : CMOF_Element;
+     To   : AMF.Optional_String) is
    begin
-      Matreshka.Internals.Strings.Dereference
-       (Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Uri)).String_Value);
-      Elements.Table (Self).Member
-       (Member_Offset
-         (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Uri)).String_Value := League.Strings.Internals.Internal (To);
-      Matreshka.Internals.Strings.Reference
-       (Elements.Table (Self).Member
-         (Member_Offset
-           (Elements.Table (Self).Kind,
-            MP_CMOF_Package_Uri)).String_Value);
+      case Elements.Table (Self).Kind is
+         when E_Package =>
+            if Elements.Table (Self).Member (7).String_Value /= null then
+               Matreshka.Internals.Strings.Dereference
+                (Elements.Table (Self).Member (7).String_Value);
+            end if;
+
+            if To.Is_Empty then
+               Elements.Table (Self).Member (7).String_Value := null;
+
+            else
+               Elements.Table (Self).Member (7).String_Value :=
+                 League.Strings.Internals.Internal (To.Value);
+               Matreshka.Internals.Strings.Reference
+                (Elements.Table (Self).Member (7).String_Value);
+            end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Set_Uri;
 
-end Cmof.Internals.Attributes;
+   -----------------------------
+   -- Internal_Set_Visibility --
+   -----------------------------
+
+   procedure Internal_Set_Visibility
+    (Self : CMOF_Element;
+     To   : CMOF_Visibility_Kind) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Element_Import =>
+            Elements.Table (Self).Member (2).Visibility_Value := To;
+
+         when E_Package_Import =>
+            Elements.Table (Self).Member (2).Visibility_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Visibility;
+
+   -----------------------------
+   -- Internal_Set_Visibility --
+   -----------------------------
+
+   procedure Internal_Set_Visibility
+    (Self : CMOF_Element;
+     To   : AMF.CMOF.Optional_CMOF_Visibility_Kind) is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Association =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Class =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Constraint =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Data_Type =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Enumeration =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Enumeration_Literal =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Expression =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Opaque_Expression =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Operation =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Package =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Parameter =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Primitive_Type =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when E_Property =>
+            Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Visibility;
+
+end CMOF.Internals.Attributes;

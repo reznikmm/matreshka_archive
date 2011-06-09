@@ -534,18 +534,20 @@ package body Generator.Constructors is
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
+         Put_Line ("      Internal_Append (Extent, Self);");
          Put_Line ("   end " & Name & ';');
       end Generate_Initialize;
 
    begin
       Put_Header;
-
+      Put_Line ("with Cmof.Internals.Extents;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Constructors is");
       New_Line;
+      Put_Line ("   use Cmof.Internals.Extents;");
       Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use CMOF.Internals.Types;");
       Class_Info.Iterate (Generate_Create'Access);

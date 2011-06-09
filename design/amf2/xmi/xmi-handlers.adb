@@ -163,7 +163,8 @@ package body XMI.Handlers is
          if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
             Self.Current.Set
              (Property,
-              Self.Factory.Create_From_String (Get_Type (Property), Value));
+              Self.Factory.Create_From_String
+               (Get_Type (Property), Get_Lower (Property) = 0, Value));
 
          else
             Association := Get_Association (Property);
@@ -382,7 +383,9 @@ package body XMI.Handlers is
                   Self.Current.Set
                    (Self.Attribute,
                     Self.Factory.Create_From_String
-                     (Get_Type (Self.Attribute), Self.Text));
+                     (Get_Type (Self.Attribute),
+                      Get_Lower (Self.Attribute) = 0,
+                      Self.Text));
 
                else
                   Put_Line
