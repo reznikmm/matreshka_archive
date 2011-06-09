@@ -223,14 +223,15 @@ package body Generator.Initialization is
 
             elsif Has_Integer_Type (Property) then
                if Get_Lower (Property) = 0 then
-                  Put_Line
+                  Put
                    ("   Internal_Set_"
                       & To_Ada_Identifier (Get_Name (Property))
                       & " (");
                   Put (Numbers.Element (Element), Width => 0);
-                  Put
+                  Put_Line
                    (", (False,"
-                      & Integer'Wide_Wide_Image (Value.Integer_Value)
+                      & Integer'Wide_Wide_Image
+                         (Value.Optional_Integer_Value.Value)
                       & "));");
 
                else
@@ -246,14 +247,14 @@ package body Generator.Initialization is
                   Put (Numbers.Element (Element), Width => 0);
                   Put (", ");
 
-                  if Value.Unlimited_Natural_Value.Unlimited then
+                  if Value.Optional_Unlimited_Natural_Value.Value.Unlimited then
                      Put_Line ("(False, (Unlimited => True)));");
 
                   else
                      Put_Line
                       ("(False, (False,"
                          & Integer'Wide_Wide_Image
-                            (Value.Unlimited_Natural_Value.Value)
+                            (Value.Optional_Unlimited_Natural_Value.Value.Value)
                          & ")));");
                   end if;
 
@@ -262,30 +263,31 @@ package body Generator.Initialization is
                end if;
 
             elsif Has_String_Type (Property) then
-               if Get_Name (Property)
-                    = League.Strings.To_Universal_String ("qualifiedName")
-               then
-                  --  XXX Special exception, must be configurable.
-
-                  null;
-
-               elsif Value.Kind /= AMF.Values.Value_String then
-                  Put_Line (Standard_Error, "Invalid string value");
+               if Value.Kind /= AMF.Values.Value_Optional_String then
+                  Put_Line
+                   (Standard_Error,
+                    Get_Name (Property).To_Wide_Wide_String
+                      & ": Invalid string value");
 
                elsif Is_Multivalued (Property) then
-                  Put_Line (Standard_Error, "Multivalued string value");
+                  Put_Line
+                   (Standard_Error,
+                    Get_Name (Property).To_Wide_Wide_String
+                      & ": Multivalued string value");
 
                elsif Get_Lower (Property) = 0 then
-                  Put_Line
-                   ("   Internal_Set_"
-                      & To_Ada_Identifier (Get_Name (Property)));
-                  Put ("    (");
-                  Put (Numbers.Element (Element), Width => 0);
-                  Put_Line (",");
-                  Put_Line
-                   ("     (False, League.Strings.To_Universal_String ("""
-                      & Value.String_Value.To_Wide_Wide_String
-                      & """)));");
+                  if not Value.Optional_String_Value.Is_Empty then
+                     Put_Line
+                      ("   Internal_Set_"
+                         & To_Ada_Identifier (Get_Name (Property)));
+                     Put ("    (");
+                     Put (Numbers.Element (Element), Width => 0);
+                     Put_Line (",");
+                     Put_Line
+                      ("     (False, League.Strings.To_Universal_String ("""
+                         & Value.Optional_String_Value.Value.To_Wide_Wide_String
+                         & """)));");
+                  end if;
 
                else
                   raise Program_Error;

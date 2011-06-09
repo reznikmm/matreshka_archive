@@ -74,9 +74,6 @@ begin
     (135,
      (False, League.Strings.To_Universal_String ("A_relatedElement_relationship")));
    Initialize_Property (182, Extent);
-   Internal_Set_Default
-    (182,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (182, False);
    Internal_Set_Is_Derived (182, False);
    Internal_Set_Is_Derived_Union (182, False);
@@ -84,8 +81,8 @@ begin
    Internal_Set_Is_Ordered (182, False);
    Internal_Set_Is_Read_Only (182, False);
    Internal_Set_Is_Unique (182, True);
-   Internal_Set_Lower (
-182, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (182, (False, 0));
+   Internal_Set_Name
     (182,
      (False, League.Strings.To_Universal_String ("relationship")));
    Internal_Set_Upper (182, (False, (Unlimited => True)));
@@ -96,9 +93,6 @@ begin
     (136,
      (False, League.Strings.To_Universal_String ("A_source_directedRelationship")));
    Initialize_Property (183, Extent);
-   Internal_Set_Default
-    (183,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (183, False);
    Internal_Set_Is_Derived (183, False);
    Internal_Set_Is_Derived_Union (183, False);
@@ -106,8 +100,8 @@ begin
    Internal_Set_Is_Ordered (183, False);
    Internal_Set_Is_Read_Only (183, False);
    Internal_Set_Is_Unique (183, True);
-   Internal_Set_Lower (
-183, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (183, (False, 0));
+   Internal_Set_Name
     (183,
      (False, League.Strings.To_Universal_String ("directedRelationship")));
    Internal_Set_Upper (183, (False, (Unlimited => True)));
@@ -118,9 +112,6 @@ begin
     (138,
      (False, League.Strings.To_Universal_String ("A_target_directedRelationship")));
    Initialize_Property (184, Extent);
-   Internal_Set_Default
-    (184,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (184, False);
    Internal_Set_Is_Derived (184, False);
    Internal_Set_Is_Derived_Union (184, False);
@@ -128,8 +119,8 @@ begin
    Internal_Set_Is_Ordered (184, False);
    Internal_Set_Is_Read_Only (184, False);
    Internal_Set_Is_Unique (184, True);
-   Internal_Set_Lower (
-184, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (184, (False, 0));
+   Internal_Set_Name
     (184,
      (False, League.Strings.To_Universal_String ("directedRelationship")));
    Internal_Set_Upper (184, (False, (Unlimited => True)));
@@ -140,9 +131,6 @@ begin
     (140,
      (False, League.Strings.To_Universal_String ("A_redefinitionContext_redefinableElement")));
    Initialize_Property (185, Extent);
-   Internal_Set_Default
-    (185,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (185, False);
    Internal_Set_Is_Derived (185, False);
    Internal_Set_Is_Derived_Union (185, False);
@@ -150,8 +138,8 @@ begin
    Internal_Set_Is_Ordered (185, False);
    Internal_Set_Is_Read_Only (185, False);
    Internal_Set_Is_Unique (185, True);
-   Internal_Set_Lower (
-185, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (185, (False, 0));
+   Internal_Set_Name
     (185,
      (False, League.Strings.To_Universal_String ("redefinableElement")));
    Internal_Set_Upper (185, (False, (Unlimited => True)));
@@ -162,9 +150,6 @@ begin
     (143,
      (False, League.Strings.To_Universal_String ("A_redefinedElement_redefinableElement")));
    Initialize_Property (186, Extent);
-   Internal_Set_Default
-    (186,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (186, False);
    Internal_Set_Is_Derived (186, False);
    Internal_Set_Is_Derived_Union (186, False);
@@ -172,8 +157,8 @@ begin
    Internal_Set_Is_Ordered (186, False);
    Internal_Set_Is_Read_Only (186, False);
    Internal_Set_Is_Unique (186, True);
-   Internal_Set_Lower (
-186, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (186, (False, 0));
+   Internal_Set_Name
     (186,
      (False, League.Strings.To_Universal_String ("redefinableElement")));
    Internal_Set_Upper (186, (False, (Unlimited => True)));
@@ -190,9 +175,6 @@ begin
     (147,
      (False, League.Strings.To_Universal_String ("A_constrainedElement_constraint")));
    Initialize_Property (187, Extent);
-   Internal_Set_Default
-    (187,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (187, False);
    Internal_Set_Is_Derived (187, False);
    Internal_Set_Is_Derived_Union (187, False);
@@ -200,8 +182,8 @@ begin
    Internal_Set_Is_Ordered (187, False);
    Internal_Set_Is_Read_Only (187, False);
    Internal_Set_Is_Unique (187, True);
-   Internal_Set_Lower (
-187, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (187, (False, 0));
+   Internal_Set_Name
     (187,
      (False, League.Strings.To_Universal_String ("constraint")));
    Internal_Set_Upper (187, (False, (Unlimited => True)));
@@ -212,9 +194,6 @@ begin
     (149,
      (False, League.Strings.To_Universal_String ("A_specification_owningConstraint")));
    Initialize_Property (188, Extent);
-   Internal_Set_Default
-    (188,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (188, False);
    Internal_Set_Is_Derived (188, False);
    Internal_Set_Is_Derived_Union (188, False);
@@ -222,8 +201,8 @@ begin
    Internal_Set_Is_Ordered (188, False);
    Internal_Set_Is_Read_Only (188, False);
    Internal_Set_Is_Unique (188, True);
-   Internal_Set_Lower (
-188, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (188, (False, 0));
+   Internal_Set_Name
     (188,
      (False, League.Strings.To_Universal_String ("owningConstraint")));
    Internal_Set_Upper (188, (False, (False, 1)));
@@ -234,9 +213,6 @@ begin
     (151,
      (False, League.Strings.To_Universal_String ("A_general_classifier")));
    Initialize_Property (189, Extent);
-   Internal_Set_Default
-    (189,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (189, False);
    Internal_Set_Is_Derived (189, False);
    Internal_Set_Is_Derived_Union (189, False);
@@ -244,8 +220,8 @@ begin
    Internal_Set_Is_Ordered (189, False);
    Internal_Set_Is_Read_Only (189, False);
    Internal_Set_Is_Unique (189, True);
-   Internal_Set_Lower (
-189, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (189, (False, 0));
+   Internal_Set_Name
     (189,
      (False, League.Strings.To_Universal_String ("classifier")));
    Internal_Set_Upper (189, (False, (Unlimited => True)));
@@ -262,9 +238,6 @@ begin
     (154,
      (False, League.Strings.To_Universal_String ("A_member_namespace")));
    Initialize_Property (190, Extent);
-   Internal_Set_Default
-    (190,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (190, False);
    Internal_Set_Is_Derived (190, False);
    Internal_Set_Is_Derived_Union (190, False);
@@ -272,8 +245,8 @@ begin
    Internal_Set_Is_Ordered (190, False);
    Internal_Set_Is_Read_Only (190, False);
    Internal_Set_Is_Unique (190, True);
-   Internal_Set_Lower (
-190, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (190, (False, 0));
+   Internal_Set_Name
     (190,
      (False, League.Strings.To_Universal_String ("namespace")));
    Internal_Set_Upper (190, (False, (Unlimited => True)));
@@ -284,9 +257,6 @@ begin
     (156,
      (False, League.Strings.To_Universal_String ("A_operand_expression")));
    Initialize_Property (191, Extent);
-   Internal_Set_Default
-    (191,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (191, False);
    Internal_Set_Is_Derived (191, False);
    Internal_Set_Is_Derived_Union (191, False);
@@ -294,8 +264,8 @@ begin
    Internal_Set_Is_Ordered (191, False);
    Internal_Set_Is_Read_Only (191, False);
    Internal_Set_Is_Unique (191, True);
-   Internal_Set_Lower (
-191, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (191, (False, 0));
+   Internal_Set_Name
     (191,
      (False, League.Strings.To_Universal_String ("expression")));
    Internal_Set_Upper (191, (False, (False, 1)));
@@ -306,9 +276,6 @@ begin
     (159,
      (False, League.Strings.To_Universal_String ("A_navigableOwnedEnd_association")));
    Initialize_Property (192, Extent);
-   Internal_Set_Default
-    (192,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (192, False);
    Internal_Set_Is_Derived (192, False);
    Internal_Set_Is_Derived_Union (192, False);
@@ -316,8 +283,8 @@ begin
    Internal_Set_Is_Ordered (192, False);
    Internal_Set_Is_Read_Only (192, False);
    Internal_Set_Is_Unique (192, True);
-   Internal_Set_Lower (
-192, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (192, (False, 0));
+   Internal_Set_Name
     (192,
      (False, League.Strings.To_Universal_String ("association")));
    Internal_Set_Upper (192, (False, (False, 1)));
@@ -334,9 +301,6 @@ begin
     (163,
      (False, League.Strings.To_Universal_String ("A_ownedComment_owningElement")));
    Initialize_Property (193, Extent);
-   Internal_Set_Default
-    (193,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (193, False);
    Internal_Set_Is_Derived (193, False);
    Internal_Set_Is_Derived_Union (193, False);
@@ -344,8 +308,8 @@ begin
    Internal_Set_Is_Ordered (193, False);
    Internal_Set_Is_Read_Only (193, False);
    Internal_Set_Is_Unique (193, True);
-   Internal_Set_Lower (
-193, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (193, (False, 0));
+   Internal_Set_Name
     (193,
      (False, League.Strings.To_Universal_String ("owningElement")));
    Internal_Set_Upper (193, (False, (False, 1)));
@@ -356,9 +320,6 @@ begin
     (165,
      (False, League.Strings.To_Universal_String ("A_inheritedMember_classifier")));
    Initialize_Property (194, Extent);
-   Internal_Set_Default
-    (194,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (194, False);
    Internal_Set_Is_Derived (194, False);
    Internal_Set_Is_Derived_Union (194, False);
@@ -366,8 +327,8 @@ begin
    Internal_Set_Is_Ordered (194, False);
    Internal_Set_Is_Read_Only (194, False);
    Internal_Set_Is_Unique (194, True);
-   Internal_Set_Lower (
-194, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (194, (False, 0));
+   Internal_Set_Name
     (194,
      (False, League.Strings.To_Universal_String ("classifier")));
    Internal_Set_Upper (194, (False, (Unlimited => True)));
@@ -378,9 +339,6 @@ begin
     (167,
      (False, League.Strings.To_Universal_String ("A_precondition_preContext")));
    Initialize_Property (195, Extent);
-   Internal_Set_Default
-    (195,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (195, False);
    Internal_Set_Is_Derived (195, False);
    Internal_Set_Is_Derived_Union (195, False);
@@ -388,8 +346,8 @@ begin
    Internal_Set_Is_Ordered (195, False);
    Internal_Set_Is_Read_Only (195, False);
    Internal_Set_Is_Unique (195, True);
-   Internal_Set_Lower (
-195, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (195, (False, 0));
+   Internal_Set_Name
     (195,
      (False, League.Strings.To_Universal_String ("preContext")));
    Internal_Set_Upper (195, (False, (False, 1)));
@@ -400,9 +358,6 @@ begin
     (169,
      (False, League.Strings.To_Universal_String ("A_postcondition_postContext")));
    Initialize_Property (196, Extent);
-   Internal_Set_Default
-    (196,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (196, False);
    Internal_Set_Is_Derived (196, False);
    Internal_Set_Is_Derived_Union (196, False);
@@ -410,8 +365,8 @@ begin
    Internal_Set_Is_Ordered (196, False);
    Internal_Set_Is_Read_Only (196, False);
    Internal_Set_Is_Unique (196, True);
-   Internal_Set_Lower (
-196, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (196, (False, 0));
+   Internal_Set_Name
     (196,
      (False, League.Strings.To_Universal_String ("postContext")));
    Internal_Set_Upper (196, (False, (False, 1)));
@@ -422,9 +377,6 @@ begin
     (171,
      (False, League.Strings.To_Universal_String ("A_bodyCondition_bodyContext")));
    Initialize_Property (197, Extent);
-   Internal_Set_Default
-    (197,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (197, False);
    Internal_Set_Is_Derived (197, False);
    Internal_Set_Is_Derived_Union (197, False);
@@ -432,8 +384,8 @@ begin
    Internal_Set_Is_Ordered (197, False);
    Internal_Set_Is_Read_Only (197, False);
    Internal_Set_Is_Unique (197, True);
-   Internal_Set_Lower (
-197, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (197, (False, 0));
+   Internal_Set_Name
     (197,
      (False, League.Strings.To_Universal_String ("bodyContext")));
    Internal_Set_Upper (197, (False, (False, 1)));
@@ -505,9 +457,6 @@ begin
     (209,
      (False, League.Strings.To_Universal_String ("Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.")));
    Initialize_Opaque_Expression (210, Extent);
-   Internal_Set_Name
-    (210,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (211, Extent);
    Internal_Set_Name
     (211,
@@ -517,13 +466,7 @@ begin
     (212,
      (False, League.Strings.To_Universal_String ("A classifier may only specialize classifiers of a valid type.")));
    Initialize_Opaque_Expression (213, Extent);
-   Internal_Set_Name
-    (213,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (42, Extent);
-   Internal_Set_Default
-    (42,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (42, False);
    Internal_Set_Is_Derived (42, True);
    Internal_Set_Is_Derived_Union (42, True);
@@ -531,8 +474,8 @@ begin
    Internal_Set_Is_Ordered (42, False);
    Internal_Set_Is_Read_Only (42, True);
    Internal_Set_Is_Unique (42, True);
-   Internal_Set_Lower (
-42, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (42, (False, 0));
+   Internal_Set_Name
     (42,
      (False, League.Strings.To_Universal_String ("attribute")));
    Internal_Set_Upper (42, (False, (Unlimited => True)));
@@ -541,9 +484,6 @@ begin
     (214,
      (False, League.Strings.To_Universal_String ("Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.")));
    Initialize_Property (43, Extent);
-   Internal_Set_Default
-    (43,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (43, False);
    Internal_Set_Is_Derived (43, True);
    Internal_Set_Is_Derived_Union (43, True);
@@ -551,8 +491,8 @@ begin
    Internal_Set_Is_Ordered (43, False);
    Internal_Set_Is_Read_Only (43, True);
    Internal_Set_Is_Unique (43, True);
-   Internal_Set_Lower (
-43, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (43, (False, 0));
+   Internal_Set_Name
     (43,
      (False, League.Strings.To_Universal_String ("feature")));
    Internal_Set_Upper (43, (False, (Unlimited => True)));
@@ -561,9 +501,6 @@ begin
     (215,
      (False, League.Strings.To_Universal_String ("Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.")));
    Initialize_Property (44, Extent);
-   Internal_Set_Default
-    (44,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (44, False);
    Internal_Set_Is_Derived (44, False);
    Internal_Set_Is_Derived_Union (44, False);
@@ -571,8 +508,8 @@ begin
    Internal_Set_Is_Ordered (44, False);
    Internal_Set_Is_Read_Only (44, False);
    Internal_Set_Is_Unique (44, True);
-   Internal_Set_Lower (
-44, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (44, (False, 0));
+   Internal_Set_Name
     (44,
      (False, League.Strings.To_Universal_String ("general")));
    Internal_Set_Upper (44, (False, (Unlimited => True)));
@@ -581,9 +518,6 @@ begin
     (216,
      (False, League.Strings.To_Universal_String ("References the general classifier in the Generalization relationship.")));
    Initialize_Property (45, Extent);
-   Internal_Set_Default
-    (45,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (45, False);
    Internal_Set_Is_Derived (45, True);
    Internal_Set_Is_Derived_Union (45, False);
@@ -591,8 +525,8 @@ begin
    Internal_Set_Is_Ordered (45, False);
    Internal_Set_Is_Read_Only (45, True);
    Internal_Set_Is_Unique (45, True);
-   Internal_Set_Lower (
-45, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (45, (False, 0));
+   Internal_Set_Name
     (45,
      (False, League.Strings.To_Universal_String ("inheritedMember")));
    Internal_Set_Upper (45, (False, (Unlimited => True)));
@@ -611,8 +545,8 @@ begin
    Internal_Set_Is_Ordered (79, False);
    Internal_Set_Is_Read_Only (79, False);
    Internal_Set_Is_Unique (79, True);
-   Internal_Set_Lower (
-79, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (79, (False, 1));
+   Internal_Set_Name
     (79,
      (False, League.Strings.To_Universal_String ("isFinalSpecialization")));
    Internal_Set_Upper (79, (False, (False, 1)));
@@ -625,8 +559,8 @@ begin
    Internal_Set_Is_Ordered (219, False);
    Internal_Set_Is_Query (219, True);
    Internal_Set_Is_Unique (219, True);
-   Internal_Set_Lower (
-219, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (219, (False, 1));
+   Internal_Set_Name
     (219,
      (False, League.Strings.To_Universal_String ("conformsTo")));
    Internal_Set_Upper (219, (False, (False, 1)));
@@ -639,30 +573,18 @@ begin
     (221,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (222, Extent);
-   Internal_Set_Name
-    (222,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (223, Extent);
-   Internal_Set_Default
-    (223,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (223, Return_Direction);
    Internal_Set_Is_Ordered (223, False);
    Internal_Set_Is_Unique (223, True);
-   Internal_Set_Lower (
-223, (False, 1));   Internal_Set_Name
-    (223,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (223, (False, 1));
    Internal_Set_Upper (223, (False, (False, 1)));
    Initialize_Parameter (224, Extent);
-   Internal_Set_Default
-    (224,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (224, In_Direction);
    Internal_Set_Is_Ordered (224, False);
    Internal_Set_Is_Unique (224, True);
-   Internal_Set_Lower (
-224, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (224, (False, 1));
+   Internal_Set_Name
     (224,
      (False, League.Strings.To_Universal_String ("other")));
    Internal_Set_Upper (224, (False, (False, 1)));
@@ -671,8 +593,8 @@ begin
    Internal_Set_Is_Ordered (225, False);
    Internal_Set_Is_Query (225, True);
    Internal_Set_Is_Unique (225, True);
-   Internal_Set_Lower (
-225, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (225, (False, 1));
+   Internal_Set_Name
     (225,
      (False, League.Strings.To_Universal_String ("allFeatures")));
    Internal_Set_Upper (225, (False, (False, 1)));
@@ -685,28 +607,19 @@ begin
     (227,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (228, Extent);
-   Internal_Set_Name
-    (228,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (229, Extent);
-   Internal_Set_Default
-    (229,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (229, Return_Direction);
    Internal_Set_Is_Ordered (229, False);
    Internal_Set_Is_Unique (229, True);
-   Internal_Set_Lower (
-229, (False, 0));   Internal_Set_Name
-    (229,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (229, (False, 0));
    Internal_Set_Upper (229, (False, (Unlimited => True)));
    Initialize_Operation (230, Extent);
    Internal_Set_Is_Leaf (230, False);
    Internal_Set_Is_Ordered (230, False);
    Internal_Set_Is_Query (230, True);
    Internal_Set_Is_Unique (230, True);
-   Internal_Set_Lower (
-230, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (230, (False, 1));
+   Internal_Set_Name
     (230,
      (False, League.Strings.To_Universal_String ("general")));
    Internal_Set_Upper (230, (False, (False, 1)));
@@ -719,28 +632,19 @@ begin
     (232,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (233, Extent);
-   Internal_Set_Name
-    (233,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (234, Extent);
-   Internal_Set_Default
-    (234,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (234, Return_Direction);
    Internal_Set_Is_Ordered (234, False);
    Internal_Set_Is_Unique (234, True);
-   Internal_Set_Lower (
-234, (False, 0));   Internal_Set_Name
-    (234,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (234, (False, 0));
    Internal_Set_Upper (234, (False, (Unlimited => True)));
    Initialize_Operation (235, Extent);
    Internal_Set_Is_Leaf (235, False);
    Internal_Set_Is_Ordered (235, False);
    Internal_Set_Is_Query (235, True);
    Internal_Set_Is_Unique (235, True);
-   Internal_Set_Lower (
-235, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (235, (False, 1));
+   Internal_Set_Name
     (235,
      (False, League.Strings.To_Universal_String ("parents")));
    Internal_Set_Upper (235, (False, (False, 1)));
@@ -753,28 +657,19 @@ begin
     (237,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (238, Extent);
-   Internal_Set_Name
-    (238,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (239, Extent);
-   Internal_Set_Default
-    (239,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (239, Return_Direction);
    Internal_Set_Is_Ordered (239, False);
    Internal_Set_Is_Unique (239, True);
-   Internal_Set_Lower (
-239, (False, 0));   Internal_Set_Name
-    (239,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (239, (False, 0));
    Internal_Set_Upper (239, (False, (Unlimited => True)));
    Initialize_Operation (240, Extent);
    Internal_Set_Is_Leaf (240, False);
    Internal_Set_Is_Ordered (240, False);
    Internal_Set_Is_Query (240, True);
    Internal_Set_Is_Unique (240, True);
-   Internal_Set_Lower (
-240, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (240, (False, 1));
+   Internal_Set_Name
     (240,
      (False, League.Strings.To_Universal_String ("inheritedMember")));
    Internal_Set_Upper (240, (False, (False, 1)));
@@ -787,28 +682,19 @@ begin
     (242,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (243, Extent);
-   Internal_Set_Name
-    (243,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (244, Extent);
-   Internal_Set_Default
-    (244,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (244, Return_Direction);
    Internal_Set_Is_Ordered (244, False);
    Internal_Set_Is_Unique (244, True);
-   Internal_Set_Lower (
-244, (False, 0));   Internal_Set_Name
-    (244,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (244, (False, 0));
    Internal_Set_Upper (244, (False, (Unlimited => True)));
    Initialize_Operation (245, Extent);
    Internal_Set_Is_Leaf (245, False);
    Internal_Set_Is_Ordered (245, False);
    Internal_Set_Is_Query (245, True);
    Internal_Set_Is_Unique (245, True);
-   Internal_Set_Lower (
-245, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (245, (False, 1));
+   Internal_Set_Name
     (245,
      (False, League.Strings.To_Universal_String ("allParents")));
    Internal_Set_Upper (245, (False, (False, 1)));
@@ -821,28 +707,19 @@ begin
     (247,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (248, Extent);
-   Internal_Set_Name
-    (248,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (249, Extent);
-   Internal_Set_Default
-    (249,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (249, Return_Direction);
    Internal_Set_Is_Ordered (249, False);
    Internal_Set_Is_Unique (249, True);
-   Internal_Set_Lower (
-249, (False, 0));   Internal_Set_Name
-    (249,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (249, (False, 0));
    Internal_Set_Upper (249, (False, (Unlimited => True)));
    Initialize_Operation (250, Extent);
    Internal_Set_Is_Leaf (250, False);
    Internal_Set_Is_Ordered (250, False);
    Internal_Set_Is_Query (250, True);
    Internal_Set_Is_Unique (250, True);
-   Internal_Set_Lower (
-250, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (250, (False, 1));
+   Internal_Set_Name
     (250,
      (False, League.Strings.To_Universal_String ("inheritableMembers")));
    Internal_Set_Upper (250, (False, (False, 1)));
@@ -851,42 +728,24 @@ begin
     (251,
      (False, League.Strings.To_Universal_String ("The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.")));
    Initialize_Constraint (252, Extent);
-   Internal_Set_Name
-    (252,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (253, Extent);
-   Internal_Set_Name
-    (253,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (254, Extent);
    Internal_Set_Name
     (254,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (255, Extent);
-   Internal_Set_Name
-    (255,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (256, Extent);
-   Internal_Set_Default
-    (256,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (256, Return_Direction);
    Internal_Set_Is_Ordered (256, False);
    Internal_Set_Is_Unique (256, True);
-   Internal_Set_Lower (
-256, (False, 0));   Internal_Set_Name
-    (256,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (256, (False, 0));
    Internal_Set_Upper (256, (False, (Unlimited => True)));
    Initialize_Parameter (257, Extent);
-   Internal_Set_Default
-    (257,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (257, In_Direction);
    Internal_Set_Is_Ordered (257, False);
    Internal_Set_Is_Unique (257, True);
-   Internal_Set_Lower (
-257, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (257, (False, 1));
+   Internal_Set_Name
     (257,
      (False, League.Strings.To_Universal_String ("c")));
    Internal_Set_Upper (257, (False, (False, 1)));
@@ -895,8 +754,8 @@ begin
    Internal_Set_Is_Ordered (258, False);
    Internal_Set_Is_Query (258, True);
    Internal_Set_Is_Unique (258, True);
-   Internal_Set_Lower (
-258, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (258, (False, 1));
+   Internal_Set_Name
     (258,
      (False, League.Strings.To_Universal_String ("hasVisibilityOf")));
    Internal_Set_Upper (258, (False, (False, 1)));
@@ -905,42 +764,24 @@ begin
     (259,
      (False, League.Strings.To_Universal_String ("The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.")));
    Initialize_Constraint (260, Extent);
-   Internal_Set_Name
-    (260,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (261, Extent);
-   Internal_Set_Name
-    (261,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (262, Extent);
    Internal_Set_Name
     (262,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (263, Extent);
-   Internal_Set_Name
-    (263,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (264, Extent);
-   Internal_Set_Default
-    (264,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (264, Return_Direction);
    Internal_Set_Is_Ordered (264, False);
    Internal_Set_Is_Unique (264, True);
-   Internal_Set_Lower (
-264, (False, 1));   Internal_Set_Name
-    (264,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (264, (False, 1));
    Internal_Set_Upper (264, (False, (False, 1)));
    Initialize_Parameter (265, Extent);
-   Internal_Set_Default
-    (265,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (265, In_Direction);
    Internal_Set_Is_Ordered (265, False);
    Internal_Set_Is_Unique (265, True);
-   Internal_Set_Lower (
-265, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (265, (False, 1));
+   Internal_Set_Name
     (265,
      (False, League.Strings.To_Universal_String ("n")));
    Internal_Set_Upper (265, (False, (False, 1)));
@@ -949,8 +790,8 @@ begin
    Internal_Set_Is_Ordered (266, False);
    Internal_Set_Is_Query (266, True);
    Internal_Set_Is_Unique (266, True);
-   Internal_Set_Lower (
-266, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (266, (False, 1));
+   Internal_Set_Name
     (266,
      (False, League.Strings.To_Universal_String ("inherit")));
    Internal_Set_Upper (266, (False, (False, 1)));
@@ -963,30 +804,18 @@ begin
     (268,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (269, Extent);
-   Internal_Set_Name
-    (269,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (270, Extent);
-   Internal_Set_Default
-    (270,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (270, Return_Direction);
    Internal_Set_Is_Ordered (270, False);
    Internal_Set_Is_Unique (270, True);
-   Internal_Set_Lower (
-270, (False, 0));   Internal_Set_Name
-    (270,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (270, (False, 0));
    Internal_Set_Upper (270, (False, (Unlimited => True)));
    Initialize_Parameter (271, Extent);
-   Internal_Set_Default
-    (271,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (271, In_Direction);
    Internal_Set_Is_Ordered (271, False);
    Internal_Set_Is_Unique (271, True);
-   Internal_Set_Lower (
-271, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (271, (False, 0));
+   Internal_Set_Name
     (271,
      (False, League.Strings.To_Universal_String ("inhs")));
    Internal_Set_Upper (271, (False, (Unlimited => True)));
@@ -995,8 +824,8 @@ begin
    Internal_Set_Is_Ordered (272, False);
    Internal_Set_Is_Query (272, True);
    Internal_Set_Is_Unique (272, True);
-   Internal_Set_Lower (
-272, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (272, (False, 1));
+   Internal_Set_Name
     (272,
      (False, League.Strings.To_Universal_String ("maySpecializeType")));
    Internal_Set_Upper (272, (False, (False, 1)));
@@ -1009,30 +838,18 @@ begin
     (274,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (275, Extent);
-   Internal_Set_Name
-    (275,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (276, Extent);
-   Internal_Set_Default
-    (276,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (276, Return_Direction);
    Internal_Set_Is_Ordered (276, False);
    Internal_Set_Is_Unique (276, True);
-   Internal_Set_Lower (
-276, (False, 1));   Internal_Set_Name
-    (276,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (276, (False, 1));
    Internal_Set_Upper (276, (False, (False, 1)));
    Initialize_Parameter (277, Extent);
-   Internal_Set_Default
-    (277,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (277, In_Direction);
    Internal_Set_Is_Ordered (277, False);
    Internal_Set_Is_Unique (277, True);
-   Internal_Set_Lower (
-277, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (277, (False, 1));
+   Internal_Set_Name
     (277,
      (False, League.Strings.To_Universal_String ("c")));
    Internal_Set_Upper (277, (False, (False, 1)));
@@ -1047,9 +864,6 @@ begin
     (278,
      (False, League.Strings.To_Universal_String ("A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.")));
    Initialize_Property (50, Extent);
-   Internal_Set_Default
-    (50,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (50, False);
    Internal_Set_Is_Derived (50, True);
    Internal_Set_Is_Derived_Union (50, True);
@@ -1057,8 +871,8 @@ begin
    Internal_Set_Is_Ordered (50, False);
    Internal_Set_Is_Read_Only (50, True);
    Internal_Set_Is_Unique (50, True);
-   Internal_Set_Lower (
-50, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (50, (False, 1));
+   Internal_Set_Name
     (50,
      (False, League.Strings.To_Universal_String ("source")));
    Internal_Set_Upper (50, (False, (Unlimited => True)));
@@ -1067,9 +881,6 @@ begin
     (279,
      (False, League.Strings.To_Universal_String ("Specifies the sources of the DirectedRelationship.")));
    Initialize_Property (51, Extent);
-   Internal_Set_Default
-    (51,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (51, False);
    Internal_Set_Is_Derived (51, True);
    Internal_Set_Is_Derived_Union (51, True);
@@ -1077,8 +888,8 @@ begin
    Internal_Set_Is_Ordered (51, False);
    Internal_Set_Is_Read_Only (51, True);
    Internal_Set_Is_Unique (51, True);
-   Internal_Set_Lower (
-51, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (51, (False, 1));
+   Internal_Set_Name
     (51,
      (False, League.Strings.To_Universal_String ("target")));
    Internal_Set_Upper (51, (False, (Unlimited => True)));
@@ -1105,9 +916,6 @@ begin
     (283,
      (False, League.Strings.To_Universal_String ("An element may not directly or indirectly own itself.")));
    Initialize_Opaque_Expression (284, Extent);
-   Internal_Set_Name
-    (284,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (285, Extent);
    Internal_Set_Name
     (285,
@@ -1117,13 +925,7 @@ begin
     (286,
      (False, League.Strings.To_Universal_String ("Elements that must be owned must have an owner.")));
    Initialize_Opaque_Expression (287, Extent);
-   Internal_Set_Name
-    (287,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (53, Extent);
-   Internal_Set_Default
-    (53,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (53, True);
    Internal_Set_Is_Derived (53, True);
    Internal_Set_Is_Derived_Union (53, True);
@@ -1131,8 +933,8 @@ begin
    Internal_Set_Is_Ordered (53, False);
    Internal_Set_Is_Read_Only (53, True);
    Internal_Set_Is_Unique (53, True);
-   Internal_Set_Lower (
-53, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (53, (False, 0));
+   Internal_Set_Name
     (53,
      (False, League.Strings.To_Universal_String ("ownedElement")));
    Internal_Set_Upper (53, (False, (Unlimited => True)));
@@ -1141,9 +943,6 @@ begin
     (288,
      (False, League.Strings.To_Universal_String ("The Elements owned by this element.")));
    Initialize_Property (83, Extent);
-   Internal_Set_Default
-    (83,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (83, False);
    Internal_Set_Is_Derived (83, True);
    Internal_Set_Is_Derived_Union (83, True);
@@ -1151,8 +950,8 @@ begin
    Internal_Set_Is_Ordered (83, False);
    Internal_Set_Is_Read_Only (83, True);
    Internal_Set_Is_Unique (83, True);
-   Internal_Set_Lower (
-83, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (83, (False, 0));
+   Internal_Set_Name
     (83,
      (False, League.Strings.To_Universal_String ("owner")));
    Internal_Set_Upper (83, (False, (False, 1)));
@@ -1161,9 +960,6 @@ begin
     (289,
      (False, League.Strings.To_Universal_String ("The Element that owns this element.")));
    Initialize_Property (52, Extent);
-   Internal_Set_Default
-    (52,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (52, True);
    Internal_Set_Is_Derived (52, False);
    Internal_Set_Is_Derived_Union (52, False);
@@ -1171,8 +967,8 @@ begin
    Internal_Set_Is_Ordered (52, False);
    Internal_Set_Is_Read_Only (52, False);
    Internal_Set_Is_Unique (52, True);
-   Internal_Set_Lower (
-52, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (52, (False, 0));
+   Internal_Set_Name
     (52,
      (False, League.Strings.To_Universal_String ("ownedComment")));
    Internal_Set_Upper (52, (False, (Unlimited => True)));
@@ -1185,8 +981,8 @@ begin
    Internal_Set_Is_Ordered (291, False);
    Internal_Set_Is_Query (291, True);
    Internal_Set_Is_Unique (291, True);
-   Internal_Set_Lower (
-291, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (291, (False, 1));
+   Internal_Set_Name
     (291,
      (False, League.Strings.To_Universal_String ("allOwnedElements")));
    Internal_Set_Upper (291, (False, (False, 1)));
@@ -1199,28 +995,19 @@ begin
     (293,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (294, Extent);
-   Internal_Set_Name
-    (294,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (295, Extent);
-   Internal_Set_Default
-    (295,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (295, Return_Direction);
    Internal_Set_Is_Ordered (295, False);
    Internal_Set_Is_Unique (295, True);
-   Internal_Set_Lower (
-295, (False, 0));   Internal_Set_Name
-    (295,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (295, (False, 0));
    Internal_Set_Upper (295, (False, (Unlimited => True)));
    Initialize_Operation (296, Extent);
    Internal_Set_Is_Leaf (296, False);
    Internal_Set_Is_Ordered (296, False);
    Internal_Set_Is_Query (296, True);
    Internal_Set_Is_Unique (296, True);
-   Internal_Set_Lower (
-296, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (296, (False, 1));
+   Internal_Set_Name
     (296,
      (False, League.Strings.To_Universal_String ("mustBeOwned")));
    Internal_Set_Upper (296, (False, (False, 1)));
@@ -1233,20 +1020,11 @@ begin
     (298,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (299, Extent);
-   Internal_Set_Name
-    (299,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (300, Extent);
-   Internal_Set_Default
-    (300,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (300, Return_Direction);
    Internal_Set_Is_Ordered (300, False);
    Internal_Set_Is_Unique (300, True);
-   Internal_Set_Lower (
-300, (False, 1));   Internal_Set_Name
-    (300,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (300, (False, 1));
    Internal_Set_Upper (300, (False, (False, 1)));
    Initialize_Class (14, Extent);
    Internal_Set_Is_Abstract (14, True);
@@ -1259,9 +1037,6 @@ begin
     (301,
      (False, League.Strings.To_Universal_String ("A feature declares a behavioral or structural characteristic of instances of classifiers.")));
    Initialize_Property (56, Extent);
-   Internal_Set_Default
-    (56,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (56, False);
    Internal_Set_Is_Derived (56, True);
    Internal_Set_Is_Derived_Union (56, True);
@@ -1269,8 +1044,8 @@ begin
    Internal_Set_Is_Ordered (56, False);
    Internal_Set_Is_Read_Only (56, True);
    Internal_Set_Is_Unique (56, True);
-   Internal_Set_Lower (
-56, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (56, (False, 0));
+   Internal_Set_Name
     (56,
      (False, League.Strings.To_Universal_String ("featuringClassifier")));
    Internal_Set_Upper (56, (False, (Unlimited => True)));
@@ -1297,9 +1072,6 @@ begin
     (305,
      (False, League.Strings.To_Universal_String ("The upper bound must be greater than or equal to the lower bound.")));
    Initialize_Opaque_Expression (306, Extent);
-   Internal_Set_Name
-    (306,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (307, Extent);
    Internal_Set_Name
     (307,
@@ -1309,9 +1081,6 @@ begin
     (308,
      (False, League.Strings.To_Universal_String ("The lower bound must be a non-negative integer literal.")));
    Initialize_Opaque_Expression (309, Extent);
-   Internal_Set_Name
-    (309,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (89, Extent);
    Internal_Set_Default
     (89,
@@ -1323,8 +1092,8 @@ begin
    Internal_Set_Is_Ordered (89, False);
    Internal_Set_Is_Read_Only (89, False);
    Internal_Set_Is_Unique (89, True);
-   Internal_Set_Lower (
-89, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (89, (False, 1));
+   Internal_Set_Name
     (89,
      (False, League.Strings.To_Universal_String ("isOrdered")));
    Internal_Set_Upper (89, (False, (False, 1)));
@@ -1343,8 +1112,8 @@ begin
    Internal_Set_Is_Ordered (90, False);
    Internal_Set_Is_Read_Only (90, False);
    Internal_Set_Is_Unique (90, True);
-   Internal_Set_Lower (
-90, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (90, (False, 1));
+   Internal_Set_Name
     (90,
      (False, League.Strings.To_Universal_String ("isUnique")));
    Internal_Set_Upper (90, (False, (False, 1)));
@@ -1363,8 +1132,8 @@ begin
    Internal_Set_Is_Ordered (91, False);
    Internal_Set_Is_Read_Only (91, False);
    Internal_Set_Is_Unique (91, True);
-   Internal_Set_Lower (
-91, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (91, (False, 0));
+   Internal_Set_Name
     (91,
      (False, League.Strings.To_Universal_String ("lower")));
    Internal_Set_Upper (91, (False, (False, 1)));
@@ -1383,8 +1152,8 @@ begin
    Internal_Set_Is_Ordered (92, False);
    Internal_Set_Is_Read_Only (92, False);
    Internal_Set_Is_Unique (92, True);
-   Internal_Set_Lower (
-92, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (92, (False, 0));
+   Internal_Set_Name
     (92,
      (False, League.Strings.To_Universal_String ("upper")));
    Internal_Set_Upper (92, (False, (False, 1)));
@@ -1397,8 +1166,8 @@ begin
    Internal_Set_Is_Ordered (314, False);
    Internal_Set_Is_Query (314, True);
    Internal_Set_Is_Unique (314, True);
-   Internal_Set_Lower (
-314, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (314, (False, 1));
+   Internal_Set_Name
     (314,
      (False, League.Strings.To_Universal_String ("isMultivalued")));
    Internal_Set_Upper (314, (False, (False, 1)));
@@ -1407,40 +1176,25 @@ begin
     (315,
      (False, League.Strings.To_Universal_String ("The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.")));
    Initialize_Constraint (316, Extent);
-   Internal_Set_Name
-    (316,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (317, Extent);
-   Internal_Set_Name
-    (317,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (318, Extent);
    Internal_Set_Name
     (318,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (319, Extent);
-   Internal_Set_Name
-    (319,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (320, Extent);
-   Internal_Set_Default
-    (320,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (320, Return_Direction);
    Internal_Set_Is_Ordered (320, False);
    Internal_Set_Is_Unique (320, True);
-   Internal_Set_Lower (
-320, (False, 1));   Internal_Set_Name
-    (320,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (320, (False, 1));
    Internal_Set_Upper (320, (False, (False, 1)));
    Initialize_Operation (321, Extent);
    Internal_Set_Is_Leaf (321, False);
    Internal_Set_Is_Ordered (321, False);
    Internal_Set_Is_Query (321, True);
    Internal_Set_Is_Unique (321, True);
-   Internal_Set_Lower (
-321, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (321, (False, 1));
+   Internal_Set_Name
     (321,
      (False, League.Strings.To_Universal_String ("includesMultiplicity")));
    Internal_Set_Upper (321, (False, (False, 1)));
@@ -1449,42 +1203,24 @@ begin
     (322,
      (False, League.Strings.To_Universal_String ("The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.")));
    Initialize_Constraint (323, Extent);
-   Internal_Set_Name
-    (323,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (324, Extent);
-   Internal_Set_Name
-    (324,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (325, Extent);
    Internal_Set_Name
     (325,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (326, Extent);
-   Internal_Set_Name
-    (326,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (327, Extent);
-   Internal_Set_Default
-    (327,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (327, Return_Direction);
    Internal_Set_Is_Ordered (327, False);
    Internal_Set_Is_Unique (327, True);
-   Internal_Set_Lower (
-327, (False, 1));   Internal_Set_Name
-    (327,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (327, (False, 1));
    Internal_Set_Upper (327, (False, (False, 1)));
    Initialize_Parameter (328, Extent);
-   Internal_Set_Default
-    (328,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (328, In_Direction);
    Internal_Set_Is_Ordered (328, False);
    Internal_Set_Is_Unique (328, True);
-   Internal_Set_Lower (
-328, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (328, (False, 1));
+   Internal_Set_Name
     (328,
      (False, League.Strings.To_Universal_String ("M")));
    Internal_Set_Upper (328, (False, (False, 1)));
@@ -1493,8 +1229,8 @@ begin
    Internal_Set_Is_Ordered (329, False);
    Internal_Set_Is_Query (329, True);
    Internal_Set_Is_Unique (329, True);
-   Internal_Set_Lower (
-329, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (329, (False, 1));
+   Internal_Set_Name
     (329,
      (False, League.Strings.To_Universal_String ("includesCardinality")));
    Internal_Set_Upper (329, (False, (False, 1)));
@@ -1503,42 +1239,24 @@ begin
     (330,
      (False, League.Strings.To_Universal_String ("The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.")));
    Initialize_Constraint (331, Extent);
-   Internal_Set_Name
-    (331,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (332, Extent);
-   Internal_Set_Name
-    (332,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (333, Extent);
    Internal_Set_Name
     (333,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (334, Extent);
-   Internal_Set_Name
-    (334,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (335, Extent);
-   Internal_Set_Default
-    (335,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (335, Return_Direction);
    Internal_Set_Is_Ordered (335, False);
    Internal_Set_Is_Unique (335, True);
-   Internal_Set_Lower (
-335, (False, 1));   Internal_Set_Name
-    (335,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (335, (False, 1));
    Internal_Set_Upper (335, (False, (False, 1)));
    Initialize_Parameter (336, Extent);
-   Internal_Set_Default
-    (336,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (336, In_Direction);
    Internal_Set_Is_Ordered (336, False);
    Internal_Set_Is_Unique (336, True);
-   Internal_Set_Lower (
-336, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (336, (False, 1));
+   Internal_Set_Name
     (336,
      (False, League.Strings.To_Universal_String ("C")));
    Internal_Set_Upper (336, (False, (False, 1)));
@@ -1547,8 +1265,8 @@ begin
    Internal_Set_Is_Ordered (337, False);
    Internal_Set_Is_Query (337, True);
    Internal_Set_Is_Unique (337, True);
-   Internal_Set_Lower (
-337, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (337, (False, 1));
+   Internal_Set_Name
     (337,
      (False, League.Strings.To_Universal_String ("lowerBound")));
    Internal_Set_Upper (337, (False, (False, 1)));
@@ -1561,28 +1279,19 @@ begin
     (339,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (340, Extent);
-   Internal_Set_Name
-    (340,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (341, Extent);
-   Internal_Set_Default
-    (341,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (341, Return_Direction);
    Internal_Set_Is_Ordered (341, False);
    Internal_Set_Is_Unique (341, True);
-   Internal_Set_Lower (
-341, (False, 1));   Internal_Set_Name
-    (341,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (341, (False, 1));
    Internal_Set_Upper (341, (False, (False, 1)));
    Initialize_Operation (342, Extent);
    Internal_Set_Is_Leaf (342, False);
    Internal_Set_Is_Ordered (342, False);
    Internal_Set_Is_Query (342, True);
    Internal_Set_Is_Unique (342, True);
-   Internal_Set_Lower (
-342, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (342, (False, 1));
+   Internal_Set_Name
     (342,
      (False, League.Strings.To_Universal_String ("upperBound")));
    Internal_Set_Upper (342, (False, (False, 1)));
@@ -1595,20 +1304,11 @@ begin
     (344,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (345, Extent);
-   Internal_Set_Name
-    (345,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (346, Extent);
-   Internal_Set_Default
-    (346,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (346, Return_Direction);
    Internal_Set_Is_Ordered (346, False);
    Internal_Set_Is_Unique (346, True);
-   Internal_Set_Lower (
-346, (False, 1));   Internal_Set_Name
-    (346,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (346, (False, 1));
    Internal_Set_Upper (346, (False, (False, 1)));
    Initialize_Class (17, Extent);
    Internal_Set_Is_Abstract (17, True);
@@ -1629,13 +1329,7 @@ begin
     (349,
      (False, League.Strings.To_Universal_String ("All the members of a Namespace are distinguishable within it.")));
    Initialize_Opaque_Expression (350, Extent);
-   Internal_Set_Name
-    (350,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (58, Extent);
-   Internal_Set_Default
-    (58,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (58, False);
    Internal_Set_Is_Derived (58, True);
    Internal_Set_Is_Derived_Union (58, False);
@@ -1643,8 +1337,8 @@ begin
    Internal_Set_Is_Ordered (58, False);
    Internal_Set_Is_Read_Only (58, True);
    Internal_Set_Is_Unique (58, True);
-   Internal_Set_Lower (
-58, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (58, (False, 0));
+   Internal_Set_Name
     (58,
      (False, League.Strings.To_Universal_String ("importedMember")));
    Internal_Set_Upper (58, (False, (Unlimited => True)));
@@ -1653,9 +1347,6 @@ begin
     (351,
      (False, League.Strings.To_Universal_String ("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.")));
    Initialize_Property (57, Extent);
-   Internal_Set_Default
-    (57,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (57, True);
    Internal_Set_Is_Derived (57, False);
    Internal_Set_Is_Derived_Union (57, False);
@@ -1663,8 +1354,8 @@ begin
    Internal_Set_Is_Ordered (57, False);
    Internal_Set_Is_Read_Only (57, False);
    Internal_Set_Is_Unique (57, True);
-   Internal_Set_Lower (
-57, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (57, (False, 0));
+   Internal_Set_Name
     (57,
      (False, League.Strings.To_Universal_String ("elementImport")));
    Internal_Set_Upper (57, (False, (Unlimited => True)));
@@ -1673,9 +1364,6 @@ begin
     (352,
      (False, League.Strings.To_Universal_String ("References the ElementImports owned by the Namespace.")));
    Initialize_Property (62, Extent);
-   Internal_Set_Default
-    (62,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (62, True);
    Internal_Set_Is_Derived (62, False);
    Internal_Set_Is_Derived_Union (62, False);
@@ -1683,8 +1371,8 @@ begin
    Internal_Set_Is_Ordered (62, False);
    Internal_Set_Is_Read_Only (62, False);
    Internal_Set_Is_Unique (62, True);
-   Internal_Set_Lower (
-62, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (62, (False, 0));
+   Internal_Set_Name
     (62,
      (False, League.Strings.To_Universal_String ("packageImport")));
    Internal_Set_Upper (62, (False, (Unlimited => True)));
@@ -1693,9 +1381,6 @@ begin
     (353,
      (False, League.Strings.To_Universal_String ("References the PackageImports owned by the Namespace.")));
    Initialize_Property (60, Extent);
-   Internal_Set_Default
-    (60,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (60, True);
    Internal_Set_Is_Derived (60, True);
    Internal_Set_Is_Derived_Union (60, True);
@@ -1703,8 +1388,8 @@ begin
    Internal_Set_Is_Ordered (60, False);
    Internal_Set_Is_Read_Only (60, True);
    Internal_Set_Is_Unique (60, True);
-   Internal_Set_Lower (
-60, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (60, (False, 0));
+   Internal_Set_Name
     (60,
      (False, League.Strings.To_Universal_String ("ownedMember")));
    Internal_Set_Upper (60, (False, (Unlimited => True)));
@@ -1713,9 +1398,6 @@ begin
     (354,
      (False, League.Strings.To_Universal_String ("A collection of NamedElements owned by the Namespace.")));
    Initialize_Property (59, Extent);
-   Internal_Set_Default
-    (59,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (59, False);
    Internal_Set_Is_Derived (59, True);
    Internal_Set_Is_Derived_Union (59, True);
@@ -1723,8 +1405,8 @@ begin
    Internal_Set_Is_Ordered (59, False);
    Internal_Set_Is_Read_Only (59, True);
    Internal_Set_Is_Unique (59, True);
-   Internal_Set_Lower (
-59, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (59, (False, 0));
+   Internal_Set_Name
     (59,
      (False, League.Strings.To_Universal_String ("member")));
    Internal_Set_Upper (59, (False, (Unlimited => True)));
@@ -1733,9 +1415,6 @@ begin
     (355,
      (False, League.Strings.To_Universal_String ("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.")));
    Initialize_Property (61, Extent);
-   Internal_Set_Default
-    (61,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (61, True);
    Internal_Set_Is_Derived (61, False);
    Internal_Set_Is_Derived_Union (61, False);
@@ -1743,8 +1422,8 @@ begin
    Internal_Set_Is_Ordered (61, False);
    Internal_Set_Is_Read_Only (61, False);
    Internal_Set_Is_Unique (61, True);
-   Internal_Set_Lower (
-61, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (61, (False, 0));
+   Internal_Set_Name
     (61,
      (False, League.Strings.To_Universal_String ("ownedRule")));
    Internal_Set_Upper (61, (False, (Unlimited => True)));
@@ -1753,8 +1432,8 @@ begin
    Internal_Set_Is_Ordered (356, False);
    Internal_Set_Is_Query (356, True);
    Internal_Set_Is_Unique (356, True);
-   Internal_Set_Lower (
-356, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (356, (False, 1));
+   Internal_Set_Name
     (356,
      (False, League.Strings.To_Universal_String ("importedMember")));
    Internal_Set_Upper (356, (False, (False, 1)));
@@ -1767,28 +1446,19 @@ begin
     (358,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (359, Extent);
-   Internal_Set_Name
-    (359,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (360, Extent);
-   Internal_Set_Default
-    (360,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (360, Return_Direction);
    Internal_Set_Is_Ordered (360, False);
    Internal_Set_Is_Unique (360, True);
-   Internal_Set_Lower (
-360, (False, 0));   Internal_Set_Name
-    (360,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (360, (False, 0));
    Internal_Set_Upper (360, (False, (Unlimited => True)));
    Initialize_Operation (361, Extent);
    Internal_Set_Is_Leaf (361, False);
    Internal_Set_Is_Ordered (361, False);
    Internal_Set_Is_Query (361, True);
    Internal_Set_Is_Unique (361, True);
-   Internal_Set_Lower (
-361, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (361, (False, 1));
+   Internal_Set_Name
     (361,
      (False, League.Strings.To_Universal_String ("getNamesOfMember")));
    Internal_Set_Upper (361, (False, (False, 1)));
@@ -1801,30 +1471,18 @@ begin
     (363,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (364, Extent);
-   Internal_Set_Name
-    (364,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (365, Extent);
-   Internal_Set_Default
-    (365,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (365, Return_Direction);
    Internal_Set_Is_Ordered (365, False);
    Internal_Set_Is_Unique (365, True);
-   Internal_Set_Lower (
-365, (False, 0));   Internal_Set_Name
-    (365,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (365, (False, 0));
    Internal_Set_Upper (365, (False, (Unlimited => True)));
    Initialize_Parameter (366, Extent);
-   Internal_Set_Default
-    (366,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (366, In_Direction);
    Internal_Set_Is_Ordered (366, False);
    Internal_Set_Is_Unique (366, True);
-   Internal_Set_Lower (
-366, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (366, (False, 1));
+   Internal_Set_Name
     (366,
      (False, League.Strings.To_Universal_String ("element")));
    Internal_Set_Upper (366, (False, (False, 1)));
@@ -1833,8 +1491,8 @@ begin
    Internal_Set_Is_Ordered (367, False);
    Internal_Set_Is_Query (367, True);
    Internal_Set_Is_Unique (367, True);
-   Internal_Set_Lower (
-367, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (367, (False, 1));
+   Internal_Set_Name
     (367,
      (False, League.Strings.To_Universal_String ("importMembers")));
    Internal_Set_Upper (367, (False, (False, 1)));
@@ -1847,30 +1505,18 @@ begin
     (369,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (370, Extent);
-   Internal_Set_Name
-    (370,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (371, Extent);
-   Internal_Set_Default
-    (371,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (371, Return_Direction);
    Internal_Set_Is_Ordered (371, False);
    Internal_Set_Is_Unique (371, True);
-   Internal_Set_Lower (
-371, (False, 0));   Internal_Set_Name
-    (371,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (371, (False, 0));
    Internal_Set_Upper (371, (False, (Unlimited => True)));
    Initialize_Parameter (372, Extent);
-   Internal_Set_Default
-    (372,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (372, In_Direction);
    Internal_Set_Is_Ordered (372, False);
    Internal_Set_Is_Unique (372, True);
-   Internal_Set_Lower (
-372, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (372, (False, 0));
+   Internal_Set_Name
     (372,
      (False, League.Strings.To_Universal_String ("imps")));
    Internal_Set_Upper (372, (False, (Unlimited => True)));
@@ -1879,8 +1525,8 @@ begin
    Internal_Set_Is_Ordered (373, False);
    Internal_Set_Is_Query (373, True);
    Internal_Set_Is_Unique (373, True);
-   Internal_Set_Lower (
-373, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (373, (False, 1));
+   Internal_Set_Name
     (373,
      (False, League.Strings.To_Universal_String ("excludeCollisions")));
    Internal_Set_Upper (373, (False, (False, 1)));
@@ -1893,30 +1539,18 @@ begin
     (375,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (376, Extent);
-   Internal_Set_Name
-    (376,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (377, Extent);
-   Internal_Set_Default
-    (377,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (377, Return_Direction);
    Internal_Set_Is_Ordered (377, False);
    Internal_Set_Is_Unique (377, True);
-   Internal_Set_Lower (
-377, (False, 0));   Internal_Set_Name
-    (377,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (377, (False, 0));
    Internal_Set_Upper (377, (False, (Unlimited => True)));
    Initialize_Parameter (378, Extent);
-   Internal_Set_Default
-    (378,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (378, In_Direction);
    Internal_Set_Is_Ordered (378, False);
    Internal_Set_Is_Unique (378, True);
-   Internal_Set_Lower (
-378, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (378, (False, 0));
+   Internal_Set_Name
     (378,
      (False, League.Strings.To_Universal_String ("imps")));
    Internal_Set_Upper (378, (False, (Unlimited => True)));
@@ -1925,8 +1559,8 @@ begin
    Internal_Set_Is_Ordered (379, False);
    Internal_Set_Is_Query (379, True);
    Internal_Set_Is_Unique (379, True);
-   Internal_Set_Lower (
-379, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (379, (False, 1));
+   Internal_Set_Name
     (379,
      (False, League.Strings.To_Universal_String ("membersAreDistinguishable")));
    Internal_Set_Upper (379, (False, (False, 1)));
@@ -1939,20 +1573,11 @@ begin
     (381,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (382, Extent);
-   Internal_Set_Name
-    (382,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (383, Extent);
-   Internal_Set_Default
-    (383,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (383, Return_Direction);
    Internal_Set_Is_Ordered (383, False);
    Internal_Set_Is_Unique (383, True);
-   Internal_Set_Lower (
-383, (False, 1));   Internal_Set_Name
-    (383,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (383, (False, 1));
    Internal_Set_Upper (383, (False, (False, 1)));
    Initialize_Class (23, Extent);
    Internal_Set_Is_Abstract (23, True);
@@ -1983,9 +1608,6 @@ begin
     (387,
      (False, League.Strings.To_Universal_String ("At least one of the redefinition contexts of the redefining element must be a specialization of at least one of the redefinition contexts for each redefined element.")));
    Initialize_Opaque_Expression (388, Extent);
-   Internal_Set_Name
-    (388,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (389, Extent);
    Internal_Set_Name
     (389,
@@ -1995,9 +1617,6 @@ begin
     (390,
      (False, League.Strings.To_Universal_String ("A redefining element must be consistent with each redefined element.")));
    Initialize_Opaque_Expression (391, Extent);
-   Internal_Set_Name
-    (391,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (392, Extent);
    Internal_Set_Name
     (392,
@@ -2007,13 +1626,7 @@ begin
     (393,
      (False, League.Strings.To_Universal_String ("A redefinable element can only redefine non-leaf redefinable elements")));
    Initialize_Opaque_Expression (394, Extent);
-   Internal_Set_Name
-    (394,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (75, Extent);
-   Internal_Set_Default
-    (75,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (75, False);
    Internal_Set_Is_Derived (75, True);
    Internal_Set_Is_Derived_Union (75, True);
@@ -2021,8 +1634,8 @@ begin
    Internal_Set_Is_Ordered (75, False);
    Internal_Set_Is_Read_Only (75, True);
    Internal_Set_Is_Unique (75, True);
-   Internal_Set_Lower (
-75, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (75, (False, 0));
+   Internal_Set_Name
     (75,
      (False, League.Strings.To_Universal_String ("redefinitionContext")));
    Internal_Set_Upper (75, (False, (Unlimited => True)));
@@ -2031,9 +1644,6 @@ begin
     (395,
      (False, League.Strings.To_Universal_String ("References the contexts that this element may be redefined from.")));
    Initialize_Property (74, Extent);
-   Internal_Set_Default
-    (74,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (74, False);
    Internal_Set_Is_Derived (74, True);
    Internal_Set_Is_Derived_Union (74, True);
@@ -2041,8 +1651,8 @@ begin
    Internal_Set_Is_Ordered (74, False);
    Internal_Set_Is_Read_Only (74, True);
    Internal_Set_Is_Unique (74, True);
-   Internal_Set_Lower (
-74, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (74, (False, 0));
+   Internal_Set_Name
     (74,
      (False, League.Strings.To_Universal_String ("redefinedElement")));
    Internal_Set_Upper (74, (False, (Unlimited => True)));
@@ -2061,8 +1671,8 @@ begin
    Internal_Set_Is_Ordered (128, False);
    Internal_Set_Is_Read_Only (128, False);
    Internal_Set_Is_Unique (128, True);
-   Internal_Set_Lower (
-128, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (128, (False, 1));
+   Internal_Set_Name
     (128,
      (False, League.Strings.To_Universal_String ("isLeaf")));
    Internal_Set_Upper (128, (False, (False, 1)));
@@ -2075,8 +1685,8 @@ begin
    Internal_Set_Is_Ordered (398, False);
    Internal_Set_Is_Query (398, True);
    Internal_Set_Is_Unique (398, True);
-   Internal_Set_Lower (
-398, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (398, (False, 1));
+   Internal_Set_Name
     (398,
      (False, League.Strings.To_Universal_String ("isConsistentWith")));
    Internal_Set_Upper (398, (False, (False, 1)));
@@ -2089,38 +1699,20 @@ begin
     (400,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (401, Extent);
-   Internal_Set_Name
-    (401,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (402, Extent);
-   Internal_Set_Name
-    (402,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (403, Extent);
-   Internal_Set_Name
-    (403,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (404, Extent);
-   Internal_Set_Default
-    (404,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (404, Return_Direction);
    Internal_Set_Is_Ordered (404, False);
    Internal_Set_Is_Unique (404, True);
-   Internal_Set_Lower (
-404, (False, 1));   Internal_Set_Name
-    (404,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (404, (False, 1));
    Internal_Set_Upper (404, (False, (False, 1)));
    Initialize_Parameter (405, Extent);
-   Internal_Set_Default
-    (405,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (405, In_Direction);
    Internal_Set_Is_Ordered (405, False);
    Internal_Set_Is_Unique (405, True);
-   Internal_Set_Lower (
-405, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (405, (False, 1));
+   Internal_Set_Name
     (405,
      (False, League.Strings.To_Universal_String ("redefinee")));
    Internal_Set_Upper (405, (False, (False, 1)));
@@ -2129,8 +1721,8 @@ begin
    Internal_Set_Is_Ordered (406, False);
    Internal_Set_Is_Query (406, True);
    Internal_Set_Is_Unique (406, True);
-   Internal_Set_Lower (
-406, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (406, (False, 1));
+   Internal_Set_Name
     (406,
      (False, League.Strings.To_Universal_String ("isRedefinitionContextValid")));
    Internal_Set_Upper (406, (False, (False, 1)));
@@ -2143,30 +1735,18 @@ begin
     (408,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (409, Extent);
-   Internal_Set_Name
-    (409,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (410, Extent);
-   Internal_Set_Default
-    (410,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (410, Return_Direction);
    Internal_Set_Is_Ordered (410, False);
    Internal_Set_Is_Unique (410, True);
-   Internal_Set_Lower (
-410, (False, 1));   Internal_Set_Name
-    (410,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (410, (False, 1));
    Internal_Set_Upper (410, (False, (False, 1)));
    Initialize_Parameter (411, Extent);
-   Internal_Set_Default
-    (411,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (411, In_Direction);
    Internal_Set_Is_Ordered (411, False);
    Internal_Set_Is_Unique (411, True);
-   Internal_Set_Lower (
-411, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (411, (False, 1));
+   Internal_Set_Name
     (411,
      (False, League.Strings.To_Universal_String ("redefined")));
    Internal_Set_Upper (411, (False, (False, 1)));
@@ -2181,9 +1761,6 @@ begin
     (412,
      (False, League.Strings.To_Universal_String ("Relationship is an abstract concept that specifies some kind of relationship between elements.")));
    Initialize_Property (76, Extent);
-   Internal_Set_Default
-    (76,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (76, False);
    Internal_Set_Is_Derived (76, True);
    Internal_Set_Is_Derived_Union (76, True);
@@ -2191,8 +1768,8 @@ begin
    Internal_Set_Is_Ordered (76, False);
    Internal_Set_Is_Read_Only (76, True);
    Internal_Set_Is_Unique (76, True);
-   Internal_Set_Lower (
-76, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (76, (False, 1));
+   Internal_Set_Name
     (76,
      (False, League.Strings.To_Universal_String ("relatedElement")));
    Internal_Set_Upper (76, (False, (Unlimited => True)));
@@ -2221,9 +1798,6 @@ begin
     (415,
      (False, League.Strings.To_Universal_String ("A typed element is a kind of named element that represents an element with a type.")));
    Initialize_Property (130, Extent);
-   Internal_Set_Default
-    (130,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (130, False);
    Internal_Set_Is_Derived (130, False);
    Internal_Set_Is_Derived_Union (130, False);
@@ -2231,8 +1805,8 @@ begin
    Internal_Set_Is_Ordered (130, False);
    Internal_Set_Is_Read_Only (130, False);
    Internal_Set_Is_Unique (130, True);
-   Internal_Set_Lower (
-130, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (130, (False, 0));
+   Internal_Set_Name
     (130,
      (False, League.Strings.To_Universal_String ("type")));
    Internal_Set_Upper (130, (False, (False, 1)));
@@ -2255,8 +1829,8 @@ begin
    Internal_Set_Is_Ordered (418, False);
    Internal_Set_Is_Query (418, True);
    Internal_Set_Is_Unique (418, True);
-   Internal_Set_Lower (
-418, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (418, (False, 1));
+   Internal_Set_Name
     (418,
      (False, League.Strings.To_Universal_String ("isComputable")));
    Internal_Set_Upper (418, (False, (False, 1)));
@@ -2269,28 +1843,19 @@ begin
     (420,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (421, Extent);
-   Internal_Set_Name
-    (421,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (422, Extent);
-   Internal_Set_Default
-    (422,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (422, Return_Direction);
    Internal_Set_Is_Ordered (422, False);
    Internal_Set_Is_Unique (422, True);
-   Internal_Set_Lower (
-422, (False, 1));   Internal_Set_Name
-    (422,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (422, (False, 1));
    Internal_Set_Upper (422, (False, (False, 1)));
    Initialize_Operation (423, Extent);
    Internal_Set_Is_Leaf (423, False);
    Internal_Set_Is_Ordered (423, False);
    Internal_Set_Is_Query (423, True);
    Internal_Set_Is_Unique (423, True);
-   Internal_Set_Lower (
-423, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (423, (False, 1));
+   Internal_Set_Name
     (423,
      (False, League.Strings.To_Universal_String ("integerValue")));
    Internal_Set_Upper (423, (False, (False, 1)));
@@ -2303,28 +1868,19 @@ begin
     (425,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (426, Extent);
-   Internal_Set_Name
-    (426,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (427, Extent);
-   Internal_Set_Default
-    (427,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (427, Return_Direction);
    Internal_Set_Is_Ordered (427, False);
    Internal_Set_Is_Unique (427, True);
-   Internal_Set_Lower (
-427, (False, 1));   Internal_Set_Name
-    (427,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (427, (False, 1));
    Internal_Set_Upper (427, (False, (False, 1)));
    Initialize_Operation (428, Extent);
    Internal_Set_Is_Leaf (428, False);
    Internal_Set_Is_Ordered (428, False);
    Internal_Set_Is_Query (428, True);
    Internal_Set_Is_Unique (428, True);
-   Internal_Set_Lower (
-428, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (428, (False, 1));
+   Internal_Set_Name
     (428,
      (False, League.Strings.To_Universal_String ("booleanValue")));
    Internal_Set_Upper (428, (False, (False, 1)));
@@ -2337,28 +1893,19 @@ begin
     (430,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (431, Extent);
-   Internal_Set_Name
-    (431,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (432, Extent);
-   Internal_Set_Default
-    (432,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (432, Return_Direction);
    Internal_Set_Is_Ordered (432, False);
    Internal_Set_Is_Unique (432, True);
-   Internal_Set_Lower (
-432, (False, 1));   Internal_Set_Name
-    (432,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (432, (False, 1));
    Internal_Set_Upper (432, (False, (False, 1)));
    Initialize_Operation (433, Extent);
    Internal_Set_Is_Leaf (433, False);
    Internal_Set_Is_Ordered (433, False);
    Internal_Set_Is_Query (433, True);
    Internal_Set_Is_Unique (433, True);
-   Internal_Set_Lower (
-433, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (433, (False, 1));
+   Internal_Set_Name
     (433,
      (False, League.Strings.To_Universal_String ("stringValue")));
    Internal_Set_Upper (433, (False, (False, 1)));
@@ -2371,28 +1918,19 @@ begin
     (435,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (436, Extent);
-   Internal_Set_Name
-    (436,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (437, Extent);
-   Internal_Set_Default
-    (437,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (437, Return_Direction);
    Internal_Set_Is_Ordered (437, False);
    Internal_Set_Is_Unique (437, True);
-   Internal_Set_Lower (
-437, (False, 1));   Internal_Set_Name
-    (437,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (437, (False, 1));
    Internal_Set_Upper (437, (False, (False, 1)));
    Initialize_Operation (438, Extent);
    Internal_Set_Is_Leaf (438, False);
    Internal_Set_Is_Ordered (438, False);
    Internal_Set_Is_Query (438, True);
    Internal_Set_Is_Unique (438, True);
-   Internal_Set_Lower (
-438, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (438, (False, 1));
+   Internal_Set_Name
     (438,
      (False, League.Strings.To_Universal_String ("unlimitedValue")));
    Internal_Set_Upper (438, (False, (False, 1)));
@@ -2405,28 +1943,19 @@ begin
     (440,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (441, Extent);
-   Internal_Set_Name
-    (441,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (442, Extent);
-   Internal_Set_Default
-    (442,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (442, Return_Direction);
    Internal_Set_Is_Ordered (442, False);
    Internal_Set_Is_Unique (442, True);
-   Internal_Set_Lower (
-442, (False, 1));   Internal_Set_Name
-    (442,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (442, (False, 1));
    Internal_Set_Upper (442, (False, (False, 1)));
    Initialize_Operation (443, Extent);
    Internal_Set_Is_Leaf (443, False);
    Internal_Set_Is_Ordered (443, False);
    Internal_Set_Is_Query (443, True);
    Internal_Set_Is_Unique (443, True);
-   Internal_Set_Lower (
-443, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (443, (False, 1));
+   Internal_Set_Name
     (443,
      (False, League.Strings.To_Universal_String ("isNull")));
    Internal_Set_Upper (443, (False, (False, 1)));
@@ -2439,20 +1968,11 @@ begin
     (445,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (446, Extent);
-   Internal_Set_Name
-    (446,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (447, Extent);
-   Internal_Set_Default
-    (447,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (447, Return_Direction);
    Internal_Set_Is_Ordered (447, False);
    Internal_Set_Is_Unique (447, True);
-   Internal_Set_Lower (
-447, (False, 1));   Internal_Set_Name
-    (447,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (447, (False, 1));
    Internal_Set_Upper (447, (False, (False, 1)));
    Initialize_Class (1, Extent);
    Internal_Set_Is_Abstract (1, False);
@@ -2473,9 +1993,6 @@ begin
     (450,
      (False, League.Strings.To_Universal_String ("Association ends of associations with more than two ends must be owned by the association.")));
    Initialize_Opaque_Expression (451, Extent);
-   Internal_Set_Name
-    (451,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (452, Extent);
    Internal_Set_Name
     (452,
@@ -2485,9 +2002,6 @@ begin
     (453,
      (False, League.Strings.To_Universal_String ("Only binary associations can be aggregations.")));
    Initialize_Opaque_Expression (454, Extent);
-   Internal_Set_Name
-    (454,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (455, Extent);
    Internal_Set_Name
     (455,
@@ -2497,9 +2011,6 @@ begin
     (456,
      (False, League.Strings.To_Universal_String ("An association specializing another association has the same number of ends as the other association.")));
    Initialize_Opaque_Expression (457, Extent);
-   Internal_Set_Name
-    (457,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (458, Extent);
    Internal_Set_Name
     (458,
@@ -2509,9 +2020,6 @@ begin
     (459,
      (False, League.Strings.To_Universal_String ("When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.")));
    Initialize_Opaque_Expression (460, Extent);
-   Internal_Set_Name
-    (460,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (77, Extent);
    Internal_Set_Default
     (77,
@@ -2523,8 +2031,8 @@ begin
    Internal_Set_Is_Ordered (77, False);
    Internal_Set_Is_Read_Only (77, False);
    Internal_Set_Is_Unique (77, True);
-   Internal_Set_Lower (
-77, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (77, (False, 1));
+   Internal_Set_Name
     (77,
      (False, League.Strings.To_Universal_String ("isDerived")));
    Internal_Set_Upper (77, (False, (False, 1)));
@@ -2533,9 +2041,6 @@ begin
     (461,
      (False, League.Strings.To_Universal_String ("Specifies whether the association is derived from other model elements such as other associations or constraints.")));
    Initialize_Property (36, Extent);
-   Internal_Set_Default
-    (36,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (36, True);
    Internal_Set_Is_Derived (36, False);
    Internal_Set_Is_Derived_Union (36, False);
@@ -2543,8 +2048,8 @@ begin
    Internal_Set_Is_Ordered (36, True);
    Internal_Set_Is_Read_Only (36, False);
    Internal_Set_Is_Unique (36, True);
-   Internal_Set_Lower (
-36, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (36, (False, 0));
+   Internal_Set_Name
     (36,
      (False, League.Strings.To_Universal_String ("ownedEnd")));
    Internal_Set_Upper (36, (False, (Unlimited => True)));
@@ -2553,9 +2058,6 @@ begin
     (462,
      (False, League.Strings.To_Universal_String ("The ends that are owned by the association itself.")));
    Initialize_Property (33, Extent);
-   Internal_Set_Default
-    (33,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (33, False);
    Internal_Set_Is_Derived (33, True);
    Internal_Set_Is_Derived_Union (33, False);
@@ -2563,8 +2065,8 @@ begin
    Internal_Set_Is_Ordered (33, False);
    Internal_Set_Is_Read_Only (33, True);
    Internal_Set_Is_Unique (33, True);
-   Internal_Set_Lower (
-33, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (33, (False, 1));
+   Internal_Set_Name
     (33,
      (False, League.Strings.To_Universal_String ("endType")));
    Internal_Set_Upper (33, (False, (Unlimited => True)));
@@ -2573,9 +2075,6 @@ begin
     (463,
      (False, League.Strings.To_Universal_String ("References the classifiers that are used as types of the ends of the association.")));
    Initialize_Property (34, Extent);
-   Internal_Set_Default
-    (34,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (34, False);
    Internal_Set_Is_Derived (34, False);
    Internal_Set_Is_Derived_Union (34, False);
@@ -2583,8 +2082,8 @@ begin
    Internal_Set_Is_Ordered (34, True);
    Internal_Set_Is_Read_Only (34, False);
    Internal_Set_Is_Unique (34, True);
-   Internal_Set_Lower (
-34, (False, 2));   Internal_Set_Name
+   Internal_Set_Lower (34, (False, 2));
+   Internal_Set_Name
     (34,
      (False, League.Strings.To_Universal_String ("memberEnd")));
    Internal_Set_Upper (34, (False, (Unlimited => True)));
@@ -2593,9 +2092,6 @@ begin
     (464,
      (False, League.Strings.To_Universal_String ("Each end represents participation of instances of the classifier connected to the end in links of the association.")));
    Initialize_Property (35, Extent);
-   Internal_Set_Default
-    (35,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (35, False);
    Internal_Set_Is_Derived (35, False);
    Internal_Set_Is_Derived_Union (35, False);
@@ -2603,8 +2099,8 @@ begin
    Internal_Set_Is_Ordered (35, False);
    Internal_Set_Is_Read_Only (35, False);
    Internal_Set_Is_Unique (35, True);
-   Internal_Set_Lower (
-35, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (35, (False, 0));
+   Internal_Set_Name
     (35,
      (False, League.Strings.To_Universal_String ("navigableOwnedEnd")));
    Internal_Set_Upper (35, (False, (Unlimited => True)));
@@ -2617,8 +2113,8 @@ begin
    Internal_Set_Is_Ordered (466, False);
    Internal_Set_Is_Query (466, True);
    Internal_Set_Is_Unique (466, True);
-   Internal_Set_Lower (
-466, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (466, (False, 1));
+   Internal_Set_Name
     (466,
      (False, League.Strings.To_Universal_String ("endType")));
    Internal_Set_Upper (466, (False, (False, 1)));
@@ -2631,20 +2127,11 @@ begin
     (468,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (469, Extent);
-   Internal_Set_Name
-    (469,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (470, Extent);
-   Internal_Set_Default
-    (470,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (470, Return_Direction);
    Internal_Set_Is_Ordered (470, True);
    Internal_Set_Is_Unique (470, True);
-   Internal_Set_Lower (
-470, (False, 0));   Internal_Set_Name
-    (470,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (470, (False, 0));
    Internal_Set_Upper (470, (False, (Unlimited => True)));
    Initialize_Class (3, Extent);
    Internal_Set_Is_Abstract (3, False);
@@ -2667,8 +2154,8 @@ begin
    Internal_Set_Is_Ordered (78, False);
    Internal_Set_Is_Read_Only (78, False);
    Internal_Set_Is_Unique (78, True);
-   Internal_Set_Lower (
-78, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (78, (False, 1));
+   Internal_Set_Name
     (78,
      (False, League.Strings.To_Universal_String ("isAbstract")));
    Internal_Set_Upper (78, (False, (False, 1)));
@@ -2677,9 +2164,6 @@ begin
     (472,
      (False, League.Strings.To_Universal_String ("True when a class is abstract.")));
    Initialize_Property (39, Extent);
-   Internal_Set_Default
-    (39,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (39, True);
    Internal_Set_Is_Derived (39, False);
    Internal_Set_Is_Derived_Union (39, False);
@@ -2687,8 +2171,8 @@ begin
    Internal_Set_Is_Ordered (39, True);
    Internal_Set_Is_Read_Only (39, False);
    Internal_Set_Is_Unique (39, True);
-   Internal_Set_Lower (
-39, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (39, (False, 0));
+   Internal_Set_Name
     (39,
      (False, League.Strings.To_Universal_String ("ownedAttribute")));
    Internal_Set_Upper (39, (False, (Unlimited => True)));
@@ -2697,9 +2181,6 @@ begin
     (473,
      (False, League.Strings.To_Universal_String ("The attributes (i.e. the properties) owned by the class.")));
    Initialize_Property (40, Extent);
-   Internal_Set_Default
-    (40,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (40, True);
    Internal_Set_Is_Derived (40, False);
    Internal_Set_Is_Derived_Union (40, False);
@@ -2707,8 +2188,8 @@ begin
    Internal_Set_Is_Ordered (40, True);
    Internal_Set_Is_Read_Only (40, False);
    Internal_Set_Is_Unique (40, True);
-   Internal_Set_Lower (
-40, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (40, (False, 0));
+   Internal_Set_Name
     (40,
      (False, League.Strings.To_Universal_String ("ownedOperation")));
    Internal_Set_Upper (40, (False, (Unlimited => True)));
@@ -2717,9 +2198,6 @@ begin
     (474,
      (False, League.Strings.To_Universal_String ("The operations owned by the class.")));
    Initialize_Property (41, Extent);
-   Internal_Set_Default
-    (41,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (41, False);
    Internal_Set_Is_Derived (41, False);
    Internal_Set_Is_Derived_Union (41, False);
@@ -2727,8 +2205,8 @@ begin
    Internal_Set_Is_Ordered (41, False);
    Internal_Set_Is_Read_Only (41, False);
    Internal_Set_Is_Unique (41, True);
-   Internal_Set_Lower (
-41, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (41, (False, 0));
+   Internal_Set_Name
     (41,
      (False, League.Strings.To_Universal_String ("superClass")));
    Internal_Set_Upper (41, (False, (Unlimited => True)));
@@ -2741,8 +2219,8 @@ begin
    Internal_Set_Is_Ordered (476, False);
    Internal_Set_Is_Query (476, True);
    Internal_Set_Is_Unique (476, True);
-   Internal_Set_Lower (
-476, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (476, (False, 1));
+   Internal_Set_Name
     (476,
      (False, League.Strings.To_Universal_String ("inherit")));
    Internal_Set_Upper (476, (False, (False, 1)));
@@ -2755,30 +2233,18 @@ begin
     (478,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (479, Extent);
-   Internal_Set_Name
-    (479,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (480, Extent);
-   Internal_Set_Default
-    (480,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (480, Return_Direction);
    Internal_Set_Is_Ordered (480, False);
    Internal_Set_Is_Unique (480, True);
-   Internal_Set_Lower (
-480, (False, 0));   Internal_Set_Name
-    (480,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (480, (False, 0));
    Internal_Set_Upper (480, (False, (Unlimited => True)));
    Initialize_Parameter (481, Extent);
-   Internal_Set_Default
-    (481,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (481, In_Direction);
    Internal_Set_Is_Ordered (481, False);
    Internal_Set_Is_Unique (481, True);
-   Internal_Set_Lower (
-481, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (481, (False, 0));
+   Internal_Set_Name
     (481,
      (False, League.Strings.To_Universal_String ("inhs")));
    Internal_Set_Upper (481, (False, (Unlimited => True)));
@@ -2801,9 +2267,6 @@ begin
     (484,
      (False, League.Strings.To_Universal_String ("A multiplicity of a composite aggregation must not have an upper bound greater than 1.")));
    Initialize_Opaque_Expression (485, Extent);
-   Internal_Set_Name
-    (485,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (486, Extent);
    Internal_Set_Name
     (486,
@@ -2813,9 +2276,6 @@ begin
     (487,
      (False, League.Strings.To_Universal_String ("Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.")));
    Initialize_Opaque_Expression (488, Extent);
-   Internal_Set_Name
-    (488,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (489, Extent);
    Internal_Set_Name
     (489,
@@ -2825,9 +2285,6 @@ begin
     (490,
      (False, League.Strings.To_Universal_String ("A redefined property must be inherited from a more general classifier containing the redefining property.")));
    Initialize_Opaque_Expression (491, Extent);
-   Internal_Set_Name
-    (491,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (492, Extent);
    Internal_Set_Name
     (492,
@@ -2837,9 +2294,6 @@ begin
     (493,
      (False, League.Strings.To_Universal_String ("A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less.")));
    Initialize_Opaque_Expression (494, Extent);
-   Internal_Set_Name
-    (494,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (495, Extent);
    Internal_Set_Name
     (495,
@@ -2849,9 +2303,6 @@ begin
     (496,
      (False, League.Strings.To_Universal_String ("Only a navigable property can be marked as readOnly.")));
    Initialize_Opaque_Expression (497, Extent);
-   Internal_Set_Name
-    (497,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (498, Extent);
    Internal_Set_Name
     (498,
@@ -2861,9 +2312,6 @@ begin
     (499,
      (False, League.Strings.To_Universal_String ("A derived union is derived.")));
    Initialize_Opaque_Expression (500, Extent);
-   Internal_Set_Name
-    (500,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (501, Extent);
    Internal_Set_Name
     (501,
@@ -2873,9 +2321,6 @@ begin
     (502,
      (False, League.Strings.To_Universal_String ("A property may not subset a property with the same name.")));
    Initialize_Opaque_Expression (503, Extent);
-   Internal_Set_Name
-    (503,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (125, Extent);
    Internal_Set_Default
     (125,
@@ -2887,8 +2332,8 @@ begin
    Internal_Set_Is_Ordered (125, False);
    Internal_Set_Is_Read_Only (125, False);
    Internal_Set_Is_Unique (125, True);
-   Internal_Set_Lower (
-125, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (125, (False, 1));
+   Internal_Set_Name
     (125,
      (False, League.Strings.To_Universal_String ("isReadOnly")));
    Internal_Set_Upper (125, (False, (False, 1)));
@@ -2897,9 +2342,6 @@ begin
     (504,
      (False, League.Strings.To_Universal_String ("If isReadOnly is true, the attribute may not be written to after initialization.")));
    Initialize_Property (121, Extent);
-   Internal_Set_Default
-    (121,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (121, False);
    Internal_Set_Is_Derived (121, False);
    Internal_Set_Is_Derived_Union (121, False);
@@ -2907,8 +2349,8 @@ begin
    Internal_Set_Is_Ordered (121, False);
    Internal_Set_Is_Read_Only (121, False);
    Internal_Set_Is_Unique (121, True);
-   Internal_Set_Lower (
-121, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (121, (False, 0));
+   Internal_Set_Name
     (121,
      (False, League.Strings.To_Universal_String ("default")));
    Internal_Set_Upper (121, (False, (False, 1)));
@@ -2927,8 +2369,8 @@ begin
    Internal_Set_Is_Ordered (122, False);
    Internal_Set_Is_Read_Only (122, False);
    Internal_Set_Is_Unique (122, True);
-   Internal_Set_Lower (
-122, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (122, (False, 1));
+   Internal_Set_Name
     (122,
      (False, League.Strings.To_Universal_String ("isComposite")));
    Internal_Set_Upper (122, (False, (False, 1)));
@@ -2947,8 +2389,8 @@ begin
    Internal_Set_Is_Ordered (123, False);
    Internal_Set_Is_Read_Only (123, False);
    Internal_Set_Is_Unique (123, True);
-   Internal_Set_Lower (
-123, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (123, (False, 1));
+   Internal_Set_Name
     (123,
      (False, League.Strings.To_Universal_String ("isDerived")));
    Internal_Set_Upper (123, (False, (False, 1)));
@@ -2967,8 +2409,8 @@ begin
    Internal_Set_Is_Ordered (124, False);
    Internal_Set_Is_Read_Only (124, False);
    Internal_Set_Is_Unique (124, True);
-   Internal_Set_Lower (
-124, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (124, (False, 1));
+   Internal_Set_Name
     (124,
      (False, League.Strings.To_Universal_String ("isDerivedUnion")));
    Internal_Set_Upper (124, (False, (False, 1)));
@@ -2977,9 +2419,6 @@ begin
     (508,
      (False, League.Strings.To_Universal_String ("Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.")));
    Initialize_Property (119, Extent);
-   Internal_Set_Default
-    (119,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (119, False);
    Internal_Set_Is_Derived (119, False);
    Internal_Set_Is_Derived_Union (119, False);
@@ -2987,8 +2426,8 @@ begin
    Internal_Set_Is_Ordered (119, False);
    Internal_Set_Is_Read_Only (119, False);
    Internal_Set_Is_Unique (119, True);
-   Internal_Set_Lower (
-119, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (119, (False, 0));
+   Internal_Set_Name
     (119,
      (False, League.Strings.To_Universal_String ("class")));
    Internal_Set_Upper (119, (False, (False, 1)));
@@ -2997,9 +2436,6 @@ begin
     (509,
      (False, League.Strings.To_Universal_String ("References the Class that owns the Property.")));
    Initialize_Property (127, Extent);
-   Internal_Set_Default
-    (127,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (127, False);
    Internal_Set_Is_Derived (127, False);
    Internal_Set_Is_Derived_Union (127, False);
@@ -3007,8 +2443,8 @@ begin
    Internal_Set_Is_Ordered (127, False);
    Internal_Set_Is_Read_Only (127, False);
    Internal_Set_Is_Unique (127, True);
-   Internal_Set_Lower (
-127, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (127, (False, 0));
+   Internal_Set_Name
     (127,
      (False, League.Strings.To_Universal_String ("owningAssociation")));
    Internal_Set_Upper (127, (False, (False, 1)));
@@ -3017,9 +2453,6 @@ begin
     (510,
      (False, League.Strings.To_Universal_String ("References the owning association of this property, if any.")));
    Initialize_Property (72, Extent);
-   Internal_Set_Default
-    (72,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (72, False);
    Internal_Set_Is_Derived (72, False);
    Internal_Set_Is_Derived_Union (72, False);
@@ -3027,8 +2460,8 @@ begin
    Internal_Set_Is_Ordered (72, False);
    Internal_Set_Is_Read_Only (72, False);
    Internal_Set_Is_Unique (72, True);
-   Internal_Set_Lower (
-72, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (72, (False, 0));
+   Internal_Set_Name
     (72,
      (False, League.Strings.To_Universal_String ("redefinedProperty")));
    Internal_Set_Upper (72, (False, (Unlimited => True)));
@@ -3037,9 +2470,6 @@ begin
     (511,
      (False, League.Strings.To_Universal_String ("References the properties that are redefined by this property.")));
    Initialize_Property (73, Extent);
-   Internal_Set_Default
-    (73,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (73, False);
    Internal_Set_Is_Derived (73, False);
    Internal_Set_Is_Derived_Union (73, False);
@@ -3047,8 +2477,8 @@ begin
    Internal_Set_Is_Ordered (73, False);
    Internal_Set_Is_Read_Only (73, False);
    Internal_Set_Is_Unique (73, True);
-   Internal_Set_Lower (
-73, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (73, (False, 0));
+   Internal_Set_Name
     (73,
      (False, League.Strings.To_Universal_String ("subsettedProperty")));
    Internal_Set_Upper (73, (False, (Unlimited => True)));
@@ -3057,9 +2487,6 @@ begin
     (512,
      (False, League.Strings.To_Universal_String ("References the properties of which this property is constrained to be a subset.")));
    Initialize_Property (126, Extent);
-   Internal_Set_Default
-    (126,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (126, False);
    Internal_Set_Is_Derived (126, True);
    Internal_Set_Is_Derived_Union (126, False);
@@ -3067,8 +2494,8 @@ begin
    Internal_Set_Is_Ordered (126, False);
    Internal_Set_Is_Read_Only (126, False);
    Internal_Set_Is_Unique (126, True);
-   Internal_Set_Lower (
-126, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (126, (False, 0));
+   Internal_Set_Name
     (126,
      (False, League.Strings.To_Universal_String ("opposite")));
    Internal_Set_Upper (126, (False, (False, 1)));
@@ -3077,9 +2504,6 @@ begin
     (513,
      (False, League.Strings.To_Universal_String ("In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.")));
    Initialize_Property (120, Extent);
-   Internal_Set_Default
-    (120,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (120, False);
    Internal_Set_Is_Derived (120, False);
    Internal_Set_Is_Derived_Union (120, False);
@@ -3087,8 +2511,8 @@ begin
    Internal_Set_Is_Ordered (120, False);
    Internal_Set_Is_Read_Only (120, False);
    Internal_Set_Is_Unique (120, True);
-   Internal_Set_Lower (
-120, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (120, (False, 0));
+   Internal_Set_Name
     (120,
      (False, League.Strings.To_Universal_String ("datatype")));
    Internal_Set_Upper (120, (False, (False, 1)));
@@ -3097,9 +2521,6 @@ begin
     (514,
      (False, League.Strings.To_Universal_String ("The DataType that owns this Property.")));
    Initialize_Property (118, Extent);
-   Internal_Set_Default
-    (118,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (118, False);
    Internal_Set_Is_Derived (118, False);
    Internal_Set_Is_Derived_Union (118, False);
@@ -3107,8 +2528,8 @@ begin
    Internal_Set_Is_Ordered (118, False);
    Internal_Set_Is_Read_Only (118, False);
    Internal_Set_Is_Unique (118, True);
-   Internal_Set_Lower (
-118, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (118, (False, 0));
+   Internal_Set_Name
     (118,
      (False, League.Strings.To_Universal_String ("association")));
    Internal_Set_Upper (118, (False, (False, 1)));
@@ -3121,8 +2542,8 @@ begin
    Internal_Set_Is_Ordered (516, False);
    Internal_Set_Is_Query (516, True);
    Internal_Set_Is_Unique (516, True);
-   Internal_Set_Lower (
-516, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (516, (False, 1));
+   Internal_Set_Name
     (516,
      (False, League.Strings.To_Universal_String ("opposite")));
    Internal_Set_Upper (516, (False, (False, 1)));
@@ -3135,28 +2556,19 @@ begin
     (518,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (519, Extent);
-   Internal_Set_Name
-    (519,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (520, Extent);
-   Internal_Set_Default
-    (520,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (520, Return_Direction);
    Internal_Set_Is_Ordered (520, False);
    Internal_Set_Is_Unique (520, True);
-   Internal_Set_Lower (
-520, (False, 1));   Internal_Set_Name
-    (520,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (520, (False, 1));
    Internal_Set_Upper (520, (False, (False, 1)));
    Initialize_Operation (521, Extent);
    Internal_Set_Is_Leaf (521, False);
    Internal_Set_Is_Ordered (521, False);
    Internal_Set_Is_Query (521, True);
    Internal_Set_Is_Unique (521, True);
-   Internal_Set_Lower (
-521, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (521, (False, 1));
+   Internal_Set_Name
     (521,
      (False, League.Strings.To_Universal_String ("isConsistentWith")));
    Internal_Set_Upper (521, (False, (False, 1)));
@@ -3165,42 +2577,24 @@ begin
     (522,
      (False, League.Strings.To_Universal_String ("The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.")));
    Initialize_Constraint (523, Extent);
-   Internal_Set_Name
-    (523,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (524, Extent);
-   Internal_Set_Name
-    (524,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (525, Extent);
    Internal_Set_Name
     (525,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (526, Extent);
-   Internal_Set_Name
-    (526,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (527, Extent);
-   Internal_Set_Default
-    (527,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (527, Return_Direction);
    Internal_Set_Is_Ordered (527, False);
    Internal_Set_Is_Unique (527, True);
-   Internal_Set_Lower (
-527, (False, 1));   Internal_Set_Name
-    (527,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (527, (False, 1));
    Internal_Set_Upper (527, (False, (False, 1)));
    Initialize_Parameter (528, Extent);
-   Internal_Set_Default
-    (528,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (528, In_Direction);
    Internal_Set_Is_Ordered (528, False);
    Internal_Set_Is_Unique (528, True);
-   Internal_Set_Lower (
-528, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (528, (False, 1));
+   Internal_Set_Name
     (528,
      (False, League.Strings.To_Universal_String ("redefinee")));
    Internal_Set_Upper (528, (False, (False, 1)));
@@ -3209,8 +2603,8 @@ begin
    Internal_Set_Is_Ordered (529, False);
    Internal_Set_Is_Query (529, True);
    Internal_Set_Is_Unique (529, True);
-   Internal_Set_Lower (
-529, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (529, (False, 1));
+   Internal_Set_Name
     (529,
      (False, League.Strings.To_Universal_String ("subsettingContext")));
    Internal_Set_Upper (529, (False, (False, 1)));
@@ -3223,28 +2617,19 @@ begin
     (531,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (532, Extent);
-   Internal_Set_Name
-    (532,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (533, Extent);
-   Internal_Set_Default
-    (533,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (533, Return_Direction);
    Internal_Set_Is_Ordered (533, False);
    Internal_Set_Is_Unique (533, True);
-   Internal_Set_Lower (
-533, (False, 0));   Internal_Set_Name
-    (533,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (533, (False, 0));
    Internal_Set_Upper (533, (False, (Unlimited => True)));
    Initialize_Operation (534, Extent);
    Internal_Set_Is_Leaf (534, False);
    Internal_Set_Is_Ordered (534, False);
    Internal_Set_Is_Query (534, True);
    Internal_Set_Is_Unique (534, True);
-   Internal_Set_Lower (
-534, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (534, (False, 1));
+   Internal_Set_Name
     (534,
      (False, League.Strings.To_Universal_String ("isNavigable")));
    Internal_Set_Upper (534, (False, (False, 1)));
@@ -3257,28 +2642,19 @@ begin
     (536,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (537, Extent);
-   Internal_Set_Name
-    (537,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (538, Extent);
-   Internal_Set_Default
-    (538,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (538, Return_Direction);
    Internal_Set_Is_Ordered (538, False);
    Internal_Set_Is_Unique (538, True);
-   Internal_Set_Lower (
-538, (False, 1));   Internal_Set_Name
-    (538,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (538, (False, 1));
    Internal_Set_Upper (538, (False, (False, 1)));
    Initialize_Operation (539, Extent);
    Internal_Set_Is_Leaf (539, False);
    Internal_Set_Is_Ordered (539, False);
    Internal_Set_Is_Query (539, True);
    Internal_Set_Is_Unique (539, True);
-   Internal_Set_Lower (
-539, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (539, (False, 1));
+   Internal_Set_Name
     (539,
      (False, League.Strings.To_Universal_String ("isAttribute")));
    Internal_Set_Upper (539, (False, (False, 1)));
@@ -3291,30 +2667,18 @@ begin
     (541,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (542, Extent);
-   Internal_Set_Name
-    (542,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (543, Extent);
-   Internal_Set_Default
-    (543,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (543, Return_Direction);
    Internal_Set_Is_Ordered (543, False);
    Internal_Set_Is_Unique (543, True);
-   Internal_Set_Lower (
-543, (False, 1));   Internal_Set_Name
-    (543,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (543, (False, 1));
    Internal_Set_Upper (543, (False, (False, 1)));
    Initialize_Parameter (544, Extent);
-   Internal_Set_Default
-    (544,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (544, In_Direction);
    Internal_Set_Is_Ordered (544, False);
    Internal_Set_Is_Unique (544, True);
-   Internal_Set_Lower (
-544, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (544, (False, 1));
+   Internal_Set_Name
     (544,
      (False, League.Strings.To_Universal_String ("p")));
    Internal_Set_Upper (544, (False, (False, 1)));
@@ -3329,9 +2693,6 @@ begin
     (545,
      (False, League.Strings.To_Universal_String ("A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.")));
    Initialize_Property (48, Extent);
-   Internal_Set_Default
-    (48,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (48, True);
    Internal_Set_Is_Derived (48, False);
    Internal_Set_Is_Derived_Union (48, False);
@@ -3339,8 +2700,8 @@ begin
    Internal_Set_Is_Ordered (48, True);
    Internal_Set_Is_Read_Only (48, False);
    Internal_Set_Is_Unique (48, True);
-   Internal_Set_Lower (
-48, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (48, (False, 0));
+   Internal_Set_Name
     (48,
      (False, League.Strings.To_Universal_String ("ownedAttribute")));
    Internal_Set_Upper (48, (False, (Unlimited => True)));
@@ -3349,9 +2710,6 @@ begin
     (546,
      (False, League.Strings.To_Universal_String ("The Attributes owned by the DataType.")));
    Initialize_Property (49, Extent);
-   Internal_Set_Default
-    (49,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (49, True);
    Internal_Set_Is_Derived (49, False);
    Internal_Set_Is_Derived_Union (49, False);
@@ -3359,8 +2717,8 @@ begin
    Internal_Set_Is_Ordered (49, True);
    Internal_Set_Is_Read_Only (49, False);
    Internal_Set_Is_Unique (49, True);
-   Internal_Set_Lower (
-49, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (49, (False, 0));
+   Internal_Set_Name
     (49,
      (False, League.Strings.To_Universal_String ("ownedOperation")));
    Internal_Set_Upper (49, (False, (Unlimited => True)));
@@ -3373,8 +2731,8 @@ begin
    Internal_Set_Is_Ordered (548, False);
    Internal_Set_Is_Query (548, True);
    Internal_Set_Is_Unique (548, True);
-   Internal_Set_Lower (
-548, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (548, (False, 1));
+   Internal_Set_Name
     (548,
      (False, League.Strings.To_Universal_String ("inherit")));
    Internal_Set_Upper (548, (False, (False, 1)));
@@ -3387,30 +2745,18 @@ begin
     (550,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (551, Extent);
-   Internal_Set_Name
-    (551,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (552, Extent);
-   Internal_Set_Default
-    (552,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (552, Return_Direction);
    Internal_Set_Is_Ordered (552, False);
    Internal_Set_Is_Unique (552, True);
-   Internal_Set_Lower (
-552, (False, 0));   Internal_Set_Name
-    (552,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (552, (False, 0));
    Internal_Set_Upper (552, (False, (Unlimited => True)));
    Initialize_Parameter (553, Extent);
-   Internal_Set_Default
-    (553,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (553, In_Direction);
    Internal_Set_Is_Ordered (553, False);
    Internal_Set_Is_Unique (553, True);
-   Internal_Set_Lower (
-553, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (553, (False, 0));
+   Internal_Set_Name
     (553,
      (False, League.Strings.To_Universal_String ("inhs")));
    Internal_Set_Upper (553, (False, (Unlimited => True)));
@@ -3425,9 +2771,6 @@ begin
     (554,
      (False, League.Strings.To_Universal_String ("An enumeration is a data type whose values are enumerated in the model as enumeration literals.")));
    Initialize_Property (54, Extent);
-   Internal_Set_Default
-    (54,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (54, True);
    Internal_Set_Is_Derived (54, False);
    Internal_Set_Is_Derived_Union (54, False);
@@ -3435,8 +2778,8 @@ begin
    Internal_Set_Is_Ordered (54, True);
    Internal_Set_Is_Read_Only (54, False);
    Internal_Set_Is_Unique (54, True);
-   Internal_Set_Lower (
-54, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (54, (False, 0));
+   Internal_Set_Name
     (54,
      (False, League.Strings.To_Universal_String ("ownedLiteral")));
    Internal_Set_Upper (54, (False, (Unlimited => True)));
@@ -3455,9 +2798,6 @@ begin
     (556,
      (False, League.Strings.To_Universal_String ("An enumeration literal is a user-defined data value for an enumeration.")));
    Initialize_Property (88, Extent);
-   Internal_Set_Default
-    (88,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (88, False);
    Internal_Set_Is_Derived (88, False);
    Internal_Set_Is_Derived_Union (88, False);
@@ -3465,8 +2805,8 @@ begin
    Internal_Set_Is_Ordered (88, False);
    Internal_Set_Is_Read_Only (88, False);
    Internal_Set_Is_Unique (88, True);
-   Internal_Set_Lower (
-88, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (88, (False, 0));
+   Internal_Set_Name
     (88,
      (False, League.Strings.To_Universal_String ("enumeration")));
    Internal_Set_Upper (88, (False, (False, 1)));
@@ -3503,9 +2843,6 @@ begin
     (561,
      (False, League.Strings.To_Universal_String ("A constraint cannot be applied to itself.")));
    Initialize_Opaque_Expression (562, Extent);
-   Internal_Set_Name
-    (562,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (563, Extent);
    Internal_Set_Name
     (563,
@@ -3515,13 +2852,7 @@ begin
     (564,
      (False, League.Strings.To_Universal_String ("The value specification for a constraint must evaluate to a Boolean value.")));
    Initialize_Opaque_Expression (565, Extent);
-   Internal_Set_Name
-    (565,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (47, Extent);
-   Internal_Set_Default
-    (47,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (47, False);
    Internal_Set_Is_Derived (47, False);
    Internal_Set_Is_Derived_Union (47, False);
@@ -3529,8 +2860,8 @@ begin
    Internal_Set_Is_Ordered (47, True);
    Internal_Set_Is_Read_Only (47, False);
    Internal_Set_Is_Unique (47, True);
-   Internal_Set_Lower (
-47, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (47, (False, 0));
+   Internal_Set_Name
     (47,
      (False, League.Strings.To_Universal_String ("constrainedElement")));
    Internal_Set_Upper (47, (False, (Unlimited => True)));
@@ -3539,9 +2870,6 @@ begin
     (566,
      (False, League.Strings.To_Universal_String ("The ordered set of Elements referenced by this Constraint.")));
    Initialize_Property (82, Extent);
-   Internal_Set_Default
-    (82,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (82, True);
    Internal_Set_Is_Derived (82, False);
    Internal_Set_Is_Derived_Union (82, False);
@@ -3549,8 +2877,8 @@ begin
    Internal_Set_Is_Ordered (82, False);
    Internal_Set_Is_Read_Only (82, False);
    Internal_Set_Is_Unique (82, True);
-   Internal_Set_Lower (
-82, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (82, (False, 1));
+   Internal_Set_Name
     (82,
      (False, League.Strings.To_Universal_String ("specification")));
    Internal_Set_Upper (82, (False, (False, 1)));
@@ -3559,9 +2887,6 @@ begin
     (567,
      (False, League.Strings.To_Universal_String ("A condition that must be true when evaluated in order for the constraint to be satisfied.")));
    Initialize_Property (81, Extent);
-   Internal_Set_Default
-    (81,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (81, False);
    Internal_Set_Is_Derived (81, False);
    Internal_Set_Is_Derived_Union (81, False);
@@ -3569,8 +2894,8 @@ begin
    Internal_Set_Is_Ordered (81, False);
    Internal_Set_Is_Read_Only (81, False);
    Internal_Set_Is_Unique (81, True);
-   Internal_Set_Lower (
-81, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (81, (False, 0));
+   Internal_Set_Name
     (81,
      (False, League.Strings.To_Universal_String ("context")));
    Internal_Set_Upper (81, (False, (False, 1)));
@@ -3593,13 +2918,7 @@ begin
     (570,
      (False, League.Strings.To_Universal_String ("If the language attribute is not empty, then the size of the body and language arrays must be the same.")));
    Initialize_Opaque_Expression (571, Extent);
-   Internal_Set_Name
-    (571,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (97, Extent);
-   Internal_Set_Default
-    (97,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (97, True);
    Internal_Set_Is_Derived (97, False);
    Internal_Set_Is_Derived_Union (97, False);
@@ -3607,8 +2926,8 @@ begin
    Internal_Set_Is_Ordered (97, True);
    Internal_Set_Is_Read_Only (97, False);
    Internal_Set_Is_Unique (97, False);
-   Internal_Set_Lower (
-97, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (97, (False, 0));
+   Internal_Set_Name
     (97,
      (False, League.Strings.To_Universal_String ("body")));
    Internal_Set_Upper (97, (False, (Unlimited => True)));
@@ -3617,9 +2936,6 @@ begin
     (572,
      (False, League.Strings.To_Universal_String ("The text of the expression, possibly in multiple languages.")));
    Initialize_Property (98, Extent);
-   Internal_Set_Default
-    (98,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (98, True);
    Internal_Set_Is_Derived (98, False);
    Internal_Set_Is_Derived_Union (98, False);
@@ -3627,8 +2943,8 @@ begin
    Internal_Set_Is_Ordered (98, True);
    Internal_Set_Is_Read_Only (98, False);
    Internal_Set_Is_Unique (98, True);
-   Internal_Set_Lower (
-98, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (98, (False, 0));
+   Internal_Set_Name
     (98,
      (False, League.Strings.To_Universal_String ("language")));
    Internal_Set_Upper (98, (False, (Unlimited => True)));
@@ -3655,9 +2971,6 @@ begin
     (576,
      (False, League.Strings.To_Universal_String ("A bodyCondition can only be specified for a query operation.")));
    Initialize_Opaque_Expression (577, Extent);
-   Internal_Set_Name
-    (577,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (578, Extent);
    Internal_Set_Name
     (578,
@@ -3667,9 +2980,6 @@ begin
     (579,
      (False, League.Strings.To_Universal_String ("An operation can have at most one return parameter; i.e., an owned parameter with the direction set to 'return'")));
    Initialize_Opaque_Expression (580, Extent);
-   Internal_Set_Name
-    (580,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (103, Extent);
    Internal_Set_Default
     (103,
@@ -3681,8 +2991,8 @@ begin
    Internal_Set_Is_Ordered (103, False);
    Internal_Set_Is_Read_Only (103, False);
    Internal_Set_Is_Unique (103, True);
-   Internal_Set_Lower (
-103, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (103, (False, 1));
+   Internal_Set_Name
     (103,
      (False, League.Strings.To_Universal_String ("isQuery")));
    Internal_Set_Upper (103, (False, (False, 1)));
@@ -3701,8 +3011,8 @@ begin
    Internal_Set_Is_Ordered (102, False);
    Internal_Set_Is_Read_Only (102, False);
    Internal_Set_Is_Unique (102, True);
-   Internal_Set_Lower (
-102, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (102, (False, 1));
+   Internal_Set_Name
     (102,
      (False, League.Strings.To_Universal_String ("isOrdered")));
    Internal_Set_Upper (102, (False, (False, 1)));
@@ -3721,8 +3031,8 @@ begin
    Internal_Set_Is_Ordered (104, False);
    Internal_Set_Is_Read_Only (104, False);
    Internal_Set_Is_Unique (104, True);
-   Internal_Set_Lower (
-104, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (104, (False, 1));
+   Internal_Set_Name
     (104,
      (False, League.Strings.To_Universal_String ("isUnique")));
    Internal_Set_Upper (104, (False, (False, 1)));
@@ -3741,8 +3051,8 @@ begin
    Internal_Set_Is_Ordered (105, False);
    Internal_Set_Is_Read_Only (105, False);
    Internal_Set_Is_Unique (105, True);
-   Internal_Set_Lower (
-105, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (105, (False, 0));
+   Internal_Set_Name
     (105,
      (False, League.Strings.To_Universal_String ("lower")));
    Internal_Set_Upper (105, (False, (False, 1)));
@@ -3761,8 +3071,8 @@ begin
    Internal_Set_Is_Ordered (107, False);
    Internal_Set_Is_Read_Only (107, False);
    Internal_Set_Is_Unique (107, True);
-   Internal_Set_Lower (
-107, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (107, (False, 0));
+   Internal_Set_Name
     (107,
      (False, League.Strings.To_Universal_String ("upper")));
    Internal_Set_Upper (107, (False, (False, 1)));
@@ -3771,9 +3081,6 @@ begin
     (585,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
    Initialize_Property (100, Extent);
-   Internal_Set_Default
-    (100,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (100, False);
    Internal_Set_Is_Derived (100, False);
    Internal_Set_Is_Derived_Union (100, False);
@@ -3781,8 +3088,8 @@ begin
    Internal_Set_Is_Ordered (100, False);
    Internal_Set_Is_Read_Only (100, False);
    Internal_Set_Is_Unique (100, True);
-   Internal_Set_Lower (
-100, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (100, (False, 0));
+   Internal_Set_Name
     (100,
      (False, League.Strings.To_Universal_String ("class")));
    Internal_Set_Upper (100, (False, (False, 1)));
@@ -3791,9 +3098,6 @@ begin
     (586,
      (False, League.Strings.To_Universal_String ("The class that owns the operation.")));
    Initialize_Property (101, Extent);
-   Internal_Set_Default
-    (101,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (101, False);
    Internal_Set_Is_Derived (101, False);
    Internal_Set_Is_Derived_Union (101, False);
@@ -3801,8 +3105,8 @@ begin
    Internal_Set_Is_Ordered (101, False);
    Internal_Set_Is_Read_Only (101, False);
    Internal_Set_Is_Unique (101, True);
-   Internal_Set_Lower (
-101, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (101, (False, 0));
+   Internal_Set_Name
     (101,
      (False, League.Strings.To_Universal_String ("datatype")));
    Internal_Set_Upper (101, (False, (False, 1)));
@@ -3811,9 +3115,6 @@ begin
     (587,
      (False, League.Strings.To_Universal_String ("The DataType that owns this Operation.")));
    Initialize_Property (66, Extent);
-   Internal_Set_Default
-    (66,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (66, False);
    Internal_Set_Is_Derived (66, False);
    Internal_Set_Is_Derived_Union (66, False);
@@ -3821,8 +3122,8 @@ begin
    Internal_Set_Is_Ordered (66, False);
    Internal_Set_Is_Read_Only (66, False);
    Internal_Set_Is_Unique (66, True);
-   Internal_Set_Lower (
-66, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (66, (False, 0));
+   Internal_Set_Name
     (66,
      (False, League.Strings.To_Universal_String ("raisedException")));
    Internal_Set_Upper (66, (False, (Unlimited => True)));
@@ -3831,9 +3132,6 @@ begin
     (588,
      (False, League.Strings.To_Universal_String ("References the Types representing exceptions that may be raised during an invocation of this operation.")));
    Initialize_Property (67, Extent);
-   Internal_Set_Default
-    (67,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (67, False);
    Internal_Set_Is_Derived (67, False);
    Internal_Set_Is_Derived_Union (67, False);
@@ -3841,8 +3139,8 @@ begin
    Internal_Set_Is_Ordered (67, False);
    Internal_Set_Is_Read_Only (67, False);
    Internal_Set_Is_Unique (67, True);
-   Internal_Set_Lower (
-67, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (67, (False, 0));
+   Internal_Set_Name
     (67,
      (False, League.Strings.To_Universal_String ("redefinedOperation")));
    Internal_Set_Upper (67, (False, (Unlimited => True)));
@@ -3851,9 +3149,6 @@ begin
     (589,
      (False, League.Strings.To_Universal_String ("References the Operations that are redefined by this Operation.")));
    Initialize_Property (106, Extent);
-   Internal_Set_Default
-    (106,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (106, False);
    Internal_Set_Is_Derived (106, True);
    Internal_Set_Is_Derived_Union (106, False);
@@ -3861,8 +3156,8 @@ begin
    Internal_Set_Is_Ordered (106, False);
    Internal_Set_Is_Read_Only (106, False);
    Internal_Set_Is_Unique (106, True);
-   Internal_Set_Lower (
-106, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (106, (False, 0));
+   Internal_Set_Name
     (106,
      (False, League.Strings.To_Universal_String ("type")));
    Internal_Set_Upper (106, (False, (False, 1)));
@@ -3871,9 +3166,6 @@ begin
     (590,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
    Initialize_Property (63, Extent);
-   Internal_Set_Default
-    (63,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (63, True);
    Internal_Set_Is_Derived (63, False);
    Internal_Set_Is_Derived_Union (63, False);
@@ -3881,8 +3173,8 @@ begin
    Internal_Set_Is_Ordered (63, True);
    Internal_Set_Is_Read_Only (63, False);
    Internal_Set_Is_Unique (63, True);
-   Internal_Set_Lower (
-63, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (63, (False, 0));
+   Internal_Set_Name
     (63,
      (False, League.Strings.To_Universal_String ("ownedParameter")));
    Internal_Set_Upper (63, (False, (Unlimited => True)));
@@ -3891,9 +3183,6 @@ begin
     (591,
      (False, League.Strings.To_Universal_String ("Specifies the ordered set of formal parameters of this BehavioralFeature.")));
    Initialize_Property (65, Extent);
-   Internal_Set_Default
-    (65,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (65, True);
    Internal_Set_Is_Derived (65, False);
    Internal_Set_Is_Derived_Union (65, False);
@@ -3901,15 +3190,12 @@ begin
    Internal_Set_Is_Ordered (65, False);
    Internal_Set_Is_Read_Only (65, False);
    Internal_Set_Is_Unique (65, True);
-   Internal_Set_Lower (
-65, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (65, (False, 0));
+   Internal_Set_Name
     (65,
      (False, League.Strings.To_Universal_String ("precondition")));
    Internal_Set_Upper (65, (False, (Unlimited => True)));
    Initialize_Property (64, Extent);
-   Internal_Set_Default
-    (64,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (64, True);
    Internal_Set_Is_Derived (64, False);
    Internal_Set_Is_Derived_Union (64, False);
@@ -3917,15 +3203,12 @@ begin
    Internal_Set_Is_Ordered (64, False);
    Internal_Set_Is_Read_Only (64, False);
    Internal_Set_Is_Unique (64, True);
-   Internal_Set_Lower (
-64, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (64, (False, 0));
+   Internal_Set_Name
     (64,
      (False, League.Strings.To_Universal_String ("postcondition")));
    Internal_Set_Upper (64, (False, (Unlimited => True)));
    Initialize_Property (99, Extent);
-   Internal_Set_Default
-    (99,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (99, True);
    Internal_Set_Is_Derived (99, False);
    Internal_Set_Is_Derived_Union (99, False);
@@ -3933,8 +3216,8 @@ begin
    Internal_Set_Is_Ordered (99, False);
    Internal_Set_Is_Read_Only (99, False);
    Internal_Set_Is_Unique (99, True);
-   Internal_Set_Lower (
-99, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (99, (False, 0));
+   Internal_Set_Name
     (99,
      (False, League.Strings.To_Universal_String ("bodyCondition")));
    Internal_Set_Upper (99, (False, (False, 1)));
@@ -3943,8 +3226,8 @@ begin
    Internal_Set_Is_Ordered (592, False);
    Internal_Set_Is_Query (592, True);
    Internal_Set_Is_Unique (592, True);
-   Internal_Set_Lower (
-592, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (592, (False, 1));
+   Internal_Set_Name
     (592,
      (False, League.Strings.To_Universal_String ("isOrdered")));
    Internal_Set_Upper (592, (False, (False, 1)));
@@ -3957,28 +3240,19 @@ begin
     (594,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (595, Extent);
-   Internal_Set_Name
-    (595,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (596, Extent);
-   Internal_Set_Default
-    (596,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (596, Return_Direction);
    Internal_Set_Is_Ordered (596, False);
    Internal_Set_Is_Unique (596, True);
-   Internal_Set_Lower (
-596, (False, 1));   Internal_Set_Name
-    (596,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (596, (False, 1));
    Internal_Set_Upper (596, (False, (False, 1)));
    Initialize_Operation (597, Extent);
    Internal_Set_Is_Leaf (597, False);
    Internal_Set_Is_Ordered (597, False);
    Internal_Set_Is_Query (597, True);
    Internal_Set_Is_Unique (597, True);
-   Internal_Set_Lower (
-597, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (597, (False, 1));
+   Internal_Set_Name
     (597,
      (False, League.Strings.To_Universal_String ("isUnique")));
    Internal_Set_Upper (597, (False, (False, 1)));
@@ -3991,28 +3265,19 @@ begin
     (599,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (600, Extent);
-   Internal_Set_Name
-    (600,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (601, Extent);
-   Internal_Set_Default
-    (601,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (601, Return_Direction);
    Internal_Set_Is_Ordered (601, False);
    Internal_Set_Is_Unique (601, True);
-   Internal_Set_Lower (
-601, (False, 1));   Internal_Set_Name
-    (601,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (601, (False, 1));
    Internal_Set_Upper (601, (False, (False, 1)));
    Initialize_Operation (602, Extent);
    Internal_Set_Is_Leaf (602, False);
    Internal_Set_Is_Ordered (602, False);
    Internal_Set_Is_Query (602, True);
    Internal_Set_Is_Unique (602, True);
-   Internal_Set_Lower (
-602, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (602, (False, 1));
+   Internal_Set_Name
     (602,
      (False, League.Strings.To_Universal_String ("lower")));
    Internal_Set_Upper (602, (False, (False, 1)));
@@ -4025,28 +3290,19 @@ begin
     (604,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (605, Extent);
-   Internal_Set_Name
-    (605,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (606, Extent);
-   Internal_Set_Default
-    (606,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (606, Return_Direction);
    Internal_Set_Is_Ordered (606, False);
    Internal_Set_Is_Unique (606, True);
-   Internal_Set_Lower (
-606, (False, 1));   Internal_Set_Name
-    (606,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (606, (False, 1));
    Internal_Set_Upper (606, (False, (False, 1)));
    Initialize_Operation (607, Extent);
    Internal_Set_Is_Leaf (607, False);
    Internal_Set_Is_Ordered (607, False);
    Internal_Set_Is_Query (607, True);
    Internal_Set_Is_Unique (607, True);
-   Internal_Set_Lower (
-607, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (607, (False, 1));
+   Internal_Set_Name
     (607,
      (False, League.Strings.To_Universal_String ("upper")));
    Internal_Set_Upper (607, (False, (False, 1)));
@@ -4059,28 +3315,19 @@ begin
     (609,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (610, Extent);
-   Internal_Set_Name
-    (610,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (611, Extent);
-   Internal_Set_Default
-    (611,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (611, Return_Direction);
    Internal_Set_Is_Ordered (611, False);
    Internal_Set_Is_Unique (611, True);
-   Internal_Set_Lower (
-611, (False, 1));   Internal_Set_Name
-    (611,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (611, (False, 1));
    Internal_Set_Upper (611, (False, (False, 1)));
    Initialize_Operation (612, Extent);
    Internal_Set_Is_Leaf (612, False);
    Internal_Set_Is_Ordered (612, False);
    Internal_Set_Is_Query (612, True);
    Internal_Set_Is_Unique (612, True);
-   Internal_Set_Lower (
-612, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (612, (False, 1));
+   Internal_Set_Name
     (612,
      (False, League.Strings.To_Universal_String ("type")));
    Internal_Set_Upper (612, (False, (False, 1)));
@@ -4093,28 +3340,19 @@ begin
     (614,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (615, Extent);
-   Internal_Set_Name
-    (615,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (616, Extent);
-   Internal_Set_Default
-    (616,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (616, Return_Direction);
    Internal_Set_Is_Ordered (616, False);
    Internal_Set_Is_Unique (616, True);
-   Internal_Set_Lower (
-616, (False, 1));   Internal_Set_Name
-    (616,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (616, (False, 1));
    Internal_Set_Upper (616, (False, (False, 1)));
    Initialize_Operation (617, Extent);
    Internal_Set_Is_Leaf (617, False);
    Internal_Set_Is_Ordered (617, False);
    Internal_Set_Is_Query (617, True);
    Internal_Set_Is_Unique (617, True);
-   Internal_Set_Lower (
-617, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (617, (False, 1));
+   Internal_Set_Name
     (617,
      (False, League.Strings.To_Universal_String ("isConsistentWith")));
    Internal_Set_Upper (617, (False, (False, 1)));
@@ -4123,42 +3361,24 @@ begin
     (618,
      (False, League.Strings.To_Universal_String ("The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.")));
    Initialize_Constraint (619, Extent);
-   Internal_Set_Name
-    (619,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (620, Extent);
-   Internal_Set_Name
-    (620,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (621, Extent);
    Internal_Set_Name
     (621,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (622, Extent);
-   Internal_Set_Name
-    (622,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (623, Extent);
-   Internal_Set_Default
-    (623,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (623, Return_Direction);
    Internal_Set_Is_Ordered (623, False);
    Internal_Set_Is_Unique (623, True);
-   Internal_Set_Lower (
-623, (False, 1));   Internal_Set_Name
-    (623,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (623, (False, 1));
    Internal_Set_Upper (623, (False, (False, 1)));
    Initialize_Parameter (624, Extent);
-   Internal_Set_Default
-    (624,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (624, In_Direction);
    Internal_Set_Is_Ordered (624, False);
    Internal_Set_Is_Unique (624, True);
-   Internal_Set_Lower (
-624, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (624, (False, 1));
+   Internal_Set_Name
     (624,
      (False, League.Strings.To_Universal_String ("redefinee")));
    Internal_Set_Upper (624, (False, (False, 1)));
@@ -4167,8 +3387,8 @@ begin
    Internal_Set_Is_Ordered (625, False);
    Internal_Set_Is_Query (625, True);
    Internal_Set_Is_Unique (625, True);
-   Internal_Set_Lower (
-625, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (625, (False, 1));
+   Internal_Set_Name
     (625,
      (False, League.Strings.To_Universal_String ("returnResult")));
    Internal_Set_Upper (625, (False, (False, 1)));
@@ -4177,20 +3397,11 @@ begin
     (626,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (627, Extent);
-   Internal_Set_Name
-    (627,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (628, Extent);
-   Internal_Set_Default
-    (628,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (628, Return_Direction);
    Internal_Set_Is_Ordered (628, False);
    Internal_Set_Is_Unique (628, True);
-   Internal_Set_Lower (
-628, (False, 0));   Internal_Set_Name
-    (628,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (628, (False, 0));
    Internal_Set_Upper (628, (False, (Unlimited => True)));
    Initialize_Class (24, Extent);
    Internal_Set_Is_Abstract (24, False);
@@ -4203,9 +3414,6 @@ begin
     (629,
      (False, League.Strings.To_Universal_String ("A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.")));
    Initialize_Property (115, Extent);
-   Internal_Set_Default
-    (115,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (115, False);
    Internal_Set_Is_Derived (115, False);
    Internal_Set_Is_Derived_Union (115, False);
@@ -4213,8 +3421,8 @@ begin
    Internal_Set_Is_Ordered (115, False);
    Internal_Set_Is_Read_Only (115, False);
    Internal_Set_Is_Unique (115, True);
-   Internal_Set_Lower (
-115, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (115, (False, 0));
+   Internal_Set_Name
     (115,
      (False, League.Strings.To_Universal_String ("default")));
    Internal_Set_Upper (115, (False, (False, 1)));
@@ -4233,8 +3441,8 @@ begin
    Internal_Set_Is_Ordered (116, False);
    Internal_Set_Is_Read_Only (116, False);
    Internal_Set_Is_Unique (116, True);
-   Internal_Set_Lower (
-116, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (116, (False, 1));
+   Internal_Set_Name
     (116,
      (False, League.Strings.To_Universal_String ("direction")));
    Internal_Set_Upper (116, (False, (False, 1)));
@@ -4243,9 +3451,6 @@ begin
     (631,
      (False, League.Strings.To_Universal_String ("Indicates whether a parameter is being sent into or out of a behavioral element.")));
    Initialize_Property (117, Extent);
-   Internal_Set_Default
-    (117,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (117, False);
    Internal_Set_Is_Derived (117, False);
    Internal_Set_Is_Derived_Union (117, False);
@@ -4253,8 +3458,8 @@ begin
    Internal_Set_Is_Ordered (117, False);
    Internal_Set_Is_Read_Only (117, False);
    Internal_Set_Is_Unique (117, True);
-   Internal_Set_Lower (
-117, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (117, (False, 0));
+   Internal_Set_Name
     (117,
      (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (117, (False, (False, 1)));
@@ -4273,9 +3478,6 @@ begin
     (633,
      (False, League.Strings.To_Universal_String ("A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.")));
    Initialize_Property (37, Extent);
-   Internal_Set_Default
-    (37,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (37, True);
    Internal_Set_Is_Derived (37, False);
    Internal_Set_Is_Derived_Union (37, False);
@@ -4283,8 +3485,8 @@ begin
    Internal_Set_Is_Ordered (37, True);
    Internal_Set_Is_Read_Only (37, False);
    Internal_Set_Is_Unique (37, True);
-   Internal_Set_Lower (
-37, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (37, (False, 0));
+   Internal_Set_Name
     (37,
      (False, League.Strings.To_Universal_String ("ownedParameter")));
    Internal_Set_Upper (37, (False, (Unlimited => True)));
@@ -4293,9 +3495,6 @@ begin
     (634,
      (False, League.Strings.To_Universal_String ("Specifies the ordered set of formal parameters of this BehavioralFeature.")));
    Initialize_Property (38, Extent);
-   Internal_Set_Default
-    (38,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (38, False);
    Internal_Set_Is_Derived (38, False);
    Internal_Set_Is_Derived_Union (38, False);
@@ -4303,8 +3502,8 @@ begin
    Internal_Set_Is_Ordered (38, False);
    Internal_Set_Is_Read_Only (38, False);
    Internal_Set_Is_Unique (38, True);
-   Internal_Set_Lower (
-38, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (38, (False, 0));
+   Internal_Set_Name
     (38,
      (False, League.Strings.To_Universal_String ("raisedException")));
    Internal_Set_Upper (38, (False, (Unlimited => True)));
@@ -4317,8 +3516,8 @@ begin
    Internal_Set_Is_Ordered (636, False);
    Internal_Set_Is_Query (636, True);
    Internal_Set_Is_Unique (636, True);
-   Internal_Set_Lower (
-636, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (636, (False, 1));
+   Internal_Set_Name
     (636,
      (False, League.Strings.To_Universal_String ("isDistinguishableFrom")));
    Internal_Set_Upper (636, (False, (False, 1)));
@@ -4331,42 +3530,27 @@ begin
     (638,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (639, Extent);
-   Internal_Set_Name
-    (639,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (640, Extent);
-   Internal_Set_Default
-    (640,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (640, Return_Direction);
    Internal_Set_Is_Ordered (640, False);
    Internal_Set_Is_Unique (640, True);
-   Internal_Set_Lower (
-640, (False, 1));   Internal_Set_Name
-    (640,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (640, (False, 1));
    Internal_Set_Upper (640, (False, (False, 1)));
    Initialize_Parameter (641, Extent);
-   Internal_Set_Default
-    (641,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (641, In_Direction);
    Internal_Set_Is_Ordered (641, False);
    Internal_Set_Is_Unique (641, True);
-   Internal_Set_Lower (
-641, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (641, (False, 1));
+   Internal_Set_Name
     (641,
      (False, League.Strings.To_Universal_String ("n")));
    Internal_Set_Upper (641, (False, (False, 1)));
    Initialize_Parameter (642, Extent);
-   Internal_Set_Default
-    (642,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (642, In_Direction);
    Internal_Set_Is_Ordered (642, False);
    Internal_Set_Is_Unique (642, True);
-   Internal_Set_Lower (
-642, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (642, (False, 1));
+   Internal_Set_Name
     (642,
      (False, League.Strings.To_Universal_String ("ns")));
    Internal_Set_Upper (642, (False, (False, 1)));
@@ -4389,9 +3573,6 @@ begin
     (645,
      (False, League.Strings.To_Universal_String ("The visibility of an ElementImport is either public or private.")));
    Initialize_Opaque_Expression (646, Extent);
-   Internal_Set_Name
-    (646,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (647, Extent);
    Internal_Set_Name
     (647,
@@ -4401,9 +3582,6 @@ begin
     (648,
      (False, League.Strings.To_Universal_String ("An importedElement has either public visibility or no visibility at all.")));
    Initialize_Opaque_Expression (649, Extent);
-   Internal_Set_Name
-    (649,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (87, Extent);
    Internal_Set_Default
     (87,
@@ -4415,8 +3593,8 @@ begin
    Internal_Set_Is_Ordered (87, False);
    Internal_Set_Is_Read_Only (87, False);
    Internal_Set_Is_Unique (87, True);
-   Internal_Set_Lower (
-87, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (87, (False, 1));
+   Internal_Set_Name
     (87,
      (False, League.Strings.To_Universal_String ("visibility")));
    Internal_Set_Upper (87, (False, (False, 1)));
@@ -4425,9 +3603,6 @@ begin
     (650,
      (False, League.Strings.To_Universal_String ("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.")));
    Initialize_Property (84, Extent);
-   Internal_Set_Default
-    (84,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (84, False);
    Internal_Set_Is_Derived (84, False);
    Internal_Set_Is_Derived_Union (84, False);
@@ -4435,8 +3610,8 @@ begin
    Internal_Set_Is_Ordered (84, False);
    Internal_Set_Is_Read_Only (84, False);
    Internal_Set_Is_Unique (84, True);
-   Internal_Set_Lower (
-84, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (84, (False, 0));
+   Internal_Set_Name
     (84,
      (False, League.Strings.To_Universal_String ("alias")));
    Internal_Set_Upper (84, (False, (False, 1)));
@@ -4445,9 +3620,6 @@ begin
     (651,
      (False, League.Strings.To_Universal_String ("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.")));
    Initialize_Property (85, Extent);
-   Internal_Set_Default
-    (85,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (85, False);
    Internal_Set_Is_Derived (85, False);
    Internal_Set_Is_Derived_Union (85, False);
@@ -4455,8 +3627,8 @@ begin
    Internal_Set_Is_Ordered (85, False);
    Internal_Set_Is_Read_Only (85, False);
    Internal_Set_Is_Unique (85, True);
-   Internal_Set_Lower (
-85, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (85, (False, 1));
+   Internal_Set_Name
     (85,
      (False, League.Strings.To_Universal_String ("importedElement")));
    Internal_Set_Upper (85, (False, (False, 1)));
@@ -4465,9 +3637,6 @@ begin
     (652,
      (False, League.Strings.To_Universal_String ("Specifies the PackageableElement whose name is to be added to a Namespace.")));
    Initialize_Property (86, Extent);
-   Internal_Set_Default
-    (86,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (86, False);
    Internal_Set_Is_Derived (86, False);
    Internal_Set_Is_Derived_Union (86, False);
@@ -4475,8 +3644,8 @@ begin
    Internal_Set_Is_Ordered (86, False);
    Internal_Set_Is_Read_Only (86, False);
    Internal_Set_Is_Unique (86, True);
-   Internal_Set_Lower (
-86, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (86, (False, 1));
+   Internal_Set_Name
     (86,
      (False, League.Strings.To_Universal_String ("importingNamespace")));
    Internal_Set_Upper (86, (False, (False, 1)));
@@ -4489,8 +3658,8 @@ begin
    Internal_Set_Is_Ordered (654, False);
    Internal_Set_Is_Query (654, True);
    Internal_Set_Is_Unique (654, True);
-   Internal_Set_Lower (
-654, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (654, (False, 1));
+   Internal_Set_Name
     (654,
      (False, League.Strings.To_Universal_String ("getName")));
    Internal_Set_Upper (654, (False, (False, 1)));
@@ -4503,20 +3672,11 @@ begin
     (656,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (657, Extent);
-   Internal_Set_Name
-    (657,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (658, Extent);
-   Internal_Set_Default
-    (658,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (658, Return_Direction);
    Internal_Set_Is_Ordered (658, False);
    Internal_Set_Is_Unique (658, True);
-   Internal_Set_Lower (
-658, (False, 1));   Internal_Set_Name
-    (658,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (658, (False, 1));
    Internal_Set_Upper (658, (False, (False, 1)));
    Initialize_Class (20, Extent);
    Internal_Set_Is_Abstract (20, False);
@@ -4537,13 +3697,7 @@ begin
     (661,
      (False, League.Strings.To_Universal_String ("If an element that is owned by a package has visibility, it is public or private.")));
    Initialize_Opaque_Expression (662, Extent);
-   Internal_Set_Name
-    (662,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (71, Extent);
-   Internal_Set_Default
-    (71,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (71, True);
    Internal_Set_Is_Derived (71, False);
    Internal_Set_Is_Derived_Union (71, False);
@@ -4551,8 +3705,8 @@ begin
    Internal_Set_Is_Ordered (71, False);
    Internal_Set_Is_Read_Only (71, False);
    Internal_Set_Is_Unique (71, True);
-   Internal_Set_Lower (
-71, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (71, (False, 0));
+   Internal_Set_Name
     (71,
      (False, League.Strings.To_Universal_String ("packagedElement")));
    Internal_Set_Upper (71, (False, (Unlimited => True)));
@@ -4561,9 +3715,6 @@ begin
     (663,
      (False, League.Strings.To_Universal_String ("Specifies the packageable elements that are owned by this Package.")));
    Initialize_Property (69, Extent);
-   Internal_Set_Default
-    (69,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (69, True);
    Internal_Set_Is_Derived (69, True);
    Internal_Set_Is_Derived_Union (69, False);
@@ -4571,8 +3722,8 @@ begin
    Internal_Set_Is_Ordered (69, False);
    Internal_Set_Is_Read_Only (69, False);
    Internal_Set_Is_Unique (69, True);
-   Internal_Set_Lower (
-69, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (69, (False, 0));
+   Internal_Set_Name
     (69,
      (False, League.Strings.To_Universal_String ("ownedType")));
    Internal_Set_Upper (69, (False, (Unlimited => True)));
@@ -4581,9 +3732,6 @@ begin
     (664,
      (False, League.Strings.To_Universal_String ("References the packaged elements that are Types.")));
    Initialize_Property (68, Extent);
-   Internal_Set_Default
-    (68,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (68, True);
    Internal_Set_Is_Derived (68, True);
    Internal_Set_Is_Derived_Union (68, False);
@@ -4591,8 +3739,8 @@ begin
    Internal_Set_Is_Ordered (68, False);
    Internal_Set_Is_Read_Only (68, False);
    Internal_Set_Is_Unique (68, True);
-   Internal_Set_Lower (
-68, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (68, (False, 0));
+   Internal_Set_Name
     (68,
      (False, League.Strings.To_Universal_String ("nestedPackage")));
    Internal_Set_Upper (68, (False, (Unlimited => True)));
@@ -4601,9 +3749,6 @@ begin
     (665,
      (False, League.Strings.To_Universal_String ("References the packaged elements that are Packages.")));
    Initialize_Property (108, Extent);
-   Internal_Set_Default
-    (108,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (108, False);
    Internal_Set_Is_Derived (108, False);
    Internal_Set_Is_Derived_Union (108, False);
@@ -4611,8 +3756,8 @@ begin
    Internal_Set_Is_Ordered (108, False);
    Internal_Set_Is_Read_Only (108, False);
    Internal_Set_Is_Unique (108, True);
-   Internal_Set_Lower (
-108, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (108, (False, 0));
+   Internal_Set_Name
     (108,
      (False, League.Strings.To_Universal_String ("nestingPackage")));
    Internal_Set_Upper (108, (False, (False, 1)));
@@ -4621,9 +3766,6 @@ begin
     (666,
      (False, League.Strings.To_Universal_String ("References the Package that owns this Package.")));
    Initialize_Property (70, Extent);
-   Internal_Set_Default
-    (70,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (70, True);
    Internal_Set_Is_Derived (70, False);
    Internal_Set_Is_Derived_Union (70, False);
@@ -4631,8 +3773,8 @@ begin
    Internal_Set_Is_Ordered (70, False);
    Internal_Set_Is_Read_Only (70, False);
    Internal_Set_Is_Unique (70, True);
-   Internal_Set_Lower (
-70, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (70, (False, 0));
+   Internal_Set_Name
     (70,
      (False, League.Strings.To_Universal_String ("packageMerge")));
    Internal_Set_Upper (70, (False, (Unlimited => True)));
@@ -4641,9 +3783,6 @@ begin
     (667,
      (False, League.Strings.To_Universal_String ("References the PackageMerges that are owned by this Package.")));
    Initialize_Property (109, Extent);
-   Internal_Set_Default
-    (109,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (109, False);
    Internal_Set_Is_Derived (109, False);
    Internal_Set_Is_Derived_Union (109, False);
@@ -4651,8 +3790,8 @@ begin
    Internal_Set_Is_Ordered (109, False);
    Internal_Set_Is_Read_Only (109, False);
    Internal_Set_Is_Unique (109, True);
-   Internal_Set_Lower (
-109, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (109, (False, 0));
+   Internal_Set_Name
     (109,
      (False, League.Strings.To_Universal_String ("uri")));
    Internal_Set_Upper (109, (False, (False, 1)));
@@ -4665,8 +3804,8 @@ begin
    Internal_Set_Is_Ordered (669, False);
    Internal_Set_Is_Query (669, True);
    Internal_Set_Is_Unique (669, True);
-   Internal_Set_Lower (
-669, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (669, (False, 1));
+   Internal_Set_Name
     (669,
      (False, League.Strings.To_Universal_String ("mustBeOwned")));
    Internal_Set_Upper (669, (False, (False, 1)));
@@ -4679,28 +3818,19 @@ begin
     (671,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (672, Extent);
-   Internal_Set_Name
-    (672,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (673, Extent);
-   Internal_Set_Default
-    (673,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (673, Return_Direction);
    Internal_Set_Is_Ordered (673, False);
    Internal_Set_Is_Unique (673, True);
-   Internal_Set_Lower (
-673, (False, 1));   Internal_Set_Name
-    (673,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (673, (False, 1));
    Internal_Set_Upper (673, (False, (False, 1)));
    Initialize_Operation (674, Extent);
    Internal_Set_Is_Leaf (674, False);
    Internal_Set_Is_Ordered (674, False);
    Internal_Set_Is_Query (674, True);
    Internal_Set_Is_Unique (674, True);
-   Internal_Set_Lower (
-674, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (674, (False, 1));
+   Internal_Set_Name
     (674,
      (False, League.Strings.To_Universal_String ("visibleMembers")));
    Internal_Set_Upper (674, (False, (False, 1)));
@@ -4713,28 +3843,19 @@ begin
     (676,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (677, Extent);
-   Internal_Set_Name
-    (677,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (678, Extent);
-   Internal_Set_Default
-    (678,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (678, Return_Direction);
    Internal_Set_Is_Ordered (678, False);
    Internal_Set_Is_Unique (678, True);
-   Internal_Set_Lower (
-678, (False, 0));   Internal_Set_Name
-    (678,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (678, (False, 0));
    Internal_Set_Upper (678, (False, (Unlimited => True)));
    Initialize_Operation (679, Extent);
    Internal_Set_Is_Leaf (679, False);
    Internal_Set_Is_Ordered (679, False);
    Internal_Set_Is_Query (679, True);
    Internal_Set_Is_Unique (679, True);
-   Internal_Set_Lower (
-679, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (679, (False, 1));
+   Internal_Set_Name
     (679,
      (False, League.Strings.To_Universal_String ("makesVisible")));
    Internal_Set_Upper (679, (False, (False, 1)));
@@ -4743,42 +3864,24 @@ begin
     (680,
      (False, League.Strings.To_Universal_String ("The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.")));
    Initialize_Constraint (681, Extent);
-   Internal_Set_Name
-    (681,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Opaque_Expression (682, Extent);
-   Internal_Set_Name
-    (682,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (683, Extent);
    Internal_Set_Name
     (683,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (684, Extent);
-   Internal_Set_Name
-    (684,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (685, Extent);
-   Internal_Set_Default
-    (685,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (685, Return_Direction);
    Internal_Set_Is_Ordered (685, False);
    Internal_Set_Is_Unique (685, True);
-   Internal_Set_Lower (
-685, (False, 1));   Internal_Set_Name
-    (685,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (685, (False, 1));
    Internal_Set_Upper (685, (False, (False, 1)));
    Initialize_Parameter (686, Extent);
-   Internal_Set_Default
-    (686,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (686, In_Direction);
    Internal_Set_Is_Ordered (686, False);
    Internal_Set_Is_Unique (686, True);
-   Internal_Set_Lower (
-686, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (686, (False, 1));
+   Internal_Set_Name
     (686,
      (False, League.Strings.To_Universal_String ("el")));
    Internal_Set_Upper (686, (False, (False, 1)));
@@ -4801,9 +3904,6 @@ begin
     (689,
      (False, League.Strings.To_Universal_String ("The visibility of a PackageImport is either public or private.")));
    Initialize_Opaque_Expression (690, Extent);
-   Internal_Set_Name
-    (690,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (112, Extent);
    Internal_Set_Default
     (112,
@@ -4815,8 +3915,8 @@ begin
    Internal_Set_Is_Ordered (112, False);
    Internal_Set_Is_Read_Only (112, False);
    Internal_Set_Is_Unique (112, True);
-   Internal_Set_Lower (
-112, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (112, (False, 1));
+   Internal_Set_Name
     (112,
      (False, League.Strings.To_Universal_String ("visibility")));
    Internal_Set_Upper (112, (False, (False, 1)));
@@ -4825,9 +3925,6 @@ begin
     (691,
      (False, League.Strings.To_Universal_String ("Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.")));
    Initialize_Property (110, Extent);
-   Internal_Set_Default
-    (110,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (110, False);
    Internal_Set_Is_Derived (110, False);
    Internal_Set_Is_Derived_Union (110, False);
@@ -4835,8 +3932,8 @@ begin
    Internal_Set_Is_Ordered (110, False);
    Internal_Set_Is_Read_Only (110, False);
    Internal_Set_Is_Unique (110, True);
-   Internal_Set_Lower (
-110, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (110, (False, 1));
+   Internal_Set_Name
     (110,
      (False, League.Strings.To_Universal_String ("importedPackage")));
    Internal_Set_Upper (110, (False, (False, 1)));
@@ -4845,9 +3942,6 @@ begin
     (692,
      (False, League.Strings.To_Universal_String ("Specifies the Package whose members are imported into a Namespace.")));
    Initialize_Property (111, Extent);
-   Internal_Set_Default
-    (111,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (111, False);
    Internal_Set_Is_Derived (111, False);
    Internal_Set_Is_Derived_Union (111, False);
@@ -4855,8 +3949,8 @@ begin
    Internal_Set_Is_Ordered (111, False);
    Internal_Set_Is_Read_Only (111, False);
    Internal_Set_Is_Unique (111, True);
-   Internal_Set_Lower (
-111, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (111, (False, 1));
+   Internal_Set_Name
     (111,
      (False, League.Strings.To_Universal_String ("importingNamespace")));
    Internal_Set_Upper (111, (False, (False, 1)));
@@ -4875,9 +3969,6 @@ begin
     (694,
      (False, League.Strings.To_Universal_String ("A package merge defines how the contents of one package are extended by the contents of another package.")));
    Initialize_Property (114, Extent);
-   Internal_Set_Default
-    (114,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (114, False);
    Internal_Set_Is_Derived (114, False);
    Internal_Set_Is_Derived_Union (114, False);
@@ -4885,8 +3976,8 @@ begin
    Internal_Set_Is_Ordered (114, False);
    Internal_Set_Is_Read_Only (114, False);
    Internal_Set_Is_Unique (114, True);
-   Internal_Set_Lower (
-114, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (114, (False, 1));
+   Internal_Set_Name
     (114,
      (False, League.Strings.To_Universal_String ("receivingPackage")));
    Internal_Set_Upper (114, (False, (False, 1)));
@@ -4895,9 +3986,6 @@ begin
     (695,
      (False, League.Strings.To_Universal_String ("References the Package that is being extended with the contents of the merged package of the PackageMerge.")));
    Initialize_Property (113, Extent);
-   Internal_Set_Default
-    (113,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (113, False);
    Internal_Set_Is_Derived (113, False);
    Internal_Set_Is_Derived_Union (113, False);
@@ -4905,8 +3993,8 @@ begin
    Internal_Set_Is_Ordered (113, False);
    Internal_Set_Is_Read_Only (113, False);
    Internal_Set_Is_Unique (113, True);
-   Internal_Set_Lower (
-113, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (113, (False, 1));
+   Internal_Set_Name
     (113,
      (False, League.Strings.To_Universal_String ("mergedPackage")));
    Internal_Set_Upper (113, (False, (False, 1)));
@@ -4925,9 +4013,6 @@ begin
     (697,
      (False, League.Strings.To_Universal_String ("A type is a named element that is used as the type for a typed element. A type can be contained in a package.")));
    Initialize_Property (129, Extent);
-   Internal_Set_Default
-    (129,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (129, False);
    Internal_Set_Is_Derived (129, False);
    Internal_Set_Is_Derived_Union (129, False);
@@ -4935,8 +4020,8 @@ begin
    Internal_Set_Is_Ordered (129, False);
    Internal_Set_Is_Read_Only (129, False);
    Internal_Set_Is_Unique (129, True);
-   Internal_Set_Lower (
-129, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (129, (False, 0));
+   Internal_Set_Name
     (129,
      (False, League.Strings.To_Universal_String ("package")));
    Internal_Set_Upper (129, (False, (False, 1)));
@@ -4949,8 +4034,8 @@ begin
    Internal_Set_Is_Ordered (699, False);
    Internal_Set_Is_Query (699, True);
    Internal_Set_Is_Unique (699, True);
-   Internal_Set_Lower (
-699, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (699, (False, 1));
+   Internal_Set_Name
     (699,
      (False, League.Strings.To_Universal_String ("conformsTo")));
    Internal_Set_Upper (699, (False, (False, 1)));
@@ -4963,30 +4048,18 @@ begin
     (701,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (702, Extent);
-   Internal_Set_Name
-    (702,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (703, Extent);
-   Internal_Set_Default
-    (703,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (703, Return_Direction);
    Internal_Set_Is_Ordered (703, False);
    Internal_Set_Is_Unique (703, True);
-   Internal_Set_Lower (
-703, (False, 1));   Internal_Set_Name
-    (703,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (703, (False, 1));
    Internal_Set_Upper (703, (False, (False, 1)));
    Initialize_Parameter (704, Extent);
-   Internal_Set_Default
-    (704,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (704, In_Direction);
    Internal_Set_Is_Ordered (704, False);
    Internal_Set_Is_Unique (704, True);
-   Internal_Set_Lower (
-704, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (704, (False, 1));
+   Internal_Set_Name
     (704,
      (False, League.Strings.To_Universal_String ("other")));
    Internal_Set_Upper (704, (False, (False, 1)));
@@ -5009,9 +4082,6 @@ begin
     (707,
      (False, League.Strings.To_Universal_String ("If there is no name, or one of the containing namespaces has no name, there is no qualified name.")));
    Initialize_Opaque_Expression (708, Extent);
-   Internal_Set_Name
-    (708,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (709, Extent);
    Internal_Set_Name
     (709,
@@ -5021,9 +4091,6 @@ begin
     (710,
      (False, League.Strings.To_Universal_String ("When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.")));
    Initialize_Opaque_Expression (711, Extent);
-   Internal_Set_Name
-    (711,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Constraint (712, Extent);
    Internal_Set_Name
     (712,
@@ -5033,13 +4100,7 @@ begin
     (713,
      (False, League.Strings.To_Universal_String ("If a NamedElement is not owned by a Namespace, it does not have a visibility.")));
    Initialize_Opaque_Expression (714, Extent);
-   Internal_Set_Name
-    (714,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Property (93, Extent);
-   Internal_Set_Default
-    (93,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (93, False);
    Internal_Set_Is_Derived (93, False);
    Internal_Set_Is_Derived_Union (93, False);
@@ -5047,8 +4108,8 @@ begin
    Internal_Set_Is_Ordered (93, False);
    Internal_Set_Is_Read_Only (93, False);
    Internal_Set_Is_Unique (93, True);
-   Internal_Set_Lower (
-93, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (93, (False, 0));
+   Internal_Set_Name
     (93,
      (False, League.Strings.To_Universal_String ("name")));
    Internal_Set_Upper (93, (False, (False, 1)));
@@ -5057,9 +4118,6 @@ begin
     (715,
      (False, League.Strings.To_Universal_String ("The name of the NamedElement.")));
    Initialize_Property (96, Extent);
-   Internal_Set_Default
-    (96,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (96, False);
    Internal_Set_Is_Derived (96, False);
    Internal_Set_Is_Derived_Union (96, False);
@@ -5067,8 +4125,8 @@ begin
    Internal_Set_Is_Ordered (96, False);
    Internal_Set_Is_Read_Only (96, False);
    Internal_Set_Is_Unique (96, True);
-   Internal_Set_Lower (
-96, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (96, (False, 0));
+   Internal_Set_Name
     (96,
      (False, League.Strings.To_Universal_String ("visibility")));
    Internal_Set_Upper (96, (False, (False, 1)));
@@ -5077,9 +4135,6 @@ begin
     (716,
      (False, League.Strings.To_Universal_String ("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.")));
    Initialize_Property (94, Extent);
-   Internal_Set_Default
-    (94,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (94, False);
    Internal_Set_Is_Derived (94, True);
    Internal_Set_Is_Derived_Union (94, True);
@@ -5087,8 +4142,8 @@ begin
    Internal_Set_Is_Ordered (94, False);
    Internal_Set_Is_Read_Only (94, True);
    Internal_Set_Is_Unique (94, True);
-   Internal_Set_Lower (
-94, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (94, (False, 0));
+   Internal_Set_Name
     (94,
      (False, League.Strings.To_Universal_String ("namespace")));
    Internal_Set_Upper (94, (False, (False, 1)));
@@ -5097,9 +4152,6 @@ begin
     (717,
      (False, League.Strings.To_Universal_String ("Specifies the namespace that owns the NamedElement.")));
    Initialize_Property (95, Extent);
-   Internal_Set_Default
-    (95,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (95, False);
    Internal_Set_Is_Derived (95, True);
    Internal_Set_Is_Derived_Union (95, False);
@@ -5107,8 +4159,8 @@ begin
    Internal_Set_Is_Ordered (95, False);
    Internal_Set_Is_Read_Only (95, True);
    Internal_Set_Is_Unique (95, True);
-   Internal_Set_Lower (
-95, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (95, (False, 0));
+   Internal_Set_Name
     (95,
      (False, League.Strings.To_Universal_String ("qualifiedName")));
    Internal_Set_Upper (95, (False, (False, 1)));
@@ -5121,8 +4173,8 @@ begin
    Internal_Set_Is_Ordered (719, False);
    Internal_Set_Is_Query (719, True);
    Internal_Set_Is_Unique (719, True);
-   Internal_Set_Lower (
-719, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (719, (False, 1));
+   Internal_Set_Name
     (719,
      (False, League.Strings.To_Universal_String ("allNamespaces")));
    Internal_Set_Upper (719, (False, (False, 1)));
@@ -5135,28 +4187,19 @@ begin
     (721,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (722, Extent);
-   Internal_Set_Name
-    (722,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (723, Extent);
-   Internal_Set_Default
-    (723,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (723, Return_Direction);
    Internal_Set_Is_Ordered (723, True);
    Internal_Set_Is_Unique (723, True);
-   Internal_Set_Lower (
-723, (False, 0));   Internal_Set_Name
-    (723,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (723, (False, 0));
    Internal_Set_Upper (723, (False, (Unlimited => True)));
    Initialize_Operation (724, Extent);
    Internal_Set_Is_Leaf (724, False);
    Internal_Set_Is_Ordered (724, False);
    Internal_Set_Is_Query (724, True);
    Internal_Set_Is_Unique (724, True);
-   Internal_Set_Lower (
-724, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (724, (False, 1));
+   Internal_Set_Name
     (724,
      (False, League.Strings.To_Universal_String ("isDistinguishableFrom")));
    Internal_Set_Upper (724, (False, (False, 1)));
@@ -5169,42 +4212,27 @@ begin
     (726,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (727, Extent);
-   Internal_Set_Name
-    (727,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (728, Extent);
-   Internal_Set_Default
-    (728,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (728, Return_Direction);
    Internal_Set_Is_Ordered (728, False);
    Internal_Set_Is_Unique (728, True);
-   Internal_Set_Lower (
-728, (False, 1));   Internal_Set_Name
-    (728,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (728, (False, 1));
    Internal_Set_Upper (728, (False, (False, 1)));
    Initialize_Parameter (729, Extent);
-   Internal_Set_Default
-    (729,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (729, In_Direction);
    Internal_Set_Is_Ordered (729, False);
    Internal_Set_Is_Unique (729, True);
-   Internal_Set_Lower (
-729, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (729, (False, 1));
+   Internal_Set_Name
     (729,
      (False, League.Strings.To_Universal_String ("n")));
    Internal_Set_Upper (729, (False, (False, 1)));
    Initialize_Parameter (730, Extent);
-   Internal_Set_Default
-    (730,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (730, In_Direction);
    Internal_Set_Is_Ordered (730, False);
    Internal_Set_Is_Unique (730, True);
-   Internal_Set_Lower (
-730, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (730, (False, 1));
+   Internal_Set_Name
     (730,
      (False, League.Strings.To_Universal_String ("ns")));
    Internal_Set_Upper (730, (False, (False, 1)));
@@ -5213,8 +4241,8 @@ begin
    Internal_Set_Is_Ordered (731, False);
    Internal_Set_Is_Query (731, True);
    Internal_Set_Is_Unique (731, True);
-   Internal_Set_Lower (
-731, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (731, (False, 1));
+   Internal_Set_Name
     (731,
      (False, League.Strings.To_Universal_String ("separator")));
    Internal_Set_Upper (731, (False, (False, 1)));
@@ -5227,28 +4255,19 @@ begin
     (733,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (734, Extent);
-   Internal_Set_Name
-    (734,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (735, Extent);
-   Internal_Set_Default
-    (735,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (735, Return_Direction);
    Internal_Set_Is_Ordered (735, False);
    Internal_Set_Is_Unique (735, True);
-   Internal_Set_Lower (
-735, (False, 1));   Internal_Set_Name
-    (735,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (735, (False, 1));
    Internal_Set_Upper (735, (False, (False, 1)));
    Initialize_Operation (736, Extent);
    Internal_Set_Is_Leaf (736, False);
    Internal_Set_Is_Ordered (736, False);
    Internal_Set_Is_Query (736, True);
    Internal_Set_Is_Unique (736, True);
-   Internal_Set_Lower (
-736, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (736, (False, 1));
+   Internal_Set_Name
     (736,
      (False, League.Strings.To_Universal_String ("qualifiedName")));
    Internal_Set_Upper (736, (False, (False, 1)));
@@ -5261,20 +4280,11 @@ begin
     (738,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (739, Extent);
-   Internal_Set_Name
-    (739,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (740, Extent);
-   Internal_Set_Default
-    (740,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (740, Return_Direction);
    Internal_Set_Is_Ordered (740, False);
    Internal_Set_Is_Unique (740, True);
-   Internal_Set_Lower (
-740, (False, 1));   Internal_Set_Name
-    (740,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (740, (False, 1));
    Internal_Set_Upper (740, (False, (False, 1)));
    Initialize_Class (13, Extent);
    Internal_Set_Is_Abstract (13, False);
@@ -5287,9 +4297,6 @@ begin
     (741,
      (False, League.Strings.To_Universal_String ("An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.")));
    Initialize_Property (55, Extent);
-   Internal_Set_Default
-    (55,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (55, True);
    Internal_Set_Is_Derived (55, False);
    Internal_Set_Is_Derived_Union (55, False);
@@ -5297,8 +4304,8 @@ begin
    Internal_Set_Is_Ordered (55, True);
    Internal_Set_Is_Read_Only (55, False);
    Internal_Set_Is_Unique (55, True);
-   Internal_Set_Lower (
-55, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (55, (False, 0));
+   Internal_Set_Name
     (55,
      (False, League.Strings.To_Universal_String ("operand")));
    Internal_Set_Upper (55, (False, (Unlimited => True)));
@@ -5317,9 +4324,6 @@ begin
     (743,
      (False, League.Strings.To_Universal_String ("A comment is a textual annotation that can be attached to a set of elements.")));
    Initialize_Property (80, Extent);
-   Internal_Set_Default
-    (80,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (80, False);
    Internal_Set_Is_Derived (80, False);
    Internal_Set_Is_Derived_Union (80, False);
@@ -5327,8 +4331,8 @@ begin
    Internal_Set_Is_Ordered (80, False);
    Internal_Set_Is_Read_Only (80, False);
    Internal_Set_Is_Unique (80, True);
-   Internal_Set_Lower (
-80, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (80, (False, 0));
+   Internal_Set_Name
     (80,
      (False, League.Strings.To_Universal_String ("body")));
    Internal_Set_Upper (80, (False, (False, 1)));
@@ -5337,9 +4341,6 @@ begin
     (744,
      (False, League.Strings.To_Universal_String ("Specifies a string that is the comment.")));
    Initialize_Property (46, Extent);
-   Internal_Set_Default
-    (46,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (46, False);
    Internal_Set_Is_Derived (46, False);
    Internal_Set_Is_Derived_Union (46, False);
@@ -5347,8 +4348,8 @@ begin
    Internal_Set_Is_Ordered (46, False);
    Internal_Set_Is_Read_Only (46, False);
    Internal_Set_Is_Unique (46, True);
-   Internal_Set_Lower (
-46, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (46, (False, 0));
+   Internal_Set_Name
     (46,
      (False, League.Strings.To_Universal_String ("annotatedElement")));
    Internal_Set_Upper (46, (False, (Unlimited => True)));
@@ -5411,8 +4412,8 @@ begin
    Internal_Set_Is_Ordered (758, False);
    Internal_Set_Is_Query (758, True);
    Internal_Set_Is_Unique (758, True);
-   Internal_Set_Lower (
-758, (False, 1));   Internal_Set_Name
+   Internal_Set_Lower (758, (False, 1));
+   Internal_Set_Name
     (758,
      (False, League.Strings.To_Universal_String ("bestVisibility")));
    Internal_Set_Upper (758, (False, (False, 1)));
@@ -5425,30 +4426,18 @@ begin
     (760,
      (False, League.Strings.To_Universal_String ("spec")));
    Initialize_Opaque_Expression (761, Extent);
-   Internal_Set_Name
-    (761,
-     (False, League.Strings.To_Universal_String ("")));
    Initialize_Parameter (762, Extent);
-   Internal_Set_Default
-    (762,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (762, Return_Direction);
    Internal_Set_Is_Ordered (762, False);
    Internal_Set_Is_Unique (762, True);
-   Internal_Set_Lower (
-762, (False, 1));   Internal_Set_Name
-    (762,
-     (False, League.Strings.To_Universal_String ("")));
+   Internal_Set_Lower (762, (False, 1));
    Internal_Set_Upper (762, (False, (False, 1)));
    Initialize_Parameter (763, Extent);
-   Internal_Set_Default
-    (763,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Direction (763, In_Direction);
    Internal_Set_Is_Ordered (763, False);
    Internal_Set_Is_Unique (763, True);
-   Internal_Set_Lower (
-763, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (763, (False, 0));
+   Internal_Set_Name
     (763,
      (False, League.Strings.To_Universal_String ("vis")));
    Internal_Set_Upper (763, (False, (Unlimited => True)));
@@ -5491,9 +4480,6 @@ begin
     (137,
      (False, League.Strings.To_Universal_String ("A_type_typedElement")));
    Initialize_Property (772, Extent);
-   Internal_Set_Default
-    (772,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (772, False);
    Internal_Set_Is_Derived (772, False);
    Internal_Set_Is_Derived_Union (772, False);
@@ -5501,8 +4487,8 @@ begin
    Internal_Set_Is_Ordered (772, False);
    Internal_Set_Is_Read_Only (772, False);
    Internal_Set_Is_Unique (772, True);
-   Internal_Set_Lower (
-772, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (772, (False, 0));
+   Internal_Set_Name
     (772,
      (False, League.Strings.To_Universal_String ("typedElement")));
    Internal_Set_Upper (772, (False, (Unlimited => True)));
@@ -5531,9 +4517,6 @@ begin
     (144,
      (False, League.Strings.To_Universal_String ("A_attribute_classifier")));
    Initialize_Property (773, Extent);
-   Internal_Set_Default
-    (773,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (773, False);
    Internal_Set_Is_Derived (773, False);
    Internal_Set_Is_Derived_Union (773, False);
@@ -5541,8 +4524,8 @@ begin
    Internal_Set_Is_Ordered (773, False);
    Internal_Set_Is_Read_Only (773, False);
    Internal_Set_Is_Unique (773, True);
-   Internal_Set_Lower (
-773, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (773, (False, 0));
+   Internal_Set_Name
     (773,
      (False, League.Strings.To_Universal_String ("classifier")));
    Internal_Set_Upper (773, (False, (False, 1)));
@@ -5553,9 +4536,6 @@ begin
     (146,
      (False, League.Strings.To_Universal_String ("A_redefinedProperty_property")));
    Initialize_Property (774, Extent);
-   Internal_Set_Default
-    (774,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (774, False);
    Internal_Set_Is_Derived (774, False);
    Internal_Set_Is_Derived_Union (774, False);
@@ -5563,8 +4543,8 @@ begin
    Internal_Set_Is_Ordered (774, False);
    Internal_Set_Is_Read_Only (774, False);
    Internal_Set_Is_Unique (774, True);
-   Internal_Set_Lower (
-774, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (774, (False, 0));
+   Internal_Set_Name
     (774,
      (False, League.Strings.To_Universal_String ("property")));
    Internal_Set_Upper (774, (False, (Unlimited => True)));
@@ -5575,9 +4555,6 @@ begin
     (148,
      (False, League.Strings.To_Universal_String ("A_subsettedProperty_property")));
    Initialize_Property (775, Extent);
-   Internal_Set_Default
-    (775,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (775, False);
    Internal_Set_Is_Derived (775, False);
    Internal_Set_Is_Derived_Union (775, False);
@@ -5585,8 +4562,8 @@ begin
    Internal_Set_Is_Ordered (775, False);
    Internal_Set_Is_Read_Only (775, False);
    Internal_Set_Is_Unique (775, True);
-   Internal_Set_Lower (
-775, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (775, (False, 0));
+   Internal_Set_Name
     (775,
      (False, League.Strings.To_Universal_String ("property")));
    Internal_Set_Upper (775, (False, (Unlimited => True)));
@@ -5597,9 +4574,6 @@ begin
     (150,
      (False, League.Strings.To_Universal_String ("A_opposite_property")));
    Initialize_Property (776, Extent);
-   Internal_Set_Default
-    (776,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (776, False);
    Internal_Set_Is_Derived (776, False);
    Internal_Set_Is_Derived_Union (776, False);
@@ -5607,8 +4581,8 @@ begin
    Internal_Set_Is_Ordered (776, False);
    Internal_Set_Is_Read_Only (776, False);
    Internal_Set_Is_Unique (776, True);
-   Internal_Set_Lower (
-776, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (776, (False, 0));
+   Internal_Set_Name
     (776,
      (False, League.Strings.To_Universal_String ("property")));
    Internal_Set_Upper (776, (False, (False, 1)));
@@ -5619,9 +4593,6 @@ begin
     (152,
      (False, League.Strings.To_Universal_String ("A_superClass_class")));
    Initialize_Property (777, Extent);
-   Internal_Set_Default
-    (777,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (777, False);
    Internal_Set_Is_Derived (777, False);
    Internal_Set_Is_Derived_Union (777, False);
@@ -5629,8 +4600,8 @@ begin
    Internal_Set_Is_Ordered (777, False);
    Internal_Set_Is_Read_Only (777, False);
    Internal_Set_Is_Unique (777, True);
-   Internal_Set_Lower (
-777, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (777, (False, 0));
+   Internal_Set_Name
     (777,
      (False, League.Strings.To_Universal_String ("class")));
    Internal_Set_Upper (777, (False, (Unlimited => True)));
@@ -5641,9 +4612,6 @@ begin
     (155,
      (False, League.Strings.To_Universal_String ("A_endType_association")));
    Initialize_Property (778, Extent);
-   Internal_Set_Default
-    (778,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (778, False);
    Internal_Set_Is_Derived (778, False);
    Internal_Set_Is_Derived_Union (778, False);
@@ -5651,8 +4619,8 @@ begin
    Internal_Set_Is_Ordered (778, False);
    Internal_Set_Is_Read_Only (778, False);
    Internal_Set_Is_Unique (778, True);
-   Internal_Set_Lower (
-778, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (778, (False, 0));
+   Internal_Set_Name
     (778,
      (False, League.Strings.To_Universal_String ("association")));
    Internal_Set_Upper (778, (False, (Unlimited => True)));
@@ -5681,9 +4649,6 @@ begin
     (161,
      (False, League.Strings.To_Universal_String ("A_raisedException_operation")));
    Initialize_Property (779, Extent);
-   Internal_Set_Default
-    (779,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (779, False);
    Internal_Set_Is_Derived (779, False);
    Internal_Set_Is_Derived_Union (779, False);
@@ -5691,8 +4656,8 @@ begin
    Internal_Set_Is_Ordered (779, False);
    Internal_Set_Is_Read_Only (779, False);
    Internal_Set_Is_Unique (779, True);
-   Internal_Set_Lower (
-779, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (779, (False, 0));
+   Internal_Set_Name
     (779,
      (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (779, (False, (Unlimited => True)));
@@ -5703,9 +4668,6 @@ begin
     (164,
      (False, League.Strings.To_Universal_String ("A_redefinedOperation_operation")));
    Initialize_Property (780, Extent);
-   Internal_Set_Default
-    (780,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (780, False);
    Internal_Set_Is_Derived (780, False);
    Internal_Set_Is_Derived_Union (780, False);
@@ -5713,8 +4675,8 @@ begin
    Internal_Set_Is_Ordered (780, False);
    Internal_Set_Is_Read_Only (780, False);
    Internal_Set_Is_Unique (780, True);
-   Internal_Set_Lower (
-780, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (780, (False, 0));
+   Internal_Set_Name
     (780,
      (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (780, (False, (Unlimited => True)));
@@ -5725,9 +4687,6 @@ begin
     (166,
      (False, League.Strings.To_Universal_String ("A_ownedParameter_ownerFormalParam")));
    Initialize_Property (781, Extent);
-   Internal_Set_Default
-    (781,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (781, False);
    Internal_Set_Is_Derived (781, False);
    Internal_Set_Is_Derived_Union (781, False);
@@ -5735,8 +4694,8 @@ begin
    Internal_Set_Is_Ordered (781, False);
    Internal_Set_Is_Read_Only (781, False);
    Internal_Set_Is_Unique (781, True);
-   Internal_Set_Lower (
-781, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (781, (False, 0));
+   Internal_Set_Name
     (781,
      (False, League.Strings.To_Universal_String ("ownerFormalParam")));
    Internal_Set_Upper (781, (False, (False, 1)));
@@ -5747,9 +4706,6 @@ begin
     (168,
      (False, League.Strings.To_Universal_String ("A_raisedException_behavioralFeature")));
    Initialize_Property (782, Extent);
-   Internal_Set_Default
-    (782,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (782, False);
    Internal_Set_Is_Derived (782, False);
    Internal_Set_Is_Derived_Union (782, False);
@@ -5757,8 +4713,8 @@ begin
    Internal_Set_Is_Ordered (782, False);
    Internal_Set_Is_Read_Only (782, False);
    Internal_Set_Is_Unique (782, True);
-   Internal_Set_Lower (
-782, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (782, (False, 0));
+   Internal_Set_Name
     (782,
      (False, League.Strings.To_Universal_String ("behavioralFeature")));
    Internal_Set_Upper (782, (False, (Unlimited => True)));
@@ -5769,9 +4725,6 @@ begin
     (170,
      (False, League.Strings.To_Universal_String ("A_importedMember_namespace")));
    Initialize_Property (783, Extent);
-   Internal_Set_Default
-    (783,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (783, False);
    Internal_Set_Is_Derived (783, False);
    Internal_Set_Is_Derived_Union (783, False);
@@ -5779,8 +4732,8 @@ begin
    Internal_Set_Is_Ordered (783, False);
    Internal_Set_Is_Read_Only (783, False);
    Internal_Set_Is_Unique (783, True);
-   Internal_Set_Lower (
-783, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (783, (False, 0));
+   Internal_Set_Name
     (783,
      (False, League.Strings.To_Universal_String ("namespace")));
    Internal_Set_Upper (783, (False, (Unlimited => True)));
@@ -5791,9 +4744,6 @@ begin
     (172,
      (False, League.Strings.To_Universal_String ("A_importedPackage_packageImport")));
    Initialize_Property (784, Extent);
-   Internal_Set_Default
-    (784,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (784, False);
    Internal_Set_Is_Derived (784, False);
    Internal_Set_Is_Derived_Union (784, False);
@@ -5801,8 +4751,8 @@ begin
    Internal_Set_Is_Ordered (784, False);
    Internal_Set_Is_Read_Only (784, False);
    Internal_Set_Is_Unique (784, True);
-   Internal_Set_Lower (
-784, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (784, (False, 0));
+   Internal_Set_Name
     (784,
      (False, League.Strings.To_Universal_String ("packageImport")));
    Internal_Set_Upper (784, (False, (Unlimited => True)));
@@ -5813,9 +4763,6 @@ begin
     (174,
      (False, League.Strings.To_Universal_String ("A_importedElement_elementImport")));
    Initialize_Property (785, Extent);
-   Internal_Set_Default
-    (785,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (785, False);
    Internal_Set_Is_Derived (785, False);
    Internal_Set_Is_Derived_Union (785, False);
@@ -5823,8 +4770,8 @@ begin
    Internal_Set_Is_Ordered (785, False);
    Internal_Set_Is_Read_Only (785, False);
    Internal_Set_Is_Unique (785, True);
-   Internal_Set_Lower (
-785, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (785, (False, 0));
+   Internal_Set_Name
     (785,
      (False, League.Strings.To_Universal_String ("elementImport")));
    Internal_Set_Upper (785, (False, (Unlimited => True)));
@@ -5847,9 +4794,6 @@ begin
     (177,
      (False, League.Strings.To_Universal_String ("A_packagedElement_owningPackage")));
    Initialize_Property (786, Extent);
-   Internal_Set_Default
-    (786,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (786, False);
    Internal_Set_Is_Derived (786, False);
    Internal_Set_Is_Derived_Union (786, False);
@@ -5857,8 +4801,8 @@ begin
    Internal_Set_Is_Ordered (786, False);
    Internal_Set_Is_Read_Only (786, False);
    Internal_Set_Is_Unique (786, True);
-   Internal_Set_Lower (
-786, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (786, (False, 0));
+   Internal_Set_Name
     (786,
      (False, League.Strings.To_Universal_String ("owningPackage")));
    Internal_Set_Upper (786, (False, (False, 1)));
@@ -5887,9 +4831,6 @@ begin
     (181,
      (False, League.Strings.To_Universal_String ("A_type_operation")));
    Initialize_Property (787, Extent);
-   Internal_Set_Default
-    (787,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (787, False);
    Internal_Set_Is_Derived (787, False);
    Internal_Set_Is_Derived_Union (787, False);
@@ -5897,8 +4838,8 @@ begin
    Internal_Set_Is_Ordered (787, False);
    Internal_Set_Is_Read_Only (787, False);
    Internal_Set_Is_Unique (787, True);
-   Internal_Set_Lower (
-787, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (787, (False, 0));
+   Internal_Set_Name
     (787,
      (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (787, (False, (Unlimited => True)));
@@ -5915,9 +4856,6 @@ begin
     (132,
      (False, League.Strings.To_Universal_String ("A_mergedPackage_packageMerge")));
    Initialize_Property (788, Extent);
-   Internal_Set_Default
-    (788,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (788, False);
    Internal_Set_Is_Derived (788, False);
    Internal_Set_Is_Derived_Union (788, False);
@@ -5925,8 +4863,8 @@ begin
    Internal_Set_Is_Ordered (788, False);
    Internal_Set_Is_Read_Only (788, False);
    Internal_Set_Is_Unique (788, True);
-   Internal_Set_Lower (
-788, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (788, (False, 0));
+   Internal_Set_Name
     (788,
      (False, League.Strings.To_Universal_String ("packageMerge")));
    Internal_Set_Upper (788, (False, (Unlimited => True)));
@@ -5943,9 +4881,6 @@ begin
     (134,
      (False, League.Strings.To_Universal_String ("A_annotatedElement_comment")));
    Initialize_Property (789, Extent);
-   Internal_Set_Default
-    (789,
-     (False, League.Strings.To_Universal_String ("")));
    Internal_Set_Is_Composite (789, False);
    Internal_Set_Is_Derived (789, False);
    Internal_Set_Is_Derived_Union (789, False);
@@ -5953,8 +4888,8 @@ begin
    Internal_Set_Is_Ordered (789, False);
    Internal_Set_Is_Read_Only (789, False);
    Internal_Set_Is_Unique (789, True);
-   Internal_Set_Lower (
-789, (False, 0));   Internal_Set_Name
+   Internal_Set_Lower (789, (False, 0));
+   Internal_Set_Name
     (789,
      (False, League.Strings.To_Universal_String ("comment")));
    Internal_Set_Upper (789, (False, (Unlimited => True)));
