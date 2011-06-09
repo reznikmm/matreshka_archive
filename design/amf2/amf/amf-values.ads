@@ -46,6 +46,7 @@
 --  extended to support other types or replaced by League.Values package at
 --  some point.
 ------------------------------------------------------------------------------
+with AMF.CMOF;
 with CMOF;
 
 package AMF.Values is
@@ -66,7 +67,8 @@ package AMF.Values is
      Value_Element,
      Value_Collection_Of_Element,
      Value_CMOF_Parameter_Direction_Kind,
-     Value_CMOF_Visibility_Kind);
+     Value_CMOF_Visibility_Kind,
+     Value_Optional_CMOF_Visibility_Kind);
 
    type Value (Kind : Value_Kinds := Value_None) is record
       case Kind is
@@ -98,19 +100,22 @@ package AMF.Values is
             Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;
 
          when Value_Collection_Of_String =>
-            Collection_String_Value : CMOF.Collection_Of_CMOF_String;
+            Collection_String_Value : Standard.CMOF.Collection_Of_CMOF_String;
 
          when Value_Element =>
-            Element_Value : CMOF.CMOF_Element;
+            Element_Value : Standard.CMOF.CMOF_Element;
 
          when Value_Collection_Of_Element =>
-            Collection_Value : CMOF.Collection_Of_CMOF_Element;
+            Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
 
          when Value_CMOF_Parameter_Direction_Kind =>
             Parameter_Direction_Value : CMOF.CMOF_Parameter_Direction_Kind;
 
          when Value_CMOF_Visibility_Kind =>
             Visibility_Value : CMOF.CMOF_Visibility_Kind;
+
+         when Value_Optional_CMOF_Visibility_Kind =>
+            Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
       end case;
    end record;
 

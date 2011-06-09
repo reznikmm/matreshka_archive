@@ -55,13 +55,22 @@ package AMF.CMOF is
 --     Out_Direction,
 --     Return_Direction);
 
-   type CMOF_Visibility_Kind is
-    (Public_Visibility,
-     Private_Visibility,
-     Protected_Visibility,
-     Package_Visibility);
+   subtype CMOF_Visibility_Kind is Standard.CMOF.CMOF_Visibility_Kind;
+--   type CMOF_Visibility_Kind is
+--    (Public_Visibility,
+--     Private_Visibility,
+--     Protected_Visibility,
+--     Package_Visibility);
 
-   type Optional_CMOF_Visibility_Kind is null record;
+   type Optional_CMOF_Visibility_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when False =>
+            Value : CMOF_Visibility_Kind;
+
+         when True =>
+            null;
+      end case;
+   end record;
 
    type Sequence_Of_String is null record;
    type Set_Of_String is null record;
