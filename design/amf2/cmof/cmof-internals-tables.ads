@@ -45,7 +45,7 @@ with GNAT.Table;
 
 with Matreshka.Internals.Strings;
 
-with AMF;
+with AMF.CMOF;
 with AMF.Elements;
 with CMOF.Internals.Types;
 
@@ -57,9 +57,14 @@ private package CMOF.Internals.Tables is
      M_Collection_Of_Element,
      M_Boolean,
      M_Integer,
+     M_Integer_Holder,
      M_Unlimited_Natural,
+     M_Unlimited_Natural_Holder,
      M_String,
-     M_Parameter_Direction_Kind);
+     M_Collection_Of_String,
+     M_Parameter_Direction_Kind,
+     M_Visibility_Kind,
+     M_Visibility_Holder_Kind);
 
    type Member_Record (Kind : Member_Kinds := M_None) is record
       case Kind is
@@ -75,17 +80,32 @@ private package CMOF.Internals.Tables is
          when M_Boolean =>
             Boolean_Value : Boolean;
 
+         when M_Integer_Holder =>
+            Integer_Holder_Value : AMF.Optional_Integer;
+
          when M_Integer =>
             Integer_Value : Integer;
 
          when M_Unlimited_Natural =>
             Natural_Value : AMF.Unlimited_Natural;
 
+         when M_Unlimited_Natural_Holder =>
+            Natural_Holder_Value : AMF.Optional_Unlimited_Natural;
+
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
 
+         when M_Collection_Of_String =>
+            String_Collection_Value : Collection_Of_CMOF_String;
+
          when M_Parameter_Direction_Kind =>
             Parameter_Direction_Value : CMOF_Parameter_Direction_Kind;
+
+         when M_Visibility_Kind =>
+            Visibility_Value : CMOF_Visibility_Kind;
+
+         when M_Visibility_Holder_Kind =>
+            Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
       end case;
    end record;
 

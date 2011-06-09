@@ -80,6 +80,12 @@ package Generator is
 --    (Item : not null AMF.CMOF.Classes.CMOF_Class_Access)
 --       return Ada.Containers.Hash_Type;
 
+   function Hash
+    (Item : AMF.CMOF.Properties.CMOF_Property_Access)
+       return Ada.Containers.Hash_Type;
+
+   function Hash (Item : Natural) return Ada.Containers.Hash_Type;
+
    function Less
     (Left  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Right : not null AMF.CMOF.Properties.CMOF_Property_Access)
@@ -100,10 +106,33 @@ package Generator is
            Less,
            AMF.CMOF.Properties."=");
 
+   package CMOF_Property_Natural_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.CMOF.Properties.CMOF_Property_Access,
+           Natural,
+           Hash,
+           AMF.CMOF.Properties."=");
+
+   package Natural_CMOF_Property_Maps is
+     new Ada.Containers.Hashed_Maps
+          (Natural,
+           AMF.CMOF.Properties.CMOF_Property_Access,
+           Hash,
+           "=",
+           AMF.CMOF.Properties."=");
+
    type Class_Information is record
-      Class          : AMF.CMOF.Classes.CMOF_Class_Access;
-      All_Attributes : CMOF_Property_Sets.Set;
+      Class            : AMF.CMOF.Classes.CMOF_Class_Access;
+      All_Attributes   : CMOF_Property_Sets.Set;
       --  Set of all attributes of the class.
+      Slot             : CMOF_Property_Natural_Maps.Map;
+      Slot_Index       : Natural_CMOF_Property_Maps.Map;
+      Collection       : CMOF_Property_Natural_Maps.Map;
+      Collection_Index : Natural_CMOF_Property_Maps.Map;
+      --  Mapping of attributes into slots and collections. Index to
+      --  slot/collection mapping map to first declaration of the attribute.
+      --  Attributes which redefine this attribute is out of the mapping, but
+      --  present in slot/collection to index mapping and share the same index.
    end record;
    --  Class information record contains extracted information for each class.
 
@@ -114,10 +143,48 @@ package Generator is
           (AMF.CMOF.Classes.CMOF_Class_Access,
            Class_Information_Access,
            Less);
---           Hash,
---           AMF.CMOF.Classes."=");
+
+--   type Attribute_Group is record
+--      Properties : CMOF_Property_Sets.Set;
+----      Classes    : CMOF_Class_Sets.Set;
+--   end record;
+--
+--   type Attribute_Group_Access is access all Attribute_Group;
+--
+--   function Less
+--    (Left  : Attribute_Group_Access;
+--     Right : Attribute_Group_Access) return Boolean;
+--
+--   package Attribute_Group_Sets is
+--     new Ada.Containers.Ordered_Sets (Attribute_Group_Access, Less);
+--
+----   package CMOF_Property_Attribute_Homograph_Maps is
+----     new Ada.Containers.
+
+   ------------------------
+   -- Global information --
+   ------------------------
 
    Class_Info : Class_Information_Maps.Map;
    --  Mapping from CMOF::Class to class information.
+
+--   Attribute_Info : Property_
+--   Attribute_Groups : Attribute_Group_Sets.Set;
+
+   ---------------
+   -- Utilities --
+   ---------------
+
+   type Representation_Kinds is
+    (Value, Holder, Set, Ordered_Set, Bag, Sequence);
+
+   function Representation
+    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Representation_Kinds;
+
+   function Has_Setter
+    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean;
+   --  Returns True when specified attribute has setter.
 
 end Generator;

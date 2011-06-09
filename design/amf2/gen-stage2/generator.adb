@@ -75,17 +75,37 @@ package body Generator is
                 and To_Integer_32 (Left) < To_Integer_32 (Right));
    end "<";
 
+   ----------------
+   -- Has_Setter --
+   ----------------
+
+   function Has_Setter
+    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean is
+   begin
+      return not Attribute.Get_Is_Read_Only and not Attribute.Is_Multivalued;
+   end Has_Setter;
+
    ----------
    -- Hash --
    ----------
 
    function Hash
-    (Item : not null AMF.CMOF.Classes.CMOF_Class_Access)
+    (Item : AMF.CMOF.Properties.CMOF_Property_Access)
        return Ada.Containers.Hash_Type is
    begin
       return
         Ada.Containers.Hash_Type
          (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id);
+   end Hash;
+
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash (Item : Natural) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item);
    end Hash;
 
    ----------
@@ -119,6 +139,40 @@ package body Generator is
                 (Right.all).Id;
       end if;
    end Less;
+
+   --------------------
+   -- Representation --
+   --------------------
+
+   function Representation
+    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Representation_Kinds is
+   begin
+      if Attribute.Is_Multivalued then
+         if Attribute.Get_Is_Unique then
+            if Attribute.Get_Is_Ordered then
+               return Ordered_Set;
+
+            else
+               return Set;
+            end if;
+
+         else
+            if Attribute.Get_Is_Ordered then
+               return Sequence;
+
+            else
+               return Bag;
+            end if;
+         end if;
+
+      elsif Attribute.Lower_Bound = 0 then
+         return Holder;
+
+      else
+         return Value;
+      end if;
+   end Representation;
 
    ----------
    -- Sort --

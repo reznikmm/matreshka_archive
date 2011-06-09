@@ -57,13 +57,6 @@ package body Generator.Reflection is
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
 
-   type Representation_Kinds is
-    (Value, Holder, Set, Ordered_Set, Bag, Sequence);
-
-   function Representation
-    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return Representation_Kinds;
-
    Body_Name                     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("body");
 
@@ -709,7 +702,7 @@ package body Generator.Reflection is
       end Generate_Setter_Specification;
 
    begin
-      Put_Header (False);
+      Put_Header;
       Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
@@ -778,39 +771,5 @@ package body Generator.Reflection is
       New_Line;
       Put_Line ("end CMOF.Internals.Reflection;");
    end Generate_Reflection_Implementation;
-
-   --------------------
-   -- Representation --
-   --------------------
-
-   function Representation
-    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return Representation_Kinds is
-   begin
-      if Attribute.Is_Multivalued then
-         if Attribute.Get_Is_Unique then
-            if Attribute.Get_Is_Ordered then
-               return Ordered_Set;
-
-            else
-               return Set;
-            end if;
-
-         else
-            if Attribute.Get_Is_Ordered then
-               return Sequence;
-
-            else
-               return Bag;
-            end if;
-         end if;
-
-      elsif Attribute.Lower_Bound = 0 then
-         return Holder;
-
-      else
-         return Value;
-      end if;
-   end Representation;
 
 end Generator.Reflection;
