@@ -56,6 +56,15 @@ package body AMF.Generic_Collections is
       return Element_Access (Self.Collection.Element (Index));
    end Element;
 
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty (Self : Collection'Class) return Boolean is
+   begin
+      return Self.Collection.Length = 0;
+   end Is_Empty;
+
    ------------
    -- Length --
    ------------

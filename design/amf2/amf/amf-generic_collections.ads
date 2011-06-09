@@ -65,6 +65,8 @@ package AMF.Generic_Collections is
 
    --  XXX These subprograms must be reviewed.
 
+   function Is_Empty (Self : Collection'Class) return Boolean;
+
    function Length (Self : Collection'Class) return Natural;
 
    function Element
