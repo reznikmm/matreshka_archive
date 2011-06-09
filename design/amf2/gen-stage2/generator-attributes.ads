@@ -44,6 +44,7 @@
 
 package Generator.Attributes is
 
+   procedure Generate_Attributes_Mapping_Specification;
    procedure Generate_Attributes_Specification;
    procedure Generate_Attributes_Implementation;
 

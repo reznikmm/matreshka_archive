@@ -960,6 +960,175 @@ package body Generator.Attributes is
       Put_Line ("end CMOF.Internals.Attributes;");
    end Generate_Attributes_Implementation;
 
+   -----------------------------------------------
+   -- Generate_Attributes_Mapping_Specification --
+   -----------------------------------------------
+
+   procedure Generate_Attributes_Mapping_Specification is
+
+      procedure Generate_Collection (Position : Class_Information_Maps.Cursor);
+
+      procedure Generate_Slot (Position : Class_Information_Maps.Cursor);
+
+      First_Class : Boolean := True;
+
+      -------------------------
+      -- Generate_Collection --
+      -------------------------
+
+      procedure Generate_Collection
+       (Position : Class_Information_Maps.Cursor)
+      is
+
+         procedure Generate (Position : CMOF_Property_Sets.Cursor);
+
+         Class           : constant Class_Information_Access
+           := Class_Information_Maps.Element (Position);
+         First_Attribute : Boolean := True;
+
+         --------------
+         -- Generate --
+         --------------
+
+         procedure Generate (Position : CMOF_Property_Sets.Cursor) is
+            Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
+              := CMOF_Property_Sets.Element (Position);
+
+         begin
+            if not Class.Collection.Contains (Attribute) then
+               return;
+            end if;
+
+            if First_Attribute then
+               Put ("          (");
+               First_Attribute := False;
+
+            else
+               Put ("           ");
+            end if;
+
+            Put_Line
+             (Property_Constant_Name (Attribute)
+                & " =>"
+                & Integer'Wide_Wide_Image
+                   (Class.Collection.Element (Attribute))
+                & ",");
+         end Generate;
+
+      begin
+         if Class.Class.Get_Is_Abstract then
+            return;
+         end if;
+
+         if First_Class then
+            First_Class := False;
+
+         else
+            Put_Line (",");
+            Put ("         ");
+         end if;
+
+         Put_Line
+          ("E_" & To_Ada_Identifier (Class.Class.Get_Name.Value) & " =>");
+         Class.All_Attributes.Iterate (Generate'Access);
+         Put ("           others => 0)");
+      end Generate_Collection;
+
+      -------------------
+      -- Generate_Slot --
+      -------------------
+
+      procedure Generate_Slot (Position : Class_Information_Maps.Cursor) is
+
+         procedure Generate (Position : CMOF_Property_Sets.Cursor);
+
+         Class           : constant Class_Information_Access
+           := Class_Information_Maps.Element (Position);
+         First_Attribute : Boolean := True;
+
+         --------------
+         -- Generate --
+         --------------
+
+         procedure Generate (Position : CMOF_Property_Sets.Cursor) is
+            Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
+              := CMOF_Property_Sets.Element (Position);
+
+         begin
+            if not Class.Slot.Contains (Attribute) then
+               return;
+            end if;
+
+            if First_Attribute then
+               Put ("          (");
+               First_Attribute := False;
+
+            else
+               Put ("           ");
+            end if;
+
+            Put_Line
+             (Property_Constant_Name (Attribute)
+                & " =>"
+                & Integer'Wide_Wide_Image
+                   (Class.Slot.Element (Attribute))
+                & ",");
+         end Generate;
+
+      begin
+         if Class.Class.Get_Is_Abstract then
+            return;
+         end if;
+
+         if First_Class then
+            First_Class := False;
+
+         else
+            Put_Line (",");
+            Put ("         ");
+         end if;
+
+         Put_Line
+          ("E_" & To_Ada_Identifier (Class.Class.Get_Name.Value) & " =>");
+         Class.All_Attributes.Iterate (Generate'Access);
+         Put ("           others => 0)");
+      end Generate_Slot;
+
+   begin
+      Put_Header;
+      Put_Line ("with CMOF.Internals.Metamodel;");
+      Put_Line ("with CMOF.Internals.Types;");
+      New_Line;
+      Put_Line ("private package CMOF.Internals.Attribute_Mappings is");
+      New_Line;
+      Put_Line ("   pragma Pure;");
+      New_Line;
+      Put_Line ("   use CMOF.Internals.Metamodel;");
+      Put_Line ("   use CMOF.Internals.Types;");
+      New_Line;
+      Put_Line ("   Collection_Offset : constant");
+      Put_Line ("     array (CMOF.Internals.Types.Class_Element_Kinds,");
+      Put_Line
+       ("            "
+          & "CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)");
+      Put_Line ("       of Interfaces.Integer_8 :=");
+      Put ("        (");
+      Class_Info.Iterate (Generate_Collection'Access);
+      Put_Line (");");
+      New_Line;
+      Put_Line ("   Member_Offset : constant");
+      Put_Line ("     array (CMOF.Internals.Types.Class_Element_Kinds,");
+      Put_Line
+       ("            "
+          & "Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=");
+      Put_Line ("       (");
+      First_Class := True;
+      Class_Info.Iterate (Generate_Slot'Access);
+      Put_Line (");");
+      New_Line;
+      Put_Line ("end CMOF.Internals.Attribute_Mappings;");
+   end Generate_Attributes_Mapping_Specification;
+
    ---------------------------------------
    -- Generate_Attributes_Specification --
    ---------------------------------------
