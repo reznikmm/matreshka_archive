@@ -265,7 +265,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
    overriding function Bound_Value
     (Self : not null access OCI_Query;
      Name : League.Strings.Universal_String)
-      return League.Holder.Holder
+      return League.Holders.Holder
    is
       Empty : League.Holders.Holder;
       Pos   : constant Parameter_Maps.Cursor := Self.Parameters.Find (Name);
@@ -343,7 +343,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
          elsif League.Holders.Is_Abstract_Float (Item.Value) then
             if Item.Is_Null = 0 then
-               League.Holders.Set (Item.Value, Item.Float);
+               League.Holders.Replace_Element (Item.Value, Item.Float);
             else
                League.Holders.Clear (Item.Value);
             end if;
