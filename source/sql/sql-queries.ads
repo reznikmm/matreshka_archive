@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with League.Holders;
 with League.Strings;
-with League.Values;
 private with Matreshka.Internals.SQL_Drivers.Dummy;
 
 package SQL.Queries is
@@ -54,7 +54,7 @@ package SQL.Queries is
    procedure Bind_Value
     (Self      : in out SQL_Query'Class;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : Parameter_Directions := In_Parameter);
    --  Set the placeholder Name to be bound to value Value in the prepared
    --  statement.
@@ -63,7 +63,7 @@ package SQL.Queries is
 
    function Bound_Value
     (Self : SQL_Query'Class;
-     Name : League.Strings.Universal_String) return League.Values.Value;
+     Name : League.Strings.Universal_String) return League.Holders.Holder;
 
    function Error_Message
     (Self : SQL_Query'Class) return League.Strings.Universal_String;
@@ -143,7 +143,7 @@ package SQL.Queries is
 
    function Value
     (Self  : SQL_Query'Class;
-     Index : Positive) return League.Values.Value;
+     Index : Positive) return League.Holders.Holder;
 
 private
 

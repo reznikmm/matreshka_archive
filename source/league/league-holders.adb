@@ -46,7 +46,7 @@ with Ada.Unchecked_Deallocation;
 
 with League.Strings.Internals;
 
-package body League.Values is
+package body League.Holders is
 
    function Create is
      new Ada.Tags.Generic_Dispatching_Constructor
@@ -56,7 +56,7 @@ package body League.Values is
    -- Adjust --
    ------------
 
-   overriding procedure Adjust (Self : in out Value) is
+   overriding procedure Adjust (Self : in out Holder) is
    begin
       Reference (Self.Data);
    end Adjust;
@@ -87,7 +87,7 @@ package body League.Values is
    -- Clear --
    -----------
 
-   procedure Clear (Self : in out Value) is
+   procedure Clear (Self : in out Holder) is
       Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
       Is_Empty : aliased Boolean := True;
 
@@ -245,6 +245,110 @@ package body League.Values is
       end if;
    end Dereference;
 
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return League.Calendars.Date is
+   begin
+      if Self.Data.all not in Date_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Date_Container (Self.Data.all).Value;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return League.Calendars.Date_Time is
+   begin
+      if Self.Data.all not in Date_Time_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Date_Time_Container (Self.Data.all).Value;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return League.Calendars.Time is
+   begin
+      if Self.Data.all not in Time_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Time_Container (Self.Data.all).Value;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return League.Strings.Universal_String is
+   begin
+      if Self.Data.all not in Universal_String_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return
+        League.Strings.Internals.Create
+         (Universal_String_Container (Self.Data.all).Value);
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return Universal_Float is
+   begin
+      if Self.Data.all not in Abstract_Float_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Abstract_Float_Container'Class (Self.Data.all).Get;
+   end Element;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return Universal_Integer is
+   begin
+      if Self.Data.all not in Abstract_Integer_Container'Class then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Abstract_Integer_Container'Class (Self.Data.all).Get;
+   end Element;
+
    --------------
    -- Finalize --
    --------------
@@ -259,7 +363,7 @@ package body League.Values is
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out Value) is
+   overriding procedure Finalize (Self : in out Holder) is
    begin
       --  Finalize must be idempotent.
 
@@ -300,7 +404,7 @@ package body League.Values is
    -- First --
    -----------
 
-   function First (Self : Value) return Universal_Float is
+   function First (Self : Holder) return Universal_Float is
    begin
       if Self.Data.all not in Abstract_Float_Container'Class then
          raise Constraint_Error with "invalid type of value";
@@ -313,7 +417,7 @@ package body League.Values is
    -- First --
    -----------
 
-   function First (Self : Value) return Universal_Integer is
+   function First (Self : Holder) return Universal_Integer is
    begin
       if Self.Data.all not in Abstract_Integer_Container'Class then
          raise Constraint_Error with "invalid type of value";
@@ -344,115 +448,11 @@ package body League.Values is
       return Self.Value;
    end Get;
 
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return League.Calendars.Date is
-   begin
-      if Self.Data.all not in Date_Container then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      return Date_Container (Self.Data.all).Value;
-   end Get;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return League.Calendars.Date_Time is
-   begin
-      if Self.Data.all not in Date_Time_Container then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      return Date_Time_Container (Self.Data.all).Value;
-   end Get;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return League.Calendars.Time is
-   begin
-      if Self.Data.all not in Time_Container then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      return Time_Container (Self.Data.all).Value;
-   end Get;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return League.Strings.Universal_String is
-   begin
-      if Self.Data.all not in Universal_String_Container then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      return
-        League.Strings.Internals.Create
-         (Universal_String_Container (Self.Data.all).Value);
-   end Get;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return Universal_Float is
-   begin
-      if Self.Data.all not in Abstract_Float_Container'Class then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      return Abstract_Float_Container'Class (Self.Data.all).Get;
-   end Get;
-
-   ---------
-   -- Get --
-   ---------
-
-   function Get (Self : Value) return Universal_Integer is
-   begin
-      if Self.Data.all not in Abstract_Integer_Container'Class then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      return Abstract_Integer_Container'Class (Self.Data.all).Get;
-   end Get;
-
    -------------
    -- Get_Tag --
    -------------
 
-   function Get_Tag (Self : Value) return Tag is
+   function Get_Tag (Self : Holder) return Tag is
    begin
       return Tag (Self.Data'Tag);
    end Get_Tag;
@@ -461,7 +461,7 @@ package body League.Values is
    -- Is_Abstract_Float --
    -----------------------
 
-   function Is_Abstract_Float (Self : Value) return Boolean is
+   function Is_Abstract_Float (Self : Holder) return Boolean is
    begin
       return Self.Data.all in Abstract_Float_Container'Class;
    end Is_Abstract_Float;
@@ -470,7 +470,7 @@ package body League.Values is
    -- Is_Abstract_Integer --
    --------------------------
 
-   function Is_Abstract_Integer (Self : Value) return Boolean is
+   function Is_Abstract_Integer (Self : Holder) return Boolean is
    begin
       return Self.Data.all in Abstract_Integer_Container'Class;
    end Is_Abstract_Integer;
@@ -479,7 +479,7 @@ package body League.Values is
    -- Is_Date --
    -------------
 
-   function Is_Date (Self : Value) return Boolean is
+   function Is_Date (Self : Holder) return Boolean is
    begin
       return Self.Data.all in Date_Container;
    end Is_Date;
@@ -488,7 +488,7 @@ package body League.Values is
    -- Is_Date_Time --
    ------------------
 
-   function Is_Date_Time (Self : Value) return Boolean is
+   function Is_Date_Time (Self : Holder) return Boolean is
    begin
       return Self.Data.all in Date_Time_Container;
    end Is_Date_Time;
@@ -497,7 +497,7 @@ package body League.Values is
    -- Is_Empty --
    --------------
 
-   function Is_Empty (Self : Value) return Boolean is
+   function Is_Empty (Self : Holder) return Boolean is
    begin
       return Self.Data.Is_Empty;
    end Is_Empty;
@@ -506,7 +506,7 @@ package body League.Values is
    -- Is_Time --
    -------------
 
-   function Is_Time (Self : Value) return Boolean is
+   function Is_Time (Self : Holder) return Boolean is
    begin
       return Self.Data.all in Time_Container;
    end Is_Time;
@@ -515,7 +515,7 @@ package body League.Values is
    -- Is_Universal_String --
    -------------------------
 
-   function Is_Universal_String (Self : Value) return Boolean is
+   function Is_Universal_String (Self : Holder) return Boolean is
    begin
       return Self.Data.all in Universal_String_Container;
    end Is_Universal_String;
@@ -552,7 +552,7 @@ package body League.Values is
    -- Last --
    ----------
 
-   function Last (Self : Value) return Universal_Float is
+   function Last (Self : Holder) return Universal_Float is
    begin
       if Self.Data.all not in Abstract_Float_Container'Class then
          raise Constraint_Error with "invalid type of value";
@@ -565,7 +565,7 @@ package body League.Values is
    -- Last --
    ----------
 
-   function Last (Self : Value) return Universal_Integer is
+   function Last (Self : Holder) return Universal_Integer is
    begin
       if Self.Data.all not in Abstract_Integer_Container'Class then
          raise Constraint_Error with "invalid type of value";
@@ -585,35 +585,13 @@ package body League.Values is
       end if;
    end Reference;
 
-   ---------
-   -- Set --
-   ---------
+   ---------------------
+   -- Replace_Element --
+   ---------------------
 
-   overriding procedure Set
-    (Self : not null access Universal_Float_Container;
-     To   : Universal_Float) is
-   begin
-      Self.Is_Empty := False;
-      Self.Value    := To;
-   end Set;
-
-   ---------
-   -- Set --
-   ---------
-
-   overriding procedure Set
-    (Self : not null access Universal_Integer_Container;
-     To   : Universal_Integer) is
-   begin
-      Self.Is_Empty := False;
-      Self.Value    := To;
-   end Set;
-
-   ---------
-   -- Set --
-   ---------
-
-   procedure Set (Self : in out Value; To : League.Calendars.Date) is
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Calendars.Date) is
    begin
       if Self.Data.all not in Date_Container then
          raise Constraint_Error with "invalid type of value";
@@ -632,13 +610,15 @@ package body League.Values is
          Date_Container'Class (Self.Data.all).Is_Empty := False;
          Date_Container'Class (Self.Data.all).Value    := To;
       end if;
-   end Set;
+   end Replace_Element;
 
-   ---------
-   -- Set --
-   ---------
+   ---------------------
+   -- Replace_Element --
+   ---------------------
 
-   procedure Set (Self : in out Value; To : League.Calendars.Date_Time) is
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Calendars.Date_Time) is
    begin
       if Self.Data.all not in Date_Time_Container then
          raise Constraint_Error with "invalid type of value";
@@ -658,13 +638,15 @@ package body League.Values is
          Date_Time_Container'Class (Self.Data.all).Is_Empty := False;
          Date_Time_Container'Class (Self.Data.all).Value    := To;
       end if;
-   end Set;
+   end Replace_Element;
 
-   ---------
-   -- Set --
-   ---------
+   ---------------------
+   -- Replace_Element --
+   ---------------------
 
-   procedure Set (Self : in out Value; To : League.Calendars.Time) is
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Calendars.Time) is
    begin
       if Self.Data.all not in Time_Container then
          raise Constraint_Error with "invalid type of value";
@@ -683,13 +665,16 @@ package body League.Values is
          Time_Container'Class (Self.Data.all).Is_Empty := False;
          Time_Container'Class (Self.Data.all).Value    := To;
       end if;
-   end Set;
+   end Replace_Element;
 
-   ---------
-   -- Set --
-   ---------
+   ---------------------
+   -- Replace_Element --
+   ---------------------
 
-   procedure Set (Self : in out Value; To : League.Strings.Universal_String) is
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Strings.Universal_String)
+   is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
         := League.Strings.Internals.Internal (To);
 
@@ -716,13 +701,16 @@ package body League.Values is
          Universal_String_Container'Class (Self.Data.all).Is_Empty := False;
          Universal_String_Container'Class (Self.Data.all).Value    := Aux;
       end if;
-   end Set;
+   end Replace_Element;
 
-   ---------
-   -- Set --
-   ---------
+   ---------------------
+   -- Replace_Element --
+   ---------------------
 
-   procedure Set (Self : in out Value; To : Universal_Float) is
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : Universal_Float)
+   is
       Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
       Is_Empty : aliased Boolean := True;
 
@@ -742,13 +730,16 @@ package body League.Values is
       end if;
 
       Abstract_Float_Container'Class (Self.Data.all).Set (To);
-   end Set;
+   end Replace_Element;
 
-   ---------
-   -- Set --
-   ---------
+   ---------------------
+   -- Replace_Element --
+   ---------------------
 
-   procedure Set (Self : in out Value; To : Universal_Integer) is
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : Universal_Integer)
+   is
       Tag      : constant Ada.Tags.Tag := Self.Data'Tag;
       Is_Empty : aliased Boolean := True;
 
@@ -770,14 +761,37 @@ package body League.Values is
       --  Set value.
 
       Abstract_Integer_Container'Class (Self.Data.all).Set (To);
+   end Replace_Element;
+
+   ---------
+   -- Set --
+   ---------
+
+   overriding procedure Set
+    (Self : not null access Universal_Float_Container;
+     To   : Universal_Float) is
+   begin
+      Self.Is_Empty := False;
+      Self.Value    := To;
+   end Set;
+
+   ---------
+   -- Set --
+   ---------
+
+   overriding procedure Set
+    (Self : not null access Universal_Integer_Container;
+     To   : Universal_Integer) is
+   begin
+      Self.Is_Empty := False;
+      Self.Value    := To;
    end Set;
 
    -------------
    -- Set_Tag --
    -------------
 
-   procedure Set_Tag (Self : in out Value; To : Tag) is
-
+   procedure Set_Tag (Self : in out Holder; To : Tag) is
       use type Ada.Tags.Tag;
 
       Is_Empty : aliased Boolean := True;
@@ -802,47 +816,47 @@ package body League.Values is
       end if;
    end Set_Tag;
 
-   --------------
-   -- To_Value --
-   --------------
+   ---------------
+   -- To_Holder --
+   ---------------
 
-   function To_Value (Item : League.Calendars.Date) return Value is
+   function To_Holder (Item : League.Calendars.Date) return Holder is
    begin
       return
        (Ada.Finalization.Controlled with
           new Date_Container'
                (Counter => <>, Is_Empty => False, Value => Item));
-   end To_Value;
+   end To_Holder;
 
-   --------------
-   -- To_Value --
-   --------------
+   ---------------
+   -- To_Holder --
+   ---------------
 
-   function To_Value (Item : League.Calendars.Date_Time) return Value is
+   function To_Holder (Item : League.Calendars.Date_Time) return Holder is
    begin
       return
        (Ada.Finalization.Controlled with
           new Date_Time_Container'
                (Counter => <>, Is_Empty => False, Value => Item));
-   end To_Value;
+   end To_Holder;
 
-   --------------
-   -- To_Value --
-   --------------
+   ---------------
+   -- To_Holder --
+   ---------------
 
-   function To_Value (Item : League.Calendars.Time) return Value is
+   function To_Holder (Item : League.Calendars.Time) return Holder is
    begin
       return
        (Ada.Finalization.Controlled with
           new Time_Container'
                (Counter => <>, Is_Empty => False, Value => Item));
-   end To_Value;
+   end To_Holder;
 
-   --------------
-   -- To_Value --
-   --------------
+   ---------------
+   -- To_Holder --
+   ---------------
 
-   function To_Value (Item : League.Strings.Universal_String) return Value is
+   function To_Holder (Item : League.Strings.Universal_String) return Holder is
       Aux : constant Matreshka.Internals.Strings.Shared_String_Access
         := League.Strings.Internals.Internal (Item);
 
@@ -853,6 +867,6 @@ package body League.Values is
        (Ada.Finalization.Controlled with
           new Universal_String_Container'
                (Counter => <>, Is_Empty => False, Value => Aux));
-   end To_Value;
+   end To_Holder;
 
-end League.Values;
+end League.Holders;

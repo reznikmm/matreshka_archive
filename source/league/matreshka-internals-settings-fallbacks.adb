@@ -135,7 +135,7 @@ package body Matreshka.Internals.Settings.Fallbacks is
    overriding procedure Set_Value
     (Self  : in out Fallback_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value) is
+     Value : League.Holders.Holder) is
    begin
       Self.Storages.First_Element.Set_Value (Key, Value);
    end Set_Value;
@@ -156,7 +156,7 @@ package body Matreshka.Internals.Settings.Fallbacks is
    overriding function Value
     (Self : Fallback_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value is
+       return League.Holders.Holder is
    begin
       for J in 1 .. Natural (Self.Storages.Length) loop
          if Self.Storages.Element (J).Contains (Key) then
@@ -164,7 +164,7 @@ package body Matreshka.Internals.Settings.Fallbacks is
          end if;
       end loop;
 
-      return X : League.Values.Value;
+      return League.Holders.Empty_Holder;
    end Value;
 
 end Matreshka.Internals.Settings.Fallbacks;

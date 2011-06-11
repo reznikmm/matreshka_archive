@@ -68,13 +68,13 @@ private
    overriding procedure Bind_Value
     (Self      : not null access PostgreSQL_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions);
 
    overriding function Bound_Value
     (Self : not null access PostgreSQL_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
    overriding function Error_Message
     (Self : not null access PostgreSQL_Query)
@@ -99,6 +99,6 @@ private
 
    overriding function Value
     (Self  : not null access PostgreSQL_Query;
-     Index : Positive) return League.Values.Value;
+     Index : Positive) return League.Holders.Holder;
 
 end Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries;

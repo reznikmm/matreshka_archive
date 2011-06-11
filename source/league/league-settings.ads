@@ -61,8 +61,8 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with League.Holders;
 with League.Strings;
-with League.Values;
 private with Matreshka.Internals.Settings;
 
 package League.Settings is
@@ -152,7 +152,7 @@ package League.Settings is
    procedure Set_Value
     (Self  : in out Settings'Class;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value);
+     Value : League.Holders.Holder);
    --  Sets the value of setting key to value. If the key already exists, the
    --  previous value is overwritten.
    --
@@ -167,7 +167,7 @@ package League.Settings is
 
    function Value
     (Self : Settings'Class;
-     Key  : League.Strings.Universal_String) return League.Values.Value;
+     Key  : League.Strings.Universal_String) return League.Holders.Holder;
    --  Returns the value for setting key. If the setting doesn't exist, returns
    --  Default_Value.
    --

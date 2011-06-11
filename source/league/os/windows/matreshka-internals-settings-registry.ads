@@ -88,13 +88,13 @@ private
    overriding procedure Set_Value
     (Self  : in out Registry_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value);
+     Value : League.Holders.Holder);
 
    overriding procedure Sync (Self : in out Registry_Settings);
 
    overriding function Value
     (Self : Registry_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
 end Matreshka.Internals.Settings.Registry;

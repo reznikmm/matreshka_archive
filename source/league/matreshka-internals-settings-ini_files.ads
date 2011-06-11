@@ -95,13 +95,13 @@ private
    overriding procedure Set_Value
     (Self  : in out Ini_File_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value);
+     Value : League.Holders.Holder);
 
    overriding procedure Sync (Self : in out Ini_File_Settings);
 
    overriding function Value
     (Self : Ini_File_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
 end Matreshka.Internals.Settings.Ini_Files;

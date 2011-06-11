@@ -71,13 +71,13 @@ package Matreshka.Internals.SQL_Drivers.Dummy is
    overriding procedure Bind_Value
     (Self      : not null access Dummy_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions) is null;
 
    overriding function Bound_Value
     (Self : not null access Dummy_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
    overriding function Error_Message
     (Self : not null access Dummy_Query)
@@ -100,7 +100,7 @@ package Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Value
     (Self  : not null access Dummy_Query;
-     Index : Positive) return League.Values.Value;
+     Index : Positive) return League.Holders.Holder;
 
    Empty_Database : aliased Dummy_Database;
    Empty_Query    : aliased Dummy_Query;

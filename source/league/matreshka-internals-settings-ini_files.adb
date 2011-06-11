@@ -693,10 +693,10 @@ package body Matreshka.Internals.Settings.Ini_Files is
    overriding procedure Set_Value
     (Self  : in out Ini_File_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value) is
+     Value : League.Holders.Holder) is
    begin
       Self.Modified := True;
-      Self.Values.Include (Key, Encode_Value (League.Values.Get (Value)));
+      Self.Values.Include (Key, Encode_Value (League.Holders.Element (Value)));
    end Set_Value;
 
    ----------
@@ -757,15 +757,15 @@ package body Matreshka.Internals.Settings.Ini_Files is
    overriding function Value
     (Self : Ini_File_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value is
+       return League.Holders.Holder is
    begin
       if Self.Values.Contains (Key) then
          return
-           League.Values.To_Value
+           League.Holders.To_Holder
             (Decode_Value (Self.Values.Element (Key).To_Stream_Element_Array));
 
       else
-         return Aux : League.Values.Value;
+         return League.Holders.Empty_Holder;
       end if;
    end Value;
 

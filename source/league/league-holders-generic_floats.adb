@@ -41,8 +41,138 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Values.Generic_Floats;
 
-package League.Values.Long_Floats is
-  new League.Values.Generic_Floats (Long_Float);
-pragma Preelaborate (League.Values.Long_Floats);
+package body League.Holders.Generic_Floats is
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Float_Container
+   is
+      pragma Assert (Is_Empty.all);
+
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
+   end Constructor;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return Num is
+   begin
+      if Self.Data.all not in Float_Container
+        and Self.Data.all not in Universal_Float_Container
+      then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      if Self.Data.all in Universal_Float_Container then
+         return Num (Universal_Float_Container'Class (Self.Data.all).Value);
+
+      else
+         return Float_Container'Class (Self.Data.all).Value;
+      end if;
+   end Element;
+
+   -----------
+   -- First --
+   -----------
+
+   overriding function First
+    (Self : not null access constant Float_Container) return Universal_Float
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return Universal_Float (Num'First);
+   end First;
+
+   ---------
+   -- Get --
+   ---------
+
+   overriding function Get
+    (Self : not null access constant Float_Container)
+       return Universal_Float is
+   begin
+      return Universal_Float (Self.Value);
+   end Get;
+
+   ----------
+   -- Last --
+   ----------
+
+   overriding function Last
+    (Self : not null access constant Float_Container) return Universal_Float
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return Universal_Float (Num'Last);
+   end Last;
+
+   ---------------------
+   -- Replace_Element --
+   ---------------------
+
+   procedure Replace_Element (Self : in out Holder; To : Num) is
+   begin
+      if Self.Data.all not in Float_Container
+        and Self.Data.all not in Universal_Float_Container
+      then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  XXX This subprogram can be improved to reuse shared segment when
+      --  possible.
+
+      if Self.Data.all in Universal_Float_Container then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Universal_Float_Container'
+                (Counter  => <>,
+                 Is_Empty => False,
+                 Value    => Universal_Float (To));
+
+      else
+         Dereference (Self.Data);
+         Self.Data :=
+           new Float_Container'
+                (Counter => <>, Is_Empty => False, Value => To);
+      end if;
+   end Replace_Element;
+
+   ---------
+   -- Set --
+   ---------
+
+   overriding procedure Set
+    (Self : not null access Float_Container; To : Universal_Float) is
+   begin
+      Self.Is_Empty := False;
+      Self.Value    := Num (To);
+   end Set;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder (Item : Num) return Holder is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          new Float_Container'
+               (Counter => <>, Is_Empty => False, Value => Item));
+   end To_Holder;
+
+end League.Holders.Generic_Floats;

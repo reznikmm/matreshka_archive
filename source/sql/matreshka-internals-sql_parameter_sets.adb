@@ -63,7 +63,7 @@ package body Matreshka.Internals.SQL_Parameter_Sets is
     (Self : in out Parameter_Set;
      Name : League.Strings.Universal_String)
    is
-      Value : League.Values.Value;
+      Value : League.Holders.Holder;
 
    begin
       Self.Names.Insert (Integer (Self.Names.Length) + 1, Name);
@@ -148,7 +148,7 @@ package body Matreshka.Internals.SQL_Parameter_Sets is
    procedure Set_Value
     (Self  : in out Parameter_Set;
      Name  : League.Strings.Universal_String;
-     Value : League.Values.Value) is
+     Value : League.Holders.Holder) is
    begin
       if Self.Values.Contains (Name) then
          Self.Values.Replace (Name, Value);
@@ -160,7 +160,7 @@ package body Matreshka.Internals.SQL_Parameter_Sets is
    -----------
 
    function Value
-    (Self  : Parameter_Set; Index : Positive) return League.Values.Value is
+    (Self  : Parameter_Set; Index : Positive) return League.Holders.Holder is
    begin
       return Self.Values.Element (Self.Names.Element (Index));
    end Value;

@@ -41,140 +41,52 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This generic package allows to store value of arbitrary integer type in
+--  the Value.
+------------------------------------------------------------------------------
 
-package body League.Values.Generic_Integers is
+generic
+   type Num is range <>;
 
-   -----------------
-   -- Constructor --
-   -----------------
+package League.Holders.Generic_Integers is
+
+   pragma Preelaborate;
+
+   Integer_Tag : constant Tag;
+
+   function Element (Self : Holder) return Num;
+   --  Returns internal value.
+
+   procedure Replace_Element (Self : in out Holder; To : Num);
+   --  Set value. Tag of the value must be set before this call.
+
+   function To_Holder (Item : Num) return Holder;
+   --  Creates new Value from specified value.
+
+private
+
+   type Integer_Container is new Abstract_Integer_Container with record
+      Value : Num;
+   end record;
 
    overriding function Constructor
-    (Is_Empty : not null access Boolean) return Integer_Container
-   is
-      pragma Assert (Is_Empty.all);
-
-   begin
-      return
-       (Counter  => <>,
-        Is_Empty => Is_Empty.all,
-        Value    => <>);
-   end Constructor;
-
-   -----------
-   -- First --
-   -----------
-
-   overriding function First
-    (Self : not null access constant Integer_Container)
-       return Universal_Integer
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return Universal_Integer (Num'First);
-   end First;
-
-   ---------
-   -- Get --
-   ---------
+    (Is_Empty : not null access Boolean) return Integer_Container;
 
    overriding function Get
     (Self : not null access constant Integer_Container)
-       return Universal_Integer is
-   begin
-      return Universal_Integer (Self.Value);
-   end Get;
+       return Universal_Integer;
 
-   ---------
-   -- Get --
-   ---------
+   overriding procedure Set
+    (Self : not null access Integer_Container; To : Universal_Integer);
 
-   function Get (Self : Value) return Num is
-   begin
-      if Self.Data.all not in Integer_Container
-        and Self.Data.all not in Universal_Integer_Container
-      then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      if Self.Data.Is_Empty then
-         raise Constraint_Error with "value is empty";
-      end if;
-
-      if Self.Data.all in Universal_Integer_Container then
-         return Num (Universal_Integer_Container'Class (Self.Data.all).Value);
-
-      else
-         return Integer_Container'Class (Self.Data.all).Value;
-      end if;
-   end Get;
-
-   ----------
-   -- Last --
-   ----------
+   overriding function First
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer;
 
    overriding function Last
     (Self : not null access constant Integer_Container)
-       return Universal_Integer
-   is
-      pragma Unreferenced (Self);
+       return Universal_Integer;
 
-   begin
-      return Universal_Integer (Num'Last);
-   end Last;
+   Integer_Tag : constant Tag := Tag (Integer_Container'Tag);
 
-   ---------
-   -- Set --
-   ---------
-
-   overriding procedure Set
-    (Self : not null access Integer_Container; To : Universal_Integer) is
-   begin
-      Self.Is_Empty := False;
-      Self.Value    := Num (To);
-   end Set;
-
-   ---------
-   -- Set --
-   ---------
-
-   procedure Set (Self : in out Value; To : Num) is
-   begin
-      if Self.Data.all not in Integer_Container
-        and Self.Data.all not in Universal_Integer_Container
-      then
-         raise Constraint_Error with "invalid type of value";
-      end if;
-
-      --  XXX This subprogram can be improved to reuse shared segment when
-      --  possible.
-
-      if Self.Data.all in Universal_Integer_Container then
-         Dereference (Self.Data);
-         Self.Data :=
-           new Universal_Integer_Container'
-                (Counter  => <>,
-                 Is_Empty => False,
-                 Value    => Universal_Integer (To));
-
-      else
-         Dereference (Self.Data);
-         Self.Data :=
-           new Integer_Container'
-                (Counter => <>, Is_Empty => False, Value => To);
-      end if;
-   end Set;
-
-   --------------
-   -- To_Value --
-   --------------
-
-   function To_Value (Item : Num) return Value is
-   begin
-      return
-       (Ada.Finalization.Controlled with
-          new Integer_Container'
-               (Counter => <>, Is_Empty => False, Value => Item));
-   end To_Value;
-
-end League.Values.Generic_Integers;
+end League.Holders.Generic_Integers;

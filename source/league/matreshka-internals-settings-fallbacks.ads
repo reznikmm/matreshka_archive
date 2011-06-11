@@ -89,13 +89,13 @@ private
    overriding procedure Set_Value
     (Self  : in out Fallback_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value);
+     Value : League.Holders.Holder);
 
    overriding procedure Sync (Self : in out Fallback_Settings);
 
    overriding function Value
     (Self : Fallback_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
 end Matreshka.Internals.Settings.Fallbacks;

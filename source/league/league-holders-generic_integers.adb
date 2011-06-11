@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,50 +41,140 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This generic package allows to store value of arbitrary float type in
---  the Value.
-------------------------------------------------------------------------------
 
-generic
-   type Num is digits <>;
+package body League.Holders.Generic_Integers is
 
-package League.Values.Generic_Floats is
-
-   pragma Preelaborate;
-
-   Float_Tag : constant Tag;
-
-   function Get (Self : Value) return Num;
-   --  Returns internal value.
-
-   procedure Set (Self : in out Value; To : Num);
-   --  Set value. Tag of the value must be set before this call.
-
-   function To_Value (Item : Num) return Value;
-   --  Creates new Value from specified value.
-
-private
-
-   type Float_Container is new Abstract_Float_Container with record
-      Value : Num;
-   end record;
+   -----------------
+   -- Constructor --
+   -----------------
 
    overriding function Constructor
-    (Is_Empty : not null access Boolean) return Float_Container;
+    (Is_Empty : not null access Boolean) return Integer_Container
+   is
+      pragma Assert (Is_Empty.all);
 
-   overriding function Get
-    (Self : not null access constant Float_Container)
-       return Universal_Float;
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
+   end Constructor;
 
-   overriding procedure Set
-    (Self : not null access Float_Container; To : Universal_Float);
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return Num is
+   begin
+      if Self.Data.all not in Integer_Container
+        and Self.Data.all not in Universal_Integer_Container
+      then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      if Self.Data.all in Universal_Integer_Container then
+         return Num (Universal_Integer_Container'Class (Self.Data.all).Value);
+
+      else
+         return Integer_Container'Class (Self.Data.all).Value;
+      end if;
+   end Element;
+
+   -----------
+   -- First --
+   -----------
 
    overriding function First
-    (Self : not null access constant Float_Container) return Universal_Float;
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return Universal_Integer (Num'First);
+   end First;
+
+   ---------
+   -- Get --
+   ---------
+
+   overriding function Get
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer is
+   begin
+      return Universal_Integer (Self.Value);
+   end Get;
+
+   ----------
+   -- Last --
+   ----------
 
    overriding function Last
-    (Self : not null access constant Float_Container) return Universal_Float;
+    (Self : not null access constant Integer_Container)
+       return Universal_Integer
+   is
+      pragma Unreferenced (Self);
 
-   Float_Tag : constant Tag := Tag (Float_Container'Tag);
+   begin
+      return Universal_Integer (Num'Last);
+   end Last;
 
-end League.Values.Generic_Floats;
+   ---------------------
+   -- Replace_Element --
+   ---------------------
+
+   procedure Replace_Element (Self : in out Holder; To : Num) is
+   begin
+      if Self.Data.all not in Integer_Container
+        and Self.Data.all not in Universal_Integer_Container
+      then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  XXX This subprogram can be improved to reuse shared segment when
+      --  possible.
+
+      if Self.Data.all in Universal_Integer_Container then
+         Dereference (Self.Data);
+         Self.Data :=
+           new Universal_Integer_Container'
+                (Counter  => <>,
+                 Is_Empty => False,
+                 Value    => Universal_Integer (To));
+
+      else
+         Dereference (Self.Data);
+         Self.Data :=
+           new Integer_Container'
+                (Counter => <>, Is_Empty => False, Value => To);
+      end if;
+   end Replace_Element;
+
+   ---------
+   -- Set --
+   ---------
+
+   overriding procedure Set
+    (Self : not null access Integer_Container; To : Universal_Integer) is
+   begin
+      Self.Is_Empty := False;
+      Self.Value    := Num (To);
+   end Set;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder (Item : Num) return Holder is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          new Integer_Container'
+               (Counter => <>, Is_Empty => False, Value => Item));
+   end To_Holder;
+
+end League.Holders.Generic_Integers;

@@ -444,7 +444,7 @@ package body Matreshka.Internals.Settings.Registry is
    overriding procedure Set_Value
     (Self  : in out Registry_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value)
+     Value : League.Holders.Holder)
    is
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
@@ -476,7 +476,7 @@ package body Matreshka.Internals.Settings.Registry is
 
       --  Extract value.
 
-      V := League.Values.Get (Value);
+      V := League.Holders.Element (Value);
 
       --  Store string.
 
@@ -537,7 +537,7 @@ package body Matreshka.Internals.Settings.Registry is
    overriding function Value
     (Self : Registry_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value
+       return League.Holders.Holder
    is
       use Matreshka.Internals.Utf16;
       use type DWORD;
@@ -547,7 +547,7 @@ package body Matreshka.Internals.Settings.Registry is
       Name    : League.Strings.Universal_String;
       V_Type  : aliased DWORD;
       V_Size  : aliased DWORD;
-      Value   : League.Values.Value;
+      Value   : League.Holders.Holder;
 
    begin
       --  Compute path to open
@@ -589,7 +589,7 @@ package body Matreshka.Internals.Settings.Registry is
                     V_Size'Unchecked_Access) = 0
                then
                   V (V'Last) := 0;
-                  League.Values.Set
+                  League.Holders.Replace_Element
                    (Value,
                     Matreshka.Internals.Strings.C.To_Valid_Universal_String
                      (V (0)'Unchecked_Access));

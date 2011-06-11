@@ -67,7 +67,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    overriding procedure Bind_Value
     (Self      : not null access PostgreSQL_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions) is
    begin
       Self.Parameters.Set_Value (Name, Value);
@@ -80,9 +80,9 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    overriding function Bound_Value
     (Self : not null access PostgreSQL_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value is
+       return League.Holders.Holder is
    begin
-      return X : League.Values.Value;
+      return League.Holders.Empty_Holder;
    end Bound_Value;
 
    -------------------
@@ -103,7 +103,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    overriding function Execute
     (Self : not null access PostgreSQL_Query) return Boolean
    is
-      Value  : League.Values.Value;
+      Value  : League.Holders.Holder;
       Params : Interfaces.C.Strings.chars_ptr_array
                 (1 .. Interfaces.C.size_t
                        (Self.Parameters.Number_Of_Positional));
@@ -114,23 +114,24 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
       for J in Params'Range loop
          Value := Self.Parameters.Value (Positive (J));
 
-         if League.Values.Is_Empty (Value) then
+         if League.Holders.Is_Empty (Value) then
             Params (J) := Interfaces.C.Strings.Null_Ptr;
 
-         elsif League.Values.Is_Universal_String (Value) then
-            Params (J) := Databases.New_String (League.Values.Get (Value));
+         elsif League.Holders.Is_Universal_String (Value) then
+            Params (J) :=
+              Databases.New_String (League.Holders.Element (Value));
 
-         elsif League.Values.Is_Abstract_Integer (Value) then
+         elsif League.Holders.Is_Abstract_Integer (Value) then
             Params (J) :=
               Interfaces.C.Strings.New_String
-               (League.Values.Universal_Integer'Image
-                 (League.Values.Get (Value)));
+               (League.Holders.Universal_Integer'Image
+                 (League.Holders.Element (Value)));
 
-         elsif League.Values.Is_Abstract_Float (Value) then
+         elsif League.Hilders.Is_Abstract_Float (Value) then
             Params (J) :=
               Interfaces.C.Strings.New_String
-               (League.Values.Universal_Float'Image
-                 (League.Values.Get (Value)));
+               (League.Holders.Universal_Float'Image
+                 (League.Holders.Element (Value)));
          end if;
       end loop;
 
@@ -367,10 +368,10 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
 
    overriding function Value
     (Self  : not null access PostgreSQL_Query;
-     Index : Positive) return League.Values.Value
+     Index : Positive) return League.Holders.Holder
    is
       Column : constant Interfaces.C.int := Interfaces.C.int (Index - 1);
-      Value  : League.Values.Value;
+      Value  : League.Holders.Holder;
 
    begin
       case Databases.PostgreSQL_Database'Class
@@ -379,7 +380,8 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
          when Databases.Text_Data =>
             --  Process text data.
 
-            League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_String_Tag);
 
             if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
                declare
@@ -395,14 +397,15 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                   pragma Import (Ada, S);
 
                begin
-                  League.Values.Set (Value, Codec.Decode (S));
+                  League.Holders.Replace_Element (Value, Codec.Decode (S));
                end;
             end if;
 
          when Databases.Integer_Data =>
             --  Process integer data.
 
-            League.Values.Set_Tag (Value, League.Values.Universal_Integer_Tag);
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
 
             if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
                declare
@@ -411,15 +414,15 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                         (PQgetvalue (Self.Result, Self.Row, Column));
 
                begin
-                  League.Values.Set
-                   (Value, League.Values.Universal_Integer'Value (Image));
+                  League.Holders.Set
+                   (Value, League.Holders.Universal_Integer'Value (Image));
                end;
             end if;
 
          when Databases.Float_Data =>
             --  Process float data.
 
-            League.Values.Set_Tag (Value, League.Values.Universal_Float_Tag);
+            League.Holders.Set_Tag (Value, League.Holders.Universal_Float_Tag);
 
             if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
                declare
@@ -428,8 +431,8 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                         (PQgetvalue (Self.Result, Self.Row, Column));
 
                begin
-                  League.Values.Set
-                   (Value, League.Values.Universal_Float'Value (Image));
+                  League.Holders.Replace_Element
+                   (Value, League.Holders.Universal_Float'Value (Image));
                end;
             end if;
       end case;

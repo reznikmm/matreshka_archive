@@ -41,8 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
 with League.Strings;
-with League.Values;
 with Matreshka.Internals.Atomics.Counters;
 
 package Matreshka.Internals.Settings is
@@ -79,14 +79,14 @@ package Matreshka.Internals.Settings is
    not overriding procedure Set_Value
     (Self  : in out Abstract_Settings;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value) is abstract;
+     Value : League.Holders.Holder) is abstract;
 
    not overriding procedure Sync (Self : in out Abstract_Settings) is abstract;
 
    not overriding function Value
     (Self : Abstract_Settings;
      Key  : League.Strings.Universal_String)
-       return League.Values.Value is abstract;
+       return League.Holders.Holder is abstract;
 
    type Settings_Access is access all Abstract_Settings'Class;
 

@@ -67,7 +67,7 @@ package body SQL.Queries is
    procedure Bind_Value
     (Self      : in out SQL_Query'Class;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : Parameter_Directions := In_Parameter) is
    begin
       if not Self.Data.Is_Valid then
@@ -85,12 +85,12 @@ package body SQL.Queries is
 
    function Bound_Value
     (Self : SQL_Query'Class;
-     Name : League.Strings.Universal_String) return League.Values.Value is
+     Name : League.Strings.Universal_String) return League.Holders.Holder is
    begin
       if not Self.Data.Is_Valid then
          --  Returns when internal object was invalidated.
 
-         return X : League.Values.Value;
+         return League.Holders.Empty_Holder;
       end if;
 
       return Self.Data.Bound_Value (Name.To_Casefold);
@@ -258,7 +258,7 @@ package body SQL.Queries is
 
    function Value
     (Self  : SQL_Query'Class;
-     Index : Positive) return League.Values.Value is
+     Index : Positive) return League.Holders.Holder is
    begin
       if not Self.Data.Is_Valid
         or else not Self.Data.Is_Active
@@ -266,7 +266,7 @@ package body SQL.Queries is
          --  Returns when internal object was invalidated or not in active
          --  state.
 
-         return X : League.Values.Value;
+         return League.Holders.Empty_Holder;
       end if;
 
       return Self.Data.Value (Index);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,52 +41,50 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This generic package allows to store value of arbitrary integer type in
+--  This generic package allows to store value of arbitrary float type in
 --  the Value.
 ------------------------------------------------------------------------------
 
 generic
-   type Num is range <>;
+   type Num is digits <>;
 
-package League.Values.Generic_Integers is
+package League.Holders.Generic_Floats is
 
    pragma Preelaborate;
 
-   Integer_Tag : constant Tag;
+   Float_Tag : constant Tag;
 
-   function Get (Self : Value) return Num;
+   function Element (Self : Holder) return Num;
    --  Returns internal value.
 
-   procedure Set (Self : in out Value; To : Num);
+   procedure Replace_Element (Self : in out Holder; To : Num);
    --  Set value. Tag of the value must be set before this call.
 
-   function To_Value (Item : Num) return Value;
+   function To_Holder (Item : Num) return Holder;
    --  Creates new Value from specified value.
 
 private
 
-   type Integer_Container is new Abstract_Integer_Container with record
+   type Float_Container is new Abstract_Float_Container with record
       Value : Num;
    end record;
 
    overriding function Constructor
-    (Is_Empty : not null access Boolean) return Integer_Container;
+    (Is_Empty : not null access Boolean) return Float_Container;
 
    overriding function Get
-    (Self : not null access constant Integer_Container)
-       return Universal_Integer;
+    (Self : not null access constant Float_Container)
+       return Universal_Float;
 
    overriding procedure Set
-    (Self : not null access Integer_Container; To : Universal_Integer);
+    (Self : not null access Float_Container; To : Universal_Float);
 
    overriding function First
-    (Self : not null access constant Integer_Container)
-       return Universal_Integer;
+    (Self : not null access constant Float_Container) return Universal_Float;
 
    overriding function Last
-    (Self : not null access constant Integer_Container)
-       return Universal_Integer;
+    (Self : not null access constant Float_Container) return Universal_Float;
 
-   Integer_Tag : constant Tag := Tag (Integer_Container'Tag);
+   Float_Tag : constant Tag := Tag (Float_Container'Tag);
 
-end League.Values.Generic_Integers;
+end League.Holders.Generic_Floats;

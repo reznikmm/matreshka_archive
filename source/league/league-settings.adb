@@ -303,7 +303,7 @@ package body League.Settings is
    procedure Set_Value
     (Self  : in out Settings'Class;
      Key   : League.Strings.Universal_String;
-     Value : League.Values.Value) is
+     Value : League.Holders.Holder) is
    begin
       Self.Data.Set_Value (Self.Data.Manager.To_Storage_Key (Key), Value);
    end Set_Value;
@@ -334,7 +334,7 @@ package body League.Settings is
 
    function Value
     (Self : Settings'Class;
-     Key  : League.Strings.Universal_String) return League.Values.Value is
+     Key  : League.Strings.Universal_String) return League.Holders.Holder is
    begin
       return Self.Data.Value (Self.Data.Manager.To_Storage_Key (Key));
    end Value;

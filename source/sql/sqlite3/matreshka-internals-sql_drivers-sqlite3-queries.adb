@@ -81,7 +81,7 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding procedure Bind_Value
     (Self      : not null access SQLite3_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions)
    is
       use type Ada.Streams.Stream_Element_Array;
@@ -110,13 +110,13 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
       Self.Parameters.Include (Name, Value);
 
-      if League.Values.Is_Empty (Value) then
+      if League.Holders.Is_Empty (Value) then
          --  Bind NULL value of any type (SQLite3 doesn't distinguish type of
          --  NULL value).
 
          Self.Call (sqlite3_bind_null (Self.Handle, Index));
 
-      elsif League.Values.Is_Universal_String (Value) then
+      elsif League.Holders.Is_Universal_String (Value) then
          --  Bind text value.
 
          Self.Call
@@ -124,22 +124,23 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
             (Self.Handle,
              Index,
              League.Strings.Internals.Internal
-              (League.Values.Get (Value)).Value (0)'Access,
+              (League.Holders.Element (Value)).Value (0)'Access,
              Interfaces.C.int
               (League.Strings.Internals.Internal
-                (League.Values.Get (Value)).Unused * 2),
+                (League.Holders.Element (Value)).Unused * 2),
              null));
          --  Copy of string value is stored in the parameters map, so provides
          --  warranty that it will not be deallocated/modified till another
          --  value will be bind. As result, copy of string data is not needed.
 
-      elsif League.Values.Is_Abstract_Integer (Value) then
+      elsif League.Holders.Is_Abstract_Integer (Value) then
          --  Bind integer value.
 
          Self.Call
-          (sqlite3_bind_int64 (Self.Handle, Index, League.Values.Get (Value)));
+          (sqlite3_bind_int64
+            (Self.Handle, Index, League.Holders.Element (Value)));
 
-      elsif League.Values.Is_Abstract_Float (Value) then
+      elsif League.Holders.Is_Abstract_Float (Value) then
          --  Bind float value.
 
          Self.Call
@@ -147,7 +148,8 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
             (Self.Handle,
              Index,
              Interfaces.C.double
-              (League.Values.Universal_Float'(League.Values.Get (Value)))));
+              (League.Holders.Universal_Float'
+                (League.Holders.Element (Value)))));
       end if;
    end Bind_Value;
 
@@ -158,9 +160,9 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding function Bound_Value
     (Self : not null access SQLite3_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value is
+       return League.Holders.Holder is
    begin
-      return X : League.Values.Value;
+      return League.Holders.Empty_Holder;
    end Bound_Value;
 
    ----------
@@ -399,19 +401,20 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
    overriding function Value
     (Self  : not null access SQLite3_Query;
-     Index : Positive) return League.Values.Value
+     Index : Positive) return League.Holders.Holder
    is
       Text   : Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
       Length : Matreshka.Internals.Utf16.Utf16_String_Index;
-      Value  : League.Values.Value;
+      Value  : League.Holders.Holder;
 
    begin
       case sqlite3_column_type (Self.Handle, Interfaces.C.int (Index - 1)) is
          when SQLITE_INTEGER =>
             --  Create universal integer value.
 
-            League.Values.Set_Tag (Value, League.Values.Universal_Integer_Tag);
-            League.Values.Set
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
+            League.Holders.Replace_Element
              (Value,
               sqlite3_column_int64
                (Self.Handle, Interfaces.C.int (Index - 1)));
@@ -419,10 +422,10 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
          when SQLITE_FLOAT =>
             --  Create universal float value.
 
-            League.Values.Set_Tag (Value, League.Values.Universal_Float_Tag);
-            League.Values.Set
+            League.Holders.Set_Tag (Value, League.Holders.Universal_Float_Tag);
+            League.Holders.Replace_Element
              (Value,
-              League.Values.Universal_Float
+              League.Holders.Universal_Float
                (sqlite3_column_double
                  (Self.Handle, Interfaces.C.int (Index - 1))));
 
@@ -437,8 +440,10 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
                (sqlite3_column_bytes16
                  (Self.Handle, Interfaces.C.int (Index - 1)));
 
-            League.Values.Set_Tag (Value, League.Values.Universal_String_Tag);
-            League.Values.Set (Value, To_Universal_String (Text, Length / 2));
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_String_Tag);
+            League.Holders.Replace_Element
+             (Value, To_Universal_String (Text, Length / 2));
 
          when SQLITE_BLOB =>
             --  Not supported yet.

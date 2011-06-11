@@ -41,9 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Values is generic mechanism to pass value of arbitrary type. This package
---  provides generic interface for Value objects, and subprograms to manipulate
---  most common data types.
+--  Holders is a generic container fo value of arbitrary type. This package
+--  provides generic interface for Holder objects, and subprograms to
+--  manipulate most common data types.
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 private with Ada.Tags;
@@ -54,11 +54,14 @@ with League.Strings;
 private with Matreshka.Internals.Atomics.Counters;
 private with Matreshka.Internals.Strings;
 
-package League.Values is
+package League.Holders is
 
    pragma Preelaborate;
 
-   type Value is private;
+   type Holder is private;
+   pragma Preelaborable_Initialization (Holder);
+
+   Empty_Holder : constant Holder;
 
    type Tag (<>) is private;
 
@@ -73,35 +76,35 @@ package League.Values is
    -- Generic operations on Value --
    ---------------------------------
 
-   function Get_Tag (Self : Value) return Tag;
+   function Get_Tag (Self : Holder) return Tag;
    --  Returns current tag of the value.
 
-   procedure Set_Tag (Self : in out Value; To : Tag);
+   procedure Set_Tag (Self : in out Holder; To : Tag);
    --  Sets type of the value. Free previous value and set current value to
    --  null.
 
-   function Is_Empty (Self : Value) return Boolean;
+   function Is_Empty (Self : Holder) return Boolean;
    --  Returns True if object contains no value.
 
-   procedure Clear (Self : in out Value);
-   --  Reset Value to contain no value.
+   procedure Clear (Self : in out Holder);
+   --  Reset holder to contain no value.
 
    ---------------------------------
    -- Universal String Operations --
    ---------------------------------
 
-   function Is_Universal_String (Self : Value) return Boolean;
+   function Is_Universal_String (Self : Holder) return Boolean;
    --  Returns True if contained value is string.
 
-   function Get (Self : Value) return League.Strings.Universal_String;
+   function Element (Self : Holder) return League.Strings.Universal_String;
    --  Returns contained value.
 
-   procedure Set
-    (Self : in out Value;
+   procedure Replace_Element
+    (Self : in out Holder;
      To   : League.Strings.Universal_String);
    --  Set contained value to specified value.
 
-   function To_Value (Item : League.Strings.Universal_String) return Value;
+   function To_Holder (Item : League.Strings.Universal_String) return Holder;
    --  Creates value which contains specified string.
 
    ----------------------------------
@@ -111,20 +114,20 @@ package League.Values is
    subtype Universal_Integer is Interfaces.Integer_64;
    --  Largest supported integer type.
 
-   function Is_Abstract_Integer (Self : Value) return Boolean;
+   function Is_Abstract_Integer (Self : Holder) return Boolean;
    --  Returns True if contained value has any integer type.
 
-   function Get (Self : Value) return Universal_Integer;
+   function Element (Self : Holder) return Universal_Integer;
    --  Returns internal value as a longest supported integer.
 
-   procedure Set (Self : in out Value; To : Universal_Integer);
+   procedure Replace_Element (Self : in out Holder; To : Universal_Integer);
    --  Set value from a longest supported integer. Raises Contraint_Error if
    --  value is outside of the range of valid values for actual integer type.
 
-   function First (Self : Value) return Universal_Integer;
+   function First (Self : Holder) return Universal_Integer;
    --  Returns minimal value of the range of valid values.
 
-   function Last (Self : Value) return Universal_Integer;
+   function Last (Self : Holder) return Universal_Integer;
    --  Returns maximum value of the range of valid values.
 
    --------------------------------
@@ -134,63 +137,69 @@ package League.Values is
    subtype Universal_Float is Interfaces.IEEE_Float_64;
    --  Largest supported float type.
 
-   function Is_Abstract_Float (Self : Value) return Boolean;
+   function Is_Abstract_Float (Self : Holder) return Boolean;
    --  Returns True if contained value has any float type.
 
-   function Get (Self : Value) return Universal_Float;
+   function Element (Self : Holder) return Universal_Float;
    --  Returns internal value as a longest supported float.
 
-   procedure Set (Self : in out Value; To : Universal_Float);
+   procedure Replace_Element (Self : in out Holder; To : Universal_Float);
    --  Set value from a longest supported float. Raises Contraint_Error if
    --  value is outside of the range of valid values for actual float type.
 
 --   function Get_Digits (Self : Value) return Universal_Float;
 --   --  Returns number of digits.
 
-   function First (Self : Value) return Universal_Float;
+   function First (Self : Holder) return Universal_Float;
    --  Returns minimal value of the range of valid values.
 
-   function Last (Self : Value) return Universal_Float;
+   function Last (Self : Holder) return Universal_Float;
    --  Returns maximum value of the range of valid values.
 
    --------------------------
    -- Date/Time Operations --
    --------------------------
 
-   function Is_Time (Self : Value) return Boolean;
+   function Is_Time (Self : Holder) return Boolean;
    --  Returns True when contained value is Time.
 
-   function Is_Date (Self : Value) return Boolean;
+   function Is_Date (Self : Holder) return Boolean;
    --  Returns True when contained value is Date.
 
-   function Is_Date_Time (Self : Value) return Boolean;
+   function Is_Date_Time (Self : Holder) return Boolean;
    --  Returns True when contained value is Date_Time.
 
-   function Get (Self : Value) return League.Calendars.Time;
+   function Element (Self : Holder) return League.Calendars.Time;
    --  Returns contained value of type Time.
 
-   function Get (Self : Value) return League.Calendars.Date;
+   function Element (Self : Holder) return League.Calendars.Date;
    --  Returns contained value of type Date.
 
-   function Get (Self : Value) return League.Calendars.Date_Time;
+   function Element (Self : Holder) return League.Calendars.Date_Time;
    --  Returns contained value of type Date_Time.
 
-   procedure Set (Self : in out Value; To : League.Calendars.Time);
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Calendars.Time);
    --  Sets contained value of type Time to specified value.
 
-   procedure Set (Self : in out Value; To : League.Calendars.Date);
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Calendars.Date);
    --  Sets contained value of type Date to specified value.
 
-   procedure Set (Self : in out Value; To : League.Calendars.Date_Time);
+   procedure Replace_Element
+    (Self : in out Holder;
+     To   : League.Calendars.Date_Time);
    --  Sets contained value of type Date_Time to specified value.
 
-   function To_Value (Item : League.Calendars.Time) return Value;
+   function To_Holder (Item : League.Calendars.Time) return Holder;
    --  Constructs value object of type Time with specified value.
 
-   function To_Value (Item : League.Calendars.Date) return Value;
+   function To_Holder (Item : League.Calendars.Date) return Holder;
    --  Constructs value object of type Date with specified value.
 
-   function To_Value (Item : League.Calendars.Date_Time) return Value;
+   function To_Holder (Item : League.Calendars.Date_Time) return Holder;
    --  Constructs value object of type Date_Time with specified value.
 
 private
@@ -244,19 +253,22 @@ private
 
    Shared_Empty : aliased Empty_Container;
 
-   -------------------
-   -- Value and Tag --
-   -------------------
+   --------------------
+   -- Holder and Tag --
+   --------------------
 
    type Tag is new Ada.Tags.Tag;
 
-   type Value is new Ada.Finalization.Controlled with record
+   type Holder is new Ada.Finalization.Controlled with record
       Data : Container_Access := Shared_Empty'Access;
    end record;
 
-   overriding procedure Adjust (Self : in out Value);
+   overriding procedure Adjust (Self : in out Holder);
 
-   overriding procedure Finalize (Self : in out Value);
+   overriding procedure Finalize (Self : in out Holder);
+
+   Empty_Holder : constant Holder
+     := (Ada.Finalization.Controlled with null);
 
    --------------------------------
    -- Universal_String_Container --
@@ -452,4 +464,4 @@ private
 
    Date_Time_Tag : constant Tag := Tag (Date_Time_Container'Tag);
 
-end League.Values;
+end League.Holders;

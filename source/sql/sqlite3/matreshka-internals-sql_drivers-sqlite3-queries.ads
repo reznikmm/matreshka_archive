@@ -59,10 +59,10 @@ private
    package Parameter_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           League.Values.Value,
+           League.Holders.Holder,
            League.Strings.Hash,
            League.Strings."=",
-           League.Values."=");
+           League.Holders."=");
 
    type SQLite3_Query is new Abstract_Query with record
       Handle     : aliased sqlite3_stmt_Access;
@@ -77,13 +77,13 @@ private
    overriding procedure Bind_Value
     (Self      : not null access SQLite3_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions);
 
    overriding function Bound_Value
     (Self : not null access SQLite3_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
    overriding function Error_Message
     (Self : not null access SQLite3_Query)
@@ -108,6 +108,6 @@ private
 
    overriding function Value
     (Self  : not null access SQLite3_Query;
-     Index : Positive) return League.Values.Value;
+     Index : Positive) return League.Holders.Holder;
 
 end Matreshka.Internals.SQL_Drivers.SQLite3.Queries;

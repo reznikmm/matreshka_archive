@@ -57,13 +57,13 @@ package Matreshka.Internals.SQL_Drivers.OCI.Queries is
 private
 
    type Bound_Value_Node is limited record
-      Value       : League.Values.Value;
+      Value       : League.Holders.Holder;
       Bind        : aliased OCI.Bind;
       Is_Null     : aliased Sb2;
       String_Size : aliased Ub4;
       String      : Matreshka.Internals.Strings.Shared_String_Access;
-      Int         : aliased League.Values.Universal_Integer;
-      Float       : aliased League.Values.Universal_Float;
+      Int         : aliased League.Holders.Universal_Integer;
+      Float       : aliased League.Holders.Universal_Float;
    end record;
 
    type Bound_Value_Access is access Bound_Value_Node;
@@ -85,8 +85,8 @@ private
       Is_Null     : aliased Sb2;
       Size        : Utf16.Utf16_String_Index;
       String      : Matreshka.Internals.Strings.Shared_String_Access;
-      Int         : aliased League.Values.Universal_Integer;
-      Float       : aliased League.Values.Universal_Float;
+      Int         : aliased League.Holders.Universal_Integer;
+      Float       : aliased League.Holders.Universal_Float;
    end record;
 
    type Defined_Value_Array is array (Positive range <>) of Defined_Value;
@@ -114,13 +114,13 @@ private
    overriding procedure Bind_Value
     (Self      : not null access OCI_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions);
 
    overriding function Bound_Value
     (Self : not null access OCI_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value;
+       return League.Holders.Holder;
 
    overriding function Error_Message
     (Self : not null access OCI_Query) return League.Strings.Universal_String;
@@ -143,6 +143,6 @@ private
 
    overriding function Value
     (Self  : not null access OCI_Query;
-     Index : Positive) return League.Values.Value;
+     Index : Positive) return League.Holders.Holder;
 
 end Matreshka.Internals.SQL_Drivers.OCI.Queries;

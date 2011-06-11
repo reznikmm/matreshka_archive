@@ -47,7 +47,7 @@
 private with Ada.Containers.Hashed_Maps;
 
 with League.Strings;
-with League.Values;
+with League.Holders;
 private with League.Strings.Hash;
 
 package Matreshka.Internals.SQL_Parameter_Sets is
@@ -87,12 +87,12 @@ package Matreshka.Internals.SQL_Parameter_Sets is
    procedure Set_Value
     (Self  : in out Parameter_Set;
      Name  : League.Strings.Universal_String;
-     Value : League.Values.Value);
+     Value : League.Holders.Holder);
    --  Sets value of the specified parameter. Do nothing when parameter are not
    --  registered.
 
    function Value
-    (Self : Parameter_Set; Index : Positive) return League.Values.Value;
+    (Self : Parameter_Set; Index : Positive) return League.Holders.Holder;
    --  Returns value of the specified positional parameter.
 
 private
@@ -100,10 +100,10 @@ private
    package Universal_String_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           League.Values.Value,
+           League.Holders.Holder,
            League.Strings.Hash,
            League.Strings."=",
-           League.Values."=");
+           League.Holders."=");
 
    function Hash (Item : Positive) return Ada.Containers.Hash_Type;
 

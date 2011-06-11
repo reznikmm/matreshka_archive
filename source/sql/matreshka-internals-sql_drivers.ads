@@ -53,7 +53,7 @@
 --  when query is valid, so database drivers should use this to optimize code.
 ------------------------------------------------------------------------------
 with League.Strings;
-with League.Values;
+with League.Holders;
 private with Matreshka.Internals.Atomics.Counters;
 with SQL;
 
@@ -113,13 +113,13 @@ package Matreshka.Internals.SQL_Drivers is
    not overriding procedure Bind_Value
     (Self      : not null access Abstract_Query;
      Name      : League.Strings.Universal_String;
-     Value     : League.Values.Value;
+     Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions) is abstract;
 
    not overriding function Bound_Value
     (Self : not null access Abstract_Query;
      Name : League.Strings.Universal_String)
-       return League.Values.Value is abstract;
+       return League.Holders.Holder is abstract;
    --  XXX
 
    not overriding function Error_Message
@@ -179,7 +179,7 @@ package Matreshka.Internals.SQL_Drivers is
 
    not overriding function Value
     (Self  : not null access Abstract_Query;
-     Index : Positive) return League.Values.Value is abstract;
+     Index : Positive) return League.Holders.Holder is abstract;
 
    ---------------------
    -- Database_Access --

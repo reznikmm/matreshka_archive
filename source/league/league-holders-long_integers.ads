@@ -41,7 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Values.Generic_Integers;
+with League.Holders.Generic_Integers;
 
-package League.Values.Integers is new League.Values.Generic_Integers (Integer);
-pragma Preelaborate (League.Values.Integers);
+package League.Holders.Long_Integers is
+  new League.Holders.Generic_Integers (Long_Integer);
+pragma Preelaborate (League.Holders.Long_Integers);
