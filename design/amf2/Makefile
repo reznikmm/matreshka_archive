@@ -4,8 +4,8 @@ all:
 	gprbuild -p -Pcmof/cmof.gpr
 	gprbuild -p -Pxmi/xmi.gpr
 	gprbuild -p -Puml/uml.gpr
-	gprbuild -p -Pgui/gui_moc.gpr
-	gprbuild -p -Pgui/gui.gpr
+	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
+	gprbuild -p -Pgui/cmof_tree_view/gui.gpr
 #	gprbuild -p -Pgen-stage1/generator.gpr
 	gprbuild -p -Pgen-stage2/gens.gpr
 #	time ./demo-reader data/cmof.xml
@@ -45,4 +45,4 @@ gen-uml:
 	gnatmake -p -Puml/uml.gpr
 
 clean:
-	rm -rf cmof/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/.objs gui/.amoc demo-cmof demo-reader demo-viewer
+	rm -rf cmof/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
