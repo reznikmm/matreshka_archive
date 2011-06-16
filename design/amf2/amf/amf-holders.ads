@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,58 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides data type to pass "any" value through reflection
---  capability. It supports only CMOF related types for now, but will be
---  extended to support other types or replaced by League.Values package at
---  some point.
+--  This package provides subprogram to store/retrieve values with multiplicity
+--  [0..1] of data types into/from holders. League.Holders already have empty
+--  state and it is used to represent empty element.
 ------------------------------------------------------------------------------
-with CMOF;
 with League.Holders;
 
-package AMF.Values is
+package AMF.Holders is
 
    pragma Preelaborate;
 
-   type Value_Kinds is
-    (Value_None,
-     Value_Holder,
-     Value_Boolean,
-     Value_Unlimited_Natural,
-     Value_Optional_Boolean,
-     Value_Optional_Unlimited_Natural,
-     Value_Collection_Of_String,
-     Value_Element,
-     Value_Collection_Of_Element);
+   --  String [0..1]
 
-   type Value (Kind : Value_Kinds := Value_None) is record
-      case Kind is
-         when Value_None =>
-            null;
+   function To_Holder (Item : Optional_String) return League.Holders.Holder;
+   function Element (Holder : League.Holders.Holder) return Optional_String;
 
-         when Value_Holder =>
-            Holder_Value : League.Holders.Holder;
+   --  Integer [0..1]
 
-         when Value_Boolean =>
-            Boolean_Value : Boolean;
+   function To_Holder (Item : Optional_Integer) return League.Holders.Holder;
+   function Element (Holder : League.Holders.Holder) return Optional_Integer;
 
-         when Value_Unlimited_Natural =>
-            Unlimited_Natural_Value : Unlimited_Natural;
-
-         when Value_Optional_Boolean =>
-            Optional_Boolean_Value : Optional_Boolean;
-
-         when Value_Optional_Unlimited_Natural =>
-            Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;
-
-         when Value_Collection_Of_String =>
-            Collection_String_Value : Standard.CMOF.Collection_Of_CMOF_String;
-
-         when Value_Element =>
-            Element_Value : Standard.CMOF.CMOF_Element;
-
-         when Value_Collection_Of_Element =>
-            Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
-      end case;
-   end record;
-
-end AMF.Values;
+end AMF.Holders;

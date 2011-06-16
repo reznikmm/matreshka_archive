@@ -43,13 +43,9 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Wide_Wide_Fixed;
 
+with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Factories.Registry;
-with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
-with CMOF.Internals.Constructors;
-with CMOF.Internals.Metamodel;
-with CMOF.Internals.Links;
-with CMOF.Internals.Tables;
 with AMF.Internals.CMOF_Associations;
 with AMF.Internals.CMOF_Classes;
 with AMF.Internals.CMOF_Comments;
@@ -68,10 +64,35 @@ with AMF.Internals.CMOF_Package_Merges;
 with AMF.Internals.CMOF_Parameters;
 with AMF.Internals.CMOF_Primitive_Types;
 with AMF.Internals.CMOF_Properties;
+with CMOF.Internals.Attributes;
+with CMOF.Internals.Collections;
+with CMOF.Internals.Constructors;
+with CMOF.Internals.Metamodel;
+with CMOF.Internals.Links;
+with CMOF.Internals.Tables;
+with League.Holders.Integers;
 
 package body CMOF.Internals.Factories is
 
    use CMOF.Internals.Metamodel;
+
+   In_Image     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("in");
+   In_Out_Image : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("inout");
+   Out_Image    : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("out");
+   Return_Image : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("return");
+
+   Public_Image    : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("public");
+   Private_Image   : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("private");
+   Protected_Image : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("protected");
+   Package_Image   : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("package");
 
    ------------
    -- Create --
@@ -215,17 +236,10 @@ package body CMOF.Internals.Factories is
            Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
 
       elsif Data_Type = MC_CMOF_Integer then
-         if Optional then
-            return
-             (AMF.Values.Value_Optional_Integer,
-              (False,
-               Integer'Wide_Wide_Value (Image.To_Wide_Wide_String)));
-
-         else
-            return
-             (AMF.Values.Value_Integer,
-              Integer'Wide_Wide_Value (Image.To_Wide_Wide_String));
-         end if;
+         return
+          (AMF.Values.Value_Holder,
+           League.Holders.Integers.To_Holder
+            (Integer'Wide_Wide_Value (Image.To_Wide_Wide_String)));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
          if Optional then
@@ -255,33 +269,32 @@ package body CMOF.Internals.Factories is
          end if;
 
       elsif Data_Type = MC_CMOF_String then
-         if Optional then
-            return (AMF.Values.Value_Optional_String, (False, Image));
-
-         else
-            return (AMF.Values.Value_String, Image);
-         end if;
+         return (AMF.Values.Value_Holder, League.Holders.To_Holder (Image));
 
       elsif Data_Type = MC_CMOF_Parameter_Direction_Kind then
-         if Image = League.Strings.To_Universal_String ("in") then
+         if Image = In_Image then
             return
-             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
-              CMOF.In_Direction);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+               (CMOF.In_Direction));
 
-         elsif Image = League.Strings.To_Universal_String ("inout") then
+         elsif Image = In_Out_Image then
             return
-             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
-              CMOF.In_Out_Direction);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+               (CMOF.In_Out_Direction));
 
-         elsif Image = League.Strings.To_Universal_String ("out") then
+         elsif Image = Out_Image then
             return
-             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
-              CMOF.Out_Direction);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+               (CMOF.Out_Direction));
 
-         elsif Image = League.Strings.To_Universal_String ("return") then
+         elsif Image = Return_Image then
             return
-             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
-              CMOF.Return_Direction);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+               (CMOF.Return_Direction));
 
          else
             raise Constraint_Error;
@@ -289,31 +302,28 @@ package body CMOF.Internals.Factories is
 
       elsif Data_Type = MC_CMOF_Visibility_Kind then
          if Image = League.Strings.To_Universal_String ("public") then
-            if Optional then
-               return
-                (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-                 (False, CMOF.Public_Visibility));
-
-            else
-               return
-                (AMF.Values.Value_CMOF_Visibility_Kind,
-                 CMOF.Public_Visibility);
-            end if;
+            return
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+               (CMOF.Public_Visibility));
 
          elsif Image = League.Strings.To_Universal_String ("private") then
             return
-             (AMF.Values.Value_CMOF_Visibility_Kind,
-              CMOF.Private_Visibility);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+               (CMOF.Private_Visibility));
 
          elsif Image = League.Strings.To_Universal_String ("protected") then
             return
-             (AMF.Values.Value_CMOF_Visibility_Kind,
-              CMOF.Protected_Visibility);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+               (CMOF.Protected_Visibility));
 
          elsif Image = League.Strings.To_Universal_String ("package") then
             return
-             (AMF.Values.Value_CMOF_Visibility_Kind,
-              CMOF.Package_Visibility);
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+               (CMOF.Package_Visibility));
 
          else
             raise Constraint_Error;
@@ -377,7 +387,8 @@ package body CMOF.Internals.Factories is
          return
            League.Strings.To_Universal_String
             (Ada.Strings.Wide_Wide_Fixed.Trim
-              (Integer'Wide_Wide_Image (Value.Integer_Value),
+              (Integer'Wide_Wide_Image
+                (League.Holders.Integers.Element (Value.Holder_Value)),
                Ada.Strings.Both));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
@@ -394,15 +405,69 @@ package body CMOF.Internals.Factories is
          end if;
 
       elsif Data_Type = MC_CMOF_String then
-         if Value.Kind = AMF.Values.Value_Optional_String then
-            return Value.Optional_String_Value.Value;
+         if League.Holders.Is_Empty (Value.Holder_Value) then
+            return League.Strings.Empty_Universal_String;
 
          else
-            return Value.String_Value;
+            return League.Holders.Element (Value.Holder_Value);
+         end if;
+
+      elsif Data_Type = MC_CMOF_Parameter_Direction_Kind then
+         if League.Holders.Is_Empty (Value.Holder_Value) then
+            return League.Strings.Empty_Universal_String;
+
+         else
+            declare
+               Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
+                 := AMF.CMOF.Parameter_Direction_Kind_Holders.Element
+                     (Value.Holder_Value);
+
+            begin
+               case Kind is
+                  when CMOF.In_Direction =>
+                     return In_Image;
+
+                  when CMOF.In_Out_Direction =>
+                     return In_Out_Image;
+
+                  when CMOF.Out_Direction =>
+                     return Out_Image;
+
+                  when CMOF.Return_Direction =>
+                     return Return_Image;
+               end case;
+            end;
+         end if;
+
+      elsif Data_Type = MC_CMOF_Visibility_Kind then
+         if League.Holders.Is_Empty (Value.Holder_Value) then
+            return League.Strings.Empty_Universal_String;
+
+         else
+            declare
+               Kind : constant AMF.CMOF.CMOF_Visibility_Kind
+                 := AMF.CMOF.Visibility_Kind_Holders.Element
+                     (Value.Holder_Value);
+
+            begin
+               case Kind is
+                  when CMOF.Public_Visibility =>
+                     return Public_Image;
+
+                  when CMOF.Private_Visibility =>
+                     return Private_Image;
+
+                  when CMOF.Protected_Visibility =>
+                     return Protected_Image;
+
+                  when CMOF.Package_Visibility =>
+                     return Package_Image;
+               end case;
+            end;
          end if;
 
       else
-         return League.Strings.To_Universal_String ("Value must be here");
+         raise Program_Error;
       end if;
    end Convert_To_String;
 

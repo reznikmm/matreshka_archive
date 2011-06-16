@@ -44,6 +44,8 @@
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.Holders;
 with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
@@ -54,6 +56,7 @@ with CMOF.Properties;
 with CMOF.Reflection;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
+with League.Holders.Integers;
 with League.Strings;
 
 with Generator.Names;
@@ -184,6 +187,8 @@ package body Generator.Initialization is
      Numbers : CMOF_Element_Number_Maps.Map)
    is
 
+      use AMF.Holders;
+      use League.Holders;
       use type AMF.Values.Value_Kinds;
 
       Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
@@ -231,7 +236,7 @@ package body Generator.Initialization is
                   Put_Line
                    (", (False,"
                       & Integer'Wide_Wide_Image
-                         (Value.Optional_Integer_Value.Value)
+                         (League.Holders.Integers.Element (Value.Holder_Value))
                       & "));");
 
                else
@@ -263,20 +268,14 @@ package body Generator.Initialization is
                end if;
 
             elsif Has_String_Type (Property) then
-               if Value.Kind /= AMF.Values.Value_Optional_String then
-                  Put_Line
-                   (Standard_Error,
-                    Get_Name (Property).To_Wide_Wide_String
-                      & ": Invalid string value");
-
-               elsif Is_Multivalued (Property) then
+               if Is_Multivalued (Property) then
                   Put_Line
                    (Standard_Error,
                     Get_Name (Property).To_Wide_Wide_String
                       & ": Multivalued string value");
 
                elsif Get_Lower (Property) = 0 then
-                  if not Value.Optional_String_Value.Is_Empty then
+                  if not Is_Empty (Value.Holder_Value) then
                      Put_Line
                       ("   Internal_Set_"
                          & To_Ada_Identifier (Get_Name (Property)));
@@ -285,7 +284,8 @@ package body Generator.Initialization is
                      Put_Line (",");
                      Put_Line
                       ("     (False, League.Strings.To_Universal_String ("""
-                         & Value.Optional_String_Value.Value.To_Wide_Wide_String
+                         & League.Holders.Element
+                            (Value.Holder_Value).To_Wide_Wide_String
                          & """)));");
                   end if;
 
@@ -300,7 +300,9 @@ package body Generator.Initialization is
                Put (Numbers.Element (Element), Width => 0);
                Put (", ");
 
-               case Value.Parameter_Direction_Value is
+               case AMF.CMOF.Parameter_Direction_Kind_Holders.Element
+                     (Value.Holder_Value)
+               is
                   when In_Direction =>
                      Put_Line ("In_Direction);");
 

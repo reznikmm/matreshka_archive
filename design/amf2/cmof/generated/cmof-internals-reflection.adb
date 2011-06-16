@@ -43,6 +43,10 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.CMOF.Holders;
+with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.CMOF.Visibility_Kind_Holders;
+with AMF.Holders;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
@@ -50,6 +54,7 @@ with CMOF.Internals.Types;
 
 package body CMOF.Internals.Reflection is
 
+   use AMF.Holders;
    use CMOF.Internals.Attributes;
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
@@ -202,8 +207,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -279,8 +284,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -293,8 +298,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -374,8 +379,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -451,8 +456,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Class_Super_Class then
             --  Class::superClass : Class
@@ -465,8 +470,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -490,8 +495,8 @@ package body CMOF.Internals.Reflection is
             --  Comment::body : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Body (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Body (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -543,8 +548,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -578,8 +583,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -592,8 +597,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -666,8 +671,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -743,15 +748,15 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -768,8 +773,8 @@ package body CMOF.Internals.Reflection is
             --  ElementImport::alias : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Alias (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Alias (Self)));
 
          elsif Property = MP_CMOF_Element_Import_Imported_Element then
             --  ElementImport::importedElement : PackageableElement
@@ -831,8 +836,8 @@ package body CMOF.Internals.Reflection is
             --  ElementImport::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Visibility_Kind_Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -905,8 +910,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -989,15 +994,15 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1021,8 +1026,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1056,15 +1061,15 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1081,8 +1086,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1123,8 +1128,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -1137,8 +1142,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1169,8 +1174,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1204,8 +1209,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -1218,8 +1223,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1306,8 +1311,8 @@ package body CMOF.Internals.Reflection is
             --  Operation::lower : Integer
 
             return
-             (AMF.Values.Value_Optional_Integer,
-              Internal_Get_Lower (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Lower (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -1320,8 +1325,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1404,8 +1409,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Operation_Raised_Exception then
             --  Operation::raisedException : Type
@@ -1460,8 +1465,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1499,8 +1504,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1590,22 +1595,22 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Package_Uri then
             --  Package::uri : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Uri (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Uri (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1678,8 +1683,8 @@ package body CMOF.Internals.Reflection is
             --  PackageImport::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Visibility_Kind_Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1763,15 +1768,15 @@ package body CMOF.Internals.Reflection is
             --  Parameter::default : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Default (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Default (Self)));
 
          elsif Property = MP_CMOF_Parameter_Direction then
             --  Parameter::direction : ParameterDirectionKind
 
             return
-             (AMF.Values.Value_CMOF_Parameter_Direction_Kind,
-              Internal_Get_Direction (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder (Internal_Get_Direction (Self)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
@@ -1791,15 +1796,15 @@ package body CMOF.Internals.Reflection is
             --  MultiplicityElement::lower : Integer
 
             return
-             (AMF.Values.Value_Optional_Integer,
-              Internal_Get_Lower (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Lower (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1840,8 +1845,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -1861,8 +1866,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -1935,8 +1940,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -2012,15 +2017,15 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -2058,8 +2063,8 @@ package body CMOF.Internals.Reflection is
             --  Property::default : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Default (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Default (Self)));
 
          elsif Property = MP_CMOF_Feature_Featuring_Classifier then
             --  Feature::featuringClassifier : Classifier
@@ -2121,15 +2126,15 @@ package body CMOF.Internals.Reflection is
             --  MultiplicityElement::lower : Integer
 
             return
-             (AMF.Values.Value_Optional_Integer,
-              Internal_Get_Lower (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Lower (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Name (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -2177,8 +2182,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-             (AMF.Values.Value_Optional_String,
-              Internal_Get_Qualified_Name (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.To_Holder (Internal_Get_Qualified_Name (Self)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -2226,8 +2231,8 @@ package body CMOF.Internals.Reflection is
             --  NamedElement::visibility : VisibilityKind
 
             return
-             (AMF.Values.Value_Optional_CMOF_Visibility_Kind,
-              Internal_Get_Visibility (Self));
+             (AMF.Values.Value_Holder,
+              AMF.CMOF.Holders.To_Holder (Internal_Get_Visibility (Self)));
 
          else
             raise Program_Error;
@@ -2435,7 +2440,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
@@ -2445,7 +2450,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2471,7 +2476,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
@@ -2481,7 +2486,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2497,7 +2502,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Comment_Body then
             --  Comment::body : String
 
-            Internal_Set_Body (Self, Value.Optional_String_Value);
+            Internal_Set_Body (Self, Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2518,7 +2523,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -2528,7 +2533,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2549,7 +2554,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
@@ -2559,7 +2564,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2575,7 +2580,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Element_Import_Alias then
             --  ElementImport::alias : String
 
-            Internal_Set_Alias (Self, Value.Optional_String_Value);
+            Internal_Set_Alias (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Element_Import_Imported_Element then
             --  ElementImport::importedElement : PackageableElement
@@ -2590,7 +2595,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Element_Import_Visibility then
             --  ElementImport::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Visibility_Kind_Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2611,7 +2616,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
@@ -2621,7 +2626,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2642,12 +2647,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2663,7 +2668,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -2673,7 +2678,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2689,7 +2694,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -2699,7 +2704,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2740,12 +2745,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2761,7 +2766,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Package_Nesting_Package then
             --  Package::nestingPackage : Package
@@ -2771,12 +2776,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Package_Uri then
             --  Package::uri : String
 
-            Internal_Set_Uri (Self, Value.Optional_String_Value);
+            Internal_Set_Uri (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2802,7 +2807,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Package_Import_Visibility then
             --  PackageImport::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Visibility_Kind_Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2839,12 +2844,12 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Parameter_Default then
             --  Parameter::default : String
 
-            Internal_Set_Default (Self, Value.Optional_String_Value);
+            Internal_Set_Default (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Parameter_Direction then
             --  Parameter::direction : ParameterDirectionKind
 
-            Internal_Set_Direction (Self, Value.Parameter_Direction_Value);
+            Internal_Set_Direction (Self, AMF.CMOF.Parameter_Direction_Kind_Holders.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
@@ -2859,12 +2864,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
-            Internal_Set_Lower (Self, Value.Optional_Integer_Value);
+            Internal_Set_Lower (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Parameter_Operation then
             --  Parameter::operation : Operation
@@ -2884,7 +2889,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2905,7 +2910,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
@@ -2915,7 +2920,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;
@@ -2946,7 +2951,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Property_Default then
             --  Property::default : String
 
-            Internal_Set_Default (Self, Value.Optional_String_Value);
+            Internal_Set_Default (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Property_Is_Composite then
             --  Property::isComposite : Boolean
@@ -2986,12 +2991,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
-            Internal_Set_Lower (Self, Value.Optional_Integer_Value);
+            Internal_Set_Lower (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, Value.Optional_String_Value);
+            Internal_Set_Name (Self, Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Property_Owning_Association then
             --  Property::owningAssociation : Association
@@ -3011,7 +3016,7 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, Value.Visibility_Holder_Value);
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value.Holder_Value));
 
          else
             raise Program_Error;

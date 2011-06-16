@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,58 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides data type to pass "any" value through reflection
---  capability. It supports only CMOF related types for now, but will be
---  extended to support other types or replaced by League.Values package at
---  some point.
-------------------------------------------------------------------------------
-with CMOF;
-with League.Holders;
+with AMF.CMOF.Visibility_Kind_Holders;
 
-package AMF.Values is
+package body AMF.CMOF.Holders is
 
-   pragma Preelaborate;
+   -------------
+   -- Element --
+   -------------
 
-   type Value_Kinds is
-    (Value_None,
-     Value_Holder,
-     Value_Boolean,
-     Value_Unlimited_Natural,
-     Value_Optional_Boolean,
-     Value_Optional_Unlimited_Natural,
-     Value_Collection_Of_String,
-     Value_Element,
-     Value_Collection_Of_Element);
+   function Element
+    (Holder : League.Holders.Holder) return Optional_CMOF_Visibility_Kind is
+   begin
+      if not AMF.CMOF.Visibility_Kind_Holders.Is_Enumeration (Holder) then
+         raise Constraint_Error;
+      end if;
 
-   type Value (Kind : Value_Kinds := Value_None) is record
-      case Kind is
-         when Value_None =>
-            null;
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
 
-         when Value_Holder =>
-            Holder_Value : League.Holders.Holder;
+      else
+         return (False, AMF.CMOF.Visibility_Kind_Holders.Element (Holder));
+      end if;
+   end Element;
 
-         when Value_Boolean =>
-            Boolean_Value : Boolean;
+   ---------------
+   -- To_Holder --
+   ---------------
 
-         when Value_Unlimited_Natural =>
-            Unlimited_Natural_Value : Unlimited_Natural;
+   function To_Holder
+    (Item : Optional_CMOF_Visibility_Kind) return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.CMOF.Visibility_Kind_Holders.Enumeration_Tag);
 
-         when Value_Optional_Boolean =>
-            Optional_Boolean_Value : Optional_Boolean;
+         if not Item.Is_Empty then
+            AMF.CMOF.Visibility_Kind_Holders.Replace_Element
+             (Result, Item.Value);
+         end if;
+      end return;
+   end To_Holder;
 
-         when Value_Optional_Unlimited_Natural =>
-            Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;
-
-         when Value_Collection_Of_String =>
-            Collection_String_Value : Standard.CMOF.Collection_Of_CMOF_String;
-
-         when Value_Element =>
-            Element_Value : Standard.CMOF.CMOF_Element;
-
-         when Value_Collection_Of_Element =>
-            Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
-      end case;
-   end record;
-
-end AMF.Values;
+end AMF.CMOF.Holders;
