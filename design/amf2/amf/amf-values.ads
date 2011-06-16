@@ -56,9 +56,7 @@ package AMF.Values is
    type Value_Kinds is
     (Value_None,
      Value_Holder,
-     Value_Boolean,
      Value_Unlimited_Natural,
-     Value_Optional_Boolean,
      Value_Optional_Unlimited_Natural,
      Value_Collection_Of_String,
      Value_Element,
@@ -72,14 +70,8 @@ package AMF.Values is
          when Value_Holder =>
             Holder_Value : League.Holders.Holder;
 
-         when Value_Boolean =>
-            Boolean_Value : Boolean;
-
          when Value_Unlimited_Natural =>
             Unlimited_Natural_Value : Unlimited_Natural;
-
-         when Value_Optional_Boolean =>
-            Optional_Boolean_Value : Optional_Boolean;
 
          when Value_Optional_Unlimited_Natural =>
             Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;

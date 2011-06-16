@@ -51,6 +51,7 @@ with CMOF.Internals.Attributes;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
 with CMOF.Internals.Types;
+with League.Holders.Booleans;
 
 package body CMOF.Internals.Reflection is
 
@@ -179,15 +180,15 @@ package body CMOF.Internals.Reflection is
             --  Association::isDerived : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Derived (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Derived (Self)));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Final_Specialization (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Final_Specialization (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -358,15 +359,15 @@ package body CMOF.Internals.Reflection is
             --  Class::isAbstract : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Abstract (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Abstract (Self)));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Final_Specialization (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Final_Specialization (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -657,8 +658,8 @@ package body CMOF.Internals.Reflection is
             --  Classifier::isFinalSpecialization : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Final_Specialization (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Final_Specialization (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -896,8 +897,8 @@ package body CMOF.Internals.Reflection is
             --  Classifier::isFinalSpecialization : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Final_Specialization (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Final_Specialization (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -1283,29 +1284,29 @@ package body CMOF.Internals.Reflection is
             --  RedefinableElement::isLeaf : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Leaf (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Leaf (Self)));
 
          elsif Property = MP_CMOF_Operation_Is_Ordered then
             --  Operation::isOrdered : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Ordered (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Ordered (Self)));
 
          elsif Property = MP_CMOF_Operation_Is_Query then
             --  Operation::isQuery : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Query (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Query (Self)));
 
          elsif Property = MP_CMOF_Operation_Is_Unique then
             --  Operation::isUnique : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Unique (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Unique (Self)));
 
          elsif Property = MP_CMOF_Operation_Lower then
             --  Operation::lower : Integer
@@ -1782,15 +1783,15 @@ package body CMOF.Internals.Reflection is
             --  MultiplicityElement::isOrdered : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Ordered (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Ordered (Self)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Unique (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Unique (Self)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
@@ -1926,8 +1927,8 @@ package body CMOF.Internals.Reflection is
             --  Classifier::isFinalSpecialization : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Final_Specialization (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Final_Specialization (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -2077,50 +2078,50 @@ package body CMOF.Internals.Reflection is
             --  Property::isComposite : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Composite (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Composite (Self)));
 
          elsif Property = MP_CMOF_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Derived (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Derived (Self)));
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Derived_Union (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Derived_Union (Self)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Leaf (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Leaf (Self)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Ordered (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Ordered (Self)));
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Read_Only (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Read_Only (Self)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
-             (AMF.Values.Value_Boolean,
-              Internal_Get_Is_Unique (Self));
+             (AMF.Values.Value_Holder,
+              League.Holders.Booleans.To_Holder (Internal_Get_Is_Unique (Self)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
@@ -2430,12 +2431,12 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Association_Is_Derived then
             --  Association::isDerived : Boolean
 
-            Internal_Set_Is_Derived (Self, Value.Boolean_Value);
+            Internal_Set_Is_Derived (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
+            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2466,12 +2467,12 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Class_Is_Abstract then
             --  Class::isAbstract : Boolean
 
-            Internal_Set_Is_Abstract (Self, Value.Boolean_Value);
+            Internal_Set_Is_Abstract (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
+            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2549,7 +2550,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
+            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2611,7 +2612,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
+            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2735,12 +2736,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
-            Internal_Set_Is_Leaf (Self, Value.Boolean_Value);
+            Internal_Set_Is_Leaf (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Operation_Is_Query then
             --  Operation::isQuery : Boolean
 
-            Internal_Set_Is_Query (Self, Value.Boolean_Value);
+            Internal_Set_Is_Query (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2854,12 +2855,12 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
-            Internal_Set_Is_Ordered (Self, Value.Boolean_Value);
+            Internal_Set_Is_Ordered (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
-            Internal_Set_Is_Unique (Self, Value.Boolean_Value);
+            Internal_Set_Is_Unique (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
@@ -2905,7 +2906,7 @@ package body CMOF.Internals.Reflection is
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, Value.Boolean_Value);
+            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2956,37 +2957,37 @@ package body CMOF.Internals.Reflection is
          elsif Property = MP_CMOF_Property_Is_Composite then
             --  Property::isComposite : Boolean
 
-            Internal_Set_Is_Composite (Self, Value.Boolean_Value);
+            Internal_Set_Is_Composite (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
-            Internal_Set_Is_Derived (Self, Value.Boolean_Value);
+            Internal_Set_Is_Derived (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
-            Internal_Set_Is_Derived_Union (Self, Value.Boolean_Value);
+            Internal_Set_Is_Derived_Union (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
-            Internal_Set_Is_Leaf (Self, Value.Boolean_Value);
+            Internal_Set_Is_Leaf (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
-            Internal_Set_Is_Ordered (Self, Value.Boolean_Value);
+            Internal_Set_Is_Ordered (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
-            Internal_Set_Is_Read_Only (Self, Value.Boolean_Value);
+            Internal_Set_Is_Read_Only (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
-            Internal_Set_Is_Unique (Self, Value.Boolean_Value);
+            Internal_Set_Is_Unique (Self, League.Holders.Booleans.Element (Value.Holder_Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer

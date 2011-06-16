@@ -70,6 +70,7 @@ with CMOF.Internals.Constructors;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Links;
 with CMOF.Internals.Tables;
+with League.Holders.Booleans;
 with League.Holders.Integers;
 
 package body CMOF.Internals.Factories is
@@ -232,8 +233,9 @@ package body CMOF.Internals.Factories is
    begin
       if Data_Type = MC_CMOF_Boolean then
          return
-          (AMF.Values.Value_Boolean,
-           Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
+          (AMF.Values.Value_Holder,
+           League.Holders.Booleans.To_Holder
+            (Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String)));
 
       elsif Data_Type = MC_CMOF_Integer then
          return
@@ -376,7 +378,7 @@ package body CMOF.Internals.Factories is
 
    begin
       if Data_Type = MC_CMOF_Boolean then
-         if Value.Boolean_Value then
+         if League.Holders.Booleans.Element (Value.Holder_Value) then
             return League.Strings.To_Universal_String ("true");
 
          else

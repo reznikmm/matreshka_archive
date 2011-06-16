@@ -41,9 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders.Booleans;
 with League.Holders.Integers;
 
 package body AMF.Holders is
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Holder : League.Holders.Holder) return Optional_Boolean is
+   begin
+      if not League.Holders.Booleans.Is_Enumeration (Holder) then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, League.Holders.Booleans.Element (Holder));
+      end if;
+   end Element;
 
    -------------
    -- Element --
@@ -80,6 +99,22 @@ package body AMF.Holders is
          return (False, League.Holders.Element (Holder));
       end if;
    end Element;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder (Item : Optional_Boolean) return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, League.Holders.Booleans.Enumeration_Tag);
+
+         if not Item.Is_Empty then
+            League.Holders.Booleans.Replace_Element (Result, Item.Value);
+         end if;
+      end return;
+   end To_Holder;
 
    ---------------
    -- To_Holder --

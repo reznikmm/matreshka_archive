@@ -198,7 +198,10 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Boolean_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put_Line ("AMF.Values.Value_Boolean,");
+                     Holder_Name :=
+                       To_Unbounded_Wide_Wide_String
+                        ("League.Holders.Booleans.To_Holder");
+                     Put_Line ("AMF.Values.Value_Holder,");
 
                   when Holder =>
                      raise Program_Error;
@@ -519,7 +522,8 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Boolean_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put ("Value.Boolean_Value");
+                     Put
+                      ("League.Holders.Booleans.Element (Value.Holder_Value)");
 
                   when Holder =>
                      raise Program_Error;
@@ -703,6 +707,7 @@ package body Generator.Reflection is
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
+      Put_Line ("with League.Holders.Booleans;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Reflection is");
       New_Line;

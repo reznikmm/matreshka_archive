@@ -56,6 +56,7 @@ with CMOF.Properties;
 with CMOF.Reflection;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
+with League.Holders.Booleans;
 with League.Holders.Integers;
 with League.Strings;
 
@@ -217,7 +218,7 @@ package body Generator.Initialization is
                Put (Numbers.Element (Element), Width => 0);
                Put (", ");
 
-               if Value.Boolean_Value then
+               if League.Holders.Booleans.Element (Value.Holder_Value) then
                   Put_Line ("True);");
 
                else

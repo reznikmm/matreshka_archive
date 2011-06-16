@@ -51,6 +51,11 @@ package AMF.Holders is
 
    pragma Preelaborate;
 
+   --  Boolean [0..1]
+
+   function To_Holder (Item : Optional_Boolean) return League.Holders.Holder;
+   function Element (Holder : League.Holders.Holder) return Optional_Boolean;
+
    --  String [0..1]
 
    function To_Holder (Item : Optional_String) return League.Holders.Holder;
