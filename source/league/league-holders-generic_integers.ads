@@ -54,6 +54,9 @@ package League.Holders.Generic_Integers is
 
    Integer_Tag : constant Tag;
 
+   function Is_Integer (Self : Holder) return Boolean;
+   --  Returns True when holder contains object of the integer type.
+
    function Element (Self : Holder) return Num;
    --  Returns internal value.
 
