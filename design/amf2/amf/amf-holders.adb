@@ -52,7 +52,9 @@ package body AMF.Holders is
 
    function Element (Holder : League.Holders.Holder) return Optional_Boolean is
    begin
-      if not League.Holders.Booleans.Is_Enumeration (Holder) then
+      if not League.Holders.Has_Tag
+              (Holder, League.Holders.Booleans.Value_Tag)
+      then
          raise Constraint_Error;
       end if;
 
@@ -70,7 +72,9 @@ package body AMF.Holders is
 
    function Element (Holder : League.Holders.Holder) return Optional_Integer is
    begin
-      if not League.Holders.Integers.Is_Integer (Holder) then
+      if not League.Holders.Has_Tag
+              (Holder, League.Holders.Integers.Value_Tag)
+      then
          raise Constraint_Error;
       end if;
 
@@ -108,7 +112,7 @@ package body AMF.Holders is
    begin
       return Result : League.Holders.Holder do
          League.Holders.Set_Tag
-          (Result, League.Holders.Booleans.Enumeration_Tag);
+          (Result, League.Holders.Booleans.Value_Tag);
 
          if not Item.Is_Empty then
             League.Holders.Booleans.Replace_Element (Result, Item.Value);
@@ -123,7 +127,7 @@ package body AMF.Holders is
    function To_Holder (Item : Optional_Integer) return League.Holders.Holder is
    begin
       return Result : League.Holders.Holder do
-         League.Holders.Set_Tag (Result, League.Holders.Integers.Integer_Tag);
+         League.Holders.Set_Tag (Result, League.Holders.Integers.Value_Tag);
 
          if not Item.Is_Empty then
             League.Holders.Integers.Replace_Element (Result, Item.Value);

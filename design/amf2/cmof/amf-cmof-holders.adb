@@ -52,7 +52,9 @@ package body AMF.CMOF.Holders is
    function Element
     (Holder : League.Holders.Holder) return Optional_CMOF_Visibility_Kind is
    begin
-      if not AMF.CMOF.Visibility_Kind_Holders.Is_Enumeration (Holder) then
+      if not League.Holders.Has_Tag
+              (Holder, AMF.CMOF.Visibility_Kind_Holders.Value_Tag)
+      then
          raise Constraint_Error;
       end if;
 
@@ -73,7 +75,7 @@ package body AMF.CMOF.Holders is
    begin
       return Result : League.Holders.Holder do
          League.Holders.Set_Tag
-          (Result, AMF.CMOF.Visibility_Kind_Holders.Enumeration_Tag);
+          (Result, AMF.CMOF.Visibility_Kind_Holders.Value_Tag);
 
          if not Item.Is_Empty then
             AMF.CMOF.Visibility_Kind_Holders.Replace_Element
