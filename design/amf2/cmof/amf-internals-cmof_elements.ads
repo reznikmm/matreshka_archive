@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Classes;
 with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Elements;
 with AMF.Elements;
@@ -62,7 +63,7 @@ package AMF.Internals.CMOF_Elements is
 
    overriding function Get_Meta_Class
     (Self : not null access constant CMOF_Element_Proxy)
-       return Standard.CMOF.CMOF_Class;
+       return AMF.CMOF.Classes.CMOF_Class_Access;
 
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Element_Proxy)

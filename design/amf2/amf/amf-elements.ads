@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Classes;
 with AMF.Values;
 with CMOF;
 
@@ -54,16 +55,16 @@ package AMF.Elements is
 
    not overriding function Get_Meta_Class
     (Self : not null access constant Abstract_Element)
-       return CMOF.CMOF_Class is abstract;
+       return AMF.CMOF.Classes.CMOF_Class_Access is abstract;
    --  Returns the Class that describes this element.
 
    not overriding function Get
     (Self     : not null access constant Abstract_Element;
-     Property : CMOF.CMOF_Property) return AMF.Values.Value is abstract;
+     Property : Standard.CMOF.CMOF_Property) return AMF.Values.Value is abstract;
 
    not overriding procedure Set
     (Self     : not null access Abstract_Element;
-     Property : CMOF.CMOF_Property;
+     Property : Standard.CMOF.CMOF_Property;
      Value    : AMF.Values.Value) is abstract;
    --  If the Property has multiplicity upper bound = 1, set() atomically
    --  updates the value of the Property to the object parameter. If Property

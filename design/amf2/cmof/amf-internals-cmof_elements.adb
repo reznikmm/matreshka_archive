@@ -44,6 +44,7 @@
 with AMF.Internals.Collections;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
+with CMOF.Internals.Proxies;
 with CMOF.Reflection;
 
 package body AMF.Internals.CMOF_Elements is
@@ -68,9 +69,12 @@ package body AMF.Internals.CMOF_Elements is
 
    overriding function Get_Meta_Class
     (Self : not null access constant CMOF_Element_Proxy)
-       return Standard.CMOF.CMOF_Class is
+       return AMF.CMOF.Classes.CMOF_Class_Access is
    begin
-      return Standard.CMOF.Reflection.Get_Meta_Class (Self.Id);
+      return
+        AMF.CMOF.Classes.CMOF_Class_Access
+         (Standard.CMOF.Internals.Proxies.Get_Proxy
+           (Standard.CMOF.Reflection.Get_Meta_Class (Self.Id)));
    end Get_Meta_Class;
 
    -----------------------

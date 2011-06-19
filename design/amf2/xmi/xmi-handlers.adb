@@ -581,12 +581,12 @@ package body XMI.Handlers is
 
          Property :=
            Resolve_Owned_Attribute
-            (Self.Current.Get_Meta_Class, Qualified_Name);
+            (CMOF_Element_Of (Self.Current.Get_Meta_Class), Qualified_Name);
 
          if Property = Null_CMOF_Element then
             Self.Diagnosis :=
               "Unknown property '"
-                & Get_Name (Self.Current.Get_Meta_Class)
+                & Self.Current.Get_Meta_Class.Get_Name.Value
                 & ":"
                 & Qualified_Name
                 & ''';
