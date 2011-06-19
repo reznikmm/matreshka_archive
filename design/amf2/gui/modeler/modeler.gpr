@@ -1,0 +1,36 @@
+with "qt_gui.gpr";
+
+with "../../xmi/xmi.gpr";
+
+project Modeler is
+
+   type Build_Modes is ("APP", "MOC");
+   Build_Mode : Build_Modes := external ("BUILD_MODE");
+
+   Common_Source_Dirs := (".");
+
+   case Build_Mode is
+      when "APP" =>
+         for Main use ("modeler-driver.adb");
+         for Source_Dirs use Common_Source_Dirs & (".amoc");
+         for Exec_Dir use "../..";
+         for Object_Dir use ".objs";
+
+      when "MOC" =>
+         for Languages use ("Amoc");
+         for Source_Dirs use Common_Source_Dirs;
+         for Source_Files use
+          ("modeler-diagram_views.ads",
+           "modeler-main_windows.ads");
+         for Object_Dir use ".amoc";
+   end case;
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12");
+   end Compiler;
+
+   package Builder is
+      for Executable ("modeler-driver.adb") use "modeler";
+   end Builder;
+
+end Modeler;
