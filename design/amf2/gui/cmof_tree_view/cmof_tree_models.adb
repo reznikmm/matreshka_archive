@@ -417,8 +417,8 @@ package body CMOF_Tree_Models is
                              Self.Extent,
                              False,
                              Qt4.Strings.From_Ucs_4
-                              (Get_Name
-                                (C.Get_Meta_Class).To_Wide_Wide_String),
+                              (C.Get_Meta_Class.Get_Name.Value.
+                                 To_Wide_Wide_String),
                              C);
                   end if;
 
@@ -597,7 +597,8 @@ package body CMOF_Tree_Models is
       if not Self.Is_Populated then
          Self.Is_Populated := True;
          All_Attributes
-          (Self.Element.Get_Meta_Class).Iterate (Process_Property'Access);
+          (CMOF.XMI_Helper.CMOF_Element_Of
+            (Self.Element.Get_Meta_Class)).Iterate (Process_Property'Access);
       end if;
    end Populate;
 
@@ -616,7 +617,7 @@ package body CMOF_Tree_Models is
               Self.Extent,
               False,
               Qt4.Strings.From_Ucs_4
-               (Get_Name (Self.Element.Get_Meta_Class).To_Wide_Wide_String),
+               (Self.Element.Get_Meta_Class.Get_Name.Value.To_Wide_Wide_String),
               Self.Element);
       Self.Children.Append (X);
    end Populate;
