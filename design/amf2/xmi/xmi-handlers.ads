@@ -44,6 +44,7 @@
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
 
+private with AMF.CMOF.Properties;
 private with AMF.Elements;
 private with AMF.Factories;
 private with League.Strings.Hash;
@@ -70,7 +71,7 @@ private
 
    type Postponed_Link is record
       Element   : AMF.Elements.Element_Access;
-      Attribute : CMOF.CMOF_Property;
+      Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
       Id        : League.Strings.Universal_String;
    end record;
 
@@ -92,7 +93,7 @@ private
       Factory          : AMF.Factories.AMF_Factory_Access;
       Current          : AMF.Elements.Element_Access;
       Stack            : Element_Vectors.Vector;
-      Attribute        : CMOF.CMOF_Property := CMOF.Null_CMOF_Element;
+      Attribute        : AMF.CMOF.Properties.CMOF_Property_Access;
       Text             : League.Strings.Universal_String;
       Collect_Text     : Boolean := False;
       Mapping          : String_Element_Maps.Map;

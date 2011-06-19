@@ -51,29 +51,20 @@ with XMI.Reader;
 
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Data_Types;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Factories.Registry;
 with AMF.Values;
-with CMOF.Associations;
-with CMOF.Collections;
 with CMOF.Extents;
-with CMOF.Multiplicity_Elements;
-with CMOF.Properties;
-with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 
 package body XMI.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
-   use CMOF;
-   use CMOF.Associations;
-   use CMOF.Collections;
    use CMOF.Extents;
-   use CMOF.Multiplicity_Elements;
-   use CMOF.Properties;
-   use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
+   use type AMF.CMOF.Properties.CMOF_Property_Access;
    use type League.Strings.Universal_String;
 
    XMI_Namespace  : constant League.Strings.Universal_String
@@ -100,7 +91,7 @@ package body XMI.Handlers is
    procedure Analyze_Object_Element
     (Self       : in out XMI_Handler;
      Meta_Class : AMF.CMOF.Classes.CMOF_Class_Access;
-     Attribute  : CMOF.CMOF_Property;
+     Attribute  : AMF.CMOF.Properties.CMOF_Property_Access;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Success    : out Boolean);
    --  Analyze current XML element which represents AMF.Element: resolves
@@ -110,7 +101,7 @@ package body XMI.Handlers is
 
    procedure Establish_Link
     (Self          : in out XMI_Handler;
-     Attribute     : CMOF.CMOF_Property;
+     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
      One_Element   : not null AMF.Elements.Element_Access;
      Other_Element : not null AMF.Elements.Element_Access);
    --  Creates link between specified elements, but prevents to create
@@ -121,9 +112,10 @@ package body XMI.Handlers is
    package Universal_String_Extent_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           CMOF_Extent,
+           CMOF.CMOF_Extent,
            League.Strings.Hash,
-           League.Strings."=");
+           League.Strings."=",
+           CMOF."=");
 
    Documents : Universal_String_Extent_Maps.Map;
    --  Map file name of document to extent.
@@ -135,43 +127,52 @@ package body XMI.Handlers is
    procedure Analyze_Object_Element
     (Self       : in out XMI_Handler;
      Meta_Class : AMF.CMOF.Classes.CMOF_Class_Access;
-     Attribute  : CMOF.CMOF_Property;
+     Attribute  : AMF.CMOF.Properties.CMOF_Property_Access;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Success    : out Boolean)
    is
       use type AMF.Elements.Element_Access;
 
       procedure Set_Attribute
-       (Property : CMOF_Property; Value : League.Strings.Universal_String);
+       (Property : AMF.CMOF.Properties.CMOF_Property_Access;
+        Value    : League.Strings.Universal_String);
 
       -------------------
       -- Set_Attribute --
       -------------------
 
       procedure Set_Attribute
-       (Property : CMOF_Property; Value : League.Strings.Universal_String)
+       (Property : AMF.CMOF.Properties.CMOF_Property_Access;
+        Value    : League.Strings.Universal_String)
       is
-         Association : CMOF_Association;
+         use type AMF.CMOF.Types.CMOF_Type_Access;
+
+         Association    : AMF.CMOF.Associations.CMOF_Association_Access;
+         Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
       begin
-         if Property = Null_CMOF_Element then
+         if Property = null then
             raise Program_Error with "Unknown attribute";
          end if;
 
-         if Get_Type (Property) = Null_CMOF_Element then
+         Attribute_Type := Property.Get_Type;
+
+         if Attribute_Type = null then
             raise Program_Error with "Type not specified";
          end if;
 
-         if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Property)) then
+         if Attribute_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
             Self.Current.Set
-             (Property,
+             (CMOF_Element_Of (Property),
               Self.Factory.Create_From_String
-               (Get_Type (Property), Get_Lower (Property) = 0, Value));
+               (CMOF_Element_Of (Attribute_Type),
+                Property.Get_Lower.Value = 0,
+                Value));
 
          else
-            Association := Get_Association (Property);
+            Association := Property.Get_Association;
 
-            if Is_Multivalued (Property) then
+            if Property.Is_Multivalued then
                declare
                   Ids : constant League.String_Vectors.Universal_String_Vector
                     := Value.Split (' ');
@@ -263,7 +264,7 @@ package body XMI.Handlers is
 
       --  Establish ownership link.
 
-      if Attribute /= Null_CMOF_Element then
+      if Attribute /= null then
          Establish_Link
           (Self, Attribute, Self.Stack.Last_Element, Self.Current);
       end if;
@@ -276,13 +277,12 @@ package body XMI.Handlers is
                --  XLink 'href' handled outside of this subprogram.
 
                declare
-                  Property : CMOF_Property
-                    := CMOF_Element_Of
-                        (Resolve_Owned_Attribute
-                          (Meta_Class, Attributes.Qualified_Name (J)));
+                  Property : AMF.CMOF.Properties.CMOF_Property_Access
+                    := Resolve_Owned_Attribute
+                        (Meta_Class, Attributes.Qualified_Name (J));
 
                begin
-                  if Property = Null_CMOF_Element then
+                  if Property = null then
                      Self.Diagnosis :=
                        "Unknown property '"
                          & Meta_Class.Get_Name.Value
@@ -373,7 +373,10 @@ package body XMI.Handlers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
+
    begin
       if Self.Skip_End_Element /= 0 then
          Self.Skip_End_Element := Self.Skip_End_Element - 1;
@@ -381,14 +384,17 @@ package body XMI.Handlers is
       elsif not Self.Stack.Is_Empty then
          if Self.Collect_Text then
             Self.Collect_Text := False;
+            Attribute_Type := Self.Attribute.Get_Type;
 
-            if CMOF.XMI_Helper.Is_Data_Type (Get_Type (Self.Attribute)) then
-               if not Is_Multivalued (Self.Attribute) then
+            if Attribute_Type.all
+                 in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+            then
+               if not Self.Attribute.Is_Multivalued then
                   Self.Current.Set
-                   (Self.Attribute,
+                   (CMOF_Element_Of (Self.Attribute),
                     Self.Factory.Create_From_String
-                     (Get_Type (Self.Attribute),
-                      Get_Lower (Self.Attribute) = 0,
+                     (CMOF_Element_Of (Attribute_Type),
+                      Self.Attribute.Get_Lower.Value = 0,
                       Self.Text));
 
                else
@@ -429,11 +435,12 @@ package body XMI.Handlers is
 
    procedure Establish_Link
     (Self          : in out XMI_Handler;
-     Attribute     : CMOF.CMOF_Property;
+     Attribute     : not null AMF.CMOF.Properties.CMOF_Property_Access;
      One_Element   : not null AMF.Elements.Element_Access;
      Other_Element : not null AMF.Elements.Element_Access)
    is
-      Association : constant CMOF_Association := Get_Association (Attribute);
+      Association : constant AMF.CMOF.Associations.CMOF_Association_Access
+        := Attribute.Get_Association;
 
    begin
       --  This subprograms take in sense constraint of MOF meta models to
@@ -443,15 +450,17 @@ package body XMI.Handlers is
       --  navigableOwnedEnd (they will always be owned by Classes) and may have
       --  at most one ownedEnd."
 
-      if Length (Get_Owned_End (Association)) = 1 then
+      if Association.Get_Owned_End.Length = 1 then
          --  One of the ends is owned by association, link must be created
          --  even when order of ends is reversed.
 
-         if Element (Get_Member_End (Association), 1) = Attribute then
-            Self.Factory.Create_Link (Association, One_Element, Other_Element);
+         if Association.Get_Member_End.Element (1) = Attribute then
+            Self.Factory.Create_Link
+             (CMOF_Element_Of (Association), One_Element, Other_Element);
 
          else
-            Self.Factory.Create_Link (Association, Other_Element, One_Element);
+            Self.Factory.Create_Link
+             (CMOF_Element_Of (Association), Other_Element, One_Element);
          end if;
 
       else
@@ -459,8 +468,9 @@ package body XMI.Handlers is
          --  specified attribute is a first end of the association to prevent
          --  duplicate links.
 
-         if Element (Get_Member_End (Association), 1) = Attribute then
-            Self.Factory.Create_Link (Association, One_Element, Other_Element);
+         if Association.Get_Member_End.Element (1) = Attribute then
+            Self.Factory.Create_Link
+             (CMOF_Element_Of (Association), One_Element, Other_Element);
          end if;
       end if;
    end Establish_Link;
@@ -500,7 +510,6 @@ package body XMI.Handlers is
        return AMF.CMOF.Properties.CMOF_Property_Access
    is
       use type AMF.Optional_String;
-      use type AMF.CMOF.Properties.CMOF_Property_Access;
 
       Attributes    : constant
         AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
@@ -579,7 +588,6 @@ package body XMI.Handlers is
    is
       use type AMF.CMOF.Associations.CMOF_Association_Access;
       use type AMF.CMOF.Classes.CMOF_Class_Access;
-      use type AMF.CMOF.Properties.CMOF_Property_Access;
 
       Association   : AMF.CMOF.Associations.CMOF_Association_Access;
       Name          : League.Strings.Universal_String;
@@ -632,11 +640,10 @@ package body XMI.Handlers is
                Meta := AMF.CMOF.Classes.CMOF_Class_Access (Property_Type);
             end if;
 
-            Analyze_Object_Element
-             (Self, Meta, CMOF_Element_Of (Property), Attributes, Success);
+            Analyze_Object_Element (Self, Meta, Property, Attributes, Success);
 
          else
-            Self.Attribute := CMOF_Element_Of (Property);
+            Self.Attribute := Property;
             Self.Collect_Text := True;
             Self.Text.Clear;
          end if;
@@ -659,8 +666,7 @@ package body XMI.Handlers is
            AMF.CMOF.Classes.CMOF_Class_Access
             (CMOF.XMI_Helper.Resolve (Local_Name));
 
-         Analyze_Object_Element
-          (Self, Meta, Null_CMOF_Element, Attributes, Success);
+         Analyze_Object_Element (Self, Meta, null, Attributes, Success);
       end if;
    end Start_Element;
 
