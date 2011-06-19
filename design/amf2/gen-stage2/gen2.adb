@@ -63,6 +63,7 @@ with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
+with CMOF.Internals.Setup;
 with XMI.Reader;
 
 with Generator.Analyzer;

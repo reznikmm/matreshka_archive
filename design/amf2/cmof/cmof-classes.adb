@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Setup;
 with CMOF.Internals.Factories;
 
 package body CMOF.Classes is

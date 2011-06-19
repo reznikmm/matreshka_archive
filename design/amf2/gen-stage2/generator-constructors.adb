@@ -93,6 +93,9 @@ package body Generator.Constructors is
 
    procedure Generate_Constructors_Implementation is
 
+      procedure Generate_With (Position : Class_Information_Maps.Cursor);
+      --  Generates with clause for proxy package.
+
       procedure Generate_Create (Position : Class_Information_Maps.Cursor);
 
       procedure Generate_Initialize (Position : Class_Information_Maps.Cursor);
@@ -135,6 +138,8 @@ package body Generator.Constructors is
 
          Class          : constant Class_Information_Access
            := Class_Information_Maps.Element (Position);
+         Class_Name     : constant League.Strings.Universal_String
+           := Class.Class.Get_Name.Value;
          Name           : constant Wide_Wide_String
            := "Initialize_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Element_Kind   : constant Wide_Wide_String
@@ -158,7 +163,13 @@ package body Generator.Constructors is
          Put_Line ("        Extent   => 0,");
          Put_Line ("        Previous => 0,");
          Put_Line ("        Next     => 0,");
-         Put_Line ("        Proxy    => null,");
+         Put_Line ("        Proxy    =>");
+         Put_Line
+          ("          new AMF.Internals.CMOF_"
+             & Plural (To_Ada_Identifier (Class_Name))
+             & ".CMOF_"
+             & To_Ada_Identifier (Class_Name)
+             & "_Proxy'(Id => Self),");
          Put_Line ("        Member   => (0      => (Kind => M_None),");
 
          for J in 1 .. Natural (Class.Slot_Index.Length) loop
@@ -538,16 +549,38 @@ package body Generator.Constructors is
          Put_Line ("   end " & Name & ';');
       end Generate_Initialize;
 
+      -------------------
+      -- Generate_With --
+      -------------------
+
+      procedure Generate_With
+       (Position : Class_Information_Maps.Cursor)
+      is
+         Class          : constant Class_Information_Access
+           := Class_Information_Maps.Element (Position);
+         Class_Name     : constant League.Strings.Universal_String
+           := Class.Class.Get_Name.Value;
+
+      begin
+         if not Class.Class.Get_Is_Abstract then
+            Put_Line
+             ("with AMF.Internals.CMOF_"
+                & Plural (To_Ada_Identifier (Class_Name))
+                & ";");
+         end if;
+      end Generate_With;
+
    begin
       Put_Header;
-      Put_Line ("with Cmof.Internals.Extents;");
+      Class_Info.Iterate (Generate_With'Access);
+      Put_Line ("with CMOF.Internals.Extents;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Constructors is");
       New_Line;
-      Put_Line ("   use Cmof.Internals.Extents;");
+      Put_Line ("   use CMOF.Internals.Extents;");
       Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use CMOF.Internals.Types;");
       Class_Info.Iterate (Generate_Create'Access);
