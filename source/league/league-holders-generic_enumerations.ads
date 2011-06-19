@@ -52,10 +52,13 @@ package League.Holders.Generic_Enumerations is
    Value_Tag : constant Tag;
 
    function Element (Self : Holder) return Enum;
+   --  Returns internal value.
 
    procedure Replace_Element (Self : in out Holder; To : Enum);
+   --  Set value. Tag of the value must be set before this call.
 
    function To_Holder (Item : Enum) return Holder;
+   --  Creates new Value from specified value.
 
 private
 

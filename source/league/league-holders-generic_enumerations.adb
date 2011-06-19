@@ -77,15 +77,6 @@ package body League.Holders.Generic_Enumerations is
       return Enumeration_Container'Class (Self.Data.all).Value;
    end Element;
 
-   --------------------
-   -- Is_Enumeration --
-   --------------------
-
-   function Is_Enumeration (Self : Holder) return Boolean is
-   begin
-      return Self.Data.all in Enumeration_Container;
-   end Is_Enumeration;
-
    ---------------------
    -- Replace_Element --
    ---------------------
