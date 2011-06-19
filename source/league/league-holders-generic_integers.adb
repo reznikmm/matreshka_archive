@@ -109,15 +109,6 @@ package body League.Holders.Generic_Integers is
       return Universal_Integer (Self.Value);
    end Get;
 
-   ----------------
-   -- Is_Integer --
-   ----------------
-
-   function Is_Integer (Self : Holder) return Boolean is
-   begin
-      return Self.Data.all in Integer_Container;
-   end Is_Integer;
-
    ----------
    -- Last --
    ----------

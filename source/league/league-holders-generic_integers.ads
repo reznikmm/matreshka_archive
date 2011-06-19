@@ -52,10 +52,7 @@ package League.Holders.Generic_Integers is
 
    pragma Preelaborate;
 
-   Integer_Tag : constant Tag;
-
-   function Is_Integer (Self : Holder) return Boolean;
-   --  Returns True when holder contains object of the integer type.
+   Value_Tag : constant Tag;
 
    function Element (Self : Holder) return Num;
    --  Returns internal value.
@@ -90,6 +87,6 @@ private
     (Self : not null access constant Integer_Container)
        return Universal_Integer;
 
-   Integer_Tag : constant Tag := Tag (Integer_Container'Tag);
+   Value_Tag : constant Tag := Tag (Integer_Container'Tag);
 
 end League.Holders.Generic_Integers;

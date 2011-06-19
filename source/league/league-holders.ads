@@ -83,6 +83,9 @@ package League.Holders is
    --  Sets type of the value. Free previous value and set current value to
    --  null.
 
+   function Has_Tag (Self : Holder; Item : Tag) return Boolean;
+   --  Returns True when holder's value has specified tag.
+
    function Is_Empty (Self : Holder) return Boolean;
    --  Returns True if object contains no value.
 

@@ -49,9 +49,7 @@ package League.Holders.Generic_Enumerations is
 
    pragma Preelaborate;
 
-   Enumeration_Tag : constant Tag;
-
-   function Is_Enumeration (Self : Holder) return Boolean;
+   Value_Tag : constant Tag;
 
    function Element (Self : Holder) return Enum;
 
@@ -68,6 +66,6 @@ private
    overriding function Constructor
     (Is_Empty : not null access Boolean) return Enumeration_Container;
 
-   Enumeration_Tag : constant Tag := Tag (Enumeration_Container'Tag);
+   Value_Tag : constant Tag := Tag (Enumeration_Container'Tag);
 
 end League.Holders.Generic_Enumerations;

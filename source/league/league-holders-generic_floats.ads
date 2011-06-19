@@ -52,7 +52,7 @@ package League.Holders.Generic_Floats is
 
    pragma Preelaborate;
 
-   Float_Tag : constant Tag;
+   Value_Tag : constant Tag;
 
    function Element (Self : Holder) return Num;
    --  Returns internal value.
@@ -85,6 +85,6 @@ private
    overriding function Last
     (Self : not null access constant Float_Container) return Universal_Float;
 
-   Float_Tag : constant Tag := Tag (Float_Container'Tag);
+   Value_Tag : constant Tag := Tag (Float_Container'Tag);
 
 end League.Holders.Generic_Floats;

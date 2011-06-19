@@ -457,6 +457,15 @@ package body League.Holders is
       return Tag (Self.Data'Tag);
    end Get_Tag;
 
+   -------------
+   -- Has_Tag --
+   -------------
+
+   function Has_Tag (Self : Holder; Item : Tag) return Boolean is
+   begin
+      return Tag (Self.Data'Tag) = Item;
+   end Has_Tag;
+
    -----------------------
    -- Is_Abstract_Float --
    -----------------------
