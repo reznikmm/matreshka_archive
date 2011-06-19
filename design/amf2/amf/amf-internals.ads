@@ -46,4 +46,13 @@ package AMF.Internals is
 
    pragma Preelaborate;
 
+   type AMF_Metamodel is mod 2 ** 8;
+   --  Identifier of the metamodel. AMF can supports up to 255 metamodels.
+
+   type AMF_Element is mod 2 ** 32;
+   --  Identifier of the element inside metamodel.
+
+   type AMF_Link is mod 2 ** 32;
+   --  Identifier of the link between two elements.
+
 end AMF.Internals;
