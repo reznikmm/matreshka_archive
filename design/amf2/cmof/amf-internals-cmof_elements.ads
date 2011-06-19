@@ -56,6 +56,10 @@ package AMF.Internals.CMOF_Elements is
       Id : Standard.CMOF.CMOF_Element;
    end record;
 
+   overriding function Get
+    (Self     : not null access constant CMOF_Element_Proxy;
+     Property : Standard.CMOF.CMOF_Property) return AMF.Values.Value;
+
    overriding function Get_Meta_Class
     (Self : not null access constant CMOF_Element_Proxy)
        return Standard.CMOF.CMOF_Class;

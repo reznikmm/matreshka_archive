@@ -49,6 +49,7 @@ private with Qt4.Model_Indices;
 private with Qt4.Strings;
 private with Qt4.Variants;
 
+with AMF.Elements;
 with CMOF;
 
 package CMOF_Tree_Models is
@@ -86,19 +87,19 @@ private
    procedure Populate (Self : not null access Abstract_Node) is abstract;
 
    type Root_Node is new Abstract_Node with record
-      Element : CMOF.CMOF_Element;
+      Element : AMF.Elements.Element_Access;
    end record;
 
    procedure Populate (Self : not null access Root_Node);
 
    type Element_Node is new Abstract_Node with record
-      Element : CMOF.CMOF_Element;
+      Element : AMF.Elements.Element_Access;
    end record;
 
    procedure Populate (Self : not null access Element_Node);
 
    type Attribute_Node is new Abstract_Node with record
-      Element   : CMOF.CMOF_Element;
+      Element   : AMF.Elements.Element_Access;
       Attribute : CMOF.CMOF_Property;
    end record;
 

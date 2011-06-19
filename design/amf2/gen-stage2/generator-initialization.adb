@@ -45,7 +45,10 @@ with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.Element_Holders;
+with AMF.Elements;
 with AMF.Holders;
+with AMF.Internals.CMOF_Elements;
 with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
@@ -359,6 +362,8 @@ package body Generator.Initialization is
       procedure Generate_Attribute_Initialization
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
       is
+         use type AMF.Elements.Element_Access;
+
          Property    : constant CMOF_Property
            := CMOF_Named_Element_Ordered_Sets.Element (Position);
          Association : constant CMOF_Association := Get_Association (Property);
@@ -418,9 +423,14 @@ package body Generator.Initialization is
                end loop;
 
             else
-               if Value.Element_Value /= Null_CMOF_Element then
+               if AMF.Element_Holders.Element (Value.Holder_Value) /= null then
                   Establish_Link
-                   (Association, Property, Element, Value.Element_Value);
+                   (Association,
+                    Property,
+                    Element,
+                    AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+                     (AMF.Element_Holders.Element
+                       (Value.Holder_Value).all).Id);
                end if;
             end if;
          end if;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,39 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Internals.Collections;
-with CMOF.Internals.Proxies;
+with AMF.Elements;
+with League.Holders.Generic_Holders;
 
-package body CMOF.Collections is
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self : Collection_Of_CMOF_Element; Index : Positive) return CMOF_Element is
-   begin
-      return CMOF.Internals.Collections.Element (Self, Index);
-   end Element;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : Collection_Of_CMOF_Element;
-     Index : Positive) return AMF.Elements.Element_Access is
-   begin
-      return CMOF.Internals.Proxies.Get_Proxy (Element (Self, Index));
-   end Element;
-
-   ------------
-   -- Length --
-   ------------
-
-   function Length (Self : Collection_Of_CMOF_Element) return Natural is
-   begin
-      return CMOF.Internals.Collections.Length (Self);
-   end Length;
-
-end CMOF.Collections;
+package AMF.Element_Holders is
+  new League.Holders.Generic_Holders (AMF.Elements.Element_Access);

@@ -57,6 +57,10 @@ package AMF.Elements is
        return CMOF.CMOF_Class is abstract;
    --  Returns the Class that describes this element.
 
+   not overriding function Get
+    (Self     : not null access constant Abstract_Element;
+     Property : CMOF.CMOF_Property) return AMF.Values.Value is abstract;
+
    not overriding procedure Set
     (Self     : not null access Abstract_Element;
      Property : CMOF.CMOF_Property;

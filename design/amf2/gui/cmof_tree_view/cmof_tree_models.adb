@@ -49,10 +49,11 @@ with Interfaces;
 with Qt_Ada.Generic_Model_Index_Data;
 with League.Strings;
 
-with AMF;
+with AMF.Element_Holders;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
+with CMOF.Internals.Proxies;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Properties;
@@ -362,15 +363,15 @@ package body CMOF_Tree_Models is
                     Qt4.Strings.From_Ucs_4
                      (CMOF.Extents.Factory (Self.Extent).Convert_To_String
                        (Get_Type (Self.Attribute),
-                        Get
-                         (Self.Element, Self.Attribute)).To_Wide_Wide_String));
+                        Self.Element.Get
+                         (Self.Attribute)).To_Wide_Wide_String));
             Self.Children.Append (X);
 
          else
             if Is_Multivalued (Self.Attribute) then
                declare
                   C : constant Collection_Of_CMOF_Element
-                    := Get (Self.Element, Self.Attribute).Collection_Value;
+                    := Self.Element.Get (Self.Attribute).Collection_Value;
 
                begin
                   for J in 1 .. Length (C) loop
@@ -391,11 +392,14 @@ package body CMOF_Tree_Models is
 
             else
                declare
-                  C : constant CMOF_Element
-                    := Get (Self.Element, Self.Attribute).Element_Value;
+                  use type AMF.Elements.Element_Access;
+
+                  C : constant AMF.Elements.Element_Access
+                    := AMF.Element_Holders.Element
+                        (Self.Element.Get (Self.Attribute).Holder_Value);
 
                begin
-                  if C = Null_CMOF_Element then
+                  if C = null then
                      X :=
                        new Element_Node'
                             (Node_Access (Self),
@@ -403,7 +407,7 @@ package body CMOF_Tree_Models is
                              Self.Extent,
                              True,
                              Qt4.Strings.From_Utf_8 ("<null>"),
-                             Null_CMOF_Element);
+                             null);
 
                   else
                      X :=
@@ -414,7 +418,7 @@ package body CMOF_Tree_Models is
                              False,
                              Qt4.Strings.From_Ucs_4
                               (Get_Name
-                                (Get_Meta_Class (C)).To_Wide_Wide_String),
+                                (C.Get_Meta_Class).To_Wide_Wide_String),
                              C);
                   end if;
 
@@ -593,7 +597,7 @@ package body CMOF_Tree_Models is
       if not Self.Is_Populated then
          Self.Is_Populated := True;
          All_Attributes
-          (Get_Meta_Class (Self.Element)).Iterate (Process_Property'Access);
+          (Self.Element.Get_Meta_Class).Iterate (Process_Property'Access);
       end if;
    end Populate;
 
@@ -612,7 +616,7 @@ package body CMOF_Tree_Models is
               Self.Extent,
               False,
               Qt4.Strings.From_Ucs_4
-               (Get_Name (Get_Meta_Class (Self.Element)).To_Wide_Wide_String),
+               (Get_Name (Self.Element.Get_Meta_Class).To_Wide_Wide_String),
               Self.Element);
       Self.Children.Append (X);
    end Populate;
@@ -658,7 +662,7 @@ package body CMOF_Tree_Models is
                     Root,
                     False,
                     Qt4.Strings.Create,
-                    X);
+                    CMOF.Internals.Proxies.Get_Proxy (X));
          end if;
       end Dump;
 

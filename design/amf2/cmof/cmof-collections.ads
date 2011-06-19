@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
 
 package CMOF.Collections is
 
@@ -48,5 +49,9 @@ package CMOF.Collections is
 
    function Element
     (Self : Collection_Of_CMOF_Element; Index : Positive) return CMOF_Element;
+
+   function Element
+    (Self  : Collection_Of_CMOF_Element;
+     Index : Positive) return AMF.Elements.Element_Access;
 
 end CMOF.Collections;

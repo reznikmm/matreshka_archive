@@ -162,6 +162,7 @@ package body Generator.Reflection is
             Attribute_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
               := Attribute.Get_Type;
             Holder_Name     : Unbounded_Wide_Wide_String;
+            Convertor_Name  : Unbounded_Wide_Wide_String;
 
          begin
             if First then
@@ -189,7 +190,13 @@ package body Generator.Reflection is
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
-                  Put_Line ("AMF.Values.Value_Element,");
+                  Holder_Name :=
+                    To_Unbounded_Wide_Wide_String
+                     ("AMF.Element_Holders.To_Holder");
+                  Convertor_Name :=
+                    To_Unbounded_Wide_Wide_String
+                     ("CMOF.Internals.Proxies.Get_Proxy");
+                  Put_Line ("AMF.Values.Value_Holder,");
 
                else
                   Put_Line ("AMF.Values.Value_Collection_Of_Element,");
@@ -349,12 +356,24 @@ package body Generator.Reflection is
                    & " (Self));");
 
             else
-               Put_Line
-                ("              "
-                   & To_Wide_Wide_String (Holder_Name)
-                   & " (Internal_Get_"
-                   & To_Ada_Identifier (Attribute.Get_Name.Value)
-                   & " (Self)));");
+               if Convertor_Name = Null_Unbounded_Wide_Wide_String then
+                  Put_Line
+                   ("              "
+                      & To_Wide_Wide_String (Holder_Name)
+                      & " (Internal_Get_"
+                      & To_Ada_Identifier (Attribute.Get_Name.Value)
+                      & " (Self)));");
+
+               else
+                  Put_Line
+                   ("              "
+                      & To_Wide_Wide_String (Holder_Name)
+                      & " ("
+                      & To_Wide_Wide_String (Convertor_Name)
+                      & " (Internal_Get_"
+                      & To_Ada_Identifier (Attribute.Get_Name.Value)
+                      & " (Self))));");
+               end if;
             end if;
          end Generate_Attribute;
 
@@ -510,7 +529,10 @@ package body Generator.Reflection is
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
-                  Put ("Value.Element_Value");
+                  Put
+                   ("AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class"
+                      & " (AMF.Element_Holders.Element"
+                      & " (Value.Holder_Value).all).Id");
 
                else
                   --  XXX all elements from the set should be copied into
@@ -702,9 +724,12 @@ package body Generator.Reflection is
       Put_Line ("with AMF.CMOF.Holders;");
       Put_Line ("with AMF.CMOF.Parameter_Direction_Kind_Holders;");
       Put_Line ("with AMF.CMOF.Visibility_Kind_Holders;");
+      Put_Line ("with AMF.Element_Holders;");
       Put_Line ("with AMF.Holders;");
+      Put_Line ("with AMF.Internals.CMOF_Elements;");
       Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Metamodel;");
+      Put_Line ("with CMOF.Internals.Proxies;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with League.Holders.Booleans;");

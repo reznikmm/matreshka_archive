@@ -51,6 +51,17 @@ package body AMF.Internals.CMOF_Elements is
    use Standard.CMOF.Internals.Attributes;
    use Standard.CMOF.Internals.Collections;
 
+   ---------
+   -- Get --
+   ---------
+
+   overriding function Get
+    (Self     : not null access constant CMOF_Element_Proxy;
+     Property : Standard.CMOF.CMOF_Property) return AMF.Values.Value is
+   begin
+      return Standard.CMOF.Reflection.Get (Self.Id, Property);
+   end Get;
+
    --------------------
    -- Get_Meta_Class --
    --------------------

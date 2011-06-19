@@ -59,7 +59,6 @@ package AMF.Values is
      Value_Unlimited_Natural,
      Value_Optional_Unlimited_Natural,
      Value_Collection_Of_String,
-     Value_Element,
      Value_Collection_Of_Element);
 
    type Value (Kind : Value_Kinds := Value_None) is record
@@ -78,9 +77,6 @@ package AMF.Values is
 
          when Value_Collection_Of_String =>
             Collection_String_Value : Standard.CMOF.Collection_Of_CMOF_String;
-
-         when Value_Element =>
-            Element_Value : Standard.CMOF.CMOF_Element;
 
          when Value_Collection_Of_Element =>
             Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
