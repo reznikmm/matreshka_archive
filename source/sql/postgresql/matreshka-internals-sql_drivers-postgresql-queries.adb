@@ -127,7 +127,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                (League.Holders.Universal_Integer'Image
                  (League.Holders.Element (Value)));
 
-         elsif League.Hilders.Is_Abstract_Float (Value) then
+         elsif League.Holders.Is_Abstract_Float (Value) then
             Params (J) :=
               Interfaces.C.Strings.New_String
                (League.Holders.Universal_Float'Image
@@ -414,7 +414,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                         (PQgetvalue (Self.Result, Self.Row, Column));
 
                begin
-                  League.Holders.Set
+                  League.Holders.Replace_Element
                    (Value, League.Holders.Universal_Integer'Value (Image));
                end;
             end if;
