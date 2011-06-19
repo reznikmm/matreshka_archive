@@ -50,6 +50,7 @@ with Qt4.Tree_Views.Constructors;
 
 with CMOF;
 with CMOF.Extents;
+with CMOF.Internals.Setup;
 with XMI.Reader;
 
 with CMOF_Tree_Models;
