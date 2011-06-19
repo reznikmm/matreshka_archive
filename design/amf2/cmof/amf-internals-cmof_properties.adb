@@ -51,6 +51,20 @@ package body AMF.Internals.CMOF_Properties is
    use Standard.CMOF.Internals.Attributes;
    use Standard.CMOF.Internals.Collections;
 
+   ---------------------
+   -- Get_Association --
+   ---------------------
+
+   overriding function Get_Association
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Associations.CMOF_Association_Access is
+   begin
+      return
+        AMF.CMOF.Associations.CMOF_Association_Access
+         (Standard.CMOF.Internals.Proxies.Get_Proxy
+           (Internal_Get_Association (Self.Id)));
+   end Get_Association;
+
    ---------------
    -- Get_Class --
    ---------------
@@ -717,21 +731,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Datatype unimplemented");
       raise Program_Error;
    end Set_Datatype;
-
-   ---------------------
-   -- Get_Association --
-   ---------------------
-
-   overriding function Get_Association
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Associations.CMOF_Association_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Association unimplemented");
-      raise Program_Error;
-      return Get_Association (Self);
-   end Get_Association;
 
    ---------------------
    -- Set_Association --

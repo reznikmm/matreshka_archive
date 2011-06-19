@@ -49,14 +49,16 @@ with League.Characters;
 with League.String_Vectors;
 with XMI.Reader;
 
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Factories.Registry;
 with AMF.Values;
 with CMOF.Associations;
-with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
 with CMOF.Multiplicity_Elements;
-with CMOF.Named_Elements;
 with CMOF.Properties;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
@@ -69,7 +71,6 @@ package body XMI.Handlers is
    use CMOF.Collections;
    use CMOF.Extents;
    use CMOF.Multiplicity_Elements;
-   use CMOF.Named_Elements;
    use CMOF.Properties;
    use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
@@ -91,13 +92,14 @@ package body XMI.Handlers is
      := League.Strings.To_Universal_String ("href");
 
    function Resolve_Owned_Attribute
-    (Class : CMOF.CMOF_Class;
-     Name  : League.Strings.Universal_String) return CMOF.CMOF_Property;
+    (Class : AMF.CMOF.Classes.CMOF_Class_Access;
+     Name  : League.Strings.Universal_String)
+       return AMF.CMOF.Properties.CMOF_Property_Access;
    --  Resolves class's owned attribute by its name.
 
    procedure Analyze_Object_Element
     (Self       : in out XMI_Handler;
-     Meta_Class : CMOF.CMOF_Class;
+     Meta_Class : AMF.CMOF.Classes.CMOF_Class_Access;
      Attribute  : CMOF.CMOF_Property;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Success    : out Boolean);
@@ -132,7 +134,7 @@ package body XMI.Handlers is
 
    procedure Analyze_Object_Element
     (Self       : in out XMI_Handler;
-     Meta_Class : CMOF.CMOF_Class;
+     Meta_Class : AMF.CMOF.Classes.CMOF_Class_Access;
      Attribute  : CMOF.CMOF_Property;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Success    : out Boolean)
@@ -253,7 +255,8 @@ package body XMI.Handlers is
       else
          --  Create new element.
 
-         Self.Current := Self.Factory.Create (Self.Extent, Meta_Class);
+         Self.Current :=
+           Self.Factory.Create (Self.Extent, CMOF_Element_Of (Meta_Class));
          Set_Id (Self.Current, Id);
          Self.Mapping.Insert (Id, Self.Current);
       end if;
@@ -274,14 +277,15 @@ package body XMI.Handlers is
 
                declare
                   Property : CMOF_Property
-                    := Resolve_Owned_Attribute
-                        (Meta_Class, Attributes.Qualified_Name (J));
+                    := CMOF_Element_Of
+                        (Resolve_Owned_Attribute
+                          (Meta_Class, Attributes.Qualified_Name (J)));
 
                begin
                   if Property = Null_CMOF_Element then
                      Self.Diagnosis :=
                        "Unknown property '"
-                         & Get_Name (Meta_Class)
+                         & Meta_Class.Get_Name.Value
                          & ":"
                          & Attributes.Qualified_Name (J)
                          & ''';
@@ -491,41 +495,45 @@ package body XMI.Handlers is
    -----------------------------
 
    function Resolve_Owned_Attribute
-    (Class : CMOF.CMOF_Class;
-     Name  : League.Strings.Universal_String) return CMOF.CMOF_Property
+    (Class : AMF.CMOF.Classes.CMOF_Class_Access;
+     Name  : League.Strings.Universal_String)
+       return AMF.CMOF.Properties.CMOF_Property_Access
    is
-      use CMOF.Classes;
-      use CMOF.Named_Elements;
+      use type AMF.Optional_String;
+      use type AMF.CMOF.Properties.CMOF_Property_Access;
 
-      Attributes    : constant Ordered_Set_Of_CMOF_Property
-        := Get_Owned_Attribute (Class);
-      Super_Classes : constant Set_Of_CMOF_Class := Get_Super_Class (Class);
-      Aux           : CMOF_Property;
+      Attributes    : constant
+        AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+          := Class.Get_Owned_Attribute;
+      Super_Classes : constant
+        AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+          := Class.Get_Super_Class;
+      Aux           : AMF.CMOF.Properties.CMOF_Property_Access;
 
    begin
       --  Lookup in ownedAttribute set.
 
-      for J in 1 .. Length (Attributes) loop
-         Aux := Element (Attributes, J);
+      for J in 1 .. Attributes.Length loop
+         Aux := Attributes.Element (J);
 
-         if Get_Name (Aux) = Name then
+         if Aux.Get_Name = Name then
             return Aux;
          end if;
       end loop;
 
       --  Lookup in superclasses.
 
-      for J in 1 .. Length (Super_Classes) loop
-         Aux := Resolve_Owned_Attribute (Element (Super_Classes, J), Name);
+      for J in 1 .. Super_Classes.Length loop
+         Aux := Resolve_Owned_Attribute (Super_Classes.Element (J), Name);
 
-         if Aux /= Null_CMOF_Element then
+         if Aux /= null then
             return Aux;
          end if;
       end loop;
 
       --  Lookup failed.
 
-      return Null_CMOF_Element;
+      return null;
    end Resolve_Owned_Attribute;
 
    ----------
@@ -569,11 +577,15 @@ package body XMI.Handlers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
-      use CMOF.Classes;
+      use type AMF.CMOF.Associations.CMOF_Association_Access;
+      use type AMF.CMOF.Classes.CMOF_Class_Access;
+      use type AMF.CMOF.Properties.CMOF_Property_Access;
 
-      Name     : League.Strings.Universal_String;
-      Meta     : CMOF.CMOF_Element;
-      Property : CMOF_Property;
+      Association   : AMF.CMOF.Associations.CMOF_Association_Access;
+      Name          : League.Strings.Universal_String;
+      Meta          : AMF.CMOF.Classes.CMOF_Class_Access;
+      Property      : AMF.CMOF.Properties.CMOF_Property_Access;
+      Property_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
    begin
       if Namespace_URI.Is_Empty then
@@ -581,9 +593,9 @@ package body XMI.Handlers is
 
          Property :=
            Resolve_Owned_Attribute
-            (CMOF_Element_Of (Self.Current.Get_Meta_Class), Qualified_Name);
+            (Self.Current.Get_Meta_Class, Qualified_Name);
 
-         if Property = Null_CMOF_Element then
+         if Property = null then
             Self.Diagnosis :=
               "Unknown property '"
                 & Self.Current.Get_Meta_Class.Get_Name.Value
@@ -595,31 +607,36 @@ package body XMI.Handlers is
             return;
          end if;
 
-         if Get_Association (Property) /= Null_CMOF_Element then
+         Association := Property.Get_Association;
+
+         if Association /= null then
             if Attributes.Index (XMI_Namespace, Type_Name) /= 0 then
                --  Metaclass of the element is specified explicitly, resolve
                --  it.
 
                Name := Attributes.Value (XMI_Namespace, Type_Name);
                Meta :=
-                 CMOF.XMI_Helper.Resolve
-                  (Name.Slice (Name.Index (':') + 1, Name.Length));
+                 AMF.CMOF.Classes.CMOF_Class_Access
+                  (CMOF.XMI_Helper.Resolve
+                    (Name.Slice (Name.Index (':') + 1, Name.Length)));
 
-               if Meta = Null_CMOF_Element then
+               if Meta = null then
                   raise Program_Error;
                end if;
 
             else
                --  Fallback to default metaclass - type of the property.
 
-               Meta := Get_Type (Property);
+               Property_Type := Property.Get_Type;
+
+               Meta := AMF.CMOF.Classes.CMOF_Class_Access (Property_Type);
             end if;
 
             Analyze_Object_Element
-             (Self, Meta, Property, Attributes, Success);
+             (Self, Meta, CMOF_Element_Of (Property), Attributes, Success);
 
          else
-            Self.Attribute := Property;
+            Self.Attribute := CMOF_Element_Of (Property);
             Self.Collect_Text := True;
             Self.Text.Clear;
          end if;
@@ -638,7 +655,9 @@ package body XMI.Handlers is
 
       else
          Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
-         Meta := CMOF.XMI_Helper.Resolve (Local_Name);
+         Meta :=
+           AMF.CMOF.Classes.CMOF_Class_Access
+            (CMOF.XMI_Helper.Resolve (Local_Name));
 
          Analyze_Object_Element
           (Self, Meta, Null_CMOF_Element, Attributes, Success);

@@ -49,7 +49,8 @@ with AMF.Elements;
 package CMOF.XMI_Helper is
 
    function Resolve
-    (Name : League.Strings.Universal_String) return CMOF_Element;
+    (Name : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access;
 
    function Is_Data_Type (Element : CMOF_Element) return Boolean;
 

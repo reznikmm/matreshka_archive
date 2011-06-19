@@ -46,6 +46,7 @@ with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
+with CMOF.Internals.Proxies;
 with CMOF.Internals.Subclassing;
 with CMOF.Named_Elements;
 with CMOF.Packages;
@@ -132,6 +133,17 @@ package body CMOF.XMI_Helper is
       end loop;
 
       raise Program_Error with "Unknown CMOF class";
+   end Resolve;
+
+   -------------
+   -- Resolve --
+   -------------
+
+   function Resolve
+    (Name : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access is
+   begin
+      return CMOF.Internals.Proxies.Get_Proxy (Resolve (Name));
    end Resolve;
 
    ------------
