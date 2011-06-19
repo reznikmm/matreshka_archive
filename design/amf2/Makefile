@@ -3,7 +3,7 @@ all:
 	make -C ../..
 	gprbuild -p -Pcmof/cmof.gpr
 	gprbuild -p -Pxmi/xmi.gpr
-	gprbuild -p -Puml/uml.gpr
+#	gprbuild -p -Puml/uml.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui.gpr
 	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=MOC
