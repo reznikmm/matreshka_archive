@@ -165,9 +165,7 @@ package body XMI.Handlers is
             Self.Current.Set
              (Property,
               Self.Factory.Create_From_String
-               (CMOF_Element_Of (Attribute_Type),
-                Property.Get_Lower.Value = 0,
-                Value));
+               (CMOF_Element_Of (Attribute_Type), Value));
 
          else
             Association := Property.Get_Association;
@@ -393,9 +391,7 @@ package body XMI.Handlers is
                   Self.Current.Set
                    (Self.Attribute,
                     Self.Factory.Create_From_String
-                     (CMOF_Element_Of (Attribute_Type),
-                      Self.Attribute.Get_Lower.Value = 0,
-                      Self.Text));
+                     (CMOF_Element_Of (Attribute_Type), Self.Text));
 
                else
                   Put_Line

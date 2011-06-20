@@ -53,7 +53,8 @@ with AMF.CMOF.Data_Types;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Element_Holders;
+with AMF.Elements.Collections;
+with AMF.Holders.Elements;
 with CMOF.Collections;
 with CMOF.Extents;
 with CMOF.Internals.Proxies;
@@ -366,11 +367,11 @@ package body CMOF_Tree_Models is
          else
             if Self.Attribute.Is_Multivalued then
                declare
-                  C : constant Collection_Of_CMOF_Element
+                  C : constant AMF.Elements.Collections.Reflective_Collection
                     := Self.Element.Get (Self.Attribute).Collection_Value;
 
                begin
-                  for J in 1 .. Length (C) loop
+                  for J in 1 .. C.Length loop
                      X :=
                        new Element_Node'
                             (Node_Access (Self),
@@ -378,9 +379,9 @@ package body CMOF_Tree_Models is
                              Self.Extent,
                              False,
                              Qt4.Strings.From_Ucs_4
-                              (Element (C, J).Get_Meta_Class.Get_Name.Value.
+                              (C.Element (J).Get_Meta_Class.Get_Name.Value.
                                  To_Wide_Wide_String),
-                             Element (C, J));
+                             C.Element (J));
                      Self.Children.Append (X);
                   end loop;
                end;
@@ -390,7 +391,7 @@ package body CMOF_Tree_Models is
                   use type AMF.Elements.Element_Access;
 
                   C : constant AMF.Elements.Element_Access
-                    := AMF.Element_Holders.Element
+                    := AMF.Holders.Elements.Element
                         (Self.Element.Get (Self.Attribute).Holder_Value);
 
                begin

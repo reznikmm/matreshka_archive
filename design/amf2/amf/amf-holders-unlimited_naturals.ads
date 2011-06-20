@@ -41,8 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Elements;
 with League.Holders.Generic_Holders;
 
-package AMF.Element_Holders is
-  new League.Holders.Generic_Holders (AMF.Elements.Element_Access);
+package AMF.Holders.Unlimited_Naturals is
+  new League.Holders.Generic_Holders (AMF.Unlimited_Natural);
+pragma Preelaborate (AMF.Holders.Unlimited_Naturals);

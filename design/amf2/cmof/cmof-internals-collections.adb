@@ -154,4 +154,19 @@ package body CMOF.Internals.Collections is
       return Length (Self.Collection);
    end Length;
 
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Collection : Collection_Of_CMOF_Element)
+       return AMF.Elements.Collections.Reflective_Collection is
+   begin
+      return
+        AMF.Elements.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Collection));
+   end Wrap;
+
 end CMOF.Internals.Collections;

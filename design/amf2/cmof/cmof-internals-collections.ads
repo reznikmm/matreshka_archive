@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Collections;
-with AMF.Elements;
+with AMF.Elements.Collections;
 
 package CMOF.Internals.Collections is
 
@@ -68,5 +68,9 @@ package CMOF.Internals.Collections is
    function Element
     (Self  : not null access constant CMOF_Collection;
      Index : Positive) return not null AMF.Elements.Element_Access;
+
+   function Wrap
+    (Collection : Collection_Of_CMOF_Element)
+       return AMF.Elements.Collections.Reflective_Collection;
 
 end CMOF.Internals.Collections;

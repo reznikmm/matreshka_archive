@@ -192,13 +192,16 @@ package body Generator.Reflection is
                if Representation (Attribute) in Value .. Holder then
                   Holder_Name :=
                     To_Unbounded_Wide_Wide_String
-                     ("AMF.Element_Holders.To_Holder");
+                     ("AMF.Holders.Elements.To_Holder");
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
                      ("CMOF.Internals.Proxies.Get_Proxy");
                   Put_Line ("AMF.Values.Value_Holder,");
 
                else
+                  Holder_Name :=
+                    To_Unbounded_Wide_Wide_String
+                     ("CMOF.Internals.Collections.Wrap");
                   Put_Line ("AMF.Values.Value_Collection_Of_Element,");
                end if;
 
@@ -303,7 +306,9 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put_Line ("AMF.Values.Value_Optional_Unlimited_Natural,");
+                     Put_Line ("AMF.Values.Value_Holder,");
+                     Holder_Name :=
+                       To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
 
                   when Set =>
                      raise Program_Error;
@@ -531,7 +536,7 @@ package body Generator.Reflection is
                if Representation (Attribute) in Value .. Holder then
                   Put
                    ("AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class"
-                      & " (AMF.Element_Holders.Element"
+                      & " (AMF.Holders.Elements.Element"
                       & " (Value.Holder_Value).all).Id");
 
                else
@@ -569,7 +574,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put ("Element (Value.Holder_Value)");
+                     Put ("AMF.Holders.Element (Value.Holder_Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -613,7 +618,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put ("Element (Value.Holder_Value)");
+                     Put ("AMF.Holders.Element (Value.Holder_Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -634,7 +639,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put ("Value.Optional_Unlimited_Natural_Value");
+                     Put ("AMF.Holders.Element (Value.Holder_Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -724,10 +729,10 @@ package body Generator.Reflection is
       Put_Line ("with AMF.CMOF.Holders;");
       Put_Line ("with AMF.CMOF.Parameter_Direction_Kind_Holders;");
       Put_Line ("with AMF.CMOF.Visibility_Kind_Holders;");
-      Put_Line ("with AMF.Element_Holders;");
-      Put_Line ("with AMF.Holders;");
+      Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
       Put_Line ("with CMOF.Internals.Attributes;");
+      Put_Line ("with CMOF.Internals.Collections;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Proxies;");
       Put_Line ("with CMOF.Internals.Tables;");
@@ -736,7 +741,6 @@ package body Generator.Reflection is
       New_Line;
       Put_Line ("package body CMOF.Internals.Reflection is");
       New_Line;
-      Put_Line ("   use AMF.Holders;");
       Put_Line ("   use CMOF.Internals.Attributes;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");

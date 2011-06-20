@@ -44,8 +44,10 @@
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Elements;
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
-with AMF.Element_Holders;
+with AMF.Holders.Elements;
+with AMF.Holders.Unlimited_Naturals;
 with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
@@ -256,14 +258,17 @@ package body Generator.Initialization is
                   Put (Numbers.Element (Element), Width => 0);
                   Put (", ");
 
-                  if Value.Optional_Unlimited_Natural_Value.Value.Unlimited then
+                  if AMF.Holders.Unlimited_Naturals.Element
+                      (Value.Holder_Value).Unlimited
+                  then
                      Put_Line ("(False, (Unlimited => True)));");
 
                   else
                      Put_Line
                       ("(False, (False,"
                          & Integer'Wide_Wide_Image
-                            (Value.Optional_Unlimited_Natural_Value.Value.Value)
+                            (AMF.Holders.Unlimited_Naturals.Element
+                              (Value.Holder_Value).Value)
                          & ")));");
                   end if;
 
@@ -414,22 +419,26 @@ package body Generator.Initialization is
       begin
          if Is_Class (Get_Type (Property)) then
             if Is_Multivalued (Property) then
-               for J in 1 .. Length (Value.Collection_Value) loop
+               for J in 1 .. Value.Collection_Value.Length loop
                   Establish_Link
                    (Association,
                     Property,
                     Element,
-                    Collections.Element (Value.Collection_Value, J));
+                    CMOF_Element_Of
+                     (AMF.CMOF.Elements.CMOF_Element_Access
+                       (Value.Collection_Value.Element (J))));
                end loop;
 
             else
-               if AMF.Element_Holders.Element (Value.Holder_Value) /= null then
+               if AMF.Holders.Elements.Element (Value.Holder_Value)
+                    /= null
+               then
                   Establish_Link
                    (Association,
                     Property,
                     Element,
                     AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-                     (AMF.Element_Holders.Element
+                     (AMF.Holders.Elements.Element
                        (Value.Holder_Value).all).Id);
                end if;
             end if;

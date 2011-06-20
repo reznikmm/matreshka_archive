@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Holders.Unlimited_Naturals;
 with League.Holders.Booleans;
 with League.Holders.Integers;
 
@@ -104,6 +105,27 @@ package body AMF.Holders is
       end if;
    end Element;
 
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Holder : League.Holders.Holder) return Optional_Unlimited_Natural is
+   begin
+      if not League.Holders.Has_Tag
+              (Holder, AMF.Holders.Unlimited_Naturals.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
+
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
+
+      else
+         return (False, AMF.Holders.Unlimited_Naturals.Element (Holder));
+      end if;
+   end Element;
+
    ---------------
    -- To_Holder --
    ---------------
@@ -146,6 +168,24 @@ package body AMF.Holders is
 
          if not Item.Is_Empty then
             League.Holders.Replace_Element (Result, Item.Value);
+         end if;
+      end return;
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : Optional_Unlimited_Natural) return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.Holders.Unlimited_Naturals.Value_Tag);
+
+         if not Item.Is_Empty then
+            AMF.Holders.Unlimited_Naturals.Replace_Element
+             (Result, Item.Value);
          end if;
       end return;
    end To_Holder;

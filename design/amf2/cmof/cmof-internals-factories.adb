@@ -46,6 +46,7 @@ with Ada.Strings.Wide_Wide_Fixed;
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Factories.Registry;
+with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.CMOF_Elements;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
@@ -161,7 +162,6 @@ package body CMOF.Internals.Factories is
    function Create_From_String
     (Self      : not null access CMOF_Factory;
      Data_Type : CMOF_Data_Type;
-     Optional  : Boolean;
      Image     : League.Strings.Universal_String) return AMF.Values.Value
    is
       use type League.Strings.Universal_String;
@@ -180,30 +180,18 @@ package body CMOF.Internals.Factories is
             (Integer'Wide_Wide_Value (Image.To_Wide_Wide_String)));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
-         if Optional then
-            if Image = League.Strings.To_Universal_String ("*") then
-               return
-                (AMF.Values.Value_Optional_Unlimited_Natural,
-                 (False, (Unlimited => True)));
-
-            else
-               return
-                (AMF.Values.Value_Optional_Unlimited_Natural,
-                 (False,
-                  (False,
-                   Natural'Wide_Wide_Value (Image.To_Wide_Wide_String))));
-            end if;
+         if Image = League.Strings.To_Universal_String ("*") then
+            return
+             (AMF.Values.Value_Holder,
+              AMF.Holders.Unlimited_Naturals.To_Holder
+               ((Unlimited => True)));
 
          else
-            if Image = League.Strings.To_Universal_String ("*") then
-               return (AMF.Values.Value_Unlimited_Natural, (Unlimited => True));
-
-            else
-               return
-                (AMF.Values.Value_Unlimited_Natural,
-                 (False,
-                  Natural'Wide_Wide_Value (Image.To_Wide_Wide_String)));
-            end if;
+            return
+             (AMF.Values.Value_Holder,
+              AMF.Holders.Unlimited_Naturals.To_Holder
+               ((False,
+                 Natural'Wide_Wide_Value (Image.To_Wide_Wide_String))));
          end if;
 
       elsif Data_Type = MC_CMOF_String then
@@ -330,7 +318,9 @@ package body CMOF.Internals.Factories is
                Ada.Strings.Both));
 
       elsif Data_Type = MC_CMOF_Unlimited_Natural then
-         if Value.Unlimited_Natural_Value.Unlimited then
+         if AMF.Holders.Unlimited_Naturals.Element
+             (Value.Holder_Value).Unlimited
+         then
             return League.Strings.To_Universal_String ("*");
 
          else
@@ -338,7 +328,8 @@ package body CMOF.Internals.Factories is
               League.Strings.To_Universal_String
                (Ada.Strings.Wide_Wide_Fixed.Trim
                  (Natural'Wide_Wide_Image
-                   (Value.Unlimited_Natural_Value.Value),
+                   (AMF.Holders.Unlimited_Naturals.Element
+                     (Value.Holder_Value).Value),
                   Ada.Strings.Both));
          end if;
 

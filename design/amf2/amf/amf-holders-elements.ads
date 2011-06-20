@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,38 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for CMOF classes.
-------------------------------------------------------------------------------
-with League.Strings;
-
 with AMF.Elements;
-with AMF.Factories;
-with AMF.Values;
+with League.Holders.Generic_Holders;
 
-package CMOF.Internals.Factories is
-
-   type CMOF_Factory is limited new AMF.Factories.AMF_Factory with null record;
-
-   overriding function Create
-    (Self       : not null access CMOF_Factory;
-     Extent     : CMOF.CMOF_Extent;
-     Meta_Class : CMOF.CMOF_Class)
-       return not null AMF.Elements.Element_Access;
-
-   overriding procedure Create_Link
-    (Self           : not null access CMOF_Factory;
-     Association    : CMOF_Association;
-     First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access);
-
-   overriding function Create_From_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
-
-   overriding function Convert_To_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
-
-end CMOF.Internals.Factories;
+package AMF.Holders.Elements is
+  new League.Holders.Generic_Holders (AMF.Elements.Element_Access);
+pragma Preelaborate (AMF.Holders.Elements);

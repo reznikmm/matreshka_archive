@@ -43,7 +43,8 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
-with AMF.Values;
+limited with AMF.Values;
+--  XXX temporary, till remove dependency of Values from Collections.
 
 package AMF.Elements is
 

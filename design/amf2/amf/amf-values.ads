@@ -46,6 +46,7 @@
 --  extended to support other types or replaced by League.Values package at
 --  some point.
 ------------------------------------------------------------------------------
+with AMF.Elements.Collections;
 with CMOF;
 with League.Holders;
 
@@ -56,8 +57,6 @@ package AMF.Values is
    type Value_Kinds is
     (Value_None,
      Value_Holder,
-     Value_Unlimited_Natural,
-     Value_Optional_Unlimited_Natural,
      Value_Collection_Of_String,
      Value_Collection_Of_Element);
 
@@ -69,17 +68,12 @@ package AMF.Values is
          when Value_Holder =>
             Holder_Value : League.Holders.Holder;
 
-         when Value_Unlimited_Natural =>
-            Unlimited_Natural_Value : Unlimited_Natural;
-
-         when Value_Optional_Unlimited_Natural =>
-            Optional_Unlimited_Natural_Value : Optional_Unlimited_Natural;
-
          when Value_Collection_Of_String =>
             Collection_String_Value : Standard.CMOF.Collection_Of_CMOF_String;
 
          when Value_Collection_Of_Element =>
-            Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
+            Collection_Value : AMF.Elements.Collections.Reflective_Collection;
+--            Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
       end case;
    end record;
 

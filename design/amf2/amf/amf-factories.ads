@@ -70,7 +70,6 @@ package AMF.Factories is
    not overriding function Create_From_String
     (Self      : not null access AMF_Factory;
      Data_Type : CMOF.CMOF_Data_Type;
-     Optional  : Boolean;
      Image     : League.Strings.Universal_String)
        return AMF.Values.Value is abstract;
 
