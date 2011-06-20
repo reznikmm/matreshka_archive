@@ -172,21 +172,6 @@ package body AMF.Internals.CMOF_Operations is
    end Must_Be_Owned;
 
    --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error;
-      return Get_Name (Self);
-   end Get_Name;
-
-   --------------
    -- Set_Name --
    --------------
 

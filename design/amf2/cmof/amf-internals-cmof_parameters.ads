@@ -48,18 +48,24 @@ with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations;
 with AMF.CMOF.Parameters;
 with AMF.CMOF.Types;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Named_Elements;
 with AMF.Internals.CMOF_Multiplicity_Elements;
 pragma Elaborate (AMF.Internals.CMOF_Multiplicity_Elements);
+with AMF.Internals.CMOF_Typed_Elements;
+pragma Elaborate (AMF.Internals.CMOF_Typed_Elements);
 
 package AMF.Internals.CMOF_Parameters is
 
    package Multiplicity_Elements is
      new AMF.Internals.CMOF_Multiplicity_Elements
-          (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy);
+          (AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy);
+
+   package Typed_Elements is
+     new AMF.Internals.CMOF_Typed_Elements
+          (Multiplicity_Elements.CMOF_Multiplicity_Element_Proxy);
 
    type CMOF_Parameter_Proxy is
-     limited new Multiplicity_Elements.CMOF_Multiplicity_Element_Proxy
+     limited new Typed_Elements.CMOF_Typed_Element_Proxy
        and AMF.CMOF.Parameters.CMOF_Parameter
          with null record;
 
@@ -107,10 +113,6 @@ package AMF.Internals.CMOF_Parameters is
      C : Integer)
        return Boolean;
 
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Optional_String;
-
    overriding procedure Set_Name
     (Self : not null access CMOF_Parameter_Proxy;
      To   : Optional_String);
@@ -148,10 +150,6 @@ package AMF.Internals.CMOF_Parameters is
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Parameter_Proxy)
        return League.Strings.Universal_String;
-
-   overriding function Get_Type
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Parameter_Proxy;

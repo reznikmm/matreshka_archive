@@ -208,21 +208,6 @@ package body AMF.Internals.CMOF_Parameters is
    end Set_Upper;
 
    --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error;
-      return Get_Name (Self);
-   end Get_Name;
-
-   --------------
    -- Set_Name --
    --------------
 
@@ -356,21 +341,6 @@ package body AMF.Internals.CMOF_Parameters is
       raise Program_Error;
       return Qualified_Name (Self);
    end Qualified_Name;
-
-   --------------
-   -- Get_Type --
-   --------------
-
-   overriding function Get_Type
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return AMF.CMOF.Types.CMOF_Type_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Type unimplemented");
-      raise Program_Error;
-      return Get_Type (Self);
-   end Get_Type;
 
    --------------
    -- Set_Type --

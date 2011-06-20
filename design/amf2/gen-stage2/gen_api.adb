@@ -48,14 +48,15 @@ with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Data_Types;
 with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Elements.Collections;
+with CMOF.Internals.Setup;
 with CMOF.Extents;
-with CMOF.Named_Elements;
-with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 with League.Application;
 with League.Characters;
@@ -71,29 +72,32 @@ procedure Gen_API is
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use CMOF;
-   use CMOF.Named_Elements;
-   use CMOF.Typed_Elements;
    use CMOF.XMI_Helper;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use League.Strings;
+   use type AMF.CMOF.Types.CMOF_Type_Access;
+   use type AMF.Optional_String;
 
    function Ada_API_Package_Name
-    (Element : CMOF_Class) return League.Strings.Universal_String;
+    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Strings.Universal_String;
    --  Returns name of interface package.
 
    function Ada_API_Collections_Package_Name
-    (Element : CMOF_Class) return League.Strings.Universal_String;
+    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Strings.Universal_String;
    --  Returns name of collections package.
 
    function Ada_API_Type_Name
-    (Element : CMOF_Class) return League.Strings.Universal_String;
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return League.Strings.Universal_String;
    --  Returns name of the type.
 
    function Ada_Type_Qualified_Name
     (Is_Multivalued : Boolean;
      Lower          : Integer;
-     The_Type       : CMOF_Element;
+     The_Type       : not null AMF.CMOF.Types.CMOF_Type_Access;
      Is_Ordered     : Boolean;
      Is_Unique      : Boolean)
        return Wide_Wide_String;
@@ -125,13 +129,14 @@ procedure Gen_API is
    --------------------------------------
 
    function Ada_API_Collections_Package_Name
-    (Element : CMOF_Class) return League.Strings.Universal_String is
+    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Strings.Universal_String is
    begin
       return
         "AMF."
           & Model_Name
           & "."
-          & Plural (To_Ada_Identifier (Get_Name (Element)))
+          & Plural (To_Ada_Identifier (Element.Get_Name.Value))
           & ".Collections";
    end Ada_API_Collections_Package_Name;
 
@@ -140,13 +145,14 @@ procedure Gen_API is
    --------------------------
 
    function Ada_API_Package_Name
-    (Element : CMOF_Class) return League.Strings.Universal_String is
+    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Strings.Universal_String is
    begin
       return
         "AMF."
           & Model_Name
           & "."
-          & Plural (To_Ada_Identifier (Get_Name (Element)));
+          & Plural (To_Ada_Identifier (Element.Get_Name.Value));
    end Ada_API_Package_Name;
 
    -----------------------
@@ -154,10 +160,11 @@ procedure Gen_API is
    -----------------------
 
    function Ada_API_Type_Name
-    (Element : CMOF_Class) return League.Strings.Universal_String is
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return League.Strings.Universal_String is
    begin
       return
-        Model_Name & "_" & To_Ada_Identifier (Get_Name (Element));
+        Model_Name & "_" & To_Ada_Identifier (Element.Get_Name.Value);
    end Ada_API_Type_Name;
 
    -----------------------------
@@ -167,19 +174,19 @@ procedure Gen_API is
    function Ada_Type_Qualified_Name
     (Is_Multivalued : Boolean;
      Lower          : Integer;
-     The_Type       : CMOF_Element;
+     The_Type       : not null AMF.CMOF.Types.CMOF_Type_Access;
      Is_Ordered     : Boolean;
      Is_Unique      : Boolean)
        return Wide_Wide_String is
    begin
       if Is_Multivalued then
-         if Is_Data_Type (The_Type) then
-            if Get_Name (The_Type) = To_Universal_String ("Boolean") then
+         if The_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+            if The_Type.Get_Name = To_Universal_String ("Boolean") then
                if not Is_Ordered and Is_Unique then
                   return "Set_Of_Boolean";
                end if;
 
-            elsif Get_Name (The_Type) = To_Universal_String ("String") then
+            elsif The_Type.Get_Name = To_Universal_String ("String") then
                if Is_Ordered and Is_Unique then
                   return "Ordered_Set_Of_String";
 
@@ -193,7 +200,7 @@ procedure Gen_API is
 
             Put_Line
              (Standard_Error,
-              Get_Name (The_Type).To_Wide_Wide_String
+              The_Type.Get_Name.Value.To_Wide_Wide_String
                 & " "
                 & Boolean'Wide_Wide_Image (Is_Unique)
                 & " "
@@ -202,33 +209,41 @@ procedure Gen_API is
          else
             if Is_Ordered and Is_Unique then
                return
-                 Ada_API_Package_Name (The_Type).To_Wide_Wide_String
+                 Ada_API_Package_Name
+                  (AMF.CMOF.Classes.CMOF_Class_Access
+                    (The_Type)).To_Wide_Wide_String
                    & ".Collections.Ordered_Set_Of_"
                    & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
 
             elsif Is_Ordered then
                return
-                 Ada_API_Package_Name (The_Type).To_Wide_Wide_String
+                 Ada_API_Package_Name
+                  (AMF.CMOF.Classes.CMOF_Class_Access
+                    (The_Type)).To_Wide_Wide_String
                    & ".Collections.Sequence_Of_"
                    & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
 
             elsif Is_Unique then
                return
-                 Ada_API_Package_Name (The_Type).To_Wide_Wide_String
+                 Ada_API_Package_Name
+                  (AMF.CMOF.Classes.CMOF_Class_Access
+                    (The_Type)).To_Wide_Wide_String
                    & ".Collections.Set_Of_"
                    & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
 
             else
                return
-                 Ada_API_Package_Name (The_Type).To_Wide_Wide_String
+                 Ada_API_Package_Name
+                  (AMF.CMOF.Classes.CMOF_Class_Access
+                    (The_Type)).To_Wide_Wide_String
                    & ".Collections.Bag_Of_"
                    & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
             end if;
          end if;
 
       else
-         if Is_Data_Type (The_Type) then
-            if Get_Name (The_Type) = To_Universal_String ("Boolean") then
+         if The_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+            if The_Type.Get_Name = To_Universal_String ("Boolean") then
                if Lower = 0 then
                   return "Optional_Boolean";
 
@@ -236,7 +251,7 @@ procedure Gen_API is
                   return "Boolean";
                end if;
 
-            elsif Get_Name (The_Type) = To_Universal_String ("Integer") then
+            elsif The_Type.Get_Name = To_Universal_String ("Integer") then
                if Lower = 0 then
                   return "Optional_Integer";
 
@@ -244,7 +259,7 @@ procedure Gen_API is
                   return "Integer";
                end if;
 
-            elsif Get_Name (The_Type)
+            elsif The_Type.Get_Name
                  = To_Universal_String ("UnlimitedNatural")
             then
                if Lower = 0 then
@@ -254,7 +269,7 @@ procedure Gen_API is
                   return "Unlimited_Natural";
                end if;
 
-            elsif Get_Name (The_Type) = To_Universal_String ("String") then
+            elsif The_Type.Get_Name = To_Universal_String ("String") then
                if Lower = 0 then
                   return "Optional_String";
 
@@ -262,7 +277,7 @@ procedure Gen_API is
                   return "League.Strings.Universal_String";
                end if;
 
-            elsif Get_Name (The_Type) = To_Universal_String ("Real") then
+            elsif The_Type.Get_Name = To_Universal_String ("Real") then
                if Lower = 0 then
                   return "Optional_Real";
 
@@ -284,7 +299,9 @@ procedure Gen_API is
 
          else
             return
-              Ada_API_Package_Name (The_Type).To_Wide_Wide_String
+              Ada_API_Package_Name
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (The_Type)).To_Wide_Wide_String
                 & "."
                 & Ada_API_Type_Name (The_Type).To_Wide_Wide_String
                 & "_Access";
@@ -331,20 +348,22 @@ procedure Gen_API is
 
       procedure Compute_With_For_Attributes is
          Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
-         The_Type  : CMOF_Classifier;
+         The_Type  : AMF.CMOF.Types.CMOF_Type_Access;
          Name      : League.Strings.Universal_String;
 
       begin
          for J in 1 .. Attributes.Length loop
             Attribute := Attributes.Element (J);
-            The_Type := Get_Type (CMOF_Element_Of (Attribute));
+            The_Type := Attribute.Get_Type;
 
-            if not Is_Data_Type (The_Type)
-              and (The_Type /= CMOF_Element_Of (Class)
+            if The_Type.all not in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+              and (The_Type /= AMF.CMOF.Types.CMOF_Type_Access (Class)
                      or Attribute.Is_Multivalued)
             then
                if Attribute.Is_Multivalued then
-                  Name := Ada_API_Package_Name (The_Type);
+                  Name :=
+                    Ada_API_Package_Name
+                     (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
 
                   --  Remove with clause for interface package when it is not
                   --  withed by ordinary with clause.
@@ -355,10 +374,14 @@ procedure Gen_API is
                      All_With.Delete (Name);
                   end if;
 
-                  Name := Ada_API_Collections_Package_Name (The_Type);
+                  Name :=
+                    Ada_API_Collections_Package_Name
+                     (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
 
                else
-                  Name := Ada_API_Package_Name (The_Type);
+                  Name :=
+                    Ada_API_Package_Name
+                     (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
                end if;
 
                if not All_With.Contains (Name) then
@@ -376,7 +399,7 @@ procedure Gen_API is
          Parameters :
            AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter;
          Parameter  : AMF.CMOF.Parameters.CMOF_Parameter_Access;
-         The_Type   : CMOF_Classifier;
+         The_Type   : AMF.CMOF.Types.CMOF_Type_Access;
          Name       : League.Strings.Universal_String;
 
       begin
@@ -385,14 +408,16 @@ procedure Gen_API is
 
             for J in 1 .. Parameters.Length loop
                Parameter := Parameters.Element (J);
-               The_Type := Get_Type (CMOF_Element_Of (Parameter));
+               The_Type := Parameter.Get_Type;
 
-               if not Is_Data_Type (The_Type)
-                 and (The_Type /= CMOF_Element_Of (Class)
+               if The_Type.all not in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+                 and (The_Type /= AMF.CMOF.Types.CMOF_Type_Access (Class)
                         or Parameter.Is_Multivalued)
                then
                   if Parameter.Is_Multivalued then
-                     Name := Ada_API_Package_Name (The_Type);
+                     Name :=
+                       Ada_API_Package_Name
+                        (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
 
                      --  Remove with clause for interface package when it is
                      --  not withed by ordinary with clause.
@@ -403,10 +428,14 @@ procedure Gen_API is
                         All_With.Delete (Name);
                      end if;
 
-                     Name := Ada_API_Collections_Package_Name (The_Type);
+                     Name :=
+                       Ada_API_Collections_Package_Name
+                        (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
 
                   else
-                     Name := Ada_API_Package_Name (The_Type);
+                     Name :=
+                       Ada_API_Package_Name
+                        (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
                   end if;
 
                   if not All_With.Contains (Name) then
@@ -426,9 +455,7 @@ procedure Gen_API is
 
       begin
          for J in 1 .. Super_Classes.Length loop
-            Name :=
-              Ada_API_Package_Name
-               (CMOF_Element_Of (Super_Classes.Element (J)));
+            Name := Ada_API_Package_Name (Super_Classes.Element (J));
             Ordinary_With.Insert (Name);
             All_With.Insert (Name);
          end loop;
@@ -445,10 +472,17 @@ procedure Gen_API is
            AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
              := Attribute.Get_Redefined_Property;
          Class_Type_Name : constant Wide_Wide_String
-           := Ada_API_Type_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
+           := Ada_API_Type_Name (Class).To_Wide_Wide_String;
          Attribute_Name  : constant Wide_Wide_String
-           := To_Ada_Identifier (Get_Name (CMOF_Element_Of (Attribute)));
+           := To_Ada_Identifier (Attribute.Get_Name.Value);
+         Attribute_Type  : AMF.CMOF.Types.CMOF_Type_Access
+           := Attribute.Get_Type;
          Ada_Overriding  : Boolean := False;
+         Type_1          : AMF.CMOF.Types.CMOF_Type_Access;
+
+         -------------------------
+         -- Type_Qualified_Name --
+         -------------------------
 
          function Type_Qualified_Name return Wide_Wide_String is
          begin
@@ -456,18 +490,16 @@ procedure Gen_API is
               Ada_Type_Qualified_Name
                (Attribute.Is_Multivalued,
                 Attribute.Lower_Bound,
-                Get_Type (CMOF_Element_Of (Attribute)),
+                Attribute.Get_Type,
                 Attribute.Get_Is_Ordered,
                 Attribute.Get_Is_Unique);
          end Type_Qualified_Name;
 
       begin
          for J in 1 .. Redefines.Length loop
-            if Get_Name (CMOF_Element_Of (Redefines.Element (J)))
-                 = Get_Name (CMOF_Element_Of (Attribute))
-            then
-               if Get_Type (CMOF_Element_Of (Redefines.Element (J)))
-                    = Get_Type (CMOF_Element_Of (Attribute))
+            if Redefines.Element (J).Get_Name = Attribute.Get_Name then
+               Type_1 := Redefines.Element (J).Get_Type;
+               if Type_1 = Attribute_Type
                  and then Redefines.Element (J).Lower_Bound
                             = Attribute.Lower_Bound
                then
@@ -567,6 +599,8 @@ procedure Gen_API is
             Parameters_2 :
               AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter;
             Result       : Boolean := False;
+            Type_1       : AMF.CMOF.Types.CMOF_Type_Access;
+            Type_2       : AMF.CMOF.Types.CMOF_Type_Access;
 
          begin
             for J in 1 .. Redefines.Length loop
@@ -576,9 +610,10 @@ procedure Gen_API is
                   Result := True;
 
                   for J in 1 .. Parameters.Length loop
-                     if Get_Type (CMOF_Element_Of (Parameters.Element (J)))
-                          /= Get_Type
-                              (CMOF_Element_Of (Parameters_2.Element (J)))
+                     Type_1 := Parameters.Element (J).Get_Type;
+                     Type_2 := Parameters_2.Element (J).Get_Type;
+
+                     if Type_1 /= Type_2
                        or Parameters.Element (J).Lower_Bound
                             /= Parameters_2.Element (J).Lower_Bound
                      then
@@ -609,14 +644,13 @@ procedure Gen_API is
               Ada_Type_Qualified_Name
                (Parameter.Is_Multivalued,
                 Parameter.Lower_Bound,
-                Get_Type (CMOF_Element_Of (Parameter)),
+                Parameter.Get_Type,
                 Parameter.Get_Is_Ordered,
                 Parameter.Get_Is_Unique);
          end Type_Qualified_Name;
 
          Class_Type_Name : constant Wide_Wide_String
-           := Ada_API_Type_Name
-               (CMOF_Element_Of (Operation.Get_Class)).To_Wide_Wide_String;
+           := Ada_API_Type_Name (Operation.Get_Class).To_Wide_Wide_String;
          Parameters      : constant
            AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
              := Operation.Get_Owned_Parameter;
@@ -634,7 +668,7 @@ procedure Gen_API is
 
          --  Compute name of the operation, XXX to rename 'type' operation.
 
-         Name := Get_Name (CMOF_Element_Of (Operation));
+         Name := Operation.Get_Name.Value;
 
          if Name = League.Strings.To_Universal_String ("type") then
             Name := League.Strings.To_Universal_String ("Types");
@@ -683,8 +717,7 @@ procedure Gen_API is
                Put_Line (";");
                Put
                 ("     "
-                   & To_Ada_Identifier
-                      (Get_Name (CMOF_Element_Of (Parameters.Element (J))))
+                   & To_Ada_Identifier (Parameters.Element (J).Get_Name.Value)
                    & " : "
                    & Type_Qualified_Name (Parameters.Element (J)));
             end if;
@@ -739,9 +772,9 @@ procedure Gen_API is
       end Generate_With_Clause;
 
       Package_Name  : constant Wide_Wide_String
-        := Ada_API_Package_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
+        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
       Type_Name     : constant Wide_Wide_String
-        := Ada_API_Type_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
+        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
 
    begin
       Compute_With_For_Super_Classes;
@@ -790,12 +823,10 @@ procedure Gen_API is
          Put
           ("     and "
              & Ada_API_Package_Name
-                (CMOF_Element_Of
-                  (Super_Classes.Element (J))).To_Wide_Wide_String
+                (Super_Classes.Element (J)).To_Wide_Wide_String
              & "."
              & Ada_API_Type_Name
-                (CMOF_Element_Of
-                  (Super_Classes.Element (J))).To_Wide_Wide_String);
+                (Super_Classes.Element (J)).To_Wide_Wide_String);
       end loop;
 
       Put_Line (";");
@@ -831,9 +862,9 @@ procedure Gen_API is
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
       Package_Name  : constant Wide_Wide_String
-        := Ada_API_Package_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
+        := Ada_API_Package_Name (Class).To_Wide_Wide_String;
       Type_Name     : constant Wide_Wide_String
-        := Ada_API_Type_Name (CMOF_Element_Of (Class)).To_Wide_Wide_String;
+        := Ada_API_Type_Name (Class).To_Wide_Wide_String;
 
    begin
       Put_Header (Year_2010 => False);

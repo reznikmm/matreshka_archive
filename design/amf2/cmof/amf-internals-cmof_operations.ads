@@ -55,12 +55,12 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types.Collections;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Named_Elements;
 
 package AMF.Internals.CMOF_Operations is
 
    type CMOF_Operation_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
        and AMF.CMOF.Operations.CMOF_Operation
          with null record;
 
@@ -81,10 +81,6 @@ package AMF.Internals.CMOF_Operations is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Operation_Proxy)
        return Boolean;
-
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return Optional_String;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Operation_Proxy;
