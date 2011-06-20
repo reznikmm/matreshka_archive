@@ -58,9 +58,12 @@ package body AMF.Internals.CMOF_Elements is
 
    overriding function Get
     (Self     : not null access constant CMOF_Element_Proxy;
-     Property : Standard.CMOF.CMOF_Property) return AMF.Values.Value is
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return AMF.Values.Value is
    begin
-      return Standard.CMOF.Reflection.Get (Self.Id, Property);
+      return
+        Standard.CMOF.Reflection.Get
+         (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id);
    end Get;
 
    --------------------
@@ -98,10 +101,11 @@ package body AMF.Internals.CMOF_Elements is
 
    overriding procedure Set
     (Self     : not null access CMOF_Element_Proxy;
-     Property : Standard.CMOF.CMOF_Property;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : AMF.Values.Value) is
    begin
-      Standard.CMOF.Reflection.Set (Self.Id, Property, Value);
+      Standard.CMOF.Reflection.Set
+       (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id, Value);
    end Set;
 
 end AMF.Internals.CMOF_Elements;

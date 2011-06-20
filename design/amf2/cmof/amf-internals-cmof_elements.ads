@@ -44,6 +44,7 @@
 with AMF.CMOF.Classes;
 with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Elements;
+with AMF.CMOF.Properties;
 with AMF.Elements;
 with AMF.Values;
 with CMOF;
@@ -59,7 +60,8 @@ package AMF.Internals.CMOF_Elements is
 
    overriding function Get
     (Self     : not null access constant CMOF_Element_Proxy;
-     Property : Standard.CMOF.CMOF_Property) return AMF.Values.Value;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return AMF.Values.Value;
 
    overriding function Get_Meta_Class
     (Self : not null access constant CMOF_Element_Proxy)
@@ -71,7 +73,7 @@ package AMF.Internals.CMOF_Elements is
 
    overriding procedure Set
     (Self     : not null access CMOF_Element_Proxy;
-     Property : Standard.CMOF.CMOF_Property;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : AMF.Values.Value);
 
 end AMF.Internals.CMOF_Elements;

@@ -360,16 +360,14 @@ package body CMOF_Tree_Models is
                      (CMOF.Extents.Factory (Self.Extent).Convert_To_String
                        (CMOF_Element_Of (Attribute_Type),
                         Self.Element.Get
-                         (CMOF_Element_Of
-                           (Self.Attribute))).To_Wide_Wide_String));
+                         (Self.Attribute)).To_Wide_Wide_String));
             Self.Children.Append (X);
 
          else
             if Self.Attribute.Is_Multivalued then
                declare
                   C : constant Collection_Of_CMOF_Element
-                    := Self.Element.Get
-                        (CMOF_Element_Of (Self.Attribute)).Collection_Value;
+                    := Self.Element.Get (Self.Attribute).Collection_Value;
 
                begin
                   for J in 1 .. Length (C) loop
@@ -393,8 +391,7 @@ package body CMOF_Tree_Models is
 
                   C : constant AMF.Elements.Element_Access
                     := AMF.Element_Holders.Element
-                        (Self.Element.Get
-                          (CMOF_Element_Of (Self.Attribute)).Holder_Value);
+                        (Self.Element.Get (Self.Attribute).Holder_Value);
 
                begin
                   if C = null then

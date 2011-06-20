@@ -163,7 +163,7 @@ package body XMI.Handlers is
 
          if Attribute_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
             Self.Current.Set
-             (CMOF_Element_Of (Property),
+             (Property,
               Self.Factory.Create_From_String
                (CMOF_Element_Of (Attribute_Type),
                 Property.Get_Lower.Value = 0,
@@ -391,7 +391,7 @@ package body XMI.Handlers is
             then
                if not Self.Attribute.Is_Multivalued then
                   Self.Current.Set
-                   (CMOF_Element_Of (Self.Attribute),
+                   (Self.Attribute,
                     Self.Factory.Create_From_String
                      (CMOF_Element_Of (Attribute_Type),
                       Self.Attribute.Get_Lower.Value = 0,

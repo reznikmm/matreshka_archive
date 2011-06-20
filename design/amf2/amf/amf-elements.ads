@@ -42,8 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes;
+with AMF.CMOF.Properties;
 with AMF.Values;
-with CMOF;
 
 package AMF.Elements is
 
@@ -60,11 +60,20 @@ package AMF.Elements is
 
    not overriding function Get
     (Self     : not null access constant Abstract_Element;
-     Property : Standard.CMOF.CMOF_Property) return AMF.Values.Value is abstract;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return AMF.Values.Value is abstract;
+   --  Gets the value of the given property. If the Property has multiplicity
+   --  upper bound of 1, get() returns the value of the Property. If Property
+   --  has multiplicity upper bound >1, get() returns a ReflectiveCollection
+   --  containing the values of the Property. If there are no values, the
+   --  ReflectiveCollection returned is empty.
+   --
+   --  Exception: throws IllegalArgumentException if Property is not a member
+   --  of the Class from class().
 
    not overriding procedure Set
     (Self     : not null access Abstract_Element;
-     Property : Standard.CMOF.CMOF_Property;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : AMF.Values.Value) is abstract;
    --  If the Property has multiplicity upper bound = 1, set() atomically
    --  updates the value of the Property to the object parameter. If Property
