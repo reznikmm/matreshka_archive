@@ -46,6 +46,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Elements;
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Elements;
@@ -419,14 +420,17 @@ package body Generator.Initialization is
       begin
          if Is_Class (Get_Type (Property)) then
             if Is_Multivalued (Property) then
-               for J in 1 .. Value.Collection_Value.Length loop
+               for J in 1 .. AMF.Holders.Collections.Element
+                              (Value.Holder_Value).Length
+               loop
                   Establish_Link
                    (Association,
                     Property,
                     Element,
                     CMOF_Element_Of
                      (AMF.CMOF.Elements.CMOF_Element_Access
-                       (Value.Collection_Value.Element (J))));
+                       (AMF.Holders.Collections.Element
+                         (Value.Holder_Value).Element (J))));
                end loop;
 
             else

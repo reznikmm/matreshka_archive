@@ -46,7 +46,6 @@
 --  extended to support other types or replaced by League.Values package at
 --  some point.
 ------------------------------------------------------------------------------
-with AMF.Elements.Collections;
 with CMOF;
 with League.Holders;
 
@@ -57,8 +56,7 @@ package AMF.Values is
    type Value_Kinds is
     (Value_None,
      Value_Holder,
-     Value_Collection_Of_String,
-     Value_Collection_Of_Element);
+     Value_Collection_Of_String);
 
    type Value (Kind : Value_Kinds := Value_None) is record
       case Kind is
@@ -70,10 +68,6 @@ package AMF.Values is
 
          when Value_Collection_Of_String =>
             Collection_String_Value : Standard.CMOF.Collection_Of_CMOF_String;
-
-         when Value_Collection_Of_Element =>
-            Collection_Value : AMF.Elements.Collections.Reflective_Collection;
---            Collection_Value : Standard.CMOF.Collection_Of_CMOF_Element;
       end case;
    end record;
 

@@ -201,8 +201,11 @@ package body Generator.Reflection is
                else
                   Holder_Name :=
                     To_Unbounded_Wide_Wide_String
+                     ("AMF.Holders.Collections.To_Holder");
+                  Convertor_Name :=
+                    To_Unbounded_Wide_Wide_String
                      ("CMOF.Internals.Collections.Wrap");
-                  Put_Line ("AMF.Values.Value_Collection_Of_Element,");
+                  Put_Line ("AMF.Values.Value_Holder,");
                end if;
 
             elsif Attribute_Type.Get_Name = Boolean_Name then
@@ -729,6 +732,7 @@ package body Generator.Reflection is
       Put_Line ("with AMF.CMOF.Holders;");
       Put_Line ("with AMF.CMOF.Parameter_Direction_Kind_Holders;");
       Put_Line ("with AMF.CMOF.Visibility_Kind_Holders;");
+      Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
       Put_Line ("with CMOF.Internals.Attributes;");

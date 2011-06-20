@@ -54,6 +54,7 @@ with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
+with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with CMOF.Collections;
 with CMOF.Extents;
@@ -368,7 +369,8 @@ package body CMOF_Tree_Models is
             if Self.Attribute.Is_Multivalued then
                declare
                   C : constant AMF.Elements.Collections.Reflective_Collection
-                    := Self.Element.Get (Self.Attribute).Collection_Value;
+                    := AMF.Holders.Collections.Element
+                        (Self.Element.Get (Self.Attribute).Holder_Value);
 
                begin
                   for J in 1 .. C.Length loop
