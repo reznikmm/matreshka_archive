@@ -49,16 +49,15 @@ with Interfaces;
 with Qt_Ada.Generic_Model_Index_Data;
 with League.Strings;
 
+with AMF.CMOF.Data_Types;
+with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Element_Holders;
-with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Extents;
 with CMOF.Internals.Proxies;
-with CMOF.Multiplicity_Elements;
-with CMOF.Named_Elements;
-with CMOF.Properties;
 with CMOF.Reflection;
-with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
 
 with CMOF_Tree_Models.Moc;
@@ -67,9 +66,6 @@ package body CMOF_Tree_Models is
 
    use CMOF;
    use CMOF.Collections;
-   use CMOF.Named_Elements;
-   use CMOF.Reflection;
-   use CMOF.Typed_Elements;
 
    package Model_Index_Data is
      new Qt_Ada.Generic_Model_Index_Data
@@ -87,31 +83,40 @@ package body CMOF_Tree_Models is
        return Qt4.Model_Indices.Q_Model_Index;
 
    function "<"
-    (Left : CMOF.CMOF_Element; Right : CMOF.CMOF_Element) return Boolean;
+    (Left  : AMF.CMOF.Properties.CMOF_Property_Access;
+     Right : AMF.CMOF.Properties.CMOF_Property_Access) return Boolean;
 
    package CMOF_Property_Sets is
-     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Element);
+     new Ada.Containers.Ordered_Sets
+          (AMF.CMOF.Properties.CMOF_Property_Access,
+           "<",
+           AMF.CMOF.Properties."=");
 
    function All_Attributes
-    (Class : CMOF.CMOF_Class) return CMOF_Property_Sets.Set;
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return CMOF_Property_Sets.Set;
 
    ---------
    -- "<" --
    ---------
 
    function "<"
-    (Left : CMOF.CMOF_Element; Right : CMOF.CMOF_Element) return Boolean
+    (Left  : AMF.CMOF.Properties.CMOF_Property_Access;
+     Right : AMF.CMOF.Properties.CMOF_Property_Access) return Boolean
    is
       use type Interfaces.Integer_32;
       use type League.Strings.Universal_String;
+      use type AMF.Optional_String;
 
       function To_Integer_32 is
-        new Ada.Unchecked_Conversion (CMOF.CMOF_Element, Interfaces.Integer_32);
+        new Ada.Unchecked_Conversion
+             (CMOF.CMOF_Element, Interfaces.Integer_32);
 
    begin
-      return Get_Name (Left) < Get_Name (Right)
-        or (Get_Name (Left) = Get_Name (Right)
-              and To_Integer_32 (Left) < To_Integer_32 (Right));
+      return Left.Get_Name < Right.Get_Name
+        or (Left.Get_Name = Right.Get_Name
+              and To_Integer_32 (CMOF.XMI_Helper.CMOF_Element_Of (Left))
+                    < To_Integer_32 (CMOF.XMI_Helper.CMOF_Element_Of (Right)));
    end "<";
 
    --------------------
@@ -119,23 +124,22 @@ package body CMOF_Tree_Models is
    --------------------
 
    function All_Attributes
-    (Class : CMOF.CMOF_Class) return CMOF_Property_Sets.Set
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return CMOF_Property_Sets.Set
    is
-      use CMOF;
-      use CMOF.Classes;
-      use CMOF.Collections;
-
-      A : Ordered_Set_Of_CMOF_Property := Get_Owned_Attribute (Class);
-      S : Set_Of_CMOF_Class            := Get_Super_Class (Class);
+      A : AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+        := Class.Get_Owned_Attribute;
+      S : AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+        := Class.Get_Super_Class;
 
    begin
       return Result : CMOF_Property_Sets.Set do
-         for J in 1 .. Length (A) loop
-            Result.Insert (Element (A, J));
+         for J in 1 .. A.Length loop
+            Result.Insert (A.Element (J));
          end loop;
 
-         for J in 1 .. Length (S) loop
-            Result.Union (All_Attributes (Element (S, J)));
+         for J in 1 .. S.Length loop
+            Result.Union (All_Attributes (S.Element (J)));
          end loop;
       end return;
    end All_Attributes;
@@ -249,15 +253,6 @@ package body CMOF_Tree_Models is
       end if;
    end Has_Children;
 
-   ----------
-   -- Hash --
-   ----------
-
-   function Hash (Item : CMOF.CMOF_Element) return Ada.Containers.Hash_Type is
-   begin
-      return Ada.Containers.Hash_Type (CMOF.Named_Elements.Get_Name (Item).Hash);
-   end Hash;
-
    -----------------
    -- Header_Data --
    -----------------
@@ -344,16 +339,17 @@ package body CMOF_Tree_Models is
    --------------
 
    procedure Populate (Self : not null access Attribute_Node) is
-      use CMOF.Multiplicity_Elements;
       use CMOF.XMI_Helper;
 
       X : Node_Access;
+      Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
    begin
       if not Self.Is_Populated then
          Self.Is_Populated := True;
+         Attribute_Type := Self.Attribute.Get_Type;
 
-         if Is_Data_Type (Get_Type (Self.Attribute)) then
+         if Attribute_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
             X :=
               new Attribute_Value_Node'
                    (Node_Access (Self),
@@ -362,16 +358,18 @@ package body CMOF_Tree_Models is
                     True,
                     Qt4.Strings.From_Ucs_4
                      (CMOF.Extents.Factory (Self.Extent).Convert_To_String
-                       (Get_Type (Self.Attribute),
+                       (CMOF_Element_Of (Attribute_Type),
                         Self.Element.Get
-                         (Self.Attribute)).To_Wide_Wide_String));
+                         (CMOF_Element_Of
+                           (Self.Attribute))).To_Wide_Wide_String));
             Self.Children.Append (X);
 
          else
-            if Is_Multivalued (Self.Attribute) then
+            if Self.Attribute.Is_Multivalued then
                declare
                   C : constant Collection_Of_CMOF_Element
-                    := Self.Element.Get (Self.Attribute).Collection_Value;
+                    := Self.Element.Get
+                        (CMOF_Element_Of (Self.Attribute)).Collection_Value;
 
                begin
                   for J in 1 .. Length (C) loop
@@ -382,9 +380,8 @@ package body CMOF_Tree_Models is
                              Self.Extent,
                              False,
                              Qt4.Strings.From_Ucs_4
-                              (Get_Name
-                                (Get_Meta_Class
-                                  (Element (C, J))).To_Wide_Wide_String),
+                              (Element (C, J).Get_Meta_Class.Get_Name.Value.
+                                 To_Wide_Wide_String),
                              Element (C, J));
                      Self.Children.Append (X);
                   end loop;
@@ -396,7 +393,8 @@ package body CMOF_Tree_Models is
 
                   C : constant AMF.Elements.Element_Access
                     := AMF.Element_Holders.Element
-                        (Self.Element.Get (Self.Attribute).Holder_Value);
+                        (Self.Element.Get
+                          (CMOF_Element_Of (Self.Attribute)).Holder_Value);
 
                begin
                   if C = null then
@@ -446,13 +444,11 @@ package body CMOF_Tree_Models is
 
    procedure Populate (Self : not null access Element_Node) is
       use AMF;
-      use CMOF.Classes;
-      use CMOF.Multiplicity_Elements;
-      use CMOF.Properties;
       use League.Strings;
 
       procedure Process_Property (Position : CMOF_Property_Sets.Cursor) is
-         Property : CMOF_Property := CMOF_Property_Sets.Element (Position);
+         Property : AMF.CMOF.Properties.CMOF_Property_Access
+           := CMOF_Property_Sets.Element (Position);
          X        : Node_Access;
          Notation : League.Strings.Universal_String;
          Modifier : Boolean := False;
@@ -468,34 +464,39 @@ package body CMOF_Tree_Models is
             end if;
          end Append_Modifier;
 
+         Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
+
       begin
          --  Construct property's notation.
 
          --  Derived indicator
 
-         if Get_Is_Derived (Property) then
+         if Property.Get_Is_Derived then
             Notation.Append (League.Strings.To_Universal_String ("/ "));
          end if;
 
          --  Name and type
 
-         Notation.Append (Get_Name (Property));
+         Notation.Append (Property.Get_Name.Value);
          Notation.Append (League.Strings.To_Universal_String (" : "));
-         Notation.Append (Get_Name (Get_Type (Property)));
+         Attribute_Type := Property.Get_Type;
+         Notation.Append (Attribute_Type.Get_Name.Value);
 
          --  Multiplicity
 
-         if Get_Lower (Property) /= 1 or Get_Upper (Property) /= 1 then
-            if Get_Lower (Property) = Get_Upper (Property) then
+         if Property.Lower_Bound /= 1 or Property.Upper_Bound /= 1 then
+            if Property.Lower_Bound = Property.Upper_Bound then
                Notation.Append
                 (League.Strings.To_Universal_String
                   (" ["
                      & Ada.Strings.Wide_Wide_Fixed.Trim
-                        (Integer'Wide_Wide_Image (Get_Lower (Property)),
+                        (Integer'Wide_Wide_Image (Property.Lower_Bound),
                          Ada.Strings.Both)
                      & "]"));
 
-            elsif Get_Lower (Property) = 0 and Get_Upper (Property) = Unlimited then
+            elsif Property.Lower_Bound = 0
+              and Property.Upper_Bound = Unlimited
+            then
                Notation.Append (League.Strings.To_Universal_String (" [*]"));
 
             else
@@ -503,11 +504,11 @@ package body CMOF_Tree_Models is
                 (League.Strings.To_Universal_String
                   (" ["
                      & Ada.Strings.Wide_Wide_Fixed.Trim
-                        (Integer'Wide_Wide_Image (Get_Lower (Property)),
+                        (Integer'Wide_Wide_Image (Property.Lower_Bound),
                          Ada.Strings.Both)
                      & ".."));
 
-               if Get_Upper (Property) = Unlimited then
+               if Property.Upper_Bound = Unlimited then
                   Notation.Append
                    (League.Strings.To_Universal_String ("*]"));
 
@@ -515,7 +516,7 @@ package body CMOF_Tree_Models is
                   Notation.Append
                    (League.Strings.To_Universal_String
                      (Ada.Strings.Wide_Wide_Fixed.Trim
-                       (Integer'Wide_Wide_Image (Get_Upper (Property).Value),
+                       (Integer'Wide_Wide_Image (Property.Upper_Bound.Value),
                         Ada.Strings.Both)
                         & "]"));
                end if;
@@ -524,53 +525,57 @@ package body CMOF_Tree_Models is
 
          --  Read only
 
-         if Get_Is_Read_Only (Property) then
+         if Property.Get_Is_Read_Only then
             Append_Modifier ("readOnly");
          end if;
 
          --  Union
 
-         if Get_Is_Derived_Union (Property) then
+         if Property.Get_Is_Derived_Union then
             Append_Modifier ("union");
          end if;
 
          --  Subsets
 
          declare
-            Subsetted_Property : constant Set_Of_CMOF_Property
-              := Get_Subsetted_Property (Property);
+            Subsetted_Property : constant
+              AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+                := Property.Get_Subsetted_Property;
 
          begin
-            for J in 1 .. Length (Subsetted_Property) loop
+            for J in 1 .. Subsetted_Property.Length loop
                Append_Modifier
                 ("subsets "
-                   & Get_Name (Element (Subsetted_Property, J)).To_Wide_Wide_String);
+                   & Subsetted_Property.Element
+                      (J).Get_Name.Value.To_Wide_Wide_String);
             end loop;
          end;
 
          --  Redefines
 
          declare
-            Redefined_Property : constant Set_Of_CMOF_Property
-              := Get_Redefined_Property (Property);
+            Redefined_Property : constant
+              AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+                := Property.Get_Redefined_Property;
 
          begin
-            for J in 1 .. Length (Redefined_Property) loop
+            for J in 1 .. Redefined_Property.Length loop
                Append_Modifier
                 ("redefines "
-                   & Get_Name (Element (Redefined_Property, J)).To_Wide_Wide_String);
+                   & Redefined_Property.Element
+                      (J).Get_Name.Value.To_Wide_Wide_String);
             end loop;
          end;
 
          --  Ordered
 
-         if Get_Is_Ordered (Property) then
+         if Property.Get_Is_Ordered then
             Append_Modifier ("ordered");
          end if;
 
          --  Unique
 
-         if Get_Is_Unique (Property) then
+         if Property.Get_Is_Unique then
             Append_Modifier ("unique");
          end if;
 
@@ -597,8 +602,7 @@ package body CMOF_Tree_Models is
       if not Self.Is_Populated then
          Self.Is_Populated := True;
          All_Attributes
-          (CMOF.XMI_Helper.CMOF_Element_Of
-            (Self.Element.Get_Meta_Class)).Iterate (Process_Property'Access);
+          (Self.Element.Get_Meta_Class).Iterate (Process_Property'Access);
       end if;
    end Populate;
 
@@ -655,7 +659,7 @@ package body CMOF_Tree_Models is
          X : constant CMOF_Element := CMOF_Element_Sets.Element (Position);
 
       begin
-         if Container (X) = Null_CMOF_Element then
+         if CMOF.Reflection.Container (X) = Null_CMOF_Element then
             Self.Root :=
               new Root_Node'
                    (null,

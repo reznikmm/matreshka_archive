@@ -49,7 +49,8 @@ private with Qt4.Model_Indices;
 private with Qt4.Strings;
 private with Qt4.Variants;
 
-with AMF.Elements;
+private with AMF.CMOF.Properties;
+private with AMF.Elements;
 with CMOF;
 
 package CMOF_Tree_Models is
@@ -100,7 +101,7 @@ private
 
    type Attribute_Node is new Abstract_Node with record
       Element   : AMF.Elements.Element_Access;
-      Attribute : CMOF.CMOF_Property;
+      Attribute : AMF.CMOF.Properties.CMOF_Property_Access;
    end record;
 
    procedure Populate (Self : not null access Attribute_Node);

@@ -105,6 +105,17 @@ package body AMF.Internals.CMOF_Properties is
       return Internal_Get_Is_Derived (Self.Id);
    end Get_Is_Derived;
 
+   --------------------------
+   -- Get_Is_Derived_Union --
+   --------------------------
+
+   overriding function Get_Is_Derived_Union
+    (Self : not null access constant CMOF_Property_Proxy)
+       return Boolean is
+   begin
+      return Internal_Get_Is_Derived_Union (Self.Id);
+   end Get_Is_Derived_Union;
+
    ----------------------
    -- Get_Is_Read_Only --
    ----------------------
@@ -143,6 +154,21 @@ package body AMF.Internals.CMOF_Properties is
                (AMF.Internals.Collections.Abstract_Collection with
                   Collection => Internal_Get_Redefined_Property (Self.Id)));
    end Get_Redefined_Property;
+
+   ----------------------------
+   -- Get_Subsetted_Property --
+   ----------------------------
+
+   overriding function Get_Subsetted_Property
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is
+   begin
+      return
+        AMF.CMOF.Properties.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Internal_Get_Subsetted_Property (Self.Id)));
+   end Get_Subsetted_Property;
 
    -----------------------
    -- Get_Owned_Element --
@@ -603,21 +629,6 @@ package body AMF.Internals.CMOF_Properties is
    end Set_Is_Derived;
 
    --------------------------
-   -- Get_Is_Derived_Union --
-   --------------------------
-
-   overriding function Get_Is_Derived_Union
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Derived_Union unimplemented");
-      raise Program_Error;
-      return Get_Is_Derived_Union (Self);
-   end Get_Is_Derived_Union;
-
-   --------------------------
    -- Set_Is_Derived_Union --
    --------------------------
 
@@ -658,21 +669,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Owning_Association unimplemented");
       raise Program_Error;
    end Set_Owning_Association;
-
-   ----------------------------
-   -- Get_Subsetted_Property --
-   ----------------------------
-
-   overriding function Get_Subsetted_Property
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Subsetted_Property unimplemented");
-      raise Program_Error;
-      return Get_Subsetted_Property (Self);
-   end Get_Subsetted_Property;
 
    ------------------
    -- Get_Opposite --
