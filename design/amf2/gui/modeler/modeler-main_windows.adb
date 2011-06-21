@@ -45,10 +45,11 @@ with Qt4.Dock_Widgets.Constructors;
 with Qt4.Settings.Constructors;
 with Qt4.Strings;
 with Qt4.Tree_Views.Constructors;
---  with Qt4.V_Box_Layouts.Constructors;
 with Qt4.Variants;
 
-with Modeler.Main_Windows.Moc;
+with Modeler.Diagram_Views;
+with Modeler.Main_Windows.MOC;
+pragma Unreferenced (Modeler.Main_Windows.MOC);
 
 package body Modeler.Main_Windows is
 
@@ -100,23 +101,29 @@ package body Modeler.Main_Windows is
       ----------------
 
       procedure Initialize (Self : not null access Main_Window'Class) is
-         Settings : constant not null Qt4.Settings.Q_Settings_Access
+         Settings     : constant not null Qt4.Settings.Q_Settings_Access
            := Qt4.Settings.Constructors.Create;
-         Dock     : Qt4.Dock_Widgets.Q_Dock_Widget_Access;
---         Layout   : Qt4.V_Box_Layouts.Q_V_Box_Layout_Access;
-         View     : Qt4.Tree_Views.Q_Tree_View_Access;
+         Dock         : Qt4.Dock_Widgets.Q_Dock_Widget_Access;
+         Tree_View    : Qt4.Tree_Views.Q_Tree_View_Access;
+         Diagram_View : Modeler.Diagram_Views.Diagram_View_Access;
 
       begin
          Qt4.Main_Windows.Directors.Constructors.Initialize (Self);
 
+         --  Create components of main window.
+
          Dock := Qt4.Dock_Widgets.Constructors.Create (Self);
+         Tree_View := Qt4.Tree_Views.Constructors.Create (Dock);
+         Dock.Set_Widget (Tree_View);
+
+         Diagram_View := Modeler.Diagram_Views.Constructors.Create (Self);
+
+         --  Set components of main window.
+
+         Self.Set_Central_Widget (Diagram_View);
          Self.Add_Dock_Widget (Qt4.Left_Dock_Widget_Area, Dock);
 
---         Layout := Qt4.V_Box_Layouts.Constructors.Create (Dock);
-
-         View := Qt4.Tree_Views.Constructors.Create (Dock);
-         Dock.Set_Widget (View);
---         Dock.Layout.Add_Widget (View);
+         --  Restore size of the window.
 
          Settings.Begin_Group (+"MainWindow");
 

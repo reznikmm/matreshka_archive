@@ -46,14 +46,7 @@ with Ada.Command_Line;
 with Qt_Ada.Application;
 with Qt4.Core_Applications;
 with Qt4.Strings;
---with Qt4.Tree_Views.Constructors;
 
---with CMOF;
---with CMOF.Extents;
---with XMI.Reader;
-
---with CMOF_Tree_Models;
-with Modeler.Diagram_Views;
 with Modeler.Main_Windows;
 
 procedure Modeler.Driver is
@@ -61,10 +54,6 @@ procedure Modeler.Driver is
      renames Qt4.Strings.From_Utf_8;
 
    Window : Modeler.Main_Windows.Main_Window_Access;
-   View   : Modeler.Diagram_Views.Diagram_View_Access;
---   Model  : CMOF_Tree_Models.CMOF_Tree_Model_Access;
---   View   : Qt4.Tree_Views.Q_Tree_View_Access;
---   Root   : CMOF.CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
 
 begin
    Qt_Ada.Application.Initialize;
@@ -73,16 +62,7 @@ begin
    Qt4.Core_Applications.Set_Application_Name (+"Matreshka Modeler");
    Qt4.Core_Applications.Set_Application_Version (+"0.2.0");
 
---   Model := CMOF_Tree_Models.Constructors.Create;
---   Model.Set_Extent (Root);
---
---   View := Qt4.Tree_Views.Constructors.Create;
---   View.Set_Model (Model);
-
-   View := Modeler.Diagram_Views.Constructors.Create;
-
    Window := Main_Windows.Constructors.Create;
-   Window.Set_Central_Widget (View);
    Window.Show;
 
    Qt_Ada.Application.Execute;
