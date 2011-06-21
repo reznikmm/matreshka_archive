@@ -6,14 +6,13 @@ project XMI is
    for Source_Dirs use (".", "..");
    for Object_Dir use ".objs";
    for Exec_Dir use "..";
-   for Main use ("cmof-main.adb", "xmi-main.adb");
+   for Main use ("xmi-main.adb");
 
    package Compiler is
       for Default_Switches ("Ada") use ("-g", "-gnat12");
    end Compiler;
 
    package Builder is
-      for Executable ("cmof-main.adb") use "demo-cmof";
       for Executable ("xmi-main.adb") use "demo-reader";
    end Builder;
 
