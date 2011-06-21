@@ -67,4 +67,7 @@ private
      (Self  : not null access Main_Window;
       Event : not null access Qt4.Close_Events.Q_Close_Event'Class);
 
+   procedure Quit (Self : not null access Main_Window'Class);
+   pragma Q_Slot (Quit);
+
 end Modeler.Main_Windows;

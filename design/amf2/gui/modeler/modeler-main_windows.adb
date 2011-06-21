@@ -41,7 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Qt4.Actions;
 with Qt4.Dock_Widgets.Constructors;
+with Qt4.Menu_Bars.Constructors;
+with Qt4.Menus;
+with Qt4.Objects;
 with Qt4.Settings.Constructors;
 with Qt4.Strings;
 with Qt4.Tree_Views.Constructors;
@@ -104,6 +108,9 @@ package body Modeler.Main_Windows is
       procedure Initialize (Self : not null access Main_Window'Class) is
          Settings     : constant not null Qt4.Settings.Q_Settings_Access
            := Qt4.Settings.Constructors.Create;
+         Menu_Bar     : Qt4.Menu_Bars.Q_Menu_Bar_Access;
+         Menu         : Qt4.Menus.Q_Menu_Access;
+         Action       : Qt4.Actions.Q_Action_Access;
          Dock         : Qt4.Dock_Widgets.Q_Dock_Widget_Access;
          Tree_View    : Qt4.Tree_Views.Q_Tree_View_Access;
          Tree_Model   :
@@ -114,6 +121,13 @@ package body Modeler.Main_Windows is
          Qt4.Main_Windows.Directors.Constructors.Initialize (Self);
 
          --  Create components of main window.
+
+         Menu_Bar := Qt4.Menu_Bars.Constructors.Create (Self);
+         Menu := Menu_Bar.Add_Menu (+"&File");
+         Action := Menu.Add_Action (+"&Quit");
+         Qt4.Objects.Connect
+          (Action, Qt4.Signal ("triggered(bool)"),
+           Self, Qt4.Slot ("quit()"));
 
          Dock := Qt4.Dock_Widgets.Constructors.Create (Self);
          Tree_Model := Modeler.Containment_Tree_Models.Constructors.Create;
@@ -126,6 +140,7 @@ package body Modeler.Main_Windows is
 
          --  Set components of main window.
 
+         Self.Set_Menu_Bar (Menu_Bar);
          Self.Set_Central_Widget (Diagram_View);
          Self.Add_Dock_Widget (Qt4.Left_Dock_Widget_Area, Dock);
 
@@ -142,5 +157,14 @@ package body Modeler.Main_Windows is
       end Initialize;
 
    end Constructors;
+
+   ----------
+   -- Quit --
+   ----------
+
+   procedure Quit (Self : not null access Main_Window'Class) is
+   begin
+      null;
+   end Quit;
 
 end Modeler.Main_Windows;
