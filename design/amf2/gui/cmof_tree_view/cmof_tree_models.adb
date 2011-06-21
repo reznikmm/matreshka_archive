@@ -49,25 +49,22 @@ with Interfaces;
 with Qt_Ada.Generic_Model_Index_Data;
 with League.Strings;
 
-with AMF.CMOF.Data_Types;
 with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Data_Types;
+with AMF.CMOF.Elements;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
-with CMOF.Collections;
 with CMOF.Extents;
-with CMOF.Internals.Proxies;
 with CMOF.Reflection;
 with CMOF.XMI_Helper;
 
-with CMOF_Tree_Models.Moc;
+with CMOF_Tree_Models.MOC;
+pragma Unreferenced (CMOF_Tree_Models.MOC);
 
 package body CMOF_Tree_Models is
-
-   use CMOF;
-   use CMOF.Collections;
 
    package Model_Index_Data is
      new Qt_Ada.Generic_Model_Index_Data
@@ -651,15 +648,21 @@ package body CMOF_Tree_Models is
     (Self : not null access CMOF_Tree_Model'Class;
      Root : CMOF.CMOF_Extent)
    is
-      use CMOF.Extents;
+      use CMOF;
 
-      procedure Dump (Position : CMOF_Element_Sets.Cursor);
+      E : constant AMF.Elements.Collections.Reflective_Collection
+        := CMOF.Extents.Elements (Root);
+      X : AMF.Elements.Element_Access;
 
-      procedure Dump (Position : CMOF_Element_Sets.Cursor) is
-         X : constant CMOF_Element := CMOF_Element_Sets.Element (Position);
+   begin
+      for J in 1 .. E.Length loop
+         X := E.Element (J);
 
-      begin
-         if CMOF.Reflection.Container (X) = Null_CMOF_Element then
+         if CMOF.Reflection.Container
+             (CMOF.XMI_Helper.CMOF_Element_Of
+               (AMF.CMOF.Elements.CMOF_Element_Access (X)))
+              = Null_CMOF_Element
+         then
             Self.Root :=
               new Root_Node'
                    (null,
@@ -667,12 +670,9 @@ package body CMOF_Tree_Models is
                     Root,
                     False,
                     Qt4.Strings.Create,
-                    CMOF.Internals.Proxies.Get_Proxy (X));
+                    X);
          end if;
-      end Dump;
-
-   begin
-      Elements (Root).Iterate (Dump'Access);
+      end loop;
    end Set_Extent;
 
 end CMOF_Tree_Models;
