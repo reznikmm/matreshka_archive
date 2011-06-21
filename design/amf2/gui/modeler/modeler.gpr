@@ -33,6 +33,7 @@ project Modeler is
 
    package Builder is
       for Executable ("modeler-driver.adb") use "modeler";
+      for Global_Configuration_Pragmas use "modeler.adc";
    end Builder;
 
 end Modeler;
