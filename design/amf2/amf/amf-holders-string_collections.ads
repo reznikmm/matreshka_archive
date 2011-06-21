@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides data type to pass "any" value through reflection
---  capability. It supports only CMOF related types for now, but will be
---  extended to support other types or replaced by League.Values package at
---  some point.
-------------------------------------------------------------------------------
-with CMOF;
-with League.Holders;
+with League.Holders.Generic_Holders;
+with AMF.String_Collections;
 
-package AMF.Values is
-
-   pragma Preelaborate;
-
-   type Value_Kinds is
-    (Value_None,
-     Value_Holder);
-
-   type Value (Kind : Value_Kinds := Value_None) is record
-      case Kind is
-         when Value_None =>
-            null;
-
-         when Value_Holder =>
-            Holder_Value : League.Holders.Holder;
-      end case;
-   end record;
-
-end AMF.Values;
+package AMF.Holders.String_Collections is
+  new League.Holders.Generic_Holders
+       (AMF.String_Collections.Collection_Of_String);
+pragma Preelaborate (AMF.Holders.String_Collections);

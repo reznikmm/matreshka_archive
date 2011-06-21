@@ -56,7 +56,6 @@
 --   - PrimitiveTypes::String is mapped to League.Strings.Universal_String.
 --
 ------------------------------------------------------------------------------
-with Interfaces;
 with League.Strings;
 
 package AMF is

@@ -294,13 +294,25 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Ordered_Set =>
-                     Put_Line ("AMF.Values.Value_Collection_Of_String,");
+                     Holder_Name :=
+                       To_Unbounded_Wide_Wide_String
+                        ("AMF.Holders.String_Collections.To_Holder");
+                     Convertor_Name :=
+                       To_Unbounded_Wide_Wide_String
+                        ("AMF.String_Collections.Wrap");
+                     Put_Line ("AMF.Values.Value_Holder,");
 
                   when Bag =>
                      raise Program_Error;
 
                   when Sequence =>
-                     Put_Line ("AMF.Values.Value_Collection_Of_String,");
+                     Holder_Name :=
+                       To_Unbounded_Wide_Wide_String
+                        ("AMF.Holders.String_Collections.To_Holder");
+                     Convertor_Name :=
+                       To_Unbounded_Wide_Wide_String
+                        ("AMF.String_Collections.Wrap");
+                     Put_Line ("AMF.Values.Value_Holder,");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
@@ -734,7 +746,9 @@ package body Generator.Reflection is
       Put_Line ("with AMF.CMOF.Visibility_Kind_Holders;");
       Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
+      Put_Line ("with AMF.Holders.String_Collections;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
+      Put_Line ("with AMF.String_Collections;");
       Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Collections;");
       Put_Line ("with CMOF.Internals.Metamodel;");

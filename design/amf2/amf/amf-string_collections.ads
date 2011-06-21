@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,30 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides data type to pass "any" value through reflection
---  capability. It supports only CMOF related types for now, but will be
---  extended to support other types or replaced by League.Values package at
---  some point.
-------------------------------------------------------------------------------
-with CMOF;
-with League.Holders;
+private with Ada.Finalization;
 
-package AMF.Values is
+with CMOF;
+
+package AMF.String_Collections is
 
    pragma Preelaborate;
 
-   type Value_Kinds is
-    (Value_None,
-     Value_Holder);
+   type Collection_Of_String is tagged private;
 
-   type Value (Kind : Value_Kinds := Value_None) is record
-      case Kind is
-         when Value_None =>
-            null;
+   function Wrap
+    (Collection : CMOF.Collection_Of_CMOF_String) return Collection_Of_String;
 
-         when Value_Holder =>
-            Holder_Value : League.Holders.Holder;
-      end case;
-   end record;
+private
 
-end AMF.Values;
+   type Collection_Of_String is
+     new Ada.Finalization.Controlled with null record;
+
+end AMF.String_Collections;

@@ -48,7 +48,9 @@ with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
+with AMF.Holders.String_Collections;
 with AMF.Internals.CMOF_Elements;
+with AMF.String_Collections;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
@@ -1164,15 +1166,15 @@ package body CMOF.Internals.Reflection is
             --  OpaqueExpression::body : String
 
             return
-             (AMF.Values.Value_Collection_Of_String,
-              Internal_Get_Body (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.String_Collections.To_Holder (AMF.String_Collections.Wrap (Internal_Get_Body (Self))));
 
          elsif Property = MP_CMOF_Opaque_Expression_Language then
             --  OpaqueExpression::language : String
 
             return
-             (AMF.Values.Value_Collection_Of_String,
-              Internal_Get_Language (Self));
+             (AMF.Values.Value_Holder,
+              AMF.Holders.String_Collections.To_Holder (AMF.String_Collections.Wrap (Internal_Get_Language (Self))));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
