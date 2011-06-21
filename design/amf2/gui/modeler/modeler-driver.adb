@@ -47,6 +47,7 @@ with Qt_Ada.Application;
 with Qt4.Core_Applications;
 with Qt4.Strings;
 
+with CMOF.Internals.Setup;
 with Modeler.Main_Windows;
 
 procedure Modeler.Driver is
