@@ -47,10 +47,13 @@ private with Qt4.Model_Indices;
 with Qt4.Objects;
 private with Qt4.Variants;
 
+with AMF.Listeners;
+
 package Modeler.Containment_Tree_Models is
 
    type Containment_Tree_Model is
-     limited new Qt4.Abstract_Item_Models.Q_Abstract_Item_Model with private;
+     limited new Qt4.Abstract_Item_Models.Q_Abstract_Item_Model
+       and AMF.Listeners.Abstract_Listener with private;
 
    type Containment_Tree_Model_Access is
      access all Containment_Tree_Model'Class;
@@ -67,7 +70,7 @@ private
 
    type Containment_Tree_Model is limited
      new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
-       with null record;
+       and AMF.Listeners.Abstract_Listener with null record;
 
    overriding function Column_Count
     (Self   : not null access constant Containment_Tree_Model;

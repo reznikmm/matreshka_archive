@@ -76,6 +76,8 @@ package body Modeler.Containment_Tree_Models is
          do
             Qt4.Abstract_Item_Models.Directors.Constructors.Initialize
              (Self, Parent);
+
+            AMF.Listeners.Register (AMF.Listeners.Listener_Access (Self));
          end return;
       end Create;
 
