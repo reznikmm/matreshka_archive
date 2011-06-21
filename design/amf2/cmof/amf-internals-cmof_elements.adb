@@ -59,7 +59,7 @@ package body AMF.Internals.CMOF_Elements is
    overriding function Get
     (Self     : not null access constant CMOF_Element_Proxy;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return AMF.Values.Value is
+       return League.Holders.Holder is
    begin
       return
         Standard.CMOF.Reflection.Get
@@ -102,7 +102,7 @@ package body AMF.Internals.CMOF_Elements is
    overriding procedure Set
     (Self     : not null access CMOF_Element_Proxy;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Value    : AMF.Values.Value) is
+     Value    : League.Holders.Holder) is
    begin
       Standard.CMOF.Reflection.Set
        (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id, Value);

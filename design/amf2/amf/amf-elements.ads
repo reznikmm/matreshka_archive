@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
-with AMF.Values;
+with League.Holders;
 
 package AMF.Elements is
 
@@ -61,7 +61,7 @@ package AMF.Elements is
    not overriding function Get
     (Self     : not null access constant Abstract_Element;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return AMF.Values.Value is abstract;
+       return League.Holders.Holder is abstract;
    --  Gets the value of the given property. If the Property has multiplicity
    --  upper bound of 1, get() returns the value of the Property. If Property
    --  has multiplicity upper bound >1, get() returns a ReflectiveCollection
@@ -74,7 +74,7 @@ package AMF.Elements is
    not overriding procedure Set
     (Self     : not null access Abstract_Element;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Value    : AMF.Values.Value) is abstract;
+     Value    : League.Holders.Holder) is abstract;
    --  If the Property has multiplicity upper bound = 1, set() atomically
    --  updates the value of the Property to the object parameter. If Property
    --  has multiplicity upper bound >1, the Object must be a kind of

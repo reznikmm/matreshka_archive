@@ -147,7 +147,7 @@ package body CMOF.Reflection is
 
    function Get
     (Self     : CMOF_Element;
-     Property : CMOF_Property) return AMF.Values.Value is
+     Property : CMOF_Property) return League.Holders.Holder is
    begin
       return CMOF.Internals.Reflection.Get (Self, Property);
    end Get;
@@ -168,7 +168,7 @@ package body CMOF.Reflection is
    procedure Set
     (Self     : CMOF_Element;
      Property : CMOF_Property;
-     Value    : AMF.Values.Value) is
+     Value    : League.Holders.Holder) is
    begin
       CMOF.Internals.Reflection.Set (Self, Property, Value);
    end Set;

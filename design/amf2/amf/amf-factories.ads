@@ -44,8 +44,8 @@
 with League.Strings;
 
 with AMF.Elements;
-with AMF.Values;
 with CMOF;
+with League.Holders;
 
 package AMF.Factories is
 
@@ -71,12 +71,12 @@ package AMF.Factories is
     (Self      : not null access AMF_Factory;
      Data_Type : CMOF.CMOF_Data_Type;
      Image     : League.Strings.Universal_String)
-       return AMF.Values.Value is abstract;
+       return League.Holders.Holder is abstract;
 
    not overriding function Convert_To_String
     (Self      : not null access AMF_Factory;
      Data_Type : CMOF.CMOF_Data_Type;
-     Value     : AMF.Values.Value)
+     Value     : League.Holders.Holder)
        return League.Strings.Universal_String is abstract;
 
 end AMF.Factories;

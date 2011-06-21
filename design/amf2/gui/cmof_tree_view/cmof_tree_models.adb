@@ -370,7 +370,7 @@ package body CMOF_Tree_Models is
                declare
                   C : constant AMF.Elements.Collections.Reflective_Collection
                     := AMF.Holders.Collections.Element
-                        (Self.Element.Get (Self.Attribute).Holder_Value);
+                        (Self.Element.Get (Self.Attribute));
 
                begin
                   for J in 1 .. C.Length loop
@@ -394,7 +394,7 @@ package body CMOF_Tree_Models is
 
                   C : constant AMF.Elements.Element_Access
                     := AMF.Holders.Elements.Element
-                        (Self.Element.Get (Self.Attribute).Holder_Value);
+                        (Self.Element.Get (Self.Attribute));
 
                begin
                   if C = null then

@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Features;
-with AMF.Values;
+with League.Holders;
 
 package AMF.Listeners is
 
@@ -83,22 +83,22 @@ package AMF.Listeners is
     (Self      : not null access Abstract_Listener;
      Feature   : not null AMF.CMOF.Features.CMOF_Feature_Access;
      Position  : Optional_Integer;
-     Old_Value : AMF.Values.Value;
-     New_Value : AMF.Values.Value) is null;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder) is null;
 
    not overriding procedure Feature_Attribute_Remove
     (Self      : not null access Abstract_Listener;
      Feature   : not null AMF.CMOF.Features.CMOF_Feature_Access;
      Position  : Optional_Integer;
-     Old_Value : AMF.Values.Value;
-     New_Value : AMF.Values.Value) is null;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder) is null;
 
    not overriding procedure Feature_Attribute_Set
     (Self      : not null access Abstract_Listener;
      Feature   : not null AMF.CMOF.Features.CMOF_Feature_Access;
      Position  : Optional_Integer;
-     Old_Value : AMF.Values.Value;
-     New_Value : AMF.Values.Value) is null;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder) is null;
 
    not overriding procedure Link_Add
     (Self : not null access Abstract_Listener) is null;

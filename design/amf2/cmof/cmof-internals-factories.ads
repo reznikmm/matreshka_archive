@@ -43,11 +43,11 @@
 ------------------------------------------------------------------------------
 --  Factory for CMOF classes.
 ------------------------------------------------------------------------------
+with League.Holders;
 with League.Strings;
 
 with AMF.Elements;
 with AMF.Factories;
-with AMF.Values;
 
 package CMOF.Internals.Factories is
 
@@ -68,11 +68,11 @@ package CMOF.Internals.Factories is
    overriding function Create_From_String
     (Self      : not null access CMOF_Factory;
      Data_Type : CMOF_Data_Type;
-     Image     : League.Strings.Universal_String) return AMF.Values.Value;
+     Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
    overriding function Convert_To_String
     (Self      : not null access CMOF_Factory;
      Data_Type : CMOF_Data_Type;
-     Value     : AMF.Values.Value) return League.Strings.Universal_String;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String;
 
 end CMOF.Internals.Factories;

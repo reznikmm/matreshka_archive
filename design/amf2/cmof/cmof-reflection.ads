@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  Reflection
-with AMF.Values;
+with League.Holders;
 
 package CMOF.Reflection is
 
@@ -52,11 +52,11 @@ package CMOF.Reflection is
 
    function Get
     (Self     : CMOF_Element;
-     Property : CMOF_Property) return AMF.Values.Value;
+     Property : CMOF_Property) return League.Holders.Holder;
 
    procedure Set
     (Self     : CMOF_Element;
      Property : CMOF_Property;
-     Value    : AMF.Values.Value);
+     Value    : League.Holders.Holder);
 
 end CMOF.Reflection;

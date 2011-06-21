@@ -186,7 +186,7 @@ package body Generator.Reflection is
                 & Attribute_Type.Get_Name.Value.To_Wide_Wide_String);
             New_Line;
             Put_Line ("            return");
-            Put ("             (");
+            Put ("              ");
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
@@ -196,7 +196,6 @@ package body Generator.Reflection is
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
                      ("CMOF.Internals.Proxies.Get_Proxy");
-                  Put_Line ("AMF.Values.Value_Holder,");
 
                else
                   Holder_Name :=
@@ -205,7 +204,6 @@ package body Generator.Reflection is
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
                      ("CMOF.Internals.Collections.Wrap");
-                  Put_Line ("AMF.Values.Value_Holder,");
                end if;
 
             elsif Attribute_Type.Get_Name = Boolean_Name then
@@ -214,7 +212,6 @@ package body Generator.Reflection is
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String
                         ("League.Holders.Booleans.To_Holder");
-                     Put_Line ("AMF.Values.Value_Holder,");
 
                   when Holder =>
                      raise Program_Error;
@@ -241,7 +238,6 @@ package body Generator.Reflection is
                   when Holder =>
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
-                     Put_Line ("AMF.Values.Value_Holder,");
 
                   when Set =>
                      raise Program_Error;
@@ -259,7 +255,6 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put_Line ("AMF.Values.Value_Holder,");
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String
                         ("AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder");
@@ -288,7 +283,6 @@ package body Generator.Reflection is
                   when Holder =>
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
-                     Put_Line ("AMF.Values.Value_Holder,");
 
                   when Set =>
                      raise Program_Error;
@@ -300,7 +294,6 @@ package body Generator.Reflection is
                      Convertor_Name :=
                        To_Unbounded_Wide_Wide_String
                         ("AMF.String_Collections.Wrap");
-                     Put_Line ("AMF.Values.Value_Holder,");
 
                   when Bag =>
                      raise Program_Error;
@@ -312,7 +305,6 @@ package body Generator.Reflection is
                      Convertor_Name :=
                        To_Unbounded_Wide_Wide_String
                         ("AMF.String_Collections.Wrap");
-                     Put_Line ("AMF.Values.Value_Holder,");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
@@ -321,7 +313,6 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put_Line ("AMF.Values.Value_Holder,");
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
 
@@ -341,13 +332,11 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put_Line ("AMF.Values.Value_Holder,");
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String
                         ("AMF.CMOF.Visibility_Kind_Holders.To_Holder");
 
                   when Holder =>
-                     Put_Line ("AMF.Values.Value_Holder,");
                      Holder_Name :=
                        To_Unbounded_Wide_Wide_String
                         ("AMF.CMOF.Holders.To_Holder");
@@ -369,31 +358,20 @@ package body Generator.Reflection is
                raise Program_Error;
             end if;
 
-            if Holder_Name = Null_Unbounded_Wide_Wide_String then
-               Put_Line
-                ("              Internal_Get_"
+            if Convertor_Name = Null_Unbounded_Wide_Wide_String then
+               Put_Line (To_Wide_Wide_String (Holder_Name));
+               Put_Line ("               (Internal_Get_"
                    & To_Ada_Identifier (Attribute.Get_Name.Value)
                    & " (Self));");
 
             else
-               if Convertor_Name = Null_Unbounded_Wide_Wide_String then
-                  Put_Line
-                   ("              "
-                      & To_Wide_Wide_String (Holder_Name)
-                      & " (Internal_Get_"
-                      & To_Ada_Identifier (Attribute.Get_Name.Value)
-                      & " (Self)));");
-
-               else
-                  Put_Line
-                   ("              "
-                      & To_Wide_Wide_String (Holder_Name)
-                      & " ("
-                      & To_Wide_Wide_String (Convertor_Name)
-                      & " (Internal_Get_"
-                      & To_Ada_Identifier (Attribute.Get_Name.Value)
-                      & " (Self))));");
-               end if;
+               Put_Line (To_Wide_Wide_String (Holder_Name));
+               Put_Line
+                ("               (" & To_Wide_Wide_String (Convertor_Name));
+               Put_Line
+                ("                 (Internal_Get_"
+                   & To_Ada_Identifier (Attribute.Get_Name.Value)
+                   & " (Self)));");
             end if;
          end Generate_Attribute;
 
@@ -402,7 +380,7 @@ package body Generator.Reflection is
             Put_Header (Name, 6);
             New_Line;
             Put_Line
-             ("      function " & Name & " return AMF.Values.Value is");
+             ("      function " & Name & " return League.Holders.Holder is");
             Put_Line ("      begin");
             Class.All_Attributes.Iterate (Generate_Attribute'Access);
             New_Line;
@@ -430,7 +408,8 @@ package body Generator.Reflection is
       begin
          if not Class.Get_Is_Abstract then
             New_Line;
-            Put_Line ("      function " & Name & " return AMF.Values.Value;");
+            Put_Line
+             ("      function " & Name & " return League.Holders.Holder;");
             Put_Line
              ("      --  Returns attribute's value of instance of "
                 & Class.Get_Name.Value.To_Wide_Wide_String
@@ -552,7 +531,7 @@ package body Generator.Reflection is
                   Put
                    ("AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class"
                       & " (AMF.Holders.Elements.Element"
-                      & " (Value.Holder_Value).all).Id");
+                      & " (Value).all).Id");
 
                else
                   --  XXX all elements from the set should be copied into
@@ -565,7 +544,7 @@ package body Generator.Reflection is
                case Representation (Attribute) is
                   when Value =>
                      Put
-                      ("League.Holders.Booleans.Element (Value.Holder_Value)");
+                      ("League.Holders.Booleans.Element (Value)");
 
                   when Holder =>
                      raise Program_Error;
@@ -589,7 +568,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value.Holder_Value)");
+                     Put ("AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -609,7 +588,7 @@ package body Generator.Reflection is
                   when Value =>
                      Put
                       ("AMF.CMOF.Parameter_Direction_Kind_Holders.Element"
-                         & " (Value.Holder_Value)");
+                         & " (Value)");
 
                   when Holder =>
                      raise Program_Error;
@@ -633,7 +612,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value.Holder_Value)");
+                     Put ("AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -654,7 +633,7 @@ package body Generator.Reflection is
                      raise Program_Error;
 
                   when Holder =>
-                     Put ("AMF.Holders.Element (Value.Holder_Value)");
+                     Put ("AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -673,11 +652,10 @@ package body Generator.Reflection is
                case Representation (Attribute) is
                   when Value =>
                      Put
-                      ("AMF.CMOF.Visibility_Kind_Holders.Element"
-                         & " (Value.Holder_Value)");
+                      ("AMF.CMOF.Visibility_Kind_Holders.Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.CMOF.Holders.Element (Value.Holder_Value)");
+                     Put ("AMF.CMOF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -770,7 +748,7 @@ package body Generator.Reflection is
       New_Line;
       Put_Line ("   function Get");
       Put_Line ("    (Self     : CMOF_Element;");
-      Put_Line ("     Property : CMOF_Property) return AMF.Values.Value");
+      Put_Line ("     Property : CMOF_Property) return League.Holders.Holder");
       Put_Line ("   is");
       Class_Info.Iterate (Generate_Getter_Specification'Access);
       Class_Info.Iterate (Generate_Getter_Implementation'Access);
@@ -805,7 +783,7 @@ package body Generator.Reflection is
       Put_Line ("   procedure Set");
       Put_Line ("    (Self     : CMOF_Element;");
       Put_Line ("     Property : CMOF_Property;");
-      Put_Line ("     Value    : AMF.Values.Value)");
+      Put_Line ("     Value    : League.Holders.Holder)");
       Put_Line ("   is");
       Class_Info.Iterate (Generate_Setter_Specification'Access);
       Class_Info.Iterate (Generate_Setter_Implementation'Access);

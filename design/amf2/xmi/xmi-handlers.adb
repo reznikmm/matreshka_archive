@@ -55,7 +55,6 @@ with AMF.CMOF.Data_Types;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Factories.Registry;
-with AMF.Values;
 with CMOF.Extents;
 with CMOF.XMI_Helper;
 

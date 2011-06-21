@@ -52,7 +52,6 @@ with Interfaces;
 
 with League.Strings;
 
-with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;

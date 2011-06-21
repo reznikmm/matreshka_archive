@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Values;
+with League.Holders;
 
 package CMOF.Internals.Reflection is
 
@@ -49,11 +49,11 @@ package CMOF.Internals.Reflection is
 
    function Get
     (Self     : CMOF_Element;
-     Property : CMOF_Property) return AMF.Values.Value;
+     Property : CMOF_Property) return League.Holders.Holder;
 
    procedure Set
     (Self     : CMOF_Element;
      Property : CMOF_Property;
-     Value    : AMF.Values.Value);
+     Value    : League.Holders.Holder);
 
 end CMOF.Internals.Reflection;

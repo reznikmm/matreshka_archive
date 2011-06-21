@@ -52,7 +52,6 @@ with AMF.Holders.Unlimited_Naturals;
 with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
-with AMF.Values;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
@@ -193,10 +192,8 @@ package body Generator.Initialization is
     (Element : CMOF_Element;
      Numbers : CMOF_Element_Number_Maps.Map)
    is
-
       use AMF.Holders;
       use League.Holders;
-      use type AMF.Values.Value_Kinds;
 
       Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
 
@@ -213,7 +210,8 @@ package body Generator.Initialization is
          Property    : constant CMOF_Property
            := CMOF_Named_Element_Ordered_Sets.Element (Position);
          Association : constant CMOF_Association := Get_Association (Property);
-         Value       : constant AMF.Values.Value := Get (Element, Property);
+         Value       : constant League.Holders.Holder
+           := Get (Element, Property);
 
       begin
          if Is_Data_Type (Get_Type (Property)) then
@@ -224,7 +222,7 @@ package body Generator.Initialization is
                Put (Numbers.Element (Element), Width => 0);
                Put (", ");
 
-               if League.Holders.Booleans.Element (Value.Holder_Value) then
+               if League.Holders.Booleans.Element (Value) then
                   Put_Line ("True);");
 
                else
@@ -243,7 +241,7 @@ package body Generator.Initialization is
                   Put_Line
                    (", (False,"
                       & Integer'Wide_Wide_Image
-                         (League.Holders.Integers.Element (Value.Holder_Value))
+                         (League.Holders.Integers.Element (Value))
                       & "));");
 
                else
@@ -260,7 +258,7 @@ package body Generator.Initialization is
                   Put (", ");
 
                   if AMF.Holders.Unlimited_Naturals.Element
-                      (Value.Holder_Value).Unlimited
+                      (Value).Unlimited
                   then
                      Put_Line ("(False, (Unlimited => True)));");
 
@@ -269,7 +267,7 @@ package body Generator.Initialization is
                       ("(False, (False,"
                          & Integer'Wide_Wide_Image
                             (AMF.Holders.Unlimited_Naturals.Element
-                              (Value.Holder_Value).Value)
+                              (Value).Value)
                          & ")));");
                   end if;
 
@@ -285,7 +283,7 @@ package body Generator.Initialization is
                       & ": Multivalued string value");
 
                elsif Get_Lower (Property) = 0 then
-                  if not Is_Empty (Value.Holder_Value) then
+                  if not Is_Empty (Value) then
                      Put_Line
                       ("   Internal_Set_"
                          & To_Ada_Identifier (Get_Name (Property)));
@@ -294,8 +292,7 @@ package body Generator.Initialization is
                      Put_Line (",");
                      Put_Line
                       ("     (False, League.Strings.To_Universal_String ("""
-                         & League.Holders.Element
-                            (Value.Holder_Value).To_Wide_Wide_String
+                         & League.Holders.Element (Value).To_Wide_Wide_String
                          & """)));");
                   end if;
 
@@ -311,7 +308,7 @@ package body Generator.Initialization is
                Put (", ");
 
                case AMF.CMOF.Parameter_Direction_Kind_Holders.Element
-                     (Value.Holder_Value)
+                     (Value)
                is
                   when In_Direction =>
                      Put_Line ("In_Direction);");
@@ -353,9 +350,6 @@ package body Generator.Initialization is
     (Element : CMOF_Element;
      Numbers : CMOF_Element_Number_Maps.Map)
    is
-
-      use type AMF.Values.Value_Kinds;
-
       Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
 
       procedure Generate_Attribute_Initialization
@@ -373,7 +367,8 @@ package body Generator.Initialization is
          Property    : constant CMOF_Property
            := CMOF_Named_Element_Ordered_Sets.Element (Position);
          Association : constant CMOF_Association := Get_Association (Property);
-         Value       : constant AMF.Values.Value := Get (Element, Property);
+         Value       : constant League.Holders.Holder
+           := Get (Element, Property);
 
          procedure Establish_Link
           (Association : CMOF_Association;
@@ -421,7 +416,7 @@ package body Generator.Initialization is
          if Is_Class (Get_Type (Property)) then
             if Is_Multivalued (Property) then
                for J in 1 .. AMF.Holders.Collections.Element
-                              (Value.Holder_Value).Length
+                              (Value).Length
                loop
                   Establish_Link
                    (Association,
@@ -429,21 +424,17 @@ package body Generator.Initialization is
                     Element,
                     CMOF_Element_Of
                      (AMF.CMOF.Elements.CMOF_Element_Access
-                       (AMF.Holders.Collections.Element
-                         (Value.Holder_Value).Element (J))));
+                       (AMF.Holders.Collections.Element (Value).Element (J))));
                end loop;
 
             else
-               if AMF.Holders.Elements.Element (Value.Holder_Value)
-                    /= null
-               then
+               if AMF.Holders.Elements.Element (Value) /= null then
                   Establish_Link
                    (Association,
                     Property,
                     Element,
                     AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-                     (AMF.Holders.Elements.Element
-                       (Value.Holder_Value).all).Id);
+                     (AMF.Holders.Elements.Element (Value).all).Id);
                end if;
             end if;
          end if;
