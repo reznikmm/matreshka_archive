@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Qt4.Graphics_Views;
 private with Qt4.Graphics_Views.Directors;
+private with Qt4.Painters;
+private with Qt4.Rect_Fs;
 with Qt4.Widgets;
 
 package Modeler.Diagram_Views is
@@ -65,5 +67,10 @@ private
    type Diagram_View is
      limited new Qt4.Graphics_Views.Directors.Q_Graphics_View_Director
        with null record;
+
+   overriding procedure Draw_Background
+    (Self    : not null access Diagram_View;
+     Painter : in out Qt4.Painters.Q_Painter'Class;
+     Rect    : Qt4.Rect_Fs.Q_Rect_F);
 
 end Modeler.Diagram_Views;

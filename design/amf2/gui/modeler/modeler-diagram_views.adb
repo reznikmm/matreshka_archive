@@ -67,4 +67,16 @@ package body Modeler.Diagram_Views is
 
    end Constructors;
 
+   ---------------------
+   -- Draw_Background --
+   ---------------------
+
+   overriding procedure Draw_Background
+    (Self    : not null access Diagram_View;
+     Painter : in out Qt4.Painters.Q_Painter'Class;
+     Rect    : Qt4.Rect_Fs.Q_Rect_F) is
+   begin
+      null;
+   end Draw_Background;
+
 end Modeler.Diagram_Views;
