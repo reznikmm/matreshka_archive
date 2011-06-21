@@ -21,7 +21,8 @@ project Modeler is
          for Languages use ("Amoc");
          for Source_Dirs use Common_Source_Dirs;
          for Source_Files use
-          ("modeler-diagram_views.ads",
+          ("modeler-containment_tree_models.ads",
+           "modeler-diagram_views.ads",
            "modeler-main_windows.ads");
          for Object_Dir use ".amoc";
    end case;

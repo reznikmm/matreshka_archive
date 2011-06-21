@@ -41,40 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Qt4.Dock_Widgets.Constructors;
-with Qt4.Settings.Constructors;
-with Qt4.Strings;
-with Qt4.Tree_Views.Constructors;
-with Qt4.Variants;
+with Modeler.Containment_Tree_Models.MOC;
+pragma Unreferenced (Modeler.Containment_Tree_Models.MOC);
 
-with Modeler.Containment_Tree_Models;
-with Modeler.Diagram_Views;
-with Modeler.Main_Windows.MOC;
-pragma Unreferenced (Modeler.Main_Windows.MOC);
+package body Modeler.Containment_Tree_Models is
 
-package body Modeler.Main_Windows is
+   ------------------
+   -- Column_Count --
+   ------------------
 
-   function "+" (Item : String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Utf_8;
-
-   -----------------
-   -- Close_Event --
-   -----------------
-
-   overriding procedure Close_Event
-     (Self  : not null access Main_Window;
-      Event : not null access Qt4.Close_Events.Q_Close_Event'Class)
-   is
-      Settings : constant not null Qt4.Settings.Q_Settings_Access :=
-        Qt4.Settings.Constructors.Create;
-
+   overriding function Column_Count
+    (Self   : not null access constant Containment_Tree_Model;
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer is
    begin
-      Settings.Begin_Group (+"MainWindow");
-      Settings.Set_Value (+"size", Qt4.Variants.Create (Self.Size));
-      Settings.End_Group;
-      Settings.Sync;
-      Settings.Delete_Later;
-   end Close_Event;
+      return 0;
+   end Column_Count;
 
    ------------------
    -- Constructors --
@@ -82,65 +63,71 @@ package body Modeler.Main_Windows is
 
    package body Constructors is
 
-      procedure Initialize (Self : not null access Main_Window'Class);
-
       ------------
       -- Create --
       ------------
 
-      function Create return not null Main_Window_Access is
+      function Create
+       (Parent : access Qt4.Objects.Q_Object'Class := null)
+          return not null Containment_Tree_Model_Access is
       begin
-         return Self : constant not null Main_Window_Access
-           := new Main_Window
+         return Self : constant not null Containment_Tree_Model_Access
+           := new Containment_Tree_Model
          do
-            Initialize (Self);
+            Qt4.Abstract_Item_Models.Directors.Constructors.Initialize
+             (Self, Parent);
          end return;
       end Create;
 
-      ----------------
-      -- Initialize --
-      ----------------
-
-      procedure Initialize (Self : not null access Main_Window'Class) is
-         Settings     : constant not null Qt4.Settings.Q_Settings_Access
-           := Qt4.Settings.Constructors.Create;
-         Dock         : Qt4.Dock_Widgets.Q_Dock_Widget_Access;
-         Tree_View    : Qt4.Tree_Views.Q_Tree_View_Access;
-         Tree_Model   :
-           Modeler.Containment_Tree_Models.Containment_Tree_Model_Access;
-         Diagram_View : Modeler.Diagram_Views.Diagram_View_Access;
-
-      begin
-         Qt4.Main_Windows.Directors.Constructors.Initialize (Self);
-
-         --  Create components of main window.
-
-         Dock := Qt4.Dock_Widgets.Constructors.Create (Self);
-         Tree_Model := Modeler.Containment_Tree_Models.Constructors.Create;
-         Tree_View := Qt4.Tree_Views.Constructors.Create (Dock);
-         Tree_View.Set_Model (Tree_Model);
-         Dock.Set_Widget (Tree_View);
-         Dock.Set_Window_Title (+"Containment");
-
-         Diagram_View := Modeler.Diagram_Views.Constructors.Create (Self);
-
-         --  Set components of main window.
-
-         Self.Set_Central_Widget (Diagram_View);
-         Self.Add_Dock_Widget (Qt4.Left_Dock_Widget_Area, Dock);
-
-         --  Restore size of the window.
-
-         Settings.Begin_Group (+"MainWindow");
-
-         if Settings.Contains (+"size") then
-            Self.Resize (Settings.Value (+"size").To_Size);
-         end if;
-
-         Settings.End_Group;
-         Settings.Delete_Later;
-      end Initialize;
-
    end Constructors;
 
-end Modeler.Main_Windows;
+   ----------
+   -- Data --
+   ----------
+
+   overriding function Data
+    (Self  : not null access Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index;
+     Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant is
+   begin
+      return Qt4.Variants.Create;
+   end Data;
+
+   -----------
+   -- Index --
+   -----------
+
+   overriding function Index
+    (Self   : not null access constant Containment_Tree_Model;
+     Row    : Qt4.Q_Integer;
+     Column : Qt4.Q_Integer;
+     Parent : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Model_Indices.Q_Model_Index is
+   begin
+      return Qt4.Model_Indices.Create;
+   end Index;
+
+   ------------
+   -- Parent --
+   ------------
+
+   overriding function Parent
+    (Self  : not null access constant Containment_Tree_Model;
+     Child : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Model_Indices.Q_Model_Index is
+   begin
+      return Qt4.Model_Indices.Create;
+   end Parent;
+
+   ---------------
+   -- Row_Count --
+   ---------------
+
+   overriding function Row_Count
+    (Self   : not null access constant Containment_Tree_Model;
+     Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer is
+   begin
+      return 0;
+   end Row_Count;
+
+end Modeler.Containment_Tree_Models;
