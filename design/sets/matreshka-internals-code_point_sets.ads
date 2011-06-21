@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 --  Internal representation of code point sets.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Atomics.Counters;
-with Matreshka.Internals.Unicode.Ucd;
+private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Internals.Unicode.Ucd;
 
 package Matreshka.Internals.Code_Point_Sets is
 

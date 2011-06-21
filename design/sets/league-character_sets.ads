@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides sets of Unicode characters (code points).
 ------------------------------------------------------------------------------
-
 with League.Strings;
 with League.Characters;
 
