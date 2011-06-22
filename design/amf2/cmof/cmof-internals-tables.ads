@@ -193,8 +193,10 @@ private package CMOF.Internals.Tables is
    type Collection_Kinds is (C_None, C_Set, C_Ordered_Set, C_Bag, C_Sequence);
 
    type Collection_Record (Kind : Collection_Kinds := C_None) is record
---      Owner : CMOF_Element;
+      Owner     : CMOF_Element;
       --  Owner of the collection.
+      Property  : CMOF_Property;
+      --  Property represented by collection.
 
 --      Read_Only : Boolean;
       Head      : Collection_Element_Identifier;
@@ -238,8 +240,20 @@ private package CMOF.Internals.Tables is
     (Collection : Collection_Of_CMOF_Element);
    --  Initialize specified collection as ordered set.
 
+   procedure Initialize_Ordered_Set_Collection
+    (Element    : CMOF_Element;
+     Property   : CMOF_Property;
+     Collection : Collection_Of_CMOF_Element);
+   --  Initialize specified collection as ordered set.
+
    procedure Initialize_Set_Collection
     (Collection : Collection_Of_CMOF_Element);
+   --  Initialize specified collection as set.
+
+   procedure Initialize_Set_Collection
+    (Element    : CMOF_Element;
+     Property   : CMOF_Property;
+     Collection : Collection_Of_CMOF_Element);
    --  Initialize specified collection as set.
 
    procedure Allocate_Collection_Of_Cmof_Element_Slots

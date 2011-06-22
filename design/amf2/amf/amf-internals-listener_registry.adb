@@ -63,6 +63,21 @@ package body AMF.Internals.Listener_Registry is
       end loop;
    end Notify_Instance_Create;
 
+   ---------------------
+   -- Notify_Link_Add --
+   ---------------------
+
+   procedure Notify_Link_Add
+    (Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access) is
+   begin
+      for J in 1 .. Natural (Registry.Length) loop
+         Registry.Element (J).Link_Add
+          (Association, First_Element, Second_Element);
+      end loop;
+   end Notify_Link_Add;
+
    --------------
    -- Register --
    --------------

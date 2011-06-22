@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Holders;
 
+with AMF.CMOF.Associations;
 with AMF.CMOF.Features;
 with AMF.Elements;
 
@@ -105,7 +106,10 @@ package AMF.Listeners is
      New_Value : League.Holders.Holder) is null;
 
    not overriding procedure Link_Add
-    (Self : not null access Abstract_Listener) is null;
+    (Self           : not null access Abstract_Listener;
+     Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access) is null;
 
    not overriding procedure Link_Remove
     (Self : not null access Abstract_Listener) is null;

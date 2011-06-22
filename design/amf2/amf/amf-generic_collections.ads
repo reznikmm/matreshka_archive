@@ -72,6 +72,10 @@ package AMF.Generic_Collections is
    function Element
     (Self : Collection'Class; Index : Positive) return not null Element_Access;
 
+--   procedure Add (Self : Collection'Class; Item : not null Element_Access);
+   procedure Add
+    (Self : Collection'Class; Item : not null access Abstract_Element'Class);
+
    --  XXX These subprograms must be removed after complete of the
    --  implementation.
 

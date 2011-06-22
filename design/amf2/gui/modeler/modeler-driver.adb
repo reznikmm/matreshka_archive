@@ -49,6 +49,8 @@ with Qt4.Strings;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Elements;
+with AMF.CMOF.Packageable_Elements.Collections;
+with AMF.CMOF.Packages;
 with AMF.Elements;
 with AMF.Factories.Registry;
 with CMOF.Internals.Setup;
@@ -85,21 +87,27 @@ begin
       Factory : constant AMF.Factories.AMF_Factory_Access
         := AMF.Factories.Registry.Resolve
             (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
-      Pack    : AMF.Elements.Element_Access
-        := Factory.Create
-            (Extent,
-             AMF.CMOF.Classes.CMOF_Class_Access
-              (AMF.CMOF.Elements.CMOF_Element_Access
-                (CMOF.XMI_Helper.Resolve (+"Package"))));
-      Class   : AMF.Elements.Element_Access
-        := Factory.Create
-            (Extent,
-             AMF.CMOF.Classes.CMOF_Class_Access
-              (AMF.CMOF.Elements.CMOF_Element_Access
-                (CMOF.XMI_Helper.Resolve (+"Class"))));
+      Pack    : AMF.CMOF.Packages.CMOF_Package_Access
+        := AMF.CMOF.Packages.CMOF_Package_Access
+            (Factory.Create
+              (Extent,
+               AMF.CMOF.Classes.CMOF_Class_Access
+                (AMF.CMOF.Elements.CMOF_Element_Access
+                  (CMOF.XMI_Helper.Resolve (+"Package")))));
+      Packed  :
+        AMF.CMOF.Packageable_Elements.Collections.
+          Set_Of_CMOF_Packageable_Element
+            := Pack.Get_Packaged_Element;
+      Class   : AMF.CMOF.Classes.CMOF_Class_Access
+        := AMF.CMOF.Classes.CMOF_Class_Access
+            (Factory.Create
+              (Extent,
+               AMF.CMOF.Classes.CMOF_Class_Access
+                (AMF.CMOF.Elements.CMOF_Element_Access
+                  (CMOF.XMI_Helper.Resolve (+"Class")))));
 
    begin
-      null;
+      Packed.Add (Class);
    end;
 
    --  XXX

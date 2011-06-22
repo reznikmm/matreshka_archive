@@ -41,11 +41,68 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.CMOF_Elements;
+with CMOF.Internals.Attributes;
+with CMOF.Internals.Links;
 with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Collections is
 
+   use CMOF.Internals.Attributes;
    use CMOF.Internals.Tables;
+
+   ---------
+   -- Add --
+   ---------
+
+   overriding procedure Add
+    (Self : not null access CMOF_Collection;
+     Item : AMF.Elements.Element_Access)
+   is
+      Owner       : constant CMOF_Element
+        := Tables.Collections.Table (Self.Collection).Owner;
+      Property    : constant CMOF_Property
+        := Tables.Collections.Table (Self.Collection).Property;
+      Association : constant CMOF_Association
+        := Internal_Get_Association (Property);
+      Element     : constant CMOF_Element
+        := AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id;
+      Member_End : constant Ordered_Set_Of_CMOF_Property
+        := CMOF.Internals.Attributes.Internal_Get_Member_End (Association);
+
+--      Member_End : constant Ordered_Set_Of_CMOF_Property
+--        := CMOF.Internals.Attributes.Internal_Get_Member_End (A);
+--
+--   begin
+--      --  XXX This implementation is limit links to connect elements from the
+--      --  same metamodel.
+--
+--      CMOF.Internals.Links.Internal_Create_Link
+--       (A,
+--        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+--         (First_Element.all).Id,
+--        CMOF.Internals.Collections.Element (Member_End, 1),
+--        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+--         (Second_Element.all).Id,
+--        CMOF.Internals.Collections.Element (Member_End, 2));
+   begin
+      if CMOF.Internals.Collections.Element (Member_End, 1) = Property then
+         CMOF.Internals.Links.Internal_Create_Link
+          (Association,
+           Owner,
+           Property,
+           Element,
+           CMOF.Internals.Collections.Element (Member_End, 2));
+
+      else
+         CMOF.Internals.Links.Internal_Create_Link
+          (Association,
+           Element,
+           CMOF.Internals.Collections.Element (Member_End, 1),
+           Owner,
+           Property);
+      end if;
+   end Add;
 
    -------------
    -- Element --

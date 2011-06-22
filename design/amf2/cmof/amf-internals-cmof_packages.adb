@@ -41,8 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Collections;
+with CMOF.Internals.Attributes;
+with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Packages is
+
+   use Standard.CMOF.Internals.Attributes;
+   use Standard.CMOF.Internals.Collections;
+
+   --------------------------
+   -- Get_Packaged_Element --
+   --------------------------
+
+   overriding function Get_Packaged_Element
+    (Self : not null access constant CMOF_Package_Proxy)
+       return
+         AMF.CMOF.Packageable_Elements.Collections.
+           Set_Of_CMOF_Packageable_Element is
+   begin
+      return
+        AMF.CMOF.Packageable_Elements.Collections.Wrap
+         (new CMOF_Collection'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Internal_Get_Packaged_Element (Self.Id)));
+   end Get_Packaged_Element;
 
    -----------------------
    -- Get_Owned_Element --
@@ -406,21 +429,6 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return Members_Are_Distinguishable (Self);
    end Members_Are_Distinguishable;
-
-   --------------------------
-   -- Get_Packaged_Element --
-   --------------------------
-
-   overriding function Get_Packaged_Element
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Packaged_Element unimplemented");
-      raise Program_Error;
-      return Get_Packaged_Element (Self);
-   end Get_Packaged_Element;
 
    --------------------
    -- Get_Owned_Type --

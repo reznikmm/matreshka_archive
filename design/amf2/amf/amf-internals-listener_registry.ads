@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Associations;
 with AMF.Elements;
 with AMF.Listeners;
 
@@ -52,5 +53,10 @@ package AMF.Internals.Listener_Registry is
 
    procedure Notify_Instance_Create
     (Element : not null AMF.Elements.Element_Access);
+
+   procedure Notify_Link_Add
+    (Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access);
 
 end AMF.Internals.Listener_Registry;

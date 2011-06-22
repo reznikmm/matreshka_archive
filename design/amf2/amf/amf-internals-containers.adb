@@ -44,6 +44,16 @@
 
 package body AMF.Internals.Containers is
 
+   ---------
+   -- Add --
+   ---------
+
+   overriding procedure Add
+    (Self : not null access Collection; Item : AMF.Elements.Element_Access) is
+   begin
+      Self.Elements.Append (Item);
+   end Add;
+
    -------------
    -- Element --
    -------------

@@ -58,4 +58,8 @@ package AMF.Internals.Collections is
     (Self  : not null access constant Abstract_Collection;
      Index : Positive) return not null AMF.Elements.Element_Access is abstract;
 
+   not overriding procedure Add
+    (Self : not null access Abstract_Collection;
+     Item : AMF.Elements.Element_Access) is abstract;
+
 end AMF.Internals.Collections;

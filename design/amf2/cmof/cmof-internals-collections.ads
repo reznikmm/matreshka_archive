@@ -69,6 +69,10 @@ package CMOF.Internals.Collections is
     (Self  : not null access constant CMOF_Collection;
      Index : Positive) return not null AMF.Elements.Element_Access;
 
+   overriding procedure Add
+    (Self : not null access CMOF_Collection;
+     Item : AMF.Elements.Element_Access);
+
    function Wrap
     (Collection : Collection_Of_CMOF_Element)
        return AMF.Elements.Collections.Reflective_Collection;

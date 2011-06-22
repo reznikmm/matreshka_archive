@@ -41,9 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Associations;
+with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
+with CMOF.Internals.Proxies;
 with CMOF.Internals.Tables;
 with CMOF.Multiplicity_Elements;
 
@@ -265,6 +268,12 @@ package body CMOF.Internals.Links is
             Create_Single_Single;
          end if;
       end if;
+
+      AMF.Internals.Listener_Registry.Notify_Link_Add
+       (AMF.CMOF.Associations.CMOF_Association_Access
+         (CMOF.Internals.Proxies.Get_Proxy (Association)),
+        CMOF.Internals.Proxies.Get_Proxy (First_Element),
+        CMOF.Internals.Proxies.Get_Proxy (Second_Element));
    end Internal_Create_Link;
 
 end CMOF.Internals.Links;

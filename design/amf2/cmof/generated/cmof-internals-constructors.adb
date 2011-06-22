@@ -61,6 +61,7 @@ with AMF.Internals.CMOF_Parameters;
 with AMF.Internals.CMOF_Primitive_Types;
 with AMF.Internals.CMOF_Properties;
 with CMOF.Internals.Extents;
+with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
 with CMOF.Internals.Types;
 with Matreshka.Internals.Strings;
@@ -68,6 +69,7 @@ with Matreshka.Internals.Strings;
 package body CMOF.Internals.Constructors is
 
    use CMOF.Internals.Extents;
+   use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
    use CMOF.Internals.Types;
 
@@ -311,39 +313,73 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 17);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  attribute
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Classifier_Attribute,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Classifier_Feature,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Classifier_General,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  inheritedMember
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Classifier_Inherited_Member,
+        Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  relatedElement
-       (Elements.Table (Self).Member (0).Collection + 13);
+       (Self,
+        MP_CMOF_Relationship_Related_Element,
+        Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Ordered_Set_Collection  --  ownedEnd
-       (Elements.Table (Self).Member (0).Collection + 14);
+       (Self,
+        MP_CMOF_Association_Owned_End,
+        Elements.Table (Self).Member (0).Collection + 14);
       Initialize_Set_Collection          --  endType
-       (Elements.Table (Self).Member (0).Collection + 15);
+       (Self,
+        MP_CMOF_Association_End_Type,
+        Elements.Table (Self).Member (0).Collection + 15);
       Initialize_Ordered_Set_Collection  --  memberEnd
-       (Elements.Table (Self).Member (0).Collection + 16);
+       (Self,
+        MP_CMOF_Association_Member_End,
+        Elements.Table (Self).Member (0).Collection + 16);
       Initialize_Set_Collection          --  navigableOwnedEnd
-       (Elements.Table (Self).Member (0).Collection + 17);
+       (Self,
+        MP_CMOF_Association_Navigable_Owned_End,
+        Elements.Table (Self).Member (0).Collection + 17);
       Internal_Append (Extent, Self);
    end Initialize_Association;
 
@@ -383,33 +419,61 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 14);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  attribute
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Classifier_Attribute,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Classifier_Feature,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Classifier_General,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  inheritedMember
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Classifier_Inherited_Member,
+        Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 13);
+       (Self,
+        MP_CMOF_Class_Owned_Attribute,
+        Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 14);
+       (Self,
+        MP_CMOF_Class_Owned_Operation,
+        Elements.Table (Self).Member (0).Collection + 14);
       Internal_Append (Extent, Self);
    end Initialize_Class;
 
@@ -437,11 +501,17 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  annotatedElement
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Comment_Annotated_Element,
+        Elements.Table (Self).Member (0).Collection + 3);
       Internal_Append (Extent, Self);
    end Initialize_Comment;
 
@@ -479,11 +549,17 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Ordered_Set_Collection  --  constrainedElement
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Constraint_Constrained_Element,
+        Elements.Table (Self).Member (0).Collection + 3);
       Internal_Append (Extent, Self);
    end Initialize_Constraint;
 
@@ -521,33 +597,61 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 14);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  attribute
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Classifier_Attribute,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Classifier_Feature,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Classifier_General,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  inheritedMember
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Classifier_Inherited_Member,
+        Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 13);
+       (Self,
+        MP_CMOF_Data_Type_Owned_Attribute,
+        Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 14);
+       (Self,
+        MP_CMOF_Data_Type_Owned_Operation,
+        Elements.Table (Self).Member (0).Collection + 14);
       Internal_Append (Extent, Self);
    end Initialize_Data_Type;
 
@@ -581,15 +685,25 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 5);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  relatedElement
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Relationship_Related_Element,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  source
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Directed_Relationship_Source,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  target
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Directed_Relationship_Target,
+        Elements.Table (Self).Member (0).Collection + 5);
       Internal_Append (Extent, Self);
    end Initialize_Element_Import;
 
@@ -627,35 +741,65 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 15);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  attribute
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Classifier_Attribute,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Classifier_Feature,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Classifier_General,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  inheritedMember
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Classifier_Inherited_Member,
+        Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 13);
+       (Self,
+        MP_CMOF_Data_Type_Owned_Attribute,
+        Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 14);
+       (Self,
+        MP_CMOF_Data_Type_Owned_Operation,
+        Elements.Table (Self).Member (0).Collection + 14);
       Initialize_Ordered_Set_Collection  --  ownedLiteral
-       (Elements.Table (Self).Member (0).Collection + 15);
+       (Self,
+        MP_CMOF_Enumeration_Owned_Literal,
+        Elements.Table (Self).Member (0).Collection + 15);
       Internal_Append (Extent, Self);
    end Initialize_Enumeration;
 
@@ -691,9 +835,13 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Internal_Append (Extent, Self);
    end Initialize_Enumeration_Literal;
 
@@ -729,11 +877,17 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Ordered_Set_Collection  --  operand
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Expression_Operand,
+        Elements.Table (Self).Member (0).Collection + 3);
       Internal_Append (Extent, Self);
    end Initialize_Expression;
 
@@ -773,9 +927,13 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Internal_Append (Extent, Self);
    end Initialize_Opaque_Expression;
 
@@ -830,37 +988,69 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 16);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  redefinitionContext
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Redefinable_Element_Redefinition_Context,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  redefinedElement
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Redefinable_Element_Redefined_Element,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  featuringClassifier
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Feature_Featuring_Classifier,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Ordered_Set_Collection  --  ownedParameter
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Behavioral_Feature_Owned_Parameter,
+        Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Set_Collection          --  raisedException
-       (Elements.Table (Self).Member (0).Collection + 13);
+       (Self,
+        MP_CMOF_Behavioral_Feature_Raised_Exception,
+        Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Set_Collection          --  redefinedOperation
-       (Elements.Table (Self).Member (0).Collection + 14);
+       (Self,
+        MP_CMOF_Operation_Redefined_Operation,
+        Elements.Table (Self).Member (0).Collection + 14);
       Initialize_Set_Collection          --  precondition
-       (Elements.Table (Self).Member (0).Collection + 15);
+       (Self,
+        MP_CMOF_Operation_Precondition,
+        Elements.Table (Self).Member (0).Collection + 15);
       Initialize_Set_Collection          --  postcondition
-       (Elements.Table (Self).Member (0).Collection + 16);
+       (Self,
+        MP_CMOF_Operation_Postcondition,
+        Elements.Table (Self).Member (0).Collection + 16);
       Internal_Append (Extent, Self);
    end Initialize_Operation;
 
@@ -898,29 +1088,53 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 12);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  packagedElement
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Package_Packaged_Element,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  ownedType
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Package_Owned_Type,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  nestedPackage
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Package_Nested_Package,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  packageMerge
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Package_Package_Merge,
+        Elements.Table (Self).Member (0).Collection + 12);
       Internal_Append (Extent, Self);
    end Initialize_Package;
 
@@ -952,15 +1166,25 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 5);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  relatedElement
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Relationship_Related_Element,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  source
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Directed_Relationship_Source,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  target
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Directed_Relationship_Target,
+        Elements.Table (Self).Member (0).Collection + 5);
       Internal_Append (Extent, Self);
    end Initialize_Package_Import;
 
@@ -990,15 +1214,25 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 5);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  relatedElement
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Relationship_Related_Element,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  source
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Directed_Relationship_Source,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  target
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Directed_Relationship_Target,
+        Elements.Table (Self).Member (0).Collection + 5);
       Internal_Append (Extent, Self);
    end Initialize_Package_Merge;
 
@@ -1049,9 +1283,13 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 2);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Internal_Append (Extent, Self);
    end Initialize_Parameter;
 
@@ -1089,33 +1327,61 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 14);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  importedMember
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Namespace_Imported_Member,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  elementImport
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Namespace_Element_Import,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  packageImport
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Namespace_Package_Import,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  ownedMember
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Namespace_Owned_Member,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  member
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Namespace_Member,
+        Elements.Table (Self).Member (0).Collection + 7);
       Initialize_Set_Collection          --  ownedRule
-       (Elements.Table (Self).Member (0).Collection + 8);
+       (Self,
+        MP_CMOF_Namespace_Owned_Rule,
+        Elements.Table (Self).Member (0).Collection + 8);
       Initialize_Set_Collection          --  attribute
-       (Elements.Table (Self).Member (0).Collection + 9);
+       (Self,
+        MP_CMOF_Classifier_Attribute,
+        Elements.Table (Self).Member (0).Collection + 9);
       Initialize_Set_Collection          --  feature
-       (Elements.Table (Self).Member (0).Collection + 10);
+       (Self,
+        MP_CMOF_Classifier_Feature,
+        Elements.Table (Self).Member (0).Collection + 10);
       Initialize_Set_Collection          --  general
-       (Elements.Table (Self).Member (0).Collection + 11);
+       (Self,
+        MP_CMOF_Classifier_General,
+        Elements.Table (Self).Member (0).Collection + 11);
       Initialize_Set_Collection          --  inheritedMember
-       (Elements.Table (Self).Member (0).Collection + 12);
+       (Self,
+        MP_CMOF_Classifier_Inherited_Member,
+        Elements.Table (Self).Member (0).Collection + 12);
       Initialize_Ordered_Set_Collection  --  ownedAttribute
-       (Elements.Table (Self).Member (0).Collection + 13);
+       (Self,
+        MP_CMOF_Data_Type_Owned_Attribute,
+        Elements.Table (Self).Member (0).Collection + 13);
       Initialize_Ordered_Set_Collection  --  ownedOperation
-       (Elements.Table (Self).Member (0).Collection + 14);
+       (Self,
+        MP_CMOF_Data_Type_Owned_Operation,
+        Elements.Table (Self).Member (0).Collection + 14);
       Internal_Append (Extent, Self);
    end Initialize_Primitive_Type;
 
@@ -1182,19 +1448,33 @@ package body CMOF.Internals.Constructors is
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 7);
       Initialize_Set_Collection          --  ownedElement
-       (Elements.Table (Self).Member (0).Collection + 1);
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
       Initialize_Set_Collection          --  ownedComment
-       (Elements.Table (Self).Member (0).Collection + 2);
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  redefinitionContext
-       (Elements.Table (Self).Member (0).Collection + 3);
+       (Self,
+        MP_CMOF_Redefinable_Element_Redefinition_Context,
+        Elements.Table (Self).Member (0).Collection + 3);
       Initialize_Set_Collection          --  redefinedElement
-       (Elements.Table (Self).Member (0).Collection + 4);
+       (Self,
+        MP_CMOF_Redefinable_Element_Redefined_Element,
+        Elements.Table (Self).Member (0).Collection + 4);
       Initialize_Set_Collection          --  featuringClassifier
-       (Elements.Table (Self).Member (0).Collection + 5);
+       (Self,
+        MP_CMOF_Feature_Featuring_Classifier,
+        Elements.Table (Self).Member (0).Collection + 5);
       Initialize_Set_Collection          --  redefinedProperty
-       (Elements.Table (Self).Member (0).Collection + 6);
+       (Self,
+        MP_CMOF_Property_Redefined_Property,
+        Elements.Table (Self).Member (0).Collection + 6);
       Initialize_Set_Collection          --  subsettedProperty
-       (Elements.Table (Self).Member (0).Collection + 7);
+       (Self,
+        MP_CMOF_Property_Subsetted_Property,
+        Elements.Table (Self).Member (0).Collection + 7);
       Internal_Append (Extent, Self);
    end Initialize_Property;
 

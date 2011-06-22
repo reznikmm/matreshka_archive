@@ -45,6 +45,17 @@ with AMF.Elements;
 
 package body AMF.Generic_Collections is
 
+   ---------
+   -- Add --
+   ---------
+
+--   procedure Add (Self : Collection'Class; Item : not null Element_Access) is
+   procedure Add
+    (Self : Collection'Class; Item : not null access Abstract_Element'Class) is
+   begin
+      Self.Collection.Add (AMF.Elements.Element_Access (Item));
+   end Add;
+
    -------------
    -- Element --
    -------------

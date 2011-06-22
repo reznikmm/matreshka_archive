@@ -64,4 +64,7 @@ package AMF.Internals.Containers is
     (Self  : not null access constant Collection;
      Index : Positive) return not null AMF.Elements.Element_Access;
 
+   overriding procedure Add
+    (Self : not null access Collection; Item : AMF.Elements.Element_Access);
+
 end AMF.Internals.Containers;

@@ -189,6 +189,19 @@ package body Modeler.Containment_Tree_Models is
       Self.End_Insert_Rows;
    end Instance_Create;
 
+   --------------
+   -- Link_Add --
+   --------------
+
+   overriding procedure Link_Add
+    (Self           : not null access Containment_Tree_Model;
+     Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access) is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line ("link add");
+   end Link_Add;
+
    ------------
    -- Parent --
    ------------

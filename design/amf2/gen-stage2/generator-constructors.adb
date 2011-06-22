@@ -541,7 +541,11 @@ package body Generator.Constructors is
             end case;
 
             Put_Line
-             ("       (Elements.Table (Self).Member (0).Collection +"
+             ("       (Self,");
+            Put_Line
+             ("        " & Property_Constant_Name (Attribute) & ",");
+            Put_Line
+             ("        Elements.Table (Self).Member (0).Collection +"
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
@@ -574,6 +578,7 @@ package body Generator.Constructors is
       Put_Header;
       Class_Info.Iterate (Generate_With'Access);
       Put_Line ("with CMOF.Internals.Extents;");
+      Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with Matreshka.Internals.Strings;");
@@ -581,6 +586,7 @@ package body Generator.Constructors is
       Put_Line ("package body CMOF.Internals.Constructors is");
       New_Line;
       Put_Line ("   use CMOF.Internals.Extents;");
+      Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use CMOF.Internals.Types;");
       Class_Info.Iterate (Generate_Create'Access);

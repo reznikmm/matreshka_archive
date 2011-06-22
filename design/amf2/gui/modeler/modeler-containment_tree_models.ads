@@ -50,6 +50,7 @@ private with Qt4.Model_Indices;
 with Qt4.Objects;
 private with Qt4.Variants;
 
+private with AMF.CMOF.Associations;
 private with AMF.CMOF.Elements.Hash;
 private with AMF.Elements;
 with AMF.Listeners;
@@ -138,5 +139,11 @@ private
    overriding procedure Instance_Create
     (Self    : not null access Containment_Tree_Model;
      Element : not null AMF.Elements.Element_Access);
+
+   overriding procedure Link_Add
+    (Self           : not null access Containment_Tree_Model;
+     Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access);
 
 end Modeler.Containment_Tree_Models;

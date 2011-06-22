@@ -97,9 +97,28 @@ package body CMOF.Internals.Tables is
     (Collection : Collection_Of_CMOF_Element) is
    begin
       Collections.Table (Collection) :=
-       (Kind => C_Ordered_Set,
-        Head => 0,
-        Tail => 0);
+       (Kind     => C_Ordered_Set,
+        Owner    => 0,
+        Property => 0,
+        Head     => 0,
+        Tail     => 0);
+   end Initialize_Ordered_Set_Collection;
+
+   ---------------------------------------
+   -- Initialize_Ordered_Set_Collection --
+   ---------------------------------------
+
+   procedure Initialize_Ordered_Set_Collection
+    (Element    : CMOF_Element;
+     Property   : CMOF_Property;
+     Collection : Collection_Of_CMOF_Element) is
+   begin
+      Collections.Table (Collection) :=
+       (Kind     => C_Ordered_Set,
+        Owner    => Element,
+        Property => Property,
+        Head     => 0,
+        Tail     => 0);
    end Initialize_Ordered_Set_Collection;
 
    -------------------------------
@@ -112,9 +131,28 @@ package body CMOF.Internals.Tables is
     (Collection : Collection_Of_CMOF_Element) is
    begin
       Collections.Table (Collection) :=
-       (Kind => C_Set,
-        Head => 0,
-        Tail => 0);
+       (Kind     => C_Set,
+        Owner    => 0,
+        Property => 0,
+        Head     => 0,
+        Tail     => 0);
+   end Initialize_Set_Collection;
+
+   -------------------------------
+   -- Initialize_Set_Collection --
+   -------------------------------
+
+   procedure Initialize_Set_Collection
+    (Element    : CMOF_Element;
+     Property   : CMOF_Property;
+     Collection : Collection_Of_CMOF_Element) is
+   begin
+      Collections.Table (Collection) :=
+       (Kind     => C_Set,
+        Owner    => Element,
+        Property => Property,
+        Head     => 0,
+        Tail     => 0);
    end Initialize_Set_Collection;
 
 end CMOF.Internals.Tables;
