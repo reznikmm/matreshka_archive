@@ -47,12 +47,23 @@ with Qt_Ada.Application;
 with Qt4.Core_Applications;
 with Qt4.Strings;
 
+with AMF.CMOF.Elements;
+with AMF.Elements;
+with AMF.Factories.Registry;
 with CMOF.Internals.Setup;
+with CMOF.Extents;
+with CMOF.XMI_Helper;
+with League.Strings;
+
 with Modeler.Main_Windows;
 
 procedure Modeler.Driver is
-   function "+" (Item : String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Utf_8;
+
+   function "+" (Item : Wide_Wide_String) return Qt4.Strings.Q_String
+     renames Qt4.Strings.From_Ucs_4;
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
    Window : Modeler.Main_Windows.Main_Window_Access;
 
@@ -65,6 +76,26 @@ begin
 
    Window := Main_Windows.Constructors.Create;
    Window.Show;
+
+   --  XXX
+
+   declare
+      Extent  : constant CMOF.CMOF_Extent := CMOF.Extents.Create_Extent;
+      Factory : constant AMF.Factories.AMF_Factory_Access
+        := AMF.Factories.Registry.Resolve
+            (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
+      Pack    : AMF.Elements.Element_Access
+        := Factory.Create
+            (Extent,
+             CMOF.XMI_Helper.CMOF_Element_Of
+              (AMF.CMOF.Elements.CMOF_Element_Access
+                (CMOF.XMI_Helper.Resolve (+"Package"))));
+
+   begin
+      null;
+   end;
+
+   --  XXX
 
    Qt_Ada.Application.Execute;
    Qt_Ada.Application.Finalize;

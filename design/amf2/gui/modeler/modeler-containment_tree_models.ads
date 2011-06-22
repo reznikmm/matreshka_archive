@@ -47,6 +47,7 @@ private with Qt4.Model_Indices;
 with Qt4.Objects;
 private with Qt4.Variants;
 
+private with AMF.Elements;
 with AMF.Listeners;
 
 package Modeler.Containment_Tree_Models is
@@ -72,6 +73,10 @@ private
      new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
        and AMF.Listeners.Abstract_Listener with null record;
 
+   -------------------------------------
+   -- QAbstractItemModel's operations --
+   -------------------------------------
+
    overriding function Column_Count
     (Self   : not null access constant Containment_Tree_Model;
      Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer;
@@ -96,5 +101,13 @@ private
    overriding function Row_Count
     (Self   : not null access constant Containment_Tree_Model;
      Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer;
+
+   ------------------------------------
+   -- Abstract_Listener's operations --
+   ------------------------------------
+
+   overriding procedure Instance_Create
+    (Self    : not null access Containment_Tree_Model;
+     Element : not null AMF.Elements.Element_Access);
 
 end Modeler.Containment_Tree_Models;

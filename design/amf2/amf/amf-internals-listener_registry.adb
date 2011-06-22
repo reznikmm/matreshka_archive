@@ -41,8 +41,27 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Containers.Vectors;
 
 package body AMF.Internals.Listener_Registry is
+
+   package Listener_Vectors is
+     new Ada.Containers.Vectors
+          (Positive, AMF.Listeners.Listener_Access, AMF.Listeners."=");
+
+   Registry : Listener_Vectors.Vector;
+
+   ----------------------------
+   -- Notify_Instance_Create --
+   ----------------------------
+
+   procedure Notify_Instance_Create
+    (Element : not null AMF.Elements.Element_Access) is
+   begin
+      for J in 1 .. Natural (Registry.Length) loop
+         Registry.Element (J).Instance_Create (Element);
+      end loop;
+   end Notify_Instance_Create;
 
    --------------
    -- Register --
@@ -50,7 +69,7 @@ package body AMF.Internals.Listener_Registry is
 
    procedure Register (Listener : not null AMF.Listeners.Listener_Access) is
    begin
-      null;
+      Registry.Append (Listener);
    end Register;
 
 end AMF.Internals.Listener_Registry;

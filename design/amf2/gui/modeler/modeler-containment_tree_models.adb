@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+
 with Modeler.Containment_Tree_Models.MOC;
 pragma Unreferenced (Modeler.Containment_Tree_Models.MOC);
 
@@ -108,6 +110,17 @@ package body Modeler.Containment_Tree_Models is
    begin
       return Qt4.Model_Indices.Create;
    end Index;
+
+   ---------------------
+   -- Instance_Create --
+   ---------------------
+
+   overriding procedure Instance_Create
+    (Self    : not null access Containment_Tree_Model;
+     Element : not null AMF.Elements.Element_Access) is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line ("created!!!!");
+   end Instance_Create;
 
    ------------
    -- Parent --

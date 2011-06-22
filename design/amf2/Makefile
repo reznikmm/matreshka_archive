@@ -12,7 +12,7 @@ all:
 	gprbuild -p -Pgen-stage2/gens.gpr
 #	time ./demo-reader data/cmof.xml
 #	./demo-viewer data/cmof.xml
-	(cd data/2.4 && ../../demo-viewer UML.cmof)
+#	(cd data/2.4 && ../../demo-viewer UML.cmof)
 
 #gen:
 #	gprbuild -p -Pgen-stage1/generator.gpr

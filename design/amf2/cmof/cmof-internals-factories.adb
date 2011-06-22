@@ -48,6 +48,7 @@ with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Constructors;
@@ -151,6 +152,9 @@ package body CMOF.Internals.Factories is
       else
          raise Program_Error with CMOF_Element'Image (Meta_Class);
       end if;
+
+      AMF.Internals.Listener_Registry.Notify_Instance_Create
+       (CMOF.Internals.Proxies.Get_Proxy (Element));
 
       return CMOF.Internals.Proxies.Get_Proxy (Element);
    end Create;

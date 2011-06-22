@@ -41,8 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Features;
 with League.Holders;
+
+with AMF.CMOF.Features;
+with AMF.Elements;
 
 package AMF.Listeners is
 
@@ -74,10 +76,12 @@ package AMF.Listeners is
     (Self : not null access Abstract_Listener) is null;
 
    not overriding procedure Instance_Create
-    (Self : not null access Abstract_Listener) is null;
+    (Self    : not null access Abstract_Listener;
+     Element : not null AMF.Elements.Element_Access) is null;
 
    not overriding procedure Instance_Remove
-    (Self : not null access Abstract_Listener) is null;
+    (Self    : not null access Abstract_Listener;
+     Element : not null AMF.Elements.Element_Access) is null;
 
    not overriding procedure Feature_Attribute_Add
     (Self      : not null access Abstract_Listener;

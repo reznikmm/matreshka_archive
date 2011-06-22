@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
 with AMF.Listeners;
 
 package AMF.Internals.Listener_Registry is
@@ -48,5 +49,8 @@ package AMF.Internals.Listener_Registry is
    pragma Preelaborate;
 
    procedure Register (Listener : not null AMF.Listeners.Listener_Access);
+
+   procedure Notify_Instance_Create
+    (Element : not null AMF.Elements.Element_Access);
 
 end AMF.Internals.Listener_Registry;
