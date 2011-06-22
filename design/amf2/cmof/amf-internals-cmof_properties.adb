@@ -95,6 +95,16 @@ package body AMF.Internals.CMOF_Properties is
       end if;
    end Get_Default;
 
+   ----------------------
+   -- Get_Is_Composite --
+   ----------------------
+
+   overriding function Get_Is_Composite
+    (Self : not null access constant CMOF_Property_Proxy) return Boolean is
+   begin
+      return Internal_Get_Is_Composite (Self.Id);
+   end Get_Is_Composite;
+
    --------------------
    -- Get_Is_Derived --
    --------------------
@@ -584,21 +594,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Default unimplemented");
       raise Program_Error;
    end Set_Default;
-
-   ----------------------
-   -- Get_Is_Composite --
-   ----------------------
-
-   overriding function Get_Is_Composite
-     (Self : not null access constant CMOF_Property_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Composite unimplemented");
-      raise Program_Error;
-      return Get_Is_Composite (Self);
-   end Get_Is_Composite;
 
    ----------------------
    -- Set_Is_Composite --

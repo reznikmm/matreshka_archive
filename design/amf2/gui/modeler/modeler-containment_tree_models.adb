@@ -47,11 +47,14 @@ with System.Address_To_Access_Conversions;
 with Qt4.Strings;
 
 with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Properties.Collections;
 
 with Modeler.Containment_Tree_Models.MOC;
 pragma Unreferenced (Modeler.Containment_Tree_Models.MOC);
 
 package body Modeler.Containment_Tree_Models is
+
+   use type Qt4.Q_Integer;
 
    package Node_Conversions is
      new System.Address_To_Access_Conversions (Node);
@@ -143,20 +146,24 @@ package body Modeler.Containment_Tree_Models is
      Parent : Qt4.Model_Indices.Q_Model_Index)
        return Qt4.Model_Indices.Q_Model_Index
    is
-      use type Qt4.Q_Integer;
+      N : Node_Access
+        := Node_Access (Node_Conversions.To_Pointer (Parent.Internal_Pointer));
 
    begin
+      --  Fix root node.
+
+      if N = null then
+         N := Self.Root;
+      end if;
+
       if Column = 0 then
-         if not Parent.Is_Valid then
-            if Row <= Self.Root.Children.Last_Index then
-               return
-                 Self.Create_Index
-                  (Row,
-                   Column,
-                   Node_Conversions.To_Address
-                    (Node_Conversions.Object_Pointer
-                      (Self.Root.Children.Element (Row))));
-            end if;
+         if Row <= N.Children.Last_Index then
+            return
+              Self.Create_Index
+               (Row,
+                Column,
+                Node_Conversions.To_Address
+                 (Node_Conversions.Object_Pointer (N.Children.Element (Row))));
          end if;
       end if;
 
@@ -175,8 +182,8 @@ package body Modeler.Containment_Tree_Models is
    is
       E : constant not null AMF.CMOF.Elements.CMOF_Element_Access
         := AMF.CMOF.Elements.CMOF_Element_Access (Element);
-      N : constant Node_Access
-        := new Node'(Element => E, Parent => null, Children => <>);
+      N : constant not null Node_Access
+        := new Node'(Element => E, Parent => Self.Root, Children => <>);
       L : constant Qt4.Q_Integer := Qt4.Q_Integer (Self.Root.Children.Length);
 
    begin
@@ -197,9 +204,55 @@ package body Modeler.Containment_Tree_Models is
     (Self           : not null access Containment_Tree_Model;
      Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
      First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access) is
+     Second_Element : not null AMF.Elements.Element_Access)
+   is
+      FE : constant not null AMF.CMOF.Elements.CMOF_Element_Access
+        := AMF.CMOF.Elements.CMOF_Element_Access (First_Element);
+      SE : constant not null AMF.CMOF.Elements.CMOF_Element_Access
+        := AMF.CMOF.Elements.CMOF_Element_Access (Second_Element);
+      ME : constant
+        AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+          := Association.Get_Member_End;
+      FN : constant not null Node_Access := Self.Map.Element (FE);
+      SN : constant not null Node_Access := Self.Map.Element (SE);
+      SP : Qt4.Model_Indices.Q_Model_Index;
+      DP : Qt4.Model_Indices.Q_Model_Index;
+
    begin
-      Ada.Wide_Wide_Text_IO.Put_Line ("link add");
+      if ME.Element (1).Get_Is_Composite then
+         --  Move second element to be child of first element.
+
+         if SN.Parent.Parent /= null then
+            Ada.Wide_Wide_Text_IO.Put_Line ("link add 1");
+         end if;
+
+         DP :=
+           Self.Create_Index
+            (FN.Parent.Children.Find_Index (FN),
+             0,
+             Node_Conversions.To_Address
+              (Node_Conversions.Object_Pointer (FN)));
+
+         if Self.Begin_Move_Rows
+             (SP,
+              SN.Parent.Children.Find_Index (SN),
+              SN.Parent.Children.Find_Index (SN),
+              DP,
+              FN.Children.Last_Index + 1)
+         then
+            SN.Parent.Children.Delete (SN.Parent.Children.Find_Index (SN));
+            FN.Children.Append (SN);
+            SN.Parent := FN;
+
+            Self.End_Move_Rows;
+
+         else
+            Ada.Wide_Wide_Text_IO.Put_Line ("link add 3");
+         end if;
+
+      elsif ME.Element (2).Get_Is_Composite then
+         Ada.Wide_Wide_Text_IO.Put_Line ("link add 2");
+      end if;
    end Link_Add;
 
    ------------
@@ -216,6 +269,16 @@ package body Modeler.Containment_Tree_Models is
 
    begin
       if N /= null and then N.Parent /= null then
+         if N.Parent.Parent /= null then
+            return
+              Self.Create_Index
+               (N.Parent.Parent.Children.Find_Index (N.Parent),
+                0,
+                Node_Conversions.To_Address
+                 (Node_Conversions.Object_Pointer (N.Parent)));
+         end if;
+
+      else
          Ada.Wide_Wide_Text_IO.Put_Line ("parent");
       end if;
 
