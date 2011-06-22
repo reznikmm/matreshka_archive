@@ -45,12 +45,54 @@
 ------------------------------------------------------------------------------
 private with Matreshka.Internals.Atomics.Counters;
 private with Matreshka.Internals.Unicode.Ucd;
+with League.Characters;
 
 package Matreshka.Internals.Code_Point_Sets is
 
    pragma Preelaborate;
 
    type Shared_Code_Point_Set (<>) is limited private;
+
+   function To_Set
+     (Sequence : Wide_Wide_String)
+     return Shared_Code_Point_Set;
+   --  Return set containing all characters from Sequence
+
+   function "=" (Left, Right : Shared_Code_Point_Set) return Boolean;
+
+   function "not"
+     (Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set;
+   --  Return complementing set of character
+
+   function "and"
+     (Left, Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set;
+   --  Return intersection of Left and Right
+
+   function "or"
+     (Left, Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set;
+   --  Return union of Left and Right
+
+   function "xor"
+     (Left, Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set;
+
+   function "-"
+     (Left, Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set;
+   --  Return difference
+
+   function Has
+     (Set     : Shared_Code_Point_Set;
+      Element : League.Characters.Universal_Character)
+     return Boolean;
+
+   function Is_Subset
+     (Elements : Shared_Code_Point_Set;
+      Set      : Shared_Code_Point_Set)
+     return Boolean;
 
 private
 
