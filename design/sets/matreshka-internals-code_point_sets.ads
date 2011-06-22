@@ -43,15 +43,39 @@
 ------------------------------------------------------------------------------
 --  Internal representation of code point sets.
 ------------------------------------------------------------------------------
-private with Matreshka.Internals.Atomics.Counters;
-private with Matreshka.Internals.Unicode.Ucd;
+with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Internals.Unicode.Ucd;
 with League.Characters;
 
 package Matreshka.Internals.Code_Point_Sets is
 
    pragma Preelaborate;
 
-   type Shared_Code_Point_Set (<>) is limited private;
+   subtype First_Stage_Index is
+     Matreshka.Internals.Unicode.Ucd.First_Stage_Index;
+
+   subtype Second_Stage_Index is
+     Matreshka.Internals.Unicode.Ucd.Second_Stage_Index;
+
+   type Boolean_Second_Stage is array (Second_Stage_Index) of Boolean;
+   pragma Pack (Boolean_Second_Stage);
+
+   type Second_Stage_Array_Index is new First_Stage_Index;
+
+   type Boolean_Second_Stage_Array is array (Second_Stage_Array_Index range <>)
+     of Boolean_Second_Stage;
+
+   type First_Stage_Map is array (First_Stage_Index)
+     of Second_Stage_Array_Index;
+
+   type Shared_Code_Point_Set (Last : Second_Stage_Array_Index) is limited
+   record
+      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      --  Atomic reference counter.
+
+      First_Stage   : First_Stage_Map;
+      Second_Stages : Boolean_Second_Stage_Array (0 .. Last);
+   end record;
 
    function To_Set
      (Sequence : Wide_Wide_String)
@@ -94,32 +118,33 @@ package Matreshka.Internals.Code_Point_Sets is
       Set      : Shared_Code_Point_Set)
      return Boolean;
 
-private
+   function Is_Empty (Set : Shared_Code_Point_Set) return Boolean;
 
-   subtype First_Stage_Index is
-     Matreshka.Internals.Unicode.Ucd.First_Stage_Index;
+   type Shared_Code_Point_Set_Access is access all Shared_Code_Point_Set;
 
-   subtype Second_Stage_Index is
-     Matreshka.Internals.Unicode.Ucd.Second_Stage_Index;
+   Shared_Empty : aliased Shared_Code_Point_Set :=
+     (Last => 0,
+      Counter => <>,
+      First_Stage => (others => 0),
+      Second_Stages => (others => (others => False)));
 
-   type Boolean_Second_Stage is array (Second_Stage_Index) of Boolean;
-   pragma Pack (Boolean_Second_Stage);
+   --  Globally defined empty shared code point set to be used as default value
+   --  Reference and Dereference subprograms known about this object and
+   --  never change its reference counter for speed optimization (atomic
+   --  increment/decrement operations have significant perfomance penalty)
+   --  and allows to be used in Preelaborateable_Initialization types.
 
-   type Second_Stage_Array_Index is new First_Stage_Index;
+   procedure Reference (Self : Shared_Code_Point_Set_Access);
+   pragma Inline (Reference);
+   --  Increment reference counter. Change of reference counter of Shared_Empty
+   --  object is prevented to provide speedup and to allow to use it to
+   --  initialize components of Preelaborateable_Initialization types.
 
-   type Boolean_Second_Stage_Array is array (Second_Stage_Array_Index range <>)
-     of Boolean_Second_Stage;
-
-   type First_Stage_Map is array (First_Stage_Index)
-     of Second_Stage_Array_Index;
-
-   type Shared_Code_Point_Set (Last : Second_Stage_Array_Index) is limited
-   record
-      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      --  Atomic reference counter.
-
-      First_Stage   : First_Stage_Map;
-      Second_Stages : Boolean_Second_Stage_Array (0 .. Last);
-   end record;
+   procedure Dereference (Self : in out Shared_Code_Point_Set_Access);
+   --  Decrement reference counter and free resources if it reach zero value.
+   --  Self is setted to null. Decrement of reference counter and deallocation
+   --  of Shared_Empty object is prevented to provide minor speedup and to
+   --  allow use it to initialize components of Preelaborateable_Initialization
+   --  types.
 
 end Matreshka.Internals.Code_Point_Sets;

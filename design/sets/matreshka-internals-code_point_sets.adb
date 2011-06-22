@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -39,10 +39,80 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
+with Ada.Containers.Generic_Array_Sort;
+with Ada.Unchecked_Deallocation;
+with League.Characters.Internals;
+with Matreshka.Internals.Unicode;
+
 package body Matreshka.Internals.Code_Point_Sets is
+
+   function Max_Result_Last (Left, Right : Shared_Code_Point_Set)
+     return Second_Stage_Array_Index;
+   pragma Inline (Max_Result_Last);
+
+   generic
+      with function Operator
+        (Left, Right : Boolean_Second_Stage)
+        return Boolean_Second_Stage;
+   function Apply_Binary_Operator
+     (Left, Right : Shared_Code_Point_Set)
+      return Shared_Code_Point_Set;
+
+   ---------------------------
+   -- Apply_Binary_Operator --
+   ---------------------------
+
+   function Apply_Binary_Operator
+     (Left, Right : Shared_Code_Point_Set)
+      return Shared_Code_Point_Set
+   is
+      Last          : Second_Stage_Array_Index := 0;
+      First_Stage   : First_Stage_Map;
+      Second_Stages : Boolean_Second_Stage_Array
+        (0 .. Max_Result_Last (Left, Right));
+
+      Set : array (Left.Second_Stages'Range, Right.Second_Stages'Range)
+        of Boolean := (others => (others => False));
+
+      Map : array (Left.Second_Stages'Range, Right.Second_Stages'Range)
+        of Second_Stage_Array_Index;
+   begin
+      for J in First_Stage'Range loop
+         if not Set (Left.First_Stage (J), Right.First_Stage (J)) then
+            Set (Left.First_Stage (J), Right.First_Stage (J)) := True;
+            Map (Left.First_Stage (J), Right.First_Stage (J)) := Last;
+
+            Second_Stages (Last) := Operator
+              (Left.Second_Stages (Left.First_Stage (J)),
+               Right.Second_Stages (Right.First_Stage (J)));
+
+            Last := Last + 1;
+         end if;
+
+         First_Stage (J) := Map (Left.First_Stage (J), Right.First_Stage (J));
+      end loop;
+
+      Last := Last - 1;
+
+      return
+        (Last => Last,
+         Counter => <>,
+         First_Stage => First_Stage,
+         Second_Stages => Second_Stages (0 .. Last));
+   end Apply_Binary_Operator;
+
+   function Apply_And is new Apply_Binary_Operator ("and");
+   function Apply_Or is new Apply_Binary_Operator ("or");
+   function Apply_Xor is new Apply_Binary_Operator ("xor");
+
+   function Minus
+     (Left, Right : Boolean_Second_Stage)
+     return Boolean_Second_Stage;
+
+   function Apply_Minus is new Apply_Binary_Operator (Minus);
 
    ---------
    -- "-" --
@@ -50,14 +120,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    function "-"
      (Left, Right : Shared_Code_Point_Set)
-      return Shared_Code_Point_Set
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (True, """-"" unimplemented");
-      raise Program_Error with "Unimplemented function ""-""";
-      return "-" (Left, Right);
-   end "-";
+     return Shared_Code_Point_Set renames Apply_Minus;
 
    ---------
    -- "=" --
@@ -82,46 +145,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    function "and"
      (Left, Right : Shared_Code_Point_Set)
-      return Shared_Code_Point_Set
-   is
-      Left_Size  : constant Positive := Natural (Left.Last) + 1;
-      Right_Size : constant Positive := Natural (Right.Last) + 1;
-      Max_Size   : constant Positive :=
-        Positive'Min (Left_Size * Right_Size, First_Stage_Index'Modulus);
-
-      Set : array (Left.Second_Stages'Range, Right.Second_Stages'Range)
-        of Boolean := (others => (others => False));
-
-      Map : array (Left.Second_Stages'Range, Right.Second_Stages'Range)
-        of Second_Stage_Array_Index;
-
-      Last          : Second_Stage_Array_Index := 0;
-      First_Stage   : First_Stage_Map;
-      Second_Stages : Boolean_Second_Stage_Array
-        (0 .. Second_Stage_Array_Index (Max_Size - 1));
-   begin
-      for J in First_Stage'Range loop
-         if not Set (Left.First_Stage (J), Right.First_Stage (J)) then
-            Set (Left.First_Stage (J), Right.First_Stage (J)) := True;
-            Map (Left.First_Stage (J), Right.First_Stage (J)) := Last;
-            Second_Stages (Last) :=
-              Left.Second_Stages (Left.First_Stage (J))
-              and
-              Right.Second_Stages (Right.First_Stage (J));
-            Last := Last + 1;
-         end if;
-
-         First_Stage (J) := Map (Left.First_Stage (J), Right.First_Stage (J));
-      end loop;
-
-      Last := Last - 1;
-
-      return
-        (Last => Last,
-         Counter => <>,
-         First_Stage => First_Stage,
-         Second_Stages => Second_Stages (0 .. Last));
-   end "and";
+     return Shared_Code_Point_Set renames Apply_And;
 
    -----------
    -- "not" --
@@ -149,14 +173,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    function "or"
      (Left, Right : Shared_Code_Point_Set)
-      return Shared_Code_Point_Set
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (True, """or"" unimplemented");
-      raise Program_Error with "Unimplemented function ""or""";
-      return "or" (Left, Right);
-   end "or";
+     return Shared_Code_Point_Set renames Apply_Or;
 
    -----------
    -- "xor" --
@@ -164,14 +181,30 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    function "xor"
      (Left, Right : Shared_Code_Point_Set)
-      return Shared_Code_Point_Set
-   is
+     return Shared_Code_Point_Set renames Apply_Xor;
+
+   -----------------
+   -- Dereference --
+   -----------------
+
+   procedure Dereference (Self : in out Shared_Code_Point_Set_Access) is
+      procedure Free is
+         new Ada.Unchecked_Deallocation
+           (Shared_Code_Point_Set, Shared_Code_Point_Set_Access);
+
+      pragma Assert (Self /= null);
+      pragma Suppress (Access_Check);
+
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (True, """xor"" unimplemented");
-      raise Program_Error with "Unimplemented function ""xor""";
-      return "xor" (Left, Right);
-   end "xor";
+      if Self /= Shared_Empty_Access
+        and then Matreshka.Internals.Atomics.Counters.Decrement
+                  (Self.Counter'Access)
+      then
+         Free (Self);
+      end if;
+
+      Self := null;
+   end Dereference;
 
    ---------
    -- Has --
@@ -182,12 +215,37 @@ package body Matreshka.Internals.Code_Point_Sets is
       Element : League.Characters.Universal_Character)
       return Boolean
    is
+      use Matreshka.Internals.Unicode;
+
+      First  : First_Stage_Index;
+      Second : Second_Stage_Index;
+      Code   : constant Code_Unit_32 :=
+        League.Characters.Internals.Internal (Element);
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (True, "Has unimplemented");
-      raise Program_Error with "Unimplemented function Has";
-      return Has (Set, Element);
+      if Is_Valid (Code) then
+         First := First_Stage_Index (Code / Second_Stage_Index'Modulus);
+         Second := Second_Stage_Index (Code mod Second_Stage_Index'Modulus);
+
+         return Set.Second_Stages (Set.First_Stage (First)) (Second);
+      else
+         return False;
+      end if;
    end Has;
+
+   --------------
+   -- Is_Empty --
+   --------------
+
+   function Is_Empty (Set : Shared_Code_Point_Set) return Boolean is
+   begin
+      for J in Set.Second_Stages'Range loop
+         if Set.Second_Stages (J) /= (Second_Stage_Index => False) then
+            return False;
+         end if;
+      end loop;
+
+      return True;
+   end Is_Empty;
 
    ---------------
    -- Is_Subset --
@@ -196,14 +254,48 @@ package body Matreshka.Internals.Code_Point_Sets is
    function Is_Subset
      (Elements : Shared_Code_Point_Set;
       Set      : Shared_Code_Point_Set)
-      return Boolean
-   is
+      return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (True, "Is_Subset unimplemented");
-      raise Program_Error with "Unimplemented function Is_Subset";
-      return Is_Subset (Elements, Set);
+      return Is_Empty (Elements - Set);
    end Is_Subset;
+
+   ---------------------
+   -- Max_Result_Last --
+   ---------------------
+
+   function Max_Result_Last
+     (Left, Right : Shared_Code_Point_Set)
+     return Second_Stage_Array_Index
+   is
+      Left_Size  : constant Positive := Natural (Left.Last) + 1;
+      Right_Size : constant Positive := Natural (Right.Last) + 1;
+      Max_Size   : constant Positive :=
+        Positive'Min (Left_Size * Right_Size, First_Stage_Index'Modulus);
+   begin
+      return Second_Stage_Array_Index (Max_Size - 1);
+   end Max_Result_Last;
+
+   -----------
+   -- Minus --
+   -----------
+
+   function Minus
+     (Left, Right : Boolean_Second_Stage)
+     return Boolean_Second_Stage is
+   begin
+      return Left and not Right;
+   end Minus;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   procedure Reference (Self : Shared_Code_Point_Set_Access) is
+   begin
+      if Self /= Shared_Empty_Access then
+         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      end if;
+   end Reference;
 
    ------------
    -- To_Set --
@@ -213,11 +305,90 @@ package body Matreshka.Internals.Code_Point_Sets is
      (Sequence : Wide_Wide_String)
       return Shared_Code_Point_Set
    is
+      use type First_Stage_Index;
+
+      function To_First_Index
+        (X : Wide_Wide_Character)
+        return First_Stage_Index;
+
+      function To_Second_Index
+        (X : Wide_Wide_Character)
+        return Second_Stage_Index;
+
+      procedure Sort is new Ada.Containers.Generic_Array_Sort
+        (Index_Type   => Positive,
+         Element_Type => Wide_Wide_Character,
+         Array_Type   => Wide_Wide_String);
+
+      --------------------
+      -- To_First_Index --
+      --------------------
+
+      function To_First_Index
+        (X : Wide_Wide_Character)
+        return First_Stage_Index
+      is
+         Pos : constant Natural := Wide_Wide_Character'Pos (X);
+      begin
+         return First_Stage_Index (Pos / Second_Stage_Index'Modulus);
+      end To_First_Index;
+
+      ---------------------
+      -- To_Second_Index --
+      ---------------------
+
+      function To_Second_Index
+        (X : Wide_Wide_Character)
+        return Second_Stage_Index
+      is
+         Pos : constant Natural := Wide_Wide_Character'Pos (X);
+      begin
+         return Second_Stage_Index (Pos mod Second_Stage_Index'Modulus);
+      end To_Second_Index;
+
+      Last    : Second_Stage_Array_Index := 1;
+      Code    : First_Stage_Index;
+      Ordered : Wide_Wide_String := Sequence;
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (True, "To_Set unimplemented");
-      raise Program_Error with "Unimplemented function To_Set";
-      return To_Set (Sequence);
+      if Ordered'Length = 0 then
+         return (Last          => 0,
+                 Counter       => <>,
+                 First_Stage   => (others => 0),
+                 Second_Stages => (others => (others => False)));
+      end if;
+
+      Sort (Ordered);
+
+      Code := To_First_Index (Ordered (Ordered'First));
+
+      for J in Ordered'Range loop
+         if Code /= To_First_Index (Ordered (J)) then
+            Code := To_First_Index (Ordered (J));
+            Last := Last + 1;
+         end if;
+      end loop;
+
+      return Result : Shared_Code_Point_Set :=
+        (Last          => Last,
+         Counter       => <>,
+         First_Stage   => (others => 0),
+         Second_Stages => (others => (others => False)))
+      do
+         Code := To_First_Index (Ordered (Ordered'First));
+         Last := 1;
+         Result.First_Stage (Code) := Last;
+
+         for J in Ordered'Range loop
+            if Code /= To_First_Index (Ordered (J)) then
+               Code := To_First_Index (Ordered (J));
+               Last := Last + 1;
+               Result.First_Stage (Code) := Last;
+            end if;
+
+            Result.Second_Stages (Last) (To_Second_Index (Ordered (J))) :=
+              True;
+         end loop;
+      end return;
    end To_Set;
 
 end Matreshka.Internals.Code_Point_Sets;

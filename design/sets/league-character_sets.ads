@@ -46,13 +46,16 @@
 with League.Strings;
 with League.Characters;
 
+private with Ada.Streams;
+private with Ada.Finalization;
+private with Matreshka.Internals.Code_Point_Sets;
+
 package League.Character_Sets is
 
    pragma Preelaborate;
    pragma Remote_Types;
 
    type Universal_Character_Set is tagged private;
-   pragma Preelaborable_Initialization (Universal_Character_Set);
 
    Empty_Universal_Character_Set : constant Universal_Character_Set;
 
@@ -112,11 +115,31 @@ package League.Character_Sets is
       Right : Universal_Character_Set)
      return Boolean renames Is_Subset;
 
+   function Is_Empty (Set : Universal_Character_Set) return Boolean;
+
 private
 
-   type Universal_Character_Set is tagged null record;
+   procedure Read
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : out Universal_Character_Set);
+
+   procedure Write
+    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+     Item   : Universal_Character_Set);
+
+   type Universal_Character_Set is new Ada.Finalization.Controlled with record
+      Data : Matreshka.Internals.Code_Point_Sets.Shared_Code_Point_Set_Access
+        := Matreshka.Internals.Code_Point_Sets.Shared_Empty'Access;
+   end record;
+   for Universal_Character_Set'Read use Read;
+   for Universal_Character_Set'Write use Write;
+
+   overriding procedure Adjust (Self : in out Universal_Character_Set);
+
+   overriding procedure Finalize (Self : in out Universal_Character_Set);
 
    Empty_Universal_Character_Set : constant Universal_Character_Set :=
-     (null record);
+     (Ada.Finalization.Controlled with
+        Data => Matreshka.Internals.Code_Point_Sets.Shared_Empty'Access);
 
 end League.Character_Sets;
