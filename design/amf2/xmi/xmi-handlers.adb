@@ -61,8 +61,6 @@ with CMOF.XMI_Helper;
 package body XMI.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
-   use CMOF.Extents;
-   use CMOF.XMI_Helper;
    use type AMF.CMOF.Properties.CMOF_Property_Access;
    use type League.Strings.Universal_String;
 
@@ -164,7 +162,8 @@ package body XMI.Handlers is
             Self.Current.Set
              (Property,
               Self.Factory.Create_From_String
-               (CMOF_Element_Of (Attribute_Type), Value));
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access (Attribute_Type),
+                Value));
 
          else
             Association := Property.Get_Association;
@@ -243,7 +242,8 @@ package body XMI.Handlers is
                     (File_Name.To_Wide_Wide_String)));
             end if;
 
-            Self.Current := Object (Documents.Element (File_Name), Name);
+            Self.Current :=
+              CMOF.Extents.Object (Documents.Element (File_Name), Name);
 
             if Self.Current = null then
                raise Program_Error;
@@ -253,9 +253,8 @@ package body XMI.Handlers is
       else
          --  Create new element.
 
-         Self.Current :=
-           Self.Factory.Create (Self.Extent, CMOF_Element_Of (Meta_Class));
-         Set_Id (Self.Current, Id);
+         Self.Current := Self.Factory.Create (Self.Extent, Meta_Class);
+         CMOF.XMI_Helper.Set_Id (Self.Current, Id);
          Self.Mapping.Insert (Id, Self.Current);
       end if;
 
@@ -390,7 +389,9 @@ package body XMI.Handlers is
                   Self.Current.Set
                    (Self.Attribute,
                     Self.Factory.Create_From_String
-                     (CMOF_Element_Of (Attribute_Type), Self.Text));
+                     (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                       (Attribute_Type),
+                      Self.Text));
 
                else
                   Put_Line
@@ -450,12 +451,10 @@ package body XMI.Handlers is
          --  even when order of ends is reversed.
 
          if Association.Get_Member_End.Element (1) = Attribute then
-            Self.Factory.Create_Link
-             (CMOF_Element_Of (Association), One_Element, Other_Element);
+            Self.Factory.Create_Link (Association, One_Element, Other_Element);
 
          else
-            Self.Factory.Create_Link
-             (CMOF_Element_Of (Association), Other_Element, One_Element);
+            Self.Factory.Create_Link (Association, Other_Element, One_Element);
          end if;
 
       else
@@ -464,8 +463,7 @@ package body XMI.Handlers is
          --  duplicate links.
 
          if Association.Get_Member_End.Element (1) = Attribute then
-            Self.Factory.Create_Link
-             (CMOF_Element_Of (Association), One_Element, Other_Element);
+            Self.Factory.Create_Link (Association, One_Element, Other_Element);
          end if;
       end if;
    end Establish_Link;

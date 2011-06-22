@@ -357,7 +357,8 @@ package body CMOF_Tree_Models is
                     True,
                     Qt4.Strings.From_Ucs_4
                      (CMOF.Extents.Factory (Self.Extent).Convert_To_String
-                       (CMOF_Element_Of (Attribute_Type),
+                       (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                         (Attribute_Type),
                         Self.Element.Get
                          (Self.Attribute)).To_Wide_Wide_String));
             Self.Children.Append (X);

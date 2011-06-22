@@ -47,6 +47,7 @@ with Qt_Ada.Application;
 with Qt4.Core_Applications;
 with Qt4.Strings;
 
+with AMF.CMOF.Classes;
 with AMF.CMOF.Elements;
 with AMF.Elements;
 with AMF.Factories.Registry;
@@ -87,7 +88,7 @@ begin
       Pack    : AMF.Elements.Element_Access
         := Factory.Create
             (Extent,
-             CMOF.XMI_Helper.CMOF_Element_Of
+             AMF.CMOF.Classes.CMOF_Class_Access
               (AMF.CMOF.Elements.CMOF_Element_Access
                 (CMOF.XMI_Helper.Resolve (+"Package"))));
 
