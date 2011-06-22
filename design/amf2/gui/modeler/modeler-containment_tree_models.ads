@@ -41,12 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Maps;
+private with Ada.Containers.Vectors;
+
 with Qt4.Abstract_Item_Models;
 private with Qt4.Abstract_Item_Models.Directors;
 private with Qt4.Model_Indices;
 with Qt4.Objects;
 private with Qt4.Variants;
 
+private with AMF.CMOF.Elements.Hash;
 private with AMF.Elements;
 with AMF.Listeners;
 
@@ -69,9 +73,34 @@ package Modeler.Containment_Tree_Models is
 
 private
 
+   subtype Q_Natural is Qt4.Q_Integer range 0 .. Qt4.Q_Integer'Last;
+
+   type Node;
+   type Node_Access is access all Node;
+
+   package Node_Vectors is
+     new Ada.Containers.Vectors (Q_Natural, Node_Access);
+
+   package Node_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.CMOF.Elements.CMOF_Element_Access,
+           Node_Access,
+           AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=");
+
+   type Node is record
+      Element  : AMF.CMOF.Elements.CMOF_Element_Access;
+      Parent   : Node_Access;
+      Children : Node_Vectors.Vector;
+   end record;
+
    type Containment_Tree_Model is limited
      new Qt4.Abstract_Item_Models.Directors.Q_Abstract_Item_Model_Director
-       and AMF.Listeners.Abstract_Listener with null record;
+       and AMF.Listeners.Abstract_Listener with
+   record
+      Root : Node_Access := new Node;
+      Map  : Node_Maps.Map;
+   end record;
 
    -------------------------------------
    -- QAbstractItemModel's operations --

@@ -41,69 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
+with AMF.Internals.CMOF_Elements;
 
-with Qt_Ada.Application;
-with Qt4.Core_Applications;
-with Qt4.Strings;
-
-with AMF.CMOF.Classes;
-with AMF.CMOF.Elements;
-with AMF.Elements;
-with AMF.Factories.Registry;
-with CMOF.Internals.Setup;
-with CMOF.Extents;
-with CMOF.XMI_Helper;
-with League.Strings;
-
-with Modeler.Main_Windows;
-
-procedure Modeler.Driver is
-
-   function "+" (Item : Wide_Wide_String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Ucs_4;
-   function "+"
-    (Item : Wide_Wide_String) return League.Strings.Universal_String
-       renames League.Strings.To_Universal_String;
-
-   Window : Modeler.Main_Windows.Main_Window_Access;
-
+function AMF.CMOF.Elements.Hash
+ (Item : AMF.CMOF.Elements.CMOF_Element_Access)
+    return Ada.Containers.Hash_Type is
 begin
-   Qt_Ada.Application.Initialize;
-   Qt4.Core_Applications.Set_Organization_Name (+"Vadim Godunko");
-   Qt4.Core_Applications.Set_Organization_Domain (+"qtada.com");
-   Qt4.Core_Applications.Set_Application_Name (+"Matreshka Modeler");
-   Qt4.Core_Applications.Set_Application_Version (+"0.2.0");
+   if Item = null then
+      return 0;
 
-   Window := Main_Windows.Constructors.Create;
-   Window.Show;
-
-   --  XXX
-
-   declare
-      Extent  : constant CMOF.CMOF_Extent := CMOF.Extents.Create_Extent;
-      Factory : constant AMF.Factories.AMF_Factory_Access
-        := AMF.Factories.Registry.Resolve
-            (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
-      Pack    : AMF.Elements.Element_Access
-        := Factory.Create
-            (Extent,
-             AMF.CMOF.Classes.CMOF_Class_Access
-              (AMF.CMOF.Elements.CMOF_Element_Access
-                (CMOF.XMI_Helper.Resolve (+"Package"))));
-      Class   : AMF.Elements.Element_Access
-        := Factory.Create
-            (Extent,
-             AMF.CMOF.Classes.CMOF_Class_Access
-              (AMF.CMOF.Elements.CMOF_Element_Access
-                (CMOF.XMI_Helper.Resolve (+"Class"))));
-
-   begin
-      null;
-   end;
-
-   --  XXX
-
-   Qt_Ada.Application.Execute;
-   Qt_Ada.Application.Finalize;
-end Modeler.Driver;
+   else
+      return
+        Ada.Containers.Hash_Type
+         (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id);
+   end if;
+end AMF.CMOF.Elements.Hash;

@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.CMOF_Elements;
 with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
@@ -52,12 +51,13 @@ with AMF.CMOF.Package_Merges.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages.Collections;
 with AMF.CMOF.Types.Collections;
+with AMF.Internals.CMOF_Named_Elements;
 with CMOF;
 
 package AMF.Internals.CMOF_Packages is
 
    type CMOF_Package_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
        and AMF.CMOF.Packages.CMOF_Package with null record;
 
    --  XXX These subprograms are stubs
@@ -77,10 +77,6 @@ package AMF.Internals.CMOF_Packages is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Package_Proxy)
        return Boolean;
-
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Package_Proxy)
-       return Optional_String;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Package_Proxy;
