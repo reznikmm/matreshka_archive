@@ -1,0 +1,12 @@
+with "../../gnat/matreshka_league.gpr";
+
+project Test_For_Sets is
+   for Main use ("test_for_sets.adb");
+   for Source_Dirs use (".");
+   for Object_Dir use ".objs";
+   for Exec_Dir use ".";
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
+   end Compiler;
+end Test_For_Sets;

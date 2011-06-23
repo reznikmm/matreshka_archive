@@ -196,7 +196,7 @@ package body Matreshka.Internals.Code_Point_Sets is
       pragma Suppress (Access_Check);
 
    begin
-      if Self /= Shared_Empty_Access
+      if Self /= Shared_Empty'Access
         and then Matreshka.Internals.Atomics.Counters.Decrement
                   (Self.Counter'Access)
       then
@@ -292,7 +292,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    procedure Reference (Self : Shared_Code_Point_Set_Access) is
    begin
-      if Self /= Shared_Empty_Access then
+      if Self /= Shared_Empty'Access then
          Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
