@@ -52,8 +52,10 @@ private with Qt4.Variants;
 
 private with AMF.CMOF.Associations;
 private with AMF.CMOF.Elements.Hash;
+private with AMF.CMOF.Properties;
 private with AMF.Elements;
 with AMF.Listeners;
+private with League.Holders;
 
 package Modeler.Containment_Tree_Models is
 
@@ -135,6 +137,14 @@ private
    ------------------------------------
    -- Abstract_Listener's operations --
    ------------------------------------
+
+   overriding procedure Attribute_Set
+    (Self      : not null access Containment_Tree_Model;
+     Element   : not null AMF.Elements.Element_Access;
+     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Position  : AMF.Optional_Integer;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder);
 
    overriding procedure Instance_Create
     (Self    : not null access Containment_Tree_Model;

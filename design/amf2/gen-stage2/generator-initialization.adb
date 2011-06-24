@@ -90,10 +90,17 @@ package body Generator.Initialization is
    procedure Generate_Metaclass_Initialization
     (Element : CMOF_Element;
      Numbers : CMOF_Element_Number_Maps.Map);
+   --  Generate initialization of metaclass element.
+
+   procedure Generate_Properties_Initialization
+    (Element : CMOF_Element;
+     Numbers : CMOF_Element_Number_Maps.Map);
+   --  Generate initialization of metaclass's properties.
 
    procedure Generate_Link_Initialization
     (Element : CMOF_Element;
      Numbers : CMOF_Element_Number_Maps.Map);
+   --  Generate initialization of links.
 
    function Has_Parameter_Direction_Kind_Type
     (Property : CMOF_Property) return Boolean;
@@ -184,11 +191,236 @@ package body Generator.Initialization is
       return Result;
    end Class_Properties_Except_Redefined;
 
+   ----------------------------------
+   -- Generate_Link_Initialization --
+   ----------------------------------
+
+   procedure Generate_Link_Initialization
+    (Element : CMOF_Element;
+     Numbers : CMOF_Element_Number_Maps.Map)
+   is
+      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
+
+      procedure Generate_Attribute_Initialization
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
+
+      ---------------------------------------
+      -- Generate_Attribute_Initialization --
+      ---------------------------------------
+
+      procedure Generate_Attribute_Initialization
+       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
+      is
+         use type AMF.Elements.Element_Access;
+
+         Property    : constant CMOF_Property
+           := CMOF_Named_Element_Ordered_Sets.Element (Position);
+         Association : constant CMOF_Association := Get_Association (Property);
+         Value       : constant League.Holders.Holder
+           := Get (Element, Property);
+
+         procedure Establish_Link
+          (Association : CMOF_Association;
+           Property    : CMOF_Property;
+           Element     : CMOF_Element;
+           Other       : CMOF_Element);
+
+         --------------------
+         -- Establish_Link --
+         --------------------
+
+         procedure Establish_Link
+          (Association : CMOF_Association;
+           Property    : CMOF_Property;
+           Element     : CMOF_Element;
+           Other       : CMOF_Element)
+         is
+            First_End  : constant CMOF_Property
+              := Collections.Element (Get_Member_End (Association), 1);
+            Second_End : constant CMOF_Property
+              := Collections.Element (Get_Member_End (Association), 2);
+
+         begin
+            if First_End = Property then
+               --  Link is created only when specified property is a first
+               --  property in the Association::membrEnd. This allows to
+               --  suppress generation of duplicate links.
+
+               Put_Line ("   Internal_Create_Link");
+               Put_Line
+                ("    (" & Association_Constant_Name (Association) & ",");
+               Put ("     ");
+               Put (Numbers.Element (Element), Width => 0);
+               Put_Line (",");
+               Put_Line ("     " & Property_Constant_Name (First_End) & ",");
+               Put ("     ");
+               Put (Numbers.Element (Other), Width => 0);
+               Put_Line (",");
+               Put_Line ("     " & Property_Constant_Name (Second_End) & ");");
+            end if;
+
+         end Establish_Link;
+
+      begin
+         if Is_Class (Get_Type (Property)) then
+            if Is_Multivalued (Property) then
+               for J in 1 .. AMF.Holders.Collections.Element
+                              (Value).Length
+               loop
+                  Establish_Link
+                   (Association,
+                    Property,
+                    Element,
+                    CMOF_Element_Of
+                     (AMF.CMOF.Elements.CMOF_Element_Access
+                       (AMF.Holders.Collections.Element (Value).Element (J))));
+               end loop;
+
+            else
+               if AMF.Holders.Elements.Element (Value) /= null then
+                  Establish_Link
+                   (Association,
+                    Property,
+                    Element,
+                    AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
+                     (AMF.Holders.Elements.Element (Value).all).Id);
+               end if;
+            end if;
+         end if;
+      end Generate_Attribute_Initialization;
+
+   begin
+      Sort
+       (Class_Properties_Except_Redefined (Meta_Class)).Iterate
+         (Generate_Attribute_Initialization'Access);
+   end Generate_Link_Initialization;
+
    ---------------------------------------
    -- Generate_Metaclass_Initialization --
    ---------------------------------------
 
    procedure Generate_Metaclass_Initialization
+    (Element : CMOF_Element;
+     Numbers : CMOF_Element_Number_Maps.Map)
+   is
+      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
+
+   begin
+      Put
+       ("   Initialize_"
+          & To_Ada_Identifier (Get_Name (Meta_Class))
+          & " (");
+      Put (Numbers.Element (Element), Width => 0);
+      Put_Line (", Extent);");
+   end Generate_Metaclass_Initialization;
+
+   ------------------------------------------------------
+   -- Generate_Metamodel_Initialization_Implementation --
+   ------------------------------------------------------
+
+   procedure Generate_Metamodel_Initialization_Implementation
+    (Elements : CMOF.Extents.CMOF_Element_Sets.Set;
+     Numbers  : CMOF_Element_Number_Maps.Map;
+     Total    : Positive)
+   is
+
+      procedure Generate_Metaclass_Initialization
+       (Position : CMOF_Element_Sets.Cursor);
+      --  Generates initialization of metaclass except links.
+
+      procedure Generate_Properties_Initialization
+       (Position : CMOF_Element_Sets.Cursor);
+      --  Generates initialization of metaclass except links.
+
+      procedure Generate_Link_Initialization
+       (Position : CMOF_Element_Sets.Cursor);
+      --  Generates initialization of links.
+
+      ----------------------------------
+      -- Generate_Link_Initialization --
+      ----------------------------------
+
+      procedure Generate_Link_Initialization
+       (Position : CMOF_Element_Sets.Cursor)
+      is
+         Element : constant CMOF_Element
+           := CMOF_Element_Sets.Element (Position);
+
+      begin
+         Generate_Link_Initialization (Element, Numbers);
+      end Generate_Link_Initialization;
+
+      ---------------------------------------
+      -- Generate_Metaclass_Initialization --
+      ---------------------------------------
+
+      procedure Generate_Metaclass_Initialization
+       (Position : CMOF_Element_Sets.Cursor)
+      is
+         Element : constant CMOF_Element
+           := CMOF_Element_Sets.Element (Position);
+
+      begin
+         Generate_Metaclass_Initialization (Element, Numbers);
+      end Generate_Metaclass_Initialization;
+
+      ----------------------------------------
+      -- Generate_Properties_Initialization --
+      ----------------------------------------
+
+      procedure Generate_Properties_Initialization
+       (Position : CMOF_Element_Sets.Cursor)
+      is
+         Element : constant CMOF_Element
+           := CMOF_Element_Sets.Element (Position);
+
+      begin
+         Generate_Properties_Initialization (Element, Numbers);
+      end Generate_Properties_Initialization;
+
+   begin
+      Put_Header;
+      Put_Line ("with League.Strings;");
+      New_Line;
+      Put_Line ("with AMF;");
+      Put_Line ("with CMOF.Internals.Attributes;");
+      Put_Line ("with CMOF.Internals.Constructors;");
+      Put_Line ("with CMOF.Internals.Extents;");
+      Put_Line ("with CMOF.Internals.Links;");
+      Put_Line ("with CMOF.Internals.Metamodel;");
+      Put_Line ("with CMOF.Internals.Tables;");
+      New_Line;
+      Put_Line ("package body CMOF.Internals.Setup is");
+      New_Line;
+      Put_Line ("   use CMOF.Internals.Attributes;");
+      Put_Line ("   use CMOF.Internals.Constructors;");
+      Put_Line ("   use CMOF.Internals.Extents;");
+      Put_Line ("   use CMOF.Internals.Links;");
+      Put_Line ("   use CMOF.Internals.Metamodel;");
+      New_Line;
+      Put_Line ("   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;");
+      New_Line;
+      Put_Line ("begin");
+      Put
+       ("   Tables.Elements.Set_Last (");
+      Put (Total, Width => 0);
+      Put_Line
+       (");");
+      Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
+      New_Line;
+      Elements.Iterate (Generate_Metaclass_Initialization'Access);
+      Elements.Iterate (Generate_Properties_Initialization'Access);
+      New_Line;
+      Elements.Iterate (Generate_Link_Initialization'Access);
+      New_Line;
+      Put_Line ("end CMOF.Internals.Setup;");
+   end Generate_Metamodel_Initialization_Implementation;
+
+   ----------------------------------------
+   -- Generate_Properties_Initialization --
+   ----------------------------------------
+
+   procedure Generate_Properties_Initialization
     (Element : CMOF_Element;
      Numbers : CMOF_Element_Number_Maps.Map)
    is
@@ -331,202 +563,11 @@ package body Generator.Initialization is
       end Generate_Attribute_Initialization;
 
    begin
-      Put
-       ("   Initialize_"
-          & To_Ada_Identifier (Get_Name (Meta_Class))
-          & " (");
-      Put (Numbers.Element (Element), Width => 0);
-      Put_Line (", Extent);");
+      New_Line;
       Sort
        (Class_Properties_Except_Redefined (Meta_Class)).Iterate
          (Generate_Attribute_Initialization'Access);
-   end Generate_Metaclass_Initialization;
-
-   ----------------------------------
-   -- Generate_Link_Initialization --
-   ----------------------------------
-
-   procedure Generate_Link_Initialization
-    (Element : CMOF_Element;
-     Numbers : CMOF_Element_Number_Maps.Map)
-   is
-      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
-
-      procedure Generate_Attribute_Initialization
-       (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
-
-      ---------------------------------------
-      -- Generate_Attribute_Initialization --
-      ---------------------------------------
-
-      procedure Generate_Attribute_Initialization
-       (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
-      is
-         use type AMF.Elements.Element_Access;
-
-         Property    : constant CMOF_Property
-           := CMOF_Named_Element_Ordered_Sets.Element (Position);
-         Association : constant CMOF_Association := Get_Association (Property);
-         Value       : constant League.Holders.Holder
-           := Get (Element, Property);
-
-         procedure Establish_Link
-          (Association : CMOF_Association;
-           Property    : CMOF_Property;
-           Element     : CMOF_Element;
-           Other       : CMOF_Element);
-
-         --------------------
-         -- Establish_Link --
-         --------------------
-
-         procedure Establish_Link
-          (Association : CMOF_Association;
-           Property    : CMOF_Property;
-           Element     : CMOF_Element;
-           Other       : CMOF_Element)
-         is
-            First_End  : constant CMOF_Property
-              := Collections.Element (Get_Member_End (Association), 1);
-            Second_End : constant CMOF_Property
-              := Collections.Element (Get_Member_End (Association), 2);
-
-         begin
-            if First_End = Property then
-               --  Link is created only when specified property is a first
-               --  property in the Association::membrEnd. This allows to
-               --  suppress generation of duplicate links.
-
-               Put_Line ("   Internal_Create_Link");
-               Put_Line
-                ("    (" & Association_Constant_Name (Association) & ",");
-               Put ("     ");
-               Put (Numbers.Element (Element), Width => 0);
-               Put_Line (",");
-               Put_Line ("     " & Property_Constant_Name (First_End) & ",");
-               Put ("     ");
-               Put (Numbers.Element (Other), Width => 0);
-               Put_Line (",");
-               Put_Line ("     " & Property_Constant_Name (Second_End) & ");");
-            end if;
-
-         end Establish_Link;
-
-      begin
-         if Is_Class (Get_Type (Property)) then
-            if Is_Multivalued (Property) then
-               for J in 1 .. AMF.Holders.Collections.Element
-                              (Value).Length
-               loop
-                  Establish_Link
-                   (Association,
-                    Property,
-                    Element,
-                    CMOF_Element_Of
-                     (AMF.CMOF.Elements.CMOF_Element_Access
-                       (AMF.Holders.Collections.Element (Value).Element (J))));
-               end loop;
-
-            else
-               if AMF.Holders.Elements.Element (Value) /= null then
-                  Establish_Link
-                   (Association,
-                    Property,
-                    Element,
-                    AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-                     (AMF.Holders.Elements.Element (Value).all).Id);
-               end if;
-            end if;
-         end if;
-      end Generate_Attribute_Initialization;
-
-   begin
-      Sort
-       (Class_Properties_Except_Redefined (Meta_Class)).Iterate
-         (Generate_Attribute_Initialization'Access);
-   end Generate_Link_Initialization;
-
-   ------------------------------------------------------
-   -- Generate_Metamodel_Initialization_Implementation --
-   ------------------------------------------------------
-
-   procedure Generate_Metamodel_Initialization_Implementation
-    (Elements : CMOF.Extents.CMOF_Element_Sets.Set;
-     Numbers  : CMOF_Element_Number_Maps.Map;
-     Total    : Positive)
-   is
-
-      procedure Generate_Metaclass_Initialization
-       (Position : CMOF_Element_Sets.Cursor);
-      --  Generates initialization of metaclass except links.
-
-      procedure Generate_Link_Initialization
-       (Position : CMOF_Element_Sets.Cursor);
-      --  Generates initialization of links.
-
-      ----------------------------------
-      -- Generate_Link_Initialization --
-      ----------------------------------
-
-      procedure Generate_Link_Initialization
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Element : constant CMOF_Element
-           := CMOF_Element_Sets.Element (Position);
-
-      begin
-         Generate_Link_Initialization (Element, Numbers);
-      end Generate_Link_Initialization;
-
-      ---------------------------------------
-      -- Generate_Metaclass_Initialization --
-      ---------------------------------------
-
-      procedure Generate_Metaclass_Initialization
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Element : constant CMOF_Element
-           := CMOF_Element_Sets.Element (Position);
-
-      begin
-         Generate_Metaclass_Initialization (Element, Numbers);
-      end Generate_Metaclass_Initialization;
-
-   begin
-      Put_Header;
-      Put_Line ("with League.Strings;");
-      New_Line;
-      Put_Line ("with AMF;");
-      Put_Line ("with CMOF.Internals.Attributes;");
-      Put_Line ("with CMOF.Internals.Constructors;");
-      Put_Line ("with CMOF.Internals.Extents;");
-      Put_Line ("with CMOF.Internals.Links;");
-      Put_Line ("with CMOF.Internals.Metamodel;");
-      Put_Line ("with CMOF.Internals.Tables;");
-      New_Line;
-      Put_Line ("package body CMOF.Internals.Setup is");
-      New_Line;
-      Put_Line ("   use CMOF.Internals.Attributes;");
-      Put_Line ("   use CMOF.Internals.Constructors;");
-      Put_Line ("   use CMOF.Internals.Extents;");
-      Put_Line ("   use CMOF.Internals.Links;");
-      Put_Line ("   use CMOF.Internals.Metamodel;");
-      New_Line;
-      Put_Line ("   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;");
-      New_Line;
-      Put_Line ("begin");
-      Put
-       ("   Tables.Elements.Set_Last (");
-      Put (Total, Width => 0);
-      Put_Line
-       (");");
-      Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
-      New_Line;
-      Elements.Iterate (Generate_Metaclass_Initialization'Access);
-      Elements.Iterate (Generate_Link_Initialization'Access);
-      New_Line;
-      Put_Line ("end CMOF.Internals.Setup;");
-   end Generate_Metamodel_Initialization_Implementation;
+   end Generate_Properties_Initialization;
 
    ----------------------
    -- Has_Boolean_Type --

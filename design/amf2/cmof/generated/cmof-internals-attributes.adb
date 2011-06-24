@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with CMOF.Internals.Metamodel;
+with CMOF.Internals.Notification;
 with CMOF.Internals.Tables;
 with CMOF.Internals.Types;
 with League.Strings.Internals;
@@ -50,6 +52,7 @@ with Matreshka.Internals.Strings;
 
 package body CMOF.Internals.Attributes is
 
+   use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
    use CMOF.Internals.Types;
    use type Matreshka.Internals.Strings.Shared_String_Access;
@@ -2551,13 +2554,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Alias
     (Self : CMOF_Element;
-     To   : AMF.Optional_String) is
+     To   : AMF.Optional_String)
+   is
+      Old : AMF.Optional_String;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Element_Import =>
             if Elements.Table (Self).Member (3).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (3).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (3).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -2570,6 +2578,9 @@ package body CMOF.Internals.Attributes is
                 (Elements.Table (Self).Member (3).String_Value);
             end if;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Element_Import_Alias, Old, To);
+
          when others =>
             raise Program_Error;
       end case;
@@ -2581,11 +2592,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Association
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Property =>
+            Old := Elements.Table (Self).Member (21).Element;
             Elements.Table (Self).Member (21).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Association, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2598,13 +2616,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Body
     (Self : CMOF_Element;
-     To   : AMF.Optional_String) is
+     To   : AMF.Optional_String)
+   is
+      Old : AMF.Optional_String;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Comment =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -2616,6 +2639,9 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Comment_Body, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2628,11 +2654,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Body_Condition
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (15).Element;
             Elements.Table (Self).Member (15).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Body_Condition, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2645,14 +2678,25 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Class
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (12).Element;
             Elements.Table (Self).Member (12).Element := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Class, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (17).Element;
             Elements.Table (Self).Member (17).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Class, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2665,11 +2709,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Context
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Constraint =>
+            Old := Elements.Table (Self).Member (7).Element;
             Elements.Table (Self).Member (7).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Constraint_Context, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2682,14 +2733,25 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Datatype
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (13).Element;
             Elements.Table (Self).Member (13).Element := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Datatype, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (20).Element;
             Elements.Table (Self).Member (20).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Datatype, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2702,13 +2764,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Default
     (Self : CMOF_Element;
-     To   : AMF.Optional_String) is
+     To   : AMF.Optional_String)
+   is
+      Old : AMF.Optional_String;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Parameter =>
             if Elements.Table (Self).Member (11).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (11).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (11).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -2721,10 +2788,15 @@ package body CMOF.Internals.Attributes is
                 (Elements.Table (Self).Member (11).String_Value);
             end if;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Parameter_Default, Old, To);
+
          when E_Property =>
             if Elements.Table (Self).Member (13).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (13).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (13).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -2737,6 +2809,9 @@ package body CMOF.Internals.Attributes is
                 (Elements.Table (Self).Member (13).String_Value);
             end if;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Default, Old, To);
+
          when others =>
             raise Program_Error;
       end case;
@@ -2748,11 +2823,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Direction
     (Self : CMOF_Element;
-     To   : CMOF_Parameter_Direction_Kind) is
+     To   : CMOF_Parameter_Direction_Kind)
+   is
+      Old : CMOF_Parameter_Direction_Kind;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (12).Parameter_Direction_Value;
             Elements.Table (Self).Member (12).Parameter_Direction_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Parameter_Direction, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2765,11 +2847,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Enumeration
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Enumeration_Literal =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Enumeration_Literal_Enumeration, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2782,11 +2871,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Imported_Element
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Element_Import =>
+            Old := Elements.Table (Self).Member (4).Element;
             Elements.Table (Self).Member (4).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Element_Import_Imported_Element, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2799,11 +2895,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Imported_Package
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Package_Import =>
+            Old := Elements.Table (Self).Member (3).Element;
             Elements.Table (Self).Member (3).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Import_Imported_Package, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2816,14 +2919,25 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Importing_Namespace
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Element_Import =>
+            Old := Elements.Table (Self).Member (5).Element;
             Elements.Table (Self).Member (5).Element := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Element_Import_Importing_Namespace, Old, To);
+
          when E_Package_Import =>
+            Old := Elements.Table (Self).Member (4).Element;
             Elements.Table (Self).Member (4).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Import_Importing_Namespace, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2836,11 +2950,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Abstract
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Class =>
+            Old := Elements.Table (Self).Member (8).Boolean_Value;
             Elements.Table (Self).Member (8).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Class_Is_Abstract, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2853,11 +2974,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Composite
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Property =>
+            Old := Elements.Table (Self).Member (14).Boolean_Value;
             Elements.Table (Self).Member (14).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Is_Composite, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2870,14 +2998,25 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Derived
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Association =>
+            Old := Elements.Table (Self).Member (8).Boolean_Value;
             Elements.Table (Self).Member (8).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Association_Is_Derived, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (15).Boolean_Value;
             Elements.Table (Self).Member (15).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Is_Derived, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2890,11 +3029,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Derived_Union
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Property =>
+            Old := Elements.Table (Self).Member (16).Boolean_Value;
             Elements.Table (Self).Member (16).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Is_Derived_Union, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2907,23 +3053,46 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Final_Specialization
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Association =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Class =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Data_Type =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Enumeration =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Classifier_Is_Final_Specialization, Old, To);
+
          when E_Primitive_Type =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Classifier_Is_Final_Specialization, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2936,14 +3105,25 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Leaf
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (6).Boolean_Value;
             Elements.Table (Self).Member (6).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Redefinable_Element_Is_Leaf, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (6).Boolean_Value;
             Elements.Table (Self).Member (6).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Redefinable_Element_Is_Leaf, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2956,17 +3136,32 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Ordered
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (8).Boolean_Value;
             Elements.Table (Self).Member (8).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Is_Ordered, Old, To);
+
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Is_Ordered, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Is_Ordered, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2979,11 +3174,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Query
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (7).Boolean_Value;
             Elements.Table (Self).Member (7).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Is_Query, Old, To);
 
          when others =>
             raise Program_Error;
@@ -2996,11 +3198,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Read_Only
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Property =>
+            Old := Elements.Table (Self).Member (12).Boolean_Value;
             Elements.Table (Self).Member (12).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Is_Read_Only, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3013,17 +3222,32 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Is_Unique
     (Self : CMOF_Element;
-     To   : Boolean) is
+     To   : Boolean)
+   is
+      Old : Boolean;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (9).Boolean_Value;
             Elements.Table (Self).Member (9).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Is_Unique, Old, To);
+
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (8).Boolean_Value;
             Elements.Table (Self).Member (8).Boolean_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Is_Unique, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (8).Boolean_Value;
             Elements.Table (Self).Member (8).Boolean_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Is_Unique, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3036,17 +3260,32 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Lower
     (Self : CMOF_Element;
-     To   : AMF.Optional_Integer) is
+     To   : AMF.Optional_Integer)
+   is
+      Old : AMF.Optional_Integer;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (10).Integer_Holder_Value;
             Elements.Table (Self).Member (10).Integer_Holder_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Lower, Old, To);
+
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (9).Integer_Holder_Value;
             Elements.Table (Self).Member (9).Integer_Holder_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Lower, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (9).Integer_Holder_Value;
             Elements.Table (Self).Member (9).Integer_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Lower, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3059,11 +3298,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Merged_Package
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Package_Merge =>
+            Old := Elements.Table (Self).Member (3).Element;
             Elements.Table (Self).Member (3).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Merge_Merged_Package, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3076,13 +3322,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Name
     (Self : CMOF_Element;
-     To   : AMF.Optional_String) is
+     To   : AMF.Optional_String)
+   is
+      Old : AMF.Optional_String;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Association =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3094,11 +3345,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Class =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3110,11 +3366,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Constraint =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3126,11 +3387,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Data_Type =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3142,11 +3408,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Enumeration =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3158,11 +3429,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Enumeration_Literal =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3174,11 +3450,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Expression =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3190,11 +3471,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Opaque_Expression =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3206,11 +3492,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Operation =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3222,11 +3513,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Package =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3238,11 +3534,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Parameter =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3254,11 +3555,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Primitive_Type =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3270,11 +3576,16 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when E_Property =>
             if Elements.Table (Self).Member (2).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (2).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (2).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3286,6 +3597,9 @@ package body CMOF.Internals.Attributes is
                Matreshka.Internals.Strings.Reference
                 (Elements.Table (Self).Member (2).String_Value);
             end if;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Name, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3298,11 +3612,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Nesting_Package
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Package =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Nesting_Package, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3315,11 +3636,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Operation
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (13).Element;
             Elements.Table (Self).Member (13).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Parameter_Operation, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3332,11 +3660,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Opposite
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Property =>
+            Old := Elements.Table (Self).Member (19).Element;
             Elements.Table (Self).Member (19).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Opposite, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3349,11 +3684,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Owning_Association
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Property =>
+            Old := Elements.Table (Self).Member (18).Element;
             Elements.Table (Self).Member (18).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Property_Owning_Association, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3366,23 +3708,46 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Package
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Association =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Type_Package, Old, To);
 
          when E_Class =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Type_Package, Old, To);
 
          when E_Data_Type =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Type_Package, Old, To);
 
          when E_Enumeration =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Type_Package, Old, To);
+
          when E_Primitive_Type =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Type_Package, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3395,11 +3760,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Receiving_Package
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Package_Merge =>
+            Old := Elements.Table (Self).Member (2).Element;
             Elements.Table (Self).Member (2).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Merge_Receiving_Package, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3412,11 +3784,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Specification
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Constraint =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Constraint_Specification, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3429,23 +3808,46 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Type
     (Self : CMOF_Element;
-     To   : CMOF_Element) is
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Expression =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Typed_Element_Type, Old, To);
 
          when E_Opaque_Expression =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Typed_Element_Type, Old, To);
 
          when E_Operation =>
+            Old := Elements.Table (Self).Member (14).Element;
             Elements.Table (Self).Member (14).Element := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Type, Old, To);
+
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (6).Element;
             Elements.Table (Self).Member (6).Element := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Typed_Element_Type, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (11).Element;
             Elements.Table (Self).Member (11).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Typed_Element_Type, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3458,17 +3860,32 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Upper
     (Self : CMOF_Element;
-     To   : AMF.Optional_Unlimited_Natural) is
+     To   : AMF.Optional_Unlimited_Natural)
+   is
+      Old : AMF.Optional_Unlimited_Natural;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Operation =>
+            Old := Elements.Table (Self).Member (11).Natural_Holder_Value;
             Elements.Table (Self).Member (11).Natural_Holder_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Operation_Upper, Old, To);
+
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (10).Natural_Holder_Value;
             Elements.Table (Self).Member (10).Natural_Holder_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Upper, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (10).Natural_Holder_Value;
             Elements.Table (Self).Member (10).Natural_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Multiplicity_Element_Upper, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3481,13 +3898,18 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Uri
     (Self : CMOF_Element;
-     To   : AMF.Optional_String) is
+     To   : AMF.Optional_String)
+   is
+      Old : AMF.Optional_String;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Package =>
             if Elements.Table (Self).Member (7).String_Value /= null then
-               Matreshka.Internals.Strings.Dereference
-                (Elements.Table (Self).Member (7).String_Value);
+               Old :=
+                (False,
+                 League.Strings.Internals.Wrap
+                  (Elements.Table (Self).Member (7).String_Value));
             end if;
 
             if To.Is_Empty then
@@ -3500,6 +3922,9 @@ package body CMOF.Internals.Attributes is
                 (Elements.Table (Self).Member (7).String_Value);
             end if;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Uri, Old, To);
+
          when others =>
             raise Program_Error;
       end case;
@@ -3511,14 +3936,25 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Visibility
     (Self : CMOF_Element;
-     To   : CMOF_Visibility_Kind) is
+     To   : CMOF_Visibility_Kind)
+   is
+      Old : CMOF_Visibility_Kind;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Element_Import =>
+            Old := Elements.Table (Self).Member (2).Visibility_Value;
             Elements.Table (Self).Member (2).Visibility_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Element_Import_Visibility, Old, To);
+
          when E_Package_Import =>
+            Old := Elements.Table (Self).Member (2).Visibility_Value;
             Elements.Table (Self).Member (2).Visibility_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Package_Import_Visibility, Old, To);
 
          when others =>
             raise Program_Error;
@@ -3531,47 +3967,102 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Visibility
     (Self : CMOF_Element;
-     To   : AMF.CMOF.Optional_CMOF_Visibility_Kind) is
+     To   : AMF.CMOF.Optional_CMOF_Visibility_Kind)
+   is
+      Old : AMF.CMOF.Optional_CMOF_Visibility_Kind;
+
    begin
       case Elements.Table (Self).Kind is
          when E_Association =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Class =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Constraint =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Data_Type =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Enumeration =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Enumeration_Literal =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Expression =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Opaque_Expression =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Operation =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Package =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Parameter =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when E_Primitive_Type =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
 
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
+
          when E_Property =>
+            Old := Elements.Table (Self).Member (3).Visibility_Holder_Value;
             Elements.Table (Self).Member (3).Visibility_Holder_Value := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Named_Element_Visibility, Old, To);
 
          when others =>
             raise Program_Error;

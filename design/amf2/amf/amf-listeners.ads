@@ -44,7 +44,7 @@
 with League.Holders;
 
 with AMF.CMOF.Associations;
-with AMF.CMOF.Features;
+with AMF.CMOF.Properties;
 with AMF.Elements;
 
 package AMF.Listeners is
@@ -84,32 +84,35 @@ package AMF.Listeners is
     (Self    : not null access Abstract_Listener;
      Element : not null AMF.Elements.Element_Access) is null;
 
-   not overriding procedure Feature_Attribute_Add
+   not overriding procedure Attribute_Add
     (Self      : not null access Abstract_Listener;
-     Feature   : not null AMF.CMOF.Features.CMOF_Feature_Access;
+     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Position  : Optional_Integer;
      Old_Value : League.Holders.Holder;
      New_Value : League.Holders.Holder) is null;
 
-   not overriding procedure Feature_Attribute_Remove
+   not overriding procedure Attribute_Remove
     (Self      : not null access Abstract_Listener;
-     Feature   : not null AMF.CMOF.Features.CMOF_Feature_Access;
+     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Position  : Optional_Integer;
      Old_Value : League.Holders.Holder;
      New_Value : League.Holders.Holder) is null;
 
-   not overriding procedure Feature_Attribute_Set
+   not overriding procedure Attribute_Set
     (Self      : not null access Abstract_Listener;
-     Feature   : not null AMF.CMOF.Features.CMOF_Feature_Access;
+     Element   : not null AMF.Elements.Element_Access;
+     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Position  : Optional_Integer;
      Old_Value : League.Holders.Holder;
      New_Value : League.Holders.Holder) is null;
+   --  Called when attribute value is changed.
 
    not overriding procedure Link_Add
     (Self           : not null access Abstract_Listener;
      Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
      First_Element  : not null AMF.Elements.Element_Access;
      Second_Element : not null AMF.Elements.Element_Access) is null;
+   --  Called when link between two elements is created.
 
    not overriding procedure Link_Remove
     (Self : not null access Abstract_Listener) is null;

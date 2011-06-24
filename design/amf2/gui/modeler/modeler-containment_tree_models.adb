@@ -59,6 +59,21 @@ package body Modeler.Containment_Tree_Models is
    package Node_Conversions is
      new System.Address_To_Access_Conversions (Node);
 
+   -------------------
+   -- Attribute_Set --
+   -------------------
+
+   overriding procedure Attribute_Set
+    (Self      : not null access Containment_Tree_Model;
+     Element   : not null AMF.Elements.Element_Access;
+     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Position  : AMF.Optional_Integer;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder) is
+   begin
+      null;
+   end Attribute_Set;
+
    ------------------
    -- Column_Count --
    ------------------

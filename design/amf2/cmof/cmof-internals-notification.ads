@@ -41,67 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Vectors;
+--  Helper subprograms for element modification notification.
+------------------------------------------------------------------------------
+with AMF.CMOF;
 
-package body AMF.Internals.Listener_Registry is
-
-   package Listener_Vectors is
-     new Ada.Containers.Vectors
-          (Positive, AMF.Listeners.Listener_Access, AMF.Listeners."=");
-
-   Registry : Listener_Vectors.Vector;
-
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
+private package CMOF.Internals.Notification is
 
    procedure Notify_Attribute_Set
-    (Element   : not null AMF.Elements.Element_Access;
-     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Position  : Optional_Integer;
-     Old_Value : League.Holders.Holder;
-     New_Value : League.Holders.Holder) is
-   begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Attribute_Set
-          (Element, Property, Position, Old_Value, New_Value);
-      end loop;
-   end Notify_Attribute_Set;
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : Boolean;
+     New_Value : Boolean);
 
-   ----------------------------
-   -- Notify_Instance_Create --
-   ----------------------------
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : AMF.Optional_String;
+     New_Value : AMF.Optional_String);
 
-   procedure Notify_Instance_Create
-    (Element : not null AMF.Elements.Element_Access) is
-   begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Instance_Create (Element);
-      end loop;
-   end Notify_Instance_Create;
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : AMF.Optional_Integer;
+     New_Value : AMF.Optional_Integer);
 
-   ---------------------
-   -- Notify_Link_Add --
-   ---------------------
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : AMF.Optional_Unlimited_Natural;
+     New_Value : AMF.Optional_Unlimited_Natural);
 
-   procedure Notify_Link_Add
-    (Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
-     First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access) is
-   begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Link_Add
-          (Association, First_Element, Second_Element);
-      end loop;
-   end Notify_Link_Add;
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : CMOF.CMOF_Element;
+     New_Value : CMOF.CMOF_Element);
 
-   --------------
-   -- Register --
-   --------------
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
+     New_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind);
 
-   procedure Register (Listener : not null AMF.Listeners.Listener_Access) is
-   begin
-      Registry.Append (Listener);
-   end Register;
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
+     New_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind);
 
-end AMF.Internals.Listener_Registry;
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : AMF.CMOF.CMOF_Visibility_Kind;
+     New_Value : AMF.CMOF.CMOF_Visibility_Kind);
+
+end CMOF.Internals.Notification;

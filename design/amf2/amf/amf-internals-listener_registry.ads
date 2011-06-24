@@ -42,14 +42,23 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
+with AMF.CMOF.Properties;
 with AMF.Elements;
 with AMF.Listeners;
+with League.Holders;
 
 package AMF.Internals.Listener_Registry is
 
    pragma Preelaborate;
 
    procedure Register (Listener : not null AMF.Listeners.Listener_Access);
+
+   procedure Notify_Attribute_Set
+    (Element   : not null AMF.Elements.Element_Access;
+     Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Position  : Optional_Integer;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder);
 
    procedure Notify_Instance_Create
     (Element : not null AMF.Elements.Element_Access);
