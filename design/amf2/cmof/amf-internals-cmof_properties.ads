@@ -117,10 +117,6 @@ package AMF.Internals.CMOF_Properties is
      C : Integer)
        return Boolean;
 
-   overriding procedure Set_Name
-    (Self : not null access CMOF_Property_Proxy;
-     To   : Optional_String);
-
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Property_Proxy)
        return CMOF.Optional_CMOF_Visibility_Kind;

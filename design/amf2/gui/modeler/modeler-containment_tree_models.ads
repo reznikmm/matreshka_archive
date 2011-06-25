@@ -118,6 +118,11 @@ private
      Index : Qt4.Model_Indices.Q_Model_Index;
      Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant;
 
+   overriding function Flags
+    (Self  : not null access constant Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Item_Flags;
+
    overriding function Index
     (Self   : not null access constant Containment_Tree_Model;
      Row    : Qt4.Q_Integer;
@@ -133,6 +138,12 @@ private
    overriding function Row_Count
     (Self   : not null access constant Containment_Tree_Model;
      Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer;
+
+   overriding function Set_Data
+    (Self  : not null access Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index;
+     Value : Qt4.Variants.Q_Variant;
+     Role  : Qt4.Item_Data_Role) return Boolean;
 
    ------------------------------------
    -- Abstract_Listener's operations --

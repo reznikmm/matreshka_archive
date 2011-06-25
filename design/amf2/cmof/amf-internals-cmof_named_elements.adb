@@ -58,4 +58,15 @@ package body AMF.Internals.CMOF_Named_Elements is
       return Internal_Get_Name (Self.Id);
    end Get_Name;
 
+   --------------
+   -- Set_Name --
+   --------------
+
+   overriding procedure Set_Name
+    (Self : not null access CMOF_Named_Element_Proxy;
+     To   : Optional_String) is
+   begin
+      Internal_Set_Name (Self.Id, To);
+   end Set_Name;
+
 end AMF.Internals.CMOF_Named_Elements;

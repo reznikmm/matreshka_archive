@@ -127,20 +127,6 @@ package body AMF.Internals.CMOF_Packages is
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access CMOF_Package_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error;
-   end Set_Name;
-
    --------------------
    -- Get_Visibility --
    --------------------

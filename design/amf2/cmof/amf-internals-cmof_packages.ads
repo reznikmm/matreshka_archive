@@ -78,10 +78,6 @@ package AMF.Internals.CMOF_Packages is
     (Self : not null access constant CMOF_Package_Proxy)
        return Boolean;
 
-   overriding procedure Set_Name
-    (Self : not null access CMOF_Package_Proxy;
-     To   : Optional_String);
-
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind;

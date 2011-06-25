@@ -107,6 +107,8 @@ begin
                   (CMOF.XMI_Helper.Resolve (+"Class")))));
 
    begin
+      Pack.Set_Name ((False, +"Package one"));
+      Class.Set_Name ((False, +"Class two"));
       Packed.Add (Class);
    end;
 

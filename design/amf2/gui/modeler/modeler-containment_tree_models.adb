@@ -48,6 +48,7 @@ with Qt4.Strings;
 
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Properties.Collections;
+with League.Strings;
 
 with Modeler.Containment_Tree_Models.MOC;
 pragma Unreferenced (Modeler.Containment_Tree_Models.MOC);
@@ -59,6 +60,14 @@ package body Modeler.Containment_Tree_Models is
    package Node_Conversions is
      new System.Address_To_Access_Conversions (Node);
 
+   function To_Node
+    (Self  : not null access constant Containment_Tree_Model'Class;
+     Index : Qt4.Model_Indices.Q_Model_Index) return not null Node_Access;
+
+   function To_Index
+    (Self : not null access constant Containment_Tree_Model'Class;
+     Node : not null Node_Access) return Qt4.Model_Indices.Q_Model_Index;
+
    -------------------
    -- Attribute_Set --
    -------------------
@@ -69,9 +78,20 @@ package body Modeler.Containment_Tree_Models is
      Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Position  : AMF.Optional_Integer;
      Old_Value : League.Holders.Holder;
-     New_Value : League.Holders.Holder) is
+     New_Value : League.Holders.Holder)
+   is
+      N : constant not null Node_Access
+        := Self.Map (AMF.CMOF.Elements.CMOF_Element_Access (Element));
+
    begin
-      null;
+      if N.Element.all in AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+        and then Property.Get_Name.Value.To_Wide_Wide_String = "name"
+      then
+         Self.Emit_Data_Changed (Self.To_Index (N), Self.To_Index (N));
+
+      else
+         Ada.Wide_Wide_Text_IO.Put_Line ("attribute set");
+      end if;
    end Attribute_Set;
 
    ------------------
@@ -120,15 +140,16 @@ package body Modeler.Containment_Tree_Models is
      Index : Qt4.Model_Indices.Q_Model_Index;
      Role  : Qt4.Item_Data_Role) return Qt4.Variants.Q_Variant
    is
-      N    : constant Node_Access
-        := Node_Access (Node_Conversions.To_Pointer (Index.Internal_Pointer));
+      N    : constant Node_Access := Self.To_Node (Index);
       Name : AMF.Optional_String;
 
       pragma Assert (N /= null);
 
    begin
       case Role is
-         when Qt4.Display_Role =>
+         when Qt4.Display_Role
+           | Qt4.Edit_Role
+         =>
             if N.Element.all
                  in AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
             then
@@ -151,6 +172,22 @@ package body Modeler.Containment_Tree_Models is
    end Data;
 
    -----------
+   -- Flags --
+   -----------
+
+   overriding function Flags
+    (Self  : not null access constant Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index)
+       return Qt4.Item_Flags
+   is
+      use type Qt4.Item_Flags;
+
+   begin
+      return
+        Qt4.Item_Is_Selectable + Qt4.Item_Is_Editable + Qt4.Item_Is_Enabled;
+   end Flags;
+
+   -----------
    -- Index --
    -----------
 
@@ -161,16 +198,9 @@ package body Modeler.Containment_Tree_Models is
      Parent : Qt4.Model_Indices.Q_Model_Index)
        return Qt4.Model_Indices.Q_Model_Index
    is
-      N : Node_Access
-        := Node_Access (Node_Conversions.To_Pointer (Parent.Internal_Pointer));
+      N : constant Node_Access := Self.To_Node (Parent);
 
    begin
-      --  Fix root node.
-
-      if N = null then
-         N := Self.Root;
-      end if;
-
       if Column = 0 then
          if Row <= N.Children.Last_Index then
             return
@@ -279,25 +309,15 @@ package body Modeler.Containment_Tree_Models is
      Child : Qt4.Model_Indices.Q_Model_Index)
        return Qt4.Model_Indices.Q_Model_Index
    is
-      N : constant Node_Access
-        := Node_Access (Node_Conversions.To_Pointer (Child.Internal_Pointer));
+      N : constant Node_Access := Self.To_Node (Child);
 
    begin
-      if N /= null and then N.Parent /= null then
-         if N.Parent.Parent /= null then
-            return
-              Self.Create_Index
-               (N.Parent.Parent.Children.Find_Index (N.Parent),
-                0,
-                Node_Conversions.To_Address
-                 (Node_Conversions.Object_Pointer (N.Parent)));
-         end if;
+      if N.Parent /= null then
+         return Self.To_Index (N.Parent);
 
       else
-         Ada.Wide_Wide_Text_IO.Put_Line ("parent");
+         return Qt4.Model_Indices.Create;
       end if;
-
-      return Qt4.Model_Indices.Create;
    end Parent;
 
    ---------------
@@ -308,15 +328,96 @@ package body Modeler.Containment_Tree_Models is
     (Self   : not null access constant Containment_Tree_Model;
      Parent : Qt4.Model_Indices.Q_Model_Index) return Qt4.Q_Integer
    is
-      N : Node_Access
-        := Node_Access (Node_Conversions.To_Pointer (Parent.Internal_Pointer));
+      N : constant Node_Access := Self.To_Node (Parent);
+
+   begin
+      return Qt4.Q_Integer (N.Children.Length);
+   end Row_Count;
+
+   --------------
+   -- Set_Data --
+   --------------
+
+   overriding function Set_Data
+    (Self  : not null access Containment_Tree_Model;
+     Index : Qt4.Model_Indices.Q_Model_Index;
+     Value : Qt4.Variants.Q_Variant;
+     Role  : Qt4.Item_Data_Role) return Boolean
+   is
+      N : constant not null Node_Access := Self.To_Node (Index);
+
+   begin
+      case Role is
+         when Qt4.Edit_Role =>
+            if N.Element.all
+                 in AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+            then
+               if Value.To_String.Length = 0 then
+                  AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                   (N.Element.all).Set_Name ((Is_Empty => True));
+
+               else
+                  AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                   (N.Element.all).Set_Name
+                     ((False,
+                       League.Strings.To_Universal_String
+                        (Value.To_String.To_Ucs_4)));
+               end if;
+
+               return True;
+            end if;
+
+            Ada.Wide_Wide_Text_IO.Put_Line
+             ("set data"
+                & Qt4.Item_Data_Role'Wide_Wide_Image (Role)
+                & Value.To_String.To_Ucs_4);
+
+         when others =>
+            null;
+      end case;
+
+      return False;
+   end Set_Data;
+
+   --------------
+   -- To_Index --
+   --------------
+
+   function To_Index
+    (Self : not null access constant Containment_Tree_Model'Class;
+     Node : not null Node_Access) return Qt4.Model_Indices.Q_Model_Index is
+   begin
+      if Node = Self.Root then
+         return Qt4.Model_Indices.Create;
+
+      else
+         return
+           Self.Create_Index
+            (Node.Parent.Children.Find_Index (Node),
+             0,
+             Node_Conversions.To_Address
+              (Node_Conversions.Object_Pointer (Node)));
+      end if;
+   end To_Index;
+
+   -------------
+   -- To_Node --
+   -------------
+
+   function To_Node
+    (Self  : not null access constant Containment_Tree_Model'Class;
+     Index : Qt4.Model_Indices.Q_Model_Index) return not null Node_Access
+   is
+      N : constant Node_Access
+        := Node_Access (Node_Conversions.To_Pointer (Index.Internal_Pointer));
 
    begin
       if N = null then
-         N := Self.Root;
-      end if;
+         return Self.Root;
 
-      return Qt4.Q_Integer (N.Children.Length);
-   end Row_Count;
+      else
+         return N;
+      end if;
+   end To_Node;
 
 end Modeler.Containment_Tree_Models;
