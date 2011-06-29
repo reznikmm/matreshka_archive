@@ -83,6 +83,7 @@ package body Modeler.Package_Items is
             Qt4.Graphics_Items.Directors.Constructors.Initialize
              (Self, Parent);
             Self.Element := Element;
+            Self.Set_Flag (Qt4.Graphics_Items.Item_Is_Movable);
          end return;
       end Create;
 
