@@ -41,107 +41,51 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Elements;
+with Qt4.Graphics_Items;
+private with Qt4.Graphics_Items.Directors;
+private with Qt4.Painters;
+private with Qt4.Rect_Fs;
+private with Qt4.Style_Option_Graphics_Items;
+private with Qt4.Widgets;
+
 with AMF.CMOF.Packages;
 
-with Modeler.Mime_Datas;
-with Modeler.Package_Items;
+package Modeler.Package_Items is
 
-with Modeler.Diagram_Scenes.MOC;
-pragma Unreferenced (Modeler.Diagram_Scenes.MOC);
+   type Package_Item is
+     limited new Qt4.Graphics_Items.Q_Graphics_Item with private;
 
-package body Modeler.Diagram_Scenes is
+   type Package_Item_Access is access all Package_Item'Class;
 
-   ------------------
-   -- Constructors --
-   ------------------
-
-   package body Constructors is
-
-      ------------
-      -- Create --
-      ------------
+   package Constructors is
 
       function Create
-       (Parent : access Qt4.Objects.Q_Object'Class := null)
-          return not null Diagram_Scene_Access is
-      begin
-         return Self : constant not null Diagram_Scene_Access
-           := new Diagram_Scene
-         do
-            Qt4.Graphics_Scenes.Directors.Constructors.Initialize
-             (Self, Parent);
-         end return;
-      end Create;
+       (Element : not null AMF.CMOF.Packages.CMOF_Package_Access;
+        Parent  : access Qt4.Graphics_Items.Q_Graphics_Item'Class := null)
+          return not null Package_Item_Access;
 
    end Constructors;
 
-   ---------------------
-   -- Drag_Move_Event --
-   ---------------------
+private
 
-   overriding procedure Drag_Move_Event
-    (Self  : not null access Diagram_Scene;
-     Event : not null access QGSDDE.Q_Graphics_Scene_Drag_Drop_Event'Class) is
-   begin
-      --  Call default handler, it deliver event to the item under cursor.
+   type Package_Item is
+     limited new Qt4.Graphics_Items.Directors.Q_Graphics_Item_Director with
+   record
+      Element : AMF.CMOF.Packages.CMOF_Package_Access;
+   end record;
 
-      Qt4.Graphics_Scenes.Directors.Q_Graphics_Scene_Director
-       (Self.all).Drag_Move_Event (Event);
+   --------------------------------
+   -- QGraphicsItem's operations --
+   --------------------------------
 
-      --  When event is not delivered to the item under cursor scene handle it
-      --  byself.
+   overriding function Bounding_Rect
+    (Self : not null access constant Package_Item) return Qt4.Rect_Fs.Q_Rect_F;
 
-      if not Event.Is_Accepted
-        and then Event.Mime_Data.all
-                   in Modeler.Mime_Datas.Modeler_Mime_Data'Class
-      then
-         Self.Accept_Drop := True;
+   overriding procedure Paint
+    (Self    : not null access Package_Item;
+     Painter : in out Qt4.Painters.Q_Painter'Class;
+     Option  :
+       Qt4.Style_Option_Graphics_Items.Q_Style_Option_Graphics_Item'Class;
+     Widget  : access Qt4.Widgets.Q_Widget'Class := null);
 
-         --  Accept event to allow to drop at the free space of the scene.
-
-         Event.Accept_Event;
-
-      else
-         Self.Accept_Drop := False;
-      end if;
-   end Drag_Move_Event;
-
-   ----------------
-   -- Drop_Event --
-   ----------------
-
-   overriding procedure Drop_Event
-    (Self  : not null access Diagram_Scene;
-     Event : not null access QGSDDE.Q_Graphics_Scene_Drag_Drop_Event'Class) is
-   begin
-      --  Call default handler, it deliver event to the item under cursor.
-
-      Qt4.Graphics_Scenes.Directors.Q_Graphics_Scene_Director
-       (Self.all).Drop_Event (Event);
-
-      --  Handle drop event when it is not handled by the item under cursor.
-
-      if Self.Accept_Drop
-        and then Event.Mime_Data.all
-                   in Modeler.Mime_Datas.Modeler_Mime_Data'Class
-      then
-         Event.Accept_Event;
-         --  XXX Accept_Proposed_Action should be called instead.
-
-         declare
-            Element : constant AMF.CMOF.Elements.CMOF_Element_Access
-              := Modeler.Mime_Datas.Modeler_Mime_Data'Class
-                  (Event.Mime_Data.all).Element;
-            Item    : constant Modeler.Package_Items.Package_Item_Access
-              := Modeler.Package_Items.Constructors.Create
-                  (AMF.CMOF.Packages.CMOF_Package_Access (Element));
-
-         begin
-            Item.Set_Pos (Event.Scene_Pos);
-            Self.Add_Item (Item);
-         end;
-      end if;
-   end Drop_Event;
-
-end Modeler.Diagram_Scenes;
+end Modeler.Package_Items;
