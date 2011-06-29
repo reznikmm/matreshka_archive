@@ -41,12 +41,109 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Qt4.Graphics_Rect_Items;
+with Qt4.Rect_Fs;
 
-package Modeler is
+with AMF.CMOF.Elements;
 
-   pragma Pure;
+with Modeler.Mime_Datas;
 
-   Drag_Drop_Mime_Type : constant Wide_Wide_String
-     := "application/x-matreshka-modeler-element";
+with Modeler.Diagram_Scenes.MOC;
+pragma Unreferenced (Modeler.Diagram_Scenes.MOC);
 
-end Modeler;
+package body Modeler.Diagram_Scenes is
+
+   ------------------
+   -- Constructors --
+   ------------------
+
+   package body Constructors is
+
+      ------------
+      -- Create --
+      ------------
+
+      function Create
+       (Parent : access Qt4.Objects.Q_Object'Class := null)
+          return not null Diagram_Scene_Access is
+      begin
+         return Self : constant not null Diagram_Scene_Access
+           := new Diagram_Scene
+         do
+            Qt4.Graphics_Scenes.Directors.Constructors.Initialize
+             (Self, Parent);
+         end return;
+      end Create;
+
+   end Constructors;
+
+   ---------------------
+   -- Drag_Move_Event --
+   ---------------------
+
+   overriding procedure Drag_Move_Event
+    (Self  : not null access Diagram_Scene;
+     Event : not null access QGSDDE.Q_Graphics_Scene_Drag_Drop_Event'Class) is
+   begin
+      --  Call default handler, it deliver event to the item under cursor.
+
+      Qt4.Graphics_Scenes.Directors.Q_Graphics_Scene_Director
+       (Self.all).Drag_Move_Event (Event);
+
+      --  When event is not delivered to the item under cursor scene handle it
+      --  byself.
+
+      if not Event.Is_Accepted
+        and then Event.Mime_Data.all
+                   in Modeler.Mime_Datas.Modeler_Mime_Data'Class
+      then
+         Self.Accept_Drop := True;
+
+         --  Accept event to allow to drop at the free space of the scene.
+
+         Event.Accept_Event;
+
+      else
+         Self.Accept_Drop := False;
+      end if;
+   end Drag_Move_Event;
+
+   ----------------
+   -- Drop_Event --
+   ----------------
+
+   overriding procedure Drop_Event
+    (Self  : not null access Diagram_Scene;
+     Event : not null access QGSDDE.Q_Graphics_Scene_Drag_Drop_Event'Class) is
+   begin
+      --  Call default handler, it deliver event to the item under cursor.
+
+      Qt4.Graphics_Scenes.Directors.Q_Graphics_Scene_Director
+       (Self.all).Drop_Event (Event);
+
+      --  Handle drop event when it is not handled by the item under cursor.
+
+      if Self.Accept_Drop
+        and then Event.Mime_Data.all
+                   in Modeler.Mime_Datas.Modeler_Mime_Data'Class
+      then
+         Event.Accept_Event;
+         --  XXX Accept_Proposed_Action should be called instead.
+
+         declare
+            E : AMF.CMOF.Elements.CMOF_Element_Access
+              := Modeler.Mime_Datas.Modeler_Mime_Data'Class
+                  (Event.Mime_Data.all).Element;
+            R : Qt4.Graphics_Rect_Items.Q_Graphics_Rect_Item_Access
+              := Qt4.Graphics_Rect_Items.Q_Graphics_Rect_Item_Access
+                  (Self.Add_Rect
+                    (Qt4.Rect_Fs.Create
+                      (Event.Scene_Pos.X, Event.Scene_Pos.Y, 50.0, 50.0)));
+
+         begin
+            null;
+         end;
+      end if;
+   end Drop_Event;
+
+end Modeler.Diagram_Scenes;

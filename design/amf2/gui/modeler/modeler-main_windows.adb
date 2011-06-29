@@ -52,6 +52,7 @@ with Qt4.Tree_Views.Constructors;
 with Qt4.Variants;
 
 with Modeler.Containment_Tree_Models;
+with Modeler.Diagram_Scenes;
 with Modeler.Diagram_Views;
 with Modeler.Main_Windows.MOC;
 pragma Unreferenced (Modeler.Main_Windows.MOC);
@@ -115,6 +116,7 @@ package body Modeler.Main_Windows is
          Tree_View    : Qt4.Tree_Views.Q_Tree_View_Access;
          Tree_Model   :
            Modeler.Containment_Tree_Models.Containment_Tree_Model_Access;
+         Scene        : Modeler.Diagram_Scenes.Diagram_Scene_Access;
          Diagram_View : Modeler.Diagram_Views.Diagram_View_Access;
 
       begin
@@ -133,10 +135,13 @@ package body Modeler.Main_Windows is
          Tree_Model := Modeler.Containment_Tree_Models.Constructors.Create;
          Tree_View := Qt4.Tree_Views.Constructors.Create (Dock);
          Tree_View.Set_Model (Tree_Model);
+         Tree_View.Set_Drag_Enabled (True);
          Dock.Set_Widget (Tree_View);
          Dock.Set_Window_Title (+"Containment");
 
+         Scene := Modeler.Diagram_Scenes.Constructors.Create;
          Diagram_View := Modeler.Diagram_Views.Constructors.Create (Self);
+         Diagram_View.Set_Scene (Scene);
 
          --  Set components of main window.
 

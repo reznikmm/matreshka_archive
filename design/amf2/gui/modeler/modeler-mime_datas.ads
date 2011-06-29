@@ -41,12 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Qt4.Mime_Datas;
+private with Qt4.Mime_Datas.Directors;
 
-package Modeler is
+with AMF.CMOF.Elements;
 
-   pragma Pure;
+package Modeler.Mime_Datas is
 
-   Drag_Drop_Mime_Type : constant Wide_Wide_String
-     := "application/x-matreshka-modeler-element";
+   type Modeler_Mime_Data is
+     limited new Qt4.Mime_Datas.Q_Mime_Data with private;
 
-end Modeler;
+   type Modeler_Mime_Data_Access is access all Modeler_Mime_Data'Class;
+
+   function Element
+    (Self : not null access constant Modeler_Mime_Data'Class)
+       return AMF.CMOF.Elements.CMOF_Element_Access;
+   --  Returns associated element.
+
+   procedure Set_Element
+    (Self    : not null access Modeler_Mime_Data'Class;
+     Element : AMF.CMOF.Elements.CMOF_Element_Access);
+   --  Set associated element.
+
+   package Constructors is
+
+      function Create return not null Modeler_Mime_Data_Access;
+
+   end Constructors;
+
+private
+
+   type Modeler_Mime_Data is
+     limited new Qt4.Mime_Datas.Directors.Q_Mime_Data_Director with record
+      Element : AMF.CMOF.Elements.CMOF_Element_Access;
+   end record;
+
+end Modeler.Mime_Datas;

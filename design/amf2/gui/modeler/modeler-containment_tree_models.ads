@@ -46,8 +46,11 @@ private with Ada.Containers.Vectors;
 
 with Qt4.Abstract_Item_Models;
 private with Qt4.Abstract_Item_Models.Directors;
+private with Qt4.Mime_Datas;
 private with Qt4.Model_Indices;
+private with Qt4.Model_Index_Lists;
 with Qt4.Objects;
+private with Qt4.String_Lists;
 private with Qt4.Variants;
 
 private with AMF.CMOF.Associations;
@@ -129,6 +132,15 @@ private
      Column : Qt4.Q_Integer;
      Parent : Qt4.Model_Indices.Q_Model_Index)
        return Qt4.Model_Indices.Q_Model_Index;
+
+   overriding function Mime_Data
+    (Self    : not null access constant Containment_Tree_Model;
+     Indexes : Qt4.Model_Index_Lists.Q_Model_Index_List)
+       return access Qt4.Mime_Datas.Q_Mime_Data'Class;
+
+   overriding function Mime_Types
+    (Self : not null access constant Containment_Tree_Model)
+       return Qt4.String_Lists.Q_String_List;
 
    overriding function Parent
     (Self  : not null access constant Containment_Tree_Model;

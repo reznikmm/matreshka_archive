@@ -22,8 +22,10 @@ project Modeler is
          for Source_Dirs use Common_Source_Dirs;
          for Source_Files use
           ("modeler-containment_tree_models.ads",
+           "modeler-diagram_scenes.ads",
            "modeler-diagram_views.ads",
-           "modeler-main_windows.ads");
+           "modeler-main_windows.ads",
+           "modeler-mime_datas.ads");
          for Object_Dir use ".amoc";
    end case;
 

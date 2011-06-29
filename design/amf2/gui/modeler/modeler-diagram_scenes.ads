@@ -41,12 +41,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Qt4.Graphics_Scene_Drag_Drop_Events;
+with Qt4.Graphics_Scenes;
+private with Qt4.Graphics_Scenes.Directors;
+with Qt4.Objects;
 
-package Modeler is
+package Modeler.Diagram_Scenes is
 
-   pragma Pure;
+   type Diagram_Scene is
+     limited new Qt4.Graphics_Scenes.Q_Graphics_Scene with private;
 
-   Drag_Drop_Mime_Type : constant Wide_Wide_String
-     := "application/x-matreshka-modeler-element";
+   type Diagram_Scene_Access is access all Diagram_Scene'Class;
 
-end Modeler;
+   package Constructors is
+
+      function Create
+       (Parent : access Qt4.Objects.Q_Object'Class := null)
+          return not null Diagram_Scene_Access;
+
+   end Constructors;
+
+private
+
+   package QGSDDE renames Qt4.Graphics_Scene_Drag_Drop_Events;
+
+   type Diagram_Scene is
+     limited new Qt4.Graphics_Scenes.Directors.Q_Graphics_Scene_Director
+       with record
+      Accept_Drop : Boolean := False;
+      --  When True scene handle drop event byself, otherwise default handler
+      --  is used.
+   end record;
+
+   overriding procedure Drag_Move_Event
+    (Self  : not null access Diagram_Scene;
+     Event : not null access QGSDDE.Q_Graphics_Scene_Drag_Drop_Event'Class);
+
+   overriding procedure Drop_Event
+    (Self  : not null access Diagram_Scene;
+     Event : not null access QGSDDE.Q_Graphics_Scene_Drag_Drop_Event'Class);
+
+end Modeler.Diagram_Scenes;

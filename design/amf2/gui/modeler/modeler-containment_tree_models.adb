@@ -50,6 +50,8 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Properties.Collections;
 with League.Strings;
 
+with Modeler.Mime_Datas;
+
 with Modeler.Containment_Tree_Models.MOC;
 pragma Unreferenced (Modeler.Containment_Tree_Models.MOC);
 
@@ -183,8 +185,21 @@ package body Modeler.Containment_Tree_Models is
       use type Qt4.Item_Flags;
 
    begin
-      return
-        Qt4.Item_Is_Selectable + Qt4.Item_Is_Editable + Qt4.Item_Is_Enabled;
+      if Index.Is_Valid then
+         return
+           Qt4.Item_Is_Selectable
+             + Qt4.Item_Is_Editable
+             + Qt4.Item_Is_Drag_Enabled
+             + Qt4.Item_Is_Drop_Enabled
+             + Qt4.Item_Is_Enabled;
+
+      else
+         return
+           Qt4.Item_Is_Selectable
+             + Qt4.Item_Is_Editable
+             + Qt4.Item_Is_Drop_Enabled
+             + Qt4.Item_Is_Enabled;
+      end if;
    end Flags;
 
    -----------
@@ -299,6 +314,41 @@ package body Modeler.Containment_Tree_Models is
          Ada.Wide_Wide_Text_IO.Put_Line ("link add 2");
       end if;
    end Link_Add;
+
+   ---------------
+   -- Mime_Data --
+   ---------------
+
+   overriding function Mime_Data
+    (Self    : not null access constant Containment_Tree_Model;
+     Indexes : Qt4.Model_Index_Lists.Q_Model_Index_List)
+       return access Qt4.Mime_Datas.Q_Mime_Data'Class
+   is
+      Data : Modeler.Mime_Datas.Modeler_Mime_Data_Access;
+
+   begin
+      if Indexes.Size = 1
+        and then Indexes.Item_At (0).Is_Valid
+      then
+         Data := Modeler.Mime_Datas.Constructors.Create;
+         Data.Set_Element (Self.To_Node (Indexes.Item_At (0)).Element);
+      end if;
+
+      return Data;
+   end Mime_Data;
+
+   ----------------
+   -- Mime_Types --
+   ----------------
+
+   overriding function Mime_Types
+    (Self : not null access constant Containment_Tree_Model)
+       return Qt4.String_Lists.Q_String_List is
+   begin
+      return Result : Qt4.String_Lists.Q_String_List do
+         Result.Append (Qt4.Strings.From_Ucs_4 (Drag_Drop_Mime_Type));
+      end return;
+   end Mime_Types;
 
    ------------
    -- Parent --
