@@ -19,25 +19,58 @@
 
 Name:           libmatreshka
 Version:        0.1.0
-Release:        1.1
+Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
 Group:          System/Libraries
 Source:         matreshka-0.1.0.tar.gz
 ##  Patch:
-BuildRequires:  gcc-ada sqlite3-devel postgresql-devel
+BuildRequires:  gcc-ada postgresql-devel
 ##  PreReq:
 ##  Provides:
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
 %description
-Matreshka is a set of Ada components.
+Matreshka is a set of Ada components to develop information systems.
 
 %package devel
 Summary: Matreshka components for Ada programmers
 %description devel
-Matreshka is a set of Ada components.
+Matreshka is a set of Ada components to develop information systems.
+
+%package fastcgi
+Summary: FastCGI library of Matreshka components for Ada programmers
+%description fastcgi
+FastCGI library of Matreshka components allows to Ada applications to
+communicate to web servers through FastCGI protocol.
+
+%package fastcgi-devel
+Summary: FastCGI library of Matreshka components for Ada programmers
+%description fastcgi-devel
+FastCGI library of Matreshka components allows to Ada applications to
+communicate to web servers through FastCGI protocol.
+
+%package sql
+Summary: SQL database access library of Matreshka components for Ada programmers
+%description sql
+SQL database access library of Matreshka components allows to use simple API to
+access to different SQL databases.
+
+%package sql-devel
+Summary: SQL database access library of Matreshka components for Ada programmers
+%description sql-devel
+SQL database access library of Matreshka components allows to use simple API to
+access to different SQL databases.
+
+%package sql-postgresql
+Summary: PostgreSQL driver for SQL database access library of Matreshka components
+%description sql-postgresql
+PostgreSQL driver for SQL database access library of Matreshka components.
+
+%package sql-postgresql-devel
+Summary: PostgreSQL driver for SQL database access library of Matreshka components
+%description sql-postgresql-devel
+PostgreSQL driver for SQL database access library of Matreshka components.
 
 %prep
 %setup -q -n matreshka-%{version}
@@ -45,7 +78,6 @@ Matreshka is a set of Ada components.
 %build
 make config
 %configure
-%global RTL_VERSION_SUFFIX %(grep RTL_VERSION Makefile.config | sed -e 's/RTL_VERSION = \\(.*\\)/\\1/')
 make SMP_MFLAGS=%{?_smp_mflags}
 
 %install
@@ -61,10 +93,28 @@ export NO_BRP_CHECK_RPATH=true
 %postun
 /sbin/ldconfig
 
-%files -f .objs/league-lib.files -f .objs/fastcgi-lib.files -f .objs/sql-lib.files -f .objs/sql_postgresql-lib.files -f .objs/sql_sqlite3-lib.files
+%files -f .objs/league-lib.files
 %defattr(-,root,root)
 ##  %%doc ChangeLog README COPYING
+%files devel -f .objs/league-devel.files
+%dir %{_includedir}/matreshka
+%dir %{_includedir}/matreshka/league
+%dir %{_prefix}/lib/gnat/matreshka
+%dir %{_libdir}/matreshka
 
-%files devel -f .objs/league-devel.files -f .objs/fastcgi-devel.files -f .objs/sql-devel.files -f .objs/sql_postgresql-devel.files -f .objs/sql_sqlite3-devel.files
+%files fastcgi -f .objs/fastcgi-lib.files
+%files fastcgi-devel -f .objs/fastcgi-devel.files
+%dir %{_includedir}/matreshka/fastcgi
+
+%files sql -f .objs/sql-lib.files
+%files sql-devel -f .objs/sql-devel.files
+%dir %{_includedir}/matreshka/sql
+
+%files sql-postgresql -f .objs/sql_postgresql-lib.files
+%files sql-postgresql-devel -f .objs/sql_postgresql-devel.files
+%dir %{_includedir}/matreshka/sql/postgresql
+
+##  %%files sql-sqlite3 -f .objs/sql_sqlite3-lib.files
+##  %%files sql-sqlite3-devel -f .objs/sql_sqlite3-devel.files
 
 %changelog
