@@ -17,17 +17,16 @@
 
 # norootforbuild
 
-Name:           matreshka
+Name:           libmatreshka
 Version:        0.1.0
-Release:        1
+Release:        1.1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
 Group:          System/Libraries
 Source:         matreshka-0.1.0.tar.gz
 ##  Patch:
-BuildRequires:  gcc-ada sqlite3-devel
-#BuildRequires:  gcc-ada sqlite3-devel postgresql-devel
+BuildRequires:  gcc-ada sqlite3-devel postgresql-devel
 ##  PreReq:
 ##  Provides:
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -35,12 +34,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 Matreshka is a set of Ada components.
 
+%package devel
+Summary: Matreshka components for Ada programmers
+%description devel
+Matreshka is a set of Ada components.
+
 %prep
-%setup -q
+%setup -q -n matreshka-%{version}
 
 %build
 make config
 %configure
+%global RTL_VERSION_SUFFIX %(grep RTL_VERSION Makefile.config | sed -e 's/RTL_VERSION = \\(.*\\)/\\1/')
 make SMP_MFLAGS=%{?_smp_mflags}
 
 %install
@@ -56,12 +61,10 @@ export NO_BRP_CHECK_RPATH=true
 %postun
 /sbin/ldconfig
 
-%files
+%files -f .objs/league-lib.files -f .objs/fastcgi-lib.files -f .objs/sql-lib.files -f .objs/sql_postgresql-lib.files -f .objs/sql_sqlite3-lib.files
 %defattr(-,root,root)
 ##  %%doc ChangeLog README COPYING
-/usr/include/matreshka
-/usr/lib/gnat
-%_libdir
-%attr(0444, root, root) %_libdir/matreshka
+
+%files devel -f .objs/league-devel.files -f .objs/fastcgi-devel.files -f .objs/sql-devel.files -f .objs/sql_postgresql-devel.files -f .objs/sql_sqlite3-devel.files
 
 %changelog
