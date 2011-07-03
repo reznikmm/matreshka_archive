@@ -41,13 +41,13 @@
 ##--------------------------------------------------------------------------##
 
 Name:           matreshka
-Version:        0.1.0
+Version:        0.2.0
 Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
 Group:          System/Libraries
-Source:         matreshka-0.1.0.tar.gz
+Source:         matreshka-0.2.0.tar.gz
 ##  Patch:
 BuildRequires:  gcc-ada postgresql-devel sqlite3-devel
 ##  PreReq:
