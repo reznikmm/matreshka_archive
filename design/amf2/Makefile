@@ -39,11 +39,11 @@ gen2-api:
 
 gen-uml:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	(cd data/2.4 && ../../gen-stage2/.obj/gen_api UML.cmof UML) > uml/generated/sources.ada
-	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
-	rm uml/generated/sources.ada
-#	(cd data/2.4 && ../../gen-stage2/.obj/gen_init UML.cmof) > uml/generated/sources.ada
+#	(cd data/2.4 && ../../gen-stage2/.obj/gen_api UML.cmof UML) > uml/generated/sources.ada
 #	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
+#	rm uml/generated/sources.ada
+	(cd data/2.4 && ../../gen-stage2/.obj/gen2 UML.cmof) > uml/generated/sources.ada
+	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
 	gnatmake -p -Puml/uml.gpr
 
 clean:
