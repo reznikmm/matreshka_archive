@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 with Ada.Containers.Ordered_Sets;
 with Ada.Strings.Wide_Wide_Fixed;
-with Ada.Unchecked_Conversion;
-with Interfaces;
 
 with Qt_Ada.Generic_Model_Index_Data;
 with League.Strings;
@@ -54,6 +52,7 @@ with AMF.CMOF.Data_Types;
 with AMF.CMOF.Elements;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
+with AMF.Internals;
 with AMF.Elements.Collections;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
@@ -103,19 +102,15 @@ package body CMOF_Tree_Models is
     (Left  : AMF.CMOF.Properties.CMOF_Property_Access;
      Right : AMF.CMOF.Properties.CMOF_Property_Access) return Boolean
    is
-      use type Interfaces.Integer_32;
       use type League.Strings.Universal_String;
       use type AMF.Optional_String;
-
-      function To_Integer_32 is
-        new Ada.Unchecked_Conversion
-             (CMOF.CMOF_Element, Interfaces.Integer_32);
 
    begin
       return Left.Get_Name < Right.Get_Name
         or (Left.Get_Name = Right.Get_Name
-              and To_Integer_32 (CMOF.XMI_Helper.CMOF_Element_Of (Left))
-                    < To_Integer_32 (CMOF.XMI_Helper.CMOF_Element_Of (Right)));
+              and AMF.Internals."<"
+                   (CMOF.XMI_Helper.CMOF_Element_Of (Left),
+                    CMOF.XMI_Helper.CMOF_Element_Of (Right)));
    end "<";
 
    --------------------
@@ -650,6 +645,7 @@ package body CMOF_Tree_Models is
      Root : CMOF.CMOF_Extent)
    is
       use CMOF;
+      use type CMOF.CMOF_Element;
 
       E : constant AMF.Elements.Collections.Reflective_Collection
         := CMOF.Extents.Elements (Root);
