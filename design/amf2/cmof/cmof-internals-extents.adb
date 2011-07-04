@@ -64,13 +64,14 @@ package body CMOF.Internals.Extents is
 
    function Container (Self : CMOF_Element) return CMOF_Element is
 
+      use AMF.Internals.Tables;
       use CMOF.Internals.Attribute_Mappings;
       use CMOF.Internals.Attributes;
       use CMOF.Internals.Collections;
       use CMOF.Internals.Reflection;
       use CMOF.Internals.Metamodel;
       use CMOF.Internals.Subclassing;
-      use type CMOF.Internals.Tables.Collection_Element_Identifier;
+      use type AMF.Internals.Tables.AMF_Tables.Collection_Element_Identifier;
 
       Meta_Class  : constant CMOF_Class := Reflection.Get_Meta_Class (Self);
       Meta_Extent : constant CMOF_Extent
@@ -80,9 +81,9 @@ package body CMOF.Internals.Extents is
       Association : CMOF_Association;
       Member_End  : Ordered_Set_Of_CMOF_Property;
       Opposite    : CMOF_Property;
-      Collection  : Tables.Collection_Element_Identifier;
+      Collection  : AMF_Tables.Collection_Element_Identifier;
       Owner       : CMOF_Element;
-      Link        : CMOF_Link;
+      Link        : AMF.Internals.AMF_Link;
 
    begin
       --  All properties must be traversed to detect containment.
@@ -127,45 +128,51 @@ package body CMOF.Internals.Extents is
 
                else
                Collection :=
-                 Tables.Collections.Table
+                 AMF_Tables.Collections.Table
                   (Tables.Elements.Table (Self).Member (0).Collection).Head;
 
                while Collection /= 0 loop
-                  Link := Tables.Collection_Elements.Table (Collection).Link;
+                  Link :=
+                    AMF_Tables.Collection_Elements.Table (Collection).Link;
 
-                  if Tables.Links.Table (Link).Association = Association then
-                     if Tables.Links.Table (Link).First_Element = Self then
-                        return Tables.Links.Table (Link).Second_Element;
+                  if AMF_Tables.Links.Table (Link).Association
+                       = Association
+                  then
+                     if AMF_Tables.Links.Table (Link).First_Element = Self then
+                        return AMF_Tables.Links.Table (Link).Second_Element;
 
                      else
-                        return Tables.Links.Table (Link).First_Element;
+                        return AMF_Tables.Links.Table (Link).First_Element;
                      end if;
                   end if;
 
                   Collection :=
-                    Tables.Collection_Elements.Table (Collection).Next;
+                    AMF_Tables.Collection_Elements.Table (Collection).Next;
                end loop;
                end if;
 
             else
                Collection :=
-                 Tables.Collections.Table
+                 AMF_Tables.Collections.Table
                   (Tables.Elements.Table (Self).Member (0).Collection).Head;
 
                while Collection /= 0 loop
-                  Link := Tables.Collection_Elements.Table (Collection).Link;
+                  Link :=
+                    AMF_Tables.Collection_Elements.Table (Collection).Link;
 
-                  if Tables.Links.Table (Link).Association = Association then
-                     if Tables.Links.Table (Link).First_Element = Self then
-                        return Tables.Links.Table (Link).Second_Element;
+                  if AMF_Tables.Links.Table (Link).Association
+                       = Association
+                  then
+                     if AMF_Tables.Links.Table (Link).First_Element = Self then
+                        return AMF_Tables.Links.Table (Link).Second_Element;
 
                      else
-                        return Tables.Links.Table (Link).First_Element;
+                        return AMF_Tables.Links.Table (Link).First_Element;
                      end if;
                   end if;
 
                   Collection :=
-                    Tables.Collection_Elements.Table (Collection).Next;
+                    AMF_Tables.Collection_Elements.Table (Collection).Next;
                end loop;
             end if;
          end if;

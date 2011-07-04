@@ -54,7 +54,7 @@ package CMOF.Internals.Collections is
    procedure Internal_Append
     (Collection : Collection_Of_CMOF_Element;
      Element    : CMOF_Element;
-     Link       : CMOF_Link);
+     Link       : AMF.Internals.AMF_Link);
    --  Appends element to collection. This subprogram doesn't construct link.
 
    type CMOF_Collection is

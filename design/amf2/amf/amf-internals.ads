@@ -52,7 +52,8 @@ package AMF.Internals is
    type AMF_Element is mod 2 ** 32;
    --  Identifier of the element inside metamodel.
 
-   type AMF_Link is mod 2 ** 32;
+   type AMF_Link is range 0 .. 2 ** 31 - 1;
+--   type AMF_Link is mod 2 ** 32;
    --  Identifier of the link between two elements.
 
 end AMF.Internals;

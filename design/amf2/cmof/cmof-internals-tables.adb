@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
@@ -48,6 +49,7 @@ with CMOF.Multiplicity_Elements;
 
 package body CMOF.Internals.Tables is
 
+   use AMF.Internals.Tables;
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Types;
 
@@ -60,10 +62,11 @@ package body CMOF.Internals.Tables is
      Count   : Natural)
    is
       First : constant Collection_Of_CMOF_Element
-        := Collections.Last + 1;
+        := AMF_Tables.Collections.Last + 1;
 
    begin
-      Collections.Set_Last (First + Collection_Of_CMOF_Element (Count));
+      AMF_Tables.Collections.Set_Last
+       (First + Collection_Of_CMOF_Element (Count));
       Elements.Table (Element).Member (0) := (M_Collection_Of_Element, First);
    end Allocate_Collection_Of_Cmof_Element_Slots;
 
@@ -96,8 +99,8 @@ package body CMOF.Internals.Tables is
 --     Property   : CMOF_Property;
     (Collection : Collection_Of_CMOF_Element) is
    begin
-      Collections.Table (Collection) :=
-       (Kind     => C_Ordered_Set,
+      AMF_Tables.Collections.Table (Collection) :=
+       (Kind     => AMF_Tables.C_Ordered_Set,
         Owner    => 0,
         Property => 0,
         Head     => 0,
@@ -113,8 +116,8 @@ package body CMOF.Internals.Tables is
      Property   : CMOF_Property;
      Collection : Collection_Of_CMOF_Element) is
    begin
-      Collections.Table (Collection) :=
-       (Kind     => C_Ordered_Set,
+      AMF_Tables.Collections.Table (Collection) :=
+       (Kind     => AMF_Tables.C_Ordered_Set,
         Owner    => Element,
         Property => Property,
         Head     => 0,
@@ -130,8 +133,8 @@ package body CMOF.Internals.Tables is
 --     Property   : CMOF_Property;
     (Collection : Collection_Of_CMOF_Element) is
    begin
-      Collections.Table (Collection) :=
-       (Kind     => C_Set,
+      AMF_Tables.Collections.Table (Collection) :=
+       (Kind     => AMF_Tables.C_Set,
         Owner    => 0,
         Property => 0,
         Head     => 0,
@@ -147,8 +150,8 @@ package body CMOF.Internals.Tables is
      Property   : CMOF_Property;
      Collection : Collection_Of_CMOF_Element) is
    begin
-      Collections.Table (Collection) :=
-       (Kind     => C_Set,
+      AMF_Tables.Collections.Table (Collection) :=
+       (Kind     => AMF_Tables.C_Set,
         Owner    => Element,
         Property => Property,
         Head     => 0,

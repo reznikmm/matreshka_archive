@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
 with AMF.Internals.Listener_Registry;
+with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
@@ -51,6 +52,8 @@ with CMOF.Internals.Tables;
 with CMOF.Multiplicity_Elements;
 
 package body CMOF.Internals.Links is
+
+   use AMF.Internals.Tables;
 
    --------------------------
    -- Internal_Create_Link --
@@ -83,8 +86,8 @@ package body CMOF.Internals.Links is
 
       procedure Create_Multiple_Multiple is
       begin
-         Tables.Links.Table (Tables.Links.Last) :=
-          (L_Multiple_Multiple,
+         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
+          (AMF_Tables.L_Multiple_Multiple,
            Association,
            First_Element,
            Second_Element);
@@ -93,7 +96,7 @@ package body CMOF.Internals.Links is
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Internal_Append
@@ -103,14 +106,14 @@ package body CMOF.Internals.Links is
                      (Elements.Table (First_Element).Kind,
                       First_Property)),
               Second_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Internal_Append
@@ -120,7 +123,7 @@ package body CMOF.Internals.Links is
                      (Elements.Table (Second_Element).Kind,
                       Second_Property)),
               First_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
          end if;
       end Create_Multiple_Multiple;
 
@@ -130,8 +133,8 @@ package body CMOF.Internals.Links is
 
       procedure Create_Multiple_Single is
       begin
-         Tables.Links.Table (Tables.Links.Last) :=
-          (L_Multiple_Single,
+         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
+          (AMF_Tables.L_Multiple_Single,
            Association,
            First_Element,
            Second_Element);
@@ -140,7 +143,7 @@ package body CMOF.Internals.Links is
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Internal_Append
@@ -150,14 +153,14 @@ package body CMOF.Internals.Links is
                      (Elements.Table (First_Element).Kind,
                       First_Property)),
               Second_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Elements.Table (Second_Element).Member
@@ -173,8 +176,8 @@ package body CMOF.Internals.Links is
 
       procedure Create_Single_Multiple is
       begin
-         Tables.Links.Table (Tables.Links.Last) :=
-          (L_Single_Multiple,
+         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
+          (AMF_Tables.L_Single_Multiple,
            Association,
            First_Element,
            Second_Element);
@@ -183,7 +186,7 @@ package body CMOF.Internals.Links is
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Elements.Table (First_Element).Member
@@ -196,7 +199,7 @@ package body CMOF.Internals.Links is
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Internal_Append
@@ -206,7 +209,7 @@ package body CMOF.Internals.Links is
                      (Elements.Table (Second_Element).Kind,
                       Second_Property)),
               First_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
          end if;
       end Create_Single_Multiple;
 
@@ -216,8 +219,8 @@ package body CMOF.Internals.Links is
 
       procedure Create_Single_Single is
       begin
-         Tables.Links.Table (Tables.Links.Last) :=
-          (L_Single_Single,
+         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
+          (AMF_Tables.L_Single_Single,
            Association,
            First_Element,
            Second_Element);
@@ -226,7 +229,7 @@ package body CMOF.Internals.Links is
             Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Elements.Table (First_Element).Member
@@ -239,7 +242,7 @@ package body CMOF.Internals.Links is
             Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
-              Tables.Links.Last);
+              AMF_Tables.Links.Last);
 
          else
             Elements.Table (Second_Element).Member
@@ -250,7 +253,7 @@ package body CMOF.Internals.Links is
       end Create_Single_Single;
 
    begin
-      Tables.Links.Increment_Last;
+      AMF_Tables.Links.Increment_Last;
 
       if Is_Multivalued (First_Property) then
          if Is_Multivalued (Second_Property) then

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,12 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Links;
 with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Collections is
 
+   use AMF.Internals.Tables;
    use CMOF.Internals.Attributes;
    use CMOF.Internals.Tables;
 
@@ -60,9 +62,9 @@ package body CMOF.Internals.Collections is
      Item : AMF.Elements.Element_Access)
    is
       Owner       : constant CMOF_Element
-        := Tables.Collections.Table (Self.Collection).Owner;
+        := AMF_Tables.Collections.Table (Self.Collection).Owner;
       Property    : constant CMOF_Property
-        := Tables.Collections.Table (Self.Collection).Property;
+        := AMF_Tables.Collections.Table (Self.Collection).Property;
       Association : constant CMOF_Association
         := Internal_Get_Association (Property);
       Element     : constant CMOF_Element
@@ -112,21 +114,23 @@ package body CMOF.Internals.Collections is
     (Self  : Collection_Of_CMOF_Element;
      Index : Positive) return CMOF_Element
    is
-      Current : Collection_Element_Identifier
-        := Tables.Collections.Table (Self).Head;
+      use type AMF_Tables.Collection_Element_Identifier;
+
+      Current : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Self).Head;
 
    begin
       for J in 2 .. Index loop
          exit when Current = 0;
 
-         Current := Collection_Elements.Table (Current).Next;
+         Current := AMF_Tables.Collection_Elements.Table (Current).Next;
       end loop;
 
       if Current = 0 then
          raise Constraint_Error;
 
       else
-         return Collection_Elements.Table (Current).Element;
+         return AMF_Tables.Collection_Elements.Table (Current).Element;
       end if;
    end Element;
 
@@ -148,20 +152,22 @@ package body CMOF.Internals.Collections is
    procedure Internal_Append
     (Collection : Collection_Of_CMOF_Element;
      Element    : CMOF_Element;
-     Link       : CMOF_Link)
+     Link       : AMF.Internals.AMF_Link)
    is
-      Head        : Collection_Element_Identifier
-        := Tables.Collections.Table (Collection).Head;
-      Tail        : Collection_Element_Identifier
-        := Tables.Collections.Table (Collection).Tail;
-      Previous    : Collection_Element_Identifier
-        := Tables.Collections.Table (Collection).Tail;
-      Next        : Collection_Element_Identifier := 0;
-      New_Element : Collection_Element_Identifier;
+      use type AMF_Tables.Collection_Element_Identifier;
+
+      Head        : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Collection).Head;
+      Tail        : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Collection).Tail;
+      Previous    : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Collection).Tail;
+      Next        : AMF_Tables.Collection_Element_Identifier := 0;
+      New_Element : AMF_Tables.Collection_Element_Identifier;
 
    begin
-      Collection_Elements.Increment_Last;
-      New_Element := Collection_Elements.Last;
+      AMF_Tables.Collection_Elements.Increment_Last;
+      New_Element := AMF_Tables.Collection_Elements.Last;
 
       if Head = 0 then
          --  List is empty.
@@ -169,17 +175,17 @@ package body CMOF.Internals.Collections is
          Head := New_Element;
          Tail := New_Element;
 
-         Tables.Collections.Table (Collection).Head := Head;
-         Tables.Collections.Table (Collection).Tail := Tail;
+         AMF_Tables.Collections.Table (Collection).Head := Head;
+         AMF_Tables.Collections.Table (Collection).Tail := Tail;
 
       else
          Tail := New_Element;
 
-         Tables.Collections.Table (Collection).Tail := Tail;
-         Collection_Elements.Table (Previous).Next := New_Element;
+         AMF_Tables.Collections.Table (Collection).Tail := Tail;
+         AMF_Tables.Collection_Elements.Table (Previous).Next := New_Element;
       end if;
 
-      Collection_Elements.Table (New_Element) :=
+      AMF_Tables.Collection_Elements.Table (New_Element) :=
        (Element, Link, Previous, Next);
    end Internal_Append;
 
@@ -188,14 +194,16 @@ package body CMOF.Internals.Collections is
    ------------
 
    function Length (Self : Collection_Of_CMOF_Element) return Natural is
-      Current : Collection_Element_Identifier
-        := Tables.Collections.Table (Self).Head;
+      use type AMF_Tables.Collection_Element_Identifier;
+
+      Current : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Self).Head;
       Aux     : Natural := 0;
 
    begin
       while Current /= 0 loop
          Aux     := Aux + 1;
-         Current := Collection_Elements.Table (Current).Next;
+         Current := AMF_Tables.Collection_Elements.Table (Current).Next;
       end loop;
 
       return Aux;

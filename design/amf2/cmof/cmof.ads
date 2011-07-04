@@ -59,7 +59,11 @@ package CMOF is
      Protected_Visibility,
      Package_Visibility);
 
-   type Collection_Of_CMOF_Element is private;
+   type Collection_Of_CMOF_Element is
+--     new Interfaces.Unsigned_32;
+     new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
+   for Collection_Of_CMOF_Element'Size use Interfaces.Integer_32'Size;
+
 
    subtype Set_Of_CMOF_Class is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Classifier is Collection_Of_CMOF_Element;
@@ -130,11 +134,6 @@ package CMOF is
 
 
 private
-
-   type Collection_Of_CMOF_Element is
---     new Interfaces.Unsigned_32;
-     new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
-   for Collection_Of_CMOF_Element'Size use Interfaces.Integer_32'Size;
 
    type Collection_Of_CMOF_String is
      new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
