@@ -41,12 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Root package for tables of all metamodels. Each metamodel has own tables
---  package as child of this package.
+--  Tables of AMF internals data structures.
 ------------------------------------------------------------------------------
+with GNAT.Table;
 
-package AMF.Internals.Tables is
+with CMOF;
 
-   pragma Preelaborate;
+package AMF.Internals.Tables.AMF_Tables is
 
-end AMF.Internals.Tables;
+   type Extent_Record is record
+      Head : CMOF.CMOF_Element;
+      Tail : CMOF.CMOF_Element;
+   end record;
+
+   package Extents is
+     new GNAT.Table (Extent_Record, CMOF.CMOF_Extent, 1, 100, 100);
+
+end AMF.Internals.Tables.AMF_Tables;
