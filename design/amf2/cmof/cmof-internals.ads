@@ -44,6 +44,6 @@
 
 package Cmof.Internals is
 
-   pragma Pure;
+   pragma Preelaborate;
 
 end Cmof.Internals;

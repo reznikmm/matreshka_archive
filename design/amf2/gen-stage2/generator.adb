@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,9 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
-with Interfaces;
-
 with League.Strings;
 
 with AMF.Internals.CMOF_Elements;
@@ -63,16 +60,12 @@ package body Generator is
     (Left : CMOF_Named_Element; Right : CMOF_Named_Element) return Boolean
    is
       use type League.Strings.Universal_String;
-      use type Interfaces.Integer_32;
-
-      function To_Integer_32 is
-        new Ada.Unchecked_Conversion (CMOF_Element, Interfaces.Integer_32);
 
    begin
       return
         Get_Name (Left) < Get_Name (Right)
           or (Get_Name (Left) = Get_Name (Right)
-                and To_Integer_32 (Left) < To_Integer_32 (Right));
+                and AMF.Internals."<" (Left, Right));
    end "<";
 
    ----------------

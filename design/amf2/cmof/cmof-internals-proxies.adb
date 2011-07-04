@@ -50,7 +50,10 @@ package body CMOF.Internals.Proxies is
    ---------------
 
    function Get_Proxy
-    (Element : CMOF_Element) return AMF.Elements.Element_Access is
+    (Element : CMOF_Element) return AMF.Elements.Element_Access
+   is
+      use type AMF.Internals.AMF_Element;
+
    begin
       if Element = Null_CMOF_Element then
          return null;

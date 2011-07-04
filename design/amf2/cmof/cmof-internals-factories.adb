@@ -62,6 +62,7 @@ with League.Holders.Integers;
 package body CMOF.Internals.Factories is
 
    use CMOF.Internals.Metamodel;
+   use type AMF.Internals.AMF_Element;
 
    In_Image     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("in");

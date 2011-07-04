@@ -44,6 +44,6 @@
 
 package CMOF.Utilities is
 
-   pragma Pure;
+   pragma Preelaborate;
 
 end CMOF.Utilities;

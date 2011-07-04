@@ -75,6 +75,8 @@ package body CMOF.Internals.Tables is
    -------------
 
    function Is_Null (Self : Cmof_Element) return Boolean is
+      use type AMF.Internals.AMF_Element;
+
    begin
       return Self = Null_Cmof_Element;
    end Is_Null;

@@ -65,6 +65,7 @@ package body CMOF.Internals.Reflection is
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
    use CMOF.Internals.Types;
+   use type AMF.Internals.AMF_Element;
 
    ---------
    -- Get --

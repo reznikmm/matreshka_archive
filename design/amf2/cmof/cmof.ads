@@ -43,9 +43,11 @@
 ------------------------------------------------------------------------------
 with Interfaces;
 
+with AMF.Internals;
+
 package CMOF is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    type CMOF_Parameter_Direction_Kind is
     (In_Direction,
@@ -85,13 +87,8 @@ package CMOF is
 --   subtype Sequence_Of_String is Collection_Of_String;
 --   subtype Bag_Of_String is Collection_Of_String;
 
---   type Cmof_Element is private;
---   Null_Cmof_Element : constant Cmof_Element;
-
-   type Cmof_Element is
-     new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
-   for CMOF_Element'Size use Interfaces.Integer_32'Size;
-   Null_Cmof_Element : constant Cmof_Element := 0;
+   subtype CMOF_Element is AMF.Internals.CMOF_Element;
+   Null_CMOF_Element : constant CMOF_Element := 0;
 
    subtype Cmof_Association is Cmof_Element;
    subtype Cmof_Behavioral_Feature is Cmof_Element;

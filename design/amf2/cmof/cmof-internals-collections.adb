@@ -52,6 +52,7 @@ package body CMOF.Internals.Collections is
    use AMF.Internals.Tables;
    use CMOF.Internals.Attributes;
    use CMOF.Internals.Tables;
+   use type AMF.Internals.AMF_Element;
 
    ---------
    -- Add --

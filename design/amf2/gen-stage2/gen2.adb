@@ -544,7 +544,7 @@ procedure Gen2 is
       New_Line;
       Put_Line ("package CMOF.Internals.Metamodel is");
       New_Line;
-      Put_Line ("   pragma Pure;");
+      Put_Line ("   pragma Preelaborate;");
       New_Line;
       Sort (All_Packages).Iterate (Generate_Package_Constant'Access);
       New_Line;

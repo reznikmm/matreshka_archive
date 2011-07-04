@@ -45,7 +45,7 @@
 
 package CMOF.Internals.Types is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    --  Node kinds enumeration is constructed on the base of Class_Kinds by
    --  excluding all abstract classes and adding N_None.

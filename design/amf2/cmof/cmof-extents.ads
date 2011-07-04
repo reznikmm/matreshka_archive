@@ -52,7 +52,11 @@ package CMOF.Extents is
    function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
 
    package CMOF_Element_Sets is
-     new Ada.Containers.Hashed_Sets (CMOF_Element, Hash, "=");
+     new Ada.Containers.Hashed_Sets
+          (AMF.Internals.AMF_Element,
+           Hash,
+           AMF.Internals."=",
+           AMF.Internals."=");
 
    function Create_Extent return CMOF_Extent;
 

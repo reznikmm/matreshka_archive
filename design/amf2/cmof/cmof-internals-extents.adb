@@ -58,6 +58,8 @@ with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Extents is
 
+   use type AMF.Internals.AMF_Element;
+
    ---------------
    -- Container --
    ---------------

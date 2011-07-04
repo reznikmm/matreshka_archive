@@ -235,6 +235,8 @@ package body Generator.Initialization is
            Element     : CMOF_Element;
            Other       : CMOF_Element)
          is
+            use type AMF.Internals.AMF_Element;
+
             First_End  : constant CMOF_Property
               := Collections.Element (Get_Member_End (Association), 1);
             Second_End : constant CMOF_Property

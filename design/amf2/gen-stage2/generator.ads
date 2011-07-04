@@ -47,6 +47,7 @@ with Ada.Containers.Ordered_Sets;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
+with AMF.Internals;
 with CMOF.Extents;
 
 package Generator is
@@ -58,11 +59,12 @@ package Generator is
      Right : CMOF.CMOF_Named_Element) return Boolean;
 
    package CMOF_Named_Element_Ordered_Sets is
-     new Ada.Containers.Ordered_Sets (CMOF.CMOF_Named_Element);
+     new Ada.Containers.Ordered_Sets
+          (CMOF.CMOF_Named_Element, "<", AMF.Internals."=");
 
    package CMOF_Element_Number_Maps is
      new Ada.Containers.Hashed_Maps
-          (CMOF.CMOF_Element, Positive, CMOF.Extents.Hash, "=");
+          (CMOF.CMOF_Element, Positive, CMOF.Extents.Hash, AMF.Internals."=");
 
    function Sort
     (Set : CMOF.Extents.CMOF_Element_Sets.Set)

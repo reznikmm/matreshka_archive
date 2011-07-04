@@ -48,7 +48,7 @@ with CMOF.Internals.Types;
 
 private package CMOF.Internals.Attribute_Mappings is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Types;

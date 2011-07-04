@@ -46,7 +46,7 @@
 
 package CMOF.Internals.Metamodel is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    MM_CMOF : constant CMOF_Package := 198;
 

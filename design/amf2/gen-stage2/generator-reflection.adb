@@ -741,6 +741,7 @@ package body Generator.Reflection is
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use CMOF.Internals.Types;");
+      Put_Line ("   use type AMF.Internals.AMF_Element;");
 
       --  Getter
 

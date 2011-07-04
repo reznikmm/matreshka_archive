@@ -142,6 +142,7 @@ package body Generator.Names is
     (Property : CMOF_Property) return Wide_Wide_String
    is
       Ada_Name : League.Strings.Universal_String;
+      use type AMF.Internals.AMF_Element;
 
    begin
       if Get_Owning_Association (Property) /= Null_CMOF_Element then
