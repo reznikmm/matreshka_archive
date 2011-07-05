@@ -42,11 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.Helpers;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Proxies;
 with CMOF.Internals.Subclassing;
 with CMOF.Named_Elements;
 with CMOF.Packages;
@@ -143,7 +143,7 @@ package body CMOF.XMI_Helper is
     (Name : League.Strings.Universal_String)
        return AMF.Elements.Element_Access is
    begin
-      return CMOF.Internals.Proxies.Get_Proxy (Resolve (Name));
+      return AMF.Internals.Helpers.To_Element (Resolve (Name));
    end Resolve;
 
    ------------

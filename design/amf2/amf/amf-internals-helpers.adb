@@ -41,11 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Elements;
+with Interfaces;
 
-package CMOF.Internals.Proxies is
+package body AMF.Internals.Helpers is
 
-   function Get_Proxy
-    (Element : CMOF_Element) return AMF.Elements.Element_Access;
+   use Interfaces;
+   --  XXX Interfaces.Unsigned_32 used only till AMF_Element isn't declared as
+   --  modular type.
 
-end CMOF.Internals.Proxies;
+   ----------------
+   -- To_Element --
+   ----------------
+
+   function To_Element
+    (Element : AMF_Element) return AMF.Elements.Element_Access is
+   begin
+      if (Unsigned_32 (Element) and 16#00FFFFFF#) = 0 then
+         --  First element in every metamodel is null element.
+
+         return null;
+
+      else
+         return
+           Metamodel_Helper
+            (AMF_Metamodel (Unsigned_32 (Element) / 16#01000000#)).To_Element
+              (Element);
+      end if;
+   end To_Element;
+
+end AMF.Internals.Helpers;

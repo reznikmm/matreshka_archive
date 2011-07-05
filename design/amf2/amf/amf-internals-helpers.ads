@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,43 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Helpers.CMOF_Helper;
+--  Metamodel's helper is used by AMF to interact with arbitrary metamodel
+--  to convert identifiers to elements, establish links, etc.
+------------------------------------------------------------------------------
+with AMF.Elements;
 
-package CMOF.Internals.Setup is
+package AMF.Internals.Helpers is
 
-   pragma Elaborate_Body;
+   pragma Preelaborate;
 
-end CMOF.Internals.Setup;
+   function To_Element
+    (Element : AMF_Element) return AMF.Elements.Element_Access;
+   --  Converts element's identifier into element's object.
+
+private
+
+   type Abstract_Metamodel_Helper is abstract tagged null record;
+
+   not overriding function To_Element
+    (Self    : not null access constant Abstract_Metamodel_Helper;
+     Element : AMF_Element) return AMF.Elements.Element_Access is abstract;
+   --  Converts internal element's identifier into element object.
+
+--   not overriding function Get_Collection
+--    (Self     : not null access constant Abstract_Metamodel;
+--     Element  : AMF_Element;
+--     Property : CMOF_Element) return AMF_Collection_Of_Element is abstract;
+--   --  Returns 
+--
+--   not overriding procedure Set_Link_End
+--    (Self     : not null access constant Abstract_Metamodel;
+--     Element  : AMF_Element;
+--     Other    : AMF_Element;
+--     Property : CMOF_Element;
+--     Link     : AMF_Link) is abstract;
+
+   type Metamodel_Helper_Access is access all Abstract_Metamodel_Helper'Class;
+
+   Metamodel_Helper : array (AMF_Metamodel) of Metamodel_Helper_Access;
+
+end AMF.Internals.Helpers;

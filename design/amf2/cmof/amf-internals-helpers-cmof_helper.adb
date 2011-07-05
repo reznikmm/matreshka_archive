@@ -43,24 +43,21 @@
 ------------------------------------------------------------------------------
 with CMOF.Internals.Tables;
 
-package body CMOF.Internals.Proxies is
+package body AMF.Internals.Helpers.CMOF_Helper is
 
-   ---------------
-   -- Get_Proxy --
-   ---------------
+   ----------------
+   -- To_Element --
+   ----------------
 
-   function Get_Proxy
-    (Element : CMOF_Element) return AMF.Elements.Element_Access
-   is
-      use type AMF.Internals.AMF_Element;
-
+   overriding function To_Element
+    (Self     : not null access constant CMOF_Metamodel_Helper;
+     Element  : AMF_Element) return AMF.Elements.Element_Access is
    begin
-      if Element = Null_CMOF_Element then
-         return null;
+      return CMOF.Internals.Tables.Elements.Table (Element).Proxy;
+   end To_Element;
 
-      else
-         return CMOF.Internals.Tables.Elements.Table (Element).Proxy;
-      end if;
-   end Get_Proxy;
+   Helper : aliased CMOF_Metamodel_Helper;
 
-end CMOF.Internals.Proxies;
+begin
+   Metamodel_Helper (CMOF_Metamodel) := Helper'Access;
+end AMF.Internals.Helpers.CMOF_Helper;

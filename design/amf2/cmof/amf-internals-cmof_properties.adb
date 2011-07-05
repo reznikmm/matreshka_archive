@@ -42,9 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Collections;
+with AMF.Internals.Helpers;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Collections;
-with CMOF.Internals.Proxies;
 
 package body AMF.Internals.CMOF_Properties is
 
@@ -61,7 +61,7 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Associations.CMOF_Association_Access
-         (Standard.CMOF.Internals.Proxies.Get_Proxy
+         (AMF.Internals.Helpers.To_Element
            (Internal_Get_Association (Self.Id)));
    end Get_Association;
 
@@ -75,8 +75,7 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Classes.CMOF_Class_Access
-         (Standard.CMOF.Internals.Proxies.Get_Proxy
-           (Internal_Get_Class (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Id)));
    end Get_Class;
 
    -----------------
@@ -146,7 +145,7 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Associations.CMOF_Association_Access
-         (Standard.CMOF.Internals.Proxies.Get_Proxy
+         (AMF.Internals.Helpers.To_Element
            (Internal_Get_Owning_Association (Self.Id)));
    end Get_Owning_Association;
 

@@ -41,8 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Helpers;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Proxies;
 
 package body AMF.Internals.CMOF_Typed_Elements is
 
@@ -58,8 +58,7 @@ package body AMF.Internals.CMOF_Typed_Elements is
    begin
       return
         AMF.CMOF.Types.CMOF_Type_Access
-         (Standard.CMOF.Internals.Proxies.Get_Proxy
-           (Internal_Get_Type (Self.Id)));
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Id)));
    end Get_Type;
 
 end AMF.Internals.CMOF_Typed_Elements;

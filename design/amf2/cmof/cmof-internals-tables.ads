@@ -49,7 +49,7 @@ with AMF.CMOF;
 with AMF.Elements;
 with CMOF.Internals.Types;
 
-private package CMOF.Internals.Tables is
+package CMOF.Internals.Tables is
 
    type Member_Kinds is
     (M_None,

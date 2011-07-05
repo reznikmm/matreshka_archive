@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Helpers.CMOF_Helper;
+--  Metamodel's helper for CMOF metamodel.
+------------------------------------------------------------------------------
 
-package CMOF.Internals.Setup is
+package AMF.Internals.Helpers.CMOF_Helper is
 
-   pragma Elaborate_Body;
+private
 
-end CMOF.Internals.Setup;
+   type CMOF_Metamodel_Helper is new Abstract_Metamodel_Helper with null record;
+
+   overriding function To_Element
+    (Self     : not null access constant CMOF_Metamodel_Helper;
+     Element  : AMF_Element) return AMF.Elements.Element_Access;
+
+end AMF.Internals.Helpers.CMOF_Helper;

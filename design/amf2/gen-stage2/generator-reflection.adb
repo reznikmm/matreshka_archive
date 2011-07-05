@@ -195,7 +195,7 @@ package body Generator.Reflection is
                      ("AMF.Holders.Elements.To_Holder");
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
-                     ("CMOF.Internals.Proxies.Get_Proxy");
+                     ("AMF.Internals.Helpers.To_Element");
 
                else
                   Holder_Name :=
@@ -726,11 +726,11 @@ package body Generator.Reflection is
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Holders.String_Collections;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
+      Put_Line ("with AMF.Internals.Helpers;");
       Put_Line ("with AMF.String_Collections;");
       Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Collections;");
       Put_Line ("with CMOF.Internals.Metamodel;");
-      Put_Line ("with CMOF.Internals.Proxies;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with League.Holders.Booleans;");

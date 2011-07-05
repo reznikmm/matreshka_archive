@@ -71,21 +71,4 @@ package AMF.Internals is
    type AMF_Collection_Of_Element is range 0 .. 2 ** 31 - 1;
    for AMF_Collection_Of_Element'Size use 32;
 
---   type Abstract_Metamodel is abstract tagged null record;
---
---   not overriding function Get_Collection
---    (Self     : not null access constant Abstract_Metamodel;
---     Element  : AMF_Element;
---     Property : CMOF_Element) return AMF_Collection_Of_Element is abstract;
---   --  Returns 
---
---   not overriding procedure Set_Link_End
---    (Self     : not null access constant Abstract_Metamodel;
---     Element  : AMF_Element;
---     Other    : AMF_Element;
---     Property : CMOF_Element;
---     Link     : AMF_Link) is abstract;
---
---   type Metamodel_Access is access all Abstract_Metamodel'Class;
-
 end AMF.Internals;

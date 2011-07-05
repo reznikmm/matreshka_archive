@@ -43,12 +43,12 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Proxies;
 with CMOF.Internals.Tables;
 with CMOF.Multiplicity_Elements;
 
@@ -276,9 +276,9 @@ package body CMOF.Internals.Links is
 
       AMF.Internals.Listener_Registry.Notify_Link_Add
        (AMF.CMOF.Associations.CMOF_Association_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Association)),
-        CMOF.Internals.Proxies.Get_Proxy (First_Element),
-        CMOF.Internals.Proxies.Get_Proxy (Second_Element));
+         (AMF.Internals.Helpers.To_Element (Association)),
+        AMF.Internals.Helpers.To_Element (First_Element),
+        AMF.Internals.Helpers.To_Element (Second_Element));
    end Internal_Create_Link;
 
 end CMOF.Internals.Links;
