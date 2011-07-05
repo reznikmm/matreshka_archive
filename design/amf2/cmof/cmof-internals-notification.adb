@@ -46,8 +46,8 @@ with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Properties;
 with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Holders.Elements;
+with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
-with CMOF.Internals.Proxies;
 with League.Holders.Booleans;
 with League.Strings.Internals;
 
@@ -64,9 +64,9 @@ package body CMOF.Internals.Notification is
      New_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder (Old_Value),
         AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder (New_Value));
@@ -83,9 +83,9 @@ package body CMOF.Internals.Notification is
      New_Value : AMF.CMOF.CMOF_Visibility_Kind) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.CMOF.Visibility_Kind_Holders.To_Holder (Old_Value),
         AMF.CMOF.Visibility_Kind_Holders.To_Holder (New_Value));
@@ -102,9 +102,9 @@ package body CMOF.Internals.Notification is
      New_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.CMOF.Holders.To_Holder (Old_Value),
         AMF.CMOF.Holders.To_Holder (New_Value));
@@ -121,9 +121,9 @@ package body CMOF.Internals.Notification is
      New_Value : AMF.Optional_Integer) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.Holders.To_Holder (Old_Value),
         AMF.Holders.To_Holder (New_Value));
@@ -140,9 +140,9 @@ package body CMOF.Internals.Notification is
      New_Value : AMF.Optional_String) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.Holders.To_Holder (Old_Value),
         AMF.Holders.To_Holder (New_Value));
@@ -159,9 +159,9 @@ package body CMOF.Internals.Notification is
      New_Value : AMF.Optional_Unlimited_Natural) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.Holders.To_Holder (Old_Value),
         AMF.Holders.To_Holder (New_Value));
@@ -178,9 +178,9 @@ package body CMOF.Internals.Notification is
      New_Value : Boolean) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         League.Holders.Booleans.To_Holder (Old_Value),
         League.Holders.Booleans.To_Holder (New_Value));
@@ -197,14 +197,14 @@ package body CMOF.Internals.Notification is
      New_Value : CMOF.CMOF_Element) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (CMOF.Internals.Proxies.Get_Proxy (Element),
+       (AMF.Internals.Helpers.To_Element (Element),
         AMF.CMOF.Properties.CMOF_Property_Access
-         (CMOF.Internals.Proxies.Get_Proxy (Property)),
+         (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
         AMF.Holders.Elements.To_Holder
-         (CMOF.Internals.Proxies.Get_Proxy (Old_Value)),
+         (AMF.Internals.Helpers.To_Element (Old_Value)),
         AMF.Holders.Elements.To_Holder
-         (CMOF.Internals.Proxies.Get_Proxy (New_Value)));
+         (AMF.Internals.Helpers.To_Element (New_Value)));
    end Notify_Attribute_Set;
 
 end CMOF.Internals.Notification;

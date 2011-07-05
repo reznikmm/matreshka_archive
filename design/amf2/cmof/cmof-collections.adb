@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
-with CMOF.Internals.Proxies;
+with AMF.Internals.Helpers;
 
 package body CMOF.Collections is
 
@@ -64,7 +64,7 @@ package body CMOF.Collections is
     (Self  : Collection_Of_CMOF_Element;
      Index : Positive) return AMF.Elements.Element_Access is
    begin
-      return CMOF.Internals.Proxies.Get_Proxy (Element (Self, Index));
+      return AMF.Internals.Helpers.To_Element (Element (Self, Index));
    end Element;
 
    ------------
