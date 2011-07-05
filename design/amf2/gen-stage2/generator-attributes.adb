@@ -988,6 +988,7 @@ package body Generator.Attributes is
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use CMOF.Internals.Types;");
+      Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Put_Line
        ("   use type Matreshka.Internals.Strings.Shared_String_Access;");
       Class_Info.Iterate (Dump_Class'Access);

@@ -155,7 +155,7 @@ package AMF.Internals.Tables.AMF_Tables is
    package Collections is
      new GNAT.Table
           (Collection_Record,
-           CMOF.Collection_Of_CMOF_Element,
+           AMF_Collection_Of_Element,
            1,
            5_500,
            100);

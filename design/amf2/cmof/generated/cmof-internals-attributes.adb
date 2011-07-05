@@ -55,6 +55,7 @@ package body CMOF.Internals.Attributes is
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
    use CMOF.Internals.Types;
+   use type AMF.Internals.AMF_Collection_Of_Element;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
    --  Association

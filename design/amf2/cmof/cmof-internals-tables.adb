@@ -61,6 +61,8 @@ package body CMOF.Internals.Tables is
     (Element : Cmof_Element;
      Count   : Natural)
    is
+      use type AMF.Internals.AMF_Collection_Of_Element;
+
       First : constant Collection_Of_CMOF_Element
         := AMF_Tables.Collections.Last + 1;
 

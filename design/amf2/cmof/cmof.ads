@@ -61,11 +61,8 @@ package CMOF is
      Protected_Visibility,
      Package_Visibility);
 
-   type Collection_Of_CMOF_Element is
---     new Interfaces.Unsigned_32;
-     new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
-   for Collection_Of_CMOF_Element'Size use Interfaces.Integer_32'Size;
-
+   subtype Collection_Of_CMOF_Element is
+     AMF.Internals.AMF_Collection_Of_Element;
 
    subtype Set_Of_CMOF_Class is Collection_Of_CMOF_Element;
    subtype Set_Of_CMOF_Classifier is Collection_Of_CMOF_Element;

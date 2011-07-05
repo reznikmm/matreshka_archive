@@ -71,6 +71,7 @@ package body CMOF.Internals.Links is
       use CMOF.Internals.Metamodel;
       use CMOF.Internals.Tables;
       use CMOF.Multiplicity_Elements;
+      use type AMF.Internals.AMF_Collection_Of_Element;
 
       procedure Create_Single_Single;
 

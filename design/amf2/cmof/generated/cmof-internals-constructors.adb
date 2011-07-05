@@ -72,6 +72,7 @@ package body CMOF.Internals.Constructors is
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
    use CMOF.Internals.Types;
+   use type AMF.Internals.AMF_Collection_Of_Element;
 
    ------------------------
    -- Create_Association --
