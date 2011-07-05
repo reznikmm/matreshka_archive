@@ -54,8 +54,8 @@ package AMF.Internals.Tables.AMF_Tables is
    -------------
 
    type Extent_Record is record
-      Head : CMOF.CMOF_Element;
-      Tail : CMOF.CMOF_Element;
+      Head : AMF_Element;
+      Tail : AMF_Element;
    end record;
 
    package Extents is
@@ -89,9 +89,9 @@ package AMF.Internals.Tables.AMF_Tables is
            | L_Multiple_Single
            | L_Multiple_Multiple
          =>
-            Association    : CMOF.CMOF_Association;
-            First_Element  : CMOF.CMOF_Element;
-            Second_Element : CMOF.CMOF_Element;
+            Association    : CMOF_Element;
+            First_Element  : AMF_Element;
+            Second_Element : AMF_Element;
       end case;
    end record;
 
@@ -130,9 +130,9 @@ package AMF.Internals.Tables.AMF_Tables is
    type Collection_Kinds is (C_None, C_Set, C_Ordered_Set, C_Bag, C_Sequence);
 
    type Collection_Record (Kind : Collection_Kinds := C_None) is record
-      Owner     : CMOF.CMOF_Element;
+      Owner     : AMF_Element;
       --  Owner of the collection.
-      Property  : CMOF.CMOF_Property;
+      Property  : CMOF_Element;
       --  Property represented by collection.
 
 --      Read_Only : Boolean;
@@ -146,7 +146,7 @@ package AMF.Internals.Tables.AMF_Tables is
 
    type Collection_Element_Record is record
 --      Collection : Collection_Of_Cmof_Element;
-      Element    : CMOF.CMOF_Element;
+      Element    : AMF_Element;
       Link       : AMF_Link;
       Previous   : Collection_Element_Identifier;
       Next       : Collection_Element_Identifier;

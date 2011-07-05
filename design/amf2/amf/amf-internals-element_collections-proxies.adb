@@ -41,19 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---with AMF.Internals.CMOF_Elements;
---with AMF.Internals.Element_Collections;
 with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
---with AMF.Internals.Links;
---with AMF.Internals.Tables.AMF_Tables;
---with CMOF.Internals.Attributes;
---with CMOF.Internals.Tables;
 
 package body AMF.Internals.Element_Collections.Proxies is
-
---   use AMF.Internals.Tables;
---   use type AMF.Internals.AMF_Element;
 
    ---------
    -- Add --

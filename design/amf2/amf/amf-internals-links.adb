@@ -45,7 +45,7 @@ with AMF.CMOF.Associations;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Tables;
-with CMOF.Multiplicity_Elements;
+with CMOF.Internals.Attributes;
 
 package body AMF.Internals.Links is
 
@@ -62,8 +62,6 @@ package body AMF.Internals.Links is
      Second_Element  : AMF_Element;
      Second_Property : CMOF_Element)
    is
-      use Standard.CMOF.Multiplicity_Elements;
-
       procedure Create_Single_Single;
 
       procedure Create_Single_Multiple;
@@ -83,17 +81,6 @@ package body AMF.Internals.Links is
            Association,
            First_Element,
            Second_Element);
-
-         AMF.Internals.Helpers.Connect_Link_End
-          (First_Element,
-           First_Property,
-           AMF_Tables.Links.Last,
-           Second_Element);
-         AMF.Internals.Helpers.Connect_Link_End
-          (Second_Element,
-           Second_Property,
-           AMF_Tables.Links.Last,
-           First_Element);
       end Create_Multiple_Multiple;
 
       ----------------------------
@@ -107,17 +94,6 @@ package body AMF.Internals.Links is
            Association,
            First_Element,
            Second_Element);
-
-         AMF.Internals.Helpers.Connect_Link_End
-          (First_Element,
-           First_Property,
-           AMF_Tables.Links.Last,
-           Second_Element);
-         AMF.Internals.Helpers.Connect_Link_End
-          (Second_Element,
-           Second_Property,
-           AMF_Tables.Links.Last,
-           First_Element);
       end Create_Multiple_Single;
 
       ----------------------------
@@ -131,17 +107,6 @@ package body AMF.Internals.Links is
            Association,
            First_Element,
            Second_Element);
-
-         AMF.Internals.Helpers.Connect_Link_End
-          (First_Element,
-           First_Property,
-           AMF_Tables.Links.Last,
-           Second_Element);
-         AMF.Internals.Helpers.Connect_Link_End
-          (Second_Element,
-           Second_Property,
-           AMF_Tables.Links.Last,
-           First_Element);
       end Create_Single_Multiple;
 
       --------------------------
@@ -155,24 +120,17 @@ package body AMF.Internals.Links is
            Association,
            First_Element,
            Second_Element);
-
-         AMF.Internals.Helpers.Connect_Link_End
-          (First_Element,
-           First_Property,
-           AMF_Tables.Links.Last,
-           Second_Element);
-         AMF.Internals.Helpers.Connect_Link_End
-          (Second_Element,
-           Second_Property,
-           AMF_Tables.Links.Last,
-           First_Element);
       end Create_Single_Single;
 
    begin
       AMF_Tables.Links.Increment_Last;
 
-      if Is_Multivalued (First_Property) then
-         if Is_Multivalued (Second_Property) then
+      if Standard.CMOF.Internals.Attributes.Internal_Get_Upper
+          (First_Property).Value > 1
+      then
+         if Standard.CMOF.Internals.Attributes.Internal_Get_Upper
+             (Second_Property).Value > 1
+         then
             Create_Multiple_Multiple;
 
          else
@@ -180,13 +138,20 @@ package body AMF.Internals.Links is
          end if;
 
       else
-         if Is_Multivalued (Second_Property) then
+         if Standard.CMOF.Internals.Attributes.Internal_Get_Upper
+             (Second_Property).Value > 1
+         then
             Create_Single_Multiple;
 
          else
             Create_Single_Single;
          end if;
       end if;
+
+      AMF.Internals.Helpers.Connect_Link_End
+       (First_Element, First_Property, AMF_Tables.Links.Last, Second_Element);
+      AMF.Internals.Helpers.Connect_Link_End
+       (Second_Element, Second_Property, AMF_Tables.Links.Last, First_Element);
 
       AMF.Internals.Listener_Registry.Notify_Link_Add
        (AMF.CMOF.Associations.CMOF_Association_Access
