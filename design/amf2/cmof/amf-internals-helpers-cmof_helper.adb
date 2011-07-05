@@ -41,9 +41,65 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Element_Collections;
+with CMOF.Internals.Attribute_Mappings;
+with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
+with CMOF.Multiplicity_Elements;
 
 package body AMF.Internals.Helpers.CMOF_Helper is
+
+   use CMOF.Internals.Attribute_Mappings;
+   use CMOF.Internals.Metamodel;
+   use CMOF.Multiplicity_Elements;
+
+   ----------------------
+   -- Connect_Link_End --
+   ----------------------
+
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant CMOF_Metamodel_Helper;
+     Element  : AMF_Element;
+     Property : CMOF_Element;
+     Link     : AMF_Link;
+     Other    : AMF_Element) is
+   begin
+      if Is_Multivalued (Property) then
+         if Property not in CMOF_Collection_Of_Element_Property then
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF.Internals.Tables.Elements.Table
+               (Element).Member (0).Collection,
+              Other,
+              Link);
+
+         else
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF.Internals.Tables.Elements.Table
+               (Element).Member (0).Collection
+                + AMF_Collection_Of_Element
+                   (Collection_Offset
+                     (CMOF.Internals.Tables.Elements.Table (Element).Kind,
+                      Property)),
+              Other,
+              Link);
+         end if;
+
+      else
+         if Property not in CMOF_Non_Collection_Of_Element_Property then
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF.Internals.Tables.Elements.Table
+               (Element).Member (0).Collection,
+              Other,
+              Link);
+
+         else
+            CMOF.Internals.Tables.Elements.Table (Element).Member
+             (Member_Offset
+               (CMOF.Internals.Tables.Elements.Table (Element).Kind,
+                Property)).Element := Other;
+         end if;
+      end if;
+   end Connect_Link_End;
 
    ----------------
    -- To_Element --

@@ -45,9 +45,25 @@ with Interfaces;
 
 package body AMF.Internals.Helpers is
 
-   use Interfaces;
+   subtype U32 is Interfaces.Unsigned_32;
+   use type U32;
    --  XXX Interfaces.Unsigned_32 used only till AMF_Element isn't declared as
    --  modular type.
+
+   ----------------------
+   -- Connect_Link_End --
+   ----------------------
+
+   procedure Connect_Link_End
+    (Element  : AMF_Element;
+     Property : CMOF_Element;
+     Link     : AMF_Link;
+     Other    : AMF_Element) is
+   begin
+     Metamodel_Helper
+      (AMF_Metamodel (U32 (Element) / 16#01000000#)).Connect_Link_End
+        (Element, Property, Link, Other);
+   end Connect_Link_End;
 
    ----------------
    -- To_Element --
@@ -56,7 +72,7 @@ package body AMF.Internals.Helpers is
    function To_Element
     (Element : AMF_Element) return AMF.Elements.Element_Access is
    begin
-      if (Unsigned_32 (Element) and 16#00FFFFFF#) = 0 then
+      if (U32 (Element) and 16#00FFFFFF#) = 0 then
          --  First element in every metamodel is null element.
 
          return null;
@@ -64,7 +80,7 @@ package body AMF.Internals.Helpers is
       else
          return
            Metamodel_Helper
-            (AMF_Metamodel (Unsigned_32 (Element) / 16#01000000#)).To_Element
+            (AMF_Metamodel (U32 (Element) / 16#01000000#)).To_Element
               (Element);
       end if;
    end To_Element;

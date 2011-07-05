@@ -46,7 +46,7 @@
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Types;
 
-private package CMOF.Internals.Attribute_Mappings is
+package CMOF.Internals.Attribute_Mappings is
 
    pragma Preelaborate;
 

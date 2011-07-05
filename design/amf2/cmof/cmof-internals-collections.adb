@@ -43,9 +43,9 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Links;
 with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Links;
 with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Collections is
@@ -72,26 +72,11 @@ package body CMOF.Internals.Collections is
       Member_End : constant Ordered_Set_Of_CMOF_Property
         := CMOF.Internals.Attributes.Internal_Get_Member_End (Association);
 
---      Member_End : constant Ordered_Set_Of_CMOF_Property
---        := CMOF.Internals.Attributes.Internal_Get_Member_End (A);
---
---   begin
---      --  XXX This implementation is limit links to connect elements from the
---      --  same metamodel.
---
---      CMOF.Internals.Links.Internal_Create_Link
---       (A,
---        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
---         (First_Element.all).Id,
---        CMOF.Internals.Collections.Element (Member_End, 1),
---        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
---         (Second_Element.all).Id,
---        CMOF.Internals.Collections.Element (Member_End, 2));
    begin
       if AMF.Internals.Element_Collections.Element (Member_End, 1)
            = Property
       then
-         CMOF.Internals.Links.Internal_Create_Link
+         AMF.Internals.Links.Internal_Create_Link
           (Association,
            Owner,
            Property,
@@ -99,7 +84,7 @@ package body CMOF.Internals.Collections is
            AMF.Internals.Element_Collections.Element (Member_End, 2));
 
       else
-         CMOF.Internals.Links.Internal_Create_Link
+         AMF.Internals.Links.Internal_Create_Link
           (Association,
            Element,
            AMF.Internals.Element_Collections.Element (Member_End, 1),

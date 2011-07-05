@@ -50,11 +50,11 @@ with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
+with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Links;
 with CMOF.Internals.Tables;
 with League.Holders.Booleans;
 with League.Holders.Integers;
@@ -276,10 +276,10 @@ package body CMOF.Internals.Factories is
         := CMOF.Internals.Attributes.Internal_Get_Member_End (A);
 
    begin
-      --  XXX This implementation is limit links to connect elements from the
-      --  same metamodel.
+      --  XXX This subprogram is not CMOF specific and can be refactored to be
+      --  used with any metamodels.
 
-      CMOF.Internals.Links.Internal_Create_Link
+      AMF.Internals.Links.Internal_Create_Link
        (A,
         AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
          (First_Element.all).Id,

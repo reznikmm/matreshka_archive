@@ -42,17 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
-with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Tables;
-with CMOF.Internals.Attribute_Mappings;
-with CMOF.Internals.Collections;
-with CMOF.Internals.Metamodel;
-with CMOF.Internals.Tables;
 with CMOF.Multiplicity_Elements;
 
-package body CMOF.Internals.Links is
+package body AMF.Internals.Links is
 
    use AMF.Internals.Tables;
 
@@ -61,18 +56,13 @@ package body CMOF.Internals.Links is
    --------------------------
 
    procedure Internal_Create_Link
-    (Association     : CMOF_Association;
-     First_Element   : CMOF_Element;
-     First_Property  : CMOF_Property;
-     Second_Element  : CMOF_Element;
-     Second_Property : CMOF_Property)
+    (Association     : CMOF_Element;
+     First_Element   : AMF_Element;
+     First_Property  : CMOF_Element;
+     Second_Element  : AMF_Element;
+     Second_Property : CMOF_Element)
    is
-      use CMOF.Internals.Attribute_Mappings;
-      use CMOF.Internals.Collections;
-      use CMOF.Internals.Metamodel;
-      use CMOF.Internals.Tables;
-      use CMOF.Multiplicity_Elements;
-      use type AMF.Internals.AMF_Collection_Of_Element;
+      use Standard.CMOF.Multiplicity_Elements;
 
       procedure Create_Single_Single;
 
@@ -94,39 +84,16 @@ package body CMOF.Internals.Links is
            First_Element,
            Second_Element);
 
-         if First_Property not in Cmof_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (First_Element).Member (0).Collection
-                + Collection_Of_CMOF_Element
-                   (Collection_Offset
-                     (Elements.Table (First_Element).Kind,
-                      First_Property)),
-              Second_Element,
-              AMF_Tables.Links.Last);
-         end if;
-
-         if Second_Property not in Cmof_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (Second_Element).Member (0).Collection
-                + Collection_Of_CMOF_Element
-                   (Collection_Offset
-                     (Elements.Table (Second_Element).Kind,
-                      Second_Property)),
-              First_Element,
-              AMF_Tables.Links.Last);
-         end if;
+         AMF.Internals.Helpers.Connect_Link_End
+          (First_Element,
+           First_Property,
+           AMF_Tables.Links.Last,
+           Second_Element);
+         AMF.Internals.Helpers.Connect_Link_End
+          (Second_Element,
+           Second_Property,
+           AMF_Tables.Links.Last,
+           First_Element);
       end Create_Multiple_Multiple;
 
       ----------------------------
@@ -141,35 +108,16 @@ package body CMOF.Internals.Links is
            First_Element,
            Second_Element);
 
-         if First_Property not in Cmof_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (First_Element).Member (0).Collection
-                + Collection_Of_CMOF_Element
-                   (Collection_Offset
-                     (Elements.Table (First_Element).Kind,
-                      First_Property)),
-              Second_Element,
-              AMF_Tables.Links.Last);
-         end if;
-
-         if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            Elements.Table (Second_Element).Member
-             (Member_Offset
-               (Elements.Table (Second_Element).Kind,
-                Second_Property)).Element := First_Element;
-         end if;
+         AMF.Internals.Helpers.Connect_Link_End
+          (First_Element,
+           First_Property,
+           AMF_Tables.Links.Last,
+           Second_Element);
+         AMF.Internals.Helpers.Connect_Link_End
+          (Second_Element,
+           Second_Property,
+           AMF_Tables.Links.Last,
+           First_Element);
       end Create_Multiple_Single;
 
       ----------------------------
@@ -184,35 +132,16 @@ package body CMOF.Internals.Links is
            First_Element,
            Second_Element);
 
-         if First_Property not in Cmof_Non_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            Elements.Table (First_Element).Member
-             (Member_Offset
-               (Elements.Table (First_Element).Kind,
-                First_Property)).Element := Second_Element;
-         end if;
-
-         if Second_Property not in Cmof_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (Second_Element).Member (0).Collection
-                + Collection_Of_CMOF_Element
-                   (Collection_Offset
-                     (Elements.Table (Second_Element).Kind,
-                      Second_Property)),
-              First_Element,
-              AMF_Tables.Links.Last);
-         end if;
+         AMF.Internals.Helpers.Connect_Link_End
+          (First_Element,
+           First_Property,
+           AMF_Tables.Links.Last,
+           Second_Element);
+         AMF.Internals.Helpers.Connect_Link_End
+          (Second_Element,
+           Second_Property,
+           AMF_Tables.Links.Last,
+           First_Element);
       end Create_Single_Multiple;
 
       --------------------------
@@ -227,31 +156,16 @@ package body CMOF.Internals.Links is
            First_Element,
            Second_Element);
 
-         if First_Property not in Cmof_Non_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (First_Element).Member (0).Collection,
-              Second_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            Elements.Table (First_Element).Member
-             (Member_Offset
-               (Elements.Table (First_Element).Kind,
-                First_Property)).Element := Second_Element;
-         end if;
-
-         if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (Elements.Table (Second_Element).Member (0).Collection,
-              First_Element,
-              AMF_Tables.Links.Last);
-
-         else
-            Elements.Table (Second_Element).Member
-             (Member_Offset
-               (Elements.Table (Second_Element).Kind,
-                Second_Property)).Element := First_Element;
-         end if;
+         AMF.Internals.Helpers.Connect_Link_End
+          (First_Element,
+           First_Property,
+           AMF_Tables.Links.Last,
+           Second_Element);
+         AMF.Internals.Helpers.Connect_Link_End
+          (Second_Element,
+           Second_Property,
+           AMF_Tables.Links.Last,
+           First_Element);
       end Create_Single_Single;
 
    begin
@@ -281,4 +195,4 @@ package body CMOF.Internals.Links is
         AMF.Internals.Helpers.To_Element (Second_Element));
    end Internal_Create_Link;
 
-end CMOF.Internals.Links;
+end AMF.Internals.Links;

@@ -54,6 +54,13 @@ package AMF.Internals.Helpers is
     (Element : AMF_Element) return AMF.Elements.Element_Access;
    --  Converts element's identifier into element's object.
 
+   procedure Connect_Link_End
+    (Element  : AMF_Element;
+     Property : CMOF_Element;
+     Link     : AMF_Link;
+     Other    : AMF_Element);
+   --  Connects link end.
+
 private
 
    type Abstract_Metamodel_Helper is abstract tagged null record;
@@ -63,18 +70,13 @@ private
      Element : AMF_Element) return AMF.Elements.Element_Access is abstract;
    --  Converts internal element's identifier into element object.
 
---   not overriding function Get_Collection
---    (Self     : not null access constant Abstract_Metamodel;
---     Element  : AMF_Element;
---     Property : CMOF_Element) return AMF_Collection_Of_Element is abstract;
---   --  Returns 
---
---   not overriding procedure Set_Link_End
---    (Self     : not null access constant Abstract_Metamodel;
---     Element  : AMF_Element;
---     Other    : AMF_Element;
---     Property : CMOF_Element;
---     Link     : AMF_Link) is abstract;
+   not overriding procedure Connect_Link_End
+    (Self     : not null access constant Abstract_Metamodel_Helper;
+     Element  : AMF_Element;
+     Property : CMOF_Element;
+     Link     : AMF_Link;
+     Other    : AMF_Element) is abstract;
+   --  Connects link end with specified element:property.
 
    type Metamodel_Helper_Access is access all Abstract_Metamodel_Helper'Class;
 

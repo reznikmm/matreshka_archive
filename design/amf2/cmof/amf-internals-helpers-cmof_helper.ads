@@ -54,4 +54,11 @@ private
     (Self     : not null access constant CMOF_Metamodel_Helper;
      Element  : AMF_Element) return AMF.Elements.Element_Access;
 
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant CMOF_Metamodel_Helper;
+     Element  : AMF_Element;
+     Property : CMOF_Element;
+     Link     : AMF_Link;
+     Other    : AMF_Element);
+
 end AMF.Internals.Helpers.CMOF_Helper;

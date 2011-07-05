@@ -1137,7 +1137,7 @@ package body Generator.Attributes is
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Types;");
       New_Line;
-      Put_Line ("private package CMOF.Internals.Attribute_Mappings is");
+      Put_Line ("package CMOF.Internals.Attribute_Mappings is");
       New_Line;
       Put_Line ("   pragma Preelaborate;");
       New_Line;
