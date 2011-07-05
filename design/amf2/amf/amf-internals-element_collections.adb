@@ -41,11 +41,49 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Collections;
+with AMF.Internals.Element_Collections.Proxies;
+with AMF.Internals.Links;
 with AMF.Internals.Tables.AMF_Tables;
+with CMOF.Internals.Attributes;
 
 package body AMF.Internals.Element_Collections is
 
-   use AMF.Internals.Tables.AMF_Tables;
+   use AMF.Internals.Tables;
+   use type AMF.Internals.Tables.AMF_Tables.Collection_Element_Identifier;
+
+   ---------
+   -- Add --
+   ---------
+
+   procedure Add (Self : AMF_Collection_Of_Element; Item : AMF_Element) is
+      Owner       : constant AMF_Element
+        := AMF_Tables.Collections.Table (Self).Owner;
+      Property    : constant CMOF_Element
+        := AMF_Tables.Collections.Table (Self).Property;
+      Association : constant CMOF_Element
+        := CMOF.Internals.Attributes.Internal_Get_Association (Property);
+      Member_End : constant AMF_Collection_Of_Element
+        := CMOF.Internals.Attributes.Internal_Get_Member_End (Association);
+
+   begin
+      if Element (Member_End, 1) = Property then
+         AMF.Internals.Links.Internal_Create_Link
+          (Association,
+           Owner,
+           Property,
+           Item,
+           Element (Member_End, 2));
+
+      else
+         AMF.Internals.Links.Internal_Create_Link
+          (Association,
+           Item,
+           Element (Member_End, 1),
+           Owner,
+           Property);
+      end if;
+   end Add;
 
    -------------
    -- Element --
@@ -55,20 +93,21 @@ package body AMF.Internals.Element_Collections is
     (Self  : AMF_Collection_Of_Element;
      Index : Positive) return AMF_Element
    is
-      Current : Collection_Element_Identifier := Collections.Table (Self).Head;
+      Current : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Self).Head;
 
    begin
       for J in 2 .. Index loop
          exit when Current = 0;
 
-         Current := Collection_Elements.Table (Current).Next;
+         Current := AMF_Tables.Collection_Elements.Table (Current).Next;
       end loop;
 
       if Current = 0 then
          raise Constraint_Error;
 
       else
-         return Collection_Elements.Table (Current).Element;
+         return AMF_Tables.Collection_Elements.Table (Current).Element;
       end if;
    end Element;
 
@@ -81,18 +120,18 @@ package body AMF.Internals.Element_Collections is
      Element    : AMF_Element;
      Link       : AMF_Link)
    is
-      Head        : Collection_Element_Identifier
-        := Collections.Table (Collection).Head;
-      Tail        : Collection_Element_Identifier
-        := Collections.Table (Collection).Tail;
-      Previous    : Collection_Element_Identifier
-        := Collections.Table (Collection).Tail;
-      Next        : Collection_Element_Identifier := 0;
-      New_Element : Collection_Element_Identifier;
+      Head        : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Collection).Head;
+      Tail        : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Collection).Tail;
+      Previous    : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Collection).Tail;
+      Next        : AMF_Tables.Collection_Element_Identifier := 0;
+      New_Element : AMF_Tables.Collection_Element_Identifier;
 
    begin
-      Collection_Elements.Increment_Last;
-      New_Element := Collection_Elements.Last;
+      AMF_Tables.Collection_Elements.Increment_Last;
+      New_Element := AMF_Tables.Collection_Elements.Last;
 
       if Head = 0 then
          --  List is empty.
@@ -100,17 +139,17 @@ package body AMF.Internals.Element_Collections is
          Head := New_Element;
          Tail := New_Element;
 
-         Collections.Table (Collection).Head := Head;
-         Collections.Table (Collection).Tail := Tail;
+         AMF_Tables.Collections.Table (Collection).Head := Head;
+         AMF_Tables.Collections.Table (Collection).Tail := Tail;
 
       else
          Tail := New_Element;
 
-         Collections.Table (Collection).Tail := Tail;
-         Collection_Elements.Table (Previous).Next := New_Element;
+         AMF_Tables.Collections.Table (Collection).Tail := Tail;
+         AMF_Tables.Collection_Elements.Table (Previous).Next := New_Element;
       end if;
 
-      Collection_Elements.Table (New_Element) :=
+      AMF_Tables.Collection_Elements.Table (New_Element) :=
        (Element, Link, Previous, Next);
    end Internal_Append;
 
@@ -119,16 +158,46 @@ package body AMF.Internals.Element_Collections is
    ------------
 
    function Length (Self : AMF_Collection_Of_Element) return Natural is
-      Current : Collection_Element_Identifier := Collections.Table (Self).Head;
+      Current : AMF_Tables.Collection_Element_Identifier
+        := AMF_Tables.Collections.Table (Self).Head;
       Aux     : Natural := 0;
 
    begin
       while Current /= 0 loop
          Aux     := Aux + 1;
-         Current := Collection_Elements.Table (Current).Next;
+         Current := AMF_Tables.Collection_Elements.Table (Current).Next;
       end loop;
 
       return Aux;
    end Length;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Collection : AMF_Collection_Of_Element)
+       return AMF.Internals.Collections.Collection_Access is
+   begin
+      return
+        new Proxies.Element_Collection_Proxy'
+             (AMF.Internals.Collections.Abstract_Collection with
+                Collection => Collection);
+   end Wrap;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Collection : AMF_Collection_Of_Element)
+       return AMF.Elements.Collections.Reflective_Collection is
+   begin
+      return
+        AMF.Elements.Collections.Wrap
+         (new Proxies.Element_Collection_Proxy'
+               (AMF.Internals.Collections.Abstract_Collection with
+                  Collection => Collection));
+   end Wrap;
 
 end AMF.Internals.Element_Collections;

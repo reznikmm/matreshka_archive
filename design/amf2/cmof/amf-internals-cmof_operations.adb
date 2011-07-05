@@ -41,15 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Operations is
 
    use Standard.CMOF.Internals.Attributes;
-   use Standard.CMOF.Internals.Collections;
 
    ---------------
    -- Get_Class --
@@ -89,9 +87,8 @@ package body AMF.Internals.CMOF_Operations is
 
       return
         AMF.CMOF.Parameters.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Owned_Parameter (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Parameter (Self.Id)));
    end Get_Owned_Parameter;
 
    -----------------------------
@@ -104,9 +101,8 @@ package body AMF.Internals.CMOF_Operations is
    begin
       return
         AMF.CMOF.Operations.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Redefined_Operation (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Redefined_Operation (Self.Id)));
    end Get_Redefined_Operation;
 
 

@@ -54,6 +54,10 @@ package AMF.Internals.Helpers is
     (Element : AMF_Element) return AMF.Elements.Element_Access;
    --  Converts element's identifier into element's object.
 
+   function To_Element
+    (Element : AMF.Elements.Element_Access) return AMF_Element;
+   --  Converts element's object into element's identifier;
+
    procedure Connect_Link_End
     (Element  : AMF_Element;
      Property : CMOF_Element;

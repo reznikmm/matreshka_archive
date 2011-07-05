@@ -41,14 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
+with AMF.Internals.Element_Collections;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Classes is
 
    use Standard.CMOF.Internals.Attributes;
-   use Standard.CMOF.Internals.Collections;
 
    -------------------------
    -- Get_Owned_Attribute --
@@ -60,9 +58,8 @@ package body AMF.Internals.CMOF_Classes is
    begin
       return
         AMF.CMOF.Properties.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Owned_Attribute (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Attribute (Self.Id)));
    end Get_Owned_Attribute;
 
    -------------------------
@@ -75,9 +72,8 @@ package body AMF.Internals.CMOF_Classes is
    begin
       return
         AMF.CMOF.Operations.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Owned_Operation (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Operation (Self.Id)));
    end Get_Owned_Operation;
 
    ---------------------
@@ -90,9 +86,8 @@ package body AMF.Internals.CMOF_Classes is
    begin
       return
         AMF.CMOF.Classes.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Super_Class (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Super_Class (Self.Id)));
    end Get_Super_Class;
 
 

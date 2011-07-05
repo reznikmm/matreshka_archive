@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
-with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
 with CMOF.Multiplicity_Elements;
 

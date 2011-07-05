@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  Internal table based implementation of collections of elements.
 ------------------------------------------------------------------------------
+with AMF.Elements.Collections;
+with AMF.Internals.Collections;
 
 package AMF.Internals.Element_Collections is
 
@@ -51,10 +53,20 @@ package AMF.Internals.Element_Collections is
    function Element
     (Self : AMF_Collection_Of_Element; Index : Positive) return AMF_Element;
 
+   procedure Add (Self : AMF_Collection_Of_Element; Item : AMF_Element);
+
    procedure Internal_Append
     (Collection : AMF_Collection_Of_Element;
      Element    : AMF_Element;
      Link       : AMF_Link);
    --  Appends element to collection. This subprogram doesn't construct link.
+
+   function Wrap
+    (Collection : AMF_Collection_Of_Element)
+       return AMF.Internals.Collections.Collection_Access;
+
+   function Wrap
+    (Collection : AMF_Collection_Of_Element)
+       return AMF.Elements.Collections.Reflective_Collection;
 
 end AMF.Internals.Element_Collections;

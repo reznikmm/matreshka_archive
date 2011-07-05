@@ -41,15 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Properties is
 
    use Standard.CMOF.Internals.Attributes;
-   use Standard.CMOF.Internals.Collections;
+   use AMF.Internals.Element_Collections;
 
    ---------------------
    -- Get_Association --
@@ -159,9 +158,8 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Properties.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Redefined_Property (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Redefined_Property (Self.Id)));
    end Get_Redefined_Property;
 
    ----------------------------
@@ -174,9 +172,8 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return
         AMF.CMOF.Properties.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Subsetted_Property (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Subsetted_Property (Self.Id)));
    end Get_Subsetted_Property;
 
    -----------------------

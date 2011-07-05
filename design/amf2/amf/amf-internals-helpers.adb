@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Interfaces;
 
+with AMF.Internals.Elements;
+
 package body AMF.Internals.Helpers is
 
    subtype U32 is Interfaces.Unsigned_32;
@@ -82,6 +84,26 @@ package body AMF.Internals.Helpers is
            Metamodel_Helper
             (AMF_Metamodel (U32 (Element) / 16#01000000#)).To_Element
               (Element);
+      end if;
+   end To_Element;
+
+   ----------------
+   -- To_Element --
+   ----------------
+
+   function To_Element
+    (Element : AMF.Elements.Element_Access) return AMF_Element
+   is
+      use type AMF.Elements.Element_Access;
+
+   begin
+      if Element = null then
+         return 0;
+
+      else
+         return
+           AMF.Internals.Elements.Element_Implementation'Class
+            (Element.all).Element;
       end if;
    end To_Element;
 

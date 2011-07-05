@@ -50,10 +50,10 @@ with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.String_Collections;
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.String_Collections;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
 with CMOF.Internals.Types;
@@ -138,7 +138,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Attribute (Self)));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
@@ -146,7 +146,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Association_End_Type then
@@ -154,7 +154,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_End_Type (Self)));
 
          elsif Property = MP_CMOF_Classifier_Feature then
@@ -162,7 +162,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Feature (Self)));
 
          elsif Property = MP_CMOF_Classifier_General then
@@ -170,7 +170,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_General (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -178,7 +178,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
@@ -186,7 +186,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Inherited_Member (Self)));
 
          elsif Property = MP_CMOF_Association_Is_Derived then
@@ -208,7 +208,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Association_Member_End then
@@ -216,7 +216,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member_End (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -239,7 +239,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Navigable_Owned_End (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
@@ -247,7 +247,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -255,7 +255,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Association_Owned_End then
@@ -263,7 +263,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_End (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -271,7 +271,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -279,7 +279,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -303,7 +303,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -318,7 +318,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Related_Element (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
@@ -344,7 +344,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Attribute (Self)));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
@@ -352,7 +352,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Classifier_Feature then
@@ -360,7 +360,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Feature (Self)));
 
          elsif Property = MP_CMOF_Classifier_General then
@@ -368,7 +368,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_General (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -376,7 +376,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
@@ -384,7 +384,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Inherited_Member (Self)));
 
          elsif Property = MP_CMOF_Class_Is_Abstract then
@@ -406,7 +406,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -429,7 +429,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Attribute (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
@@ -437,7 +437,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -445,7 +445,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -453,7 +453,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Class_Owned_Operation then
@@ -461,7 +461,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Operation (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -469,7 +469,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -493,7 +493,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -508,7 +508,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Super_Class (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
@@ -534,7 +534,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Annotated_Element (Self)));
 
          elsif Property = MP_CMOF_Comment_Body then
@@ -549,7 +549,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -557,7 +557,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -584,7 +584,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Constrained_Element (Self)));
 
          elsif Property = MP_CMOF_Constraint_Context then
@@ -615,7 +615,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -623,7 +623,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -672,7 +672,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Attribute (Self)));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
@@ -680,7 +680,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Classifier_Feature then
@@ -688,7 +688,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Feature (Self)));
 
          elsif Property = MP_CMOF_Classifier_General then
@@ -696,7 +696,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_General (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -704,7 +704,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
@@ -712,7 +712,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Inherited_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
@@ -727,7 +727,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -750,7 +750,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Attribute (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
@@ -758,7 +758,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -766,7 +766,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -774,7 +774,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
@@ -782,7 +782,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Operation (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -790,7 +790,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -814,7 +814,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -870,7 +870,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -878,7 +878,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -894,7 +894,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Related_Element (Self)));
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
@@ -902,7 +902,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Source (Self)));
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
@@ -910,7 +910,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Target (Self)));
 
          elsif Property = MP_CMOF_Element_Import_Visibility then
@@ -936,7 +936,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Attribute (Self)));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
@@ -944,7 +944,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Classifier_Feature then
@@ -952,7 +952,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Feature (Self)));
 
          elsif Property = MP_CMOF_Classifier_General then
@@ -960,7 +960,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_General (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -968,7 +968,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
@@ -976,7 +976,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Inherited_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
@@ -991,7 +991,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -1014,7 +1014,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Attribute (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
@@ -1022,7 +1022,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1030,7 +1030,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Enumeration_Owned_Literal then
@@ -1038,7 +1038,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Literal (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -1046,7 +1046,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
@@ -1054,7 +1054,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Operation (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -1062,7 +1062,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1086,7 +1086,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -1142,7 +1142,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1150,7 +1150,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1206,7 +1206,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Operand (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
@@ -1214,7 +1214,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1222,7 +1222,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1302,7 +1302,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1310,7 +1310,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1383,7 +1383,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Feature_Featuring_Classifier then
@@ -1391,7 +1391,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Featuring_Classifier (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -1399,7 +1399,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
@@ -1442,7 +1442,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -1465,7 +1465,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1473,7 +1473,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -1481,7 +1481,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Operation_Owned_Parameter then
@@ -1489,7 +1489,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Parameter (Self)));
 
          elsif Property = MP_CMOF_Behavioral_Feature_Owned_Parameter then
@@ -1497,7 +1497,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Parameter (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -1505,7 +1505,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1521,7 +1521,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Operation_Postcondition then
@@ -1529,7 +1529,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Postcondition (Self)));
 
          elsif Property = MP_CMOF_Operation_Precondition then
@@ -1537,7 +1537,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Precondition (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -1552,7 +1552,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Raised_Exception (Self)));
 
          elsif Property = MP_CMOF_Behavioral_Feature_Raised_Exception then
@@ -1560,7 +1560,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Raised_Exception (Self)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefined_Element then
@@ -1568,7 +1568,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Redefined_Element (Self)));
 
          elsif Property = MP_CMOF_Operation_Redefined_Operation then
@@ -1576,7 +1576,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Redefined_Operation (Self)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefinition_Context then
@@ -1584,7 +1584,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Redefinition_Context (Self)));
 
          elsif Property = MP_CMOF_Operation_Type then
@@ -1625,7 +1625,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -1633,7 +1633,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Namespace_Member then
@@ -1641,7 +1641,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -1664,7 +1664,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Nested_Package (Self)));
 
          elsif Property = MP_CMOF_Package_Nesting_Package then
@@ -1680,7 +1680,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1688,7 +1688,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -1696,7 +1696,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -1704,7 +1704,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Package_Owned_Type then
@@ -1712,7 +1712,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Type (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1728,7 +1728,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Package_Package_Merge then
@@ -1736,7 +1736,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Merge (Self)));
 
          elsif Property = MP_CMOF_Package_Packaged_Element then
@@ -1744,7 +1744,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Packaged_Element (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -1800,7 +1800,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1808,7 +1808,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1824,7 +1824,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Related_Element (Self)));
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
@@ -1832,7 +1832,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Source (Self)));
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
@@ -1840,7 +1840,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Target (Self)));
 
          elsif Property = MP_CMOF_Package_Import_Visibility then
@@ -1874,7 +1874,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -1882,7 +1882,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -1906,7 +1906,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Related_Element (Self)));
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
@@ -1914,7 +1914,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Source (Self)));
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
@@ -1922,7 +1922,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Target (Self)));
 
          else
@@ -1999,7 +1999,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -2007,7 +2007,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -2063,7 +2063,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Attribute (Self)));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
@@ -2071,7 +2071,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Element_Import (Self)));
 
          elsif Property = MP_CMOF_Classifier_Feature then
@@ -2079,7 +2079,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Feature (Self)));
 
          elsif Property = MP_CMOF_Classifier_General then
@@ -2087,7 +2087,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_General (Self)));
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
@@ -2095,7 +2095,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Imported_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
@@ -2103,7 +2103,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Inherited_Member (Self)));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
@@ -2118,7 +2118,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Member (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
@@ -2141,7 +2141,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Attribute (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
@@ -2149,7 +2149,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -2157,7 +2157,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
@@ -2165,7 +2165,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Member (Self)));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
@@ -2173,7 +2173,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Operation (Self)));
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
@@ -2181,7 +2181,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Rule (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -2205,7 +2205,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Package_Import (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
@@ -2269,7 +2269,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Featuring_Classifier (Self)));
 
          elsif Property = MP_CMOF_Property_Is_Composite then
@@ -2356,7 +2356,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Comment (Self)));
 
          elsif Property = MP_CMOF_Element_Owned_Element then
@@ -2364,7 +2364,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Owned_Element (Self)));
 
          elsif Property = MP_CMOF_Element_Owner then
@@ -2395,7 +2395,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Redefined_Element (Self)));
 
          elsif Property = MP_CMOF_Property_Redefined_Property then
@@ -2403,7 +2403,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Redefined_Property (Self)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefinition_Context then
@@ -2411,7 +2411,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Redefinition_Context (Self)));
 
          elsif Property = MP_CMOF_Property_Subsetted_Property then
@@ -2419,7 +2419,7 @@ package body CMOF.Internals.Reflection is
 
             return
               AMF.Holders.Collections.To_Holder
-               (CMOF.Internals.Collections.Wrap
+               (AMF.Internals.Element_Collections.Wrap
                  (Internal_Get_Subsetted_Property (Self)));
 
          elsif Property = MP_CMOF_Typed_Element_Type then

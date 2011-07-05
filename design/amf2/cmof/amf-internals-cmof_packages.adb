@@ -41,14 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
+with AMF.Internals.Element_Collections;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Packages is
 
    use Standard.CMOF.Internals.Attributes;
-   use Standard.CMOF.Internals.Collections;
 
    --------------------------
    -- Get_Packaged_Element --
@@ -62,9 +60,8 @@ package body AMF.Internals.CMOF_Packages is
    begin
       return
         AMF.CMOF.Packageable_Elements.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Packaged_Element (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Packaged_Element (Self.Id)));
    end Get_Packaged_Element;
 
    -----------------------

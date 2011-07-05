@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,29 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
-with AMF.Elements.Collections;
+with AMF.Elements;
 
-package CMOF.Internals.Collections is
+package AMF.Internals.Elements is
 
-   type CMOF_Collection is
-     new AMF.Internals.Collections.Abstract_Collection with record
-      Collection : Collection_Of_CMOF_Element;
-   end record;
+   pragma Preelaborate;
 
-   function Length
-    (Self : not null access constant CMOF_Collection) return Natural;
+   type Element_Implementation is
+     abstract limited new AMF.Elements.Abstract_Element with null record;
 
-   function Element
-    (Self  : not null access constant CMOF_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access;
+   not overriding function Element
+    (Self : not null access constant Element_Implementation)
+       return AMF_Element is abstract;
 
-   overriding procedure Add
-    (Self : not null access CMOF_Collection;
-     Item : AMF.Elements.Element_Access);
-
-   function Wrap
-    (Collection : Collection_Of_CMOF_Element)
-       return AMF.Elements.Collections.Reflective_Collection;
-
-end CMOF.Internals.Collections;
+end AMF.Internals.Elements;

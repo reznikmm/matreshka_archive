@@ -41,14 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
+with AMF.Internals.Element_Collections;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 
 package body AMF.Internals.CMOF_Associations is
 
    use Standard.CMOF.Internals.Attributes;
-   use Standard.CMOF.Internals.Collections;
 
    --------------------
    -- Get_Member_End --
@@ -60,9 +58,8 @@ package body AMF.Internals.CMOF_Associations is
    begin
       return
         AMF.CMOF.Properties.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Member_End (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Member_End (Self.Id)));
    end Get_Member_End;
 
    -------------------
@@ -75,9 +72,8 @@ package body AMF.Internals.CMOF_Associations is
    begin
       return
         AMF.CMOF.Properties.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Internal_Get_Owned_End (Self.Id)));
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_End (Self.Id)));
    end Get_Owned_End;
 
    -----------------------

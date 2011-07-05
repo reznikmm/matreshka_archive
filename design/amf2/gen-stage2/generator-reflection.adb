@@ -203,7 +203,7 @@ package body Generator.Reflection is
                      ("AMF.Holders.Collections.To_Holder");
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
-                     ("CMOF.Internals.Collections.Wrap");
+                     ("AMF.Internals.Element_Collections.Wrap");
                end if;
 
             elsif Attribute_Type.Get_Name = Boolean_Name then
@@ -726,10 +726,10 @@ package body Generator.Reflection is
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Holders.String_Collections;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
+      Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
       Put_Line ("with AMF.String_Collections;");
       Put_Line ("with CMOF.Internals.Attributes;");
-      Put_Line ("with CMOF.Internals.Collections;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");

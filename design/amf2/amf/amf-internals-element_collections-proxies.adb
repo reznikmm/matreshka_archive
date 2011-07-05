@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,79 +41,52 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Element_Collections;
+--with AMF.Internals.CMOF_Elements;
+--with AMF.Internals.Element_Collections;
+with AMF.Internals.Elements;
 with AMF.Internals.Helpers;
-with CMOF.Internals.Attributes;
-with CMOF.Reflection;
+--with AMF.Internals.Links;
+--with AMF.Internals.Tables.AMF_Tables;
+--with CMOF.Internals.Attributes;
+--with CMOF.Internals.Tables;
 
-package body AMF.Internals.CMOF_Elements is
+package body AMF.Internals.Element_Collections.Proxies is
 
-   use Standard.CMOF.Internals.Attributes;
+--   use AMF.Internals.Tables;
+--   use type AMF.Internals.AMF_Element;
+
+   ---------
+   -- Add --
+   ---------
+
+   overriding procedure Add
+    (Self : not null access Element_Collection_Proxy;
+     Item : AMF.Elements.Element_Access) is
+   begin
+      Add (Self.Collection, AMF.Internals.Helpers.To_Element (Item));
+   end Add;
 
    -------------
    -- Element --
    -------------
 
-   overriding function Element
-    (Self : not null access constant CMOF_Element_Proxy)
-       return AMF_Element is
+   function Element
+    (Self  : not null access constant Element_Collection_Proxy;
+     Index : Positive) return not null AMF.Elements.Element_Access is
    begin
-      return Self.Id;
+      return
+        AMF.Internals.Helpers.To_Element (Element (Self.Collection, Index));
    end Element;
 
-   ---------
-   -- Get --
-   ---------
+   ------------
+   -- Length --
+   ------------
 
-   overriding function Get
-    (Self     : not null access constant CMOF_Element_Proxy;
-     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return League.Holders.Holder is
+   function Length
+    (Self : not null access constant Element_Collection_Proxy)
+       return Natural is
    begin
-      return
-        Standard.CMOF.Reflection.Get
-         (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id);
-   end Get;
+      return Length (Self.Collection);
+   end Length;
 
-   --------------------
-   -- Get_Meta_Class --
-   --------------------
-
-   overriding function Get_Meta_Class
-    (Self : not null access constant CMOF_Element_Proxy)
-       return AMF.CMOF.Classes.CMOF_Class_Access is
-   begin
-      return
-        AMF.CMOF.Classes.CMOF_Class_Access
-         (AMF.Internals.Helpers.To_Element
-           (Standard.CMOF.Reflection.Get_Meta_Class (Self.Id)));
-   end Get_Meta_Class;
-
-   -----------------------
-   -- Get_Owned_Comment --
-   -----------------------
-
-   overriding function Get_Owned_Comment
-    (Self : not null access constant CMOF_Element_Proxy)
-       return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment is
-   begin
-      return
-        AMF.CMOF.Comments.Collections.Wrap
-         (AMF.Internals.Element_Collections.Wrap
-           (Internal_Get_Owned_Comment (Self.Id)));
-   end Get_Owned_Comment;
-
-   ---------
-   -- Set --
-   ---------
-
-   overriding procedure Set
-    (Self     : not null access CMOF_Element_Proxy;
-     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Value    : League.Holders.Holder) is
-   begin
-      Standard.CMOF.Reflection.Set
-       (Self.Id, CMOF_Element_Proxy'Class (Property.all).Id, Value);
-   end Set;
-
-end AMF.Internals.CMOF_Elements;
+end AMF.Internals.Element_Collections.Proxies;

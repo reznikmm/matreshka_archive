@@ -41,95 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.CMOF_Elements;
-with AMF.Internals.Element_Collections;
-with AMF.Internals.Links;
-with AMF.Internals.Tables.AMF_Tables;
-with CMOF.Internals.Attributes;
-with CMOF.Internals.Tables;
+with AMF.Internals.Collections;
 
-package body CMOF.Internals.Collections is
+package AMF.Internals.Element_Collections.Proxies is
 
-   use AMF.Internals.Tables;
-   use type AMF.Internals.AMF_Element;
+   type Element_Collection_Proxy is
+     new AMF.Internals.Collections.Abstract_Collection with record
+      Collection : AMF_Collection_Of_Element;
+   end record;
 
-   ---------
-   -- Add --
-   ---------
+   overriding function Length
+    (Self : not null access constant Element_Collection_Proxy) return Natural;
+
+   overriding function Element
+    (Self  : not null access constant Element_Collection_Proxy;
+     Index : Positive) return not null AMF.Elements.Element_Access;
 
    overriding procedure Add
-    (Self : not null access CMOF_Collection;
-     Item : AMF.Elements.Element_Access)
-   is
-      Owner       : constant CMOF_Element
-        := AMF_Tables.Collections.Table (Self.Collection).Owner;
-      Property    : constant CMOF_Property
-        := AMF_Tables.Collections.Table (Self.Collection).Property;
-      Association : constant CMOF_Association
-        := CMOF.Internals.Attributes.Internal_Get_Association (Property);
-      Element     : constant CMOF_Element
-        := AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id;
-      Member_End : constant Ordered_Set_Of_CMOF_Property
-        := CMOF.Internals.Attributes.Internal_Get_Member_End (Association);
+    (Self : not null access Element_Collection_Proxy;
+     Item : AMF.Elements.Element_Access);
 
-   begin
-      if AMF.Internals.Element_Collections.Element (Member_End, 1)
-           = Property
-      then
-         AMF.Internals.Links.Internal_Create_Link
-          (Association,
-           Owner,
-           Property,
-           Element,
-           AMF.Internals.Element_Collections.Element (Member_End, 2));
-
-      else
-         AMF.Internals.Links.Internal_Create_Link
-          (Association,
-           Element,
-           AMF.Internals.Element_Collections.Element (Member_End, 1),
-           Owner,
-           Property);
-      end if;
-   end Add;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : not null access constant CMOF_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access is
-   begin
-      return
-        CMOF.Internals.Tables.Elements.Table
-         (AMF.Internals.Element_Collections.Element
-           (Self.Collection, Index)).Proxy;
-   end Element;
-
-   ------------
-   -- Length --
-   ------------
-
-   function Length
-    (Self : not null access constant CMOF_Collection) return Natural is
-   begin
-      return AMF.Internals.Element_Collections.Length (Self.Collection);
-   end Length;
-
-   ----------
-   -- Wrap --
-   ----------
-
-   function Wrap
-    (Collection : Collection_Of_CMOF_Element)
-       return AMF.Elements.Collections.Reflective_Collection is
-   begin
-      return
-        AMF.Elements.Collections.Wrap
-         (new CMOF_Collection'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Collection));
-   end Wrap;
-
-end CMOF.Internals.Collections;
+end AMF.Internals.Element_Collections.Proxies;
