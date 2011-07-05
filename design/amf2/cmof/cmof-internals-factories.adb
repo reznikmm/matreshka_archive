@@ -48,9 +48,9 @@ with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Links;
@@ -283,10 +283,10 @@ package body CMOF.Internals.Factories is
        (A,
         AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
          (First_Element.all).Id,
-        CMOF.Internals.Collections.Element (Member_End, 1),
+        AMF.Internals.Element_Collections.Element (Member_End, 1),
         AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
          (Second_Element.all).Id,
-        CMOF.Internals.Collections.Element (Member_End, 2));
+        AMF.Internals.Element_Collections.Element (Member_End, 2));
    end Create_Link;
 
    -----------------------

@@ -41,29 +41,94 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
-with AMF.Elements.Collections;
+with AMF.Internals.Tables.AMF_Tables;
 
-package CMOF.Internals.Collections is
+package body AMF.Internals.Element_Collections is
 
-   type CMOF_Collection is
-     new AMF.Internals.Collections.Abstract_Collection with record
-      Collection : Collection_Of_CMOF_Element;
-   end record;
+   use AMF.Internals.Tables.AMF_Tables;
 
-   function Length
-    (Self : not null access constant CMOF_Collection) return Natural;
+   -------------
+   -- Element --
+   -------------
 
    function Element
-    (Self  : not null access constant CMOF_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access;
+    (Self  : AMF_Collection_Of_Element;
+     Index : Positive) return AMF_Element
+   is
+      Current : Collection_Element_Identifier := Collections.Table (Self).Head;
 
-   overriding procedure Add
-    (Self : not null access CMOF_Collection;
-     Item : AMF.Elements.Element_Access);
+   begin
+      for J in 2 .. Index loop
+         exit when Current = 0;
 
-   function Wrap
-    (Collection : Collection_Of_CMOF_Element)
-       return AMF.Elements.Collections.Reflective_Collection;
+         Current := Collection_Elements.Table (Current).Next;
+      end loop;
 
-end CMOF.Internals.Collections;
+      if Current = 0 then
+         raise Constraint_Error;
+
+      else
+         return Collection_Elements.Table (Current).Element;
+      end if;
+   end Element;
+
+   ---------------------
+   -- Internal_Append --
+   ---------------------
+
+   procedure Internal_Append
+    (Collection : AMF_Collection_Of_Element;
+     Element    : AMF_Element;
+     Link       : AMF_Link)
+   is
+      Head        : Collection_Element_Identifier
+        := Collections.Table (Collection).Head;
+      Tail        : Collection_Element_Identifier
+        := Collections.Table (Collection).Tail;
+      Previous    : Collection_Element_Identifier
+        := Collections.Table (Collection).Tail;
+      Next        : Collection_Element_Identifier := 0;
+      New_Element : Collection_Element_Identifier;
+
+   begin
+      Collection_Elements.Increment_Last;
+      New_Element := Collection_Elements.Last;
+
+      if Head = 0 then
+         --  List is empty.
+
+         Head := New_Element;
+         Tail := New_Element;
+
+         Collections.Table (Collection).Head := Head;
+         Collections.Table (Collection).Tail := Tail;
+
+      else
+         Tail := New_Element;
+
+         Collections.Table (Collection).Tail := Tail;
+         Collection_Elements.Table (Previous).Next := New_Element;
+      end if;
+
+      Collection_Elements.Table (New_Element) :=
+       (Element, Link, Previous, Next);
+   end Internal_Append;
+
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Self : AMF_Collection_Of_Element) return Natural is
+      Current : Collection_Element_Identifier := Collections.Table (Self).Head;
+      Aux     : Natural := 0;
+
+   begin
+      while Current /= 0 loop
+         Aux     := Aux + 1;
+         Current := Collection_Elements.Table (Current).Next;
+      end loop;
+
+      return Aux;
+   end Length;
+
+end AMF.Internals.Element_Collections;

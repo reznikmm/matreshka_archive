@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Internals.Collections;
+with AMF.Internals.Element_Collections;
 with CMOF.Internals.Proxies;
 
 package body CMOF.Collections is
@@ -53,7 +53,7 @@ package body CMOF.Collections is
    function Element
     (Self : Collection_Of_CMOF_Element; Index : Positive) return CMOF_Element is
    begin
-      return CMOF.Internals.Collections.Element (Self, Index);
+      return AMF.Internals.Element_Collections.Element (Self, Index);
    end Element;
 
    -------------
@@ -73,7 +73,7 @@ package body CMOF.Collections is
 
    function Length (Self : Collection_Of_CMOF_Element) return Natural is
    begin
-      return CMOF.Internals.Collections.Length (Self);
+      return AMF.Internals.Element_Collections.Length (Self);
    end Length;
 
 end CMOF.Collections;

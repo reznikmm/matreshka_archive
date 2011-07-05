@@ -41,29 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
-with AMF.Elements.Collections;
+--  Internal table based implementation of collections of elements.
+------------------------------------------------------------------------------
 
-package CMOF.Internals.Collections is
+package AMF.Internals.Element_Collections is
 
-   type CMOF_Collection is
-     new AMF.Internals.Collections.Abstract_Collection with record
-      Collection : Collection_Of_CMOF_Element;
-   end record;
-
-   function Length
-    (Self : not null access constant CMOF_Collection) return Natural;
+   function Length (Self : AMF_Collection_Of_Element) return Natural;
 
    function Element
-    (Self  : not null access constant CMOF_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access;
+    (Self : AMF_Collection_Of_Element; Index : Positive) return AMF_Element;
 
-   overriding procedure Add
-    (Self : not null access CMOF_Collection;
-     Item : AMF.Elements.Element_Access);
+   procedure Internal_Append
+    (Collection : AMF_Collection_Of_Element;
+     Element    : AMF_Element;
+     Link       : AMF_Link);
+   --  Appends element to collection. This subprogram doesn't construct link.
 
-   function Wrap
-    (Collection : Collection_Of_CMOF_Element)
-       return AMF.Elements.Collections.Reflective_Collection;
-
-end CMOF.Internals.Collections;
+end AMF.Internals.Element_Collections;

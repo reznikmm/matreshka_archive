@@ -47,10 +47,10 @@ with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
 with AMF.Internals.Containers;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Attributes;
-with CMOF.Internals.Collections;
 with CMOF.Internals.Reflection;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Subclassing;
@@ -67,9 +67,9 @@ package body CMOF.Internals.Extents is
    function Container (Self : CMOF_Element) return CMOF_Element is
 
       use AMF.Internals.Tables;
+      use AMF.Internals.Element_Collections;
       use CMOF.Internals.Attribute_Mappings;
       use CMOF.Internals.Attributes;
-      use CMOF.Internals.Collections;
       use CMOF.Internals.Reflection;
       use CMOF.Internals.Metamodel;
       use CMOF.Internals.Subclassing;

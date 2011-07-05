@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
@@ -94,13 +95,13 @@ package body CMOF.Internals.Links is
            Second_Element);
 
          if First_Property not in Cmof_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
               AMF_Tables.Links.Last);
 
          else
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (First_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -111,13 +112,13 @@ package body CMOF.Internals.Links is
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
               AMF_Tables.Links.Last);
 
          else
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -141,13 +142,13 @@ package body CMOF.Internals.Links is
            Second_Element);
 
          if First_Property not in Cmof_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
               AMF_Tables.Links.Last);
 
          else
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (First_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -158,7 +159,7 @@ package body CMOF.Internals.Links is
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
               AMF_Tables.Links.Last);
@@ -184,7 +185,7 @@ package body CMOF.Internals.Links is
            Second_Element);
 
          if First_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
               AMF_Tables.Links.Last);
@@ -197,13 +198,13 @@ package body CMOF.Internals.Links is
          end if;
 
          if Second_Property not in Cmof_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
               AMF_Tables.Links.Last);
 
          else
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection
                 + Collection_Of_CMOF_Element
                    (Collection_Offset
@@ -227,7 +228,7 @@ package body CMOF.Internals.Links is
            Second_Element);
 
          if First_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (First_Element).Member (0).Collection,
               Second_Element,
               AMF_Tables.Links.Last);
@@ -240,7 +241,7 @@ package body CMOF.Internals.Links is
          end if;
 
          if Second_Property not in Cmof_Non_Collection_Of_Element_Property then
-            Internal_Append
+            AMF.Internals.Element_Collections.Internal_Append
              (Elements.Table (Second_Element).Member (0).Collection,
               First_Element,
               AMF_Tables.Links.Last);
