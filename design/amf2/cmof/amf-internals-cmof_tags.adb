@@ -62,15 +62,15 @@ package body AMF.Internals.CMOF_Tags is
    ---------
 
    overriding function Get
-     (Self     : not null access constant CMOF_Tag_Proxy;
-      Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-      return League.Holders.Holder
-   is
+    (Self     : not null access constant CMOF_Tag_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Holders.Holder is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get unimplemented");
-      raise Program_Error with "Unimplemented function Get";
-      return Get (Self, Property);
+      return
+        Standard.CMOF.Reflection.Get
+         (Self.Id,
+          AMF.Internals.Helpers.To_Element
+           (AMF.Elements.Element_Access (Property)));
    end Get;
 
    -----------------
@@ -93,14 +93,13 @@ package body AMF.Internals.CMOF_Tags is
    --------------------
 
    overriding function Get_Meta_Class
-     (Self : not null access constant CMOF_Tag_Proxy)
-      return AMF.CMOF.Classes.CMOF_Class_Access
-   is
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Classes.CMOF_Class_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Meta_Class unimplemented");
-      raise Program_Error with "Unimplemented function Get_Meta_Class";
-      return Get_Meta_Class (Self);
+      return
+        AMF.CMOF.Classes.CMOF_Class_Access
+         (AMF.Internals.Helpers.To_Element
+           (Standard.CMOF.Reflection.Get_Meta_Class (Self.Id)));
    end Get_Meta_Class;
 
    --------------
