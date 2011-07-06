@@ -565,9 +565,6 @@ package body XMI.Handlers is
       --  set of ownedType. Unfortunately, it is derived property and it is not
       --  implemented now.
 
-      Ada.Wide_Wide_Text_IO.Put_Line
-       (Standard_Error, "Resolving '" & Name.To_Wide_Wide_String & "'");
-
       for J in 1 .. Packaged_Elements.Length loop
          Element := Packaged_Elements.Element (J);
 
