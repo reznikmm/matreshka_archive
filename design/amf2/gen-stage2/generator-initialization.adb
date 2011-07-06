@@ -313,7 +313,10 @@ package body Generator.Initialization is
           & To_Ada_Identifier (Get_Name (Meta_Class))
           & " (");
       Put (Numbers.Element (Element), Width => 0);
-      Put_Line (", Extent);");
+      Put_Line (");");
+      Put ("   Internal_Append (Extent, ");
+      Put (Numbers.Element (Element), Width => 0);
+      Put_Line (");");
    end Generate_Metaclass_Initialization;
 
    ------------------------------------------------------

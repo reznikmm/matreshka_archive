@@ -61,7 +61,6 @@ with AMF.Internals.CMOF_Parameters;
 with AMF.Internals.CMOF_Primitive_Types;
 with AMF.Internals.CMOF_Properties;
 with AMF.Internals.CMOF_Tags;
-with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
 with CMOF.Internals.Types;
@@ -69,7 +68,6 @@ with Matreshka.Internals.Strings;
 
 package body CMOF.Internals.Constructors is
 
-   use CMOF.Internals.Extents;
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
    use CMOF.Internals.Types;
@@ -79,10 +77,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Association --
    ------------------------
 
-   function Create_Association (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Association return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Association (Elements.Last, Extent);
+      Initialize_Association (Elements.Last);
 
       return Elements.Last;
    end Create_Association;
@@ -91,10 +89,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Class --
    ------------------
 
-   function Create_Class (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Class return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Class (Elements.Last, Extent);
+      Initialize_Class (Elements.Last);
 
       return Elements.Last;
    end Create_Class;
@@ -103,10 +101,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Comment --
    --------------------
 
-   function Create_Comment (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Comment return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Comment (Elements.Last, Extent);
+      Initialize_Comment (Elements.Last);
 
       return Elements.Last;
    end Create_Comment;
@@ -115,10 +113,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Constraint --
    -----------------------
 
-   function Create_Constraint (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Constraint return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Constraint (Elements.Last, Extent);
+      Initialize_Constraint (Elements.Last);
 
       return Elements.Last;
    end Create_Constraint;
@@ -127,10 +125,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Data_Type --
    ----------------------
 
-   function Create_Data_Type (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Data_Type return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Data_Type (Elements.Last, Extent);
+      Initialize_Data_Type (Elements.Last);
 
       return Elements.Last;
    end Create_Data_Type;
@@ -139,10 +137,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Element_Import --
    ---------------------------
 
-   function Create_Element_Import (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Element_Import return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Element_Import (Elements.Last, Extent);
+      Initialize_Element_Import (Elements.Last);
 
       return Elements.Last;
    end Create_Element_Import;
@@ -151,10 +149,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Enumeration --
    ------------------------
 
-   function Create_Enumeration (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Enumeration return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Enumeration (Elements.Last, Extent);
+      Initialize_Enumeration (Elements.Last);
 
       return Elements.Last;
    end Create_Enumeration;
@@ -163,10 +161,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Enumeration_Literal --
    --------------------------------
 
-   function Create_Enumeration_Literal (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Enumeration_Literal return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Enumeration_Literal (Elements.Last, Extent);
+      Initialize_Enumeration_Literal (Elements.Last);
 
       return Elements.Last;
    end Create_Enumeration_Literal;
@@ -175,10 +173,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Expression --
    -----------------------
 
-   function Create_Expression (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Expression return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Expression (Elements.Last, Extent);
+      Initialize_Expression (Elements.Last);
 
       return Elements.Last;
    end Create_Expression;
@@ -187,10 +185,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Opaque_Expression --
    ------------------------------
 
-   function Create_Opaque_Expression (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Opaque_Expression return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Opaque_Expression (Elements.Last, Extent);
+      Initialize_Opaque_Expression (Elements.Last);
 
       return Elements.Last;
    end Create_Opaque_Expression;
@@ -199,10 +197,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Operation --
    ----------------------
 
-   function Create_Operation (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Operation return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Operation (Elements.Last, Extent);
+      Initialize_Operation (Elements.Last);
 
       return Elements.Last;
    end Create_Operation;
@@ -211,10 +209,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Package --
    --------------------
 
-   function Create_Package (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Package return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Package (Elements.Last, Extent);
+      Initialize_Package (Elements.Last);
 
       return Elements.Last;
    end Create_Package;
@@ -223,10 +221,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Package_Import --
    ---------------------------
 
-   function Create_Package_Import (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Package_Import return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Package_Import (Elements.Last, Extent);
+      Initialize_Package_Import (Elements.Last);
 
       return Elements.Last;
    end Create_Package_Import;
@@ -235,10 +233,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Package_Merge --
    --------------------------
 
-   function Create_Package_Merge (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Package_Merge return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Package_Merge (Elements.Last, Extent);
+      Initialize_Package_Merge (Elements.Last);
 
       return Elements.Last;
    end Create_Package_Merge;
@@ -247,10 +245,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Parameter --
    ----------------------
 
-   function Create_Parameter (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Parameter return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Parameter (Elements.Last, Extent);
+      Initialize_Parameter (Elements.Last);
 
       return Elements.Last;
    end Create_Parameter;
@@ -259,10 +257,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Primitive_Type --
    ---------------------------
 
-   function Create_Primitive_Type (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Primitive_Type return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Primitive_Type (Elements.Last, Extent);
+      Initialize_Primitive_Type (Elements.Last);
 
       return Elements.Last;
    end Create_Primitive_Type;
@@ -271,10 +269,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Property --
    ---------------------
 
-   function Create_Property (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Property return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Property (Elements.Last, Extent);
+      Initialize_Property (Elements.Last);
 
       return Elements.Last;
    end Create_Property;
@@ -283,10 +281,10 @@ package body CMOF.Internals.Constructors is
    -- Create_Tag --
    ----------------
 
-   function Create_Tag (Extent : CMOF_Extent) return CMOF_Element is
+   function Create_Tag return CMOF_Element is
    begin
       Elements.Increment_Last;
-      Initialize_Tag (Elements.Last, Extent);
+      Initialize_Tag (Elements.Last);
 
       return Elements.Last;
    end Create_Tag;
@@ -295,9 +293,7 @@ package body CMOF.Internals.Constructors is
    -- Initialize_Association --
    ----------------------------
 
-   procedure Initialize_Association
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Association (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Association,
@@ -394,16 +390,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Association_Navigable_Owned_End,
         Elements.Table (Self).Member (0).Collection + 17);
-      Internal_Append (Extent, Self);
    end Initialize_Association;
 
    ----------------------
    -- Initialize_Class --
    ----------------------
 
-   procedure Initialize_Class
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Class (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Class,
@@ -488,16 +481,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Class_Owned_Operation,
         Elements.Table (Self).Member (0).Collection + 14);
-      Internal_Append (Extent, Self);
    end Initialize_Class;
 
    ------------------------
    -- Initialize_Comment --
    ------------------------
 
-   procedure Initialize_Comment
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Comment (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Comment,
@@ -526,16 +516,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Comment_Annotated_Element,
         Elements.Table (Self).Member (0).Collection + 3);
-      Internal_Append (Extent, Self);
    end Initialize_Comment;
 
    ---------------------------
    -- Initialize_Constraint --
    ---------------------------
 
-   procedure Initialize_Constraint
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Constraint (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Constraint,
@@ -574,16 +561,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Constraint_Constrained_Element,
         Elements.Table (Self).Member (0).Collection + 3);
-      Internal_Append (Extent, Self);
    end Initialize_Constraint;
 
    --------------------------
    -- Initialize_Data_Type --
    --------------------------
 
-   procedure Initialize_Data_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Data_Type (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Data_Type,
@@ -666,16 +650,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Data_Type_Owned_Operation,
         Elements.Table (Self).Member (0).Collection + 14);
-      Internal_Append (Extent, Self);
    end Initialize_Data_Type;
 
    -------------------------------
    -- Initialize_Element_Import --
    -------------------------------
 
-   procedure Initialize_Element_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Element_Import (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Element_Import,
@@ -718,16 +699,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Directed_Relationship_Target,
         Elements.Table (Self).Member (0).Collection + 5);
-      Internal_Append (Extent, Self);
    end Initialize_Element_Import;
 
    ----------------------------
    -- Initialize_Enumeration --
    ----------------------------
 
-   procedure Initialize_Enumeration
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Enumeration (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Enumeration,
@@ -814,16 +792,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Enumeration_Owned_Literal,
         Elements.Table (Self).Member (0).Collection + 15);
-      Internal_Append (Extent, Self);
    end Initialize_Enumeration;
 
    ------------------------------------
    -- Initialize_Enumeration_Literal --
    ------------------------------------
 
-   procedure Initialize_Enumeration_Literal
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Enumeration_Literal (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Enumeration_Literal,
@@ -856,16 +831,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Element_Owned_Comment,
         Elements.Table (Self).Member (0).Collection + 2);
-      Internal_Append (Extent, Self);
    end Initialize_Enumeration_Literal;
 
    ---------------------------
    -- Initialize_Expression --
    ---------------------------
 
-   procedure Initialize_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Expression (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Expression,
@@ -902,16 +874,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Expression_Operand,
         Elements.Table (Self).Member (0).Collection + 3);
-      Internal_Append (Extent, Self);
    end Initialize_Expression;
 
    ----------------------------------
    -- Initialize_Opaque_Expression --
    ----------------------------------
 
-   procedure Initialize_Opaque_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Opaque_Expression (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Opaque_Expression,
@@ -948,16 +917,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Element_Owned_Comment,
         Elements.Table (Self).Member (0).Collection + 2);
-      Internal_Append (Extent, Self);
    end Initialize_Opaque_Expression;
 
    --------------------------
    -- Initialize_Operation --
    --------------------------
 
-   procedure Initialize_Operation
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Operation (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Operation,
@@ -1065,16 +1031,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Operation_Postcondition,
         Elements.Table (Self).Member (0).Collection + 16);
-      Internal_Append (Extent, Self);
    end Initialize_Operation;
 
    ------------------------
    -- Initialize_Package --
    ------------------------
 
-   procedure Initialize_Package
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Package (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Package,
@@ -1149,16 +1112,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Package_Package_Merge,
         Elements.Table (Self).Member (0).Collection + 12);
-      Internal_Append (Extent, Self);
    end Initialize_Package;
 
    -------------------------------
    -- Initialize_Package_Import --
    -------------------------------
 
-   procedure Initialize_Package_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Package_Import (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Package_Import,
@@ -1199,16 +1159,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Directed_Relationship_Target,
         Elements.Table (Self).Member (0).Collection + 5);
-      Internal_Append (Extent, Self);
    end Initialize_Package_Import;
 
    ------------------------------
    -- Initialize_Package_Merge --
    ------------------------------
 
-   procedure Initialize_Package_Merge
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Package_Merge (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Package_Merge,
@@ -1247,16 +1204,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Directed_Relationship_Target,
         Elements.Table (Self).Member (0).Collection + 5);
-      Internal_Append (Extent, Self);
    end Initialize_Package_Merge;
 
    --------------------------
    -- Initialize_Parameter --
    --------------------------
 
-   procedure Initialize_Parameter
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Parameter (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Parameter,
@@ -1304,16 +1258,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Element_Owned_Comment,
         Elements.Table (Self).Member (0).Collection + 2);
-      Internal_Append (Extent, Self);
    end Initialize_Parameter;
 
    -------------------------------
    -- Initialize_Primitive_Type --
    -------------------------------
 
-   procedure Initialize_Primitive_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Primitive_Type (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Primitive_Type,
@@ -1396,16 +1347,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Data_Type_Owned_Operation,
         Elements.Table (Self).Member (0).Collection + 14);
-      Internal_Append (Extent, Self);
    end Initialize_Primitive_Type;
 
    -------------------------
    -- Initialize_Property --
    -------------------------
 
-   procedure Initialize_Property
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Property (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Property,
@@ -1489,16 +1437,13 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Property_Subsetted_Property,
         Elements.Table (Self).Member (0).Collection + 7);
-      Internal_Append (Extent, Self);
    end Initialize_Property;
 
    --------------------
    -- Initialize_Tag --
    --------------------
 
-   procedure Initialize_Tag
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent) is
+   procedure Initialize_Tag (Self   : CMOF_Element) is
    begin
       Elements.Table (Self) :=
        (Kind     => E_Tag,
@@ -1519,7 +1464,6 @@ package body CMOF.Internals.Constructors is
        (Self,
         MP_CMOF_Tag_Element,
         Elements.Table (Self).Member (0).Collection + 1);
-      Internal_Append (Extent, Self);
    end Initialize_Tag;
 
 end CMOF.Internals.Constructors;

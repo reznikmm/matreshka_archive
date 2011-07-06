@@ -115,13 +115,10 @@ package body Generator.Constructors is
       begin
          Put_Header (Name, 3);
          New_Line;
-         Put_Line
-          ("   function "
-             & Name
-             & " (Extent : CMOF_Extent) return CMOF_Element is");
+         Put_Line ("   function " & Name & " return CMOF_Element is");
          Put_Line ("   begin");
          Put_Line ("      Elements.Increment_Last;");
-         Put_Line ("      " & Initialize_Name & " (Elements.Last, Extent);");
+         Put_Line ("      " & Initialize_Name & " (Elements.Last);");
          New_Line;
          Put_Line ("      return Elements.Last;");
          Put_Line ("   end " & Name & ";");
@@ -151,9 +148,7 @@ package body Generator.Constructors is
       begin
          Put_Header (Name, 3);
          New_Line;
-         Put_Line ("   procedure " & Name);
-         Put_Line ("    (Self   : CMOF_Element;");
-         Put_Line ("     Extent : CMOF_Extent) is");
+         Put_Line ("   procedure " & Name & " (Self   : CMOF_Element) is");
          Put_Line ("   begin");
          Put_Line ("      Elements.Table (Self) :=");
          Put_Line ("       (Kind     => " & Element_Kind & ",");
@@ -549,7 +544,6 @@ package body Generator.Constructors is
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
-         Put_Line ("      Internal_Append (Extent, Self);");
          Put_Line ("   end " & Name & ';');
       end Generate_Initialize;
 
@@ -577,7 +571,6 @@ package body Generator.Constructors is
    begin
       Put_Header;
       Class_Info.Iterate (Generate_With'Access);
-      Put_Line ("with CMOF.Internals.Extents;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");
@@ -585,7 +578,6 @@ package body Generator.Constructors is
       New_Line;
       Put_Line ("package body CMOF.Internals.Constructors is");
       New_Line;
-      Put_Line ("   use CMOF.Internals.Extents;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use CMOF.Internals.Types;");
@@ -618,10 +610,7 @@ package body Generator.Constructors is
 
       begin
          New_Line;
-         Put_Line
-          ("   function "
-             & Name
-             & " (Extent : CMOF_Extent) return CMOF_Element;");
+         Put_Line ("   function " & Name & " return CMOF_Element;");
       end Generate_Create;
 
       -------------------------
@@ -638,9 +627,7 @@ package body Generator.Constructors is
 
       begin
          New_Line;
-         Put_Line ("   procedure " & Name);
-         Put_Line ("    (Self   : CMOF_Element;");
-         Put_Line ("     Extent : CMOF_Extent);");
+         Put_Line ("   procedure " & Name & " (Self : CMOF_Element);");
       end Generate_Initialize;
 
    begin

@@ -46,112 +46,76 @@
 
 package CMOF.Internals.Constructors is
 
-   function Create_Association (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Association return CMOF_Element;
 
-   function Create_Class (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Class return CMOF_Element;
 
-   function Create_Comment (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Comment return CMOF_Element;
 
-   function Create_Constraint (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Constraint return CMOF_Element;
 
-   function Create_Data_Type (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Data_Type return CMOF_Element;
 
-   function Create_Element_Import (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Element_Import return CMOF_Element;
 
-   function Create_Enumeration (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Enumeration return CMOF_Element;
 
-   function Create_Enumeration_Literal (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Enumeration_Literal return CMOF_Element;
 
-   function Create_Expression (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Expression return CMOF_Element;
 
-   function Create_Opaque_Expression (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Opaque_Expression return CMOF_Element;
 
-   function Create_Operation (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Operation return CMOF_Element;
 
-   function Create_Package (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Package return CMOF_Element;
 
-   function Create_Package_Import (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Package_Import return CMOF_Element;
 
-   function Create_Package_Merge (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Package_Merge return CMOF_Element;
 
-   function Create_Parameter (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Parameter return CMOF_Element;
 
-   function Create_Primitive_Type (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Primitive_Type return CMOF_Element;
 
-   function Create_Property (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Property return CMOF_Element;
 
-   function Create_Tag (Extent : CMOF_Extent) return CMOF_Element;
+   function Create_Tag return CMOF_Element;
 
-   procedure Initialize_Association
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Association (Self : CMOF_Element);
 
-   procedure Initialize_Class
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Class (Self : CMOF_Element);
 
-   procedure Initialize_Comment
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Comment (Self : CMOF_Element);
 
-   procedure Initialize_Constraint
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Constraint (Self : CMOF_Element);
 
-   procedure Initialize_Data_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Data_Type (Self : CMOF_Element);
 
-   procedure Initialize_Element_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Element_Import (Self : CMOF_Element);
 
-   procedure Initialize_Enumeration
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Enumeration (Self : CMOF_Element);
 
-   procedure Initialize_Enumeration_Literal
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Enumeration_Literal (Self : CMOF_Element);
 
-   procedure Initialize_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Expression (Self : CMOF_Element);
 
-   procedure Initialize_Opaque_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Opaque_Expression (Self : CMOF_Element);
 
-   procedure Initialize_Operation
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Operation (Self : CMOF_Element);
 
-   procedure Initialize_Package
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Package (Self : CMOF_Element);
 
-   procedure Initialize_Package_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Package_Import (Self : CMOF_Element);
 
-   procedure Initialize_Package_Merge
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Package_Merge (Self : CMOF_Element);
 
-   procedure Initialize_Parameter
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Parameter (Self : CMOF_Element);
 
-   procedure Initialize_Primitive_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Primitive_Type (Self : CMOF_Element);
 
-   procedure Initialize_Property
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Property (Self : CMOF_Element);
 
-   procedure Initialize_Tag
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
+   procedure Initialize_Tag (Self : CMOF_Element);
 
 end CMOF.Internals.Constructors;

@@ -54,6 +54,7 @@ with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
+with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
 with League.Holders.Booleans;
@@ -101,64 +102,66 @@ package body CMOF.Internals.Factories is
       --  Create corresponding proxy element.
 
       if MC = MC_CMOF_Association then
-         Element := CMOF.Internals.Constructors.Create_Association (Extent);
+         Element := CMOF.Internals.Constructors.Create_Association;
 
       elsif MC = MC_CMOF_Class then
-         Element := CMOF.Internals.Constructors.Create_Class (Extent);
+         Element := CMOF.Internals.Constructors.Create_Class;
 
       elsif MC = MC_CMOF_Comment then
-         Element := CMOF.Internals.Constructors.Create_Comment (Extent);
+         Element := CMOF.Internals.Constructors.Create_Comment;
 
       elsif MC = MC_CMOF_Constraint then
-         Element := CMOF.Internals.Constructors.Create_Constraint (Extent);
+         Element := CMOF.Internals.Constructors.Create_Constraint;
 
       elsif MC = MC_CMOF_Data_Type then
-         Element := CMOF.Internals.Constructors.Create_Data_Type (Extent);
+         Element := CMOF.Internals.Constructors.Create_Data_Type;
 
       elsif MC = MC_CMOF_Element_Import then
-         Element := CMOF.Internals.Constructors.Create_Element_Import (Extent);
+         Element := CMOF.Internals.Constructors.Create_Element_Import;
 
       elsif MC = MC_CMOF_Enumeration then
-         Element := CMOF.Internals.Constructors.Create_Enumeration (Extent);
+         Element := CMOF.Internals.Constructors.Create_Enumeration;
 
       elsif MC = MC_CMOF_Enumeration_Literal then
          Element :=
-           CMOF.Internals.Constructors.Create_Enumeration_Literal (Extent);
+           CMOF.Internals.Constructors.Create_Enumeration_Literal;
 
       elsif MC = MC_CMOF_Expression then
-         Element := CMOF.Internals.Constructors.Create_Expression (Extent);
+         Element := CMOF.Internals.Constructors.Create_Expression;
 
       elsif MC = MC_CMOF_Opaque_Expression then
          Element :=
-           CMOF.Internals.Constructors.Create_Opaque_Expression (Extent);
+           CMOF.Internals.Constructors.Create_Opaque_Expression;
 
       elsif MC = MC_CMOF_Operation then
-         Element := CMOF.Internals.Constructors.Create_Operation (Extent);
+         Element := CMOF.Internals.Constructors.Create_Operation;
 
       elsif MC = MC_CMOF_Package then
-         Element := CMOF.Internals.Constructors.Create_Package (Extent);
+         Element := CMOF.Internals.Constructors.Create_Package;
 
       elsif MC = MC_CMOF_Package_Import then
-         Element := CMOF.Internals.Constructors.Create_Package_Import (Extent);
+         Element := CMOF.Internals.Constructors.Create_Package_Import;
 
       elsif MC = MC_CMOF_Package_Merge then
-         Element := CMOF.Internals.Constructors.Create_Package_Merge (Extent);
+         Element := CMOF.Internals.Constructors.Create_Package_Merge;
 
       elsif MC = MC_CMOF_Parameter then
-         Element := CMOF.Internals.Constructors.Create_Parameter (Extent);
+         Element := CMOF.Internals.Constructors.Create_Parameter;
 
       elsif MC = MC_CMOF_Primitive_Type then
-         Element := CMOF.Internals.Constructors.Create_Primitive_Type (Extent);
+         Element := CMOF.Internals.Constructors.Create_Primitive_Type;
 
       elsif MC = MC_CMOF_Property then
-         Element := CMOF.Internals.Constructors.Create_Property (Extent);
+         Element := CMOF.Internals.Constructors.Create_Property;
 
       elsif MC = MC_CMOF_Tag then
-         Element := CMOF.Internals.Constructors.Create_Tag (Extent);
+         Element := CMOF.Internals.Constructors.Create_Tag;
 
       else
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
+
+      CMOF.Internals.Extents.Internal_Append (Extent, Element);
 
       AMF.Internals.Listener_Registry.Notify_Instance_Create
        (AMF.Internals.Helpers.To_Element (Element));
