@@ -1404,6 +1404,8 @@ package body CMOF.Internals.Constructors is
                        --  name
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  value
+                     3      => (M_Element, 0),
+                       --  tagOwner
                      others => (Kind => M_None)));
       Allocate_Collection_Of_Cmof_Element_Slots (Self, 1);
       Initialize_Set_Collection          --  element

@@ -2473,6 +2473,14 @@ package body CMOF.Internals.Reflection is
               League.Holders.To_Holder
                (Internal_Get_Name (Self));
 
+         elsif Property = MP_CMOF_Tag_Tag_Owner then
+            --  Tag::tagOwner : Element
+
+            return
+              AMF.Holders.Elements.To_Holder
+               (AMF.Internals.Helpers.To_Element
+                 (Internal_Get_Tag_Owner (Self)));
+
          elsif Property = MP_CMOF_Tag_Value then
             --  Tag::value : String
 
@@ -3288,6 +3296,11 @@ package body CMOF.Internals.Reflection is
             --  Tag::name : String
 
             Internal_Set_Name (Self, League.Holders.Element (Value));
+
+         elsif Property = MP_CMOF_Tag_Tag_Owner then
+            --  Tag::tagOwner : Element
+
+            Internal_Set_Tag_Owner (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
 
          elsif Property = MP_CMOF_Tag_Value then
             --  Tag::value : String

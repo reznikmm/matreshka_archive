@@ -636,6 +636,13 @@ package CMOF.Internals.Attributes is
     (Self : CMOF_Element) return Collection_Of_CMOF_Element;
    --  Class => Class::superClass
 
+   function Internal_Get_Tag_Owner
+    (Self : CMOF_Element) return CMOF_Element;
+   procedure Internal_Set_Tag_Owner
+    (Self : CMOF_Element;
+     To   : CMOF_Element);
+   --  Tag => Tag::tagOwner
+
    function Internal_Get_Target
     (Self : CMOF_Element) return Collection_Of_CMOF_Element;
    --  ElementImport => DirectedRelationship::target

@@ -411,6 +411,7 @@ E_Association =>
            others => 0),
          E_Tag =>
           (MP_CMOF_Tag_Name => 1,
+           MP_CMOF_Tag_Tag_Owner => 3,
            MP_CMOF_Tag_Value => 2,
            others => 0));
 

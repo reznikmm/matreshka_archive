@@ -405,6 +405,7 @@ package body CMOF.Internals.Attributes is
    --  Tag
    --
    --     1  Tag::name
+   --     3  Tag::tagOwner
    --     2  Tag::value
    --
    --     1  Tag::element
@@ -2423,6 +2424,22 @@ package body CMOF.Internals.Attributes is
       end case;
    end Internal_Get_Super_Class;
 
+   ----------------------------
+   -- Internal_Get_Tag_Owner --
+   ----------------------------
+
+   function Internal_Get_Tag_Owner
+    (Self : CMOF_Element) return CMOF_Element is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            return Elements.Table (Self).Member (3).Element;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Tag_Owner;
+
    -------------------------
    -- Internal_Get_Target --
    -------------------------
@@ -3891,6 +3908,30 @@ package body CMOF.Internals.Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Specification;
+
+   ----------------------------
+   -- Internal_Set_Tag_Owner --
+   ----------------------------
+
+   procedure Internal_Set_Tag_Owner
+    (Self : CMOF_Element;
+     To   : CMOF_Element)
+   is
+      Old : CMOF_Element;
+
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            Old := Elements.Table (Self).Member (3).Element;
+            Elements.Table (Self).Member (3).Element := To;
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Tag_Tag_Owner, Old, To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Tag_Owner;
 
    -----------------------
    -- Internal_Set_Type --
