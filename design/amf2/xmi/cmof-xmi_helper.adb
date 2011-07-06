@@ -41,9 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Helpers;
-with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
@@ -52,34 +50,6 @@ with CMOF.Named_Elements;
 with CMOF.Packages;
 
 package body CMOF.XMI_Helper is
-
-   function CMOF_Element_Of
-    (Element : not null access AMF.Elements.Abstract_Element'Class)
-       return CMOF_Element;
-
-   ---------------------
-   -- CMOF_Element_Of --
-   ---------------------
-
-   function CMOF_Element_Of
-    (Element : not null access AMF.Elements.Abstract_Element'Class)
-       return CMOF_Element is
-   begin
-      return
-        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Element.all).Id;
-   end CMOF_Element_Of;
-
-   ---------------------
-   -- CMOF_Element_Of --
-   ---------------------
-
-   function CMOF_Element_Of
-    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
-       return CMOF_Element is
-   begin
-      return
-        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Element.all).Id;
-   end CMOF_Element_Of;
 
    --------------------
    -- Is_Association --
@@ -154,7 +124,8 @@ package body CMOF.XMI_Helper is
     (Element : not null access AMF.Elements.Abstract_Element'Class;
      Id      : League.Strings.Universal_String) is
    begin
-      CMOF.Internals.Extents.Set_Id (CMOF_Element_Of (Element), Id);
+      CMOF.Internals.Extents.Set_Id
+       (AMF.Internals.Helpers.To_Element (Element), Id);
    end Set_Id;
 
 end CMOF.XMI_Helper;

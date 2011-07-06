@@ -64,8 +64,4 @@ package CMOF.XMI_Helper is
     (Element : not null access AMF.Elements.Abstract_Element'Class;
      Id      : League.Strings.Universal_String);
 
-   function CMOF_Element_Of
-    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
-       return CMOF_Element;
-
 end CMOF.XMI_Helper;

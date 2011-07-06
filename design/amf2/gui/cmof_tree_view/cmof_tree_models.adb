@@ -49,16 +49,14 @@ with League.Strings;
 
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
-with AMF.CMOF.Elements;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Internals;
+with AMF.Internals.Helpers;
 with AMF.Elements.Collections;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with CMOF.Extents;
 with CMOF.Reflection;
-with CMOF.XMI_Helper;
 
 with CMOF_Tree_Models.MOC;
 pragma Unreferenced (CMOF_Tree_Models.MOC);
@@ -105,12 +103,16 @@ package body CMOF_Tree_Models is
       use type League.Strings.Universal_String;
       use type AMF.Optional_String;
 
+      LI : constant AMF.Internals.CMOF_Element
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Left));
+      RI : constant AMF.Internals.CMOF_Element
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Right));
+
    begin
       return Left.Get_Name < Right.Get_Name
-        or (Left.Get_Name = Right.Get_Name
-              and AMF.Internals."<"
-                   (CMOF.XMI_Helper.CMOF_Element_Of (Left),
-                    CMOF.XMI_Helper.CMOF_Element_Of (Right)));
+        or (Left.Get_Name = Right.Get_Name and AMF.Internals."<" (LI, RI));
    end "<";
 
    --------------------
@@ -333,9 +335,7 @@ package body CMOF_Tree_Models is
    --------------
 
    procedure Populate (Self : not null access Attribute_Node) is
-      use CMOF.XMI_Helper;
-
-      X : Node_Access;
+      X              : Node_Access;
       Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
    begin
@@ -655,9 +655,7 @@ package body CMOF_Tree_Models is
       for J in 1 .. E.Length loop
          X := E.Element (J);
 
-         if CMOF.Reflection.Container
-             (CMOF.XMI_Helper.CMOF_Element_Of
-               (AMF.CMOF.Elements.CMOF_Element_Access (X)))
+         if CMOF.Reflection.Container (AMF.Internals.Helpers.To_Element (X))
               = Null_CMOF_Element
          then
             Self.Root :=

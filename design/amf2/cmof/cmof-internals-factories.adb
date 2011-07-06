@@ -153,6 +153,9 @@ package body CMOF.Internals.Factories is
       elsif MC = MC_CMOF_Property then
          Element := CMOF.Internals.Constructors.Create_Property (Extent);
 
+      elsif MC = MC_CMOF_Tag then
+         Element := CMOF.Internals.Constructors.Create_Tag (Extent);
+
       else
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
@@ -281,11 +284,9 @@ package body CMOF.Internals.Factories is
 
       AMF.Internals.Links.Internal_Create_Link
        (A,
-        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-         (First_Element.all).Id,
+        AMF.Internals.Helpers.To_Element (First_Element),
         AMF.Internals.Element_Collections.Element (Member_End, 1),
-        AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-         (Second_Element.all).Id,
+        AMF.Internals.Helpers.To_Element (Second_Element),
         AMF.Internals.Element_Collections.Element (Member_End, 2));
    end Create_Link;
 

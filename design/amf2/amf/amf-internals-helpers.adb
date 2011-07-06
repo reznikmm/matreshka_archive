@@ -92,7 +92,7 @@ package body AMF.Internals.Helpers is
    ----------------
 
    function To_Element
-    (Element : AMF.Elements.Element_Access) return AMF_Element
+    (Element : access AMF.Elements.Abstract_Element'Class) return AMF_Element
    is
       use type AMF.Elements.Element_Access;
 

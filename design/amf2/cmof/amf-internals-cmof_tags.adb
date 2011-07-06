@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
+with AMF.Internals.Helpers;
+with CMOF.Reflection;
 
 package body AMF.Internals.CMOF_Tags is
 
@@ -49,14 +52,9 @@ package body AMF.Internals.CMOF_Tags is
    -------------
 
    overriding function Element
-     (Self : not null access constant CMOF_Tag_Proxy)
-      return AMF_Element
-   is
+    (Self : not null access constant CMOF_Tag_Proxy) return AMF_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Element unimplemented");
-      raise Program_Error with "Unimplemented function Element";
-      return Element (Self);
+      return Self.Id;
    end Element;
 
    ---------
@@ -140,15 +138,17 @@ package body AMF.Internals.CMOF_Tags is
    ---------
 
    overriding procedure Set
-     (Self     : not null access CMOF_Tag_Proxy;
-      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
-      Value    : League.Holders.Holder)
-   is
+    (Self     : not null access CMOF_Tag_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Value    : League.Holders.Holder) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set unimplemented");
-      raise Program_Error with "Unimplemented procedure Set";
+      Standard.CMOF.Reflection.Set
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (Property)),
+        Value);
    end Set;
+
 
    --------------
    -- Set_Name --

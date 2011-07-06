@@ -48,14 +48,14 @@ package CMOF.Internals.Metamodel is
 
    pragma Preelaborate;
 
-   MM_CMOF : constant CMOF_Package := 206;
+   MM_CMOF : constant CMOF_Package := 209;
 
-   MC_CMOF_Boolean                  : constant CMOF_Data_Type := 209;
-   MC_CMOF_Integer                  : constant CMOF_Data_Type := 207;
-   MC_CMOF_Parameter_Direction_Kind : constant CMOF_Data_Type := 754;
-   MC_CMOF_String                   : constant CMOF_Data_Type := 211;
-   MC_CMOF_Unlimited_Natural        : constant CMOF_Data_Type := 213;
-   MC_CMOF_Visibility_Kind          : constant CMOF_Data_Type := 764;
+   MC_CMOF_Boolean                  : constant CMOF_Data_Type := 212;
+   MC_CMOF_Integer                  : constant CMOF_Data_Type := 210;
+   MC_CMOF_Parameter_Direction_Kind : constant CMOF_Data_Type := 757;
+   MC_CMOF_String                   : constant CMOF_Data_Type := 214;
+   MC_CMOF_Unlimited_Natural        : constant CMOF_Data_Type := 216;
+   MC_CMOF_Visibility_Kind          : constant CMOF_Data_Type := 767;
 
    MC_CMOF_Association           : constant CMOF_Class := 1;
    MC_CMOF_Behavioral_Feature    : constant CMOF_Class := 2;
@@ -194,102 +194,102 @@ package CMOF.Internals.Metamodel is
    MP_CMOF_Tag_Value                           : constant CMOF_Property := 132;
    MP_CMOF_Type_Package                        : constant CMOF_Property := 133;
    MP_CMOF_Typed_Element_Type                  : constant CMOF_Property := 134;
-   MP_CMOF_Type_Operation                      : constant CMOF_Property := 795;
-   MP_CMOF_Merged_Package_Package_Merge        : constant CMOF_Property := 187;
-   MP_CMOF_Annotated_Element_Comment           : constant CMOF_Property := 188;
-   MP_CMOF_Related_Element_Relationship        : constant CMOF_Property := 189;
-   MP_CMOF_Source_Directed_Relationship        : constant CMOF_Property := 190;
-   MP_CMOF_Type_Typed_Element                  : constant CMOF_Property := 780;
-   MP_CMOF_Target_Directed_Relationship        : constant CMOF_Property := 191;
+   MP_CMOF_Packaged_Element_Owning_Package     : constant CMOF_Property := 797;
+   MP_CMOF_Element_Tag                         : constant CMOF_Property := 206;
+   MP_CMOF_Type_Operation                      : constant CMOF_Property := 187;
+   MP_CMOF_Merged_Package_Package_Merge        : constant CMOF_Property := 188;
+   MP_CMOF_Annotated_Element_Comment           : constant CMOF_Property := 189;
+   MP_CMOF_Related_Element_Relationship        : constant CMOF_Property := 190;
+   MP_CMOF_Source_Directed_Relationship        : constant CMOF_Property := 191;
+   MP_CMOF_Type_Typed_Element                  : constant CMOF_Property := 783;
+   MP_CMOF_Target_Directed_Relationship        : constant CMOF_Property := 192;
    MP_CMOF_Redefinition_Context_Redefinable_Element
-                                               : constant CMOF_Property := 192;
-   MP_CMOF_Redefined_Element_Redefinable_Element
                                                : constant CMOF_Property := 193;
-   MP_CMOF_Attribute_Classifier                : constant CMOF_Property := 781;
-   MP_CMOF_Redefined_Property_Property         : constant CMOF_Property := 782;
-   MP_CMOF_Constrained_Element_Constraint      : constant CMOF_Property := 194;
-   MP_CMOF_Subsetted_Property_Property         : constant CMOF_Property := 783;
-   MP_CMOF_Specification_Owning_Constraint     : constant CMOF_Property := 195;
-   MP_CMOF_Opposite_Property                   : constant CMOF_Property := 784;
-   MP_CMOF_General_Classifier                  : constant CMOF_Property := 196;
-   MP_CMOF_Super_Class_Class                   : constant CMOF_Property := 785;
-   MP_CMOF_Member_Namespace                    : constant CMOF_Property := 197;
-   MP_CMOF_End_Type_Association                : constant CMOF_Property := 786;
-   MP_CMOF_Operand_Expression                  : constant CMOF_Property := 198;
-   MP_CMOF_Navigable_Owned_End_Association     : constant CMOF_Property := 199;
-   MP_CMOF_Raised_Exception_Operation          : constant CMOF_Property := 787;
-   MP_CMOF_Owned_Comment_Owning_Element        : constant CMOF_Property := 200;
-   MP_CMOF_Redefined_Operation_Operation       : constant CMOF_Property := 788;
-   MP_CMOF_Inherited_Member_Classifier         : constant CMOF_Property := 201;
-   MP_CMOF_Owned_Parameter_Owner_Formal_Param  : constant CMOF_Property := 789;
-   MP_CMOF_Precondition_Pre_Context            : constant CMOF_Property := 202;
-   MP_CMOF_Raised_Exception_Behavioral_Feature : constant CMOF_Property := 790;
-   MP_CMOF_Postcondition_Post_Context          : constant CMOF_Property := 203;
-   MP_CMOF_Imported_Member_Namespace           : constant CMOF_Property := 791;
-   MP_CMOF_Body_Condition_Body_Context         : constant CMOF_Property := 204;
-   MP_CMOF_Imported_Package_Package_Import     : constant CMOF_Property := 792;
-   MP_CMOF_Imported_Element_Element_Import     : constant CMOF_Property := 793;
-   MP_CMOF_Packaged_Element_Owning_Package     : constant CMOF_Property := 794;
-   MP_CMOF_Element_Tag                         : constant CMOF_Property := 205;
+   MP_CMOF_Redefined_Element_Redefinable_Element
+                                               : constant CMOF_Property := 194;
+   MP_CMOF_Attribute_Classifier                : constant CMOF_Property := 784;
+   MP_CMOF_Redefined_Property_Property         : constant CMOF_Property := 785;
+   MP_CMOF_Constrained_Element_Constraint      : constant CMOF_Property := 195;
+   MP_CMOF_Subsetted_Property_Property         : constant CMOF_Property := 786;
+   MP_CMOF_Specification_Owning_Constraint     : constant CMOF_Property := 196;
+   MP_CMOF_Opposite_Property                   : constant CMOF_Property := 787;
+   MP_CMOF_General_Classifier                  : constant CMOF_Property := 197;
+   MP_CMOF_Super_Class_Class                   : constant CMOF_Property := 788;
+   MP_CMOF_Member_Namespace                    : constant CMOF_Property := 198;
+   MP_CMOF_End_Type_Association                : constant CMOF_Property := 789;
+   MP_CMOF_Operand_Expression                  : constant CMOF_Property := 199;
+   MP_CMOF_Navigable_Owned_End_Association     : constant CMOF_Property := 200;
+   MP_CMOF_Raised_Exception_Operation          : constant CMOF_Property := 790;
+   MP_CMOF_Owned_Comment_Owning_Element        : constant CMOF_Property := 201;
+   MP_CMOF_Redefined_Operation_Operation       : constant CMOF_Property := 791;
+   MP_CMOF_Inherited_Member_Classifier         : constant CMOF_Property := 202;
+   MP_CMOF_Owned_Parameter_Owner_Formal_Param  : constant CMOF_Property := 792;
+   MP_CMOF_Precondition_Pre_Context            : constant CMOF_Property := 203;
+   MP_CMOF_Raised_Exception_Behavioral_Feature : constant CMOF_Property := 793;
+   MP_CMOF_Postcondition_Post_Context          : constant CMOF_Property := 204;
+   MP_CMOF_Imported_Member_Namespace           : constant CMOF_Property := 794;
+   MP_CMOF_Body_Condition_Body_Context         : constant CMOF_Property := 205;
+   MP_CMOF_Imported_Package_Package_Import     : constant CMOF_Property := 795;
+   MP_CMOF_Imported_Element_Element_Import     : constant CMOF_Property := 796;
 
-   MA_CMOF_Owned_Type_Package               : constant CMOF_Association := 135;
-   MA_CMOF_Member_End_Association           : constant CMOF_Association := 136;
-   MA_CMOF_Nested_Package_Nesting_Package   : constant CMOF_Association := 137;
-   MA_CMOF_Type_Operation                   : constant CMOF_Association := 138;
-   MA_CMOF_Package_Merge_Receiving_Package  : constant CMOF_Association := 139;
-   MA_CMOF_Merged_Package_Package_Merge     : constant CMOF_Association := 140;
-   MA_CMOF_Owned_Element_Owner              : constant CMOF_Association := 141;
-   MA_CMOF_Annotated_Element_Comment        : constant CMOF_Association := 142;
-   MA_CMOF_Related_Element_Relationship     : constant CMOF_Association := 143;
-   MA_CMOF_Source_Directed_Relationship     : constant CMOF_Association := 144;
-   MA_CMOF_Type_Typed_Element               : constant CMOF_Association := 145;
-   MA_CMOF_Target_Directed_Relationship     : constant CMOF_Association := 146;
-   MA_CMOF_Owned_Attribute_Class            : constant CMOF_Association := 147;
-   MA_CMOF_Redefinition_Context_Redefinable_Element
-                                            : constant CMOF_Association := 148;
-   MA_CMOF_Owned_Operation_Class            : constant CMOF_Association := 149;
-   MA_CMOF_Owned_End_Owning_Association     : constant CMOF_Association := 150;
-   MA_CMOF_Redefined_Element_Redefinable_Element
-                                            : constant CMOF_Association := 151;
-   MA_CMOF_Attribute_Classifier             : constant CMOF_Association := 152;
-   MA_CMOF_Feature_Featuring_Classifier     : constant CMOF_Association := 153;
-   MA_CMOF_Redefined_Property_Property      : constant CMOF_Association := 154;
-   MA_CMOF_Constrained_Element_Constraint   : constant CMOF_Association := 155;
-   MA_CMOF_Subsetted_Property_Property      : constant CMOF_Association := 156;
-   MA_CMOF_Specification_Owning_Constraint  : constant CMOF_Association := 157;
-   MA_CMOF_Opposite_Property                : constant CMOF_Association := 158;
-   MA_CMOF_General_Classifier               : constant CMOF_Association := 159;
-   MA_CMOF_Super_Class_Class                : constant CMOF_Association := 160;
-   MA_CMOF_Owned_Member_Namespace           : constant CMOF_Association := 161;
-   MA_CMOF_Member_Namespace                 : constant CMOF_Association := 162;
-   MA_CMOF_End_Type_Association             : constant CMOF_Association := 163;
-   MA_CMOF_Operand_Expression               : constant CMOF_Association := 164;
-   MA_CMOF_Owned_Literal_Enumeration        : constant CMOF_Association := 165;
-   MA_CMOF_Owned_Attribute_Datatype         : constant CMOF_Association := 166;
-   MA_CMOF_Navigable_Owned_End_Association  : constant CMOF_Association := 167;
-   MA_CMOF_Owned_Operation_Datatype         : constant CMOF_Association := 168;
-   MA_CMOF_Raised_Exception_Operation       : constant CMOF_Association := 169;
-   MA_CMOF_Owned_Parameter_Operation        : constant CMOF_Association := 170;
-   MA_CMOF_Owned_Comment_Owning_Element     : constant CMOF_Association := 171;
-   MA_CMOF_Redefined_Operation_Operation    : constant CMOF_Association := 172;
-   MA_CMOF_Inherited_Member_Classifier      : constant CMOF_Association := 173;
-   MA_CMOF_Owned_Parameter_Owner_Formal_Param
-                                            : constant CMOF_Association := 174;
-   MA_CMOF_Precondition_Pre_Context         : constant CMOF_Association := 175;
-   MA_CMOF_Raised_Exception_Behavioral_Feature
-                                            : constant CMOF_Association := 176;
-   MA_CMOF_Postcondition_Post_Context       : constant CMOF_Association := 177;
-   MA_CMOF_Imported_Member_Namespace        : constant CMOF_Association := 178;
-   MA_CMOF_Body_Condition_Body_Context      : constant CMOF_Association := 179;
-   MA_CMOF_Imported_Package_Package_Import  : constant CMOF_Association := 180;
-   MA_CMOF_Owned_Rule_Context               : constant CMOF_Association := 181;
-   MA_CMOF_Imported_Element_Element_Import  : constant CMOF_Association := 182;
-   MA_CMOF_Element_Import_Importing_Namespace
-                                            : constant CMOF_Association := 183;
    MA_CMOF_Package_Import_Importing_Namespace
-                                            : constant CMOF_Association := 184;
-   MA_CMOF_Packaged_Element_Owning_Package  : constant CMOF_Association := 185;
-   MA_CMOF_Element_Tag                      : constant CMOF_Association := 186;
+                                            : constant CMOF_Association := 135;
+   MA_CMOF_Packaged_Element_Owning_Package  : constant CMOF_Association := 136;
+   MA_CMOF_Element_Tag                      : constant CMOF_Association := 137;
+   MA_CMOF_Owned_Type_Package               : constant CMOF_Association := 138;
+   MA_CMOF_Member_End_Association           : constant CMOF_Association := 139;
+   MA_CMOF_Nested_Package_Nesting_Package   : constant CMOF_Association := 140;
+   MA_CMOF_Type_Operation                   : constant CMOF_Association := 141;
+   MA_CMOF_Package_Merge_Receiving_Package  : constant CMOF_Association := 142;
+   MA_CMOF_Merged_Package_Package_Merge     : constant CMOF_Association := 143;
+   MA_CMOF_Owned_Element_Owner              : constant CMOF_Association := 144;
+   MA_CMOF_Annotated_Element_Comment        : constant CMOF_Association := 145;
+   MA_CMOF_Related_Element_Relationship     : constant CMOF_Association := 146;
+   MA_CMOF_Source_Directed_Relationship     : constant CMOF_Association := 147;
+   MA_CMOF_Type_Typed_Element               : constant CMOF_Association := 148;
+   MA_CMOF_Target_Directed_Relationship     : constant CMOF_Association := 149;
+   MA_CMOF_Owned_Attribute_Class            : constant CMOF_Association := 150;
+   MA_CMOF_Redefinition_Context_Redefinable_Element
+                                            : constant CMOF_Association := 151;
+   MA_CMOF_Owned_Operation_Class            : constant CMOF_Association := 152;
+   MA_CMOF_Owned_End_Owning_Association     : constant CMOF_Association := 153;
+   MA_CMOF_Redefined_Element_Redefinable_Element
+                                            : constant CMOF_Association := 154;
+   MA_CMOF_Attribute_Classifier             : constant CMOF_Association := 155;
+   MA_CMOF_Feature_Featuring_Classifier     : constant CMOF_Association := 156;
+   MA_CMOF_Redefined_Property_Property      : constant CMOF_Association := 157;
+   MA_CMOF_Constrained_Element_Constraint   : constant CMOF_Association := 158;
+   MA_CMOF_Subsetted_Property_Property      : constant CMOF_Association := 159;
+   MA_CMOF_Specification_Owning_Constraint  : constant CMOF_Association := 160;
+   MA_CMOF_Opposite_Property                : constant CMOF_Association := 161;
+   MA_CMOF_General_Classifier               : constant CMOF_Association := 162;
+   MA_CMOF_Super_Class_Class                : constant CMOF_Association := 163;
+   MA_CMOF_Owned_Member_Namespace           : constant CMOF_Association := 164;
+   MA_CMOF_Member_Namespace                 : constant CMOF_Association := 165;
+   MA_CMOF_End_Type_Association             : constant CMOF_Association := 166;
+   MA_CMOF_Operand_Expression               : constant CMOF_Association := 167;
+   MA_CMOF_Owned_Literal_Enumeration        : constant CMOF_Association := 168;
+   MA_CMOF_Owned_Attribute_Datatype         : constant CMOF_Association := 169;
+   MA_CMOF_Navigable_Owned_End_Association  : constant CMOF_Association := 170;
+   MA_CMOF_Owned_Operation_Datatype         : constant CMOF_Association := 171;
+   MA_CMOF_Raised_Exception_Operation       : constant CMOF_Association := 172;
+   MA_CMOF_Owned_Parameter_Operation        : constant CMOF_Association := 173;
+   MA_CMOF_Owned_Comment_Owning_Element     : constant CMOF_Association := 174;
+   MA_CMOF_Redefined_Operation_Operation    : constant CMOF_Association := 175;
+   MA_CMOF_Inherited_Member_Classifier      : constant CMOF_Association := 176;
+   MA_CMOF_Owned_Parameter_Owner_Formal_Param
+                                            : constant CMOF_Association := 177;
+   MA_CMOF_Precondition_Pre_Context         : constant CMOF_Association := 178;
+   MA_CMOF_Raised_Exception_Behavioral_Feature
+                                            : constant CMOF_Association := 179;
+   MA_CMOF_Postcondition_Post_Context       : constant CMOF_Association := 180;
+   MA_CMOF_Imported_Member_Namespace        : constant CMOF_Association := 181;
+   MA_CMOF_Body_Condition_Body_Context      : constant CMOF_Association := 182;
+   MA_CMOF_Imported_Package_Package_Import  : constant CMOF_Association := 183;
+   MA_CMOF_Owned_Rule_Context               : constant CMOF_Association := 184;
+   MA_CMOF_Imported_Element_Element_Import  : constant CMOF_Association := 185;
+   MA_CMOF_Element_Import_Importing_Namespace
+                                            : constant CMOF_Association := 186;
 
    subtype CMOF_Meta_Class is
      CMOF_Class range 1 .. 33;

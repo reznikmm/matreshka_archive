@@ -63,350 +63,351 @@ package body CMOF.Internals.Setup is
    Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;
 
 begin
-   Tables.Elements.Set_Last (795);
+   Tables.Elements.Set_Last (797);
    Initialize_CMOF_Metamodel_Extent;
 
-   Initialize_Association (139, Extent);
-   Initialize_Association (140, Extent);
-   Initialize_Property (187, Extent);
    Initialize_Association (141, Extent);
+   Initialize_Property (187, Extent);
    Initialize_Association (142, Extent);
-   Initialize_Property (188, Extent);
    Initialize_Association (143, Extent);
-   Initialize_Property (189, Extent);
+   Initialize_Property (188, Extent);
    Initialize_Association (144, Extent);
-   Initialize_Property (190, Extent);
+   Initialize_Association (145, Extent);
+   Initialize_Property (189, Extent);
    Initialize_Association (146, Extent);
+   Initialize_Property (190, Extent);
+   Initialize_Association (147, Extent);
    Initialize_Property (191, Extent);
-   Initialize_Association (148, Extent);
+   Initialize_Association (149, Extent);
    Initialize_Property (192, Extent);
    Initialize_Association (151, Extent);
    Initialize_Property (193, Extent);
-   Initialize_Association (153, Extent);
-   Initialize_Association (155, Extent);
+   Initialize_Association (154, Extent);
    Initialize_Property (194, Extent);
-   Initialize_Association (157, Extent);
+   Initialize_Association (156, Extent);
+   Initialize_Association (158, Extent);
    Initialize_Property (195, Extent);
-   Initialize_Association (159, Extent);
+   Initialize_Association (160, Extent);
    Initialize_Property (196, Extent);
-   Initialize_Association (161, Extent);
    Initialize_Association (162, Extent);
    Initialize_Property (197, Extent);
    Initialize_Association (164, Extent);
+   Initialize_Association (165, Extent);
    Initialize_Property (198, Extent);
    Initialize_Association (167, Extent);
    Initialize_Property (199, Extent);
    Initialize_Association (170, Extent);
-   Initialize_Association (171, Extent);
    Initialize_Property (200, Extent);
    Initialize_Association (173, Extent);
+   Initialize_Association (174, Extent);
    Initialize_Property (201, Extent);
-   Initialize_Association (175, Extent);
+   Initialize_Association (176, Extent);
    Initialize_Property (202, Extent);
-   Initialize_Association (177, Extent);
+   Initialize_Association (178, Extent);
    Initialize_Property (203, Extent);
-   Initialize_Association (179, Extent);
+   Initialize_Association (180, Extent);
    Initialize_Property (204, Extent);
-   Initialize_Association (181, Extent);
+   Initialize_Association (182, Extent);
+   Initialize_Property (205, Extent);
+   Initialize_Association (184, Extent);
    Initialize_Class (30, Extent);
    Initialize_Property (131, Extent);
    Initialize_Property (132, Extent);
    Initialize_Property (78, Extent);
-   Initialize_Association (186, Extent);
-   Initialize_Property (205, Extent);
-   Initialize_Package (206, Extent);
-   Initialize_Primitive_Type (207, Extent);
-   Initialize_Comment (208, Extent);
-   Initialize_Primitive_Type (209, Extent);
-   Initialize_Comment (210, Extent);
-   Initialize_Primitive_Type (211, Extent);
-   Initialize_Comment (212, Extent);
-   Initialize_Primitive_Type (213, Extent);
-   Initialize_Comment (214, Extent);
-   Initialize_Class (4, Extent);
+   Initialize_Association (137, Extent);
+   Initialize_Property (206, Extent);
+   Initialize_Tag (207, Extent);
+   Initialize_Tag (208, Extent);
+   Initialize_Package (209, Extent);
+   Initialize_Primitive_Type (210, Extent);
+   Initialize_Comment (211, Extent);
+   Initialize_Primitive_Type (212, Extent);
+   Initialize_Comment (213, Extent);
+   Initialize_Primitive_Type (214, Extent);
    Initialize_Comment (215, Extent);
-   Initialize_Constraint (216, Extent);
+   Initialize_Primitive_Type (216, Extent);
    Initialize_Comment (217, Extent);
-   Initialize_Opaque_Expression (218, Extent);
+   Initialize_Class (4, Extent);
+   Initialize_Comment (218, Extent);
    Initialize_Constraint (219, Extent);
    Initialize_Comment (220, Extent);
    Initialize_Opaque_Expression (221, Extent);
-   Initialize_Property (43, Extent);
-   Initialize_Comment (222, Extent);
-   Initialize_Property (44, Extent);
+   Initialize_Constraint (222, Extent);
    Initialize_Comment (223, Extent);
-   Initialize_Property (45, Extent);
-   Initialize_Comment (224, Extent);
-   Initialize_Property (46, Extent);
+   Initialize_Opaque_Expression (224, Extent);
+   Initialize_Property (43, Extent);
    Initialize_Comment (225, Extent);
-   Initialize_Property (81, Extent);
+   Initialize_Property (44, Extent);
    Initialize_Comment (226, Extent);
-   Initialize_Operation (227, Extent);
+   Initialize_Property (45, Extent);
+   Initialize_Comment (227, Extent);
+   Initialize_Property (46, Extent);
    Initialize_Comment (228, Extent);
-   Initialize_Constraint (229, Extent);
-   Initialize_Opaque_Expression (230, Extent);
-   Initialize_Parameter (231, Extent);
-   Initialize_Parameter (232, Extent);
-   Initialize_Operation (233, Extent);
-   Initialize_Comment (234, Extent);
-   Initialize_Constraint (235, Extent);
-   Initialize_Opaque_Expression (236, Extent);
-   Initialize_Parameter (237, Extent);
-   Initialize_Operation (238, Extent);
-   Initialize_Comment (239, Extent);
-   Initialize_Constraint (240, Extent);
-   Initialize_Opaque_Expression (241, Extent);
-   Initialize_Parameter (242, Extent);
-   Initialize_Operation (243, Extent);
-   Initialize_Comment (244, Extent);
-   Initialize_Constraint (245, Extent);
-   Initialize_Opaque_Expression (246, Extent);
-   Initialize_Parameter (247, Extent);
-   Initialize_Operation (248, Extent);
-   Initialize_Comment (249, Extent);
-   Initialize_Constraint (250, Extent);
-   Initialize_Opaque_Expression (251, Extent);
-   Initialize_Parameter (252, Extent);
-   Initialize_Operation (253, Extent);
-   Initialize_Comment (254, Extent);
-   Initialize_Constraint (255, Extent);
-   Initialize_Opaque_Expression (256, Extent);
-   Initialize_Parameter (257, Extent);
-   Initialize_Operation (258, Extent);
-   Initialize_Comment (259, Extent);
-   Initialize_Constraint (260, Extent);
-   Initialize_Opaque_Expression (261, Extent);
-   Initialize_Constraint (262, Extent);
-   Initialize_Opaque_Expression (263, Extent);
-   Initialize_Parameter (264, Extent);
-   Initialize_Parameter (265, Extent);
-   Initialize_Operation (266, Extent);
-   Initialize_Comment (267, Extent);
-   Initialize_Constraint (268, Extent);
-   Initialize_Opaque_Expression (269, Extent);
-   Initialize_Constraint (270, Extent);
-   Initialize_Opaque_Expression (271, Extent);
-   Initialize_Parameter (272, Extent);
-   Initialize_Parameter (273, Extent);
-   Initialize_Operation (274, Extent);
-   Initialize_Comment (275, Extent);
-   Initialize_Constraint (276, Extent);
-   Initialize_Opaque_Expression (277, Extent);
-   Initialize_Parameter (278, Extent);
-   Initialize_Parameter (279, Extent);
-   Initialize_Operation (280, Extent);
-   Initialize_Comment (281, Extent);
-   Initialize_Constraint (282, Extent);
-   Initialize_Opaque_Expression (283, Extent);
-   Initialize_Parameter (284, Extent);
-   Initialize_Parameter (285, Extent);
+   Initialize_Property (81, Extent);
+   Initialize_Comment (229, Extent);
+   Initialize_Operation (230, Extent);
+   Initialize_Comment (231, Extent);
+   Initialize_Constraint (232, Extent);
+   Initialize_Opaque_Expression (233, Extent);
+   Initialize_Parameter (234, Extent);
+   Initialize_Parameter (235, Extent);
+   Initialize_Operation (236, Extent);
+   Initialize_Comment (237, Extent);
+   Initialize_Constraint (238, Extent);
+   Initialize_Opaque_Expression (239, Extent);
+   Initialize_Parameter (240, Extent);
+   Initialize_Operation (241, Extent);
+   Initialize_Comment (242, Extent);
+   Initialize_Constraint (243, Extent);
+   Initialize_Opaque_Expression (244, Extent);
+   Initialize_Parameter (245, Extent);
+   Initialize_Operation (246, Extent);
+   Initialize_Comment (247, Extent);
+   Initialize_Constraint (248, Extent);
+   Initialize_Opaque_Expression (249, Extent);
+   Initialize_Parameter (250, Extent);
+   Initialize_Operation (251, Extent);
+   Initialize_Comment (252, Extent);
+   Initialize_Constraint (253, Extent);
+   Initialize_Opaque_Expression (254, Extent);
+   Initialize_Parameter (255, Extent);
+   Initialize_Operation (256, Extent);
+   Initialize_Comment (257, Extent);
+   Initialize_Constraint (258, Extent);
+   Initialize_Opaque_Expression (259, Extent);
+   Initialize_Parameter (260, Extent);
+   Initialize_Operation (261, Extent);
+   Initialize_Comment (262, Extent);
+   Initialize_Constraint (263, Extent);
+   Initialize_Opaque_Expression (264, Extent);
+   Initialize_Constraint (265, Extent);
+   Initialize_Opaque_Expression (266, Extent);
+   Initialize_Parameter (267, Extent);
+   Initialize_Parameter (268, Extent);
+   Initialize_Operation (269, Extent);
+   Initialize_Comment (270, Extent);
+   Initialize_Constraint (271, Extent);
+   Initialize_Opaque_Expression (272, Extent);
+   Initialize_Constraint (273, Extent);
+   Initialize_Opaque_Expression (274, Extent);
+   Initialize_Parameter (275, Extent);
+   Initialize_Parameter (276, Extent);
+   Initialize_Operation (277, Extent);
+   Initialize_Comment (278, Extent);
+   Initialize_Constraint (279, Extent);
+   Initialize_Opaque_Expression (280, Extent);
+   Initialize_Parameter (281, Extent);
+   Initialize_Parameter (282, Extent);
+   Initialize_Operation (283, Extent);
+   Initialize_Comment (284, Extent);
+   Initialize_Constraint (285, Extent);
+   Initialize_Opaque_Expression (286, Extent);
+   Initialize_Parameter (287, Extent);
+   Initialize_Parameter (288, Extent);
    Initialize_Class (8, Extent);
-   Initialize_Comment (286, Extent);
-   Initialize_Property (51, Extent);
-   Initialize_Comment (287, Extent);
-   Initialize_Property (52, Extent);
-   Initialize_Comment (288, Extent);
-   Initialize_Class (9, Extent);
    Initialize_Comment (289, Extent);
-   Initialize_Constraint (290, Extent);
+   Initialize_Property (51, Extent);
+   Initialize_Comment (290, Extent);
+   Initialize_Property (52, Extent);
    Initialize_Comment (291, Extent);
-   Initialize_Opaque_Expression (292, Extent);
+   Initialize_Class (9, Extent);
+   Initialize_Comment (292, Extent);
    Initialize_Constraint (293, Extent);
    Initialize_Comment (294, Extent);
    Initialize_Opaque_Expression (295, Extent);
-   Initialize_Property (54, Extent);
-   Initialize_Comment (296, Extent);
-   Initialize_Property (85, Extent);
+   Initialize_Constraint (296, Extent);
    Initialize_Comment (297, Extent);
-   Initialize_Property (53, Extent);
-   Initialize_Comment (298, Extent);
-   Initialize_Operation (299, Extent);
+   Initialize_Opaque_Expression (298, Extent);
+   Initialize_Property (54, Extent);
+   Initialize_Comment (299, Extent);
+   Initialize_Property (85, Extent);
    Initialize_Comment (300, Extent);
-   Initialize_Constraint (301, Extent);
-   Initialize_Opaque_Expression (302, Extent);
-   Initialize_Parameter (303, Extent);
-   Initialize_Operation (304, Extent);
-   Initialize_Comment (305, Extent);
-   Initialize_Constraint (306, Extent);
-   Initialize_Opaque_Expression (307, Extent);
-   Initialize_Parameter (308, Extent);
+   Initialize_Property (53, Extent);
+   Initialize_Comment (301, Extent);
+   Initialize_Operation (302, Extent);
+   Initialize_Comment (303, Extent);
+   Initialize_Constraint (304, Extent);
+   Initialize_Opaque_Expression (305, Extent);
+   Initialize_Parameter (306, Extent);
+   Initialize_Operation (307, Extent);
+   Initialize_Comment (308, Extent);
+   Initialize_Constraint (309, Extent);
+   Initialize_Opaque_Expression (310, Extent);
+   Initialize_Parameter (311, Extent);
    Initialize_Class (14, Extent);
-   Initialize_Comment (309, Extent);
+   Initialize_Comment (312, Extent);
    Initialize_Property (57, Extent);
-   Initialize_Comment (310, Extent);
-   Initialize_Class (15, Extent);
-   Initialize_Comment (311, Extent);
-   Initialize_Constraint (312, Extent);
    Initialize_Comment (313, Extent);
-   Initialize_Opaque_Expression (314, Extent);
+   Initialize_Class (15, Extent);
+   Initialize_Comment (314, Extent);
    Initialize_Constraint (315, Extent);
    Initialize_Comment (316, Extent);
    Initialize_Opaque_Expression (317, Extent);
-   Initialize_Property (91, Extent);
-   Initialize_Comment (318, Extent);
-   Initialize_Property (92, Extent);
+   Initialize_Constraint (318, Extent);
    Initialize_Comment (319, Extent);
-   Initialize_Property (93, Extent);
-   Initialize_Comment (320, Extent);
-   Initialize_Property (94, Extent);
+   Initialize_Opaque_Expression (320, Extent);
+   Initialize_Property (91, Extent);
    Initialize_Comment (321, Extent);
-   Initialize_Operation (322, Extent);
+   Initialize_Property (92, Extent);
+   Initialize_Comment (322, Extent);
+   Initialize_Property (93, Extent);
    Initialize_Comment (323, Extent);
-   Initialize_Constraint (324, Extent);
-   Initialize_Opaque_Expression (325, Extent);
-   Initialize_Constraint (326, Extent);
-   Initialize_Opaque_Expression (327, Extent);
-   Initialize_Parameter (328, Extent);
-   Initialize_Operation (329, Extent);
-   Initialize_Comment (330, Extent);
-   Initialize_Constraint (331, Extent);
-   Initialize_Opaque_Expression (332, Extent);
-   Initialize_Constraint (333, Extent);
-   Initialize_Opaque_Expression (334, Extent);
-   Initialize_Parameter (335, Extent);
-   Initialize_Parameter (336, Extent);
-   Initialize_Operation (337, Extent);
-   Initialize_Comment (338, Extent);
-   Initialize_Constraint (339, Extent);
-   Initialize_Opaque_Expression (340, Extent);
-   Initialize_Constraint (341, Extent);
-   Initialize_Opaque_Expression (342, Extent);
-   Initialize_Parameter (343, Extent);
-   Initialize_Parameter (344, Extent);
-   Initialize_Operation (345, Extent);
-   Initialize_Comment (346, Extent);
-   Initialize_Constraint (347, Extent);
-   Initialize_Opaque_Expression (348, Extent);
-   Initialize_Parameter (349, Extent);
-   Initialize_Operation (350, Extent);
-   Initialize_Comment (351, Extent);
-   Initialize_Constraint (352, Extent);
-   Initialize_Opaque_Expression (353, Extent);
-   Initialize_Parameter (354, Extent);
+   Initialize_Property (94, Extent);
+   Initialize_Comment (324, Extent);
+   Initialize_Operation (325, Extent);
+   Initialize_Comment (326, Extent);
+   Initialize_Constraint (327, Extent);
+   Initialize_Opaque_Expression (328, Extent);
+   Initialize_Constraint (329, Extent);
+   Initialize_Opaque_Expression (330, Extent);
+   Initialize_Parameter (331, Extent);
+   Initialize_Operation (332, Extent);
+   Initialize_Comment (333, Extent);
+   Initialize_Constraint (334, Extent);
+   Initialize_Opaque_Expression (335, Extent);
+   Initialize_Constraint (336, Extent);
+   Initialize_Opaque_Expression (337, Extent);
+   Initialize_Parameter (338, Extent);
+   Initialize_Parameter (339, Extent);
+   Initialize_Operation (340, Extent);
+   Initialize_Comment (341, Extent);
+   Initialize_Constraint (342, Extent);
+   Initialize_Opaque_Expression (343, Extent);
+   Initialize_Constraint (344, Extent);
+   Initialize_Opaque_Expression (345, Extent);
+   Initialize_Parameter (346, Extent);
+   Initialize_Parameter (347, Extent);
+   Initialize_Operation (348, Extent);
+   Initialize_Comment (349, Extent);
+   Initialize_Constraint (350, Extent);
+   Initialize_Opaque_Expression (351, Extent);
+   Initialize_Parameter (352, Extent);
+   Initialize_Operation (353, Extent);
+   Initialize_Comment (354, Extent);
+   Initialize_Constraint (355, Extent);
+   Initialize_Opaque_Expression (356, Extent);
+   Initialize_Parameter (357, Extent);
    Initialize_Class (17, Extent);
-   Initialize_Comment (355, Extent);
-   Initialize_Constraint (356, Extent);
-   Initialize_Comment (357, Extent);
-   Initialize_Opaque_Expression (358, Extent);
-   Initialize_Property (59, Extent);
-   Initialize_Comment (359, Extent);
-   Initialize_Property (58, Extent);
+   Initialize_Comment (358, Extent);
+   Initialize_Constraint (359, Extent);
    Initialize_Comment (360, Extent);
-   Initialize_Property (63, Extent);
-   Initialize_Comment (361, Extent);
-   Initialize_Property (61, Extent);
+   Initialize_Opaque_Expression (361, Extent);
+   Initialize_Property (59, Extent);
    Initialize_Comment (362, Extent);
-   Initialize_Property (60, Extent);
+   Initialize_Property (58, Extent);
    Initialize_Comment (363, Extent);
-   Initialize_Property (62, Extent);
-   Initialize_Operation (364, Extent);
+   Initialize_Property (63, Extent);
+   Initialize_Comment (364, Extent);
+   Initialize_Property (61, Extent);
    Initialize_Comment (365, Extent);
-   Initialize_Constraint (366, Extent);
-   Initialize_Opaque_Expression (367, Extent);
-   Initialize_Parameter (368, Extent);
-   Initialize_Operation (369, Extent);
-   Initialize_Comment (370, Extent);
-   Initialize_Constraint (371, Extent);
-   Initialize_Opaque_Expression (372, Extent);
-   Initialize_Parameter (373, Extent);
-   Initialize_Parameter (374, Extent);
-   Initialize_Operation (375, Extent);
-   Initialize_Comment (376, Extent);
-   Initialize_Constraint (377, Extent);
-   Initialize_Opaque_Expression (378, Extent);
-   Initialize_Parameter (379, Extent);
-   Initialize_Parameter (380, Extent);
-   Initialize_Operation (381, Extent);
-   Initialize_Comment (382, Extent);
-   Initialize_Constraint (383, Extent);
-   Initialize_Opaque_Expression (384, Extent);
-   Initialize_Parameter (385, Extent);
-   Initialize_Parameter (386, Extent);
-   Initialize_Operation (387, Extent);
-   Initialize_Comment (388, Extent);
-   Initialize_Constraint (389, Extent);
-   Initialize_Opaque_Expression (390, Extent);
-   Initialize_Parameter (391, Extent);
+   Initialize_Property (60, Extent);
+   Initialize_Comment (366, Extent);
+   Initialize_Property (62, Extent);
+   Initialize_Operation (367, Extent);
+   Initialize_Comment (368, Extent);
+   Initialize_Constraint (369, Extent);
+   Initialize_Opaque_Expression (370, Extent);
+   Initialize_Parameter (371, Extent);
+   Initialize_Operation (372, Extent);
+   Initialize_Comment (373, Extent);
+   Initialize_Constraint (374, Extent);
+   Initialize_Opaque_Expression (375, Extent);
+   Initialize_Parameter (376, Extent);
+   Initialize_Parameter (377, Extent);
+   Initialize_Operation (378, Extent);
+   Initialize_Comment (379, Extent);
+   Initialize_Constraint (380, Extent);
+   Initialize_Opaque_Expression (381, Extent);
+   Initialize_Parameter (382, Extent);
+   Initialize_Parameter (383, Extent);
+   Initialize_Operation (384, Extent);
+   Initialize_Comment (385, Extent);
+   Initialize_Constraint (386, Extent);
+   Initialize_Opaque_Expression (387, Extent);
+   Initialize_Parameter (388, Extent);
+   Initialize_Parameter (389, Extent);
+   Initialize_Operation (390, Extent);
+   Initialize_Comment (391, Extent);
+   Initialize_Constraint (392, Extent);
+   Initialize_Opaque_Expression (393, Extent);
+   Initialize_Parameter (394, Extent);
    Initialize_Class (23, Extent);
-   Initialize_Comment (392, Extent);
-   Initialize_Class (27, Extent);
-   Initialize_Comment (393, Extent);
-   Initialize_Constraint (394, Extent);
    Initialize_Comment (395, Extent);
-   Initialize_Opaque_Expression (396, Extent);
+   Initialize_Class (27, Extent);
+   Initialize_Comment (396, Extent);
    Initialize_Constraint (397, Extent);
    Initialize_Comment (398, Extent);
    Initialize_Opaque_Expression (399, Extent);
    Initialize_Constraint (400, Extent);
    Initialize_Comment (401, Extent);
    Initialize_Opaque_Expression (402, Extent);
-   Initialize_Property (76, Extent);
-   Initialize_Comment (403, Extent);
-   Initialize_Property (75, Extent);
+   Initialize_Constraint (403, Extent);
    Initialize_Comment (404, Extent);
-   Initialize_Property (130, Extent);
-   Initialize_Comment (405, Extent);
-   Initialize_Operation (406, Extent);
+   Initialize_Opaque_Expression (405, Extent);
+   Initialize_Property (76, Extent);
+   Initialize_Comment (406, Extent);
+   Initialize_Property (75, Extent);
    Initialize_Comment (407, Extent);
-   Initialize_Constraint (408, Extent);
-   Initialize_Opaque_Expression (409, Extent);
-   Initialize_Constraint (410, Extent);
-   Initialize_Opaque_Expression (411, Extent);
-   Initialize_Parameter (412, Extent);
-   Initialize_Parameter (413, Extent);
-   Initialize_Operation (414, Extent);
-   Initialize_Comment (415, Extent);
-   Initialize_Constraint (416, Extent);
-   Initialize_Opaque_Expression (417, Extent);
-   Initialize_Parameter (418, Extent);
-   Initialize_Parameter (419, Extent);
+   Initialize_Property (130, Extent);
+   Initialize_Comment (408, Extent);
+   Initialize_Operation (409, Extent);
+   Initialize_Comment (410, Extent);
+   Initialize_Constraint (411, Extent);
+   Initialize_Opaque_Expression (412, Extent);
+   Initialize_Constraint (413, Extent);
+   Initialize_Opaque_Expression (414, Extent);
+   Initialize_Parameter (415, Extent);
+   Initialize_Parameter (416, Extent);
+   Initialize_Operation (417, Extent);
+   Initialize_Comment (418, Extent);
+   Initialize_Constraint (419, Extent);
+   Initialize_Opaque_Expression (420, Extent);
+   Initialize_Parameter (421, Extent);
+   Initialize_Parameter (422, Extent);
    Initialize_Class (28, Extent);
-   Initialize_Comment (420, Extent);
-   Initialize_Property (77, Extent);
-   Initialize_Comment (421, Extent);
-   Initialize_Class (29, Extent);
-   Initialize_Comment (422, Extent);
-   Initialize_Class (32, Extent);
    Initialize_Comment (423, Extent);
-   Initialize_Property (134, Extent);
+   Initialize_Property (77, Extent);
    Initialize_Comment (424, Extent);
-   Initialize_Class (33, Extent);
+   Initialize_Class (29, Extent);
    Initialize_Comment (425, Extent);
-   Initialize_Operation (426, Extent);
+   Initialize_Class (32, Extent);
+   Initialize_Comment (426, Extent);
+   Initialize_Property (134, Extent);
    Initialize_Comment (427, Extent);
-   Initialize_Constraint (428, Extent);
-   Initialize_Opaque_Expression (429, Extent);
-   Initialize_Parameter (430, Extent);
-   Initialize_Operation (431, Extent);
-   Initialize_Comment (432, Extent);
-   Initialize_Constraint (433, Extent);
-   Initialize_Opaque_Expression (434, Extent);
-   Initialize_Parameter (435, Extent);
-   Initialize_Operation (436, Extent);
-   Initialize_Comment (437, Extent);
-   Initialize_Constraint (438, Extent);
-   Initialize_Opaque_Expression (439, Extent);
-   Initialize_Parameter (440, Extent);
-   Initialize_Operation (441, Extent);
-   Initialize_Comment (442, Extent);
-   Initialize_Constraint (443, Extent);
-   Initialize_Opaque_Expression (444, Extent);
-   Initialize_Parameter (445, Extent);
-   Initialize_Operation (446, Extent);
-   Initialize_Comment (447, Extent);
-   Initialize_Constraint (448, Extent);
-   Initialize_Opaque_Expression (449, Extent);
-   Initialize_Parameter (450, Extent);
-   Initialize_Operation (451, Extent);
-   Initialize_Comment (452, Extent);
-   Initialize_Constraint (453, Extent);
-   Initialize_Opaque_Expression (454, Extent);
-   Initialize_Parameter (455, Extent);
+   Initialize_Class (33, Extent);
+   Initialize_Comment (428, Extent);
+   Initialize_Operation (429, Extent);
+   Initialize_Comment (430, Extent);
+   Initialize_Constraint (431, Extent);
+   Initialize_Opaque_Expression (432, Extent);
+   Initialize_Parameter (433, Extent);
+   Initialize_Operation (434, Extent);
+   Initialize_Comment (435, Extent);
+   Initialize_Constraint (436, Extent);
+   Initialize_Opaque_Expression (437, Extent);
+   Initialize_Parameter (438, Extent);
+   Initialize_Operation (439, Extent);
+   Initialize_Comment (440, Extent);
+   Initialize_Constraint (441, Extent);
+   Initialize_Opaque_Expression (442, Extent);
+   Initialize_Parameter (443, Extent);
+   Initialize_Operation (444, Extent);
+   Initialize_Comment (445, Extent);
+   Initialize_Constraint (446, Extent);
+   Initialize_Opaque_Expression (447, Extent);
+   Initialize_Parameter (448, Extent);
+   Initialize_Operation (449, Extent);
+   Initialize_Comment (450, Extent);
+   Initialize_Constraint (451, Extent);
+   Initialize_Opaque_Expression (452, Extent);
+   Initialize_Parameter (453, Extent);
+   Initialize_Operation (454, Extent);
+   Initialize_Comment (455, Extent);
+   Initialize_Constraint (456, Extent);
+   Initialize_Opaque_Expression (457, Extent);
+   Initialize_Parameter (458, Extent);
    Initialize_Class (1, Extent);
-   Initialize_Comment (456, Extent);
-   Initialize_Constraint (457, Extent);
-   Initialize_Comment (458, Extent);
-   Initialize_Opaque_Expression (459, Extent);
+   Initialize_Comment (459, Extent);
    Initialize_Constraint (460, Extent);
    Initialize_Comment (461, Extent);
    Initialize_Opaque_Expression (462, Extent);
@@ -416,42 +417,42 @@ begin
    Initialize_Constraint (466, Extent);
    Initialize_Comment (467, Extent);
    Initialize_Opaque_Expression (468, Extent);
-   Initialize_Property (79, Extent);
-   Initialize_Comment (469, Extent);
-   Initialize_Property (37, Extent);
+   Initialize_Constraint (469, Extent);
    Initialize_Comment (470, Extent);
-   Initialize_Property (34, Extent);
-   Initialize_Comment (471, Extent);
-   Initialize_Property (35, Extent);
+   Initialize_Opaque_Expression (471, Extent);
+   Initialize_Property (79, Extent);
    Initialize_Comment (472, Extent);
-   Initialize_Property (36, Extent);
+   Initialize_Property (37, Extent);
    Initialize_Comment (473, Extent);
-   Initialize_Operation (474, Extent);
+   Initialize_Property (34, Extent);
+   Initialize_Comment (474, Extent);
+   Initialize_Property (35, Extent);
    Initialize_Comment (475, Extent);
-   Initialize_Constraint (476, Extent);
-   Initialize_Opaque_Expression (477, Extent);
-   Initialize_Parameter (478, Extent);
+   Initialize_Property (36, Extent);
+   Initialize_Comment (476, Extent);
+   Initialize_Operation (477, Extent);
+   Initialize_Comment (478, Extent);
+   Initialize_Constraint (479, Extent);
+   Initialize_Opaque_Expression (480, Extent);
+   Initialize_Parameter (481, Extent);
    Initialize_Class (3, Extent);
-   Initialize_Comment (479, Extent);
-   Initialize_Property (80, Extent);
-   Initialize_Comment (480, Extent);
-   Initialize_Property (40, Extent);
-   Initialize_Comment (481, Extent);
-   Initialize_Property (41, Extent);
    Initialize_Comment (482, Extent);
-   Initialize_Property (42, Extent);
+   Initialize_Property (80, Extent);
    Initialize_Comment (483, Extent);
-   Initialize_Operation (484, Extent);
+   Initialize_Property (40, Extent);
+   Initialize_Comment (484, Extent);
+   Initialize_Property (41, Extent);
    Initialize_Comment (485, Extent);
-   Initialize_Constraint (486, Extent);
-   Initialize_Opaque_Expression (487, Extent);
-   Initialize_Parameter (488, Extent);
-   Initialize_Parameter (489, Extent);
+   Initialize_Property (42, Extent);
+   Initialize_Comment (486, Extent);
+   Initialize_Operation (487, Extent);
+   Initialize_Comment (488, Extent);
+   Initialize_Constraint (489, Extent);
+   Initialize_Opaque_Expression (490, Extent);
+   Initialize_Parameter (491, Extent);
+   Initialize_Parameter (492, Extent);
    Initialize_Class (26, Extent);
-   Initialize_Comment (490, Extent);
-   Initialize_Constraint (491, Extent);
-   Initialize_Comment (492, Extent);
-   Initialize_Opaque_Expression (493, Extent);
+   Initialize_Comment (493, Extent);
    Initialize_Constraint (494, Extent);
    Initialize_Comment (495, Extent);
    Initialize_Opaque_Expression (496, Extent);
@@ -470,409 +471,404 @@ begin
    Initialize_Constraint (509, Extent);
    Initialize_Comment (510, Extent);
    Initialize_Opaque_Expression (511, Extent);
-   Initialize_Property (127, Extent);
-   Initialize_Comment (512, Extent);
-   Initialize_Property (123, Extent);
+   Initialize_Constraint (512, Extent);
    Initialize_Comment (513, Extent);
-   Initialize_Property (124, Extent);
-   Initialize_Comment (514, Extent);
-   Initialize_Property (125, Extent);
+   Initialize_Opaque_Expression (514, Extent);
+   Initialize_Property (127, Extent);
    Initialize_Comment (515, Extent);
-   Initialize_Property (126, Extent);
+   Initialize_Property (123, Extent);
    Initialize_Comment (516, Extent);
-   Initialize_Property (121, Extent);
+   Initialize_Property (124, Extent);
    Initialize_Comment (517, Extent);
-   Initialize_Property (129, Extent);
+   Initialize_Property (125, Extent);
    Initialize_Comment (518, Extent);
-   Initialize_Property (73, Extent);
+   Initialize_Property (126, Extent);
    Initialize_Comment (519, Extent);
-   Initialize_Property (74, Extent);
+   Initialize_Property (121, Extent);
    Initialize_Comment (520, Extent);
-   Initialize_Property (128, Extent);
+   Initialize_Property (129, Extent);
    Initialize_Comment (521, Extent);
-   Initialize_Property (122, Extent);
+   Initialize_Property (73, Extent);
    Initialize_Comment (522, Extent);
-   Initialize_Property (120, Extent);
+   Initialize_Property (74, Extent);
    Initialize_Comment (523, Extent);
-   Initialize_Operation (524, Extent);
+   Initialize_Property (128, Extent);
+   Initialize_Comment (524, Extent);
+   Initialize_Property (122, Extent);
    Initialize_Comment (525, Extent);
-   Initialize_Constraint (526, Extent);
-   Initialize_Opaque_Expression (527, Extent);
-   Initialize_Parameter (528, Extent);
-   Initialize_Operation (529, Extent);
-   Initialize_Comment (530, Extent);
-   Initialize_Constraint (531, Extent);
-   Initialize_Opaque_Expression (532, Extent);
-   Initialize_Constraint (533, Extent);
-   Initialize_Opaque_Expression (534, Extent);
-   Initialize_Parameter (535, Extent);
-   Initialize_Parameter (536, Extent);
-   Initialize_Operation (537, Extent);
-   Initialize_Comment (538, Extent);
-   Initialize_Constraint (539, Extent);
-   Initialize_Opaque_Expression (540, Extent);
-   Initialize_Parameter (541, Extent);
-   Initialize_Operation (542, Extent);
-   Initialize_Comment (543, Extent);
-   Initialize_Constraint (544, Extent);
-   Initialize_Opaque_Expression (545, Extent);
-   Initialize_Parameter (546, Extent);
-   Initialize_Operation (547, Extent);
-   Initialize_Comment (548, Extent);
-   Initialize_Constraint (549, Extent);
-   Initialize_Opaque_Expression (550, Extent);
-   Initialize_Parameter (551, Extent);
-   Initialize_Parameter (552, Extent);
+   Initialize_Property (120, Extent);
+   Initialize_Comment (526, Extent);
+   Initialize_Operation (527, Extent);
+   Initialize_Comment (528, Extent);
+   Initialize_Constraint (529, Extent);
+   Initialize_Opaque_Expression (530, Extent);
+   Initialize_Parameter (531, Extent);
+   Initialize_Operation (532, Extent);
+   Initialize_Comment (533, Extent);
+   Initialize_Constraint (534, Extent);
+   Initialize_Opaque_Expression (535, Extent);
+   Initialize_Constraint (536, Extent);
+   Initialize_Opaque_Expression (537, Extent);
+   Initialize_Parameter (538, Extent);
+   Initialize_Parameter (539, Extent);
+   Initialize_Operation (540, Extent);
+   Initialize_Comment (541, Extent);
+   Initialize_Constraint (542, Extent);
+   Initialize_Opaque_Expression (543, Extent);
+   Initialize_Parameter (544, Extent);
+   Initialize_Operation (545, Extent);
+   Initialize_Comment (546, Extent);
+   Initialize_Constraint (547, Extent);
+   Initialize_Opaque_Expression (548, Extent);
+   Initialize_Parameter (549, Extent);
+   Initialize_Operation (550, Extent);
+   Initialize_Comment (551, Extent);
+   Initialize_Constraint (552, Extent);
+   Initialize_Opaque_Expression (553, Extent);
+   Initialize_Parameter (554, Extent);
+   Initialize_Parameter (555, Extent);
    Initialize_Class (7, Extent);
-   Initialize_Comment (553, Extent);
+   Initialize_Comment (556, Extent);
    Initialize_Property (49, Extent);
-   Initialize_Comment (554, Extent);
-   Initialize_Property (50, Extent);
-   Initialize_Comment (555, Extent);
-   Initialize_Operation (556, Extent);
    Initialize_Comment (557, Extent);
-   Initialize_Constraint (558, Extent);
-   Initialize_Opaque_Expression (559, Extent);
-   Initialize_Parameter (560, Extent);
-   Initialize_Parameter (561, Extent);
+   Initialize_Property (50, Extent);
+   Initialize_Comment (558, Extent);
+   Initialize_Operation (559, Extent);
+   Initialize_Comment (560, Extent);
+   Initialize_Constraint (561, Extent);
+   Initialize_Opaque_Expression (562, Extent);
+   Initialize_Parameter (563, Extent);
+   Initialize_Parameter (564, Extent);
    Initialize_Class (11, Extent);
-   Initialize_Comment (562, Extent);
-   Initialize_Property (55, Extent);
-   Initialize_Comment (563, Extent);
-   Initialize_Class (12, Extent);
-   Initialize_Comment (564, Extent);
-   Initialize_Property (90, Extent);
    Initialize_Comment (565, Extent);
-   Initialize_Class (25, Extent);
+   Initialize_Property (55, Extent);
    Initialize_Comment (566, Extent);
-   Initialize_Class (6, Extent);
+   Initialize_Class (12, Extent);
    Initialize_Comment (567, Extent);
-   Initialize_Constraint (568, Extent);
+   Initialize_Property (90, Extent);
+   Initialize_Comment (568, Extent);
+   Initialize_Class (25, Extent);
    Initialize_Comment (569, Extent);
-   Initialize_Opaque_Expression (570, Extent);
+   Initialize_Class (6, Extent);
+   Initialize_Comment (570, Extent);
    Initialize_Constraint (571, Extent);
    Initialize_Comment (572, Extent);
    Initialize_Opaque_Expression (573, Extent);
-   Initialize_Property (48, Extent);
-   Initialize_Comment (574, Extent);
-   Initialize_Property (84, Extent);
+   Initialize_Constraint (574, Extent);
    Initialize_Comment (575, Extent);
+   Initialize_Opaque_Expression (576, Extent);
+   Initialize_Property (48, Extent);
+   Initialize_Comment (577, Extent);
+   Initialize_Property (84, Extent);
+   Initialize_Comment (578, Extent);
    Initialize_Property (83, Extent);
    Initialize_Class (18, Extent);
-   Initialize_Comment (576, Extent);
-   Initialize_Constraint (577, Extent);
-   Initialize_Comment (578, Extent);
-   Initialize_Opaque_Expression (579, Extent);
-   Initialize_Property (99, Extent);
-   Initialize_Comment (580, Extent);
-   Initialize_Property (100, Extent);
+   Initialize_Comment (579, Extent);
+   Initialize_Constraint (580, Extent);
    Initialize_Comment (581, Extent);
-   Initialize_Class (19, Extent);
-   Initialize_Comment (582, Extent);
-   Initialize_Constraint (583, Extent);
+   Initialize_Opaque_Expression (582, Extent);
+   Initialize_Property (99, Extent);
+   Initialize_Comment (583, Extent);
+   Initialize_Property (100, Extent);
    Initialize_Comment (584, Extent);
-   Initialize_Opaque_Expression (585, Extent);
+   Initialize_Class (19, Extent);
+   Initialize_Comment (585, Extent);
    Initialize_Constraint (586, Extent);
    Initialize_Comment (587, Extent);
    Initialize_Opaque_Expression (588, Extent);
-   Initialize_Property (105, Extent);
-   Initialize_Comment (589, Extent);
-   Initialize_Property (104, Extent);
+   Initialize_Constraint (589, Extent);
    Initialize_Comment (590, Extent);
-   Initialize_Property (106, Extent);
-   Initialize_Comment (591, Extent);
-   Initialize_Property (107, Extent);
+   Initialize_Opaque_Expression (591, Extent);
+   Initialize_Property (105, Extent);
    Initialize_Comment (592, Extent);
-   Initialize_Property (109, Extent);
+   Initialize_Property (104, Extent);
    Initialize_Comment (593, Extent);
-   Initialize_Property (102, Extent);
+   Initialize_Property (106, Extent);
    Initialize_Comment (594, Extent);
-   Initialize_Property (103, Extent);
+   Initialize_Property (107, Extent);
    Initialize_Comment (595, Extent);
-   Initialize_Property (67, Extent);
+   Initialize_Property (109, Extent);
    Initialize_Comment (596, Extent);
-   Initialize_Property (68, Extent);
+   Initialize_Property (102, Extent);
    Initialize_Comment (597, Extent);
-   Initialize_Property (108, Extent);
+   Initialize_Property (103, Extent);
    Initialize_Comment (598, Extent);
-   Initialize_Property (64, Extent);
+   Initialize_Property (67, Extent);
    Initialize_Comment (599, Extent);
+   Initialize_Property (68, Extent);
+   Initialize_Comment (600, Extent);
+   Initialize_Property (108, Extent);
+   Initialize_Comment (601, Extent);
+   Initialize_Property (64, Extent);
+   Initialize_Comment (602, Extent);
    Initialize_Property (66, Extent);
    Initialize_Property (65, Extent);
    Initialize_Property (101, Extent);
-   Initialize_Operation (600, Extent);
-   Initialize_Comment (601, Extent);
-   Initialize_Constraint (602, Extent);
-   Initialize_Opaque_Expression (603, Extent);
-   Initialize_Parameter (604, Extent);
-   Initialize_Operation (605, Extent);
-   Initialize_Comment (606, Extent);
-   Initialize_Constraint (607, Extent);
-   Initialize_Opaque_Expression (608, Extent);
-   Initialize_Parameter (609, Extent);
-   Initialize_Operation (610, Extent);
-   Initialize_Comment (611, Extent);
-   Initialize_Constraint (612, Extent);
-   Initialize_Opaque_Expression (613, Extent);
-   Initialize_Parameter (614, Extent);
-   Initialize_Operation (615, Extent);
-   Initialize_Comment (616, Extent);
-   Initialize_Constraint (617, Extent);
-   Initialize_Opaque_Expression (618, Extent);
-   Initialize_Parameter (619, Extent);
-   Initialize_Operation (620, Extent);
-   Initialize_Comment (621, Extent);
-   Initialize_Constraint (622, Extent);
-   Initialize_Opaque_Expression (623, Extent);
-   Initialize_Parameter (624, Extent);
-   Initialize_Operation (625, Extent);
-   Initialize_Comment (626, Extent);
-   Initialize_Constraint (627, Extent);
-   Initialize_Opaque_Expression (628, Extent);
-   Initialize_Constraint (629, Extent);
-   Initialize_Opaque_Expression (630, Extent);
-   Initialize_Parameter (631, Extent);
-   Initialize_Parameter (632, Extent);
-   Initialize_Operation (633, Extent);
-   Initialize_Constraint (634, Extent);
-   Initialize_Opaque_Expression (635, Extent);
-   Initialize_Parameter (636, Extent);
+   Initialize_Operation (603, Extent);
+   Initialize_Comment (604, Extent);
+   Initialize_Constraint (605, Extent);
+   Initialize_Opaque_Expression (606, Extent);
+   Initialize_Parameter (607, Extent);
+   Initialize_Operation (608, Extent);
+   Initialize_Comment (609, Extent);
+   Initialize_Constraint (610, Extent);
+   Initialize_Opaque_Expression (611, Extent);
+   Initialize_Parameter (612, Extent);
+   Initialize_Operation (613, Extent);
+   Initialize_Comment (614, Extent);
+   Initialize_Constraint (615, Extent);
+   Initialize_Opaque_Expression (616, Extent);
+   Initialize_Parameter (617, Extent);
+   Initialize_Operation (618, Extent);
+   Initialize_Comment (619, Extent);
+   Initialize_Constraint (620, Extent);
+   Initialize_Opaque_Expression (621, Extent);
+   Initialize_Parameter (622, Extent);
+   Initialize_Operation (623, Extent);
+   Initialize_Comment (624, Extent);
+   Initialize_Constraint (625, Extent);
+   Initialize_Opaque_Expression (626, Extent);
+   Initialize_Parameter (627, Extent);
+   Initialize_Operation (628, Extent);
+   Initialize_Comment (629, Extent);
+   Initialize_Constraint (630, Extent);
+   Initialize_Opaque_Expression (631, Extent);
+   Initialize_Constraint (632, Extent);
+   Initialize_Opaque_Expression (633, Extent);
+   Initialize_Parameter (634, Extent);
+   Initialize_Parameter (635, Extent);
+   Initialize_Operation (636, Extent);
+   Initialize_Constraint (637, Extent);
+   Initialize_Opaque_Expression (638, Extent);
+   Initialize_Parameter (639, Extent);
    Initialize_Class (24, Extent);
-   Initialize_Comment (637, Extent);
-   Initialize_Property (117, Extent);
-   Initialize_Comment (638, Extent);
-   Initialize_Property (118, Extent);
-   Initialize_Comment (639, Extent);
-   Initialize_Property (119, Extent);
    Initialize_Comment (640, Extent);
-   Initialize_Class (2, Extent);
+   Initialize_Property (117, Extent);
    Initialize_Comment (641, Extent);
-   Initialize_Property (38, Extent);
+   Initialize_Property (118, Extent);
    Initialize_Comment (642, Extent);
-   Initialize_Property (39, Extent);
+   Initialize_Property (119, Extent);
    Initialize_Comment (643, Extent);
-   Initialize_Operation (644, Extent);
+   Initialize_Class (2, Extent);
+   Initialize_Comment (644, Extent);
+   Initialize_Property (38, Extent);
    Initialize_Comment (645, Extent);
-   Initialize_Constraint (646, Extent);
-   Initialize_Opaque_Expression (647, Extent);
-   Initialize_Parameter (648, Extent);
-   Initialize_Parameter (649, Extent);
-   Initialize_Parameter (650, Extent);
+   Initialize_Property (39, Extent);
+   Initialize_Comment (646, Extent);
+   Initialize_Operation (647, Extent);
+   Initialize_Comment (648, Extent);
+   Initialize_Constraint (649, Extent);
+   Initialize_Opaque_Expression (650, Extent);
+   Initialize_Parameter (651, Extent);
+   Initialize_Parameter (652, Extent);
+   Initialize_Parameter (653, Extent);
    Initialize_Class (10, Extent);
-   Initialize_Comment (651, Extent);
-   Initialize_Constraint (652, Extent);
-   Initialize_Comment (653, Extent);
-   Initialize_Opaque_Expression (654, Extent);
+   Initialize_Comment (654, Extent);
    Initialize_Constraint (655, Extent);
    Initialize_Comment (656, Extent);
    Initialize_Opaque_Expression (657, Extent);
-   Initialize_Property (89, Extent);
-   Initialize_Comment (658, Extent);
-   Initialize_Property (86, Extent);
+   Initialize_Constraint (658, Extent);
    Initialize_Comment (659, Extent);
-   Initialize_Property (87, Extent);
-   Initialize_Comment (660, Extent);
-   Initialize_Property (88, Extent);
+   Initialize_Opaque_Expression (660, Extent);
+   Initialize_Property (89, Extent);
    Initialize_Comment (661, Extent);
-   Initialize_Operation (662, Extent);
+   Initialize_Property (86, Extent);
+   Initialize_Comment (662, Extent);
+   Initialize_Property (87, Extent);
    Initialize_Comment (663, Extent);
-   Initialize_Constraint (664, Extent);
-   Initialize_Opaque_Expression (665, Extent);
-   Initialize_Parameter (666, Extent);
+   Initialize_Property (88, Extent);
+   Initialize_Comment (664, Extent);
+   Initialize_Operation (665, Extent);
+   Initialize_Comment (666, Extent);
+   Initialize_Constraint (667, Extent);
+   Initialize_Opaque_Expression (668, Extent);
+   Initialize_Parameter (669, Extent);
    Initialize_Class (20, Extent);
-   Initialize_Comment (667, Extent);
-   Initialize_Constraint (668, Extent);
-   Initialize_Comment (669, Extent);
-   Initialize_Opaque_Expression (670, Extent);
-   Initialize_Property (72, Extent);
-   Initialize_Comment (671, Extent);
-   Initialize_Property (70, Extent);
+   Initialize_Comment (670, Extent);
+   Initialize_Constraint (671, Extent);
    Initialize_Comment (672, Extent);
-   Initialize_Property (69, Extent);
-   Initialize_Comment (673, Extent);
-   Initialize_Property (110, Extent);
+   Initialize_Opaque_Expression (673, Extent);
+   Initialize_Property (72, Extent);
    Initialize_Comment (674, Extent);
-   Initialize_Property (71, Extent);
+   Initialize_Property (70, Extent);
    Initialize_Comment (675, Extent);
-   Initialize_Property (111, Extent);
+   Initialize_Property (69, Extent);
    Initialize_Comment (676, Extent);
-   Initialize_Operation (677, Extent);
+   Initialize_Property (110, Extent);
+   Initialize_Comment (677, Extent);
+   Initialize_Property (71, Extent);
    Initialize_Comment (678, Extent);
-   Initialize_Constraint (679, Extent);
-   Initialize_Opaque_Expression (680, Extent);
-   Initialize_Parameter (681, Extent);
-   Initialize_Operation (682, Extent);
-   Initialize_Comment (683, Extent);
-   Initialize_Constraint (684, Extent);
-   Initialize_Opaque_Expression (685, Extent);
-   Initialize_Parameter (686, Extent);
-   Initialize_Operation (687, Extent);
-   Initialize_Comment (688, Extent);
-   Initialize_Constraint (689, Extent);
-   Initialize_Opaque_Expression (690, Extent);
-   Initialize_Constraint (691, Extent);
-   Initialize_Opaque_Expression (692, Extent);
-   Initialize_Parameter (693, Extent);
-   Initialize_Parameter (694, Extent);
+   Initialize_Property (111, Extent);
+   Initialize_Comment (679, Extent);
+   Initialize_Operation (680, Extent);
+   Initialize_Comment (681, Extent);
+   Initialize_Constraint (682, Extent);
+   Initialize_Opaque_Expression (683, Extent);
+   Initialize_Parameter (684, Extent);
+   Initialize_Operation (685, Extent);
+   Initialize_Comment (686, Extent);
+   Initialize_Constraint (687, Extent);
+   Initialize_Opaque_Expression (688, Extent);
+   Initialize_Parameter (689, Extent);
+   Initialize_Operation (690, Extent);
+   Initialize_Comment (691, Extent);
+   Initialize_Constraint (692, Extent);
+   Initialize_Opaque_Expression (693, Extent);
+   Initialize_Constraint (694, Extent);
+   Initialize_Opaque_Expression (695, Extent);
+   Initialize_Parameter (696, Extent);
+   Initialize_Parameter (697, Extent);
    Initialize_Class (21, Extent);
-   Initialize_Comment (695, Extent);
-   Initialize_Constraint (696, Extent);
-   Initialize_Comment (697, Extent);
-   Initialize_Opaque_Expression (698, Extent);
-   Initialize_Property (114, Extent);
-   Initialize_Comment (699, Extent);
-   Initialize_Property (112, Extent);
+   Initialize_Comment (698, Extent);
+   Initialize_Constraint (699, Extent);
    Initialize_Comment (700, Extent);
-   Initialize_Property (113, Extent);
-   Initialize_Comment (701, Extent);
-   Initialize_Class (22, Extent);
+   Initialize_Opaque_Expression (701, Extent);
+   Initialize_Property (114, Extent);
    Initialize_Comment (702, Extent);
-   Initialize_Property (116, Extent);
+   Initialize_Property (112, Extent);
    Initialize_Comment (703, Extent);
-   Initialize_Property (115, Extent);
+   Initialize_Property (113, Extent);
    Initialize_Comment (704, Extent);
-   Initialize_Class (31, Extent);
+   Initialize_Class (22, Extent);
    Initialize_Comment (705, Extent);
-   Initialize_Property (133, Extent);
+   Initialize_Property (116, Extent);
    Initialize_Comment (706, Extent);
-   Initialize_Operation (707, Extent);
+   Initialize_Property (115, Extent);
+   Initialize_Comment (707, Extent);
+   Initialize_Class (31, Extent);
    Initialize_Comment (708, Extent);
-   Initialize_Constraint (709, Extent);
-   Initialize_Opaque_Expression (710, Extent);
-   Initialize_Parameter (711, Extent);
-   Initialize_Parameter (712, Extent);
+   Initialize_Property (133, Extent);
+   Initialize_Comment (709, Extent);
+   Initialize_Operation (710, Extent);
+   Initialize_Comment (711, Extent);
+   Initialize_Constraint (712, Extent);
+   Initialize_Opaque_Expression (713, Extent);
+   Initialize_Parameter (714, Extent);
+   Initialize_Parameter (715, Extent);
    Initialize_Class (16, Extent);
-   Initialize_Comment (713, Extent);
-   Initialize_Constraint (714, Extent);
-   Initialize_Comment (715, Extent);
-   Initialize_Opaque_Expression (716, Extent);
+   Initialize_Comment (716, Extent);
    Initialize_Constraint (717, Extent);
    Initialize_Comment (718, Extent);
    Initialize_Opaque_Expression (719, Extent);
    Initialize_Constraint (720, Extent);
    Initialize_Comment (721, Extent);
    Initialize_Opaque_Expression (722, Extent);
-   Initialize_Property (95, Extent);
-   Initialize_Comment (723, Extent);
-   Initialize_Property (98, Extent);
+   Initialize_Constraint (723, Extent);
    Initialize_Comment (724, Extent);
-   Initialize_Property (96, Extent);
-   Initialize_Comment (725, Extent);
-   Initialize_Property (97, Extent);
+   Initialize_Opaque_Expression (725, Extent);
+   Initialize_Property (95, Extent);
    Initialize_Comment (726, Extent);
-   Initialize_Operation (727, Extent);
+   Initialize_Property (98, Extent);
+   Initialize_Comment (727, Extent);
+   Initialize_Property (96, Extent);
    Initialize_Comment (728, Extent);
-   Initialize_Constraint (729, Extent);
-   Initialize_Opaque_Expression (730, Extent);
-   Initialize_Parameter (731, Extent);
-   Initialize_Operation (732, Extent);
-   Initialize_Comment (733, Extent);
-   Initialize_Constraint (734, Extent);
-   Initialize_Opaque_Expression (735, Extent);
-   Initialize_Parameter (736, Extent);
-   Initialize_Parameter (737, Extent);
-   Initialize_Parameter (738, Extent);
-   Initialize_Operation (739, Extent);
-   Initialize_Comment (740, Extent);
-   Initialize_Constraint (741, Extent);
-   Initialize_Opaque_Expression (742, Extent);
-   Initialize_Parameter (743, Extent);
-   Initialize_Operation (744, Extent);
-   Initialize_Comment (745, Extent);
-   Initialize_Constraint (746, Extent);
-   Initialize_Opaque_Expression (747, Extent);
-   Initialize_Parameter (748, Extent);
+   Initialize_Property (97, Extent);
+   Initialize_Comment (729, Extent);
+   Initialize_Operation (730, Extent);
+   Initialize_Comment (731, Extent);
+   Initialize_Constraint (732, Extent);
+   Initialize_Opaque_Expression (733, Extent);
+   Initialize_Parameter (734, Extent);
+   Initialize_Operation (735, Extent);
+   Initialize_Comment (736, Extent);
+   Initialize_Constraint (737, Extent);
+   Initialize_Opaque_Expression (738, Extent);
+   Initialize_Parameter (739, Extent);
+   Initialize_Parameter (740, Extent);
+   Initialize_Parameter (741, Extent);
+   Initialize_Operation (742, Extent);
+   Initialize_Comment (743, Extent);
+   Initialize_Constraint (744, Extent);
+   Initialize_Opaque_Expression (745, Extent);
+   Initialize_Parameter (746, Extent);
+   Initialize_Operation (747, Extent);
+   Initialize_Comment (748, Extent);
+   Initialize_Constraint (749, Extent);
+   Initialize_Opaque_Expression (750, Extent);
+   Initialize_Parameter (751, Extent);
    Initialize_Class (13, Extent);
-   Initialize_Comment (749, Extent);
-   Initialize_Property (56, Extent);
-   Initialize_Comment (750, Extent);
-   Initialize_Class (5, Extent);
-   Initialize_Comment (751, Extent);
-   Initialize_Property (82, Extent);
    Initialize_Comment (752, Extent);
-   Initialize_Property (47, Extent);
+   Initialize_Property (56, Extent);
    Initialize_Comment (753, Extent);
-   Initialize_Enumeration (754, Extent);
+   Initialize_Class (5, Extent);
+   Initialize_Comment (754, Extent);
+   Initialize_Property (82, Extent);
    Initialize_Comment (755, Extent);
-   Initialize_Enumeration_Literal (756, Extent);
-   Initialize_Comment (757, Extent);
-   Initialize_Enumeration_Literal (758, Extent);
-   Initialize_Comment (759, Extent);
-   Initialize_Enumeration_Literal (760, Extent);
-   Initialize_Comment (761, Extent);
-   Initialize_Enumeration_Literal (762, Extent);
-   Initialize_Comment (763, Extent);
-   Initialize_Enumeration (764, Extent);
-   Initialize_Comment (765, Extent);
-   Initialize_Operation (766, Extent);
-   Initialize_Comment (767, Extent);
-   Initialize_Constraint (768, Extent);
-   Initialize_Opaque_Expression (769, Extent);
-   Initialize_Parameter (770, Extent);
-   Initialize_Parameter (771, Extent);
-   Initialize_Enumeration_Literal (772, Extent);
-   Initialize_Comment (773, Extent);
-   Initialize_Enumeration_Literal (774, Extent);
-   Initialize_Comment (775, Extent);
-   Initialize_Enumeration_Literal (776, Extent);
-   Initialize_Comment (777, Extent);
-   Initialize_Enumeration_Literal (778, Extent);
-   Initialize_Comment (779, Extent);
-   Initialize_Association (145, Extent);
-   Initialize_Property (780, Extent);
-   Initialize_Association (147, Extent);
-   Initialize_Association (149, Extent);
+   Initialize_Property (47, Extent);
+   Initialize_Comment (756, Extent);
+   Initialize_Enumeration (757, Extent);
+   Initialize_Comment (758, Extent);
+   Initialize_Enumeration_Literal (759, Extent);
+   Initialize_Comment (760, Extent);
+   Initialize_Enumeration_Literal (761, Extent);
+   Initialize_Comment (762, Extent);
+   Initialize_Enumeration_Literal (763, Extent);
+   Initialize_Comment (764, Extent);
+   Initialize_Enumeration_Literal (765, Extent);
+   Initialize_Comment (766, Extent);
+   Initialize_Enumeration (767, Extent);
+   Initialize_Comment (768, Extent);
+   Initialize_Operation (769, Extent);
+   Initialize_Comment (770, Extent);
+   Initialize_Constraint (771, Extent);
+   Initialize_Opaque_Expression (772, Extent);
+   Initialize_Parameter (773, Extent);
+   Initialize_Parameter (774, Extent);
+   Initialize_Enumeration_Literal (775, Extent);
+   Initialize_Comment (776, Extent);
+   Initialize_Enumeration_Literal (777, Extent);
+   Initialize_Comment (778, Extent);
+   Initialize_Enumeration_Literal (779, Extent);
+   Initialize_Comment (780, Extent);
+   Initialize_Enumeration_Literal (781, Extent);
+   Initialize_Comment (782, Extent);
+   Initialize_Association (148, Extent);
+   Initialize_Property (783, Extent);
    Initialize_Association (150, Extent);
    Initialize_Association (152, Extent);
-   Initialize_Property (781, Extent);
-   Initialize_Association (154, Extent);
-   Initialize_Property (782, Extent);
-   Initialize_Association (156, Extent);
-   Initialize_Property (783, Extent);
-   Initialize_Association (158, Extent);
+   Initialize_Association (153, Extent);
+   Initialize_Association (155, Extent);
    Initialize_Property (784, Extent);
-   Initialize_Association (160, Extent);
+   Initialize_Association (157, Extent);
    Initialize_Property (785, Extent);
-   Initialize_Association (163, Extent);
+   Initialize_Association (159, Extent);
    Initialize_Property (786, Extent);
-   Initialize_Association (165, Extent);
+   Initialize_Association (161, Extent);
+   Initialize_Property (787, Extent);
+   Initialize_Association (163, Extent);
+   Initialize_Property (788, Extent);
    Initialize_Association (166, Extent);
+   Initialize_Property (789, Extent);
    Initialize_Association (168, Extent);
    Initialize_Association (169, Extent);
-   Initialize_Property (787, Extent);
+   Initialize_Association (171, Extent);
    Initialize_Association (172, Extent);
-   Initialize_Property (788, Extent);
-   Initialize_Association (174, Extent);
-   Initialize_Property (789, Extent);
-   Initialize_Association (176, Extent);
    Initialize_Property (790, Extent);
-   Initialize_Association (178, Extent);
+   Initialize_Association (175, Extent);
    Initialize_Property (791, Extent);
-   Initialize_Association (180, Extent);
+   Initialize_Association (177, Extent);
    Initialize_Property (792, Extent);
-   Initialize_Association (182, Extent);
+   Initialize_Association (179, Extent);
    Initialize_Property (793, Extent);
-   Initialize_Association (183, Extent);
-   Initialize_Association (184, Extent);
-   Initialize_Association (185, Extent);
+   Initialize_Association (181, Extent);
    Initialize_Property (794, Extent);
+   Initialize_Association (183, Extent);
+   Initialize_Property (795, Extent);
+   Initialize_Association (185, Extent);
+   Initialize_Property (796, Extent);
+   Initialize_Association (186, Extent);
    Initialize_Association (135, Extent);
    Initialize_Association (136, Extent);
-   Initialize_Association (137, Extent);
+   Initialize_Property (797, Extent);
    Initialize_Association (138, Extent);
-   Initialize_Property (795, Extent);
+   Initialize_Association (139, Extent);
+   Initialize_Association (140, Extent);
 
-   Internal_Set_Is_Derived (139, False);
-   Internal_Set_Is_Final_Specialization (139, False);
+   Internal_Set_Is_Derived (141, False);
+   Internal_Set_Is_Final_Specialization (141, False);
    Internal_Set_Name
-    (139,
-     (False, League.Strings.To_Universal_String ("A_packageMerge_receivingPackage")));
-
-   Internal_Set_Is_Derived (140, False);
-   Internal_Set_Is_Final_Specialization (140, False);
-   Internal_Set_Name
-    (140,
-     (False, League.Strings.To_Universal_String ("A_mergedPackage_packageMerge")));
+    (141,
+     (False, League.Strings.To_Universal_String ("A_type_operation")));
 
    Internal_Set_Is_Composite (187, False);
    Internal_Set_Is_Derived (187, False);
@@ -884,20 +880,20 @@ begin
    Internal_Set_Lower (187, (False, 0));
    Internal_Set_Name
     (187,
-     (False, League.Strings.To_Universal_String ("packageMerge")));
+     (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (187, (False, (Unlimited => True)));
-
-   Internal_Set_Is_Derived (141, False);
-   Internal_Set_Is_Final_Specialization (141, False);
-   Internal_Set_Name
-    (141,
-     (False, League.Strings.To_Universal_String ("A_ownedElement_owner")));
 
    Internal_Set_Is_Derived (142, False);
    Internal_Set_Is_Final_Specialization (142, False);
    Internal_Set_Name
     (142,
-     (False, League.Strings.To_Universal_String ("A_annotatedElement_comment")));
+     (False, League.Strings.To_Universal_String ("A_packageMerge_receivingPackage")));
+
+   Internal_Set_Is_Derived (143, False);
+   Internal_Set_Is_Final_Specialization (143, False);
+   Internal_Set_Name
+    (143,
+     (False, League.Strings.To_Universal_String ("A_mergedPackage_packageMerge")));
 
    Internal_Set_Is_Composite (188, False);
    Internal_Set_Is_Derived (188, False);
@@ -909,14 +905,20 @@ begin
    Internal_Set_Lower (188, (False, 0));
    Internal_Set_Name
     (188,
-     (False, League.Strings.To_Universal_String ("comment")));
+     (False, League.Strings.To_Universal_String ("packageMerge")));
    Internal_Set_Upper (188, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (143, False);
-   Internal_Set_Is_Final_Specialization (143, False);
+   Internal_Set_Is_Derived (144, False);
+   Internal_Set_Is_Final_Specialization (144, False);
    Internal_Set_Name
-    (143,
-     (False, League.Strings.To_Universal_String ("A_relatedElement_relationship")));
+    (144,
+     (False, League.Strings.To_Universal_String ("A_ownedElement_owner")));
+
+   Internal_Set_Is_Derived (145, False);
+   Internal_Set_Is_Final_Specialization (145, False);
+   Internal_Set_Name
+    (145,
+     (False, League.Strings.To_Universal_String ("A_annotatedElement_comment")));
 
    Internal_Set_Is_Composite (189, False);
    Internal_Set_Is_Derived (189, False);
@@ -928,14 +930,14 @@ begin
    Internal_Set_Lower (189, (False, 0));
    Internal_Set_Name
     (189,
-     (False, League.Strings.To_Universal_String ("relationship")));
+     (False, League.Strings.To_Universal_String ("comment")));
    Internal_Set_Upper (189, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (144, False);
-   Internal_Set_Is_Final_Specialization (144, False);
+   Internal_Set_Is_Derived (146, False);
+   Internal_Set_Is_Final_Specialization (146, False);
    Internal_Set_Name
-    (144,
-     (False, League.Strings.To_Universal_String ("A_source_directedRelationship")));
+    (146,
+     (False, League.Strings.To_Universal_String ("A_relatedElement_relationship")));
 
    Internal_Set_Is_Composite (190, False);
    Internal_Set_Is_Derived (190, False);
@@ -947,14 +949,14 @@ begin
    Internal_Set_Lower (190, (False, 0));
    Internal_Set_Name
     (190,
-     (False, League.Strings.To_Universal_String ("directedRelationship")));
+     (False, League.Strings.To_Universal_String ("relationship")));
    Internal_Set_Upper (190, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (146, False);
-   Internal_Set_Is_Final_Specialization (146, False);
+   Internal_Set_Is_Derived (147, False);
+   Internal_Set_Is_Final_Specialization (147, False);
    Internal_Set_Name
-    (146,
-     (False, League.Strings.To_Universal_String ("A_target_directedRelationship")));
+    (147,
+     (False, League.Strings.To_Universal_String ("A_source_directedRelationship")));
 
    Internal_Set_Is_Composite (191, False);
    Internal_Set_Is_Derived (191, False);
@@ -969,11 +971,11 @@ begin
      (False, League.Strings.To_Universal_String ("directedRelationship")));
    Internal_Set_Upper (191, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (148, False);
-   Internal_Set_Is_Final_Specialization (148, False);
+   Internal_Set_Is_Derived (149, False);
+   Internal_Set_Is_Final_Specialization (149, False);
    Internal_Set_Name
-    (148,
-     (False, League.Strings.To_Universal_String ("A_redefinitionContext_redefinableElement")));
+    (149,
+     (False, League.Strings.To_Universal_String ("A_target_directedRelationship")));
 
    Internal_Set_Is_Composite (192, False);
    Internal_Set_Is_Derived (192, False);
@@ -985,14 +987,14 @@ begin
    Internal_Set_Lower (192, (False, 0));
    Internal_Set_Name
     (192,
-     (False, League.Strings.To_Universal_String ("redefinableElement")));
+     (False, League.Strings.To_Universal_String ("directedRelationship")));
    Internal_Set_Upper (192, (False, (Unlimited => True)));
 
    Internal_Set_Is_Derived (151, False);
    Internal_Set_Is_Final_Specialization (151, False);
    Internal_Set_Name
     (151,
-     (False, League.Strings.To_Universal_String ("A_redefinedElement_redefinableElement")));
+     (False, League.Strings.To_Universal_String ("A_redefinitionContext_redefinableElement")));
 
    Internal_Set_Is_Composite (193, False);
    Internal_Set_Is_Derived (193, False);
@@ -1007,17 +1009,11 @@ begin
      (False, League.Strings.To_Universal_String ("redefinableElement")));
    Internal_Set_Upper (193, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (153, False);
-   Internal_Set_Is_Final_Specialization (153, False);
+   Internal_Set_Is_Derived (154, False);
+   Internal_Set_Is_Final_Specialization (154, False);
    Internal_Set_Name
-    (153,
-     (False, League.Strings.To_Universal_String ("A_feature_featuringClassifier")));
-
-   Internal_Set_Is_Derived (155, False);
-   Internal_Set_Is_Final_Specialization (155, False);
-   Internal_Set_Name
-    (155,
-     (False, League.Strings.To_Universal_String ("A_constrainedElement_constraint")));
+    (154,
+     (False, League.Strings.To_Universal_String ("A_redefinedElement_redefinableElement")));
 
    Internal_Set_Is_Composite (194, False);
    Internal_Set_Is_Derived (194, False);
@@ -1029,14 +1025,20 @@ begin
    Internal_Set_Lower (194, (False, 0));
    Internal_Set_Name
     (194,
-     (False, League.Strings.To_Universal_String ("constraint")));
+     (False, League.Strings.To_Universal_String ("redefinableElement")));
    Internal_Set_Upper (194, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (157, False);
-   Internal_Set_Is_Final_Specialization (157, False);
+   Internal_Set_Is_Derived (156, False);
+   Internal_Set_Is_Final_Specialization (156, False);
    Internal_Set_Name
-    (157,
-     (False, League.Strings.To_Universal_String ("A_specification_owningConstraint")));
+    (156,
+     (False, League.Strings.To_Universal_String ("A_feature_featuringClassifier")));
+
+   Internal_Set_Is_Derived (158, False);
+   Internal_Set_Is_Final_Specialization (158, False);
+   Internal_Set_Name
+    (158,
+     (False, League.Strings.To_Universal_String ("A_constrainedElement_constraint")));
 
    Internal_Set_Is_Composite (195, False);
    Internal_Set_Is_Derived (195, False);
@@ -1048,14 +1050,14 @@ begin
    Internal_Set_Lower (195, (False, 0));
    Internal_Set_Name
     (195,
-     (False, League.Strings.To_Universal_String ("owningConstraint")));
-   Internal_Set_Upper (195, (False, (False, 1)));
+     (False, League.Strings.To_Universal_String ("constraint")));
+   Internal_Set_Upper (195, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (159, False);
-   Internal_Set_Is_Final_Specialization (159, False);
+   Internal_Set_Is_Derived (160, False);
+   Internal_Set_Is_Final_Specialization (160, False);
    Internal_Set_Name
-    (159,
-     (False, League.Strings.To_Universal_String ("A_general_classifier")));
+    (160,
+     (False, League.Strings.To_Universal_String ("A_specification_owningConstraint")));
 
    Internal_Set_Is_Composite (196, False);
    Internal_Set_Is_Derived (196, False);
@@ -1067,20 +1069,14 @@ begin
    Internal_Set_Lower (196, (False, 0));
    Internal_Set_Name
     (196,
-     (False, League.Strings.To_Universal_String ("classifier")));
-   Internal_Set_Upper (196, (False, (Unlimited => True)));
-
-   Internal_Set_Is_Derived (161, False);
-   Internal_Set_Is_Final_Specialization (161, False);
-   Internal_Set_Name
-    (161,
-     (False, League.Strings.To_Universal_String ("A_ownedMember_namespace")));
+     (False, League.Strings.To_Universal_String ("owningConstraint")));
+   Internal_Set_Upper (196, (False, (False, 1)));
 
    Internal_Set_Is_Derived (162, False);
    Internal_Set_Is_Final_Specialization (162, False);
    Internal_Set_Name
     (162,
-     (False, League.Strings.To_Universal_String ("A_member_namespace")));
+     (False, League.Strings.To_Universal_String ("A_general_classifier")));
 
    Internal_Set_Is_Composite (197, False);
    Internal_Set_Is_Derived (197, False);
@@ -1092,14 +1088,20 @@ begin
    Internal_Set_Lower (197, (False, 0));
    Internal_Set_Name
     (197,
-     (False, League.Strings.To_Universal_String ("namespace")));
+     (False, League.Strings.To_Universal_String ("classifier")));
    Internal_Set_Upper (197, (False, (Unlimited => True)));
 
    Internal_Set_Is_Derived (164, False);
    Internal_Set_Is_Final_Specialization (164, False);
    Internal_Set_Name
     (164,
-     (False, League.Strings.To_Universal_String ("A_operand_expression")));
+     (False, League.Strings.To_Universal_String ("A_ownedMember_namespace")));
+
+   Internal_Set_Is_Derived (165, False);
+   Internal_Set_Is_Final_Specialization (165, False);
+   Internal_Set_Name
+    (165,
+     (False, League.Strings.To_Universal_String ("A_member_namespace")));
 
    Internal_Set_Is_Composite (198, False);
    Internal_Set_Is_Derived (198, False);
@@ -1111,14 +1113,14 @@ begin
    Internal_Set_Lower (198, (False, 0));
    Internal_Set_Name
     (198,
-     (False, League.Strings.To_Universal_String ("expression")));
-   Internal_Set_Upper (198, (False, (False, 1)));
+     (False, League.Strings.To_Universal_String ("namespace")));
+   Internal_Set_Upper (198, (False, (Unlimited => True)));
 
    Internal_Set_Is_Derived (167, False);
    Internal_Set_Is_Final_Specialization (167, False);
    Internal_Set_Name
     (167,
-     (False, League.Strings.To_Universal_String ("A_navigableOwnedEnd_association")));
+     (False, League.Strings.To_Universal_String ("A_operand_expression")));
 
    Internal_Set_Is_Composite (199, False);
    Internal_Set_Is_Derived (199, False);
@@ -1130,20 +1132,14 @@ begin
    Internal_Set_Lower (199, (False, 0));
    Internal_Set_Name
     (199,
-     (False, League.Strings.To_Universal_String ("association")));
+     (False, League.Strings.To_Universal_String ("expression")));
    Internal_Set_Upper (199, (False, (False, 1)));
 
    Internal_Set_Is_Derived (170, False);
    Internal_Set_Is_Final_Specialization (170, False);
    Internal_Set_Name
     (170,
-     (False, League.Strings.To_Universal_String ("A_ownedParameter_operation")));
-
-   Internal_Set_Is_Derived (171, False);
-   Internal_Set_Is_Final_Specialization (171, False);
-   Internal_Set_Name
-    (171,
-     (False, League.Strings.To_Universal_String ("A_ownedComment_owningElement")));
+     (False, League.Strings.To_Universal_String ("A_navigableOwnedEnd_association")));
 
    Internal_Set_Is_Composite (200, False);
    Internal_Set_Is_Derived (200, False);
@@ -1155,14 +1151,20 @@ begin
    Internal_Set_Lower (200, (False, 0));
    Internal_Set_Name
     (200,
-     (False, League.Strings.To_Universal_String ("owningElement")));
+     (False, League.Strings.To_Universal_String ("association")));
    Internal_Set_Upper (200, (False, (False, 1)));
 
    Internal_Set_Is_Derived (173, False);
    Internal_Set_Is_Final_Specialization (173, False);
    Internal_Set_Name
     (173,
-     (False, League.Strings.To_Universal_String ("A_inheritedMember_classifier")));
+     (False, League.Strings.To_Universal_String ("A_ownedParameter_operation")));
+
+   Internal_Set_Is_Derived (174, False);
+   Internal_Set_Is_Final_Specialization (174, False);
+   Internal_Set_Name
+    (174,
+     (False, League.Strings.To_Universal_String ("A_ownedComment_owningElement")));
 
    Internal_Set_Is_Composite (201, False);
    Internal_Set_Is_Derived (201, False);
@@ -1174,14 +1176,14 @@ begin
    Internal_Set_Lower (201, (False, 0));
    Internal_Set_Name
     (201,
-     (False, League.Strings.To_Universal_String ("classifier")));
-   Internal_Set_Upper (201, (False, (Unlimited => True)));
+     (False, League.Strings.To_Universal_String ("owningElement")));
+   Internal_Set_Upper (201, (False, (False, 1)));
 
-   Internal_Set_Is_Derived (175, False);
-   Internal_Set_Is_Final_Specialization (175, False);
+   Internal_Set_Is_Derived (176, False);
+   Internal_Set_Is_Final_Specialization (176, False);
    Internal_Set_Name
-    (175,
-     (False, League.Strings.To_Universal_String ("A_precondition_preContext")));
+    (176,
+     (False, League.Strings.To_Universal_String ("A_inheritedMember_classifier")));
 
    Internal_Set_Is_Composite (202, False);
    Internal_Set_Is_Derived (202, False);
@@ -1193,14 +1195,14 @@ begin
    Internal_Set_Lower (202, (False, 0));
    Internal_Set_Name
     (202,
-     (False, League.Strings.To_Universal_String ("preContext")));
-   Internal_Set_Upper (202, (False, (False, 1)));
+     (False, League.Strings.To_Universal_String ("classifier")));
+   Internal_Set_Upper (202, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (177, False);
-   Internal_Set_Is_Final_Specialization (177, False);
+   Internal_Set_Is_Derived (178, False);
+   Internal_Set_Is_Final_Specialization (178, False);
    Internal_Set_Name
-    (177,
-     (False, League.Strings.To_Universal_String ("A_postcondition_postContext")));
+    (178,
+     (False, League.Strings.To_Universal_String ("A_precondition_preContext")));
 
    Internal_Set_Is_Composite (203, False);
    Internal_Set_Is_Derived (203, False);
@@ -1212,14 +1214,14 @@ begin
    Internal_Set_Lower (203, (False, 0));
    Internal_Set_Name
     (203,
-     (False, League.Strings.To_Universal_String ("postContext")));
+     (False, League.Strings.To_Universal_String ("preContext")));
    Internal_Set_Upper (203, (False, (False, 1)));
 
-   Internal_Set_Is_Derived (179, False);
-   Internal_Set_Is_Final_Specialization (179, False);
+   Internal_Set_Is_Derived (180, False);
+   Internal_Set_Is_Final_Specialization (180, False);
    Internal_Set_Name
-    (179,
-     (False, League.Strings.To_Universal_String ("A_bodyCondition_bodyContext")));
+    (180,
+     (False, League.Strings.To_Universal_String ("A_postcondition_postContext")));
 
    Internal_Set_Is_Composite (204, False);
    Internal_Set_Is_Derived (204, False);
@@ -1231,13 +1233,32 @@ begin
    Internal_Set_Lower (204, (False, 0));
    Internal_Set_Name
     (204,
-     (False, League.Strings.To_Universal_String ("bodyContext")));
+     (False, League.Strings.To_Universal_String ("postContext")));
    Internal_Set_Upper (204, (False, (False, 1)));
 
-   Internal_Set_Is_Derived (181, False);
-   Internal_Set_Is_Final_Specialization (181, False);
+   Internal_Set_Is_Derived (182, False);
+   Internal_Set_Is_Final_Specialization (182, False);
    Internal_Set_Name
-    (181,
+    (182,
+     (False, League.Strings.To_Universal_String ("A_bodyCondition_bodyContext")));
+
+   Internal_Set_Is_Composite (205, False);
+   Internal_Set_Is_Derived (205, False);
+   Internal_Set_Is_Derived_Union (205, False);
+   Internal_Set_Is_Leaf (205, False);
+   Internal_Set_Is_Ordered (205, False);
+   Internal_Set_Is_Read_Only (205, False);
+   Internal_Set_Is_Unique (205, True);
+   Internal_Set_Lower (205, (False, 0));
+   Internal_Set_Name
+    (205,
+     (False, League.Strings.To_Universal_String ("bodyContext")));
+   Internal_Set_Upper (205, (False, (False, 1)));
+
+   Internal_Set_Is_Derived (184, False);
+   Internal_Set_Is_Final_Specialization (184, False);
+   Internal_Set_Name
+    (184,
      (False, League.Strings.To_Universal_String ("A_ownedRule_context")));
 
    Internal_Set_Is_Abstract (30, False);
@@ -1285,66 +1306,80 @@ begin
      (False, League.Strings.To_Universal_String ("element")));
    Internal_Set_Upper (78, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (186, False);
-   Internal_Set_Is_Final_Specialization (186, False);
+   Internal_Set_Is_Derived (137, False);
+   Internal_Set_Is_Final_Specialization (137, False);
    Internal_Set_Name
-    (186,
+    (137,
      (False, League.Strings.To_Universal_String ("A_element_tag")));
 
-   Internal_Set_Is_Composite (205, False);
-   Internal_Set_Is_Derived (205, False);
-   Internal_Set_Is_Derived_Union (205, False);
-   Internal_Set_Is_Leaf (205, False);
-   Internal_Set_Is_Ordered (205, False);
-   Internal_Set_Is_Read_Only (205, False);
-   Internal_Set_Is_Unique (205, True);
-   Internal_Set_Lower (205, (False, 1));
+   Internal_Set_Is_Composite (206, False);
+   Internal_Set_Is_Derived (206, False);
+   Internal_Set_Is_Derived_Union (206, False);
+   Internal_Set_Is_Leaf (206, False);
+   Internal_Set_Is_Ordered (206, False);
+   Internal_Set_Is_Read_Only (206, False);
+   Internal_Set_Is_Unique (206, True);
+   Internal_Set_Lower (206, (False, 1));
    Internal_Set_Name
-    (205,
+    (206,
      (False, League.Strings.To_Universal_String ("tag")));
-   Internal_Set_Upper (205, (False, (False, 1)));
+   Internal_Set_Upper (206, (False, (False, 1)));
 
-   Internal_Set_Name
-    (206,
-     (False, League.Strings.To_Universal_String ("CMOF")));
-   Internal_Set_Uri
-    (206,
-     (False, League.Strings.To_Universal_String ("http://schema.omg.org/spec/MOF/2.0/cmof.xml")));
-
-   Internal_Set_Is_Final_Specialization (207, False);
    Internal_Set_Name
     (207,
+     (League.Strings.To_Universal_String ("org.omg.xmi.nsPrefix")));
+   Internal_Set_Value
+    (207,
+     (League.Strings.To_Universal_String ("cmof")));
+
+   Internal_Set_Name
+    (208,
+     (League.Strings.To_Universal_String ("org.omg.xmi.nsURI")));
+   Internal_Set_Value
+    (208,
+     (League.Strings.To_Universal_String ("http://schema.omg.org/spec/MOF/2.0/cmof.xml")));
+
+   Internal_Set_Name
+    (209,
+     (False, League.Strings.To_Universal_String ("CMOF")));
+   Internal_Set_Uri
+    (209,
+     (False, League.Strings.To_Universal_String ("http://schema.omg.org/spec/MOF/2.0/cmof.xml")));
+
+   Internal_Set_Is_Final_Specialization (210, False);
+   Internal_Set_Name
+    (210,
      (False, League.Strings.To_Universal_String ("Integer")));
 
    Internal_Set_Body
-    (208,
+    (211,
      (False, League.Strings.To_Universal_String ("An integer is a primitive type representing integer values.")));
 
-   Internal_Set_Is_Final_Specialization (209, False);
+   Internal_Set_Is_Final_Specialization (212, False);
    Internal_Set_Name
-    (209,
+    (212,
      (False, League.Strings.To_Universal_String ("Boolean")));
 
    Internal_Set_Body
-    (210,
+    (213,
      (False, League.Strings.To_Universal_String ("A Boolean type is used for logical expression, consisting of the predefined values true and false.")));
 
-   Internal_Set_Is_Final_Specialization (211, False);
+   Internal_Set_Is_Final_Specialization (214, False);
    Internal_Set_Name
-    (211,
+    (214,
      (False, League.Strings.To_Universal_String ("String")));
 
    Internal_Set_Body
-    (212,
+    (215,
      (False, League.Strings.To_Universal_String ("A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.")));
 
-   Internal_Set_Is_Final_Specialization (213, False);
+   Internal_Set_Is_Final_Specialization (216, False);
    Internal_Set_Name
-    (213,
+    (216,
      (False, League.Strings.To_Universal_String ("UnlimitedNatural")));
 
    Internal_Set_Body
-    (214,
+    (217,
      (False, League.Strings.To_Universal_String ("An unlimited natural is a primitive type representing unlimited natural values.")));
 
    Internal_Set_Is_Abstract (4, True);
@@ -1354,24 +1389,24 @@ begin
      (False, League.Strings.To_Universal_String ("Classifier")));
 
    Internal_Set_Body
-    (215,
+    (218,
      (False, League.Strings.To_Universal_String ("A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.")));
 
    Internal_Set_Name
-    (216,
+    (219,
      (False, League.Strings.To_Universal_String ("no_cycles_in_generalization")));
 
    Internal_Set_Body
-    (217,
+    (220,
      (False, League.Strings.To_Universal_String ("Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.")));
 
 
    Internal_Set_Name
-    (219,
+    (222,
      (False, League.Strings.To_Universal_String ("specialize_type")));
 
    Internal_Set_Body
-    (220,
+    (223,
      (False, League.Strings.To_Universal_String ("A classifier may only specialize classifiers of a valid type.")));
 
 
@@ -1389,7 +1424,7 @@ begin
    Internal_Set_Upper (43, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (222,
+    (225,
      (False, League.Strings.To_Universal_String ("Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.")));
 
    Internal_Set_Is_Composite (44, False);
@@ -1406,7 +1441,7 @@ begin
    Internal_Set_Upper (44, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (223,
+    (226,
      (False, League.Strings.To_Universal_String ("Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.")));
 
    Internal_Set_Is_Composite (45, False);
@@ -1423,7 +1458,7 @@ begin
    Internal_Set_Upper (45, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (224,
+    (227,
      (False, League.Strings.To_Universal_String ("References the general classifier in the Generalization relationship.")));
 
    Internal_Set_Is_Composite (46, False);
@@ -1440,7 +1475,7 @@ begin
    Internal_Set_Upper (46, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (225,
+    (228,
      (False, League.Strings.To_Universal_String ("Specifies all elements inherited by this classifier from the general classifiers.")));
 
    Internal_Set_Default
@@ -1460,307 +1495,307 @@ begin
    Internal_Set_Upper (81, (False, (False, 1)));
 
    Internal_Set_Body
-    (226,
+    (229,
      (False, League.Strings.To_Universal_String ("If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.")));
 
-   Internal_Set_Is_Leaf (227, False);
-   Internal_Set_Is_Ordered (227, False);
-   Internal_Set_Is_Query (227, True);
-   Internal_Set_Is_Unique (227, True);
-   Internal_Set_Lower (227, (False, 1));
+   Internal_Set_Is_Leaf (230, False);
+   Internal_Set_Is_Ordered (230, False);
+   Internal_Set_Is_Query (230, True);
+   Internal_Set_Is_Unique (230, True);
+   Internal_Set_Lower (230, (False, 1));
    Internal_Set_Name
-    (227,
+    (230,
      (False, League.Strings.To_Universal_String ("conformsTo")));
-   Internal_Set_Upper (227, (False, (False, 1)));
+   Internal_Set_Upper (230, (False, (False, 1)));
 
    Internal_Set_Body
-    (228,
+    (231,
      (False, League.Strings.To_Universal_String ("The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.")));
 
    Internal_Set_Name
-    (229,
+    (232,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (231, Return_Direction);
-   Internal_Set_Is_Ordered (231, False);
-   Internal_Set_Is_Unique (231, True);
-   Internal_Set_Lower (231, (False, 1));
-   Internal_Set_Upper (231, (False, (False, 1)));
+   Internal_Set_Direction (234, Return_Direction);
+   Internal_Set_Is_Ordered (234, False);
+   Internal_Set_Is_Unique (234, True);
+   Internal_Set_Lower (234, (False, 1));
+   Internal_Set_Upper (234, (False, (False, 1)));
 
-   Internal_Set_Direction (232, In_Direction);
-   Internal_Set_Is_Ordered (232, False);
-   Internal_Set_Is_Unique (232, True);
-   Internal_Set_Lower (232, (False, 1));
+   Internal_Set_Direction (235, In_Direction);
+   Internal_Set_Is_Ordered (235, False);
+   Internal_Set_Is_Unique (235, True);
+   Internal_Set_Lower (235, (False, 1));
    Internal_Set_Name
-    (232,
+    (235,
      (False, League.Strings.To_Universal_String ("other")));
-   Internal_Set_Upper (232, (False, (False, 1)));
+   Internal_Set_Upper (235, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (233, False);
-   Internal_Set_Is_Ordered (233, False);
-   Internal_Set_Is_Query (233, True);
-   Internal_Set_Is_Unique (233, True);
-   Internal_Set_Lower (233, (False, 1));
+   Internal_Set_Is_Leaf (236, False);
+   Internal_Set_Is_Ordered (236, False);
+   Internal_Set_Is_Query (236, True);
+   Internal_Set_Is_Unique (236, True);
+   Internal_Set_Lower (236, (False, 1));
    Internal_Set_Name
-    (233,
+    (236,
      (False, League.Strings.To_Universal_String ("allFeatures")));
-   Internal_Set_Upper (233, (False, (False, 1)));
+   Internal_Set_Upper (236, (False, (False, 1)));
 
    Internal_Set_Body
-    (234,
+    (237,
      (False, League.Strings.To_Universal_String ("The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.")));
 
    Internal_Set_Name
-    (235,
+    (238,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (237, Return_Direction);
-   Internal_Set_Is_Ordered (237, False);
-   Internal_Set_Is_Unique (237, True);
-   Internal_Set_Lower (237, (False, 0));
-   Internal_Set_Upper (237, (False, (Unlimited => True)));
+   Internal_Set_Direction (240, Return_Direction);
+   Internal_Set_Is_Ordered (240, False);
+   Internal_Set_Is_Unique (240, True);
+   Internal_Set_Lower (240, (False, 0));
+   Internal_Set_Upper (240, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (238, False);
-   Internal_Set_Is_Ordered (238, False);
-   Internal_Set_Is_Query (238, True);
-   Internal_Set_Is_Unique (238, True);
-   Internal_Set_Lower (238, (False, 1));
+   Internal_Set_Is_Leaf (241, False);
+   Internal_Set_Is_Ordered (241, False);
+   Internal_Set_Is_Query (241, True);
+   Internal_Set_Is_Unique (241, True);
+   Internal_Set_Lower (241, (False, 1));
    Internal_Set_Name
-    (238,
+    (241,
      (False, League.Strings.To_Universal_String ("general")));
-   Internal_Set_Upper (238, (False, (False, 1)));
+   Internal_Set_Upper (241, (False, (False, 1)));
 
    Internal_Set_Body
-    (239,
+    (242,
      (False, League.Strings.To_Universal_String ("The general classifiers are the classifiers referenced by the generalization relationships.")));
 
    Internal_Set_Name
-    (240,
+    (243,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (242, Return_Direction);
-   Internal_Set_Is_Ordered (242, False);
-   Internal_Set_Is_Unique (242, True);
-   Internal_Set_Lower (242, (False, 0));
-   Internal_Set_Upper (242, (False, (Unlimited => True)));
+   Internal_Set_Direction (245, Return_Direction);
+   Internal_Set_Is_Ordered (245, False);
+   Internal_Set_Is_Unique (245, True);
+   Internal_Set_Lower (245, (False, 0));
+   Internal_Set_Upper (245, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (243, False);
-   Internal_Set_Is_Ordered (243, False);
-   Internal_Set_Is_Query (243, True);
-   Internal_Set_Is_Unique (243, True);
-   Internal_Set_Lower (243, (False, 1));
+   Internal_Set_Is_Leaf (246, False);
+   Internal_Set_Is_Ordered (246, False);
+   Internal_Set_Is_Query (246, True);
+   Internal_Set_Is_Unique (246, True);
+   Internal_Set_Lower (246, (False, 1));
    Internal_Set_Name
-    (243,
+    (246,
      (False, League.Strings.To_Universal_String ("parents")));
-   Internal_Set_Upper (243, (False, (False, 1)));
+   Internal_Set_Upper (246, (False, (False, 1)));
 
    Internal_Set_Body
-    (244,
+    (247,
      (False, League.Strings.To_Universal_String ("The query parents() gives all of the immediate ancestors of a generalized Classifier.")));
 
    Internal_Set_Name
-    (245,
+    (248,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (247, Return_Direction);
-   Internal_Set_Is_Ordered (247, False);
-   Internal_Set_Is_Unique (247, True);
-   Internal_Set_Lower (247, (False, 0));
-   Internal_Set_Upper (247, (False, (Unlimited => True)));
+   Internal_Set_Direction (250, Return_Direction);
+   Internal_Set_Is_Ordered (250, False);
+   Internal_Set_Is_Unique (250, True);
+   Internal_Set_Lower (250, (False, 0));
+   Internal_Set_Upper (250, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (248, False);
-   Internal_Set_Is_Ordered (248, False);
-   Internal_Set_Is_Query (248, True);
-   Internal_Set_Is_Unique (248, True);
-   Internal_Set_Lower (248, (False, 1));
+   Internal_Set_Is_Leaf (251, False);
+   Internal_Set_Is_Ordered (251, False);
+   Internal_Set_Is_Query (251, True);
+   Internal_Set_Is_Unique (251, True);
+   Internal_Set_Lower (251, (False, 1));
    Internal_Set_Name
-    (248,
+    (251,
      (False, League.Strings.To_Universal_String ("inheritedMember")));
-   Internal_Set_Upper (248, (False, (False, 1)));
+   Internal_Set_Upper (251, (False, (False, 1)));
 
    Internal_Set_Body
-    (249,
+    (252,
      (False, League.Strings.To_Universal_String ("The inheritedMember association is derived by inheriting the inheritable members of the parents.")));
 
    Internal_Set_Name
-    (250,
+    (253,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (252, Return_Direction);
-   Internal_Set_Is_Ordered (252, False);
-   Internal_Set_Is_Unique (252, True);
-   Internal_Set_Lower (252, (False, 0));
-   Internal_Set_Upper (252, (False, (Unlimited => True)));
+   Internal_Set_Direction (255, Return_Direction);
+   Internal_Set_Is_Ordered (255, False);
+   Internal_Set_Is_Unique (255, True);
+   Internal_Set_Lower (255, (False, 0));
+   Internal_Set_Upper (255, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (253, False);
-   Internal_Set_Is_Ordered (253, False);
-   Internal_Set_Is_Query (253, True);
-   Internal_Set_Is_Unique (253, True);
-   Internal_Set_Lower (253, (False, 1));
+   Internal_Set_Is_Leaf (256, False);
+   Internal_Set_Is_Ordered (256, False);
+   Internal_Set_Is_Query (256, True);
+   Internal_Set_Is_Unique (256, True);
+   Internal_Set_Lower (256, (False, 1));
    Internal_Set_Name
-    (253,
+    (256,
      (False, League.Strings.To_Universal_String ("allParents")));
-   Internal_Set_Upper (253, (False, (False, 1)));
+   Internal_Set_Upper (256, (False, (False, 1)));
 
    Internal_Set_Body
-    (254,
+    (257,
      (False, League.Strings.To_Universal_String ("The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.")));
 
    Internal_Set_Name
-    (255,
+    (258,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (257, Return_Direction);
-   Internal_Set_Is_Ordered (257, False);
-   Internal_Set_Is_Unique (257, True);
-   Internal_Set_Lower (257, (False, 0));
-   Internal_Set_Upper (257, (False, (Unlimited => True)));
+   Internal_Set_Direction (260, Return_Direction);
+   Internal_Set_Is_Ordered (260, False);
+   Internal_Set_Is_Unique (260, True);
+   Internal_Set_Lower (260, (False, 0));
+   Internal_Set_Upper (260, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (258, False);
-   Internal_Set_Is_Ordered (258, False);
-   Internal_Set_Is_Query (258, True);
-   Internal_Set_Is_Unique (258, True);
-   Internal_Set_Lower (258, (False, 1));
+   Internal_Set_Is_Leaf (261, False);
+   Internal_Set_Is_Ordered (261, False);
+   Internal_Set_Is_Query (261, True);
+   Internal_Set_Is_Unique (261, True);
+   Internal_Set_Lower (261, (False, 1));
    Internal_Set_Name
-    (258,
+    (261,
      (False, League.Strings.To_Universal_String ("inheritableMembers")));
-   Internal_Set_Upper (258, (False, (False, 1)));
+   Internal_Set_Upper (261, (False, (False, 1)));
 
    Internal_Set_Body
-    (259,
+    (262,
      (False, League.Strings.To_Universal_String ("The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.")));
 
 
 
    Internal_Set_Name
-    (262,
+    (265,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (264, Return_Direction);
-   Internal_Set_Is_Ordered (264, False);
-   Internal_Set_Is_Unique (264, True);
-   Internal_Set_Lower (264, (False, 0));
-   Internal_Set_Upper (264, (False, (Unlimited => True)));
+   Internal_Set_Direction (267, Return_Direction);
+   Internal_Set_Is_Ordered (267, False);
+   Internal_Set_Is_Unique (267, True);
+   Internal_Set_Lower (267, (False, 0));
+   Internal_Set_Upper (267, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (265, In_Direction);
-   Internal_Set_Is_Ordered (265, False);
-   Internal_Set_Is_Unique (265, True);
-   Internal_Set_Lower (265, (False, 1));
+   Internal_Set_Direction (268, In_Direction);
+   Internal_Set_Is_Ordered (268, False);
+   Internal_Set_Is_Unique (268, True);
+   Internal_Set_Lower (268, (False, 1));
    Internal_Set_Name
-    (265,
+    (268,
      (False, League.Strings.To_Universal_String ("c")));
-   Internal_Set_Upper (265, (False, (False, 1)));
+   Internal_Set_Upper (268, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (266, False);
-   Internal_Set_Is_Ordered (266, False);
-   Internal_Set_Is_Query (266, True);
-   Internal_Set_Is_Unique (266, True);
-   Internal_Set_Lower (266, (False, 1));
+   Internal_Set_Is_Leaf (269, False);
+   Internal_Set_Is_Ordered (269, False);
+   Internal_Set_Is_Query (269, True);
+   Internal_Set_Is_Unique (269, True);
+   Internal_Set_Lower (269, (False, 1));
    Internal_Set_Name
-    (266,
+    (269,
      (False, League.Strings.To_Universal_String ("hasVisibilityOf")));
-   Internal_Set_Upper (266, (False, (False, 1)));
+   Internal_Set_Upper (269, (False, (False, 1)));
 
    Internal_Set_Body
-    (267,
+    (270,
      (False, League.Strings.To_Universal_String ("The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.")));
 
 
 
    Internal_Set_Name
-    (270,
+    (273,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (272, Return_Direction);
-   Internal_Set_Is_Ordered (272, False);
-   Internal_Set_Is_Unique (272, True);
-   Internal_Set_Lower (272, (False, 1));
-   Internal_Set_Upper (272, (False, (False, 1)));
+   Internal_Set_Direction (275, Return_Direction);
+   Internal_Set_Is_Ordered (275, False);
+   Internal_Set_Is_Unique (275, True);
+   Internal_Set_Lower (275, (False, 1));
+   Internal_Set_Upper (275, (False, (False, 1)));
 
-   Internal_Set_Direction (273, In_Direction);
-   Internal_Set_Is_Ordered (273, False);
-   Internal_Set_Is_Unique (273, True);
-   Internal_Set_Lower (273, (False, 1));
+   Internal_Set_Direction (276, In_Direction);
+   Internal_Set_Is_Ordered (276, False);
+   Internal_Set_Is_Unique (276, True);
+   Internal_Set_Lower (276, (False, 1));
    Internal_Set_Name
-    (273,
+    (276,
      (False, League.Strings.To_Universal_String ("n")));
-   Internal_Set_Upper (273, (False, (False, 1)));
+   Internal_Set_Upper (276, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (274, False);
-   Internal_Set_Is_Ordered (274, False);
-   Internal_Set_Is_Query (274, True);
-   Internal_Set_Is_Unique (274, True);
-   Internal_Set_Lower (274, (False, 1));
+   Internal_Set_Is_Leaf (277, False);
+   Internal_Set_Is_Ordered (277, False);
+   Internal_Set_Is_Query (277, True);
+   Internal_Set_Is_Unique (277, True);
+   Internal_Set_Lower (277, (False, 1));
    Internal_Set_Name
-    (274,
+    (277,
      (False, League.Strings.To_Universal_String ("inherit")));
-   Internal_Set_Upper (274, (False, (False, 1)));
+   Internal_Set_Upper (277, (False, (False, 1)));
 
    Internal_Set_Body
-    (275,
+    (278,
      (False, League.Strings.To_Universal_String ("The inherit operation is overridden to exclude redefined properties.")));
 
    Internal_Set_Name
-    (276,
+    (279,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (278, Return_Direction);
-   Internal_Set_Is_Ordered (278, False);
-   Internal_Set_Is_Unique (278, True);
-   Internal_Set_Lower (278, (False, 0));
-   Internal_Set_Upper (278, (False, (Unlimited => True)));
+   Internal_Set_Direction (281, Return_Direction);
+   Internal_Set_Is_Ordered (281, False);
+   Internal_Set_Is_Unique (281, True);
+   Internal_Set_Lower (281, (False, 0));
+   Internal_Set_Upper (281, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (279, In_Direction);
-   Internal_Set_Is_Ordered (279, False);
-   Internal_Set_Is_Unique (279, True);
-   Internal_Set_Lower (279, (False, 0));
+   Internal_Set_Direction (282, In_Direction);
+   Internal_Set_Is_Ordered (282, False);
+   Internal_Set_Is_Unique (282, True);
+   Internal_Set_Lower (282, (False, 0));
    Internal_Set_Name
-    (279,
+    (282,
      (False, League.Strings.To_Universal_String ("inhs")));
-   Internal_Set_Upper (279, (False, (Unlimited => True)));
+   Internal_Set_Upper (282, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (280, False);
-   Internal_Set_Is_Ordered (280, False);
-   Internal_Set_Is_Query (280, True);
-   Internal_Set_Is_Unique (280, True);
-   Internal_Set_Lower (280, (False, 1));
+   Internal_Set_Is_Leaf (283, False);
+   Internal_Set_Is_Ordered (283, False);
+   Internal_Set_Is_Query (283, True);
+   Internal_Set_Is_Unique (283, True);
+   Internal_Set_Lower (283, (False, 1));
    Internal_Set_Name
-    (280,
+    (283,
      (False, League.Strings.To_Universal_String ("maySpecializeType")));
-   Internal_Set_Upper (280, (False, (False, 1)));
+   Internal_Set_Upper (283, (False, (False, 1)));
 
    Internal_Set_Body
-    (281,
+    (284,
      (False, League.Strings.To_Universal_String ("The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.")));
 
    Internal_Set_Name
-    (282,
+    (285,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (284, Return_Direction);
-   Internal_Set_Is_Ordered (284, False);
-   Internal_Set_Is_Unique (284, True);
-   Internal_Set_Lower (284, (False, 1));
-   Internal_Set_Upper (284, (False, (False, 1)));
+   Internal_Set_Direction (287, Return_Direction);
+   Internal_Set_Is_Ordered (287, False);
+   Internal_Set_Is_Unique (287, True);
+   Internal_Set_Lower (287, (False, 1));
+   Internal_Set_Upper (287, (False, (False, 1)));
 
-   Internal_Set_Direction (285, In_Direction);
-   Internal_Set_Is_Ordered (285, False);
-   Internal_Set_Is_Unique (285, True);
-   Internal_Set_Lower (285, (False, 1));
+   Internal_Set_Direction (288, In_Direction);
+   Internal_Set_Is_Ordered (288, False);
+   Internal_Set_Is_Unique (288, True);
+   Internal_Set_Lower (288, (False, 1));
    Internal_Set_Name
-    (285,
+    (288,
      (False, League.Strings.To_Universal_String ("c")));
-   Internal_Set_Upper (285, (False, (False, 1)));
+   Internal_Set_Upper (288, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (8, True);
    Internal_Set_Is_Final_Specialization (8, False);
@@ -1769,7 +1804,7 @@ begin
      (False, League.Strings.To_Universal_String ("DirectedRelationship")));
 
    Internal_Set_Body
-    (286,
+    (289,
      (False, League.Strings.To_Universal_String ("A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.")));
 
    Internal_Set_Is_Composite (51, False);
@@ -1786,7 +1821,7 @@ begin
    Internal_Set_Upper (51, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (287,
+    (290,
      (False, League.Strings.To_Universal_String ("Specifies the sources of the DirectedRelationship.")));
 
    Internal_Set_Is_Composite (52, False);
@@ -1803,7 +1838,7 @@ begin
    Internal_Set_Upper (52, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (288,
+    (291,
      (False, League.Strings.To_Universal_String ("Specifies the targets of the DirectedRelationship.")));
 
    Internal_Set_Is_Abstract (9, True);
@@ -1813,24 +1848,24 @@ begin
      (False, League.Strings.To_Universal_String ("Element")));
 
    Internal_Set_Body
-    (289,
+    (292,
      (False, League.Strings.To_Universal_String ("An element is a constituent of a model. As such, it has the capability of owning other elements.")));
 
    Internal_Set_Name
-    (290,
+    (293,
      (False, League.Strings.To_Universal_String ("not_own_self")));
 
    Internal_Set_Body
-    (291,
+    (294,
      (False, League.Strings.To_Universal_String ("An element may not directly or indirectly own itself.")));
 
 
    Internal_Set_Name
-    (293,
+    (296,
      (False, League.Strings.To_Universal_String ("has_owner")));
 
    Internal_Set_Body
-    (294,
+    (297,
      (False, League.Strings.To_Universal_String ("Elements that must be owned must have an owner.")));
 
 
@@ -1848,7 +1883,7 @@ begin
    Internal_Set_Upper (54, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (296,
+    (299,
      (False, League.Strings.To_Universal_String ("The Elements owned by this element.")));
 
    Internal_Set_Is_Composite (85, False);
@@ -1865,7 +1900,7 @@ begin
    Internal_Set_Upper (85, (False, (False, 1)));
 
    Internal_Set_Body
-    (297,
+    (300,
      (False, League.Strings.To_Universal_String ("The Element that owns this element.")));
 
    Internal_Set_Is_Composite (53, True);
@@ -1882,58 +1917,58 @@ begin
    Internal_Set_Upper (53, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (298,
+    (301,
      (False, League.Strings.To_Universal_String ("The Comments owned by this element.")));
 
-   Internal_Set_Is_Leaf (299, False);
-   Internal_Set_Is_Ordered (299, False);
-   Internal_Set_Is_Query (299, True);
-   Internal_Set_Is_Unique (299, True);
-   Internal_Set_Lower (299, (False, 1));
+   Internal_Set_Is_Leaf (302, False);
+   Internal_Set_Is_Ordered (302, False);
+   Internal_Set_Is_Query (302, True);
+   Internal_Set_Is_Unique (302, True);
+   Internal_Set_Lower (302, (False, 1));
    Internal_Set_Name
-    (299,
+    (302,
      (False, League.Strings.To_Universal_String ("allOwnedElements")));
-   Internal_Set_Upper (299, (False, (False, 1)));
+   Internal_Set_Upper (302, (False, (False, 1)));
 
    Internal_Set_Body
-    (300,
+    (303,
      (False, League.Strings.To_Universal_String ("The query allOwnedElements() gives all of the direct and indirect owned elements of an element.")));
 
    Internal_Set_Name
-    (301,
+    (304,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (303, Return_Direction);
-   Internal_Set_Is_Ordered (303, False);
-   Internal_Set_Is_Unique (303, True);
-   Internal_Set_Lower (303, (False, 0));
-   Internal_Set_Upper (303, (False, (Unlimited => True)));
+   Internal_Set_Direction (306, Return_Direction);
+   Internal_Set_Is_Ordered (306, False);
+   Internal_Set_Is_Unique (306, True);
+   Internal_Set_Lower (306, (False, 0));
+   Internal_Set_Upper (306, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (304, False);
-   Internal_Set_Is_Ordered (304, False);
-   Internal_Set_Is_Query (304, True);
-   Internal_Set_Is_Unique (304, True);
-   Internal_Set_Lower (304, (False, 1));
+   Internal_Set_Is_Leaf (307, False);
+   Internal_Set_Is_Ordered (307, False);
+   Internal_Set_Is_Query (307, True);
+   Internal_Set_Is_Unique (307, True);
+   Internal_Set_Lower (307, (False, 1));
    Internal_Set_Name
-    (304,
+    (307,
      (False, League.Strings.To_Universal_String ("mustBeOwned")));
-   Internal_Set_Upper (304, (False, (False, 1)));
+   Internal_Set_Upper (307, (False, (False, 1)));
 
    Internal_Set_Body
-    (305,
+    (308,
      (False, League.Strings.To_Universal_String ("The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.")));
 
    Internal_Set_Name
-    (306,
+    (309,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (308, Return_Direction);
-   Internal_Set_Is_Ordered (308, False);
-   Internal_Set_Is_Unique (308, True);
-   Internal_Set_Lower (308, (False, 1));
-   Internal_Set_Upper (308, (False, (False, 1)));
+   Internal_Set_Direction (311, Return_Direction);
+   Internal_Set_Is_Ordered (311, False);
+   Internal_Set_Is_Unique (311, True);
+   Internal_Set_Lower (311, (False, 1));
+   Internal_Set_Upper (311, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (14, True);
    Internal_Set_Is_Final_Specialization (14, False);
@@ -1942,7 +1977,7 @@ begin
      (False, League.Strings.To_Universal_String ("Feature")));
 
    Internal_Set_Body
-    (309,
+    (312,
      (False, League.Strings.To_Universal_String ("A feature declares a behavioral or structural characteristic of instances of classifiers.")));
 
    Internal_Set_Is_Composite (57, False);
@@ -1959,7 +1994,7 @@ begin
    Internal_Set_Upper (57, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (310,
+    (313,
      (False, League.Strings.To_Universal_String ("The Classifiers that have this Feature as a feature.")));
 
    Internal_Set_Is_Abstract (15, True);
@@ -1969,24 +2004,24 @@ begin
      (False, League.Strings.To_Universal_String ("MultiplicityElement")));
 
    Internal_Set_Body
-    (311,
+    (314,
      (False, League.Strings.To_Universal_String ("A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.")));
 
    Internal_Set_Name
-    (312,
+    (315,
      (False, League.Strings.To_Universal_String ("upper_ge_lower")));
 
    Internal_Set_Body
-    (313,
+    (316,
      (False, League.Strings.To_Universal_String ("The upper bound must be greater than or equal to the lower bound.")));
 
 
    Internal_Set_Name
-    (315,
+    (318,
      (False, League.Strings.To_Universal_String ("lower_ge_0")));
 
    Internal_Set_Body
-    (316,
+    (319,
      (False, League.Strings.To_Universal_String ("The lower bound must be a non-negative integer literal.")));
 
 
@@ -2007,7 +2042,7 @@ begin
    Internal_Set_Upper (91, (False, (False, 1)));
 
    Internal_Set_Body
-    (318,
+    (321,
      (False, League.Strings.To_Universal_String ("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.")));
 
    Internal_Set_Default
@@ -2027,7 +2062,7 @@ begin
    Internal_Set_Upper (92, (False, (False, 1)));
 
    Internal_Set_Body
-    (319,
+    (322,
      (False, League.Strings.To_Universal_String ("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.")));
 
    Internal_Set_Default
@@ -2047,7 +2082,7 @@ begin
    Internal_Set_Upper (93, (False, (False, 1)));
 
    Internal_Set_Body
-    (320,
+    (323,
      (False, League.Strings.To_Universal_String ("Specifies the lower bound of the multiplicity interval.")));
 
    Internal_Set_Default
@@ -2067,157 +2102,157 @@ begin
    Internal_Set_Upper (94, (False, (False, 1)));
 
    Internal_Set_Body
-    (321,
+    (324,
      (False, League.Strings.To_Universal_String ("Specifies the upper bound of the multiplicity interval.")));
 
-   Internal_Set_Is_Leaf (322, False);
-   Internal_Set_Is_Ordered (322, False);
-   Internal_Set_Is_Query (322, True);
-   Internal_Set_Is_Unique (322, True);
-   Internal_Set_Lower (322, (False, 1));
+   Internal_Set_Is_Leaf (325, False);
+   Internal_Set_Is_Ordered (325, False);
+   Internal_Set_Is_Query (325, True);
+   Internal_Set_Is_Unique (325, True);
+   Internal_Set_Lower (325, (False, 1));
    Internal_Set_Name
-    (322,
+    (325,
      (False, League.Strings.To_Universal_String ("isMultivalued")));
-   Internal_Set_Upper (322, (False, (False, 1)));
+   Internal_Set_Upper (325, (False, (False, 1)));
 
    Internal_Set_Body
-    (323,
+    (326,
      (False, League.Strings.To_Universal_String ("The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.")));
 
 
 
    Internal_Set_Name
-    (326,
+    (329,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (328, Return_Direction);
-   Internal_Set_Is_Ordered (328, False);
-   Internal_Set_Is_Unique (328, True);
-   Internal_Set_Lower (328, (False, 1));
-   Internal_Set_Upper (328, (False, (False, 1)));
+   Internal_Set_Direction (331, Return_Direction);
+   Internal_Set_Is_Ordered (331, False);
+   Internal_Set_Is_Unique (331, True);
+   Internal_Set_Lower (331, (False, 1));
+   Internal_Set_Upper (331, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (329, False);
-   Internal_Set_Is_Ordered (329, False);
-   Internal_Set_Is_Query (329, True);
-   Internal_Set_Is_Unique (329, True);
-   Internal_Set_Lower (329, (False, 1));
+   Internal_Set_Is_Leaf (332, False);
+   Internal_Set_Is_Ordered (332, False);
+   Internal_Set_Is_Query (332, True);
+   Internal_Set_Is_Unique (332, True);
+   Internal_Set_Lower (332, (False, 1));
    Internal_Set_Name
-    (329,
+    (332,
      (False, League.Strings.To_Universal_String ("includesMultiplicity")));
-   Internal_Set_Upper (329, (False, (False, 1)));
+   Internal_Set_Upper (332, (False, (False, 1)));
 
    Internal_Set_Body
-    (330,
+    (333,
      (False, League.Strings.To_Universal_String ("The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.")));
 
 
 
    Internal_Set_Name
-    (333,
+    (336,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (335, Return_Direction);
-   Internal_Set_Is_Ordered (335, False);
-   Internal_Set_Is_Unique (335, True);
-   Internal_Set_Lower (335, (False, 1));
-   Internal_Set_Upper (335, (False, (False, 1)));
+   Internal_Set_Direction (338, Return_Direction);
+   Internal_Set_Is_Ordered (338, False);
+   Internal_Set_Is_Unique (338, True);
+   Internal_Set_Lower (338, (False, 1));
+   Internal_Set_Upper (338, (False, (False, 1)));
 
-   Internal_Set_Direction (336, In_Direction);
-   Internal_Set_Is_Ordered (336, False);
-   Internal_Set_Is_Unique (336, True);
-   Internal_Set_Lower (336, (False, 1));
+   Internal_Set_Direction (339, In_Direction);
+   Internal_Set_Is_Ordered (339, False);
+   Internal_Set_Is_Unique (339, True);
+   Internal_Set_Lower (339, (False, 1));
    Internal_Set_Name
-    (336,
+    (339,
      (False, League.Strings.To_Universal_String ("M")));
-   Internal_Set_Upper (336, (False, (False, 1)));
+   Internal_Set_Upper (339, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (337, False);
-   Internal_Set_Is_Ordered (337, False);
-   Internal_Set_Is_Query (337, True);
-   Internal_Set_Is_Unique (337, True);
-   Internal_Set_Lower (337, (False, 1));
+   Internal_Set_Is_Leaf (340, False);
+   Internal_Set_Is_Ordered (340, False);
+   Internal_Set_Is_Query (340, True);
+   Internal_Set_Is_Unique (340, True);
+   Internal_Set_Lower (340, (False, 1));
    Internal_Set_Name
-    (337,
+    (340,
      (False, League.Strings.To_Universal_String ("includesCardinality")));
-   Internal_Set_Upper (337, (False, (False, 1)));
+   Internal_Set_Upper (340, (False, (False, 1)));
 
    Internal_Set_Body
-    (338,
+    (341,
      (False, League.Strings.To_Universal_String ("The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.")));
 
 
 
    Internal_Set_Name
-    (341,
+    (344,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (343, Return_Direction);
-   Internal_Set_Is_Ordered (343, False);
-   Internal_Set_Is_Unique (343, True);
-   Internal_Set_Lower (343, (False, 1));
-   Internal_Set_Upper (343, (False, (False, 1)));
+   Internal_Set_Direction (346, Return_Direction);
+   Internal_Set_Is_Ordered (346, False);
+   Internal_Set_Is_Unique (346, True);
+   Internal_Set_Lower (346, (False, 1));
+   Internal_Set_Upper (346, (False, (False, 1)));
 
-   Internal_Set_Direction (344, In_Direction);
-   Internal_Set_Is_Ordered (344, False);
-   Internal_Set_Is_Unique (344, True);
-   Internal_Set_Lower (344, (False, 1));
+   Internal_Set_Direction (347, In_Direction);
+   Internal_Set_Is_Ordered (347, False);
+   Internal_Set_Is_Unique (347, True);
+   Internal_Set_Lower (347, (False, 1));
    Internal_Set_Name
-    (344,
+    (347,
      (False, League.Strings.To_Universal_String ("C")));
-   Internal_Set_Upper (344, (False, (False, 1)));
+   Internal_Set_Upper (347, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (345, False);
-   Internal_Set_Is_Ordered (345, False);
-   Internal_Set_Is_Query (345, True);
-   Internal_Set_Is_Unique (345, True);
-   Internal_Set_Lower (345, (False, 1));
+   Internal_Set_Is_Leaf (348, False);
+   Internal_Set_Is_Ordered (348, False);
+   Internal_Set_Is_Query (348, True);
+   Internal_Set_Is_Unique (348, True);
+   Internal_Set_Lower (348, (False, 1));
    Internal_Set_Name
-    (345,
+    (348,
      (False, League.Strings.To_Universal_String ("lowerBound")));
-   Internal_Set_Upper (345, (False, (False, 1)));
+   Internal_Set_Upper (348, (False, (False, 1)));
 
    Internal_Set_Body
-    (346,
+    (349,
      (False, League.Strings.To_Universal_String ("The query lowerBound() returns the lower bound of the multiplicity as an integer.")));
 
    Internal_Set_Name
-    (347,
+    (350,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (349, Return_Direction);
-   Internal_Set_Is_Ordered (349, False);
-   Internal_Set_Is_Unique (349, True);
-   Internal_Set_Lower (349, (False, 1));
-   Internal_Set_Upper (349, (False, (False, 1)));
+   Internal_Set_Direction (352, Return_Direction);
+   Internal_Set_Is_Ordered (352, False);
+   Internal_Set_Is_Unique (352, True);
+   Internal_Set_Lower (352, (False, 1));
+   Internal_Set_Upper (352, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (350, False);
-   Internal_Set_Is_Ordered (350, False);
-   Internal_Set_Is_Query (350, True);
-   Internal_Set_Is_Unique (350, True);
-   Internal_Set_Lower (350, (False, 1));
+   Internal_Set_Is_Leaf (353, False);
+   Internal_Set_Is_Ordered (353, False);
+   Internal_Set_Is_Query (353, True);
+   Internal_Set_Is_Unique (353, True);
+   Internal_Set_Lower (353, (False, 1));
    Internal_Set_Name
-    (350,
+    (353,
      (False, League.Strings.To_Universal_String ("upperBound")));
-   Internal_Set_Upper (350, (False, (False, 1)));
+   Internal_Set_Upper (353, (False, (False, 1)));
 
    Internal_Set_Body
-    (351,
+    (354,
      (False, League.Strings.To_Universal_String ("The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.")));
 
    Internal_Set_Name
-    (352,
+    (355,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (354, Return_Direction);
-   Internal_Set_Is_Ordered (354, False);
-   Internal_Set_Is_Unique (354, True);
-   Internal_Set_Lower (354, (False, 1));
-   Internal_Set_Upper (354, (False, (False, 1)));
+   Internal_Set_Direction (357, Return_Direction);
+   Internal_Set_Is_Ordered (357, False);
+   Internal_Set_Is_Unique (357, True);
+   Internal_Set_Lower (357, (False, 1));
+   Internal_Set_Upper (357, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (17, True);
    Internal_Set_Is_Final_Specialization (17, False);
@@ -2226,15 +2261,15 @@ begin
      (False, League.Strings.To_Universal_String ("Namespace")));
 
    Internal_Set_Body
-    (355,
+    (358,
      (False, League.Strings.To_Universal_String ("A namespace is an element in a model that contains a set of named elements that can be identified by name.")));
 
    Internal_Set_Name
-    (356,
+    (359,
      (False, League.Strings.To_Universal_String ("members_distinguishable")));
 
    Internal_Set_Body
-    (357,
+    (360,
      (False, League.Strings.To_Universal_String ("All the members of a Namespace are distinguishable within it.")));
 
 
@@ -2252,7 +2287,7 @@ begin
    Internal_Set_Upper (59, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (359,
+    (362,
      (False, League.Strings.To_Universal_String ("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.")));
 
    Internal_Set_Is_Composite (58, True);
@@ -2269,7 +2304,7 @@ begin
    Internal_Set_Upper (58, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (360,
+    (363,
      (False, League.Strings.To_Universal_String ("References the ElementImports owned by the Namespace.")));
 
    Internal_Set_Is_Composite (63, True);
@@ -2286,7 +2321,7 @@ begin
    Internal_Set_Upper (63, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (361,
+    (364,
      (False, League.Strings.To_Universal_String ("References the PackageImports owned by the Namespace.")));
 
    Internal_Set_Is_Composite (61, True);
@@ -2303,7 +2338,7 @@ begin
    Internal_Set_Upper (61, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (362,
+    (365,
      (False, League.Strings.To_Universal_String ("A collection of NamedElements owned by the Namespace.")));
 
    Internal_Set_Is_Composite (60, False);
@@ -2320,7 +2355,7 @@ begin
    Internal_Set_Upper (60, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (363,
+    (366,
      (False, League.Strings.To_Universal_String ("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.")));
 
    Internal_Set_Is_Composite (62, True);
@@ -2336,157 +2371,157 @@ begin
      (False, League.Strings.To_Universal_String ("ownedRule")));
    Internal_Set_Upper (62, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (364, False);
-   Internal_Set_Is_Ordered (364, False);
-   Internal_Set_Is_Query (364, True);
-   Internal_Set_Is_Unique (364, True);
-   Internal_Set_Lower (364, (False, 1));
+   Internal_Set_Is_Leaf (367, False);
+   Internal_Set_Is_Ordered (367, False);
+   Internal_Set_Is_Query (367, True);
+   Internal_Set_Is_Unique (367, True);
+   Internal_Set_Lower (367, (False, 1));
    Internal_Set_Name
-    (364,
+    (367,
      (False, League.Strings.To_Universal_String ("importedMember")));
-   Internal_Set_Upper (364, (False, (False, 1)));
+   Internal_Set_Upper (367, (False, (False, 1)));
 
    Internal_Set_Body
-    (365,
+    (368,
      (False, League.Strings.To_Universal_String ("The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.")));
 
    Internal_Set_Name
-    (366,
+    (369,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (368, Return_Direction);
-   Internal_Set_Is_Ordered (368, False);
-   Internal_Set_Is_Unique (368, True);
-   Internal_Set_Lower (368, (False, 0));
-   Internal_Set_Upper (368, (False, (Unlimited => True)));
+   Internal_Set_Direction (371, Return_Direction);
+   Internal_Set_Is_Ordered (371, False);
+   Internal_Set_Is_Unique (371, True);
+   Internal_Set_Lower (371, (False, 0));
+   Internal_Set_Upper (371, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (369, False);
-   Internal_Set_Is_Ordered (369, False);
-   Internal_Set_Is_Query (369, True);
-   Internal_Set_Is_Unique (369, True);
-   Internal_Set_Lower (369, (False, 1));
+   Internal_Set_Is_Leaf (372, False);
+   Internal_Set_Is_Ordered (372, False);
+   Internal_Set_Is_Query (372, True);
+   Internal_Set_Is_Unique (372, True);
+   Internal_Set_Lower (372, (False, 1));
    Internal_Set_Name
-    (369,
+    (372,
      (False, League.Strings.To_Universal_String ("getNamesOfMember")));
-   Internal_Set_Upper (369, (False, (False, 1)));
+   Internal_Set_Upper (372, (False, (False, 1)));
 
    Internal_Set_Body
-    (370,
+    (373,
      (False, League.Strings.To_Universal_String ("The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.")));
 
    Internal_Set_Name
-    (371,
+    (374,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (373, Return_Direction);
-   Internal_Set_Is_Ordered (373, False);
-   Internal_Set_Is_Unique (373, True);
-   Internal_Set_Lower (373, (False, 0));
-   Internal_Set_Upper (373, (False, (Unlimited => True)));
+   Internal_Set_Direction (376, Return_Direction);
+   Internal_Set_Is_Ordered (376, False);
+   Internal_Set_Is_Unique (376, True);
+   Internal_Set_Lower (376, (False, 0));
+   Internal_Set_Upper (376, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (374, In_Direction);
-   Internal_Set_Is_Ordered (374, False);
-   Internal_Set_Is_Unique (374, True);
-   Internal_Set_Lower (374, (False, 1));
+   Internal_Set_Direction (377, In_Direction);
+   Internal_Set_Is_Ordered (377, False);
+   Internal_Set_Is_Unique (377, True);
+   Internal_Set_Lower (377, (False, 1));
    Internal_Set_Name
-    (374,
+    (377,
      (False, League.Strings.To_Universal_String ("element")));
-   Internal_Set_Upper (374, (False, (False, 1)));
+   Internal_Set_Upper (377, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (375, False);
-   Internal_Set_Is_Ordered (375, False);
-   Internal_Set_Is_Query (375, True);
-   Internal_Set_Is_Unique (375, True);
-   Internal_Set_Lower (375, (False, 1));
+   Internal_Set_Is_Leaf (378, False);
+   Internal_Set_Is_Ordered (378, False);
+   Internal_Set_Is_Query (378, True);
+   Internal_Set_Is_Unique (378, True);
+   Internal_Set_Lower (378, (False, 1));
    Internal_Set_Name
-    (375,
+    (378,
      (False, League.Strings.To_Universal_String ("importMembers")));
-   Internal_Set_Upper (375, (False, (False, 1)));
+   Internal_Set_Upper (378, (False, (False, 1)));
 
    Internal_Set_Body
-    (376,
+    (379,
      (False, League.Strings.To_Universal_String ("The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.")));
 
    Internal_Set_Name
-    (377,
+    (380,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (379, Return_Direction);
-   Internal_Set_Is_Ordered (379, False);
-   Internal_Set_Is_Unique (379, True);
-   Internal_Set_Lower (379, (False, 0));
-   Internal_Set_Upper (379, (False, (Unlimited => True)));
+   Internal_Set_Direction (382, Return_Direction);
+   Internal_Set_Is_Ordered (382, False);
+   Internal_Set_Is_Unique (382, True);
+   Internal_Set_Lower (382, (False, 0));
+   Internal_Set_Upper (382, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (380, In_Direction);
-   Internal_Set_Is_Ordered (380, False);
-   Internal_Set_Is_Unique (380, True);
-   Internal_Set_Lower (380, (False, 0));
+   Internal_Set_Direction (383, In_Direction);
+   Internal_Set_Is_Ordered (383, False);
+   Internal_Set_Is_Unique (383, True);
+   Internal_Set_Lower (383, (False, 0));
    Internal_Set_Name
-    (380,
+    (383,
      (False, League.Strings.To_Universal_String ("imps")));
-   Internal_Set_Upper (380, (False, (Unlimited => True)));
+   Internal_Set_Upper (383, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (381, False);
-   Internal_Set_Is_Ordered (381, False);
-   Internal_Set_Is_Query (381, True);
-   Internal_Set_Is_Unique (381, True);
-   Internal_Set_Lower (381, (False, 1));
+   Internal_Set_Is_Leaf (384, False);
+   Internal_Set_Is_Ordered (384, False);
+   Internal_Set_Is_Query (384, True);
+   Internal_Set_Is_Unique (384, True);
+   Internal_Set_Lower (384, (False, 1));
    Internal_Set_Name
-    (381,
+    (384,
      (False, League.Strings.To_Universal_String ("excludeCollisions")));
-   Internal_Set_Upper (381, (False, (False, 1)));
+   Internal_Set_Upper (384, (False, (False, 1)));
 
    Internal_Set_Body
-    (382,
+    (385,
      (False, League.Strings.To_Universal_String ("The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.")));
 
    Internal_Set_Name
-    (383,
+    (386,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (385, Return_Direction);
-   Internal_Set_Is_Ordered (385, False);
-   Internal_Set_Is_Unique (385, True);
-   Internal_Set_Lower (385, (False, 0));
-   Internal_Set_Upper (385, (False, (Unlimited => True)));
+   Internal_Set_Direction (388, Return_Direction);
+   Internal_Set_Is_Ordered (388, False);
+   Internal_Set_Is_Unique (388, True);
+   Internal_Set_Lower (388, (False, 0));
+   Internal_Set_Upper (388, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (386, In_Direction);
-   Internal_Set_Is_Ordered (386, False);
-   Internal_Set_Is_Unique (386, True);
-   Internal_Set_Lower (386, (False, 0));
+   Internal_Set_Direction (389, In_Direction);
+   Internal_Set_Is_Ordered (389, False);
+   Internal_Set_Is_Unique (389, True);
+   Internal_Set_Lower (389, (False, 0));
    Internal_Set_Name
-    (386,
+    (389,
      (False, League.Strings.To_Universal_String ("imps")));
-   Internal_Set_Upper (386, (False, (Unlimited => True)));
+   Internal_Set_Upper (389, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (387, False);
-   Internal_Set_Is_Ordered (387, False);
-   Internal_Set_Is_Query (387, True);
-   Internal_Set_Is_Unique (387, True);
-   Internal_Set_Lower (387, (False, 1));
+   Internal_Set_Is_Leaf (390, False);
+   Internal_Set_Is_Ordered (390, False);
+   Internal_Set_Is_Query (390, True);
+   Internal_Set_Is_Unique (390, True);
+   Internal_Set_Lower (390, (False, 1));
    Internal_Set_Name
-    (387,
+    (390,
      (False, League.Strings.To_Universal_String ("membersAreDistinguishable")));
-   Internal_Set_Upper (387, (False, (False, 1)));
+   Internal_Set_Upper (390, (False, (False, 1)));
 
    Internal_Set_Body
-    (388,
+    (391,
      (False, League.Strings.To_Universal_String ("The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.")));
 
    Internal_Set_Name
-    (389,
+    (392,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (391, Return_Direction);
-   Internal_Set_Is_Ordered (391, False);
-   Internal_Set_Is_Unique (391, True);
-   Internal_Set_Lower (391, (False, 1));
-   Internal_Set_Upper (391, (False, (False, 1)));
+   Internal_Set_Direction (394, Return_Direction);
+   Internal_Set_Is_Ordered (394, False);
+   Internal_Set_Is_Unique (394, True);
+   Internal_Set_Lower (394, (False, 1));
+   Internal_Set_Upper (394, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (23, True);
    Internal_Set_Is_Final_Specialization (23, False);
@@ -2495,7 +2530,7 @@ begin
      (False, League.Strings.To_Universal_String ("PackageableElement")));
 
    Internal_Set_Body
-    (392,
+    (395,
      (False, League.Strings.To_Universal_String ("A packageable element indicates a named element that may be owned directly by a package.")));
 
    Internal_Set_Is_Abstract (27, True);
@@ -2505,33 +2540,33 @@ begin
      (False, League.Strings.To_Universal_String ("RedefinableElement")));
 
    Internal_Set_Body
-    (393,
+    (396,
      (False, League.Strings.To_Universal_String ("A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.")));
 
    Internal_Set_Name
-    (394,
+    (397,
      (False, League.Strings.To_Universal_String ("redefinition_context_valid")));
 
    Internal_Set_Body
-    (395,
+    (398,
      (False, League.Strings.To_Universal_String ("At least one of the redefinition contexts of the redefining element must be a specialization of at least one of the redefinition contexts for each redefined element.")));
 
 
    Internal_Set_Name
-    (397,
+    (400,
      (False, League.Strings.To_Universal_String ("redefinition_consistent")));
 
    Internal_Set_Body
-    (398,
+    (401,
      (False, League.Strings.To_Universal_String ("A redefining element must be consistent with each redefined element.")));
 
 
    Internal_Set_Name
-    (400,
+    (403,
      (False, League.Strings.To_Universal_String ("non_leaf_redefinition")));
 
    Internal_Set_Body
-    (401,
+    (404,
      (False, League.Strings.To_Universal_String ("A redefinable element can only redefine non-leaf redefinable elements")));
 
 
@@ -2549,7 +2584,7 @@ begin
    Internal_Set_Upper (76, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (403,
+    (406,
      (False, League.Strings.To_Universal_String ("References the contexts that this element may be redefined from.")));
 
    Internal_Set_Is_Composite (75, False);
@@ -2566,7 +2601,7 @@ begin
    Internal_Set_Upper (75, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (404,
+    (407,
      (False, League.Strings.To_Universal_String ("The redefinable element that is being redefined by this element.")));
 
    Internal_Set_Default
@@ -2586,78 +2621,78 @@ begin
    Internal_Set_Upper (130, (False, (False, 1)));
 
    Internal_Set_Body
-    (405,
+    (408,
      (False, League.Strings.To_Universal_String ("Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.")));
 
-   Internal_Set_Is_Leaf (406, False);
-   Internal_Set_Is_Ordered (406, False);
-   Internal_Set_Is_Query (406, True);
-   Internal_Set_Is_Unique (406, True);
-   Internal_Set_Lower (406, (False, 1));
+   Internal_Set_Is_Leaf (409, False);
+   Internal_Set_Is_Ordered (409, False);
+   Internal_Set_Is_Query (409, True);
+   Internal_Set_Is_Unique (409, True);
+   Internal_Set_Lower (409, (False, 1));
    Internal_Set_Name
-    (406,
+    (409,
      (False, League.Strings.To_Universal_String ("isConsistentWith")));
-   Internal_Set_Upper (406, (False, (False, 1)));
+   Internal_Set_Upper (409, (False, (False, 1)));
 
    Internal_Set_Body
-    (407,
+    (410,
      (False, League.Strings.To_Universal_String ("The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.")));
 
    Internal_Set_Name
-    (408,
+    (411,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
 
 
-   Internal_Set_Direction (412, Return_Direction);
-   Internal_Set_Is_Ordered (412, False);
-   Internal_Set_Is_Unique (412, True);
-   Internal_Set_Lower (412, (False, 1));
-   Internal_Set_Upper (412, (False, (False, 1)));
+   Internal_Set_Direction (415, Return_Direction);
+   Internal_Set_Is_Ordered (415, False);
+   Internal_Set_Is_Unique (415, True);
+   Internal_Set_Lower (415, (False, 1));
+   Internal_Set_Upper (415, (False, (False, 1)));
 
-   Internal_Set_Direction (413, In_Direction);
-   Internal_Set_Is_Ordered (413, False);
-   Internal_Set_Is_Unique (413, True);
-   Internal_Set_Lower (413, (False, 1));
+   Internal_Set_Direction (416, In_Direction);
+   Internal_Set_Is_Ordered (416, False);
+   Internal_Set_Is_Unique (416, True);
+   Internal_Set_Lower (416, (False, 1));
    Internal_Set_Name
-    (413,
+    (416,
      (False, League.Strings.To_Universal_String ("redefinee")));
-   Internal_Set_Upper (413, (False, (False, 1)));
+   Internal_Set_Upper (416, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (414, False);
-   Internal_Set_Is_Ordered (414, False);
-   Internal_Set_Is_Query (414, True);
-   Internal_Set_Is_Unique (414, True);
-   Internal_Set_Lower (414, (False, 1));
+   Internal_Set_Is_Leaf (417, False);
+   Internal_Set_Is_Ordered (417, False);
+   Internal_Set_Is_Query (417, True);
+   Internal_Set_Is_Unique (417, True);
+   Internal_Set_Lower (417, (False, 1));
    Internal_Set_Name
-    (414,
+    (417,
      (False, League.Strings.To_Universal_String ("isRedefinitionContextValid")));
-   Internal_Set_Upper (414, (False, (False, 1)));
+   Internal_Set_Upper (417, (False, (False, 1)));
 
    Internal_Set_Body
-    (415,
+    (418,
      (False, League.Strings.To_Universal_String ("The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.")));
 
    Internal_Set_Name
-    (416,
+    (419,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (418, Return_Direction);
-   Internal_Set_Is_Ordered (418, False);
-   Internal_Set_Is_Unique (418, True);
-   Internal_Set_Lower (418, (False, 1));
-   Internal_Set_Upper (418, (False, (False, 1)));
+   Internal_Set_Direction (421, Return_Direction);
+   Internal_Set_Is_Ordered (421, False);
+   Internal_Set_Is_Unique (421, True);
+   Internal_Set_Lower (421, (False, 1));
+   Internal_Set_Upper (421, (False, (False, 1)));
 
-   Internal_Set_Direction (419, In_Direction);
-   Internal_Set_Is_Ordered (419, False);
-   Internal_Set_Is_Unique (419, True);
-   Internal_Set_Lower (419, (False, 1));
+   Internal_Set_Direction (422, In_Direction);
+   Internal_Set_Is_Ordered (422, False);
+   Internal_Set_Is_Unique (422, True);
+   Internal_Set_Lower (422, (False, 1));
    Internal_Set_Name
-    (419,
+    (422,
      (False, League.Strings.To_Universal_String ("redefined")));
-   Internal_Set_Upper (419, (False, (False, 1)));
+   Internal_Set_Upper (422, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (28, True);
    Internal_Set_Is_Final_Specialization (28, False);
@@ -2666,7 +2701,7 @@ begin
      (False, League.Strings.To_Universal_String ("Relationship")));
 
    Internal_Set_Body
-    (420,
+    (423,
      (False, League.Strings.To_Universal_String ("Relationship is an abstract concept that specifies some kind of relationship between elements.")));
 
    Internal_Set_Is_Composite (77, False);
@@ -2683,7 +2718,7 @@ begin
    Internal_Set_Upper (77, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (421,
+    (424,
      (False, League.Strings.To_Universal_String ("Specifies the elements related by the Relationship.")));
 
    Internal_Set_Is_Abstract (29, True);
@@ -2693,7 +2728,7 @@ begin
      (False, League.Strings.To_Universal_String ("StructuralFeature")));
 
    Internal_Set_Body
-    (422,
+    (425,
      (False, League.Strings.To_Universal_String ("A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.")));
 
    Internal_Set_Is_Abstract (32, True);
@@ -2703,7 +2738,7 @@ begin
      (False, League.Strings.To_Universal_String ("TypedElement")));
 
    Internal_Set_Body
-    (423,
+    (426,
      (False, League.Strings.To_Universal_String ("A typed element is a kind of named element that represents an element with a type.")));
 
    Internal_Set_Is_Composite (134, False);
@@ -2720,7 +2755,7 @@ begin
    Internal_Set_Upper (134, (False, (False, 1)));
 
    Internal_Set_Body
-    (424,
+    (427,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
 
    Internal_Set_Is_Abstract (33, True);
@@ -2730,158 +2765,158 @@ begin
      (False, League.Strings.To_Universal_String ("ValueSpecification")));
 
    Internal_Set_Body
-    (425,
+    (428,
      (False, League.Strings.To_Universal_String ("A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.")));
 
-   Internal_Set_Is_Leaf (426, False);
-   Internal_Set_Is_Ordered (426, False);
-   Internal_Set_Is_Query (426, True);
-   Internal_Set_Is_Unique (426, True);
-   Internal_Set_Lower (426, (False, 1));
+   Internal_Set_Is_Leaf (429, False);
+   Internal_Set_Is_Ordered (429, False);
+   Internal_Set_Is_Query (429, True);
+   Internal_Set_Is_Unique (429, True);
+   Internal_Set_Lower (429, (False, 1));
    Internal_Set_Name
-    (426,
+    (429,
      (False, League.Strings.To_Universal_String ("isComputable")));
-   Internal_Set_Upper (426, (False, (False, 1)));
+   Internal_Set_Upper (429, (False, (False, 1)));
 
    Internal_Set_Body
-    (427,
+    (430,
      (False, League.Strings.To_Universal_String ("The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.")));
 
    Internal_Set_Name
-    (428,
+    (431,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (430, Return_Direction);
-   Internal_Set_Is_Ordered (430, False);
-   Internal_Set_Is_Unique (430, True);
-   Internal_Set_Lower (430, (False, 1));
-   Internal_Set_Upper (430, (False, (False, 1)));
+   Internal_Set_Direction (433, Return_Direction);
+   Internal_Set_Is_Ordered (433, False);
+   Internal_Set_Is_Unique (433, True);
+   Internal_Set_Lower (433, (False, 1));
+   Internal_Set_Upper (433, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (431, False);
-   Internal_Set_Is_Ordered (431, False);
-   Internal_Set_Is_Query (431, True);
-   Internal_Set_Is_Unique (431, True);
-   Internal_Set_Lower (431, (False, 1));
+   Internal_Set_Is_Leaf (434, False);
+   Internal_Set_Is_Ordered (434, False);
+   Internal_Set_Is_Query (434, True);
+   Internal_Set_Is_Unique (434, True);
+   Internal_Set_Lower (434, (False, 1));
    Internal_Set_Name
-    (431,
+    (434,
      (False, League.Strings.To_Universal_String ("integerValue")));
-   Internal_Set_Upper (431, (False, (False, 1)));
+   Internal_Set_Upper (434, (False, (False, 1)));
 
    Internal_Set_Body
-    (432,
+    (435,
      (False, League.Strings.To_Universal_String ("The query integerValue() gives a single Integer value when one can be computed.")));
 
    Internal_Set_Name
-    (433,
+    (436,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (435, Return_Direction);
-   Internal_Set_Is_Ordered (435, False);
-   Internal_Set_Is_Unique (435, True);
-   Internal_Set_Lower (435, (False, 1));
-   Internal_Set_Upper (435, (False, (False, 1)));
+   Internal_Set_Direction (438, Return_Direction);
+   Internal_Set_Is_Ordered (438, False);
+   Internal_Set_Is_Unique (438, True);
+   Internal_Set_Lower (438, (False, 1));
+   Internal_Set_Upper (438, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (436, False);
-   Internal_Set_Is_Ordered (436, False);
-   Internal_Set_Is_Query (436, True);
-   Internal_Set_Is_Unique (436, True);
-   Internal_Set_Lower (436, (False, 1));
+   Internal_Set_Is_Leaf (439, False);
+   Internal_Set_Is_Ordered (439, False);
+   Internal_Set_Is_Query (439, True);
+   Internal_Set_Is_Unique (439, True);
+   Internal_Set_Lower (439, (False, 1));
    Internal_Set_Name
-    (436,
+    (439,
      (False, League.Strings.To_Universal_String ("booleanValue")));
-   Internal_Set_Upper (436, (False, (False, 1)));
+   Internal_Set_Upper (439, (False, (False, 1)));
 
    Internal_Set_Body
-    (437,
+    (440,
      (False, League.Strings.To_Universal_String ("The query booleanValue() gives a single Boolean value when one can be computed.")));
 
    Internal_Set_Name
-    (438,
+    (441,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (440, Return_Direction);
-   Internal_Set_Is_Ordered (440, False);
-   Internal_Set_Is_Unique (440, True);
-   Internal_Set_Lower (440, (False, 1));
-   Internal_Set_Upper (440, (False, (False, 1)));
+   Internal_Set_Direction (443, Return_Direction);
+   Internal_Set_Is_Ordered (443, False);
+   Internal_Set_Is_Unique (443, True);
+   Internal_Set_Lower (443, (False, 1));
+   Internal_Set_Upper (443, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (441, False);
-   Internal_Set_Is_Ordered (441, False);
-   Internal_Set_Is_Query (441, True);
-   Internal_Set_Is_Unique (441, True);
-   Internal_Set_Lower (441, (False, 1));
+   Internal_Set_Is_Leaf (444, False);
+   Internal_Set_Is_Ordered (444, False);
+   Internal_Set_Is_Query (444, True);
+   Internal_Set_Is_Unique (444, True);
+   Internal_Set_Lower (444, (False, 1));
    Internal_Set_Name
-    (441,
+    (444,
      (False, League.Strings.To_Universal_String ("stringValue")));
-   Internal_Set_Upper (441, (False, (False, 1)));
+   Internal_Set_Upper (444, (False, (False, 1)));
 
    Internal_Set_Body
-    (442,
+    (445,
      (False, League.Strings.To_Universal_String ("The query stringValue() gives a single String value when one can be computed.")));
 
    Internal_Set_Name
-    (443,
+    (446,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (445, Return_Direction);
-   Internal_Set_Is_Ordered (445, False);
-   Internal_Set_Is_Unique (445, True);
-   Internal_Set_Lower (445, (False, 1));
-   Internal_Set_Upper (445, (False, (False, 1)));
+   Internal_Set_Direction (448, Return_Direction);
+   Internal_Set_Is_Ordered (448, False);
+   Internal_Set_Is_Unique (448, True);
+   Internal_Set_Lower (448, (False, 1));
+   Internal_Set_Upper (448, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (446, False);
-   Internal_Set_Is_Ordered (446, False);
-   Internal_Set_Is_Query (446, True);
-   Internal_Set_Is_Unique (446, True);
-   Internal_Set_Lower (446, (False, 1));
+   Internal_Set_Is_Leaf (449, False);
+   Internal_Set_Is_Ordered (449, False);
+   Internal_Set_Is_Query (449, True);
+   Internal_Set_Is_Unique (449, True);
+   Internal_Set_Lower (449, (False, 1));
    Internal_Set_Name
-    (446,
+    (449,
      (False, League.Strings.To_Universal_String ("unlimitedValue")));
-   Internal_Set_Upper (446, (False, (False, 1)));
+   Internal_Set_Upper (449, (False, (False, 1)));
 
    Internal_Set_Body
-    (447,
+    (450,
      (False, League.Strings.To_Universal_String ("The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.")));
 
    Internal_Set_Name
-    (448,
+    (451,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (450, Return_Direction);
-   Internal_Set_Is_Ordered (450, False);
-   Internal_Set_Is_Unique (450, True);
-   Internal_Set_Lower (450, (False, 1));
-   Internal_Set_Upper (450, (False, (False, 1)));
+   Internal_Set_Direction (453, Return_Direction);
+   Internal_Set_Is_Ordered (453, False);
+   Internal_Set_Is_Unique (453, True);
+   Internal_Set_Lower (453, (False, 1));
+   Internal_Set_Upper (453, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (451, False);
-   Internal_Set_Is_Ordered (451, False);
-   Internal_Set_Is_Query (451, True);
-   Internal_Set_Is_Unique (451, True);
-   Internal_Set_Lower (451, (False, 1));
+   Internal_Set_Is_Leaf (454, False);
+   Internal_Set_Is_Ordered (454, False);
+   Internal_Set_Is_Query (454, True);
+   Internal_Set_Is_Unique (454, True);
+   Internal_Set_Lower (454, (False, 1));
    Internal_Set_Name
-    (451,
+    (454,
      (False, League.Strings.To_Universal_String ("isNull")));
-   Internal_Set_Upper (451, (False, (False, 1)));
+   Internal_Set_Upper (454, (False, (False, 1)));
 
    Internal_Set_Body
-    (452,
+    (455,
      (False, League.Strings.To_Universal_String ("The query isNull() returns true when it can be computed that the value is null.")));
 
    Internal_Set_Name
-    (453,
+    (456,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (455, Return_Direction);
-   Internal_Set_Is_Ordered (455, False);
-   Internal_Set_Is_Unique (455, True);
-   Internal_Set_Lower (455, (False, 1));
-   Internal_Set_Upper (455, (False, (False, 1)));
+   Internal_Set_Direction (458, Return_Direction);
+   Internal_Set_Is_Ordered (458, False);
+   Internal_Set_Is_Unique (458, True);
+   Internal_Set_Lower (458, (False, 1));
+   Internal_Set_Upper (458, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (1, False);
    Internal_Set_Is_Final_Specialization (1, False);
@@ -2890,42 +2925,42 @@ begin
      (False, League.Strings.To_Universal_String ("Association")));
 
    Internal_Set_Body
-    (456,
+    (459,
      (False, League.Strings.To_Universal_String ("An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.")));
 
    Internal_Set_Name
-    (457,
+    (460,
      (False, League.Strings.To_Universal_String ("association_ends")));
 
    Internal_Set_Body
-    (458,
+    (461,
      (False, League.Strings.To_Universal_String ("Association ends of associations with more than two ends must be owned by the association.")));
 
 
    Internal_Set_Name
-    (460,
+    (463,
      (False, League.Strings.To_Universal_String ("binary_associations")));
 
    Internal_Set_Body
-    (461,
+    (464,
      (False, League.Strings.To_Universal_String ("Only binary associations can be aggregations.")));
 
 
    Internal_Set_Name
-    (463,
+    (466,
      (False, League.Strings.To_Universal_String ("specialized_end_number")));
 
    Internal_Set_Body
-    (464,
+    (467,
      (False, League.Strings.To_Universal_String ("An association specializing another association has the same number of ends as the other association.")));
 
 
    Internal_Set_Name
-    (466,
+    (469,
      (False, League.Strings.To_Universal_String ("specialized_end_types")));
 
    Internal_Set_Body
-    (467,
+    (470,
      (False, League.Strings.To_Universal_String ("When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.")));
 
 
@@ -2946,7 +2981,7 @@ begin
    Internal_Set_Upper (79, (False, (False, 1)));
 
    Internal_Set_Body
-    (469,
+    (472,
      (False, League.Strings.To_Universal_String ("Specifies whether the association is derived from other model elements such as other associations or constraints.")));
 
    Internal_Set_Is_Composite (37, True);
@@ -2963,7 +2998,7 @@ begin
    Internal_Set_Upper (37, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (470,
+    (473,
      (False, League.Strings.To_Universal_String ("The ends that are owned by the association itself.")));
 
    Internal_Set_Is_Composite (34, False);
@@ -2980,7 +3015,7 @@ begin
    Internal_Set_Upper (34, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (471,
+    (474,
      (False, League.Strings.To_Universal_String ("References the classifiers that are used as types of the ends of the association.")));
 
    Internal_Set_Is_Composite (35, False);
@@ -2997,7 +3032,7 @@ begin
    Internal_Set_Upper (35, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (472,
+    (475,
      (False, League.Strings.To_Universal_String ("Each end represents participation of instances of the classifier connected to the end in links of the association.")));
 
    Internal_Set_Is_Composite (36, False);
@@ -3014,33 +3049,33 @@ begin
    Internal_Set_Upper (36, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (473,
+    (476,
      (False, League.Strings.To_Universal_String ("The navigable ends that are owned by the association itself.")));
 
-   Internal_Set_Is_Leaf (474, False);
-   Internal_Set_Is_Ordered (474, False);
-   Internal_Set_Is_Query (474, True);
-   Internal_Set_Is_Unique (474, True);
-   Internal_Set_Lower (474, (False, 1));
+   Internal_Set_Is_Leaf (477, False);
+   Internal_Set_Is_Ordered (477, False);
+   Internal_Set_Is_Query (477, True);
+   Internal_Set_Is_Unique (477, True);
+   Internal_Set_Lower (477, (False, 1));
    Internal_Set_Name
-    (474,
+    (477,
      (False, League.Strings.To_Universal_String ("endType")));
-   Internal_Set_Upper (474, (False, (False, 1)));
+   Internal_Set_Upper (477, (False, (False, 1)));
 
    Internal_Set_Body
-    (475,
+    (478,
      (False, League.Strings.To_Universal_String ("endType is derived from the types of the member ends.")));
 
    Internal_Set_Name
-    (476,
+    (479,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (478, Return_Direction);
-   Internal_Set_Is_Ordered (478, True);
-   Internal_Set_Is_Unique (478, True);
-   Internal_Set_Lower (478, (False, 0));
-   Internal_Set_Upper (478, (False, (Unlimited => True)));
+   Internal_Set_Direction (481, Return_Direction);
+   Internal_Set_Is_Ordered (481, True);
+   Internal_Set_Is_Unique (481, True);
+   Internal_Set_Lower (481, (False, 0));
+   Internal_Set_Upper (481, (False, (Unlimited => True)));
 
    Internal_Set_Is_Abstract (3, False);
    Internal_Set_Is_Final_Specialization (3, False);
@@ -3049,7 +3084,7 @@ begin
      (False, League.Strings.To_Universal_String ("Class")));
 
    Internal_Set_Body
-    (479,
+    (482,
      (False, League.Strings.To_Universal_String ("A class describes a set of objects that share the same specifications of features, constraints, and semantics.")));
 
    Internal_Set_Default
@@ -3069,7 +3104,7 @@ begin
    Internal_Set_Upper (80, (False, (False, 1)));
 
    Internal_Set_Body
-    (480,
+    (483,
      (False, League.Strings.To_Universal_String ("True when a class is abstract.")));
 
    Internal_Set_Is_Composite (40, True);
@@ -3086,7 +3121,7 @@ begin
    Internal_Set_Upper (40, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (481,
+    (484,
      (False, League.Strings.To_Universal_String ("The attributes (i.e. the properties) owned by the class.")));
 
    Internal_Set_Is_Composite (41, True);
@@ -3103,7 +3138,7 @@ begin
    Internal_Set_Upper (41, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (482,
+    (485,
      (False, League.Strings.To_Universal_String ("The operations owned by the class.")));
 
    Internal_Set_Is_Composite (42, False);
@@ -3120,42 +3155,42 @@ begin
    Internal_Set_Upper (42, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (483,
+    (486,
      (False, League.Strings.To_Universal_String ("This gives the superclasses of a class.")));
 
-   Internal_Set_Is_Leaf (484, False);
-   Internal_Set_Is_Ordered (484, False);
-   Internal_Set_Is_Query (484, True);
-   Internal_Set_Is_Unique (484, True);
-   Internal_Set_Lower (484, (False, 1));
+   Internal_Set_Is_Leaf (487, False);
+   Internal_Set_Is_Ordered (487, False);
+   Internal_Set_Is_Query (487, True);
+   Internal_Set_Is_Unique (487, True);
+   Internal_Set_Lower (487, (False, 1));
    Internal_Set_Name
-    (484,
+    (487,
      (False, League.Strings.To_Universal_String ("inherit")));
-   Internal_Set_Upper (484, (False, (False, 1)));
+   Internal_Set_Upper (487, (False, (False, 1)));
 
    Internal_Set_Body
-    (485,
+    (488,
      (False, League.Strings.To_Universal_String ("The inherit operation is overridden to exclude redefined properties.")));
 
    Internal_Set_Name
-    (486,
+    (489,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (488, Return_Direction);
-   Internal_Set_Is_Ordered (488, False);
-   Internal_Set_Is_Unique (488, True);
-   Internal_Set_Lower (488, (False, 0));
-   Internal_Set_Upper (488, (False, (Unlimited => True)));
+   Internal_Set_Direction (491, Return_Direction);
+   Internal_Set_Is_Ordered (491, False);
+   Internal_Set_Is_Unique (491, True);
+   Internal_Set_Lower (491, (False, 0));
+   Internal_Set_Upper (491, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (489, In_Direction);
-   Internal_Set_Is_Ordered (489, False);
-   Internal_Set_Is_Unique (489, True);
-   Internal_Set_Lower (489, (False, 0));
+   Internal_Set_Direction (492, In_Direction);
+   Internal_Set_Is_Ordered (492, False);
+   Internal_Set_Is_Unique (492, True);
+   Internal_Set_Lower (492, (False, 0));
    Internal_Set_Name
-    (489,
+    (492,
      (False, League.Strings.To_Universal_String ("inhs")));
-   Internal_Set_Upper (489, (False, (Unlimited => True)));
+   Internal_Set_Upper (492, (False, (Unlimited => True)));
 
    Internal_Set_Is_Abstract (26, False);
    Internal_Set_Is_Final_Specialization (26, False);
@@ -3164,69 +3199,69 @@ begin
      (False, League.Strings.To_Universal_String ("Property")));
 
    Internal_Set_Body
-    (490,
+    (493,
      (False, League.Strings.To_Universal_String ("A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.")));
 
    Internal_Set_Name
-    (491,
+    (494,
      (False, League.Strings.To_Universal_String ("multiplicity_of_composite")));
 
    Internal_Set_Body
-    (492,
+    (495,
      (False, League.Strings.To_Universal_String ("A multiplicity of a composite aggregation must not have an upper bound greater than 1.")));
 
 
    Internal_Set_Name
-    (494,
+    (497,
      (False, League.Strings.To_Universal_String ("subsetting_context_conforms")));
 
    Internal_Set_Body
-    (495,
+    (498,
      (False, League.Strings.To_Universal_String ("Subsetting may only occur when the context of the subsetting property conforms to the context of the subsetted property.")));
 
 
    Internal_Set_Name
-    (497,
+    (500,
      (False, League.Strings.To_Universal_String ("redefined_property_inherited")));
 
    Internal_Set_Body
-    (498,
+    (501,
      (False, League.Strings.To_Universal_String ("A redefined property must be inherited from a more general classifier containing the redefining property.")));
 
 
    Internal_Set_Name
-    (500,
+    (503,
      (False, League.Strings.To_Universal_String ("subsetting_rules")));
 
    Internal_Set_Body
-    (501,
+    (504,
      (False, League.Strings.To_Universal_String ("A subsetting property may strengthen the type of the subsetted property, and its upper bound may be less.")));
 
 
    Internal_Set_Name
-    (503,
+    (506,
      (False, League.Strings.To_Universal_String ("navigable_readonly")));
 
    Internal_Set_Body
-    (504,
+    (507,
      (False, League.Strings.To_Universal_String ("Only a navigable property can be marked as readOnly.")));
 
 
    Internal_Set_Name
-    (506,
+    (509,
      (False, League.Strings.To_Universal_String ("derived_union_is_derived")));
 
    Internal_Set_Body
-    (507,
+    (510,
      (False, League.Strings.To_Universal_String ("A derived union is derived.")));
 
 
    Internal_Set_Name
-    (509,
+    (512,
      (False, League.Strings.To_Universal_String ("subsetted_property_names")));
 
    Internal_Set_Body
-    (510,
+    (513,
      (False, League.Strings.To_Universal_String ("A property may not subset a property with the same name.")));
 
 
@@ -3247,7 +3282,7 @@ begin
    Internal_Set_Upper (127, (False, (False, 1)));
 
    Internal_Set_Body
-    (512,
+    (515,
      (False, League.Strings.To_Universal_String ("If isReadOnly is true, the attribute may not be written to after initialization.")));
 
    Internal_Set_Is_Composite (123, False);
@@ -3264,7 +3299,7 @@ begin
    Internal_Set_Upper (123, (False, (False, 1)));
 
    Internal_Set_Body
-    (513,
+    (516,
      (False, League.Strings.To_Universal_String ("Specifies a String that represents a value to be used when no argument is supplied for the Property.")));
 
    Internal_Set_Default
@@ -3284,7 +3319,7 @@ begin
    Internal_Set_Upper (124, (False, (False, 1)));
 
    Internal_Set_Body
-    (514,
+    (517,
      (False, League.Strings.To_Universal_String ("If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.")));
 
    Internal_Set_Default
@@ -3304,7 +3339,7 @@ begin
    Internal_Set_Upper (125, (False, (False, 1)));
 
    Internal_Set_Body
-    (515,
+    (518,
      (False, League.Strings.To_Universal_String ("If isDerived is true, the value of the attribute is derived from information elsewhere.")));
 
    Internal_Set_Default
@@ -3324,7 +3359,7 @@ begin
    Internal_Set_Upper (126, (False, (False, 1)));
 
    Internal_Set_Body
-    (516,
+    (519,
      (False, League.Strings.To_Universal_String ("Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.")));
 
    Internal_Set_Is_Composite (121, False);
@@ -3341,7 +3376,7 @@ begin
    Internal_Set_Upper (121, (False, (False, 1)));
 
    Internal_Set_Body
-    (517,
+    (520,
      (False, League.Strings.To_Universal_String ("References the Class that owns the Property.")));
 
    Internal_Set_Is_Composite (129, False);
@@ -3358,7 +3393,7 @@ begin
    Internal_Set_Upper (129, (False, (False, 1)));
 
    Internal_Set_Body
-    (518,
+    (521,
      (False, League.Strings.To_Universal_String ("References the owning association of this property, if any.")));
 
    Internal_Set_Is_Composite (73, False);
@@ -3375,7 +3410,7 @@ begin
    Internal_Set_Upper (73, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (519,
+    (522,
      (False, League.Strings.To_Universal_String ("References the properties that are redefined by this property.")));
 
    Internal_Set_Is_Composite (74, False);
@@ -3392,7 +3427,7 @@ begin
    Internal_Set_Upper (74, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (520,
+    (523,
      (False, League.Strings.To_Universal_String ("References the properties of which this property is constrained to be a subset.")));
 
    Internal_Set_Is_Composite (128, False);
@@ -3409,7 +3444,7 @@ begin
    Internal_Set_Upper (128, (False, (False, 1)));
 
    Internal_Set_Body
-    (521,
+    (524,
      (False, League.Strings.To_Universal_String ("In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.")));
 
    Internal_Set_Is_Composite (122, False);
@@ -3426,7 +3461,7 @@ begin
    Internal_Set_Upper (122, (False, (False, 1)));
 
    Internal_Set_Body
-    (522,
+    (525,
      (False, League.Strings.To_Universal_String ("The DataType that owns this Property.")));
 
    Internal_Set_Is_Composite (120, False);
@@ -3443,153 +3478,153 @@ begin
    Internal_Set_Upper (120, (False, (False, 1)));
 
    Internal_Set_Body
-    (523,
+    (526,
      (False, League.Strings.To_Universal_String ("References the association of which this property is a member, if any.")));
 
-   Internal_Set_Is_Leaf (524, False);
-   Internal_Set_Is_Ordered (524, False);
-   Internal_Set_Is_Query (524, True);
-   Internal_Set_Is_Unique (524, True);
-   Internal_Set_Lower (524, (False, 1));
+   Internal_Set_Is_Leaf (527, False);
+   Internal_Set_Is_Ordered (527, False);
+   Internal_Set_Is_Query (527, True);
+   Internal_Set_Is_Unique (527, True);
+   Internal_Set_Lower (527, (False, 1));
    Internal_Set_Name
-    (524,
+    (527,
      (False, League.Strings.To_Universal_String ("opposite")));
-   Internal_Set_Upper (524, (False, (False, 1)));
+   Internal_Set_Upper (527, (False, (False, 1)));
 
    Internal_Set_Body
-    (525,
+    (528,
      (False, League.Strings.To_Universal_String ("If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.")));
 
    Internal_Set_Name
-    (526,
+    (529,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (528, Return_Direction);
-   Internal_Set_Is_Ordered (528, False);
-   Internal_Set_Is_Unique (528, True);
-   Internal_Set_Lower (528, (False, 1));
-   Internal_Set_Upper (528, (False, (False, 1)));
+   Internal_Set_Direction (531, Return_Direction);
+   Internal_Set_Is_Ordered (531, False);
+   Internal_Set_Is_Unique (531, True);
+   Internal_Set_Lower (531, (False, 1));
+   Internal_Set_Upper (531, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (529, False);
-   Internal_Set_Is_Ordered (529, False);
-   Internal_Set_Is_Query (529, True);
-   Internal_Set_Is_Unique (529, True);
-   Internal_Set_Lower (529, (False, 1));
+   Internal_Set_Is_Leaf (532, False);
+   Internal_Set_Is_Ordered (532, False);
+   Internal_Set_Is_Query (532, True);
+   Internal_Set_Is_Unique (532, True);
+   Internal_Set_Lower (532, (False, 1));
    Internal_Set_Name
-    (529,
+    (532,
      (False, League.Strings.To_Universal_String ("isConsistentWith")));
-   Internal_Set_Upper (529, (False, (False, 1)));
+   Internal_Set_Upper (532, (False, (False, 1)));
 
    Internal_Set_Body
-    (530,
+    (533,
      (False, League.Strings.To_Universal_String ("The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property, and the redefining property is derived if the redefined property is derived.")));
 
 
 
    Internal_Set_Name
-    (533,
+    (536,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (535, Return_Direction);
-   Internal_Set_Is_Ordered (535, False);
-   Internal_Set_Is_Unique (535, True);
-   Internal_Set_Lower (535, (False, 1));
-   Internal_Set_Upper (535, (False, (False, 1)));
+   Internal_Set_Direction (538, Return_Direction);
+   Internal_Set_Is_Ordered (538, False);
+   Internal_Set_Is_Unique (538, True);
+   Internal_Set_Lower (538, (False, 1));
+   Internal_Set_Upper (538, (False, (False, 1)));
 
-   Internal_Set_Direction (536, In_Direction);
-   Internal_Set_Is_Ordered (536, False);
-   Internal_Set_Is_Unique (536, True);
-   Internal_Set_Lower (536, (False, 1));
+   Internal_Set_Direction (539, In_Direction);
+   Internal_Set_Is_Ordered (539, False);
+   Internal_Set_Is_Unique (539, True);
+   Internal_Set_Lower (539, (False, 1));
    Internal_Set_Name
-    (536,
+    (539,
      (False, League.Strings.To_Universal_String ("redefinee")));
-   Internal_Set_Upper (536, (False, (False, 1)));
+   Internal_Set_Upper (539, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (537, False);
-   Internal_Set_Is_Ordered (537, False);
-   Internal_Set_Is_Query (537, True);
-   Internal_Set_Is_Unique (537, True);
-   Internal_Set_Lower (537, (False, 1));
+   Internal_Set_Is_Leaf (540, False);
+   Internal_Set_Is_Ordered (540, False);
+   Internal_Set_Is_Query (540, True);
+   Internal_Set_Is_Unique (540, True);
+   Internal_Set_Lower (540, (False, 1));
    Internal_Set_Name
-    (537,
+    (540,
      (False, League.Strings.To_Universal_String ("subsettingContext")));
-   Internal_Set_Upper (537, (False, (False, 1)));
+   Internal_Set_Upper (540, (False, (False, 1)));
 
    Internal_Set_Body
-    (538,
+    (541,
      (False, League.Strings.To_Universal_String ("The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.")));
 
    Internal_Set_Name
-    (539,
+    (542,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (541, Return_Direction);
-   Internal_Set_Is_Ordered (541, False);
-   Internal_Set_Is_Unique (541, True);
-   Internal_Set_Lower (541, (False, 0));
-   Internal_Set_Upper (541, (False, (Unlimited => True)));
+   Internal_Set_Direction (544, Return_Direction);
+   Internal_Set_Is_Ordered (544, False);
+   Internal_Set_Is_Unique (544, True);
+   Internal_Set_Lower (544, (False, 0));
+   Internal_Set_Upper (544, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (542, False);
-   Internal_Set_Is_Ordered (542, False);
-   Internal_Set_Is_Query (542, True);
-   Internal_Set_Is_Unique (542, True);
-   Internal_Set_Lower (542, (False, 1));
+   Internal_Set_Is_Leaf (545, False);
+   Internal_Set_Is_Ordered (545, False);
+   Internal_Set_Is_Query (545, True);
+   Internal_Set_Is_Unique (545, True);
+   Internal_Set_Lower (545, (False, 1));
    Internal_Set_Name
-    (542,
+    (545,
      (False, League.Strings.To_Universal_String ("isNavigable")));
-   Internal_Set_Upper (542, (False, (False, 1)));
+   Internal_Set_Upper (545, (False, (False, 1)));
 
    Internal_Set_Body
-    (543,
+    (546,
      (False, League.Strings.To_Universal_String ("The query isNavigable() indicates whether it is possible to navigate across the property.")));
 
    Internal_Set_Name
-    (544,
+    (547,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (546, Return_Direction);
-   Internal_Set_Is_Ordered (546, False);
-   Internal_Set_Is_Unique (546, True);
-   Internal_Set_Lower (546, (False, 1));
-   Internal_Set_Upper (546, (False, (False, 1)));
+   Internal_Set_Direction (549, Return_Direction);
+   Internal_Set_Is_Ordered (549, False);
+   Internal_Set_Is_Unique (549, True);
+   Internal_Set_Lower (549, (False, 1));
+   Internal_Set_Upper (549, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (547, False);
-   Internal_Set_Is_Ordered (547, False);
-   Internal_Set_Is_Query (547, True);
-   Internal_Set_Is_Unique (547, True);
-   Internal_Set_Lower (547, (False, 1));
+   Internal_Set_Is_Leaf (550, False);
+   Internal_Set_Is_Ordered (550, False);
+   Internal_Set_Is_Query (550, True);
+   Internal_Set_Is_Unique (550, True);
+   Internal_Set_Lower (550, (False, 1));
    Internal_Set_Name
-    (547,
+    (550,
      (False, League.Strings.To_Universal_String ("isAttribute")));
-   Internal_Set_Upper (547, (False, (False, 1)));
+   Internal_Set_Upper (550, (False, (False, 1)));
 
    Internal_Set_Body
-    (548,
+    (551,
      (False, League.Strings.To_Universal_String ("The query isAttribute() is true if the Property is defined as an attribute of some classifier.")));
 
    Internal_Set_Name
-    (549,
+    (552,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (551, Return_Direction);
-   Internal_Set_Is_Ordered (551, False);
-   Internal_Set_Is_Unique (551, True);
-   Internal_Set_Lower (551, (False, 1));
-   Internal_Set_Upper (551, (False, (False, 1)));
+   Internal_Set_Direction (554, Return_Direction);
+   Internal_Set_Is_Ordered (554, False);
+   Internal_Set_Is_Unique (554, True);
+   Internal_Set_Lower (554, (False, 1));
+   Internal_Set_Upper (554, (False, (False, 1)));
 
-   Internal_Set_Direction (552, In_Direction);
-   Internal_Set_Is_Ordered (552, False);
-   Internal_Set_Is_Unique (552, True);
-   Internal_Set_Lower (552, (False, 1));
+   Internal_Set_Direction (555, In_Direction);
+   Internal_Set_Is_Ordered (555, False);
+   Internal_Set_Is_Unique (555, True);
+   Internal_Set_Lower (555, (False, 1));
    Internal_Set_Name
-    (552,
+    (555,
      (False, League.Strings.To_Universal_String ("p")));
-   Internal_Set_Upper (552, (False, (False, 1)));
+   Internal_Set_Upper (555, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (7, False);
    Internal_Set_Is_Final_Specialization (7, False);
@@ -3598,7 +3633,7 @@ begin
      (False, League.Strings.To_Universal_String ("DataType")));
 
    Internal_Set_Body
-    (553,
+    (556,
      (False, League.Strings.To_Universal_String ("A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.")));
 
    Internal_Set_Is_Composite (49, True);
@@ -3615,7 +3650,7 @@ begin
    Internal_Set_Upper (49, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (554,
+    (557,
      (False, League.Strings.To_Universal_String ("The Attributes owned by the DataType.")));
 
    Internal_Set_Is_Composite (50, True);
@@ -3632,42 +3667,42 @@ begin
    Internal_Set_Upper (50, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (555,
+    (558,
      (False, League.Strings.To_Universal_String ("The Operations owned by the DataType.")));
 
-   Internal_Set_Is_Leaf (556, False);
-   Internal_Set_Is_Ordered (556, False);
-   Internal_Set_Is_Query (556, True);
-   Internal_Set_Is_Unique (556, True);
-   Internal_Set_Lower (556, (False, 1));
+   Internal_Set_Is_Leaf (559, False);
+   Internal_Set_Is_Ordered (559, False);
+   Internal_Set_Is_Query (559, True);
+   Internal_Set_Is_Unique (559, True);
+   Internal_Set_Lower (559, (False, 1));
    Internal_Set_Name
-    (556,
+    (559,
      (False, League.Strings.To_Universal_String ("inherit")));
-   Internal_Set_Upper (556, (False, (False, 1)));
+   Internal_Set_Upper (559, (False, (False, 1)));
 
    Internal_Set_Body
-    (557,
+    (560,
      (False, League.Strings.To_Universal_String ("The inherit operation is overridden to exclude redefined properties.")));
 
    Internal_Set_Name
-    (558,
+    (561,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (560, Return_Direction);
-   Internal_Set_Is_Ordered (560, False);
-   Internal_Set_Is_Unique (560, True);
-   Internal_Set_Lower (560, (False, 0));
-   Internal_Set_Upper (560, (False, (Unlimited => True)));
+   Internal_Set_Direction (563, Return_Direction);
+   Internal_Set_Is_Ordered (563, False);
+   Internal_Set_Is_Unique (563, True);
+   Internal_Set_Lower (563, (False, 0));
+   Internal_Set_Upper (563, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (561, In_Direction);
-   Internal_Set_Is_Ordered (561, False);
-   Internal_Set_Is_Unique (561, True);
-   Internal_Set_Lower (561, (False, 0));
+   Internal_Set_Direction (564, In_Direction);
+   Internal_Set_Is_Ordered (564, False);
+   Internal_Set_Is_Unique (564, True);
+   Internal_Set_Lower (564, (False, 0));
    Internal_Set_Name
-    (561,
+    (564,
      (False, League.Strings.To_Universal_String ("inhs")));
-   Internal_Set_Upper (561, (False, (Unlimited => True)));
+   Internal_Set_Upper (564, (False, (Unlimited => True)));
 
    Internal_Set_Is_Abstract (11, False);
    Internal_Set_Is_Final_Specialization (11, False);
@@ -3676,7 +3711,7 @@ begin
      (False, League.Strings.To_Universal_String ("Enumeration")));
 
    Internal_Set_Body
-    (562,
+    (565,
      (False, League.Strings.To_Universal_String ("An enumeration is a data type whose values are enumerated in the model as enumeration literals.")));
 
    Internal_Set_Is_Composite (55, True);
@@ -3693,7 +3728,7 @@ begin
    Internal_Set_Upper (55, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (563,
+    (566,
      (False, League.Strings.To_Universal_String ("The ordered set of literals for this Enumeration.")));
 
    Internal_Set_Is_Abstract (12, False);
@@ -3703,7 +3738,7 @@ begin
      (False, League.Strings.To_Universal_String ("EnumerationLiteral")));
 
    Internal_Set_Body
-    (564,
+    (567,
      (False, League.Strings.To_Universal_String ("An enumeration literal is a user-defined data value for an enumeration.")));
 
    Internal_Set_Is_Composite (90, False);
@@ -3720,7 +3755,7 @@ begin
    Internal_Set_Upper (90, (False, (False, 1)));
 
    Internal_Set_Body
-    (565,
+    (568,
      (False, League.Strings.To_Universal_String ("The Enumeration that this EnumerationLiteral is a member of.")));
 
    Internal_Set_Is_Abstract (25, False);
@@ -3730,7 +3765,7 @@ begin
      (False, League.Strings.To_Universal_String ("PrimitiveType")));
 
    Internal_Set_Body
-    (566,
+    (569,
      (False, League.Strings.To_Universal_String ("A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.")));
 
    Internal_Set_Is_Abstract (6, False);
@@ -3740,24 +3775,24 @@ begin
      (False, League.Strings.To_Universal_String ("Constraint")));
 
    Internal_Set_Body
-    (567,
+    (570,
      (False, League.Strings.To_Universal_String ("A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.")));
 
    Internal_Set_Name
-    (568,
+    (571,
      (False, League.Strings.To_Universal_String ("not_apply_to_self")));
 
    Internal_Set_Body
-    (569,
+    (572,
      (False, League.Strings.To_Universal_String ("A constraint cannot be applied to itself.")));
 
 
    Internal_Set_Name
-    (571,
+    (574,
      (False, League.Strings.To_Universal_String ("value_specification_boolean")));
 
    Internal_Set_Body
-    (572,
+    (575,
      (False, League.Strings.To_Universal_String ("The value specification for a constraint must evaluate to a Boolean value.")));
 
 
@@ -3775,7 +3810,7 @@ begin
    Internal_Set_Upper (48, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (574,
+    (577,
      (False, League.Strings.To_Universal_String ("The ordered set of Elements referenced by this Constraint.")));
 
    Internal_Set_Is_Composite (84, True);
@@ -3792,7 +3827,7 @@ begin
    Internal_Set_Upper (84, (False, (False, 1)));
 
    Internal_Set_Body
-    (575,
+    (578,
      (False, League.Strings.To_Universal_String ("A condition that must be true when evaluated in order for the constraint to be satisfied.")));
 
    Internal_Set_Is_Composite (83, False);
@@ -3815,15 +3850,15 @@ begin
      (False, League.Strings.To_Universal_String ("OpaqueExpression")));
 
    Internal_Set_Body
-    (576,
+    (579,
      (False, League.Strings.To_Universal_String ("An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.")));
 
    Internal_Set_Name
-    (577,
+    (580,
      (False, League.Strings.To_Universal_String ("language_body_size")));
 
    Internal_Set_Body
-    (578,
+    (581,
      (False, League.Strings.To_Universal_String ("If the language attribute is not empty, then the size of the body and language arrays must be the same.")));
 
 
@@ -3841,7 +3876,7 @@ begin
    Internal_Set_Upper (99, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (580,
+    (583,
      (False, League.Strings.To_Universal_String ("The text of the expression, possibly in multiple languages.")));
 
    Internal_Set_Is_Composite (100, True);
@@ -3858,7 +3893,7 @@ begin
    Internal_Set_Upper (100, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (581,
+    (584,
      (False, League.Strings.To_Universal_String ("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.")));
 
    Internal_Set_Is_Abstract (19, False);
@@ -3868,24 +3903,24 @@ begin
      (False, League.Strings.To_Universal_String ("Operation")));
 
    Internal_Set_Body
-    (582,
+    (585,
      (False, League.Strings.To_Universal_String ("An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.")));
 
    Internal_Set_Name
-    (583,
+    (586,
      (False, League.Strings.To_Universal_String ("only_body_for_query")));
 
    Internal_Set_Body
-    (584,
+    (587,
      (False, League.Strings.To_Universal_String ("A bodyCondition can only be specified for a query operation.")));
 
 
    Internal_Set_Name
-    (586,
+    (589,
      (False, League.Strings.To_Universal_String ("at_most_one_return")));
 
    Internal_Set_Body
-    (587,
+    (590,
      (False, League.Strings.To_Universal_String ("An operation can have at most one return parameter; i.e., an owned parameter with the direction set to 'return'")));
 
 
@@ -3906,7 +3941,7 @@ begin
    Internal_Set_Upper (105, (False, (False, 1)));
 
    Internal_Set_Body
-    (589,
+    (592,
      (False, League.Strings.To_Universal_String ("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).")));
 
    Internal_Set_Default
@@ -3926,7 +3961,7 @@ begin
    Internal_Set_Upper (104, (False, (False, 1)));
 
    Internal_Set_Body
-    (590,
+    (593,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
 
    Internal_Set_Default
@@ -3946,7 +3981,7 @@ begin
    Internal_Set_Upper (106, (False, (False, 1)));
 
    Internal_Set_Body
-    (591,
+    (594,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
 
    Internal_Set_Default
@@ -3966,7 +4001,7 @@ begin
    Internal_Set_Upper (107, (False, (False, 1)));
 
    Internal_Set_Body
-    (592,
+    (595,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
 
    Internal_Set_Default
@@ -3986,7 +4021,7 @@ begin
    Internal_Set_Upper (109, (False, (False, 1)));
 
    Internal_Set_Body
-    (593,
+    (596,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
 
    Internal_Set_Is_Composite (102, False);
@@ -4003,7 +4038,7 @@ begin
    Internal_Set_Upper (102, (False, (False, 1)));
 
    Internal_Set_Body
-    (594,
+    (597,
      (False, League.Strings.To_Universal_String ("The class that owns the operation.")));
 
    Internal_Set_Is_Composite (103, False);
@@ -4020,7 +4055,7 @@ begin
    Internal_Set_Upper (103, (False, (False, 1)));
 
    Internal_Set_Body
-    (595,
+    (598,
      (False, League.Strings.To_Universal_String ("The DataType that owns this Operation.")));
 
    Internal_Set_Is_Composite (67, False);
@@ -4037,7 +4072,7 @@ begin
    Internal_Set_Upper (67, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (596,
+    (599,
      (False, League.Strings.To_Universal_String ("References the Types representing exceptions that may be raised during an invocation of this operation.")));
 
    Internal_Set_Is_Composite (68, False);
@@ -4054,7 +4089,7 @@ begin
    Internal_Set_Upper (68, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (597,
+    (600,
      (False, League.Strings.To_Universal_String ("References the Operations that are redefined by this Operation.")));
 
    Internal_Set_Is_Composite (108, False);
@@ -4071,7 +4106,7 @@ begin
    Internal_Set_Upper (108, (False, (False, 1)));
 
    Internal_Set_Body
-    (598,
+    (601,
      (False, League.Strings.To_Universal_String ("This information is derived from the return result for this Operation.")));
 
    Internal_Set_Is_Composite (64, True);
@@ -4088,7 +4123,7 @@ begin
    Internal_Set_Upper (64, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (599,
+    (602,
      (False, League.Strings.To_Universal_String ("Specifies the ordered set of formal parameters of this BehavioralFeature.")));
 
    Internal_Set_Is_Composite (66, True);
@@ -4130,187 +4165,187 @@ begin
      (False, League.Strings.To_Universal_String ("bodyCondition")));
    Internal_Set_Upper (101, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (600, False);
-   Internal_Set_Is_Ordered (600, False);
-   Internal_Set_Is_Query (600, True);
-   Internal_Set_Is_Unique (600, True);
-   Internal_Set_Lower (600, (False, 1));
+   Internal_Set_Is_Leaf (603, False);
+   Internal_Set_Is_Ordered (603, False);
+   Internal_Set_Is_Query (603, True);
+   Internal_Set_Is_Unique (603, True);
+   Internal_Set_Lower (603, (False, 1));
    Internal_Set_Name
-    (600,
+    (603,
      (False, League.Strings.To_Universal_String ("isOrdered")));
-   Internal_Set_Upper (600, (False, (False, 1)));
+   Internal_Set_Upper (603, (False, (False, 1)));
 
    Internal_Set_Body
-    (601,
+    (604,
      (False, League.Strings.To_Universal_String ("If this operation has a return parameter, isOrdered equals the value of isOrdered for that parameter. Otherwise isOrdered is false.")));
 
    Internal_Set_Name
-    (602,
+    (605,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (604, Return_Direction);
-   Internal_Set_Is_Ordered (604, False);
-   Internal_Set_Is_Unique (604, True);
-   Internal_Set_Lower (604, (False, 1));
-   Internal_Set_Upper (604, (False, (False, 1)));
+   Internal_Set_Direction (607, Return_Direction);
+   Internal_Set_Is_Ordered (607, False);
+   Internal_Set_Is_Unique (607, True);
+   Internal_Set_Lower (607, (False, 1));
+   Internal_Set_Upper (607, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (605, False);
-   Internal_Set_Is_Ordered (605, False);
-   Internal_Set_Is_Query (605, True);
-   Internal_Set_Is_Unique (605, True);
-   Internal_Set_Lower (605, (False, 1));
+   Internal_Set_Is_Leaf (608, False);
+   Internal_Set_Is_Ordered (608, False);
+   Internal_Set_Is_Query (608, True);
+   Internal_Set_Is_Unique (608, True);
+   Internal_Set_Lower (608, (False, 1));
    Internal_Set_Name
-    (605,
+    (608,
      (False, League.Strings.To_Universal_String ("isUnique")));
-   Internal_Set_Upper (605, (False, (False, 1)));
+   Internal_Set_Upper (608, (False, (False, 1)));
 
    Internal_Set_Body
-    (606,
+    (609,
      (False, League.Strings.To_Universal_String ("If this operation has a return parameter, isUnique equals the value of isUnique for that parameter. Otherwise isUnique is true.")));
 
    Internal_Set_Name
-    (607,
+    (610,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (609, Return_Direction);
-   Internal_Set_Is_Ordered (609, False);
-   Internal_Set_Is_Unique (609, True);
-   Internal_Set_Lower (609, (False, 1));
-   Internal_Set_Upper (609, (False, (False, 1)));
+   Internal_Set_Direction (612, Return_Direction);
+   Internal_Set_Is_Ordered (612, False);
+   Internal_Set_Is_Unique (612, True);
+   Internal_Set_Lower (612, (False, 1));
+   Internal_Set_Upper (612, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (610, False);
-   Internal_Set_Is_Ordered (610, False);
-   Internal_Set_Is_Query (610, True);
-   Internal_Set_Is_Unique (610, True);
-   Internal_Set_Lower (610, (False, 1));
+   Internal_Set_Is_Leaf (613, False);
+   Internal_Set_Is_Ordered (613, False);
+   Internal_Set_Is_Query (613, True);
+   Internal_Set_Is_Unique (613, True);
+   Internal_Set_Lower (613, (False, 1));
    Internal_Set_Name
-    (610,
+    (613,
      (False, League.Strings.To_Universal_String ("lower")));
-   Internal_Set_Upper (610, (False, (False, 1)));
+   Internal_Set_Upper (613, (False, (False, 1)));
 
    Internal_Set_Body
-    (611,
+    (614,
      (False, League.Strings.To_Universal_String ("If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.")));
 
    Internal_Set_Name
-    (612,
+    (615,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (614, Return_Direction);
-   Internal_Set_Is_Ordered (614, False);
-   Internal_Set_Is_Unique (614, True);
-   Internal_Set_Lower (614, (False, 1));
-   Internal_Set_Upper (614, (False, (False, 1)));
+   Internal_Set_Direction (617, Return_Direction);
+   Internal_Set_Is_Ordered (617, False);
+   Internal_Set_Is_Unique (617, True);
+   Internal_Set_Lower (617, (False, 1));
+   Internal_Set_Upper (617, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (615, False);
-   Internal_Set_Is_Ordered (615, False);
-   Internal_Set_Is_Query (615, True);
-   Internal_Set_Is_Unique (615, True);
-   Internal_Set_Lower (615, (False, 1));
+   Internal_Set_Is_Leaf (618, False);
+   Internal_Set_Is_Ordered (618, False);
+   Internal_Set_Is_Query (618, True);
+   Internal_Set_Is_Unique (618, True);
+   Internal_Set_Lower (618, (False, 1));
    Internal_Set_Name
-    (615,
+    (618,
      (False, League.Strings.To_Universal_String ("upper")));
-   Internal_Set_Upper (615, (False, (False, 1)));
+   Internal_Set_Upper (618, (False, (False, 1)));
 
    Internal_Set_Body
-    (616,
+    (619,
      (False, League.Strings.To_Universal_String ("If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.")));
 
    Internal_Set_Name
-    (617,
+    (620,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (619, Return_Direction);
-   Internal_Set_Is_Ordered (619, False);
-   Internal_Set_Is_Unique (619, True);
-   Internal_Set_Lower (619, (False, 1));
-   Internal_Set_Upper (619, (False, (False, 1)));
+   Internal_Set_Direction (622, Return_Direction);
+   Internal_Set_Is_Ordered (622, False);
+   Internal_Set_Is_Unique (622, True);
+   Internal_Set_Lower (622, (False, 1));
+   Internal_Set_Upper (622, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (620, False);
-   Internal_Set_Is_Ordered (620, False);
-   Internal_Set_Is_Query (620, True);
-   Internal_Set_Is_Unique (620, True);
-   Internal_Set_Lower (620, (False, 1));
+   Internal_Set_Is_Leaf (623, False);
+   Internal_Set_Is_Ordered (623, False);
+   Internal_Set_Is_Query (623, True);
+   Internal_Set_Is_Unique (623, True);
+   Internal_Set_Lower (623, (False, 1));
    Internal_Set_Name
-    (620,
+    (623,
      (False, League.Strings.To_Universal_String ("type")));
-   Internal_Set_Upper (620, (False, (False, 1)));
+   Internal_Set_Upper (623, (False, (False, 1)));
 
    Internal_Set_Body
-    (621,
+    (624,
      (False, League.Strings.To_Universal_String ("If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.")));
 
    Internal_Set_Name
-    (622,
+    (625,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (624, Return_Direction);
-   Internal_Set_Is_Ordered (624, False);
-   Internal_Set_Is_Unique (624, True);
-   Internal_Set_Lower (624, (False, 1));
-   Internal_Set_Upper (624, (False, (False, 1)));
+   Internal_Set_Direction (627, Return_Direction);
+   Internal_Set_Is_Ordered (627, False);
+   Internal_Set_Is_Unique (627, True);
+   Internal_Set_Lower (627, (False, 1));
+   Internal_Set_Upper (627, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (625, False);
-   Internal_Set_Is_Ordered (625, False);
-   Internal_Set_Is_Query (625, True);
-   Internal_Set_Is_Unique (625, True);
-   Internal_Set_Lower (625, (False, 1));
+   Internal_Set_Is_Leaf (628, False);
+   Internal_Set_Is_Ordered (628, False);
+   Internal_Set_Is_Query (628, True);
+   Internal_Set_Is_Unique (628, True);
+   Internal_Set_Lower (628, (False, 1));
    Internal_Set_Name
-    (625,
+    (628,
      (False, League.Strings.To_Universal_String ("isConsistentWith")));
-   Internal_Set_Upper (625, (False, (False, 1)));
+   Internal_Set_Upper (628, (False, (False, 1)));
 
    Internal_Set_Body
-    (626,
+    (629,
      (False, League.Strings.To_Universal_String ("The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'.")));
 
 
 
    Internal_Set_Name
-    (629,
-     (False, League.Strings.To_Universal_String ("spec")));
-
-
-   Internal_Set_Direction (631, Return_Direction);
-   Internal_Set_Is_Ordered (631, False);
-   Internal_Set_Is_Unique (631, True);
-   Internal_Set_Lower (631, (False, 1));
-   Internal_Set_Upper (631, (False, (False, 1)));
-
-   Internal_Set_Direction (632, In_Direction);
-   Internal_Set_Is_Ordered (632, False);
-   Internal_Set_Is_Unique (632, True);
-   Internal_Set_Lower (632, (False, 1));
-   Internal_Set_Name
     (632,
-     (False, League.Strings.To_Universal_String ("redefinee")));
-   Internal_Set_Upper (632, (False, (False, 1)));
-
-   Internal_Set_Is_Leaf (633, False);
-   Internal_Set_Is_Ordered (633, False);
-   Internal_Set_Is_Query (633, True);
-   Internal_Set_Is_Unique (633, True);
-   Internal_Set_Lower (633, (False, 1));
-   Internal_Set_Name
-    (633,
-     (False, League.Strings.To_Universal_String ("returnResult")));
-   Internal_Set_Upper (633, (False, (False, 1)));
-
-   Internal_Set_Name
-    (634,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (636, Return_Direction);
+   Internal_Set_Direction (634, Return_Direction);
+   Internal_Set_Is_Ordered (634, False);
+   Internal_Set_Is_Unique (634, True);
+   Internal_Set_Lower (634, (False, 1));
+   Internal_Set_Upper (634, (False, (False, 1)));
+
+   Internal_Set_Direction (635, In_Direction);
+   Internal_Set_Is_Ordered (635, False);
+   Internal_Set_Is_Unique (635, True);
+   Internal_Set_Lower (635, (False, 1));
+   Internal_Set_Name
+    (635,
+     (False, League.Strings.To_Universal_String ("redefinee")));
+   Internal_Set_Upper (635, (False, (False, 1)));
+
+   Internal_Set_Is_Leaf (636, False);
    Internal_Set_Is_Ordered (636, False);
+   Internal_Set_Is_Query (636, True);
    Internal_Set_Is_Unique (636, True);
-   Internal_Set_Lower (636, (False, 0));
-   Internal_Set_Upper (636, (False, (Unlimited => True)));
+   Internal_Set_Lower (636, (False, 1));
+   Internal_Set_Name
+    (636,
+     (False, League.Strings.To_Universal_String ("returnResult")));
+   Internal_Set_Upper (636, (False, (False, 1)));
+
+   Internal_Set_Name
+    (637,
+     (False, League.Strings.To_Universal_String ("spec")));
+
+
+   Internal_Set_Direction (639, Return_Direction);
+   Internal_Set_Is_Ordered (639, False);
+   Internal_Set_Is_Unique (639, True);
+   Internal_Set_Lower (639, (False, 0));
+   Internal_Set_Upper (639, (False, (Unlimited => True)));
 
    Internal_Set_Is_Abstract (24, False);
    Internal_Set_Is_Final_Specialization (24, False);
@@ -4319,7 +4354,7 @@ begin
      (False, League.Strings.To_Universal_String ("Parameter")));
 
    Internal_Set_Body
-    (637,
+    (640,
      (False, League.Strings.To_Universal_String ("A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.")));
 
    Internal_Set_Is_Composite (117, False);
@@ -4336,7 +4371,7 @@ begin
    Internal_Set_Upper (117, (False, (False, 1)));
 
    Internal_Set_Body
-    (638,
+    (641,
      (False, League.Strings.To_Universal_String ("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.")));
 
    Internal_Set_Default
@@ -4356,7 +4391,7 @@ begin
    Internal_Set_Upper (118, (False, (False, 1)));
 
    Internal_Set_Body
-    (639,
+    (642,
      (False, League.Strings.To_Universal_String ("Indicates whether a parameter is being sent into or out of a behavioral element.")));
 
    Internal_Set_Is_Composite (119, False);
@@ -4373,7 +4408,7 @@ begin
    Internal_Set_Upper (119, (False, (False, 1)));
 
    Internal_Set_Body
-    (640,
+    (643,
      (False, League.Strings.To_Universal_String ("References the Operation owning this parameter.")));
 
    Internal_Set_Is_Abstract (2, True);
@@ -4383,7 +4418,7 @@ begin
      (False, League.Strings.To_Universal_String ("BehavioralFeature")));
 
    Internal_Set_Body
-    (641,
+    (644,
      (False, League.Strings.To_Universal_String ("A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.")));
 
    Internal_Set_Is_Composite (38, True);
@@ -4400,7 +4435,7 @@ begin
    Internal_Set_Upper (38, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (642,
+    (645,
      (False, League.Strings.To_Universal_String ("Specifies the ordered set of formal parameters of this BehavioralFeature.")));
 
    Internal_Set_Is_Composite (39, False);
@@ -4417,51 +4452,51 @@ begin
    Internal_Set_Upper (39, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (643,
+    (646,
      (False, League.Strings.To_Universal_String ("References the Types representing exceptions that may be raised during an invocation of this feature.")));
 
-   Internal_Set_Is_Leaf (644, False);
-   Internal_Set_Is_Ordered (644, False);
-   Internal_Set_Is_Query (644, True);
-   Internal_Set_Is_Unique (644, True);
-   Internal_Set_Lower (644, (False, 1));
+   Internal_Set_Is_Leaf (647, False);
+   Internal_Set_Is_Ordered (647, False);
+   Internal_Set_Is_Query (647, True);
+   Internal_Set_Is_Unique (647, True);
+   Internal_Set_Lower (647, (False, 1));
    Internal_Set_Name
-    (644,
+    (647,
      (False, League.Strings.To_Universal_String ("isDistinguishableFrom")));
-   Internal_Set_Upper (644, (False, (False, 1)));
+   Internal_Set_Upper (647, (False, (False, 1)));
 
    Internal_Set_Body
-    (645,
+    (648,
      (False, League.Strings.To_Universal_String ("The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.")));
 
    Internal_Set_Name
-    (646,
+    (649,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (648, Return_Direction);
-   Internal_Set_Is_Ordered (648, False);
-   Internal_Set_Is_Unique (648, True);
-   Internal_Set_Lower (648, (False, 1));
-   Internal_Set_Upper (648, (False, (False, 1)));
+   Internal_Set_Direction (651, Return_Direction);
+   Internal_Set_Is_Ordered (651, False);
+   Internal_Set_Is_Unique (651, True);
+   Internal_Set_Lower (651, (False, 1));
+   Internal_Set_Upper (651, (False, (False, 1)));
 
-   Internal_Set_Direction (649, In_Direction);
-   Internal_Set_Is_Ordered (649, False);
-   Internal_Set_Is_Unique (649, True);
-   Internal_Set_Lower (649, (False, 1));
+   Internal_Set_Direction (652, In_Direction);
+   Internal_Set_Is_Ordered (652, False);
+   Internal_Set_Is_Unique (652, True);
+   Internal_Set_Lower (652, (False, 1));
    Internal_Set_Name
-    (649,
+    (652,
      (False, League.Strings.To_Universal_String ("n")));
-   Internal_Set_Upper (649, (False, (False, 1)));
+   Internal_Set_Upper (652, (False, (False, 1)));
 
-   Internal_Set_Direction (650, In_Direction);
-   Internal_Set_Is_Ordered (650, False);
-   Internal_Set_Is_Unique (650, True);
-   Internal_Set_Lower (650, (False, 1));
+   Internal_Set_Direction (653, In_Direction);
+   Internal_Set_Is_Ordered (653, False);
+   Internal_Set_Is_Unique (653, True);
+   Internal_Set_Lower (653, (False, 1));
    Internal_Set_Name
-    (650,
+    (653,
      (False, League.Strings.To_Universal_String ("ns")));
-   Internal_Set_Upper (650, (False, (False, 1)));
+   Internal_Set_Upper (653, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (10, False);
    Internal_Set_Is_Final_Specialization (10, False);
@@ -4470,24 +4505,24 @@ begin
      (False, League.Strings.To_Universal_String ("ElementImport")));
 
    Internal_Set_Body
-    (651,
+    (654,
      (False, League.Strings.To_Universal_String ("An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.")));
 
    Internal_Set_Name
-    (652,
+    (655,
      (False, League.Strings.To_Universal_String ("visibility_public_or_private")));
 
    Internal_Set_Body
-    (653,
+    (656,
      (False, League.Strings.To_Universal_String ("The visibility of an ElementImport is either public or private.")));
 
 
    Internal_Set_Name
-    (655,
+    (658,
      (False, League.Strings.To_Universal_String ("imported_element_is_public")));
 
    Internal_Set_Body
-    (656,
+    (659,
      (False, League.Strings.To_Universal_String ("An importedElement has either public visibility or no visibility at all.")));
 
 
@@ -4508,7 +4543,7 @@ begin
    Internal_Set_Upper (89, (False, (False, 1)));
 
    Internal_Set_Body
-    (658,
+    (661,
      (False, League.Strings.To_Universal_String ("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.")));
 
    Internal_Set_Is_Composite (86, False);
@@ -4525,7 +4560,7 @@ begin
    Internal_Set_Upper (86, (False, (False, 1)));
 
    Internal_Set_Body
-    (659,
+    (662,
      (False, League.Strings.To_Universal_String ("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.")));
 
    Internal_Set_Is_Composite (87, False);
@@ -4542,7 +4577,7 @@ begin
    Internal_Set_Upper (87, (False, (False, 1)));
 
    Internal_Set_Body
-    (660,
+    (663,
      (False, League.Strings.To_Universal_String ("Specifies the PackageableElement whose name is to be added to a Namespace.")));
 
    Internal_Set_Is_Composite (88, False);
@@ -4559,33 +4594,33 @@ begin
    Internal_Set_Upper (88, (False, (False, 1)));
 
    Internal_Set_Body
-    (661,
+    (664,
      (False, League.Strings.To_Universal_String ("Specifies the Namespace that imports a PackageableElement from another Package.")));
 
-   Internal_Set_Is_Leaf (662, False);
-   Internal_Set_Is_Ordered (662, False);
-   Internal_Set_Is_Query (662, True);
-   Internal_Set_Is_Unique (662, True);
-   Internal_Set_Lower (662, (False, 1));
+   Internal_Set_Is_Leaf (665, False);
+   Internal_Set_Is_Ordered (665, False);
+   Internal_Set_Is_Query (665, True);
+   Internal_Set_Is_Unique (665, True);
+   Internal_Set_Lower (665, (False, 1));
    Internal_Set_Name
-    (662,
+    (665,
      (False, League.Strings.To_Universal_String ("getName")));
-   Internal_Set_Upper (662, (False, (False, 1)));
+   Internal_Set_Upper (665, (False, (False, 1)));
 
    Internal_Set_Body
-    (663,
+    (666,
      (False, League.Strings.To_Universal_String ("The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.")));
 
    Internal_Set_Name
-    (664,
+    (667,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (666, Return_Direction);
-   Internal_Set_Is_Ordered (666, False);
-   Internal_Set_Is_Unique (666, True);
-   Internal_Set_Lower (666, (False, 1));
-   Internal_Set_Upper (666, (False, (False, 1)));
+   Internal_Set_Direction (669, Return_Direction);
+   Internal_Set_Is_Ordered (669, False);
+   Internal_Set_Is_Unique (669, True);
+   Internal_Set_Lower (669, (False, 1));
+   Internal_Set_Upper (669, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (20, False);
    Internal_Set_Is_Final_Specialization (20, False);
@@ -4594,15 +4629,15 @@ begin
      (False, League.Strings.To_Universal_String ("Package")));
 
    Internal_Set_Body
-    (667,
+    (670,
      (False, League.Strings.To_Universal_String ("A package is used to group elements, and provides a namespace for the grouped elements.")));
 
    Internal_Set_Name
-    (668,
+    (671,
      (False, League.Strings.To_Universal_String ("elements_public_or_private")));
 
    Internal_Set_Body
-    (669,
+    (672,
      (False, League.Strings.To_Universal_String ("If an element that is owned by a package has visibility, it is public or private.")));
 
 
@@ -4620,7 +4655,7 @@ begin
    Internal_Set_Upper (72, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (671,
+    (674,
      (False, League.Strings.To_Universal_String ("Specifies the packageable elements that are owned by this Package.")));
 
    Internal_Set_Is_Composite (70, True);
@@ -4637,7 +4672,7 @@ begin
    Internal_Set_Upper (70, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (672,
+    (675,
      (False, League.Strings.To_Universal_String ("References the packaged elements that are Types.")));
 
    Internal_Set_Is_Composite (69, True);
@@ -4654,7 +4689,7 @@ begin
    Internal_Set_Upper (69, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (673,
+    (676,
      (False, League.Strings.To_Universal_String ("References the packaged elements that are Packages.")));
 
    Internal_Set_Is_Composite (110, False);
@@ -4671,7 +4706,7 @@ begin
    Internal_Set_Upper (110, (False, (False, 1)));
 
    Internal_Set_Body
-    (674,
+    (677,
      (False, League.Strings.To_Universal_String ("References the Package that owns this Package.")));
 
    Internal_Set_Is_Composite (71, True);
@@ -4688,7 +4723,7 @@ begin
    Internal_Set_Upper (71, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (675,
+    (678,
      (False, League.Strings.To_Universal_String ("References the PackageMerges that are owned by this Package.")));
 
    Internal_Set_Is_Composite (111, False);
@@ -4705,94 +4740,94 @@ begin
    Internal_Set_Upper (111, (False, (False, 1)));
 
    Internal_Set_Body
-    (676,
+    (679,
      (False, League.Strings.To_Universal_String ("Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned URIs to their outermost package. The package URI appears in XMI files when instances of the package’s classes are serialized.")));
 
-   Internal_Set_Is_Leaf (677, False);
-   Internal_Set_Is_Ordered (677, False);
-   Internal_Set_Is_Query (677, True);
-   Internal_Set_Is_Unique (677, True);
-   Internal_Set_Lower (677, (False, 1));
+   Internal_Set_Is_Leaf (680, False);
+   Internal_Set_Is_Ordered (680, False);
+   Internal_Set_Is_Query (680, True);
+   Internal_Set_Is_Unique (680, True);
+   Internal_Set_Lower (680, (False, 1));
    Internal_Set_Name
-    (677,
+    (680,
      (False, League.Strings.To_Universal_String ("mustBeOwned")));
-   Internal_Set_Upper (677, (False, (False, 1)));
+   Internal_Set_Upper (680, (False, (False, 1)));
 
    Internal_Set_Body
-    (678,
+    (681,
      (False, League.Strings.To_Universal_String ("The query mustBeOwned() indicates whether elements of this type must have an owner.")));
 
    Internal_Set_Name
-    (679,
+    (682,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (681, Return_Direction);
-   Internal_Set_Is_Ordered (681, False);
-   Internal_Set_Is_Unique (681, True);
-   Internal_Set_Lower (681, (False, 1));
-   Internal_Set_Upper (681, (False, (False, 1)));
+   Internal_Set_Direction (684, Return_Direction);
+   Internal_Set_Is_Ordered (684, False);
+   Internal_Set_Is_Unique (684, True);
+   Internal_Set_Lower (684, (False, 1));
+   Internal_Set_Upper (684, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (682, False);
-   Internal_Set_Is_Ordered (682, False);
-   Internal_Set_Is_Query (682, True);
-   Internal_Set_Is_Unique (682, True);
-   Internal_Set_Lower (682, (False, 1));
+   Internal_Set_Is_Leaf (685, False);
+   Internal_Set_Is_Ordered (685, False);
+   Internal_Set_Is_Query (685, True);
+   Internal_Set_Is_Unique (685, True);
+   Internal_Set_Lower (685, (False, 1));
    Internal_Set_Name
-    (682,
+    (685,
      (False, League.Strings.To_Universal_String ("visibleMembers")));
-   Internal_Set_Upper (682, (False, (False, 1)));
+   Internal_Set_Upper (685, (False, (False, 1)));
 
    Internal_Set_Body
-    (683,
+    (686,
      (False, League.Strings.To_Universal_String ("The query visibleMembers() defines which members of a Package can be accessed outside it.")));
 
    Internal_Set_Name
-    (684,
+    (687,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (686, Return_Direction);
-   Internal_Set_Is_Ordered (686, False);
-   Internal_Set_Is_Unique (686, True);
-   Internal_Set_Lower (686, (False, 0));
-   Internal_Set_Upper (686, (False, (Unlimited => True)));
+   Internal_Set_Direction (689, Return_Direction);
+   Internal_Set_Is_Ordered (689, False);
+   Internal_Set_Is_Unique (689, True);
+   Internal_Set_Lower (689, (False, 0));
+   Internal_Set_Upper (689, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (687, False);
-   Internal_Set_Is_Ordered (687, False);
-   Internal_Set_Is_Query (687, True);
-   Internal_Set_Is_Unique (687, True);
-   Internal_Set_Lower (687, (False, 1));
+   Internal_Set_Is_Leaf (690, False);
+   Internal_Set_Is_Ordered (690, False);
+   Internal_Set_Is_Query (690, True);
+   Internal_Set_Is_Unique (690, True);
+   Internal_Set_Lower (690, (False, 1));
    Internal_Set_Name
-    (687,
+    (690,
      (False, League.Strings.To_Universal_String ("makesVisible")));
-   Internal_Set_Upper (687, (False, (False, 1)));
+   Internal_Set_Upper (690, (False, (False, 1)));
 
    Internal_Set_Body
-    (688,
+    (691,
      (False, League.Strings.To_Universal_String ("The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.")));
 
 
 
    Internal_Set_Name
-    (691,
+    (694,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (693, Return_Direction);
-   Internal_Set_Is_Ordered (693, False);
-   Internal_Set_Is_Unique (693, True);
-   Internal_Set_Lower (693, (False, 1));
-   Internal_Set_Upper (693, (False, (False, 1)));
+   Internal_Set_Direction (696, Return_Direction);
+   Internal_Set_Is_Ordered (696, False);
+   Internal_Set_Is_Unique (696, True);
+   Internal_Set_Lower (696, (False, 1));
+   Internal_Set_Upper (696, (False, (False, 1)));
 
-   Internal_Set_Direction (694, In_Direction);
-   Internal_Set_Is_Ordered (694, False);
-   Internal_Set_Is_Unique (694, True);
-   Internal_Set_Lower (694, (False, 1));
+   Internal_Set_Direction (697, In_Direction);
+   Internal_Set_Is_Ordered (697, False);
+   Internal_Set_Is_Unique (697, True);
+   Internal_Set_Lower (697, (False, 1));
    Internal_Set_Name
-    (694,
+    (697,
      (False, League.Strings.To_Universal_String ("el")));
-   Internal_Set_Upper (694, (False, (False, 1)));
+   Internal_Set_Upper (697, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (21, False);
    Internal_Set_Is_Final_Specialization (21, False);
@@ -4801,15 +4836,15 @@ begin
      (False, League.Strings.To_Universal_String ("PackageImport")));
 
    Internal_Set_Body
-    (695,
+    (698,
      (False, League.Strings.To_Universal_String ("A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.")));
 
    Internal_Set_Name
-    (696,
+    (699,
      (False, League.Strings.To_Universal_String ("public_or_private")));
 
    Internal_Set_Body
-    (697,
+    (700,
      (False, League.Strings.To_Universal_String ("The visibility of a PackageImport is either public or private.")));
 
 
@@ -4830,7 +4865,7 @@ begin
    Internal_Set_Upper (114, (False, (False, 1)));
 
    Internal_Set_Body
-    (699,
+    (702,
      (False, League.Strings.To_Universal_String ("Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.")));
 
    Internal_Set_Is_Composite (112, False);
@@ -4847,7 +4882,7 @@ begin
    Internal_Set_Upper (112, (False, (False, 1)));
 
    Internal_Set_Body
-    (700,
+    (703,
      (False, League.Strings.To_Universal_String ("Specifies the Package whose members are imported into a Namespace.")));
 
    Internal_Set_Is_Composite (113, False);
@@ -4864,7 +4899,7 @@ begin
    Internal_Set_Upper (113, (False, (False, 1)));
 
    Internal_Set_Body
-    (701,
+    (704,
      (False, League.Strings.To_Universal_String ("Specifies the Namespace that imports the members from a Package.")));
 
    Internal_Set_Is_Abstract (22, False);
@@ -4874,7 +4909,7 @@ begin
      (False, League.Strings.To_Universal_String ("PackageMerge")));
 
    Internal_Set_Body
-    (702,
+    (705,
      (False, League.Strings.To_Universal_String ("A package merge defines how the contents of one package are extended by the contents of another package.")));
 
    Internal_Set_Is_Composite (116, False);
@@ -4891,7 +4926,7 @@ begin
    Internal_Set_Upper (116, (False, (False, 1)));
 
    Internal_Set_Body
-    (703,
+    (706,
      (False, League.Strings.To_Universal_String ("References the Package that is being extended with the contents of the merged package of the PackageMerge.")));
 
    Internal_Set_Is_Composite (115, False);
@@ -4908,7 +4943,7 @@ begin
    Internal_Set_Upper (115, (False, (False, 1)));
 
    Internal_Set_Body
-    (704,
+    (707,
      (False, League.Strings.To_Universal_String ("References the Package that is to be merged with the receiving package of the PackageMerge.")));
 
    Internal_Set_Is_Abstract (31, True);
@@ -4918,7 +4953,7 @@ begin
      (False, League.Strings.To_Universal_String ("Type")));
 
    Internal_Set_Body
-    (705,
+    (708,
      (False, League.Strings.To_Universal_String ("A type is a named element that is used as the type for a typed element. A type can be contained in a package.")));
 
    Internal_Set_Is_Composite (133, False);
@@ -4935,42 +4970,42 @@ begin
    Internal_Set_Upper (133, (False, (False, 1)));
 
    Internal_Set_Body
-    (706,
+    (709,
      (False, League.Strings.To_Universal_String ("Specifies the owning package of this classifier, if any.")));
 
-   Internal_Set_Is_Leaf (707, False);
-   Internal_Set_Is_Ordered (707, False);
-   Internal_Set_Is_Query (707, True);
-   Internal_Set_Is_Unique (707, True);
-   Internal_Set_Lower (707, (False, 1));
+   Internal_Set_Is_Leaf (710, False);
+   Internal_Set_Is_Ordered (710, False);
+   Internal_Set_Is_Query (710, True);
+   Internal_Set_Is_Unique (710, True);
+   Internal_Set_Lower (710, (False, 1));
    Internal_Set_Name
-    (707,
+    (710,
      (False, League.Strings.To_Universal_String ("conformsTo")));
-   Internal_Set_Upper (707, (False, (False, 1)));
+   Internal_Set_Upper (710, (False, (False, 1)));
 
    Internal_Set_Body
-    (708,
+    (711,
      (False, League.Strings.To_Universal_String ("The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.")));
 
    Internal_Set_Name
-    (709,
+    (712,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (711, Return_Direction);
-   Internal_Set_Is_Ordered (711, False);
-   Internal_Set_Is_Unique (711, True);
-   Internal_Set_Lower (711, (False, 1));
-   Internal_Set_Upper (711, (False, (False, 1)));
+   Internal_Set_Direction (714, Return_Direction);
+   Internal_Set_Is_Ordered (714, False);
+   Internal_Set_Is_Unique (714, True);
+   Internal_Set_Lower (714, (False, 1));
+   Internal_Set_Upper (714, (False, (False, 1)));
 
-   Internal_Set_Direction (712, In_Direction);
-   Internal_Set_Is_Ordered (712, False);
-   Internal_Set_Is_Unique (712, True);
-   Internal_Set_Lower (712, (False, 1));
+   Internal_Set_Direction (715, In_Direction);
+   Internal_Set_Is_Ordered (715, False);
+   Internal_Set_Is_Unique (715, True);
+   Internal_Set_Lower (715, (False, 1));
    Internal_Set_Name
-    (712,
+    (715,
      (False, League.Strings.To_Universal_String ("other")));
-   Internal_Set_Upper (712, (False, (False, 1)));
+   Internal_Set_Upper (715, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (16, True);
    Internal_Set_Is_Final_Specialization (16, False);
@@ -4979,33 +5014,33 @@ begin
      (False, League.Strings.To_Universal_String ("NamedElement")));
 
    Internal_Set_Body
-    (713,
+    (716,
      (False, League.Strings.To_Universal_String ("A named element is an element in a model that may have a name.")));
 
    Internal_Set_Name
-    (714,
+    (717,
      (False, League.Strings.To_Universal_String ("has_no_qualified_name")));
 
    Internal_Set_Body
-    (715,
+    (718,
      (False, League.Strings.To_Universal_String ("If there is no name, or one of the containing namespaces has no name, there is no qualified name.")));
 
 
    Internal_Set_Name
-    (717,
+    (720,
      (False, League.Strings.To_Universal_String ("has_qualified_name")));
 
    Internal_Set_Body
-    (718,
+    (721,
      (False, League.Strings.To_Universal_String ("When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.")));
 
 
    Internal_Set_Name
-    (720,
+    (723,
      (False, League.Strings.To_Universal_String ("visibility_needs_ownership")));
 
    Internal_Set_Body
-    (721,
+    (724,
      (False, League.Strings.To_Universal_String ("If a NamedElement is not owned by a Namespace, it does not have a visibility.")));
 
 
@@ -5023,7 +5058,7 @@ begin
    Internal_Set_Upper (95, (False, (False, 1)));
 
    Internal_Set_Body
-    (723,
+    (726,
      (False, League.Strings.To_Universal_String ("The name of the NamedElement.")));
 
    Internal_Set_Is_Composite (98, False);
@@ -5040,7 +5075,7 @@ begin
    Internal_Set_Upper (98, (False, (False, 1)));
 
    Internal_Set_Body
-    (724,
+    (727,
      (False, League.Strings.To_Universal_String ("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.")));
 
    Internal_Set_Is_Composite (96, False);
@@ -5057,7 +5092,7 @@ begin
    Internal_Set_Upper (96, (False, (False, 1)));
 
    Internal_Set_Body
-    (725,
+    (728,
      (False, League.Strings.To_Universal_String ("Specifies the namespace that owns the NamedElement.")));
 
    Internal_Set_Is_Composite (97, False);
@@ -5074,126 +5109,126 @@ begin
    Internal_Set_Upper (97, (False, (False, 1)));
 
    Internal_Set_Body
-    (726,
+    (729,
      (False, League.Strings.To_Universal_String ("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.")));
 
-   Internal_Set_Is_Leaf (727, False);
-   Internal_Set_Is_Ordered (727, False);
-   Internal_Set_Is_Query (727, True);
-   Internal_Set_Is_Unique (727, True);
-   Internal_Set_Lower (727, (False, 1));
+   Internal_Set_Is_Leaf (730, False);
+   Internal_Set_Is_Ordered (730, False);
+   Internal_Set_Is_Query (730, True);
+   Internal_Set_Is_Unique (730, True);
+   Internal_Set_Lower (730, (False, 1));
    Internal_Set_Name
-    (727,
+    (730,
      (False, League.Strings.To_Universal_String ("allNamespaces")));
-   Internal_Set_Upper (727, (False, (False, 1)));
+   Internal_Set_Upper (730, (False, (False, 1)));
 
    Internal_Set_Body
-    (728,
+    (731,
      (False, League.Strings.To_Universal_String ("The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.")));
 
    Internal_Set_Name
-    (729,
+    (732,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (731, Return_Direction);
-   Internal_Set_Is_Ordered (731, True);
-   Internal_Set_Is_Unique (731, True);
-   Internal_Set_Lower (731, (False, 0));
-   Internal_Set_Upper (731, (False, (Unlimited => True)));
+   Internal_Set_Direction (734, Return_Direction);
+   Internal_Set_Is_Ordered (734, True);
+   Internal_Set_Is_Unique (734, True);
+   Internal_Set_Lower (734, (False, 0));
+   Internal_Set_Upper (734, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Leaf (732, False);
-   Internal_Set_Is_Ordered (732, False);
-   Internal_Set_Is_Query (732, True);
-   Internal_Set_Is_Unique (732, True);
-   Internal_Set_Lower (732, (False, 1));
+   Internal_Set_Is_Leaf (735, False);
+   Internal_Set_Is_Ordered (735, False);
+   Internal_Set_Is_Query (735, True);
+   Internal_Set_Is_Unique (735, True);
+   Internal_Set_Lower (735, (False, 1));
    Internal_Set_Name
-    (732,
+    (735,
      (False, League.Strings.To_Universal_String ("isDistinguishableFrom")));
-   Internal_Set_Upper (732, (False, (False, 1)));
+   Internal_Set_Upper (735, (False, (False, 1)));
 
    Internal_Set_Body
-    (733,
+    (736,
      (False, League.Strings.To_Universal_String ("The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.")));
 
    Internal_Set_Name
-    (734,
+    (737,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (736, Return_Direction);
-   Internal_Set_Is_Ordered (736, False);
-   Internal_Set_Is_Unique (736, True);
-   Internal_Set_Lower (736, (False, 1));
-   Internal_Set_Upper (736, (False, (False, 1)));
-
-   Internal_Set_Direction (737, In_Direction);
-   Internal_Set_Is_Ordered (737, False);
-   Internal_Set_Is_Unique (737, True);
-   Internal_Set_Lower (737, (False, 1));
-   Internal_Set_Name
-    (737,
-     (False, League.Strings.To_Universal_String ("n")));
-   Internal_Set_Upper (737, (False, (False, 1)));
-
-   Internal_Set_Direction (738, In_Direction);
-   Internal_Set_Is_Ordered (738, False);
-   Internal_Set_Is_Unique (738, True);
-   Internal_Set_Lower (738, (False, 1));
-   Internal_Set_Name
-    (738,
-     (False, League.Strings.To_Universal_String ("ns")));
-   Internal_Set_Upper (738, (False, (False, 1)));
-
-   Internal_Set_Is_Leaf (739, False);
+   Internal_Set_Direction (739, Return_Direction);
    Internal_Set_Is_Ordered (739, False);
-   Internal_Set_Is_Query (739, True);
    Internal_Set_Is_Unique (739, True);
    Internal_Set_Lower (739, (False, 1));
-   Internal_Set_Name
-    (739,
-     (False, League.Strings.To_Universal_String ("separator")));
    Internal_Set_Upper (739, (False, (False, 1)));
 
-   Internal_Set_Body
+   Internal_Set_Direction (740, In_Direction);
+   Internal_Set_Is_Ordered (740, False);
+   Internal_Set_Is_Unique (740, True);
+   Internal_Set_Lower (740, (False, 1));
+   Internal_Set_Name
     (740,
+     (False, League.Strings.To_Universal_String ("n")));
+   Internal_Set_Upper (740, (False, (False, 1)));
+
+   Internal_Set_Direction (741, In_Direction);
+   Internal_Set_Is_Ordered (741, False);
+   Internal_Set_Is_Unique (741, True);
+   Internal_Set_Lower (741, (False, 1));
+   Internal_Set_Name
+    (741,
+     (False, League.Strings.To_Universal_String ("ns")));
+   Internal_Set_Upper (741, (False, (False, 1)));
+
+   Internal_Set_Is_Leaf (742, False);
+   Internal_Set_Is_Ordered (742, False);
+   Internal_Set_Is_Query (742, True);
+   Internal_Set_Is_Unique (742, True);
+   Internal_Set_Lower (742, (False, 1));
+   Internal_Set_Name
+    (742,
+     (False, League.Strings.To_Universal_String ("separator")));
+   Internal_Set_Upper (742, (False, (False, 1)));
+
+   Internal_Set_Body
+    (743,
      (False, League.Strings.To_Universal_String ("The query separator() gives the string that is used to separate names when constructing a qualified name.")));
 
    Internal_Set_Name
-    (741,
+    (744,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (743, Return_Direction);
-   Internal_Set_Is_Ordered (743, False);
-   Internal_Set_Is_Unique (743, True);
-   Internal_Set_Lower (743, (False, 1));
-   Internal_Set_Upper (743, (False, (False, 1)));
+   Internal_Set_Direction (746, Return_Direction);
+   Internal_Set_Is_Ordered (746, False);
+   Internal_Set_Is_Unique (746, True);
+   Internal_Set_Lower (746, (False, 1));
+   Internal_Set_Upper (746, (False, (False, 1)));
 
-   Internal_Set_Is_Leaf (744, False);
-   Internal_Set_Is_Ordered (744, False);
-   Internal_Set_Is_Query (744, True);
-   Internal_Set_Is_Unique (744, True);
-   Internal_Set_Lower (744, (False, 1));
+   Internal_Set_Is_Leaf (747, False);
+   Internal_Set_Is_Ordered (747, False);
+   Internal_Set_Is_Query (747, True);
+   Internal_Set_Is_Unique (747, True);
+   Internal_Set_Lower (747, (False, 1));
    Internal_Set_Name
-    (744,
+    (747,
      (False, League.Strings.To_Universal_String ("qualifiedName")));
-   Internal_Set_Upper (744, (False, (False, 1)));
+   Internal_Set_Upper (747, (False, (False, 1)));
 
    Internal_Set_Body
-    (745,
+    (748,
      (False, League.Strings.To_Universal_String ("When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.")));
 
    Internal_Set_Name
-    (746,
+    (749,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (748, Return_Direction);
-   Internal_Set_Is_Ordered (748, False);
-   Internal_Set_Is_Unique (748, True);
-   Internal_Set_Lower (748, (False, 1));
-   Internal_Set_Upper (748, (False, (False, 1)));
+   Internal_Set_Direction (751, Return_Direction);
+   Internal_Set_Is_Ordered (751, False);
+   Internal_Set_Is_Unique (751, True);
+   Internal_Set_Lower (751, (False, 1));
+   Internal_Set_Upper (751, (False, (False, 1)));
 
    Internal_Set_Is_Abstract (13, False);
    Internal_Set_Is_Final_Specialization (13, False);
@@ -5202,7 +5237,7 @@ begin
      (False, League.Strings.To_Universal_String ("Expression")));
 
    Internal_Set_Body
-    (749,
+    (752,
      (False, League.Strings.To_Universal_String ("An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.")));
 
    Internal_Set_Is_Composite (56, True);
@@ -5219,7 +5254,7 @@ begin
    Internal_Set_Upper (56, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (750,
+    (753,
      (False, League.Strings.To_Universal_String ("Specifies a sequence of operands.")));
 
    Internal_Set_Is_Abstract (5, False);
@@ -5229,7 +5264,7 @@ begin
      (False, League.Strings.To_Universal_String ("Comment")));
 
    Internal_Set_Body
-    (751,
+    (754,
      (False, League.Strings.To_Universal_String ("A comment is a textual annotation that can be attached to a set of elements.")));
 
    Internal_Set_Is_Composite (82, False);
@@ -5246,7 +5281,7 @@ begin
    Internal_Set_Upper (82, (False, (False, 1)));
 
    Internal_Set_Body
-    (752,
+    (755,
      (False, League.Strings.To_Universal_String ("Specifies a string that is the comment.")));
 
    Internal_Set_Is_Composite (47, False);
@@ -5263,205 +5298,130 @@ begin
    Internal_Set_Upper (47, (False, (Unlimited => True)));
 
    Internal_Set_Body
-    (753,
+    (756,
      (False, League.Strings.To_Universal_String ("References the Element(s) being commented.")));
 
-   Internal_Set_Is_Final_Specialization (754, False);
+   Internal_Set_Is_Final_Specialization (757, False);
    Internal_Set_Name
-    (754,
+    (757,
      (False, League.Strings.To_Universal_String ("ParameterDirectionKind")));
 
    Internal_Set_Body
-    (755,
+    (758,
      (False, League.Strings.To_Universal_String ("Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.")));
 
    Internal_Set_Name
-    (756,
+    (759,
      (False, League.Strings.To_Universal_String ("in")));
 
    Internal_Set_Body
-    (757,
+    (760,
      (False, League.Strings.To_Universal_String ("Indicates that parameter values are passed into the behavioral element by the caller.")));
 
    Internal_Set_Name
-    (758,
+    (761,
      (False, League.Strings.To_Universal_String ("inout")));
 
    Internal_Set_Body
-    (759,
+    (762,
      (False, League.Strings.To_Universal_String ("Indicates that parameter values are passed into a behavioral element by the caller and then back out to the caller from the behavioral element.")));
 
    Internal_Set_Name
-    (760,
+    (763,
      (False, League.Strings.To_Universal_String ("out")));
 
    Internal_Set_Body
-    (761,
+    (764,
      (False, League.Strings.To_Universal_String ("Indicates that parameter values are passed from a behavioral element out to the caller.")));
 
    Internal_Set_Name
-    (762,
+    (765,
      (False, League.Strings.To_Universal_String ("return")));
 
    Internal_Set_Body
-    (763,
+    (766,
      (False, League.Strings.To_Universal_String ("Indicates that parameter values are passed as return values from a behavioral element back to the caller.")));
 
-   Internal_Set_Is_Final_Specialization (764, False);
+   Internal_Set_Is_Final_Specialization (767, False);
    Internal_Set_Name
-    (764,
+    (767,
      (False, League.Strings.To_Universal_String ("VisibilityKind")));
 
    Internal_Set_Body
-    (765,
+    (768,
      (False, League.Strings.To_Universal_String ("VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.")));
 
-   Internal_Set_Is_Leaf (766, False);
-   Internal_Set_Is_Ordered (766, False);
-   Internal_Set_Is_Query (766, True);
-   Internal_Set_Is_Unique (766, True);
-   Internal_Set_Lower (766, (False, 1));
+   Internal_Set_Is_Leaf (769, False);
+   Internal_Set_Is_Ordered (769, False);
+   Internal_Set_Is_Query (769, True);
+   Internal_Set_Is_Unique (769, True);
+   Internal_Set_Lower (769, (False, 1));
    Internal_Set_Name
-    (766,
+    (769,
      (False, League.Strings.To_Universal_String ("bestVisibility")));
-   Internal_Set_Upper (766, (False, (False, 1)));
+   Internal_Set_Upper (769, (False, (False, 1)));
 
    Internal_Set_Body
-    (767,
+    (770,
      (False, League.Strings.To_Universal_String ("The query bestVisibility() examines a set of VisibilityKinds, and returns public as the preferred visibility.")));
 
    Internal_Set_Name
-    (768,
+    (771,
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (770, Return_Direction);
-   Internal_Set_Is_Ordered (770, False);
-   Internal_Set_Is_Unique (770, True);
-   Internal_Set_Lower (770, (False, 1));
-   Internal_Set_Upper (770, (False, (False, 1)));
+   Internal_Set_Direction (773, Return_Direction);
+   Internal_Set_Is_Ordered (773, False);
+   Internal_Set_Is_Unique (773, True);
+   Internal_Set_Lower (773, (False, 1));
+   Internal_Set_Upper (773, (False, (False, 1)));
 
-   Internal_Set_Direction (771, In_Direction);
-   Internal_Set_Is_Ordered (771, False);
-   Internal_Set_Is_Unique (771, True);
-   Internal_Set_Lower (771, (False, 0));
+   Internal_Set_Direction (774, In_Direction);
+   Internal_Set_Is_Ordered (774, False);
+   Internal_Set_Is_Unique (774, True);
+   Internal_Set_Lower (774, (False, 0));
    Internal_Set_Name
-    (771,
+    (774,
      (False, League.Strings.To_Universal_String ("vis")));
-   Internal_Set_Upper (771, (False, (Unlimited => True)));
+   Internal_Set_Upper (774, (False, (Unlimited => True)));
 
    Internal_Set_Name
-    (772,
+    (775,
      (False, League.Strings.To_Universal_String ("public")));
 
    Internal_Set_Body
-    (773,
+    (776,
      (False, League.Strings.To_Universal_String ("A public element is visible to all elements that can access the contents of the namespace that owns it.")));
 
    Internal_Set_Name
-    (774,
+    (777,
      (False, League.Strings.To_Universal_String ("private")));
 
    Internal_Set_Body
-    (775,
+    (778,
      (False, League.Strings.To_Universal_String ("A private element is only visible inside the namespace that owns it.")));
 
    Internal_Set_Name
-    (776,
+    (779,
      (False, League.Strings.To_Universal_String ("protected")));
 
    Internal_Set_Body
-    (777,
+    (780,
      (False, League.Strings.To_Universal_String ("A protected element is visible to elements that have a generalization relationship to the namespace that owns it.")));
 
    Internal_Set_Name
-    (778,
+    (781,
      (False, League.Strings.To_Universal_String ("package")));
 
    Internal_Set_Body
-    (779,
+    (782,
      (False, League.Strings.To_Universal_String ("A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility.  Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility).  Outside the nearest enclosing package, an element marked as having package visibility is not visible.")));
 
-   Internal_Set_Is_Derived (145, False);
-   Internal_Set_Is_Final_Specialization (145, False);
+   Internal_Set_Is_Derived (148, False);
+   Internal_Set_Is_Final_Specialization (148, False);
    Internal_Set_Name
-    (145,
+    (148,
      (False, League.Strings.To_Universal_String ("A_type_typedElement")));
-
-   Internal_Set_Is_Composite (780, False);
-   Internal_Set_Is_Derived (780, False);
-   Internal_Set_Is_Derived_Union (780, False);
-   Internal_Set_Is_Leaf (780, False);
-   Internal_Set_Is_Ordered (780, False);
-   Internal_Set_Is_Read_Only (780, False);
-   Internal_Set_Is_Unique (780, True);
-   Internal_Set_Lower (780, (False, 0));
-   Internal_Set_Name
-    (780,
-     (False, League.Strings.To_Universal_String ("typedElement")));
-   Internal_Set_Upper (780, (False, (Unlimited => True)));
-
-   Internal_Set_Is_Derived (147, False);
-   Internal_Set_Is_Final_Specialization (147, False);
-   Internal_Set_Name
-    (147,
-     (False, League.Strings.To_Universal_String ("A_ownedAttribute_class")));
-
-   Internal_Set_Is_Derived (149, False);
-   Internal_Set_Is_Final_Specialization (149, False);
-   Internal_Set_Name
-    (149,
-     (False, League.Strings.To_Universal_String ("A_ownedOperation_class")));
-
-   Internal_Set_Is_Derived (150, False);
-   Internal_Set_Is_Final_Specialization (150, False);
-   Internal_Set_Name
-    (150,
-     (False, League.Strings.To_Universal_String ("A_ownedEnd_owningAssociation")));
-
-   Internal_Set_Is_Derived (152, False);
-   Internal_Set_Is_Final_Specialization (152, False);
-   Internal_Set_Name
-    (152,
-     (False, League.Strings.To_Universal_String ("A_attribute_classifier")));
-
-   Internal_Set_Is_Composite (781, False);
-   Internal_Set_Is_Derived (781, False);
-   Internal_Set_Is_Derived_Union (781, False);
-   Internal_Set_Is_Leaf (781, False);
-   Internal_Set_Is_Ordered (781, False);
-   Internal_Set_Is_Read_Only (781, False);
-   Internal_Set_Is_Unique (781, True);
-   Internal_Set_Lower (781, (False, 0));
-   Internal_Set_Name
-    (781,
-     (False, League.Strings.To_Universal_String ("classifier")));
-   Internal_Set_Upper (781, (False, (False, 1)));
-
-   Internal_Set_Is_Derived (154, False);
-   Internal_Set_Is_Final_Specialization (154, False);
-   Internal_Set_Name
-    (154,
-     (False, League.Strings.To_Universal_String ("A_redefinedProperty_property")));
-
-   Internal_Set_Is_Composite (782, False);
-   Internal_Set_Is_Derived (782, False);
-   Internal_Set_Is_Derived_Union (782, False);
-   Internal_Set_Is_Leaf (782, False);
-   Internal_Set_Is_Ordered (782, False);
-   Internal_Set_Is_Read_Only (782, False);
-   Internal_Set_Is_Unique (782, True);
-   Internal_Set_Lower (782, (False, 0));
-   Internal_Set_Name
-    (782,
-     (False, League.Strings.To_Universal_String ("property")));
-   Internal_Set_Upper (782, (False, (Unlimited => True)));
-
-   Internal_Set_Is_Derived (156, False);
-   Internal_Set_Is_Final_Specialization (156, False);
-   Internal_Set_Name
-    (156,
-     (False, League.Strings.To_Universal_String ("A_subsettedProperty_property")));
 
    Internal_Set_Is_Composite (783, False);
    Internal_Set_Is_Derived (783, False);
@@ -5473,14 +5433,32 @@ begin
    Internal_Set_Lower (783, (False, 0));
    Internal_Set_Name
     (783,
-     (False, League.Strings.To_Universal_String ("property")));
+     (False, League.Strings.To_Universal_String ("typedElement")));
    Internal_Set_Upper (783, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (158, False);
-   Internal_Set_Is_Final_Specialization (158, False);
+   Internal_Set_Is_Derived (150, False);
+   Internal_Set_Is_Final_Specialization (150, False);
    Internal_Set_Name
-    (158,
-     (False, League.Strings.To_Universal_String ("A_opposite_property")));
+    (150,
+     (False, League.Strings.To_Universal_String ("A_ownedAttribute_class")));
+
+   Internal_Set_Is_Derived (152, False);
+   Internal_Set_Is_Final_Specialization (152, False);
+   Internal_Set_Name
+    (152,
+     (False, League.Strings.To_Universal_String ("A_ownedOperation_class")));
+
+   Internal_Set_Is_Derived (153, False);
+   Internal_Set_Is_Final_Specialization (153, False);
+   Internal_Set_Name
+    (153,
+     (False, League.Strings.To_Universal_String ("A_ownedEnd_owningAssociation")));
+
+   Internal_Set_Is_Derived (155, False);
+   Internal_Set_Is_Final_Specialization (155, False);
+   Internal_Set_Name
+    (155,
+     (False, League.Strings.To_Universal_String ("A_attribute_classifier")));
 
    Internal_Set_Is_Composite (784, False);
    Internal_Set_Is_Derived (784, False);
@@ -5492,14 +5470,14 @@ begin
    Internal_Set_Lower (784, (False, 0));
    Internal_Set_Name
     (784,
-     (False, League.Strings.To_Universal_String ("property")));
+     (False, League.Strings.To_Universal_String ("classifier")));
    Internal_Set_Upper (784, (False, (False, 1)));
 
-   Internal_Set_Is_Derived (160, False);
-   Internal_Set_Is_Final_Specialization (160, False);
+   Internal_Set_Is_Derived (157, False);
+   Internal_Set_Is_Final_Specialization (157, False);
    Internal_Set_Name
-    (160,
-     (False, League.Strings.To_Universal_String ("A_superClass_class")));
+    (157,
+     (False, League.Strings.To_Universal_String ("A_redefinedProperty_property")));
 
    Internal_Set_Is_Composite (785, False);
    Internal_Set_Is_Derived (785, False);
@@ -5511,14 +5489,14 @@ begin
    Internal_Set_Lower (785, (False, 0));
    Internal_Set_Name
     (785,
-     (False, League.Strings.To_Universal_String ("class")));
+     (False, League.Strings.To_Universal_String ("property")));
    Internal_Set_Upper (785, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (163, False);
-   Internal_Set_Is_Final_Specialization (163, False);
+   Internal_Set_Is_Derived (159, False);
+   Internal_Set_Is_Final_Specialization (159, False);
    Internal_Set_Name
-    (163,
-     (False, League.Strings.To_Universal_String ("A_endType_association")));
+    (159,
+     (False, League.Strings.To_Universal_String ("A_subsettedProperty_property")));
 
    Internal_Set_Is_Composite (786, False);
    Internal_Set_Is_Derived (786, False);
@@ -5530,32 +5508,14 @@ begin
    Internal_Set_Lower (786, (False, 0));
    Internal_Set_Name
     (786,
-     (False, League.Strings.To_Universal_String ("association")));
+     (False, League.Strings.To_Universal_String ("property")));
    Internal_Set_Upper (786, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (165, False);
-   Internal_Set_Is_Final_Specialization (165, False);
+   Internal_Set_Is_Derived (161, False);
+   Internal_Set_Is_Final_Specialization (161, False);
    Internal_Set_Name
-    (165,
-     (False, League.Strings.To_Universal_String ("A_ownedLiteral_enumeration")));
-
-   Internal_Set_Is_Derived (166, False);
-   Internal_Set_Is_Final_Specialization (166, False);
-   Internal_Set_Name
-    (166,
-     (False, League.Strings.To_Universal_String ("A_ownedAttribute_datatype")));
-
-   Internal_Set_Is_Derived (168, False);
-   Internal_Set_Is_Final_Specialization (168, False);
-   Internal_Set_Name
-    (168,
-     (False, League.Strings.To_Universal_String ("A_ownedOperation_datatype")));
-
-   Internal_Set_Is_Derived (169, False);
-   Internal_Set_Is_Final_Specialization (169, False);
-   Internal_Set_Name
-    (169,
-     (False, League.Strings.To_Universal_String ("A_raisedException_operation")));
+    (161,
+     (False, League.Strings.To_Universal_String ("A_opposite_property")));
 
    Internal_Set_Is_Composite (787, False);
    Internal_Set_Is_Derived (787, False);
@@ -5567,14 +5527,14 @@ begin
    Internal_Set_Lower (787, (False, 0));
    Internal_Set_Name
     (787,
-     (False, League.Strings.To_Universal_String ("operation")));
-   Internal_Set_Upper (787, (False, (Unlimited => True)));
+     (False, League.Strings.To_Universal_String ("property")));
+   Internal_Set_Upper (787, (False, (False, 1)));
 
-   Internal_Set_Is_Derived (172, False);
-   Internal_Set_Is_Final_Specialization (172, False);
+   Internal_Set_Is_Derived (163, False);
+   Internal_Set_Is_Final_Specialization (163, False);
    Internal_Set_Name
-    (172,
-     (False, League.Strings.To_Universal_String ("A_redefinedOperation_operation")));
+    (163,
+     (False, League.Strings.To_Universal_String ("A_superClass_class")));
 
    Internal_Set_Is_Composite (788, False);
    Internal_Set_Is_Derived (788, False);
@@ -5586,14 +5546,14 @@ begin
    Internal_Set_Lower (788, (False, 0));
    Internal_Set_Name
     (788,
-     (False, League.Strings.To_Universal_String ("operation")));
+     (False, League.Strings.To_Universal_String ("class")));
    Internal_Set_Upper (788, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (174, False);
-   Internal_Set_Is_Final_Specialization (174, False);
+   Internal_Set_Is_Derived (166, False);
+   Internal_Set_Is_Final_Specialization (166, False);
    Internal_Set_Name
-    (174,
-     (False, League.Strings.To_Universal_String ("A_ownedParameter_ownerFormalParam")));
+    (166,
+     (False, League.Strings.To_Universal_String ("A_endType_association")));
 
    Internal_Set_Is_Composite (789, False);
    Internal_Set_Is_Derived (789, False);
@@ -5605,14 +5565,32 @@ begin
    Internal_Set_Lower (789, (False, 0));
    Internal_Set_Name
     (789,
-     (False, League.Strings.To_Universal_String ("ownerFormalParam")));
-   Internal_Set_Upper (789, (False, (False, 1)));
+     (False, League.Strings.To_Universal_String ("association")));
+   Internal_Set_Upper (789, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (176, False);
-   Internal_Set_Is_Final_Specialization (176, False);
+   Internal_Set_Is_Derived (168, False);
+   Internal_Set_Is_Final_Specialization (168, False);
    Internal_Set_Name
-    (176,
-     (False, League.Strings.To_Universal_String ("A_raisedException_behavioralFeature")));
+    (168,
+     (False, League.Strings.To_Universal_String ("A_ownedLiteral_enumeration")));
+
+   Internal_Set_Is_Derived (169, False);
+   Internal_Set_Is_Final_Specialization (169, False);
+   Internal_Set_Name
+    (169,
+     (False, League.Strings.To_Universal_String ("A_ownedAttribute_datatype")));
+
+   Internal_Set_Is_Derived (171, False);
+   Internal_Set_Is_Final_Specialization (171, False);
+   Internal_Set_Name
+    (171,
+     (False, League.Strings.To_Universal_String ("A_ownedOperation_datatype")));
+
+   Internal_Set_Is_Derived (172, False);
+   Internal_Set_Is_Final_Specialization (172, False);
+   Internal_Set_Name
+    (172,
+     (False, League.Strings.To_Universal_String ("A_raisedException_operation")));
 
    Internal_Set_Is_Composite (790, False);
    Internal_Set_Is_Derived (790, False);
@@ -5624,14 +5602,14 @@ begin
    Internal_Set_Lower (790, (False, 0));
    Internal_Set_Name
     (790,
-     (False, League.Strings.To_Universal_String ("behavioralFeature")));
+     (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (790, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (178, False);
-   Internal_Set_Is_Final_Specialization (178, False);
+   Internal_Set_Is_Derived (175, False);
+   Internal_Set_Is_Final_Specialization (175, False);
    Internal_Set_Name
-    (178,
-     (False, League.Strings.To_Universal_String ("A_importedMember_namespace")));
+    (175,
+     (False, League.Strings.To_Universal_String ("A_redefinedOperation_operation")));
 
    Internal_Set_Is_Composite (791, False);
    Internal_Set_Is_Derived (791, False);
@@ -5643,14 +5621,14 @@ begin
    Internal_Set_Lower (791, (False, 0));
    Internal_Set_Name
     (791,
-     (False, League.Strings.To_Universal_String ("namespace")));
+     (False, League.Strings.To_Universal_String ("operation")));
    Internal_Set_Upper (791, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (180, False);
-   Internal_Set_Is_Final_Specialization (180, False);
+   Internal_Set_Is_Derived (177, False);
+   Internal_Set_Is_Final_Specialization (177, False);
    Internal_Set_Name
-    (180,
-     (False, League.Strings.To_Universal_String ("A_importedPackage_packageImport")));
+    (177,
+     (False, League.Strings.To_Universal_String ("A_ownedParameter_ownerFormalParam")));
 
    Internal_Set_Is_Composite (792, False);
    Internal_Set_Is_Derived (792, False);
@@ -5662,14 +5640,14 @@ begin
    Internal_Set_Lower (792, (False, 0));
    Internal_Set_Name
     (792,
-     (False, League.Strings.To_Universal_String ("packageImport")));
-   Internal_Set_Upper (792, (False, (Unlimited => True)));
+     (False, League.Strings.To_Universal_String ("ownerFormalParam")));
+   Internal_Set_Upper (792, (False, (False, 1)));
 
-   Internal_Set_Is_Derived (182, False);
-   Internal_Set_Is_Final_Specialization (182, False);
+   Internal_Set_Is_Derived (179, False);
+   Internal_Set_Is_Final_Specialization (179, False);
    Internal_Set_Name
-    (182,
-     (False, League.Strings.To_Universal_String ("A_importedElement_elementImport")));
+    (179,
+     (False, League.Strings.To_Universal_String ("A_raisedException_behavioralFeature")));
 
    Internal_Set_Is_Composite (793, False);
    Internal_Set_Is_Derived (793, False);
@@ -5681,26 +5659,14 @@ begin
    Internal_Set_Lower (793, (False, 0));
    Internal_Set_Name
     (793,
-     (False, League.Strings.To_Universal_String ("elementImport")));
+     (False, League.Strings.To_Universal_String ("behavioralFeature")));
    Internal_Set_Upper (793, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (183, False);
-   Internal_Set_Is_Final_Specialization (183, False);
+   Internal_Set_Is_Derived (181, False);
+   Internal_Set_Is_Final_Specialization (181, False);
    Internal_Set_Name
-    (183,
-     (False, League.Strings.To_Universal_String ("A_elementImport_importingNamespace")));
-
-   Internal_Set_Is_Derived (184, False);
-   Internal_Set_Is_Final_Specialization (184, False);
-   Internal_Set_Name
-    (184,
-     (False, League.Strings.To_Universal_String ("A_packageImport_importingNamespace")));
-
-   Internal_Set_Is_Derived (185, False);
-   Internal_Set_Is_Final_Specialization (185, False);
-   Internal_Set_Name
-    (185,
-     (False, League.Strings.To_Universal_String ("A_packagedElement_owningPackage")));
+    (181,
+     (False, League.Strings.To_Universal_String ("A_importedMember_namespace")));
 
    Internal_Set_Is_Composite (794, False);
    Internal_Set_Is_Derived (794, False);
@@ -5712,32 +5678,14 @@ begin
    Internal_Set_Lower (794, (False, 0));
    Internal_Set_Name
     (794,
-     (False, League.Strings.To_Universal_String ("owningPackage")));
-   Internal_Set_Upper (794, (False, (False, 1)));
+     (False, League.Strings.To_Universal_String ("namespace")));
+   Internal_Set_Upper (794, (False, (Unlimited => True)));
 
-   Internal_Set_Is_Derived (135, False);
-   Internal_Set_Is_Final_Specialization (135, False);
+   Internal_Set_Is_Derived (183, False);
+   Internal_Set_Is_Final_Specialization (183, False);
    Internal_Set_Name
-    (135,
-     (False, League.Strings.To_Universal_String ("A_ownedType_package")));
-
-   Internal_Set_Is_Derived (136, False);
-   Internal_Set_Is_Final_Specialization (136, False);
-   Internal_Set_Name
-    (136,
-     (False, League.Strings.To_Universal_String ("A_memberEnd_association")));
-
-   Internal_Set_Is_Derived (137, False);
-   Internal_Set_Is_Final_Specialization (137, False);
-   Internal_Set_Name
-    (137,
-     (False, League.Strings.To_Universal_String ("A_nestedPackage_nestingPackage")));
-
-   Internal_Set_Is_Derived (138, False);
-   Internal_Set_Is_Final_Specialization (138, False);
-   Internal_Set_Name
-    (138,
-     (False, League.Strings.To_Universal_String ("A_type_operation")));
+    (183,
+     (False, League.Strings.To_Universal_String ("A_importedPackage_packageImport")));
 
    Internal_Set_Is_Composite (795, False);
    Internal_Set_Is_Derived (795, False);
@@ -5749,546 +5697,638 @@ begin
    Internal_Set_Lower (795, (False, 0));
    Internal_Set_Name
     (795,
-     (False, League.Strings.To_Universal_String ("operation")));
+     (False, League.Strings.To_Universal_String ("packageImport")));
    Internal_Set_Upper (795, (False, (Unlimited => True)));
+
+   Internal_Set_Is_Derived (185, False);
+   Internal_Set_Is_Final_Specialization (185, False);
+   Internal_Set_Name
+    (185,
+     (False, League.Strings.To_Universal_String ("A_importedElement_elementImport")));
+
+   Internal_Set_Is_Composite (796, False);
+   Internal_Set_Is_Derived (796, False);
+   Internal_Set_Is_Derived_Union (796, False);
+   Internal_Set_Is_Leaf (796, False);
+   Internal_Set_Is_Ordered (796, False);
+   Internal_Set_Is_Read_Only (796, False);
+   Internal_Set_Is_Unique (796, True);
+   Internal_Set_Lower (796, (False, 0));
+   Internal_Set_Name
+    (796,
+     (False, League.Strings.To_Universal_String ("elementImport")));
+   Internal_Set_Upper (796, (False, (Unlimited => True)));
+
+   Internal_Set_Is_Derived (186, False);
+   Internal_Set_Is_Final_Specialization (186, False);
+   Internal_Set_Name
+    (186,
+     (False, League.Strings.To_Universal_String ("A_elementImport_importingNamespace")));
+
+   Internal_Set_Is_Derived (135, False);
+   Internal_Set_Is_Final_Specialization (135, False);
+   Internal_Set_Name
+    (135,
+     (False, League.Strings.To_Universal_String ("A_packageImport_importingNamespace")));
+
+   Internal_Set_Is_Derived (136, False);
+   Internal_Set_Is_Final_Specialization (136, False);
+   Internal_Set_Name
+    (136,
+     (False, League.Strings.To_Universal_String ("A_packagedElement_owningPackage")));
+
+   Internal_Set_Is_Composite (797, False);
+   Internal_Set_Is_Derived (797, False);
+   Internal_Set_Is_Derived_Union (797, False);
+   Internal_Set_Is_Leaf (797, False);
+   Internal_Set_Is_Ordered (797, False);
+   Internal_Set_Is_Read_Only (797, False);
+   Internal_Set_Is_Unique (797, True);
+   Internal_Set_Lower (797, (False, 0));
+   Internal_Set_Name
+    (797,
+     (False, League.Strings.To_Universal_String ("owningPackage")));
+   Internal_Set_Upper (797, (False, (False, 1)));
+
+   Internal_Set_Is_Derived (138, False);
+   Internal_Set_Is_Final_Specialization (138, False);
+   Internal_Set_Name
+    (138,
+     (False, League.Strings.To_Universal_String ("A_ownedType_package")));
+
+   Internal_Set_Is_Derived (139, False);
+   Internal_Set_Is_Final_Specialization (139, False);
+   Internal_Set_Name
+    (139,
+     (False, League.Strings.To_Universal_String ("A_memberEnd_association")));
+
+   Internal_Set_Is_Derived (140, False);
+   Internal_Set_Is_Final_Specialization (140, False);
+   Internal_Set_Name
+    (140,
+     (False, League.Strings.To_Universal_String ("A_nestedPackage_nestingPackage")));
 
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     139,
+     141,
+     MP_CMOF_Association_Member_End,
+     108,
+     MP_CMOF_Property_Association);
+   Internal_Create_Link
+    (MA_CMOF_Member_End_Association,
+     141,
+     MP_CMOF_Association_Member_End,
+     187,
+     MP_CMOF_Property_Association);
+   Internal_Create_Link
+    (MA_CMOF_Owned_End_Owning_Association,
+     141,
+     MP_CMOF_Association_Owned_End,
+     187,
+     MP_CMOF_Property_Owning_Association);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     187,
+     MP_CMOF_Typed_Element_Type,
+     19,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Member_End_Association,
+     142,
      MP_CMOF_Association_Member_End,
      71,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     139,
+     142,
      MP_CMOF_Association_Member_End,
      116,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     140,
+     143,
      MP_CMOF_Association_Member_End,
      115,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     140,
+     143,
      MP_CMOF_Association_Member_End,
-     187,
+     188,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     140,
+     143,
      MP_CMOF_Association_Owned_End,
-     187,
+     188,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     187,
+     188,
      MP_CMOF_Typed_Element_Type,
      22,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     141,
+     144,
      MP_CMOF_Association_Member_End,
      54,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     141,
+     144,
      MP_CMOF_Association_Member_End,
      85,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     142,
+     145,
      MP_CMOF_Association_Member_End,
      47,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     142,
+     145,
      MP_CMOF_Association_Member_End,
-     188,
+     189,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     142,
+     145,
      MP_CMOF_Association_Owned_End,
-     188,
+     189,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     188,
+     189,
      MP_CMOF_Typed_Element_Type,
      5,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     143,
+     146,
      MP_CMOF_Association_Member_End,
      77,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     143,
+     146,
      MP_CMOF_Association_Member_End,
-     189,
+     190,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     143,
+     146,
      MP_CMOF_Association_Owned_End,
-     189,
+     190,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     189,
+     190,
      MP_CMOF_Typed_Element_Type,
      28,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     144,
+     147,
      MP_CMOF_Association_Member_End,
      51,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     144,
+     147,
      MP_CMOF_Association_Member_End,
-     190,
+     191,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     144,
+     147,
      MP_CMOF_Association_Owned_End,
-     190,
+     191,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     190,
+     191,
      MP_CMOF_Typed_Element_Type,
      8,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     146,
+     149,
      MP_CMOF_Association_Member_End,
      52,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     146,
+     149,
      MP_CMOF_Association_Member_End,
-     191,
+     192,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     146,
+     149,
      MP_CMOF_Association_Owned_End,
-     191,
+     192,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     191,
+     192,
      MP_CMOF_Typed_Element_Type,
      8,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     148,
+     151,
      MP_CMOF_Association_Member_End,
      76,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     148,
+     151,
      MP_CMOF_Association_Member_End,
-     192,
+     193,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     148,
+     151,
      MP_CMOF_Association_Owned_End,
-     192,
+     193,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     192,
+     193,
      MP_CMOF_Typed_Element_Type,
      27,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     151,
+     154,
      MP_CMOF_Association_Member_End,
      75,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     151,
+     154,
      MP_CMOF_Association_Member_End,
-     193,
+     194,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     151,
+     154,
      MP_CMOF_Association_Owned_End,
-     193,
+     194,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     193,
+     194,
      MP_CMOF_Typed_Element_Type,
      27,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     153,
+     156,
      MP_CMOF_Association_Member_End,
      44,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     153,
+     156,
      MP_CMOF_Association_Member_End,
      57,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     155,
+     158,
      MP_CMOF_Association_Member_End,
      48,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     155,
+     158,
      MP_CMOF_Association_Member_End,
-     194,
+     195,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     155,
+     158,
      MP_CMOF_Association_Owned_End,
-     194,
+     195,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     194,
+     195,
      MP_CMOF_Typed_Element_Type,
      6,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     157,
+     160,
      MP_CMOF_Association_Member_End,
      84,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     157,
+     160,
      MP_CMOF_Association_Member_End,
-     195,
+     196,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     157,
+     160,
      MP_CMOF_Association_Owned_End,
-     195,
+     196,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     195,
+     196,
      MP_CMOF_Property_Subsetted_Property,
      85,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     195,
+     196,
      MP_CMOF_Typed_Element_Type,
      6,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     159,
+     162,
      MP_CMOF_Association_Member_End,
      45,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     159,
+     162,
      MP_CMOF_Association_Member_End,
-     196,
+     197,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     159,
+     162,
      MP_CMOF_Association_Owned_End,
-     196,
+     197,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     196,
+     197,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     161,
+     164,
      MP_CMOF_Association_Member_End,
      61,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     161,
+     164,
      MP_CMOF_Association_Member_End,
      96,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     162,
+     165,
      MP_CMOF_Association_Member_End,
      60,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     162,
+     165,
      MP_CMOF_Association_Member_End,
-     197,
+     198,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     162,
+     165,
      MP_CMOF_Association_Owned_End,
-     197,
+     198,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     197,
+     198,
      MP_CMOF_Typed_Element_Type,
      17,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     164,
+     167,
      MP_CMOF_Association_Member_End,
      56,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     164,
+     167,
      MP_CMOF_Association_Member_End,
-     198,
+     199,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     164,
+     167,
      MP_CMOF_Association_Owned_End,
-     198,
+     199,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     198,
+     199,
      MP_CMOF_Property_Subsetted_Property,
      85,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     198,
+     199,
      MP_CMOF_Typed_Element_Type,
      13,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     167,
+     170,
      MP_CMOF_Association_Member_End,
      36,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     167,
+     170,
      MP_CMOF_Association_Member_End,
-     199,
+     200,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     167,
+     170,
      MP_CMOF_Association_Owned_End,
-     199,
+     200,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     199,
+     200,
      MP_CMOF_Typed_Element_Type,
      1,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     170,
+     173,
      MP_CMOF_Association_Member_End,
      64,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     170,
+     173,
      MP_CMOF_Association_Member_End,
      119,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     171,
+     174,
      MP_CMOF_Association_Member_End,
      53,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     171,
+     174,
      MP_CMOF_Association_Member_End,
-     200,
+     201,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     171,
+     174,
      MP_CMOF_Association_Owned_End,
-     200,
+     201,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     200,
+     201,
      MP_CMOF_Property_Subsetted_Property,
      85,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     200,
+     201,
      MP_CMOF_Typed_Element_Type,
      9,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     173,
+     176,
      MP_CMOF_Association_Member_End,
      46,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     173,
+     176,
      MP_CMOF_Association_Member_End,
-     201,
+     202,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     173,
+     176,
      MP_CMOF_Association_Owned_End,
-     201,
+     202,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     201,
+     202,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     175,
+     178,
      MP_CMOF_Association_Member_End,
      66,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     175,
+     178,
      MP_CMOF_Association_Member_End,
-     202,
+     203,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     175,
+     178,
      MP_CMOF_Association_Owned_End,
-     202,
+     203,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     202,
+     203,
      MP_CMOF_Property_Subsetted_Property,
      83,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     202,
+     203,
      MP_CMOF_Typed_Element_Type,
      19,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     177,
+     180,
      MP_CMOF_Association_Member_End,
      65,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     177,
+     180,
      MP_CMOF_Association_Member_End,
-     203,
+     204,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     177,
+     180,
      MP_CMOF_Association_Owned_End,
-     203,
+     204,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     203,
+     204,
      MP_CMOF_Property_Subsetted_Property,
      83,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     203,
+     204,
      MP_CMOF_Typed_Element_Type,
      19,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     179,
+     182,
      MP_CMOF_Association_Member_End,
      101,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     179,
+     182,
      MP_CMOF_Association_Member_End,
-     204,
+     205,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     179,
+     182,
      MP_CMOF_Association_Owned_End,
-     204,
+     205,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     204,
+     205,
      MP_CMOF_Property_Subsetted_Property,
      83,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     204,
+     205,
      MP_CMOF_Typed_Element_Type,
      19,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     181,
+     184,
      MP_CMOF_Association_Member_End,
      62,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     181,
+     184,
      MP_CMOF_Association_Member_End,
      83,
      MP_CMOF_Property_Association);
@@ -6314,13 +6354,13 @@ begin
     (MA_CMOF_Type_Typed_Element,
      131,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      132,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -6330,621 +6370,633 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     186,
+     137,
      MP_CMOF_Association_Member_End,
      78,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     186,
+     137,
      MP_CMOF_Association_Member_End,
-     205,
+     206,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     186,
+     137,
      MP_CMOF_Association_Owned_End,
-     205,
+     206,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     205,
+     206,
      MP_CMOF_Typed_Element_Type,
      30,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
+    (MA_CMOF_Element_Tag,
      207,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
+     MP_CMOF_Tag_Element,
      209,
-     MP_CMOF_Packaged_Element_Owning_Package);
+     MP_CMOF_Element_Tag);
+   Internal_Create_Link
+    (MA_CMOF_Element_Tag,
+     208,
+     MP_CMOF_Tag_Element,
+     209,
+     MP_CMOF_Element_Tag);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     211,
+     210,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     213,
+     212,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     214,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     216,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
      MP_CMOF_Package_Packaged_Element,
      4,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      8,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      9,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      14,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      15,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      17,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      23,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      27,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      28,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      29,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      32,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      33,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      1,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      3,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      26,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      7,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      11,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      12,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      25,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      6,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      18,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      19,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      24,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      2,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      10,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      20,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      21,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      22,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      31,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      16,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      13,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      5,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     754,
+     757,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     764,
+     767,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     145,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     147,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     149,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     150,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     152,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     154,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     156,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     158,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     160,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     163,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     165,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     166,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     168,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     169,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     172,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     174,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     176,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     178,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     180,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     182,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     183,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     184,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     185,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     135,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     136,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     137,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     138,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     139,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     140,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     141,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     142,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     143,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     144,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
-     MP_CMOF_Package_Packaged_Element,
-     146,
-     MP_CMOF_Packaged_Element_Owning_Package);
-   Internal_Create_Link
-    (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      148,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     151,
+     150,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     152,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
      MP_CMOF_Package_Packaged_Element,
      153,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      155,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      157,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      159,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      161,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     162,
+     163,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     164,
+     166,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     167,
+     168,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     170,
+     169,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      171,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     173,
+     172,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      175,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      177,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      179,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
      181,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     183,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     185,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     186,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     135,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     136,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     138,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     139,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     140,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     141,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     142,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     143,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     144,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     145,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     146,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     147,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     149,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     151,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     154,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     156,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     158,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     160,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     162,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     164,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     165,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     167,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     170,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     173,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     174,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     176,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     178,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     180,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     182,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
+     MP_CMOF_Package_Packaged_Element,
+     184,
+     MP_CMOF_Packaged_Element_Owning_Package);
+   Internal_Create_Link
+    (MA_CMOF_Packaged_Element_Owning_Package,
+     209,
      MP_CMOF_Package_Packaged_Element,
      30,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Packaged_Element_Owning_Package,
-     206,
+     209,
      MP_CMOF_Package_Packaged_Element,
-     186,
+     137,
      MP_CMOF_Packaged_Element_Owning_Package);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     207,
-     MP_CMOF_Element_Owned_Comment,
-     208,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     208,
-     MP_CMOF_Comment_Annotated_Element,
-     207,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     209,
-     MP_CMOF_Element_Owned_Comment,
      210,
+     MP_CMOF_Element_Owned_Comment,
+     211,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
+     211,
+     MP_CMOF_Comment_Annotated_Element,
      210,
-     MP_CMOF_Comment_Annotated_Element,
-     209,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     211,
-     MP_CMOF_Element_Owned_Comment,
      212,
+     MP_CMOF_Element_Owned_Comment,
+     213,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     212,
+     213,
      MP_CMOF_Comment_Annotated_Element,
-     211,
+     212,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     213,
-     MP_CMOF_Element_Owned_Comment,
      214,
+     MP_CMOF_Element_Owned_Comment,
+     215,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     214,
+     215,
      MP_CMOF_Comment_Annotated_Element,
-     213,
+     214,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     216,
+     MP_CMOF_Element_Owned_Comment,
+     217,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     217,
+     MP_CMOF_Comment_Annotated_Element,
+     216,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Attribute_Class,
@@ -6980,79 +7032,79 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      4,
      MP_CMOF_Element_Owned_Comment,
-     215,
+     218,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     227,
+     230,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     233,
+     236,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     238,
+     241,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     243,
+     246,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     248,
+     251,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     253,
+     256,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     258,
+     261,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     266,
+     269,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     274,
+     277,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      4,
      MP_CMOF_Class_Owned_Operation,
-     280,
+     283,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     4,
-     MP_CMOF_Namespace_Owned_Rule,
-     216,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      4,
      MP_CMOF_Namespace_Owned_Rule,
      219,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     4,
+     MP_CMOF_Namespace_Owned_Rule,
+     222,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -7068,33 +7120,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     215,
-     MP_CMOF_Comment_Annotated_Element,
-     4,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     216,
-     MP_CMOF_Constraint_Constrained_Element,
-     4,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     216,
-     MP_CMOF_Element_Owned_Comment,
-     217,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     216,
-     MP_CMOF_Constraint_Specification,
      218,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     217,
      MP_CMOF_Comment_Annotated_Element,
-     216,
+     4,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -7121,10 +7149,34 @@ begin
      219,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     222,
+     MP_CMOF_Constraint_Constrained_Element,
+     4,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     222,
+     MP_CMOF_Element_Owned_Comment,
+     223,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     222,
+     MP_CMOF_Constraint_Specification,
+     224,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     223,
+     MP_CMOF_Comment_Annotated_Element,
+     222,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      43,
      MP_CMOF_Element_Owned_Comment,
-     222,
+     225,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -7140,7 +7192,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     222,
+     225,
      MP_CMOF_Comment_Annotated_Element,
      43,
      MP_CMOF_Annotated_Element_Comment);
@@ -7148,7 +7200,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      44,
      MP_CMOF_Element_Owned_Comment,
-     223,
+     226,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -7164,7 +7216,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     223,
+     226,
      MP_CMOF_Comment_Annotated_Element,
      44,
      MP_CMOF_Annotated_Element_Comment);
@@ -7172,7 +7224,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      45,
      MP_CMOF_Element_Owned_Comment,
-     224,
+     227,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -7182,7 +7234,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     224,
+     227,
      MP_CMOF_Comment_Annotated_Element,
      45,
      MP_CMOF_Annotated_Element_Comment);
@@ -7190,7 +7242,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      46,
      MP_CMOF_Element_Owned_Comment,
-     225,
+     228,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -7206,7 +7258,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     225,
+     228,
      MP_CMOF_Comment_Annotated_Element,
      46,
      MP_CMOF_Annotated_Element_Comment);
@@ -7214,623 +7266,623 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      81,
      MP_CMOF_Element_Owned_Comment,
-     226,
+     229,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      81,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     226,
+     229,
      MP_CMOF_Comment_Annotated_Element,
      81,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     227,
+     230,
      MP_CMOF_Operation_Body_Condition,
-     229,
+     232,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     227,
+     230,
      MP_CMOF_Element_Owned_Comment,
-     228,
+     231,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     227,
+     230,
      MP_CMOF_Operation_Owned_Parameter,
-     231,
+     234,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     227,
+     230,
      MP_CMOF_Operation_Owned_Parameter,
-     232,
+     235,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     227,
+     230,
      MP_CMOF_Namespace_Owned_Rule,
-     229,
+     232,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     227,
+     230,
      MP_CMOF_Operation_Redefined_Operation,
-     707,
+     710,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     228,
+     231,
      MP_CMOF_Comment_Annotated_Element,
-     227,
+     230,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     229,
+     232,
      MP_CMOF_Constraint_Constrained_Element,
-     227,
+     230,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     229,
+     232,
      MP_CMOF_Constraint_Specification,
-     230,
+     233,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     231,
+     234,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     232,
+     235,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     233,
+     236,
      MP_CMOF_Operation_Body_Condition,
-     235,
+     238,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     233,
+     236,
      MP_CMOF_Element_Owned_Comment,
-     234,
+     237,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     233,
+     236,
      MP_CMOF_Operation_Owned_Parameter,
-     237,
+     240,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     233,
+     236,
      MP_CMOF_Namespace_Owned_Rule,
-     235,
+     238,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     234,
+     237,
      MP_CMOF_Comment_Annotated_Element,
-     233,
+     236,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     235,
+     238,
      MP_CMOF_Constraint_Constrained_Element,
-     233,
+     236,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     235,
+     238,
      MP_CMOF_Constraint_Specification,
-     236,
+     239,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     237,
+     240,
      MP_CMOF_Typed_Element_Type,
      14,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     238,
+     241,
      MP_CMOF_Operation_Body_Condition,
-     240,
+     243,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     238,
+     241,
      MP_CMOF_Element_Owned_Comment,
-     239,
+     242,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     238,
+     241,
      MP_CMOF_Operation_Owned_Parameter,
-     242,
+     245,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     238,
+     241,
      MP_CMOF_Namespace_Owned_Rule,
-     240,
+     243,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     239,
+     242,
      MP_CMOF_Comment_Annotated_Element,
-     238,
+     241,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     240,
+     243,
      MP_CMOF_Constraint_Constrained_Element,
-     238,
+     241,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     240,
+     243,
      MP_CMOF_Constraint_Constrained_Element,
      45,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     240,
+     243,
      MP_CMOF_Constraint_Specification,
-     241,
+     244,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     242,
+     245,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     243,
+     246,
      MP_CMOF_Operation_Body_Condition,
-     245,
+     248,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     243,
+     246,
      MP_CMOF_Element_Owned_Comment,
-     244,
+     247,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     243,
+     246,
      MP_CMOF_Operation_Owned_Parameter,
-     247,
+     250,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     243,
+     246,
      MP_CMOF_Namespace_Owned_Rule,
-     245,
+     248,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     244,
+     247,
      MP_CMOF_Comment_Annotated_Element,
-     243,
+     246,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     245,
+     248,
      MP_CMOF_Constraint_Constrained_Element,
-     243,
+     246,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     245,
+     248,
      MP_CMOF_Constraint_Specification,
-     246,
+     249,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     247,
+     250,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     248,
+     251,
      MP_CMOF_Operation_Body_Condition,
-     250,
+     253,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     248,
+     251,
      MP_CMOF_Element_Owned_Comment,
-     249,
+     252,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     248,
+     251,
      MP_CMOF_Operation_Owned_Parameter,
-     252,
+     255,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     248,
+     251,
      MP_CMOF_Namespace_Owned_Rule,
-     250,
+     253,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     249,
+     252,
      MP_CMOF_Comment_Annotated_Element,
-     248,
+     251,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     250,
+     253,
      MP_CMOF_Constraint_Constrained_Element,
-     248,
+     251,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     250,
+     253,
      MP_CMOF_Constraint_Constrained_Element,
      46,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     250,
+     253,
      MP_CMOF_Constraint_Specification,
-     251,
+     254,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     252,
+     255,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     253,
-     MP_CMOF_Operation_Body_Condition,
-     255,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     253,
-     MP_CMOF_Element_Owned_Comment,
-     254,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     253,
-     MP_CMOF_Operation_Owned_Parameter,
-     257,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     253,
-     MP_CMOF_Namespace_Owned_Rule,
-     255,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     254,
-     MP_CMOF_Comment_Annotated_Element,
-     253,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     255,
-     MP_CMOF_Constraint_Constrained_Element,
-     253,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     255,
-     MP_CMOF_Constraint_Specification,
      256,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Operation_Body_Condition,
+     258,
+     MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     256,
+     MP_CMOF_Element_Owned_Comment,
      257,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     256,
+     MP_CMOF_Operation_Owned_Parameter,
+     260,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     256,
+     MP_CMOF_Namespace_Owned_Rule,
+     258,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     257,
+     MP_CMOF_Comment_Annotated_Element,
+     256,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     258,
+     MP_CMOF_Constraint_Constrained_Element,
+     256,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     258,
+     MP_CMOF_Constraint_Specification,
+     259,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     260,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     258,
-     MP_CMOF_Operation_Body_Condition,
-     262,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     258,
-     MP_CMOF_Element_Owned_Comment,
-     259,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     258,
-     MP_CMOF_Operation_Owned_Parameter,
-     264,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     258,
-     MP_CMOF_Operation_Owned_Parameter,
-     265,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     258,
-     MP_CMOF_Namespace_Owned_Rule,
-     260,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     258,
-     MP_CMOF_Namespace_Owned_Rule,
-     262,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Precondition_Pre_Context,
-     258,
-     MP_CMOF_Operation_Precondition,
-     260,
-     MP_CMOF_Precondition_Pre_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     259,
-     MP_CMOF_Comment_Annotated_Element,
-     258,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     260,
-     MP_CMOF_Constraint_Constrained_Element,
-     258,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     260,
-     MP_CMOF_Constraint_Specification,
      261,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Operation_Body_Condition,
+     265,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     261,
+     MP_CMOF_Element_Owned_Comment,
+     262,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     261,
+     MP_CMOF_Operation_Owned_Parameter,
+     267,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     261,
+     MP_CMOF_Operation_Owned_Parameter,
+     268,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     261,
+     MP_CMOF_Namespace_Owned_Rule,
+     263,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     261,
+     MP_CMOF_Namespace_Owned_Rule,
+     265,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Precondition_Pre_Context,
+     261,
+     MP_CMOF_Operation_Precondition,
+     263,
+     MP_CMOF_Precondition_Pre_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     262,
+     MP_CMOF_Comment_Annotated_Element,
+     261,
+     MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     262,
+     263,
      MP_CMOF_Constraint_Constrained_Element,
-     258,
+     261,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     262,
-     MP_CMOF_Constraint_Specification,
      263,
+     MP_CMOF_Constraint_Specification,
+     264,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     265,
+     MP_CMOF_Constraint_Constrained_Element,
+     261,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     265,
+     MP_CMOF_Constraint_Specification,
+     266,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     264,
+     267,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     265,
+     268,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     266,
+     269,
      MP_CMOF_Operation_Body_Condition,
-     270,
+     273,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     266,
+     269,
      MP_CMOF_Element_Owned_Comment,
-     267,
+     270,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     266,
+     269,
      MP_CMOF_Operation_Owned_Parameter,
-     272,
+     275,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     266,
+     269,
      MP_CMOF_Operation_Owned_Parameter,
-     273,
+     276,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     266,
+     269,
      MP_CMOF_Namespace_Owned_Rule,
-     268,
+     271,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     266,
+     269,
      MP_CMOF_Namespace_Owned_Rule,
-     270,
+     273,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     266,
+     269,
      MP_CMOF_Operation_Precondition,
-     268,
+     271,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     267,
+     270,
      MP_CMOF_Comment_Annotated_Element,
-     266,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     268,
-     MP_CMOF_Constraint_Constrained_Element,
-     266,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     268,
-     MP_CMOF_Constraint_Specification,
      269,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     270,
-     MP_CMOF_Constraint_Constrained_Element,
-     266,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     270,
-     MP_CMOF_Constraint_Specification,
      271,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Constraint_Constrained_Element,
+     269,
+     MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Specification_Owning_Constraint,
+     271,
+     MP_CMOF_Constraint_Specification,
      272,
-     MP_CMOF_Typed_Element_Type,
-     209,
-     MP_CMOF_Type_Typed_Element);
+     MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Constrained_Element_Constraint,
      273,
+     MP_CMOF_Constraint_Constrained_Element,
+     269,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     273,
+     MP_CMOF_Constraint_Specification,
+     274,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     275,
+     MP_CMOF_Typed_Element_Type,
+     212,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     276,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     274,
-     MP_CMOF_Operation_Body_Condition,
-     276,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     274,
-     MP_CMOF_Element_Owned_Comment,
-     275,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     274,
-     MP_CMOF_Operation_Owned_Parameter,
-     278,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     274,
-     MP_CMOF_Operation_Owned_Parameter,
-     279,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     274,
-     MP_CMOF_Namespace_Owned_Rule,
-     276,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     275,
-     MP_CMOF_Comment_Annotated_Element,
-     274,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     276,
-     MP_CMOF_Constraint_Constrained_Element,
-     274,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     276,
-     MP_CMOF_Constraint_Specification,
      277,
+     MP_CMOF_Operation_Body_Condition,
+     279,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     277,
+     MP_CMOF_Element_Owned_Comment,
+     278,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     277,
+     MP_CMOF_Operation_Owned_Parameter,
+     281,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     277,
+     MP_CMOF_Operation_Owned_Parameter,
+     282,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     277,
+     MP_CMOF_Namespace_Owned_Rule,
+     279,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     278,
+     MP_CMOF_Comment_Annotated_Element,
+     277,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     279,
+     MP_CMOF_Constraint_Constrained_Element,
+     277,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     279,
+     MP_CMOF_Constraint_Specification,
+     280,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     278,
+     281,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     279,
+     282,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     280,
+     283,
      MP_CMOF_Operation_Body_Condition,
-     282,
+     285,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     280,
+     283,
      MP_CMOF_Element_Owned_Comment,
-     281,
+     284,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     280,
+     283,
      MP_CMOF_Operation_Owned_Parameter,
-     284,
+     287,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     280,
+     283,
      MP_CMOF_Operation_Owned_Parameter,
-     285,
+     288,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     280,
+     283,
      MP_CMOF_Namespace_Owned_Rule,
-     282,
+     285,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     281,
+     284,
      MP_CMOF_Comment_Annotated_Element,
-     280,
+     283,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     282,
+     285,
      MP_CMOF_Constraint_Constrained_Element,
-     280,
+     283,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     282,
+     285,
      MP_CMOF_Constraint_Specification,
-     283,
+     286,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     284,
+     287,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     285,
+     288,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
@@ -7850,7 +7902,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      8,
      MP_CMOF_Element_Owned_Comment,
-     286,
+     289,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -7860,7 +7912,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     286,
+     289,
      MP_CMOF_Comment_Annotated_Element,
      8,
      MP_CMOF_Annotated_Element_Comment);
@@ -7868,7 +7920,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      51,
      MP_CMOF_Element_Owned_Comment,
-     287,
+     290,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -7884,7 +7936,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     287,
+     290,
      MP_CMOF_Comment_Annotated_Element,
      51,
      MP_CMOF_Annotated_Element_Comment);
@@ -7892,7 +7944,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      52,
      MP_CMOF_Element_Owned_Comment,
-     288,
+     291,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -7908,7 +7960,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     288,
+     291,
      MP_CMOF_Comment_Annotated_Element,
      52,
      MP_CMOF_Annotated_Element_Comment);
@@ -7934,26 +7986,20 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      9,
      MP_CMOF_Element_Owned_Comment,
-     289,
+     292,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      9,
      MP_CMOF_Class_Owned_Operation,
-     299,
+     302,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      9,
      MP_CMOF_Class_Owned_Operation,
-     304,
+     307,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     9,
-     MP_CMOF_Namespace_Owned_Rule,
-     290,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      9,
@@ -7961,34 +8007,16 @@ begin
      293,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     9,
+     MP_CMOF_Namespace_Owned_Rule,
+     296,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     289,
-     MP_CMOF_Comment_Annotated_Element,
-     9,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     290,
-     MP_CMOF_Constraint_Constrained_Element,
-     9,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     290,
-     MP_CMOF_Element_Owned_Comment,
-     291,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     290,
-     MP_CMOF_Constraint_Specification,
      292,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     291,
      MP_CMOF_Comment_Annotated_Element,
-     290,
+     9,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -8015,10 +8043,34 @@ begin
      293,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     296,
+     MP_CMOF_Constraint_Constrained_Element,
+     9,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     296,
+     MP_CMOF_Element_Owned_Comment,
+     297,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     296,
+     MP_CMOF_Constraint_Specification,
+     298,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     297,
+     MP_CMOF_Comment_Annotated_Element,
+     296,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      54,
      MP_CMOF_Element_Owned_Comment,
-     296,
+     299,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -8028,7 +8080,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     296,
+     299,
      MP_CMOF_Comment_Annotated_Element,
      54,
      MP_CMOF_Annotated_Element_Comment);
@@ -8036,7 +8088,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      85,
      MP_CMOF_Element_Owned_Comment,
-     297,
+     300,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -8046,7 +8098,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     297,
+     300,
      MP_CMOF_Comment_Annotated_Element,
      85,
      MP_CMOF_Annotated_Element_Comment);
@@ -8054,7 +8106,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      53,
      MP_CMOF_Element_Owned_Comment,
-     298,
+     301,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -8070,105 +8122,105 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     298,
+     301,
      MP_CMOF_Comment_Annotated_Element,
      53,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     299,
+     302,
      MP_CMOF_Operation_Body_Condition,
-     301,
+     304,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     299,
+     302,
      MP_CMOF_Element_Owned_Comment,
-     300,
+     303,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     299,
+     302,
      MP_CMOF_Operation_Owned_Parameter,
-     303,
+     306,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     299,
+     302,
      MP_CMOF_Namespace_Owned_Rule,
-     301,
+     304,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     300,
+     303,
      MP_CMOF_Comment_Annotated_Element,
-     299,
+     302,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     301,
+     304,
      MP_CMOF_Constraint_Constrained_Element,
-     299,
+     302,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     301,
+     304,
      MP_CMOF_Constraint_Specification,
-     302,
+     305,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     303,
+     306,
      MP_CMOF_Typed_Element_Type,
      9,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     304,
+     307,
      MP_CMOF_Operation_Body_Condition,
-     306,
+     309,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     304,
+     307,
      MP_CMOF_Element_Owned_Comment,
-     305,
+     308,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     304,
+     307,
      MP_CMOF_Operation_Owned_Parameter,
-     308,
+     311,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     304,
+     307,
      MP_CMOF_Namespace_Owned_Rule,
-     306,
+     309,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     305,
+     308,
      MP_CMOF_Comment_Annotated_Element,
-     304,
+     307,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     306,
+     309,
      MP_CMOF_Constraint_Constrained_Element,
-     304,
+     307,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     306,
+     309,
      MP_CMOF_Constraint_Specification,
-     307,
+     310,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     308,
+     311,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Attribute_Class,
@@ -8180,7 +8232,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      14,
      MP_CMOF_Element_Owned_Comment,
-     309,
+     312,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -8190,7 +8242,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     309,
+     312,
      MP_CMOF_Comment_Annotated_Element,
      14,
      MP_CMOF_Annotated_Element_Comment);
@@ -8198,7 +8250,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      57,
      MP_CMOF_Element_Owned_Comment,
-     310,
+     313,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -8208,7 +8260,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     310,
+     313,
      MP_CMOF_Comment_Annotated_Element,
      57,
      MP_CMOF_Annotated_Element_Comment);
@@ -8240,49 +8292,49 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      15,
      MP_CMOF_Element_Owned_Comment,
-     311,
+     314,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      15,
      MP_CMOF_Class_Owned_Operation,
-     322,
+     325,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      15,
      MP_CMOF_Class_Owned_Operation,
-     329,
+     332,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      15,
      MP_CMOF_Class_Owned_Operation,
-     337,
+     340,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      15,
      MP_CMOF_Class_Owned_Operation,
-     345,
+     348,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      15,
      MP_CMOF_Class_Owned_Operation,
-     350,
+     353,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     15,
-     MP_CMOF_Namespace_Owned_Rule,
-     312,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      15,
      MP_CMOF_Namespace_Owned_Rule,
      315,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     15,
+     MP_CMOF_Namespace_Owned_Rule,
+     318,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -8292,33 +8344,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     311,
-     MP_CMOF_Comment_Annotated_Element,
-     15,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     312,
-     MP_CMOF_Constraint_Constrained_Element,
-     15,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     312,
-     MP_CMOF_Element_Owned_Comment,
-     313,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     312,
-     MP_CMOF_Constraint_Specification,
      314,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     313,
      MP_CMOF_Comment_Annotated_Element,
-     312,
+     15,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -8345,20 +8373,44 @@ begin
      315,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     318,
+     MP_CMOF_Constraint_Constrained_Element,
+     15,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     318,
+     MP_CMOF_Element_Owned_Comment,
+     319,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     318,
+     MP_CMOF_Constraint_Specification,
+     320,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     319,
+     MP_CMOF_Comment_Annotated_Element,
+     318,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      91,
      MP_CMOF_Element_Owned_Comment,
-     318,
+     321,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      91,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     318,
+     321,
      MP_CMOF_Comment_Annotated_Element,
      91,
      MP_CMOF_Annotated_Element_Comment);
@@ -8366,17 +8418,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      92,
      MP_CMOF_Element_Owned_Comment,
-     319,
+     322,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      92,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     319,
+     322,
      MP_CMOF_Comment_Annotated_Element,
      92,
      MP_CMOF_Annotated_Element_Comment);
@@ -8384,17 +8436,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      93,
      MP_CMOF_Element_Owned_Comment,
-     320,
+     323,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      93,
      MP_CMOF_Typed_Element_Type,
-     207,
+     210,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     320,
+     323,
      MP_CMOF_Comment_Annotated_Element,
      93,
      MP_CMOF_Annotated_Element_Comment);
@@ -8402,355 +8454,355 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      94,
      MP_CMOF_Element_Owned_Comment,
-     321,
+     324,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      94,
      MP_CMOF_Typed_Element_Type,
-     213,
+     216,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     321,
+     324,
      MP_CMOF_Comment_Annotated_Element,
      94,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     322,
-     MP_CMOF_Operation_Body_Condition,
-     326,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     322,
-     MP_CMOF_Element_Owned_Comment,
-     323,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     322,
-     MP_CMOF_Operation_Owned_Parameter,
-     328,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     322,
-     MP_CMOF_Namespace_Owned_Rule,
-     324,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     322,
-     MP_CMOF_Namespace_Owned_Rule,
-     326,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Precondition_Pre_Context,
-     322,
-     MP_CMOF_Operation_Precondition,
-     324,
-     MP_CMOF_Precondition_Pre_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     323,
-     MP_CMOF_Comment_Annotated_Element,
-     322,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     324,
-     MP_CMOF_Constraint_Constrained_Element,
-     322,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     324,
-     MP_CMOF_Constraint_Specification,
      325,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     326,
-     MP_CMOF_Constraint_Constrained_Element,
-     322,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     326,
-     MP_CMOF_Constraint_Specification,
-     327,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
-     328,
-     MP_CMOF_Typed_Element_Type,
-     209,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     329,
      MP_CMOF_Operation_Body_Condition,
-     333,
+     329,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     329,
+     325,
      MP_CMOF_Element_Owned_Comment,
-     330,
+     326,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     329,
+     325,
      MP_CMOF_Operation_Owned_Parameter,
-     335,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     329,
-     MP_CMOF_Operation_Owned_Parameter,
-     336,
+     331,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     329,
+     325,
      MP_CMOF_Namespace_Owned_Rule,
-     331,
+     327,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     329,
+     325,
      MP_CMOF_Namespace_Owned_Rule,
-     333,
+     329,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     329,
+     325,
      MP_CMOF_Operation_Precondition,
-     331,
+     327,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     330,
+     326,
      MP_CMOF_Comment_Annotated_Element,
-     329,
+     325,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     331,
+     327,
      MP_CMOF_Constraint_Constrained_Element,
-     329,
+     325,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     331,
+     327,
      MP_CMOF_Constraint_Specification,
-     332,
+     328,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     333,
-     MP_CMOF_Constraint_Constrained_Element,
      329,
+     MP_CMOF_Constraint_Constrained_Element,
+     325,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     333,
+     329,
      MP_CMOF_Constraint_Specification,
-     334,
+     330,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     335,
+     331,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
+     332,
+     MP_CMOF_Operation_Body_Condition,
+     336,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     332,
+     MP_CMOF_Element_Owned_Comment,
+     333,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     332,
+     MP_CMOF_Operation_Owned_Parameter,
+     338,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     332,
+     MP_CMOF_Operation_Owned_Parameter,
+     339,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     332,
+     MP_CMOF_Namespace_Owned_Rule,
+     334,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     332,
+     MP_CMOF_Namespace_Owned_Rule,
+     336,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Precondition_Pre_Context,
+     332,
+     MP_CMOF_Operation_Precondition,
+     334,
+     MP_CMOF_Precondition_Pre_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     333,
+     MP_CMOF_Comment_Annotated_Element,
+     332,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     334,
+     MP_CMOF_Constraint_Constrained_Element,
+     332,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     334,
+     MP_CMOF_Constraint_Specification,
+     335,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     336,
+     MP_CMOF_Constraint_Constrained_Element,
+     332,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     336,
+     MP_CMOF_Constraint_Specification,
+     337,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     338,
+     MP_CMOF_Typed_Element_Type,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     336,
+     339,
      MP_CMOF_Typed_Element_Type,
      15,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     337,
+     340,
      MP_CMOF_Operation_Body_Condition,
-     341,
+     344,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     337,
+     340,
      MP_CMOF_Element_Owned_Comment,
-     338,
+     341,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     337,
+     340,
      MP_CMOF_Operation_Owned_Parameter,
-     343,
+     346,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     337,
+     340,
      MP_CMOF_Operation_Owned_Parameter,
-     344,
+     347,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     337,
+     340,
      MP_CMOF_Namespace_Owned_Rule,
-     339,
+     342,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     337,
+     340,
      MP_CMOF_Namespace_Owned_Rule,
-     341,
+     344,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     337,
+     340,
      MP_CMOF_Operation_Precondition,
-     339,
+     342,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     338,
+     341,
      MP_CMOF_Comment_Annotated_Element,
-     337,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     339,
-     MP_CMOF_Constraint_Constrained_Element,
-     337,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     339,
-     MP_CMOF_Constraint_Specification,
      340,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     341,
-     MP_CMOF_Constraint_Constrained_Element,
-     337,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     341,
-     MP_CMOF_Constraint_Specification,
      342,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Constraint_Constrained_Element,
+     340,
+     MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Specification_Owning_Constraint,
+     342,
+     MP_CMOF_Constraint_Specification,
      343,
-     MP_CMOF_Typed_Element_Type,
-     209,
-     MP_CMOF_Type_Typed_Element);
+     MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Constrained_Element_Constraint,
      344,
-     MP_CMOF_Typed_Element_Type,
-     207,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     345,
-     MP_CMOF_Operation_Body_Condition,
-     347,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     345,
-     MP_CMOF_Element_Owned_Comment,
-     346,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     345,
-     MP_CMOF_Operation_Owned_Parameter,
-     349,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     345,
-     MP_CMOF_Namespace_Owned_Rule,
-     347,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     346,
-     MP_CMOF_Comment_Annotated_Element,
-     345,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     347,
      MP_CMOF_Constraint_Constrained_Element,
-     345,
+     340,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     347,
+     344,
      MP_CMOF_Constraint_Specification,
+     345,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     346,
+     MP_CMOF_Typed_Element_Type,
+     212,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     347,
+     MP_CMOF_Typed_Element_Type,
+     210,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
      348,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
-     349,
-     MP_CMOF_Typed_Element_Type,
-     207,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     350,
      MP_CMOF_Operation_Body_Condition,
-     352,
+     350,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     350,
+     348,
      MP_CMOF_Element_Owned_Comment,
-     351,
+     349,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     350,
+     348,
      MP_CMOF_Operation_Owned_Parameter,
-     354,
+     352,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     350,
+     348,
      MP_CMOF_Namespace_Owned_Rule,
-     352,
+     350,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     351,
+     349,
      MP_CMOF_Comment_Annotated_Element,
-     350,
+     348,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     352,
-     MP_CMOF_Constraint_Constrained_Element,
      350,
+     MP_CMOF_Constraint_Constrained_Element,
+     348,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     352,
+     350,
      MP_CMOF_Constraint_Specification,
-     353,
+     351,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     354,
+     352,
      MP_CMOF_Typed_Element_Type,
-     213,
+     210,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
+     353,
+     MP_CMOF_Operation_Body_Condition,
+     355,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     353,
+     MP_CMOF_Element_Owned_Comment,
+     354,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     353,
+     MP_CMOF_Operation_Owned_Parameter,
+     357,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     353,
+     MP_CMOF_Namespace_Owned_Rule,
+     355,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     354,
+     MP_CMOF_Comment_Annotated_Element,
+     353,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     355,
+     MP_CMOF_Constraint_Constrained_Element,
+     353,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     355,
+     MP_CMOF_Constraint_Specification,
+     356,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     357,
+     MP_CMOF_Typed_Element_Type,
+     216,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Attribute_Class,
@@ -8792,43 +8844,43 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      17,
      MP_CMOF_Element_Owned_Comment,
-     355,
+     358,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      17,
      MP_CMOF_Class_Owned_Operation,
-     364,
+     367,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      17,
      MP_CMOF_Class_Owned_Operation,
-     369,
+     372,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      17,
      MP_CMOF_Class_Owned_Operation,
-     375,
+     378,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      17,
      MP_CMOF_Class_Owned_Operation,
-     381,
+     384,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      17,
      MP_CMOF_Class_Owned_Operation,
-     387,
+     390,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      17,
      MP_CMOF_Namespace_Owned_Rule,
-     356,
+     359,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -8838,39 +8890,39 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     355,
+     358,
      MP_CMOF_Comment_Annotated_Element,
      17,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     356,
+     359,
      MP_CMOF_Constraint_Constrained_Element,
      17,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     356,
+     359,
      MP_CMOF_Element_Owned_Comment,
-     357,
+     360,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     356,
+     359,
      MP_CMOF_Constraint_Specification,
-     358,
+     361,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     357,
+     360,
      MP_CMOF_Comment_Annotated_Element,
-     356,
+     359,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      59,
      MP_CMOF_Element_Owned_Comment,
-     359,
+     362,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -8886,7 +8938,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     359,
+     362,
      MP_CMOF_Comment_Annotated_Element,
      59,
      MP_CMOF_Annotated_Element_Comment);
@@ -8894,7 +8946,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      58,
      MP_CMOF_Element_Owned_Comment,
-     360,
+     363,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -8910,7 +8962,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     360,
+     363,
      MP_CMOF_Comment_Annotated_Element,
      58,
      MP_CMOF_Annotated_Element_Comment);
@@ -8918,7 +8970,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      63,
      MP_CMOF_Element_Owned_Comment,
-     361,
+     364,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -8934,7 +8986,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     361,
+     364,
      MP_CMOF_Comment_Annotated_Element,
      63,
      MP_CMOF_Annotated_Element_Comment);
@@ -8942,7 +8994,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      61,
      MP_CMOF_Element_Owned_Comment,
-     362,
+     365,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -8964,7 +9016,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     362,
+     365,
      MP_CMOF_Comment_Annotated_Element,
      61,
      MP_CMOF_Annotated_Element_Comment);
@@ -8972,7 +9024,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      60,
      MP_CMOF_Element_Owned_Comment,
-     363,
+     366,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -8982,7 +9034,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     363,
+     366,
      MP_CMOF_Comment_Annotated_Element,
      60,
      MP_CMOF_Annotated_Element_Comment);
@@ -9000,291 +9052,291 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     364,
+     367,
      MP_CMOF_Operation_Body_Condition,
-     366,
+     369,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     364,
+     367,
      MP_CMOF_Element_Owned_Comment,
-     365,
+     368,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     364,
+     367,
      MP_CMOF_Operation_Owned_Parameter,
-     368,
+     371,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     364,
+     367,
      MP_CMOF_Namespace_Owned_Rule,
-     366,
+     369,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     365,
+     368,
      MP_CMOF_Comment_Annotated_Element,
-     364,
+     367,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     366,
+     369,
      MP_CMOF_Constraint_Constrained_Element,
-     364,
+     367,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     366,
+     369,
      MP_CMOF_Constraint_Constrained_Element,
      59,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     366,
+     369,
      MP_CMOF_Constraint_Specification,
-     367,
+     370,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     368,
+     371,
      MP_CMOF_Typed_Element_Type,
      23,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     369,
+     372,
      MP_CMOF_Operation_Body_Condition,
-     371,
+     374,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     369,
+     372,
      MP_CMOF_Element_Owned_Comment,
-     370,
+     373,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     369,
+     372,
      MP_CMOF_Operation_Owned_Parameter,
-     373,
+     376,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     369,
+     372,
      MP_CMOF_Operation_Owned_Parameter,
-     374,
+     377,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     369,
+     372,
      MP_CMOF_Namespace_Owned_Rule,
-     371,
+     374,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     370,
+     373,
      MP_CMOF_Comment_Annotated_Element,
-     369,
+     372,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     371,
+     374,
      MP_CMOF_Constraint_Constrained_Element,
-     369,
+     372,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     371,
+     374,
      MP_CMOF_Constraint_Specification,
-     372,
+     375,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     373,
+     376,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     374,
+     377,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     375,
-     MP_CMOF_Operation_Body_Condition,
-     377,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     375,
-     MP_CMOF_Element_Owned_Comment,
-     376,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     375,
-     MP_CMOF_Operation_Owned_Parameter,
-     379,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     375,
-     MP_CMOF_Operation_Owned_Parameter,
-     380,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     375,
-     MP_CMOF_Namespace_Owned_Rule,
-     377,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     376,
-     MP_CMOF_Comment_Annotated_Element,
-     375,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     377,
-     MP_CMOF_Constraint_Constrained_Element,
-     375,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     377,
-     MP_CMOF_Constraint_Specification,
      378,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
-     379,
-     MP_CMOF_Typed_Element_Type,
-     23,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+     MP_CMOF_Operation_Body_Condition,
      380,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     378,
+     MP_CMOF_Element_Owned_Comment,
+     379,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     378,
+     MP_CMOF_Operation_Owned_Parameter,
+     382,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     378,
+     MP_CMOF_Operation_Owned_Parameter,
+     383,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     378,
+     MP_CMOF_Namespace_Owned_Rule,
+     380,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     379,
+     MP_CMOF_Comment_Annotated_Element,
+     378,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     380,
+     MP_CMOF_Constraint_Constrained_Element,
+     378,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     380,
+     MP_CMOF_Constraint_Specification,
+     381,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     382,
+     MP_CMOF_Typed_Element_Type,
+     23,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     383,
      MP_CMOF_Typed_Element_Type,
      23,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     381,
-     MP_CMOF_Operation_Body_Condition,
-     383,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     381,
-     MP_CMOF_Element_Owned_Comment,
-     382,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     381,
-     MP_CMOF_Operation_Owned_Parameter,
-     385,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     381,
-     MP_CMOF_Operation_Owned_Parameter,
-     386,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     381,
-     MP_CMOF_Namespace_Owned_Rule,
-     383,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     382,
-     MP_CMOF_Comment_Annotated_Element,
-     381,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     383,
-     MP_CMOF_Constraint_Constrained_Element,
-     381,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     383,
-     MP_CMOF_Constraint_Specification,
      384,
+     MP_CMOF_Operation_Body_Condition,
+     386,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     384,
+     MP_CMOF_Element_Owned_Comment,
+     385,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     384,
+     MP_CMOF_Operation_Owned_Parameter,
+     388,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     384,
+     MP_CMOF_Operation_Owned_Parameter,
+     389,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     384,
+     MP_CMOF_Namespace_Owned_Rule,
+     386,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     385,
+     MP_CMOF_Comment_Annotated_Element,
+     384,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     386,
+     MP_CMOF_Constraint_Constrained_Element,
+     384,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     386,
+     MP_CMOF_Constraint_Specification,
+     387,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     385,
+     388,
      MP_CMOF_Typed_Element_Type,
      23,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     386,
+     389,
      MP_CMOF_Typed_Element_Type,
      23,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     387,
+     390,
      MP_CMOF_Operation_Body_Condition,
-     389,
+     392,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     387,
+     390,
      MP_CMOF_Element_Owned_Comment,
-     388,
+     391,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     387,
+     390,
      MP_CMOF_Operation_Owned_Parameter,
-     391,
+     394,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     387,
+     390,
      MP_CMOF_Namespace_Owned_Rule,
-     389,
+     392,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     388,
+     391,
      MP_CMOF_Comment_Annotated_Element,
-     387,
+     390,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     389,
+     392,
      MP_CMOF_Constraint_Constrained_Element,
-     387,
+     390,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     389,
+     392,
      MP_CMOF_Constraint_Specification,
-     390,
+     393,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     391,
+     394,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      23,
      MP_CMOF_Element_Owned_Comment,
-     392,
+     395,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -9294,7 +9346,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     392,
+     395,
      MP_CMOF_Comment_Annotated_Element,
      23,
      MP_CMOF_Annotated_Element_Comment);
@@ -9320,26 +9372,20 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      27,
      MP_CMOF_Element_Owned_Comment,
-     393,
+     396,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      27,
      MP_CMOF_Class_Owned_Operation,
-     406,
+     409,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      27,
      MP_CMOF_Class_Owned_Operation,
-     414,
+     417,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     27,
-     MP_CMOF_Namespace_Owned_Rule,
-     394,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      27,
@@ -9353,6 +9399,12 @@ begin
      400,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     27,
+     MP_CMOF_Namespace_Owned_Rule,
+     403,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
      27,
      MP_CMOF_Class_Super_Class,
@@ -9360,33 +9412,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     393,
-     MP_CMOF_Comment_Annotated_Element,
-     27,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     394,
-     MP_CMOF_Constraint_Constrained_Element,
-     27,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     394,
-     MP_CMOF_Element_Owned_Comment,
-     395,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     394,
-     MP_CMOF_Constraint_Specification,
      396,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     395,
      MP_CMOF_Comment_Annotated_Element,
-     394,
+     27,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -9437,10 +9465,34 @@ begin
      400,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     403,
+     MP_CMOF_Constraint_Constrained_Element,
+     27,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     403,
+     MP_CMOF_Element_Owned_Comment,
+     404,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     403,
+     MP_CMOF_Constraint_Specification,
+     405,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     404,
+     MP_CMOF_Comment_Annotated_Element,
+     403,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      76,
      MP_CMOF_Element_Owned_Comment,
-     403,
+     406,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -9450,7 +9502,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     403,
+     406,
      MP_CMOF_Comment_Annotated_Element,
      76,
      MP_CMOF_Annotated_Element_Comment);
@@ -9458,7 +9510,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      75,
      MP_CMOF_Element_Owned_Comment,
-     404,
+     407,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -9468,7 +9520,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     404,
+     407,
      MP_CMOF_Comment_Annotated_Element,
      75,
      MP_CMOF_Annotated_Element_Comment);
@@ -9476,161 +9528,161 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      130,
      MP_CMOF_Element_Owned_Comment,
-     405,
+     408,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      130,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     405,
+     408,
      MP_CMOF_Comment_Annotated_Element,
      130,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     406,
+     409,
      MP_CMOF_Operation_Body_Condition,
-     408,
+     411,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     406,
+     409,
      MP_CMOF_Element_Owned_Comment,
-     407,
+     410,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     406,
+     409,
      MP_CMOF_Operation_Owned_Parameter,
-     412,
+     415,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     406,
+     409,
      MP_CMOF_Operation_Owned_Parameter,
-     413,
+     416,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     406,
+     409,
      MP_CMOF_Namespace_Owned_Rule,
-     408,
+     411,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     406,
+     409,
      MP_CMOF_Namespace_Owned_Rule,
-     410,
+     413,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     406,
+     409,
      MP_CMOF_Operation_Precondition,
-     410,
+     413,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     407,
+     410,
      MP_CMOF_Comment_Annotated_Element,
-     406,
+     409,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     408,
+     411,
      MP_CMOF_Constraint_Constrained_Element,
-     406,
+     409,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     408,
+     411,
      MP_CMOF_Constraint_Specification,
-     409,
+     412,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     410,
+     413,
      MP_CMOF_Constraint_Constrained_Element,
-     406,
+     409,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     410,
+     413,
      MP_CMOF_Constraint_Specification,
-     411,
+     414,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     412,
+     415,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     413,
+     416,
      MP_CMOF_Typed_Element_Type,
      27,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     414,
+     417,
      MP_CMOF_Operation_Body_Condition,
-     416,
+     419,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     414,
+     417,
      MP_CMOF_Element_Owned_Comment,
-     415,
+     418,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     414,
+     417,
      MP_CMOF_Operation_Owned_Parameter,
-     418,
+     421,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     414,
+     417,
      MP_CMOF_Operation_Owned_Parameter,
-     419,
+     422,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     414,
+     417,
      MP_CMOF_Namespace_Owned_Rule,
-     416,
+     419,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     415,
+     418,
      MP_CMOF_Comment_Annotated_Element,
-     414,
+     417,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     416,
+     419,
      MP_CMOF_Constraint_Constrained_Element,
-     414,
+     417,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     416,
+     419,
      MP_CMOF_Constraint_Specification,
-     417,
+     420,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     418,
+     421,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     419,
+     422,
      MP_CMOF_Typed_Element_Type,
      27,
      MP_CMOF_Type_Typed_Element);
@@ -9644,7 +9696,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      28,
      MP_CMOF_Element_Owned_Comment,
-     420,
+     423,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -9654,7 +9706,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     420,
+     423,
      MP_CMOF_Comment_Annotated_Element,
      28,
      MP_CMOF_Annotated_Element_Comment);
@@ -9662,7 +9714,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      77,
      MP_CMOF_Element_Owned_Comment,
-     421,
+     424,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -9672,7 +9724,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     421,
+     424,
      MP_CMOF_Comment_Annotated_Element,
      77,
      MP_CMOF_Annotated_Element_Comment);
@@ -9680,7 +9732,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      29,
      MP_CMOF_Element_Owned_Comment,
-     422,
+     425,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -9702,7 +9754,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     422,
+     425,
      MP_CMOF_Comment_Annotated_Element,
      29,
      MP_CMOF_Annotated_Element_Comment);
@@ -9716,7 +9768,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      32,
      MP_CMOF_Element_Owned_Comment,
-     423,
+     426,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -9726,7 +9778,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     423,
+     426,
      MP_CMOF_Comment_Annotated_Element,
      32,
      MP_CMOF_Annotated_Element_Comment);
@@ -9734,7 +9786,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      134,
      MP_CMOF_Element_Owned_Comment,
-     424,
+     427,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -9744,7 +9796,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     424,
+     427,
      MP_CMOF_Comment_Annotated_Element,
      134,
      MP_CMOF_Annotated_Element_Comment);
@@ -9752,43 +9804,43 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      33,
      MP_CMOF_Element_Owned_Comment,
-     425,
+     428,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      33,
      MP_CMOF_Class_Owned_Operation,
-     426,
+     429,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      33,
      MP_CMOF_Class_Owned_Operation,
-     431,
+     434,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      33,
      MP_CMOF_Class_Owned_Operation,
-     436,
+     439,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      33,
      MP_CMOF_Class_Owned_Operation,
-     441,
+     444,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      33,
      MP_CMOF_Class_Owned_Operation,
-     446,
+     449,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      33,
      MP_CMOF_Class_Owned_Operation,
-     451,
+     454,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -9804,297 +9856,297 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     425,
+     428,
      MP_CMOF_Comment_Annotated_Element,
      33,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     426,
-     MP_CMOF_Operation_Body_Condition,
-     428,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     426,
-     MP_CMOF_Element_Owned_Comment,
-     427,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Parameter_Operation,
-     426,
-     MP_CMOF_Operation_Owned_Parameter,
-     430,
-     MP_CMOF_Parameter_Operation);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     426,
-     MP_CMOF_Namespace_Owned_Rule,
-     428,
-     MP_CMOF_Constraint_Context);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     427,
-     MP_CMOF_Comment_Annotated_Element,
-     426,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     428,
-     MP_CMOF_Constraint_Constrained_Element,
-     426,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     428,
-     MP_CMOF_Constraint_Specification,
      429,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Operation_Body_Condition,
+     431,
+     MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     429,
+     MP_CMOF_Element_Owned_Comment,
      430,
-     MP_CMOF_Typed_Element_Type,
-     209,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     431,
-     MP_CMOF_Operation_Body_Condition,
-     433,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     431,
-     MP_CMOF_Element_Owned_Comment,
-     432,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     431,
+     429,
      MP_CMOF_Operation_Owned_Parameter,
-     435,
+     433,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     431,
+     429,
      MP_CMOF_Namespace_Owned_Rule,
-     433,
+     431,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     432,
+     430,
      MP_CMOF_Comment_Annotated_Element,
-     431,
+     429,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     433,
-     MP_CMOF_Constraint_Constrained_Element,
      431,
+     MP_CMOF_Constraint_Constrained_Element,
+     429,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     433,
+     431,
      MP_CMOF_Constraint_Specification,
+     432,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     433,
+     MP_CMOF_Typed_Element_Type,
+     212,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
      434,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Operation_Body_Condition,
+     436,
+     MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     434,
+     MP_CMOF_Element_Owned_Comment,
      435,
-     MP_CMOF_Typed_Element_Type,
-     207,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     436,
-     MP_CMOF_Operation_Body_Condition,
-     438,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     436,
-     MP_CMOF_Element_Owned_Comment,
-     437,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     436,
+     434,
      MP_CMOF_Operation_Owned_Parameter,
-     440,
+     438,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     436,
+     434,
      MP_CMOF_Namespace_Owned_Rule,
-     438,
+     436,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     437,
+     435,
      MP_CMOF_Comment_Annotated_Element,
-     436,
+     434,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     438,
-     MP_CMOF_Constraint_Constrained_Element,
      436,
+     MP_CMOF_Constraint_Constrained_Element,
+     434,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     438,
+     436,
      MP_CMOF_Constraint_Specification,
+     437,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     438,
+     MP_CMOF_Typed_Element_Type,
+     210,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
      439,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Operation_Body_Condition,
+     441,
+     MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     439,
+     MP_CMOF_Element_Owned_Comment,
      440,
-     MP_CMOF_Typed_Element_Type,
-     209,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     441,
-     MP_CMOF_Operation_Body_Condition,
-     443,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     441,
-     MP_CMOF_Element_Owned_Comment,
-     442,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     441,
+     439,
      MP_CMOF_Operation_Owned_Parameter,
-     445,
+     443,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     441,
+     439,
      MP_CMOF_Namespace_Owned_Rule,
-     443,
+     441,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     442,
+     440,
      MP_CMOF_Comment_Annotated_Element,
-     441,
+     439,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     443,
-     MP_CMOF_Constraint_Constrained_Element,
      441,
+     MP_CMOF_Constraint_Constrained_Element,
+     439,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     443,
+     441,
      MP_CMOF_Constraint_Specification,
+     442,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     443,
+     MP_CMOF_Typed_Element_Type,
+     212,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
      444,
-     MP_CMOF_Specification_Owning_Constraint);
+     MP_CMOF_Operation_Body_Condition,
+     446,
+     MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     444,
+     MP_CMOF_Element_Owned_Comment,
      445,
-     MP_CMOF_Typed_Element_Type,
-     211,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     446,
-     MP_CMOF_Operation_Body_Condition,
-     448,
-     MP_CMOF_Body_Condition_Body_Context);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     446,
-     MP_CMOF_Element_Owned_Comment,
-     447,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     446,
+     444,
      MP_CMOF_Operation_Owned_Parameter,
-     450,
+     448,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     446,
+     444,
      MP_CMOF_Namespace_Owned_Rule,
-     448,
+     446,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     447,
+     445,
      MP_CMOF_Comment_Annotated_Element,
-     446,
+     444,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     448,
-     MP_CMOF_Constraint_Constrained_Element,
      446,
+     MP_CMOF_Constraint_Constrained_Element,
+     444,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     448,
+     446,
      MP_CMOF_Constraint_Specification,
+     447,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     448,
+     MP_CMOF_Typed_Element_Type,
+     214,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
      449,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
-     450,
-     MP_CMOF_Typed_Element_Type,
-     213,
-     MP_CMOF_Type_Typed_Element);
-   Internal_Create_Link
-    (MA_CMOF_Body_Condition_Body_Context,
-     451,
      MP_CMOF_Operation_Body_Condition,
-     453,
+     451,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     451,
+     449,
      MP_CMOF_Element_Owned_Comment,
-     452,
+     450,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     451,
+     449,
      MP_CMOF_Operation_Owned_Parameter,
-     455,
+     453,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     451,
+     449,
      MP_CMOF_Namespace_Owned_Rule,
-     453,
+     451,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     452,
+     450,
      MP_CMOF_Comment_Annotated_Element,
-     451,
+     449,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     453,
-     MP_CMOF_Constraint_Constrained_Element,
      451,
+     MP_CMOF_Constraint_Constrained_Element,
+     449,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     453,
+     451,
      MP_CMOF_Constraint_Specification,
-     454,
+     452,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     455,
+     453,
      MP_CMOF_Typed_Element_Type,
-     209,
+     216,
+     MP_CMOF_Type_Typed_Element);
+   Internal_Create_Link
+    (MA_CMOF_Body_Condition_Body_Context,
+     454,
+     MP_CMOF_Operation_Body_Condition,
+     456,
+     MP_CMOF_Body_Condition_Body_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     454,
+     MP_CMOF_Element_Owned_Comment,
+     455,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Parameter_Operation,
+     454,
+     MP_CMOF_Operation_Owned_Parameter,
+     458,
+     MP_CMOF_Parameter_Operation);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     454,
+     MP_CMOF_Namespace_Owned_Rule,
+     456,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     455,
+     MP_CMOF_Comment_Annotated_Element,
+     454,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     456,
+     MP_CMOF_Constraint_Constrained_Element,
+     454,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     456,
+     MP_CMOF_Constraint_Specification,
+     457,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Type_Typed_Element,
+     458,
+     MP_CMOF_Typed_Element_Type,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Attribute_Class,
@@ -10130,20 +10182,14 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      1,
      MP_CMOF_Element_Owned_Comment,
-     456,
+     459,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      1,
      MP_CMOF_Class_Owned_Operation,
-     474,
+     477,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     1,
-     MP_CMOF_Namespace_Owned_Rule,
-     457,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      1,
@@ -10163,6 +10209,12 @@ begin
      466,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     1,
+     MP_CMOF_Namespace_Owned_Rule,
+     469,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
      1,
      MP_CMOF_Class_Super_Class,
@@ -10176,33 +10228,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     456,
-     MP_CMOF_Comment_Annotated_Element,
-     1,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     457,
-     MP_CMOF_Constraint_Constrained_Element,
-     1,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     457,
-     MP_CMOF_Element_Owned_Comment,
-     458,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     457,
-     MP_CMOF_Constraint_Specification,
      459,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     458,
      MP_CMOF_Comment_Annotated_Element,
-     457,
+     1,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -10277,20 +10305,44 @@ begin
      466,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     469,
+     MP_CMOF_Constraint_Constrained_Element,
+     1,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     469,
+     MP_CMOF_Element_Owned_Comment,
+     470,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     469,
+     MP_CMOF_Constraint_Specification,
+     471,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     470,
+     MP_CMOF_Comment_Annotated_Element,
+     469,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      79,
      MP_CMOF_Element_Owned_Comment,
-     469,
+     472,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      79,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     469,
+     472,
      MP_CMOF_Comment_Annotated_Element,
      79,
      MP_CMOF_Annotated_Element_Comment);
@@ -10298,7 +10350,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      37,
      MP_CMOF_Element_Owned_Comment,
-     470,
+     473,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -10326,7 +10378,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     470,
+     473,
      MP_CMOF_Comment_Annotated_Element,
      37,
      MP_CMOF_Annotated_Element_Comment);
@@ -10334,7 +10386,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      34,
      MP_CMOF_Element_Owned_Comment,
-     471,
+     474,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -10350,7 +10402,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     471,
+     474,
      MP_CMOF_Comment_Annotated_Element,
      34,
      MP_CMOF_Annotated_Element_Comment);
@@ -10358,7 +10410,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      35,
      MP_CMOF_Element_Owned_Comment,
-     472,
+     475,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -10374,7 +10426,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     472,
+     475,
      MP_CMOF_Comment_Annotated_Element,
      35,
      MP_CMOF_Annotated_Element_Comment);
@@ -10382,7 +10434,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      36,
      MP_CMOF_Element_Owned_Comment,
-     473,
+     476,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -10398,61 +10450,61 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     473,
+     476,
      MP_CMOF_Comment_Annotated_Element,
      36,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     474,
+     477,
      MP_CMOF_Operation_Body_Condition,
-     476,
+     479,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     474,
+     477,
      MP_CMOF_Element_Owned_Comment,
-     475,
+     478,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     474,
+     477,
      MP_CMOF_Operation_Owned_Parameter,
-     478,
+     481,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     474,
+     477,
      MP_CMOF_Namespace_Owned_Rule,
-     476,
+     479,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     475,
+     478,
      MP_CMOF_Comment_Annotated_Element,
-     474,
+     477,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     476,
+     479,
      MP_CMOF_Constraint_Constrained_Element,
-     474,
+     477,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     476,
+     479,
      MP_CMOF_Constraint_Constrained_Element,
      34,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     476,
+     479,
      MP_CMOF_Constraint_Specification,
-     477,
+     480,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     478,
+     481,
      MP_CMOF_Typed_Element_Type,
      31,
      MP_CMOF_Type_Typed_Element);
@@ -10484,13 +10536,13 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      3,
      MP_CMOF_Element_Owned_Comment,
-     479,
+     482,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      3,
      MP_CMOF_Class_Owned_Operation,
-     484,
+     487,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -10500,7 +10552,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     479,
+     482,
      MP_CMOF_Comment_Annotated_Element,
      3,
      MP_CMOF_Annotated_Element_Comment);
@@ -10508,17 +10560,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      80,
      MP_CMOF_Element_Owned_Comment,
-     480,
+     483,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      80,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     480,
+     483,
      MP_CMOF_Comment_Annotated_Element,
      80,
      MP_CMOF_Annotated_Element_Comment);
@@ -10526,7 +10578,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      40,
      MP_CMOF_Element_Owned_Comment,
-     481,
+     484,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -10548,7 +10600,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     481,
+     484,
      MP_CMOF_Comment_Annotated_Element,
      40,
      MP_CMOF_Annotated_Element_Comment);
@@ -10556,7 +10608,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      41,
      MP_CMOF_Element_Owned_Comment,
-     482,
+     485,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -10578,7 +10630,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     482,
+     485,
      MP_CMOF_Comment_Annotated_Element,
      41,
      MP_CMOF_Annotated_Element_Comment);
@@ -10586,7 +10638,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      42,
      MP_CMOF_Element_Owned_Comment,
-     483,
+     486,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Redefined_Property_Property,
@@ -10602,73 +10654,73 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     483,
+     486,
      MP_CMOF_Comment_Annotated_Element,
      42,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     484,
+     487,
      MP_CMOF_Operation_Body_Condition,
-     486,
+     489,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     484,
+     487,
      MP_CMOF_Element_Owned_Comment,
-     485,
+     488,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     484,
+     487,
      MP_CMOF_Operation_Owned_Parameter,
-     488,
+     491,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     484,
+     487,
      MP_CMOF_Operation_Owned_Parameter,
-     489,
+     492,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     484,
+     487,
      MP_CMOF_Namespace_Owned_Rule,
-     486,
+     489,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     484,
+     487,
      MP_CMOF_Operation_Redefined_Operation,
-     274,
+     277,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     485,
+     488,
      MP_CMOF_Comment_Annotated_Element,
-     484,
+     487,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     486,
+     489,
      MP_CMOF_Constraint_Constrained_Element,
-     484,
+     487,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     486,
+     489,
      MP_CMOF_Constraint_Specification,
-     487,
+     490,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     488,
+     491,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     489,
+     492,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
@@ -10748,44 +10800,38 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      26,
      MP_CMOF_Element_Owned_Comment,
-     490,
+     493,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      26,
      MP_CMOF_Class_Owned_Operation,
-     524,
+     527,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      26,
      MP_CMOF_Class_Owned_Operation,
-     529,
+     532,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      26,
      MP_CMOF_Class_Owned_Operation,
-     537,
+     540,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      26,
      MP_CMOF_Class_Owned_Operation,
-     542,
+     545,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      26,
      MP_CMOF_Class_Owned_Operation,
-     547,
+     550,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     26,
-     MP_CMOF_Namespace_Owned_Rule,
-     491,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      26,
@@ -10823,6 +10869,12 @@ begin
      509,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     26,
+     MP_CMOF_Namespace_Owned_Rule,
+     512,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
      26,
      MP_CMOF_Class_Super_Class,
@@ -10830,33 +10882,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     490,
-     MP_CMOF_Comment_Annotated_Element,
-     26,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     491,
-     MP_CMOF_Constraint_Constrained_Element,
-     26,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     491,
-     MP_CMOF_Element_Owned_Comment,
-     492,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     491,
-     MP_CMOF_Constraint_Specification,
      493,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     492,
      MP_CMOF_Comment_Annotated_Element,
-     491,
+     26,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -11003,20 +11031,44 @@ begin
      509,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     512,
+     MP_CMOF_Constraint_Constrained_Element,
+     26,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     512,
+     MP_CMOF_Element_Owned_Comment,
+     513,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     512,
+     MP_CMOF_Constraint_Specification,
+     514,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     513,
+     MP_CMOF_Comment_Annotated_Element,
+     512,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      127,
      MP_CMOF_Element_Owned_Comment,
-     512,
+     515,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      127,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     512,
+     515,
      MP_CMOF_Comment_Annotated_Element,
      127,
      MP_CMOF_Annotated_Element_Comment);
@@ -11024,17 +11076,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      123,
      MP_CMOF_Element_Owned_Comment,
-     513,
+     516,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      123,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     513,
+     516,
      MP_CMOF_Comment_Annotated_Element,
      123,
      MP_CMOF_Annotated_Element_Comment);
@@ -11042,17 +11094,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      124,
      MP_CMOF_Element_Owned_Comment,
-     514,
+     517,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      124,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     514,
+     517,
      MP_CMOF_Comment_Annotated_Element,
      124,
      MP_CMOF_Annotated_Element_Comment);
@@ -11060,17 +11112,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      125,
      MP_CMOF_Element_Owned_Comment,
-     515,
+     518,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      125,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     515,
+     518,
      MP_CMOF_Comment_Annotated_Element,
      125,
      MP_CMOF_Annotated_Element_Comment);
@@ -11078,17 +11130,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      126,
      MP_CMOF_Element_Owned_Comment,
-     516,
+     519,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      126,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     516,
+     519,
      MP_CMOF_Comment_Annotated_Element,
      126,
      MP_CMOF_Annotated_Element_Comment);
@@ -11096,7 +11148,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      121,
      MP_CMOF_Element_Owned_Comment,
-     517,
+     520,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11114,7 +11166,7 @@ begin
     (MA_CMOF_Subsetted_Property_Property,
      121,
      MP_CMOF_Property_Subsetted_Property,
-     781,
+     784,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -11124,7 +11176,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     517,
+     520,
      MP_CMOF_Comment_Annotated_Element,
      121,
      MP_CMOF_Annotated_Element_Comment);
@@ -11132,7 +11184,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      129,
      MP_CMOF_Element_Owned_Comment,
-     518,
+     521,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11160,7 +11212,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     518,
+     521,
      MP_CMOF_Comment_Annotated_Element,
      129,
      MP_CMOF_Annotated_Element_Comment);
@@ -11168,7 +11220,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      73,
      MP_CMOF_Element_Owned_Comment,
-     519,
+     522,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11184,7 +11236,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     519,
+     522,
      MP_CMOF_Comment_Annotated_Element,
      73,
      MP_CMOF_Annotated_Element_Comment);
@@ -11192,7 +11244,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      74,
      MP_CMOF_Element_Owned_Comment,
-     520,
+     523,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -11202,7 +11254,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     520,
+     523,
      MP_CMOF_Comment_Annotated_Element,
      74,
      MP_CMOF_Annotated_Element_Comment);
@@ -11210,7 +11262,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      128,
      MP_CMOF_Element_Owned_Comment,
-     521,
+     524,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -11220,7 +11272,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     521,
+     524,
      MP_CMOF_Comment_Annotated_Element,
      128,
      MP_CMOF_Annotated_Element_Comment);
@@ -11228,7 +11280,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      122,
      MP_CMOF_Element_Owned_Comment,
-     522,
+     525,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11246,7 +11298,7 @@ begin
     (MA_CMOF_Subsetted_Property_Property,
      122,
      MP_CMOF_Property_Subsetted_Property,
-     781,
+     784,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -11256,7 +11308,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     522,
+     525,
      MP_CMOF_Comment_Annotated_Element,
      122,
      MP_CMOF_Annotated_Element_Comment);
@@ -11264,7 +11316,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      120,
      MP_CMOF_Element_Owned_Comment,
-     523,
+     526,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -11274,307 +11326,307 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     523,
+     526,
      MP_CMOF_Comment_Annotated_Element,
      120,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     524,
+     527,
      MP_CMOF_Operation_Body_Condition,
-     526,
+     529,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     524,
+     527,
      MP_CMOF_Element_Owned_Comment,
-     525,
+     528,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     524,
+     527,
      MP_CMOF_Operation_Owned_Parameter,
-     528,
+     531,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     524,
+     527,
      MP_CMOF_Namespace_Owned_Rule,
-     526,
+     529,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     525,
+     528,
      MP_CMOF_Comment_Annotated_Element,
-     524,
+     527,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     526,
+     529,
      MP_CMOF_Constraint_Constrained_Element,
-     524,
+     527,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     526,
+     529,
      MP_CMOF_Constraint_Constrained_Element,
      128,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     526,
+     529,
      MP_CMOF_Constraint_Specification,
-     527,
+     530,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     528,
+     531,
      MP_CMOF_Typed_Element_Type,
      26,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     529,
+     532,
      MP_CMOF_Operation_Body_Condition,
-     533,
+     536,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     529,
+     532,
      MP_CMOF_Element_Owned_Comment,
-     530,
+     533,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     529,
+     532,
      MP_CMOF_Operation_Owned_Parameter,
-     535,
+     538,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     529,
+     532,
      MP_CMOF_Operation_Owned_Parameter,
-     536,
+     539,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     529,
+     532,
      MP_CMOF_Namespace_Owned_Rule,
-     531,
+     534,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     529,
+     532,
      MP_CMOF_Namespace_Owned_Rule,
-     533,
+     536,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     529,
+     532,
      MP_CMOF_Operation_Precondition,
-     531,
+     534,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     529,
+     532,
      MP_CMOF_Operation_Redefined_Operation,
-     406,
+     409,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     530,
+     533,
      MP_CMOF_Comment_Annotated_Element,
-     529,
+     532,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     531,
+     534,
      MP_CMOF_Constraint_Constrained_Element,
-     529,
+     532,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     531,
+     534,
      MP_CMOF_Constraint_Specification,
-     532,
+     535,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     533,
+     536,
      MP_CMOF_Constraint_Constrained_Element,
-     529,
+     532,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     533,
+     536,
      MP_CMOF_Constraint_Specification,
-     534,
+     537,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     535,
+     538,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     536,
+     539,
      MP_CMOF_Typed_Element_Type,
      27,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     537,
+     540,
      MP_CMOF_Operation_Body_Condition,
-     539,
+     542,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     537,
+     540,
      MP_CMOF_Element_Owned_Comment,
-     538,
+     541,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     537,
+     540,
      MP_CMOF_Operation_Owned_Parameter,
-     541,
+     544,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     537,
+     540,
      MP_CMOF_Namespace_Owned_Rule,
-     539,
+     542,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     538,
+     541,
      MP_CMOF_Comment_Annotated_Element,
-     537,
+     540,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     539,
+     542,
      MP_CMOF_Constraint_Constrained_Element,
-     537,
+     540,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     539,
+     542,
      MP_CMOF_Constraint_Specification,
-     540,
+     543,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     541,
+     544,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     542,
+     545,
      MP_CMOF_Operation_Body_Condition,
-     544,
+     547,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     542,
+     545,
      MP_CMOF_Element_Owned_Comment,
-     543,
+     546,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     542,
+     545,
      MP_CMOF_Operation_Owned_Parameter,
-     546,
+     549,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     542,
+     545,
      MP_CMOF_Namespace_Owned_Rule,
-     544,
+     547,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     543,
+     546,
      MP_CMOF_Comment_Annotated_Element,
-     542,
+     545,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     544,
+     547,
      MP_CMOF_Constraint_Constrained_Element,
-     542,
+     545,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     544,
+     547,
      MP_CMOF_Constraint_Specification,
-     545,
+     548,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     546,
+     549,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     547,
+     550,
      MP_CMOF_Operation_Body_Condition,
-     549,
+     552,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     547,
+     550,
      MP_CMOF_Element_Owned_Comment,
-     548,
+     551,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     547,
+     550,
      MP_CMOF_Operation_Owned_Parameter,
-     551,
+     554,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     547,
+     550,
      MP_CMOF_Operation_Owned_Parameter,
-     552,
+     555,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     547,
+     550,
      MP_CMOF_Namespace_Owned_Rule,
-     549,
+     552,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     548,
+     551,
      MP_CMOF_Comment_Annotated_Element,
-     547,
+     550,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     549,
+     552,
      MP_CMOF_Constraint_Constrained_Element,
-     547,
+     550,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     549,
+     552,
      MP_CMOF_Constraint_Specification,
-     550,
+     553,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     551,
+     554,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     552,
+     555,
      MP_CMOF_Typed_Element_Type,
      26,
      MP_CMOF_Type_Typed_Element);
@@ -11594,13 +11646,13 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      7,
      MP_CMOF_Element_Owned_Comment,
-     553,
+     556,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      7,
      MP_CMOF_Class_Owned_Operation,
-     556,
+     559,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -11610,7 +11662,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     553,
+     556,
      MP_CMOF_Comment_Annotated_Element,
      7,
      MP_CMOF_Annotated_Element_Comment);
@@ -11618,7 +11670,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      49,
      MP_CMOF_Element_Owned_Comment,
-     554,
+     557,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11640,7 +11692,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     554,
+     557,
      MP_CMOF_Comment_Annotated_Element,
      49,
      MP_CMOF_Annotated_Element_Comment);
@@ -11648,7 +11700,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      50,
      MP_CMOF_Element_Owned_Comment,
-     555,
+     558,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11670,73 +11722,73 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     555,
+     558,
      MP_CMOF_Comment_Annotated_Element,
      50,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     556,
+     559,
      MP_CMOF_Operation_Body_Condition,
-     558,
+     561,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     556,
+     559,
      MP_CMOF_Element_Owned_Comment,
-     557,
+     560,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     556,
+     559,
      MP_CMOF_Operation_Owned_Parameter,
-     560,
+     563,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     556,
+     559,
      MP_CMOF_Operation_Owned_Parameter,
-     561,
+     564,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     556,
+     559,
      MP_CMOF_Namespace_Owned_Rule,
-     558,
+     561,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     556,
+     559,
      MP_CMOF_Operation_Redefined_Operation,
-     274,
+     277,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     557,
+     560,
      MP_CMOF_Comment_Annotated_Element,
-     556,
+     559,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     558,
+     561,
      MP_CMOF_Constraint_Constrained_Element,
-     556,
+     559,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     558,
+     561,
      MP_CMOF_Constraint_Specification,
-     559,
+     562,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     560,
+     563,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     561,
+     564,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
@@ -11750,7 +11802,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      11,
      MP_CMOF_Element_Owned_Comment,
-     562,
+     565,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -11760,7 +11812,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     562,
+     565,
      MP_CMOF_Comment_Annotated_Element,
      11,
      MP_CMOF_Annotated_Element_Comment);
@@ -11768,7 +11820,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      55,
      MP_CMOF_Element_Owned_Comment,
-     563,
+     566,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11784,7 +11836,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     563,
+     566,
      MP_CMOF_Comment_Annotated_Element,
      55,
      MP_CMOF_Annotated_Element_Comment);
@@ -11798,7 +11850,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      12,
      MP_CMOF_Element_Owned_Comment,
-     564,
+     567,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -11808,7 +11860,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     564,
+     567,
      MP_CMOF_Comment_Annotated_Element,
      12,
      MP_CMOF_Annotated_Element_Comment);
@@ -11816,7 +11868,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      90,
      MP_CMOF_Element_Owned_Comment,
-     565,
+     568,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11832,7 +11884,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     565,
+     568,
      MP_CMOF_Comment_Annotated_Element,
      90,
      MP_CMOF_Annotated_Element_Comment);
@@ -11840,7 +11892,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      25,
      MP_CMOF_Element_Owned_Comment,
-     566,
+     569,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -11850,7 +11902,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     566,
+     569,
      MP_CMOF_Comment_Annotated_Element,
      25,
      MP_CMOF_Annotated_Element_Comment);
@@ -11876,19 +11928,19 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      6,
      MP_CMOF_Element_Owned_Comment,
-     567,
+     570,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      6,
      MP_CMOF_Namespace_Owned_Rule,
-     568,
+     571,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      6,
      MP_CMOF_Namespace_Owned_Rule,
-     571,
+     574,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -11898,33 +11950,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     567,
-     MP_CMOF_Comment_Annotated_Element,
-     6,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     568,
-     MP_CMOF_Constraint_Constrained_Element,
-     6,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     568,
-     MP_CMOF_Element_Owned_Comment,
-     569,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     568,
-     MP_CMOF_Constraint_Specification,
      570,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     569,
      MP_CMOF_Comment_Annotated_Element,
-     568,
+     6,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -11951,10 +11979,34 @@ begin
      571,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     574,
+     MP_CMOF_Constraint_Constrained_Element,
+     6,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     574,
+     MP_CMOF_Element_Owned_Comment,
+     575,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     574,
+     MP_CMOF_Constraint_Specification,
+     576,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     575,
+     MP_CMOF_Comment_Annotated_Element,
+     574,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      48,
      MP_CMOF_Element_Owned_Comment,
-     574,
+     577,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -11964,7 +12016,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     574,
+     577,
      MP_CMOF_Comment_Annotated_Element,
      48,
      MP_CMOF_Annotated_Element_Comment);
@@ -11972,7 +12024,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      84,
      MP_CMOF_Element_Owned_Comment,
-     575,
+     578,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -11988,7 +12040,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     575,
+     578,
      MP_CMOF_Comment_Annotated_Element,
      84,
      MP_CMOF_Annotated_Element_Comment);
@@ -12020,13 +12072,13 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      18,
      MP_CMOF_Element_Owned_Comment,
-     576,
+     579,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      18,
      MP_CMOF_Namespace_Owned_Rule,
-     577,
+     580,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -12036,49 +12088,49 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     576,
+     579,
      MP_CMOF_Comment_Annotated_Element,
      18,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     577,
+     580,
      MP_CMOF_Constraint_Constrained_Element,
      18,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     577,
+     580,
      MP_CMOF_Element_Owned_Comment,
-     578,
+     581,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     577,
+     580,
      MP_CMOF_Constraint_Specification,
-     579,
+     582,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     578,
+     581,
      MP_CMOF_Comment_Annotated_Element,
-     577,
+     580,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      99,
      MP_CMOF_Element_Owned_Comment,
-     580,
+     583,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      99,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     580,
+     583,
      MP_CMOF_Comment_Annotated_Element,
      99,
      MP_CMOF_Annotated_Element_Comment);
@@ -12086,17 +12138,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      100,
      MP_CMOF_Element_Owned_Comment,
-     581,
+     584,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      100,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     581,
+     584,
      MP_CMOF_Comment_Annotated_Element,
      100,
      MP_CMOF_Annotated_Element_Comment);
@@ -12188,61 +12240,61 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      19,
      MP_CMOF_Element_Owned_Comment,
-     582,
+     585,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     600,
+     603,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     605,
+     608,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     610,
+     613,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     615,
+     618,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     620,
+     623,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     625,
+     628,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      19,
      MP_CMOF_Class_Owned_Operation,
-     633,
+     636,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     19,
-     MP_CMOF_Namespace_Owned_Rule,
-     583,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      19,
      MP_CMOF_Namespace_Owned_Rule,
      586,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     19,
+     MP_CMOF_Namespace_Owned_Rule,
+     589,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -12252,33 +12304,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     582,
-     MP_CMOF_Comment_Annotated_Element,
-     19,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     583,
-     MP_CMOF_Constraint_Constrained_Element,
-     19,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     583,
-     MP_CMOF_Element_Owned_Comment,
-     584,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     583,
-     MP_CMOF_Constraint_Specification,
      585,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     584,
      MP_CMOF_Comment_Annotated_Element,
-     583,
+     19,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -12305,20 +12333,44 @@ begin
      586,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     589,
+     MP_CMOF_Constraint_Constrained_Element,
+     19,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     589,
+     MP_CMOF_Element_Owned_Comment,
+     590,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     589,
+     MP_CMOF_Constraint_Specification,
+     591,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     590,
+     MP_CMOF_Comment_Annotated_Element,
+     589,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      105,
      MP_CMOF_Element_Owned_Comment,
-     589,
+     592,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      105,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     589,
+     592,
      MP_CMOF_Comment_Annotated_Element,
      105,
      MP_CMOF_Annotated_Element_Comment);
@@ -12326,17 +12378,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      104,
      MP_CMOF_Element_Owned_Comment,
-     590,
+     593,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      104,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     590,
+     593,
      MP_CMOF_Comment_Annotated_Element,
      104,
      MP_CMOF_Annotated_Element_Comment);
@@ -12344,17 +12396,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      106,
      MP_CMOF_Element_Owned_Comment,
-     591,
+     594,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      106,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     591,
+     594,
      MP_CMOF_Comment_Annotated_Element,
      106,
      MP_CMOF_Annotated_Element_Comment);
@@ -12362,17 +12414,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      107,
      MP_CMOF_Element_Owned_Comment,
-     592,
+     595,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      107,
      MP_CMOF_Typed_Element_Type,
-     207,
+     210,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     592,
+     595,
      MP_CMOF_Comment_Annotated_Element,
      107,
      MP_CMOF_Annotated_Element_Comment);
@@ -12380,17 +12432,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      109,
      MP_CMOF_Element_Owned_Comment,
-     593,
+     596,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      109,
      MP_CMOF_Typed_Element_Type,
-     213,
+     216,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     593,
+     596,
      MP_CMOF_Comment_Annotated_Element,
      109,
      MP_CMOF_Annotated_Element_Comment);
@@ -12398,7 +12450,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      102,
      MP_CMOF_Element_Owned_Comment,
-     594,
+     597,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -12426,7 +12478,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     594,
+     597,
      MP_CMOF_Comment_Annotated_Element,
      102,
      MP_CMOF_Annotated_Element_Comment);
@@ -12434,7 +12486,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      103,
      MP_CMOF_Element_Owned_Comment,
-     595,
+     598,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -12462,7 +12514,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     595,
+     598,
      MP_CMOF_Comment_Annotated_Element,
      103,
      MP_CMOF_Annotated_Element_Comment);
@@ -12470,7 +12522,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      67,
      MP_CMOF_Element_Owned_Comment,
-     596,
+     599,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Redefined_Property_Property,
@@ -12486,7 +12538,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     596,
+     599,
      MP_CMOF_Comment_Annotated_Element,
      67,
      MP_CMOF_Annotated_Element_Comment);
@@ -12494,7 +12546,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      68,
      MP_CMOF_Element_Owned_Comment,
-     597,
+     600,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -12510,7 +12562,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     597,
+     600,
      MP_CMOF_Comment_Annotated_Element,
      68,
      MP_CMOF_Annotated_Element_Comment);
@@ -12518,7 +12570,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      108,
      MP_CMOF_Element_Owned_Comment,
-     598,
+     601,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -12528,7 +12580,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     598,
+     601,
      MP_CMOF_Comment_Annotated_Element,
      108,
      MP_CMOF_Annotated_Element_Comment);
@@ -12536,7 +12588,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      64,
      MP_CMOF_Element_Owned_Comment,
-     599,
+     602,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Redefined_Property_Property,
@@ -12552,7 +12604,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     599,
+     602,
      MP_CMOF_Comment_Annotated_Element,
      64,
      MP_CMOF_Annotated_Element_Comment);
@@ -12594,397 +12646,397 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     600,
+     603,
      MP_CMOF_Operation_Body_Condition,
-     602,
+     605,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     600,
+     603,
      MP_CMOF_Element_Owned_Comment,
-     601,
+     604,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     600,
+     603,
      MP_CMOF_Operation_Owned_Parameter,
-     604,
+     607,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     600,
+     603,
      MP_CMOF_Namespace_Owned_Rule,
-     602,
+     605,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     601,
+     604,
      MP_CMOF_Comment_Annotated_Element,
-     600,
+     603,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     602,
+     605,
      MP_CMOF_Constraint_Constrained_Element,
-     600,
+     603,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     602,
+     605,
      MP_CMOF_Constraint_Constrained_Element,
      104,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     602,
+     605,
      MP_CMOF_Constraint_Specification,
-     603,
+     606,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     604,
+     607,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     605,
+     608,
      MP_CMOF_Operation_Body_Condition,
-     607,
+     610,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     605,
+     608,
      MP_CMOF_Element_Owned_Comment,
-     606,
+     609,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     605,
+     608,
      MP_CMOF_Operation_Owned_Parameter,
-     609,
+     612,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     605,
+     608,
      MP_CMOF_Namespace_Owned_Rule,
-     607,
+     610,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     606,
+     609,
      MP_CMOF_Comment_Annotated_Element,
-     605,
+     608,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     607,
+     610,
      MP_CMOF_Constraint_Constrained_Element,
-     605,
+     608,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     607,
+     610,
      MP_CMOF_Constraint_Constrained_Element,
      106,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     607,
+     610,
      MP_CMOF_Constraint_Specification,
-     608,
+     611,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     609,
+     612,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     610,
+     613,
      MP_CMOF_Operation_Body_Condition,
-     612,
+     615,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     610,
+     613,
      MP_CMOF_Element_Owned_Comment,
-     611,
+     614,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     610,
+     613,
      MP_CMOF_Operation_Owned_Parameter,
-     614,
+     617,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     610,
+     613,
      MP_CMOF_Namespace_Owned_Rule,
-     612,
+     615,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     611,
+     614,
      MP_CMOF_Comment_Annotated_Element,
-     610,
+     613,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     612,
+     615,
      MP_CMOF_Constraint_Constrained_Element,
-     610,
+     613,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     612,
+     615,
      MP_CMOF_Constraint_Constrained_Element,
      107,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     612,
+     615,
      MP_CMOF_Constraint_Specification,
-     613,
+     616,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     614,
+     617,
      MP_CMOF_Typed_Element_Type,
-     207,
+     210,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     615,
+     618,
      MP_CMOF_Operation_Body_Condition,
-     617,
+     620,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     615,
+     618,
      MP_CMOF_Element_Owned_Comment,
-     616,
+     619,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     615,
+     618,
      MP_CMOF_Operation_Owned_Parameter,
-     619,
+     622,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     615,
+     618,
      MP_CMOF_Namespace_Owned_Rule,
-     617,
+     620,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     616,
+     619,
      MP_CMOF_Comment_Annotated_Element,
-     615,
+     618,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     617,
+     620,
      MP_CMOF_Constraint_Constrained_Element,
-     615,
+     618,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     617,
+     620,
      MP_CMOF_Constraint_Constrained_Element,
      109,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     617,
+     620,
      MP_CMOF_Constraint_Specification,
-     618,
+     621,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     619,
+     622,
      MP_CMOF_Typed_Element_Type,
-     213,
+     216,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     620,
+     623,
      MP_CMOF_Operation_Body_Condition,
-     622,
+     625,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     620,
+     623,
      MP_CMOF_Element_Owned_Comment,
-     621,
+     624,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     620,
+     623,
      MP_CMOF_Operation_Owned_Parameter,
-     624,
+     627,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     620,
+     623,
      MP_CMOF_Namespace_Owned_Rule,
-     622,
+     625,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     621,
+     624,
      MP_CMOF_Comment_Annotated_Element,
-     620,
+     623,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     622,
+     625,
      MP_CMOF_Constraint_Constrained_Element,
-     620,
+     623,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     622,
+     625,
      MP_CMOF_Constraint_Constrained_Element,
      108,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     622,
+     625,
      MP_CMOF_Constraint_Specification,
-     623,
+     626,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     624,
+     627,
      MP_CMOF_Typed_Element_Type,
      31,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     625,
+     628,
      MP_CMOF_Operation_Body_Condition,
-     629,
+     632,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     625,
+     628,
      MP_CMOF_Element_Owned_Comment,
-     626,
+     629,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     625,
+     628,
      MP_CMOF_Operation_Owned_Parameter,
-     631,
+     634,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     625,
+     628,
      MP_CMOF_Operation_Owned_Parameter,
-     632,
+     635,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     625,
+     628,
      MP_CMOF_Namespace_Owned_Rule,
-     627,
+     630,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     625,
+     628,
      MP_CMOF_Namespace_Owned_Rule,
-     629,
+     632,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     625,
+     628,
      MP_CMOF_Operation_Precondition,
-     627,
+     630,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     625,
+     628,
      MP_CMOF_Operation_Redefined_Operation,
-     406,
+     409,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     626,
+     629,
      MP_CMOF_Comment_Annotated_Element,
-     625,
+     628,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     627,
+     630,
      MP_CMOF_Constraint_Constrained_Element,
-     625,
+     628,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     627,
+     630,
      MP_CMOF_Constraint_Specification,
-     628,
+     631,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     629,
+     632,
      MP_CMOF_Constraint_Constrained_Element,
-     625,
+     628,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     629,
+     632,
      MP_CMOF_Constraint_Specification,
-     630,
+     633,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     631,
+     634,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     632,
+     635,
      MP_CMOF_Typed_Element_Type,
      27,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     633,
+     636,
      MP_CMOF_Operation_Body_Condition,
-     634,
+     637,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     633,
-     MP_CMOF_Operation_Owned_Parameter,
      636,
+     MP_CMOF_Operation_Owned_Parameter,
+     639,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     633,
+     636,
      MP_CMOF_Namespace_Owned_Rule,
-     634,
+     637,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     634,
+     637,
      MP_CMOF_Constraint_Constrained_Element,
-     633,
+     636,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     634,
+     637,
      MP_CMOF_Constraint_Specification,
-     635,
+     638,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     636,
+     639,
      MP_CMOF_Typed_Element_Type,
      24,
      MP_CMOF_Type_Typed_Element);
@@ -13010,7 +13062,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      24,
      MP_CMOF_Element_Owned_Comment,
-     637,
+     640,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -13026,7 +13078,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     637,
+     640,
      MP_CMOF_Comment_Annotated_Element,
      24,
      MP_CMOF_Annotated_Element_Comment);
@@ -13034,17 +13086,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      117,
      MP_CMOF_Element_Owned_Comment,
-     638,
+     641,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      117,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     638,
+     641,
      MP_CMOF_Comment_Annotated_Element,
      117,
      MP_CMOF_Annotated_Element_Comment);
@@ -13052,17 +13104,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      118,
      MP_CMOF_Element_Owned_Comment,
-     639,
+     642,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      118,
      MP_CMOF_Typed_Element_Type,
-     754,
+     757,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     639,
+     642,
      MP_CMOF_Comment_Annotated_Element,
      118,
      MP_CMOF_Annotated_Element_Comment);
@@ -13070,7 +13122,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      119,
      MP_CMOF_Element_Owned_Comment,
-     640,
+     643,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13086,7 +13138,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     640,
+     643,
      MP_CMOF_Comment_Annotated_Element,
      119,
      MP_CMOF_Annotated_Element_Comment);
@@ -13106,13 +13158,13 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      2,
      MP_CMOF_Element_Owned_Comment,
-     641,
+     644,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      2,
      MP_CMOF_Class_Owned_Operation,
-     644,
+     647,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -13128,7 +13180,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     641,
+     644,
      MP_CMOF_Comment_Annotated_Element,
      2,
      MP_CMOF_Annotated_Element_Comment);
@@ -13136,7 +13188,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      38,
      MP_CMOF_Element_Owned_Comment,
-     642,
+     645,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13152,7 +13204,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     642,
+     645,
      MP_CMOF_Comment_Annotated_Element,
      38,
      MP_CMOF_Annotated_Element_Comment);
@@ -13160,7 +13212,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      39,
      MP_CMOF_Element_Owned_Comment,
-     643,
+     646,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -13170,85 +13222,85 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     643,
+     646,
      MP_CMOF_Comment_Annotated_Element,
      39,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     644,
+     647,
      MP_CMOF_Operation_Body_Condition,
-     646,
+     649,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     644,
+     647,
      MP_CMOF_Element_Owned_Comment,
-     645,
+     648,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     644,
+     647,
      MP_CMOF_Operation_Owned_Parameter,
-     648,
+     651,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     644,
+     647,
      MP_CMOF_Operation_Owned_Parameter,
-     649,
+     652,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     644,
+     647,
      MP_CMOF_Operation_Owned_Parameter,
-     650,
+     653,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     644,
+     647,
      MP_CMOF_Namespace_Owned_Rule,
-     646,
+     649,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     644,
+     647,
      MP_CMOF_Operation_Redefined_Operation,
-     732,
+     735,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     645,
+     648,
      MP_CMOF_Comment_Annotated_Element,
-     644,
+     647,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     646,
+     649,
      MP_CMOF_Constraint_Constrained_Element,
-     644,
+     647,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     646,
+     649,
      MP_CMOF_Constraint_Specification,
-     647,
+     650,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     648,
+     651,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     649,
+     652,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     650,
+     653,
      MP_CMOF_Typed_Element_Type,
      17,
      MP_CMOF_Type_Typed_Element);
@@ -13280,25 +13332,25 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      10,
      MP_CMOF_Element_Owned_Comment,
-     651,
+     654,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      10,
      MP_CMOF_Class_Owned_Operation,
-     662,
+     665,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      10,
      MP_CMOF_Namespace_Owned_Rule,
-     652,
+     655,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      10,
      MP_CMOF_Namespace_Owned_Rule,
-     655,
+     658,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -13308,33 +13360,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     651,
-     MP_CMOF_Comment_Annotated_Element,
-     10,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     652,
-     MP_CMOF_Constraint_Constrained_Element,
-     10,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     652,
-     MP_CMOF_Element_Owned_Comment,
-     653,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     652,
-     MP_CMOF_Constraint_Specification,
      654,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     653,
      MP_CMOF_Comment_Annotated_Element,
-     652,
+     10,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -13361,20 +13389,44 @@ begin
      655,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     658,
+     MP_CMOF_Constraint_Constrained_Element,
+     10,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     658,
+     MP_CMOF_Element_Owned_Comment,
+     659,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     658,
+     MP_CMOF_Constraint_Specification,
+     660,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     659,
+     MP_CMOF_Comment_Annotated_Element,
+     658,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      89,
      MP_CMOF_Element_Owned_Comment,
-     658,
+     661,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      89,
      MP_CMOF_Typed_Element_Type,
-     764,
+     767,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     658,
+     661,
      MP_CMOF_Comment_Annotated_Element,
      89,
      MP_CMOF_Annotated_Element_Comment);
@@ -13382,17 +13434,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      86,
      MP_CMOF_Element_Owned_Comment,
-     659,
+     662,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      86,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     659,
+     662,
      MP_CMOF_Comment_Annotated_Element,
      86,
      MP_CMOF_Annotated_Element_Comment);
@@ -13400,7 +13452,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      87,
      MP_CMOF_Element_Owned_Comment,
-     660,
+     663,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13416,7 +13468,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     660,
+     663,
      MP_CMOF_Comment_Annotated_Element,
      87,
      MP_CMOF_Annotated_Element_Comment);
@@ -13424,7 +13476,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      88,
      MP_CMOF_Element_Owned_Comment,
-     661,
+     664,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13446,57 +13498,57 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     661,
+     664,
      MP_CMOF_Comment_Annotated_Element,
      88,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     662,
+     665,
      MP_CMOF_Operation_Body_Condition,
-     664,
+     667,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     662,
+     665,
      MP_CMOF_Element_Owned_Comment,
-     663,
+     666,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     662,
+     665,
      MP_CMOF_Operation_Owned_Parameter,
-     666,
+     669,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     662,
+     665,
      MP_CMOF_Namespace_Owned_Rule,
-     664,
+     667,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     663,
+     666,
      MP_CMOF_Comment_Annotated_Element,
-     662,
+     665,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     664,
+     667,
      MP_CMOF_Constraint_Constrained_Element,
-     662,
+     665,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     664,
+     667,
      MP_CMOF_Constraint_Specification,
-     665,
+     668,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     666,
+     669,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Attribute_Class,
@@ -13538,31 +13590,31 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      20,
      MP_CMOF_Element_Owned_Comment,
-     667,
+     670,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      20,
      MP_CMOF_Class_Owned_Operation,
-     677,
+     680,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      20,
      MP_CMOF_Class_Owned_Operation,
-     682,
+     685,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      20,
      MP_CMOF_Class_Owned_Operation,
-     687,
+     690,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      20,
      MP_CMOF_Namespace_Owned_Rule,
-     668,
+     671,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -13578,39 +13630,39 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     667,
+     670,
      MP_CMOF_Comment_Annotated_Element,
      20,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     668,
+     671,
      MP_CMOF_Constraint_Constrained_Element,
      20,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     668,
+     671,
      MP_CMOF_Element_Owned_Comment,
-     669,
+     672,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     668,
+     671,
      MP_CMOF_Constraint_Specification,
-     670,
+     673,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     669,
+     672,
      MP_CMOF_Comment_Annotated_Element,
-     668,
+     671,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      72,
      MP_CMOF_Element_Owned_Comment,
-     671,
+     674,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13626,7 +13678,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     671,
+     674,
      MP_CMOF_Comment_Annotated_Element,
      72,
      MP_CMOF_Annotated_Element_Comment);
@@ -13634,7 +13686,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      70,
      MP_CMOF_Element_Owned_Comment,
-     672,
+     675,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13650,7 +13702,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     672,
+     675,
      MP_CMOF_Comment_Annotated_Element,
      70,
      MP_CMOF_Annotated_Element_Comment);
@@ -13658,7 +13710,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      69,
      MP_CMOF_Element_Owned_Comment,
-     673,
+     676,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13674,7 +13726,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     673,
+     676,
      MP_CMOF_Comment_Annotated_Element,
      69,
      MP_CMOF_Annotated_Element_Comment);
@@ -13682,7 +13734,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      110,
      MP_CMOF_Element_Owned_Comment,
-     674,
+     677,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13698,7 +13750,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     674,
+     677,
      MP_CMOF_Comment_Annotated_Element,
      110,
      MP_CMOF_Annotated_Element_Comment);
@@ -13706,7 +13758,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      71,
      MP_CMOF_Element_Owned_Comment,
-     675,
+     678,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -13722,7 +13774,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     675,
+     678,
      MP_CMOF_Comment_Annotated_Element,
      71,
      MP_CMOF_Annotated_Element_Comment);
@@ -13730,203 +13782,203 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      111,
      MP_CMOF_Element_Owned_Comment,
-     676,
+     679,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      111,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     676,
+     679,
      MP_CMOF_Comment_Annotated_Element,
      111,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     677,
+     680,
      MP_CMOF_Operation_Body_Condition,
-     679,
+     682,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     677,
+     680,
      MP_CMOF_Element_Owned_Comment,
-     678,
+     681,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     677,
+     680,
      MP_CMOF_Operation_Owned_Parameter,
-     681,
+     684,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     677,
+     680,
      MP_CMOF_Namespace_Owned_Rule,
-     679,
+     682,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Redefined_Operation_Operation,
-     677,
+     680,
      MP_CMOF_Operation_Redefined_Operation,
-     304,
+     307,
      MP_CMOF_Redefined_Operation_Operation);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     678,
+     681,
      MP_CMOF_Comment_Annotated_Element,
-     677,
+     680,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     679,
+     682,
      MP_CMOF_Constraint_Constrained_Element,
-     677,
+     680,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     679,
+     682,
      MP_CMOF_Constraint_Specification,
-     680,
+     683,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     681,
+     684,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     682,
+     685,
      MP_CMOF_Operation_Body_Condition,
-     684,
+     687,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     682,
+     685,
      MP_CMOF_Element_Owned_Comment,
-     683,
+     686,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     682,
+     685,
      MP_CMOF_Operation_Owned_Parameter,
-     686,
+     689,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     682,
+     685,
      MP_CMOF_Namespace_Owned_Rule,
-     684,
+     687,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     683,
+     686,
      MP_CMOF_Comment_Annotated_Element,
-     682,
+     685,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     684,
+     687,
      MP_CMOF_Constraint_Constrained_Element,
-     682,
+     685,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     684,
+     687,
      MP_CMOF_Constraint_Specification,
-     685,
+     688,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     686,
+     689,
      MP_CMOF_Typed_Element_Type,
      23,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     687,
+     690,
      MP_CMOF_Operation_Body_Condition,
-     691,
+     694,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     687,
+     690,
      MP_CMOF_Element_Owned_Comment,
-     688,
+     691,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     687,
+     690,
      MP_CMOF_Operation_Owned_Parameter,
-     693,
+     696,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     687,
+     690,
      MP_CMOF_Operation_Owned_Parameter,
-     694,
+     697,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     687,
+     690,
      MP_CMOF_Namespace_Owned_Rule,
-     689,
+     692,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     687,
+     690,
      MP_CMOF_Namespace_Owned_Rule,
-     691,
+     694,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Precondition_Pre_Context,
-     687,
+     690,
      MP_CMOF_Operation_Precondition,
-     689,
+     692,
      MP_CMOF_Precondition_Pre_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     688,
+     691,
      MP_CMOF_Comment_Annotated_Element,
-     687,
+     690,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     689,
+     692,
      MP_CMOF_Constraint_Constrained_Element,
-     687,
+     690,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     689,
+     692,
      MP_CMOF_Constraint_Specification,
-     690,
+     693,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     691,
+     694,
      MP_CMOF_Constraint_Constrained_Element,
-     687,
+     690,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     691,
+     694,
      MP_CMOF_Constraint_Specification,
-     692,
+     695,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     693,
+     696,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     694,
+     697,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
@@ -13952,13 +14004,13 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      21,
      MP_CMOF_Element_Owned_Comment,
-     695,
+     698,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      21,
      MP_CMOF_Namespace_Owned_Rule,
-     696,
+     699,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -13968,49 +14020,49 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     695,
+     698,
      MP_CMOF_Comment_Annotated_Element,
      21,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     696,
+     699,
      MP_CMOF_Constraint_Constrained_Element,
      21,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     696,
+     699,
      MP_CMOF_Element_Owned_Comment,
-     697,
+     700,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     696,
+     699,
      MP_CMOF_Constraint_Specification,
-     698,
+     701,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     697,
+     700,
      MP_CMOF_Comment_Annotated_Element,
-     696,
+     699,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      114,
      MP_CMOF_Element_Owned_Comment,
-     699,
+     702,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      114,
      MP_CMOF_Typed_Element_Type,
-     764,
+     767,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     699,
+     702,
      MP_CMOF_Comment_Annotated_Element,
      114,
      MP_CMOF_Annotated_Element_Comment);
@@ -14018,7 +14070,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      112,
      MP_CMOF_Element_Owned_Comment,
-     700,
+     703,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14034,7 +14086,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     700,
+     703,
      MP_CMOF_Comment_Annotated_Element,
      112,
      MP_CMOF_Annotated_Element_Comment);
@@ -14042,7 +14094,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      113,
      MP_CMOF_Element_Owned_Comment,
-     701,
+     704,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14064,7 +14116,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     701,
+     704,
      MP_CMOF_Comment_Annotated_Element,
      113,
      MP_CMOF_Annotated_Element_Comment);
@@ -14084,7 +14136,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      22,
      MP_CMOF_Element_Owned_Comment,
-     702,
+     705,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -14094,7 +14146,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     702,
+     705,
      MP_CMOF_Comment_Annotated_Element,
      22,
      MP_CMOF_Annotated_Element_Comment);
@@ -14102,7 +14154,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      116,
      MP_CMOF_Element_Owned_Comment,
-     703,
+     706,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14124,7 +14176,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     703,
+     706,
      MP_CMOF_Comment_Annotated_Element,
      116,
      MP_CMOF_Annotated_Element_Comment);
@@ -14132,7 +14184,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      115,
      MP_CMOF_Element_Owned_Comment,
-     704,
+     707,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14148,7 +14200,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     704,
+     707,
      MP_CMOF_Comment_Annotated_Element,
      115,
      MP_CMOF_Annotated_Element_Comment);
@@ -14162,13 +14214,13 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      31,
      MP_CMOF_Element_Owned_Comment,
-     705,
+     708,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      31,
      MP_CMOF_Class_Owned_Operation,
-     707,
+     710,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -14184,7 +14236,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     705,
+     708,
      MP_CMOF_Comment_Annotated_Element,
      31,
      MP_CMOF_Annotated_Element_Comment);
@@ -14192,7 +14244,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      133,
      MP_CMOF_Element_Owned_Comment,
-     706,
+     709,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14208,67 +14260,67 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     706,
+     709,
      MP_CMOF_Comment_Annotated_Element,
      133,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     707,
+     710,
      MP_CMOF_Operation_Body_Condition,
-     709,
+     712,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     707,
+     710,
      MP_CMOF_Element_Owned_Comment,
-     708,
+     711,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     707,
+     710,
      MP_CMOF_Operation_Owned_Parameter,
-     711,
+     714,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     707,
+     710,
      MP_CMOF_Operation_Owned_Parameter,
-     712,
+     715,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     707,
+     710,
      MP_CMOF_Namespace_Owned_Rule,
-     709,
+     712,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     708,
+     711,
      MP_CMOF_Comment_Annotated_Element,
-     707,
+     710,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     709,
+     712,
      MP_CMOF_Constraint_Constrained_Element,
-     707,
+     710,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     709,
+     712,
      MP_CMOF_Constraint_Specification,
-     710,
+     713,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     711,
+     714,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     712,
+     715,
      MP_CMOF_Typed_Element_Type,
      31,
      MP_CMOF_Type_Typed_Element);
@@ -14300,38 +14352,32 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      16,
      MP_CMOF_Element_Owned_Comment,
-     713,
+     716,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      16,
      MP_CMOF_Class_Owned_Operation,
-     727,
+     730,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      16,
      MP_CMOF_Class_Owned_Operation,
-     732,
+     735,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      16,
      MP_CMOF_Class_Owned_Operation,
-     739,
+     742,
      MP_CMOF_Operation_Class);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Class,
      16,
      MP_CMOF_Class_Owned_Operation,
-     744,
+     747,
      MP_CMOF_Operation_Class);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Rule_Context,
-     16,
-     MP_CMOF_Namespace_Owned_Rule,
-     714,
-     MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
      16,
@@ -14345,6 +14391,12 @@ begin
      720,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
+    (MA_CMOF_Owned_Rule_Context,
+     16,
+     MP_CMOF_Namespace_Owned_Rule,
+     723,
+     MP_CMOF_Constraint_Context);
+   Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
      16,
      MP_CMOF_Class_Super_Class,
@@ -14352,33 +14404,9 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     713,
-     MP_CMOF_Comment_Annotated_Element,
-     16,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Constrained_Element_Constraint,
-     714,
-     MP_CMOF_Constraint_Constrained_Element,
-     16,
-     MP_CMOF_Constrained_Element_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     714,
-     MP_CMOF_Element_Owned_Comment,
-     715,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Specification_Owning_Constraint,
-     714,
-     MP_CMOF_Constraint_Specification,
      716,
-     MP_CMOF_Specification_Owning_Constraint);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     715,
      MP_CMOF_Comment_Annotated_Element,
-     714,
+     16,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
@@ -14429,20 +14457,44 @@ begin
      720,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
+    (MA_CMOF_Constrained_Element_Constraint,
+     723,
+     MP_CMOF_Constraint_Constrained_Element,
+     16,
+     MP_CMOF_Constrained_Element_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     723,
+     MP_CMOF_Element_Owned_Comment,
+     724,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Specification_Owning_Constraint,
+     723,
+     MP_CMOF_Constraint_Specification,
+     725,
+     MP_CMOF_Specification_Owning_Constraint);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     724,
+     MP_CMOF_Comment_Annotated_Element,
+     723,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
      95,
      MP_CMOF_Element_Owned_Comment,
-     723,
+     726,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      95,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     723,
+     726,
      MP_CMOF_Comment_Annotated_Element,
      95,
      MP_CMOF_Annotated_Element_Comment);
@@ -14450,17 +14502,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      98,
      MP_CMOF_Element_Owned_Comment,
-     724,
+     727,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      98,
      MP_CMOF_Typed_Element_Type,
-     764,
+     767,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     724,
+     727,
      MP_CMOF_Comment_Annotated_Element,
      98,
      MP_CMOF_Annotated_Element_Comment);
@@ -14468,7 +14520,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      96,
      MP_CMOF_Element_Owned_Comment,
-     725,
+     728,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14484,7 +14536,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     725,
+     728,
      MP_CMOF_Comment_Annotated_Element,
      96,
      MP_CMOF_Annotated_Element_Comment);
@@ -14492,235 +14544,235 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      97,
      MP_CMOF_Element_Owned_Comment,
-     726,
+     729,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      97,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     726,
+     729,
      MP_CMOF_Comment_Annotated_Element,
      97,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     727,
+     730,
      MP_CMOF_Operation_Body_Condition,
-     729,
+     732,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     727,
+     730,
      MP_CMOF_Element_Owned_Comment,
-     728,
+     731,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     727,
+     730,
      MP_CMOF_Operation_Owned_Parameter,
-     731,
+     734,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     727,
+     730,
      MP_CMOF_Namespace_Owned_Rule,
-     729,
+     732,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     728,
+     731,
      MP_CMOF_Comment_Annotated_Element,
-     727,
+     730,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     729,
+     732,
      MP_CMOF_Constraint_Constrained_Element,
-     727,
+     730,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     729,
+     732,
      MP_CMOF_Constraint_Specification,
-     730,
+     733,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     731,
+     734,
      MP_CMOF_Typed_Element_Type,
      17,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     732,
+     735,
      MP_CMOF_Operation_Body_Condition,
-     734,
+     737,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     732,
+     735,
      MP_CMOF_Element_Owned_Comment,
-     733,
+     736,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     732,
+     735,
      MP_CMOF_Operation_Owned_Parameter,
-     736,
+     739,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     732,
+     735,
      MP_CMOF_Operation_Owned_Parameter,
-     737,
+     740,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     732,
+     735,
      MP_CMOF_Operation_Owned_Parameter,
-     738,
+     741,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     732,
+     735,
      MP_CMOF_Namespace_Owned_Rule,
-     734,
+     737,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     733,
+     736,
      MP_CMOF_Comment_Annotated_Element,
-     732,
+     735,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     734,
+     737,
      MP_CMOF_Constraint_Constrained_Element,
-     732,
+     735,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     734,
+     737,
      MP_CMOF_Constraint_Specification,
-     735,
+     738,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     736,
+     739,
      MP_CMOF_Typed_Element_Type,
-     209,
+     212,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     737,
+     740,
      MP_CMOF_Typed_Element_Type,
      16,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     738,
+     741,
      MP_CMOF_Typed_Element_Type,
      17,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     739,
+     742,
      MP_CMOF_Operation_Body_Condition,
-     741,
+     744,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     739,
+     742,
      MP_CMOF_Element_Owned_Comment,
-     740,
+     743,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     739,
+     742,
      MP_CMOF_Operation_Owned_Parameter,
-     743,
+     746,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     739,
+     742,
      MP_CMOF_Namespace_Owned_Rule,
-     741,
+     744,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     740,
+     743,
      MP_CMOF_Comment_Annotated_Element,
-     739,
+     742,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     741,
+     744,
      MP_CMOF_Constraint_Constrained_Element,
-     739,
+     742,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     741,
+     744,
      MP_CMOF_Constraint_Specification,
-     742,
+     745,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     743,
+     746,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     744,
+     747,
      MP_CMOF_Operation_Body_Condition,
-     746,
+     749,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     744,
+     747,
      MP_CMOF_Element_Owned_Comment,
-     745,
+     748,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     744,
+     747,
      MP_CMOF_Operation_Owned_Parameter,
-     748,
+     751,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     744,
+     747,
      MP_CMOF_Namespace_Owned_Rule,
-     746,
+     749,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     745,
+     748,
      MP_CMOF_Comment_Annotated_Element,
-     744,
+     747,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     746,
+     749,
      MP_CMOF_Constraint_Constrained_Element,
-     744,
+     747,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     746,
+     749,
      MP_CMOF_Constraint_Specification,
-     747,
+     750,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     748,
+     751,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Attribute_Class,
@@ -14732,7 +14784,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      13,
      MP_CMOF_Element_Owned_Comment,
-     749,
+     752,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -14742,7 +14794,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     749,
+     752,
      MP_CMOF_Comment_Annotated_Element,
      13,
      MP_CMOF_Annotated_Element_Comment);
@@ -14750,7 +14802,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      56,
      MP_CMOF_Element_Owned_Comment,
-     750,
+     753,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
@@ -14766,7 +14818,7 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     750,
+     753,
      MP_CMOF_Comment_Annotated_Element,
      56,
      MP_CMOF_Annotated_Element_Comment);
@@ -14786,7 +14838,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      5,
      MP_CMOF_Element_Owned_Comment,
-     751,
+     754,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Super_Class_Class,
@@ -14796,7 +14848,7 @@ begin
      MP_CMOF_Super_Class_Class);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     751,
+     754,
      MP_CMOF_Comment_Annotated_Element,
      5,
      MP_CMOF_Annotated_Element_Comment);
@@ -14804,17 +14856,17 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      82,
      MP_CMOF_Element_Owned_Comment,
-     752,
+     755,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      82,
      MP_CMOF_Typed_Element_Type,
-     211,
+     214,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     752,
+     755,
      MP_CMOF_Comment_Annotated_Element,
      82,
      MP_CMOF_Annotated_Element_Comment);
@@ -14822,7 +14874,7 @@ begin
     (MA_CMOF_Owned_Comment_Owning_Element,
      47,
      MP_CMOF_Element_Owned_Comment,
-     753,
+     756,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
@@ -14832,777 +14884,753 @@ begin
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     753,
+     756,
      MP_CMOF_Comment_Annotated_Element,
      47,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     754,
-     MP_CMOF_Element_Owned_Comment,
-     755,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Literal_Enumeration,
-     754,
-     MP_CMOF_Enumeration_Owned_Literal,
-     756,
-     MP_CMOF_Enumeration_Literal_Enumeration);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Literal_Enumeration,
-     754,
-     MP_CMOF_Enumeration_Owned_Literal,
-     758,
-     MP_CMOF_Enumeration_Literal_Enumeration);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Literal_Enumeration,
-     754,
-     MP_CMOF_Enumeration_Owned_Literal,
-     760,
-     MP_CMOF_Enumeration_Literal_Enumeration);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Literal_Enumeration,
-     754,
-     MP_CMOF_Enumeration_Owned_Literal,
-     762,
-     MP_CMOF_Enumeration_Literal_Enumeration);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     755,
-     MP_CMOF_Comment_Annotated_Element,
-     754,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     756,
-     MP_CMOF_Element_Owned_Comment,
      757,
+     MP_CMOF_Element_Owned_Comment,
+     758,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
+    (MA_CMOF_Owned_Literal_Enumeration,
      757,
-     MP_CMOF_Comment_Annotated_Element,
-     756,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     758,
-     MP_CMOF_Element_Owned_Comment,
+     MP_CMOF_Enumeration_Owned_Literal,
      759,
-     MP_CMOF_Owned_Comment_Owning_Element);
+     MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     759,
-     MP_CMOF_Comment_Annotated_Element,
-     758,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     760,
-     MP_CMOF_Element_Owned_Comment,
+    (MA_CMOF_Owned_Literal_Enumeration,
+     757,
+     MP_CMOF_Enumeration_Owned_Literal,
      761,
-     MP_CMOF_Owned_Comment_Owning_Element);
+     MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     761,
-     MP_CMOF_Comment_Annotated_Element,
-     760,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     762,
-     MP_CMOF_Element_Owned_Comment,
+    (MA_CMOF_Owned_Literal_Enumeration,
+     757,
+     MP_CMOF_Enumeration_Owned_Literal,
      763,
-     MP_CMOF_Owned_Comment_Owning_Element);
+     MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     763,
-     MP_CMOF_Comment_Annotated_Element,
-     762,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     764,
-     MP_CMOF_Element_Owned_Comment,
+    (MA_CMOF_Owned_Literal_Enumeration,
+     757,
+     MP_CMOF_Enumeration_Owned_Literal,
      765,
+     MP_CMOF_Enumeration_Literal_Enumeration);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     758,
+     MP_CMOF_Comment_Annotated_Element,
+     757,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     759,
+     MP_CMOF_Element_Owned_Comment,
+     760,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     760,
+     MP_CMOF_Comment_Annotated_Element,
+     759,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     761,
+     MP_CMOF_Element_Owned_Comment,
+     762,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     762,
+     MP_CMOF_Comment_Annotated_Element,
+     761,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     763,
+     MP_CMOF_Element_Owned_Comment,
+     764,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     764,
+     MP_CMOF_Comment_Annotated_Element,
+     763,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     765,
+     MP_CMOF_Element_Owned_Comment,
+     766,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     766,
+     MP_CMOF_Comment_Annotated_Element,
+     765,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     767,
+     MP_CMOF_Element_Owned_Comment,
+     768,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Literal_Enumeration,
-     764,
+     767,
      MP_CMOF_Enumeration_Owned_Literal,
-     772,
+     775,
      MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
     (MA_CMOF_Owned_Literal_Enumeration,
-     764,
+     767,
      MP_CMOF_Enumeration_Owned_Literal,
-     774,
+     777,
      MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
     (MA_CMOF_Owned_Literal_Enumeration,
-     764,
+     767,
      MP_CMOF_Enumeration_Owned_Literal,
-     776,
+     779,
      MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
     (MA_CMOF_Owned_Literal_Enumeration,
-     764,
+     767,
      MP_CMOF_Enumeration_Owned_Literal,
-     778,
+     781,
      MP_CMOF_Enumeration_Literal_Enumeration);
    Internal_Create_Link
     (MA_CMOF_Owned_Operation_Datatype,
-     764,
+     767,
      MP_CMOF_Data_Type_Owned_Operation,
-     766,
+     769,
      MP_CMOF_Operation_Datatype);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     765,
+     768,
      MP_CMOF_Comment_Annotated_Element,
-     764,
+     767,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Body_Condition_Body_Context,
-     766,
+     769,
      MP_CMOF_Operation_Body_Condition,
-     768,
+     771,
      MP_CMOF_Body_Condition_Body_Context);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     766,
+     769,
      MP_CMOF_Element_Owned_Comment,
-     767,
+     770,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     766,
+     769,
      MP_CMOF_Operation_Owned_Parameter,
-     770,
+     773,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Parameter_Operation,
-     766,
+     769,
      MP_CMOF_Operation_Owned_Parameter,
-     771,
+     774,
      MP_CMOF_Parameter_Operation);
    Internal_Create_Link
     (MA_CMOF_Owned_Rule_Context,
-     766,
+     769,
      MP_CMOF_Namespace_Owned_Rule,
-     768,
+     771,
      MP_CMOF_Constraint_Context);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     767,
+     770,
      MP_CMOF_Comment_Annotated_Element,
-     766,
+     769,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Constrained_Element_Constraint,
-     768,
+     771,
      MP_CMOF_Constraint_Constrained_Element,
-     766,
+     769,
      MP_CMOF_Constrained_Element_Constraint);
    Internal_Create_Link
     (MA_CMOF_Specification_Owning_Constraint,
-     768,
+     771,
      MP_CMOF_Constraint_Specification,
-     769,
+     772,
      MP_CMOF_Specification_Owning_Constraint);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     770,
+     773,
      MP_CMOF_Typed_Element_Type,
-     764,
+     767,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     771,
+     774,
      MP_CMOF_Typed_Element_Type,
-     764,
+     767,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     772,
-     MP_CMOF_Element_Owned_Comment,
-     773,
-     MP_CMOF_Owned_Comment_Owning_Element);
-   Internal_Create_Link
-    (MA_CMOF_Annotated_Element_Comment,
-     773,
-     MP_CMOF_Comment_Annotated_Element,
-     772,
-     MP_CMOF_Annotated_Element_Comment);
-   Internal_Create_Link
-    (MA_CMOF_Owned_Comment_Owning_Element,
-     774,
-     MP_CMOF_Element_Owned_Comment,
      775,
+     MP_CMOF_Element_Owned_Comment,
+     776,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
+     776,
+     MP_CMOF_Comment_Annotated_Element,
      775,
-     MP_CMOF_Comment_Annotated_Element,
-     774,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     776,
-     MP_CMOF_Element_Owned_Comment,
      777,
+     MP_CMOF_Element_Owned_Comment,
+     778,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     777,
+     778,
      MP_CMOF_Comment_Annotated_Element,
-     776,
+     777,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Owned_Comment_Owning_Element,
-     778,
-     MP_CMOF_Element_Owned_Comment,
      779,
+     MP_CMOF_Element_Owned_Comment,
+     780,
      MP_CMOF_Owned_Comment_Owning_Element);
    Internal_Create_Link
     (MA_CMOF_Annotated_Element_Comment,
-     779,
+     780,
      MP_CMOF_Comment_Annotated_Element,
-     778,
+     779,
+     MP_CMOF_Annotated_Element_Comment);
+   Internal_Create_Link
+    (MA_CMOF_Owned_Comment_Owning_Element,
+     781,
+     MP_CMOF_Element_Owned_Comment,
+     782,
+     MP_CMOF_Owned_Comment_Owning_Element);
+   Internal_Create_Link
+    (MA_CMOF_Annotated_Element_Comment,
+     782,
+     MP_CMOF_Comment_Annotated_Element,
+     781,
      MP_CMOF_Annotated_Element_Comment);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     145,
+     148,
      MP_CMOF_Association_Member_End,
      134,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     145,
+     148,
      MP_CMOF_Association_Member_End,
-     780,
+     783,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     145,
+     148,
      MP_CMOF_Association_Owned_End,
-     780,
+     783,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     780,
+     783,
      MP_CMOF_Typed_Element_Type,
      32,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     147,
+     150,
      MP_CMOF_Association_Member_End,
      40,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     147,
+     150,
      MP_CMOF_Association_Member_End,
      121,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     149,
+     152,
      MP_CMOF_Association_Member_End,
      41,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     149,
+     152,
      MP_CMOF_Association_Member_End,
      102,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     150,
+     153,
      MP_CMOF_Association_Member_End,
      37,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     150,
+     153,
      MP_CMOF_Association_Member_End,
      129,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     152,
+     155,
      MP_CMOF_Association_Member_End,
      43,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     152,
+     155,
      MP_CMOF_Association_Member_End,
-     781,
+     784,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     152,
+     155,
      MP_CMOF_Association_Owned_End,
-     781,
+     784,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     781,
+     784,
      MP_CMOF_Property_Subsetted_Property,
      76,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     781,
+     784,
      MP_CMOF_Typed_Element_Type,
      4,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     154,
+     157,
      MP_CMOF_Association_Member_End,
      73,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     154,
+     157,
      MP_CMOF_Association_Member_End,
-     782,
+     785,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     154,
+     157,
      MP_CMOF_Association_Owned_End,
-     782,
+     785,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     782,
+     785,
      MP_CMOF_Typed_Element_Type,
      26,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     156,
+     159,
      MP_CMOF_Association_Member_End,
      74,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     156,
+     159,
      MP_CMOF_Association_Member_End,
-     783,
+     786,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     156,
+     159,
      MP_CMOF_Association_Owned_End,
-     783,
+     786,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     783,
+     786,
      MP_CMOF_Typed_Element_Type,
      26,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     158,
+     161,
      MP_CMOF_Association_Member_End,
      128,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     158,
+     161,
      MP_CMOF_Association_Member_End,
-     784,
+     787,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     158,
+     161,
      MP_CMOF_Association_Owned_End,
-     784,
+     787,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     784,
+     787,
      MP_CMOF_Typed_Element_Type,
      26,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     160,
+     163,
      MP_CMOF_Association_Member_End,
      42,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     160,
+     163,
      MP_CMOF_Association_Member_End,
-     785,
+     788,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     160,
+     163,
      MP_CMOF_Association_Owned_End,
-     785,
+     788,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     785,
+     788,
      MP_CMOF_Typed_Element_Type,
      3,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     163,
+     166,
      MP_CMOF_Association_Member_End,
      34,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     163,
+     166,
      MP_CMOF_Association_Member_End,
-     786,
+     789,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     163,
+     166,
      MP_CMOF_Association_Owned_End,
-     786,
+     789,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     786,
+     789,
      MP_CMOF_Typed_Element_Type,
      1,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     165,
+     168,
      MP_CMOF_Association_Member_End,
      55,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     165,
+     168,
      MP_CMOF_Association_Member_End,
      90,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     166,
+     169,
      MP_CMOF_Association_Member_End,
      49,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     166,
+     169,
      MP_CMOF_Association_Member_End,
      122,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     168,
+     171,
      MP_CMOF_Association_Member_End,
      50,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     168,
+     171,
      MP_CMOF_Association_Member_End,
      103,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     169,
+     172,
      MP_CMOF_Association_Member_End,
      67,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     169,
+     172,
      MP_CMOF_Association_Member_End,
-     787,
+     790,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     169,
+     172,
      MP_CMOF_Association_Owned_End,
-     787,
+     790,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     787,
+     790,
      MP_CMOF_Typed_Element_Type,
      19,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     172,
+     175,
      MP_CMOF_Association_Member_End,
      68,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     172,
+     175,
      MP_CMOF_Association_Member_End,
-     788,
+     791,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     172,
+     175,
      MP_CMOF_Association_Owned_End,
-     788,
+     791,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     788,
+     791,
      MP_CMOF_Typed_Element_Type,
      19,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     174,
+     177,
      MP_CMOF_Association_Member_End,
      38,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     174,
+     177,
      MP_CMOF_Association_Member_End,
-     789,
+     792,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     174,
+     177,
      MP_CMOF_Association_Owned_End,
-     789,
+     792,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     789,
+     792,
      MP_CMOF_Property_Subsetted_Property,
      96,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     789,
+     792,
      MP_CMOF_Typed_Element_Type,
      2,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     176,
+     179,
      MP_CMOF_Association_Member_End,
      39,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     176,
+     179,
      MP_CMOF_Association_Member_End,
-     790,
+     793,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     176,
+     179,
      MP_CMOF_Association_Owned_End,
-     790,
+     793,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     790,
+     793,
      MP_CMOF_Typed_Element_Type,
      2,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     178,
+     181,
      MP_CMOF_Association_Member_End,
      59,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     178,
+     181,
      MP_CMOF_Association_Member_End,
-     791,
+     794,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     178,
+     181,
      MP_CMOF_Association_Owned_End,
-     791,
+     794,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     791,
+     794,
      MP_CMOF_Typed_Element_Type,
      17,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     180,
+     183,
      MP_CMOF_Association_Member_End,
      112,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     180,
+     183,
      MP_CMOF_Association_Member_End,
-     792,
+     795,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     180,
+     183,
      MP_CMOF_Association_Owned_End,
-     792,
+     795,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     792,
+     795,
      MP_CMOF_Typed_Element_Type,
      21,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     182,
+     185,
      MP_CMOF_Association_Member_End,
      87,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     182,
+     185,
      MP_CMOF_Association_Member_End,
-     793,
+     796,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     182,
+     185,
      MP_CMOF_Association_Owned_End,
-     793,
+     796,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     793,
+     796,
      MP_CMOF_Typed_Element_Type,
      10,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     183,
+     186,
      MP_CMOF_Association_Member_End,
      58,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     183,
+     186,
      MP_CMOF_Association_Member_End,
      88,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     184,
+     135,
      MP_CMOF_Association_Member_End,
      63,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     184,
+     135,
      MP_CMOF_Association_Member_End,
      113,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     185,
+     136,
      MP_CMOF_Association_Member_End,
      72,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     185,
+     136,
      MP_CMOF_Association_Member_End,
-     794,
+     797,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Owned_End_Owning_Association,
-     185,
+     136,
      MP_CMOF_Association_Owned_End,
-     794,
+     797,
      MP_CMOF_Property_Owning_Association);
    Internal_Create_Link
     (MA_CMOF_Subsetted_Property_Property,
-     794,
+     797,
      MP_CMOF_Property_Subsetted_Property,
      96,
      MP_CMOF_Subsetted_Property_Property);
    Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
-     794,
+     797,
      MP_CMOF_Typed_Element_Type,
      20,
      MP_CMOF_Type_Typed_Element);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     135,
+     138,
      MP_CMOF_Association_Member_End,
      70,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     135,
+     138,
      MP_CMOF_Association_Member_End,
      133,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     136,
+     139,
      MP_CMOF_Association_Member_End,
      35,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     136,
+     139,
      MP_CMOF_Association_Member_End,
      120,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     137,
+     140,
      MP_CMOF_Association_Member_End,
      69,
      MP_CMOF_Property_Association);
    Internal_Create_Link
     (MA_CMOF_Member_End_Association,
-     137,
+     140,
      MP_CMOF_Association_Member_End,
      110,
      MP_CMOF_Property_Association);
-   Internal_Create_Link
-    (MA_CMOF_Member_End_Association,
-     138,
-     MP_CMOF_Association_Member_End,
-     108,
-     MP_CMOF_Property_Association);
-   Internal_Create_Link
-    (MA_CMOF_Member_End_Association,
-     138,
-     MP_CMOF_Association_Member_End,
-     795,
-     MP_CMOF_Property_Association);
-   Internal_Create_Link
-    (MA_CMOF_Owned_End_Owning_Association,
-     138,
-     MP_CMOF_Association_Owned_End,
-     795,
-     MP_CMOF_Property_Owning_Association);
-   Internal_Create_Link
-    (MA_CMOF_Type_Typed_Element,
-     795,
-     MP_CMOF_Typed_Element_Type,
-     19,
-     MP_CMOF_Type_Typed_Element);
 
 end CMOF.Internals.Setup;

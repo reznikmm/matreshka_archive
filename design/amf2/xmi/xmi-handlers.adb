@@ -67,11 +67,6 @@ package body XMI.Handlers is
    XMI_Namespace  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/XMI/2.1");
-   CMOF_Namespace : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String
-         ("http://schema.omg.org/spec/MOF/2.0/cmof.xml");
-   Tag_Class_Name : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("Tag");
    Id_Name        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
    Type_Name      : constant League.Strings.Universal_String
@@ -640,13 +635,6 @@ package body XMI.Handlers is
             Self.Collect_Text := True;
             Self.Text.Clear;
          end if;
-
-      elsif Namespace_URI = CMOF_Namespace
-        and Local_Name = Tag_Class_Name
-      then
-         --  XXX CMOF:Tags are ignored now.
-
-         return;
 
       elsif Namespace_URI = XMI_Namespace then
          --  XXX XMI namespace is not processed now.

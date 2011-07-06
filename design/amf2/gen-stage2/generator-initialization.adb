@@ -52,6 +52,7 @@ with AMF.Holders.Unlimited_Naturals;
 with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
+with AMF.Internals.Helpers;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
@@ -273,9 +274,8 @@ package body Generator.Initialization is
                    (Association,
                     Property,
                     Element,
-                    CMOF_Element_Of
-                     (AMF.CMOF.Elements.CMOF_Element_Access
-                       (AMF.Holders.Collections.Element (Value).Element (J))));
+                    AMF.Internals.Helpers.To_Element
+                     (AMF.Holders.Collections.Element (Value).Element (J)));
                end loop;
 
             else
@@ -284,8 +284,8 @@ package body Generator.Initialization is
                    (Association,
                     Property,
                     Element,
-                    AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-                     (AMF.Holders.Elements.Element (Value).all).Id);
+                    AMF.Internals.Helpers.To_Element
+                     (AMF.Holders.Elements.Element (Value)));
                end if;
             end if;
          end if;
@@ -530,7 +530,16 @@ package body Generator.Initialization is
                   end if;
 
                else
-                  raise Program_Error;
+                  Put_Line
+                   ("   Internal_Set_"
+                      & To_Ada_Identifier (Get_Name (Property)));
+                  Put ("    (");
+                  Put (Numbers.Element (Element), Width => 0);
+                  Put_Line (",");
+                  Put_Line
+                   ("     (League.Strings.To_Universal_String ("""
+                      & League.Holders.Element (Value).To_Wide_Wide_String
+                      & """)));");
                end if;
 
             elsif Has_Parameter_Direction_Kind_Type (Property) then
