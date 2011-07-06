@@ -60,16 +60,6 @@ package CMOF.Extents is
 
    function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
 
-   function Elements
-    (Self : CMOF_Extent)
-       return AMF.Elements.Collections.Reflective_Collection;
-   --  Returns all elements in the specified extent.
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-
    function Factory (Self : CMOF_Extent) return AMF.Factories.Factory_Access;
    --  CMOF::Store class will be provided in the future, and it will implement
    --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is

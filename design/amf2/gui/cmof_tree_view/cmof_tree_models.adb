@@ -351,7 +351,7 @@ package body CMOF_Tree_Models is
                     Self.Extent,
                     True,
                     Qt4.Strings.From_Ucs_4
-                     (CMOF.Extents.Factory (Self.Extent).Convert_To_String
+                     (Self.Extent.Convert_To_String
                        (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
                          (Attribute_Type),
                         Self.Element.Get
@@ -642,13 +642,12 @@ package body CMOF_Tree_Models is
 
    procedure Set_Extent
     (Self : not null access CMOF_Tree_Model'Class;
-     Root : CMOF.CMOF_Extent)
+     Root : AMF.URI_Stores.URI_Store_Access)
    is
-      use CMOF;
       use type CMOF.CMOF_Element;
 
       E : constant AMF.Elements.Collections.Reflective_Collection
-        := CMOF.Extents.Elements (Root);
+        := Root.Elements;
       X : AMF.Elements.Element_Access;
 
    begin
@@ -656,7 +655,7 @@ package body CMOF_Tree_Models is
          X := E.Element (J);
 
          if CMOF.Reflection.Container (AMF.Internals.Helpers.To_Element (X))
-              = Null_CMOF_Element
+              = CMOF.Null_CMOF_Element
          then
             Self.Root :=
               new Root_Node'

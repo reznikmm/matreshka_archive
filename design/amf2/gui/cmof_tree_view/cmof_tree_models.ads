@@ -51,7 +51,7 @@ private with Qt4.Variants;
 
 private with AMF.CMOF.Properties;
 private with AMF.Elements;
-with CMOF;
+with AMF.URI_Stores;
 
 package CMOF_Tree_Models is
 
@@ -61,7 +61,7 @@ package CMOF_Tree_Models is
 
    procedure Set_Extent
     (Self : not null access CMOF_Tree_Model'Class;
-     Root : CMOF.CMOF_Extent);
+     Root : AMF.URI_Stores.URI_Store_Access);
 
    package Constructors is
 
@@ -80,7 +80,7 @@ private
    type Abstract_Node is abstract tagged limited record
       Parent       : Node_Access;
       Children     : Node_Vectors.Vector;
-      Extent       : CMOF.CMOF_Extent;
+      Extent       : AMF.URI_Stores.URI_Store_Access;
       Is_Populated : Boolean := False;
       Name         : Qt4.Strings.Q_String;
    end record;

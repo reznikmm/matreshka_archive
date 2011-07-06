@@ -59,15 +59,6 @@ package CMOF.Internals.Extents is
        return not null AMF.Internals.Collections.Collection_Access;
    --  Returns all elements in the specified extent.
 
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-
    function Container (Self : CMOF_Element) return CMOF_Element;
 
 end CMOF.Internals.Extents;

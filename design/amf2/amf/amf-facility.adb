@@ -76,18 +76,4 @@ package body AMF.Facility is
       null;
    end Initialize;
 
-   ---------------------------
-   -- Resolve_Metamodel_URI --
-   ---------------------------
-
-   function Resolve_Metamodel_URI
-    (Metamodel_URI : League.Strings.Universal_String)
-       return AMF.CMOF.Packages.CMOF_Package_Access is
-   begin
-      return
-        AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element
-           (Standard.CMOF.Internals.Metamodel.MM_CMOF));
-   end Resolve_Metamodel_URI;
-
 end AMF.Facility;

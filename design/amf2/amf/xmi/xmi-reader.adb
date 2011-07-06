@@ -46,7 +46,9 @@ with XML.SAX.Simple_Readers;
 
 with AMF.Internals.XMI_Handlers;
 
-function XMI.Reader (File_Name : String) return CMOF.CMOF_Extent is
+function XMI.Reader
+ (File_Name : String) return AMF.URI_Stores.URI_Store_Access
+is
    Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Handler : aliased AMF.Internals.XMI_Handlers.XMI_Handler;

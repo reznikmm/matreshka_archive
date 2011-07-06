@@ -41,8 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
-
+--  XXX Metamodel is hardcoded now to be CMOF. Nethertheless, it is possible
+--  to do required metaclass to package navigation is less efficient way by
+--  traversing elements in the metaclass extent.
+------------------------------------------------------------------------------
 with AMF.Factories.Registry;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Extents;
@@ -50,6 +52,7 @@ with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attributes;
+with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 
 package body AMF.Internals.AMF_URI_Stores is
@@ -152,6 +155,33 @@ package body AMF.Internals.AMF_URI_Stores is
       raise Program_Error;
       return League.Strings.Empty_Universal_String;
    end Convert_To_String;
+
+   -------------
+   -- Element --
+   -------------
+
+   overriding function Element
+    (Self : not null access constant AMF_URI_Store;
+     URI  : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access is
+   begin
+      return
+        AMF.Internals.Helpers.To_Element
+         (AMF.Internals.Extents.Element (Self.Extent, URI));
+   end Element;
+
+   --------------
+   -- Elements --
+   --------------
+
+   overriding function Elements
+    (Self : not null access constant AMF_URI_Store)
+       return AMF.Elements.Collections.Reflective_Collection is
+   begin
+      return
+        AMF.Elements.Collections.Wrap
+         (Standard.CMOF.Internals.Extents.All_Elements (Self.Extent));
+   end Elements;
 
    -----------------
    -- Get_Package --

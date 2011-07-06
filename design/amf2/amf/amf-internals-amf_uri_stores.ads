@@ -47,7 +47,7 @@ with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
-with AMF.Elements;
+with AMF.Elements.Collections;
 with AMF.URI_Stores;
 
 package AMF.Internals.AMF_URI_Stores is
@@ -79,6 +79,15 @@ package AMF.Internals.AMF_URI_Stores is
     (Self      : not null access AMF_URI_Store;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String;
+
+   overriding function Element
+    (Self : not null access constant AMF_URI_Store;
+     URI  : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access;
+
+   overriding function Elements
+    (Self : not null access constant AMF_URI_Store)
+       return AMF.Elements.Collections.Reflective_Collection;
 
    overriding function Get_Package
     (Self : not null access constant AMF_URI_Store)

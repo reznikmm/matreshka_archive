@@ -52,7 +52,7 @@ private with XML.SAX.Parse_Exceptions;
 
 private with AMF.CMOF.Properties;
 private with AMF.Elements;
-private with AMF.URI_Stores;
+with AMF.URI_Stores;
 
 package AMF.Internals.XMI_Handlers is
 
@@ -60,7 +60,7 @@ package AMF.Internals.XMI_Handlers is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
-   function Root (Self : XMI_Handler) return AMF_Extent;
+   function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access;
 
 private
 

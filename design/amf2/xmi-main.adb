@@ -1,10 +1,10 @@
 with Ada.Command_Line;
 
-with CMOF;
+with AMF.URI_Stores;
 with XMI.Reader;
 
 procedure XMI.Main is
-   X : CMOF.CMOF_Extent;
+   X : AMF.URI_Stores.URI_Store_Access;
 
 begin
    X := XMI.Reader (Ada.Command_Line.Argument (1));

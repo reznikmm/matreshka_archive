@@ -62,7 +62,6 @@ with AMF.Factories.Registry;
 with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
-with CMOF.Extents;
 
 package body AMF.Internals.XMI_Handlers is
 
@@ -116,10 +115,10 @@ package body AMF.Internals.XMI_Handlers is
    package Universal_String_Extent_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           AMF_Extent,
+           AMF.URI_Stores.URI_Store_Access,
            League.Strings.Hash,
            League.Strings."=",
-           AMF.Internals."=");
+           AMF.URI_Stores."=");
 
    Documents : Universal_String_Extent_Maps.Map;
    --  Map file name of document to extent.
@@ -249,10 +248,7 @@ package body AMF.Internals.XMI_Handlers is
                     (File_Name.To_Wide_Wide_String)));
             end if;
 
-            Self.Current :=
-              Standard.CMOF.Extents.Object
-               (Documents.Element (File_Name), Name);
-            --  XXX Should be replaced by URIExtent:Element (name).
+            Self.Current := Documents.Element (File_Name).Element (Name);
 
             if Self.Current = null then
                raise Program_Error;
@@ -590,11 +586,9 @@ package body AMF.Internals.XMI_Handlers is
    -- Root --
    ----------
 
-   function Root (Self : XMI_Handler) return AMF_Extent is
+   function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access is
    begin
-      return
-        AMF.Internals.AMF_URI_Stores.AMF_URI_Store'Class
-         (Self.Extent.all).Extent;
+      return Self.Extent;
    end Root;
 
 --   overriding procedure Set_Document_Locator

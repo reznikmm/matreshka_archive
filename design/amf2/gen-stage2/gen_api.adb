@@ -56,8 +56,8 @@ with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
 with AMF.Facility;
-with CMOF.Extents;
-with CMOF.XMI_Helper;
+with AMF.URI_Stores;
+with CMOF;
 with League.Application;
 with League.Characters;
 with League.String_Vectors;
@@ -72,7 +72,6 @@ procedure Gen_API is
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use CMOF;
-   use CMOF.XMI_Helper;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use League.Strings;
@@ -933,14 +932,14 @@ procedure Gen_API is
       return Result;
    end Split_Text;
 
-   Extent   : CMOF.CMOF_Extent;
+   Extent   : AMF.URI_Stores.URI_Store_Access;
    Elements : AMF.Elements.Collections.Reflective_Collection;
 
 begin
    AMF.Facility.Initialize;
 
    Extent := XMI.Reader (Ada.Command_Line.Argument (1));
-   Elements := CMOF.Extents.Elements (Extent);
+   Elements := Extent.Elements;
 
    for J in 1 .. Elements.Length loop
       if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then

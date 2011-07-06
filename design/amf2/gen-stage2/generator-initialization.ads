@@ -41,12 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Extents;
+with AMF.Elements.Collections;
 
 package Generator.Initialization is
 
    procedure Generate_Metamodel_Initialization_Implementation
-    (Elements : CMOF.Extents.CMOF_Element_Sets.Set;
+    (Elements : AMF.Elements.Collections.Reflective_Collection;
      Numbers  : CMOF_Element_Number_Maps.Map;
      Total    : Positive);
    --  Generates body of metamodel initialization package.

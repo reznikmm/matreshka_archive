@@ -42,13 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Maps;
+with Ada.Containers.Hashed_Sets;
 with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Ordered_Sets;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
 with AMF.Internals;
-with CMOF.Extents;
+with CMOF;
 
 package Generator is
 
@@ -58,16 +59,25 @@ package Generator is
     (Left  : CMOF.CMOF_Named_Element;
      Right : CMOF.CMOF_Named_Element) return Boolean;
 
+   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+
    package CMOF_Named_Element_Ordered_Sets is
      new Ada.Containers.Ordered_Sets
           (CMOF.CMOF_Named_Element, "<", AMF.Internals."=");
 
    package CMOF_Element_Number_Maps is
      new Ada.Containers.Hashed_Maps
-          (CMOF.CMOF_Element, Positive, CMOF.Extents.Hash, AMF.Internals."=");
+          (CMOF.CMOF_Element, Positive, Hash, AMF.Internals."=");
+
+   package CMOF_Element_Sets is
+     new Ada.Containers.Hashed_Sets
+          (AMF.Internals.AMF_Element,
+           Hash,
+           AMF.Internals."=",
+           AMF.Internals."=");
 
    function Sort
-    (Set : CMOF.Extents.CMOF_Element_Sets.Set)
+    (Set : CMOF_Element_Sets.Set)
        return CMOF_Named_Element_Ordered_Sets.Set;
 
    -------------------------------------------

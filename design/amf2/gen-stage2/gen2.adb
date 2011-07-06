@@ -52,7 +52,10 @@ with Interfaces;
 
 with League.Strings;
 
+with AMF.Elements.Collections;
 with AMF.Facility;
+with AMF.Internals.Helpers;
+with AMF.URI_Stores;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
@@ -82,7 +85,6 @@ procedure Gen2 is
    use CMOF.Associations;
    use CMOF.Classes;
    use CMOF.Collections;
-   use CMOF.Extents;
    use CMOF.Properties;
    use CMOF.Reflection;
    use CMOF.Multiplicity_Elements;
@@ -97,7 +99,7 @@ procedure Gen2 is
 
    type CMOF_Element_Array is array (Positive range <>) of CMOF_Element;
 
-   Extent : CMOF_Extent;
+   Extent : AMF.URI_Stores.URI_Store_Access;
 
    All_Associations : CMOF_Element_Sets.Set;
    All_Classes      : CMOF_Element_Sets.Set;
@@ -154,12 +156,12 @@ procedure Gen2 is
    -- Assign_Numbers --
    --------------------
 
-   procedure Assign_Numbers (Extent : CMOF_Extent) is
-      Elements : CMOF_Element_Sets.Set := CMOF.Extents.Elements (Extent);
+   procedure Assign_Numbers
+    (Extent : not null access constant AMF.URI_Stores.URI_Store'Class)
+   is
+      Elements : AMF.Elements.Collections.Reflective_Collection
+        := Extent.Elements;
       Last     : Natural := 0;
-
-      procedure Classify (Position : CMOF_Element_Sets.Cursor);
-      --  Classify elements and fills All_Classes and All_Associations sets.
 
       ------------------------
       -- Assign_Ordered_Set --
@@ -239,15 +241,14 @@ procedure Gen2 is
          end if;
       end Assign_Set;
 
-      --------------
-      -- Classify --
-      --------------
+      Element : CMOF_Element;
 
-      procedure Classify (Position : CMOF_Element_Sets.Cursor) is
-         Element : constant CMOF_Element
-           := CMOF_Element_Sets.Element (Position);
+   begin
+      --  Classify elements and fills All_Classes and All_Associations sets.
 
-      begin
+      for J in 1 .. Elements.Length loop
+         Element := AMF.Internals.Helpers.To_Element (Elements.Element (J));
+
          if Is_Association (Element) then
             All_Associations.Insert (Element);
 
@@ -271,12 +272,7 @@ procedure Gen2 is
                (Package_Constant_Name_Max,
                 Package_Constant_Name (Element)'Length);
          end if;
-      end Classify;
-
-   begin
-      --  Classify all elements.
-
-      Elements.Iterate (Classify'Access);
+      end loop;
 
       --  Assign numbers for classes and their owned properties.
 
@@ -295,7 +291,16 @@ procedure Gen2 is
 
       --  Assign numbers for other elements.
 
-      Elements.Iterate (Assign_Set'Access);
+      for J in 1 .. Elements.Length loop
+         Element :=
+           AMF.Internals.Helpers.To_Element (Elements.Element (J));
+
+         if not Element_Numbers.Contains (Element) then
+            Last := Last + 1;
+            Element_Numbers.Insert (Element, Last);
+         end if;
+      end loop;
+
       Last_Metamodel_Element := Last;
    end Assign_Numbers;
 
@@ -590,13 +595,12 @@ procedure Gen2 is
       Put_Line ("end CMOF.Internals.Metamodel;");
    end Generate_Metamodel_Specification;
 
-   Elements : CMOF_Element_Sets.Set;
+   Elements : AMF.Elements.Collections.Reflective_Collection;
 
 begin
    AMF.Facility.Initialize;
    Extent := XMI.Reader (Ada.Command_Line.Argument (1));
-
-   Elements := CMOF.Extents.Elements (Extent);
+   Elements := Extent.Elements;
 
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Model (Extent);

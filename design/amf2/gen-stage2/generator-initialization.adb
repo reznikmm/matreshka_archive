@@ -77,7 +77,6 @@ package body Generator.Initialization is
    use CMOF.Associations;
    use CMOF.Classes;
    use CMOF.Collections;
-   use CMOF.Extents;
    use CMOF.Multiplicity_Elements;
    use CMOF.Named_Elements;
    use CMOF.Properties;
@@ -324,65 +323,9 @@ package body Generator.Initialization is
    ------------------------------------------------------
 
    procedure Generate_Metamodel_Initialization_Implementation
-    (Elements : CMOF.Extents.CMOF_Element_Sets.Set;
+    (Elements : AMF.Elements.Collections.Reflective_Collection;
      Numbers  : CMOF_Element_Number_Maps.Map;
-     Total    : Positive)
-   is
-
-      procedure Generate_Metaclass_Initialization
-       (Position : CMOF_Element_Sets.Cursor);
-      --  Generates initialization of metaclass except links.
-
-      procedure Generate_Properties_Initialization
-       (Position : CMOF_Element_Sets.Cursor);
-      --  Generates initialization of metaclass except links.
-
-      procedure Generate_Link_Initialization
-       (Position : CMOF_Element_Sets.Cursor);
-      --  Generates initialization of links.
-
-      ----------------------------------
-      -- Generate_Link_Initialization --
-      ----------------------------------
-
-      procedure Generate_Link_Initialization
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Element : constant CMOF_Element
-           := CMOF_Element_Sets.Element (Position);
-
-      begin
-         Generate_Link_Initialization (Element, Numbers);
-      end Generate_Link_Initialization;
-
-      ---------------------------------------
-      -- Generate_Metaclass_Initialization --
-      ---------------------------------------
-
-      procedure Generate_Metaclass_Initialization
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Element : constant CMOF_Element
-           := CMOF_Element_Sets.Element (Position);
-
-      begin
-         Generate_Metaclass_Initialization (Element, Numbers);
-      end Generate_Metaclass_Initialization;
-
-      ----------------------------------------
-      -- Generate_Properties_Initialization --
-      ----------------------------------------
-
-      procedure Generate_Properties_Initialization
-       (Position : CMOF_Element_Sets.Cursor)
-      is
-         Element : constant CMOF_Element
-           := CMOF_Element_Sets.Element (Position);
-
-      begin
-         Generate_Properties_Initialization (Element, Numbers);
-      end Generate_Properties_Initialization;
-
+     Total    : Positive) is
    begin
       Put_Header;
       Put_Line ("with League.Strings;");
@@ -414,10 +357,24 @@ package body Generator.Initialization is
        (");");
       Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
       New_Line;
-      Elements.Iterate (Generate_Metaclass_Initialization'Access);
-      Elements.Iterate (Generate_Properties_Initialization'Access);
+
+      for J in 1 .. Elements.Length loop
+         Generate_Metaclass_Initialization
+          (AMF.Internals.Helpers.To_Element (Elements.Element (J)), Numbers);
+      end loop;
+
+      for J in 1 .. Elements.Length loop
+         Generate_Properties_Initialization
+           (AMF.Internals.Helpers.To_Element (Elements.Element (J)), Numbers);
+      end loop;
+
       New_Line;
-      Elements.Iterate (Generate_Link_Initialization'Access);
+
+      for J in 1 .. Elements.Length loop
+         Generate_Link_Initialization
+           (AMF.Internals.Helpers.To_Element (Elements.Element (J)), Numbers);
+      end loop;
+
       New_Line;
       Put_Line ("end CMOF.Internals.Setup;");
    end Generate_Metamodel_Initialization_Implementation;

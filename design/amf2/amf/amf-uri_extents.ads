@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
 with AMF.Extents;
 
 package AMF.URI_Extents is
@@ -51,5 +52,15 @@ package AMF.URI_Extents is
 
    type URI_Extent_Access is access all URI_Extent'Class;
    for URI_Extent_Access'Storage_Size use 0;
+
+   not overriding function Element
+    (Self : not null access constant URI_Extent;
+     URI  : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access is abstract;
+   --  Returns the Element identified by the given URI in the extent. Returns
+   --  Null if there is no element in the extent with the given URI. Note the
+   --  Element does not (necessarily) contain a property corresponding to the
+   --  URI. The URI identifies the element in the context of the extent. The
+   --  same element may have a different identifier in another extent.
 
 end AMF.URI_Extents;

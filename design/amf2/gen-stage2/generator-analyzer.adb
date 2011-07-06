@@ -57,9 +57,11 @@ package body Generator.Analyzer is
    -- Analyze_Model --
    -------------------
 
-   procedure Analyze_Model (Extent : CMOF.CMOF_Extent) is
+   procedure Analyze_Model
+    (Extent : not null AMF.URI_Stores.URI_Store_Access)
+   is
       Elements : constant AMF.Elements.Collections.Reflective_Collection
-        := CMOF.Extents.Elements (Extent);
+        := Extent.Elements;
 
    begin
       for J in 1 .. Elements.Length loop

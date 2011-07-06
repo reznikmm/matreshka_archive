@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements.Collections;
 
 package AMF.Extents is
 
@@ -50,5 +51,14 @@ package AMF.Extents is
 
    type Extent_Access is access all Extent'Class;
    for Extent_Access'Storage_Size use 0;
+
+   not overriding function Elements
+    (Self : not null access constant Extent)
+       return AMF.Elements.Collections.Reflective_Collection is abstract;
+   --  Returns a ReflectiveSequence of the elements directly referenced by this
+   --  extent. If exclusive()==true, these elements must have
+   --  container()==null. Extent.elements() is a reflective operation, not a
+   --  reference between Extent and Element. See Chapter 4, “Reflection” for a
+   --  definition of ReflectiveSequence.
 
 end AMF.Extents;

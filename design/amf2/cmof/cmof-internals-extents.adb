@@ -272,43 +272,4 @@ package body CMOF.Internals.Extents is
       return Aux;
    end Length;
 
-   ------------
-   -- Object --
-   ------------
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element
-   is
-      use type League.Strings.Universal_String;
-
-      Current : AMF_Tables.Extent_Element_Identifier
-        := AMF_Tables.Extents.Table (Self).Head;
-
-   begin
-      while Current /= 0 loop
-         if League.Strings.Internals.Create
-             (AMF_Tables.Extent_Elements.Table (Current).Id) = Identifier
-         then
-            return AMF_Tables.Extent_Elements.Table (Current).Element;
-         end if;
-
-         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
-      end loop;
-
-      return Null_CMOF_Element;
-   end Object;
-
-   ------------
-   -- Object --
-   ------------
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access is
-   begin
-      return Tables.Elements.Table (Object (Self, Identifier)).Proxy;
-   end Object;
-
 end CMOF.Internals.Extents;

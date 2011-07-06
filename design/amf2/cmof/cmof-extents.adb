@@ -50,19 +50,6 @@ package body CMOF.Extents is
    -- Elements --
    --------------
 
-   function Elements
-    (Self : CMOF_Extent)
-       return AMF.Elements.Collections.Reflective_Collection is
-   begin
-      return
-        AMF.Elements.Collections.Wrap
-         (CMOF.Internals.Extents.All_Elements (Self));
-   end Elements;
-
-   --------------
-   -- Elements --
-   --------------
-
    function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set is
       use CMOF.Internals.Extents;
 
@@ -96,15 +83,5 @@ package body CMOF.Extents is
    begin
       return Ada.Containers.Hash_Type (Item);
    end Hash;
-
-   ------------
-   -- Object --
-   ------------
-
-   function Object
-    (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access
-         renames CMOF.Internals.Extents.Object;
 
 end CMOF.Extents;

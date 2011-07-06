@@ -56,5 +56,16 @@ package AMF.Internals.Extents is
     (Element : not null access constant AMF.Elements.Abstract_Element'Class;
      Id      : League.Strings.Universal_String);
    --  Associate specified identifier with the element.
+   --
+   --  XXX Access to Abstract_Element'Class should be replaced by AMF_Element.
+
+   function Element
+    (Self : AMF_Extent;
+     Name : League.Strings.Universal_String) return AMF_Element;
+   --  Returns the Element identified by the given URI in the extent. Returns
+   --  Null if there is no element in the extent with the given URI. Note the
+   --  Element does not (necessarily) contain a property corresponding to the
+   --  URI. The URI identifies the element in the context of the extent. The
+   --  same element may have a different identifier in another extent.
 
 end AMF.Internals.Extents;

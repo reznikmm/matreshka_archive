@@ -49,6 +49,7 @@ with Qt4.Strings;
 with Qt4.Tree_Views.Constructors;
 
 with AMF.Facility;
+with AMF.URI_Stores;
 with CMOF.Internals.Setup;
 with XMI.Reader;
 
@@ -62,7 +63,7 @@ procedure Main is
    Window : Main_Windows.Main_Window_Access;
    Model  : CMOF_Tree_Models.CMOF_Tree_Model_Access;
    View   : Qt4.Tree_Views.Q_Tree_View_Access;
-   Root   : CMOF.CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   Root   : AMF.URI_Stores.URI_Store_Access;
 
 begin
    Qt_Ada.Application.Initialize;
@@ -74,6 +75,8 @@ begin
    --  Initialize Facility
 
    AMF.Facility.Initialize;
+
+   Root := XMI.Reader (Ada.Command_Line.Argument (1));
 
    Model := CMOF_Tree_Models.Constructors.Create;
    Model.Set_Extent (Root);

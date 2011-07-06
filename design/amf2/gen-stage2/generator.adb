@@ -102,6 +102,15 @@ package body Generator is
    end Hash;
 
    ----------
+   -- Hash --
+   ----------
+
+   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type is
+   begin
+      return Ada.Containers.Hash_Type (Item);
+   end Hash;
+
+   ----------
    -- Less --
    ----------
 
@@ -172,16 +181,16 @@ package body Generator is
    ----------
 
    function Sort
-    (Set : CMOF.Extents.CMOF_Element_Sets.Set)
+    (Set : CMOF_Element_Sets.Set)
        return CMOF_Named_Element_Ordered_Sets.Set
    is
       Result   : CMOF_Named_Element_Ordered_Sets.Set;
-      Position : CMOF.Extents.CMOF_Element_Sets.Cursor := Set.First;
+      Position : CMOF_Element_Sets.Cursor := Set.First;
 
    begin
-      while CMOF.Extents.CMOF_Element_Sets.Has_Element (Position) loop
-         Result.Insert (CMOF.Extents.CMOF_Element_Sets.Element (Position));
-         CMOF.Extents.CMOF_Element_Sets.Next (Position);
+      while CMOF_Element_Sets.Has_Element (Position) loop
+         Result.Insert (CMOF_Element_Sets.Element (Position));
+         CMOF_Element_Sets.Next (Position);
       end loop;
 
       return Result;
