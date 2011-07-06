@@ -41,9 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
-
 with AMF.Internals.Containers;
 with AMF.Internals.Helpers;
 with AMF.Internals.Element_Collections;
@@ -59,7 +56,6 @@ package body CMOF.Internals.Extents is
 
    use AMF.Internals;
    use AMF.Internals.Tables;
-   use type AMF.Internals.AMF_Element;
    use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
 
    ---------------
@@ -71,7 +67,6 @@ package body CMOF.Internals.Extents is
       use AMF.Internals.Element_Collections;
       use CMOF.Internals.Attribute_Mappings;
       use CMOF.Internals.Attributes;
-      use CMOF.Internals.Reflection;
       use CMOF.Internals.Metamodel;
       use CMOF.Internals.Subclassing;
       use type AMF.Internals.Tables.AMF_Tables.Collection_Element_Identifier;
@@ -191,35 +186,9 @@ package body CMOF.Internals.Extents is
       return Null_CMOF_Element;
    end Container;
 
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : CMOF_Extent;
-     Index : Positive) return CMOF_Element
-   is
-      Current : AMF_Tables.Extent_Element_Identifier
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
-
-   begin
-      for J in 2 .. Index loop
-         exit when Current = 0;
-
-         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
-      end loop;
-
-      if Current = 0 then
-         raise Constraint_Error;
-
-      else
-         return AMF_Tables.Extent_Elements.Table (Current).Element;
-      end if;
-   end Element;
-
-   --------------
-   -- Elements --
-   --------------
+   ------------------
+   -- All_Elements --
+   ------------------
 
    function All_Elements
     (Self : CMOF_Extent)
@@ -253,23 +222,5 @@ package body CMOF.Internals.Extents is
       AMF.Internals.Tables.AMF_Tables.Extents.Table
        (CMOF_Metamodel_Extent) := (0, 0);
    end Initialize_CMOF_Metamodel_Extent;
-
-   ------------
-   -- Length --
-   ------------
-
-   function Length (Self : CMOF_Extent) return Natural is
-      Current : AMF_Tables.Extent_Element_Identifier
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
-      Aux     : Natural := 0;
-
-   begin
-      while Current /= 0 loop
-         Aux     := Aux + 1;
-         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
-      end loop;
-
-      return Aux;
-   end Length;
 
 end CMOF.Internals.Extents;

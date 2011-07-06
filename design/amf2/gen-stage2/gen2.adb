@@ -59,7 +59,6 @@ with AMF.URI_Stores;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
-with CMOF.Extents;
 with CMOF.Properties;
 with CMOF.Reflection;
 with CMOF.Multiplicity_Elements;

@@ -41,18 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with AMF.Internals.Collections;
-with AMF.Elements;
 
 package CMOF.Internals.Extents is
 
    procedure Initialize_CMOF_Metamodel_Extent;
-
-   function Length (Self : CMOF_Extent) return Natural;
-
-   function Element (Self : CMOF_Extent; Index : Positive) return CMOF_Element;
 
    function All_Elements
     (Self : CMOF_Extent)

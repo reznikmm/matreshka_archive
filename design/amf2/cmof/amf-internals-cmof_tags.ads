@@ -78,6 +78,10 @@ package AMF.Internals.CMOF_Tags is
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String;
 
+   overriding function Get_Tag_Owner
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access;
+
    overriding function Get_Value
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String;
@@ -90,6 +94,10 @@ package AMF.Internals.CMOF_Tags is
    overriding procedure Set_Name
     (Self : not null access CMOF_Tag_Proxy;
      To   : League.Strings.Universal_String);
+
+   overriding procedure Set_Tag_Owner
+    (Self : not null access CMOF_Tag_Proxy;
+     To   : AMF.CMOF.Elements.CMOF_Element_Access);
 
    overriding procedure Set_Value
     (Self : not null access CMOF_Tag_Proxy;

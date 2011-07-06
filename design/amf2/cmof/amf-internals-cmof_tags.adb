@@ -117,6 +117,18 @@ package body AMF.Internals.CMOF_Tags is
       return Get_Name (Self);
    end Get_Name;
 
+   -------------------
+   -- Get_Tag_Owner --
+   -------------------
+
+   overriding function Get_Tag_Owner
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access is
+   begin
+      raise Program_Error;
+      return null;
+   end Get_Tag_Owner;
+
    ---------------
    -- Get_Value --
    ---------------
@@ -162,6 +174,17 @@ package body AMF.Internals.CMOF_Tags is
       pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
       raise Program_Error with "Unimplemented procedure Set_Name";
    end Set_Name;
+
+   -------------------
+   -- Set_Tag_Owner --
+   -------------------
+
+   overriding procedure Set_Tag_Owner
+    (Self : not null access CMOF_Tag_Proxy;
+     To   : AMF.CMOF.Elements.CMOF_Element_Access) is
+   begin
+      raise Program_Error;
+   end Set_Tag_Owner;
 
    ---------------
    -- Set_Value --

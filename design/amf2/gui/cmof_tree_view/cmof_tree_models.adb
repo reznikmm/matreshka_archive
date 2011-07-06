@@ -55,7 +55,6 @@ with AMF.Internals.Helpers;
 with AMF.Elements.Collections;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
-with CMOF.Extents;
 with CMOF.Reflection;
 
 with CMOF_Tree_Models.MOC;

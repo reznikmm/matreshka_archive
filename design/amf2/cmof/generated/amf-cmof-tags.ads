@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
+limited with AMF.CMOF.Elements;
 limited with AMF.CMOF.Elements.Collections;
 
 package AMF.CMOF.Tags is
@@ -75,5 +76,13 @@ package AMF.CMOF.Tags is
    not overriding function Get_Element
     (Self : not null access constant CMOF_Tag)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+
+   not overriding function Get_Tag_Owner
+    (Self : not null access constant CMOF_Tag)
+       return AMF.CMOF.Elements.CMOF_Element_Access is abstract;
+
+   not overriding procedure Set_Tag_Owner
+    (Self : not null access CMOF_Tag;
+     To   : AMF.CMOF.Elements.CMOF_Element_Access) is abstract;
 
 end AMF.CMOF.Tags;
