@@ -8,7 +8,7 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-owningDiagram" name="owningDiagram" visibility="public" type="Diagram" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_rootElement_owningDiagram"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-owningElement" name="owningElement" visibility="public" type="DiagramElement" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_ownedElement_owningElement"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-modelElement" name="modelElement" visibility="public" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_modelElement_diagramElement">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-style" name="style" visibility="public" type="Style" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_style_diagramElement"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DiagramElement-ownedElement" name="ownedElement" visibility="public" type="DiagramElement" upper="*" lower="0" isReadOnly="true" isDerived="true" isDerivedUnion="true" isComposite="true" association="A_ownedElement_owningElement"/>

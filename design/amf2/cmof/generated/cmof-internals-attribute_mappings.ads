@@ -232,6 +232,9 @@ package CMOF.Internals.Attribute_Mappings is
            MP_CMOF_Property_Redefined_Property => 6,
            MP_CMOF_Redefinable_Element_Redefinition_Context => 3,
            MP_CMOF_Property_Subsetted_Property => 7,
+           others => 0),
+         E_Tag =>
+          (MP_CMOF_Tag_Element => 1,
            others => 0));
 
    Member_Offset : constant
@@ -405,6 +408,10 @@ E_Association =>
            MP_CMOF_Typed_Element_Type => 11,
            MP_CMOF_Multiplicity_Element_Upper => 10,
            MP_CMOF_Named_Element_Visibility => 3,
+           others => 0),
+         E_Tag =>
+          (MP_CMOF_Tag_Name => 1,
+           MP_CMOF_Tag_Value => 2,
            others => 0));
 
 end CMOF.Internals.Attribute_Mappings;

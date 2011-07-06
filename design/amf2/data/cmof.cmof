@@ -2,7 +2,7 @@
 <!-- This is merged by hand model to bootstrap CMOF library. It is based on LM.cmof model, and adds:
        - Package::uri
 -->
-<!-- XXX MOF extensions (one of important is MOF::Tag) should be added later. -->
+<!-- XXX MOF extensions (one of most important is MOF::Tag) should be added later. -->
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="_0" name="CMOF" uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
     <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Integer" name="Integer">
@@ -1868,6 +1868,44 @@
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_bodyCondition_bodyContext-bodyContext" name="bodyContext" type="Operation" lower="0" owningAssociation="A_bodyCondition_bodyContext" subsettedProperty="Constraint-context" association="A_bodyCondition_bodyContext"/>
     </packagedElement>
     <packagedElement xmi:type="cmof:Association" xmi:id="A_ownedRule_context" name="A_ownedRule_context" memberEnd="Namespace-ownedRule Constraint-context"/>
+    <packagedElement xmi:type="cmof:Class" xmi:id="Tag" name="Tag">
+      <!--  XXX CMOF 2.4: Tag doesn't inherited from Element now.
+      <generalization xmi:type="uml:Generalization" xmi:id="_MOF-Extension-Tag-Generalization.0">
+        <general xmi:idref="_MOF-Reflection-Element"/>
+      </generalization>
+      -->
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Tag-name" name="name" type="String"/>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Tag-value" name="value" type="String"/>
+      <ownedAttribute xmi:type="cmof:Property" xmi:id="Tag-element" name="element" type="Element" lower="0" upper="*" association="_MOF-Extension-A_element_tag"/>
+    </packagedElement>
+    <packagedElement xmi:type="cmof:Association" xmi:id="_MOF-Extension-A_element_tag" name="A_element_tag" memberEnd="Tag-element _MOF-Extension-A_element_tag-tag">
+      <ownedEnd xmi:type="cmof:Property" xmi:id="_MOF-Extension-A_element_tag-tag" name="tag" type="Tag" association="_MOF-Extension-A_element_tag"/>
+    </packagedElement>
+    <!--  XXX CMOF 2.4: This is CMOF extension for Tag type, it is not implemented right now.
+      <packagedElement xmi:type="uml:Class" name="Tag" xmi:id="_MOF-CMOFExtension-Tag">
+        <generalization xmi:type="uml:Generalization" xmi:id="_MOF-CMOFExtension-Tag-Generalization.0">
+          <general href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classes-Kernel-Element"/>
+        </generalization>
+        <ownedAttribute xmi:type="uml:Property" name="tagOwner" xmi:id="_MOF-CMOFExtension-Tag-tagOwner">
+          <association xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner"/>
+          <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classes-Kernel-Element"/>
+          <subsettedProperty href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classes-Kernel-Element-owner"/>
+          <lowerValue xmi:type="uml:LiteralString" value="0" xmi:id="_MOF-CMOFExtension-Tag-tagOwner-LiteralString.3"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" name="A_ownedTag_tagOwner" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner">
+        <memberEnd xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag"/>
+        <memberEnd xmi:idref="_MOF-CMOFExtension-Tag-tagOwner"/>
+        <navigableOwnedEnd xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag"/>
+        <ownedEnd xmi:type="uml:Property" name="ownedTag" visibility="public" aggregation="composite" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag">
+          <type xmi:idref="_MOF-CMOFExtension-Tag"/>
+          <association xmi:idref="_MOF-CMOFExtension-A_ownedTag_tagOwner"/>
+          <subsettedProperty href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classes-Kernel-Element-ownedElement"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" value="*" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag-LiteralUnlimitedNatural.3"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MOF-CMOFExtension-A_ownedTag_tagOwner-ownedTag-LiteralInteger.4"/>
+        </ownedEnd>
+      </packagedElement>
+    -->
   </cmof:Package>
   <cmof:Tag xmi:id="_3" name="org.omg.xmi.nsPrefix" value="cmof" element="_0"/>
   <cmof:Tag xmi:id="_4" name="org.omg.xmi.nsURI" value="http://schema.omg.org/spec/MOF/2.0/cmof.xml" element="_0"/>

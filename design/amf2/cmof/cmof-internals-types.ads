@@ -68,10 +68,11 @@ package CMOF.Internals.Types is
       E_Package_Merge,
       E_Parameter,
       E_Primitive_Type,
-      E_Property);
+      E_Property,
+      E_Tag);
 
    subtype Class_Element_Kinds is Element_Kinds
-     range E_Association .. E_Property;
+     range E_Association .. E_Tag;
 
    type Collection_Index is new Interfaces.Integer_8;
    type Member_Index is new Interfaces.Integer_8;

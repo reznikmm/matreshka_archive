@@ -127,6 +127,9 @@ package body CMOF.Internals.Reflection is
       function Property_Get return League.Holders.Holder;
       --  Returns attribute's value of instance of Property class.
 
+      function Tag_Get return League.Holders.Holder;
+      --  Returns attribute's value of instance of Tag class.
+
       ---------------------
       -- Association_Get --
       ---------------------
@@ -2449,6 +2452,39 @@ package body CMOF.Internals.Reflection is
          end if;
       end Property_Get;
 
+      -------------
+      -- Tag_Get --
+      -------------
+
+      function Tag_Get return League.Holders.Holder is
+      begin
+         if Property = MP_CMOF_Tag_Element then
+            --  Tag::element : Element
+
+            return
+              AMF.Holders.Collections.To_Holder
+               (AMF.Internals.Element_Collections.Wrap
+                 (Internal_Get_Element (Self)));
+
+         elsif Property = MP_CMOF_Tag_Name then
+            --  Tag::name : String
+
+            return
+              League.Holders.To_Holder
+               (Internal_Get_Name (Self));
+
+         elsif Property = MP_CMOF_Tag_Value then
+            --  Tag::value : String
+
+            return
+              League.Holders.To_Holder
+               (Internal_Get_Value (Self));
+
+         else
+            raise Program_Error;
+         end if;
+      end Tag_Get;
+
    begin
       case Elements.Table (Self).Kind is
          when E_None =>
@@ -2504,6 +2540,9 @@ package body CMOF.Internals.Reflection is
 
          when E_Property =>
             return Property_Get;
+
+         when E_Tag =>
+            return Tag_Get;
       end case;
    end Get;
 
@@ -2567,6 +2606,9 @@ package body CMOF.Internals.Reflection is
 
          when E_Property =>
             return MC_CMOF_Property;
+
+         when E_Tag =>
+            return MC_CMOF_Tag;
       end case;
    end Get_Meta_Class;
 
@@ -2630,6 +2672,9 @@ package body CMOF.Internals.Reflection is
 
       procedure Property_Set;
       --  Sets attribute's value of instance of Property class.
+
+      procedure Tag_Set;
+      --  Sets attribute's value of instance of Tag class.
 
       ---------------------
       -- Association_Set --
@@ -3232,6 +3277,27 @@ package body CMOF.Internals.Reflection is
             raise Program_Error;
          end if;
       end Property_Set;
+
+      -------------
+      -- Tag_Set --
+      -------------
+
+      procedure Tag_Set is
+      begin
+         if Property = MP_CMOF_Tag_Name then
+            --  Tag::name : String
+
+            Internal_Set_Name (Self, League.Holders.Element (Value));
+
+         elsif Property = MP_CMOF_Tag_Value then
+            --  Tag::value : String
+
+            Internal_Set_Value (Self, League.Holders.Element (Value));
+
+         else
+            raise Program_Error;
+         end if;
+      end Tag_Set;
    begin
       case Elements.Table (Self).Kind is
          when E_None =>
@@ -3287,6 +3353,9 @@ package body CMOF.Internals.Reflection is
 
          when E_Property =>
             Property_Set;
+
+         when E_Tag =>
+            Tag_Set;
       end case;
    end Set;
 

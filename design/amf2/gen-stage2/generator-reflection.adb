@@ -278,7 +278,8 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Holder_Name :=
+                       To_Unbounded_Wide_Wide_String ("League.Holders.To_Holder");
 
                   when Holder =>
                      Holder_Name :=
@@ -609,7 +610,7 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Put ("League.Holders.Element (Value)");
 
                   when Holder =>
                      Put ("AMF.Holders.Element (Value)");

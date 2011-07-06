@@ -224,6 +224,10 @@ package body CMOF.Internals.Subclassing is
            | MC_CMOF_Packageable_Element
            | MC_CMOF_Typed_Element
            | MC_CMOF_Value_Specification => True,
+         others => False),
+      MC_CMOF_Tag =>
+        (MC_CMOF_Element
+           | MC_CMOF_Tag => True,
          others => False));
 
    Class : constant array (Class_Element_Kinds) of CMOF_Meta_Class :=
@@ -243,7 +247,8 @@ package body CMOF.Internals.Subclassing is
       E_Package_Merge       => MC_CMOF_Package_Merge,
       E_Parameter           => MC_CMOF_Parameter,
       E_Primitive_Type      => MC_CMOF_Primitive_Type,
-      E_Property            => MC_CMOF_Property);
+      E_Property            => MC_CMOF_Property,
+      E_Tag                 => MC_CMOF_Tag);
 
    --------------------
    -- Is_Association --

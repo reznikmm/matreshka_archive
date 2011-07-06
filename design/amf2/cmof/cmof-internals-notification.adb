@@ -207,4 +207,23 @@ package body CMOF.Internals.Notification is
          (AMF.Internals.Helpers.To_Element (New_Value)));
    end Notify_Attribute_Set;
 
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : League.Strings.Universal_String;
+     New_Value : League.Strings.Universal_String) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        League.Holders.To_Holder (Old_Value),
+        League.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
 end CMOF.Internals.Notification;

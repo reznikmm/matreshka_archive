@@ -402,6 +402,13 @@ package body CMOF.Internals.Attributes is
    --     3  RedefinableElement::redefinitionContext
    --     7  Property::subsettedProperty
 
+   --  Tag
+   --
+   --     1  Tag::name
+   --     2  Tag::value
+   --
+   --     1  Tag::element
+
    ------------------------
    -- Internal_Get_Alias --
    ------------------------
@@ -661,6 +668,22 @@ package body CMOF.Internals.Attributes is
             raise Program_Error;
       end case;
    end Internal_Get_Direction;
+
+   --------------------------
+   -- Internal_Get_Element --
+   --------------------------
+
+   function Internal_Get_Element
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Element;
 
    ---------------------------------
    -- Internal_Get_Element_Import --
@@ -1359,6 +1382,24 @@ package body CMOF.Internals.Attributes is
                  League.Strings.Internals.Create
                   (Elements.Table (Self).Member (2).String_Value));
             end if;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Name;
+
+   -----------------------
+   -- Internal_Get_Name --
+   -----------------------
+
+   function Internal_Get_Name
+    (Self : CMOF_Element) return League.Strings.Universal_String is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            return
+              League.Strings.Internals.Create
+               (Elements.Table (Self).Member (1).String_Value);
 
          when others =>
             raise Program_Error;
@@ -2477,6 +2518,24 @@ package body CMOF.Internals.Attributes is
             raise Program_Error;
       end case;
    end Internal_Get_Uri;
+
+   ------------------------
+   -- Internal_Get_Value --
+   ------------------------
+
+   function Internal_Get_Value
+    (Self : CMOF_Element) return League.Strings.Universal_String is
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            return
+              League.Strings.Internals.Create
+               (Elements.Table (Self).Member (2).String_Value);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Value;
 
    -----------------------------
    -- Internal_Get_Visibility --
@@ -3607,6 +3666,36 @@ package body CMOF.Internals.Attributes is
       end case;
    end Internal_Set_Name;
 
+   -----------------------
+   -- Internal_Set_Name --
+   -----------------------
+
+   procedure Internal_Set_Name
+    (Self : CMOF_Element;
+     To   : League.Strings.Universal_String)
+   is
+      Old : League.Strings.Universal_String;
+
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            Old :=
+              League.Strings.Internals.Wrap
+               (Elements.Table (Self).Member (1).String_Value);
+
+            Elements.Table (Self).Member (1).String_Value :=
+              League.Strings.Internals.Internal (To);
+            Matreshka.Internals.Strings.Reference
+             (Elements.Table (Self).Member (1).String_Value);
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Tag_Name, Old, To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Name;
+
    ----------------------------------
    -- Internal_Set_Nesting_Package --
    ----------------------------------
@@ -3930,6 +4019,36 @@ package body CMOF.Internals.Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Uri;
+
+   ------------------------
+   -- Internal_Set_Value --
+   ------------------------
+
+   procedure Internal_Set_Value
+    (Self : CMOF_Element;
+     To   : League.Strings.Universal_String)
+   is
+      Old : League.Strings.Universal_String;
+
+   begin
+      case Elements.Table (Self).Kind is
+         when E_Tag =>
+            Old :=
+              League.Strings.Internals.Wrap
+               (Elements.Table (Self).Member (2).String_Value);
+
+            Elements.Table (Self).Member (2).String_Value :=
+              League.Strings.Internals.Internal (To);
+            Matreshka.Internals.Strings.Reference
+             (Elements.Table (Self).Member (2).String_Value);
+
+            Notification.Notify_Attribute_Set
+             (Self, MP_CMOF_Tag_Value, Old, To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Value;
 
    -----------------------------
    -- Internal_Set_Visibility --

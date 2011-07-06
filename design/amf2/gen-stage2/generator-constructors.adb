@@ -351,10 +351,11 @@ package body Generator.Constructors is
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
                   when Value =>
---                     if Default.Is_Empty then
---                        raise Program_Error;
---
---                     else
+                     if Default.Is_Empty then
+                        Put (" (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),");
+
+                     else
+                        raise Program_Error;
 --                        if Boolean'Wide_Wide_Value
 --                            (Default.Value.To_Wide_Wide_String)
 --                        then
@@ -363,8 +364,7 @@ package body Generator.Constructors is
 --                        else
 --                           Put (" (M_Boolean, False),");
 --                        end if;
---                     end if;
-                     raise Program_Error;
+                     end if;
 
                   when Holder =>
                      if Default.Is_Empty then

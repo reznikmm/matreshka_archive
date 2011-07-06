@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,115 +43,27 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Generic_Collections;
 
-package CMOF.Internals.Constructors is
+package AMF.CMOF.Tags.Collections is
 
-   function Create_Association (Extent : CMOF_Extent) return CMOF_Element;
+   pragma Preelaborate;
 
-   function Create_Class (Extent : CMOF_Extent) return CMOF_Element;
+   package CMOF_Tag_Collections is
+     new AMF.Generic_Collections
+          (CMOF_Tag,
+           CMOF_Tag_Access);
 
-   function Create_Comment (Extent : CMOF_Extent) return CMOF_Element;
+   type Set_Of_CMOF_Tag is
+     new CMOF_Tag_Collections.Set with null record;
 
-   function Create_Constraint (Extent : CMOF_Extent) return CMOF_Element;
+   type Ordered_Set_Of_CMOF_Tag is
+     new CMOF_Tag_Collections.Ordered_Set with null record;
 
-   function Create_Data_Type (Extent : CMOF_Extent) return CMOF_Element;
+   type Bag_Of_CMOF_Tag is
+     new CMOF_Tag_Collections.Bag with null record;
 
-   function Create_Element_Import (Extent : CMOF_Extent) return CMOF_Element;
+   type Sequence_Of_CMOF_Tag is
+     new CMOF_Tag_Collections.Sequence with null record;
 
-   function Create_Enumeration (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Enumeration_Literal (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Expression (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Opaque_Expression (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Operation (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Package (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Package_Import (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Package_Merge (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Parameter (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Primitive_Type (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Property (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Tag (Extent : CMOF_Extent) return CMOF_Element;
-
-   procedure Initialize_Association
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Class
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Comment
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Constraint
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Data_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Element_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Enumeration
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Enumeration_Literal
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Opaque_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Operation
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Package
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Package_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Package_Merge
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Parameter
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Primitive_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Property
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Tag
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-end CMOF.Internals.Constructors;
+end AMF.CMOF.Tags.Collections;

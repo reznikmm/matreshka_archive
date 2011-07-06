@@ -44,6 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.CMOF;
+with League.Strings;
 
 package CMOF.Internals.Attributes is
 
@@ -132,6 +133,10 @@ package CMOF.Internals.Attributes is
     (Self : CMOF_Element;
      To   : CMOF_Parameter_Direction_Kind);
    --  Parameter => Parameter::direction
+
+   function Internal_Get_Element
+    (Self : CMOF_Element) return Collection_Of_CMOF_Element;
+   --  Tag => Tag::element
 
    function Internal_Get_Element_Import
     (Self : CMOF_Element) return Collection_Of_CMOF_Element;
@@ -347,6 +352,13 @@ package CMOF.Internals.Attributes is
    --  Parameter => NamedElement::name
    --  PrimitiveType => NamedElement::name
    --  Property => NamedElement::name
+
+   function Internal_Get_Name
+    (Self : CMOF_Element) return League.Strings.Universal_String;
+   procedure Internal_Set_Name
+    (Self : CMOF_Element;
+     To   : League.Strings.Universal_String);
+   --  Tag => Tag::name
 
    function Internal_Get_Namespace
     (Self : CMOF_Element) return CMOF_Element;
@@ -656,6 +668,13 @@ package CMOF.Internals.Attributes is
     (Self : CMOF_Element;
      To   : AMF.Optional_String);
    --  Package => Package::uri
+
+   function Internal_Get_Value
+    (Self : CMOF_Element) return League.Strings.Universal_String;
+   procedure Internal_Set_Value
+    (Self : CMOF_Element;
+     To   : League.Strings.Universal_String);
+   --  Tag => Tag::value
 
    function Internal_Get_Visibility
     (Self : CMOF_Element) return CMOF_Visibility_Kind;

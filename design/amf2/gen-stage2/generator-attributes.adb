@@ -204,7 +204,7 @@ package body Generator.Attributes is
       elsif Attribute_Type.Get_Name = String_Name then
          case Representation (Attribute) is
             when Value =>
-               raise Program_Error;
+               return "League.Strings.Universal_String";
 
             when Holder =>
                return "AMF.Optional_String";
@@ -485,7 +485,15 @@ package body Generator.Attributes is
 
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Put_Line ("            return");
+                     Put_Line
+                      ("              League.Strings.Internals.Create");
+                     Put_Line
+                      ("               (Elements.Table (Self).Member ("
+                         & Trim
+                            (Integer'Wide_Wide_Image
+                              (Info.Slot.Element (Attribute)), Both)
+                         & ").String_Value);");
 
                   when Holder =>
                      Put_Line
@@ -846,7 +854,42 @@ package body Generator.Attributes is
             if Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Put_Line ("            Old :=");
+                     Put_Line
+                      ("              League.Strings.Internals.Wrap");
+                     Put_Line
+                      ("               (Elements.Table (Self).Member ("
+                         & Trim
+                            (Integer'Wide_Wide_Image
+                              (Info.Slot.Element (Attribute)), Both)
+                         & ").String_Value);");
+                     New_Line;
+                     Put_Line
+                      ("            Elements.Table (Self).Member ("
+                         & Trim
+                            (Integer'Wide_Wide_Image
+                              (Info.Slot.Element (Attribute)), Both)
+                         & ").String_Value :=");
+                     Put_Line
+                      ("              "
+                         & "League.Strings.Internals.Internal (To);");
+                     Put_Line
+                      ("            "
+                         & "Matreshka.Internals.Strings.Reference");
+                     Put_Line
+                      ("             (Elements.Table (Self).Member ("
+                         & Trim
+                            (Integer'Wide_Wide_Image
+                              (Info.Slot.Element (Attribute)), Both)
+                         & ").String_Value);");
+                     New_Line;
+                     Put_Line
+                      ("            Notification.Notify_Attribute_Set");
+                     Put_Line
+                      ("             (Self, "
+                         & Property_Constant_Name (Attribute)
+                         & ", Old, To);");
+
 
                   when Holder =>
                      Put_Line
@@ -1234,6 +1277,7 @@ package body Generator.Attributes is
 
       Put_Header;
       Put_Line ("with AMF.CMOF;");
+      Put_Line ("with League.Strings;");
       New_Line;
       Put_Line ("package CMOF.Internals.Attributes is");
       Getters.Iterate (Generate_Getter'Access);

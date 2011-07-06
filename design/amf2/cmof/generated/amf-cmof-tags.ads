@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,115 +43,37 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+limited with AMF.CMOF.Elements.Collections;
 
-package CMOF.Internals.Constructors is
+package AMF.CMOF.Tags is
 
-   function Create_Association (Extent : CMOF_Extent) return CMOF_Element;
+   pragma Preelaborate;
 
-   function Create_Class (Extent : CMOF_Extent) return CMOF_Element;
+   type CMOF_Tag is limited interface;
 
-   function Create_Comment (Extent : CMOF_Extent) return CMOF_Element;
+   type CMOF_Tag_Access is
+     access all CMOF_Tag'Class;
+   for CMOF_Tag_Access'Storage_Size use 0;
 
-   function Create_Constraint (Extent : CMOF_Extent) return CMOF_Element;
+   not overriding function Get_Name
+    (Self : not null access constant CMOF_Tag)
+       return League.Strings.Universal_String is abstract;
 
-   function Create_Data_Type (Extent : CMOF_Extent) return CMOF_Element;
+   not overriding procedure Set_Name
+    (Self : not null access CMOF_Tag;
+     To   : League.Strings.Universal_String) is abstract;
 
-   function Create_Element_Import (Extent : CMOF_Extent) return CMOF_Element;
+   not overriding function Get_Value
+    (Self : not null access constant CMOF_Tag)
+       return League.Strings.Universal_String is abstract;
 
-   function Create_Enumeration (Extent : CMOF_Extent) return CMOF_Element;
+   not overriding procedure Set_Value
+    (Self : not null access CMOF_Tag;
+     To   : League.Strings.Universal_String) is abstract;
 
-   function Create_Enumeration_Literal (Extent : CMOF_Extent) return CMOF_Element;
+   not overriding function Get_Element
+    (Self : not null access constant CMOF_Tag)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
 
-   function Create_Expression (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Opaque_Expression (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Operation (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Package (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Package_Import (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Package_Merge (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Parameter (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Primitive_Type (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Property (Extent : CMOF_Extent) return CMOF_Element;
-
-   function Create_Tag (Extent : CMOF_Extent) return CMOF_Element;
-
-   procedure Initialize_Association
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Class
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Comment
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Constraint
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Data_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Element_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Enumeration
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Enumeration_Literal
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Opaque_Expression
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Operation
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Package
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Package_Import
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Package_Merge
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Parameter
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Primitive_Type
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Property
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-   procedure Initialize_Tag
-    (Self   : CMOF_Element;
-     Extent : CMOF_Extent);
-
-end CMOF.Internals.Constructors;
+end AMF.CMOF.Tags;

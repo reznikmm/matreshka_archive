@@ -60,6 +60,7 @@ with AMF.Internals.CMOF_Package_Merges;
 with AMF.Internals.CMOF_Parameters;
 with AMF.Internals.CMOF_Primitive_Types;
 with AMF.Internals.CMOF_Properties;
+with AMF.Internals.CMOF_Tags;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
@@ -277,6 +278,18 @@ package body CMOF.Internals.Constructors is
 
       return Elements.Last;
    end Create_Property;
+
+   ----------------
+   -- Create_Tag --
+   ----------------
+
+   function Create_Tag (Extent : CMOF_Extent) return CMOF_Element is
+   begin
+      Elements.Increment_Last;
+      Initialize_Tag (Elements.Last, Extent);
+
+      return Elements.Last;
+   end Create_Tag;
 
    ----------------------------
    -- Initialize_Association --
@@ -1478,5 +1491,35 @@ package body CMOF.Internals.Constructors is
         Elements.Table (Self).Member (0).Collection + 7);
       Internal_Append (Extent, Self);
    end Initialize_Property;
+
+   --------------------
+   -- Initialize_Tag --
+   --------------------
+
+   procedure Initialize_Tag
+    (Self   : CMOF_Element;
+     Extent : CMOF_Extent) is
+   begin
+      Elements.Table (Self) :=
+       (Kind     => E_Tag,
+        Id       => Matreshka.Internals.Strings.Shared_Empty'Access,
+        Extent   => 0,
+        Previous => 0,
+        Next     => 0,
+        Proxy    =>
+          new AMF.Internals.CMOF_Tags.CMOF_Tag_Proxy'(Id => Self),
+        Member   => (0      => (Kind => M_None),
+                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                       --  name
+                     2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                       --  value
+                     others => (Kind => M_None)));
+      Allocate_Collection_Of_Cmof_Element_Slots (Self, 1);
+      Initialize_Set_Collection          --  element
+       (Self,
+        MP_CMOF_Tag_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
+      Internal_Append (Extent, Self);
+   end Initialize_Tag;
 
 end CMOF.Internals.Constructors;

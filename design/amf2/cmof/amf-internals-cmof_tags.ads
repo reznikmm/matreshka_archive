@@ -41,66 +41,58 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Helper subprograms for element modification notification.
-------------------------------------------------------------------------------
-with League.Strings;
+with League.Holders;
 
-with AMF.CMOF;
+with AMF.CMOF.Classes;
+with AMF.CMOF.Elements.Collections;
+with AMF.CMOF.Properties;
+with AMF.CMOF.Tags;
+with AMF.Internals.Elements;
 
-private package CMOF.Internals.Notification is
+package AMF.Internals.CMOF_Tags is
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : Boolean;
-     New_Value : Boolean);
+   type CMOF_Tag_Proxy is
+     limited new AMF.Internals.Elements.Element_Implementation
+       and AMF.CMOF.Tags.CMOF_Tag with
+   record
+      Id : CMOF_Element;
+   end record;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : League.Strings.Universal_String;
-     New_Value : League.Strings.Universal_String);
+   overriding function Element
+    (Self : not null access constant CMOF_Tag_Proxy) return AMF_Element;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : AMF.Optional_String;
-     New_Value : AMF.Optional_String);
+   overriding function Get
+    (Self     : not null access constant CMOF_Tag_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Holders.Holder;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : AMF.Optional_Integer;
-     New_Value : AMF.Optional_Integer);
+   overriding function Get_Element
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : AMF.Optional_Unlimited_Natural;
-     New_Value : AMF.Optional_Unlimited_Natural);
+   overriding function Get_Meta_Class
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : CMOF.CMOF_Element;
-     New_Value : CMOF.CMOF_Element);
+   overriding function Get_Name
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return League.Strings.Universal_String;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
-     New_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind);
+   overriding function Get_Value
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return League.Strings.Universal_String;
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
-     New_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind);
+   overriding procedure Set
+    (Self     : not null access CMOF_Tag_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Value    : League.Holders.Holder);
 
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : AMF.CMOF.CMOF_Visibility_Kind;
-     New_Value : AMF.CMOF.CMOF_Visibility_Kind);
+   overriding procedure Set_Name
+    (Self : not null access CMOF_Tag_Proxy;
+     To   : League.Strings.Universal_String);
 
-end CMOF.Internals.Notification;
+   overriding procedure Set_Value
+    (Self : not null access CMOF_Tag_Proxy;
+     To   : League.Strings.Universal_String);
+
+end AMF.Internals.CMOF_Tags;

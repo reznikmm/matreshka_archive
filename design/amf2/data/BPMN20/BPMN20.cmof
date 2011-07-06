@@ -12,22 +12,22 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Interface" name="Interface" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Interface-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Interface-operations" name="operations" type="Operation" upper="*" isComposite="true" association="A_operations_interface"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Interface-implementationRef" name="implementationRef" visibility="public" lower="0">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Operation" name="Operation" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-inMessageRef" name="inMessageRef" type="Message" association="A_inMessageRef_operation"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-outMessageRef" name="outMessageRef" type="Message" lower="0" association="A_outMessageRef_operation"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-errorRefs" name="errorRefs" type="Error" upper="*" lower="0" association="A_errorRefs_operation"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-implementationRef" name="implementationRef" visibility="public" lower="0">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_operations_interface" name="A_operations_interface" visibility="private" memberEnd="Interface-operations A_operations_interface-interface">
@@ -59,7 +59,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="Process" name="Process" superClass="FlowElementsContainer CallableElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-processType" name="processType" type="ProcessType"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-isClosed" name="isClosed">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-auditing" name="auditing" type="Auditing" lower="0" isComposite="true" association="A_auditing_process"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-monitoring" name="monitoring" type="Monitoring" lower="0" isComposite="true" association="A_monitoring_process"/>
@@ -67,16 +67,16 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-supports" name="supports" type="Process" upper="*" lower="0" association="A_supports_process"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-definitionalCollaborationRef" name="definitionalCollaborationRef" type="Collaboration" lower="0" association="A_definitionalCollaborationRef_process"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-isExecutable" name="isExecutable" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-resources" name="resources" visibility="public" type="ResourceRole" upper="*" lower="0" isComposite="true" association="A_resources_process"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-artifacts" name="artifacts" visibility="public" type="Artifact" upper="*" lower="0" isComposite="true" association="A_artifacts_process"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Process-correlationSubscriptions" name="correlationSubscriptions" visibility="public" type="CorrelationSubscription" upper="*" lower="0" isComposite="true" association="A_correlationSubscriptions_process"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="ProcessType" name="ProcessType">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ProcessType-None" name="None" classifier="ProcessType" enumeration="ProcessType"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ProcessType-Public" name="Public" classifier="ProcessType" enumeration="ProcessType"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ProcessType-Private" name="Private" classifier="ProcessType" enumeration="ProcessType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ProcessType-None" name="None" enumeration="ProcessType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ProcessType-Public" name="Public" enumeration="ProcessType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ProcessType-Private" name="Private" enumeration="ProcessType"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_properties_process" name="A_properties_process" visibility="private" memberEnd="Process-properties A_properties_process-process">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_properties_process-process" name="process" type="Process" lower="0" owningAssociation="A_properties_process" association="A_properties_process"/>
@@ -84,12 +84,12 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="LaneSet" name="LaneSet" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LaneSet-lanes" name="lanes" type="Lane" upper="*" lower="0" isComposite="true" association="A_lanes_laneSet"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LaneSet-name" name="name" visibility="public" lower="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Lane" name="Lane" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Lane-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Lane-childLaneSet" name="childLaneSet" type="LaneSet" lower="0" isComposite="true" association="A_childLaneSet_parentLane"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Lane-partitionElementRef" name="partitionElementRef" type="BaseElement" lower="0" association="A_partitionElementRef_lane"/>
@@ -122,7 +122,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="UserTask" name="UserTask" superClass="Task">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="UserTask-renderings" name="renderings" type="Rendering" upper="*" lower="0" isComposite="true" association="A_renderings_usertask"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="UserTask-implementation" name="implementation">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Rendering" name="Rendering" superClass="BaseElement"/>
@@ -133,7 +133,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="PotentialOwner" name="PotentialOwner" superClass="HumanPerformer"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="GlobalUserTask" name="GlobalUserTask" superClass="GlobalTask">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GlobalUserTask-implementation" name="implementation">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GlobalUserTask-renderings" name="renderings" type="Rendering" upper="*" lower="0" isComposite="true" association="A_renderings_globalUserTask"/>
     </ownedMember>
@@ -147,10 +147,10 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Gateway-gatewayDirection" name="gatewayDirection" type="GatewayDirection" default="unspecified"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="GatewayDirection" name="GatewayDirection">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Unspecified" name="Unspecified" classifier="GatewayDirection" enumeration="GatewayDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Converging" name="Converging" classifier="GatewayDirection" enumeration="GatewayDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Diverging" name="Diverging" classifier="GatewayDirection" enumeration="GatewayDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Mixed" name="Mixed" classifier="GatewayDirection" enumeration="GatewayDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Unspecified" name="Unspecified" enumeration="GatewayDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Converging" name="Converging" enumeration="GatewayDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Diverging" name="Diverging" enumeration="GatewayDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="GatewayDirection-Mixed" name="Mixed" enumeration="GatewayDirection"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_default_inclusiveGateway" name="A_default_inclusiveGateway" visibility="private" memberEnd="InclusiveGateway-default A_default_inclusiveGateway-inclusiveGateway">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_default_inclusiveGateway-inclusiveGateway" name="inclusiveGateway" type="InclusiveGateway" upper="*" lower="0" owningAssociation="A_default_inclusiveGateway" association="A_default_inclusiveGateway"/>
@@ -160,7 +160,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="EventBasedGateway" name="EventBasedGateway" superClass="Gateway">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="EventBasedGateway-instantiate" name="instantiate" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="EventBasedGateway-eventGatewayType" name="eventGatewayType" type="EventBasedGatewayType"/>
     </ownedMember>
@@ -176,8 +176,8 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ParallelGateway" name="ParallelGateway" superClass="Gateway"/>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="EventBasedGatewayType" name="EventBasedGatewayType">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="EventBasedGatewayType-Parallel" name="Parallel" classifier="EventBasedGatewayType" enumeration="EventBasedGatewayType"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="EventBasedGatewayType-Exclusive" name="Exclusive" classifier="EventBasedGatewayType" enumeration="EventBasedGatewayType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="EventBasedGatewayType-Parallel" name="Parallel" enumeration="EventBasedGatewayType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="EventBasedGatewayType-Exclusive" name="Exclusive" enumeration="EventBasedGatewayType"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_default_complexGateway" name="A_default_complexGateway" visibility="private" memberEnd="ComplexGateway-default A_default_complexGateway-complexGateway">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_default_complexGateway-complexGateway" name="complexGateway" type="ComplexGateway" upper="*" lower="0" owningAssociation="A_default_complexGateway" association="A_default_complexGateway"/>
@@ -185,14 +185,14 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="RootElement" name="RootElement" isAbstract="true" superClass="BaseElement"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="Relationship" name="Relationship" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Relationship-type" name="type">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Relationship-direction" name="direction" type="RelationshipDirection"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Relationship-sources" name="sources" upper="*" association="A_sources_relationship">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Relationship-targets" name="targets" upper="*" association="A_targets_relationship">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_valueRef_extensionAttributeValue" name="A_valueRef_extensionAttributeValue" visibility="private" memberEnd="ExtensionAttributeValue-valueRef A_valueRef_extensionAttributeValue-extensionAttributeValue">
@@ -203,7 +203,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="BaseElement" name="BaseElement" isAbstract="true">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BaseElement-id" name="id">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BaseElement-extensionDefinitions" name="extensionDefinitions" type="ExtensionDefinition" upper="*" lower="0" association="A_extensionDefinitions_baseElement"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BaseElement-extensionValues" name="extensionValues" type="ExtensionAttributeValue" upper="*" lower="0" isComposite="true" association="A_extensionValues_baseElement"/>
@@ -211,34 +211,34 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Extension" name="Extension">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Extension-mustUnderstand" name="mustUnderstand" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Extension-definition" name="definition" type="ExtensionDefinition" isComposite="true" association="A_definition_extension"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ExtensionDefinition" name="ExtensionDefinition">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionDefinition-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionDefinition-extensionAttributeDefinitions" name="extensionAttributeDefinitions" type="ExtensionAttributeDefinition" upper="*" lower="0" isComposite="true" association="A_extensionAttributeDefinitions_extensionDefinition"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ExtensionAttributeDefinition" name="ExtensionAttributeDefinition">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeDefinition-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeDefinition-type" name="type">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeDefinition-isReference" name="isReference" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeDefinition-extensionDefinition" name="extensionDefinition" type="ExtensionDefinition" association="A_extensionAttributeDefinitions_extensionDefinition"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ExtensionAttributeValue" name="ExtensionAttributeValue">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeValue-valueRef" name="valueRef" lower="0" association="A_valueRef_extensionAttributeValue">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeValue-value" name="value" lower="0" isComposite="true" association="A_value_extensionAttributeValue">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionAttributeValue-extensionAttributeDefinition" name="extensionAttributeDefinition" type="ExtensionAttributeDefinition" association="A_extensionAttributeDefinition_extensionAttributeValue"/>
     </ownedMember>
@@ -253,20 +253,20 @@
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_extensionValues_baseElement-baseElement" name="baseElement" type="BaseElement" owningAssociation="A_extensionValues_baseElement" association="A_extensionValues_baseElement"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="RelationshipDirection" name="RelationshipDirection">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-None" name="None" classifier="RelationshipDirection" enumeration="RelationshipDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-Forward" name="Forward" classifier="RelationshipDirection" enumeration="RelationshipDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-Backward" name="Backward" classifier="RelationshipDirection" enumeration="RelationshipDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-Both" name="Both" classifier="RelationshipDirection" enumeration="RelationshipDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-None" name="None" enumeration="RelationshipDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-Forward" name="Forward" enumeration="RelationshipDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-Backward" name="Backward" enumeration="RelationshipDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="RelationshipDirection-Both" name="Both" enumeration="RelationshipDirection"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_extensionAttributeDefinition_extensionAttributeValue" name="A_extensionAttributeDefinition_extensionAttributeValue" visibility="private" memberEnd="ExtensionAttributeValue-extensionAttributeDefinition A_extensionAttributeDefinition_extensionAttributeValue-extensionAttributeValue">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_extensionAttributeDefinition_extensionAttributeValue-extensionAttributeValue" name="extensionAttributeValue" type="ExtensionAttributeValue" upper="*" lower="0" owningAssociation="A_extensionAttributeDefinition_extensionAttributeValue" association="A_extensionAttributeDefinition_extensionAttributeValue"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Documentation" name="Documentation" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Documentation-text" name="text">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Documentation-textFormat" name="textFormat" visibility="public" default="text/plain">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_documentation_baseElement" name="A_documentation_baseElement" visibility="private" memberEnd="BaseElement-documentation A_documentation_baseElement-baseElement">
@@ -310,7 +310,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="EndEvent" name="EndEvent" superClass="ThrowEvent"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="StartEvent" name="StartEvent" superClass="CatchEvent">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="StartEvent-isInterrupting" name="isInterrupting" default="true">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ThrowEvent" name="ThrowEvent" isAbstract="true" superClass="Event">
@@ -322,7 +322,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="CatchEvent" name="CatchEvent" isAbstract="true" superClass="Event">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CatchEvent-parallelMultiple" name="parallelMultiple">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CatchEvent-outputSet" name="outputSet" type="OutputSet" lower="0" isComposite="true" association="A_outputSet_catchEvent"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CatchEvent-eventDefinitionRefs" name="eventDefinitionRefs" type="EventDefinition" upper="*" lower="0" association="A_eventDefinitionRefs_catchEvent"/>
@@ -332,7 +332,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="BoundaryEvent" name="BoundaryEvent" superClass="CatchEvent">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BoundaryEvent-cancelActivity" name="cancelActivity" default="true">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BoundaryEvent-attachedToRef" name="attachedToRef" type="Activity" association="A_boundaryEventRefs_attachedToRef"/>
     </ownedMember>
@@ -357,10 +357,10 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="Escalation" name="Escalation">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Escalation-structureRef" name="structureRef" type="ItemDefinition" lower="0" association="A_structureRef_escalation"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Escalation-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Escalation-escalationCode" name="escalationCode" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_escalationRef_escalationEventDefinition" name="A_escalationRef_escalationEventDefinition" visibility="private" memberEnd="EscalationEventDefinition-escalationRef A_escalationRef_escalationEventDefinition-escalationEventDefinition">
@@ -368,7 +368,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="CompensateEventDefinition" name="CompensateEventDefinition" superClass="EventDefinition">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CompensateEventDefinition-waitForCompletion" name="waitForCompletion">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CompensateEventDefinition-activityRef" name="activityRef" type="Activity" lower="0" association="A_activityRef_compensateEventDefinition"/>
     </ownedMember>
@@ -379,7 +379,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="LinkEventDefinition" name="LinkEventDefinition" superClass="EventDefinition">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LinkEventDefinition-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LinkEventDefinition-target" name="target" visibility="public" type="LinkEventDefinition" lower="0" association="A_target_source"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LinkEventDefinition-source" name="source" visibility="public" type="LinkEventDefinition" upper="*" lower="0" association="A_target_source"/>
@@ -397,7 +397,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="Signal" name="Signal" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Signal-structureRef" name="structureRef" type="ItemDefinition" lower="0" association="A_structureRef_signal"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Signal-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_signalRef_signalEventDefinition" name="A_signalRef_signalEventDefinition" visibility="private" memberEnd="SignalEventDefinition-signalRef A_signalRef_signalEventDefinition-signalEventDefinition">
@@ -440,7 +440,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataState" name="DataState" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataState-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ItemAwareElement" name="ItemAwareElement" superClass="BaseElement">
@@ -467,10 +467,10 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataInput" name="DataInput" superClass="ItemAwareElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataInput-name" name="name" lower="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataInput-isCollection" name="isCollection" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataInput-inputSetRefs" name="inputSetRefs" type="InputSet" upper="*" isDerived="true" association="A_dataInputRefs_inputSetRefs"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataInput-inputSetWithOptional" name="inputSetWithOptional" type="InputSet" upper="*" lower="0" isDerived="true" association="A_optionalInputRefs_inputSetWithOptional"/>
@@ -478,10 +478,10 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataOutput" name="DataOutput" superClass="ItemAwareElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataOutput-name" name="name" lower="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataOutput-isCollection" name="isCollection" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataOutput-outputSetRefs" name="outputSetRefs" type="OutputSet" upper="*" isDerived="true" association="A_dataOutputRefs_outputSetRefs"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataOutput-outputSetWithOptional" name="outputSetWithOptional" type="OutputSet" upper="*" lower="0" isDerived="true" association="A_outputSetWithOptional_optionalOutputRefs"/>
@@ -489,7 +489,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="InputSet" name="InputSet" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="InputSet-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="InputSet-dataInputRefs" name="dataInputRefs" type="DataInput" upper="*" lower="0" association="A_dataInputRefs_inputSetRefs"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="InputSet-optionalInputRefs" name="optionalInputRefs" type="DataInput" upper="*" lower="0" association="A_optionalInputRefs_inputSetWithOptional"/>
@@ -499,7 +499,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="OutputSet" name="OutputSet" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OutputSet-dataOutputRefs" name="dataOutputRefs" type="DataOutput" upper="*" lower="0" association="A_dataOutputRefs_outputSetRefs"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OutputSet-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OutputSet-inputSetRefs" name="inputSetRefs" type="InputSet" upper="*" lower="0" association="A_inputSetRefs_outputSetRefs"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OutputSet-optionalOutputRefs" name="optionalOutputRefs" type="DataOutput" upper="*" lower="0" association="A_outputSetWithOptional_optionalOutputRefs"/>
@@ -509,7 +509,7 @@
     <ownedMember xmi:type="cmof:Association" xmi:id="A_dataOutputRefs_outputSetRefs" name="A_dataOutputRefs_outputSetRefs" visibility="private" memberEnd="OutputSet-dataOutputRefs DataOutput-outputSetRefs"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="Property" name="Property" superClass="ItemAwareElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataInputAssociation" name="DataInputAssociation" superClass="DataAssociation"/>
@@ -534,7 +534,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataObject" name="DataObject" superClass="FlowElement ItemAwareElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataObject-isCollection" name="isCollection" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_inputSetRefs_outputSetRefs" name="A_inputSetRefs_outputSetRefs" visibility="private" memberEnd="OutputSet-inputSetRefs InputSet-outputSetRefs"/>
@@ -562,13 +562,13 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataStore" name="DataStore" superClass="RootElement ItemAwareElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataStore-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataStore-capacity" name="capacity">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Integer"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Integer"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DataStore-isUnlimited" name="isUnlimited" default="true">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="DataStoreReference" name="DataStoreReference" superClass="ItemAwareElement FlowElement">
@@ -596,7 +596,7 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConversationLink-sourceRef" name="sourceRef" visibility="public" type="InteractionNode" association="A_sourceRef_outgoingConversationLinks"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConversationLink-targetRef" name="targetRef" visibility="public" type="InteractionNode" association="A_targetRef_incomingConversationLinks"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConversationLink-name" name="name" visibility="public" lower="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ConversationAssociation" name="ConversationAssociation" superClass="BaseElement">
@@ -625,7 +625,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ConversationNode" name="ConversationNode" isAbstract="true" superClass="InteractionNode BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConversationNode-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConversationNode-participantRefs" name="participantRefs" type="Participant" upper="*" lower="2" association="A_participantRefs_conversationNode"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConversationNode-messageFlowRefs" name="messageFlowRefs" type="MessageFlow" upper="*" lower="0" association="A_messageFlowRefs_communication"/>
@@ -651,13 +651,13 @@
     <ownedMember xmi:type="cmof:Association" xmi:id="A_targetRef_incomingConversationLinks" name="A_targetRef_incomingConversationLinks" visibility="private" memberEnd="ConversationLink-targetRef InteractionNode-incomingConversationLinks"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="PartnerEntity" name="PartnerEntity" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="PartnerEntity-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="PartnerEntity-participantRef" name="participantRef" type="Participant" upper="*" lower="0" association="A_partnerEntityRef_participantRef"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="PartnerRole" name="PartnerRole" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="PartnerRole-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="PartnerRole-participantRef" name="participantRef" type="Participant" upper="*" lower="0" association="A_partnerRoleRef_participantRef"/>
     </ownedMember>
@@ -667,13 +667,13 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="CorrelationProperty" name="CorrelationProperty" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CorrelationProperty-correlationPropertyRetrievalExpression" name="correlationPropertyRetrievalExpression" type="CorrelationPropertyRetrievalExpression" upper="*" isComposite="true" association="A_correlationPropertyRetrievalExpression_correlationproperty"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CorrelationProperty-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CorrelationProperty-type" name="type" visibility="public" type="ItemDefinition" lower="0" association="A_type_correlationProperty"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="ItemKind" name="ItemKind">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ItemKind-Physical" name="Physical" classifier="ItemKind" enumeration="ItemKind"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ItemKind-Information" name="Information" classifier="ItemKind" enumeration="ItemKind"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ItemKind-Physical" name="Physical" enumeration="ItemKind"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ItemKind-Information" name="Information" enumeration="ItemKind"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_supportedInterfaceRefs_callableElements" name="A_supportedInterfaceRefs_callableElements" visibility="private" memberEnd="CallableElement-supportedInterfaceRefs A_supportedInterfaceRefs_callableElements-callableElements">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_supportedInterfaceRefs_callableElements-callableElements" name="callableElements" type="CallableElement" upper="*" lower="0" owningAssociation="A_supportedInterfaceRefs_callableElements" association="A_supportedInterfaceRefs_callableElements"/>
@@ -693,10 +693,10 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="Error" name="Error" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Error-structureRef" name="structureRef" type="ItemDefinition" lower="0" association="A_structureRef_error"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Error-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Error-errorCode" name="errorCode" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_evaluatesToTypeRef_formalExpression" name="A_evaluatesToTypeRef_formalExpression" visibility="private" memberEnd="FormalExpression-evaluatesToTypeRef A_evaluatesToTypeRef_formalExpression-formalExpression">
@@ -705,32 +705,32 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="CorrelationKey" name="CorrelationKey" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CorrelationKey-correlationPropertyRef" name="correlationPropertyRef" type="CorrelationProperty" upper="*" lower="0" association="A_correlationPropertyRef_correlationKey"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CorrelationKey-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Expression" name="Expression" superClass="BaseElement"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="FormalExpression" name="FormalExpression" superClass="Expression">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="FormalExpression-language" name="language">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="FormalExpression-body" name="body">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="FormalExpression-evaluatesToTypeRef" name="evaluatesToTypeRef" type="ItemDefinition" association="A_evaluatesToTypeRef_formalExpression"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Message" name="Message" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Message-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Message-itemRef" name="itemRef" visibility="public" type="ItemDefinition" lower="0" association="A_itemRef_message"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ItemDefinition" name="ItemDefinition" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ItemDefinition-itemKind" name="itemKind" type="ItemKind"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ItemDefinition-structureRef" name="structureRef">
-        <type xmi:type="cmof:Class" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Element"/>
+        <type xmi:type="cmof:Class" href="../cmof.xml#Element"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ItemDefinition-isCollection" name="isCollection" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ItemDefinition-import" name="import" type="Import" lower="0" association="A_import_itemDefinition"/>
     </ownedMember>
@@ -739,7 +739,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="FlowElement" name="FlowElement" isAbstract="true" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="FlowElement-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="FlowElement-auditing" name="auditing" type="Auditing" lower="0" isComposite="true" association="A_auditing_flowElement"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="FlowElement-monitoring" name="monitoring" type="Monitoring" lower="0" isComposite="true" association="A_monitoring_flowElement"/>
@@ -747,7 +747,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="SequenceFlow" name="SequenceFlow" superClass="FlowElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SequenceFlow-isImmediate" name="isImmediate" lower="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SequenceFlow-conditionExpression" name="conditionExpression" type="Expression" lower="0" isComposite="true" association="A_conditionExpression_sequenceFlow"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SequenceFlow-sourceRef" name="sourceRef" type="FlowNode" association="A_sourceRef_outgoing_flow"/>
@@ -762,7 +762,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="CallableElement" name="CallableElement" isAbstract="true" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CallableElement-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CallableElement-ioSpecification" name="ioSpecification" type="InputOutputSpecification" lower="0" isComposite="true" association="A_ioSpecification_callableElement"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CallableElement-supportedInterfaceRefs" name="supportedInterfaceRefs" type="Interface" upper="*" lower="0" association="A_supportedInterfaceRefs_callableElements"/>
@@ -797,16 +797,16 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Resource" name="Resource" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Resource-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Resource-resourceParameters" name="resourceParameters" type="ResourceParameter" upper="*" lower="0" isComposite="true" association="A_resourceParameters_resource"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ResourceParameter" name="ResourceParameter" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ResourceParameter-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ResourceParameter-isRequired" name="isRequired">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ResourceParameter-type" name="type" visibility="public" type="ItemDefinition" lower="0" association="A_type_resourceParameter"/>
     </ownedMember>
@@ -846,7 +846,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="MessageFlow" name="MessageFlow" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MessageFlow-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MessageFlow-sourceRef" name="sourceRef" type="InteractionNode" association="A_sourceRef_messageFlow"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MessageFlow-targetRef" name="targetRef" type="InteractionNode" association="A_targetRef_messageFlow"/>
@@ -862,7 +862,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Participant" name="Participant" superClass="InteractionNode BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Participant-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Participant-interfaceRefs" name="interfaceRefs" type="Interface" upper="*" lower="0" association="A_interfaceRefs_participant"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Participant-participantMultiplicity" name="participantMultiplicity" type="ParticipantMultiplicity" lower="0" isComposite="true" association="A_participantMultiplicity_participant"/>
@@ -875,10 +875,10 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ParticipantMultiplicity" name="ParticipantMultiplicity">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ParticipantMultiplicity-minimum" name="minimum" default="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Integer"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Integer"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ParticipantMultiplicity-maximum" name="maximum" lower="0" default="1">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Integer"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Integer"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_messageFlowAssociations_collaboration" name="A_messageFlowAssociations_collaboration" visibility="private" memberEnd="Collaboration-messageFlowAssociations A_messageFlowAssociations_collaboration-collaboration">
@@ -892,10 +892,10 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Collaboration" name="Collaboration" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Collaboration-name" name="name">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Collaboration-isClosed" name="isClosed">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Collaboration-choreographyRef" name="choreographyRef" type="Choreography" upper="*" lower="0" association="A_choreographyRef_collaboration"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Collaboration-artifacts" name="artifacts" type="Artifact" upper="*" lower="0" isComposite="true" association="A_artifacts_collaboration"/>
@@ -1000,10 +1000,10 @@
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_artifacts_subChoreography-subChoreography" name="subChoreography" visibility="public" type="SubChoreography" lower="0" owningAssociation="A_artifacts_subChoreography" association="A_artifacts_subChoreography"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="ChoreographyLoopType" name="ChoreographyLoopType">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-None" name="None" classifier="ChoreographyLoopType" enumeration="ChoreographyLoopType"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-Standard" name="Standard" classifier="ChoreographyLoopType" enumeration="ChoreographyLoopType"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-MultiInstanceSequential" name="MultiInstanceSequential" classifier="ChoreographyLoopType" enumeration="ChoreographyLoopType"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-MultiInstanceParallel" name="MultiInstanceParallel" classifier="ChoreographyLoopType" enumeration="ChoreographyLoopType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-None" name="None" enumeration="ChoreographyLoopType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-Standard" name="Standard" enumeration="ChoreographyLoopType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-MultiInstanceSequential" name="MultiInstanceSequential" enumeration="ChoreographyLoopType"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="ChoreographyLoopType-MultiInstanceParallel" name="MultiInstanceParallel" enumeration="ChoreographyLoopType"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_correlationKeys_choreographyActivity" name="A_correlationKeys_choreographyActivity" visibility="private" memberEnd="ChoreographyActivity-correlationKeys A_correlationKeys_choreographyActivity-choreographyActivity">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_correlationKeys_choreographyActivity-choreographyActivity" name="choreographyActivity" visibility="public" type="ChoreographyActivity" lower="0" owningAssociation="A_correlationKeys_choreographyActivity" association="A_correlationKeys_choreographyActivity"/>
@@ -1023,10 +1023,10 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="TextAnnotation" name="TextAnnotation" superClass="Artifact">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="TextAnnotation-text" name="text">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="TextAnnotation-textFormat" name="textFormat" visibility="public" default="text/plain">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Group" name="Group" superClass="Artifact">
@@ -1040,7 +1040,7 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="Category" name="Category" superClass="RootElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Category-categoryValue" name="categoryValue" type="CategoryValue" upper="*" lower="0" isComposite="true" association="A_categoryValue_category"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Category-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Artifact" name="Artifact" isAbstract="true" superClass="BaseElement"/>
@@ -1048,14 +1048,14 @@
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_categoryValueRef_categoryValueRef-categoryValueRef" name="categoryValueRef" type="Group" upper="*" lower="0" owningAssociation="A_categoryValueRef_categoryValueRef" association="A_categoryValueRef_categoryValueRef"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="AssociationDirection" name="AssociationDirection">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AssociationDirection-None" name="None" classifier="AssociationDirection" enumeration="AssociationDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AssociationDirection-One" name="One" classifier="AssociationDirection" enumeration="AssociationDirection"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AssociationDirection-Both" name="Both" classifier="AssociationDirection" enumeration="AssociationDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AssociationDirection-None" name="None" enumeration="AssociationDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AssociationDirection-One" name="One" enumeration="AssociationDirection"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AssociationDirection-Both" name="Both" enumeration="AssociationDirection"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="CategoryValue" name="CategoryValue" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CategoryValue-categorizedFlowElements" name="categorizedFlowElements" type="FlowElement" upper="*" lower="0" isDerived="true" association="A_categorizedFlowElements_categoryValueRef"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CategoryValue-value" name="value">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_categoryValue_category" name="A_categoryValue_category" visibility="private" memberEnd="Category-categoryValue A_categoryValue_category-category">
@@ -1094,7 +1094,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Activity" name="Activity" isAbstract="true" superClass="FlowNode">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-isForCompensation" name="isForCompensation" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-loopCharacteristics" name="loopCharacteristics" type="LoopCharacteristics" lower="0" isComposite="true" association="A_loopCharacteristics_activity"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-resources" name="resources" type="ResourceRole" upper="*" lower="0" isComposite="true" association="A_resources_activity"/>
@@ -1105,10 +1105,10 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-dataInputAssociations" name="dataInputAssociations" type="DataInputAssociation" upper="*" lower="0" isComposite="true" association="A_dataInputAssociations_activity"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-dataOutputAssociations" name="dataOutputAssociations" type="DataOutputAssociation" upper="*" lower="0" isComposite="true" association="A_dataOutputAssociations_activity"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-startQuantity" name="startQuantity" default="1">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Integer"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Integer"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-completionQuantity" name="completionQuantity" default="1">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Integer"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Integer"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_operationRef_serviceTask" name="A_operationRef_serviceTask" visibility="private" memberEnd="ServiceTask-operationRef A_operationRef_serviceTask-serviceTask">
@@ -1140,13 +1140,13 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ServiceTask" name="ServiceTask" superClass="Task">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ServiceTask-implementation" name="implementation">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ServiceTask-operationRef" name="operationRef" type="Operation" lower="0" association="A_operationRef_serviceTask"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="SubProcess" name="SubProcess" superClass="Activity FlowElementsContainer">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SubProcess-triggeredByEvent" name="triggeredByEvent" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SubProcess-artifacts" name="artifacts" visibility="public" type="Artifact" upper="*" lower="0" isComposite="true" association="A_artifacts_subProcess"/>
     </ownedMember>
@@ -1158,14 +1158,14 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="LoopCharacteristics" name="LoopCharacteristics" isAbstract="true" superClass="BaseElement"/>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="MultiInstanceBehavior" name="MultiInstanceBehavior">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-None" name="None" classifier="MultiInstanceBehavior" enumeration="MultiInstanceBehavior"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-One" name="One" classifier="MultiInstanceBehavior" enumeration="MultiInstanceBehavior"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-All" name="All" classifier="MultiInstanceBehavior" enumeration="MultiInstanceBehavior"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-Complex" name="Complex" classifier="MultiInstanceBehavior" enumeration="MultiInstanceBehavior"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-None" name="None" enumeration="MultiInstanceBehavior"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-One" name="One" enumeration="MultiInstanceBehavior"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-All" name="All" enumeration="MultiInstanceBehavior"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="MultiInstanceBehavior-Complex" name="Complex" enumeration="MultiInstanceBehavior"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="MultiInstanceLoopCharacteristics" name="MultiInstanceLoopCharacteristics" superClass="LoopCharacteristics">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiInstanceLoopCharacteristics-isSequential" name="isSequential" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiInstanceLoopCharacteristics-behavior" name="behavior" type="MultiInstanceBehavior" default="All"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiInstanceLoopCharacteristics-loopCardinality" name="loopCardinality" type="Expression" lower="0" isComposite="true" association="A_loopCardinality_multiInstanceLoopCharacteristics"/>
@@ -1180,7 +1180,7 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="StandardLoopCharacteristics" name="StandardLoopCharacteristics" superClass="LoopCharacteristics">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="StandardLoopCharacteristics-testBefore" name="testBefore" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="StandardLoopCharacteristics-loopCondition" name="loopCondition" type="Expression" lower="0" isComposite="true" association="A_loopCondition_standardLoopCharacteristics"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="StandardLoopCharacteristics-loopMaximum" name="loopMaximum" type="Expression" lower="0" isComposite="true" association="A_loopMaximum_standardLoopCharacteristics"/>
@@ -1191,64 +1191,64 @@
     <ownedMember xmi:type="cmof:Class" xmi:id="Task" name="Task" superClass="Activity InteractionNode"/>
     <ownedMember xmi:type="cmof:Class" xmi:id="SendTask" name="SendTask" superClass="Task">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SendTask-implementation" name="implementation">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SendTask-operationRef" name="operationRef" type="Operation" lower="0" association="A_operationRef_sendTask"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="SendTask-messageRef" name="messageRef" type="Message" lower="0" association="A_messageRef_sendTask"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ReceiveTask" name="ReceiveTask" superClass="Task">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReceiveTask-implementation" name="implementation">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReceiveTask-instantiate" name="instantiate" default="false">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReceiveTask-operationRef" name="operationRef" type="Operation" lower="0" association="A_operationRef_receiveTask"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReceiveTask-messageRef" name="messageRef" type="Message" lower="0" association="A_messageRef_receiveTask"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ScriptTask" name="ScriptTask" superClass="Task">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ScriptTask-scriptFormat" name="scriptFormat" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ScriptTask-script" name="script">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="BusinessRuleTask" name="BusinessRuleTask" superClass="Task">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BusinessRuleTask-implementation" name="implementation" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="AdHocSubProcess" name="AdHocSubProcess" superClass="SubProcess">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="AdHocSubProcess-completionCondition" name="completionCondition" type="Expression" isComposite="true" association="A_completionCondition_adHocSubProcess"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="AdHocSubProcess-ordering" name="ordering" type="AdHocOrdering"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="AdHocSubProcess-cancelRemainingInstances" name="cancelRemainingInstances" default="true">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#Boolean"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Enumeration" xmi:id="AdHocOrdering" name="AdHocOrdering">
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AdHocOrdering-Parallel" name="Parallel" classifier="AdHocOrdering" enumeration="AdHocOrdering"/>
-      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AdHocOrdering-Sequential" name="Sequential" classifier="AdHocOrdering" enumeration="AdHocOrdering"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AdHocOrdering-Parallel" name="Parallel" enumeration="AdHocOrdering"/>
+      <ownedLiteral xmi:type="cmof:EnumerationLiteral" xmi:id="AdHocOrdering-Sequential" name="Sequential" enumeration="AdHocOrdering"/>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Transaction" name="Transaction" superClass="SubProcess">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Transaction-protocol" name="protocol" lower="0">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Transaction-method" name="method">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="GlobalScriptTask" name="GlobalScriptTask" superClass="GlobalTask">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GlobalScriptTask-scriptLanguage" name="scriptLanguage">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GlobalScriptTask-script" name="script">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="GlobalBusinessRuleTask" name="GlobalBusinessRuleTask" superClass="GlobalTask">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GlobalBusinessRuleTask-implementation" name="implementation" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ComplexBehaviorDefinition" name="ComplexBehaviorDefinition" superClass="BaseElement">
@@ -1263,7 +1263,7 @@
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ResourceRole-resourceParameterBindings" name="resourceParameterBindings" type="ResourceParameterBinding" upper="*" lower="0" isComposite="true" association="A_resourceParameterBindings_activityResource"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ResourceRole-resourceAssignmentExpression" name="resourceAssignmentExpression" type="ResourceAssignmentExpression" lower="0" isComposite="true" association="A_resourceAssignmentExpression_activityResource"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ResourceRole-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="ResourceParameterBinding" name="ResourceParameterBinding">
@@ -1312,27 +1312,27 @@
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Import" name="Import">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Import-importType" name="importType" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Import-location" name="location" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Import-namespace" name="namespace" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Class" xmi:id="Definitions" name="Definitions" superClass="BaseElement">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-name" name="name" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-targetNamespace" name="targetNamespace" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-expressionLanguage" name="expressionLanguage" visibility="public" default="http://www.w3.org/1999/XPath">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-typeLanguage" name="typeLanguage" visibility="public" default="http://www.w3.org/2001/XMLSchema">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-imports" name="imports" visibility="public" type="Import" upper="*" lower="0" isComposite="true" association="A_imports_definition"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-extensions" name="extensions" visibility="public" type="Extension" upper="*" lower="0" isComposite="true" association="A_extensions_definitions"/>
@@ -1342,10 +1342,10 @@
         <type xmi:type="cmof:Class" href="BPMNDI.cmof#BPMNDiagram"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-exporter" name="exporter" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Definitions-exporterVersion" name="exporterVersion" visibility="public">
-        <type xmi:type="cmof:PrimitiveType" href="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String"/>
+        <type xmi:type="cmof:PrimitiveType" href="../cmof.xml#String"/>
       </ownedAttribute>
     </ownedMember>
     <ownedMember xmi:type="cmof:Association" xmi:id="A_diagrams_definitions" name="A_diagrams_definitions" visibility="private" memberEnd="Definitions-diagrams A_diagrams_definitions-definitions">
