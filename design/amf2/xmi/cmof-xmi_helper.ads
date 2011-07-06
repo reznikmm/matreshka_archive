@@ -48,10 +48,6 @@ with AMF.Elements;
 
 package CMOF.XMI_Helper is
 
-   function Resolve
-    (Name : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-
    function Is_Data_Type (Element : CMOF_Element) return Boolean;
 
    function Is_Association (Element : CMOF_Element) return Boolean;
@@ -59,9 +55,5 @@ package CMOF.XMI_Helper is
    function Is_Class (Element : CMOF_Element) return Boolean;
 
    function Is_Package (Element : CMOF_Element) return Boolean;
-
-   procedure Set_Id
-    (Element : not null access AMF.Elements.Abstract_Element'Class;
-     Id      : League.Strings.Universal_String);
 
 end CMOF.XMI_Helper;

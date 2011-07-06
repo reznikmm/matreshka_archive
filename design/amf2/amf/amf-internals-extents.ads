@@ -41,11 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
 
 package AMF.Internals.Extents is
 
    procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element);
    --  Adds specified element to the set of elements contained in the specified
    --  extent.
+
+   procedure Associate_Id
+    (Element : not null access constant AMF.Elements.Abstract_Element'Class;
+     Id      : League.Strings.Universal_String);
+   --  Associate specified identifier with the element.
 
 end AMF.Internals.Extents;

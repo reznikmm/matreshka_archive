@@ -41,13 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Helpers;
-with CMOF.Collections;
-with CMOF.Internals.Extents;
-with CMOF.Internals.Metamodel;
 with CMOF.Internals.Subclassing;
-with CMOF.Named_Elements;
-with CMOF.Packages;
 
 package body CMOF.XMI_Helper is
 
@@ -78,54 +72,5 @@ package body CMOF.XMI_Helper is
 
    function Is_Package (Element : CMOF_Element) return Boolean
      renames CMOF.Internals.Subclassing.Is_Package;
-
-   -------------
-   -- Resolve --
-   -------------
-
-   function Resolve
-    (Name : League.Strings.Universal_String) return CMOF_Element
-   is
-      use type League.Strings.Universal_String;
-
-      use CMOF.Collections;
-      use CMOF.Named_Elements;
-      use CMOF.Packages;
-
-      E : constant Set_Of_CMOF_Packageable_Element
-        := Get_Packaged_Element (CMOF.Internals.Metamodel.MM_CMOF);
-
-   begin
-      for J in 1 .. Length (E) loop
-         if Get_Name (Element (E, J)) = Name then
-            return Element (E, J);
-         end if;
-      end loop;
-
-      raise Program_Error with "Unknown CMOF class";
-   end Resolve;
-
-   -------------
-   -- Resolve --
-   -------------
-
-   function Resolve
-    (Name : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access is
-   begin
-      return AMF.Internals.Helpers.To_Element (Resolve (Name));
-   end Resolve;
-
-   ------------
-   -- Set_Id --
-   ------------
-
-   procedure Set_Id
-    (Element : not null access AMF.Elements.Abstract_Element'Class;
-     Id      : League.Strings.Universal_String) is
-   begin
-      CMOF.Internals.Extents.Set_Id
-       (AMF.Internals.Helpers.To_Element (Element), Id);
-   end Set_Id;
 
 end CMOF.XMI_Helper;

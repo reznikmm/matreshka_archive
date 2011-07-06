@@ -52,12 +52,13 @@ with XMI.Reader;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
+with AMF.CMOF.Packageable_Elements.Collections;
+with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Factories.Registry;
-with AMF.Internals;
+with AMF.Internals.Extents;
 with CMOF.Extents;
-with CMOF.XMI_Helper;
 
 package body XMI.Handlers is
 
@@ -80,6 +81,12 @@ package body XMI.Handlers is
      Name  : League.Strings.Universal_String)
        return AMF.CMOF.Properties.CMOF_Property_Access;
    --  Resolves class's owned attribute by its name.
+
+   function Resolve_Owned_Class
+    (Root : not null AMF.CMOF.Packages.CMOF_Package_Access;
+     Name : League.Strings.Universal_String)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
+   --  Resolves owned class by name.
 
    procedure Analyze_Object_Element
     (Self       : in out XMI_Handler;
@@ -250,7 +257,7 @@ package body XMI.Handlers is
          --  Create new element.
 
          Self.Current := Self.Factory.Create (Self.Extent, Meta_Class);
-         CMOF.XMI_Helper.Set_Id (Self.Current, Id);
+         AMF.Internals.Extents.Associate_Id (Self.Current, Id);
          Self.Mapping.Insert (Id, Self.Current);
       end if;
 
@@ -534,6 +541,48 @@ package body XMI.Handlers is
       return null;
    end Resolve_Owned_Attribute;
 
+   -------------------------
+   -- Resolve_Owned_Class --
+   -------------------------
+
+   function Resolve_Owned_Class
+    (Root : not null AMF.CMOF.Packages.CMOF_Package_Access;
+     Name : League.Strings.Universal_String)
+       return AMF.CMOF.Classes.CMOF_Class_Access
+   is
+      use type AMF.Optional_String;
+
+      Packaged_Elements :
+        AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+          := Root.Get_Packaged_Element;
+      Element           :
+        AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access;
+
+   begin
+      --  Looking in the set of packagedElement.
+      --
+      --  XXX Minor performance improvement can be achived by looking inside
+      --  set of ownedType. Unfortunately, it is derived property and it is not
+      --  implemented now.
+
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Standard_Error, "Resolving '" & Name.To_Wide_Wide_String & "'");
+
+      for J in 1 .. Packaged_Elements.Length loop
+         Element := Packaged_Elements.Element (J);
+
+         if Element.all in AMF.CMOF.Classes.CMOF_Class'Class
+           and then Element.Get_Name = Name
+         then
+            return AMF.CMOF.Classes.CMOF_Class_Access (Element);
+         end if;
+      end loop;
+
+      --  Lookup failed.
+
+      return null;
+   end Resolve_Owned_Class;
+
    ----------
    -- Root --
    ----------
@@ -613,9 +662,9 @@ package body XMI.Handlers is
 
                Name := Attributes.Value (XMI_Namespace, Type_Name);
                Meta :=
-                 AMF.CMOF.Classes.CMOF_Class_Access
-                  (CMOF.XMI_Helper.Resolve
-                    (Name.Slice (Name.Index (':') + 1, Name.Length)));
+                 Resolve_Owned_Class
+                  (Self.Factory.Get_Package,
+                   Name.Slice (Name.Index (':') + 1, Name.Length));
 
                if Meta = null then
                   raise Program_Error;
@@ -643,10 +692,13 @@ package body XMI.Handlers is
          null;
 
       else
-         Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
-         Meta :=
-           AMF.CMOF.Classes.CMOF_Class_Access
-            (CMOF.XMI_Helper.Resolve (Local_Name));
+         Meta := Resolve_Owned_Class (Self.Factory.Get_Package, Local_Name);
+
+         if Meta = null then
+            Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
+
+            raise Program_Error;
+         end if;
 
          Analyze_Object_Element (Self, Meta, null, Attributes, Success);
       end if;

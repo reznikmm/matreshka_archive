@@ -47,6 +47,7 @@ with League.Strings;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
+with AMF.CMOF.Packages;
 with AMF.Elements;
 with CMOF;
 
@@ -153,5 +154,10 @@ package AMF.Factories is
    --  Exception: IllegalArgumentException if datatype is not a member of the
    --  package returned by getPackage() or the supplied object is not a valid
    --  instance of that datatype.
+
+   not overriding function Get_Package
+    (Self : not null access constant AMF_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access is abstract;
+   --  Returns the package this is a factory for.
 
 end AMF.Factories;

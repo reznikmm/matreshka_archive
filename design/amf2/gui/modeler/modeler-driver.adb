@@ -55,7 +55,6 @@ with AMF.Elements;
 with AMF.Factories.Registry;
 with CMOF.Internals.Setup;
 with CMOF.Extents;
-with CMOF.XMI_Helper;
 with League.Strings;
 
 with Modeler.Main_Windows;
@@ -67,6 +66,51 @@ procedure Modeler.Driver is
    function "+"
     (Item : Wide_Wide_String) return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
+
+   function Resolve_Owned_Class
+    (Root : not null AMF.CMOF.Packages.CMOF_Package_Access;
+     Name : League.Strings.Universal_String)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
+   --  Resolves owned class by name.
+
+   -------------------------
+   -- Resolve_Owned_Class --
+   -------------------------
+
+   function Resolve_Owned_Class
+    (Root : not null AMF.CMOF.Packages.CMOF_Package_Access;
+     Name : League.Strings.Universal_String)
+       return AMF.CMOF.Classes.CMOF_Class_Access
+   is
+      use type AMF.Optional_String;
+
+      Packaged_Elements :
+        AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
+          := Root.Get_Packaged_Element;
+      Element           :
+        AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access;
+
+   begin
+      --  Looking in the set of packagedElement.
+      --
+      --  XXX Minor performance improvement can be achived by looking inside
+      --  set of ownedType. Unfortunately, it is derived property and it is not
+      --  implemented now.
+
+      for J in 1 .. Packaged_Elements.Length loop
+         Element := Packaged_Elements.Element (J);
+
+         if Element.all in AMF.CMOF.Classes.CMOF_Class'Class
+           and then Element.Get_Name = Name
+         then
+            return AMF.CMOF.Classes.CMOF_Class_Access (Element);
+         end if;
+      end loop;
+
+      --  Lookup failed.
+
+      return null;
+   end Resolve_Owned_Class;
 
    Window : Modeler.Main_Windows.Main_Window_Access;
 
@@ -91,9 +135,7 @@ begin
         := AMF.CMOF.Packages.CMOF_Package_Access
             (Factory.Create
               (Extent,
-               AMF.CMOF.Classes.CMOF_Class_Access
-                (AMF.CMOF.Elements.CMOF_Element_Access
-                  (CMOF.XMI_Helper.Resolve (+"Package")))));
+               Resolve_Owned_Class (Factory.Get_Package, +"Package")));
       Packed  :
         AMF.CMOF.Packageable_Elements.Collections.
           Set_Of_CMOF_Packageable_Element
@@ -102,9 +144,7 @@ begin
         := AMF.CMOF.Classes.CMOF_Class_Access
             (Factory.Create
               (Extent,
-               AMF.CMOF.Classes.CMOF_Class_Access
-                (AMF.CMOF.Elements.CMOF_Element_Access
-                  (CMOF.XMI_Helper.Resolve (+"Class")))));
+               Resolve_Owned_Class (Factory.Get_Package, +"Class")));
 
    begin
       Pack.Set_Name ((False, +"Package one"));

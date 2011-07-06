@@ -42,8 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --with Ada.Text_IO;
---
---with League.Strings.Internals;
+
+with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
 --with AMF.Internals.Containers;
@@ -62,8 +62,8 @@ package body AMF.Internals.Extents is
 --   use AMF.Internals;
 --   use AMF.Internals.Tables;
 --   use type AMF.Internals.AMF_Element;
---   use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
---
+   use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
+
 --   ---------------
 --   -- Container --
 --   ---------------
@@ -263,8 +263,6 @@ package body AMF.Internals.Extents is
    ---------------------
 
    procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element) is
-      use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
-
       Head     : Tables.AMF_Tables.Extent_Element_Identifier
         := Tables.AMF_Tables.Extents.Table (Extent).Head;
       Tail     : Tables.AMF_Tables.Extent_Element_Identifier
@@ -368,34 +366,37 @@ package body AMF.Internals.Extents is
 --   begin
 --      return Tables.Elements.Table (Object (Self, Identifier)).Proxy;
 --   end Object;
---
---   ------------
---   -- Set_Id --
---   ------------
---
---   procedure Set_Id
---    (Element : CMOF_Element;
---     Id      : League.Strings.Universal_String)
---   is
---      Current : AMF_Tables.Extent_Element_Identifier
---        := AMF_Tables.Extents.Table
---            (AMF.Internals.Helpers.Get_Extent (Element)).Head;
---
---   begin
---      while Current /= 0 loop
---         if AMF_Tables.Extent_Elements.Table (Current).Element = Element then
---            Matreshka.Internals.Strings.Dereference
---             (AMF_Tables.Extent_Elements.Table (Current).Id);
---            AMF_Tables.Extent_Elements.Table (Current).Id :=
---              League.Strings.Internals.Internal (Id);
---            Matreshka.Internals.Strings.Reference
---             (AMF_Tables.Extent_Elements.Table (Current).Id);
---
---            exit;
---         end if;
---
---         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
---      end loop;
---   end Set_Id;
+
+   ------------------
+   -- Associate_Id --
+   ------------------
+
+   procedure Associate_Id
+    (Element : not null access constant AMF.Elements.Abstract_Element'Class;
+     Id      : League.Strings.Universal_String)
+   is
+      Current : Tables.AMF_Tables.Extent_Element_Identifier
+        := Tables.AMF_Tables.Extents.Table
+            (AMF.Internals.Helpers.Get_Extent
+              (AMF.Internals.Helpers.To_Element (Element))).Head;
+
+   begin
+      while Current /= 0 loop
+         if Tables.AMF_Tables.Extent_Elements.Table (Current).Element
+              = AMF.Internals.Helpers.To_Element (Element)
+         then
+            Matreshka.Internals.Strings.Dereference
+             (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+            Tables.AMF_Tables.Extent_Elements.Table (Current).Id :=
+              League.Strings.Internals.Internal (Id);
+            Matreshka.Internals.Strings.Reference
+             (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+
+            exit;
+         end if;
+
+         Current := Tables.AMF_Tables.Extent_Elements.Table (Current).Next;
+      end loop;
+   end Associate_Id;
 
 end AMF.Internals.Extents;

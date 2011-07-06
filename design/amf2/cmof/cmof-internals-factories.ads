@@ -49,6 +49,7 @@ with League.Strings;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
+with AMF.CMOF.Packages;
 with AMF.Elements;
 with AMF.Factories;
 
@@ -82,5 +83,9 @@ package CMOF.Internals.Factories is
     (Self      : not null access CMOF_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String;
+
+   overriding function Get_Package
+    (Self : not null access constant CMOF_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access;
 
 end CMOF.Internals.Factories;

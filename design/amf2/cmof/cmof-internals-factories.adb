@@ -404,6 +404,19 @@ package body CMOF.Internals.Factories is
       end if;
    end Convert_To_String;
 
+   -----------------
+   -- Get_Package --
+   -----------------
+
+   overriding function Get_Package
+    (Self : not null access constant CMOF_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element (MM_CMOF));
+   end Get_Package;
+
    Factory : aliased CMOF_Factory;
 
 begin
