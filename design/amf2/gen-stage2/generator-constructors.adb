@@ -152,12 +152,7 @@ package body Generator.Constructors is
          Put_Line ("   begin");
          Put_Line ("      Elements.Table (Self) :=");
          Put_Line ("       (Kind     => " & Element_Kind & ",");
-         Put_Line
-          ("        Id       =>"
-             & " Matreshka.Internals.Strings.Shared_Empty'Access,");
          Put_Line ("        Extent   => 0,");
-         Put_Line ("        Previous => 0,");
-         Put_Line ("        Next     => 0,");
          Put_Line ("        Proxy    =>");
          Put_Line
           ("          new AMF.Internals.CMOF_"

@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with GNAT.Table;
 
-with CMOF;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.AMF_Tables is
 
@@ -53,13 +53,26 @@ package AMF.Internals.Tables.AMF_Tables is
    -- Extents --
    -------------
 
+   type Extent_Element_Identifier is new Natural;
+
    type Extent_Record is record
-      Head : AMF_Element;
-      Tail : AMF_Element;
+      Head : Extent_Element_Identifier;
+      Tail : Extent_Element_Identifier;
+   end record;
+
+   type Extent_Element_Record is record
+      Id       : Matreshka.Internals.Strings.Shared_String_Access;
+      Element  : AMF_Element;
+      Previous : Extent_Element_Identifier;
+      Next     : Extent_Element_Identifier;
    end record;
 
    package Extents is
-     new GNAT.Table (Extent_Record, CMOF.CMOF_Extent, 1, 100, 100);
+     new GNAT.Table (Extent_Record, AMF_Extent, 1, 100, 100);
+
+   package Extent_Elements is
+     new GNAT.Table
+          (Extent_Element_Record, Extent_Element_Identifier, 1, 10_000, 100);
 
    -----------
    -- Links --

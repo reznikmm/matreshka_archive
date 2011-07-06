@@ -55,6 +55,7 @@ with AMF.CMOF.Data_Types;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Factories.Registry;
+with AMF.Internals;
 with CMOF.Extents;
 with CMOF.XMI_Helper;
 
@@ -107,7 +108,7 @@ package body XMI.Handlers is
            CMOF.CMOF_Extent,
            League.Strings.Hash,
            League.Strings."=",
-           CMOF."=");
+           AMF.Internals."=");
 
    Documents : Universal_String_Extent_Maps.Map;
    --  Map file name of document to extent.

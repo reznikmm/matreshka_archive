@@ -49,12 +49,12 @@ with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
-with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
 with League.Holders.Booleans;
@@ -161,7 +161,7 @@ package body CMOF.Internals.Factories is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      CMOF.Internals.Extents.Internal_Append (Extent, Element);
+      AMF.Internals.Extents.Internal_Append (Extent, Element);
 
       AMF.Internals.Listener_Registry.Notify_Instance_Create
        (AMF.Internals.Helpers.To_Element (Element));

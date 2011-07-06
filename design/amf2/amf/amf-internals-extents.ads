@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,92 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces;
 
-with AMF.Internals.Elements;
+package AMF.Internals.Extents is
 
-package body AMF.Internals.Helpers is
+   procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element);
+   --  Adds specified element to the set of elements contained in the specified
+   --  extent.
 
-   subtype U32 is Interfaces.Unsigned_32;
-   use type U32;
-   --  XXX Interfaces.Unsigned_32 used only till AMF_Element isn't declared as
-   --  modular type.
-
-   --------------------
-   -- Connect_Extent --
-   --------------------
-
-   procedure Connect_Extent (Element : AMF_Element; Extent : AMF_Extent) is
-   begin
-      Metamodel_Helper
-       (AMF_Metamodel (U32 (Element) / 16#01000000#)).Connect_Extent
-         (Element, Extent);
-   end Connect_Extent;
-
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   procedure Connect_Link_End
-    (Element  : AMF_Element;
-     Property : CMOF_Element;
-     Link     : AMF_Link;
-     Other    : AMF_Element) is
-   begin
-      Metamodel_Helper
-       (AMF_Metamodel (U32 (Element) / 16#01000000#)).Connect_Link_End
-         (Element, Property, Link, Other);
-   end Connect_Link_End;
-
-   ----------------
-   -- Get_Extent --
-   ----------------
-
-   function Get_Extent (Element : AMF_Element) return AMF_Extent is
-   begin
-      return
-        Metamodel_Helper
-         (AMF_Metamodel (U32 (Element) / 16#01000000#)).Get_Extent (Element);
-   end Get_Extent;
-
-   ----------------
-   -- To_Element --
-   ----------------
-
-   function To_Element
-    (Element : AMF_Element) return AMF.Elements.Element_Access is
-   begin
-      if (U32 (Element) and 16#00FFFFFF#) = 0 then
-         --  First element in every metamodel is null element.
-
-         return null;
-
-      else
-         return
-           Metamodel_Helper
-            (AMF_Metamodel (U32 (Element) / 16#01000000#)).To_Element
-              (Element);
-      end if;
-   end To_Element;
-
-   ----------------
-   -- To_Element --
-   ----------------
-
-   function To_Element
-    (Element : access AMF.Elements.Abstract_Element'Class) return AMF_Element
-   is
-      use type AMF.Elements.Element_Access;
-
-   begin
-      if Element = null then
-         return 0;
-
-      else
-         return
-           AMF.Internals.Elements.Element_Implementation'Class
-            (Element.all).Element;
-      end if;
-   end To_Element;
-
-end AMF.Internals.Helpers;
+end AMF.Internals.Extents;

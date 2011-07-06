@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with AMF.Internals.Extents;
 with AMF.Internals.Links;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
@@ -54,6 +55,7 @@ with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Setup is
 
+   use AMF.Internals.Extents;
    use AMF.Internals.Links;
    use CMOF.Internals.Attributes;
    use CMOF.Internals.Constructors;

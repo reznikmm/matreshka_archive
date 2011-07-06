@@ -53,6 +53,18 @@ package body AMF.Internals.Helpers.CMOF_Helper is
    use CMOF.Internals.Metamodel;
    use CMOF.Multiplicity_Elements;
 
+   --------------------
+   -- Connect_Extent --
+   --------------------
+
+   overriding procedure Connect_Extent
+    (Self    : not null access constant CMOF_Metamodel_Helper;
+     Element : AMF_Element;
+     Extent  : AMF_Extent) is
+   begin
+      CMOF.Internals.Tables.Elements.Table (Element).Extent := Extent;
+   end Connect_Extent;
+
    ----------------------
    -- Connect_Link_End --
    ----------------------
@@ -100,6 +112,17 @@ package body AMF.Internals.Helpers.CMOF_Helper is
          end if;
       end if;
    end Connect_Link_End;
+
+   ----------------
+   -- Get_Extent --
+   ----------------
+
+   overriding function Get_Extent
+    (Self    : not null access constant CMOF_Metamodel_Helper;
+     Element : AMF_Element) return AMF_Extent is
+   begin
+      return CMOF.Internals.Tables.Elements.Table (Element).Extent;
+   end Get_Extent;
 
    ----------------
    -- To_Element --

@@ -50,8 +50,6 @@ package CMOF.Internals.Extents is
 
    procedure Initialize_CMOF_Metamodel_Extent;
 
-   procedure Internal_Append (Extent : CMOF_Extent; Element : CMOF_Element);
-
    function Create_Extent return CMOF_Extent;
 
    function Length (Self : CMOF_Extent) return Natural;
@@ -73,9 +71,6 @@ package CMOF.Internals.Extents is
        return AMF.Elements.Element_Access;
 
    function Container (Self : CMOF_Element) return CMOF_Element;
-
-   function Get_Id
-    (Element : CMOF_Element) return League.Strings.Universal_String;
 
    procedure Set_Id
     (Element : CMOF_Element;

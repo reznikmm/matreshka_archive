@@ -51,6 +51,8 @@ with CMOF.Internals.Types;
 
 package CMOF.Internals.Tables is
 
+   use AMF.Internals;
+
    type Member_Kinds is
     (M_None,
      M_Element,
@@ -118,12 +120,7 @@ package CMOF.Internals.Tables is
             null;
 
          when others =>
-            Id       : Matreshka.Internals.Strings.Shared_String_Access;
-            --  Internal identifier of element. Used as xmi:id.
-            Extent   : CMOF_Extent;
-            Next     : CMOF_Element;
-            Previous : CMOF_Element;
-            --  Doubly linked list of elements in the extent.
+            Extent   : AMF_Extent;
             Proxy    : AMF.Elements.Element_Access;
             Member   : Member_Array;
             --  First element (with index 0) contains index of first collection

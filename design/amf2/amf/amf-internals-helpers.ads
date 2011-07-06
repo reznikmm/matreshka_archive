@@ -58,12 +58,18 @@ package AMF.Internals.Helpers is
     (Element : access AMF.Elements.Abstract_Element'Class) return AMF_Element;
    --  Converts element's object into element's identifier;
 
+   function Get_Extent (Element : AMF_Element) return AMF_Extent;
+   --  Returns extent witch contains specified element.
+
    procedure Connect_Link_End
     (Element  : AMF_Element;
      Property : CMOF_Element;
      Link     : AMF_Link;
      Other    : AMF_Element);
    --  Connects link end.
+
+   procedure Connect_Extent (Element : AMF_Element; Extent : AMF_Extent);
+   --  Connects element to the extent.
 
 private
 
@@ -81,6 +87,17 @@ private
      Link     : AMF_Link;
      Other    : AMF_Element) is abstract;
    --  Connects link end with specified element:property.
+
+   not overriding procedure Connect_Extent
+    (Self    : not null access constant Abstract_Metamodel_Helper;
+     Element : AMF_Element;
+     Extent  : AMF_Extent) is abstract;
+   --  Connects element with extent.
+
+   not overriding function Get_Extent
+    (Self    : not null access constant Abstract_Metamodel_Helper;
+     Element : AMF_Element) return AMF_Extent is abstract;
+   --  Returns extent witch contains specified element.
 
    type Metamodel_Helper_Access is access all Abstract_Metamodel_Helper'Class;
 

@@ -119,11 +119,7 @@ package CMOF is
    subtype CMOF_Typed_Element is Cmof_Element;
    subtype CMOF_Value_Specification is Cmof_Element;
 
---   type CMOF_Extent is private;
---   CMOF_Metamodel_Extent : constant CMOF_Extent;
-   type CMOF_Extent is
-     new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
-   for CMOF_Extent'Size use Interfaces.Integer_32'Size;
+   subtype CMOF_Extent is AMF.Internals.AMF_Extent;
    CMOF_Metamodel_Extent : constant CMOF_Extent := 1;
 
 

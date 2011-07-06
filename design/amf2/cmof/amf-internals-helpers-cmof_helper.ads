@@ -48,11 +48,13 @@ package AMF.Internals.Helpers.CMOF_Helper is
 
 private
 
-   type CMOF_Metamodel_Helper is new Abstract_Metamodel_Helper with null record;
+   type CMOF_Metamodel_Helper is
+     new Abstract_Metamodel_Helper with null record;
 
-   overriding function To_Element
-    (Self     : not null access constant CMOF_Metamodel_Helper;
-     Element  : AMF_Element) return AMF.Elements.Element_Access;
+   overriding procedure Connect_Extent
+    (Self    : not null access constant CMOF_Metamodel_Helper;
+     Element : AMF_Element;
+     Extent  : AMF_Extent);
 
    overriding procedure Connect_Link_End
     (Self     : not null access constant CMOF_Metamodel_Helper;
@@ -60,5 +62,13 @@ private
      Property : CMOF_Element;
      Link     : AMF_Link;
      Other    : AMF_Element);
+
+   overriding function Get_Extent
+    (Self    : not null access constant CMOF_Metamodel_Helper;
+     Element : AMF_Element) return AMF_Extent;
+
+   overriding function To_Element
+    (Self     : not null access constant CMOF_Metamodel_Helper;
+     Element  : AMF_Element) return AMF.Elements.Element_Access;
 
 end AMF.Internals.Helpers.CMOF_Helper;

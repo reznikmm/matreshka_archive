@@ -41,12 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Text_IO;
-
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
 with AMF.Internals.Containers;
+with AMF.Internals.Helpers;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Attribute_Mappings;
@@ -58,7 +57,10 @@ with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Extents is
 
+   use AMF.Internals;
+   use AMF.Internals.Tables;
    use type AMF.Internals.AMF_Element;
+   use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
 
    ---------------
    -- Container --
@@ -66,7 +68,6 @@ package body CMOF.Internals.Extents is
 
    function Container (Self : CMOF_Element) return CMOF_Element is
 
-      use AMF.Internals.Tables;
       use AMF.Internals.Element_Collections;
       use CMOF.Internals.Attribute_Mappings;
       use CMOF.Internals.Attributes;
@@ -75,34 +76,39 @@ package body CMOF.Internals.Extents is
       use CMOF.Internals.Subclassing;
       use type AMF.Internals.Tables.AMF_Tables.Collection_Element_Identifier;
 
-      Meta_Class  : constant CMOF_Class := Reflection.Get_Meta_Class (Self);
-      Meta_Extent : constant CMOF_Extent
+      Meta_Class      : constant CMOF_Class
+        := Reflection.Get_Meta_Class (Self);
+      Meta_Extent     : constant AMF_Extent
         := Tables.Elements.Table (Meta_Class).Extent;
-      Current     : CMOF_Element
+      Current         : AMF_Tables.Extent_Element_Identifier
         := AMF.Internals.Tables.AMF_Tables.Extents.Table (Meta_Extent).Head;
-      Association : CMOF_Association;
-      Member_End  : Ordered_Set_Of_CMOF_Property;
-      Opposite    : CMOF_Property;
-      Collection  : AMF_Tables.Collection_Element_Identifier;
-      Owner       : CMOF_Element;
-      Link        : AMF.Internals.AMF_Link;
+      Current_Element : AMF_Element;
+      Association     : CMOF_Association;
+      Member_End      : Ordered_Set_Of_CMOF_Property;
+      Opposite        : CMOF_Property;
+      Collection      : AMF_Tables.Collection_Element_Identifier;
+      Owner           : CMOF_Element;
+      Link            : AMF.Internals.AMF_Link;
 
    begin
       --  All properties must be traversed to detect containment.
 
       while Current /= 0 loop
-         if Is_Property (Current)
-           and then Internal_Get_Type (Current) in CMOF_Meta_Class
-           and then Is_Subclass (Meta_Class, Internal_Get_Type (Current))
-           and then Boolean (Internal_Get_Is_Composite (Current))
+         Current_Element := AMF_Tables.Extent_Elements.Table (Current).Element;
+
+         if Is_Property (Current_Element)
+           and then Internal_Get_Type (Current_Element) in CMOF_Meta_Class
+           and then Is_Subclass
+                     (Meta_Class, Internal_Get_Type (Current_Element))
+           and then Boolean (Internal_Get_Is_Composite (Current_Element))
          then
             --  Find opposite property, it is at the element's side of the
             --  association.
 
-            Association := Internal_Get_Association (Current);
+            Association := Internal_Get_Association (Current_Element);
             Member_End := Internal_Get_Member_End (Association);
 
-            if Element (Member_End, 1) = Current then
+            if Element (Member_End, 1) = Current_Element then
                Opposite := Element (Member_End, 2);
 
             else
@@ -179,7 +185,7 @@ package body CMOF.Internals.Extents is
             end if;
          end if;
 
-         Current := Tables.Elements.Table (Current).Next;
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
       end loop;
 
       return Null_CMOF_Element;
@@ -195,7 +201,7 @@ package body CMOF.Internals.Extents is
       AMF.Internals.Tables.AMF_Tables.Extents.Table
        (AMF.Internals.Tables.AMF_Tables.Extents.Last) := (0, 0);
 
-      return AMF.Internals.Tables.AMF_Tables.Extents.Last;
+      return CMOF_Extent (AMF.Internals.Tables.AMF_Tables.Extents.Last);
    end Create_Extent;
 
    -------------
@@ -206,21 +212,21 @@ package body CMOF.Internals.Extents is
     (Self  : CMOF_Extent;
      Index : Positive) return CMOF_Element
    is
-      Current : CMOF_Element
+      Current : AMF_Tables.Extent_Element_Identifier
         := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
 
    begin
       for J in 2 .. Index loop
          exit when Current = 0;
 
-         Current := Tables.Elements.Table (Current).Next;
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
       end loop;
 
       if Current = 0 then
          raise Constraint_Error;
 
       else
-         return Current;
+         return AMF_Tables.Extent_Elements.Table (Current).Element;
       end if;
    end Element;
 
@@ -232,8 +238,8 @@ package body CMOF.Internals.Extents is
     (Self : CMOF_Extent)
        return not null AMF.Internals.Collections.Collection_Access
    is
-      Current  : CMOF_Element
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
+      Current  : AMF_Tables.Extent_Element_Identifier
+        := AMF_Tables.Extents.Table (Self).Head;
       Result   : not null AMF.Internals.Collections.Collection_Access
         := new AMF.Internals.Containers.Collection;
       Elements : AMF.Internals.Containers.Vectors.Vector
@@ -241,61 +247,14 @@ package body CMOF.Internals.Extents is
 
    begin
       while Current /= 0 loop
-         Elements.Append (Tables.Elements.Table (Current).Proxy);
-         Current := Tables.Elements.Table (Current).Next;
+         Elements.Append
+          (AMF.Internals.Helpers.To_Element
+            (AMF_Tables.Extent_Elements.Table (Current).Element));
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
       end loop;
 
       return Result;
    end All_Elements;
-
-   ------------
-   -- Get_Id --
-   ------------
-
-   function Get_Id
-    (Element : CMOF_Element) return League.Strings.Universal_String is
-   begin
-      return
-        League.Strings.Internals.Create (Tables.Elements.Table (Element).Id);
-   end Get_Id;
-
-   ---------------------
-   -- Internal_Append --
-   ---------------------
-
-   procedure Internal_Append
-    (Extent  : CMOF_Extent;
-     Element : CMOF_Element)
-   is
-      Head     : CMOF_Element
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Head;
-      Tail     : CMOF_Element
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Tail;
-      Previous : CMOF_Element
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Tail;
-      Next     : CMOF_Element := 0;
-
-   begin
-      if Head = 0 then
-         --  List is empty.
-
-         Head := Element;
-         Tail := Element;
-
-         AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Head := Head;
-         AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Tail := Tail;
-
-      else
-         Tail := Element;
-
-         AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Tail := Tail;
-         Tables.Elements.Table (Previous).Next := Element;
-      end if;
-
-      Tables.Elements.Table (Element).Extent   := Extent;
-      Tables.Elements.Table (Element).Previous := Previous;
-      Tables.Elements.Table (Element).Next     := Next;
-   end Internal_Append;
 
    --------------------------------------
    -- Initialize_CMOF_Metamodel_Extent --
@@ -313,14 +272,14 @@ package body CMOF.Internals.Extents is
    ------------
 
    function Length (Self : CMOF_Extent) return Natural is
-      Current : CMOF_Element
+      Current : AMF_Tables.Extent_Element_Identifier
         := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
       Aux     : Natural := 0;
 
    begin
       while Current /= 0 loop
          Aux     := Aux + 1;
-         Current := Tables.Elements.Table (Current).Next;
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
       end loop;
 
       return Aux;
@@ -336,16 +295,18 @@ package body CMOF.Internals.Extents is
    is
       use type League.Strings.Universal_String;
 
-      Current : CMOF_Element
-        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
+      Current : AMF_Tables.Extent_Element_Identifier
+        := AMF_Tables.Extents.Table (Self).Head;
 
    begin
-      while Current /= Null_CMOF_Element loop
-         if Get_Id (Current) = Identifier then
-            return Current;
+      while Current /= 0 loop
+         if League.Strings.Internals.Create
+             (AMF_Tables.Extent_Elements.Table (Current).Id) = Identifier
+         then
+            return AMF_Tables.Extent_Elements.Table (Current).Element;
          end if;
 
-         Current := Tables.Elements.Table (Current).Next;
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
       end loop;
 
       return Null_CMOF_Element;
@@ -369,14 +330,27 @@ package body CMOF.Internals.Extents is
 
    procedure Set_Id
     (Element : CMOF_Element;
-     Id      : League.Strings.Universal_String) is
+     Id      : League.Strings.Universal_String)
+   is
+      Current : AMF_Tables.Extent_Element_Identifier
+        := AMF_Tables.Extents.Table
+            (AMF.Internals.Helpers.Get_Extent (Element)).Head;
+
    begin
-      Matreshka.Internals.Strings.Dereference
-       (Tables.Elements.Table (Element).Id);
-      Tables.Elements.Table (Element).Id :=
-        League.Strings.Internals.Internal (Id);
-      Matreshka.Internals.Strings.Reference
-       (Tables.Elements.Table (Element).Id);
+      while Current /= 0 loop
+         if AMF_Tables.Extent_Elements.Table (Current).Element = Element then
+            Matreshka.Internals.Strings.Dereference
+             (AMF_Tables.Extent_Elements.Table (Current).Id);
+            AMF_Tables.Extent_Elements.Table (Current).Id :=
+              League.Strings.Internals.Internal (Id);
+            Matreshka.Internals.Strings.Reference
+             (AMF_Tables.Extent_Elements.Table (Current).Id);
+
+            exit;
+         end if;
+
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
+      end loop;
    end Set_Id;
 
 end CMOF.Internals.Extents;
