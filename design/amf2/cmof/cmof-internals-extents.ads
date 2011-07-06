@@ -70,8 +70,4 @@ package CMOF.Internals.Extents is
 
    function Container (Self : CMOF_Element) return CMOF_Element;
 
-   procedure Set_Id
-    (Element : CMOF_Element;
-     Id      : League.Strings.Universal_String);
-
 end CMOF.Internals.Extents;

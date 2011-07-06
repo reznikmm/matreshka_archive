@@ -58,8 +58,6 @@ package CMOF.Extents is
            AMF.Internals."=",
            AMF.Internals."=");
 
---   function Create_Extent return CMOF_Extent;
-
    function Elements (Extent : CMOF_Extent) return CMOF_Element_Sets.Set;
 
    function Elements

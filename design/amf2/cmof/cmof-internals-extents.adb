@@ -311,33 +311,4 @@ package body CMOF.Internals.Extents is
       return Tables.Elements.Table (Object (Self, Identifier)).Proxy;
    end Object;
 
-   ------------
-   -- Set_Id --
-   ------------
-
-   procedure Set_Id
-    (Element : CMOF_Element;
-     Id      : League.Strings.Universal_String)
-   is
-      Current : AMF_Tables.Extent_Element_Identifier
-        := AMF_Tables.Extents.Table
-            (AMF.Internals.Helpers.Get_Extent (Element)).Head;
-
-   begin
-      while Current /= 0 loop
-         if AMF_Tables.Extent_Elements.Table (Current).Element = Element then
-            Matreshka.Internals.Strings.Dereference
-             (AMF_Tables.Extent_Elements.Table (Current).Id);
-            AMF_Tables.Extent_Elements.Table (Current).Id :=
-              League.Strings.Internals.Internal (Id);
-            Matreshka.Internals.Strings.Reference
-             (AMF_Tables.Extent_Elements.Table (Current).Id);
-
-            exit;
-         end if;
-
-         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
-      end loop;
-   end Set_Id;
-
 end CMOF.Internals.Extents;
