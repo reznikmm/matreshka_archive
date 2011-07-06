@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,15 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../amf/amf.gpr";
+with XML.SAX.Input_Sources.Streams.Files;
+with XML.SAX.Simple_Readers;
 
-project Gens is
+with AMF.Internals.XMI_Handlers;
 
-   for Main use ("gen_api.adb", "gen2.adb");
-   for Object_Dir use ".obj";
+function XMI.Reader (File_Name : String) return CMOF.CMOF_Extent is
+   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+   Handler : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
 
-   package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
-   end Compiler;
+begin
+   Input.Open (File_Name);
+   Reader.Set_Content_Handler (Handler'Unchecked_Access);
+   Reader.Set_Error_Handler (Handler'Unchecked_Access);
+   Reader.Parse (Input'Unchecked_Access);
 
-end Gens;
+   return Handler.Root;
+end XMI.Reader;

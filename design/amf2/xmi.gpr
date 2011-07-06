@@ -1,11 +1,11 @@
-with "../../../gnat/matreshka_xml.gpr";
-with "../cmof/cmof.gpr";
+with "../../gnat/matreshka_xml.gpr";
+with "amf/amf.gpr";
 
 project XMI is
 
-   for Source_Dirs use (".", "..");
+   for Source_Dirs use (".");
    for Object_Dir use ".objs";
-   for Exec_Dir use "..";
+   for Exec_Dir use ".";
    for Main use ("xmi-main.adb");
 
    package Compiler is

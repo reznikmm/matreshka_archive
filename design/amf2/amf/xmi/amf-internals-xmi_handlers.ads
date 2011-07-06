@@ -53,15 +53,13 @@ with XML.SAX.Content_Handlers;
 with XML.SAX.Error_Handlers;
 private with XML.SAX.Parse_Exceptions;
 
-with CMOF;
-
-package XMI.Handlers is
+package AMF.Internals.XMI_Handlers is
 
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
-   function Root (Self : XMI_Handler) return CMOF.CMOF_Extent;
+   function Root (Self : XMI_Handler) return AMF_Extent;
 
 private
 
@@ -89,7 +87,7 @@ private
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with record
-      Extent           : CMOF.CMOF_Extent;
+      Extent           : AMF_Extent;
       Factory          : AMF.Factories.AMF_Factory_Access;
       Current          : AMF.Elements.Element_Access;
       Stack            : Element_Vectors.Vector;
@@ -169,4 +167,4 @@ private
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
 
-end XMI.Handlers;
+end AMF.Internals.XMI_Handlers;

@@ -60,7 +60,7 @@ with AMF.Factories.Registry;
 with AMF.Internals.Extents;
 with CMOF.Extents;
 
-package body XMI.Handlers is
+package body AMF.Internals.XMI_Handlers is
 
    use Ada.Wide_Wide_Text_IO;
    use type AMF.CMOF.Properties.CMOF_Property_Access;
@@ -112,7 +112,7 @@ package body XMI.Handlers is
    package Universal_String_Extent_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           CMOF.CMOF_Extent,
+           AMF_Extent,
            League.Strings.Hash,
            League.Strings."=",
            AMF.Internals."=");
@@ -246,7 +246,9 @@ package body XMI.Handlers is
             end if;
 
             Self.Current :=
-              CMOF.Extents.Object (Documents.Element (File_Name), Name);
+              Standard.CMOF.Extents.Object
+               (Documents.Element (File_Name), Name);
+            --  XXX Should be replaced by URIExtent:Element (name).
 
             if Self.Current = null then
                raise Program_Error;
@@ -584,7 +586,7 @@ package body XMI.Handlers is
    -- Root --
    ----------
 
-   function Root (Self : XMI_Handler) return CMOF.CMOF_Extent is
+   function Root (Self : XMI_Handler) return AMF_Extent is
    begin
       return Self.Extent;
    end Root;
@@ -606,7 +608,8 @@ package body XMI.Handlers is
     (Self    : in out XMI_Handler;
      Success : in out Boolean) is
    begin
-      Self.Extent := CMOF.Extents.Create_Extent;
+      Self.Extent := Standard.CMOF.Extents.Create_Extent;
+      --  XXX Should be replaced by call to Facility.
    end Start_Document;
 
    -------------------
@@ -716,4 +719,4 @@ package body XMI.Handlers is
       end if;
    end Start_Prefix_Mapping;
 
-end XMI.Handlers;
+end AMF.Internals.XMI_Handlers;

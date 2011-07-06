@@ -1,8 +1,8 @@
 
 all:
 	make -C ../..
-	gprbuild -p -Pcmof/cmof.gpr
-	gprbuild -p -Pxmi/xmi.gpr
+	gprbuild -p -Pamf/amf.gpr
+	gprbuild -p -Pxmi.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui.gpr
 	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=MOC
@@ -49,4 +49,4 @@ gen-uml:
 	gnatmake -p -Puml/uml.gpr
 
 clean:
-	rm -rf cmof/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
+	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
