@@ -52,9 +52,9 @@ with AMF.CMOF.Elements;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.Elements;
+with AMF.Facility;
 with AMF.Factories.Registry;
-with CMOF.Internals.Setup;
-with CMOF.Extents;
+with AMF.URI_Stores;
 with League.Strings;
 
 with Modeler.Main_Windows;
@@ -121,13 +121,18 @@ begin
    Qt4.Core_Applications.Set_Application_Name (+"Matreshka Modeler");
    Qt4.Core_Applications.Set_Application_Version (+"0.2.0");
 
+   --  Initialize Facility
+
+   AMF.Facility.Initialize;
+
    Window := Main_Windows.Constructors.Create;
    Window.Show;
 
    --  XXX
 
    declare
-      Extent  : constant CMOF.CMOF_Extent := CMOF.Extents.Create_Extent;
+      Extent  : constant AMF.URI_Stores.URI_Store_Access
+        := AMF.Facility.Create_URI_Store;
       Factory : constant AMF.Factories.AMF_Factory_Access
         := AMF.Factories.Registry.Resolve
             (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");

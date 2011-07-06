@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Helpers.CMOF_Helper;
-with CMOF.Internals.Factories;
 
 package CMOF.Internals.Setup is
 

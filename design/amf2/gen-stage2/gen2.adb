@@ -52,6 +52,7 @@ with Interfaces;
 
 with League.Strings;
 
+with AMF.Facility;
 with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
@@ -62,7 +63,6 @@ with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Typed_Elements;
 with CMOF.XMI_Helper;
-with CMOF.Internals.Setup;
 with XMI.Reader;
 
 with Generator.Analyzer;
@@ -97,7 +97,7 @@ procedure Gen2 is
 
    type CMOF_Element_Array is array (Positive range <>) of CMOF_Element;
 
-   Extent : constant CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   Extent : CMOF_Extent;
 
    All_Associations : CMOF_Element_Sets.Set;
    All_Classes      : CMOF_Element_Sets.Set;
@@ -590,9 +590,14 @@ procedure Gen2 is
       Put_Line ("end CMOF.Internals.Metamodel;");
    end Generate_Metamodel_Specification;
 
-   Elements : CMOF_Element_Sets.Set := CMOF.Extents.Elements (Extent);
+   Elements : CMOF_Element_Sets.Set;
 
 begin
+   AMF.Facility.Initialize;
+   Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+
+   Elements := CMOF.Extents.Elements (Extent);
+
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Model (Extent);
    Assign_Numbers (Extent);

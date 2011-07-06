@@ -64,6 +64,19 @@ package body AMF.Internals.Extents is
 --   use type AMF.Internals.AMF_Element;
    use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
 
+   ---------------------
+   -- Allocate_Extent --
+   ---------------------
+
+   function Allocate_Extent return AMF_Extent is
+   begin
+      AMF.Internals.Tables.AMF_Tables.Extents.Increment_Last;
+      AMF.Internals.Tables.AMF_Tables.Extents.Table
+       (AMF.Internals.Tables.AMF_Tables.Extents.Last) := (0, 0);
+
+      return AMF.Internals.Tables.AMF_Tables.Extents.Last;
+   end Allocate_Extent;
+
 --   ---------------
 --   -- Container --
 --   ---------------
@@ -192,19 +205,6 @@ package body AMF.Internals.Extents is
 --
 --      return Null_CMOF_Element;
 --   end Container;
---
---   -------------------
---   -- Create_Extent --
---   -------------------
---
---   function Create_Extent return CMOF_Extent is
---   begin
---      AMF.Internals.Tables.AMF_Tables.Extents.Increment_Last;
---      AMF.Internals.Tables.AMF_Tables.Extents.Table
---       (AMF.Internals.Tables.AMF_Tables.Extents.Last) := (0, 0);
---
---      return CMOF_Extent (AMF.Internals.Tables.AMF_Tables.Extents.Last);
---   end Create_Extent;
 --
 --   -------------
 --   -- Element --

@@ -46,12 +46,12 @@ with CMOF.Internals.Extents;
 
 package body CMOF.Extents is
 
-   -------------------
-   -- Create_Extent --
-   -------------------
-
-   function Create_Extent return CMOF_Extent
-     renames CMOF.Internals.Extents.Create_Extent;
+--   -------------------
+--   -- Create_Extent --
+--   -------------------
+--
+--   function Create_Extent return CMOF_Extent
+--     renames CMOF.Internals.Extents.Create_Extent;
 
    --------------
    -- Elements --

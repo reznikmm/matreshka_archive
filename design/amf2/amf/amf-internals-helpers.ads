@@ -45,6 +45,7 @@
 --  to convert identifiers to elements, establish links, etc.
 ------------------------------------------------------------------------------
 with AMF.Elements;
+with AMF.Extents;
 
 package AMF.Internals.Helpers is
 

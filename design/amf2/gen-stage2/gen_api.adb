@@ -55,7 +55,7 @@ with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
-with CMOF.Internals.Setup;
+with AMF.Facility;
 with CMOF.Extents;
 with CMOF.XMI_Helper;
 with League.Application;
@@ -933,12 +933,15 @@ procedure Gen_API is
       return Result;
    end Split_Text;
 
-   Extent   : constant CMOF.CMOF_Extent
-     := XMI.Reader (Ada.Command_Line.Argument (1));
-   Elements : AMF.Elements.Collections.Reflective_Collection
-     := CMOF.Extents.Elements (Extent);
+   Extent   : CMOF.CMOF_Extent;
+   Elements : AMF.Elements.Collections.Reflective_Collection;
 
 begin
+   AMF.Facility.Initialize;
+
+   Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   Elements := CMOF.Extents.Elements (Extent);
+
    for J in 1 .. Elements.Length loop
       if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then
          Generate_Class

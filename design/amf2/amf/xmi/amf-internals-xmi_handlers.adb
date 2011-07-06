@@ -56,8 +56,12 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
+with AMF.Extents;
+with AMF.Facility;
 with AMF.Factories.Registry;
+with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.Extents;
+with AMF.Internals.Helpers;
 with CMOF.Extents;
 
 package body AMF.Internals.XMI_Handlers is
@@ -588,7 +592,9 @@ package body AMF.Internals.XMI_Handlers is
 
    function Root (Self : XMI_Handler) return AMF_Extent is
    begin
-      return Self.Extent;
+      return
+        AMF.Internals.AMF_URI_Stores.AMF_URI_Store'Class
+         (Self.Extent.all).Extent;
    end Root;
 
 --   overriding procedure Set_Document_Locator
@@ -608,8 +614,7 @@ package body AMF.Internals.XMI_Handlers is
     (Self    : in out XMI_Handler;
      Success : in out Boolean) is
    begin
-      Self.Extent := Standard.CMOF.Extents.Create_Extent;
-      --  XXX Should be replaced by call to Facility.
+      Self.Extent := AMF.Facility.Create_URI_Store;
    end Start_Document;
 
    -------------------

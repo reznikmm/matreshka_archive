@@ -41,50 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-
-with Qt_Ada.Application;
-with Qt4.Core_Applications;
-with Qt4.Strings;
-with Qt4.Tree_Views.Constructors;
-
-with AMF.Facility;
+with AMF.Internals.Extents;
+with AMF.Internals.AMF_URI_Stores;
+with AMF.Internals.Helpers.CMOF_Helper;
+pragma Unreferenced (AMF.Internals.Helpers.CMOF_Helper);
+with CMOF.Internals.Factories;
+pragma Unreferenced (CMOF.Internals.Factories);
 with CMOF.Internals.Setup;
-with XMI.Reader;
+pragma Unreferenced (CMOF.Internals.Setup);
 
-with CMOF_Tree_Models;
-with Main_Windows;
+package body AMF.Facility is
 
-procedure Main is
-   function "+" (Item : String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Utf_8;
+   ----------------------
+   -- Create_URI_Store --
+   ----------------------
 
-   Window : Main_Windows.Main_Window_Access;
-   Model  : CMOF_Tree_Models.CMOF_Tree_Model_Access;
-   View   : Qt4.Tree_Views.Q_Tree_View_Access;
-   Root   : CMOF.CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   function Create_URI_Store return AMF.URI_Stores.URI_Store_Access is
+      Aux : constant AMF.Internals.AMF_URI_Stores.AMF_URI_Store_Access
+        := new AMF.Internals.AMF_URI_Stores.AMF_URI_Store'
+                (Extent => AMF.Internals.Extents.Allocate_Extent);
 
-begin
-   Qt_Ada.Application.Initialize;
-   Qt4.Core_Applications.Set_Organization_Name (+"Vadim Godunko");
-   Qt4.Core_Applications.Set_Organization_Domain (+"qtada.com");
-   Qt4.Core_Applications.Set_Application_Name (+"Matreshka Model Viewer");
-   Qt4.Core_Applications.Set_Application_Version (+"0.0.6");
+   begin
+      return AMF.URI_Stores.URI_Store_Access (Aux);
+   end Create_URI_Store;
 
-   --  Initialize Facility
+   ----------------
+   -- Initialize --
+   ----------------
 
-   AMF.Facility.Initialize;
+   procedure Initialize is
+   begin
+      null;
+   end Initialize;
 
-   Model := CMOF_Tree_Models.Constructors.Create;
-   Model.Set_Extent (Root);
-
-   View := Qt4.Tree_Views.Constructors.Create;
-   View.Set_Model (Model);
-
-   Window := Main_Windows.Constructors.Create;
-   Window.Set_Central_Widget (View);
-   Window.Show;
-
-   Qt_Ada.Application.Execute;
-   Qt_Ada.Application.Finalize;
-end Main;
+end AMF.Facility;

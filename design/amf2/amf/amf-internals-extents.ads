@@ -45,6 +45,9 @@ with AMF.Elements;
 
 package AMF.Internals.Extents is
 
+   function Allocate_Extent return AMF_Extent;
+   --  Allocates new empty extent.
+
    procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element);
    --  Adds specified element to the set of elements contained in the specified
    --  extent.

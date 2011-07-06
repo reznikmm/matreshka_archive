@@ -191,19 +191,6 @@ package body CMOF.Internals.Extents is
       return Null_CMOF_Element;
    end Container;
 
-   -------------------
-   -- Create_Extent --
-   -------------------
-
-   function Create_Extent return CMOF_Extent is
-   begin
-      AMF.Internals.Tables.AMF_Tables.Extents.Increment_Last;
-      AMF.Internals.Tables.AMF_Tables.Extents.Table
-       (AMF.Internals.Tables.AMF_Tables.Extents.Last) := (0, 0);
-
-      return CMOF_Extent (AMF.Internals.Tables.AMF_Tables.Extents.Last);
-   end Create_Extent;
-
    -------------
    -- Element --
    -------------

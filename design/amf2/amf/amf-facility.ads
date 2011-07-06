@@ -41,50 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
+with AMF.URI_Stores;
 
-with Qt_Ada.Application;
-with Qt4.Core_Applications;
-with Qt4.Strings;
-with Qt4.Tree_Views.Constructors;
+package AMF.Facility is
 
-with AMF.Facility;
-with CMOF.Internals.Setup;
-with XMI.Reader;
+   procedure Initialize;
+   --  Initialize facility.
 
-with CMOF_Tree_Models;
-with Main_Windows;
+   function Create_URI_Store return AMF.URI_Stores.URI_Store_Access;
+   --  Creates empty URIStore.
 
-procedure Main is
-   function "+" (Item : String) return Qt4.Strings.Q_String
-     renames Qt4.Strings.From_Utf_8;
-
-   Window : Main_Windows.Main_Window_Access;
-   Model  : CMOF_Tree_Models.CMOF_Tree_Model_Access;
-   View   : Qt4.Tree_Views.Q_Tree_View_Access;
-   Root   : CMOF.CMOF_Extent := XMI.Reader (Ada.Command_Line.Argument (1));
-
-begin
-   Qt_Ada.Application.Initialize;
-   Qt4.Core_Applications.Set_Organization_Name (+"Vadim Godunko");
-   Qt4.Core_Applications.Set_Organization_Domain (+"qtada.com");
-   Qt4.Core_Applications.Set_Application_Name (+"Matreshka Model Viewer");
-   Qt4.Core_Applications.Set_Application_Version (+"0.0.6");
-
-   --  Initialize Facility
-
-   AMF.Facility.Initialize;
-
-   Model := CMOF_Tree_Models.Constructors.Create;
-   Model.Set_Extent (Root);
-
-   View := Qt4.Tree_Views.Constructors.Create;
-   View.Set_Model (Model);
-
-   Window := Main_Windows.Constructors.Create;
-   Window.Set_Central_Widget (View);
-   Window.Show;
-
-   Qt_Ada.Application.Execute;
-   Qt_Ada.Application.Finalize;
-end Main;
+end AMF.Facility;

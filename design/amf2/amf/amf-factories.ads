@@ -49,7 +49,7 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
 with AMF.Elements;
-with CMOF;
+with AMF.Extents;
 
 package AMF.Factories is
 
@@ -61,7 +61,7 @@ package AMF.Factories is
 
    not overriding function Create
     (Self       : not null access AMF_Factory;
-     Extent     : Standard.CMOF.CMOF_Extent;
+     Extent     : not null access AMF.Extents.Extent'Class;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access is abstract;
    --  Creates an element that is an instance of the metaClass.

@@ -44,14 +44,16 @@
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
 
-private with AMF.CMOF.Properties;
-private with AMF.Elements;
-private with AMF.Factories;
 private with League.Strings.Hash;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Error_Handlers;
 private with XML.SAX.Parse_Exceptions;
+
+private with AMF.CMOF.Properties;
+private with AMF.Elements;
+private with AMF.Factories;
+private with AMF.URI_Stores;
 
 package AMF.Internals.XMI_Handlers is
 
@@ -87,7 +89,7 @@ private
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with record
-      Extent           : AMF_Extent;
+      Extent           : AMF.URI_Stores.URI_Store_Access;
       Factory          : AMF.Factories.AMF_Factory_Access;
       Current          : AMF.Elements.Element_Access;
       Stack            : Element_Vectors.Vector;

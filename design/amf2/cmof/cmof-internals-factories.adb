@@ -47,6 +47,7 @@ with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
+with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Extents;
@@ -89,7 +90,7 @@ package body CMOF.Internals.Factories is
 
    overriding function Create
     (Self       : not null access CMOF_Factory;
-     Extent     : CMOF.CMOF_Extent;
+     Extent     : not null access AMF.Extents.Extent'Class;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
@@ -161,7 +162,9 @@ package body CMOF.Internals.Factories is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      AMF.Internals.Extents.Internal_Append (Extent, Element);
+      AMF.Internals.Extents.Internal_Append
+       (AMF.Internals.AMF_URI_Stores.AMF_URI_Store'Class (Extent.all).Extent,
+        Element);
 
       AMF.Internals.Listener_Registry.Notify_Instance_Create
        (AMF.Internals.Helpers.To_Element (Element));
