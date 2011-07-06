@@ -49,19 +49,17 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
 with AMF.Elements;
-with AMF.Extents;
 
 package AMF.Factories is
 
    pragma Preelaborate;
 
-   type AMF_Factory is limited interface;
+   type Factory is limited interface;
 
-   type AMF_Factory_Access is access all AMF_Factory'Class;
+   type Factory_Access is access all Factory'Class;
 
    not overriding function Create
-    (Self       : not null access AMF_Factory;
-     Extent     : not null access AMF.Extents.Extent'Class;
+    (Self       : not null access Factory;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access is abstract;
    --  Creates an element that is an instance of the metaClass.
@@ -116,7 +114,7 @@ package AMF.Factories is
    --  instantiated.
 
    not overriding procedure Create_Link
-    (Self           : not null access AMF_Factory;
+    (Self           : not null access Factory;
      Association    :
        not null access AMF.CMOF.Associations.CMOF_Association'Class;
      First_Element  : not null AMF.Elements.Element_Access;
@@ -127,7 +125,7 @@ package AMF.Factories is
    --  conform to its type. And correspondingly for the secondElement.
 
    not overriding function Create_From_String
-    (Self      : not null access AMF_Factory;
+    (Self      : not null access Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String)
        return League.Holders.Holder is abstract;
@@ -143,7 +141,7 @@ package AMF.Factories is
    --  package returned by getPackage().
 
    not overriding function Convert_To_String
-    (Self      : not null access AMF_Factory;
+    (Self      : not null access Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder)
        return League.Strings.Universal_String is abstract;
@@ -156,7 +154,7 @@ package AMF.Factories is
    --  instance of that datatype.
 
    not overriding function Get_Package
-    (Self : not null access constant AMF_Factory)
+    (Self : not null access constant Factory)
        return not null AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  Returns the package this is a factory for.
 

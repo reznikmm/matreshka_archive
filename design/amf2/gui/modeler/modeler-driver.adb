@@ -48,12 +48,9 @@ with Qt4.Core_Applications;
 with Qt4.Strings;
 
 with AMF.CMOF.Classes;
-with AMF.CMOF.Elements;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
-with AMF.Elements;
 with AMF.Facility;
-with AMF.Factories.Registry;
 with AMF.URI_Stores;
 with League.Strings;
 
@@ -133,23 +130,25 @@ begin
    declare
       Extent  : constant AMF.URI_Stores.URI_Store_Access
         := AMF.Facility.Create_URI_Store;
-      Factory : constant AMF.Factories.AMF_Factory_Access
-        := AMF.Factories.Registry.Resolve
-            (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
+--      Factory : constant AMF.Factories.AMF_Factory_Access
+--        := AMF.Factories.Registry.Resolve
+--            (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
       Pack    : AMF.CMOF.Packages.CMOF_Package_Access
         := AMF.CMOF.Packages.CMOF_Package_Access
-            (Factory.Create
-              (Extent,
-               Resolve_Owned_Class (Factory.Get_Package, +"Package")));
+            (Extent.Create
+--            (Factory.Create
+--              (Extent,
+              (Resolve_Owned_Class (Extent.Get_Package, +"Package")));
       Packed  :
         AMF.CMOF.Packageable_Elements.Collections.
           Set_Of_CMOF_Packageable_Element
             := Pack.Get_Packaged_Element;
       Class   : AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.CMOF.Classes.CMOF_Class_Access
-            (Factory.Create
-              (Extent,
-               Resolve_Owned_Class (Factory.Get_Package, +"Class")));
+            (Extent.Create
+--            (Factory.Create
+--              (Extent,
+              (Resolve_Owned_Class (Extent.Get_Package, +"Class")));
 
    begin
       Pack.Set_Name ((False, +"Package one"));

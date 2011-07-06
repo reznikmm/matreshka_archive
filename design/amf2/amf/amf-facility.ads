@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Packages;
 with AMF.URI_Stores;
 
 package AMF.Facility is
@@ -50,5 +51,10 @@ package AMF.Facility is
 
    function Create_URI_Store return AMF.URI_Stores.URI_Store_Access;
    --  Creates empty URIStore.
+
+   function Resolve_Metamodel_URI
+    (Metamodel_URI : League.Strings.Universal_String)
+       return AMF.CMOF.Packages.CMOF_Package_Access;
+   --  Resolves metamodel URI to root its root package.
 
 end AMF.Facility;

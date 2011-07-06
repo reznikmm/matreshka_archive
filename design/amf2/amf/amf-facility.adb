@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Extents;
 with AMF.Internals.AMF_URI_Stores;
+with CMOF.Internals.Metamodel;
+
 with AMF.Internals.Helpers.CMOF_Helper;
 pragma Unreferenced (AMF.Internals.Helpers.CMOF_Helper);
 with CMOF.Internals.Factories;
@@ -73,5 +75,19 @@ package body AMF.Facility is
    begin
       null;
    end Initialize;
+
+   ---------------------------
+   -- Resolve_Metamodel_URI --
+   ---------------------------
+
+   function Resolve_Metamodel_URI
+    (Metamodel_URI : League.Strings.Universal_String)
+       return AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element
+           (Standard.CMOF.Internals.Metamodel.MM_CMOF));
+   end Resolve_Metamodel_URI;
 
 end AMF.Facility;

@@ -48,10 +48,10 @@ package AMF.Factories.Registry is
 
    procedure Register
     (URI     : League.Strings.Universal_String;
-     Factory : not null AMF_Factory_Access);
+     Factory : not null Factory_Access);
 
    function Resolve
     (URI : League.Strings.Universal_String)
-       return not null AMF_Factory_Access;
+       return not null Factory_Access;
 
 end AMF.Factories.Registry;

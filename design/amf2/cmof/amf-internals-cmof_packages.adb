@@ -64,6 +64,17 @@ package body AMF.Internals.CMOF_Packages is
            (Internal_Get_Packaged_Element (Self.Id)));
    end Get_Packaged_Element;
 
+   -------------
+   -- Get_Uri --
+   -------------
+
+   overriding function Get_Uri
+    (Self : not null access constant CMOF_Package_Proxy)
+       return Optional_String is
+   begin
+      return Internal_Get_Uri (Self.Id);
+   end Get_Uri;
+
    -----------------------
    -- Get_Owned_Element --
    -----------------------
@@ -486,21 +497,6 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return Get_Package_Merge (Self);
    end Get_Package_Merge;
-
-   -------------
-   -- Get_Uri --
-   -------------
-
-   overriding function Get_Uri
-     (Self : not null access constant CMOF_Package_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Uri unimplemented");
-      raise Program_Error;
-      return Get_Uri (Self);
-   end Get_Uri;
 
    -------------
    -- Set_Uri --

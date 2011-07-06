@@ -80,8 +80,7 @@ package body CMOF.Extents is
    -- Factory --
    -------------
 
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access is
+   function Factory (Self : CMOF_Extent) return AMF.Factories.Factory_Access is
    begin
       return
         AMF.Factories.Registry.Resolve

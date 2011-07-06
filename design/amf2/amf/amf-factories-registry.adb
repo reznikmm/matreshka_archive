@@ -48,12 +48,12 @@ with Ada.Containers.Hashed_Maps;
 package body AMF.Factories.Registry is
 
    function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.hash_Type;
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type;
 
    package Factory_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           AMF_Factory_Access,
+           Factory_Access,
            Hash,
            League.Strings."=");
 
@@ -64,7 +64,7 @@ package body AMF.Factories.Registry is
    ----------
 
    function Hash
-    (Item : League.Strings.Universal_String) return Ada.Containers.hash_Type is
+    (Item : League.Strings.Universal_String) return Ada.Containers.Hash_Type is
    begin
       return Ada.Containers.Hash_Type (Item.Hash);
    end Hash;
@@ -75,7 +75,7 @@ package body AMF.Factories.Registry is
 
    procedure Register
     (URI     : League.Strings.Universal_String;
-     Factory : not null AMF_Factory_Access) is
+     Factory : not null Factory_Access) is
    begin
       Map.Insert (URI, Factory);
    end Register;
@@ -86,7 +86,7 @@ package body AMF.Factories.Registry is
 
    function Resolve
     (URI : League.Strings.Universal_String)
-       return not null AMF_Factory_Access is
+       return not null Factory_Access is
    begin
       return Map.Element (URI);
    end Resolve;

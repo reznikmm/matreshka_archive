@@ -51,12 +51,11 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
 with AMF.Elements;
-with AMF.Extents;
 with AMF.Factories;
 
 package CMOF.Internals.Factories is
 
-   type CMOF_Factory is limited new AMF.Factories.AMF_Factory with null record;
+   type CMOF_Factory is limited new AMF.Factories.Factory with null record;
 
    ------------------------------
    -- AMF_Factory's operations --
@@ -64,7 +63,6 @@ package CMOF.Internals.Factories is
 
    overriding function Create
     (Self       : not null access CMOF_Factory;
-     Extent     : not null access AMF.Extents.Extent'Class;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access;
 

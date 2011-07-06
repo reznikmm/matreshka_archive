@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 with CMOF.Internals.Attributes;
 
 package body AMF.Internals.CMOF_Classes is
@@ -75,6 +76,19 @@ package body AMF.Internals.CMOF_Classes is
          (AMF.Internals.Element_Collections.Wrap
            (Internal_Get_Owned_Operation (Self.Id)));
    end Get_Owned_Operation;
+
+   -----------------
+   -- Get_Package --
+   -----------------
+
+   overriding function Get_Package
+    (Self : not null access constant CMOF_Class_Proxy)
+       return AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Package (Self.Id)));
+   end Get_Package;
 
    ---------------------
    -- Get_Super_Class --
@@ -271,21 +285,6 @@ package body AMF.Internals.CMOF_Classes is
       raise Program_Error;
       return Qualified_Name (Self);
    end Qualified_Name;
-
-   -----------------
-   -- Get_Package --
-   -----------------
-
-   overriding function Get_Package
-     (Self : not null access constant CMOF_Class_Proxy)
-      return AMF.CMOF.Packages.CMOF_Package_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package unimplemented");
-      raise Program_Error;
-      return Get_Package (Self);
-   end Get_Package;
 
    -----------------
    -- Set_Package --

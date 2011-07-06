@@ -70,8 +70,7 @@ package CMOF.Extents is
      Identifier : League.Strings.Universal_String)
        return AMF.Elements.Element_Access;
 
-   function Factory
-    (Self : CMOF_Extent) return AMF.Factories.AMF_Factory_Access;
+   function Factory (Self : CMOF_Extent) return AMF.Factories.Factory_Access;
    --  CMOF::Store class will be provided in the future, and it will implement
    --  CMOF::Extent and CMOF::Factory. But for now, this subprogram is
    --  provided to return factory.

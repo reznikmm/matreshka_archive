@@ -168,7 +168,7 @@ package body AMF.Internals.XMI_Handlers is
          if Attribute_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
             Self.Current.Set
              (Property,
-              Self.Factory.Create_From_String
+              Self.Extent.Create_From_String
                (AMF.CMOF.Data_Types.CMOF_Data_Type_Access (Attribute_Type),
                 Value));
 
@@ -262,7 +262,7 @@ package body AMF.Internals.XMI_Handlers is
       else
          --  Create new element.
 
-         Self.Current := Self.Factory.Create (Self.Extent, Meta_Class);
+         Self.Current := Self.Extent.Create (Meta_Class);
          AMF.Internals.Extents.Associate_Id (Self.Current, Id);
          Self.Mapping.Insert (Id, Self.Current);
       end if;
@@ -397,7 +397,7 @@ package body AMF.Internals.XMI_Handlers is
                if not Self.Attribute.Is_Multivalued then
                   Self.Current.Set
                    (Self.Attribute,
-                    Self.Factory.Create_From_String
+                    Self.Extent.Create_From_String
                      (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
                        (Attribute_Type),
                       Self.Text));
@@ -460,10 +460,10 @@ package body AMF.Internals.XMI_Handlers is
          --  even when order of ends is reversed.
 
          if Association.Get_Member_End.Element (1) = Attribute then
-            Self.Factory.Create_Link (Association, One_Element, Other_Element);
+            Self.Extent.Create_Link (Association, One_Element, Other_Element);
 
          else
-            Self.Factory.Create_Link (Association, Other_Element, One_Element);
+            Self.Extent.Create_Link (Association, Other_Element, One_Element);
          end if;
 
       else
@@ -472,7 +472,7 @@ package body AMF.Internals.XMI_Handlers is
          --  duplicate links.
 
          if Association.Get_Member_End.Element (1) = Attribute then
-            Self.Factory.Create_Link (Association, One_Element, Other_Element);
+            Self.Extent.Create_Link (Association, One_Element, Other_Element);
          end if;
       end if;
    end Establish_Link;
@@ -668,7 +668,7 @@ package body AMF.Internals.XMI_Handlers is
                Name := Attributes.Value (XMI_Namespace, Type_Name);
                Meta :=
                  Resolve_Owned_Class
-                  (Self.Factory.Get_Package,
+                  (Self.Extent.Get_Package,
                    Name.Slice (Name.Index (':') + 1, Name.Length));
 
                if Meta = null then
@@ -697,7 +697,7 @@ package body AMF.Internals.XMI_Handlers is
          null;
 
       else
-         Meta := Resolve_Owned_Class (Self.Factory.Get_Package, Local_Name);
+         Meta := Resolve_Owned_Class (Self.Extent.Get_Package, Local_Name);
 
          if Meta = null then
             Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
@@ -719,9 +719,7 @@ package body AMF.Internals.XMI_Handlers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean) is
    begin
-      if Namespace_URI /= XMI_Namespace then
-         Self.Factory := AMF.Factories.Registry.Resolve (Namespace_URI);
-      end if;
+      null;
    end Start_Prefix_Mapping;
 
 end AMF.Internals.XMI_Handlers;

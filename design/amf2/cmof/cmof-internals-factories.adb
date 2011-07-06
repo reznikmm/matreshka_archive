@@ -43,23 +43,16 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Wide_Wide_Fixed;
 
+with League.Holders.Booleans;
+with League.Holders.Integers;
+
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Visibility_Kind_Holders;
 with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
-with AMF.Internals.AMF_URI_Stores;
-with AMF.Internals.CMOF_Elements;
-with AMF.Internals.Element_Collections;
-with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
-with AMF.Internals.Links;
-with AMF.Internals.Listener_Registry;
-with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Tables;
-with League.Holders.Booleans;
-with League.Holders.Integers;
 
 package body CMOF.Internals.Factories is
 
@@ -90,13 +83,12 @@ package body CMOF.Internals.Factories is
 
    overriding function Create
     (Self       : not null access CMOF_Factory;
-     Extent     : not null access AMF.Extents.Extent'Class;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
       MC      : constant CMOF.CMOF_Class
-        := AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-            (Meta_Class.all).Id;
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Meta_Class));
       Element : CMOF.CMOF_Element;
 
    begin
@@ -162,13 +154,6 @@ package body CMOF.Internals.Factories is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      AMF.Internals.Extents.Internal_Append
-       (AMF.Internals.AMF_URI_Stores.AMF_URI_Store'Class (Extent.all).Extent,
-        Element);
-
-      AMF.Internals.Listener_Registry.Notify_Instance_Create
-       (AMF.Internals.Helpers.To_Element (Element));
-
       return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
@@ -184,8 +169,8 @@ package body CMOF.Internals.Factories is
       use type League.Strings.Universal_String;
 
       DT : constant CMOF.CMOF_Data_Type
-        := AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-            (Data_Type.all).Id;
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Data_Type));
 
    begin
       if DT = MC_CMOF_Boolean then
@@ -276,24 +261,12 @@ package body CMOF.Internals.Factories is
      Association    :
        not null access AMF.CMOF.Associations.CMOF_Association'Class;
      First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access)
-   is
-      A          : CMOF.CMOF_Association
-        := AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-            (Association.all).Id;
-      Member_End : constant Ordered_Set_Of_CMOF_Property
-        := CMOF.Internals.Attributes.Internal_Get_Member_End (A);
-
+     Second_Element : not null AMF.Elements.Element_Access) is
    begin
-      --  XXX This subprogram is not CMOF specific and can be refactored to be
-      --  used with any metamodels.
+      --  XXX This subprogram must never be called, link establishment is
+      --  implemented at AMF layer.
 
-      AMF.Internals.Links.Internal_Create_Link
-       (A,
-        AMF.Internals.Helpers.To_Element (First_Element),
-        AMF.Internals.Element_Collections.Element (Member_End, 1),
-        AMF.Internals.Helpers.To_Element (Second_Element),
-        AMF.Internals.Element_Collections.Element (Member_End, 2));
+      raise Program_Error;
    end Create_Link;
 
    -----------------------
@@ -309,8 +282,8 @@ package body CMOF.Internals.Factories is
       use Ada.Strings.Wide_Wide_Fixed;
 
       DT : constant CMOF.CMOF_Data_Type
-        := AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-            (Data_Type.all).Id;
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Data_Type));
 
    begin
       if DT = MC_CMOF_Boolean then

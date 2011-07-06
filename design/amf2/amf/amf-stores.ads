@@ -42,12 +42,15 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Extents;
+with AMF.Factories;
 
 package AMF.Stores is
 
    pragma Preelaborate;
 
-   type Store is limited interface and AMF.Extents.Extent;
+   type Store is limited interface
+     and AMF.Extents.Extent
+     and AMF.Factories.Factory;
 
    type Store_Access is access all Store'Class;
    for Store_Access'Storage_Size use 0;
