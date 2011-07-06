@@ -111,15 +111,6 @@ package body CMOF.Extents is
 
    function Object
     (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element
-       renames CMOF.Internals.Extents.Object;
-
-   ------------
-   -- Object --
-   ------------
-
-   function Object
-    (Self       : CMOF_Extent;
      Identifier : League.Strings.Universal_String)
        return AMF.Elements.Element_Access
          renames CMOF.Internals.Extents.Object;

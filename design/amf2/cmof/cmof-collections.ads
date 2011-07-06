@@ -50,8 +50,4 @@ package CMOF.Collections is
    function Element
     (Self : Collection_Of_CMOF_Element; Index : Positive) return CMOF_Element;
 
-   function Element
-    (Self  : Collection_Of_CMOF_Element;
-     Index : Positive) return AMF.Elements.Element_Access;
-
 end CMOF.Collections;

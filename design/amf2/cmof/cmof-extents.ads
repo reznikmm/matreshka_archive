@@ -69,10 +69,6 @@ package CMOF.Extents is
 
    function Object
     (Self       : CMOF_Extent;
-     Identifier : League.Strings.Universal_String) return CMOF_Element;
-
-   function Object
-    (Self       : CMOF_Extent;
      Identifier : League.Strings.Universal_String)
        return AMF.Elements.Element_Access;
 

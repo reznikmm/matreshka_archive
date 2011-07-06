@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
-with AMF.Internals.Helpers;
 
 package body CMOF.Collections is
 
@@ -54,17 +53,6 @@ package body CMOF.Collections is
     (Self : Collection_Of_CMOF_Element; Index : Positive) return CMOF_Element is
    begin
       return AMF.Internals.Element_Collections.Element (Self, Index);
-   end Element;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : Collection_Of_CMOF_Element;
-     Index : Positive) return AMF.Elements.Element_Access is
-   begin
-      return AMF.Internals.Helpers.To_Element (Element (Self, Index));
    end Element;
 
    ------------

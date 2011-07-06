@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,18 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF;
 
 package CMOF.Multiplicity_Elements is
 
    function Get_Lower (Self : CMOF_Multiplicity_Element) return Integer;
-
-   function Get_Upper
-    (Self : CMOF_Multiplicity_Element) return AMF.Unlimited_Natural;
-
-   function Get_Is_Ordered (Self : CMOF_Property) return Boolean;
-
-   function Get_Is_Unique (Self : CMOF_Property) return Boolean;
 
    function Is_Multivalued
     (Self : CMOF_Multiplicity_Element) return Boolean;

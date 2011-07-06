@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,10 +53,5 @@ package CMOF.Reflection is
    function Get
     (Self     : CMOF_Element;
      Property : CMOF_Property) return League.Holders.Holder;
-
-   procedure Set
-    (Self     : CMOF_Element;
-     Property : CMOF_Property;
-     Value    : League.Holders.Holder);
 
 end CMOF.Reflection;

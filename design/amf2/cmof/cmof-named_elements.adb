@@ -55,15 +55,4 @@ package body CMOF.Named_Elements is
       return CMOF.Internals.Attributes.Internal_Get_Name (Self).Value;
    end Get_Name;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   procedure Set_Name
-    (Self : CMOF_Named_Element;
-     To   : League.Strings.Universal_String) is
-   begin
-      CMOF.Internals.Attributes.Internal_Set_Name (Self, (False, To));
-   end Set_Name;
-
 end CMOF.Named_Elements;

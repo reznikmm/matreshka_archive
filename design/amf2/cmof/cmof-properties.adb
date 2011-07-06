@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,34 +61,6 @@ package body CMOF.Properties is
    function Get_Class (Self : CMOF_Property) return CMOF_Class
      renames CMOF.Internals.Attributes.Internal_Get_Class;
 
-   ----------------------
-   -- Get_Is_Composite --
-   ----------------------
-
-   function Get_Is_Composite (Self : CMOF_Property) return Boolean
-     renames CMOF.Internals.Attributes.Internal_Get_Is_Composite;
-
-   --------------------
-   -- Get_Is_Derived --
-   --------------------
-
-   function Get_Is_Derived (Self : CMOF_Property) return Boolean
-     renames CMOF.Internals.Attributes.Internal_Get_Is_Derived;
-
-   --------------------------
-   -- Get_Is_Derived_Union --
-   --------------------------
-
-   function Get_Is_Derived_Union (Self : CMOF_Property) return Boolean
-     renames CMOF.Internals.Attributes.Internal_Get_Is_Derived_Union;
-
-   ----------------------
-   -- Get_Is_Read_Only --
-   ----------------------
-
-   function Get_Is_Read_Only (Self : CMOF_Property) return Boolean
-     renames CMOF.Internals.Attributes.Internal_Get_Is_Read_Only;
-
    ----------------------------
    -- Get_Owning_Association --
    ----------------------------
@@ -104,13 +76,5 @@ package body CMOF.Properties is
    function Get_Redefined_Property
     (Self : CMOF_Property) return Set_Of_CMOF_Property
        renames CMOF.Internals.Attributes.Internal_Get_Redefined_Property;
-
-   ----------------------------
-   -- Get_Subsetted_Property --
-   ----------------------------
-
-   function Get_Subsetted_Property
-    (Self : CMOF_Property) return Set_Of_CMOF_Property
-       renames CMOF.Internals.Attributes.Internal_Get_Subsetted_Property;
 
 end CMOF.Properties;

@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Internals.Helpers;
-with CMOF.Reflection;
+with CMOF.Internals.Reflection;
 
 package body AMF.Internals.CMOF_Tags is
 
@@ -67,7 +67,7 @@ package body AMF.Internals.CMOF_Tags is
        return League.Holders.Holder is
    begin
       return
-        Standard.CMOF.Reflection.Get
+        Standard.CMOF.Internals.Reflection.Get
          (Self.Id,
           AMF.Internals.Helpers.To_Element
            (AMF.Elements.Element_Access (Property)));
@@ -99,7 +99,7 @@ package body AMF.Internals.CMOF_Tags is
       return
         AMF.CMOF.Classes.CMOF_Class_Access
          (AMF.Internals.Helpers.To_Element
-           (Standard.CMOF.Reflection.Get_Meta_Class (Self.Id)));
+           (Standard.CMOF.Internals.Reflection.Get_Meta_Class (Self.Id)));
    end Get_Meta_Class;
 
    --------------
@@ -141,7 +141,7 @@ package body AMF.Internals.CMOF_Tags is
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Value    : League.Holders.Holder) is
    begin
-      Standard.CMOF.Reflection.Set
+      Standard.CMOF.Internals.Reflection.Set
        (Self.Id,
         AMF.Internals.Helpers.To_Element
          (AMF.Elements.Element_Access (Property)),
