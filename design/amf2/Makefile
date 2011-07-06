@@ -3,16 +3,18 @@ all:
 	make -C ../..
 	gprbuild -p -Pcmof/cmof.gpr
 	gprbuild -p -Pxmi/xmi.gpr
-#	gprbuild -p -Puml/uml.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui.gpr
 	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=MOC
 	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=APP
 #	gprbuild -p -Pgen-stage1/generator.gpr
 	gprbuild -p -Pgen-stage2/gens.gpr
-#	time ./demo-reader data/cmof.xml
-#	./demo-viewer data/cmof.xml
+#	time ./demo-reader data/cmof.cmof
+#	./demo-viewer data/cmof.cmof
 #	(cd data/2.4 && ../../demo-viewer UML.cmof)
+
+uml-all:
+	gprbuild -p -Puml/uml.gpr
 
 #gen:
 #	gprbuild -p -Pgen-stage1/generator.gpr
@@ -23,17 +25,17 @@ all:
 
 gen2:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen2 data/cmof.xml > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen2 data/cmof.cmof > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen2 data/cmof.xml > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen2 data/cmof.cmof > cmof/generated/sources.ada
 	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 
 gen2-api:
 	gprbuild -j2 -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen_api data/cmof.xml CMOF > cmof/generated/sources.ada
+	./gen-stage2/.obj/gen_api data/cmof.cmof CMOF > cmof/generated/sources.ada
 	gnatchop -gnat12 -w cmof/generated/sources.ada cmof/generated
 	rm cmof/generated/sources.ada
 
