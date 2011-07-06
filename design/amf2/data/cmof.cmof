@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This is merged by hand model to bootstrap CMOF library. It is based on LM.cmof model, and adds:
+<!-- This is merged by hand model to bootstrap CMOF library. It is based on
+     LM.cmof model, and adds:
        - Package::uri
+       - Tag (note, Tag:owner is not supported now; Tag is not inherited from
+         Element)
+       - Type:isInstance not supported
 -->
-<!-- XXX MOF extensions (one of most important is MOF::Tag) should be added later. -->
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:id="_0" name="CMOF" uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
     <packagedElement xmi:type="cmof:PrimitiveType" xmi:id="Integer" name="Integer">
@@ -1869,7 +1872,7 @@
     </packagedElement>
     <packagedElement xmi:type="cmof:Association" xmi:id="A_ownedRule_context" name="A_ownedRule_context" memberEnd="Namespace-ownedRule Constraint-context"/>
     <packagedElement xmi:type="cmof:Class" xmi:id="Tag" name="Tag">
-      <!--  XXX CMOF 2.4: Tag doesn't inherited from Element now.
+      <!--  XXX CMOF 2.4: Tag is not inherited from Element now.
       <generalization xmi:type="uml:Generalization" xmi:id="_MOF-Extension-Tag-Generalization.0">
         <general xmi:idref="_MOF-Reflection-Element"/>
       </generalization>
