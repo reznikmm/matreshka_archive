@@ -47,6 +47,7 @@ with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Ordered_Sets;
 
 with AMF.CMOF.Classes;
+with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Properties;
 with AMF.Internals;
 with CMOF;
@@ -67,7 +68,10 @@ package Generator is
 
    package CMOF_Element_Number_Maps is
      new Ada.Containers.Hashed_Maps
-          (CMOF.CMOF_Element, Positive, Hash, AMF.Internals."=");
+          (AMF.CMOF.Elements.CMOF_Element_Access,
+           Positive,
+           AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=");
 
    package CMOF_Element_Sets is
      new Ada.Containers.Hashed_Sets

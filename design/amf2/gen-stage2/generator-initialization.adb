@@ -45,6 +45,8 @@ with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Associations;
+with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Data_Types;
 with AMF.CMOF.Elements;
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Properties.Collections;
@@ -56,14 +58,6 @@ with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Helpers;
-with CMOF.Classes;
-with CMOF.Collections;
-with CMOF.Multiplicity_Elements;
-with CMOF.Named_Elements;
-with CMOF.Properties;
-with CMOF.Reflection;
-with CMOF.Typed_Elements;
-with CMOF.XMI_Helper;
 with League.Holders.Booleans;
 with League.Holders.Integers;
 with League.Strings;
@@ -75,47 +69,50 @@ package body Generator.Initialization is
 
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
-   use CMOF.Classes;
-   use CMOF.Collections;
-   use CMOF.Multiplicity_Elements;
-   use CMOF.Named_Elements;
-   use CMOF.Properties;
-   use CMOF.Reflection;
-   use CMOF.Typed_Elements;
-   use CMOF.XMI_Helper;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
+   use type AMF.Optional_Integer;
+   use type AMF.Optional_String;
    use type League.Strings.Universal_String;
 
    procedure Generate_Metaclass_Initialization
-    (Element : CMOF_Element;
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access;
      Numbers : CMOF_Element_Number_Maps.Map);
    --  Generate initialization of metaclass element.
 
    procedure Generate_Properties_Initialization
-    (Element : CMOF_Element;
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access;
      Numbers : CMOF_Element_Number_Maps.Map);
    --  Generate initialization of metaclass's properties.
 
    procedure Generate_Link_Initialization
-    (Element : CMOF_Element;
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access;
      Numbers : CMOF_Element_Number_Maps.Map);
    --  Generate initialization of links.
 
-   function Has_Parameter_Direction_Kind_Type
-    (Property : CMOF_Property) return Boolean;
+   function Is_Parameter_Direction_Kind_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
 
-   function Has_Boolean_Type (Property : CMOF_Property) return Boolean;
+   function Is_Boolean_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
 
-   function Has_Integer_Type (Property : CMOF_Property) return Boolean;
+   function Is_Integer_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
 
-   function Has_Unlimited_Natural_Type
-    (Property : CMOF_Property) return Boolean;
+   function Is_Unlimited_Natural_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
 
-   function Has_String_Type (Property : CMOF_Property) return Boolean;
+   function Is_String_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
 
    function Class_Properties_Except_Redefined
-    (Self : CMOF_Class) return CMOF_Element_Sets.Set;
+    (Self : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return CMOF_Element_Sets.Set;
    --  Returns all properties of the specified class (including properties of
    --  superclasses, but except redefined properties).
 
@@ -124,45 +121,56 @@ package body Generator.Initialization is
    ---------------------------------------
 
    function Class_Properties_Except_Redefined
-    (Self : CMOF_Class) return CMOF_Element_Sets.Set
+    (Self : not null AMF.CMOF.Classes.CMOF_Class_Access)
+       return CMOF_Element_Sets.Set
    is
       Result        : CMOF_Element_Sets.Set;
       All_Redefined : CMOF_Element_Sets.Set;
 
-      procedure Process_Class (Class : CMOF_Class);
+      procedure Process_Class (Class : AMF.CMOF.Classes.CMOF_Class_Access);
 
       -------------------
       -- Process_Class --
       -------------------
 
-      procedure Process_Class (Class : CMOF_Class) is
-         Owned_Attribute : constant Ordered_Set_Of_CMOF_Property
-           := Get_Owned_Attribute (Class);
-         Super_Class     : constant Set_Of_CMOF_Class
-           := Get_Super_Class (Class);
+      procedure Process_Class (Class : AMF.CMOF.Classes.CMOF_Class_Access) is
+         Owned_Attribute : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Class.Get_Owned_Attribute;
+         Super_Class     : constant
+           AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+             := Class.Get_Super_Class;
 
       begin
          --  Analyze owned properties.
 
-         for J in 1 .. Length (Owned_Attribute) loop
+         for J in 1 .. Owned_Attribute.Length loop
             declare
-               Attribute          : constant CMOF_Property
-                 := Element (Owned_Attribute, J);
-               Redefined_Property : constant Set_Of_CMOF_Property
-                 := Get_Redefined_Property (Attribute);
+               Attribute          : constant
+                 AMF.CMOF.Properties.CMOF_Property_Access
+                   := Owned_Attribute.Element (J);
+               Redefined_Property : constant
+                 AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+                   := Attribute.Get_Redefined_Property;
 
             begin
                --  Add all redefined properties into the set of redefined
                --  properties.
 
-               for J in 1 .. Length (Redefined_Property) loop
+               for J in 1 .. Redefined_Property.Length loop
                   declare
-                     Redefined : constant CMOF_Property
-                       := Element (Redefined_Property, J);
+                     Redefined : constant
+                       AMF.CMOF.Properties.CMOF_Property_Access
+                         := Redefined_Property.Element (J);
 
                   begin
-                     if not All_Redefined.Contains (Redefined) then
-                        All_Redefined.Insert (Redefined);
+                     if not All_Redefined.Contains
+                             (AMF.Internals.Helpers.To_Element
+                               (AMF.Elements.Element_Access (Redefined)))
+                     then
+                        All_Redefined.Insert
+                         (AMF.Internals.Helpers.To_Element
+                           (AMF.Elements.Element_Access (Redefined)));
                      end if;
                   end;
                end loop;
@@ -170,18 +178,24 @@ package body Generator.Initialization is
                --  Add attribute into the result when it is not redefined and
                --  not in the result set already.
 
-               if not All_Redefined.Contains (Attribute)
-                 and not Result.Contains (Attribute)
+               if not All_Redefined.Contains
+                       (AMF.Internals.Helpers.To_Element 
+                         (AMF.Elements.Element_Access (Attribute)))
+                 and not Result.Contains
+                          (AMF.Internals.Helpers.To_Element
+                            (AMF.Elements.Element_Access (Attribute)))
                then
-                  Result.Insert (Attribute);
+                  Result.Insert
+                   (AMF.Internals.Helpers.To_Element
+                     (AMF.Elements.Element_Access (Attribute)));
                end if;
             end;
          end loop;
 
          --  Analyze superclasses
 
-         for J in 1 .. Length (Super_Class) loop
-            Process_Class (Element (Super_Class, J));
+         for J in 1 .. Super_Class.Length loop
+            Process_Class (Super_Class.Element (J));
          end loop;
       end Process_Class;
 
@@ -196,10 +210,11 @@ package body Generator.Initialization is
    ----------------------------------
 
    procedure Generate_Link_Initialization
-    (Element : CMOF_Element;
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access;
      Numbers : CMOF_Element_Number_Maps.Map)
    is
-      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
+      Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
+        := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
       procedure Generate_Attribute_Initialization
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
@@ -222,14 +237,14 @@ package body Generator.Initialization is
          Association   : constant AMF.CMOF.Associations.CMOF_Association_Access
            := Property.Get_Association;
          Value         : constant League.Holders.Holder
-           := AMF.Internals.Helpers.To_Element (Element).Get (Property);
+           := AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
 
          procedure Establish_Link
           (Association :
              not null AMF.CMOF.Associations.CMOF_Association_Access;
            Property    : not null AMF.CMOF.Properties.CMOF_Property_Access;
-           Element     : CMOF_Element;
-           Other       : CMOF_Element);
+           Element     : not null AMF.CMOF.Elements.CMOF_Element_Access;
+           Other       : not null AMF.CMOF.Elements.CMOF_Element_Access);
 
          --------------------
          -- Establish_Link --
@@ -239,8 +254,8 @@ package body Generator.Initialization is
           (Association :
              not null AMF.CMOF.Associations.CMOF_Association_Access;
            Property    : not null AMF.CMOF.Properties.CMOF_Property_Access;
-           Element     : CMOF_Element;
-           Other       : CMOF_Element)
+           Element     : not null AMF.CMOF.Elements.CMOF_Element_Access;
+           Other       : not null AMF.CMOF.Elements.CMOF_Element_Access)
          is
             use type AMF.CMOF.Properties.CMOF_Property_Access;
 
@@ -283,7 +298,7 @@ package body Generator.Initialization is
                    (Association,
                     Property,
                     Element,
-                    AMF.Internals.Helpers.To_Element
+                    AMF.CMOF.Elements.CMOF_Element_Access
                      (AMF.Holders.Collections.Element (Value).Element (J)));
                end loop;
 
@@ -293,7 +308,7 @@ package body Generator.Initialization is
                    (Association,
                     Property,
                     Element,
-                    AMF.Internals.Helpers.To_Element
+                    AMF.CMOF.Elements.CMOF_Element_Access
                      (AMF.Holders.Elements.Element (Value)));
                end if;
             end if;
@@ -311,15 +326,16 @@ package body Generator.Initialization is
    ---------------------------------------
 
    procedure Generate_Metaclass_Initialization
-    (Element : CMOF_Element;
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access;
      Numbers : CMOF_Element_Number_Maps.Map)
    is
-      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
+      Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
+        := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
    begin
       Put
        ("   Initialize_"
-          & To_Ada_Identifier (Get_Name (Meta_Class))
+          & To_Ada_Identifier (Meta_Class.Get_Name.Value)
           & " (");
       Put (Numbers.Element (Element), Width => 0);
       Put_Line (");");
@@ -370,19 +386,22 @@ package body Generator.Initialization is
 
       for J in 1 .. Elements.Length loop
          Generate_Metaclass_Initialization
-          (AMF.Internals.Helpers.To_Element (Elements.Element (J)), Numbers);
+          (AMF.CMOF.Elements.CMOF_Element_Access
+            (Elements.Element (J)), Numbers);
       end loop;
 
       for J in 1 .. Elements.Length loop
          Generate_Properties_Initialization
-           (AMF.Internals.Helpers.To_Element (Elements.Element (J)), Numbers);
+          (AMF.CMOF.Elements.CMOF_Element_Access
+            (Elements.Element (J)), Numbers);
       end loop;
 
       New_Line;
 
       for J in 1 .. Elements.Length loop
          Generate_Link_Initialization
-           (AMF.Internals.Helpers.To_Element (Elements.Element (J)), Numbers);
+          (AMF.CMOF.Elements.CMOF_Element_Access
+            (Elements.Element (J)), Numbers);
       end loop;
 
       New_Line;
@@ -394,13 +413,14 @@ package body Generator.Initialization is
    ----------------------------------------
 
    procedure Generate_Properties_Initialization
-    (Element : CMOF_Element;
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access;
      Numbers : CMOF_Element_Number_Maps.Map)
    is
       use AMF.Holders;
       use League.Holders;
 
-      Meta_Class : constant CMOF_Class := Get_Meta_Class (Element);
+      Meta_Class : constant AMF.CMOF.Classes.CMOF_Class_Access
+        := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
       procedure Generate_Attribute_Initialization
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor);
@@ -412,17 +432,23 @@ package body Generator.Initialization is
       procedure Generate_Attribute_Initialization
        (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
       is
-         Property    : constant CMOF_Property
-           := CMOF_Named_Element_Ordered_Sets.Element (Position);
-         Association : constant CMOF_Association := Get_Association (Property);
-         Value       : constant League.Holders.Holder
-           := Get (Element, Property);
+         Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
+           := AMF.CMOF.Properties.CMOF_Property_Access
+               (AMF.Internals.Helpers.To_Element
+                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+         Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Property.Get_Type;
+         Association   : constant AMF.CMOF.Associations.CMOF_Association_Access
+           := Property.Get_Association;
+         Value         : constant League.Holders.Holder
+           := AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
 
       begin
-         if Is_Data_Type (Get_Type (Property)) then
-            if Has_Boolean_Type (Property) then
+         if Property_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+            if Is_Boolean_Type (Property_Type) then
                Put
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
+                ("   Internal_Set_"
+                   & To_Ada_Identifier (Property.Get_Name.Value)
                    & " (");
                Put (Numbers.Element (Element), Width => 0);
                Put (", ");
@@ -436,11 +462,11 @@ package body Generator.Initialization is
 --               if Is_Optional (Property) then
 --               end if;
 
-            elsif Has_Integer_Type (Property) then
-               if Get_Lower (Property) = 0 then
+            elsif Is_Integer_Type (Property_Type) then
+               if Property.Get_Lower = 0 then
                   Put
                    ("   Internal_Set_"
-                      & To_Ada_Identifier (Get_Name (Property))
+                      & To_Ada_Identifier (Property.Get_Name.Value)
                       & " (");
                   Put (Numbers.Element (Element), Width => 0);
                   Put_Line
@@ -453,11 +479,11 @@ package body Generator.Initialization is
                   raise Program_Error;
                end if;
 
-            elsif Has_Unlimited_Natural_Type (Property) then
-               if Get_Lower (Property) = 0 then
+            elsif Is_Unlimited_Natural_Type (Property_Type) then
+               if Property.Get_Lower = 0 then
                   Put
                    ("   Internal_Set_"
-                      & To_Ada_Identifier (Get_Name (Property))
+                      & To_Ada_Identifier (Property.Get_Name.Value)
                       & " (");
                   Put (Numbers.Element (Element), Width => 0);
                   Put (", ");
@@ -480,18 +506,18 @@ package body Generator.Initialization is
                   raise Program_Error;
                end if;
 
-            elsif Has_String_Type (Property) then
-               if Is_Multivalued (Property) then
+            elsif Is_String_Type (Property_Type) then
+               if Property.Is_Multivalued then
                   Put_Line
                    (Standard_Error,
-                    Get_Name (Property).To_Wide_Wide_String
+                    Property.Get_Name.Value.To_Wide_Wide_String
                       & ": Multivalued string value");
 
-               elsif Get_Lower (Property) = 0 then
+               elsif Property.Get_Lower = 0 then
                   if not Is_Empty (Value) then
                      Put_Line
                       ("   Internal_Set_"
-                         & To_Ada_Identifier (Get_Name (Property)));
+                         & To_Ada_Identifier (Property.Get_Name.Value));
                      Put ("    (");
                      Put (Numbers.Element (Element), Width => 0);
                      Put_Line (",");
@@ -504,7 +530,7 @@ package body Generator.Initialization is
                else
                   Put_Line
                    ("   Internal_Set_"
-                      & To_Ada_Identifier (Get_Name (Property)));
+                      & To_Ada_Identifier (Property.Get_Name.Value));
                   Put ("    (");
                   Put (Numbers.Element (Element), Width => 0);
                   Put_Line (",");
@@ -514,9 +540,10 @@ package body Generator.Initialization is
                       & """)));");
                end if;
 
-            elsif Has_Parameter_Direction_Kind_Type (Property) then
+            elsif Is_Parameter_Direction_Kind_Type (Property_Type) then
                Put
-                ("   Internal_Set_" & To_Ada_Identifier (Get_Name (Property))
+                ("   Internal_Set_"
+                   & To_Ada_Identifier (Property.Get_Name.Value)
                    & " (");
                Put (Numbers.Element (Element), Width => 0);
                Put (", ");
@@ -551,61 +578,63 @@ package body Generator.Initialization is
          (Generate_Attribute_Initialization'Access);
    end Generate_Properties_Initialization;
 
-   ----------------------
-   -- Has_Boolean_Type --
-   ----------------------
+   ---------------------
+   -- Is_Boolean_Type --
+   ---------------------
 
-   function Has_Boolean_Type (Property : CMOF_Property) return Boolean is
+   function Is_Boolean_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean is
+   begin
+      return Element.Get_Name = League.Strings.To_Universal_String ("Boolean");
+   end Is_Boolean_Type;
+
+   ---------------------
+   -- Is_Integer_Type --
+   ---------------------
+
+   function Is_Integer_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean is
+   begin
+      return Element.Get_Name = League.Strings.To_Universal_String ("Integer");
+   end Is_Integer_Type;
+
+   --------------------------------------
+   -- Is_Parameter_Direction_Kind_Type --
+   --------------------------------------
+
+   function Is_Parameter_Direction_Kind_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean is
    begin
       return
-        Get_Name (Get_Type (Property))
-          = League.Strings.To_Universal_String ("Boolean");
-   end Has_Boolean_Type;
-
-   ----------------------
-   -- Has_Integer_Type --
-   ----------------------
-
-   function Has_Integer_Type (Property : CMOF_Property) return Boolean is
-   begin
-      return
-        Get_Name (Get_Type (Property))
-          = League.Strings.To_Universal_String ("Integer");
-   end Has_Integer_Type;
-
-   ---------------------------------------
-   -- Has_Parameter_Direction_Kind_Type --
-   ---------------------------------------
-
-   function Has_Parameter_Direction_Kind_Type
-    (Property : CMOF_Property) return Boolean is
-   begin
-      return
-        Get_Name (Get_Type (Property))
+        Element.Get_Name
           = League.Strings.To_Universal_String ("ParameterDirectionKind");
-   end Has_Parameter_Direction_Kind_Type;
+   end Is_Parameter_Direction_Kind_Type;
 
-   --------------------------------
-   -- Has_Unlimited_Natural_Type --
-   --------------------------------
+   -------------------------------
+   -- Is_Unlimited_Natural_Type --
+   -------------------------------
 
-   function Has_Unlimited_Natural_Type
-    (Property : CMOF_Property) return Boolean is
+   function Is_Unlimited_Natural_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean is
    begin
       return
-        Get_Name (Get_Type (Property))
+        Element.Get_Name
           = League.Strings.To_Universal_String ("UnlimitedNatural");
-   end Has_Unlimited_Natural_Type;
+   end Is_Unlimited_Natural_Type;
 
-   ---------------------
-   -- Has_String_Type --
-   ---------------------
+   --------------------
+   -- Is_String_Type --
+   --------------------
 
-   function Has_String_Type (Property : CMOF_Property) return Boolean is
+   function Is_String_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean is
    begin
-      return
-        Get_Name (Get_Type (Property))
-          = League.Strings.To_Universal_String ("String");
-   end Has_String_Type;
+      return Element.Get_Name = League.Strings.To_Universal_String ("String");
+   end Is_String_Type;
 
 end Generator.Initialization;

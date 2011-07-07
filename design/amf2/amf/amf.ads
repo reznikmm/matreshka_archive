@@ -176,6 +176,9 @@ package AMF is
       end case;
    end record;
 
+   function "=" (Left : Optional_Integer; Right : Integer) return Boolean;
+   function "=" (Left : Integer; Right : Optional_Integer) return Boolean;
+
    type Optional_Unlimited_Natural (Is_Empty : Boolean := True) is record
       case Is_Empty is
          when True =>

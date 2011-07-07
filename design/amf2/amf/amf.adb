@@ -307,6 +307,24 @@ package body AMF is
    end "=";
 
    ---------
+   -- "=" --
+   ---------
+
+   function "=" (Left : Optional_Integer; Right : Integer) return Boolean is
+   begin
+      return not Left.Is_Empty and then Left.Value = Right;
+   end "=";
+
+   ---------
+   -- "=" --
+   ---------
+
+   function "=" (Left : Integer; Right : Optional_Integer) return Boolean is
+   begin
+      return not Right.Is_Empty and then Left = Right.Value;
+   end "=";
+
+   ---------
    -- ">" --
    ---------
 
