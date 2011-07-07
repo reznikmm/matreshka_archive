@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-
 with Qt_Ada.Application;
 with Qt4.Core_Applications;
 with Qt4.Strings;
@@ -130,14 +128,9 @@ begin
    declare
       Extent  : constant AMF.URI_Stores.URI_Store_Access
         := AMF.Facility.Create_URI_Store;
---      Factory : constant AMF.Factories.AMF_Factory_Access
---        := AMF.Factories.Registry.Resolve
---            (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
       Pack    : AMF.CMOF.Packages.CMOF_Package_Access
         := AMF.CMOF.Packages.CMOF_Package_Access
             (Extent.Create
---            (Factory.Create
---              (Extent,
               (Resolve_Owned_Class (Extent.Get_Package, +"Package")));
       Packed  :
         AMF.CMOF.Packageable_Elements.Collections.
@@ -146,8 +139,6 @@ begin
       Class   : AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.CMOF.Classes.CMOF_Class_Access
             (Extent.Create
---            (Factory.Create
---              (Extent,
               (Resolve_Owned_Class (Extent.Get_Package, +"Class")));
 
    begin

@@ -50,7 +50,6 @@ with Qt4.Tree_Views.Constructors;
 
 with AMF.Facility;
 with AMF.URI_Stores;
-with CMOF.Internals.Setup;
 with XMI.Reader;
 
 with CMOF_Tree_Models;
