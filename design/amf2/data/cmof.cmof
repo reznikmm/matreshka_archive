@@ -1870,12 +1870,7 @@
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_bodyCondition_bodyContext-bodyContext" name="bodyContext" type="Operation" lower="0" owningAssociation="A_bodyCondition_bodyContext" subsettedProperty="Constraint-context" association="A_bodyCondition_bodyContext"/>
     </packagedElement>
     <packagedElement xmi:type="cmof:Association" xmi:id="A_ownedRule_context" name="A_ownedRule_context" memberEnd="Namespace-ownedRule Constraint-context"/>
-    <packagedElement xmi:type="cmof:Class" xmi:id="Tag" name="Tag">
-      <!--  XXX CMOF 2.4: Tag is not inherited from Element now.
-      <generalization xmi:type="uml:Generalization" xmi:id="_MOF-Extension-Tag-Generalization.0">
-        <general xmi:idref="_MOF-Reflection-Element"/>
-      </generalization>
-      -->
+    <packagedElement xmi:type="cmof:Class" xmi:id="Tag" name="Tag" superClass="Element">
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Tag-name" name="name" type="String"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Tag-value" name="value" type="String"/>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Tag-element" name="element" type="Element" lower="0" upper="*" association="_MOF-Extension-A_element_tag"/>

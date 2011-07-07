@@ -16428,6 +16428,12 @@ begin
      132,
      MP_CMOF_Property_Class);
    Internal_Create_Link
+    (MA_CMOF_Super_Class_Class,
+     30,
+     MP_CMOF_Class_Super_Class,
+     9,
+     MP_CMOF_Super_Class_Class);
+   Internal_Create_Link
     (MA_CMOF_Type_Typed_Element,
      131,
      MP_CMOF_Typed_Element_Type,

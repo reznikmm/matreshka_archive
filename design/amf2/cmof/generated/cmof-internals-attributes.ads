@@ -435,6 +435,7 @@ package CMOF.Internals.Attributes is
    --  Parameter => Element::ownedComment
    --  PrimitiveType => Element::ownedComment
    --  Property => Element::ownedComment
+   --  Tag => Element::ownedComment
 
    function Internal_Get_Owned_Element
     (Self : CMOF_Element) return Collection_Of_CMOF_Element;
@@ -455,6 +456,7 @@ package CMOF.Internals.Attributes is
    --  Parameter => Element::ownedElement
    --  PrimitiveType => Element::ownedElement
    --  Property => Element::ownedElement
+   --  Tag => Element::ownedElement
 
    function Internal_Get_Owned_End
     (Self : CMOF_Element) return Collection_Of_CMOF_Element;
@@ -518,6 +520,7 @@ package CMOF.Internals.Attributes is
    --  Parameter => Element::owner
    --  PrimitiveType => Element::owner
    --  Property => Element::owner
+   --  Tag => Element::owner
 
    function Internal_Get_Owning_Association
     (Self : CMOF_Element) return CMOF_Element;

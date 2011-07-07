@@ -2473,6 +2473,30 @@ package body CMOF.Internals.Reflection is
               League.Holders.To_Holder
                (Internal_Get_Name (Self));
 
+         elsif Property = MP_CMOF_Element_Owned_Comment then
+            --  Element::ownedComment : Comment
+
+            return
+              AMF.Holders.Collections.To_Holder
+               (AMF.Internals.Element_Collections.Wrap
+                 (Internal_Get_Owned_Comment (Self)));
+
+         elsif Property = MP_CMOF_Element_Owned_Element then
+            --  Element::ownedElement : Element
+
+            return
+              AMF.Holders.Collections.To_Holder
+               (AMF.Internals.Element_Collections.Wrap
+                 (Internal_Get_Owned_Element (Self)));
+
+         elsif Property = MP_CMOF_Element_Owner then
+            --  Element::owner : Element
+
+            return
+              AMF.Holders.Elements.To_Holder
+               (AMF.Internals.Helpers.To_Element
+                 (Internal_Get_Owner (Self)));
+
          elsif Property = MP_CMOF_Tag_Tag_Owner then
             --  Tag::tagOwner : Element
 

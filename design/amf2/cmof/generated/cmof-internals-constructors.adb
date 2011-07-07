@@ -1400,18 +1400,28 @@ package body CMOF.Internals.Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Tags.CMOF_Tag_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
-                       --  name
+                     1      => (M_Element, 0),
+                       --  owner
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                       --  name
+                     3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  value
-                     3      => (M_Element, 0),
+                     4      => (M_Element, 0),
                        --  tagOwner
                      others => (Kind => M_None)));
-      Allocate_Collection_Of_Cmof_Element_Slots (Self, 1);
+      Allocate_Collection_Of_Cmof_Element_Slots (Self, 3);
+      Initialize_Set_Collection          --  ownedElement
+       (Self,
+        MP_CMOF_Element_Owned_Element,
+        Elements.Table (Self).Member (0).Collection + 1);
+      Initialize_Set_Collection          --  ownedComment
+       (Self,
+        MP_CMOF_Element_Owned_Comment,
+        Elements.Table (Self).Member (0).Collection + 2);
       Initialize_Set_Collection          --  element
        (Self,
         MP_CMOF_Tag_Element,
-        Elements.Table (Self).Member (0).Collection + 1);
+        Elements.Table (Self).Member (0).Collection + 3);
    end Initialize_Tag;
 
 end CMOF.Internals.Constructors;

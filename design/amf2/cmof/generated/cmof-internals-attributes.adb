@@ -404,11 +404,14 @@ package body CMOF.Internals.Attributes is
 
    --  Tag
    --
-   --     1  Tag::name
-   --     3  Tag::tagOwner
-   --     2  Tag::value
+   --     2  Tag::name
+   --     1  Element::owner
+   --     4  Tag::tagOwner
+   --     3  Tag::value
    --
-   --     1  Tag::element
+   --     3  Tag::element
+   --     2  Element::ownedComment
+   --     1  Element::ownedElement
 
    ------------------------
    -- Internal_Get_Alias --
@@ -679,7 +682,7 @@ package body CMOF.Internals.Attributes is
    begin
       case Elements.Table (Self).Kind is
          when E_Tag =>
-            return Elements.Table (Self).Member (0).Collection + 1;
+            return Elements.Table (Self).Member (0).Collection + 3;
 
          when others =>
             raise Program_Error;
@@ -1400,7 +1403,7 @@ package body CMOF.Internals.Attributes is
          when E_Tag =>
             return
               League.Strings.Internals.Create
-               (Elements.Table (Self).Member (1).String_Value);
+               (Elements.Table (Self).Member (2).String_Value);
 
          when others =>
             raise Program_Error;
@@ -1639,6 +1642,9 @@ package body CMOF.Internals.Attributes is
          when E_Property =>
             return Elements.Table (Self).Member (0).Collection + 2;
 
+         when E_Tag =>
+            return Elements.Table (Self).Member (0).Collection + 2;
+
          when others =>
             raise Program_Error;
       end case;
@@ -1701,6 +1707,9 @@ package body CMOF.Internals.Attributes is
             return Elements.Table (Self).Member (0).Collection + 1;
 
          when E_Property =>
+            return Elements.Table (Self).Member (0).Collection + 1;
+
+         when E_Tag =>
             return Elements.Table (Self).Member (0).Collection + 1;
 
          when others =>
@@ -1922,6 +1931,9 @@ package body CMOF.Internals.Attributes is
             return Elements.Table (Self).Member (1).Element;
 
          when E_Property =>
+            return Elements.Table (Self).Member (1).Element;
+
+         when E_Tag =>
             return Elements.Table (Self).Member (1).Element;
 
          when others =>
@@ -2433,7 +2445,7 @@ package body CMOF.Internals.Attributes is
    begin
       case Elements.Table (Self).Kind is
          when E_Tag =>
-            return Elements.Table (Self).Member (3).Element;
+            return Elements.Table (Self).Member (4).Element;
 
          when others =>
             raise Program_Error;
@@ -2547,7 +2559,7 @@ package body CMOF.Internals.Attributes is
          when E_Tag =>
             return
               League.Strings.Internals.Create
-               (Elements.Table (Self).Member (2).String_Value);
+               (Elements.Table (Self).Member (3).String_Value);
 
          when others =>
             raise Program_Error;
@@ -3698,12 +3710,12 @@ package body CMOF.Internals.Attributes is
          when E_Tag =>
             Old :=
               League.Strings.Internals.Wrap
-               (Elements.Table (Self).Member (1).String_Value);
+               (Elements.Table (Self).Member (2).String_Value);
 
-            Elements.Table (Self).Member (1).String_Value :=
+            Elements.Table (Self).Member (2).String_Value :=
               League.Strings.Internals.Internal (To);
             Matreshka.Internals.Strings.Reference
-             (Elements.Table (Self).Member (1).String_Value);
+             (Elements.Table (Self).Member (2).String_Value);
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Tag_Name, Old, To);
@@ -3922,8 +3934,8 @@ package body CMOF.Internals.Attributes is
    begin
       case Elements.Table (Self).Kind is
          when E_Tag =>
-            Old := Elements.Table (Self).Member (3).Element;
-            Elements.Table (Self).Member (3).Element := To;
+            Old := Elements.Table (Self).Member (4).Element;
+            Elements.Table (Self).Member (4).Element := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Tag_Tag_Owner, Old, To);
@@ -4076,12 +4088,12 @@ package body CMOF.Internals.Attributes is
          when E_Tag =>
             Old :=
               League.Strings.Internals.Wrap
-               (Elements.Table (Self).Member (2).String_Value);
+               (Elements.Table (Self).Member (3).String_Value);
 
-            Elements.Table (Self).Member (2).String_Value :=
+            Elements.Table (Self).Member (3).String_Value :=
               League.Strings.Internals.Internal (To);
             Matreshka.Internals.Strings.Reference
-             (Elements.Table (Self).Member (2).String_Value);
+             (Elements.Table (Self).Member (3).String_Value);
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Tag_Value, Old, To);

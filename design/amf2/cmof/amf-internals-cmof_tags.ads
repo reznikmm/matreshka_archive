@@ -41,42 +41,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Holders;
-
-with AMF.CMOF.Classes;
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Properties;
 with AMF.CMOF.Tags;
-with AMF.Internals.Elements;
+with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Tags is
 
    type CMOF_Tag_Proxy is
-     limited new AMF.Internals.Elements.Element_Implementation
-       and AMF.CMOF.Tags.CMOF_Tag with
-   record
-      Id : CMOF_Element;
-   end record;
+     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+       and AMF.CMOF.Tags.CMOF_Tag with null record;
 
-   overriding function Element
-    (Self : not null access constant CMOF_Tag_Proxy) return AMF_Element;
-
-   overriding function Get
-    (Self     : not null access constant CMOF_Tag_Proxy;
-     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return League.Holders.Holder;
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
    overriding function Get_Element
     (Self : not null access constant CMOF_Tag_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Get_Meta_Class
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Classes.CMOF_Class_Access;
-
    overriding function Get_Name
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function Get_Tag_Owner
     (Self : not null access constant CMOF_Tag_Proxy)
@@ -86,10 +79,8 @@ package AMF.Internals.CMOF_Tags is
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String;
 
-   overriding procedure Set
-    (Self     : not null access CMOF_Tag_Proxy;
-     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Value    : League.Holders.Holder);
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Tag_Proxy) return Boolean;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Tag_Proxy;

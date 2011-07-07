@@ -47,32 +47,6 @@ with CMOF.Internals.Reflection;
 
 package body AMF.Internals.CMOF_Tags is
 
-   -------------
-   -- Element --
-   -------------
-
-   overriding function Element
-    (Self : not null access constant CMOF_Tag_Proxy) return AMF_Element is
-   begin
-      return Self.Id;
-   end Element;
-
-   ---------
-   -- Get --
-   ---------
-
-   overriding function Get
-    (Self     : not null access constant CMOF_Tag_Proxy;
-     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return League.Holders.Holder is
-   begin
-      return
-        Standard.CMOF.Internals.Reflection.Get
-         (Self.Id,
-          AMF.Internals.Helpers.To_Element
-           (AMF.Elements.Element_Access (Property)));
-   end Get;
-
    -----------------
    -- Get_Element --
    -----------------
@@ -87,20 +61,6 @@ package body AMF.Internals.CMOF_Tags is
       raise Program_Error with "Unimplemented function Get_Element";
       return Get_Element (Self);
    end Get_Element;
-
-   --------------------
-   -- Get_Meta_Class --
-   --------------------
-
-   overriding function Get_Meta_Class
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Classes.CMOF_Class_Access is
-   begin
-      return
-        AMF.CMOF.Classes.CMOF_Class_Access
-         (AMF.Internals.Helpers.To_Element
-           (Standard.CMOF.Internals.Reflection.Get_Meta_Class (Self.Id)));
-   end Get_Meta_Class;
 
    --------------
    -- Get_Name --
@@ -144,23 +104,6 @@ package body AMF.Internals.CMOF_Tags is
       return Get_Value (Self);
    end Get_Value;
 
-   ---------
-   -- Set --
-   ---------
-
-   overriding procedure Set
-    (Self     : not null access CMOF_Tag_Proxy;
-     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Value    : League.Holders.Holder) is
-   begin
-      Standard.CMOF.Internals.Reflection.Set
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (Property)),
-        Value);
-   end Set;
-
-
    --------------
    -- Set_Name --
    --------------
@@ -199,5 +142,52 @@ package body AMF.Internals.CMOF_Tags is
       pragma Compile_Time_Warning (Standard.True, "Set_Value unimplemented");
       raise Program_Error with "Unimplemented procedure Set_Value";
    end Set_Value;
+
+   ------------------------
+   -- All_Owned_Elements --
+   ------------------------
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is
+   begin
+      raise Program_Error;
+      return All_Owned_Elements (Self);
+   end All_Owned_Elements;
+
+   -----------------------
+   -- Get_Owned_Element --
+   -----------------------
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is
+   begin
+      raise Program_Error;
+      return Get_Owned_Element (Self);
+   end Get_Owned_Element;
+
+   ---------------
+   -- Get_Owner --
+   ---------------
+
+   overriding function Get_Owner
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access is
+   begin
+      raise Program_Error;
+      return Get_Owner (Self);
+   end Get_Owner;
+
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Tag_Proxy) return Boolean is
+   begin
+      raise Program_Error;
+      return Must_Be_Owned (Self);
+   end Must_Be_Owned;
 
 end AMF.Internals.CMOF_Tags;
