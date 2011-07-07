@@ -58,6 +58,7 @@ with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Helpers;
+with CMOF;
 with League.Holders.Booleans;
 with League.Holders.Integers;
 with League.Strings;
@@ -69,6 +70,7 @@ package body Generator.Initialization is
 
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
+   use CMOF;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_Integer;
@@ -165,12 +167,11 @@ package body Generator.Initialization is
 
                   begin
                      if not All_Redefined.Contains
-                             (AMF.Internals.Helpers.To_Element
-                               (AMF.Elements.Element_Access (Redefined)))
+                             (AMF.CMOF.Elements.CMOF_Element_Access
+                               (Redefined))
                      then
                         All_Redefined.Insert
-                         (AMF.Internals.Helpers.To_Element
-                           (AMF.Elements.Element_Access (Redefined)));
+                         (AMF.CMOF.Elements.CMOF_Element_Access (Redefined));
                      end if;
                   end;
                end loop;
@@ -179,15 +180,12 @@ package body Generator.Initialization is
                --  not in the result set already.
 
                if not All_Redefined.Contains
-                       (AMF.Internals.Helpers.To_Element 
-                         (AMF.Elements.Element_Access (Attribute)))
+                       (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
                  and not Result.Contains
-                          (AMF.Internals.Helpers.To_Element
-                            (AMF.Elements.Element_Access (Attribute)))
+                          (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
                then
                   Result.Insert
-                   (AMF.Internals.Helpers.To_Element
-                     (AMF.Elements.Element_Access (Attribute)));
+                   (AMF.CMOF.Elements.CMOF_Element_Access (Attribute));
                end if;
             end;
          end loop;
@@ -230,8 +228,7 @@ package body Generator.Initialization is
 
          Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := AMF.CMOF.Properties.CMOF_Property_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
          Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Property.Get_Type;
          Association   : constant AMF.CMOF.Associations.CMOF_Association_Access
@@ -434,8 +431,7 @@ package body Generator.Initialization is
       is
          Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := AMF.CMOF.Properties.CMOF_Property_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
          Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Property.Get_Type;
          Association   : constant AMF.CMOF.Associations.CMOF_Association_Access

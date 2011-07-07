@@ -48,23 +48,20 @@ with Ada.Containers.Ordered_Sets;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Elements.Hash;
+with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Properties;
-with AMF.Internals;
-with CMOF;
 
 package Generator is
 
-   use CMOF;
-
-   function "<"
-    (Left  : CMOF.CMOF_Named_Element;
-     Right : CMOF.CMOF_Named_Element) return Boolean;
-
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type;
+   function Less
+    (Left  : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Right : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access) return Boolean;
 
    package CMOF_Named_Element_Ordered_Sets is
      new Ada.Containers.Ordered_Sets
-          (CMOF.CMOF_Named_Element, "<", AMF.Internals."=");
+          (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access,
+           Less,
+           AMF.CMOF.Named_Elements."=");
 
    package CMOF_Element_Number_Maps is
      new Ada.Containers.Hashed_Maps
@@ -75,10 +72,10 @@ package Generator is
 
    package CMOF_Element_Sets is
      new Ada.Containers.Hashed_Sets
-          (AMF.Internals.AMF_Element,
-           Hash,
-           AMF.Internals."=",
-           AMF.Internals."=");
+          (AMF.CMOF.Elements.CMOF_Element_Access,
+           AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=",
+           AMF.CMOF.Elements."=");
 
    function Sort
     (Set : CMOF_Element_Sets.Set)

@@ -42,26 +42,18 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
-with Ada.Containers.Hashed_Sets;
-with Ada.Containers.Ordered_Sets;
-with Ada.Containers.Hashed_Maps;
-with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
-with Ada.Unchecked_Conversion;
-with Interfaces;
-
-with League.Strings;
 
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Elements;
+with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
 with AMF.Facility;
-with AMF.Internals.Helpers;
 with AMF.URI_Stores;
 with XMI.Reader;
 
@@ -75,14 +67,11 @@ with Generator.Wide_Wide_Text_IO;
 
 procedure Gen2 is
 
-   use Ada.Strings;
-   use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use Generator;
    use Generator.Initialization;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
-   use type League.Strings.Universal_String;
 
    Extent : AMF.URI_Stores.URI_Store_Access;
 
@@ -159,8 +148,7 @@ procedure Gen2 is
       is
          Element : constant AMF.CMOF.Elements.CMOF_Element_Access
            := AMF.CMOF.Elements.CMOF_Element_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
          if not Element_Numbers.Contains (Element) then
@@ -178,8 +166,7 @@ procedure Gen2 is
       is
          Class          : constant AMF.CMOF.Classes.CMOF_Class_Access
            := AMF.CMOF.Classes.CMOF_Class_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
          Attributes     : constant
            AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
              := Class.Get_Owned_Attribute;
@@ -194,8 +181,8 @@ procedure Gen2 is
               and Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
             then
                Properties.Insert
-                (AMF.Internals.Helpers.To_Element
-                  (AMF.Elements.Element_Access (Attributes.Element (J))));
+                (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access
+                  (Attributes.Element (J)));
             end if;
          end loop;
 
@@ -211,8 +198,7 @@ procedure Gen2 is
       is
          Class      : constant AMF.CMOF.Classes.CMOF_Class_Access
            := AMF.CMOF.Classes.CMOF_Class_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
          Attributes : constant
            AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
              := Class.Get_Owned_Attribute;
@@ -221,8 +207,8 @@ procedure Gen2 is
       begin
          for J in 1 .. Attributes.Length loop
             Properties.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Attributes.Element (J))));
+             (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access
+               (Attributes.Element (J)));
          end loop;
 
          Properties.Iterate (Assign_Ordered_Set'Access);
@@ -234,9 +220,7 @@ procedure Gen2 is
 
       procedure Assign_Set (Position : CMOF_Element_Sets.Cursor) is
          Element : constant AMF.CMOF.Elements.CMOF_Element_Access
-           := AMF.CMOF.Elements.CMOF_Element_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Element_Sets.Element (Position)));
+           := CMOF_Element_Sets.Element (Position);
 
       begin
          if not Element_Numbers.Contains (Element) then
@@ -255,14 +239,10 @@ procedure Gen2 is
            AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
 
          if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
-            All_Associations.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Element)));
+            All_Associations.Insert (Element);
 
          elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            All_Classes.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Element)));
+            All_Classes.Insert (Element);
             Class_Constant_Name_Max :=
               Positive_Count'Max
                (Class_Constant_Name_Max,
@@ -270,9 +250,7 @@ procedure Gen2 is
                  (AMF.CMOF.Classes.CMOF_Class_Access (Element))'Length);
 
          elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
-            All_Data_Types.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Element)));
+            All_Data_Types.Insert (Element);
             Data_Type_Constant_Name_Max :=
               Positive_Count'Max
                (Data_Type_Constant_Name_Max,
@@ -280,9 +258,7 @@ procedure Gen2 is
                  (AMF.CMOF.Data_Types.CMOF_Data_Type_Access (Element))'Length);
 
          elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
-            All_Packages.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Element)));
+            All_Packages.Insert (Element);
             Package_Constant_Name_Max :=
               Positive_Count'Max
                (Package_Constant_Name_Max,
@@ -345,8 +321,7 @@ procedure Gen2 is
       is
          Association : constant AMF.CMOF.Associations.CMOF_Association_Access
            := AMF.CMOF.Associations.CMOF_Association_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Element_Sets.Element (Position)));
+               (CMOF_Element_Sets.Element (Position));
 --         Owned_End   : constant Ordered_Set_Of_CMOF_Property
 --           := Get_Owned_End (Association);
 --
@@ -386,8 +361,7 @@ procedure Gen2 is
       is
          Association : constant AMF.CMOF.Associations.CMOF_Association_Access
            := AMF.CMOF.Associations.CMOF_Association_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Element_Sets.Element (Position)));
+               (CMOF_Element_Sets.Element (Position));
          Owned_End   : constant
            AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
              := Association.Get_Owned_End;
@@ -438,8 +412,7 @@ procedure Gen2 is
          is
             Property : constant AMF.CMOF.Properties.CMOF_Property_Access
               := AMF.CMOF.Properties.CMOF_Property_Access
-                  (AMF.Internals.Helpers.To_Element
-                    (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+                  (CMOF_Named_Element_Ordered_Sets.Element (Position));
             Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
               := Property.Get_Type;
 
@@ -460,8 +433,7 @@ procedure Gen2 is
 
          Class      : constant AMF.CMOF.Classes.CMOF_Class_Access
            := AMF.CMOF.Classes.CMOF_Class_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
          Attributes : constant
            AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
              := Class.Get_Owned_Attribute;
@@ -470,8 +442,8 @@ procedure Gen2 is
       begin
          for J in 1 .. Attributes.Length loop
             Properties.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Attributes.Element (J))));
+             (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access
+               (Attributes.Element (J)));
          end loop;
 
          Properties.Iterate (Generate_Property_Constant'Access);
@@ -497,8 +469,7 @@ procedure Gen2 is
          is
             Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
               := AMF.CMOF.Properties.CMOF_Property_Access
-                  (AMF.Internals.Helpers.To_Element
-                    (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+                  (CMOF_Named_Element_Ordered_Sets.Element (Position));
             Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
               := Property.Get_Type;
 
@@ -519,8 +490,7 @@ procedure Gen2 is
 
          Class      : constant AMF.CMOF.Classes.CMOF_Class_Access
            := AMF.CMOF.Classes.CMOF_Class_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
          Attributes : constant
            AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
              := Class.Get_Owned_Attribute;
@@ -529,8 +499,8 @@ procedure Gen2 is
       begin
          for J in 1 .. Attributes.Length loop
             Properties.Insert
-             (AMF.Internals.Helpers.To_Element
-               (AMF.Elements.Element_Access (Attributes.Element (J))));
+             (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access
+               (Attributes.Element (J)));
          end loop;
 
          Properties.Iterate (Generate_Property_Constant'Access);
@@ -545,8 +515,7 @@ procedure Gen2 is
       is
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := AMF.CMOF.Classes.CMOF_Class_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
          Put ("   " & Type_Constant_Name (Class));
@@ -568,8 +537,7 @@ procedure Gen2 is
       is
          Data_Type : constant AMF.CMOF.Data_Types.CMOF_Data_Type_Access
            := AMF.CMOF.Data_Types.CMOF_Data_Type_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
          Put ("   " & Type_Constant_Name (Data_Type));
@@ -591,8 +559,7 @@ procedure Gen2 is
       is
          Element : constant AMF.CMOF.Packages.CMOF_Package_Access
            := AMF.CMOF.Packages.CMOF_Package_Access
-               (AMF.Internals.Helpers.To_Element
-                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+               (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
          Put ("   " & Package_Constant_Name (Element));

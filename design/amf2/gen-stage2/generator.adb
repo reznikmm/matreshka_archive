@@ -41,32 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-
-with AMF.Internals.CMOF_Elements;
-with CMOF.Named_Elements;
+with AMF.Elements;
+with AMF.Internals.Helpers;
 
 package body Generator is
 
-   use CMOF;
-   use CMOF.Named_Elements;
    use type AMF.Optional_String;
-
-   ---------
-   -- "<" --
-   ---------
-
-   function "<"
-    (Left : CMOF_Named_Element; Right : CMOF_Named_Element) return Boolean
-   is
-      use type League.Strings.Universal_String;
-
-   begin
-      return
-        Get_Name (Left) < Get_Name (Right)
-          or (Get_Name (Left) = Get_Name (Right)
-                and AMF.Internals."<" (Left, Right));
-   end "<";
+   use type AMF.Internals.AMF_Element;
 
    ----------------
    -- Has_Setter --
@@ -89,7 +70,8 @@ package body Generator is
    begin
       return
         Ada.Containers.Hash_Type
-         (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Item.all).Id);
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Elements.Element_Access (Item)));
    end Hash;
 
    ----------
@@ -97,15 +79,6 @@ package body Generator is
    ----------
 
    function Hash (Item : Natural) return Ada.Containers.Hash_Type is
-   begin
-      return Ada.Containers.Hash_Type (Item);
-   end Hash;
-
-   ----------
-   -- Hash --
-   ----------
-
-   function Hash (Item : CMOF_Element) return Ada.Containers.Hash_Type is
    begin
       return Ada.Containers.Hash_Type (Item);
    end Hash;
@@ -136,9 +109,31 @@ package body Generator is
 
       else
          return
-           AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (Left.all).Id
-             < AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class
-                (Right.all).Id;
+           AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Left))
+             < AMF.Internals.Helpers.To_Element
+                (AMF.Elements.Element_Access (Right));
+      end if;
+   end Less;
+
+   ----------
+   -- Less --
+   ----------
+
+   function Less
+    (Left  : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
+     Right : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return Boolean is
+   begin
+      if Left.Get_Name /= Right.Get_Name then
+         return Left.Get_Name < Right.Get_Name;
+
+      else
+         return
+           AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Left))
+             < AMF.Internals.Helpers.To_Element
+                (AMF.Elements.Element_Access (Right));
       end if;
    end Less;
 
@@ -189,7 +184,9 @@ package body Generator is
 
    begin
       while CMOF_Element_Sets.Has_Element (Position) loop
-         Result.Insert (CMOF_Element_Sets.Element (Position));
+         Result.Insert
+            (AMF.CMOF.Named_Elements.CMOF_Named_Element_Access
+              (CMOF_Element_Sets.Element (Position)));
          CMOF_Element_Sets.Next (Position);
       end loop;
 

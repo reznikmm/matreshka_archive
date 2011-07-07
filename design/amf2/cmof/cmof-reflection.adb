@@ -53,24 +53,4 @@ package body CMOF.Reflection is
    function Container (Self : CMOF_Element) return CMOF_Element
      renames CMOF.Internals.Extents.Container;
 
-   ---------
-   -- Get --
-   ---------
-
-   function Get
-    (Self     : CMOF_Element;
-     Property : CMOF_Property) return League.Holders.Holder is
-   begin
-      return CMOF.Internals.Reflection.Get (Self, Property);
-   end Get;
-
-   --------------------
-   -- Get_Meta_Class --
-   --------------------
-
-   function Get_Meta_Class (Self : CMOF_Element) return CMOF_Class is
-   begin
-      return CMOF.Internals.Reflection.Get_Meta_Class (Self);
-   end Get_Meta_Class;
-
 end CMOF.Reflection;
