@@ -43,15 +43,14 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
 with CMOF.Internals.Attribute_Mappings;
+with CMOF.Internals.Attributes;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
-with CMOF.Multiplicity_Elements;
 
 package body AMF.Internals.Helpers.CMOF_Helper is
 
    use CMOF.Internals.Attribute_Mappings;
    use CMOF.Internals.Metamodel;
-   use CMOF.Multiplicity_Elements;
 
    --------------------
    -- Connect_Extent --
@@ -76,7 +75,7 @@ package body AMF.Internals.Helpers.CMOF_Helper is
      Link     : AMF_Link;
      Other    : AMF_Element) is
    begin
-      if Is_Multivalued (Property) then
+      if CMOF.Internals.Attributes.Internal_Get_Upper (Property).Value > 1 then
          if Property not in CMOF_Collection_Of_Element_Property then
             AMF.Internals.Element_Collections.Internal_Append
              (CMOF.Internals.Tables.Elements.Table

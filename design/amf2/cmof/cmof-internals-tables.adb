@@ -42,14 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.AMF_Tables;
-with CMOF.Internals.Attribute_Mappings;
-with CMOF.Internals.Metamodel;
-with CMOF.Multiplicity_Elements;
 
 package body CMOF.Internals.Tables is
 
    use AMF.Internals.Tables;
-   use CMOF.Internals.Metamodel;
    use CMOF.Internals.Types;
 
    -----------------------------------------------
