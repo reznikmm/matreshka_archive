@@ -44,14 +44,15 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-limited with AMF.CMOF.Elements;
+with AMF.CMOF.Elements;
 limited with AMF.CMOF.Elements.Collections;
 
 package AMF.CMOF.Tags is
 
    pragma Preelaborate;
 
-   type CMOF_Tag is limited interface;
+   type CMOF_Tag is limited interface
+     and AMF.CMOF.Elements.CMOF_Element;
 
    type CMOF_Tag_Access is
      access all CMOF_Tag'Class;
