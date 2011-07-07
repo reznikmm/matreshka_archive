@@ -51,6 +51,7 @@ private with Ada.Finalization;
 private with Interfaces;
 
 with League.Strings;
+private with Matreshka.Internals.SAX_Locators;
 private with Matreshka.Internals.Strings;
 private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
@@ -246,6 +247,9 @@ private
       Enable_Validation : Boolean := False;
    end record;
 
+   type Simple_Shared_Locator is tagged;
+   type Simple_Shared_Locator_Access is access all Simple_Shared_Locator'Class;
+
    type SAX_Simple_Reader is new Ada.Finalization.Limited_Controlled
      and XML.SAX.Readers.SAX_Reader with
    record
@@ -273,7 +277,7 @@ private
       Scanner_Stack          : Scanner_State_Vectors.Vector;
       Symbols                :
         Matreshka.Internals.XML.Symbol_Tables.Symbol_Table;
-      Locator                : XML.SAX.Locators.SAX_Locator;
+      Locator                : Simple_Shared_Locator_Access;
       YYLVal                 : YYSType;
       Character_Buffer       :
         Matreshka.Internals.Strings.Shared_String_Access;
@@ -425,5 +429,36 @@ private
    overriding procedure Set_Lexical_Handler
     (Self    : not null access SAX_Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Lexical_Handler_Access);
+
+   -------------
+   -- Locator --
+   -------------
+
+   type Simple_Shared_Locator is
+     new Matreshka.Internals.SAX_Locators.Shared_Abstract_Locator with record
+      Reader : access SAX_Simple_Reader'Class;
+   end record;
+
+   overriding function Line
+    (Self : not null access constant Simple_Shared_Locator) return Natural;
+
+   overriding function Column
+    (Self : not null access constant Simple_Shared_Locator) return Natural;
+
+   overriding function Encoding
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String;
+
+   overriding function Version
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String;
+
+   overriding function Public_Id
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String;
+
+   overriding function System_Id
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String;
 
 end XML.SAX.Simple_Readers;

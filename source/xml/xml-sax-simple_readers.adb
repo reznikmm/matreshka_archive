@@ -70,6 +70,16 @@ package body XML.SAX.Simple_Readers is
       Item.Symbol        := Matreshka.Internals.XML.No_Symbol;
    end Clear;
 
+   ------------
+   -- Column --
+   ------------
+
+   overriding function Column
+    (Self : not null access constant Simple_Shared_Locator) return Natural is
+   begin
+      return Self.Reader.Scanner_State.YY_Current_Column;
+   end Column;
+
    ---------------------
    -- Content_Handler --
    ---------------------
@@ -118,6 +128,17 @@ package body XML.SAX.Simple_Readers is
       end if;
    end DTD_Handler;
 
+   --------------
+   -- Encoding --
+   --------------
+
+   overriding function Encoding
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Encoding;
+
    ---------------------
    -- Entity_Resolver --
    ---------------------
@@ -150,7 +171,14 @@ package body XML.SAX.Simple_Readers is
    --------------
 
    overriding procedure Finalize (Self : in out SAX_Simple_Reader) is
+      Locator : Matreshka.Internals.SAX_Locators.Shared_Locator_Access
+        := Matreshka.Internals.SAX_Locators.Shared_Locator_Access
+            (Self.Locator);
+
    begin
+      Self.Locator.Reader := null;
+      Self.Locator := null;
+      Matreshka.Internals.SAX_Locators.Dereference (Locator);
       Scanner.Finalize (Self);
       Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.Strings.Dereference (Self.Character_Data);
@@ -182,6 +210,10 @@ package body XML.SAX.Simple_Readers is
       --  or two code units, thus preallocate enough space.
 
       Scanner.Initialize (Self);
+      Self.Locator :=
+        new Simple_Shared_Locator'
+             (Matreshka.Internals.SAX_Locators.Shared_Abstract_Locator with
+                Reader => Self'Unchecked_Access);
    end Initialize;
 
    ---------------------
@@ -199,6 +231,16 @@ package body XML.SAX.Simple_Readers is
          return Self.Lexical_Handler;
       end if;
    end Lexical_Handler;
+
+   ----------
+   -- Line --
+   ----------
+
+   overriding function Line
+    (Self : not null access constant Simple_Shared_Locator) return Natural is
+   begin
+      return Self.Reader.Scanner_State.YY_Current_Line;
+   end Line;
 
    ----------
    -- Move --
@@ -244,6 +286,20 @@ package body XML.SAX.Simple_Readers is
       Ada.Exceptions.Reraise_Occurrence (Self.User_Exception);
    end Parse;
 
+   ---------------
+   -- Public_Id --
+   ---------------
+
+   overriding function Public_Id
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String is
+   begin
+      return
+        League.Strings.Internals.Create
+         (Matreshka.Internals.XML.Entity_Tables.Public_Id
+           (Self.Reader.Entities, Self.Reader.Scanner_State.Entity));
+   end Public_Id;
+
    -----------
    -- Reset --
    -----------
@@ -267,7 +323,7 @@ package body XML.SAX.Simple_Readers is
       Self.Namespaces.Enabled := Self.Configuration.Enable_Namespaces;
       Self.Validation.Enabled := Self.Configuration.Enable_Validation;
 
-      Callbacks.Call_Set_Document_Locator (Self.all, Self.Locator);
+      Callbacks.Call_Set_Document_Locator (Self.all);
       Self.Version := XML_1_0;
       New_Document_Entity
        (Self.Entities,
@@ -472,5 +528,36 @@ package body XML.SAX.Simple_Readers is
       Item.Is_Whitespace := False;
       Item.Symbol        := Symbol;
    end Set_Symbol;
+
+   ---------------
+   -- System_Id --
+   ---------------
+
+   overriding function System_Id
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String is
+   begin
+      return
+        League.Strings.Internals.Create
+         (Matreshka.Internals.XML.Entity_Tables.System_Id
+           (Self.Reader.Entities, Self.Reader.Scanner_State.Entity));
+   end System_Id;
+
+   -------------
+   -- Version --
+   -------------
+
+   overriding function Version
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String is
+   begin
+      case Self.Reader.Version is
+         when XML_1_0 =>
+            return League.Strings.To_Universal_String ("1.0");
+
+         when XML_1_1 =>
+            return League.Strings.To_Universal_String ("1.1");
+      end case;
+   end Version;
 
 end XML.SAX.Simple_Readers;

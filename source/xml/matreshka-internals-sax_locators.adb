@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,93 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
 
-package body XML.SAX.Locators is
+package body Matreshka.Internals.SAX_Locators is
 
-   use type Matreshka.Internals.SAX_Locators.Shared_Locator_Access;
+   -----------------
+   -- Dereference --
+   -----------------
 
-   ------------
-   -- Adjust --
-   ------------
+   procedure Dereference (Self : in out Shared_Locator_Access) is
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Shared_Abstract_Locator'Class, Shared_Locator_Access);
 
-   overriding procedure Adjust (Self : in out SAX_Locator) is
    begin
-      if Self.Data /= null then
-         Matreshka.Internals.SAX_Locators.Reference (Self.Data);
+      if Matreshka.Internals.Atomics.Counters.Decrement
+          (Self.Counter'Access)
+      then
+         Free (Self);
+
+      else
+         Self := null;
       end if;
-   end Adjust;
-
-   ------------
-   -- Column --
-   ------------
-
-   function Column (Self : SAX_Locator'Class) return Natural is
-   begin
-      return Self.Data.Column;
-   end Column;
-
-   --------------
-   -- Encoding --
-   --------------
-
-   function Encoding
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.Encoding;
-   end Encoding;
-
-   --------------
-   -- Finalize --
-   --------------
-
-   overriding procedure Finalize (Self : in out SAX_Locator) is
-   begin
-      --  Finalize can be called more than once (as specified by language
-      --  standard), thus implementation should provide protection from
-      --  multiple finalization.
-
-      if Self.Data /= null then
-         Matreshka.Internals.SAX_Locators.Dereference (Self.Data);
-      end if;
-   end Finalize;
-
-   ----------
-   -- Line --
-   ----------
-
-   function Line (Self : SAX_Locator'Class) return Natural is
-   begin
-      return Self.Data.Line;
-   end Line;
+   end Dereference;
 
    ---------------
-   -- Public_Id --
+   -- Reference --
    ---------------
 
-   function Public_Id
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
+   procedure Reference (Self : not null Shared_Locator_Access) is
    begin
-      return Self.Data.Public_Id;
-   end Public_Id;
+      Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+   end Reference;
 
-   ---------------
-   -- System_Id --
-   ---------------
-
-   function System_Id
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.System_Id;
-   end System_Id;
-
-   -------------
-   -- Version --
-   -------------
-
-   function Version
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.Version;
-   end Version;
-
-end XML.SAX.Locators;
+end Matreshka.Internals.SAX_Locators;

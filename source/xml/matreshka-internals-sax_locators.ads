@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,93 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides abstract root type to implement SAX Locator for the
+--  specific reader. XML.SAX.Locators.SAX_Locator provides capability to wrap
+--  reader specific locator and to access its attributes.
+--
+--  For perforamnce reasons, internal locator provides trampoline to access
+--  reader's internal data structures, thus locator should not be updated
+--  each time when user callback is called.
+------------------------------------------------------------------------------
+with League.Strings;
+with Matreshka.Internals.Atomics.Counters;
 
-package body XML.SAX.Locators is
+package Matreshka.Internals.SAX_Locators is
 
-   use type Matreshka.Internals.SAX_Locators.Shared_Locator_Access;
+   pragma Preelaborate;
 
-   ------------
-   -- Adjust --
-   ------------
+   type Shared_Abstract_Locator is abstract tagged limited record
+      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+   end record;
 
-   overriding procedure Adjust (Self : in out SAX_Locator) is
-   begin
-      if Self.Data /= null then
-         Matreshka.Internals.SAX_Locators.Reference (Self.Data);
-      end if;
-   end Adjust;
+   not overriding function Line
+    (Self : not null access constant Shared_Abstract_Locator)
+       return Natural is abstract;
 
-   ------------
-   -- Column --
-   ------------
+   not overriding function Column
+    (Self : not null access constant Shared_Abstract_Locator)
+       return Natural is abstract;
 
-   function Column (Self : SAX_Locator'Class) return Natural is
-   begin
-      return Self.Data.Column;
-   end Column;
+   not overriding function Encoding
+    (Self : not null access constant Shared_Abstract_Locator)
+       return League.Strings.Universal_String is abstract;
 
-   --------------
-   -- Encoding --
-   --------------
+   not overriding function Version
+    (Self : not null access constant Shared_Abstract_Locator)
+       return League.Strings.Universal_String is abstract;
 
-   function Encoding
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.Encoding;
-   end Encoding;
+   not overriding function Public_Id
+    (Self : not null access constant Shared_Abstract_Locator)
+       return League.Strings.Universal_String is abstract;
 
-   --------------
-   -- Finalize --
-   --------------
+   not overriding function System_Id
+    (Self : not null access constant Shared_Abstract_Locator)
+       return League.Strings.Universal_String is abstract;
 
-   overriding procedure Finalize (Self : in out SAX_Locator) is
-   begin
-      --  Finalize can be called more than once (as specified by language
-      --  standard), thus implementation should provide protection from
-      --  multiple finalization.
+   type Shared_Locator_Access is access all Shared_Abstract_Locator'Class;
 
-      if Self.Data /= null then
-         Matreshka.Internals.SAX_Locators.Dereference (Self.Data);
-      end if;
-   end Finalize;
+   procedure Reference (Self : not null Shared_Locator_Access);
+   pragma Inline (Reference);
 
-   ----------
-   -- Line --
-   ----------
+   procedure Dereference (Self : in out Shared_Locator_Access);
 
-   function Line (Self : SAX_Locator'Class) return Natural is
-   begin
-      return Self.Data.Line;
-   end Line;
-
-   ---------------
-   -- Public_Id --
-   ---------------
-
-   function Public_Id
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.Public_Id;
-   end Public_Id;
-
-   ---------------
-   -- System_Id --
-   ---------------
-
-   function System_Id
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.System_Id;
-   end System_Id;
-
-   -------------
-   -- Version --
-   -------------
-
-   function Version
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.Version;
-   end Version;
-
-end XML.SAX.Locators;
+end Matreshka.Internals.SAX_Locators;

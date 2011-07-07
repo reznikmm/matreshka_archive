@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,7 +56,7 @@
 private with Ada.Finalization;
 
 with League.Strings;
-private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Internals.SAX_Locators;
 
 package XML.SAX.Locators is
 
@@ -90,19 +90,8 @@ package XML.SAX.Locators is
 
 private
 
-   type Shared_Locator is record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
-      Line    : Natural;
-      pragma Atomic (Line);
-      Column  : Natural;
-      pragma Atomic (Column);
-      Version : Natural := 0;
-   end record;
-
-   type Shared_Locator_Access is access all Shared_Locator;
-
    type SAX_Locator is new Ada.Finalization.Controlled with record
-      Data : Shared_Locator_Access := new Shared_Locator;
+      Data : Matreshka.Internals.SAX_Locators.Shared_Locator_Access;
    end record;
 
    overriding procedure Adjust (Self : in out SAX_Locator);
@@ -111,6 +100,10 @@ private
 
    pragma Inline (Adjust);
    pragma Inline (Column);
+   pragma Inline (Encoding);
+   pragma Inline (Finalize);
    pragma Inline (Line);
+   pragma Inline (Public_Id);
+   pragma Inline (System_Id);
 
 end XML.SAX.Locators;

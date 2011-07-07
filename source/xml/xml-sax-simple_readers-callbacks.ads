@@ -129,9 +129,7 @@ private package XML.SAX.Simple_Readers.Callbacks is
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access);
    --  Calls entity resolver's SAX_Entity_Resolver.Resolve_Entity subprogram.
 
-   procedure Call_Set_Document_Locator
-    (Self    : in out SAX_Simple_Reader'Class;
-     Locator : XML.SAX.Locators.SAX_Locator);
+   procedure Call_Set_Document_Locator (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.Set_Document_Locator subprogram.
 
    procedure Call_Start_Document (Self : in out SAX_Simple_Reader'Class);
