@@ -25,19 +25,25 @@ uml-all:
 
 gen2:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen2 data/cmof.cmof > cmof/generated/sources.ada
-	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
-	rm cmof/generated/sources.ada
+	test -d cmof/generated/.new || mkdir cmof/generated/.new
+	./gen-stage2/.obj/gen2 data/cmof.cmof > cmof/generated/.new/sources.ada
+	gnatchop -gnat05 -w cmof/generated/.new/sources.ada cmof/generated/.new
+	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
+	rm -r cmof/generated/.new
 	gprbuild -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen2 data/cmof.cmof > cmof/generated/sources.ada
-	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
-	rm cmof/generated/sources.ada
+	test -d cmof/generated/.new || mkdir cmof/generated/.new
+	./gen-stage2/.obj/gen2 data/cmof.cmof > cmof/generated/.new/sources.ada
+	gnatchop -gnat05 -w cmof/generated/.new/sources.ada cmof/generated/.new
+	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
+	rm -r cmof/generated/.new
 
 gen2-api:
 	gprbuild -j2 -p -Pgen-stage2/gens.gpr
-	./gen-stage2/.obj/gen_api data/cmof.cmof CMOF > cmof/generated/sources.ada
-	gnatchop -gnat12 -w cmof/generated/sources.ada cmof/generated
-	rm cmof/generated/sources.ada
+	test -d cmof/generated/.new || mkdir cmof/generated/.new
+	./gen-stage2/.obj/gen_api data/cmof.cmof CMOF > cmof/generated/.new/sources.ada
+	gnatchop -gnat12 -w cmof/generated/.new/sources.ada cmof/generated/.new
+	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
+	rm -r cmof/generated/.new
 
 gen-uml:
 	gprbuild -p -Pgen-stage2/gens.gpr
