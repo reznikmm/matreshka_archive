@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
@@ -54,7 +55,19 @@ is
    Handler : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
 
 begin
-   Input.Open (File_Name);
+   --  XXX It would be nice to use XML Catalogs here, but it is not supported
+   --  by Matreshka XML Processor now; so, simple hack is used here.
+
+   if File_Name = "http://schema.omg.org/spec/MOF/2.0/cmof.xml" then
+      Input.Open ("data/cmof.cmof");
+      Input.Set_System_Id
+       (League.Strings.To_Universal_String
+         ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"));
+
+   else
+      Input.Open (File_Name);
+   end if;
+
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Parse (Input'Unchecked_Access);
