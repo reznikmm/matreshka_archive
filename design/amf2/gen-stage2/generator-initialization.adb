@@ -44,8 +44,11 @@
 with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Associations;
 with AMF.CMOF.Elements;
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.Unlimited_Naturals;
@@ -53,7 +56,6 @@ with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Helpers;
-with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
 with CMOF.Multiplicity_Elements;
@@ -73,8 +75,6 @@ package body Generator.Initialization is
 
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
-   use CMOF;
-   use CMOF.Associations;
    use CMOF.Classes;
    use CMOF.Collections;
    use CMOF.Multiplicity_Elements;
@@ -213,15 +213,21 @@ package body Generator.Initialization is
       is
          use type AMF.Elements.Element_Access;
 
-         Property    : constant CMOF_Property
-           := CMOF_Named_Element_Ordered_Sets.Element (Position);
-         Association : constant CMOF_Association := Get_Association (Property);
-         Value       : constant League.Holders.Holder
-           := Get (Element, Property);
+         Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
+           := AMF.CMOF.Properties.CMOF_Property_Access
+               (AMF.Internals.Helpers.To_Element
+                 (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+         Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Property.Get_Type;
+         Association   : constant AMF.CMOF.Associations.CMOF_Association_Access
+           := Property.Get_Association;
+         Value         : constant League.Holders.Holder
+           := AMF.Internals.Helpers.To_Element (Element).Get (Property);
 
          procedure Establish_Link
-          (Association : CMOF_Association;
-           Property    : CMOF_Property;
+          (Association :
+             not null AMF.CMOF.Associations.CMOF_Association_Access;
+           Property    : not null AMF.CMOF.Properties.CMOF_Property_Access;
            Element     : CMOF_Element;
            Other       : CMOF_Element);
 
@@ -230,17 +236,21 @@ package body Generator.Initialization is
          --------------------
 
          procedure Establish_Link
-          (Association : CMOF_Association;
-           Property    : CMOF_Property;
+          (Association :
+             not null AMF.CMOF.Associations.CMOF_Association_Access;
+           Property    : not null AMF.CMOF.Properties.CMOF_Property_Access;
            Element     : CMOF_Element;
            Other       : CMOF_Element)
          is
-            use type AMF.Internals.AMF_Element;
+            use type AMF.CMOF.Properties.CMOF_Property_Access;
 
-            First_End  : constant CMOF_Property
-              := Collections.Element (Get_Member_End (Association), 1);
-            Second_End : constant CMOF_Property
-              := Collections.Element (Get_Member_End (Association), 2);
+            Member_End : constant
+              AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+                := Association.Get_Member_End;
+            First_End  : constant AMF.CMOF.Properties.CMOF_Property_Access
+              := Member_End.Element (1);
+            Second_End : constant AMF.CMOF.Properties.CMOF_Property_Access
+              := Member_End.Element (2);
 
          begin
             if First_End = Property then
@@ -264,8 +274,8 @@ package body Generator.Initialization is
          end Establish_Link;
 
       begin
-         if Is_Class (Get_Type (Property)) then
-            if Is_Multivalued (Property) then
+         if Property_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+            if Property.Is_Multivalued then
                for J in 1 .. AMF.Holders.Collections.Element
                               (Value).Length
                loop

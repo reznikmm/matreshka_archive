@@ -52,15 +52,16 @@ with Interfaces;
 
 with League.Strings;
 
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Elements.Collections;
 with AMF.Facility;
 with AMF.Internals.Helpers;
 with AMF.URI_Stores;
-with CMOF.Associations;
 with CMOF.Classes;
 with CMOF.Collections;
-with CMOF.Properties;
-with CMOF.Reflection;
 with CMOF.Multiplicity_Elements;
 with CMOF.Named_Elements;
 with CMOF.Typed_Elements;
@@ -81,11 +82,8 @@ procedure Gen2 is
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use CMOF;
-   use CMOF.Associations;
    use CMOF.Classes;
    use CMOF.Collections;
-   use CMOF.Properties;
-   use CMOF.Reflection;
    use CMOF.Multiplicity_Elements;
    use CMOF.Named_Elements;
    use CMOF.Typed_Elements;
@@ -324,8 +322,10 @@ procedure Gen2 is
       procedure Generate_Association_Constant
        (Position : CMOF_Element_Sets.Cursor)
       is
-         Association : constant CMOF_Association
-           := CMOF_Element_Sets.Element (Position);
+         Association : constant AMF.CMOF.Associations.CMOF_Association_Access
+           := AMF.CMOF.Associations.CMOF_Association_Access
+               (AMF.Internals.Helpers.To_Element
+                 (CMOF_Element_Sets.Element (Position)));
 --         Owned_End   : constant Ordered_Set_Of_CMOF_Property
 --           := Get_Owned_End (Association);
 --
@@ -345,7 +345,9 @@ procedure Gen2 is
             Put_Line
              (": constant CMOF_Association :="
                 & Integer'Wide_Wide_Image
-                   (Element_Numbers.Element (Association))
+                   (Element_Numbers.Element
+                     (AMF.Internals.Helpers.To_Element
+                       (AMF.Elements.Element_Access (Association))))
                 & ";");
 --         end Generate_Property_Constant;
 --
@@ -362,29 +364,38 @@ procedure Gen2 is
       procedure Generate_Association_Property_Constant
        (Position : CMOF_Element_Sets.Cursor)
       is
-         Association : constant CMOF_Association
-           := CMOF_Element_Sets.Element (Position);
-         Owned_End   : constant Ordered_Set_Of_CMOF_Property
-           := Get_Owned_End (Association);
+         Association : constant AMF.CMOF.Associations.CMOF_Association_Access
+           := AMF.CMOF.Associations.CMOF_Association_Access
+               (AMF.Internals.Helpers.To_Element
+                 (CMOF_Element_Sets.Element (Position)));
+         Owned_End   : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Association.Get_Owned_End;
+
+         procedure Generate_Property_Constant
+          (Property : not null AMF.CMOF.Properties.CMOF_Property_Access);
 
          --------------------------------
          -- Generate_Property_Constant --
          --------------------------------
 
-         procedure Generate_Property_Constant (Property : CMOF_Property) is
+         procedure Generate_Property_Constant
+          (Property : not null AMF.CMOF.Properties.CMOF_Property_Access) is
          begin
             Put ("   " & Property_Constant_Name (Property));
             Set_Col (Property_Constant_Name_Max + 5);
             Put_Line
              (": constant CMOF_Property :="
                 & Integer'Wide_Wide_Image
-                   (Element_Numbers.Element (Property))
+                   (Element_Numbers.Element
+                     (AMF.Internals.Helpers.To_Element
+                       (AMF.Elements.Element_Access (Property))))
                 & ";");
          end Generate_Property_Constant;
 
       begin
-         for J in 1 .. Length (Owned_End) loop
-            Generate_Property_Constant (Element (Owned_End, J));
+         for J in 1 .. Owned_End.Length loop
+            Generate_Property_Constant (Owned_End.Element (J));
          end loop;
       end Generate_Association_Property_Constant;
 
@@ -406,19 +417,25 @@ procedure Gen2 is
          procedure Generate_Property_Constant
           (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
          is
-            Property : constant CMOF_Class
-              := CMOF_Named_Element_Ordered_Sets.Element (Position);
+            Property : constant AMF.CMOF.Properties.CMOF_Property_Access
+              := AMF.CMOF.Properties.CMOF_Property_Access
+                  (AMF.Internals.Helpers.To_Element
+                    (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+            Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+              := Property.Get_Type;
 
          begin
-            if Is_Multivalued (Property)
-              and Is_Class (Get_Type (Property))
+            if Property.Is_Multivalued
+              and Property_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
             then
                Put ("   " & Property_Constant_Name (Property));
                Set_Col (Property_Constant_Name_Max + 5);
                Put_Line
                 (": constant CMOF_Property :="
                    & Integer'Wide_Wide_Image
-                      (Element_Numbers.Element (Property))
+                      (Element_Numbers.Element
+                        (AMF.Internals.Helpers.To_Element
+                          (AMF.Elements.Element_Access (Property))))
                    & ";");
             end if;
          end Generate_Property_Constant;
@@ -455,19 +472,25 @@ procedure Gen2 is
          procedure Generate_Property_Constant
           (Position : CMOF_Named_Element_Ordered_Sets.Cursor)
          is
-            Property : constant CMOF_Class
-              := CMOF_Named_Element_Ordered_Sets.Element (Position);
+            Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
+              := AMF.CMOF.Properties.CMOF_Property_Access
+                  (AMF.Internals.Helpers.To_Element
+                    (CMOF_Named_Element_Ordered_Sets.Element (Position)));
+            Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+              := Property.Get_Type;
 
          begin
-            if not Is_Multivalued (Property)
-              or not Is_Class (Get_Type (Property))
+            if not Property.Is_Multivalued
+              or Property_Type.all not in AMF.CMOF.Classes.CMOF_Class'Class
             then
                Put ("   " & Property_Constant_Name (Property));
                Set_Col (Property_Constant_Name_Max + 5);
                Put_Line
                 (": constant CMOF_Property :="
                    & Integer'Wide_Wide_Image
-                      (Element_Numbers.Element (Property))
+                      (Element_Numbers.Element
+                        (AMF.Internals.Helpers.To_Element
+                          (AMF.Elements.Element_Access (Property))))
                    & ";");
             end if;
          end Generate_Property_Constant;
