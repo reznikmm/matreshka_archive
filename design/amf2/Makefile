@@ -16,13 +16,6 @@ all:
 uml-all:
 	gprbuild -p -Puml/uml.gpr
 
-#gen:
-#	gprbuild -p -Pgen-stage1/generator.gpr
-#	./gen-stage1/.objs/gen data/Infrastructure.cmof > cmof/generated/sources.ada
-#	gnatchop -gnat05 -w cmof/generated/sources.ada cmof/generated
-#	rm cmof/generated/sources.ada
-#	(cd cmof/generated && patch < uri-1.patch)
-
 gen2:
 	gprbuild -p -Pgen-stage2/gens.gpr
 	test -d cmof/generated/.new || mkdir cmof/generated/.new
