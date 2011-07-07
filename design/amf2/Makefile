@@ -47,11 +47,16 @@ gen2-api:
 
 gen-uml:
 	gprbuild -p -Pgen-stage2/gens.gpr
-#	(cd data/2.4 && ../../gen-stage2/.obj/gen_api UML.cmof UML) > uml/generated/sources.ada
-#	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
-#	rm uml/generated/sources.ada
-	(cd data/2.4 && ../../gen-stage2/.obj/gen2 UML.cmof) > uml/generated/sources.ada
-	gnatchop -gnat12 -w uml/generated/sources.ada uml/generated
+	test -d uml/generated/.new || mkdir uml/generated/.new
+	(cd data/2.4 && ../../gen-stage2/.obj/gen_api UML.cmof UML) > uml/generated/.new/sources.ada
+	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
+	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
+	rm -r uml/generated/.new
+	test -d uml/generated/.new || mkdir uml/generated/.new
+	(cd data/2.4 && ../../gen-stage2/.obj/gen2 UML.cmof) > uml/generated/.new/sources.ada
+	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
+	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
+	rm -r uml/generated/.new
 	gnatmake -p -Puml/uml.gpr
 
 clean:
