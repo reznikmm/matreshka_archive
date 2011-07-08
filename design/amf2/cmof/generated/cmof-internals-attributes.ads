@@ -75,7 +75,7 @@ package CMOF.Internals.Attributes is
    --  PrimitiveType => Classifier::attribute
 
    function Internal_Get_Body
-    (Self : CMOF_Element) return Collection_Of_CMOF_String;
+    (Self : CMOF_Element) return AMF.CMOF.Sequence_Of_String;
    --  OpaqueExpression => OpaqueExpression::body
 
    function Internal_Get_Body
@@ -128,10 +128,10 @@ package CMOF.Internals.Attributes is
    --  Property => Property::default
 
    function Internal_Get_Direction
-    (Self : CMOF_Element) return CMOF_Parameter_Direction_Kind;
+    (Self : CMOF_Element) return AMF.CMOF.CMOF_Parameter_Direction_Kind;
    procedure Internal_Set_Direction
     (Self : CMOF_Element;
-     To   : CMOF_Parameter_Direction_Kind);
+     To   : AMF.CMOF.CMOF_Parameter_Direction_Kind);
    --  Parameter => Parameter::direction
 
    function Internal_Get_Element
@@ -301,7 +301,7 @@ package CMOF.Internals.Attributes is
    --  Property => MultiplicityElement::isUnique
 
    function Internal_Get_Language
-    (Self : CMOF_Element) return Collection_Of_CMOF_String;
+    (Self : CMOF_Element) return AMF.CMOF.Ordered_Set_Of_String;
    --  OpaqueExpression => OpaqueExpression::language
 
    function Internal_Get_Lower
@@ -687,10 +687,10 @@ package CMOF.Internals.Attributes is
    --  Tag => Tag::value
 
    function Internal_Get_Visibility
-    (Self : CMOF_Element) return CMOF_Visibility_Kind;
+    (Self : CMOF_Element) return AMF.CMOF.CMOF_Visibility_Kind;
    procedure Internal_Set_Visibility
     (Self : CMOF_Element;
-     To   : CMOF_Visibility_Kind);
+     To   : AMF.CMOF.CMOF_Visibility_Kind);
    --  ElementImport => ElementImport::visibility
    --  PackageImport => PackageImport::visibility
 

@@ -502,7 +502,7 @@ package body CMOF.Internals.Attributes is
    -----------------------
 
    function Internal_Get_Body
-    (Self : CMOF_Element) return Collection_Of_CMOF_String is
+    (Self : CMOF_Element) return AMF.CMOF.Sequence_Of_String is
    begin
       case Elements.Table (Self).Kind is
          when E_Opaque_Expression =>
@@ -662,7 +662,7 @@ package body CMOF.Internals.Attributes is
    ----------------------------
 
    function Internal_Get_Direction
-    (Self : CMOF_Element) return CMOF_Parameter_Direction_Kind is
+    (Self : CMOF_Element) return AMF.CMOF.CMOF_Parameter_Direction_Kind is
    begin
       case Elements.Table (Self).Kind is
          when E_Parameter =>
@@ -1138,7 +1138,7 @@ package body CMOF.Internals.Attributes is
    ---------------------------
 
    function Internal_Get_Language
-    (Self : CMOF_Element) return Collection_Of_CMOF_String is
+    (Self : CMOF_Element) return AMF.CMOF.Ordered_Set_Of_String is
    begin
       case Elements.Table (Self).Kind is
          when E_Opaque_Expression =>
@@ -2571,7 +2571,7 @@ package body CMOF.Internals.Attributes is
    -----------------------------
 
    function Internal_Get_Visibility
-    (Self : CMOF_Element) return CMOF_Visibility_Kind is
+    (Self : CMOF_Element) return AMF.CMOF.CMOF_Visibility_Kind is
    begin
       case Elements.Table (Self).Kind is
          when E_Element_Import =>
@@ -2912,9 +2912,9 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Direction
     (Self : CMOF_Element;
-     To   : CMOF_Parameter_Direction_Kind)
+     To   : AMF.CMOF.CMOF_Parameter_Direction_Kind)
    is
-      Old : CMOF_Parameter_Direction_Kind;
+      Old : AMF.CMOF.CMOF_Parameter_Direction_Kind;
 
    begin
       case Elements.Table (Self).Kind is
@@ -4109,9 +4109,9 @@ package body CMOF.Internals.Attributes is
 
    procedure Internal_Set_Visibility
     (Self : CMOF_Element;
-     To   : CMOF_Visibility_Kind)
+     To   : AMF.CMOF.CMOF_Visibility_Kind)
    is
-      Old : CMOF_Visibility_Kind;
+      Old : AMF.CMOF.CMOF_Visibility_Kind;
 
    begin
       case Elements.Table (Self).Kind is

@@ -74,13 +74,13 @@ package AMF.CMOF.Parameters is
 
    not overriding function Get_Direction
     (Self : not null access constant CMOF_Parameter)
-       return CMOF_Parameter_Direction_Kind is abstract;
+       return AMF.CMOF.CMOF_Parameter_Direction_Kind is abstract;
    --  Indicates whether a parameter is being sent into or out of a behavioral 
    --  element.
 
    not overriding procedure Set_Direction
     (Self : not null access CMOF_Parameter;
-     To   : CMOF_Parameter_Direction_Kind) is abstract;
+     To   : AMF.CMOF.CMOF_Parameter_Direction_Kind) is abstract;
 
    not overriding function Get_Operation
     (Self : not null access constant CMOF_Parameter)

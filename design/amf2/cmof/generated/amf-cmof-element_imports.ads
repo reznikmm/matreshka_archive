@@ -63,7 +63,7 @@ package AMF.CMOF.Element_Imports is
 
    not overriding function Get_Visibility
     (Self : not null access constant CMOF_Element_Import)
-       return CMOF_Visibility_Kind is abstract;
+       return AMF.CMOF.CMOF_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElement within the 
    --  importing Package. The default visibility is the same as that of the 
    --  imported element. If the imported element does not have a visibility, 
@@ -71,7 +71,7 @@ package AMF.CMOF.Element_Imports is
 
    not overriding procedure Set_Visibility
     (Self : not null access CMOF_Element_Import;
-     To   : CMOF_Visibility_Kind) is abstract;
+     To   : AMF.CMOF.CMOF_Visibility_Kind) is abstract;
 
    not overriding function Get_Alias
     (Self : not null access constant CMOF_Element_Import)
