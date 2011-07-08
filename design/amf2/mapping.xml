@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mappings>
+  <!--  Primitive and enumeration types of CMOF  -->
+  <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Boolean">
+    <mapping representation="value" adaType="Boolean" memberName="Boolean_Value"/>
+  </type>
+  <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#Integer">
+    <mapping representation="value" adaType="Integer" memberName="Integer_Value"/>
+    <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder_Value"/>
+  </type>
+  <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String">
+    <mapping representation="value" adaType="League.Strings.Universal_String"/>
+    <mapping representation="holder" adaType="AMF.Optional_String"/>
+    <mapping representation="set" adaType="Set_Of_String"/>
+    <mapping representation="ordered_set" adaType="Ordered_Set_Of_String"/>
+    <mapping representation="sequence" adaType="Sequence_Of_String"/>
+  </type>
+  <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#UnlimitedNatural">
+    <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Natural_Value"/>
+    <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Natural_Holder_Value"/>
+  </type>
+  <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#ParameterDirectionKind">
+    <mapping representation="value" adaType="CMOF_Parameter_Direction_Kind" memberName="Parameter_Direction_Value"/>
+  </type>
+  <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#VisibilityKind">
+    <mapping representation="value" adaType="CMOF_Visibility_Kind" memberName="Visibility_Value"/>
+    <mapping representation="holder" adaType="AMF.CMOF.Optional_CMOF_Visibility_Kind" memberName="Visibility_Holder_Value"/>
+  </type>
+
+  <!--  Primitive types of PrimitiveTypes package of UML specification  -->
+  <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Real"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
+
+  <!--  Enumeration types of UML package of UML specification  -->
+  <type uri="http://www.omg.org/spec/UML/20100901/#AggregationKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#CallConcurrencyKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ConnectorKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#MessageKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#MessageSort"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ObjectNodeOrderingKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ParameterEffectKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#TransitionKind"/>
+  <type uri="http://www.omg.org/spec/UML/20100901/#VisibilityKind"/>
+</mappings>

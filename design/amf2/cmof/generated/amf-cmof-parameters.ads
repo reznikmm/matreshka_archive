@@ -64,13 +64,13 @@ package AMF.CMOF.Parameters is
 
    not overriding function Get_Default
     (Self : not null access constant CMOF_Parameter)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Specifies a String that represents a value to be used when no argument 
    --  is supplied for the Parameter.
 
    not overriding procedure Set_Default
     (Self : not null access CMOF_Parameter;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Direction
     (Self : not null access constant CMOF_Parameter)

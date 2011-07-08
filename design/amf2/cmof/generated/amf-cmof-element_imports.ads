@@ -75,7 +75,7 @@ package AMF.CMOF.Element_Imports is
 
    not overriding function Get_Alias
     (Self : not null access constant CMOF_Element_Import)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Specifies the name that should be added to the namespace of the 
    --  importing package in lieu of the name of the imported packagable 
    --  element. The aliased name must not clash with any other member name in 
@@ -83,7 +83,7 @@ package AMF.CMOF.Element_Imports is
 
    not overriding procedure Set_Alias
     (Self : not null access CMOF_Element_Import;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Imported_Element
     (Self : not null access constant CMOF_Element_Import)

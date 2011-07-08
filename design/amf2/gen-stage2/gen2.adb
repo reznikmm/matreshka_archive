@@ -63,6 +63,7 @@ with Generator.Constructors;
 with Generator.Initialization;
 with Generator.Names;
 with Generator.Reflection;
+with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
 
 procedure Gen2 is
@@ -629,6 +630,8 @@ begin
    AMF.Facility.Initialize;
    Extent := XMI.Reader (Ada.Command_Line.Argument (1));
    Elements := Extent.Elements;
+
+   Generator.Type_Mapping.Load_Mapping;
 
    Put_Line (Standard_Error, "Analyzing...");
    Generator.Analyzer.Analyze_Model (Extent);

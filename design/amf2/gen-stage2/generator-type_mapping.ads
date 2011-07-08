@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,65 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
+--  This package provides capability to specify mapping of model's data types
+--  into Ada one.
 ------------------------------------------------------------------------------
---  A value specification is the specification of a (possibly empty) set of 
---  instances, including both objects and data values.
-------------------------------------------------------------------------------
-with AMF.CMOF.Packageable_Elements;
-with AMF.CMOF.Typed_Elements;
+private with Ada.Containers.Hashed_Maps;
+private with AMF.CMOF.Elements.Hash;
 
-package AMF.CMOF.Value_Specifications is
+with League.Strings;
 
-   pragma Preelaborate;
+package Generator.Type_Mapping is
 
-   type CMOF_Value_Specification is limited interface
-     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element
-     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element;
+   procedure Load_Mapping;
+   --  Loads mapping data.
 
-   type CMOF_Value_Specification_Access is
-     access all CMOF_Value_Specification'Class;
-   for CMOF_Value_Specification_Access'Storage_Size use 0;
+   function Ada_Type
+    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
 
-   not overriding function Is_Computable
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query isComputable() determines whether a value specification can 
-   --  be computed in a model. This operation cannot be fully defined in OCL. 
-   --  A conforming implementation is expected to deliver true for this 
-   --  operation for all value specifications that it can compute, and to 
-   --  compute all of those for which the operation is true. A conforming 
-   --  implementation is expected to be able to compute the value of all 
-   --  literals.
+   function Member_Name
+    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
 
-   not overriding function Integer_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return Integer is abstract;
-   --  The query integerValue() gives a single Integer value when one can be 
-   --  computed.
+private
 
-   not overriding function Boolean_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query booleanValue() gives a single Boolean value when one can be 
-   --  computed.
+   type Representation_Mapping is record
+      Ada_Type    : League.Strings.Universal_String;
+      Member_Name : League.Strings.Universal_String;
+   end record;
 
-   not overriding function String_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return League.Strings.Universal_String is abstract;
-   --  The query stringValue() gives a single String value when one can be 
-   --  computed.
+   type Representation_Mapping_Access is access all Representation_Mapping;
 
-   not overriding function Unlimited_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return AMF.Unlimited_Natural is abstract;
-   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
-   --  one can be computed.
+   type Representation_Mappings is
+     array (Representation_Kinds) of Representation_Mapping_Access;
 
-   not overriding function Is_Null
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query isNull() returns true when it can be computed that the value 
-   --  is null.
+   type Type_Mapping is record
+      Mapping : Representation_Mappings;
+   end record;
 
-end AMF.CMOF.Value_Specifications;
+   type Type_Mapping_Access is access all Type_Mapping;
+
+   package Mapping_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.CMOF.Elements.CMOF_Element_Access,
+           Type_Mapping_Access,
+           AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=");
+
+   Mapping : Mapping_Maps.Map;
+
+end Generator.Type_Mapping;

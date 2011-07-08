@@ -49,6 +49,7 @@ with Ada.Containers.Ordered_Sets;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Parameters;
 with AMF.CMOF.Properties;
 
 package Generator is
@@ -193,6 +194,10 @@ package Generator is
 
    function Representation
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Representation_Kinds;
+
+   function Representation
+    (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
        return Representation_Kinds;
 
    function Has_Setter

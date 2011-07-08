@@ -97,7 +97,7 @@ package AMF.CMOF.Packages is
 
    not overriding function Get_Uri
     (Self : not null access constant CMOF_Package)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Provides an identifier for the package that can be used for many 
    --  purposes. A URI is the universally unique identification of the package 
    --  following the IETF URI specification, RFC 2396 
@@ -107,7 +107,7 @@ package AMF.CMOF.Packages is
 
    not overriding procedure Set_Uri
     (Self : not null access CMOF_Package;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Package)

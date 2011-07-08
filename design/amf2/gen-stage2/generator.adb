@@ -142,6 +142,40 @@ package body Generator is
    --------------------
 
    function Representation
+    (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
+       return Representation_Kinds is
+   begin
+      if Parameter.Is_Multivalued then
+         if Parameter.Get_Is_Unique then
+            if Parameter.Get_Is_Ordered then
+               return Ordered_Set;
+
+            else
+               return Set;
+            end if;
+
+         else
+            if Parameter.Get_Is_Ordered then
+               return Sequence;
+
+            else
+               return Bag;
+            end if;
+         end if;
+
+      elsif Parameter.Lower_Bound = 0 then
+         return Holder;
+
+      else
+         return Value;
+      end if;
+   end Representation;
+
+   --------------------
+   -- Representation --
+   --------------------
+
+   function Representation
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return Representation_Kinds is
    begin

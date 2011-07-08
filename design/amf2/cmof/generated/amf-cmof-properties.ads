@@ -83,13 +83,13 @@ package AMF.CMOF.Properties is
 
    not overriding function Get_Default
     (Self : not null access constant CMOF_Property)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Specifies a String that represents a value to be used when no argument 
    --  is supplied for the Property.
 
    not overriding procedure Set_Default
     (Self : not null access CMOF_Property;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Is_Composite
     (Self : not null access constant CMOF_Property)

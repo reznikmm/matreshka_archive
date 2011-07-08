@@ -50,6 +50,7 @@ with AMF.CMOF.Types;
 with League.Strings;
 
 with Generator.Names;
+with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Attributes is
@@ -138,131 +139,10 @@ package body Generator.Attributes is
             return "CMOF_Element";
          end if;
 
-      elsif Attribute_Type.Get_Name = Boolean_Name then
-         case Representation (Attribute) is
-            when Value =>
-               return "Boolean";
-
-            when Holder =>
-               raise Program_Error;
-
-            when Set =>
-               raise Program_Error;
-
-            when Ordered_Set =>
-               raise Program_Error;
-
-            when Bag =>
-               raise Program_Error;
-
-            when Sequence =>
-               raise Program_Error;
-         end case;
-
-      elsif Attribute_Type.Get_Name = Integer_Name then
-         case Representation (Attribute) is
-            when Value =>
-               raise Program_Error;
-
-            when Holder =>
-               return "AMF.Optional_Integer";
-
-            when Set =>
-               raise Program_Error;
-
-            when Ordered_Set =>
-               raise Program_Error;
-
-            when Bag =>
-               raise Program_Error;
-
-            when Sequence =>
-               raise Program_Error;
-         end case;
-
-      elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
-         case Representation (Attribute) is
-            when Value =>
-               return "CMOF_Parameter_Direction_Kind";
-
-            when Holder =>
-               raise Program_Error;
-
-            when Set =>
-               raise Program_Error;
-
-            when Ordered_Set =>
-               raise Program_Error;
-
-            when Bag =>
-               raise Program_Error;
-
-            when Sequence =>
-               raise Program_Error;
-         end case;
-
-      elsif Attribute_Type.Get_Name = String_Name then
-         case Representation (Attribute) is
-            when Value =>
-               return "League.Strings.Universal_String";
-
-            when Holder =>
-               return "AMF.Optional_String";
-
-            when Set =>
-               raise Program_Error;
-
-            when Ordered_Set =>
-               return "Collection_Of_CMOF_String";
-
-            when Bag =>
-               raise Program_Error;
-
-            when Sequence =>
-               return "Collection_Of_CMOF_String";
-         end case;
-
-      elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
-         case Representation (Attribute) is
-            when Value =>
-               raise Program_Error;
-
-            when Holder =>
-               return "AMF.Optional_Unlimited_Natural";
-
-            when Set =>
-               raise Program_Error;
-
-            when Ordered_Set =>
-               raise Program_Error;
-
-            when Bag =>
-               raise Program_Error;
-
-            when Sequence =>
-               raise Program_Error;
-         end case;
-
-      elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
-         case Representation (Attribute) is
-            when Value =>
-               return "CMOF_Visibility_Kind";
-
-            when Holder =>
-               return "AMF.CMOF.Optional_CMOF_Visibility_Kind";
-
-            when Set =>
-               raise Program_Error;
-
-            when Ordered_Set =>
-               raise Program_Error;
-
-            when Bag =>
-               raise Program_Error;
-
-            when Sequence =>
-               raise Program_Error;
-         end case;
+      else
+         return
+           Generator.Type_Mapping.Ada_Type
+            (Attribute_Type, Representation (Attribute)).To_Wide_Wide_String;
       end if;
    end Ada_Type;
 
@@ -551,115 +431,11 @@ package body Generator.Attributes is
                if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                   Put ("Element");
 
-               elsif Attribute_Type.Get_Name = Boolean_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        Put ("Boolean_Value");
-
-                     when Holder =>
-                        raise Program_Error;
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name = Integer_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        raise Program_Error;
-
-                     when Holder =>
-                        Put ("Integer_Holder_Value");
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name
-                       = Parameter_Direction_Kind_Name
-               then
-                  case Representation (Attribute) is
-                     when Value =>
-                        Put ("Parameter_Direction_Value");
-
-                     when Holder =>
-                        raise Program_Error;
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        raise Program_Error;
-
-                     when Holder =>
-                        Put ("Natural_Holder_Value");
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        Put ("Visibility_Value");
-
-                     when Holder =>
-                        Put ("Visibility_Holder_Value");
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
                else
-                  raise Program_Error;
+                  Put
+                   (Generator.Type_Mapping.Member_Name
+                     (Attribute_Type,
+                      Representation (Attribute)).To_Wide_Wide_String);
                end if;
 
                Put_Line (";");
@@ -733,115 +509,11 @@ package body Generator.Attributes is
                if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                   return "Element";
 
-               elsif Attribute_Type.Get_Name = Boolean_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        return "Boolean_Value";
-
-                     when Holder =>
-                        raise Program_Error;
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name = Integer_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        raise Program_Error;
-
-                     when Holder =>
-                        return "Integer_Holder_Value";
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name
-                       = Parameter_Direction_Kind_Name
-               then
-                  case Representation (Attribute) is
-                     when Value =>
-                        return "Parameter_Direction_Value";
-
-                     when Holder =>
-                        raise Program_Error;
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        raise Program_Error;
-
-                     when Holder =>
-                        return "Natural_Holder_Value";
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
-               elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
-                  case Representation (Attribute) is
-                     when Value =>
-                        return "Visibility_Value";
-
-                     when Holder =>
-                        return "Visibility_Holder_Value";
-
-                     when Set =>
-                        raise Program_Error;
-
-                     when Ordered_Set =>
-                        raise Program_Error;
-
-                     when Bag =>
-                        raise Program_Error;
-
-                     when Sequence =>
-                        raise Program_Error;
-                  end case;
-
                else
-                  raise Program_Error;
+                  return
+                    Generator.Type_Mapping.Member_Name
+                     (Attribute_Type,
+                      Representation (Attribute)).To_Wide_Wide_String;
                end if;
             end Member_Name;
 

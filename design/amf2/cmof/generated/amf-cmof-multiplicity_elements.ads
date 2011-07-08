@@ -83,21 +83,21 @@ package AMF.CMOF.Multiplicity_Elements is
 
    not overriding function Get_Lower
     (Self : not null access constant CMOF_Multiplicity_Element)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  Specifies the lower bound of the multiplicity interval.
 
    not overriding procedure Set_Lower
     (Self : not null access CMOF_Multiplicity_Element;
-     To   : Optional_Integer) is abstract;
+     To   : AMF.Optional_Integer) is abstract;
 
    not overriding function Get_Upper
     (Self : not null access constant CMOF_Multiplicity_Element)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  Specifies the upper bound of the multiplicity interval.
 
    not overriding procedure Set_Upper
     (Self : not null access CMOF_Multiplicity_Element;
-     To   : Optional_Unlimited_Natural) is abstract;
+     To   : AMF.Optional_Unlimited_Natural) is abstract;
 
    not overriding function Is_Multivalued
     (Self : not null access constant CMOF_Multiplicity_Element)
@@ -127,7 +127,7 @@ package AMF.CMOF.Multiplicity_Elements is
 
    not overriding function Upper_Bound
     (Self : not null access constant CMOF_Multiplicity_Element)
-       return Unlimited_Natural is abstract;
+       return AMF.Unlimited_Natural is abstract;
    --  The query upperBound() returns the upper bound of the multiplicity for 
    --  a bounded multiplicity as an unlimited natural.
 

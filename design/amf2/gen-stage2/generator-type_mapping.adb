@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,65 +41,51 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
---  A value specification is the specification of a (possibly empty) set of 
---  instances, including both objects and data values.
-------------------------------------------------------------------------------
-with AMF.CMOF.Packageable_Elements;
-with AMF.CMOF.Typed_Elements;
+with XML.SAX.Input_Sources.Streams.Files;
+with XML.SAX.Simple_Readers;
 
-package AMF.CMOF.Value_Specifications is
+with Generator.Type_Mapping.Handlers;
 
-   pragma Preelaborate;
+package body Generator.Type_Mapping is
 
-   type CMOF_Value_Specification is limited interface
-     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element
-     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element;
+   --------------
+   -- Ada_Type --
+   --------------
 
-   type CMOF_Value_Specification_Access is
-     access all CMOF_Value_Specification'Class;
-   for CMOF_Value_Specification_Access'Storage_Size use 0;
+   function Ada_Type
+    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String is
+   begin
+      return Mapping.Element (Element).Mapping (Representation).Ada_Type;
+   end Ada_Type;
 
-   not overriding function Is_Computable
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query isComputable() determines whether a value specification can 
-   --  be computed in a model. This operation cannot be fully defined in OCL. 
-   --  A conforming implementation is expected to deliver true for this 
-   --  operation for all value specifications that it can compute, and to 
-   --  compute all of those for which the operation is true. A conforming 
-   --  implementation is expected to be able to compute the value of all 
-   --  literals.
+   ------------------
+   -- Load_Mapping --
+   ------------------
 
-   not overriding function Integer_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return Integer is abstract;
-   --  The query integerValue() gives a single Integer value when one can be 
-   --  computed.
+   procedure Load_Mapping is
+      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+      Handler : aliased Generator.Type_Mapping.Handlers.Mapping_Handler;
 
-   not overriding function Boolean_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query booleanValue() gives a single Boolean value when one can be 
-   --  computed.
+   begin
+      Input.Open ("mapping.xml");
+      Reader.Set_Content_Handler (Handler'Unchecked_Access);
+--      Reader.Set_Error_Handler (Handler'Unchecked_Access);
+      Reader.Parse (Input'Unchecked_Access);
+   end Load_Mapping;
 
-   not overriding function String_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return League.Strings.Universal_String is abstract;
-   --  The query stringValue() gives a single String value when one can be 
-   --  computed.
+   -----------------
+   -- Member_Name --
+   -----------------
 
-   not overriding function Unlimited_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return AMF.Unlimited_Natural is abstract;
-   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
-   --  one can be computed.
+   function Member_Name
+    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String is
+   begin
+      return Mapping.Element (Element).Mapping (Representation).Member_Name;
+   end Member_Name;
 
-   not overriding function Is_Null
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query isNull() returns true when it can be computed that the value 
-   --  is null.
-
-end AMF.CMOF.Value_Specifications;
+end Generator.Type_Mapping;

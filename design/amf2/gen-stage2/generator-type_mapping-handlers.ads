@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,65 +41,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
---  A value specification is the specification of a (possibly empty) set of 
---  instances, including both objects and data values.
-------------------------------------------------------------------------------
-with AMF.CMOF.Packageable_Elements;
-with AMF.CMOF.Typed_Elements;
+private with League.Strings;
+private with XML.SAX.Attributes;
+with XML.SAX.Content_Handlers;
 
-package AMF.CMOF.Value_Specifications is
+private package Generator.Type_Mapping.Handlers is
 
-   pragma Preelaborate;
+   type Mapping_Handler is
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
 
-   type CMOF_Value_Specification is limited interface
-     and AMF.CMOF.Typed_Elements.CMOF_Typed_Element
-     and AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element;
+private
 
-   type CMOF_Value_Specification_Access is
-     access all CMOF_Value_Specification'Class;
-   for CMOF_Value_Specification_Access'Storage_Size use 0;
+   type Mapping_Handler is
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
+      Element : AMF.CMOF.Elements.CMOF_Element_Access;
+      Mapping : Type_Mapping_Access;
+   end record;
 
-   not overriding function Is_Computable
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query isComputable() determines whether a value specification can 
-   --  be computed in a model. This operation cannot be fully defined in OCL. 
-   --  A conforming implementation is expected to deliver true for this 
-   --  operation for all value specifications that it can compute, and to 
-   --  compute all of those for which the operation is true. A conforming 
-   --  implementation is expected to be able to compute the value of all 
-   --  literals.
+   overriding function Error_String
+    (Self : Mapping_Handler)
+       return League.Strings.Universal_String;
 
-   not overriding function Integer_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return Integer is abstract;
-   --  The query integerValue() gives a single Integer value when one can be 
-   --  computed.
+   overriding procedure Start_Element
+    (Self           : in out Mapping_Handler;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
+     Success        : in out Boolean);
 
-   not overriding function Boolean_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query booleanValue() gives a single Boolean value when one can be 
-   --  computed.
-
-   not overriding function String_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return League.Strings.Universal_String is abstract;
-   --  The query stringValue() gives a single String value when one can be 
-   --  computed.
-
-   not overriding function Unlimited_Value
-    (Self : not null access constant CMOF_Value_Specification)
-       return AMF.Unlimited_Natural is abstract;
-   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
-   --  one can be computed.
-
-   not overriding function Is_Null
-    (Self : not null access constant CMOF_Value_Specification)
-       return Boolean is abstract;
-   --  The query isNull() returns true when it can be computed that the value 
-   --  is null.
-
-end AMF.CMOF.Value_Specifications;
+end Generator.Type_Mapping.Handlers;

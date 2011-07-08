@@ -100,21 +100,21 @@ package AMF.CMOF.Operations is
 
    not overriding function Get_Lower
     (Self : not null access constant CMOF_Operation)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Lower
     (Self : not null access CMOF_Operation;
-     To   : Optional_Integer) is abstract;
+     To   : AMF.Optional_Integer) is abstract;
 
    not overriding function Get_Upper
     (Self : not null access constant CMOF_Operation)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Upper
     (Self : not null access CMOF_Operation;
-     To   : Optional_Unlimited_Natural) is abstract;
+     To   : AMF.Optional_Unlimited_Natural) is abstract;
 
    not overriding function Get_Class
     (Self : not null access constant CMOF_Operation)
@@ -196,7 +196,7 @@ package AMF.CMOF.Operations is
 
    not overriding function Upper
     (Self : not null access constant CMOF_Operation)
-       return Unlimited_Natural is abstract;
+       return AMF.Unlimited_Natural is abstract;
    --  If this operation has a return parameter, upper equals the value of 
    --  upper for that parameter. Otherwise upper is not defined.
 
