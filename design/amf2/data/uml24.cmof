@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:cmof="http://schema.omg.org/spec/MOF/2.0/cmof.xml">
   <cmof:Package xmi:type="cmof:Package" xmi:id="_0" name="UML" uri="http://www.omg.org/spec/UML/20100901">
     <packageImport xmi:type="cmof:PackageImport" xmi:id="_packageImport.0">
-      <importedPackage href="PrimitiveTypes.cmof#_0"/>
+      <importedPackage href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#_0"/>
     </packageImport>
     <packagedElement xmi:type="cmof:Association" xmi:id="A_action_actionExecutionSpecification" name="A_action_actionExecutionSpecification" memberEnd="ActionExecutionSpecification-action A_action_actionExecutionSpecification-actionExecutionSpecification">
       <ownedEnd xmi:type="cmof:Property" xmi:id="A_action_actionExecutionSpecification-actionExecutionSpecification" name="actionExecutionSpecification" visibility="public" type="ActionExecutionSpecification" association="A_action_actionExecutionSpecification" upper="*" lower="0"/>
@@ -1254,7 +1254,7 @@
         <ownedComment xmi:type="cmof:Comment" xmi:id="AcceptEventAction-isUnmarshall-_ownedComment.0" annotatedElement="AcceptEventAction-isUnmarshall">
           <body>Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="AcceptEventAction-result" name="result" visibility="public" type="OutputPin" isComposite="true" subsettedProperty="Action-output" association="A_result_acceptEventAction" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="AcceptEventAction-result-_ownedComment.0" annotatedElement="AcceptEventAction-result">
@@ -1291,7 +1291,7 @@
         <ownedComment xmi:type="cmof:Comment" xmi:id="Action-isLocallyReentrant-_ownedComment.0" annotatedElement="Action-isLocallyReentrant">
           <body>If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Action-localPostcondition" name="localPostcondition" visibility="public" type="Constraint" isComposite="true" subsettedProperty="Element-ownedElement" association="A_localPostcondition_action" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Action-localPostcondition-_ownedComment.0" annotatedElement="Action-localPostcondition">
@@ -1422,13 +1422,13 @@
         <ownedComment xmi:type="cmof:Comment" xmi:id="Activity-isReadOnly-_ownedComment.0" annotatedElement="Activity-isReadOnly">
           <body>If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-isSingleExecution" name="isSingleExecution" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Activity-isSingleExecution-_ownedComment.0" annotatedElement="Activity-isSingleExecution">
           <body>If true, all invocations of the activity are handled by the same execution.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Activity-node" name="node" visibility="public" type="ActivityNode" isComposite="true" subsettedProperty="Element-ownedElement" association="A_node_activity" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Activity-node-_ownedComment.0" annotatedElement="Activity-node">
@@ -1795,13 +1795,13 @@
         <ownedComment xmi:type="cmof:Comment" xmi:id="ActivityPartition-isDimension-_ownedComment.0" annotatedElement="ActivityPartition-isDimension">
           <body>Tells whether the partition groups other partitions along a dimension.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ActivityPartition-isExternal" name="isExternal" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ActivityPartition-isExternal-_ownedComment.0" annotatedElement="ActivityPartition-isExternal">
           <body>Tells whether the partition represents an entity to which the partitioning structure does not apply.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ActivityPartition-node" name="node" visibility="public" type="ActivityNode" subsettedProperty="ActivityGroup-containedNode" association="A_inPartition_node" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ActivityPartition-node-_ownedComment.0" annotatedElement="ActivityPartition-node">
@@ -1891,7 +1891,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="AddStructuralFeatureValueAction-isReplaceAll-_ownedComment.0" annotatedElement="AddStructuralFeatureValueAction-isReplaceAll">
           <body>Specifies whether existing values of the structural feature of the object should be removed before adding the new value.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="AddVariableValueAction" name="AddVariableValueAction" superClass="WriteVariableAction">
@@ -1933,7 +1933,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="AddVariableValueAction-isReplaceAll-_ownedComment.0" annotatedElement="AddVariableValueAction-isReplaceAll">
           <body>Specifies whether existing values of the variable should be removed before adding the new value.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="AnyReceiveEvent" name="AnyReceiveEvent" superClass="MessageEvent">
@@ -1952,7 +1952,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="Artifact-fileName-_ownedComment.0" annotatedElement="Artifact-fileName">
           <body>A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Artifact-manifestation" name="manifestation" visibility="public" type="Manifestation" isComposite="true" subsettedProperty="Element-ownedElement NamedElement-clientDependency" association="A_manifestation_artifact" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Artifact-manifestation-_ownedComment.0" annotatedElement="Artifact-manifestation">
@@ -2029,7 +2029,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="Association-isDerived-_ownedComment.0" annotatedElement="Association-isDerived">
           <body>Specifies whether the association is derived from other model elements such as other associations or constraints.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Association-memberEnd" name="memberEnd" visibility="public" type="Property" isOrdered="true" subsettedProperty="Namespace-member" association="A_memberEnd_association" upper="*" lower="2">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Association-memberEnd-_ownedComment.0" annotatedElement="Association-memberEnd">
@@ -2134,7 +2134,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="Behavior-isReentrant-_ownedComment.0" annotatedElement="Behavior-isReentrant">
           <body>Tells whether the behavior can be invoked while it is still executing from a previous invocation.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Behavior-ownedParameter" name="ownedParameter" visibility="public" type="Parameter" isOrdered="true" isComposite="true" subsettedProperty="Namespace-ownedMember" association="A_ownedParameter_behavior" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Behavior-ownedParameter-_ownedComment.0" annotatedElement="Behavior-ownedParameter">
@@ -2208,7 +2208,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="BehavioralFeature-isAbstract-_ownedComment.0" annotatedElement="BehavioralFeature-isAbstract">
           <body>If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="BehavioralFeature-method" name="method" visibility="public" type="Behavior" association="A_method_specification" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="BehavioralFeature-method-_ownedComment.0" annotatedElement="BehavioralFeature-method">
@@ -2248,7 +2248,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="BehavioralFeature-isDistinguishableFrom-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="BehavioralFeature-isDistinguishableFrom-n" name="n" visibility="public" type="NamedElement"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="BehavioralFeature-isDistinguishableFrom-ns" name="ns" visibility="public" type="Namespace"/>
@@ -2349,7 +2349,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="CallAction-isSynchronous-_ownedComment.0" annotatedElement="CallAction-isSynchronous">
           <body>If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="CallAction-result" name="result" visibility="public" type="OutputPin" isOrdered="true" isComposite="true" subsettedProperty="Action-output" association="A_result_callAction" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="CallAction-result-_ownedComment.0" annotatedElement="CallAction-result">
@@ -2504,13 +2504,13 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Class-isAbstract-_ownedComment.1" annotatedElement="Class-isAbstract">
           <body>If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Class-isActive" name="isActive" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Class-isActive-_ownedComment.0" annotatedElement="Class-isActive">
           <body>Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Class-nestedClassifier" name="nestedClassifier" visibility="public" type="Classifier" isOrdered="true" isComposite="true" subsettedProperty="A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember" association="A_nestedClassifier_class" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Class-nestedClassifier-_ownedComment.0" annotatedElement="Class-nestedClassifier">
@@ -2664,13 +2664,13 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Classifier-isAbstract-_ownedComment.0" annotatedElement="Classifier-isAbstract">
           <body>If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Classifier-isFinalSpecialization" name="isFinalSpecialization" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Classifier-isFinalSpecialization-_ownedComment.0" annotatedElement="Classifier-isFinalSpecialization">
           <body>If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Classifier-ownedTemplateSignature" name="ownedTemplateSignature" visibility="public" type="RedefinableTemplateSignature" isComposite="true" redefinedProperty="TemplateableElement-ownedTemplateSignature" subsettedProperty="A_redefinitionContext_redefinableElement-redefinableElement" association="A_ownedTemplateSignature_classifier" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Classifier-ownedTemplateSignature-_ownedComment.0" annotatedElement="Classifier-ownedTemplateSignature">
@@ -2747,7 +2747,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-conformsTo-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-conformsTo-other" name="other" visibility="public" type="Classifier"/>
       </ownedOperation>
@@ -2780,7 +2780,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-hasVisibilityOf-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-hasVisibilityOf-n" name="n" visibility="public" type="NamedElement"/>
       </ownedOperation>
@@ -2845,7 +2845,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-isTemplate-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Classifier-maySpecializeType" name="maySpecializeType" visibility="public" isQuery="true" bodyCondition="Classifier-maySpecializeType-spec">
@@ -2859,7 +2859,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-maySpecializeType-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Classifier-maySpecializeType-c" name="c" visibility="public" type="Classifier"/>
       </ownedOperation>
@@ -2893,7 +2893,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ClassifierTemplateParameter-allowSubstitutable-_ownedComment.0" annotatedElement="ClassifierTemplateParameter-allowSubstitutable">
           <body>Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ClassifierTemplateParameter-constrainingClassifier" name="constrainingClassifier" visibility="public" type="Classifier" association="A_constrainingClassifier_classifierTemplateParameter" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ClassifierTemplateParameter-constrainingClassifier-_ownedComment.0" annotatedElement="ClassifierTemplateParameter-constrainingClassifier">
@@ -3155,7 +3155,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Comment-body-_ownedComment.0" annotatedElement="Comment-body">
           <body>Specifies a string that is the comment.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="CommunicationPath" name="CommunicationPath" superClass="Association">
@@ -3201,7 +3201,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Component-isIndirectlyInstantiated-_ownedComment.0" annotatedElement="Component-isIndirectlyInstantiated">
           <body>isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Component-packagedElement" name="packagedElement" visibility="public" type="PackageableElement" isComposite="true" subsettedProperty="Namespace-ownedMember" association="A_packagedElement_component" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Component-packagedElement-_ownedComment.0" annotatedElement="Component-packagedElement">
@@ -3376,13 +3376,13 @@ collect(dependency|dependency.supplier)</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ConditionalNode-isAssured-_ownedComment.0" annotatedElement="ConditionalNode-isAssured">
           <body>If true, the modeler asserts that at least one test will succeed.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConditionalNode-isDeterminate" name="isDeterminate" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ConditionalNode-isDeterminate-_ownedComment.0" annotatedElement="ConditionalNode-isDeterminate">
           <body>If true, the modeler asserts that at most one test will succeed.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ConditionalNode-result" name="result" visibility="public" type="OutputPin" isOrdered="true" isComposite="true" redefinedProperty="StructuredActivityNode-structuredNodeOutput" association="A_result_conditionalNode" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ConditionalNode-result-_ownedComment.0" annotatedElement="ConditionalNode-result">
@@ -3743,7 +3743,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Continuation-setting-_ownedComment.0" annotatedElement="Continuation-setting">
           <body>True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="ControlFlow" name="ControlFlow" superClass="ActivityEdge">
@@ -4067,13 +4067,13 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="DeploymentSpecification-deploymentLocation-_ownedComment.0" annotatedElement="DeploymentSpecification-deploymentLocation">
           <body>The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DeploymentSpecification-executionLocation" name="executionLocation" visibility="public" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="DeploymentSpecification-executionLocation-_ownedComment.0" annotatedElement="DeploymentSpecification-executionLocation">
           <body>The location where a component Artifact executes. This may be a local or remote location.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="DeploymentTarget" name="DeploymentTarget" isAbstract="true" superClass="NamedElement">
@@ -4139,13 +4139,13 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="DestroyObjectAction-isDestroyLinks-_ownedComment.0" annotatedElement="DestroyObjectAction-isDestroyLinks">
           <body>Specifies whether links in which the object participates are destroyed along with the object.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DestroyObjectAction-isDestroyOwnedObjects" name="isDestroyOwnedObjects" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="DestroyObjectAction-isDestroyOwnedObjects-_ownedComment.0" annotatedElement="DestroyObjectAction-isDestroyOwnedObjects">
           <body>Specifies whether objects owned by the object are destroyed along with the object.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DestroyObjectAction-target" name="target" visibility="public" type="InputPin" isComposite="true" subsettedProperty="Action-input" association="A_target_destroyObjectAction">
         <ownedComment xmi:type="cmof:Comment" xmi:id="DestroyObjectAction-target-_ownedComment.0" annotatedElement="DestroyObjectAction-target">
@@ -4220,7 +4220,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="DurationConstraint-firstEvent-_ownedComment.0" annotatedElement="DurationConstraint-firstEvent">
           <body>The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="DurationConstraint-specification" name="specification" visibility="public" type="DurationInterval" isComposite="true" redefinedProperty="IntervalConstraint-specification" association="A_specification_durationConstraint">
         <ownedComment xmi:type="cmof:Comment" xmi:id="DurationConstraint-specification-_ownedComment.0" annotatedElement="DurationConstraint-specification">
@@ -4266,7 +4266,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="DurationObservation-firstEvent-_ownedComment.0" annotatedElement="DurationObservation-firstEvent">
           <body>The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="Element" name="Element" isAbstract="true">
@@ -4329,7 +4329,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Element-mustBeOwned-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -4359,7 +4359,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ElementImport-alias-_ownedComment.0" annotatedElement="ElementImport-alias">
           <body>Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ElementImport-importedElement" name="importedElement" visibility="public" type="PackageableElement" subsettedProperty="DirectedRelationship-target" association="A_importedElement_elementImport">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ElementImport-importedElement-_ownedComment.0" annotatedElement="ElementImport-importedElement">
@@ -4391,7 +4391,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ElementImport-getName-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -4647,7 +4647,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Expression-symbol-_ownedComment.0" annotatedElement="Expression-symbol">
           <body>The symbol associated with the node in the expression tree.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="Extend" name="Extend" superClass="NamedElement DirectedRelationship">
@@ -4710,7 +4710,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Extension-isRequired-_ownedComment.0" annotatedElement="Extension-isRequired">
           <body>Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Extension-metaclass" name="metaclass" visibility="public" type="Class" isReadOnly="true" isDerived="true" association="A_extension_metaclass">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Extension-metaclass-_ownedComment.0" annotatedElement="Extension-metaclass">
@@ -4733,7 +4733,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Extension-isRequired.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Extension-metaclass.1" name="metaclass" visibility="public" isQuery="true" bodyCondition="Extension-metaclass.1-spec">
@@ -4790,7 +4790,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ExtensionEnd-lower-_ownedComment.0" annotatedElement="ExtensionEnd-lower">
           <body>This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Integer"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ExtensionEnd-type" name="type" visibility="public" type="Stereotype" redefinedProperty="TypedElement-type" association="A_type_extensionEnd">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ExtensionEnd-type-_ownedComment.0" annotatedElement="ExtensionEnd-type">
@@ -4808,7 +4808,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ExtensionEnd-lowerBound-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -4844,7 +4844,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Feature-isStatic-_ownedComment.0" annotatedElement="Feature-isStatic">
           <body>Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="FinalNode" name="FinalNode" isAbstract="true" superClass="ControlNode">
@@ -5054,7 +5054,7 @@ self.ownedParameters-&gt;forAll(p | p.type.notEmpty() and
         <ownedComment xmi:type="cmof:Comment" xmi:id="Generalization-isSubstitutable-_ownedComment.0" annotatedElement="Generalization-isSubstitutable">
           <body>Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Generalization-specific" name="specific" visibility="public" type="Classifier" subsettedProperty="DirectedRelationship-source Element-owner" association="A_generalization_specific">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Generalization-specific-_ownedComment.0" annotatedElement="Generalization-specific">
@@ -5093,13 +5093,13 @@ self.ownedParameters-&gt;forAll(p | p.type.notEmpty() and
         <ownedComment xmi:type="cmof:Comment" xmi:id="GeneralizationSet-isCovering-_ownedComment.0" annotatedElement="GeneralizationSet-isCovering">
           <body>Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GeneralizationSet-isDisjoint" name="isDisjoint" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="GeneralizationSet-isDisjoint-_ownedComment.0" annotatedElement="GeneralizationSet-isDisjoint">
           <body>Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="GeneralizationSet-powertype" name="powertype" visibility="public" type="Classifier" association="A_powertypeExtent_powertype" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="GeneralizationSet-powertype-_ownedComment.0" annotatedElement="GeneralizationSet-powertype">
@@ -5115,19 +5115,19 @@ self.ownedParameters-&gt;forAll(p | p.type.notEmpty() and
         <ownedComment xmi:type="cmof:Comment" xmi:id="Image-content-_ownedComment.0" annotatedElement="Image-content">
           <body>This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Image-format" name="format" visibility="public" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Image-format-_ownedComment.0" annotatedElement="Image-format">
           <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Image-location" name="location" visibility="public" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Image-location-_ownedComment.0" annotatedElement="Image-location">
           <body>This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="Include" name="Include" superClass="DirectedRelationship NamedElement">
@@ -5783,7 +5783,7 @@ self.ownedParameters-&gt;forAll(p | p.type.notEmpty() and
         <ownedComment xmi:type="cmof:Comment" xmi:id="JoinNode-isCombineDuplicate-_ownedComment.0" annotatedElement="JoinNode-isCombineDuplicate">
           <body>Tells whether tokens having objects with the same identity are combined into one by the join.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="JoinNode-joinSpec" name="joinSpec" visibility="public" type="ValueSpecification" isComposite="true" subsettedProperty="Element-ownedElement" association="A_joinSpec_joinNode">
         <ownedComment xmi:type="cmof:Comment" xmi:id="JoinNode-joinSpec-_ownedComment.0" annotatedElement="JoinNode-joinSpec">
@@ -5950,7 +5950,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LinkEndCreationData-isReplaceAll-_ownedComment.0" annotatedElement="LinkEndCreationData-isReplaceAll">
           <body>Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="LinkEndData" name="LinkEndData" superClass="Element">
@@ -6049,7 +6049,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LinkEndDestructionData-isDestroyDuplicates-_ownedComment.0" annotatedElement="LinkEndDestructionData-isDestroyDuplicates">
           <body>Specifies whether to destroy duplicates of the value in nonunique association ends.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="LiteralBoolean" name="LiteralBoolean" superClass="LiteralSpecification">
@@ -6060,7 +6060,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralBoolean-value-_ownedComment.0" annotatedElement="LiteralBoolean-value">
           <body>The specified Boolean value.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralBoolean-booleanValue" name="booleanValue" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-booleanValue" bodyCondition="LiteralBoolean-booleanValue-spec">
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralBoolean-booleanValue-_ownedComment.0" annotatedElement="LiteralBoolean-booleanValue">
@@ -6073,7 +6073,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralBoolean-booleanValue-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralBoolean-isComputable" name="isComputable" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralBoolean-isComputable-spec">
@@ -6087,7 +6087,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralBoolean-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6099,7 +6099,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralInteger-value-_ownedComment.0" annotatedElement="LiteralInteger-value">
           <body>The specified Integer value.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Integer"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralInteger-integerValue" name="integerValue" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-integerValue" bodyCondition="LiteralInteger-integerValue-spec">
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralInteger-integerValue-_ownedComment.0" annotatedElement="LiteralInteger-integerValue">
@@ -6112,7 +6112,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralInteger-integerValue-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralInteger-isComputable" name="isComputable" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralInteger-isComputable-spec">
@@ -6126,7 +6126,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralInteger-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6145,7 +6145,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralNull-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralNull-isNull" name="isNull" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-isNull" bodyCondition="LiteralNull-isNull-spec">
@@ -6159,7 +6159,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralNull-isNull-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6168,7 +6168,7 @@ endif
         <body>A literal real is a specification of a real value.</body>
       </ownedComment>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LiteralReal-value" name="value" visibility="public">
-        <type href="PrimitiveTypes.cmof#Real"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Real"/>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralReal-isComputable" name="isComputable" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralReal-isComputable-spec">
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralReal-isComputable-_ownedComment.0" annotatedElement="LiteralReal-isComputable">
@@ -6181,7 +6181,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralReal-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralReal-realValue" name="realValue" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-realValue" bodyCondition="LiteralReal-realValue-spec">
@@ -6195,7 +6195,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralReal-realValue-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Real"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Real"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6212,7 +6212,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralString-value-_ownedComment.0" annotatedElement="LiteralString-value">
           <body>The specified String value.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralString-isComputable" name="isComputable" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralString-isComputable-spec">
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralString-isComputable-_ownedComment.0" annotatedElement="LiteralString-isComputable">
@@ -6225,7 +6225,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralString-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralString-stringValue" name="stringValue" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-stringValue" bodyCondition="LiteralString-stringValue-spec">
@@ -6239,7 +6239,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralString-stringValue-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6251,7 +6251,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralUnlimitedNatural-value-_ownedComment.0" annotatedElement="LiteralUnlimitedNatural-value">
           <body>The specified UnlimitedNatural value.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralUnlimitedNatural-isComputable" name="isComputable" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-isComputable" bodyCondition="LiteralUnlimitedNatural-isComputable-spec">
         <ownedComment xmi:type="cmof:Comment" xmi:id="LiteralUnlimitedNatural-isComputable-_ownedComment.0" annotatedElement="LiteralUnlimitedNatural-isComputable">
@@ -6264,7 +6264,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralUnlimitedNatural-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="LiteralUnlimitedNatural-unlimitedValue" name="unlimitedValue" visibility="public" isQuery="true" redefinedOperation="ValueSpecification-unlimitedValue" bodyCondition="LiteralUnlimitedNatural-unlimitedValue-spec">
@@ -6278,7 +6278,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="LiteralUnlimitedNatural-unlimitedValue-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6341,7 +6341,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="LoopNode-isTestedFirst-_ownedComment.0" annotatedElement="LoopNode-isTestedFirst">
           <body>If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="LoopNode-loopVariable" name="loopVariable" visibility="public" type="OutputPin" isOrdered="true" association="A_loopVariable_loopNode" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="LoopNode-loopVariable-_ownedComment.0" annotatedElement="LoopNode-loopVariable">
@@ -6550,7 +6550,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="Model-viewpoint-_ownedComment.0" annotatedElement="Model-viewpoint">
           <body>The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="MultiplicityElement" name="MultiplicityElement" isAbstract="true" superClass="Element">
@@ -6597,19 +6597,19 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="MultiplicityElement-isOrdered-_ownedComment.0" annotatedElement="MultiplicityElement-isOrdered">
           <body>For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiplicityElement-isUnique" name="isUnique" visibility="public" default="true">
         <ownedComment xmi:type="cmof:Comment" xmi:id="MultiplicityElement-isUnique-_ownedComment.0" annotatedElement="MultiplicityElement-isUnique">
           <body>For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiplicityElement-lower" name="lower" visibility="public" isDerived="true" default="1" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="MultiplicityElement-lower-_ownedComment.0" annotatedElement="MultiplicityElement-lower">
           <body>Specifies the lower bound of the multiplicity interval.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Integer"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiplicityElement-lowerValue" name="lowerValue" visibility="public" type="ValueSpecification" isComposite="true" subsettedProperty="Element-ownedElement" association="A_lowerValue_owningLower" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="MultiplicityElement-lowerValue-_ownedComment.0" annotatedElement="MultiplicityElement-lowerValue">
@@ -6620,7 +6620,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="MultiplicityElement-upper-_ownedComment.0" annotatedElement="MultiplicityElement-upper">
           <body>Specifies the upper bound of the multiplicity interval.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="MultiplicityElement-upperValue" name="upperValue" visibility="public" type="ValueSpecification" isComposite="true" subsettedProperty="Element-ownedElement" association="A_upperValue_owningUpper" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="MultiplicityElement-upperValue-_ownedComment.0" annotatedElement="MultiplicityElement-upperValue">
@@ -6638,7 +6638,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-compatibleWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-compatibleWith-other" name="other" visibility="public" type="MultiplicityElement"/>
       </ownedOperation>
@@ -6659,10 +6659,10 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-includesCardinality-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-includesCardinality-C" name="C" visibility="public">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="MultiplicityElement-includesMultiplicity" name="includesMultiplicity" visibility="public" isQuery="true" precondition="MultiplicityElement-includesMultiplicity-pre" bodyCondition="MultiplicityElement-includesMultiplicity-spec">
@@ -6682,7 +6682,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-includesMultiplicity-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-includesMultiplicity-M" name="M" visibility="public" type="MultiplicityElement"/>
       </ownedOperation>
@@ -6697,13 +6697,13 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-is-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-is-lowerbound" name="lowerbound" visibility="public">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-is-upperbound" name="upperbound" visibility="public">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="MultiplicityElement-isMultivalued" name="isMultivalued" visibility="public" isQuery="true" precondition="MultiplicityElement-isMultivalued-pre" bodyCondition="MultiplicityElement-isMultivalued-spec">
@@ -6723,7 +6723,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-isMultivalued-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="MultiplicityElement-lower.1" name="lower" visibility="public" isQuery="true" bodyCondition="MultiplicityElement-lower.1-spec">
@@ -6737,7 +6737,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-lower.1-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="MultiplicityElement-lowerBound" name="lowerBound" visibility="public" isQuery="true" bodyCondition="MultiplicityElement-lowerBound-spec">
@@ -6751,7 +6751,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-lowerBound-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="MultiplicityElement-upper.1" name="upper" visibility="public" isQuery="true" bodyCondition="MultiplicityElement-upper.1-spec">
@@ -6765,7 +6765,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-upper.1-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="MultiplicityElement-upperBound" name="upperBound" visibility="public" isQuery="true" bodyCondition="MultiplicityElement-upperBound-spec">
@@ -6779,7 +6779,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="MultiplicityElement-upperBound-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -6828,7 +6828,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="NamedElement-name-_ownedComment.0" annotatedElement="NamedElement-name">
           <body>The name of the NamedElement.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="NamedElement-nameExpression" name="nameExpression" visibility="public" type="StringExpression" isComposite="true" subsettedProperty="Element-ownedElement" association="A_nameExpression_namedElement" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="NamedElement-nameExpression-_ownedComment.0" annotatedElement="NamedElement-nameExpression">
@@ -6844,7 +6844,7 @@ endif
         <ownedComment xmi:type="cmof:Comment" xmi:id="NamedElement-qualifiedName-_ownedComment.0" annotatedElement="NamedElement-qualifiedName">
           <body>A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="NamedElement-visibility" name="visibility" visibility="public" type="VisibilityKind" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="NamedElement-visibility-_ownedComment.0" annotatedElement="NamedElement-visibility">
@@ -6892,7 +6892,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="NamedElement-isDistinguishableFrom-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="NamedElement-isDistinguishableFrom-n" name="n" visibility="public" type="NamedElement"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="NamedElement-isDistinguishableFrom-ns" name="ns" visibility="public" type="Namespace"/>
@@ -6925,7 +6925,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="NamedElement-qualifiedName.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="NamedElement-separator" name="separator" visibility="public" isQuery="true" bodyCondition="NamedElement-separator-spec">
@@ -6939,7 +6939,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="NamedElement-separator-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -7020,7 +7020,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Namespace-getNamesOfMember-result" name="result" visibility="public" direction="return" upper="*" lower="0">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Namespace-getNamesOfMember-element" name="element" visibility="public" type="NamedElement"/>
       </ownedOperation>
@@ -7064,7 +7064,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Namespace-membersAreDistinguishable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Namespace-ownedMember.1" name="ownedMember" visibility="public" isQuery="true" bodyCondition="Namespace-ownedMember.1-spec">
@@ -7182,13 +7182,13 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ObjectFlow-isMulticast-_ownedComment.0" annotatedElement="ObjectFlow-isMulticast">
           <body>Tells whether the objects in the flow are passed by multicasting.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ObjectFlow-isMultireceive" name="isMultireceive" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ObjectFlow-isMultireceive-_ownedComment.0" annotatedElement="ObjectFlow-isMultireceive">
           <body>Tells whether the objects in the flow are gathered from respondents to multicasting.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ObjectFlow-selection" name="selection" visibility="public" type="Behavior" association="A_selection_objectFlow" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ObjectFlow-selection-_ownedComment.0" annotatedElement="ObjectFlow-selection">
@@ -7244,7 +7244,7 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ObjectNode-isControlType-_ownedComment.0" annotatedElement="ObjectNode-isControlType">
           <body>Tells whether the type of the object node is to be treated as control.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ObjectNode-ordering" name="ordering" visibility="public" type="ObjectNodeOrderingKind" default="FIFO">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ObjectNode-ordering-_ownedComment.0" annotatedElement="ObjectNode-ordering">
@@ -7295,7 +7295,7 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueAction-body-_ownedComment.0" annotatedElement="OpaqueAction-body">
           <body>Specifies the action in one or more languages.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OpaqueAction-inputValue" name="inputValue" visibility="public" type="InputPin" isComposite="true" subsettedProperty="Action-input" association="A_inputValue_opaqueAction" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueAction-inputValue-_ownedComment.0" annotatedElement="OpaqueAction-inputValue">
@@ -7306,7 +7306,7 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueAction-language-_ownedComment.0" annotatedElement="OpaqueAction-language">
           <body>Languages the body strings use, in the same order as the body strings</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OpaqueAction-outputValue" name="outputValue" visibility="public" type="OutputPin" isComposite="true" subsettedProperty="Action-output" association="A_outputValue_opaqueAction" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueAction-outputValue-_ownedComment.0" annotatedElement="OpaqueAction-outputValue">
@@ -7322,13 +7322,13 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueBehavior-body-_ownedComment.0" annotatedElement="OpaqueBehavior-body">
           <body>Specifies the behavior in one or more languages.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OpaqueBehavior-language" name="language" visibility="public" isOrdered="true" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueBehavior-language-_ownedComment.0" annotatedElement="OpaqueBehavior-language">
           <body>Languages the body strings use in the same order as the body strings.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="OpaqueExpression" name="OpaqueExpression" superClass="ValueSpecification">
@@ -7376,13 +7376,13 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueExpression-body-_ownedComment.0" annotatedElement="OpaqueExpression-body">
           <body>The text of the expression, possibly in multiple languages.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OpaqueExpression-language" name="language" visibility="public" isOrdered="true" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueExpression-language-_ownedComment.0" annotatedElement="OpaqueExpression-language">
           <body>Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="OpaqueExpression-result" name="result" visibility="public" type="Parameter" isReadOnly="true" isDerived="true" association="A_result_opaqueExpression" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="OpaqueExpression-result-_ownedComment.0" annotatedElement="OpaqueExpression-result">
@@ -7400,7 +7400,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="OpaqueExpression-isIntegral-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="OpaqueExpression-isNonNegative" name="isNonNegative" visibility="public" isQuery="true" precondition="OpaqueExpression-isNonNegative-pre" bodyCondition="OpaqueExpression-isNonNegative-spec">
@@ -7420,7 +7420,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="OpaqueExpression-isNonNegative-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="OpaqueExpression-isPositive" name="isPositive" visibility="public" isQuery="true" precondition="OpaqueExpression-isPositive-pre" bodyCondition="OpaqueExpression-isPositive-spec">
@@ -7440,7 +7440,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="OpaqueExpression-isPositive-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="OpaqueExpression-result.1" name="result" visibility="public" isQuery="true" bodyCondition="OpaqueExpression-result.1-spec">
@@ -7472,7 +7472,7 @@ memb.isDistinguishableFrom(other, self)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="OpaqueExpression-value-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -7531,13 +7531,13 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-isOrdered-_ownedComment.1" annotatedElement="Operation-isOrdered">
           <body>Specifies whether the return parameter is ordered or not, if present.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-isQuery" name="isQuery" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-isQuery-_ownedComment.0" annotatedElement="Operation-isQuery">
           <body>Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-isUnique" name="isUnique" visibility="public" isReadOnly="true" isDerived="true" default="true">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-isUnique-_ownedComment.0" annotatedElement="Operation-isUnique">
@@ -7546,7 +7546,7 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-isUnique-_ownedComment.1" annotatedElement="Operation-isUnique">
           <body>Specifies whether the return parameter is unique or not, if present.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-lower" name="lower" visibility="public" isReadOnly="true" isDerived="true" lower="0" default="1">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-lower-_ownedComment.0" annotatedElement="Operation-lower">
@@ -7555,7 +7555,7 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-lower-_ownedComment.1" annotatedElement="Operation-lower">
           <body>This information is derived from the return result for this Operation.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Integer"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Operation-ownedParameter" name="ownedParameter" visibility="public" type="Parameter" isOrdered="true" isComposite="true" redefinedProperty="BehavioralFeature-ownedParameter" association="A_ownedParameter_operation" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-ownedParameter-_ownedComment.0" annotatedElement="Operation-ownedParameter">
@@ -7605,7 +7605,7 @@ memb.isDistinguishableFrom(other, self)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-upper-_ownedComment.1" annotatedElement="Operation-upper">
           <body>This information is derived from the return result for this Operation.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
       </ownedAttribute>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Operation-isConsistentWith" name="isConsistentWith" visibility="public" isQuery="true" precondition="Operation-isConsistentWith-pre" redefinedOperation="RedefinableElement-isConsistentWith" bodyCondition="Operation-isConsistentWith-spec">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Operation-isConsistentWith-_ownedComment.0" annotatedElement="Operation-isConsistentWith">
@@ -7631,7 +7631,7 @@ let op : Operation = redefinee.oclAsType(Operation) in
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Operation-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Operation-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -7646,7 +7646,7 @@ let op : Operation = redefinee.oclAsType(Operation) in
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Operation-isOrdered.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Operation-isUnique.1" name="isUnique" visibility="public" isQuery="true" bodyCondition="Operation-isUnique.1-spec">
@@ -7660,7 +7660,7 @@ let op : Operation = redefinee.oclAsType(Operation) in
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Operation-isUnique.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Operation-lower.1" name="lower" visibility="public" isQuery="true" bodyCondition="Operation-lower.1-spec">
@@ -7674,7 +7674,7 @@ let op : Operation = redefinee.oclAsType(Operation) in
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Operation-lower.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Operation-returnResult" name="returnResult" visibility="public" isQuery="true" bodyCondition="Operation-returnResult-spec">
@@ -7712,7 +7712,7 @@ let op : Operation = redefinee.oclAsType(Operation) in
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Operation-upper.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -7763,7 +7763,7 @@ let op : Operation = redefinee.oclAsType(Operation) in
         <ownedComment xmi:type="cmof:Comment" xmi:id="Package-URI-_ownedComment.0" annotatedElement="Package-URI">
           <body>Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Package-nestedPackage" name="nestedPackage" visibility="public" type="Package" isDerived="true" isComposite="true" subsettedProperty="Package-packagedElement" association="A_nestedPackage_nestingPackage" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Package-nestedPackage-_ownedComment.0" annotatedElement="Package-nestedPackage">
@@ -7850,7 +7850,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Package-makesVisible-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Package-makesVisible-el" name="el" visibility="public" type="NamedElement"/>
       </ownedOperation>
@@ -7865,7 +7865,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Package-mustBeOwned-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Package-nestedPackage.1" name="nestedPackage" visibility="public" isQuery="true" bodyCondition="Package-nestedPackage.1-spec">
@@ -8033,7 +8033,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Parameter-default-_ownedComment.0" annotatedElement="Parameter-default">
           <body>Specifies a String that represents a value to be used when no argument is supplied for the Parameter.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Parameter-defaultValue" name="defaultValue" visibility="public" type="ValueSpecification" isComposite="true" subsettedProperty="Element-ownedElement" association="A_defaultValue_owningParameter" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Parameter-defaultValue-_ownedComment.0" annotatedElement="Parameter-defaultValue">
@@ -8054,13 +8054,13 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Parameter-isException-_ownedComment.0" annotatedElement="Parameter-isException">
           <body>Tells whether an output parameter may emit a value to the exclusion of the other outputs.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Parameter-isStream" name="isStream" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Parameter-isStream-_ownedComment.0" annotatedElement="Parameter-isStream">
           <body>Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Parameter-operation" name="operation" visibility="public" type="Operation" subsettedProperty="A_ownedParameter_ownerFormalParam-ownerFormalParam" association="A_ownedParameter_operation" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Parameter-operation-_ownedComment.0" annotatedElement="Parameter-operation">
@@ -8083,7 +8083,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Parameter-default.1-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -8154,7 +8154,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ParameterableElement-isCompatibleWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ParameterableElement-isCompatibleWith-p" name="p" visibility="public" type="ParameterableElement"/>
       </ownedOperation>
@@ -8169,7 +8169,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ParameterableElement-isTemplateParameter-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -8225,7 +8225,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Pin-isControl-_ownedComment.0" annotatedElement="Pin-isControl">
           <body>Tells whether the pins provide data to the actions, or just controls when it executes it.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="Port" name="Port" superClass="Property">
@@ -8266,19 +8266,19 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Port-isBehavior-_ownedComment.0" annotatedElement="Port-isBehavior">
           <body>Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Port-isConjugated" name="isConjugated" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Port-isConjugated-_ownedComment.0" annotatedElement="Port-isConjugated">
           <body>Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Port-isService" name="isService" visibility="public" default="true">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Port-isService-_ownedComment.0" annotatedElement="Port-isService">
           <body>If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Port-protocol" name="protocol" visibility="public" type="ProtocolStateMachine" association="A_protocol_port" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Port-protocol-_ownedComment.0" annotatedElement="Port-protocol">
@@ -8384,7 +8384,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ProfileApplication-isStrict-_ownedComment.0" annotatedElement="ProfileApplication-isStrict">
           <body>Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="Property" name="Property" superClass="ConnectableElement DeploymentTarget StructuralFeature">
@@ -8533,7 +8533,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-default-_ownedComment.1" annotatedElement="Property-default">
           <body>Specifies a String that represents a value to be used when no argument is supplied for the Property.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#String"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-defaultValue" name="defaultValue" visibility="public" type="ValueSpecification" isComposite="true" subsettedProperty="Element-ownedElement" association="A_defaultValue_owningProperty" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-defaultValue-_ownedComment.0" annotatedElement="Property-defaultValue">
@@ -8552,7 +8552,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isComposite-_ownedComment.1" annotatedElement="Property-isComposite">
           <body>This is a derived value, indicating whether the aggregation of the Property is composite or not.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-isDerived" name="isDerived" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isDerived-_ownedComment.0" annotatedElement="Property-isDerived">
@@ -8561,19 +8561,19 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isDerived-_ownedComment.1" annotatedElement="Property-isDerived">
           <body>If isDerived is true, the value of the attribute is derived from information elsewhere.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-isDerivedUnion" name="isDerivedUnion" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isDerivedUnion-_ownedComment.0" annotatedElement="Property-isDerivedUnion">
           <body>Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-isID" name="isID" visibility="public" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isID-_ownedComment.0" annotatedElement="Property-isID">
           <body>True indicates this property can be used to uniquely identify an instance of the containing Class.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-isReadOnly" name="isReadOnly" visibility="public" redefinedProperty="StructuralFeature-isReadOnly" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isReadOnly-_ownedComment.0" annotatedElement="Property-isReadOnly">
@@ -8582,7 +8582,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-isReadOnly-_ownedComment.1" annotatedElement="Property-isReadOnly">
           <body>If true, the attribute may only be read, and not written.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Property-opposite" name="opposite" visibility="public" type="Property" isDerived="true" association="A_opposite_property" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Property-opposite-_ownedComment.0" annotatedElement="Property-opposite">
@@ -8620,7 +8620,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-default.1-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Property-isAttribute" name="isAttribute" visibility="public" isQuery="true" bodyCondition="Property-isAttribute-spec">
@@ -8634,7 +8634,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isAttribute-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isAttribute-p" name="p" visibility="public" type="Property"/>
       </ownedOperation>
@@ -8649,7 +8649,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isCompatibleWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isCompatibleWith-p" name="p" visibility="public" type="ParameterableElement"/>
       </ownedOperation>
@@ -8664,7 +8664,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isComposite.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Property-isConsistentWith" name="isConsistentWith" visibility="public" isQuery="true" precondition="Property-isConsistentWith-pre" redefinedOperation="RedefinableElement-isConsistentWith" bodyCondition="Property-isConsistentWith-spec">
@@ -8692,7 +8692,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -8707,7 +8707,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Property-isNavigable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Property-opposite.1" name="opposite" visibility="public" isQuery="true" bodyCondition="Property-opposite.1-spec">
@@ -9126,7 +9126,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="ReadIsClassifiedObjectAction-isDirect-_ownedComment.0" annotatedElement="ReadIsClassifiedObjectAction-isDirect">
           <body>Indicates whether the classifier must directly classify the input object.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReadIsClassifiedObjectAction-object" name="object" visibility="public" type="InputPin" isComposite="true" subsettedProperty="Action-input" association="A_object_readIsClassifiedObjectAction">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ReadIsClassifiedObjectAction-object-_ownedComment.0" annotatedElement="ReadIsClassifiedObjectAction-object">
@@ -9548,7 +9548,7 @@ and self.result.ordering = self.variable.ordering
         <ownedComment xmi:type="cmof:Comment" xmi:id="ReclassifyObjectAction-isReplaceAll-_ownedComment.0" annotatedElement="ReclassifyObjectAction-isReplaceAll">
           <body>Specifies whether existing classifiers should be removed before adding the new classifiers.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReclassifyObjectAction-newClassifier" name="newClassifier" visibility="public" type="Classifier" association="A_newClassifier_reclassifyObjectAction" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ReclassifyObjectAction-newClassifier-_ownedComment.0" annotatedElement="ReclassifyObjectAction-newClassifier">
@@ -9601,7 +9601,7 @@ and self.result.ordering = self.variable.ordering
         <ownedComment xmi:type="cmof:Comment" xmi:id="RedefinableElement-isLeaf-_ownedComment.0" annotatedElement="RedefinableElement-isLeaf">
           <body>Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="RedefinableElement-redefinedElement" name="redefinedElement" visibility="public" type="RedefinableElement" isReadOnly="true" isDerived="true" isDerivedUnion="true" association="A_redefinedElement_redefinableElement" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="RedefinableElement-redefinedElement-_ownedComment.0" annotatedElement="RedefinableElement-redefinedElement">
@@ -9630,7 +9630,7 @@ and self.result.ordering = self.variable.ordering
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="RedefinableElement-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="RedefinableElement-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -9645,7 +9645,7 @@ and self.result.ordering = self.variable.ordering
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="RedefinableElement-isRedefinitionContextValid-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="RedefinableElement-isRedefinitionContextValid-redefined" name="redefined" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -9707,7 +9707,7 @@ and self.result.ordering = self.variable.ordering
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="RedefinableTemplateSignature-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="RedefinableTemplateSignature-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -9752,7 +9752,7 @@ and self.result.ordering = self.variable.ordering
         <ownedComment xmi:type="cmof:Comment" xmi:id="ReduceAction-isOrdered-_ownedComment.0" annotatedElement="ReduceAction-isOrdered">
           <body>Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="ReduceAction-reducer" name="reducer" visibility="public" type="Behavior" association="A_reducer_reduceAction">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ReduceAction-reducer-_ownedComment.0" annotatedElement="ReduceAction-reducer">
@@ -9856,7 +9856,7 @@ else false</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Region-belongsToPSM-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="Region-containingStateMachine" name="containingStateMachine" visibility="public" isQuery="true" bodyCondition="Region-containingStateMachine-spec">
@@ -9887,7 +9887,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Region-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Region-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -9902,7 +9902,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Region-isRedefinitionContextValid-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Region-isRedefinitionContextValid-redefined" name="redefined" visibility="public" type="Region"/>
       </ownedOperation>
@@ -9959,7 +9959,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="RemoveStructuralFeatureValueAction-isRemoveDuplicates-_ownedComment.0" annotatedElement="RemoveStructuralFeatureValueAction-isRemoveDuplicates">
           <body>Specifies whether to remove duplicates of the value in nonunique structural features.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="RemoveStructuralFeatureValueAction-removeAt" name="removeAt" visibility="public" type="InputPin" isComposite="true" subsettedProperty="Action-input" association="A_removeAt_removeStructuralFeatureValueAction" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="RemoveStructuralFeatureValueAction-removeAt-_ownedComment.0" annotatedElement="RemoveStructuralFeatureValueAction-removeAt">
@@ -9992,7 +9992,7 @@ endif</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="RemoveVariableValueAction-isRemoveDuplicates-_ownedComment.0" annotatedElement="RemoveVariableValueAction-isRemoveDuplicates">
           <body>Specifies whether to remove duplicates of the value in nonunique variables.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="RemoveVariableValueAction-removeAt" name="removeAt" visibility="public" type="InputPin" isComposite="true" subsettedProperty="Action-input" association="A_removeAt_removeVariableValueAction" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="RemoveVariableValueAction-removeAt-_ownedComment.0" annotatedElement="RemoveVariableValueAction-removeAt">
@@ -10307,25 +10307,25 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
         <ownedComment xmi:type="cmof:Comment" xmi:id="State-isComposite-_ownedComment.0" annotatedElement="State-isComposite">
           <body>A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="State-isOrthogonal" name="isOrthogonal" visibility="public" isReadOnly="true" isDerived="true" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="State-isOrthogonal-_ownedComment.0" annotatedElement="State-isOrthogonal">
           <body>A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="State-isSimple" name="isSimple" visibility="public" isReadOnly="true" isDerived="true" default="true">
         <ownedComment xmi:type="cmof:Comment" xmi:id="State-isSimple-_ownedComment.0" annotatedElement="State-isSimple">
           <body>A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="State-isSubmachineState" name="isSubmachineState" visibility="public" isReadOnly="true" isDerived="true" default="false">
         <ownedComment xmi:type="cmof:Comment" xmi:id="State-isSubmachineState-_ownedComment.0" annotatedElement="State-isSubmachineState">
           <body>A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="State-redefinedState" name="redefinedState" visibility="public" type="State" subsettedProperty="RedefinableElement-redefinedElement" association="A_redefinedState_state" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="State-redefinedState-_ownedComment.0" annotatedElement="State-redefinedState">
@@ -10375,7 +10375,7 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isComposite.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="State-isConsistentWith" name="isConsistentWith" visibility="public" isQuery="true" redefinedOperation="RedefinableElement-isConsistentWith" bodyCondition="State-isConsistentWith-spec">
@@ -10389,7 +10389,7 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -10404,7 +10404,7 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isOrthogonal.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="State-isRedefinitionContextValid" name="isRedefinitionContextValid" visibility="public" isQuery="true" redefinedOperation="RedefinableElement-isRedefinitionContextValid" bodyCondition="State-isRedefinitionContextValid-spec">
@@ -10418,7 +10418,7 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isRedefinitionContextValid-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isRedefinitionContextValid-redefined" name="redefined" visibility="public" type="State"/>
       </ownedOperation>
@@ -10433,7 +10433,7 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isSimple.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="State-isSubmachineState.1" name="isSubmachineState" visibility="public" isQuery="true" bodyCondition="State-isSubmachineState.1-spec">
@@ -10447,7 +10447,7 @@ cp.exit-&gt;forAll (p | p.statemachine = self.submachine)))</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="State-isSubmachineState.1-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="State-redefinitionContext.1" name="redefinitionContext" visibility="public" isQuery="true" bodyCondition="State-redefinitionContext.1-spec">
@@ -10578,7 +10578,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-ancestor-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-ancestor-s1" name="s1" visibility="public" type="State"/>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-ancestor-s2" name="s2" visibility="public" type="State"/>
@@ -10594,7 +10594,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -10609,7 +10609,7 @@ endif
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-isRedefinitionContextValid-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StateMachine-isRedefinitionContextValid-redefined" name="redefined" visibility="public" type="StateMachine"/>
       </ownedOperation>
@@ -10736,7 +10736,7 @@ else operand-&gt;iterate()(op; stringValue =  | stringValue.concat(op.value))<
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="StringExpression-stringValue-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -10751,7 +10751,7 @@ else operand-&gt;iterate()(op; stringValue =  | stringValue.concat(op.value))<
         <ownedComment xmi:type="cmof:Comment" xmi:id="StructuralFeature-isReadOnly-_ownedComment.0" annotatedElement="StructuralFeature-isReadOnly">
           <body>States whether the feature's value may be modified by a client.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="StructuralFeatureAction" name="StructuralFeatureAction" isAbstract="true" superClass="Action">
@@ -10868,7 +10868,7 @@ or (self.structuralFeature.visibility = #protected and host.allSupertypes
         <ownedComment xmi:type="cmof:Comment" xmi:id="StructuredActivityNode-mustIsolate-_ownedComment.0" annotatedElement="StructuredActivityNode-mustIsolate">
           <body>If true, then the actions in the node execute in isolation from actions outside the node.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="StructuredActivityNode-node" name="node" visibility="public" type="ActivityNode" isComposite="true" subsettedProperty="Element-ownedElement ActivityGroup-containedNode" association="A_node_inStructuredNode" upper="*" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="StructuredActivityNode-node-_ownedComment.0" annotatedElement="StructuredActivityNode-node">
@@ -11109,7 +11109,7 @@ or (self.structuralFeature.visibility = #protected and host.allSupertypes
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="TemplateableElement-isTemplate-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="TemplateableElement-parameterableElements" name="parameterableElements" visibility="public" isQuery="true" bodyCondition="TemplateableElement-parameterableElements-spec">
@@ -11185,7 +11185,7 @@ and self.second.type-&gt;size() = 0
         <ownedComment xmi:type="cmof:Comment" xmi:id="TimeConstraint-firstEvent-_ownedComment.0" annotatedElement="TimeConstraint-firstEvent">
           <body>The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="TimeConstraint-specification" name="specification" visibility="public" type="TimeInterval" isComposite="true" redefinedProperty="IntervalConstraint-specification" association="A_specification_timeConstraint">
         <ownedComment xmi:type="cmof:Comment" xmi:id="TimeConstraint-specification-_ownedComment.0" annotatedElement="TimeConstraint-specification">
@@ -11222,7 +11222,7 @@ and self.second.type-&gt;size() = 0
         <ownedComment xmi:type="cmof:Comment" xmi:id="TimeEvent-isRelative-_ownedComment.0" annotatedElement="TimeEvent-isRelative">
           <body>Specifies whether it is relative or absolute time.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="TimeEvent-when" name="when" visibility="public" type="TimeExpression" isComposite="true" subsettedProperty="Element-ownedElement" association="A_when_timeEvent">
         <ownedComment xmi:type="cmof:Comment" xmi:id="TimeEvent-when-_ownedComment.0" annotatedElement="TimeEvent-when">
@@ -11273,7 +11273,7 @@ and self.second.type-&gt;size() = 0
         <ownedComment xmi:type="cmof:Comment" xmi:id="TimeObservation-firstEvent-_ownedComment.0" annotatedElement="TimeObservation-firstEvent">
           <body>The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.</body>
         </ownedComment>
-        <type href="PrimitiveTypes.cmof#Boolean"/>
+        <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="Transition" name="Transition" superClass="Namespace RedefinableElement">
@@ -11455,7 +11455,7 @@ and self.second.type-&gt;size() = 0
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Transition-isConsistentWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Transition-isConsistentWith-redefinee" name="redefinee" visibility="public" type="RedefinableElement"/>
       </ownedOperation>
@@ -11518,7 +11518,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Type-conformsTo-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Type-conformsTo-other" name="other" visibility="public" type="Type"/>
       </ownedOperation>
@@ -11746,7 +11746,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-booleanValue-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="ValueSpecification-integerValue" name="integerValue" visibility="public" isQuery="true" bodyCondition="ValueSpecification-integerValue-spec">
@@ -11760,7 +11760,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-integerValue-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#Integer"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="ValueSpecification-isCompatibleWith" name="isCompatibleWith" visibility="public" isQuery="true" redefinedOperation="ParameterableElement-isCompatibleWith" bodyCondition="ValueSpecification-isCompatibleWith-spec">
@@ -11774,7 +11774,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-isCompatibleWith-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-isCompatibleWith-p" name="p" visibility="public" type="ParameterableElement"/>
       </ownedOperation>
@@ -11789,7 +11789,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-isComputable-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="ValueSpecification-isNull" name="isNull" visibility="public" isQuery="true" bodyCondition="ValueSpecification-isNull-spec">
@@ -11803,7 +11803,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-isNull-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="ValueSpecification-realValue" name="realValue" visibility="public" isQuery="true" bodyCondition="ValueSpecification-realValue-spec">
@@ -11817,7 +11817,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-realValue-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#Real"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Real"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="ValueSpecification-stringValue" name="stringValue" visibility="public" isQuery="true" bodyCondition="ValueSpecification-stringValue-spec">
@@ -11831,7 +11831,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-stringValue-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#String"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="cmof:Operation" xmi:id="ValueSpecification-unlimitedValue" name="unlimitedValue" visibility="public" isQuery="true" bodyCondition="ValueSpecification-unlimitedValue-spec">
@@ -11845,7 +11845,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="ValueSpecification-unlimitedValue-result" name="result" visibility="public" direction="return" lower="0">
-          <type href="PrimitiveTypes.cmof#UnlimitedNatural"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -11919,7 +11919,7 @@ endif</body>
           </specification>
         </ownedRule>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Variable-isAccessibleBy-result" name="result" visibility="public" direction="return">
-          <type href="PrimitiveTypes.cmof#Boolean"/>
+          <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean"/>
         </ownedParameter>
         <ownedParameter xmi:type="cmof:Parameter" xmi:id="Variable-isAccessibleBy-a" name="a" visibility="public" type="Action"/>
       </ownedOperation>

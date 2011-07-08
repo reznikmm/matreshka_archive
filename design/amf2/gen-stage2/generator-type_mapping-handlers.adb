@@ -104,6 +104,10 @@ package body Generator.Type_Mapping.Handlers is
                     (Representation_Attribute_Name).To_Wide_Wide_String);
 
          begin
+            if Self.Mapping = null then
+               return;
+            end if;
+
             if Self.Mapping.Mapping (Representation) = null then
                Self.Mapping.Mapping (Representation) :=
                  new Representation_Mapping;

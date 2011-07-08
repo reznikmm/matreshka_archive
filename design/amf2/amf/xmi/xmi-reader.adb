@@ -64,6 +64,20 @@ begin
        (League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"));
 
+   elsif File_Name = "http://www.omg.org/spec/UML/20100901/" then
+      Input.Open ("data/uml24.cmof");
+      Input.Set_System_Id
+       (League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/UML/20100901/"));
+
+   elsif File_Name
+           = "http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"
+   then
+      Input.Open ("data/primitivetypes24.cmof");
+      Input.Set_System_Id
+       (League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"));
+
    else
       Input.Open (File_Name);
    end if;
