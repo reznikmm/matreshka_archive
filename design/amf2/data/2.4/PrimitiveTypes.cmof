@@ -26,7 +26,7 @@
         <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
       </ownedComment>
     </packagedElement>
-  </uml:Package>
+  </cmof:Package>
   <cmof:Tag xmi:type="cmof:Tag" xmi:id="_2" name="org.omg.xmi.nsPrefix" value="primitives" element="_0"/>
   <cmof:Tag xmi:type="cmof:Tag" xmi:id="_3" name="org.omg.xmi.schemaType" value="http://www.w3.org/2001/XMLSchema#boolean" element="Boolean"/>
   <cmof:Tag xmi:type="cmof:Tag" xmi:id="_4" name="org.omg.xmi.schemaType" value="http://www.w3.org/2001/XMLSchema#integer" element="Integer"/>
