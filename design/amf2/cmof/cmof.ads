@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces;
-
 with AMF.Internals;
 
 package CMOF is
@@ -64,11 +62,7 @@ package CMOF is
    subtype Collection_Of_CMOF_Element is
      AMF.Internals.AMF_Collection_Of_Element;
 
-   subtype Set_Of_CMOF_Class is Collection_Of_CMOF_Element;
-   subtype Set_Of_CMOF_Property is Collection_Of_CMOF_Element;
    subtype Ordered_Set_Of_CMOF_Property is Collection_Of_CMOF_Element;
-
-   type Collection_Of_CMOF_String is private;
 
    subtype CMOF_Element is AMF.Internals.CMOF_Element;
    Null_CMOF_Element : constant CMOF_Element := 0;
@@ -76,19 +70,10 @@ package CMOF is
    subtype Cmof_Association is Cmof_Element;
    subtype Cmof_Class is Cmof_Element;
    subtype CMOF_Data_Type is Cmof_Element;
-   subtype CMOF_Multiplicity_Element is Cmof_Element;
-   subtype CMOF_Named_Element is Cmof_Element;
    subtype CMOF_Package is Cmof_Element;
    subtype CMOF_Property is Cmof_Element;
-   subtype CMOF_Type is Cmof_Element;
-   subtype CMOF_Typed_Element is Cmof_Element;
 
    subtype CMOF_Extent is AMF.Internals.AMF_Extent;
    CMOF_Metamodel_Extent : constant CMOF_Extent := 1;
-
-private
-
-   type Collection_Of_CMOF_String is
-     new Interfaces.Integer_32 range 0 .. Interfaces.Integer_32'Last;
 
 end Cmof;

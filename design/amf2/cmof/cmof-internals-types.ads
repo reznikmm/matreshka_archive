@@ -42,6 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  Datatypes to use in internal representation of the models.
+------------------------------------------------------------------------------
+with Interfaces;
 
 package CMOF.Internals.Types is
 

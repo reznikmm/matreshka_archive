@@ -77,7 +77,7 @@ package CMOF.Internals.Tables is
             Element : CMOF_Element;
 
          when M_Collection_Of_Element =>
-            Collection : Collection_Of_CMOF_Element;
+            Collection : AMF.Internals.AMF_Collection_Of_Element;
 
          when M_Boolean =>
             Boolean_Value : Boolean;
@@ -98,7 +98,7 @@ package CMOF.Internals.Tables is
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
 
          when M_Collection_Of_String =>
-            String_Collection_Value : Collection_Of_CMOF_String;
+            String_Collection_Value : AMF.CMOF.Collection_Of_String;
 
          when M_Parameter_Direction_Kind =>
             Parameter_Direction_Value : CMOF_Parameter_Direction_Kind;
@@ -143,23 +143,23 @@ package CMOF.Internals.Tables is
    --  table.
 
    procedure Initialize_Ordered_Set_Collection
-    (Collection : Collection_Of_CMOF_Element);
+    (Collection : AMF.Internals.AMF_Collection_Of_Element);
    --  Initialize specified collection as ordered set.
 
    procedure Initialize_Ordered_Set_Collection
     (Element    : CMOF_Element;
      Property   : CMOF_Property;
-     Collection : Collection_Of_CMOF_Element);
+     Collection : AMF.Internals.AMF_Collection_Of_Element);
    --  Initialize specified collection as ordered set.
 
    procedure Initialize_Set_Collection
-    (Collection : Collection_Of_CMOF_Element);
+    (Collection : AMF.Internals.AMF_Collection_Of_Element);
    --  Initialize specified collection as set.
 
    procedure Initialize_Set_Collection
     (Element    : CMOF_Element;
      Property   : CMOF_Property;
-     Collection : Collection_Of_CMOF_Element);
+     Collection : AMF.Internals.AMF_Collection_Of_Element);
    --  Initialize specified collection as set.
 
    procedure Allocate_Collection_Of_Cmof_Element_Slots

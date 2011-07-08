@@ -72,9 +72,11 @@ package AMF.CMOF is
       end case;
    end record;
 
-   subtype Sequence_Of_String is Standard.CMOF.Collection_Of_CMOF_String;
-   subtype Set_Of_String is Standard.CMOF.Collection_Of_CMOF_String;
-   subtype Ordered_Set_Of_String is Standard.CMOF.Collection_Of_CMOF_String;
+   type Collection_Of_String is range 0 .. 2 ** 31 - 1;
+
+   subtype Sequence_Of_String is Collection_Of_String;
+   subtype Set_Of_String is Collection_Of_String;
+   subtype Ordered_Set_Of_String is Collection_Of_String;
 --   type Sequence_Of_String is null record;
 --   type Set_Of_String is null record;
 --   type Ordered_Set_Of_String is null record;

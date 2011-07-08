@@ -49,8 +49,7 @@ package body AMF.String_Collections is
    ----------
 
    function Wrap
-    (Collection : CMOF.Collection_Of_CMOF_String)
-       return Collection_Of_String is
+    (Collection : AMF.CMOF.Collection_Of_String) return Collection_Of_String is
    begin
       return X : Collection_Of_String;
    end Wrap;
