@@ -33,7 +33,7 @@ gen2:
 gen2-api:
 	gprbuild -j2 -p -Pgen-stage2/gens.gpr
 	test -d cmof/generated/.new || mkdir cmof/generated/.new
-	./gen-stage2/.obj/gen_api data/cmof.cmof CMOF > cmof/generated/.new/sources.ada
+	./gen-stage2/.obj/gen_api 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > cmof/generated/.new/sources.ada
 	gnatchop -gnat12 -w cmof/generated/.new/sources.ada cmof/generated/.new
 	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
 	rm -r cmof/generated/.new
