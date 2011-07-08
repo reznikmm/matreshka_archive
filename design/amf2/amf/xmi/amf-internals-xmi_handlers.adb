@@ -42,10 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
-with Ada.Containers.Hashed_Maps;
+with Ada.Containers.Hashed_Sets;
 with Ada.Wide_Wide_Text_IO;
 
 with League.Characters;
+with League.Strings.Hash;
 with League.String_Vectors;
 with XMI.Reader;
 
@@ -112,6 +113,12 @@ package body AMF.Internals.XMI_Handlers is
    --  is not composition association, because opposite element referered
    --  on both ends.
 
+   package Universal_String_Sets is
+     new Ada.Containers.Hashed_Sets
+          (League.Strings.Universal_String,
+           League.Strings.Hash,
+           League.Strings."=");
+
    package Universal_String_Extent_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
@@ -120,8 +127,12 @@ package body AMF.Internals.XMI_Handlers is
            League.Strings."=",
            AMF.URI_Stores."=");
 
-   Documents : Universal_String_Extent_Maps.Map;
+   Documents             : Universal_String_Extent_Maps.Map;
    --  Map file name of document to extent.
+   Postponed_Cross_Links : Postponed_Link_Vectors.Vector;
+   --  Postponed cross-extents links.
+   URI_Queue             : Universal_String_Sets.Set;
+   --  List of URIs to be loaded.
 
    ----------------------------
    -- Analyze_Object_Element --
@@ -240,18 +251,29 @@ package body AMF.Internals.XMI_Handlers is
               := URI.Slice (Separator + 1, URI.Length);
 
          begin
-            if not Documents.Contains (File_Name) then
-               Documents.Insert
-                (File_Name,
-                 XMI.Reader
-                  (Ada.Characters.Conversions.To_String
-                    (File_Name.To_Wide_Wide_String)));
-            end if;
+            --  Check whether referenced document is already loaded.
 
-            Self.Current := Documents.Element (File_Name).Element (Name);
+            if Documents.Contains (File_Name) then
+               --  When document is loaded resolve referenced element.
 
-            if Self.Current = null then
-               raise Program_Error;
+               Self.Current := Documents.Element (File_Name).Element (Name);
+
+               if Self.Current = null then
+                  raise Program_Error;
+               end if;
+
+            else
+               --  When document is not loaded queue it and register postponed
+               --  cross link.
+
+               URI_Queue.Include (File_Name);
+
+               Postponed_Cross_Links.Append
+                ((Self.Stack.Last_Element, Attribute, URI));
+
+               Self.Current := null;
+
+               return;
             end if;
          end;
 
@@ -350,15 +372,61 @@ package body AMF.Internals.XMI_Handlers is
       procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor) is
          L : constant Postponed_Link
            := Postponed_Link_Vectors.Element (Position);
+         S : constant Natural := L.Id.Index ('#');
 
       begin
-         Establish_Link
-          (Self, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
+         if S = 0 then
+            --  Local link.
+
+            Establish_Link
+             (Self, L.Attribute, L.Element, Self.Mapping.Element (L.Id));
+
+         else
+            --  Cross link.
+
+            Establish_Link
+             (Self,
+              L.Attribute,
+              L.Element,
+              Documents.Element
+               (L.Id.Slice (1, S - 1)).Element
+                 (L.Id.Slice (S + 1, L.Id.Length)));
+         end if;
       end Establish_Link;
 
    begin
       if Self.Diagnosis.Is_Empty then
+         --  Resolve postponed local links.
+
          Self.Postponed.Iterate (Establish_Link'Access);
+
+         --  Register extent.
+
+         Documents.Insert (Self.Locator.System_Id, Self.Extent);
+
+         --  Load next document in queue.
+
+         declare
+            Position : Universal_String_Sets.Cursor := URI_Queue.First;
+            URI      : League.Strings.Universal_String;
+            Extent   : AMF.URI_Stores.URI_Store_Access;
+
+         begin
+            if Universal_String_Sets.Has_Element (Position) then
+               URI := Universal_String_Sets.Element (Position);
+               URI_Queue.Delete (Position);
+               Extent :=
+                 XMI.Reader
+                  (Ada.Characters.Conversions.To_String
+                    (URI.To_Wide_Wide_String));
+            end if;
+         end;
+
+         --  Resolve postponed cross links when all documents has been loaded.
+
+         if URI_Queue.Is_Empty then
+            Postponed_Cross_Links.Iterate (Establish_Link'Access);
+         end if;
 
       else
          Put_Line (Standard_Error, Self.Diagnosis.To_Wide_Wide_String);
@@ -414,6 +482,22 @@ package body AMF.Internals.XMI_Handlers is
          end if;
       end if;
    end End_Element;
+
+   ------------
+   -- Extent --
+   ------------
+
+   function Extent
+    (URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access is
+   begin
+      if Documents.Contains (URI) then
+         return Documents.Element (URI);
+
+      else
+         return null;
+      end if;
+   end Extent;
 
 --   overriding procedure End_Prefix_Mapping
 --    (Self    : in out XMI_Handler;
@@ -591,10 +675,17 @@ package body AMF.Internals.XMI_Handlers is
       return Self.Extent;
    end Root;
 
---   overriding procedure Set_Document_Locator
---    (Self    : in out XMI_Handler;
---     Locator : XML.SAX.Locators.SAX_Locator) is null;
---
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out XMI_Handler;
+     Locator : XML.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
+
 --   overriding procedure Skipped_Entity
 --    (Self    : in out XMI_Handler;
 --     Name    : League.Strings.Universal_String;

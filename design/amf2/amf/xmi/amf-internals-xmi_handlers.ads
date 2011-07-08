@@ -48,6 +48,7 @@ private with League.Strings.Hash;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Error_Handlers;
+private with XML.SAX.Locators;
 private with XML.SAX.Parse_Exceptions;
 
 private with AMF.CMOF.Properties;
@@ -61,6 +62,11 @@ package AMF.Internals.XMI_Handlers is
        and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
    function Root (Self : XMI_Handler) return AMF.URI_Stores.URI_Store_Access;
+
+   function Extent
+    (URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access;
+   --  Returns extent with specified URI.
 
 private
 
@@ -98,6 +104,7 @@ private
       Postponed        : Postponed_Link_Vectors.Vector;
       Skip_End_Element : Natural := 0;
       Diagnosis        : League.Strings.Universal_String;
+      Locator          : XML.SAX.Locators.SAX_Locator;
    end record;
 
    overriding procedure Characters
@@ -139,11 +146,11 @@ private
 --     Target  : League.Strings.Universal_String;
 --     Data    : League.Strings.Universal_String;
 --     Success : in out Boolean) is null;
---
---   overriding procedure Set_Document_Locator
---    (Self    : in out XMI_Handler;
---     Locator : XML.SAX.Locators.SAX_Locator) is null;
---
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out XMI_Handler;
+     Locator : XML.SAX.Locators.SAX_Locator);
+
 --   overriding procedure Skipped_Entity
 --    (Self    : in out XMI_Handler;
 --     Name    : League.Strings.Universal_String;

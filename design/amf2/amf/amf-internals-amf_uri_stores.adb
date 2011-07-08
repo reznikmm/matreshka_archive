@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  XXX Metamodel is hardcoded now to be CMOF. Nethertheless, it is possible
---  to do required metaclass to package navigation is less efficient way by
+--  to do required metaclass to package navigation in less efficient way by
 --  traversing elements in the metaclass extent.
 ------------------------------------------------------------------------------
 with AMF.Factories.Registry;
@@ -108,9 +108,6 @@ package body AMF.Internals.AMF_URI_Stores is
         := Standard.CMOF.Internals.Attributes.Internal_Get_Member_End (A);
 
    begin
-      --  XXX This subprogram is not CMOF specific and can be refactored to be
-      --  used with any metamodels.
-
       AMF.Internals.Links.Internal_Create_Link
        (A,
         AMF.Internals.Helpers.To_Element (First_Element),
@@ -150,10 +147,19 @@ package body AMF.Internals.AMF_URI_Stores is
     (Self      : not null access AMF_URI_Store;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      Enclosing_Package : AMF.CMOF.Packages.CMOF_Package_Access
+--        := Data_Type.Get_Package;
+--  XXX Type:getPackage is derived property, it is not implemented now.
+        := AMF.CMOF.Packages.CMOF_Package_Access
+            (AMF.Internals.Helpers.To_Element
+              (Standard.CMOF.Internals.Metamodel.MM_CMOF));
+      Factory           : AMF.Factories.Factory_Access
+        := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
+
    begin
-      raise Program_Error;
-      return League.Strings.Empty_Universal_String;
+      return Factory.Convert_To_String (Data_Type, Value);
    end Convert_To_String;
 
    -------------
