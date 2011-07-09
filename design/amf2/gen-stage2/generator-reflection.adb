@@ -723,25 +723,25 @@ package body Generator.Reflection is
       Put_Line ("with AMF.CMOF.Holders;");
       Put_Line ("with AMF.CMOF.Parameter_Direction_Kind_Holders;");
       Put_Line ("with AMF.CMOF.Visibility_Kind_Holders;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Holders.String_Collections;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with AMF.String_Collections;");
       Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Metamodel;");
-      Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with League.Holders.Booleans;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Reflection is");
       New_Line;
+      Put_Line ("   use AMF.Internals.Tables;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use CMOF.Internals.Attributes;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
-      Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use type AMF.Internals.AMF_Element;");
 
       --  Getter
@@ -756,7 +756,7 @@ package body Generator.Reflection is
       Class_Info.Iterate (Generate_Getter_Implementation'Access);
       New_Line;
       Put_Line ("   begin");
-      Put_Line ("      case Elements.Table (Self).Kind is");
+      Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
       Put_Line ("            raise Program_Error;");
       Class_Info.Iterate (Generate_Getter_Call'Access);
@@ -771,7 +771,7 @@ package body Generator.Reflection is
        ("   function Get_Meta_Class"
           & " (Self : CMOF_Element) return CMOF_Class is");
       Put_Line ("   begin");
-      Put_Line ("      case Elements.Table (Self).Kind is");
+      Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
       Put_Line ("            return Null_CMOF_Element;");
       Class_Info.Iterate (Generate_Meta'Access);
@@ -790,7 +790,7 @@ package body Generator.Reflection is
       Class_Info.Iterate (Generate_Setter_Specification'Access);
       Class_Info.Iterate (Generate_Setter_Implementation'Access);
       Put_Line ("   begin");
-      Put_Line ("      case Elements.Table (Self).Kind is");
+      Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
       Put_Line ("            raise Program_Error;");
       Class_Info.Iterate (Generate_Setter_Call'Access);

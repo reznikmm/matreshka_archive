@@ -46,25 +46,25 @@
 with AMF.CMOF.Holders;
 with AMF.CMOF.Parameter_Direction_Kind_Holders;
 with AMF.CMOF.Visibility_Kind_Holders;
-with AMF.Internals.Tables.CMOF_Types;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.String_Collections;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
+with AMF.Internals.Tables.CMOF_Element_Table;
+with AMF.Internals.Tables.CMOF_Types;
 with AMF.String_Collections;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Tables;
 with League.Holders.Booleans;
 
 package body CMOF.Internals.Reflection is
 
+   use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Types;
    use CMOF.Internals.Attributes;
    use CMOF.Internals.Metamodel;
-   use CMOF.Internals.Tables;
    use type AMF.Internals.AMF_Element;
 
    ---------
@@ -2518,7 +2518,7 @@ package body CMOF.Internals.Reflection is
       end Tag_Get;
 
    begin
-      case Elements.Table (Self).Kind is
+      case CMOF_Element_Table.Table (Self).Kind is
          when E_None =>
             raise Program_Error;
 
@@ -2584,7 +2584,7 @@ package body CMOF.Internals.Reflection is
 
    function Get_Meta_Class (Self : CMOF_Element) return CMOF_Class is
    begin
-      case Elements.Table (Self).Kind is
+      case CMOF_Element_Table.Table (Self).Kind is
          when E_None =>
             return Null_CMOF_Element;
 
@@ -3336,7 +3336,7 @@ package body CMOF.Internals.Reflection is
          end if;
       end Tag_Set;
    begin
-      case Elements.Table (Self).Kind is
+      case CMOF_Element_Table.Table (Self).Kind is
          when E_None =>
             raise Program_Error;
 

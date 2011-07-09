@@ -47,16 +47,17 @@ with League.Strings;
 
 with AMF.Internals.Extents;
 with AMF.Internals.Links;
+with AMF.Internals.Tables.CMOF_Element_Table;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Setup is
 
    use AMF.Internals.Extents;
    use AMF.Internals.Links;
+   use AMF.Internals.Tables;
    use CMOF.Internals.Attributes;
    use CMOF.Internals.Constructors;
    use CMOF.Internals.Extents;
@@ -65,7 +66,7 @@ package body CMOF.Internals.Setup is
    Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;
 
 begin
-   Tables.Elements.Set_Last (800);
+   CMOF_Element_Table.Set_Last (800);
    Initialize_CMOF_Metamodel_Extent;
 
    Initialize_Package (189);

@@ -369,7 +369,7 @@ package body Generator.Attributes is
                      Put_Line
                       ("              League.Strings.Internals.Create");
                      Put_Line
-                      ("               (Elements.Table (Self).Member ("
+                      ("               (CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -377,7 +377,7 @@ package body Generator.Attributes is
 
                   when Holder =>
                      Put_Line
-                      ("            if Elements.Table (Self).Member ("
+                      ("            if CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -390,7 +390,7 @@ package body Generator.Attributes is
                      Put_Line
                       ("                 League.Strings.Internals.Create");
                      Put_Line
-                      ("                  (Elements.Table (Self).Member ("
+                      ("                  (CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -402,7 +402,7 @@ package body Generator.Attributes is
 
                   when Ordered_Set =>
                      Put
-                      ("            return Elements.Table (Self).Member ("
+                      ("            return CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -413,7 +413,7 @@ package body Generator.Attributes is
 
                   when Sequence =>
                      Put
-                      ("            return Elements.Table (Self).Member ("
+                      ("            return CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -422,7 +422,7 @@ package body Generator.Attributes is
 
             elsif Info.Slot.Contains (Attribute) then
                Put
-                ("            return Elements.Table (Self).Member ("
+                ("            return CMOF_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
                         (Info.Slot.Element (Attribute)), Both)
@@ -445,7 +445,7 @@ package body Generator.Attributes is
 
                Put_Line
                 ("            return"
-                   & " Elements.Table (Self).Member (0).Collection +"
+                   & " CMOF_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
                       (Info.Collection.Element (Attribute))
                    & ";");
@@ -468,7 +468,7 @@ package body Generator.Attributes is
          Put_Line
           ("    (Self : CMOF_Element) return " & Ada_Type (Attribute) & " is");
          Put_Line ("   begin");
-         Put_Line ("      case Elements.Table (Self).Kind is");
+         Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
          Put_Line ("         when others =>");
          Put_Line ("            raise Program_Error;");
@@ -530,14 +530,14 @@ package body Generator.Attributes is
                      Put_Line
                       ("              League.Strings.Internals.Wrap");
                      Put_Line
-                      ("               (Elements.Table (Self).Member ("
+                      ("               (CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value);");
                      New_Line;
                      Put_Line
-                      ("            Elements.Table (Self).Member ("
+                      ("            CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -549,7 +549,7 @@ package body Generator.Attributes is
                       ("            "
                          & "Matreshka.Internals.Strings.Reference");
                      Put_Line
-                      ("             (Elements.Table (Self).Member ("
+                      ("             (CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -565,7 +565,7 @@ package body Generator.Attributes is
 
                   when Holder =>
                      Put_Line
-                      ("            if Elements.Table (Self).Member ("
+                      ("            if CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -575,7 +575,7 @@ package body Generator.Attributes is
                      Put_Line
                       ("                 League.Strings.Internals.Wrap");
                      Put_Line
-                      ("                  (Elements.Table (Self).Member ("
+                      ("                  (CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -585,7 +585,7 @@ package body Generator.Attributes is
                      Put_Line
                       ("            if To.Is_Empty then");
                      Put_Line
-                      ("               Elements.Table (Self).Member ("
+                      ("               CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -593,7 +593,7 @@ package body Generator.Attributes is
                      New_Line;
                      Put_Line ("            else");
                      Put_Line
-                      ("               Elements.Table (Self).Member ("
+                      ("               CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -605,7 +605,7 @@ package body Generator.Attributes is
                       ("               "
                          & "Matreshka.Internals.Strings.Reference");
                      Put_Line
-                      ("                (Elements.Table (Self).Member ("
+                      ("                (CMOF_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -634,7 +634,7 @@ package body Generator.Attributes is
 
             else
                Put_Line
-                ("            Old := Elements.Table (Self).Member ("
+                ("            Old := CMOF_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
                         (Info.Slot.Element (Attribute)), Both)
@@ -642,7 +642,7 @@ package body Generator.Attributes is
                    & Member_Name
                    & ";" );
                Put_Line
-                ("            Elements.Table (Self).Member ("
+                ("            CMOF_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
                         (Info.Slot.Element (Attribute)), Both)
@@ -681,7 +681,7 @@ package body Generator.Attributes is
          Put_Line ("      Old : " & Ada_Type (Attribute) & ";");
          New_Line;
          Put_Line ("   begin");
-         Put_Line ("      case Elements.Table (Self).Kind is");
+         Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
          Put_Line ("         when others =>");
          Put_Line ("            raise Program_Error;");
@@ -692,17 +692,17 @@ package body Generator.Attributes is
    begin
       Put_Header;
       Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Notification;");
-      Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with League.Strings.Internals;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Attributes is");
       New_Line;
+      Put_Line ("   use AMF.Internals.Tables;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
-      Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Put_Line
        ("   use type Matreshka.Internals.Strings.Shared_String_Access;");

@@ -1,11 +1,11 @@
+with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Types;
-with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Subclassing is
 
-   use CMOF.Internals.Metamodel;
-   use CMOF.Internals.Tables;
+   use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Types;
+   use CMOF.Internals.Metamodel;
 
    type Class_Bits is array (CMOF_Meta_Class) of Boolean;
    pragma Pack (Class_Bits);
@@ -275,8 +275,8 @@ package body CMOF.Internals.Subclassing is
    function Is_Valid (Self : Cmof_Element) return Boolean is
    begin
       return Is_Null (Self)
-        or else (Self in Elements.First .. Elements.Last
-                   and then Elements.Table (Self).Kind /= E_None);
+        or else (Self in CMOF_Element_Table.First .. CMOF_Element_Table.Last
+                   and then CMOF_Element_Table.Table (Self).Kind /= E_None);
    end Is_Valid;
 
    --------------------
@@ -570,7 +570,7 @@ package body CMOF.Internals.Subclassing is
 
    begin
       return
-        (Tag (Class (Elements.Table (Self).Kind)) and Tag (Superclass))
+        (Tag (Class (CMOF_Element_Table.Table (Self).Kind)) and Tag (Superclass))
            = Tag (Superclass);
    end Is_Subclass_Reflective;
 

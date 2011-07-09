@@ -45,14 +45,10 @@ with GNAT.Table;
 
 with AMF.Internals.Tables.CMOF_Types;
 
-package CMOF.Internals.Tables is
-
-   package Elements is
-     new GNAT.Table
-          (AMF.Internals.Tables.CMOF_Types.Element_Record,
-           AMF.Internals.CMOF_Element,
-           1,
-           1_000,
-           100);
-
-end CMOF.Internals.Tables;
+package AMF.Internals.Tables.CMOF_Element_Table is
+  new GNAT.Table
+       (AMF.Internals.Tables.CMOF_Types.Element_Record,
+        AMF.Internals.CMOF_Element,
+        1,
+        1_000,
+        100);

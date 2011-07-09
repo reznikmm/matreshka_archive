@@ -45,12 +45,12 @@ with AMF.Internals.Containers;
 with AMF.Internals.Helpers;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.AMF_Tables;
+with AMF.Internals.Tables.CMOF_Element_Table;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Reflection;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Subclassing;
-with CMOF.Internals.Tables;
 
 package body CMOF.Internals.Extents is
 
@@ -74,7 +74,7 @@ package body CMOF.Internals.Extents is
       Meta_Class      : constant CMOF_Class
         := Reflection.Get_Meta_Class (Self);
       Meta_Extent     : constant AMF_Extent
-        := Tables.Elements.Table (Meta_Class).Extent;
+        := CMOF_Element_Table.Table (Meta_Class).Extent;
       Current         : AMF_Tables.Extent_Element_Identifier
         := AMF.Internals.Tables.AMF_Tables.Extents.Table (Meta_Extent).Head;
       Current_Element : AMF_Element;
@@ -117,12 +117,12 @@ package body CMOF.Internals.Extents is
 
             if Opposite in Cmof_Non_Collection_Of_Element_Property'Range then
                if Member_Offset
-                   (Tables.Elements.Table (Self).Kind, Opposite) /= 0
+                   (CMOF_Element_Table.Table (Self).Kind, Opposite) /= 0
                then
                   Owner :=
-                    Tables.Elements.Table (Self).Member
+                    CMOF_Element_Table.Table (Self).Member
                      (Member_Offset
-                       (Tables.Elements.Table (Self).Kind,
+                       (CMOF_Element_Table.Table (Self).Kind,
                        Opposite)).Element;
 
                   if Owner /= Null_CMOF_Element then
@@ -132,7 +132,7 @@ package body CMOF.Internals.Extents is
                else
                Collection :=
                  AMF_Tables.Collections.Table
-                  (Tables.Elements.Table (Self).Member (0).Collection).Head;
+                  (CMOF_Element_Table.Table (Self).Member (0).Collection).Head;
 
                while Collection /= 0 loop
                   Link :=
@@ -157,7 +157,7 @@ package body CMOF.Internals.Extents is
             else
                Collection :=
                  AMF_Tables.Collections.Table
-                  (Tables.Elements.Table (Self).Member (0).Collection).Head;
+                  (CMOF_Element_Table.Table (Self).Member (0).Collection).Head;
 
                while Collection /= 0 loop
                   Link :=

@@ -42,13 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Tables.CMOF_Element_Table;
 with CMOF.Internals.Attribute_Mappings;
 with CMOF.Internals.Attributes;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Tables;
 
 package body AMF.Internals.Helpers.CMOF_Helper is
 
+   use AMF.Internals.Tables;
    use CMOF.Internals.Attribute_Mappings;
    use CMOF.Internals.Metamodel;
 
@@ -61,7 +62,7 @@ package body AMF.Internals.Helpers.CMOF_Helper is
      Element : AMF_Element;
      Extent  : AMF_Extent) is
    begin
-      CMOF.Internals.Tables.Elements.Table (Element).Extent := Extent;
+      CMOF_Element_Table.Table (Element).Extent := Extent;
    end Connect_Extent;
 
    ----------------------
@@ -78,19 +79,16 @@ package body AMF.Internals.Helpers.CMOF_Helper is
       if CMOF.Internals.Attributes.Internal_Get_Upper (Property).Value > 1 then
          if Property not in CMOF_Collection_Of_Element_Property then
             AMF.Internals.Element_Collections.Internal_Append
-             (CMOF.Internals.Tables.Elements.Table
-               (Element).Member (0).Collection,
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
               Other,
               Link);
 
          else
             AMF.Internals.Element_Collections.Internal_Append
-             (CMOF.Internals.Tables.Elements.Table
-               (Element).Member (0).Collection
+             (CMOF_Element_Table.Table (Element).Member (0).Collection
                 + AMF_Collection_Of_Element
                    (Collection_Offset
-                     (CMOF.Internals.Tables.Elements.Table (Element).Kind,
-                      Property)),
+                     (CMOF_Element_Table.Table (Element).Kind, Property)),
               Other,
               Link);
          end if;
@@ -98,15 +96,14 @@ package body AMF.Internals.Helpers.CMOF_Helper is
       else
          if Property not in CMOF_Non_Collection_Of_Element_Property then
             AMF.Internals.Element_Collections.Internal_Append
-             (CMOF.Internals.Tables.Elements.Table
-               (Element).Member (0).Collection,
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
               Other,
               Link);
 
          else
-            CMOF.Internals.Tables.Elements.Table (Element).Member
+            CMOF_Element_Table.Table (Element).Member
              (Member_Offset
-               (CMOF.Internals.Tables.Elements.Table (Element).Kind,
+               (CMOF_Element_Table.Table (Element).Kind,
                 Property)).Element := Other;
          end if;
       end if;
@@ -120,7 +117,7 @@ package body AMF.Internals.Helpers.CMOF_Helper is
     (Self    : not null access constant CMOF_Metamodel_Helper;
      Element : AMF_Element) return AMF_Extent is
    begin
-      return CMOF.Internals.Tables.Elements.Table (Element).Extent;
+      return CMOF_Element_Table.Table (Element).Extent;
    end Get_Extent;
 
    ----------------
@@ -131,7 +128,7 @@ package body AMF.Internals.Helpers.CMOF_Helper is
     (Self     : not null access constant CMOF_Metamodel_Helper;
      Element  : AMF_Element) return AMF.Elements.Element_Access is
    begin
-      return CMOF.Internals.Tables.Elements.Table (Element).Proxy;
+      return CMOF_Element_Table.Table (Element).Proxy;
    end To_Element;
 
    Helper : aliased CMOF_Metamodel_Helper;

@@ -120,10 +120,10 @@ package body Generator.Constructors is
          New_Line;
          Put_Line ("   function " & Name & " return CMOF_Element is");
          Put_Line ("   begin");
-         Put_Line ("      Elements.Increment_Last;");
-         Put_Line ("      " & Initialize_Name & " (Elements.Last);");
+         Put_Line ("      CMOF_Element_Table.Increment_Last;");
+         Put_Line ("      " & Initialize_Name & " (CMOF_Element_Table.Last);");
          New_Line;
-         Put_Line ("      return Elements.Last;");
+         Put_Line ("      return CMOF_Element_Table.Last;");
          Put_Line ("   end " & Name & ";");
       end Generate_Create;
 
@@ -153,7 +153,7 @@ package body Generator.Constructors is
          New_Line;
          Put_Line ("   procedure " & Name & " (Self   : CMOF_Element) is");
          Put_Line ("   begin");
-         Put_Line ("      Elements.Table (Self) :=");
+         Put_Line ("      CMOF_Element_Table.Table (Self) :=");
          Put_Line ("       (Kind     => " & Element_Kind & ",");
          Put_Line ("        Extent   => 0,");
          Put_Line ("        Proxy    =>");
@@ -498,7 +498,7 @@ package body Generator.Constructors is
          end loop;
 
          Put_Line ("                     others => (Kind => M_None)));");
-         Put_Line ("      Elements.Table (Self).Member (0) :=");
+         Put_Line ("      CMOF_Element_Table.Table (Self).Member (0) :=");
          Put_Line ("       (M_Collection_Of_Element,");
          Put_Line
           ("        AMF.Internals.Element_Collections.Allocate_Collections ("
@@ -547,7 +547,7 @@ package body Generator.Constructors is
             Put_Line
              ("        " & Property_Constant_Name (Attribute) & ",");
             Put_Line
-             ("        Elements.Table (Self).Member (0).Collection +"
+             ("        CMOF_Element_Table.Table (Self).Member (0).Collection +"
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
@@ -579,16 +579,16 @@ package body Generator.Constructors is
       Put_Header;
       Class_Info.Iterate (Generate_With'Access);
       Put_Line ("with AMF.Internals.Element_Collections;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with CMOF.Internals.Metamodel;");
-      Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Constructors is");
       New_Line;
+      Put_Line ("   use AMF.Internals.Tables;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
-      Put_Line ("   use CMOF.Internals.Tables;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Class_Info.Iterate (Generate_Create'Access);
       Class_Info.Iterate (Generate_Initialize'Access);
