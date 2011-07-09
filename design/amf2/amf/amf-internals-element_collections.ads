@@ -69,4 +69,20 @@ package AMF.Internals.Element_Collections is
     (Collection : AMF_Collection_Of_Element)
        return AMF.Elements.Collections.Reflective_Collection;
 
+   function Allocate_Collections
+    (Count : Natural) return AMF.Internals.AMF_Collection_Of_Element;
+   --  Allocates specified number of collections.
+
+   procedure Initialize_Ordered_Set_Collection
+    (Element    : AMF_Element;
+     Property   : CMOF_Element;
+     Collection : AMF.Internals.AMF_Collection_Of_Element);
+   --  Initialize specified collection as ordered set.
+
+   procedure Initialize_Set_Collection
+    (Element    : AMF_Element;
+     Property   : CMOF_Element;
+     Collection : AMF.Internals.AMF_Collection_Of_Element);
+   --  Initialize specified collection as set.
+
 end AMF.Internals.Element_Collections;

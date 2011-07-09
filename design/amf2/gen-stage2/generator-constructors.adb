@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Types;
@@ -51,6 +52,8 @@ with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Constructors is
 
+   use Ada.Strings;
+   use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
@@ -495,14 +498,23 @@ package body Generator.Constructors is
          end loop;
 
          Put_Line ("                     others => (Kind => M_None)));");
+         Put_Line ("      Elements.Table (Self).Member (0) :=");
+         Put_Line ("       (M_Collection_Of_Element,");
          Put_Line
-          ("      Allocate_Collection_Of_Cmof_Element_Slots (Self,"
-             & Ada.Containers.Count_Type'Wide_Wide_Image
-                (Class.Collection_Index.Length)
-             & ");");
+          ("        AMF.Internals.Element_Collections.Allocate_Collections ("
+             & Trim
+                (Ada.Containers.Count_Type'Wide_Wide_Image
+                  (Class.Collection_Index.Length),
+                 Both)
+             & "));");
 
          for J in 1 .. Natural (Class.Collection_Index.Length) loop
             Attribute := Class.Collection_Index.Element (J);
+
+               New_Line;
+               Put_Line
+                ("      --  " & Attribute.Get_Name.Value.To_Wide_Wide_String);
+               New_Line;
 
             case Representation (Attribute) is
                when Value =>
@@ -512,16 +524,16 @@ package body Generator.Constructors is
                   raise Program_Error;
 
                when Set =>
-                  Put ("      Initialize_Set_Collection");
-                  Set_Col (42);
                   Put_Line
-                   ("--  " & Attribute.Get_Name.Value.To_Wide_Wide_String);
+                   ("      "
+                      & "AMF.Internals.Element_Collections"
+                      & ".Initialize_Set_Collection");
 
                when Ordered_Set =>
-                  Put ("      Initialize_Ordered_Set_Collection");
-                  Set_Col (42);
                   Put_Line
-                   ("--  " & Attribute.Get_Name.Value.To_Wide_Wide_String);
+                   ("      "
+                      & "AMF.Internals.Element_Collections"
+                      & ".Initialize_Ordered_Set_Collection");
 
                when Bag =>
                   raise Program_Error;
@@ -566,6 +578,7 @@ package body Generator.Constructors is
    begin
       Put_Header;
       Class_Info.Iterate (Generate_With'Access);
+      Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
       Put_Line ("with CMOF.Internals.Types;");

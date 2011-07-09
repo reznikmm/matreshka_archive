@@ -85,6 +85,23 @@ package body AMF.Internals.Element_Collections is
       end if;
    end Add;
 
+   --------------------------
+   -- Allocate_Collections --
+   --------------------------
+
+   function Allocate_Collections
+    (Count : Natural) return AMF.Internals.AMF_Collection_Of_Element
+   is
+      First : constant AMF_Collection_Of_Element
+        := AMF_Tables.Collections.Last + 1;
+
+   begin
+      AMF_Tables.Collections.Set_Last
+       (First + AMF_Collection_Of_Element (Count));
+
+      return First;
+   end Allocate_Collections;
+
    -------------
    -- Element --
    -------------
@@ -110,6 +127,40 @@ package body AMF.Internals.Element_Collections is
          return AMF_Tables.Collection_Elements.Table (Current).Element;
       end if;
    end Element;
+
+   ---------------------------------------
+   -- Initialize_Ordered_Set_Collection --
+   ---------------------------------------
+
+   procedure Initialize_Ordered_Set_Collection
+    (Element    : AMF_Element;
+     Property   : CMOF_Element;
+     Collection : AMF_Collection_Of_Element) is
+   begin
+      AMF_Tables.Collections.Table (Collection) :=
+       (Kind     => AMF_Tables.C_Ordered_Set,
+        Owner    => Element,
+        Property => Property,
+        Head     => 0,
+        Tail     => 0);
+   end Initialize_Ordered_Set_Collection;
+
+   -------------------------------
+   -- Initialize_Set_Collection --
+   -------------------------------
+
+   procedure Initialize_Set_Collection
+    (Element    : AMF_Element;
+     Property   : CMOF_Element;
+     Collection : AMF_Collection_Of_Element) is
+   begin
+      AMF_Tables.Collections.Table (Collection) :=
+       (Kind     => AMF_Tables.C_Set,
+        Owner    => Element,
+        Property => Property,
+        Head     => 0,
+        Tail     => 0);
+   end Initialize_Set_Collection;
 
    ---------------------
    -- Internal_Append --
