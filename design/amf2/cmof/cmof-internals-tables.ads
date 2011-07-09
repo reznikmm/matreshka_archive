@@ -134,12 +134,4 @@ package CMOF.Internals.Tables is
    package Elements is
      new GNAT.Table (Element_Record, Cmof_Element, 1, 1_000, 100);
 
-   function Is_Null (Self : Cmof_Element) return Boolean;
-   pragma Inline (Is_Null);
-   --  Returns True when specified element is null.
-
-   function Is_Valid (Self : Cmof_Element) return Boolean;
-   --  Returns True when specified element is null or present in the elements
-   --  table.
-
 end CMOF.Internals.Tables;

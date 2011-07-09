@@ -250,6 +250,35 @@ package body CMOF.Internals.Subclassing is
       E_Property            => MC_CMOF_Property,
       E_Tag                 => MC_CMOF_Tag);
 
+   function Is_Null (Self : Cmof_Element) return Boolean;
+   --  Returns True when specified element is null.
+
+   function Is_Valid (Self : Cmof_Element) return Boolean;
+   --  Returns True when specified element is null or present in the elements
+   --  table.
+
+   -------------
+   -- Is_Null --
+   -------------
+
+   function Is_Null (Self : Cmof_Element) return Boolean is
+      use type AMF.Internals.AMF_Element;
+
+   begin
+      return Self = Null_Cmof_Element;
+   end Is_Null;
+
+   --------------
+   -- Is_Valid --
+   --------------
+
+   function Is_Valid (Self : Cmof_Element) return Boolean is
+   begin
+      return Is_Null (Self)
+        or else (Self in Elements.First .. Elements.Last
+                   and then Elements.Table (Self).Kind /= E_None);
+   end Is_Valid;
+
    --------------------
    -- Is_Association --
    --------------------
