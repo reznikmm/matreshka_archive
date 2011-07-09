@@ -41,24 +41,244 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
+with AMF.CMOF.Data_Types;
+with AMF.CMOF.Enumerations;
+with AMF.CMOF.Primitive_Types;
+
+with Generator.Names;
 with Generator.Type_Mapping.Handlers;
 
 package body Generator.Type_Mapping is
 
-   --------------
-   -- Ada_Type --
-   --------------
+   use Ada.Wide_Wide_Text_IO;
+   use Generator.Names;
+   use type League.Strings.Universal_String;
 
-   function Ada_Type
-    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+   function Public_Ada_Package_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+   --  Constructs name of the package where user visible type is declared.
+
+   function Public_Ada_Type_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+   --  Constructs name of the type which is used to represent values of the
+   --  specified type.
+
+   -----------------------------
+   -- Public_Ada_Package_Name --
+   -----------------------------
+
+   function Public_Ada_Package_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
      Representation : Representation_Kinds)
        return League.Strings.Universal_String is
    begin
-      return Mapping.Element (Element).Mapping (Representation).Ada_Type;
-   end Ada_Type;
+      if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         if Representation in Value .. Holder then
+            return
+              "AMF."
+                & Metamodel_Name
+                & "."
+                & Plural (To_Ada_Identifier (The_Type.Get_Name.Value));
+
+         else
+            return
+              "AMF."
+                & Metamodel_Name
+                & "."
+                & Plural (To_Ada_Identifier (The_Type.Get_Name.Value))
+                & ".Collections";
+         end if;
+
+      elsif The_Type.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
+         return "AMF." & Metamodel_Name;
+
+      elsif The_Type.all
+              in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
+      then
+         return
+           Mapping.Element
+            (AMF.CMOF.Elements.CMOF_Element_Access
+              (The_Type)).Mapping (Representation).Ada_Package;
+
+      else
+         raise Program_Error;
+      end if;
+   end Public_Ada_Package_Name;
+
+   --------------------------
+   -- Public_Ada_Type_Name --
+   --------------------------
+
+   function Public_Ada_Type_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String is
+   begin
+      if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         case Representation is
+            when Value | Holder =>
+               return
+                 Metamodel_Name
+                   & "_"
+                   & To_Ada_Identifier (The_Type.Get_Name.Value)
+                   & "_Access";
+
+            when Set =>
+               return
+                 "Set_Of_"
+                   & Metamodel_Name
+                   & "_"
+                   & To_Ada_Identifier (The_Type.Get_Name.Value);
+
+            when Ordered_Set =>
+               return
+                 "Ordered_Set_Of_"
+                   & Metamodel_Name
+                   & "_"
+                   & To_Ada_Identifier (The_Type.Get_Name.Value);
+
+            when Bag =>
+               return
+                 "Bag_Of_"
+                   & Metamodel_Name
+                   & "_"
+                   & To_Ada_Identifier (The_Type.Get_Name.Value);
+
+            when Sequence =>
+               return
+                 "Sequence_Of_"
+                   & Metamodel_Name
+                   & "_"
+                   & To_Ada_Identifier (The_Type.Get_Name.Value);
+         end case;
+
+      elsif The_Type.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
+         if Mapping.Contains
+             (AMF.CMOF.Elements.CMOF_Element_Access (The_Type))
+           and then Mapping.Element
+                     (AMF.CMOF.Elements.CMOF_Element_Access
+                       (The_Type)).Mapping (Representation) /= null
+           and then not Mapping.Element
+                         (AMF.CMOF.Elements.CMOF_Element_Access
+                           (The_Type)).Mapping
+                             (Representation).Ada_Type.Is_Empty
+         then
+            return
+              Mapping.Element
+               (AMF.CMOF.Elements.CMOF_Element_Access
+                 (The_Type)).Mapping (Representation).Ada_Type;
+
+         else
+            case Representation is
+               when Value =>
+                  return
+                    Metamodel_Name
+                      & "_"
+                      & To_Ada_Identifier (The_Type.Get_Name.Value);
+
+               when Holder =>
+                  return
+                    "Optional_"
+                      & Metamodel_Name
+                      & "_"
+                      & To_Ada_Identifier (The_Type.Get_Name.Value);
+
+               when others =>
+                  raise Program_Error;
+            end case;
+         end if;
+
+      elsif The_Type.all
+              in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
+      then
+         return
+           Mapping.Element
+            (AMF.CMOF.Elements.CMOF_Element_Access
+              (The_Type)).Mapping (Representation).Ada_Type;
+
+      else
+         raise Program_Error;
+      end if;
+   end Public_Ada_Type_Name;
+
+   ------------------------------------
+   -- Public_Ada_Type_Qualified_Name --
+   ------------------------------------
+
+   function Public_Ada_Type_Qualified_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String
+   is
+      Package_Name : constant League.Strings.Universal_String
+        := Public_Ada_Package_Name (The_Type, Representation);
+
+   begin
+      if Package_Name.Is_Empty then
+         return Public_Ada_Type_Name (The_Type, Representation);
+
+      else
+         return
+           Package_Name
+             & "."
+             & Public_Ada_Type_Name (The_Type, Representation);
+      end if;
+   end Public_Ada_Type_Qualified_Name;
+
+   --------------------------------------
+   -- Internal_Ada_Type_Qualified_Name --
+   --------------------------------------
+
+   function Internal_Ada_Type_Qualified_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String is
+   begin
+      if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         --  Classes are represented by internal data types.
+
+         case Representation is
+            when Value | Holder =>
+               return "AMF.Internals." & Metamodel_Name & "_Element";
+
+            when Set | Ordered_Set | Bag | Sequence =>
+               return
+                 League.Strings.To_Universal_String
+                  ("AMF.Internals.AMF_Collection_Of_Element");
+         end case;
+
+      elsif The_Type.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
+         --  Enumeration types are declared in AMF.<metamodel> package and
+         --  has <metamodel>_<type> name.
+
+         return
+           Public_Ada_Package_Name (The_Type, Representation)
+             & "."
+             & Public_Ada_Type_Name (The_Type, Representation);
+
+      elsif The_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+         --  Data types are mapped according to specified mapping rules.
+
+         --  XXX For enumeration types this can be computed.
+
+         return
+           Mapping.Element
+            (AMF.CMOF.Elements.CMOF_Element_Access
+              (The_Type)).Mapping (Representation).Ada_Type;
+
+      else
+         raise Program_Error;
+      end if;
+   end Internal_Ada_Type_Qualified_Name;
 
    ------------------
    -- Load_Mapping --

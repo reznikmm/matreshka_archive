@@ -95,16 +95,6 @@ procedure Gen_API is
        return League.Strings.Universal_String;
    --  Returns name of the type.
 
-   function Ada_Type_Qualified_Name
-    (Is_Multivalued : Boolean;
-     Lower          : Integer;
-     The_Type       : not null AMF.CMOF.Types.CMOF_Type_Access;
-     Is_Ordered     : Boolean;
-     Is_Unique      : Boolean;
-     Representation : Representation_Kinds)
-       return Wide_Wide_String;
-   --  Returns qualified name of Ada type.
-
    procedure Generate_Class
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Generates specification of interface package.
@@ -168,70 +158,6 @@ procedure Gen_API is
       return
         Model_Name & "_" & To_Ada_Identifier (Element.Get_Name.Value);
    end Ada_API_Type_Name;
-
-   -----------------------------
-   -- Ada_Type_Qualified_Name --
-   -----------------------------
-
-   function Ada_Type_Qualified_Name
-    (Is_Multivalued : Boolean;
-     Lower          : Integer;
-     The_Type       : not null AMF.CMOF.Types.CMOF_Type_Access;
-     Is_Ordered     : Boolean;
-     Is_Unique      : Boolean;
-     Representation : Representation_Kinds)
-       return Wide_Wide_String is
-   begin
-      if The_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
-         return
-           Generator.Type_Mapping.Ada_Type
-            (The_Type, Representation).To_Wide_Wide_String;
-
-      else
-         case Representation is
-            when Value | Holder =>
-               return
-                 Ada_API_Package_Name
-                  (AMF.CMOF.Classes.CMOF_Class_Access
-                    (The_Type)).To_Wide_Wide_String
-                   & "."
-                   & Ada_API_Type_Name (The_Type).To_Wide_Wide_String
-                   & "_Access";
-
-            when Ordered_Set =>
-               return
-                 Ada_API_Package_Name
-                  (AMF.CMOF.Classes.CMOF_Class_Access
-                    (The_Type)).To_Wide_Wide_String
-                   & ".Collections.Ordered_Set_Of_"
-                   & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
-
-            when Sequence =>
-               return
-                 Ada_API_Package_Name
-                  (AMF.CMOF.Classes.CMOF_Class_Access
-                    (The_Type)).To_Wide_Wide_String
-                   & ".Collections.Sequence_Of_"
-                   & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
-
-            when Set =>
-               return
-                 Ada_API_Package_Name
-                  (AMF.CMOF.Classes.CMOF_Class_Access
-                    (The_Type)).To_Wide_Wide_String
-                   & ".Collections.Set_Of_"
-                   & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
-
-            when Bag =>
-               return
-                 Ada_API_Package_Name
-                  (AMF.CMOF.Classes.CMOF_Class_Access
-                    (The_Type)).To_Wide_Wide_String
-                   & ".Collections.Bag_Of_"
-                   & Ada_API_Type_Name (The_Type).To_Wide_Wide_String;
-         end case;
-      end if;
-   end Ada_Type_Qualified_Name;
 
    --------------------
    -- Generate_Class --
@@ -411,13 +337,9 @@ procedure Gen_API is
          function Type_Qualified_Name return Wide_Wide_String is
          begin
             return
-              Ada_Type_Qualified_Name
-               (Attribute.Is_Multivalued,
-                Attribute.Lower_Bound,
-                Attribute.Get_Type,
-                Attribute.Get_Is_Ordered,
-                Attribute.Get_Is_Unique,
-                Representation (Attribute));
+              Type_Mapping.Public_Ada_Type_Qualified_Name
+               (Attribute.Get_Type,
+                Representation (Attribute)).To_Wide_Wide_String;
          end Type_Qualified_Name;
 
       begin
@@ -566,13 +488,9 @@ procedure Gen_API is
              return Wide_Wide_String is
          begin
             return
-              Ada_Type_Qualified_Name
-               (Parameter.Is_Multivalued,
-                Parameter.Lower_Bound,
-                Parameter.Get_Type,
-                Parameter.Get_Is_Ordered,
-                Parameter.Get_Is_Unique,
-                Representation (Parameter));
+              Type_Mapping.Public_Ada_Type_Qualified_Name
+               (Parameter.Get_Type,
+                Representation (Parameter)).To_Wide_Wide_String;
          end Type_Qualified_Name;
 
          Class_Type_Name : constant Wide_Wide_String
@@ -864,6 +782,7 @@ procedure Gen_API is
 
 begin
    AMF.Facility.Initialize;
+   Generator.Metamodel_Name := League.Application.Arguments.Element (2);
 
    Extent := XMI.Reader (Ada.Command_Line.Argument (1));
    Elements := Extent.Elements;

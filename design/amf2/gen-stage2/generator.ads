@@ -46,6 +46,8 @@ with Ada.Containers.Hashed_Sets;
 with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Ordered_Sets;
 
+with League.Strings;
+
 with AMF.CMOF.Classes;
 with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Named_Elements;
@@ -184,6 +186,9 @@ package Generator is
 
 --   Attribute_Info : Property_
 --   Attribute_Groups : Attribute_Group_Sets.Set;
+
+   Metamodel_Name : League.Strings.Universal_String;
+   --  Name of the generated metamodel.
 
    ---------------
    -- Utilities --

@@ -102,10 +102,6 @@ package body Generator.Attributes is
      Attribute : AMF.CMOF.Properties.CMOF_Property_Access);
    --  Adds attribute into set of attribute groups.
 
-   function Ada_Type
-    (Attribute : AMF.CMOF.Properties.CMOF_Property_Access)
-       return Wide_Wide_String;
-
    Boolean_Name                  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Boolean");
    Integer_Name                  : constant League.Strings.Universal_String
@@ -118,33 +114,6 @@ package body Generator.Attributes is
      := League.Strings.To_Universal_String ("UnlimitedNatural");
    Visibility_Kind_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("VisibilityKind");
-
-   --------------
-   -- Ada_Type --
-   --------------
-
-   function Ada_Type
-    (Attribute : AMF.CMOF.Properties.CMOF_Property_Access)
-       return Wide_Wide_String
-   is
-      Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
-        := Attribute.Get_Type;
-
-   begin
-      if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-         if Attribute.Is_Multivalued then
-            return "Collection_Of_CMOF_Element";
-
-         else
-            return "CMOF_Element";
-         end if;
-
-      else
-         return
-           Generator.Type_Mapping.Ada_Type
-            (Attribute_Type, Representation (Attribute)).To_Wide_Wide_String;
-      end if;
-   end Ada_Type;
 
    ---------
    -- Add --
@@ -454,11 +423,13 @@ package body Generator.Attributes is
             New_Line;
          end Generate;
 
-         Getter    : constant Homograph_Information_Access
+         Getter         : constant Homograph_Information_Access
            := Homograph_Sets.Element (Position);
-         Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
+         Attribute      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := Getter.Pairs.First_Element.Attribute;
-         Name      : constant Wide_Wide_String
+         Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Attribute.Get_Type;
+         Name           : constant Wide_Wide_String
            := "Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
 
       begin
@@ -466,7 +437,15 @@ package body Generator.Attributes is
          New_Line;
          Put_Line ("   function " & Name);
          Put_Line
-          ("    (Self : CMOF_Element) return " & Ada_Type (Attribute) & " is");
+          ("    (Self : AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element)");
+         Put_Line
+          ("       return "
+             & Type_Mapping.Internal_Ada_Type_Qualified_Name
+                (Attribute_Type,
+                 Representation (Attribute)).To_Wide_Wide_String
+             & " is");
          Put_Line ("   begin");
          Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
@@ -660,11 +639,13 @@ package body Generator.Attributes is
             New_Line;
          end Generate;
 
-         Getter    : constant Homograph_Information_Access
+         Getter         : constant Homograph_Information_Access
            := Homograph_Sets.Element (Position);
-         Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
+         Attribute      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := Getter.Pairs.First_Element.Attribute;
-         Name      : constant Wide_Wide_String
+         Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Attribute.Get_Type;
+         Name           : constant Wide_Wide_String
            := "Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
 
       begin
@@ -675,10 +656,21 @@ package body Generator.Attributes is
          Put_Header (Name, 3);
          New_Line;
          Put_Line ("   procedure " & Name);
-         Put_Line ("    (Self : CMOF_Element;");
-         Put_Line ("     To   : " & Ada_Type (Attribute) & ")");
+         Put_Line
+          ("    (Self : AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element;");
+         Put_Line
+          ("     To   : "
+            & Type_Mapping.Internal_Ada_Type_Qualified_Name
+               (Attribute_Type, Representation (Attribute)).To_Wide_Wide_String
+            & ")");
          Put_Line ("   is");
-         Put_Line ("      Old : " & Ada_Type (Attribute) & ";");
+         Put_Line
+          ("      Old : "
+            & Type_Mapping.Internal_Ada_Type_Qualified_Name
+               (Attribute_Type, Representation (Attribute)).To_Wide_Wide_String
+            & ";");
          New_Line;
          Put_Line ("   begin");
          Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
@@ -920,24 +912,36 @@ package body Generator.Attributes is
                 & Attribute.Get_Name.Value.To_Wide_Wide_String);
          end Generate_Usage;
 
-         Getter    : constant Homograph_Information_Access
+         Getter         : constant Homograph_Information_Access
            := Homograph_Sets.Element (Position);
-         Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
+         Attribute      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := Getter.Pairs.First_Element.Attribute;
-         Get_Name  : constant Wide_Wide_String
+         Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Attribute.Get_Type;
+         Get_Name       : constant Wide_Wide_String
            := "Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
-         Set_Name  : constant Wide_Wide_String
+         Set_Name       : constant Wide_Wide_String
            := "Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
-         Type_Name : constant Wide_Wide_String := Ada_Type (Attribute);
+         Type_Name      : constant Wide_Wide_String
+           := Type_Mapping.Internal_Ada_Type_Qualified_Name
+               (Attribute_Type,
+                Representation (Attribute)).To_Wide_Wide_String;
 
       begin
          New_Line;
          Put_Line ("   function " & Get_Name);
-         Put_Line ("    (Self : CMOF_Element) return " & Type_Name & ";");
+         Put_Line
+          ("    (Self : AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element)");
+         Put_Line ("       return " & Type_Name & ";");
 
          if Has_Setter (Attribute) then
             Put_Line ("   procedure " & Set_Name);
-            Put_Line ("    (Self : CMOF_Element;");
+            Put_Line
+             ("    (Self : AMF.Internals."
+                & Metamodel_Name.To_Wide_Wide_String
+                & "_Element;");
             Put_Line ("     To   : " & Type_Name & ");");
          end if;
 

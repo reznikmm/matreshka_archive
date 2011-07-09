@@ -44,6 +44,8 @@
 with Ada.Command_Line;
 with Ada.Wide_Wide_Text_IO;
 
+with League.Application;
+
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
@@ -627,6 +629,8 @@ procedure Gen2 is
    Elements : AMF.Elements.Collections.Reflective_Collection;
 
 begin
+   Generator.Metamodel_Name := League.Application.Arguments.Element (2);
+
    AMF.Facility.Initialize;
    Extent := XMI.Reader (Ada.Command_Line.Argument (1));
    Elements := Extent.Elements;

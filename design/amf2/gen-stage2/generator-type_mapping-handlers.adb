@@ -56,6 +56,8 @@ package body Generator.Type_Mapping.Handlers is
      := League.Strings.To_Universal_String ("mapping");
    Type_Tag_Name                 : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
+   Ada_Package_Attribute_Name    : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("adaPackage");
    Ada_Type_Attribute_Name       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaType");
    Member_Name_Attribute_Name    : constant League.Strings.Universal_String
@@ -113,6 +115,8 @@ package body Generator.Type_Mapping.Handlers is
                  new Representation_Mapping;
             end if;
 
+            Self.Mapping.Mapping (Representation).Ada_Package :=
+              Attributes.Value (Ada_Package_Attribute_Name);
             Self.Mapping.Mapping (Representation).Ada_Type :=
               Attributes.Value (Ada_Type_Attribute_Name);
             Self.Mapping.Mapping (Representation).Member_Name :=

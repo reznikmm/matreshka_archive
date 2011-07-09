@@ -46,18 +46,26 @@
 ------------------------------------------------------------------------------
 private with Ada.Containers.Hashed_Maps;
 private with AMF.CMOF.Elements.Hash;
-
-with League.Strings;
+with AMF.CMOF.Types;
 
 package Generator.Type_Mapping is
 
    procedure Load_Mapping;
    --  Loads mapping data.
 
-   function Ada_Type
-    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+   function Public_Ada_Type_Qualified_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
      Representation : Representation_Kinds)
        return League.Strings.Universal_String;
+   --  Returns fully qualified name of Ada type which is used to represent
+   --  value of the specified type in public API.
+
+   function Internal_Ada_Type_Qualified_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+   --  Returns fully qualified name of Ada type which is used to represent
+   --  value of the specified type in the internal data structures.
 
    function Member_Name
     (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
@@ -67,6 +75,7 @@ package Generator.Type_Mapping is
 private
 
    type Representation_Mapping is record
+      Ada_Package : League.Strings.Universal_String;
       Ada_Type    : League.Strings.Universal_String;
       Member_Name : League.Strings.Universal_String;
    end record;
