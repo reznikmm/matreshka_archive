@@ -1,11 +1,11 @@
+with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Tables;
-with CMOF.Internals.Types;
 
 package body CMOF.Internals.Subclassing is
 
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
-   use CMOF.Internals.Types;
+   use AMF.Internals.Tables.CMOF_Types;
 
    type Class_Bits is array (CMOF_Meta_Class) of Boolean;
    pragma Pack (Class_Bits);

@@ -62,16 +62,16 @@ with AMF.Internals.CMOF_Primitive_Types;
 with AMF.Internals.CMOF_Properties;
 with AMF.Internals.CMOF_Tags;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Tables;
-with CMOF.Internals.Types;
 with Matreshka.Internals.Strings;
 
 package body CMOF.Internals.Constructors is
 
+   use AMF.Internals.Tables.CMOF_Types;
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
-   use CMOF.Internals.Types;
    use type AMF.Internals.AMF_Collection_Of_Element;
 
    ------------------------

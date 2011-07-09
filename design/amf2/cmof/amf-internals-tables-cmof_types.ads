@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,11 +50,9 @@ with Matreshka.Internals.Strings;
 with AMF.CMOF;
 with AMF.Elements;
 
-package CMOF.Internals.Types is
+package AMF.Internals.Tables.CMOF_Types is
 
    pragma Preelaborate;
-
-   use AMF.Internals;
 
    --  Node kinds enumeration is constructed on the base of Class_Kinds by
    --  excluding all abstract classes and adding N_None.
@@ -134,10 +132,10 @@ package CMOF.Internals.Types is
             String_Collection_Value : AMF.CMOF.Collection_Of_String;
 
          when M_Parameter_Direction_Kind =>
-            Parameter_Direction_Value : CMOF_Parameter_Direction_Kind;
+            Parameter_Direction_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
 
          when M_Visibility_Kind =>
-            Visibility_Value : CMOF_Visibility_Kind;
+            Visibility_Value : AMF.CMOF.CMOF_Visibility_Kind;
 
          when M_Visibility_Holder_Kind =>
             Visibility_Holder_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
@@ -147,9 +145,9 @@ package CMOF.Internals.Types is
    type Member_Array is array (Natural range 0 .. 21) of Member_Record;
    --  XXX Size of this array must be generated.
 
-   type Element_Record (Kind : Types.Element_Kinds := Types.E_None) is record
+   type Element_Record (Kind : Element_Kinds := E_None) is record
       case Kind is
-         when Types.E_None =>
+         when E_None =>
             null;
 
          when others =>
@@ -164,4 +162,4 @@ package CMOF.Internals.Types is
       end case;
    end record;
 
-end CMOF.Internals.Types;
+end AMF.Internals.Tables.CMOF_Types;

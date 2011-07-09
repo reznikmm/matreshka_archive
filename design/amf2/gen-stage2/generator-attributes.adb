@@ -691,18 +691,18 @@ package body Generator.Attributes is
 
    begin
       Put_Header;
+      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Notification;");
       Put_Line ("with CMOF.Internals.Tables;");
-      Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with League.Strings.Internals;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Attributes is");
       New_Line;
+      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");
-      Put_Line ("   use CMOF.Internals.Types;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Put_Line
        ("   use type Matreshka.Internals.Strings.Shared_String_Access;");
@@ -849,18 +849,18 @@ package body Generator.Attributes is
 
    begin
       Put_Header;
+      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with CMOF.Internals.Metamodel;");
-      Put_Line ("with CMOF.Internals.Types;");
       New_Line;
       Put_Line ("package CMOF.Internals.Attribute_Mappings is");
       New_Line;
       Put_Line ("   pragma Preelaborate;");
       New_Line;
+      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
-      Put_Line ("   use CMOF.Internals.Types;");
       New_Line;
       Put_Line ("   Collection_Offset : constant");
-      Put_Line ("     array (CMOF.Internals.Types.Class_Element_Kinds,");
+      Put_Line ("     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,");
       Put_Line
        ("            "
           & "CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)");
@@ -870,7 +870,7 @@ package body Generator.Attributes is
       Put_Line (");");
       New_Line;
       Put_Line ("   Member_Offset : constant");
-      Put_Line ("     array (CMOF.Internals.Types.Class_Element_Kinds,");
+      Put_Line ("     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,");
       Put_Line
        ("            "
           & "Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=");

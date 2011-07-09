@@ -43,18 +43,18 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Metamodel;
-with CMOF.Internals.Types;
 
 package CMOF.Internals.Attribute_Mappings is
 
    pragma Preelaborate;
 
+   use AMF.Internals.Tables.CMOF_Types;
    use CMOF.Internals.Metamodel;
-   use CMOF.Internals.Types;
 
    Collection_Offset : constant
-     array (CMOF.Internals.Types.Class_Element_Kinds,
+     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
             CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)
        of Interfaces.Integer_8 :=
         (E_Association =>
@@ -240,7 +240,7 @@ package CMOF.Internals.Attribute_Mappings is
            others => 0));
 
    Member_Offset : constant
-     array (CMOF.Internals.Types.Class_Element_Kinds,
+     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
             Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=
        (
 E_Association =>

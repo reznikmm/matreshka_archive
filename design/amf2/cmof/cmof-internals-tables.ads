@@ -43,13 +43,13 @@
 ------------------------------------------------------------------------------
 with GNAT.Table;
 
-with CMOF.Internals.Types;
+with AMF.Internals.Tables.CMOF_Types;
 
 package CMOF.Internals.Tables is
 
    package Elements is
      new GNAT.Table
-          (CMOF.Internals.Types.Element_Record,
+          (AMF.Internals.Tables.CMOF_Types.Element_Record,
            AMF.Internals.CMOF_Element,
            1,
            1_000,

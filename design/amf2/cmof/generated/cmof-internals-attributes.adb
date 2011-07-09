@@ -43,18 +43,18 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Metamodel;
 with CMOF.Internals.Notification;
 with CMOF.Internals.Tables;
-with CMOF.Internals.Types;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
 package body CMOF.Internals.Attributes is
 
+   use AMF.Internals.Tables.CMOF_Types;
    use CMOF.Internals.Metamodel;
    use CMOF.Internals.Tables;
-   use CMOF.Internals.Types;
    use type AMF.Internals.AMF_Collection_Of_Element;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 

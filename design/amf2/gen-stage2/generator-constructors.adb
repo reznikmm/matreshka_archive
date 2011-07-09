@@ -579,16 +579,16 @@ package body Generator.Constructors is
       Put_Header;
       Class_Info.Iterate (Generate_With'Access);
       Put_Line ("with AMF.Internals.Element_Collections;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with CMOF.Internals.Tables;");
-      Put_Line ("with CMOF.Internals.Types;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Constructors is");
       New_Line;
+      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use CMOF.Internals.Tables;");
-      Put_Line ("   use CMOF.Internals.Types;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Class_Info.Iterate (Generate_Create'Access);
       Class_Info.Iterate (Generate_Initialize'Access);
