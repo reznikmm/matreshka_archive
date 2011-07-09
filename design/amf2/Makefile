@@ -46,7 +46,7 @@ gen-uml:
 	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
 	rm -r uml/generated/.new
 	test -d uml/generated/.new || mkdir uml/generated/.new
-	./gen-stage2/.obj/gen2 'http://www.omg.org/spec/UML/20100901/' > uml/generated/.new/sources.ada
+	./gen-stage2/.obj/gen2 'http://www.omg.org/spec/UML/20100901/' UML > uml/generated/.new/sources.ada
 	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
 	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
 	rm -r uml/generated/.new
