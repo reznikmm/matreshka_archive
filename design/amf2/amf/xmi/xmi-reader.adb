@@ -59,13 +59,13 @@ begin
    --  by Matreshka XML Processor now; so, simple hack is used here.
 
    if File_Name = "http://schema.omg.org/spec/MOF/2.0/cmof.xml" then
-      Input.Open ("data/cmof.cmof");
+      Input.Open ("data/CMOF.cmof");
       Input.Set_System_Id
        (League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"));
 
    elsif File_Name = "http://www.omg.org/spec/UML/20100901/" then
-      Input.Open ("data/uml24.cmof");
+      Input.Open ("data/UML24.cmof");
       Input.Set_System_Id
        (League.Strings.To_Universal_String
          ("http://www.omg.org/spec/UML/20100901/"));
@@ -73,7 +73,7 @@ begin
    elsif File_Name
            = "http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"
    then
-      Input.Open ("data/primitivetypes24.cmof");
+      Input.Open ("data/PrimitiveTypes24.cmof");
       Input.Set_System_Id
        (League.Strings.To_Universal_String
          ("http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"));
