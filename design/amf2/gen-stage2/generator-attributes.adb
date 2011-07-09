@@ -102,18 +102,8 @@ package body Generator.Attributes is
      Attribute : AMF.CMOF.Properties.CMOF_Property_Access);
    --  Adds attribute into set of attribute groups.
 
-   Boolean_Name                  : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("Boolean");
-   Integer_Name                  : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("Integer");
-   Parameter_Direction_Kind_Name : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("ParameterDirectionKind");
-   String_Name                   : constant League.Strings.Universal_String
+   String_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
-   Unlimited_Natural_Name        : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("UnlimitedNatural");
-   Visibility_Kind_Name          : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("VisibilityKind");
 
    ---------
    -- Add --
