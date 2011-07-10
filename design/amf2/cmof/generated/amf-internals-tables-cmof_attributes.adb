@@ -50,7 +50,7 @@ with CMOF.Internals.Notification;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
-package body AMF.Internals.Attributes.CMOF_Attributes is
+package body AMF.Internals.Tables.CMOF_Attributes is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Types;
@@ -4330,4 +4330,4 @@ package body AMF.Internals.Attributes.CMOF_Attributes is
       end case;
    end Internal_Set_Visibility;
 
-end AMF.Internals.Attributes.CMOF_Attributes;
+end AMF.Internals.Tables.CMOF_Attributes;

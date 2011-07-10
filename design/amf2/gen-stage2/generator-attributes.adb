@@ -732,7 +732,7 @@ package body Generator.Attributes is
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line
-       ("package body AMF.Internals.Attributes."
+       ("package body AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes is");
       New_Line;
@@ -757,7 +757,7 @@ package body Generator.Attributes is
       Getters.Iterate (Generate_Setter'Access);
       New_Line;
       Put_Line
-       ("end AMF.Internals.Attributes."
+       ("end AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes;");
    end Generate_Attributes_Implementation;
@@ -910,7 +910,7 @@ package body Generator.Attributes is
           & ".Internals.Metamodel;");
       New_Line;
       Put_Line
-       ("package AMF.Internals.Attributes."
+       ("package AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attribute_Mappings is");
       New_Line;
@@ -961,7 +961,7 @@ package body Generator.Attributes is
       Put_Line (");");
       New_Line;
       Put_Line
-       ("end AMF.Internals.Attributes."
+       ("end AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attribute_Mappings;");
    end Generate_Attributes_Mapping_Specification;
@@ -1048,13 +1048,13 @@ package body Generator.Attributes is
       Put_Line ("with League.Strings;");
       New_Line;
       Put_Line
-       ("package AMF.Internals.Attributes."
+       ("package AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes is");
       Getters.Iterate (Generate_Getter'Access);
       New_Line;
       Put_Line
-       ("end AMF.Internals.Attributes."
+       ("end AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes;");
    end Generate_Attributes_Specification;

@@ -44,7 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 
-package CMOF.Internals.Constructors is
+package AMF.Internals.Tables.CMOF_Constructors is
 
    function Create_Association return CMOF_Element;
 
@@ -118,4 +118,4 @@ package CMOF.Internals.Constructors is
 
    procedure Initialize_Tag (Self : CMOF_Element);
 
-end CMOF.Internals.Constructors;
+end AMF.Internals.Tables.CMOF_Constructors;

@@ -46,7 +46,7 @@
 with AMF.CMOF;
 with League.Strings;
 
-package AMF.Internals.Attributes.CMOF_Attributes is
+package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Alias
     (Self : AMF.Internals.CMOF_Element)
@@ -800,4 +800,4 @@ package AMF.Internals.Attributes.CMOF_Attributes is
    --  PrimitiveType => NamedElement::visibility
    --  Property => NamedElement::visibility
 
-end AMF.Internals.Attributes.CMOF_Attributes;
+end AMF.Internals.Tables.CMOF_Attributes;

@@ -584,7 +584,10 @@ package body Generator.Constructors is
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
-      Put_Line ("package body CMOF.Internals.Constructors is");
+      Put_Line
+       ("package body AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Constructors is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
@@ -593,7 +596,10 @@ package body Generator.Constructors is
       Class_Info.Iterate (Generate_Create'Access);
       Class_Info.Iterate (Generate_Initialize'Access);
       New_Line;
-      Put_Line ("end CMOF.Internals.Constructors;");
+      Put_Line
+       ("end AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Constructors;");
    end Generate_Constructors_Implementation;
 
    -----------------------------------------
@@ -642,11 +648,17 @@ package body Generator.Constructors is
       Put_Header;
 
       New_Line;
-      Put_Line ("package CMOF.Internals.Constructors is");
+      Put_Line
+       ("package AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Constructors is");
       Class_Info.Iterate (Generate_Create'Access);
       Class_Info.Iterate (Generate_Initialize'Access);
       New_Line;
-      Put_Line ("end CMOF.Internals.Constructors;");
+      Put_Line
+       ("end AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Constructors;");
    end Generate_Constructors_Specification;
 
 end Generator.Constructors;

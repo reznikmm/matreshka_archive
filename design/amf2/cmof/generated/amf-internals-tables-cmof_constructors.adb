@@ -67,7 +67,7 @@ with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Metamodel;
 with Matreshka.Internals.Strings;
 
-package body CMOF.Internals.Constructors is
+package body AMF.Internals.Tables.CMOF_Constructors is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Types;
@@ -1887,4 +1887,4 @@ package body CMOF.Internals.Constructors is
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
    end Initialize_Tag;
 
-end CMOF.Internals.Constructors;
+end AMF.Internals.Tables.CMOF_Constructors;

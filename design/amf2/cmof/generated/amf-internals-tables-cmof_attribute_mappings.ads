@@ -48,7 +48,7 @@ with Interfaces;
 with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Metamodel;
 
-package AMF.Internals.Attributes.CMOF_Attribute_Mappings is
+package AMF.Internals.Tables.CMOF_Attribute_Mappings is
 
    pragma Preelaborate;
 
@@ -421,4 +421,4 @@ E_Association =>
            MP_CMOF_Tag_Value => 3,
            others => 0));
 
-end AMF.Internals.Attributes.CMOF_Attribute_Mappings;
+end AMF.Internals.Tables.CMOF_Attribute_Mappings;

@@ -41,11 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Attributes.CMOF_Attributes;
 with AMF.Internals.Collections;
 with AMF.Internals.Element_Collections.Proxies;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.AMF_Tables;
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.Element_Collections is
 
@@ -62,10 +62,10 @@ package body AMF.Internals.Element_Collections is
       Property    : constant CMOF_Element
         := AMF_Tables.Collections.Table (Self).Property;
       Association : constant CMOF_Element
-        := AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Association
+        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Association
             (Property);
       Member_End : constant AMF_Collection_Of_Element
-        := AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Member_End
+        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
             (Association);
 
    begin

@@ -51,7 +51,7 @@ with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
-with AMF.Internals.Attributes.CMOF_Attributes;
+with AMF.Internals.Tables.CMOF_Attributes;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 
@@ -105,8 +105,7 @@ package body AMF.Internals.AMF_URI_Stores is
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Abstract_Element'Class (Association.all)'Access);
       Member_End : constant AMF_Collection_Of_Element
-        := AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Member_End
-            (A);
+        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End (A);
 
    begin
       AMF.Internals.Links.Internal_Create_Link

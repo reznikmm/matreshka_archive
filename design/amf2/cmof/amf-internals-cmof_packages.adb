@@ -41,12 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Attributes.CMOF_Attributes;
+with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
 
 package body AMF.Internals.CMOF_Packages is
 
-   use AMF.Internals.Attributes.CMOF_Attributes;
+   use AMF.Internals.Tables.CMOF_Attributes;
 
    --------------------------
    -- Get_Packaged_Element --

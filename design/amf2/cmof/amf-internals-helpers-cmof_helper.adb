@@ -41,16 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Attributes.CMOF_Attribute_Mappings;
-with AMF.Internals.Attributes.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Tables.CMOF_Attribute_Mappings;
+with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with CMOF.Internals.Metamodel;
 
 package body AMF.Internals.Helpers.CMOF_Helper is
 
-   use AMF.Internals.Attributes.CMOF_Attribute_Mappings;
    use AMF.Internals.Tables;
+   use AMF.Internals.Tables.CMOF_Attribute_Mappings;
    use CMOF.Internals.Metamodel;
 
    --------------------
@@ -76,7 +76,7 @@ package body AMF.Internals.Helpers.CMOF_Helper is
      Link     : AMF_Link;
      Other    : AMF_Element) is
    begin
-      if AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Upper
+      if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
           (Property).Value > 1
       then
          if Property not in CMOF_Collection_Of_Element_Property then

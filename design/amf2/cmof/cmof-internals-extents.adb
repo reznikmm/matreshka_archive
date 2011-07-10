@@ -41,12 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Attributes.CMOF_Attribute_Mappings;
-with AMF.Internals.Attributes.CMOF_Attributes;
 with AMF.Internals.Containers;
 with AMF.Internals.Helpers;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.AMF_Tables;
+with AMF.Internals.Tables.CMOF_Attribute_Mappings;
+with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with CMOF.Internals.Reflection;
 with CMOF.Internals.Metamodel;
@@ -64,8 +64,8 @@ package body CMOF.Internals.Extents is
 
    function Container (Self : CMOF_Element) return CMOF_Element is
 
-      use AMF.Internals.Attributes.CMOF_Attribute_Mappings;
-      use AMF.Internals.Attributes.CMOF_Attributes;
+      use AMF.Internals.Tables.CMOF_Attribute_Mappings;
+      use AMF.Internals.Tables.CMOF_Attributes;
       use AMF.Internals.Element_Collections;
       use CMOF.Internals.Metamodel;
       use CMOF.Internals.Subclassing;
