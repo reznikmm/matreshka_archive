@@ -353,20 +353,26 @@ package body Generator.Initialization is
       Put_Header;
       Put_Line ("with League.Strings;");
       New_Line;
+      Put_Line
+       ("with AMF.Internals.Attributes."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Attributes;");
       Put_Line ("with AMF.Internals.Extents;");
       Put_Line ("with AMF.Internals.Links;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
-      Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Constructors;");
       Put_Line ("with CMOF.Internals.Extents;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Setup is");
       New_Line;
+      Put_Line
+       ("   use AMF.Internals.Attributes."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Attributes;");
       Put_Line ("   use AMF.Internals.Extents;");
       Put_Line ("   use AMF.Internals.Links;");
       Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line ("   use CMOF.Internals.Attributes;");
       Put_Line ("   use CMOF.Internals.Constructors;");
       Put_Line ("   use CMOF.Internals.Extents;");
       Put_Line ("   use CMOF.Internals.Metamodel;");

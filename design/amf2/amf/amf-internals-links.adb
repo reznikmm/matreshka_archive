@@ -42,10 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
+with AMF.Internals.Attributes.CMOF_Attributes;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Tables;
-with CMOF.Internals.Attributes;
 
 package body AMF.Internals.Links is
 
@@ -125,10 +125,10 @@ package body AMF.Internals.Links is
    begin
       AMF_Tables.Links.Increment_Last;
 
-      if Standard.CMOF.Internals.Attributes.Internal_Get_Upper
+      if AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Upper
           (First_Property).Value > 1
       then
-         if Standard.CMOF.Internals.Attributes.Internal_Get_Upper
+         if AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Upper
              (Second_Property).Value > 1
          then
             Create_Multiple_Multiple;
@@ -138,7 +138,7 @@ package body AMF.Internals.Links is
          end if;
 
       else
-         if Standard.CMOF.Internals.Attributes.Internal_Get_Upper
+         if AMF.Internals.Attributes.CMOF_Attributes.Internal_Get_Upper
              (Second_Property).Value > 1
          then
             Create_Single_Multiple;

@@ -726,21 +726,27 @@ package body Generator.Reflection is
       Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Holders.String_Collections;");
+      Put_Line
+       ("with AMF.Internals.Attributes."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Attributes;");
       Put_Line ("with AMF.Internals.CMOF_Elements;");
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with AMF.String_Collections;");
-      Put_Line ("with CMOF.Internals.Attributes;");
       Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with League.Holders.Booleans;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Reflection is");
       New_Line;
+      Put_Line
+       ("   use AMF.Internals.Attributes."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Attributes;");
       Put_Line ("   use AMF.Internals.Tables;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("   use CMOF.Internals.Attributes;");
       Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use type AMF.Internals.AMF_Element;");
 

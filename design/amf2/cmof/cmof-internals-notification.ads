@@ -47,7 +47,7 @@ with League.Strings;
 
 with AMF.CMOF;
 
-private package CMOF.Internals.Notification is
+package CMOF.Internals.Notification is
 
    procedure Notify_Attribute_Set
     (Element   : CMOF.CMOF_Element;

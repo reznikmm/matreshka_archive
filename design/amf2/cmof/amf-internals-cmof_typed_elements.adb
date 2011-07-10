@@ -42,11 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Helpers;
-with CMOF.Internals.Attributes;
+with AMF.Internals.Attributes.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Typed_Elements is
 
-   use Standard.CMOF.Internals.Attributes;
+   use AMF.Internals.Attributes.CMOF_Attributes;
 
    --------------
    -- Get_Type --

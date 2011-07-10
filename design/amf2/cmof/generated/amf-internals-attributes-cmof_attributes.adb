@@ -50,11 +50,12 @@ with CMOF.Internals.Notification;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
-package body CMOF.Internals.Attributes is
+package body AMF.Internals.Attributes.CMOF_Attributes is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Types;
-   use CMOF.Internals.Metamodel;
+   use Standard.CMOF.Internals;
+   use Standard.CMOF.Internals.Metamodel;
    use type AMF.Internals.AMF_Collection_Of_Element;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
@@ -4329,4 +4330,4 @@ package body CMOF.Internals.Attributes is
       end case;
    end Internal_Set_Visibility;
 
-end CMOF.Internals.Attributes;
+end AMF.Internals.Attributes.CMOF_Attributes;

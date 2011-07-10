@@ -43,15 +43,18 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with Interfaces;
+
 with AMF.Internals.Tables.CMOF_Types;
 with CMOF.Internals.Metamodel;
 
-package CMOF.Internals.Attribute_Mappings is
+package AMF.Internals.Attributes.CMOF_Attribute_Mappings is
 
    pragma Preelaborate;
 
    use AMF.Internals.Tables.CMOF_Types;
-   use CMOF.Internals.Metamodel;
+   use Standard.CMOF.Internals;
+   use Standard.CMOF.Internals.Metamodel;
 
    Collection_Offset : constant
      array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
@@ -418,4 +421,4 @@ E_Association =>
            MP_CMOF_Tag_Value => 3,
            others => 0));
 
-end CMOF.Internals.Attribute_Mappings;
+end AMF.Internals.Attributes.CMOF_Attribute_Mappings;

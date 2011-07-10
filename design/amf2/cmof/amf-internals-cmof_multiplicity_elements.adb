@@ -41,11 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF.Internals.Attributes;
+with AMF.Internals.Attributes.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Multiplicity_Elements is
 
-   use Standard.CMOF.Internals.Attributes;
+   use AMF.Internals.Attributes.CMOF_Attributes;
 
    --------------------
    -- Get_Is_Ordered --

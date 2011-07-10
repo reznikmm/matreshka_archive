@@ -45,20 +45,20 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with AMF.Internals.Attributes.CMOF_Attributes;
 with AMF.Internals.Extents;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Element_Table;
-with CMOF.Internals.Attributes;
 with CMOF.Internals.Constructors;
 with CMOF.Internals.Extents;
 with CMOF.Internals.Metamodel;
 
 package body CMOF.Internals.Setup is
 
+   use AMF.Internals.Attributes.CMOF_Attributes;
    use AMF.Internals.Extents;
    use AMF.Internals.Links;
    use AMF.Internals.Tables;
-   use CMOF.Internals.Attributes;
    use CMOF.Internals.Constructors;
    use CMOF.Internals.Extents;
    use CMOF.Internals.Metamodel;
