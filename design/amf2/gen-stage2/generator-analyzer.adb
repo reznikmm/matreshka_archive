@@ -135,10 +135,7 @@ package body Generator.Analyzer is
 
                --  Assign slot or collection for attribute.
 
-               if Attribute_Type.all not in AMF.CMOF.Classes.CMOF_Class'Class
-                 or (Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
-                       and not Attribute.Is_Multivalued)
-               then
+               if Use_Member_Slot (Attribute) then
                   --  Slot property.
 
                   if Redefines.Is_Empty then

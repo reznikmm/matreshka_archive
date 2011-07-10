@@ -328,7 +328,9 @@ package body Generator.Attributes is
                      Put_Line
                       ("              League.Strings.Internals.Create");
                      Put_Line
-                      ("               (CMOF_Element_Table.Table (Self).Member ("
+                      ("               ("
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -336,7 +338,9 @@ package body Generator.Attributes is
 
                   when Holder =>
                      Put_Line
-                      ("            if CMOF_Element_Table.Table (Self).Member ("
+                      ("            if "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -349,7 +353,9 @@ package body Generator.Attributes is
                      Put_Line
                       ("                 League.Strings.Internals.Create");
                      Put_Line
-                      ("                  (CMOF_Element_Table.Table (Self).Member ("
+                      ("                  ("
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -361,7 +367,9 @@ package body Generator.Attributes is
 
                   when Ordered_Set =>
                      Put
-                      ("            return CMOF_Element_Table.Table (Self).Member ("
+                      ("            return "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -372,7 +380,9 @@ package body Generator.Attributes is
 
                   when Sequence =>
                      Put
-                      ("            return CMOF_Element_Table.Table (Self).Member ("
+                      ("            return "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -381,7 +391,9 @@ package body Generator.Attributes is
 
             elsif Info.Slot.Contains (Attribute) then
                Put
-                ("            return CMOF_Element_Table.Table (Self).Member ("
+                ("            return "
+                   & Metamodel_Name.To_Wide_Wide_String
+                   & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
                         (Info.Slot.Element (Attribute)), Both)
@@ -403,8 +415,9 @@ package body Generator.Attributes is
                --  Collections are of type Element also.
 
                Put_Line
-                ("            return"
-                   & " CMOF_Element_Table.Table (Self).Member (0).Collection +"
+                ("            return "
+                   & Metamodel_Name.To_Wide_Wide_String
+                   & "_Element_Table.Table (Self).Member (0).Collection +"
                    & Integer'Wide_Wide_Image
                       (Info.Collection.Element (Attribute))
                    & ";");
@@ -437,7 +450,10 @@ package body Generator.Attributes is
                  Representation (Attribute)).To_Wide_Wide_String
              & " is");
          Put_Line ("   begin");
-         Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
+         Put_Line
+          ("      case "
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
          Put_Line ("         when others =>");
          Put_Line ("            raise Program_Error;");
@@ -499,14 +515,18 @@ package body Generator.Attributes is
                      Put_Line
                       ("              League.Strings.Internals.Wrap");
                      Put_Line
-                      ("               (CMOF_Element_Table.Table (Self).Member ("
+                      ("               ("
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value);");
                      New_Line;
                      Put_Line
-                      ("            CMOF_Element_Table.Table (Self).Member ("
+                      ("            "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -518,7 +538,9 @@ package body Generator.Attributes is
                       ("            "
                          & "Matreshka.Internals.Strings.Reference");
                      Put_Line
-                      ("             (CMOF_Element_Table.Table (Self).Member ("
+                      ("             ("
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -534,7 +556,9 @@ package body Generator.Attributes is
 
                   when Holder =>
                      Put_Line
-                      ("            if CMOF_Element_Table.Table (Self).Member ("
+                      ("            if "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -544,7 +568,9 @@ package body Generator.Attributes is
                      Put_Line
                       ("                 League.Strings.Internals.Wrap");
                      Put_Line
-                      ("                  (CMOF_Element_Table.Table (Self).Member ("
+                      ("                  ("
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -554,7 +580,9 @@ package body Generator.Attributes is
                      Put_Line
                       ("            if To.Is_Empty then");
                      Put_Line
-                      ("               CMOF_Element_Table.Table (Self).Member ("
+                      ("               "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -562,7 +590,9 @@ package body Generator.Attributes is
                      New_Line;
                      Put_Line ("            else");
                      Put_Line
-                      ("               CMOF_Element_Table.Table (Self).Member ("
+                      ("               "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -574,7 +604,9 @@ package body Generator.Attributes is
                       ("               "
                          & "Matreshka.Internals.Strings.Reference");
                      Put_Line
-                      ("                (CMOF_Element_Table.Table (Self).Member ("
+                      ("                ("
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
@@ -603,7 +635,9 @@ package body Generator.Attributes is
 
             else
                Put_Line
-                ("            Old := CMOF_Element_Table.Table (Self).Member ("
+                ("            Old := "
+                   & Metamodel_Name.To_Wide_Wide_String
+                   & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
                         (Info.Slot.Element (Attribute)), Both)
@@ -611,7 +645,9 @@ package body Generator.Attributes is
                    & Member_Name
                    & ";" );
                Put_Line
-                ("            CMOF_Element_Table.Table (Self).Member ("
+                ("            "
+                   & Metamodel_Name.To_Wide_Wide_String
+                   & "_Element_Table.Table (Self).Member ("
                    & Trim
                       (Integer'Wide_Wide_Image
                         (Info.Slot.Element (Attribute)), Both)
@@ -663,7 +699,10 @@ package body Generator.Attributes is
             & ";");
          New_Line;
          Put_Line ("   begin");
-         Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
+         Put_Line
+          ("      case "
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element_Table.Table (Self).Kind is");
          Getter.Pairs.Iterate (Generate'Access);
          Put_Line ("         when others =>");
          Put_Line ("            raise Program_Error;");
@@ -673,18 +712,39 @@ package body Generator.Attributes is
 
    begin
       Put_Header;
-      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
-      Put_Line ("with CMOF.Internals.Metamodel;");
-      Put_Line ("with CMOF.Internals.Notification;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element_Table;");
+      Put_Line
+       ("with "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Metamodel;");
+      Put_Line
+       ("with "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Notification;");
       Put_Line ("with League.Strings.Internals;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
-      Put_Line ("package body CMOF.Internals.Attributes is");
+      Put_Line
+       ("package body "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Attributes is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("   use CMOF.Internals.Metamodel;");
+      Put_Line
+       ("   use AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types;");
+      Put_Line
+       ("   use "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Metamodel;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Put_Line
        ("   use type Matreshka.Internals.Strings.Shared_String_Access;");
@@ -692,7 +752,10 @@ package body Generator.Attributes is
       Getters.Iterate (Generate_Getter'Access);
       Getters.Iterate (Generate_Setter'Access);
       New_Line;
-      Put_Line ("end CMOF.Internals.Attributes;");
+      Put_Line
+       ("end "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Attributes;");
    end Generate_Attributes_Implementation;
 
    -----------------------------------------------
@@ -831,37 +894,66 @@ package body Generator.Attributes is
 
    begin
       Put_Header;
-      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("with CMOF.Internals.Metamodel;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types;");
+      Put_Line
+       ("with "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Metamodel;");
       New_Line;
-      Put_Line ("package CMOF.Internals.Attribute_Mappings is");
+      Put_Line
+       ("package "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Attribute_Mappings is");
       New_Line;
       Put_Line ("   pragma Preelaborate;");
       New_Line;
-      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("   use CMOF.Internals.Metamodel;");
+      Put_Line
+       ("   use AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types;");
+      Put_Line
+       ("   use "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Metamodel;");
       New_Line;
       Put_Line ("   Collection_Offset : constant");
-      Put_Line ("     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,");
+      Put_Line
+       ("     array (AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types.Class_Element_Kinds,");
       Put_Line
        ("            "
-          & "CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)");
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Metamodel."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Collection_Of_Element_Property)");
       Put_Line ("       of Interfaces.Integer_8 :=");
       Put ("        (");
       Class_Info.Iterate (Generate_Collection'Access);
       Put_Line (");");
       New_Line;
       Put_Line ("   Member_Offset : constant");
-      Put_Line ("     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,");
+      Put_Line
+       ("     array (AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types.Class_Element_Kinds,");
       Put_Line
        ("            "
-          & "Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=");
+          & "Metamodel."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Non_Collection_Of_Element_Property) of Natural :=");
       Put_Line ("       (");
       First_Class := True;
       Class_Info.Iterate (Generate_Slot'Access);
       Put_Line (");");
       New_Line;
-      Put_Line ("end CMOF.Internals.Attribute_Mappings;");
+      Put_Line
+       ("end "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Attribute_Mappings;");
    end Generate_Attributes_Mapping_Specification;
 
    ---------------------------------------
@@ -942,13 +1034,19 @@ package body Generator.Attributes is
       Analyze;
 
       Put_Header;
-      Put_Line ("with AMF.CMOF;");
+      Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Put_Line ("with League.Strings;");
       New_Line;
-      Put_Line ("package CMOF.Internals.Attributes is");
+      Put_Line
+       ("package "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Attributes is");
       Getters.Iterate (Generate_Getter'Access);
       New_Line;
-      Put_Line ("end CMOF.Internals.Attributes;");
+      Put_Line
+       ("end "
+          & Metamodel_Name.To_Wide_Wide_String
+          & ".Internals.Attributes;");
    end Generate_Attributes_Specification;
 
    ------------------------
@@ -978,7 +1076,7 @@ package body Generator.Attributes is
          --  Type of both attributes is class, attributes are indistinguishable
          --  if both are multivalued or not multivalued.
 
-         return First.Is_Multivalued xor Second.Is_Multivalued;
+         return Use_Member_Slot (First) xor Use_Member_Slot (Second);
 
       elsif First_Type = Second_Type then
          --  Attributes has same type (and this type is not class), they are

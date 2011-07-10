@@ -210,4 +210,9 @@ package Generator is
        return Boolean;
    --  Returns True when specified attribute has setter.
 
+   function Use_Member_Slot
+    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean;
+   --  Returns True when member slot is used for this attribute.
+
 end Generator;

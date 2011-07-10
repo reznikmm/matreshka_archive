@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Elements;
 with AMF.Internals.Helpers;
 
@@ -57,7 +59,10 @@ package body Generator is
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return Boolean is
    begin
-      return not Attribute.Get_Is_Read_Only and not Attribute.Is_Multivalued;
+      return
+        not Attribute.Get_Is_Read_Only
+          and then not Attribute.Is_Multivalued
+          and then Use_Member_Slot (Attribute);
    end Has_Setter;
 
    ----------
@@ -226,5 +231,34 @@ package body Generator is
 
       return Result;
    end Sort;
+
+   ---------------------
+   -- Use_Member_Slot --
+   ---------------------
+
+   function Use_Member_Slot
+    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Boolean
+   is
+      Attribute_Type     : constant AMF.CMOF.Types.CMOF_Type_Access
+        := Attribute.Get_Type;
+      Redefined_Property : constant
+        AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+          := Attribute.Get_Redefined_Property;
+
+   begin
+      if not Redefined_Property.Is_Empty then
+         --  When attribute redefines another attribute alanyze redefined one,
+         --  because redefinition can change multiplicity.
+
+         return Use_Member_Slot (Redefined_Property.Element (1));
+
+      else
+         return
+           Attribute_Type.all not in AMF.CMOF.Classes.CMOF_Class'Class
+             or (Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
+                   and not Attribute.Is_Multivalued);
+      end if;
+   end Use_Member_Slot;
 
 end Generator;
