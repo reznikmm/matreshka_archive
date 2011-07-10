@@ -32,15 +32,15 @@
 
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean">
     <mapping representation="value" adaType="Boolean" memberName="Boolean_Value"/>
-    <mapping representation="holder" adaType="AMF.UML.Optional_Boolean"/>
-    <mapping representation="set" adaType="AMF.UML.Set_Of_Boolean"/>
+    <mapping representation="holder" adaType="AMF.UML.Optional_Boolean" memberName="Boolean_Holder_Value"/>
+    <mapping representation="set" adaType="AMF.UML.Set_Of_Boolean" memberName="Boolean_Collection_Value"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer">
     <mapping representation="value" adaType="Integer" memberName="Integer_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder_Value"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Real">
-    <mapping representation="value" adaType="AMF.Real"/>
+    <mapping representation="value" adaType="AMF.Real" memberName="Real_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Real"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String">
@@ -56,19 +56,45 @@
   </type>
 
   <!--  Enumeration types of UML package of UML specification  -->
-  <!--
-  <type uri="http://www.omg.org/spec/UML/20100901/#AggregationKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#CallConcurrencyKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#ConnectorKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#MessageKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#MessageSort"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#ObjectNodeOrderingKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#ParameterEffectKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#TransitionKind"/>
-  <type uri="http://www.omg.org/spec/UML/20100901/#VisibilityKind"/>
-  -->
+
+  <type uri="http://www.omg.org/spec/UML/20100901/#AggregationKind">
+    <mapping representation="value" memberName="Aggregation_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#CallConcurrencyKind">
+    <mapping representation="value" memberName="Call_Concurrency_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ConnectorKind">
+    <mapping representation="value" memberName="Connector_Kind"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind">
+    <mapping representation="value" memberName="Expansion_Kind"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind">
+    <mapping representation="value" memberName="Interaction_Operator_Kind"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#MessageKind">
+    <mapping representation="value" memberName="Message_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#MessageSort">
+    <mapping representation="value" memberName="Message_Sort_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ObjectNodeOrderingKind">
+    <mapping representation="value" memberName="Object_Mode_Ordering_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind">
+    <mapping representation="value" memberName="Paramenter_Direction_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#ParameterEffectKind">
+    <mapping representation="holder" memberName="Parameter_Effect_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind">
+    <mapping representation="value" memberName="Pseudostate_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#TransitionKind">
+    <mapping representation="value" memberName="Transition_Value"/>
+  </type>
+  <type uri="http://www.omg.org/spec/UML/20100901/#VisibilityKind">
+    <mapping representation="value" memberName="Visibility_Value"/>
+    <mapping representation="holder" memberName="Visibility_Holder_Value"/>
+  </type>
 </mappings>
