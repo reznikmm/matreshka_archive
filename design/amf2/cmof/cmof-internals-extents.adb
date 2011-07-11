@@ -48,14 +48,18 @@ with AMF.Internals.Tables.AMF_Tables;
 with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Element_Table;
+with AMF.Internals.Tables.CMOF_Metamodel;
 with CMOF.Internals.Reflection;
-with CMOF.Internals.Metamodel;
 with CMOF.Internals.Subclassing;
 
 package body CMOF.Internals.Extents is
 
    use AMF.Internals;
    use AMF.Internals.Tables;
+   use AMF.Internals.Tables.CMOF_Attribute_Mappings;
+   use AMF.Internals.Tables.CMOF_Attributes;
+   use AMF.Internals.Element_Collections;
+   use AMF.Internals.Tables.CMOF_Metamodel;
    use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
 
    ---------------
@@ -64,10 +68,6 @@ package body CMOF.Internals.Extents is
 
    function Container (Self : CMOF_Element) return CMOF_Element is
 
-      use AMF.Internals.Tables.CMOF_Attribute_Mappings;
-      use AMF.Internals.Tables.CMOF_Attributes;
-      use AMF.Internals.Element_Collections;
-      use CMOF.Internals.Metamodel;
       use CMOF.Internals.Subclassing;
       use type AMF.Internals.Tables.AMF_Tables.Collection_Element_Identifier;
 

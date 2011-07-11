@@ -721,9 +721,9 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Element_Table;");
       Put_Line
-       ("with "
+       ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals.Metamodel;");
+          & "_Metamodel;");
       Put_Line
        ("with "
           & Metamodel_Name.To_Wide_Wide_String
@@ -746,10 +746,9 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & ".Internals;");
       Put_Line
-       ("   use Standard."
+       ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals.Metamodel;");
-      Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
+          & "_Metamodel;");
       Put_Line
        ("   use type Matreshka.Internals.Strings.Shared_String_Access;");
       Class_Info.Iterate (Dump_Class'Access);
@@ -903,11 +902,11 @@ package body Generator.Attributes is
       Put_Line
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & "_Types;");
+          & "_Metamodel;");
       Put_Line
-       ("with "
+       ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals.Metamodel;");
+          & "_Types;");
       New_Line;
       Put_Line
        ("package AMF.Internals.Tables."
@@ -921,13 +920,9 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Types;");
       Put_Line
-       ("   use Standard."
+       ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals;");
-      Put_Line
-       ("   use Standard."
-          & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals.Metamodel;");
+          & "_Metamodel;");
       New_Line;
       Put_Line ("   Collection_Offset : constant");
       Put_Line
@@ -935,9 +930,9 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Types.Class_Element_Kinds,");
       Put_Line
-       ("            "
+       ("            AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals.Metamodel."
+          & "_Metamodel."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Collection_Of_Element_Property)");
       Put_Line ("       of Interfaces.Integer_8 :=");
@@ -951,8 +946,9 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Types.Class_Element_Kinds,");
       Put_Line
-       ("            "
-          & "Metamodel."
+       ("            AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Non_Collection_Of_Element_Property) of Natural :=");
       Put_Line ("       (");

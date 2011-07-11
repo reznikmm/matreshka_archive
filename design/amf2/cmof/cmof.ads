@@ -41,23 +41,27 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF;
 with AMF.Internals;
 
 package CMOF is
 
    pragma Preelaborate;
 
-   type CMOF_Parameter_Direction_Kind is
-    (In_Direction,
-     In_Out_Direction,
-     Out_Direction,
-     Return_Direction);
+   subtype CMOF_Parameter_Direction_Kind
+     is AMF.CMOF.CMOF_Parameter_Direction_Kind;
+--   type CMOF_Parameter_Direction_Kind is
+--    (In_Direction,
+--     In_Out_Direction,
+--     Out_Direction,
+--     Return_Direction);
 
-   type CMOF_Visibility_Kind is
-    (Public_Visibility,
-     Private_Visibility,
-     Protected_Visibility,
-     Package_Visibility);
+   subtype CMOF_Visibility_Kind is AMF.CMOF.CMOF_Visibility_Kind;
+--   type CMOF_Visibility_Kind is
+--    (Public_Visibility,
+--     Private_Visibility,
+--     Protected_Visibility,
+--     Package_Visibility);
 
    subtype Collection_Of_CMOF_Element is
      AMF.Internals.AMF_Collection_Of_Element;

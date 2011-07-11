@@ -1,14 +1,14 @@
-with CMOF.Internals.Metamodel;
+with AMF.Internals.Tables.CMOF_Metamodel;
 
 package CMOF.Internals.Subclassing is
 
    function Is_Subclass
-     (Self       : CMOF.Internals.Metamodel.CMOF_Meta_Class;
-      Superclass : CMOF.Internals.Metamodel.CMOF_Meta_Class) return Boolean;
+     (Self       : AMF.Internals.Tables.CMOF_Metamodel.CMOF_Meta_Class;
+      Superclass : AMF.Internals.Tables.CMOF_Metamodel.CMOF_Meta_Class) return Boolean;
 
    function Is_Subclass_Reflective
      (Self       : CMOF_Element;
-      Superclass : CMOF.Internals.Metamodel.CMOF_Meta_Class) return Boolean;
+      Superclass : AMF.Internals.Tables.CMOF_Metamodel.CMOF_Meta_Class) return Boolean;
 
    function Is_Association (Self : Cmof_Element) return Boolean;
    pragma Inline (Is_Association);

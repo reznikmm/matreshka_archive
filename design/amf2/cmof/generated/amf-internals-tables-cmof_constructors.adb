@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.CMOF;
 with AMF.Internals.CMOF_Associations;
 with AMF.Internals.CMOF_Classes;
 with AMF.Internals.CMOF_Comments;
@@ -63,15 +64,15 @@ with AMF.Internals.CMOF_Properties;
 with AMF.Internals.CMOF_Tags;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.CMOF_Element_Table;
+with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Types;
-with CMOF.Internals.Metamodel;
 with Matreshka.Internals.Strings;
 
 package body AMF.Internals.Tables.CMOF_Constructors is
 
    use AMF.Internals.Tables;
+   use AMF.Internals.Tables.CMOF_Metamodel;
    use AMF.Internals.Tables.CMOF_Types;
-   use CMOF.Internals.Metamodel;
    use type AMF.Internals.AMF_Collection_Of_Element;
 
    ------------------------
@@ -815,7 +816,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Visibility_Kind, CMOF.Public_Visibility),
+                     2      => (M_Visibility_Kind, AMF.CMOF.Public_Visibility),
                        --  visibility
                      3      => (M_String, null),
                        --  alias
@@ -1435,7 +1436,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Visibility_Kind, CMOF.Public_Visibility),
+                     2      => (M_Visibility_Kind, AMF.CMOF.Public_Visibility),
                        --  visibility
                      3      => (M_Element, 0),
                        --  importedPackage

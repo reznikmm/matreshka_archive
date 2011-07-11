@@ -52,8 +52,8 @@ with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.CMOF_Attributes;
+with AMF.Internals.Tables.CMOF_Metamodel;
 with CMOF.Internals.Extents;
-with CMOF.Internals.Metamodel;
 
 package body AMF.Internals.AMF_URI_Stores is
 
@@ -71,7 +71,7 @@ package body AMF.Internals.AMF_URI_Stores is
 --  XXX Type:getPackage is derived property, it is not implemented now.
         := AMF.CMOF.Packages.CMOF_Package_Access
             (AMF.Internals.Helpers.To_Element
-              (Standard.CMOF.Internals.Metamodel.MM_CMOF));
+              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF));
       Factory           : AMF.Factories.Factory_Access
         := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
       Element           : AMF.Elements.Element_Access
@@ -131,7 +131,7 @@ package body AMF.Internals.AMF_URI_Stores is
 --  XXX Type:getPackage is derived property, it is not implemented now.
         := AMF.CMOF.Packages.CMOF_Package_Access
             (AMF.Internals.Helpers.To_Element
-              (Standard.CMOF.Internals.Metamodel.MM_CMOF));
+              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF));
       Factory           : AMF.Factories.Factory_Access
         := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
 
@@ -154,7 +154,7 @@ package body AMF.Internals.AMF_URI_Stores is
 --  XXX Type:getPackage is derived property, it is not implemented now.
         := AMF.CMOF.Packages.CMOF_Package_Access
             (AMF.Internals.Helpers.To_Element
-              (Standard.CMOF.Internals.Metamodel.MM_CMOF));
+              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF));
       Factory           : AMF.Factories.Factory_Access
         := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
 
@@ -200,7 +200,7 @@ package body AMF.Internals.AMF_URI_Stores is
       return
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element
-           (Standard.CMOF.Internals.Metamodel.MM_CMOF));
+           (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF));
    end Get_Package;
 
 end AMF.Internals.AMF_URI_Stores;

@@ -53,18 +53,18 @@ with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
+with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Types;
 with AMF.String_Collections;
-with CMOF.Internals.Metamodel;
 with League.Holders.Booleans;
 
 package body CMOF.Internals.Reflection is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Attributes;
+   use AMF.Internals.Tables.CMOF_Metamodel;
    use AMF.Internals.Tables.CMOF_Types;
-   use CMOF.Internals.Metamodel;
    use type AMF.Internals.AMF_Element;
 
    ---------

@@ -58,7 +58,6 @@ with AMF.Elements;
 with AMF.Holders;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Helpers;
-with CMOF;
 with League.Holders.Booleans;
 with League.Holders.Integers;
 with League.Strings;
@@ -70,7 +69,7 @@ package body Generator.Initialization is
 
    use Ada.Integer_Wide_Wide_Text_IO;
    use Ada.Wide_Wide_Text_IO;
-   use CMOF;
+   use AMF.CMOF;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_Integer;
@@ -353,6 +352,7 @@ package body Generator.Initialization is
       Put_Header;
       Put_Line ("with League.Strings;");
       New_Line;
+      Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Put_Line ("with AMF.Internals.Extents;");
       Put_Line ("with AMF.Internals.Links;");
       Put_Line
@@ -363,12 +363,19 @@ package body Generator.Initialization is
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Constructors;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element_Table;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
       Put_Line ("with CMOF.Internals.Extents;");
-      Put_Line ("with CMOF.Internals.Metamodel;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Setup is");
       New_Line;
+      Put_Line ("   use AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Put_Line ("   use AMF.Internals.Extents;");
       Put_Line ("   use AMF.Internals.Links;");
       Put_Line ("   use AMF.Internals.Tables;");
@@ -380,8 +387,11 @@ package body Generator.Initialization is
        ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Constructors;");
+      Put_Line
+       ("   use AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
       Put_Line ("   use CMOF.Internals.Extents;");
-      Put_Line ("   use CMOF.Internals.Metamodel;");
       New_Line;
       Put_Line ("   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;");
       New_Line;

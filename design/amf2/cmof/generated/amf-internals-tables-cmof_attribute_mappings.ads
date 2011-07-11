@@ -45,20 +45,19 @@
 ------------------------------------------------------------------------------
 with Interfaces;
 
+with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Types;
-with CMOF.Internals.Metamodel;
 
 package AMF.Internals.Tables.CMOF_Attribute_Mappings is
 
    pragma Preelaborate;
 
    use AMF.Internals.Tables.CMOF_Types;
-   use Standard.CMOF.Internals;
-   use Standard.CMOF.Internals.Metamodel;
+   use AMF.Internals.Tables.CMOF_Metamodel;
 
    Collection_Offset : constant
      array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
-            CMOF.Internals.Metamodel.CMOF_Collection_Of_Element_Property)
+            AMF.Internals.Tables.CMOF_Metamodel.CMOF_Collection_Of_Element_Property)
        of Interfaces.Integer_8 :=
         (E_Association =>
           (MP_CMOF_Classifier_Attribute => 9,
@@ -244,7 +243,7 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
 
    Member_Offset : constant
      array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
-            Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=
+            AMF.Internals.Tables.CMOF_Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=
        (
 E_Association =>
           (MP_CMOF_Association_Is_Derived => 8,

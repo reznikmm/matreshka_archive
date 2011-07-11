@@ -45,13 +45,13 @@ with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Element_Table;
-with CMOF.Internals.Metamodel;
+with AMF.Internals.Tables.CMOF_Metamodel;
 
 package body AMF.Internals.Helpers.CMOF_Helper is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Attribute_Mappings;
-   use CMOF.Internals.Metamodel;
+   use AMF.Internals.Tables.CMOF_Metamodel;
 
    --------------------
    -- Connect_Extent --

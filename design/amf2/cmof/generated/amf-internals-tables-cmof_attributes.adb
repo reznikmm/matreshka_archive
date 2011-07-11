@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.CMOF_Types;
 with AMF.Internals.Tables.CMOF_Element_Table;
-with CMOF.Internals.Metamodel;
+with AMF.Internals.Tables.CMOF_Metamodel;
 with CMOF.Internals.Notification;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
@@ -55,8 +55,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Types;
    use Standard.CMOF.Internals;
-   use Standard.CMOF.Internals.Metamodel;
-   use type AMF.Internals.AMF_Collection_Of_Element;
+   use AMF.Internals.Tables.CMOF_Metamodel;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
    --  Association

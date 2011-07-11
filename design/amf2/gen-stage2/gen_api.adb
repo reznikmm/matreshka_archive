@@ -57,7 +57,6 @@ with AMF.CMOF.Types;
 with AMF.Elements.Collections;
 with AMF.Facility;
 with AMF.URI_Stores;
-with CMOF;
 with League.Application;
 with League.Characters;
 with League.String_Vectors;
@@ -72,7 +71,7 @@ procedure Gen_API is
 
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
-   use CMOF;
+   use AMF.CMOF;
    use Generator;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;

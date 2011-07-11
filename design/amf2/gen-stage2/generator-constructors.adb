@@ -448,7 +448,7 @@ package body Generator.Constructors is
                      else
                         if Default = Public_Image then
                            Put
-                            (" (M_Visibility_Kind, CMOF.Public_Visibility),");
+                            (" (M_Visibility_Kind, AMF.CMOF.Public_Visibility),");
 
                         elsif Default = Private_Image then
                            raise Program_Error;
@@ -577,11 +577,12 @@ package body Generator.Constructors is
 
    begin
       Put_Header;
+      Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Class_Info.Iterate (Generate_With'Access);
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Metamodel;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line
@@ -590,8 +591,8 @@ package body Generator.Constructors is
           & "_Constructors is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
+      Put_Line ("   use AMF.Internals.Tables.CMOF_Metamodel;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Class_Info.Iterate (Generate_Create'Access);
       Class_Info.Iterate (Generate_Initialize'Access);

@@ -733,10 +733,16 @@ package body Generator.Reflection is
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element_Table;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("with AMF.String_Collections;");
-      Put_Line ("with CMOF.Internals.Metamodel;");
       Put_Line ("with League.Holders.Booleans;");
       New_Line;
       Put_Line ("package body CMOF.Internals.Reflection is");
@@ -746,8 +752,11 @@ package body Generator.Reflection is
        ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes;");
+      Put_Line
+       ("   use AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
-      Put_Line ("   use CMOF.Internals.Metamodel;");
       Put_Line ("   use type AMF.Internals.AMF_Element;");
 
       --  Getter

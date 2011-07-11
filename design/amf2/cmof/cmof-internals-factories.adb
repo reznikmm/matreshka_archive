@@ -52,11 +52,12 @@ with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Constructors;
-with CMOF.Internals.Metamodel;
+with AMF.Internals.Tables.CMOF_Metamodel;
 
 package body CMOF.Internals.Factories is
 
-   use CMOF.Internals.Metamodel;
+   use AMF.CMOF;
+   use AMF.Internals.Tables.CMOF_Metamodel;
    use type AMF.Internals.AMF_Element;
 
    In_Image     : constant League.Strings.Universal_String
@@ -205,22 +206,22 @@ package body CMOF.Internals.Factories is
          if Image = In_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (CMOF.In_Direction);
+               (AMF.CMOF.In_Direction);
 
          elsif Image = In_Out_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (CMOF.In_Out_Direction);
+               (AMF.CMOF.In_Out_Direction);
 
          elsif Image = Out_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (CMOF.Out_Direction);
+               (AMF.CMOF.Out_Direction);
 
          elsif Image = Return_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (CMOF.Return_Direction);
+               (AMF.CMOF.Return_Direction);
 
          else
             raise Constraint_Error;
@@ -230,22 +231,22 @@ package body CMOF.Internals.Factories is
          if Image = Public_Image then
             return
               AMF.CMOF.Visibility_Kind_Holders.To_Holder
-               (CMOF.Public_Visibility);
+               (AMF.CMOF.Public_Visibility);
 
          elsif Image = Private_Image then
             return
               AMF.CMOF.Visibility_Kind_Holders.To_Holder
-               (CMOF.Private_Visibility);
+               (AMF.CMOF.Private_Visibility);
 
          elsif Image = Protected_Image then
             return
               AMF.CMOF.Visibility_Kind_Holders.To_Holder
-               (CMOF.Protected_Visibility);
+               (AMF.CMOF.Protected_Visibility);
 
          elsif Image = Package_Image then
             return
               AMF.CMOF.Visibility_Kind_Holders.To_Holder
-               (CMOF.Package_Visibility);
+               (AMF.CMOF.Package_Visibility);
 
          else
             raise Constraint_Error;
@@ -338,16 +339,16 @@ package body CMOF.Internals.Factories is
 
             begin
                case Kind is
-                  when CMOF.In_Direction =>
+                  when AMF.CMOF.In_Direction =>
                      return In_Image;
 
-                  when CMOF.In_Out_Direction =>
+                  when AMF.CMOF.In_Out_Direction =>
                      return In_Out_Image;
 
-                  when CMOF.Out_Direction =>
+                  when AMF.CMOF.Out_Direction =>
                      return Out_Image;
 
-                  when CMOF.Return_Direction =>
+                  when AMF.CMOF.Return_Direction =>
                      return Return_Image;
                end case;
             end;
@@ -364,16 +365,16 @@ package body CMOF.Internals.Factories is
 
             begin
                case Kind is
-                  when CMOF.Public_Visibility =>
+                  when AMF.CMOF.Public_Visibility =>
                      return Public_Image;
 
-                  when CMOF.Private_Visibility =>
+                  when AMF.CMOF.Private_Visibility =>
                      return Private_Image;
 
-                  when CMOF.Protected_Visibility =>
+                  when AMF.CMOF.Protected_Visibility =>
                      return Protected_Image;
 
-                  when CMOF.Package_Visibility =>
+                  when AMF.CMOF.Package_Visibility =>
                      return Package_Image;
                end case;
             end;

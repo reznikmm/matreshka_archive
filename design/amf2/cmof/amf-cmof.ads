@@ -41,26 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with CMOF;
 
 package AMF.CMOF is
 
    pragma Preelaborate;
 
-   subtype CMOF_Parameter_Direction_Kind
-     is Standard.CMOF.CMOF_Parameter_Direction_Kind;
---   type CMOF_Parameter_Direction_Kind is
---    (In_Direction,
---     In_Out_Direction,
---     Out_Direction,
---     Return_Direction);
+--   subtype CMOF_Parameter_Direction_Kind
+--     is Standard.CMOF.CMOF_Parameter_Direction_Kind;
+   type CMOF_Parameter_Direction_Kind is
+    (In_Direction,
+     In_Out_Direction,
+     Out_Direction,
+     Return_Direction);
 
-   subtype CMOF_Visibility_Kind is Standard.CMOF.CMOF_Visibility_Kind;
---   type CMOF_Visibility_Kind is
---    (Public_Visibility,
---     Private_Visibility,
---     Protected_Visibility,
---     Package_Visibility);
+--   subtype CMOF_Visibility_Kind is Standard.CMOF.CMOF_Visibility_Kind;
+   type CMOF_Visibility_Kind is
+    (Public_Visibility,
+     Private_Visibility,
+     Protected_Visibility,
+     Package_Visibility);
 
    type Optional_CMOF_Visibility_Kind (Is_Empty : Boolean := True) is record
       case Is_Empty is

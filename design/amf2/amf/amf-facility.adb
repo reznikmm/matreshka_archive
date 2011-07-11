@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Extents;
 with AMF.Internals.AMF_URI_Stores;
-with CMOF.Internals.Metamodel;
 
 with AMF.Internals.Helpers.CMOF_Helper;
 pragma Unreferenced (AMF.Internals.Helpers.CMOF_Helper);

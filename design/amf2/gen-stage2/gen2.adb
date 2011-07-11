@@ -342,7 +342,7 @@ procedure Gen2 is
             Put ("   " & Association_Constant_Name (Association));
             Set_Col (Association_Constant_Name_Max + 5);
             Put_Line
-             (": constant CMOF_Association :="
+             (": constant AMF.Internals.CMOF_Element :="
                 & Integer'Wide_Wide_Image
                    (Element_Numbers.Element
                      (AMF.CMOF.Elements.CMOF_Element_Access (Association)))
@@ -382,7 +382,7 @@ procedure Gen2 is
             Put ("   " & Property_Constant_Name (Property));
             Set_Col (Property_Constant_Name_Max + 5);
             Put_Line
-             (": constant CMOF_Property :="
+             (": constant AMF.Internals.CMOF_Element :="
                 & Integer'Wide_Wide_Image
                    (Element_Numbers.Element
                      (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
@@ -426,7 +426,7 @@ procedure Gen2 is
                Put ("   " & Property_Constant_Name (Property));
                Set_Col (Property_Constant_Name_Max + 5);
                Put_Line
-                (": constant CMOF_Property :="
+                (": constant AMF.Internals.CMOF_Element :="
                    & Integer'Wide_Wide_Image
                       (Element_Numbers.Element
                         (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
@@ -483,7 +483,7 @@ procedure Gen2 is
                Put ("   " & Property_Constant_Name (Property));
                Set_Col (Property_Constant_Name_Max + 5);
                Put_Line
-                (": constant CMOF_Property :="
+                (": constant AMF.Internals.CMOF_Element :="
                    & Integer'Wide_Wide_Image
                       (Element_Numbers.Element
                         (AMF.CMOF.Elements.CMOF_Element_Access (Property)))
@@ -524,7 +524,7 @@ procedure Gen2 is
          Put ("   " & Type_Constant_Name (Class));
          Set_Col (Class_Constant_Name_Max + 5);
          Put_Line
-          (": constant CMOF_Class :="
+          (": constant AMF.Internals.CMOF_Element :="
              & Integer'Wide_Wide_Image
                 (Element_Numbers.Element
                   (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
@@ -546,7 +546,7 @@ procedure Gen2 is
          Put ("   " & Type_Constant_Name (Data_Type));
          Set_Col (Data_Type_Constant_Name_Max + 5);
          Put_Line
-          (": constant CMOF_Data_Type :="
+          (": constant AMF.Internals.CMOF_Element :="
              & Integer'Wide_Wide_Image
                 (Element_Numbers.Element
                   (AMF.CMOF.Elements.CMOF_Element_Access (Data_Type)))
@@ -568,7 +568,7 @@ procedure Gen2 is
          Put ("   " & Package_Constant_Name (Element));
          Set_Col (Package_Constant_Name_Max + 5);
          Put_Line
-          (": constant CMOF_Package :="
+          (": constant AMF.Internals.CMOF_Element :="
              & Integer'Wide_Wide_Image
                 (Element_Numbers.Element
                   (AMF.CMOF.Elements.CMOF_Element_Access (Element)))
@@ -578,7 +578,10 @@ procedure Gen2 is
    begin
       Put_Header;
       New_Line;
-      Put_Line ("package CMOF.Internals.Metamodel is");
+      Put_Line
+       ("package AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel is");
       New_Line;
       Put_Line ("   pragma Preelaborate;");
       New_Line;
@@ -601,7 +604,7 @@ procedure Gen2 is
       New_Line;
       Put_Line ("   subtype CMOF_Meta_Class is");
       Put_Line
-       ("     CMOF_Class range"
+       ("     AMF.Internals.CMOF_Element range"
           & Natural'Wide_Wide_Image (First_Class)
           & " .."
           & Natural'Wide_Wide_Image (Last_Class)
@@ -609,7 +612,7 @@ procedure Gen2 is
       New_Line;
       Put_Line ("   subtype CMOF_Collection_Of_Element_Property is");
       Put_Line
-       ("     CMOF_Property range"
+       ("     AMF.Internals.CMOF_Element range"
           & Natural'Wide_Wide_Image (First_Class_Property)
           & " .."
           & Natural'Wide_Wide_Image (Last_Collection_Class_Property)
@@ -617,13 +620,16 @@ procedure Gen2 is
       Put_Line
        ("   subtype CMOF_Non_Collection_Of_Element_Property is");
       Put_Line
-       ("     CMOF_Property range"
+       ("     AMF.Internals.CMOF_Element range"
           & Natural'Wide_Wide_Image (Last_Collection_Class_Property + 1)
           & " .."
           & Natural'Wide_Wide_Image (Last_Class_Property + 1)
           & ";");
       New_Line;
-      Put_Line ("end CMOF.Internals.Metamodel;");
+      Put_Line
+       ("end AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
    end Generate_Metamodel_Specification;
 
    Elements : AMF.Elements.Collections.Reflective_Collection;
