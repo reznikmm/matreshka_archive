@@ -46,7 +46,7 @@ with "../../../gnat/matreshka_league.gpr";
 library project AMF is
 
    for Object_Dir use ".objs";
-   for Source_Dirs use (".", "xmi", "../cmof", "../cmof/generated");
+   for Source_Dirs use (".", "xmi", "cmof", "cmof/generated");
    for Library_Dir use "../.libs";
    for Library_Name use "matreshka-amf";
    for Library_Kind use "relocatable";

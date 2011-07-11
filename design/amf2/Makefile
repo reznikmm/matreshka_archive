@@ -18,25 +18,27 @@ uml-all:
 
 gen2:
 	gprbuild -p -Pgen-stage2/gens.gpr
-	test -d cmof/generated/.new || mkdir cmof/generated/.new
-	./gen-stage2/.obj/gen2 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > cmof/generated/.new/sources.ada
-	gnatchop -gnat05 -w cmof/generated/.new/sources.ada cmof/generated/.new
-	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
-	rm -r cmof/generated/.new
+	rm -rf amf/cmof/generated/.new
+	test -d amf/cmof/generated/.new || mkdir amf/cmof/generated/.new
+	./gen-stage2/.obj/gen2 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > amf/cmof/generated/.new/sources.ada
+	gnatchop -gnat05 -w amf/cmof/generated/.new/sources.ada amf/cmof/generated/.new
+	ls amf/cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed amf/cmof/generated/.new/{} amf/cmof/generated/{}
+	rm -r amf/cmof/generated/.new
 	gprbuild -p -Pgen-stage2/gens.gpr
-	test -d cmof/generated/.new || mkdir cmof/generated/.new
-	./gen-stage2/.obj/gen2 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > cmof/generated/.new/sources.ada
-	gnatchop -gnat05 -w cmof/generated/.new/sources.ada cmof/generated/.new
-	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
-	rm -r cmof/generated/.new
+	rm -rf amf/cmof/generated/.new
+	test -d amf/cmof/generated/.new || mkdir amf/cmof/generated/.new
+	./gen-stage2/.obj/gen2 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > amf/cmof/generated/.new/sources.ada
+	gnatchop -gnat05 -w amf/cmof/generated/.new/sources.ada amf/cmof/generated/.new
+	ls amf/cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed amf/cmof/generated/.new/{} amf/cmof/generated/{}
+	rm -r amf/cmof/generated/.new
 
 gen2-api:
 	gprbuild -j2 -p -Pgen-stage2/gens.gpr
-	test -d cmof/generated/.new || mkdir cmof/generated/.new
-	./gen-stage2/.obj/gen_api 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > cmof/generated/.new/sources.ada
-	gnatchop -gnat12 -w cmof/generated/.new/sources.ada cmof/generated/.new
-	ls cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed cmof/generated/.new/{} cmof/generated/{}
-	rm -r cmof/generated/.new
+	test -d amf/cmof/generated/.new || mkdir amf/cmof/generated/.new
+	./gen-stage2/.obj/gen_api 'http://schema.omg.org/spec/MOF/2.0/cmof.xml' CMOF > amf/cmof/generated/.new/sources.ada
+	gnatchop -gnat12 -w amf/cmof/generated/.new/sources.ada amf/cmof/generated/.new
+	ls amf/cmof/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed amf/cmof/generated/.new/{} amf/cmof/generated/{}
+	rm -r amf/cmof/generated/.new
 
 gen-uml:
 	gprbuild -p -Pgen-stage2/gens.gpr
