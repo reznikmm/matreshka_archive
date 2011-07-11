@@ -809,7 +809,9 @@ package body Generator.Attributes is
             end if;
 
             Put_Line
-             (Property_Constant_Name (Attribute)
+             (Integer'Wide_Wide_Image
+               (Element_Numbers.Element
+                 (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)))
                 & " =>"
                 & Integer'Wide_Wide_Image
                    (Class.Collection.Element (Attribute))
@@ -869,7 +871,9 @@ package body Generator.Attributes is
             end if;
 
             Put_Line
-             (Property_Constant_Name (Attribute)
+             (Integer'Wide_Wide_Image
+               (Element_Numbers.Element
+                 (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)))
                 & " =>"
                 & Integer'Wide_Wide_Image
                    (Class.Slot.Element (Attribute))
@@ -913,8 +917,8 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attribute_Mappings is");
       New_Line;
-      Put_Line ("   pragma Preelaborate;");
-      New_Line;
+--      Put_Line ("   pragma Preelaborate;");
+--      New_Line;
       Put_Line
        ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String

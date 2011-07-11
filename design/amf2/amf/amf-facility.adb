@@ -43,11 +43,10 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Extents;
 with AMF.Internals.AMF_URI_Stores;
+with AMF.Internals.Tables.CMOF_Metamodel;
 
 with AMF.Internals.Helpers.CMOF_Helper;
 pragma Unreferenced (AMF.Internals.Helpers.CMOF_Helper);
-with AMF.Internals.Tables.CMOF_Setup;
-pragma Unreferenced (AMF.Internals.Tables.CMOF_Setup);
 with CMOF.Internals.Factories;
 pragma Unreferenced (CMOF.Internals.Factories);
 
@@ -72,7 +71,7 @@ package body AMF.Facility is
 
    procedure Initialize is
    begin
-      null;
+      AMF.Internals.Tables.CMOF_Metamodel.Initialize;
    end Initialize;
 
 end AMF.Facility;

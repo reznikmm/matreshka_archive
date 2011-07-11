@@ -190,6 +190,9 @@ package Generator is
    Metamodel_Name : League.Strings.Universal_String;
    --  Name of the generated metamodel.
 
+   Element_Numbers : CMOF_Element_Number_Maps.Map;
+   --  Expansion information.
+
    ---------------
    -- Utilities --
    ---------------

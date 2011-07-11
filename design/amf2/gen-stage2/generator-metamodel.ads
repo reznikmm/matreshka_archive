@@ -4,11 +4,11 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,14 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Elements.Collections;
+with AMF.URI_Stores;
 
-package Generator.Initialization is
+package Generator.Metamodel is
 
-   procedure Generate_Metamodel_Initialization_Implementation
-    (Elements : AMF.Elements.Collections.Reflective_Collection;
-     Numbers  : CMOF_Element_Number_Maps.Map;
-     Total    : Positive);
-   --  Generates body of metamodel initialization package.
+   procedure Assign_Numbers
+    (Extent : not null AMF.URI_Stores.URI_Store_Access);
 
-end Generator.Initialization;
+   procedure Generate_Metamodel_Specification;
+
+   procedure Generate_Metamodel_Implementation;
+
+end Generator.Metamodel;

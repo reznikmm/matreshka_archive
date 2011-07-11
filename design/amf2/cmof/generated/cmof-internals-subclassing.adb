@@ -11,244 +11,244 @@ package body CMOF.Internals.Subclassing is
    pragma Pack (Class_Bits);
 
    Tag : constant array (CMOF_Meta_Class) of Class_Bits :=
-     (MC_CMOF_Association =>
-        (MC_CMOF_Association
-           | MC_CMOF_Classifier
-           | MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Relationship
-           | MC_CMOF_Type => True,
+     (1 =>
+        (1
+           | 4
+           | 9
+           | 16
+           | 17
+           | 23
+           | 28
+           | 31 => True,
          others => False),
-      MC_CMOF_Behavioral_Feature =>
-        (MC_CMOF_Behavioral_Feature
-           | MC_CMOF_Element
-           | MC_CMOF_Feature
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Redefinable_Element => True,
+      2 =>
+        (2
+           | 9
+           | 14
+           | 16
+           | 17
+           | 27 => True,
          others => False),
-      MC_CMOF_Class =>
-        (MC_CMOF_Class
-           | MC_CMOF_Classifier
-           | MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Type => True,
+      3 =>
+        (3
+           | 4
+           | 9
+           | 16
+           | 17
+           | 23
+           | 31 => True,
          others => False),
-      MC_CMOF_Classifier =>
-        (MC_CMOF_Classifier
-           | MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Type => True,
+      4 =>
+        (4
+           | 9
+           | 16
+           | 17
+           | 23
+           | 31 => True,
          others => False),
-      MC_CMOF_Comment =>
-        (MC_CMOF_Comment
-           | MC_CMOF_Element => True,
+      5 =>
+        (5
+           | 9 => True,
          others => False),
-      MC_CMOF_Constraint =>
-        (MC_CMOF_Constraint
-           | MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Packageable_Element => True,
+      6 =>
+        (6
+           | 9
+           | 16
+           | 23 => True,
          others => False),
-      MC_CMOF_Data_Type =>
-        (MC_CMOF_Classifier
-           | MC_CMOF_Data_Type
-           | MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Type => True,
+      7 =>
+        (4
+           | 7
+           | 9
+           | 16
+           | 17
+           | 23
+           | 31 => True,
          others => False),
-      MC_CMOF_Directed_Relationship =>
-        (MC_CMOF_Directed_Relationship
-           | MC_CMOF_Element
-           | MC_CMOF_Relationship => True,
+      8 =>
+        (8
+           | 9
+           | 28 => True,
          others => False),
-      MC_CMOF_Element =>
-        (MC_CMOF_Element => True,
+      9 =>
+        (9 => True,
          others => False),
-      MC_CMOF_Element_Import =>
-        (MC_CMOF_Directed_Relationship
-           | MC_CMOF_Element
-           | MC_CMOF_Element_Import
-           | MC_CMOF_Relationship => True,
+      10 =>
+        (8
+           | 9
+           | 10
+           | 28 => True,
          others => False),
-      MC_CMOF_Enumeration =>
-        (MC_CMOF_Classifier
-           | MC_CMOF_Data_Type
-           | MC_CMOF_Element
-           | MC_CMOF_Enumeration
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Type => True,
+      11 =>
+        (4
+           | 7
+           | 9
+           | 11
+           | 16
+           | 17
+           | 23
+           | 31 => True,
          others => False),
-      MC_CMOF_Enumeration_Literal =>
-        (MC_CMOF_Element
-           | MC_CMOF_Enumeration_Literal
-           | MC_CMOF_Named_Element => True,
+      12 =>
+        (9
+           | 12
+           | 16 => True,
          others => False),
-      MC_CMOF_Expression =>
-        (MC_CMOF_Element
-           | MC_CMOF_Expression
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Typed_Element
-           | MC_CMOF_Value_Specification => True,
+      13 =>
+        (9
+           | 13
+           | 16
+           | 23
+           | 32
+           | 33 => True,
          others => False),
-      MC_CMOF_Feature =>
-        (MC_CMOF_Element
-           | MC_CMOF_Feature
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Redefinable_Element => True,
+      14 =>
+        (9
+           | 14
+           | 16
+           | 27 => True,
          others => False),
-      MC_CMOF_Multiplicity_Element =>
-        (MC_CMOF_Element
-           | MC_CMOF_Multiplicity_Element => True,
+      15 =>
+        (9
+           | 15 => True,
          others => False),
-      MC_CMOF_Named_Element =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element => True,
+      16 =>
+        (9
+           | 16 => True,
          others => False),
-      MC_CMOF_Namespace =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace => True,
+      17 =>
+        (9
+           | 16
+           | 17 => True,
          others => False),
-      MC_CMOF_Opaque_Expression =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Opaque_Expression
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Typed_Element
-           | MC_CMOF_Value_Specification => True,
+      18 =>
+        (9
+           | 16
+           | 18
+           | 23
+           | 32
+           | 33 => True,
          others => False),
-      MC_CMOF_Operation =>
-        (MC_CMOF_Behavioral_Feature
-           | MC_CMOF_Element
-           | MC_CMOF_Feature
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Operation
-           | MC_CMOF_Redefinable_Element => True,
+      19 =>
+        (2
+           | 9
+           | 14
+           | 16
+           | 17
+           | 19
+           | 27 => True,
          others => False),
-      MC_CMOF_Package =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Package
-           | MC_CMOF_Packageable_Element => True,
+      20 =>
+        (9
+           | 16
+           | 17
+           | 20
+           | 23 => True,
          others => False),
-      MC_CMOF_Package_Import =>
-        (MC_CMOF_Directed_Relationship
-           | MC_CMOF_Element
-           | MC_CMOF_Package_Import
-           | MC_CMOF_Relationship => True,
+      21 =>
+        (8
+           | 9
+           | 21
+           | 28 => True,
          others => False),
-      MC_CMOF_Package_Merge =>
-        (MC_CMOF_Directed_Relationship
-           | MC_CMOF_Element
-           | MC_CMOF_Package_Merge
-           | MC_CMOF_Relationship => True,
+      22 =>
+        (8
+           | 9
+           | 22
+           | 28 => True,
          others => False),
-      MC_CMOF_Packageable_Element =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Packageable_Element => True,
+      23 =>
+        (9
+           | 16
+           | 23 => True,
          others => False),
-      MC_CMOF_Parameter =>
-        (MC_CMOF_Element
-           | MC_CMOF_Multiplicity_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Parameter
-           | MC_CMOF_Typed_Element => True,
+      24 =>
+        (9
+           | 15
+           | 16
+           | 24
+           | 32 => True,
          others => False),
-      MC_CMOF_Primitive_Type =>
-        (MC_CMOF_Classifier
-           | MC_CMOF_Data_Type
-           | MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Namespace
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Primitive_Type
-           | MC_CMOF_Type => True,
+      25 =>
+        (4
+           | 7
+           | 9
+           | 16
+           | 17
+           | 23
+           | 25
+           | 31 => True,
          others => False),
-      MC_CMOF_Property =>
-        (MC_CMOF_Element
-           | MC_CMOF_Feature
-           | MC_CMOF_Multiplicity_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Property
-           | MC_CMOF_Redefinable_Element
-           | MC_CMOF_Structural_Feature
-           | MC_CMOF_Typed_Element => True,
+      26 =>
+        (9
+           | 14
+           | 15
+           | 16
+           | 26
+           | 27
+           | 29
+           | 32 => True,
          others => False),
-      MC_CMOF_Redefinable_Element =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Redefinable_Element => True,
+      27 =>
+        (9
+           | 16
+           | 27 => True,
          others => False),
-      MC_CMOF_Relationship =>
-        (MC_CMOF_Element
-           | MC_CMOF_Relationship => True,
+      28 =>
+        (9
+           | 28 => True,
          others => False),
-      MC_CMOF_Structural_Feature =>
-        (MC_CMOF_Element
-           | MC_CMOF_Feature
-           | MC_CMOF_Multiplicity_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Redefinable_Element
-           | MC_CMOF_Structural_Feature
-           | MC_CMOF_Typed_Element => True,
+      29 =>
+        (9
+           | 14
+           | 15
+           | 16
+           | 27
+           | 29
+           | 32 => True,
          others => False),
-      MC_CMOF_Type =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Type => True,
+      31 =>
+        (9
+           | 16
+           | 23
+           | 31 => True,
          others => False),
-      MC_CMOF_Typed_Element =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Typed_Element => True,
+      32 =>
+        (9
+           | 16
+           | 32 => True,
          others => False),
-      MC_CMOF_Value_Specification =>
-        (MC_CMOF_Element
-           | MC_CMOF_Named_Element
-           | MC_CMOF_Packageable_Element
-           | MC_CMOF_Typed_Element
-           | MC_CMOF_Value_Specification => True,
+      33 =>
+        (9
+           | 16
+           | 23
+           | 32
+           | 33 => True,
          others => False),
-      MC_CMOF_Tag =>
-        (MC_CMOF_Element
-           | MC_CMOF_Tag => True,
+      30 =>
+        (9
+           | 30 => True,
          others => False));
 
    Class : constant array (Class_Element_Kinds) of CMOF_Meta_Class :=
-     (E_Association         => MC_CMOF_Association,
-      E_Class               => MC_CMOF_Class,
-      E_Comment             => MC_CMOF_Comment,
-      E_Constraint          => MC_CMOF_Constraint,
-      E_Data_Type           => MC_CMOF_Data_Type,
-      E_Element_Import      => MC_CMOF_Element_Import,
-      E_Enumeration         => MC_CMOF_Enumeration,
-      E_Enumeration_Literal => MC_CMOF_Enumeration_Literal,
-      E_Expression          => MC_CMOF_Expression,
-      E_Opaque_Expression   => MC_CMOF_Opaque_Expression,
-      E_Operation           => MC_CMOF_Operation,
-      E_Package             => MC_CMOF_Package,
-      E_Package_Import      => MC_CMOF_Package_Import,
-      E_Package_Merge       => MC_CMOF_Package_Merge,
-      E_Parameter           => MC_CMOF_Parameter,
-      E_Primitive_Type      => MC_CMOF_Primitive_Type,
-      E_Property            => MC_CMOF_Property,
-      E_Tag                 => MC_CMOF_Tag);
+     (E_Association         => 1,
+      E_Class               => 3,
+      E_Comment             => 5,
+      E_Constraint          => 6,
+      E_Data_Type           => 7,
+      E_Element_Import      => 10,
+      E_Enumeration         => 11,
+      E_Enumeration_Literal => 12,
+      E_Expression          => 13,
+      E_Opaque_Expression   => 18,
+      E_Operation           => 19,
+      E_Package             => 20,
+      E_Package_Import      => 21,
+      E_Package_Merge       => 22,
+      E_Parameter           => 24,
+      E_Primitive_Type      => 25,
+      E_Property            => 26,
+      E_Tag                 => 30);
 
    function Is_Null (Self : Cmof_Element) return Boolean;
    --  Returns True when specified element is null.
