@@ -117,6 +117,13 @@ package body Generator.Initialization is
    --  Returns all properties of the specified class (including properties of
    --  superclasses, but except redefined properties).
 
+   package Number_Element_Maps is
+     new Ada.Containers.Ordered_Maps
+          (Natural,
+           AMF.CMOF.Elements.CMOF_Element_Access,
+           "<",
+           AMF.CMOF.Elements."=");
+
    ---------------------------------------
    -- Class_Properties_Except_Redefined --
    ---------------------------------------
@@ -272,11 +279,11 @@ package body Generator.Initialization is
                Put_Line ("   Internal_Create_Link");
                Put_Line
                 ("    (" & Association_Constant_Name (Association) & ",");
-               Put ("     ");
+               Put ("     Base + ");
                Put (Numbers.Element (Element), Width => 0);
                Put_Line (",");
                Put_Line ("     " & Property_Constant_Name (First_End) & ",");
-               Put ("     ");
+               Put ("     Base + ");
                Put (Numbers.Element (Other), Width => 0);
                Put_Line (",");
                Put_Line ("     " & Property_Constant_Name (Second_End) & ");");
@@ -329,15 +336,19 @@ package body Generator.Initialization is
         := AMF.Elements.Abstract_Element'Class (Element.all).Get_Meta_Class;
 
    begin
-      Put
-       ("   Initialize_"
+      if Numbers.Element (Element) /= 1 then
+         New_Line;
+      end if;
+
+      Put_Line
+       ("   Aux := Create_"
           & To_Ada_Identifier (Meta_Class.Get_Name.Value)
-          & " (");
-      Put (Numbers.Element (Element), Width => 0);
-      Put_Line (");");
-      Put ("   Internal_Append (Extent, ");
-      Put (Numbers.Element (Element), Width => 0);
-      Put_Line (");");
+          & ";");
+      Put_Line ("   Internal_Append (Extent, Aux);");
+
+      if Numbers.Element (Element) = 1 then
+         Put_Line ("   Base := Aux - 1;");
+      end if;
    end Generate_Metaclass_Initialization;
 
    ------------------------------------------------------
@@ -347,8 +358,19 @@ package body Generator.Initialization is
    procedure Generate_Metamodel_Initialization_Implementation
     (Elements : AMF.Elements.Collections.Reflective_Collection;
      Numbers  : CMOF_Element_Number_Maps.Map;
-     Total    : Positive) is
+     Total    : Positive)
+   is
+      Ordered  : Number_Element_Maps.Map;
+      Position : Number_Element_Maps.Cursor;
+
    begin
+      for J in 1 .. Elements.Length loop
+         Ordered.Insert
+          (Numbers.Element
+            (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J))),
+           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)));
+      end loop;
+
       Put_Header;
       Put_Line ("with League.Strings;");
       New_Line;
@@ -396,19 +418,17 @@ package body Generator.Initialization is
       New_Line;
       Put_Line ("   Extent : constant AMF.Internals.AMF_Extent");
       Put_Line ("     := AMF.Internals.Extents.Allocate_Extent;");
+      Put_Line ("   Base   : AMF.Internals.CMOF_Element;");
+      Put_Line ("   Aux    : AMF.Internals.CMOF_Element;");
       New_Line;
       Put_Line ("begin");
-      Put
-       ("   CMOF_Element_Table.Set_Last (");
-      Put (Total, Width => 0);
-      Put_Line
-       (");");
-      New_Line;
 
-      for J in 1 .. Elements.Length loop
+      Position := Ordered.First;
+
+      while Number_Element_Maps.Has_Element (Position) loop
          Generate_Metaclass_Initialization
-          (AMF.CMOF.Elements.CMOF_Element_Access
-            (Elements.Element (J)), Numbers);
+          (Number_Element_Maps.Element (Position), Numbers);
+         Number_Element_Maps.Next (Position);
       end loop;
 
       for J in 1 .. Elements.Length loop
@@ -472,7 +492,7 @@ package body Generator.Initialization is
                Put
                 ("   Internal_Set_"
                    & To_Ada_Identifier (Property.Get_Name.Value)
-                   & " (");
+                   & " (Base + ");
                Put (Numbers.Element (Element), Width => 0);
                Put (", ");
 
@@ -490,7 +510,7 @@ package body Generator.Initialization is
                   Put
                    ("   Internal_Set_"
                       & To_Ada_Identifier (Property.Get_Name.Value)
-                      & " (");
+                      & " (Base + ");
                   Put (Numbers.Element (Element), Width => 0);
                   Put_Line
                    (", (False,"
@@ -507,7 +527,7 @@ package body Generator.Initialization is
                   Put
                    ("   Internal_Set_"
                       & To_Ada_Identifier (Property.Get_Name.Value)
-                      & " (");
+                      & " (Base + ");
                   Put (Numbers.Element (Element), Width => 0);
                   Put (", ");
 
@@ -541,7 +561,7 @@ package body Generator.Initialization is
                      Put_Line
                       ("   Internal_Set_"
                          & To_Ada_Identifier (Property.Get_Name.Value));
-                     Put ("    (");
+                     Put ("    (Base + ");
                      Put (Numbers.Element (Element), Width => 0);
                      Put_Line (",");
                      Put_Line
@@ -554,7 +574,7 @@ package body Generator.Initialization is
                   Put_Line
                    ("   Internal_Set_"
                       & To_Ada_Identifier (Property.Get_Name.Value));
-                  Put ("    (");
+                  Put ("    (Base + ");
                   Put (Numbers.Element (Element), Width => 0);
                   Put_Line (",");
                   Put_Line
