@@ -371,9 +371,11 @@ package body Generator.Initialization is
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Metamodel;");
-      Put_Line ("with CMOF.Internals.Extents;");
       New_Line;
-      Put_Line ("package body CMOF.Internals.Setup is");
+      Put_Line
+       ("package body AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Setup is");
       New_Line;
       Put_Line ("   use AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Put_Line ("   use AMF.Internals.Extents;");
@@ -391,9 +393,9 @@ package body Generator.Initialization is
        ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Metamodel;");
-      Put_Line ("   use CMOF.Internals.Extents;");
       New_Line;
-      Put_Line ("   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;");
+      Put_Line ("   Extent : constant AMF.Internals.AMF_Extent");
+      Put_Line ("     := AMF.Internals.Extents.Allocate_Extent;");
       New_Line;
       Put_Line ("begin");
       Put
@@ -401,7 +403,6 @@ package body Generator.Initialization is
       Put (Total, Width => 0);
       Put_Line
        (");");
-      Put_Line ("   Initialize_CMOF_Metamodel_Extent;");
       New_Line;
 
       for J in 1 .. Elements.Length loop
@@ -425,7 +426,10 @@ package body Generator.Initialization is
       end loop;
 
       New_Line;
-      Put_Line ("end CMOF.Internals.Setup;");
+      Put_Line
+       ("end AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Setup;");
    end Generate_Metamodel_Initialization_Implementation;
 
    ----------------------------------------

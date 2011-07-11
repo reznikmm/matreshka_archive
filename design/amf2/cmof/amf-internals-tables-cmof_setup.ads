@@ -42,8 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package CMOF.Internals.Setup is
+package AMF.Internals.Tables.CMOF_Setup is
 
    pragma Elaborate_Body;
 
-end CMOF.Internals.Setup;
+end AMF.Internals.Tables.CMOF_Setup;

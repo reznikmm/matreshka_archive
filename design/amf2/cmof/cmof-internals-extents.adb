@@ -212,15 +212,4 @@ package body CMOF.Internals.Extents is
       return Result;
    end All_Elements;
 
-   --------------------------------------
-   -- Initialize_CMOF_Metamodel_Extent --
-   --------------------------------------
-
-   procedure Initialize_CMOF_Metamodel_Extent is
-   begin
-      AMF.Internals.Tables.AMF_Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
-      AMF.Internals.Tables.AMF_Tables.Extents.Table
-       (CMOF_Metamodel_Extent) := (0, 0);
-   end Initialize_CMOF_Metamodel_Extent;
-
 end CMOF.Internals.Extents;

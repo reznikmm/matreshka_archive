@@ -45,8 +45,6 @@ with AMF.Internals.Collections;
 
 package CMOF.Internals.Extents is
 
-   procedure Initialize_CMOF_Metamodel_Extent;
-
    function All_Elements
     (Self : CMOF_Extent)
        return not null AMF.Internals.Collections.Collection_Access;

@@ -52,9 +52,8 @@ with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
-with CMOF.Internals.Extents;
 
-package body CMOF.Internals.Setup is
+package body AMF.Internals.Tables.CMOF_Setup is
 
    use AMF.CMOF;
    use AMF.Internals.Extents;
@@ -63,13 +62,12 @@ package body CMOF.Internals.Setup is
    use AMF.Internals.Tables.CMOF_Attributes;
    use AMF.Internals.Tables.CMOF_Constructors;
    use AMF.Internals.Tables.CMOF_Metamodel;
-   use CMOF.Internals.Extents;
 
-   Extent : constant CMOF_Extent := CMOF_Metamodel_Extent;
+   Extent : constant AMF.Internals.AMF_Extent
+     := AMF.Internals.Extents.Allocate_Extent;
 
 begin
    CMOF_Element_Table.Set_Last (800);
-   Initialize_CMOF_Metamodel_Extent;
 
    Initialize_Package (189);
    Internal_Append (Extent, 189);
@@ -16533,4 +16531,4 @@ begin
      189,
      MP_CMOF_Element_Tag);
 
-end CMOF.Internals.Setup;
+end AMF.Internals.Tables.CMOF_Setup;
