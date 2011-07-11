@@ -52,20 +52,31 @@ package body Generator.Type_Mapping.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
 
-   Mapping_Tag_Name              : constant League.Strings.Universal_String
+   Literal_Tag_Name                : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("literal");
+   Mapping_Tag_Name                : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("mapping");
-   Type_Tag_Name                 : constant League.Strings.Universal_String
+   Type_Tag_Name                   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
-   Ada_Package_Attribute_Name    : constant League.Strings.Universal_String
+   Ada_Package_Attribute_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaPackage");
-   Ada_Type_Attribute_Name       : constant League.Strings.Universal_String
+   Ada_Literal_Attribute_Name      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("adaLiteral");
+   Ada_Type_Attribute_Name         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaType");
-   Member_Name_Attribute_Name    : constant League.Strings.Universal_String
+   Member_Name_Attribute_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("memberName");
-   Representation_Attribute_Name : constant League.Strings.Universal_String
+   Member_Kind_Name_Attribute_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("memberKindName");
+   Representation_Attribute_Name   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("representation");
-   URI_Attribute_Name            : constant League.Strings.Universal_String
+   URI_Attribute_Name              : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("uri");
+
+   function Resolve
+    (URI : League.Strings.Universal_String)
+       return AMF.CMOF.Elements.CMOF_Element_Access;
+   --  Resolves element.
 
    ------------------
    -- Error_String --
@@ -76,6 +87,32 @@ package body Generator.Type_Mapping.Handlers is
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
+
+   -------------
+   -- Resolve --
+   -------------
+
+   function Resolve
+    (URI : League.Strings.Universal_String)
+       return AMF.CMOF.Elements.CMOF_Element_Access
+   is
+      use type AMF.URI_Stores.URI_Store_Access;
+
+      Separator : constant Natural := URI.Index ('#');
+      Extent    : constant AMF.URI_Stores.URI_Store_Access
+        := AMF.Internals.XMI_Handlers.Extent
+            (URI.Slice (1, Separator - 1));
+      Element   : AMF.CMOF.Elements.CMOF_Element_Access;
+
+   begin
+      if Extent /= null then
+         Element :=
+           AMF.CMOF.Elements.CMOF_Element_Access
+            (Extent.Element (URI.Slice (Separator + 1, URI.Length)));
+      end if;
+
+      return Element;
+   end Resolve;
 
    -------------------
    -- Start_Element --
@@ -91,14 +128,37 @@ package body Generator.Type_Mapping.Handlers is
    is
       use type League.Strings.Universal_String;
       use type AMF.CMOF.Elements.CMOF_Element_Access;
-      use type AMF.URI_Stores.URI_Store_Access;
-
-      Separator : Natural;
-      URI       : League.Strings.Universal_String;
-      Extent    : AMF.URI_Stores.URI_Store_Access;
 
    begin
-      if Qualified_Name = Mapping_Tag_Name then
+      if Qualified_Name = Literal_Tag_Name then
+         declare
+            Element : AMF.CMOF.Elements.CMOF_Element_Access
+              := Resolve (Attributes.Value (URI_Attribute_Name));
+            Mapping : Enumeration_Literal_Mapping_Access;
+
+         begin
+            if Element = null then
+               Put_Line
+                (Standard_Error,
+                 "Element '"
+                   & Attributes.Value (URI_Attribute_Name).To_Wide_Wide_String
+                   & "' is not found, ignoring");
+
+            else
+               if Literal.Contains (Element) then
+                  Mapping := Literal.Element (Element);
+
+               else
+                  Mapping := new Enumeration_Literal_Mapping;
+                  Literal.Insert (Element, Mapping);
+               end if;
+
+               Mapping.Ada_Name :=
+                 Attributes.Value (Ada_Literal_Attribute_Name);
+            end if;
+         end;
+
+      elsif Qualified_Name = Mapping_Tag_Name then
          declare
             Representation : constant Representation_Kinds
               := Representation_Kinds'Wide_Wide_Value
@@ -121,41 +181,24 @@ package body Generator.Type_Mapping.Handlers is
               Attributes.Value (Ada_Type_Attribute_Name);
             Self.Mapping.Mapping (Representation).Member_Name :=
               Attributes.Value (Member_Name_Attribute_Name);
+            Self.Mapping.Mapping (Representation).Member_Kind_Name :=
+              Attributes.Value (Member_Kind_Name_Attribute_Name);
          end;
 
       elsif Qualified_Name = Type_Tag_Name then
-         Self.Element := null;
+         Self.Element := Resolve (Attributes.Value (URI_Attribute_Name));
          Self.Mapping := null;
-         URI := Attributes.Value (URI_Attribute_Name);
-         Separator := URI.Index ('#');
 
-         Extent :=
-           AMF.Internals.XMI_Handlers.Extent
-            (URI.Slice (1, Separator - 1));
-
-         if Extent = null then
+         if Self.Element = null then
             Put_Line
              (Standard_Error,
-              "Resource '"
-                & URI.Slice (1, Separator - 1).To_Wide_Wide_String
+              "Element '"
+                & Attributes.Value (URI_Attribute_Name).To_Wide_Wide_String
                 & "' is not found, ignoring");
 
          else
-            Self.Element :=
-              AMF.CMOF.Elements.CMOF_Element_Access
-               (Extent.Element (URI.Slice (Separator + 1, URI.Length)));
-
-            if Self.Element = null then
-               Put_Line
-                (Standard_Error,
-                 "Element '"
-                   & URI.To_Wide_Wide_String
-                   & "' is not found, ignoring");
-
-            else
-               Self.Mapping := new Type_Mapping;
-               Mapping.Insert (Self.Element, Self.Mapping);
-            end if;
+            Self.Mapping := new Type_Mapping;
+            Mapping.Insert (Self.Element, Self.Mapping);
          end if;
       end if;
    end Start_Element;

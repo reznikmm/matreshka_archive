@@ -1848,13 +1848,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (214, Return_Direction);
+   Internal_Set_Direction (214, Return_Parameter);
    Internal_Set_Is_Ordered (214, False);
    Internal_Set_Is_Unique (214, True);
    Internal_Set_Lower (214, (False, 1));
    Internal_Set_Upper (214, (False, (False, 1)));
 
-   Internal_Set_Direction (215, In_Direction);
+   Internal_Set_Direction (215, In_Parameter);
    Internal_Set_Is_Ordered (215, False);
    Internal_Set_Is_Unique (215, True);
    Internal_Set_Lower (215, (False, 1));
@@ -1882,7 +1882,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (220, Return_Direction);
+   Internal_Set_Direction (220, Return_Parameter);
    Internal_Set_Is_Ordered (220, False);
    Internal_Set_Is_Unique (220, True);
    Internal_Set_Lower (220, (False, 0));
@@ -1907,7 +1907,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (225, Return_Direction);
+   Internal_Set_Direction (225, Return_Parameter);
    Internal_Set_Is_Ordered (225, False);
    Internal_Set_Is_Unique (225, True);
    Internal_Set_Lower (225, (False, 0));
@@ -1932,7 +1932,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (230, Return_Direction);
+   Internal_Set_Direction (230, Return_Parameter);
    Internal_Set_Is_Ordered (230, False);
    Internal_Set_Is_Unique (230, True);
    Internal_Set_Lower (230, (False, 0));
@@ -1957,7 +1957,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (235, Return_Direction);
+   Internal_Set_Direction (235, Return_Parameter);
    Internal_Set_Is_Ordered (235, False);
    Internal_Set_Is_Unique (235, True);
    Internal_Set_Lower (235, (False, 0));
@@ -1982,7 +1982,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (240, Return_Direction);
+   Internal_Set_Direction (240, Return_Parameter);
    Internal_Set_Is_Ordered (240, False);
    Internal_Set_Is_Unique (240, True);
    Internal_Set_Lower (240, (False, 0));
@@ -2009,13 +2009,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (247, Return_Direction);
+   Internal_Set_Direction (247, Return_Parameter);
    Internal_Set_Is_Ordered (247, False);
    Internal_Set_Is_Unique (247, True);
    Internal_Set_Lower (247, (False, 0));
    Internal_Set_Upper (247, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (248, In_Direction);
+   Internal_Set_Direction (248, In_Parameter);
    Internal_Set_Is_Ordered (248, False);
    Internal_Set_Is_Unique (248, True);
    Internal_Set_Lower (248, (False, 1));
@@ -2045,13 +2045,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (255, Return_Direction);
+   Internal_Set_Direction (255, Return_Parameter);
    Internal_Set_Is_Ordered (255, False);
    Internal_Set_Is_Unique (255, True);
    Internal_Set_Lower (255, (False, 1));
    Internal_Set_Upper (255, (False, (False, 1)));
 
-   Internal_Set_Direction (256, In_Direction);
+   Internal_Set_Direction (256, In_Parameter);
    Internal_Set_Is_Ordered (256, False);
    Internal_Set_Is_Unique (256, True);
    Internal_Set_Lower (256, (False, 1));
@@ -2079,13 +2079,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (261, Return_Direction);
+   Internal_Set_Direction (261, Return_Parameter);
    Internal_Set_Is_Ordered (261, False);
    Internal_Set_Is_Unique (261, True);
    Internal_Set_Lower (261, (False, 0));
    Internal_Set_Upper (261, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (262, In_Direction);
+   Internal_Set_Direction (262, In_Parameter);
    Internal_Set_Is_Ordered (262, False);
    Internal_Set_Is_Unique (262, True);
    Internal_Set_Lower (262, (False, 0));
@@ -2113,13 +2113,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (267, Return_Direction);
+   Internal_Set_Direction (267, Return_Parameter);
    Internal_Set_Is_Ordered (267, False);
    Internal_Set_Is_Unique (267, True);
    Internal_Set_Lower (267, (False, 1));
    Internal_Set_Upper (267, (False, (False, 1)));
 
-   Internal_Set_Direction (268, In_Direction);
+   Internal_Set_Direction (268, In_Parameter);
    Internal_Set_Is_Ordered (268, False);
    Internal_Set_Is_Unique (268, True);
    Internal_Set_Lower (268, (False, 1));
@@ -2270,7 +2270,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (286, Return_Direction);
+   Internal_Set_Direction (286, Return_Parameter);
    Internal_Set_Is_Ordered (286, False);
    Internal_Set_Is_Unique (286, True);
    Internal_Set_Lower (286, (False, 0));
@@ -2295,7 +2295,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (291, Return_Direction);
+   Internal_Set_Direction (291, Return_Parameter);
    Internal_Set_Is_Ordered (291, False);
    Internal_Set_Is_Unique (291, True);
    Internal_Set_Lower (291, (False, 1));
@@ -2457,7 +2457,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (311, Return_Direction);
+   Internal_Set_Direction (311, Return_Parameter);
    Internal_Set_Is_Ordered (311, False);
    Internal_Set_Is_Unique (311, True);
    Internal_Set_Lower (311, (False, 1));
@@ -2484,13 +2484,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (318, Return_Direction);
+   Internal_Set_Direction (318, Return_Parameter);
    Internal_Set_Is_Ordered (318, False);
    Internal_Set_Is_Unique (318, True);
    Internal_Set_Lower (318, (False, 1));
    Internal_Set_Upper (318, (False, (False, 1)));
 
-   Internal_Set_Direction (319, In_Direction);
+   Internal_Set_Direction (319, In_Parameter);
    Internal_Set_Is_Ordered (319, False);
    Internal_Set_Is_Unique (319, True);
    Internal_Set_Lower (319, (False, 1));
@@ -2520,13 +2520,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (326, Return_Direction);
+   Internal_Set_Direction (326, Return_Parameter);
    Internal_Set_Is_Ordered (326, False);
    Internal_Set_Is_Unique (326, True);
    Internal_Set_Lower (326, (False, 1));
    Internal_Set_Upper (326, (False, (False, 1)));
 
-   Internal_Set_Direction (327, In_Direction);
+   Internal_Set_Direction (327, In_Parameter);
    Internal_Set_Is_Ordered (327, False);
    Internal_Set_Is_Unique (327, True);
    Internal_Set_Lower (327, (False, 1));
@@ -2554,7 +2554,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (332, Return_Direction);
+   Internal_Set_Direction (332, Return_Parameter);
    Internal_Set_Is_Ordered (332, False);
    Internal_Set_Is_Unique (332, True);
    Internal_Set_Lower (332, (False, 1));
@@ -2579,7 +2579,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (337, Return_Direction);
+   Internal_Set_Direction (337, Return_Parameter);
    Internal_Set_Is_Ordered (337, False);
    Internal_Set_Is_Unique (337, True);
    Internal_Set_Lower (337, (False, 1));
@@ -2721,7 +2721,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (351, Return_Direction);
+   Internal_Set_Direction (351, Return_Parameter);
    Internal_Set_Is_Ordered (351, False);
    Internal_Set_Is_Unique (351, True);
    Internal_Set_Lower (351, (False, 0));
@@ -2746,13 +2746,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (356, Return_Direction);
+   Internal_Set_Direction (356, Return_Parameter);
    Internal_Set_Is_Ordered (356, False);
    Internal_Set_Is_Unique (356, True);
    Internal_Set_Lower (356, (False, 0));
    Internal_Set_Upper (356, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (357, In_Direction);
+   Internal_Set_Direction (357, In_Parameter);
    Internal_Set_Is_Ordered (357, False);
    Internal_Set_Is_Unique (357, True);
    Internal_Set_Lower (357, (False, 1));
@@ -2780,13 +2780,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (362, Return_Direction);
+   Internal_Set_Direction (362, Return_Parameter);
    Internal_Set_Is_Ordered (362, False);
    Internal_Set_Is_Unique (362, True);
    Internal_Set_Lower (362, (False, 0));
    Internal_Set_Upper (362, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (363, In_Direction);
+   Internal_Set_Direction (363, In_Parameter);
    Internal_Set_Is_Ordered (363, False);
    Internal_Set_Is_Unique (363, True);
    Internal_Set_Lower (363, (False, 0));
@@ -2814,13 +2814,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (368, Return_Direction);
+   Internal_Set_Direction (368, Return_Parameter);
    Internal_Set_Is_Ordered (368, False);
    Internal_Set_Is_Unique (368, True);
    Internal_Set_Lower (368, (False, 0));
    Internal_Set_Upper (368, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (369, In_Direction);
+   Internal_Set_Direction (369, In_Parameter);
    Internal_Set_Is_Ordered (369, False);
    Internal_Set_Is_Unique (369, True);
    Internal_Set_Lower (369, (False, 0));
@@ -2848,7 +2848,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (374, Return_Direction);
+   Internal_Set_Direction (374, Return_Parameter);
    Internal_Set_Is_Ordered (374, False);
    Internal_Set_Is_Unique (374, True);
    Internal_Set_Lower (374, (False, 1));
@@ -2976,13 +2976,13 @@ begin
 
 
 
-   Internal_Set_Direction (395, Return_Direction);
+   Internal_Set_Direction (395, Return_Parameter);
    Internal_Set_Is_Ordered (395, False);
    Internal_Set_Is_Unique (395, True);
    Internal_Set_Lower (395, (False, 1));
    Internal_Set_Upper (395, (False, (False, 1)));
 
-   Internal_Set_Direction (396, In_Direction);
+   Internal_Set_Direction (396, In_Parameter);
    Internal_Set_Is_Ordered (396, False);
    Internal_Set_Is_Unique (396, True);
    Internal_Set_Lower (396, (False, 1));
@@ -3010,13 +3010,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (401, Return_Direction);
+   Internal_Set_Direction (401, Return_Parameter);
    Internal_Set_Is_Ordered (401, False);
    Internal_Set_Is_Unique (401, True);
    Internal_Set_Lower (401, (False, 1));
    Internal_Set_Upper (401, (False, (False, 1)));
 
-   Internal_Set_Direction (402, In_Direction);
+   Internal_Set_Direction (402, In_Parameter);
    Internal_Set_Is_Ordered (402, False);
    Internal_Set_Is_Unique (402, True);
    Internal_Set_Lower (402, (False, 1));
@@ -3118,7 +3118,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (413, Return_Direction);
+   Internal_Set_Direction (413, Return_Parameter);
    Internal_Set_Is_Ordered (413, False);
    Internal_Set_Is_Unique (413, True);
    Internal_Set_Lower (413, (False, 1));
@@ -3143,7 +3143,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (418, Return_Direction);
+   Internal_Set_Direction (418, Return_Parameter);
    Internal_Set_Is_Ordered (418, False);
    Internal_Set_Is_Unique (418, True);
    Internal_Set_Lower (418, (False, 1));
@@ -3168,7 +3168,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (423, Return_Direction);
+   Internal_Set_Direction (423, Return_Parameter);
    Internal_Set_Is_Ordered (423, False);
    Internal_Set_Is_Unique (423, True);
    Internal_Set_Lower (423, (False, 1));
@@ -3193,7 +3193,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (428, Return_Direction);
+   Internal_Set_Direction (428, Return_Parameter);
    Internal_Set_Is_Ordered (428, False);
    Internal_Set_Is_Unique (428, True);
    Internal_Set_Lower (428, (False, 1));
@@ -3218,7 +3218,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (433, Return_Direction);
+   Internal_Set_Direction (433, Return_Parameter);
    Internal_Set_Is_Ordered (433, False);
    Internal_Set_Is_Unique (433, True);
    Internal_Set_Lower (433, (False, 1));
@@ -3243,7 +3243,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (438, Return_Direction);
+   Internal_Set_Direction (438, Return_Parameter);
    Internal_Set_Is_Ordered (438, False);
    Internal_Set_Is_Unique (438, True);
    Internal_Set_Lower (438, (False, 1));
@@ -3402,7 +3402,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (461, Return_Direction);
+   Internal_Set_Direction (461, Return_Parameter);
    Internal_Set_Is_Ordered (461, True);
    Internal_Set_Is_Unique (461, True);
    Internal_Set_Lower (461, (False, 0));
@@ -3508,13 +3508,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (471, Return_Direction);
+   Internal_Set_Direction (471, Return_Parameter);
    Internal_Set_Is_Ordered (471, False);
    Internal_Set_Is_Unique (471, True);
    Internal_Set_Lower (471, (False, 0));
    Internal_Set_Upper (471, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (472, In_Direction);
+   Internal_Set_Direction (472, In_Parameter);
    Internal_Set_Is_Ordered (472, False);
    Internal_Set_Is_Unique (472, True);
    Internal_Set_Lower (472, (False, 0));
@@ -3831,7 +3831,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (511, Return_Direction);
+   Internal_Set_Direction (511, Return_Parameter);
    Internal_Set_Is_Ordered (511, False);
    Internal_Set_Is_Unique (511, True);
    Internal_Set_Lower (511, (False, 1));
@@ -3858,13 +3858,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (518, Return_Direction);
+   Internal_Set_Direction (518, Return_Parameter);
    Internal_Set_Is_Ordered (518, False);
    Internal_Set_Is_Unique (518, True);
    Internal_Set_Lower (518, (False, 1));
    Internal_Set_Upper (518, (False, (False, 1)));
 
-   Internal_Set_Direction (519, In_Direction);
+   Internal_Set_Direction (519, In_Parameter);
    Internal_Set_Is_Ordered (519, False);
    Internal_Set_Is_Unique (519, True);
    Internal_Set_Lower (519, (False, 1));
@@ -3892,7 +3892,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (524, Return_Direction);
+   Internal_Set_Direction (524, Return_Parameter);
    Internal_Set_Is_Ordered (524, False);
    Internal_Set_Is_Unique (524, True);
    Internal_Set_Lower (524, (False, 0));
@@ -3917,7 +3917,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (529, Return_Direction);
+   Internal_Set_Direction (529, Return_Parameter);
    Internal_Set_Is_Ordered (529, False);
    Internal_Set_Is_Unique (529, True);
    Internal_Set_Lower (529, (False, 1));
@@ -3942,13 +3942,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (534, Return_Direction);
+   Internal_Set_Direction (534, Return_Parameter);
    Internal_Set_Is_Ordered (534, False);
    Internal_Set_Is_Unique (534, True);
    Internal_Set_Lower (534, (False, 1));
    Internal_Set_Upper (534, (False, (False, 1)));
 
-   Internal_Set_Direction (535, In_Direction);
+   Internal_Set_Direction (535, In_Parameter);
    Internal_Set_Is_Ordered (535, False);
    Internal_Set_Is_Unique (535, True);
    Internal_Set_Lower (535, (False, 1));
@@ -4020,13 +4020,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (543, Return_Direction);
+   Internal_Set_Direction (543, Return_Parameter);
    Internal_Set_Is_Ordered (543, False);
    Internal_Set_Is_Unique (543, True);
    Internal_Set_Lower (543, (False, 0));
    Internal_Set_Upper (543, (False, (Unlimited => True)));
 
-   Internal_Set_Direction (544, In_Direction);
+   Internal_Set_Direction (544, In_Parameter);
    Internal_Set_Is_Ordered (544, False);
    Internal_Set_Is_Unique (544, True);
    Internal_Set_Lower (544, (False, 0));
@@ -4515,7 +4515,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (587, Return_Direction);
+   Internal_Set_Direction (587, Return_Parameter);
    Internal_Set_Is_Ordered (587, False);
    Internal_Set_Is_Unique (587, True);
    Internal_Set_Lower (587, (False, 1));
@@ -4540,7 +4540,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (592, Return_Direction);
+   Internal_Set_Direction (592, Return_Parameter);
    Internal_Set_Is_Ordered (592, False);
    Internal_Set_Is_Unique (592, True);
    Internal_Set_Lower (592, (False, 1));
@@ -4565,7 +4565,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (597, Return_Direction);
+   Internal_Set_Direction (597, Return_Parameter);
    Internal_Set_Is_Ordered (597, False);
    Internal_Set_Is_Unique (597, True);
    Internal_Set_Lower (597, (False, 1));
@@ -4590,7 +4590,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (602, Return_Direction);
+   Internal_Set_Direction (602, Return_Parameter);
    Internal_Set_Is_Ordered (602, False);
    Internal_Set_Is_Unique (602, True);
    Internal_Set_Lower (602, (False, 1));
@@ -4615,7 +4615,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (607, Return_Direction);
+   Internal_Set_Direction (607, Return_Parameter);
    Internal_Set_Is_Ordered (607, False);
    Internal_Set_Is_Unique (607, True);
    Internal_Set_Lower (607, (False, 1));
@@ -4642,13 +4642,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (614, Return_Direction);
+   Internal_Set_Direction (614, Return_Parameter);
    Internal_Set_Is_Ordered (614, False);
    Internal_Set_Is_Unique (614, True);
    Internal_Set_Lower (614, (False, 1));
    Internal_Set_Upper (614, (False, (False, 1)));
 
-   Internal_Set_Direction (615, In_Direction);
+   Internal_Set_Direction (615, In_Parameter);
    Internal_Set_Is_Ordered (615, False);
    Internal_Set_Is_Unique (615, True);
    Internal_Set_Lower (615, (False, 1));
@@ -4672,7 +4672,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (619, Return_Direction);
+   Internal_Set_Direction (619, Return_Parameter);
    Internal_Set_Is_Ordered (619, False);
    Internal_Set_Is_Unique (619, True);
    Internal_Set_Lower (619, (False, 0));
@@ -4805,13 +4805,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (631, Return_Direction);
+   Internal_Set_Direction (631, Return_Parameter);
    Internal_Set_Is_Ordered (631, False);
    Internal_Set_Is_Unique (631, True);
    Internal_Set_Lower (631, (False, 1));
    Internal_Set_Upper (631, (False, (False, 1)));
 
-   Internal_Set_Direction (632, In_Direction);
+   Internal_Set_Direction (632, In_Parameter);
    Internal_Set_Is_Ordered (632, False);
    Internal_Set_Is_Unique (632, True);
    Internal_Set_Lower (632, (False, 1));
@@ -4820,7 +4820,7 @@ begin
      (False, League.Strings.To_Universal_String ("n")));
    Internal_Set_Upper (632, (False, (False, 1)));
 
-   Internal_Set_Direction (633, In_Direction);
+   Internal_Set_Direction (633, In_Parameter);
    Internal_Set_Is_Ordered (633, False);
    Internal_Set_Is_Unique (633, True);
    Internal_Set_Lower (633, (False, 1));
@@ -4947,7 +4947,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (649, Return_Direction);
+   Internal_Set_Direction (649, Return_Parameter);
    Internal_Set_Is_Ordered (649, False);
    Internal_Set_Is_Unique (649, True);
    Internal_Set_Lower (649, (False, 1));
@@ -5093,7 +5093,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (664, Return_Direction);
+   Internal_Set_Direction (664, Return_Parameter);
    Internal_Set_Is_Ordered (664, False);
    Internal_Set_Is_Unique (664, True);
    Internal_Set_Lower (664, (False, 1));
@@ -5118,7 +5118,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (669, Return_Direction);
+   Internal_Set_Direction (669, Return_Parameter);
    Internal_Set_Is_Ordered (669, False);
    Internal_Set_Is_Unique (669, True);
    Internal_Set_Lower (669, (False, 0));
@@ -5145,13 +5145,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (676, Return_Direction);
+   Internal_Set_Direction (676, Return_Parameter);
    Internal_Set_Is_Ordered (676, False);
    Internal_Set_Is_Unique (676, True);
    Internal_Set_Lower (676, (False, 1));
    Internal_Set_Upper (676, (False, (False, 1)));
 
-   Internal_Set_Direction (677, In_Direction);
+   Internal_Set_Direction (677, In_Parameter);
    Internal_Set_Is_Ordered (677, False);
    Internal_Set_Is_Unique (677, True);
    Internal_Set_Lower (677, (False, 1));
@@ -5323,13 +5323,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (694, Return_Direction);
+   Internal_Set_Direction (694, Return_Parameter);
    Internal_Set_Is_Ordered (694, False);
    Internal_Set_Is_Unique (694, True);
    Internal_Set_Lower (694, (False, 1));
    Internal_Set_Upper (694, (False, (False, 1)));
 
-   Internal_Set_Direction (695, In_Direction);
+   Internal_Set_Direction (695, In_Parameter);
    Internal_Set_Is_Ordered (695, False);
    Internal_Set_Is_Unique (695, True);
    Internal_Set_Lower (695, (False, 1));
@@ -5462,7 +5462,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (714, Return_Direction);
+   Internal_Set_Direction (714, Return_Parameter);
    Internal_Set_Is_Ordered (714, True);
    Internal_Set_Is_Unique (714, True);
    Internal_Set_Lower (714, (False, 0));
@@ -5487,13 +5487,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (719, Return_Direction);
+   Internal_Set_Direction (719, Return_Parameter);
    Internal_Set_Is_Ordered (719, False);
    Internal_Set_Is_Unique (719, True);
    Internal_Set_Lower (719, (False, 1));
    Internal_Set_Upper (719, (False, (False, 1)));
 
-   Internal_Set_Direction (720, In_Direction);
+   Internal_Set_Direction (720, In_Parameter);
    Internal_Set_Is_Ordered (720, False);
    Internal_Set_Is_Unique (720, True);
    Internal_Set_Lower (720, (False, 1));
@@ -5502,7 +5502,7 @@ begin
      (False, League.Strings.To_Universal_String ("n")));
    Internal_Set_Upper (720, (False, (False, 1)));
 
-   Internal_Set_Direction (721, In_Direction);
+   Internal_Set_Direction (721, In_Parameter);
    Internal_Set_Is_Ordered (721, False);
    Internal_Set_Is_Unique (721, True);
    Internal_Set_Lower (721, (False, 1));
@@ -5530,7 +5530,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (726, Return_Direction);
+   Internal_Set_Direction (726, Return_Parameter);
    Internal_Set_Is_Ordered (726, False);
    Internal_Set_Is_Unique (726, True);
    Internal_Set_Lower (726, (False, 1));
@@ -5555,7 +5555,7 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (731, Return_Direction);
+   Internal_Set_Direction (731, Return_Parameter);
    Internal_Set_Is_Ordered (731, False);
    Internal_Set_Is_Unique (731, True);
    Internal_Set_Lower (731, (False, 1));
@@ -5701,13 +5701,13 @@ begin
      (False, League.Strings.To_Universal_String ("spec")));
 
 
-   Internal_Set_Direction (753, Return_Direction);
+   Internal_Set_Direction (753, Return_Parameter);
    Internal_Set_Is_Ordered (753, False);
    Internal_Set_Is_Unique (753, True);
    Internal_Set_Lower (753, (False, 1));
    Internal_Set_Upper (753, (False, (False, 1)));
 
-   Internal_Set_Direction (754, In_Direction);
+   Internal_Set_Direction (754, In_Parameter);
    Internal_Set_Is_Ordered (754, False);
    Internal_Set_Is_Unique (754, True);
    Internal_Set_Lower (754, (False, 0));

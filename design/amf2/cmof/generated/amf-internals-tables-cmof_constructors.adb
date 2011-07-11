@@ -1577,7 +1577,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  upper
                      11     => (M_String, null),
                        --  default
-                     12     => (M_Parameter_Direction_Kind, CMOF.In_Direction),
+                     12     => (M_Parameter_Direction_Kind, AMF.CMOF.In_Parameter),
                        --  direction
                      13     => (M_Element, 0),
                        --  operation

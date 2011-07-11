@@ -574,17 +574,17 @@ package body Generator.Initialization is
                case AMF.CMOF.Parameter_Direction_Kind_Holders.Element
                      (Value)
                is
-                  when In_Direction =>
-                     Put_Line ("In_Direction);");
+                  when In_Parameter =>
+                     Put_Line ("In_Parameter);");
 
-                  when Out_Direction =>
+                  when Out_Parameter =>
                      Put_Line ("Out_Direction);");
 
-                  when In_Out_Direction =>
+                  when In_Out_Parameter =>
                      Put_Line ("In_Out_Direction);");
 
-                  when Return_Direction =>
-                     Put_Line ("Return_Direction);");
+                  when Return_Parameter =>
+                     Put_Line ("Return_Parameter);");
                end case;
             else
                --  Enumeration

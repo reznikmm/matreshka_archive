@@ -504,7 +504,7 @@ procedure Gen_API is
          --  Look for 'return' parameter.
 
          for J in 1 .. Parameters.Length loop
-            if Parameters.Element (J).Get_Direction = Return_Direction then
+            if Parameters.Element (J).Get_Direction = Return_Parameter then
                Returns := Parameters.Element (J);
             end if;
          end loop;
@@ -552,8 +552,8 @@ procedure Gen_API is
          end if;
 
          for J in 1 .. Parameters.Length loop
-            if Parameters.Element (J).Get_Direction /= Return_Direction then
-               if Parameters.Element (J).Get_Direction /= In_Direction then
+            if Parameters.Element (J).Get_Direction /= Return_Parameter then
+               if Parameters.Element (J).Get_Direction /= In_Parameter then
                   raise Program_Error;
                end if;
 

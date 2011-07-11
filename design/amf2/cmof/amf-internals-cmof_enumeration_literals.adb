@@ -41,8 +41,26 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Enumeration_Literals is
+
+   use AMF.Internals.Tables.CMOF_Attributes;
+
+   ---------------------
+   -- Get_Enumeration --
+   ---------------------
+
+   overriding function Get_Enumeration
+    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
+       return AMF.CMOF.Enumerations.CMOF_Enumeration_Access is
+   begin
+      return
+        AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Enumeration (Self.Id)));
+   end Get_Enumeration;
 
    -----------------------
    -- Get_Owned_Element --
@@ -103,21 +121,6 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error;
-      return Get_Name (Self);
-   end Get_Name;
 
    --------------
    -- Set_Name --
@@ -253,21 +256,6 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
       raise Program_Error;
       return Qualified_Name (Self);
    end Qualified_Name;
-
-   ---------------------
-   -- Get_Enumeration --
-   ---------------------
-
-   overriding function Get_Enumeration
-     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-      return AMF.CMOF.Enumerations.CMOF_Enumeration_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Enumeration unimplemented");
-      raise Program_Error;
-      return Get_Enumeration (Self);
-   end Get_Enumeration;
 
    ---------------------
    -- Set_Enumeration --

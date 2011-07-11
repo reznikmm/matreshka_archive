@@ -56,6 +56,7 @@ package AMF.Internals.CMOF_Enumerations is
 
    overriding function Get_Owned_Literal
     (Self : not null access constant CMOF_Enumeration_Proxy)
-       return AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal;
+       return
+         AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal;
 
 end AMF.Internals.CMOF_Enumerations;

@@ -72,6 +72,44 @@ package body Generator.Type_Mapping is
    --  Constructs name of the type which is used to represent values of the
    --  specified type.
 
+   ----------------------------------
+   -- Ada_Enumeration_Literal_Name --
+   ----------------------------------
+
+   function Ada_Enumeration_Literal_Name
+    (Element : not null access
+       AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class)
+       return League.Strings.Universal_String
+   is
+      Position : constant Enumeration_Literal_Maps.Cursor
+        := Literal.Find (AMF.CMOF.Elements.CMOF_Element_Access (Element));
+
+   begin
+      if Enumeration_Literal_Maps.Has_Element (Position)
+        and then
+          not Enumeration_Literal_Maps.Element (Position).Ada_Name.Is_Empty
+      then
+         return Enumeration_Literal_Maps.Element (Position).Ada_Name;
+
+      else
+         declare
+            Enumeration : constant
+              AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                := Element.Get_Enumeration;
+
+         begin
+            Ada.Wide_Wide_Text_IO.Put_Line
+             (Ada.Wide_Wide_Text_IO.Standard_Error,
+              "error: no mapping for "
+                & Enumeration.Get_Name.Value.To_Wide_Wide_String
+                & "::"
+                & Element.Get_Name.Value.To_Wide_Wide_String);
+
+            raise Program_Error;
+         end;
+      end if;
+   end Ada_Enumeration_Literal_Name;
+
    -----------------------------
    -- Public_Ada_Package_Name --
    -----------------------------
@@ -303,9 +341,65 @@ package body Generator.Type_Mapping is
    function Member_Name
     (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
      Representation : Representation_Kinds)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      Position : constant Mapping_Maps.Cursor := Mapping.Find (Element);
+
    begin
-      return Mapping.Element (Element).Mapping (Representation).Member_Name;
+      if Mapping_Maps.Has_Element (Position)
+        and then Mapping_Maps.Element (Position).Mapping (Representation)
+                   /= null
+        and then not Mapping_Maps.Element
+                      (Position).Mapping (Representation).Member_Name.Is_Empty
+      then
+         return Mapping.Element (Element).Mapping (Representation).Member_Name;
+
+      else
+         Put_Line
+          (Standard_Error,
+           "error: memberName is not defined for "
+             & Representation_Kinds'Wide_Wide_Image (Representation)
+             & " of "
+             & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                (Element.all).Get_Name.Value.To_Wide_Wide_String);
+
+         raise Program_Error;
+      end if;
    end Member_Name;
+
+   ----------------------
+   -- Member_Kind_Name --
+   ----------------------
+
+   function Member_Kind_Name
+    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String
+   is
+      Position : constant Mapping_Maps.Cursor := Mapping.Find (Element);
+
+   begin
+      if Mapping_Maps.Has_Element (Position)
+        and then Mapping_Maps.Element (Position).Mapping (Representation)
+                   /= null
+        and then not Mapping_Maps.Element
+                      (Position).Mapping
+                        (Representation).Member_Kind_Name.Is_Empty
+      then
+         return
+           Mapping.Element (Element).Mapping (Representation).Member_Kind_Name;
+
+      else
+         Put_Line
+          (Standard_Error,
+           "error: memberKindName is not defined for "
+             & Representation_Kinds'Wide_Wide_Image (Representation)
+             & " of "
+             & AMF.CMOF.Named_Elements.CMOF_Named_Element'Class
+                (Element.all).Get_Name.Value.To_Wide_Wide_String);
+
+         raise Program_Error;
+      end if;
+   end Member_Kind_Name;
 
 end Generator.Type_Mapping;

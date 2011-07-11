@@ -46,6 +46,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Containers.Hashed_Maps;
 private with AMF.CMOF.Elements.Hash;
+with AMF.CMOF.Enumeration_Literals;
 with AMF.CMOF.Types;
 
 package Generator.Type_Mapping is
@@ -72,12 +73,23 @@ package Generator.Type_Mapping is
      Representation : Representation_Kinds)
        return League.Strings.Universal_String;
 
+   function Member_Kind_Name
+    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+
+   function Ada_Enumeration_Literal_Name
+    (Element : not null access
+       AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class)
+       return League.Strings.Universal_String;
+
 private
 
    type Representation_Mapping is record
-      Ada_Package : League.Strings.Universal_String;
-      Ada_Type    : League.Strings.Universal_String;
-      Member_Name : League.Strings.Universal_String;
+      Ada_Package      : League.Strings.Universal_String;
+      Ada_Type         : League.Strings.Universal_String;
+      Member_Name      : League.Strings.Universal_String;
+      Member_Kind_Name : League.Strings.Universal_String;
    end record;
 
    type Representation_Mapping_Access is access all Representation_Mapping;
@@ -98,6 +110,21 @@ private
            AMF.CMOF.Elements.Hash,
            AMF.CMOF.Elements."=");
 
+   type Enumeration_Literal_Mapping is record
+      Ada_Name : League.Strings.Universal_String;
+   end record;
+
+   type Enumeration_Literal_Mapping_Access is
+     access all Enumeration_Literal_Mapping;
+
+   package Enumeration_Literal_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.CMOF.Elements.CMOF_Element_Access,
+           Enumeration_Literal_Mapping_Access,
+           AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=");
+
    Mapping : Mapping_Maps.Map;
+   Literal : Enumeration_Literal_Maps.Map;
 
 end Generator.Type_Mapping;

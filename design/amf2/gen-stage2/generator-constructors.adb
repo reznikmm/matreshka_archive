@@ -44,10 +44,13 @@
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Enumeration_Literals.Collections;
+with AMF.CMOF.Enumerations;
 with AMF.CMOF.Types;
 with League.Strings;
 
 with Generator.Names;
+with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Constructors is
@@ -58,37 +61,19 @@ package body Generator.Constructors is
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
 
-   Boolean_Name                  : constant League.Strings.Universal_String
+   Boolean_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Boolean");
-   Integer_Name                  : constant League.Strings.Universal_String
+   Integer_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Integer");
-   Parameter_Direction_Kind_Name : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("ParameterDirectionKind");
-   String_Name                   : constant League.Strings.Universal_String
+   Real_Name              : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Real");
+   String_Name            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
-   Unlimited_Natural_Name        : constant League.Strings.Universal_String
+   Unlimited_Natural_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("UnlimitedNatural");
-   Visibility_Kind_Name          : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("VisibilityKind");
 
    Unlimited_Image : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("*");
-   In_Image        : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("in");
-   In_Out_Image    : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("inout");
-   Out_Image       : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("out");
-   Return_Image    : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("return");
-   Public_Image    : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("public");
-   Private_Image   : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("private");
-   Protected_Image : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("protected");
-   Package_Image   : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("package");
 
    ------------------------------------------
    -- Generate_Constructors_Implementation --
@@ -221,6 +206,83 @@ package body Generator.Constructors is
                      raise Program_Error;
                end case;
 
+            elsif Attribute_Type.all
+                    in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+            then
+               --  Enumeration type
+
+               Put
+                (" ("
+                   & Generator.Type_Mapping.Member_Kind_Name
+                      (Attribute_Type,
+                       Representation (Attribute)).To_Wide_Wide_String);
+
+               case Representation (Attribute) is
+                  when Value =>
+                     if Default.Is_Empty then
+                        --  There is no default value specified, initialize to
+                        --  the value of first enumeration literal.
+
+                        Put
+                         (", "
+                            & Type_Mapping.Ada_Enumeration_Literal_Name
+                               (AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+                                 (Attribute_Type.all).Get_Owned_Literal.Element
+                                   (1)).To_Wide_Wide_String
+                            & "),");
+
+                     else
+                        declare
+                           use type AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+
+                           Literals : constant
+                             AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal
+                                 := AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+                                     (Attribute_Type.all).Get_Owned_Literal;
+                           Literal  :
+                             AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access;
+
+                        begin
+                           for J in 1 .. Literals.Length loop
+                              if Literals.Element (J).Get_Name = Default then
+                                 Literal := Literals.Element (J);
+
+                                 exit;
+                              end if;
+                           end loop;
+
+                           if Literal = null then
+                              raise Program_Error;
+                           end if;
+
+                           Put
+                            (", "
+                               & Type_Mapping.Ada_Enumeration_Literal_Name
+                                  (Literal).To_Wide_Wide_String
+                               & "),");
+                        end;
+                     end if;
+
+                  when Holder =>
+                     if Default.Is_Empty then
+                        Put (", (Is_Empty => True)),");
+
+                     else
+                        raise Program_Error;
+                     end if;
+
+                  when Set =>
+                     raise Program_Error;
+
+                  when Ordered_Set =>
+                     raise Program_Error;
+
+                  when Bag =>
+                     raise Program_Error;
+
+                  when Sequence =>
+                     raise Program_Error;
+               end case;
 
             elsif Attribute_Type.Get_Name = Boolean_Name then
                case Representation (Attribute) is
@@ -240,10 +302,10 @@ package body Generator.Constructors is
                      end if;
 
                   when Holder =>
-                     raise Program_Error;
+                     Put (" (M_Collection_Of_Boolean, 0),");
 
                   when Set =>
-                     raise Program_Error;
+                     Put (" (M_Collection_Of_Boolean, 0),");
 
                   when Ordered_Set =>
                      raise Program_Error;
@@ -258,20 +320,17 @@ package body Generator.Constructors is
             elsif Attribute_Type.Get_Name = Integer_Name then
                case Representation (Attribute) is
                   when Value =>
---                     if Default.Is_Empty then
---                        raise Program_Error;
---
---                     else
---                        if Boolean'Wide_Wide_Value
---                            (Default.Value.To_Wide_Wide_String)
---                        then
---                           Put (" (M_Boolean, True),");
---
---                        else
---                           Put (" (M_Boolean, False),");
---                        end if;
---                     end if;
-                     raise Program_Error;
+                     if Default.Is_Empty then
+                        raise Program_Error;
+
+                     else
+                        Put
+                         (" (M_Integer,"
+                            & Integer'Wide_Wide_Image
+                               (Integer'Wide_Wide_Value
+                                 (Default.Value.To_Wide_Wide_String))
+                            & "),");
+                     end if;
 
                   when Holder =>
                      if Default.Is_Empty then
@@ -285,48 +344,6 @@ package body Generator.Constructors is
                                  (Default.Value.To_Wide_Wide_String))
                             & ")),");
                      end if;
-
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        raise Program_Error;
-
-                     else
-                        if Default = In_Image then
-                           Put
-                            (" (M_Parameter_Direction_Kind,"
-                               & " CMOF.In_Direction),");
-
-                        elsif Default = In_Out_Image then
-                           raise Program_Error;
-
-                        elsif Default = Out_Image then
-                           raise Program_Error;
-
-                        elsif Default = Return_Image then
-                           raise Program_Error;
-
-                        else
-                           raise Program_Error;
-                        end if;
-                     end if;
-
-                  when Holder =>
-                     raise Program_Error;
 
                   when Set =>
                      raise Program_Error;
@@ -388,13 +405,13 @@ package body Generator.Constructors is
                      Put (" (M_Collection_Of_String, 0),");
                end case;
 
-            elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
+            elsif Attribute_Type.Get_Name = Real_Name then
                case Representation (Attribute) is
                   when Value =>
---                     if Default.Is_Empty then
---                        raise Program_Error;
---
---                     else
+                     if Default.Is_Empty then
+                        Put (" (M_Real, 0.0),");
+
+                     else
 --                        if Boolean'Wide_Wide_Value
 --                            (Default.Value.To_Wide_Wide_String)
 --                        then
@@ -403,8 +420,56 @@ package body Generator.Constructors is
 --                        else
 --                           Put (" (M_Boolean, False),");
 --                        end if;
+                        raise Program_Error;
+                     end if;
+
+                  when Holder =>
+--                     if Default.Is_Empty then
+                        raise Program_Error;
+--
+--                     else
+--                        if Default = Unlimited_Image then
+--                           raise Program_Error;
+--
+--                        else
+--                           New_Line;
+--                           Set_Col (22);
+--                           Put
+--                            (" (M_Unlimited_Natural_Holder, (False, (False,"
+--                               & Integer'Wide_Wide_Image
+--                                  (Integer'Wide_Wide_Value
+--                                    (Default.Value.To_Wide_Wide_String))
+--                               & "))),");
+--                        end if;
 --                     end if;
+
+                  when Set =>
                      raise Program_Error;
+
+                  when Ordered_Set =>
+                     raise Program_Error;
+
+                  when Bag =>
+                     raise Program_Error;
+
+                  when Sequence =>
+                     raise Program_Error;
+               end case;
+
+            elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
+               case Representation (Attribute) is
+                  when Value =>
+                     if Default.Is_Empty then
+                        raise Program_Error;
+
+                     else
+                        Put
+                         (" (M_Unlimited_Natural, (False,"
+                               & Integer'Wide_Wide_Image
+                                  (Integer'Wide_Wide_Value
+                                    (Default.Value.To_Wide_Wide_String))
+                               & ")),");
+                     end if;
 
                   when Holder =>
                      if Default.Is_Empty then
@@ -424,54 +489,6 @@ package body Generator.Constructors is
                                     (Default.Value.To_Wide_Wide_String))
                                & "))),");
                         end if;
-                     end if;
-
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     if Default.Is_Empty then
-                        raise Program_Error;
-
-                     else
-                        if Default = Public_Image then
-                           Put
-                            (" (M_Visibility_Kind, AMF.CMOF.Public_Visibility),");
-
-                        elsif Default = Private_Image then
-                           raise Program_Error;
-
-                        elsif Default = Protected_Image then
-                           raise Program_Error;
-
-                        elsif Default = Package_Image then
-                           raise Program_Error;
-
-                        else
-                           raise Program_Error;
-                        end if;
-                     end if;
-
-                  when Holder =>
-                     if Default.Is_Empty then
-                        Put
-                         (" (M_Visibility_Holder_Kind,"
-                            & " (Is_Empty => True)),");
-
-                     else
-                        raise Program_Error;
                      end if;
 
                   when Set =>

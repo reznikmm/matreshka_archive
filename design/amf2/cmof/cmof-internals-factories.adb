@@ -206,22 +206,22 @@ package body CMOF.Internals.Factories is
          if Image = In_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (AMF.CMOF.In_Direction);
+               (AMF.CMOF.In_Parameter);
 
          elsif Image = In_Out_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (AMF.CMOF.In_Out_Direction);
+               (AMF.CMOF.In_Out_Parameter);
 
          elsif Image = Out_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (AMF.CMOF.Out_Direction);
+               (AMF.CMOF.Out_Parameter);
 
          elsif Image = Return_Image then
             return
               AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
-               (AMF.CMOF.Return_Direction);
+               (AMF.CMOF.Return_Parameter);
 
          else
             raise Constraint_Error;
@@ -339,16 +339,16 @@ package body CMOF.Internals.Factories is
 
             begin
                case Kind is
-                  when AMF.CMOF.In_Direction =>
+                  when AMF.CMOF.In_Parameter =>
                      return In_Image;
 
-                  when AMF.CMOF.In_Out_Direction =>
+                  when AMF.CMOF.In_Out_Parameter =>
                      return In_Out_Image;
 
-                  when AMF.CMOF.Out_Direction =>
+                  when AMF.CMOF.Out_Parameter =>
                      return Out_Image;
 
-                  when AMF.CMOF.Return_Direction =>
+                  when AMF.CMOF.Return_Parameter =>
                      return Return_Image;
                end case;
             end;

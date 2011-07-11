@@ -41,27 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF;
 with AMF.Internals;
 
 package CMOF is
 
    pragma Preelaborate;
-
-   subtype CMOF_Parameter_Direction_Kind
-     is AMF.CMOF.CMOF_Parameter_Direction_Kind;
---   type CMOF_Parameter_Direction_Kind is
---    (In_Direction,
---     In_Out_Direction,
---     Out_Direction,
---     Return_Direction);
-
-   subtype CMOF_Visibility_Kind is AMF.CMOF.CMOF_Visibility_Kind;
---   type CMOF_Visibility_Kind is
---    (Public_Visibility,
---     Private_Visibility,
---     Protected_Visibility,
---     Package_Visibility);
 
    subtype Collection_Of_CMOF_Element is
      AMF.Internals.AMF_Collection_Of_Element;
@@ -74,10 +58,8 @@ package CMOF is
    subtype Cmof_Association is Cmof_Element;
    subtype Cmof_Class is Cmof_Element;
    subtype CMOF_Data_Type is Cmof_Element;
-   subtype CMOF_Package is Cmof_Element;
    subtype CMOF_Property is Cmof_Element;
 
    subtype CMOF_Extent is AMF.Internals.AMF_Extent;
-   CMOF_Metamodel_Extent : constant CMOF_Extent := 1;
 
 end Cmof;

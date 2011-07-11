@@ -46,12 +46,12 @@ with AMF.CMOF.Enumeration_Literals;
 with AMF.CMOF.Enumerations;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Named_Elements;
 
 package AMF.Internals.CMOF_Enumeration_Literals is
 
    type CMOF_Enumeration_Literal_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
        and AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal
          with null record;
 
@@ -72,10 +72,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return Boolean;
-
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return Optional_String;
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Enumeration_Literal_Proxy;

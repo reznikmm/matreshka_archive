@@ -46,15 +46,12 @@ package AMF.CMOF is
 
    pragma Preelaborate;
 
---   subtype CMOF_Parameter_Direction_Kind
---     is Standard.CMOF.CMOF_Parameter_Direction_Kind;
    type CMOF_Parameter_Direction_Kind is
-    (In_Direction,
-     In_Out_Direction,
-     Out_Direction,
-     Return_Direction);
+    (In_Parameter,
+     In_Out_Parameter,
+     Out_Parameter,
+     Return_Parameter);
 
---   subtype CMOF_Visibility_Kind is Standard.CMOF.CMOF_Visibility_Kind;
    type CMOF_Visibility_Kind is
     (Public_Visibility,
      Private_Visibility,
