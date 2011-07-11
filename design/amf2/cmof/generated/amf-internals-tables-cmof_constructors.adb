@@ -79,224 +79,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
    -- Create_Association --
    ------------------------
 
-   function Create_Association return CMOF_Element is
+   function Create_Association return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
       CMOF_Element_Table.Increment_Last;
-      Initialize_Association (CMOF_Element_Table.Last);
+      Self := CMOF_Element_Table.Last;
 
-      return CMOF_Element_Table.Last;
-   end Create_Association;
-
-   ------------------
-   -- Create_Class --
-   ------------------
-
-   function Create_Class return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Class (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Class;
-
-   --------------------
-   -- Create_Comment --
-   --------------------
-
-   function Create_Comment return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Comment (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Comment;
-
-   -----------------------
-   -- Create_Constraint --
-   -----------------------
-
-   function Create_Constraint return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Constraint (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Constraint;
-
-   ----------------------
-   -- Create_Data_Type --
-   ----------------------
-
-   function Create_Data_Type return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Data_Type (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Data_Type;
-
-   ---------------------------
-   -- Create_Element_Import --
-   ---------------------------
-
-   function Create_Element_Import return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Element_Import (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Element_Import;
-
-   ------------------------
-   -- Create_Enumeration --
-   ------------------------
-
-   function Create_Enumeration return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Enumeration (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Enumeration;
-
-   --------------------------------
-   -- Create_Enumeration_Literal --
-   --------------------------------
-
-   function Create_Enumeration_Literal return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Enumeration_Literal (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Enumeration_Literal;
-
-   -----------------------
-   -- Create_Expression --
-   -----------------------
-
-   function Create_Expression return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Expression (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Expression;
-
-   ------------------------------
-   -- Create_Opaque_Expression --
-   ------------------------------
-
-   function Create_Opaque_Expression return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Opaque_Expression (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Opaque_Expression;
-
-   ----------------------
-   -- Create_Operation --
-   ----------------------
-
-   function Create_Operation return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Operation (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Operation;
-
-   --------------------
-   -- Create_Package --
-   --------------------
-
-   function Create_Package return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Package (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Package;
-
-   ---------------------------
-   -- Create_Package_Import --
-   ---------------------------
-
-   function Create_Package_Import return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Package_Import (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Package_Import;
-
-   --------------------------
-   -- Create_Package_Merge --
-   --------------------------
-
-   function Create_Package_Merge return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Package_Merge (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Package_Merge;
-
-   ----------------------
-   -- Create_Parameter --
-   ----------------------
-
-   function Create_Parameter return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Parameter (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Parameter;
-
-   ---------------------------
-   -- Create_Primitive_Type --
-   ---------------------------
-
-   function Create_Primitive_Type return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Primitive_Type (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Primitive_Type;
-
-   ---------------------
-   -- Create_Property --
-   ---------------------
-
-   function Create_Property return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Property (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Property;
-
-   ----------------
-   -- Create_Tag --
-   ----------------
-
-   function Create_Tag return CMOF_Element is
-   begin
-      CMOF_Element_Table.Increment_Last;
-      Initialize_Tag (CMOF_Element_Table.Last);
-
-      return CMOF_Element_Table.Last;
-   end Create_Tag;
-
-   ----------------------------
-   -- Initialize_Association --
-   ----------------------------
-
-   procedure Initialize_Association (Self   : CMOF_Element) is
-   begin
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Association,
         Extent   => 0,
@@ -442,14 +231,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Association_Navigable_Owned_End,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 17);
-   end Initialize_Association;
 
-   ----------------------
-   -- Initialize_Class --
-   ----------------------
+      return Self;
+   end Create_Association;
 
-   procedure Initialize_Class (Self   : CMOF_Element) is
+   ------------------
+   -- Create_Class --
+   ------------------
+
+   function Create_Class return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Class,
         Extent   => 0,
@@ -574,14 +370,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Class_Owned_Operation,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
-   end Initialize_Class;
 
-   ------------------------
-   -- Initialize_Comment --
-   ------------------------
+      return Self;
+   end Create_Class;
 
-   procedure Initialize_Comment (Self   : CMOF_Element) is
+   --------------------
+   -- Create_Comment --
+   --------------------
+
+   function Create_Comment return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Comment,
         Extent   => 0,
@@ -617,14 +420,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Comment_Annotated_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
-   end Initialize_Comment;
 
-   ---------------------------
-   -- Initialize_Constraint --
-   ---------------------------
+      return Self;
+   end Create_Comment;
 
-   procedure Initialize_Constraint (Self   : CMOF_Element) is
+   -----------------------
+   -- Create_Constraint --
+   -----------------------
+
+   function Create_Constraint return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Constraint,
         Extent   => 0,
@@ -670,14 +480,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Constraint_Constrained_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
-   end Initialize_Constraint;
 
-   --------------------------
-   -- Initialize_Data_Type --
-   --------------------------
+      return Self;
+   end Create_Constraint;
 
-   procedure Initialize_Data_Type (Self   : CMOF_Element) is
+   ----------------------
+   -- Create_Data_Type --
+   ----------------------
+
+   function Create_Data_Type return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Data_Type,
         Extent   => 0,
@@ -800,14 +617,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Data_Type_Owned_Operation,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
-   end Initialize_Data_Type;
 
-   -------------------------------
-   -- Initialize_Element_Import --
-   -------------------------------
+      return Self;
+   end Create_Data_Type;
 
-   procedure Initialize_Element_Import (Self   : CMOF_Element) is
+   ---------------------------
+   -- Create_Element_Import --
+   ---------------------------
+
+   function Create_Element_Import return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Element_Import,
         Extent   => 0,
@@ -863,14 +687,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Directed_Relationship_Target,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
-   end Initialize_Element_Import;
 
-   ----------------------------
-   -- Initialize_Enumeration --
-   ----------------------------
+      return Self;
+   end Create_Element_Import;
 
-   procedure Initialize_Enumeration (Self   : CMOF_Element) is
+   ------------------------
+   -- Create_Enumeration --
+   ------------------------
+
+   function Create_Enumeration return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Enumeration,
         Extent   => 0,
@@ -1000,14 +831,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Enumeration_Owned_Literal,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 15);
-   end Initialize_Enumeration;
 
-   ------------------------------------
-   -- Initialize_Enumeration_Literal --
-   ------------------------------------
+      return Self;
+   end Create_Enumeration;
 
-   procedure Initialize_Enumeration_Literal (Self   : CMOF_Element) is
+   --------------------------------
+   -- Create_Enumeration_Literal --
+   --------------------------------
+
+   function Create_Enumeration_Literal return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Enumeration_Literal,
         Extent   => 0,
@@ -1044,14 +882,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Element_Owned_Comment,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
-   end Initialize_Enumeration_Literal;
 
-   ---------------------------
-   -- Initialize_Expression --
-   ---------------------------
+      return Self;
+   end Create_Enumeration_Literal;
 
-   procedure Initialize_Expression (Self   : CMOF_Element) is
+   -----------------------
+   -- Create_Expression --
+   -----------------------
+
+   function Create_Expression return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Expression,
         Extent   => 0,
@@ -1095,14 +940,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Expression_Operand,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
-   end Initialize_Expression;
 
-   ----------------------------------
-   -- Initialize_Opaque_Expression --
-   ----------------------------------
+      return Self;
+   end Create_Expression;
 
-   procedure Initialize_Opaque_Expression (Self   : CMOF_Element) is
+   ------------------------------
+   -- Create_Opaque_Expression --
+   ------------------------------
+
+   function Create_Opaque_Expression return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Opaque_Expression,
         Extent   => 0,
@@ -1143,14 +995,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Element_Owned_Comment,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
-   end Initialize_Opaque_Expression;
 
-   --------------------------
-   -- Initialize_Operation --
-   --------------------------
+      return Self;
+   end Create_Opaque_Expression;
 
-   procedure Initialize_Operation (Self   : CMOF_Element) is
+   ----------------------
+   -- Create_Operation --
+   ----------------------
+
+   function Create_Operation return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Operation,
         Extent   => 0,
@@ -1304,14 +1163,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Operation_Postcondition,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 16);
-   end Initialize_Operation;
 
-   ------------------------
-   -- Initialize_Package --
-   ------------------------
+      return Self;
+   end Create_Operation;
 
-   procedure Initialize_Package (Self   : CMOF_Element) is
+   --------------------
+   -- Create_Package --
+   --------------------
+
+   function Create_Package return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Package,
         Extent   => 0,
@@ -1420,14 +1286,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Package_Package_Merge,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 12);
-   end Initialize_Package;
 
-   -------------------------------
-   -- Initialize_Package_Import --
-   -------------------------------
+      return Self;
+   end Create_Package;
 
-   procedure Initialize_Package_Import (Self   : CMOF_Element) is
+   ---------------------------
+   -- Create_Package_Import --
+   ---------------------------
+
+   function Create_Package_Import return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Package_Import,
         Extent   => 0,
@@ -1481,14 +1354,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Directed_Relationship_Target,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
-   end Initialize_Package_Import;
 
-   ------------------------------
-   -- Initialize_Package_Merge --
-   ------------------------------
+      return Self;
+   end Create_Package_Import;
 
-   procedure Initialize_Package_Merge (Self   : CMOF_Element) is
+   --------------------------
+   -- Create_Package_Merge --
+   --------------------------
+
+   function Create_Package_Merge return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Package_Merge,
         Extent   => 0,
@@ -1540,14 +1420,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Directed_Relationship_Target,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 5);
-   end Initialize_Package_Merge;
 
-   --------------------------
-   -- Initialize_Parameter --
-   --------------------------
+      return Self;
+   end Create_Package_Merge;
 
-   procedure Initialize_Parameter (Self   : CMOF_Element) is
+   ----------------------
+   -- Create_Parameter --
+   ----------------------
+
+   function Create_Parameter return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Parameter,
         Extent   => 0,
@@ -1599,14 +1486,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Element_Owned_Comment,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 2);
-   end Initialize_Parameter;
 
-   -------------------------------
-   -- Initialize_Primitive_Type --
-   -------------------------------
+      return Self;
+   end Create_Parameter;
 
-   procedure Initialize_Primitive_Type (Self   : CMOF_Element) is
+   ---------------------------
+   -- Create_Primitive_Type --
+   ---------------------------
+
+   function Create_Primitive_Type return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Primitive_Type,
         Extent   => 0,
@@ -1729,14 +1623,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Data_Type_Owned_Operation,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 14);
-   end Initialize_Primitive_Type;
 
-   -------------------------
-   -- Initialize_Property --
-   -------------------------
+      return Self;
+   end Create_Primitive_Type;
 
-   procedure Initialize_Property (Self   : CMOF_Element) is
+   ---------------------
+   -- Create_Property --
+   ---------------------
+
+   function Create_Property return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Property,
         Extent   => 0,
@@ -1839,14 +1740,21 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Property_Subsetted_Property,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 7);
-   end Initialize_Property;
 
-   --------------------
-   -- Initialize_Tag --
-   --------------------
+      return Self;
+   end Create_Property;
 
-   procedure Initialize_Tag (Self   : CMOF_Element) is
+   ----------------
+   -- Create_Tag --
+   ----------------
+
+   function Create_Tag return AMF.Internals.CMOF_Element is
+      Self : AMF.Internals.CMOF_Element;
+
    begin
+      CMOF_Element_Table.Increment_Last;
+      Self := CMOF_Element_Table.Last;
+
       CMOF_Element_Table.Table (Self) :=
        (Kind     => E_Tag,
         Extent   => 0,
@@ -1886,6 +1794,8 @@ package body AMF.Internals.Tables.CMOF_Constructors is
        (Self,
         MP_CMOF_Tag_Element,
         CMOF_Element_Table.Table (Self).Member (0).Collection + 3);
-   end Initialize_Tag;
+
+      return Self;
+   end Create_Tag;
 
 end AMF.Internals.Tables.CMOF_Constructors;

@@ -86,39 +86,11 @@ package body Generator.Constructors is
 
       procedure Generate_Create (Position : Class_Information_Maps.Cursor);
 
-      procedure Generate_Initialize (Position : Class_Information_Maps.Cursor);
-
       ---------------------
       -- Generate_Create --
       ---------------------
 
       procedure Generate_Create (Position : Class_Information_Maps.Cursor) is
-         Class           : constant Class_Information_Access
-           := Class_Information_Maps.Element (Position);
-         Name            : constant Wide_Wide_String
-           := "Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
-         Initialize_Name : constant Wide_Wide_String
-           := "Initialize_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
-
-      begin
-         Put_Header (Name, 3);
-         New_Line;
-         Put_Line ("   function " & Name & " return CMOF_Element is");
-         Put_Line ("   begin");
-         Put_Line ("      CMOF_Element_Table.Increment_Last;");
-         Put_Line ("      " & Initialize_Name & " (CMOF_Element_Table.Last);");
-         New_Line;
-         Put_Line ("      return CMOF_Element_Table.Last;");
-         Put_Line ("   end " & Name & ";");
-      end Generate_Create;
-
-      -------------------------
-      -- Generate_Initialize --
-      -------------------------
-
-      procedure Generate_Initialize
-       (Position : Class_Information_Maps.Cursor)
-      is
          use type AMF.Optional_String;
 
          Class          : constant Class_Information_Access
@@ -126,7 +98,7 @@ package body Generator.Constructors is
          Class_Name     : constant League.Strings.Universal_String
            := Class.Class.Get_Name.Value;
          Name           : constant Wide_Wide_String
-           := "Initialize_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
+           := "Create_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Element_Kind   : constant Wide_Wide_String
            := "E_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
          Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
@@ -136,8 +108,14 @@ package body Generator.Constructors is
       begin
          Put_Header (Name, 3);
          New_Line;
-         Put_Line ("   procedure " & Name & " (Self   : CMOF_Element) is");
+         Put_Line
+          ("   function " & Name & " return AMF.Internals.CMOF_Element is");
+         Put_Line ("      Self : AMF.Internals.CMOF_Element;");
+         New_Line;
          Put_Line ("   begin");
+         Put_Line ("      CMOF_Element_Table.Increment_Last;");
+         Put_Line ("      Self := CMOF_Element_Table.Last;");
+         New_Line;
          Put_Line ("      CMOF_Element_Table.Table (Self) :=");
          Put_Line ("       (Kind     => " & Element_Kind & ",");
          Put_Line ("        Extent   => 0,");
@@ -568,8 +546,10 @@ package body Generator.Constructors is
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
-         Put_Line ("   end " & Name & ';');
-      end Generate_Initialize;
+         New_Line;
+         Put_Line ("      return Self;");
+         Put_Line ("   end " & Name & ";");
+      end Generate_Create;
 
       -------------------
       -- Generate_With --
@@ -612,7 +592,6 @@ package body Generator.Constructors is
       Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Class_Info.Iterate (Generate_Create'Access);
-      Class_Info.Iterate (Generate_Initialize'Access);
       New_Line;
       Put_Line
        ("end AMF.Internals.Tables."
@@ -627,8 +606,6 @@ package body Generator.Constructors is
    procedure Generate_Constructors_Specification is
 
       procedure Generate_Create (Position : Class_Information_Maps.Cursor);
-
-      procedure Generate_Initialize (Position : Class_Information_Maps.Cursor);
 
       ---------------------
       -- Generate_Create --
@@ -645,23 +622,6 @@ package body Generator.Constructors is
          Put_Line ("   function " & Name & " return CMOF_Element;");
       end Generate_Create;
 
-      -------------------------
-      -- Generate_Initialize --
-      -------------------------
-
-      procedure Generate_Initialize
-       (Position : Class_Information_Maps.Cursor)
-      is
-         Class : constant Class_Information_Access
-           := Class_Information_Maps.Element (Position);
-         Name  : constant Wide_Wide_String
-           := "Initialize_" & To_Ada_Identifier (Class.Class.Get_Name.Value);
-
-      begin
-         New_Line;
-         Put_Line ("   procedure " & Name & " (Self : CMOF_Element);");
-      end Generate_Initialize;
-
    begin
       Put_Header;
 
@@ -671,7 +631,6 @@ package body Generator.Constructors is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Constructors is");
       Class_Info.Iterate (Generate_Create'Access);
-      Class_Info.Iterate (Generate_Initialize'Access);
       New_Line;
       Put_Line
        ("end AMF.Internals.Tables."

@@ -82,40 +82,4 @@ package AMF.Internals.Tables.CMOF_Constructors is
 
    function Create_Tag return CMOF_Element;
 
-   procedure Initialize_Association (Self : CMOF_Element);
-
-   procedure Initialize_Class (Self : CMOF_Element);
-
-   procedure Initialize_Comment (Self : CMOF_Element);
-
-   procedure Initialize_Constraint (Self : CMOF_Element);
-
-   procedure Initialize_Data_Type (Self : CMOF_Element);
-
-   procedure Initialize_Element_Import (Self : CMOF_Element);
-
-   procedure Initialize_Enumeration (Self : CMOF_Element);
-
-   procedure Initialize_Enumeration_Literal (Self : CMOF_Element);
-
-   procedure Initialize_Expression (Self : CMOF_Element);
-
-   procedure Initialize_Opaque_Expression (Self : CMOF_Element);
-
-   procedure Initialize_Operation (Self : CMOF_Element);
-
-   procedure Initialize_Package (Self : CMOF_Element);
-
-   procedure Initialize_Package_Import (Self : CMOF_Element);
-
-   procedure Initialize_Package_Merge (Self : CMOF_Element);
-
-   procedure Initialize_Parameter (Self : CMOF_Element);
-
-   procedure Initialize_Primitive_Type (Self : CMOF_Element);
-
-   procedure Initialize_Property (Self : CMOF_Element);
-
-   procedure Initialize_Tag (Self : CMOF_Element);
-
 end AMF.Internals.Tables.CMOF_Constructors;
