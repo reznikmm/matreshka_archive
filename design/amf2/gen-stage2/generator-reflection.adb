@@ -745,7 +745,10 @@ package body Generator.Reflection is
       Put_Line ("with AMF.String_Collections;");
       Put_Line ("with League.Holders.Booleans;");
       New_Line;
-      Put_Line ("package body CMOF.Internals.Reflection is");
+      Put_Line
+       ("package body AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Reflection is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
       Put_Line
@@ -764,8 +767,11 @@ package body Generator.Reflection is
       Put_Header ("Get", 3);
       New_Line;
       Put_Line ("   function Get");
-      Put_Line ("    (Self     : CMOF_Element;");
-      Put_Line ("     Property : CMOF_Property) return League.Holders.Holder");
+      Put_Line
+       ("    (Self     : "
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element;");
+      Put_Line ("     Property : CMOF_Element) return League.Holders.Holder");
       Put_Line ("   is");
       Class_Info.Iterate (Generate_Getter_Specification'Access);
       Class_Info.Iterate (Generate_Getter_Implementation'Access);
@@ -784,11 +790,13 @@ package body Generator.Reflection is
       New_Line;
       Put_Line
        ("   function Get_Meta_Class"
-          & " (Self : CMOF_Element) return CMOF_Class is");
+          & " (Self : "
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element) return CMOF_Element is");
       Put_Line ("   begin");
       Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
-      Put_Line ("            return Null_CMOF_Element;");
+      Put_Line ("            return 0;");
       Class_Info.Iterate (Generate_Meta'Access);
       Put_Line ("      end case;");
       Put_Line ("   end Get_Meta_Class;");
@@ -798,8 +806,11 @@ package body Generator.Reflection is
       Put_Header ("Set", 3);
       New_Line;
       Put_Line ("   procedure Set");
-      Put_Line ("    (Self     : CMOF_Element;");
-      Put_Line ("     Property : CMOF_Property;");
+      Put_Line
+       ("    (Self     : "
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element;");
+      Put_Line ("     Property : CMOF_Element;");
       Put_Line ("     Value    : League.Holders.Holder)");
       Put_Line ("   is");
       Class_Info.Iterate (Generate_Setter_Specification'Access);
@@ -813,7 +824,10 @@ package body Generator.Reflection is
       Put_Line ("   end Set;");
 
       New_Line;
-      Put_Line ("end CMOF.Internals.Reflection;");
+      Put_Line
+       ("end AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Reflection;");
    end Generate_Reflection_Implementation;
 
 end Generator.Reflection;

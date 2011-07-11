@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with CMOF.Internals.Extents;
-with CMOF.Internals.Reflection;
 
 package body CMOF.Reflection is
 

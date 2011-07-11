@@ -59,7 +59,7 @@ with AMF.Internals.Tables.CMOF_Types;
 with AMF.String_Collections;
 with League.Holders.Booleans;
 
-package body CMOF.Internals.Reflection is
+package body AMF.Internals.Tables.CMOF_Reflection is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.CMOF_Attributes;
@@ -73,7 +73,7 @@ package body CMOF.Internals.Reflection is
 
    function Get
     (Self     : CMOF_Element;
-     Property : CMOF_Property) return League.Holders.Holder
+     Property : CMOF_Element) return League.Holders.Holder
    is
 
       function Association_Get return League.Holders.Holder;
@@ -2582,11 +2582,11 @@ package body CMOF.Internals.Reflection is
    -- Get_Meta_Class --
    --------------------
 
-   function Get_Meta_Class (Self : CMOF_Element) return CMOF_Class is
+   function Get_Meta_Class (Self : CMOF_Element) return CMOF_Element is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_None =>
-            return Null_CMOF_Element;
+            return 0;
 
          when E_Association =>
             return MC_CMOF_Association;
@@ -2650,7 +2650,7 @@ package body CMOF.Internals.Reflection is
 
    procedure Set
     (Self     : CMOF_Element;
-     Property : CMOF_Property;
+     Property : CMOF_Element;
      Value    : League.Holders.Holder)
    is
 
@@ -3396,4 +3396,4 @@ package body CMOF.Internals.Reflection is
       end case;
    end Set;
 
-end CMOF.Internals.Reflection;
+end AMF.Internals.Tables.CMOF_Reflection;

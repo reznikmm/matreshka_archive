@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Internals.Helpers;
-with CMOF.Internals.Reflection;
 
 package body AMF.Internals.CMOF_Tags is
 

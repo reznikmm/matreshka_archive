@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,17 +43,17 @@
 ------------------------------------------------------------------------------
 with League.Holders;
 
-package CMOF.Internals.Reflection is
+package AMF.Internals.Tables.CMOF_Reflection is
 
-   function Get_Meta_Class (Self : CMOF_Element) return CMOF_Class;
+   function Get_Meta_Class (Self : CMOF_Element) return CMOF_Element;
 
    function Get
     (Self     : CMOF_Element;
-     Property : CMOF_Property) return League.Holders.Holder;
+     Property : CMOF_Element) return League.Holders.Holder;
 
    procedure Set
     (Self     : CMOF_Element;
-     Property : CMOF_Property;
+     Property : CMOF_Element;
      Value    : League.Holders.Holder);
 
-end CMOF.Internals.Reflection;
+end AMF.Internals.Tables.CMOF_Reflection;

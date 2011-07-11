@@ -49,7 +49,7 @@ with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
-with CMOF.Internals.Reflection;
+with AMF.Internals.Tables.CMOF_Reflection;
 with CMOF.Internals.Subclassing;
 
 package body CMOF.Internals.Extents is
@@ -72,7 +72,7 @@ package body CMOF.Internals.Extents is
       use type AMF.Internals.Tables.AMF_Tables.Collection_Element_Identifier;
 
       Meta_Class      : constant CMOF_Class
-        := Reflection.Get_Meta_Class (Self);
+        := AMF.Internals.Tables.CMOF_Reflection.Get_Meta_Class (Self);
       Meta_Extent     : constant AMF_Extent
         := CMOF_Element_Table.Table (Meta_Class).Extent;
       Current         : AMF_Tables.Extent_Element_Identifier
