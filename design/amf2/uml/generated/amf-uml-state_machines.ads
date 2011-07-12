@@ -93,7 +93,7 @@ package AMF.UML.State_Machines is
    --  References the submachine(s) in case of a submachine state. Multiple 
    --  machines are referenced in case of a concurrent state.
 
-   not overriding function L_C_A
+   not overriding function LCA
     (Self : not null access constant UML_State_Machine;
      S1 : AMF.UML.States.UML_State_Access;
      S2 : AMF.UML.States.UML_State_Access)

@@ -66,6 +66,14 @@ package Generator is
            Less,
            AMF.CMOF.Named_Elements."=");
 
+   package CMOF_Element_String_Maps is
+     new Ada.Containers.Hashed_Maps
+          (AMF.CMOF.Elements.CMOF_Element_Access,
+           League.Strings.Universal_String,
+           AMF.CMOF.Elements.Hash,
+           AMF.CMOF.Elements."=",
+           League.Strings."=");
+
    package CMOF_Element_Number_Maps is
      new Ada.Containers.Hashed_Maps
           (AMF.CMOF.Elements.CMOF_Element_Access,
@@ -192,6 +200,14 @@ package Generator is
 
    Element_Numbers : CMOF_Element_Number_Maps.Map;
    --  Expansion information.
+
+   Metamodel_Names : CMOF_Element_String_Maps.Map;
+   --  Metamodel name for elements.
+
+   Generate_Attributes   : Boolean := True;
+   Generate_Constructors : Boolean := True;
+   Generate_Reflection   : Boolean := True;
+   --  Control generation of specific packages.
 
    ---------------
    -- Utilities --

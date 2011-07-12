@@ -44,7 +44,9 @@
 with League.Strings;
 
 with AMF.CMOF.Associations;
+with AMF.CMOF.Packages;
 with AMF.CMOF.Properties;
+with AMF.CMOF.Types;
 
 package Generator.Names is
 
@@ -58,13 +60,37 @@ package Generator.Names is
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
        return Wide_Wide_String;
 
-   function Class_Constant_Name
-    (Class : AMF.CMOF.Classes.CMOF_Class_Access)
+   function Association_Constant_Qualified_Name
+    (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
+       return Wide_Wide_String;
+
+   function Type_Constant_Name
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return League.Strings.Universal_String;
+
+   function Type_Constant_Qualified_Name
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return League.Strings.Universal_String;
+
+   function Package_Constant_Name
+    (Element : not null AMF.CMOF.Packages.CMOF_Package_Access)
+       return League.Strings.Universal_String;
+
+   function Package_Constant_Qualified_Name
+    (Element : not null AMF.CMOF.Packages.CMOF_Package_Access)
        return League.Strings.Universal_String;
 
    function Property_Constant_Name
     (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return Wide_Wide_String;
+
+   function Property_Constant_Qualified_Name
+    (Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return Wide_Wide_String;
+
+   function Element_Constant_Qualified_Name
+    (Element : not null AMF.CMOF.Elements.CMOF_Element_Access)
+       return League.Strings.Universal_String;
 
    function Plural (Name : Wide_Wide_String) return Wide_Wide_String;
 

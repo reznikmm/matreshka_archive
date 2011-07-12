@@ -134,6 +134,25 @@ package body AMF.Internals.XMI_Handlers is
    URI_Queue             : Universal_String_Sets.Set;
    --  List of URIs to be loaded.
 
+   -----------------
+   -- All_Extents --
+   -----------------
+
+   function All_Extents return Extent_Array is
+      Result   : Extent_Array (1 .. Natural (Documents.Length));
+      Last     : Natural := 0;
+      Position : Universal_String_Extent_Maps.Cursor := Documents.First;
+
+   begin
+      while Universal_String_Extent_Maps.Has_Element (Position) loop
+         Last := Last + 1;
+         Result (Last) := Universal_String_Extent_Maps.Element (Position);
+         Universal_String_Extent_Maps.Next (Position);
+      end loop;
+
+      return Result;
+   end All_Extents;
+
    ----------------------------
    -- Analyze_Object_Element --
    ----------------------------

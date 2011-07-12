@@ -77,7 +77,7 @@ package AMF.UML.Packages is
      access all UML_Package'Class;
    for UML_Package_Access'Storage_Size use 0;
 
-   not overriding function Get_U_R_I
+   not overriding function Get_URI
     (Self : not null access constant UML_Package)
        return AMF.Optional_String is abstract;
    --  Provides an identifier for the package that can be used for many 
@@ -86,7 +86,7 @@ package AMF.UML.Packages is
    --  http://www.ietf.org/rfc/rfc2396.txt and it must comply with those 
    --  syntax rules.
 
-   not overriding procedure Set_U_R_I
+   not overriding procedure Set_URI
     (Self : not null access UML_Package;
      To   : AMF.Optional_String) is abstract;
 

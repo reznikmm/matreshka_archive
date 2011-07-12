@@ -76,7 +76,7 @@ package AMF.UML.Join_Nodes is
     (Self : not null access constant UML_Join_Node)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
    --  A specification giving the conditions under which the join with emit a 
-   --  token. Default is "and".
+   --  token. Default is 'and'.
 
    not overriding procedure Set_Join_Spec
     (Self : not null access UML_Join_Node;

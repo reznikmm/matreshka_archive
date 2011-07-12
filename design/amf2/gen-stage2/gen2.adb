@@ -78,19 +78,25 @@ begin
    Generator.Analyzer.Analyze_Model (Extent);
    Generator.Metamodel.Assign_Numbers (Extent);
 
-   Put_Line (Standard_Error, "Generating attributes...");
-   Generator.Attributes.Generate_Attributes_Mapping_Specification;
-   Generator.Attributes.Generate_Attributes_Specification;
-   Generator.Attributes.Generate_Attributes_Implementation;
+   if Generator.Generate_Attributes then
+      Put_Line (Standard_Error, "Generating attributes...");
+--      Generator.Attributes.Generate_Attributes_Mapping_Specification;
+--      Generator.Attributes.Generate_Attributes_Specification;
+--      Generator.Attributes.Generate_Attributes_Implementation;
+   end if;
 
-   Put_Line (Standard_Error, "Generating constructors...");
-   Generator.Constructors.Generate_Constructors_Specification;
-   Generator.Constructors.Generate_Constructors_Implementation;
+   if Generator.Generate_Constructors then
+      Put_Line (Standard_Error, "Generating constructors...");
+--      Generator.Constructors.Generate_Constructors_Specification;
+--      Generator.Constructors.Generate_Constructors_Implementation;
+   end if;
 
    Put_Line (Standard_Error, "Generating metamodel initialization...");
    Generator.Metamodel.Generate_Metamodel_Specification;
    Generator.Metamodel.Generate_Metamodel_Implementation;
 
-   Put_Line (Standard_Error, "Generating relfection...");
-   Generator.Reflection.Generate_Reflection_Implementation;
+   if Generator.Generate_Reflection then
+      Put_Line (Standard_Error, "Generating relfection...");
+--      Generator.Reflection.Generate_Reflection_Implementation;
+   end if;
 end Gen2;

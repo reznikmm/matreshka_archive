@@ -42,16 +42,24 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
+with AMF.Internals.XMI_Handlers;
+
+with Generator.Names;
 
 package body Generator.Analyzer is
 
    procedure Compute_All_Properties
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Computes all attributes of the class, assigns slot and collections.
+
+   procedure Compute_Metamodel_Names
+    (Extent : not null AMF.URI_Stores.URI_Store_Access);
+   --  Compute metamodel names for each element.
 
    -------------------
    -- Analyze_Model --
@@ -64,6 +72,8 @@ package body Generator.Analyzer is
         := Extent.Elements;
 
    begin
+      --  Compute complete set of properties for each class.
+
       for J in 1 .. Elements.Length loop
          if Elements.Element (J).all in AMF.CMOF.Classes.CMOF_Class'Class then
             declare
@@ -75,6 +85,18 @@ package body Generator.Analyzer is
             end;
          end if;
       end loop;
+
+      --  Compute and assign metamodel names for all elements.
+
+      declare
+         Extents : constant AMF.Internals.XMI_Handlers.Extent_Array
+           := AMF.Internals.XMI_Handlers.All_Extents;
+
+      begin
+         for J in Extents'Range loop
+            Compute_Metamodel_Names (Extents (J));
+         end loop;
+      end;
    end Analyze_Model;
 
    ----------------------------
@@ -188,5 +210,43 @@ package body Generator.Analyzer is
       Process_Class (Class);
       Class_Info.Insert (Class, Info);
    end Compute_All_Properties;
+
+   -----------------------------
+   -- Compute_Metamodel_Names --
+   -----------------------------
+
+   procedure Compute_Metamodel_Names
+    (Extent : not null AMF.URI_Stores.URI_Store_Access)
+   is
+      Elements       : constant AMF.Elements.Collections.Reflective_Collection
+        := Extent.Elements;
+      Metamodel_Name : League.Strings.Universal_String;
+
+   begin
+      --  Looking for first instance of CMOF::Package and use its name to
+      --  compute metamodel name of analyzed extent.
+
+      for J in 1 .. Elements.Length loop
+         if Elements.Element (J).all
+              in AMF.CMOF.Packages.CMOF_Package'Class
+         then
+            Metamodel_Name :=
+              League.Strings.To_Universal_String
+               (Generator.Names.To_Ada_Identifier
+                 (AMF.CMOF.Packages.CMOF_Package'Class
+                   (Elements.Element (J).all).Get_Name.Value));
+
+            exit;
+         end if;
+      end loop;
+
+      --  Go through all elements and register its metamodel names.
+
+      for J in 1 .. Elements.Length loop
+         Metamodel_Names.Insert
+          (AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J)),
+           Metamodel_Name);
+      end loop;
+   end Compute_Metamodel_Names;
 
 end Generator.Analyzer;

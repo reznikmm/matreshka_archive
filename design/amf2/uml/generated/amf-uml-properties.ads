@@ -205,13 +205,13 @@ package AMF.UML.Properties is
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
 
-   not overriding function Get_Is_I_D
+   not overriding function Get_IsID
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
    --  True indicates this property can be used to uniquely identify an 
    --  instance of the containing Class.
 
-   not overriding procedure Set_Is_I_D
+   not overriding procedure Set_IsID
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
 

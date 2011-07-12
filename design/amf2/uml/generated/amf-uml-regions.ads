@@ -111,7 +111,7 @@ package AMF.UML.Regions is
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
    --  The set of transitions owned by the region.
 
-   not overriding function Belongs_To_P_S_M
+   not overriding function Belongs_ToPSM
     (Self : not null access constant UML_Region)
        return Boolean is abstract;
    --  The operation belongsToPSM () checks if the region belongs to a 

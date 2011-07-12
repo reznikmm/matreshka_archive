@@ -436,7 +436,9 @@ package body Generator.Reflection is
             Put_Line ("         when E_" & Class_Name & " =>");
             Put_Line
              ("            return "
-                & Class_Constant_Name (Class.Class).To_Wide_Wide_String
+                & Type_Constant_Qualified_Name
+                   (AMF.CMOF.Types.CMOF_Type_Access
+                     (Class.Class)).To_Wide_Wide_String
                 & ";");
          end if;
       end Generate_Meta;

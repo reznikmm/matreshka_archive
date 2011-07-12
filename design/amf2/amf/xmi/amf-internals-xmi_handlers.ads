@@ -68,6 +68,11 @@ package AMF.Internals.XMI_Handlers is
        return AMF.URI_Stores.URI_Store_Access;
    --  Returns extent with specified URI.
 
+   type Extent_Array is
+     array (Positive range <>) of AMF.URI_Stores.URI_Store_Access;
+
+   function All_Extents return Extent_Array;
+
 private
 
    package Element_Vectors is

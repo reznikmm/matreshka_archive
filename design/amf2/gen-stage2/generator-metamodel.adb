@@ -85,10 +85,10 @@ package body Generator.Metamodel is
    --  All classes and associations in the model correspondingly.
 
    First_Class                    : Positive;
-   Last_Class                     : Positive;
+   Last_Class                     : Natural;
    First_Class_Property           : Positive;
-   Last_Class_Property            : Positive;
-   Last_Collection_Class_Property : Positive;
+   Last_Class_Property            : Natural;
+   Last_Collection_Class_Property : Natural;
 
    Elements : AMF.Elements.Collections.Reflective_Collection;
    --  XXX This collection need to be removed.
@@ -113,14 +113,6 @@ package body Generator.Metamodel is
        return CMOF_Element_Sets.Set;
    --  Returns all properties of the specified class (including properties of
    --  superclasses, but except redefined properties).
-
-   function Type_Constant_Name
-    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return Wide_Wide_String;
-
-   function Package_Constant_Name
-    (Element : not null access constant AMF.CMOF.Packages.CMOF_Package'Class)
-       return Wide_Wide_String;
 
    function Is_Parameter_Direction_Kind_Type
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
@@ -315,6 +307,15 @@ package body Generator.Metamodel is
       end loop;
 
       Generator.Metamodel.Elements := Elements;
+
+      --  Disable generation of attributes and constructors when there are no
+      --  classes in the metamodel.
+
+      if All_Classes.Is_Empty then
+         Generate_Attributes := False;
+         Generate_Constructors := False;
+         Generate_Reflection := False;
+      end if;
    end Assign_Numbers;
 
    ---------------------------------------
@@ -470,17 +471,35 @@ package body Generator.Metamodel is
 
                Put_Line ("      AMF.Internals.Links.Internal_Create_Link");
                Put_Line
-                ("       (" & Association_Constant_Name (Association) & ",");
+                ("       ("
+                   & Association_Constant_Qualified_Name (Association) & ",");
                Put ("        Base + ");
                Put (Element_Numbers.Element (Element), Width => 0);
                Put_Line (",");
                Put_Line
-                ("        " & Property_Constant_Name (First_End) & ",");
-               Put ("        Base + ");
-               Put (Element_Numbers.Element (Other), Width => 0);
-               Put_Line (",");
+                ("        "
+                   & Property_Constant_Qualified_Name (First_End)
+                   & ",");
+
+               if Element_Numbers.Contains (Other) then
+                  Put ("        Base + ");
+                  Put (Element_Numbers.Element (Other), Width => 0);
+                  Put_Line (",");
+
+               else
+                  --  Cross metamodel link.
+
+                  Put_Line
+                   ("        "
+                      & Element_Constant_Qualified_Name
+                         (Other).To_Wide_Wide_String
+                      & ",");
+               end if;
+
                Put_Line
-                ("        " & Property_Constant_Name (Second_End) & ");");
+                ("        "
+                   & Property_Constant_Qualified_Name (Second_End)
+                   & ");");
             end if;
          end Establish_Link;
 
@@ -686,11 +705,11 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         Put_Header (Type_Constant_Name (Class), 3);
+         Put_Header (Type_Constant_Name (Class).To_Wide_Wide_String, 3);
          New_Line;
          Put_Line
           ("   function "
-             & Type_Constant_Name (Class)
+             & Type_Constant_Name (Class).To_Wide_Wide_String
              & " return AMF.Internals.CMOF_Element is");
          Put_Line ("   begin");
          Put_Line
@@ -699,7 +718,8 @@ package body Generator.Metamodel is
                 (Element_Numbers.Element
                   (AMF.CMOF.Elements.CMOF_Element_Access (Class)))
              & ";");
-         Put_Line ("   end " & Type_Constant_Name (Class) & ";");
+         Put_Line
+          ("   end " & Type_Constant_Name (Class).To_Wide_Wide_String & ";");
       end Generate_Class_Constant;
 
       ---------------------------------
@@ -714,11 +734,11 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         Put_Header (Type_Constant_Name (Data_Type), 3);
+         Put_Header (Type_Constant_Name (Data_Type).To_Wide_Wide_String, 3);
          New_Line;
          Put_Line
           ("   function "
-             & Type_Constant_Name (Data_Type)
+             & Type_Constant_Name (Data_Type).To_Wide_Wide_String
              & " return AMF.Internals.CMOF_Element is");
          Put_Line ("   begin");
          Put_Line
@@ -727,7 +747,10 @@ package body Generator.Metamodel is
                 (Element_Numbers.Element
                   (AMF.CMOF.Elements.CMOF_Element_Access (Data_Type)))
              & ";");
-         Put_Line ("   end " & Type_Constant_Name (Data_Type) & ";");
+         Put_Line
+          ("   end "
+             & Type_Constant_Name (Data_Type).To_Wide_Wide_String
+             & ";");
       end Generate_Data_Type_Constant;
 
       -------------------------------
@@ -742,11 +765,11 @@ package body Generator.Metamodel is
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
 
       begin
-         Put_Header (Package_Constant_Name (Element), 3);
+         Put_Header (Package_Constant_Name (Element).To_Wide_Wide_String, 3);
          New_Line;
          Put_Line
           ("   function "
-             & Package_Constant_Name (Element)
+             & Package_Constant_Name (Element).To_Wide_Wide_String
              & " return AMF.Internals.CMOF_Element is");
          Put_Line ("   begin");
          Put_Line
@@ -755,7 +778,10 @@ package body Generator.Metamodel is
                 (Element_Numbers.Element
                   (AMF.CMOF.Elements.CMOF_Element_Access (Element)))
              & ";");
-         Put_Line ("   end " & Package_Constant_Name (Element) & ";");
+         Put_Line
+          ("   end "
+             & Package_Constant_Name (Element).To_Wide_Wide_String
+             & ";");
       end Generate_Package_Constant;
 
    begin
@@ -765,6 +791,14 @@ package body Generator.Metamodel is
       Put_Line ("with AMF.Internals.Links;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Attributes;");
       Put_Line ("with AMF.Internals.Tables.CMOF_Constructors;");
+      Put_Line ("with AMF.Internals.Tables.CMOF_Metamodel;");
+
+      if Metamodel_Name.To_Wide_Wide_String = "UML" then
+         --  XXX All loaded metamodels should be added here.
+
+         Put_Line ("with AMF.Internals.Tables.Primitive_Types_Metamodel;");
+      end if;
+
       New_Line;
       Put_Line
        ("package body AMF.Internals.Tables."
@@ -1171,7 +1205,7 @@ package body Generator.Metamodel is
       begin
          Put_Line
           ("   function "
-             & Type_Constant_Name (Class)
+             & Type_Constant_Name (Class).To_Wide_Wide_String
              & " return AMF.Internals.CMOF_Element;");
       end Generate_Class_Constant;
 
@@ -1189,7 +1223,7 @@ package body Generator.Metamodel is
       begin
          Put_Line
           ("   function "
-             & Type_Constant_Name (Data_Type)
+             & Type_Constant_Name (Data_Type).To_Wide_Wide_String
              & " return AMF.Internals.CMOF_Element;");
       end Generate_Data_Type_Constant;
 
@@ -1207,7 +1241,7 @@ package body Generator.Metamodel is
       begin
          Put_Line
           ("   function "
-             & Package_Constant_Name (Element)
+             & Package_Constant_Name (Element).To_Wide_Wide_String
              & " return AMF.Internals.CMOF_Element;");
       end Generate_Package_Constant;
 
@@ -1224,10 +1258,13 @@ package body Generator.Metamodel is
       Sort (All_Packages).Iterate (Generate_Package_Constant'Access);
       New_Line;
       Sort (All_Data_Types).Iterate (Generate_Data_Type_Constant'Access);
-      New_Line;
-      Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
-      New_Line;
-      Sort (All_Classes).Iterate (Generate_Class_Property_Constant'Access);
+
+      if not All_Classes.Is_Empty then
+         New_Line;
+         Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
+         New_Line;
+         Sort (All_Classes).Iterate (Generate_Class_Property_Constant'Access);
+      end if;
 
       if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
          --  Constants for properties owned by associations needed only to
@@ -1237,8 +1274,10 @@ package body Generator.Metamodel is
           (Generate_Association_Property_Constant'Access);
       end if;
 
-      New_Line;
-      All_Associations.Iterate (Generate_Association_Constant'Access);
+      if not All_Associations.Is_Empty then
+         New_Line;
+         All_Associations.Iterate (Generate_Association_Constant'Access);
+      end if;
 
       if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
          --  Several subtypes are used in CMOF to be able to bootstrap CMOF
@@ -1337,32 +1376,5 @@ package body Generator.Metamodel is
    begin
       return Element.Get_Name = League.Strings.To_Universal_String ("String");
    end Is_String_Type;
-
-   ---------------------------
-   -- Package_Constant_Name --
-   ---------------------------
-
-   function Package_Constant_Name
-    (Element : not null access constant AMF.CMOF.Packages.CMOF_Package'Class)
-       return Wide_Wide_String is
-   begin
-      return "MM_" & Metamodel_Name.To_Wide_Wide_String;
---      return "MM_CMOF_" & To_Ada_Identifier (Get_Name (Class));
-   end Package_Constant_Name;
-
-   ------------------------
-   -- Type_Constant_Name --
-   ------------------------
-
-   function Type_Constant_Name
-    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return Wide_Wide_String is
-   begin
-      return
-        "MC_"
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_"
-          & To_Ada_Identifier (Element.Get_Name.Value);
-   end Type_Constant_Name;
 
 end Generator.Metamodel;

@@ -50,7 +50,7 @@
 --  the effects of a group of actions from the effects of actions outside the 
 --  group. This may be indicated by setting the mustIsolate attribute to true 
 --  on a structured activity node. If a structured activity node is 
---  "isolated," then any object used by an action within the node cannot be 
+--  'isolated,' then any object used by an action within the node cannot be 
 --  accessed by any action outside the node until the structured activity node 
 --  as a whole completes. Any concurrent actions that would result in 
 --  accessing such objects are required to have their execution deferred until 

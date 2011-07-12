@@ -2882,7 +2882,7 @@ endif</body>
       </ownedComment>
       <ownedRule xmi:type="cmof:Constraint" xmi:id="ClassifierTemplateParameter-has_constraining_classifier" name="has_constraining_classifier" constrainedElement="ClassifierTemplateParameter">
         <ownedComment xmi:type="cmof:Comment" xmi:id="ClassifierTemplateParameter-has_constraining_classifier-_ownedComment.0" annotatedElement="ClassifierTemplateParameter-has_constraining_classifier">
-          <body>If "allowSubstitutable" is true, then there must be a constrainingClassifier.</body>
+          <body>If 'allowSubstitutable' is true, then there must be a constrainingClassifier.</body>
         </ownedComment>
         <specification xmi:type="cmof:OpaqueExpression" xmi:id="ClassifierTemplateParameter-has_constraining_classifier-_specification">
           <language>OCL</language>
@@ -5119,7 +5119,7 @@ self.ownedParameters-&gt;forAll(p | p.type.notEmpty() and
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="Image-format" name="format" visibility="public" lower="0">
         <ownedComment xmi:type="cmof:Comment" xmi:id="Image-format-_ownedComment.0" annotatedElement="Image-format">
-          <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".</body>
+          <body>This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example 'SVG' could instead be expressed as 'MIME: image/svg+xml'.</body>
         </ownedComment>
         <type href="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String"/>
       </ownedAttribute>
@@ -5787,7 +5787,7 @@ self.ownedParameters-&gt;forAll(p | p.type.notEmpty() and
       </ownedAttribute>
       <ownedAttribute xmi:type="cmof:Property" xmi:id="JoinNode-joinSpec" name="joinSpec" visibility="public" type="ValueSpecification" isComposite="true" subsettedProperty="Element-ownedElement" association="A_joinSpec_joinNode">
         <ownedComment xmi:type="cmof:Comment" xmi:id="JoinNode-joinSpec-_ownedComment.0" annotatedElement="JoinNode-joinSpec">
-          <body>A specification giving the conditions under which the join with emit a token. Default is "and".</body>
+          <body>A specification giving the conditions under which the join with emit a token. Default is 'and'.</body>
         </ownedComment>
       </ownedAttribute>
     </packagedElement>
@@ -8998,7 +8998,7 @@ endif</body>
       </ownedComment>
       <ownedRule xmi:type="cmof:Constraint" xmi:id="QualifierValue-multiplicity_of_qualifier" name="multiplicity_of_qualifier" constrainedElement="QualifierValue">
         <ownedComment xmi:type="cmof:Comment" xmi:id="QualifierValue-multiplicity_of_qualifier-_ownedComment.0" annotatedElement="QualifierValue-multiplicity_of_qualifier">
-          <body>The multiplicity of the qualifier value input pin is "1..1".</body>
+          <body>The multiplicity of the qualifier value input pin is '1..1'.</body>
         </ownedComment>
         <specification xmi:type="cmof:OpaqueExpression" xmi:id="QualifierValue-multiplicity_of_qualifier-_specification">
           <language>OCL</language>
@@ -10822,7 +10822,7 @@ or (self.structuralFeature.visibility = #protected and host.allSupertypes
     </packagedElement>
     <packagedElement xmi:type="cmof:Class" xmi:id="StructuredActivityNode" name="StructuredActivityNode" superClass="Namespace ActivityGroup Action">
       <ownedComment xmi:type="cmof:Comment" xmi:id="StructuredActivityNode-_ownedComment.0" annotatedElement="StructuredActivityNode">
-        <body>Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.</body>
+        <body>Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is 'isolated,' then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.</body>
       </ownedComment>
       <ownedComment xmi:type="cmof:Comment" xmi:id="StructuredActivityNode-_ownedComment.1" annotatedElement="StructuredActivityNode">
         <body>A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.</body>

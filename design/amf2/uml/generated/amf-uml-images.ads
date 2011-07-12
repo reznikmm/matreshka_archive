@@ -77,8 +77,8 @@ package AMF.UML.Images is
    --  content should be interpreted. The following values are reserved: SVG, 
    --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
    --  reserved. This option can be used as an alternative to express the 
-   --  reserved values above, for example "SVG" could instead be expressed as 
-   --  "MIME: image/svg+xml".
+   --  reserved values above, for example 'SVG' could instead be expressed as 
+   --  'MIME: image/svg+xml'.
 
    not overriding procedure Set_Format
     (Self : not null access UML_Image;

@@ -395,7 +395,7 @@ package body CMOF.Internals.Factories is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element (MM_CMOF));
+         (AMF.Internals.Helpers.To_Element (MM_CMOF_CMOF));
    end Get_Package;
 
    Factory : aliased CMOF_Factory;
