@@ -777,10 +777,15 @@ package body Generator.Metamodel is
       Sort (All_Data_Types).Iterate (Generate_Data_Type_Constant'Access);
       Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
       Sort (All_Classes).Iterate (Generate_Class_Property_Constant'Access);
-      All_Associations.Iterate (Generate_Association_Property_Constant'Access);
-      --  XXX Constants for properties owned by associations needed only to
-      --  initialize CMOF model, their generation for other models can be
-      --  suppressed.
+
+      if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
+         --  Constants for properties owned by associations needed only to
+         --  initialize CMOF model.
+
+         All_Associations.Iterate
+         (Generate_Association_Property_Constant'Access);
+      end if;
+
       All_Associations.Iterate (Generate_Association_Constant'Access);
 
       Generate_Metamodel_Initialization;
@@ -1223,38 +1228,50 @@ package body Generator.Metamodel is
       Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
       New_Line;
       Sort (All_Classes).Iterate (Generate_Class_Property_Constant'Access);
-      All_Associations.Iterate (Generate_Association_Property_Constant'Access);
-      --  XXX Constants for properties owned by associations needed only to
-      --  initialize CMOF model, their generation for other models can be
-      --  suppressed.
+
+      if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
+         --  Constants for properties owned by associations needed only to
+         --  initialize CMOF model.
+
+         All_Associations.Iterate
+          (Generate_Association_Property_Constant'Access);
+      end if;
+
       New_Line;
       All_Associations.Iterate (Generate_Association_Constant'Access);
-      New_Line;
-      Put_Line ("   subtype CMOF_Meta_Class is");
-      Put_Line
-       ("     AMF.Internals.CMOF_Element range"
-          & Natural'Wide_Wide_Image (First_Class)
-          & " .."
-          & Natural'Wide_Wide_Image (Last_Class)
-          & ";");
-      New_Line;
-      Put_Line ("   subtype CMOF_Collection_Of_Element_Property is");
-      Put_Line
-       ("     AMF.Internals.CMOF_Element range"
-          & Natural'Wide_Wide_Image (First_Class_Property)
-          & " .."
-          & Natural'Wide_Wide_Image (Last_Collection_Class_Property)
-          & ";");
-      Put_Line
-       ("   subtype CMOF_Non_Collection_Of_Element_Property is");
-      Put_Line
-       ("     AMF.Internals.CMOF_Element range"
-          & Natural'Wide_Wide_Image (Last_Collection_Class_Property + 1)
-          & " .."
-          & Natural'Wide_Wide_Image (Last_Class_Property + 1)
-          & ";");
-      New_Line;
-      Put_Line ("   procedure Initialize;");
+
+      if Metamodel_Name.To_Wide_Wide_String = "CMOF" then
+         --  Several subtypes are used in CMOF to be able to bootstrap CMOF
+         --  metamodel. Other metamodel uses already created CMOF metamodel.
+
+         New_Line;
+         Put_Line ("   subtype CMOF_Meta_Class is");
+         Put_Line
+          ("     AMF.Internals.CMOF_Element range"
+             & Natural'Wide_Wide_Image (First_Class)
+             & " .."
+             & Natural'Wide_Wide_Image (Last_Class)
+             & ";");
+         New_Line;
+         Put_Line ("   subtype CMOF_Collection_Of_Element_Property is");
+         Put_Line
+          ("     AMF.Internals.CMOF_Element range"
+             & Natural'Wide_Wide_Image (First_Class_Property)
+             & " .."
+             & Natural'Wide_Wide_Image (Last_Collection_Class_Property)
+             & ";");
+         Put_Line
+          ("   subtype CMOF_Non_Collection_Of_Element_Property is");
+         Put_Line
+          ("     AMF.Internals.CMOF_Element range"
+             & Natural'Wide_Wide_Image (Last_Collection_Class_Property + 1)
+             & " .."
+             & Natural'Wide_Wide_Image (Last_Class_Property + 1)
+             & ";");
+         New_Line;
+         Put_Line ("   procedure Initialize;");
+      end if;
+
       New_Line;
       Put_Line
        ("end AMF.Internals.Tables."
@@ -1329,7 +1346,7 @@ package body Generator.Metamodel is
     (Element : not null access constant AMF.CMOF.Packages.CMOF_Package'Class)
        return Wide_Wide_String is
    begin
-      return "MM_CMOF";
+      return "MM_" & Metamodel_Name.To_Wide_Wide_String;
 --      return "MM_CMOF_" & To_Ada_Identifier (Get_Name (Class));
    end Package_Constant_Name;
 
@@ -1341,7 +1358,11 @@ package body Generator.Metamodel is
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
        return Wide_Wide_String is
    begin
-      return "MC_CMOF_" & To_Ada_Identifier (Element.Get_Name.Value);
+      return
+        "MC_"
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_"
+          & To_Ada_Identifier (Element.Get_Name.Value);
    end Type_Constant_Name;
 
 end Generator.Metamodel;

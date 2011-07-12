@@ -97,7 +97,11 @@ package body Generator.Names is
          Ada_Name.Append (Second_Name);
       end if;
 
-      return "MA_CMOF_" & Ada_Name.To_Wide_Wide_String;
+      return
+        "MA_"
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_"
+          & Ada_Name.To_Wide_Wide_String;
    end Association_Constant_Name;
 
    -------------------------
@@ -110,7 +114,10 @@ package body Generator.Names is
    begin
       return
         League.Strings.To_Universal_String
-         ("MC_CMOF_" & To_Ada_Identifier (Class.Get_Name.Value));
+         ("MC_"
+            & Metamodel_Name.To_Wide_Wide_String
+            & "_"
+            & To_Ada_Identifier (Class.Get_Name.Value));
    end Class_Constant_Name;
 
    ------------
@@ -203,7 +210,11 @@ package body Generator.Names is
          end;
       end if;
 
-      return "MP_CMOF_" & Ada_Name.To_Wide_Wide_String;
+      return
+        "MP_"
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_"
+          & Ada_Name.To_Wide_Wide_String;
    end Property_Constant_Name;
 
    -----------------------

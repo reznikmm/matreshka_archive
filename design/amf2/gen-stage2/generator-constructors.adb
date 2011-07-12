@@ -109,21 +109,41 @@ package body Generator.Constructors is
          Put_Header (Name, 3);
          New_Line;
          Put_Line
-          ("   function " & Name & " return AMF.Internals.CMOF_Element is");
-         Put_Line ("      Self : AMF.Internals.CMOF_Element;");
+          ("   function "
+             & Name
+             & " return AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element is");
+         Put_Line
+          ("      Self : AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element;");
          New_Line;
          Put_Line ("   begin");
-         Put_Line ("      CMOF_Element_Table.Increment_Last;");
-         Put_Line ("      Self := CMOF_Element_Table.Last;");
+         Put_Line
+          ("      "
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element_Table.Increment_Last;");
+         Put_Line
+          ("      Self := "
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element_Table.Last;");
          New_Line;
-         Put_Line ("      CMOF_Element_Table.Table (Self) :=");
+         Put_Line
+          ("      "
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element_Table.Table (Self) :=");
          Put_Line ("       (Kind     => " & Element_Kind & ",");
          Put_Line ("        Extent   => 0,");
          Put_Line ("        Proxy    =>");
          Put_Line
-          ("          new AMF.Internals.CMOF_"
+          ("          new AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_"
              & Plural (To_Ada_Identifier (Class_Name))
-             & ".CMOF_"
+             & "."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_"
              & To_Ada_Identifier (Class_Name)
              & "_Proxy'(Id => Self),");
          Put_Line ("        Member   => (0      => (Kind => M_None),");
@@ -493,7 +513,10 @@ package body Generator.Constructors is
          end loop;
 
          Put_Line ("                     others => (Kind => M_None)));");
-         Put_Line ("      CMOF_Element_Table.Table (Self).Member (0) :=");
+         Put_Line
+          ("      "
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element_Table.Table (Self).Member (0) :=");
          Put_Line ("       (M_Collection_Of_Element,");
          Put_Line
           ("        AMF.Internals.Element_Collections.Allocate_Collections ("
@@ -542,7 +565,9 @@ package body Generator.Constructors is
             Put_Line
              ("        " & Property_Constant_Name (Attribute) & ",");
             Put_Line
-             ("        CMOF_Element_Table.Table (Self).Member (0).Collection +"
+             ("        "
+                & Metamodel_Name.To_Wide_Wide_String
+                & "_Element_Table.Table (Self).Member (0).Collection +"
                 & Integer'Wide_Wide_Image (J) & ");");
          end loop;
 
@@ -566,7 +591,9 @@ package body Generator.Constructors is
       begin
          if not Class.Class.Get_Is_Abstract then
             Put_Line
-             ("with AMF.Internals.CMOF_"
+             ("with AMF.Internals."
+                & Metamodel_Name.To_Wide_Wide_String
+                & "_"
                 & Plural (To_Ada_Identifier (Class_Name))
                 & ";");
          end if;
@@ -577,9 +604,18 @@ package body Generator.Constructors is
       Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
       Class_Info.Iterate (Generate_With'Access);
       Put_Line ("with AMF.Internals.Element_Collections;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Element_Table;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Metamodel;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Element_Table;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line
@@ -588,8 +624,14 @@ package body Generator.Constructors is
           & "_Constructors is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line ("   use AMF.Internals.Tables.CMOF_Metamodel;");
-      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
+      Put_Line
+       ("   use AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Metamodel;");
+      Put_Line
+       ("   use AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_Types;");
       Put_Line ("   use type AMF.Internals.AMF_Collection_Of_Element;");
       Class_Info.Iterate (Generate_Create'Access);
       New_Line;
@@ -619,7 +661,12 @@ package body Generator.Constructors is
 
       begin
          New_Line;
-         Put_Line ("   function " & Name & " return CMOF_Element;");
+         Put_Line
+          ("   function "
+             & Name
+             & " return AMF.Internals."
+             & Metamodel_Name.To_Wide_Wide_String
+             & "_Element;");
       end Generate_Create;
 
    begin

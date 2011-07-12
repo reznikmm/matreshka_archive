@@ -46,40 +46,40 @@
 
 package AMF.Internals.Tables.CMOF_Constructors is
 
-   function Create_Association return CMOF_Element;
+   function Create_Association return AMF.Internals.CMOF_Element;
 
-   function Create_Class return CMOF_Element;
+   function Create_Class return AMF.Internals.CMOF_Element;
 
-   function Create_Comment return CMOF_Element;
+   function Create_Comment return AMF.Internals.CMOF_Element;
 
-   function Create_Constraint return CMOF_Element;
+   function Create_Constraint return AMF.Internals.CMOF_Element;
 
-   function Create_Data_Type return CMOF_Element;
+   function Create_Data_Type return AMF.Internals.CMOF_Element;
 
-   function Create_Element_Import return CMOF_Element;
+   function Create_Element_Import return AMF.Internals.CMOF_Element;
 
-   function Create_Enumeration return CMOF_Element;
+   function Create_Enumeration return AMF.Internals.CMOF_Element;
 
-   function Create_Enumeration_Literal return CMOF_Element;
+   function Create_Enumeration_Literal return AMF.Internals.CMOF_Element;
 
-   function Create_Expression return CMOF_Element;
+   function Create_Expression return AMF.Internals.CMOF_Element;
 
-   function Create_Opaque_Expression return CMOF_Element;
+   function Create_Opaque_Expression return AMF.Internals.CMOF_Element;
 
-   function Create_Operation return CMOF_Element;
+   function Create_Operation return AMF.Internals.CMOF_Element;
 
-   function Create_Package return CMOF_Element;
+   function Create_Package return AMF.Internals.CMOF_Element;
 
-   function Create_Package_Import return CMOF_Element;
+   function Create_Package_Import return AMF.Internals.CMOF_Element;
 
-   function Create_Package_Merge return CMOF_Element;
+   function Create_Package_Merge return AMF.Internals.CMOF_Element;
 
-   function Create_Parameter return CMOF_Element;
+   function Create_Parameter return AMF.Internals.CMOF_Element;
 
-   function Create_Primitive_Type return CMOF_Element;
+   function Create_Primitive_Type return AMF.Internals.CMOF_Element;
 
-   function Create_Property return CMOF_Element;
+   function Create_Property return AMF.Internals.CMOF_Element;
 
-   function Create_Tag return CMOF_Element;
+   function Create_Tag return AMF.Internals.CMOF_Element;
 
 end AMF.Internals.Tables.CMOF_Constructors;

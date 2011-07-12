@@ -1435,10 +1435,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_First_Event
     (Self : AMF.Internals.UML_Element)
-       return AMF.UML.Optional_Boolean;
+       return AMF.Optional_Boolean;
    procedure Internal_Set_First_Event
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.UML.Optional_Boolean);
+     To   : AMF.Optional_Boolean);
    --  TimeConstraint => TimeConstraint::firstEvent
 
    function Internal_Get_First_Event
@@ -2896,10 +2896,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Is_Substitutable
     (Self : AMF.Internals.UML_Element)
-       return AMF.UML.Optional_Boolean;
+       return AMF.Optional_Boolean;
    procedure Internal_Set_Is_Substitutable
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.UML.Optional_Boolean);
+     To   : AMF.Optional_Boolean);
    --  Generalization => Generalization::isSubstitutable
 
    function Internal_Get_Is_Synchronous
