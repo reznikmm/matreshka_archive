@@ -68,13 +68,13 @@ package AMF.UML.Parameters is
 
    not overriding function Get_Default
     (Self : not null access constant UML_Parameter)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Specifies a String that represents a value to be used when no argument 
    --  is supplied for the Parameter.
 
    not overriding procedure Set_Default
     (Self : not null access UML_Parameter;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Default_Value
     (Self : not null access constant UML_Parameter)
@@ -88,23 +88,23 @@ package AMF.UML.Parameters is
 
    not overriding function Get_Direction
     (Self : not null access constant UML_Parameter)
-       return UML_Parameter_Direction_Kind is abstract;
+       return AMF.UML.UML_Parameter_Direction_Kind is abstract;
    --  Indicates whether a parameter is being sent into or out of a behavioral 
    --  element.
 
    not overriding procedure Set_Direction
     (Self : not null access UML_Parameter;
-     To   : UML_Parameter_Direction_Kind) is abstract;
+     To   : AMF.UML.UML_Parameter_Direction_Kind) is abstract;
 
    not overriding function Get_Effect
     (Self : not null access constant UML_Parameter)
-       return Optional_UML_Parameter_Effect_Kind is abstract;
+       return AMF.UML.Optional_UML_Parameter_Effect_Kind is abstract;
    --  Specifies the effect that the owner of the parameter has on values 
    --  passed in or out of the parameter.
 
    not overriding procedure Set_Effect
     (Self : not null access UML_Parameter;
-     To   : Optional_UML_Parameter_Effect_Kind) is abstract;
+     To   : AMF.UML.Optional_UML_Parameter_Effect_Kind) is abstract;
 
    not overriding function Get_Is_Exception
     (Self : not null access constant UML_Parameter)
@@ -143,7 +143,7 @@ package AMF.UML.Parameters is
 
    not overriding function Default
     (Self : not null access constant UML_Parameter)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Missing derivation for Parameter::/default : String
 
 end AMF.UML.Parameters;

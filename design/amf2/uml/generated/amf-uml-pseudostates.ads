@@ -63,14 +63,14 @@ package AMF.UML.Pseudostates is
 
    not overriding function Get_Kind
     (Self : not null access constant UML_Pseudostate)
-       return UML_Pseudostate_Kind is abstract;
+       return AMF.UML.UML_Pseudostate_Kind is abstract;
    --  Determines the precise type of the Pseudostate and can be one of: 
    --  entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, 
    --  fork, junction, terminate or choice.
 
    not overriding procedure Set_Kind
     (Self : not null access UML_Pseudostate;
-     To   : UML_Pseudostate_Kind) is abstract;
+     To   : AMF.UML.UML_Pseudostate_Kind) is abstract;
 
    not overriding function Get_State
     (Self : not null access constant UML_Pseudostate)

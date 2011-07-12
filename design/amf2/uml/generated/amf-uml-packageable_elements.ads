@@ -64,12 +64,12 @@ package AMF.UML.Packageable_Elements is
 
    not overriding function Get_Visibility
     (Self : not null access constant UML_Packageable_Element)
-       return UML_Visibility_Kind is abstract;
+       return AMF.UML.UML_Visibility_Kind is abstract;
    --  Indicates that packageable elements must always have a visibility, 
    --  i.e., visibility is not optional.
 
    not overriding procedure Set_Visibility
     (Self : not null access UML_Packageable_Element;
-     To   : UML_Visibility_Kind) is abstract;
+     To   : AMF.UML.UML_Visibility_Kind) is abstract;
 
 end AMF.UML.Packageable_Elements;

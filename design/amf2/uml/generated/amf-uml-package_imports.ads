@@ -81,7 +81,7 @@ package AMF.UML.Package_Imports is
 
    not overriding function Get_Visibility
     (Self : not null access constant UML_Package_Import)
-       return UML_Visibility_Kind is abstract;
+       return AMF.UML.UML_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElements within the 
    --  importing Namespace, i.e., whether imported elements will in turn be 
    --  visible to other packages that use that importingPackage as an 
@@ -91,6 +91,6 @@ package AMF.UML.Package_Imports is
 
    not overriding procedure Set_Visibility
     (Self : not null access UML_Package_Import;
-     To   : UML_Visibility_Kind) is abstract;
+     To   : AMF.UML.UML_Visibility_Kind) is abstract;
 
 end AMF.UML.Package_Imports;

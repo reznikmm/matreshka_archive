@@ -84,12 +84,12 @@ package AMF.UML.Multiplicity_Elements is
 
    not overriding function Get_Lower
     (Self : not null access constant UML_Multiplicity_Element)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  Specifies the lower bound of the multiplicity interval.
 
    not overriding procedure Set_Lower
     (Self : not null access UML_Multiplicity_Element;
-     To   : Optional_Integer) is abstract;
+     To   : AMF.Optional_Integer) is abstract;
 
    not overriding function Get_Lower_Value
     (Self : not null access constant UML_Multiplicity_Element)
@@ -102,12 +102,12 @@ package AMF.UML.Multiplicity_Elements is
 
    not overriding function Get_Upper
     (Self : not null access constant UML_Multiplicity_Element)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  Specifies the upper bound of the multiplicity interval.
 
    not overriding procedure Set_Upper
     (Self : not null access UML_Multiplicity_Element;
-     To   : Optional_Unlimited_Natural) is abstract;
+     To   : AMF.Optional_Unlimited_Natural) is abstract;
 
    not overriding function Get_Upper_Value
     (Self : not null access constant UML_Multiplicity_Element)
@@ -155,23 +155,23 @@ package AMF.UML.Multiplicity_Elements is
 
    not overriding function Lower
     (Self : not null access constant UML_Multiplicity_Element)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  The derived lower attribute must equal the lowerBound.
 
    not overriding function Lower_Bound
     (Self : not null access constant UML_Multiplicity_Element)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  The query lowerBound() returns the lower bound of the multiplicity as 
    --  an integer.
 
    not overriding function Upper
     (Self : not null access constant UML_Multiplicity_Element)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  The derived upper attribute must equal the upperBound.
 
    not overriding function Upper_Bound
     (Self : not null access constant UML_Multiplicity_Element)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  The query upperBound() returns the upper bound of the multiplicity for 
    --  a bounded multiplicity as an unlimited natural.
 

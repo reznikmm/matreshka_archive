@@ -63,14 +63,14 @@ package AMF.UML.Extension_Ends is
 
    overriding function Get_Lower
     (Self : not null access constant UML_Extension_End)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  This redefinition changes the default multiplicity of association ends, 
    --  since model elements are usually extended by 0 or 1 instance of the 
    --  extension stereotype.
 
    overriding procedure Set_Lower
     (Self : not null access UML_Extension_End;
-     To   : Optional_Integer) is abstract;
+     To   : AMF.Optional_Integer) is abstract;
 
    not overriding function Get_Type
     (Self : not null access constant UML_Extension_End)
@@ -84,7 +84,7 @@ package AMF.UML.Extension_Ends is
 
    overriding function Lower_Bound
     (Self : not null access constant UML_Extension_End)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  The query lowerBound() returns the lower bound of the multiplicity as 
    --  an Integer. This is a redefinition of the default lower bound, which 
    --  normally, for MultiplicityElements, evaluates to 1 if empty.

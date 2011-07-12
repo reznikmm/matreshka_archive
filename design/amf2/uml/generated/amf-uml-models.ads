@@ -64,12 +64,12 @@ package AMF.UML.Models is
 
    not overriding function Get_Viewpoint
     (Self : not null access constant UML_Model)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  The name of the viewpoint that is expressed by a model (This name may 
    --  refer to a profile definition).
 
    not overriding procedure Set_Viewpoint
     (Self : not null access UML_Model;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
 end AMF.UML.Models;

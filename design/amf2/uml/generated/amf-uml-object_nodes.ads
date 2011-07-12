@@ -84,13 +84,13 @@ package AMF.UML.Object_Nodes is
 
    not overriding function Get_Ordering
     (Self : not null access constant UML_Object_Node)
-       return UML_Object_Node_Ordering_Kind is abstract;
+       return AMF.UML.UML_Object_Node_Ordering_Kind is abstract;
    --  Tells whether and how the tokens in the object node are ordered for 
    --  selection to traverse edges outgoing from the object node.
 
    not overriding procedure Set_Ordering
     (Self : not null access UML_Object_Node;
-     To   : UML_Object_Node_Ordering_Kind) is abstract;
+     To   : AMF.UML.UML_Object_Node_Ordering_Kind) is abstract;
 
    not overriding function Get_Selection
     (Self : not null access constant UML_Object_Node)

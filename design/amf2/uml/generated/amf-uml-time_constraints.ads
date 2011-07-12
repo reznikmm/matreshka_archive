@@ -61,7 +61,7 @@ package AMF.UML.Time_Constraints is
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Time_Constraint)
-       return Optional_Boolean is abstract;
+       return AMF.Optional_Boolean is abstract;
    --  The value of firstEvent is related to constrainedElement. If firstEvent 
    --  is true, then the corresponding observation event is the first time 
    --  instant the execution enters constrainedElement. If firstEvent is 
@@ -70,7 +70,7 @@ package AMF.UML.Time_Constraints is
 
    not overriding procedure Set_First_Event
     (Self : not null access UML_Time_Constraint;
-     To   : Optional_Boolean) is abstract;
+     To   : AMF.Optional_Boolean) is abstract;
 
    not overriding function Get_Specification
     (Self : not null access constant UML_Time_Constraint)

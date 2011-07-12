@@ -61,7 +61,7 @@ package AMF.UML.Duration_Constraints is
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Duration_Constraint)
-       return Set_Of_Boolean is abstract;
+       return AMF.UML.Set_Of_Boolean is abstract;
    --  The value of firstEvent[i] is related to constrainedElement[i] (where i 
    --  is 1 or 2). If firstEvent[i] is true, then the corresponding 
    --  observation event is the first time instant the execution enters 

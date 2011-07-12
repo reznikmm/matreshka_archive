@@ -70,11 +70,11 @@ package AMF.UML.Expressions is
 
    not overriding function Get_Symbol
     (Self : not null access constant UML_Expression)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  The symbol associated with the node in the expression tree.
 
    not overriding procedure Set_Symbol
     (Self : not null access UML_Expression;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
 end AMF.UML.Expressions;

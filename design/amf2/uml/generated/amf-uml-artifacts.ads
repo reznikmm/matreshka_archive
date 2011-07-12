@@ -72,13 +72,13 @@ package AMF.UML.Artifacts is
 
    not overriding function Get_File_Name
     (Self : not null access constant UML_Artifact)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  A concrete name that is used to refer to the Artifact in a physical 
    --  context. Example: file system name, universal resource locator.
 
    not overriding procedure Set_File_Name
     (Self : not null access UML_Artifact;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Manifestation
     (Self : not null access constant UML_Artifact)

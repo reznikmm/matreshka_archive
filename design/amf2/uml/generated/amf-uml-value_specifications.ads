@@ -67,13 +67,13 @@ package AMF.UML.Value_Specifications is
 
    not overriding function Boolean_Value
     (Self : not null access constant UML_Value_Specification)
-       return Optional_Boolean is abstract;
+       return AMF.Optional_Boolean is abstract;
    --  The query booleanValue() gives a single Boolean value when one can be 
    --  computed.
 
    not overriding function Integer_Value
     (Self : not null access constant UML_Value_Specification)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  The query integerValue() gives a single Integer value when one can be 
    --  computed.
 
@@ -107,19 +107,19 @@ package AMF.UML.Value_Specifications is
 
    not overriding function Real_Value
     (Self : not null access constant UML_Value_Specification)
-       return Optional_Real is abstract;
+       return AMF.Optional_Real is abstract;
    --  The query realValue() gives a single Real value when one can be 
    --  computed.
 
    not overriding function String_Value
     (Self : not null access constant UML_Value_Specification)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  The query stringValue() gives a single String value when one can be 
    --  computed.
 
    not overriding function Unlimited_Value
     (Self : not null access constant UML_Value_Specification)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  The query unlimitedValue() gives a single UnlimitedNatural value when 
    --  one can be computed.
 

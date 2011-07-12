@@ -63,7 +63,7 @@ package AMF.UML.Element_Imports is
 
    not overriding function Get_Alias
     (Self : not null access constant UML_Element_Import)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Specifies the name that should be added to the namespace of the 
    --  importing package in lieu of the name of the imported packagable 
    --  element. The aliased name must not clash with any other member name in 
@@ -71,7 +71,7 @@ package AMF.UML.Element_Imports is
 
    not overriding procedure Set_Alias
     (Self : not null access UML_Element_Import;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Imported_Element
     (Self : not null access constant UML_Element_Import)
@@ -95,7 +95,7 @@ package AMF.UML.Element_Imports is
 
    not overriding function Get_Visibility
     (Self : not null access constant UML_Element_Import)
-       return UML_Visibility_Kind is abstract;
+       return AMF.UML.UML_Visibility_Kind is abstract;
    --  Specifies the visibility of the imported PackageableElement within the 
    --  importing Package. The default visibility is the same as that of the 
    --  imported element. If the imported element does not have a visibility, 
@@ -103,7 +103,7 @@ package AMF.UML.Element_Imports is
 
    not overriding procedure Set_Visibility
     (Self : not null access UML_Element_Import;
-     To   : UML_Visibility_Kind) is abstract;
+     To   : AMF.UML.UML_Visibility_Kind) is abstract;
 
    not overriding function Get_Name
     (Self : not null access constant UML_Element_Import)

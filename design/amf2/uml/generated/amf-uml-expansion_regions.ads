@@ -68,14 +68,14 @@ package AMF.UML.Expansion_Regions is
 
    not overriding function Get_Mode
     (Self : not null access constant UML_Expansion_Region)
-       return UML_Expansion_Kind is abstract;
+       return AMF.UML.UML_Expansion_Kind is abstract;
    --  The way in which the executions interact: parallel: all interactions 
    --  are independent iterative: the interactions occur in order of the 
    --  elements stream: a stream of values flows into a single execution
 
    not overriding procedure Set_Mode
     (Self : not null access UML_Expansion_Region;
-     To   : UML_Expansion_Kind) is abstract;
+     To   : AMF.UML.UML_Expansion_Kind) is abstract;
 
    not overriding function Get_Output_Element
     (Self : not null access constant UML_Expansion_Region)

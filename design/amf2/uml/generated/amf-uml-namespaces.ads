@@ -107,7 +107,7 @@ package AMF.UML.Namespaces is
    not overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Namespace;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return Set_Of_String is abstract;
+       return AMF.UML.Set_Of_String is abstract;
    --  The query getNamesOfMember() takes importing into account. It gives 
    --  back the set of names that an element would have in an importing 
    --  namespace, either because it is owned, or if not owned then imported 

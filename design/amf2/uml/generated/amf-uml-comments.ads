@@ -67,11 +67,11 @@ package AMF.UML.Comments is
 
    not overriding function Get_Body
     (Self : not null access constant UML_Comment)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Specifies a string that is the comment.
 
    not overriding procedure Set_Body
     (Self : not null access UML_Comment;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
 end AMF.UML.Comments;

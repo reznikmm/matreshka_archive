@@ -189,6 +189,16 @@ package AMF is
       end case;
    end record;
 
+   type Optional_Real (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : Real;
+      end case;
+   end record;
+
 private
 
    Unlimited : constant Unlimited_Natural := (Unlimited => True);

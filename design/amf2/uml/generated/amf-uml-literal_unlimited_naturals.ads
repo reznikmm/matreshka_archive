@@ -61,12 +61,12 @@ package AMF.UML.Literal_Unlimited_Naturals is
 
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_Unlimited_Natural)
-       return Unlimited_Natural is abstract;
+       return AMF.Unlimited_Natural is abstract;
    --  The specified UnlimitedNatural value.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Literal_Unlimited_Natural;
-     To   : Unlimited_Natural) is abstract;
+     To   : AMF.Unlimited_Natural) is abstract;
 
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Unlimited_Natural)
@@ -75,7 +75,7 @@ package AMF.UML.Literal_Unlimited_Naturals is
 
    not overriding function Unlimited_Value
     (Self : not null access constant UML_Literal_Unlimited_Natural)
-       return Unlimited_Natural is abstract;
+       return AMF.Unlimited_Natural is abstract;
    --  The query unlimitedValue() gives the value.
 
 end AMF.UML.Literal_Unlimited_Naturals;

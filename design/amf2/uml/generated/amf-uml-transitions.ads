@@ -106,12 +106,12 @@ package AMF.UML.Transitions is
 
    not overriding function Get_Kind
     (Self : not null access constant UML_Transition)
-       return UML_Transition_Kind is abstract;
+       return AMF.UML.UML_Transition_Kind is abstract;
    --  Indicates the precise type of the transition.
 
    not overriding procedure Set_Kind
     (Self : not null access UML_Transition;
-     To   : UML_Transition_Kind) is abstract;
+     To   : AMF.UML.UML_Transition_Kind) is abstract;
 
    not overriding function Get_Redefined_Transition
     (Self : not null access constant UML_Transition)

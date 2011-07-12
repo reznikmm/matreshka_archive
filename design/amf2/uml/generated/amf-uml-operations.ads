@@ -143,7 +143,7 @@ package AMF.UML.Operations is
 
    not overriding function Get_Lower
     (Self : not null access constant UML_Operation)
-       return Optional_Integer is abstract;
+       return AMF.Optional_Integer is abstract;
    --  Specifies the lower multiplicity of the return parameter, if present.
    --  This information is derived from the return result for this Operation.
 
@@ -194,7 +194,7 @@ package AMF.UML.Operations is
 
    not overriding function Get_Upper
     (Self : not null access constant UML_Operation)
-       return Optional_Unlimited_Natural is abstract;
+       return AMF.Optional_Unlimited_Natural is abstract;
    --  Specifies the upper multiplicity of the return parameter, if present.
    --  This information is derived from the return result for this Operation.
 
@@ -238,9 +238,15 @@ package AMF.UML.Operations is
    --  parameter of the Operation if one exists, otherwise, it returns an 
    --  empty set
 
+   not overriding function Types
+    (Self : not null access constant UML_Operation)
+       return AMF.UML.Types.UML_Type_Access is abstract;
+   --  If this operation has a return parameter, type equals the value of type 
+   --  for that parameter. Otherwise type is not defined.
+
    not overriding function Upper
     (Self : not null access constant UML_Operation)
-       return Unlimited_Natural is abstract;
+       return AMF.Unlimited_Natural is abstract;
    --  If this operation has a return parameter, upper equals the value of 
    --  upper for that parameter. Otherwise upper is not defined.
 

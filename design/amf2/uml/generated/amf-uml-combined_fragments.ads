@@ -71,13 +71,13 @@ package AMF.UML.Combined_Fragments is
 
    not overriding function Get_Interaction_Operator
     (Self : not null access constant UML_Combined_Fragment)
-       return UML_Interaction_Operator_Kind is abstract;
+       return AMF.UML.UML_Interaction_Operator_Kind is abstract;
    --  Specifies the operation which defines the semantics of this combination 
    --  of InteractionFragments.
 
    not overriding procedure Set_Interaction_Operator
     (Self : not null access UML_Combined_Fragment;
-     To   : UML_Interaction_Operator_Kind) is abstract;
+     To   : AMF.UML.UML_Interaction_Operator_Kind) is abstract;
 
    not overriding function Get_Operand
     (Self : not null access constant UML_Combined_Fragment)

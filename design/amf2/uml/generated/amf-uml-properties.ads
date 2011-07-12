@@ -96,12 +96,12 @@ package AMF.UML.Properties is
 
    not overriding function Get_Aggregation
     (Self : not null access constant UML_Property)
-       return UML_Aggregation_Kind is abstract;
+       return AMF.UML.UML_Aggregation_Kind is abstract;
    --  Specifies the kind of aggregation that applies to the Property.
 
    not overriding procedure Set_Aggregation
     (Self : not null access UML_Property;
-     To   : UML_Aggregation_Kind) is abstract;
+     To   : AMF.UML.UML_Aggregation_Kind) is abstract;
 
    not overriding function Get_Association
     (Self : not null access constant UML_Property)
@@ -142,7 +142,7 @@ package AMF.UML.Properties is
 
    not overriding function Get_Default
     (Self : not null access constant UML_Property)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  A String that is evaluated to give a default value for the Property 
    --  when an object of the owning Classifier is instantiated.
    --  Specifies a String that represents a value to be used when no argument 
@@ -150,7 +150,7 @@ package AMF.UML.Properties is
 
    not overriding procedure Set_Default
     (Self : not null access UML_Property;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Default_Value
     (Self : not null access constant UML_Property)
@@ -264,7 +264,7 @@ package AMF.UML.Properties is
 
    not overriding function Default
     (Self : not null access constant UML_Property)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  Missing derivation for Property::/default : String
 
    not overriding function Is_Attribute

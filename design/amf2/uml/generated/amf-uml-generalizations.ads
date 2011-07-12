@@ -83,7 +83,7 @@ package AMF.UML.Generalizations is
 
    not overriding function Get_Is_Substitutable
     (Self : not null access constant UML_Generalization)
-       return Optional_Boolean is abstract;
+       return AMF.Optional_Boolean is abstract;
    --  Indicates whether the specific classifier can be used wherever the 
    --  general classifier can be used. If true, the execution traces of the 
    --  specific classifier will be a superset of the execution traces of the 
@@ -91,7 +91,7 @@ package AMF.UML.Generalizations is
 
    not overriding procedure Set_Is_Substitutable
     (Self : not null access UML_Generalization;
-     To   : Optional_Boolean) is abstract;
+     To   : AMF.Optional_Boolean) is abstract;
 
    not overriding function Get_Specific
     (Self : not null access constant UML_Generalization)

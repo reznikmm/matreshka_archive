@@ -95,7 +95,7 @@ package AMF.UML.Connectors is
 
    not overriding function Get_Kind
     (Self : not null access constant UML_Connector)
-       return UML_Connector_Kind is abstract;
+       return AMF.UML.UML_Connector_Kind is abstract;
    --  Indicates the kind of connector. This is derived: a connector with one 
    --  or more ends connected to a Port which is not on a Part and which is 
    --  not a behavior port is a delegation; otherwise it is an assembly.
@@ -122,7 +122,7 @@ package AMF.UML.Connectors is
 
    not overriding function Kind
     (Self : not null access constant UML_Connector)
-       return UML_Connector_Kind is abstract;
+       return AMF.UML.UML_Connector_Kind is abstract;
    --  Missing derivation for Connector::/kind : ConnectorKind
 
 end AMF.UML.Connectors;

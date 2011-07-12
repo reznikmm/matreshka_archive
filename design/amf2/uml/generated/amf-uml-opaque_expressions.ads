@@ -75,12 +75,12 @@ package AMF.UML.Opaque_Expressions is
 
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Expression)
-       return Sequence_Of_String is abstract;
+       return AMF.UML.Sequence_Of_String is abstract;
    --  The text of the expression, possibly in multiple languages.
 
    not overriding function Get_Language
     (Self : not null access constant UML_Opaque_Expression)
-       return Ordered_Set_Of_String is abstract;
+       return AMF.UML.Ordered_Set_Of_String is abstract;
    --  Specifies the languages in which the expression is stated. The 
    --  interpretation of the expression body depends on the languages. If the 
    --  languages are unspecified, they might be implicit from the expression 

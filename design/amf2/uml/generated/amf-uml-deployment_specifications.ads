@@ -74,22 +74,22 @@ package AMF.UML.Deployment_Specifications is
 
    not overriding function Get_Deployment_Location
     (Self : not null access constant UML_Deployment_Specification)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  The location where an Artifact is deployed onto a Node. This is 
    --  typically a 'directory' or 'memory address'.
 
    not overriding procedure Set_Deployment_Location
     (Self : not null access UML_Deployment_Specification;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Execution_Location
     (Self : not null access constant UML_Deployment_Specification)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  The location where a component Artifact executes. This may be a local 
    --  or remote location.
 
    not overriding procedure Set_Execution_Location
     (Self : not null access UML_Deployment_Specification;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
 end AMF.UML.Deployment_Specifications;

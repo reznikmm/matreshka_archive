@@ -72,7 +72,7 @@ package AMF.UML.Behavioral_Features is
 
    not overriding function Get_Concurrency
     (Self : not null access constant UML_Behavioral_Feature)
-       return UML_Call_Concurrency_Kind is abstract;
+       return AMF.UML.UML_Call_Concurrency_Kind is abstract;
    --  Specifies the semantics of concurrent calls to the same passive 
    --  instance (i.e., an instance originating from a class with isActive 
    --  being false). Active instances control access to their own behavioral 
@@ -80,7 +80,7 @@ package AMF.UML.Behavioral_Features is
 
    not overriding procedure Set_Concurrency
     (Self : not null access UML_Behavioral_Feature;
-     To   : UML_Call_Concurrency_Kind) is abstract;
+     To   : AMF.UML.UML_Call_Concurrency_Kind) is abstract;
 
    not overriding function Get_Is_Abstract
     (Self : not null access constant UML_Behavioral_Feature)

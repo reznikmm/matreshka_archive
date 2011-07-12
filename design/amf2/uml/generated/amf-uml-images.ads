@@ -60,7 +60,7 @@ package AMF.UML.Images is
 
    not overriding function Get_Content
     (Self : not null access constant UML_Image)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  This contains the serialization of the image according to the format. 
    --  The value could represent a bitmap, image such as a GIF file, or 
    --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
@@ -68,11 +68,11 @@ package AMF.UML.Images is
 
    not overriding procedure Set_Content
     (Self : not null access UML_Image;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Format
     (Self : not null access constant UML_Image)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  This indicates the format of the content - which is how the string 
    --  content should be interpreted. The following values are reserved: SVG, 
    --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
@@ -82,16 +82,16 @@ package AMF.UML.Images is
 
    not overriding procedure Set_Format
     (Self : not null access UML_Image;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
    not overriding function Get_Location
     (Self : not null access constant UML_Image)
-       return Optional_String is abstract;
+       return AMF.Optional_String is abstract;
    --  This contains a location that can be used by a tool to locate the image 
    --  as an alternative to embedding it in the stereotype.
 
    not overriding procedure Set_Location
     (Self : not null access UML_Image;
-     To   : Optional_String) is abstract;
+     To   : AMF.Optional_String) is abstract;
 
 end AMF.UML.Images;

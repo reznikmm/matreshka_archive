@@ -88,17 +88,17 @@ package AMF.UML.Messages is
 
    not overriding function Get_Message_Kind
     (Self : not null access constant UML_Message)
-       return UML_Message_Kind is abstract;
+       return AMF.UML.UML_Message_Kind is abstract;
    --  The derived kind of the Message (complete, lost, found or unknown)
 
    not overriding function Get_Message_Sort
     (Self : not null access constant UML_Message)
-       return UML_Message_Sort is abstract;
+       return AMF.UML.UML_Message_Sort is abstract;
    --  The sort of communication reflected by the Message
 
    not overriding procedure Set_Message_Sort
     (Self : not null access UML_Message;
-     To   : UML_Message_Sort) is abstract;
+     To   : AMF.UML.UML_Message_Sort) is abstract;
 
    not overriding function Get_Receive_Event
     (Self : not null access constant UML_Message)
@@ -130,7 +130,7 @@ package AMF.UML.Messages is
 
    not overriding function Message_Kind
     (Self : not null access constant UML_Message)
-       return UML_Message_Kind is abstract;
+       return AMF.UML.UML_Message_Kind is abstract;
    --  Missing derivation for Message::/messageKind : MessageKind
 
 end AMF.UML.Messages;
