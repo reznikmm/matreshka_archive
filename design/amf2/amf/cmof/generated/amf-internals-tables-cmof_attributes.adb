@@ -419,19 +419,12 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Alias
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
-            if CMOF_Element_Table.Table (Self).Member (3).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (3).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (3).String_Value;
 
          when others =>
             raise Program_Error;
@@ -523,19 +516,12 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Comment =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when others =>
             raise Program_Error;
@@ -639,30 +625,16 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Default
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Parameter =>
-            if CMOF_Element_Table.Table (Self).Member (11).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (11).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (11).String_Value;
 
          when E_Property =>
-            if CMOF_Element_Table.Table (Self).Member (13).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (13).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (13).String_Value;
 
          when others =>
             raise Program_Error;
@@ -1282,170 +1254,64 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Name
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Association =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Class =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Constraint =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Data_Type =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Enumeration =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Enumeration_Literal =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Expression =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Opaque_Expression =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Operation =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Package =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Parameter =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Primitive_Type =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Property =>
-            if CMOF_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
+            return
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-         when others =>
-            raise Program_Error;
-      end case;
-   end Internal_Get_Name;
-
-   -----------------------
-   -- Internal_Get_Name --
-   -----------------------
-
-   function Internal_Get_Name
-    (Self : AMF.Internals.CMOF_Element)
-       return League.Strings.Universal_String is
-   begin
-      case CMOF_Element_Table.Table (Self).Kind is
          when E_Tag =>
             return
-              League.Strings.Internals.Create
-               (CMOF_Element_Table.Table (Self).Member (2).String_Value);
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
          when others =>
             raise Program_Error;
@@ -2156,151 +2022,60 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Qualified_Name
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Association =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Class =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Constraint =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Data_Type =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Enumeration =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Enumeration_Literal =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Expression =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Opaque_Expression =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Operation =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Package =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Parameter =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Primitive_Type =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Property =>
-            if CMOF_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (5).String_Value;
 
          when others =>
             raise Program_Error;
@@ -2613,19 +2388,12 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Uri
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Package =>
-            if CMOF_Element_Table.Table (Self).Member (7).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (CMOF_Element_Table.Table (Self).Member (7).String_Value));
-            end if;
+            return
+              CMOF_Element_Table.Table (Self).Member (7).String_Value;
 
          when others =>
             raise Program_Error;
@@ -2638,13 +2406,12 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Value
     (Self : AMF.Internals.CMOF_Element)
-       return League.Strings.Universal_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Tag =>
             return
-              League.Strings.Internals.Create
-               (CMOF_Element_Table.Table (Self).Member (3).String_Value);
+              CMOF_Element_Table.Table (Self).Member (3).String_Value;
 
          when others =>
             raise Program_Error;
@@ -2730,32 +2497,28 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Alias
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
+            Old := CMOF_Element_Table.Table (Self).Member (3).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (3).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (3).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (3).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (3).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (3).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (3).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Element_Import_Alias, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -2792,32 +2555,28 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Body
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Comment =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Comment_Body, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -2940,26 +2699,18 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Default
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Parameter =>
+            Old := CMOF_Element_Table.Table (Self).Member (11).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (11).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (11).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (11).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (11).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (11).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (11).String_Value);
             end if;
@@ -2967,26 +2718,26 @@ package body AMF.Internals.Tables.CMOF_Attributes is
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Parameter_Default, Old, To);
 
-         when E_Property =>
-            if CMOF_Element_Table.Table (Self).Member (13).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (13).String_Value));
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
             end if;
 
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (13).String_Value := null;
+         when E_Property =>
+            Old := CMOF_Element_Table.Table (Self).Member (13).String_Value;
 
-            else
-               CMOF_Element_Table.Table (Self).Member (13).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
+            CMOF_Element_Table.Table (Self).Member (13).String_Value := To;
+
+            if CMOF_Element_Table.Table (Self).Member (13).String_Value /= null then
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (13).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Property_Default, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -3498,278 +3249,222 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Name
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Association =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Class =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Constraint =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Data_Type =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Enumeration =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Enumeration_Literal =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Expression =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Opaque_Expression =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Operation =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Package =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Parameter =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Primitive_Type =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Property =>
+            Old := CMOF_Element_Table.Table (Self).Member (2).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (2).String_Value);
             end if;
@@ -3777,35 +3472,21 @@ package body AMF.Internals.Tables.CMOF_Attributes is
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Named_Element_Name, Old, To);
 
-         when others =>
-            raise Program_Error;
-      end case;
-   end Internal_Set_Name;
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
-   -----------------------
-   -- Internal_Set_Name --
-   -----------------------
-
-   procedure Internal_Set_Name
-    (Self : AMF.Internals.CMOF_Element;
-     To   : League.Strings.Universal_String)
-   is
-      Old : League.Strings.Universal_String;
-
-   begin
-      case CMOF_Element_Table.Table (Self).Kind is
          when E_Tag =>
             Old :=
-              League.Strings.Internals.Wrap
-               (CMOF_Element_Table.Table (Self).Member (2).String_Value);
+              CMOF_Element_Table.Table (Self).Member (2).String_Value;
 
-            CMOF_Element_Table.Table (Self).Member (2).String_Value :=
-              League.Strings.Internals.Internal (To);
+            CMOF_Element_Table.Table (Self).Member (2).String_Value := To;
             Matreshka.Internals.Strings.Reference
              (CMOF_Element_Table.Table (Self).Member (2).String_Value);
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Tag_Name, Old, To);
+            Matreshka.Internals.Strings.Dereference (Old);
 
          when others =>
             raise Program_Error;
@@ -4128,32 +3809,28 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Uri
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Package =>
+            Old := CMOF_Element_Table.Table (Self).Member (7).String_Value;
+
+            CMOF_Element_Table.Table (Self).Member (7).String_Value := To;
+
             if CMOF_Element_Table.Table (Self).Member (7).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (CMOF_Element_Table.Table (Self).Member (7).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               CMOF_Element_Table.Table (Self).Member (7).String_Value := null;
-
-            else
-               CMOF_Element_Table.Table (Self).Member (7).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (CMOF_Element_Table.Table (Self).Member (7).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Package_Uri, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -4166,24 +3843,23 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    procedure Internal_Set_Value
     (Self : AMF.Internals.CMOF_Element;
-     To   : League.Strings.Universal_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : League.Strings.Universal_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Tag =>
             Old :=
-              League.Strings.Internals.Wrap
-               (CMOF_Element_Table.Table (Self).Member (3).String_Value);
+              CMOF_Element_Table.Table (Self).Member (3).String_Value;
 
-            CMOF_Element_Table.Table (Self).Member (3).String_Value :=
-              League.Strings.Internals.Internal (To);
+            CMOF_Element_Table.Table (Self).Member (3).String_Value := To;
             Matreshka.Internals.Strings.Reference
              (CMOF_Element_Table.Table (Self).Member (3).String_Value);
 
             Notification.Notify_Attribute_Set
              (Self, MP_CMOF_Tag_Value, Old, To);
+            Matreshka.Internals.Strings.Dereference (Old);
 
          when others =>
             raise Program_Error;

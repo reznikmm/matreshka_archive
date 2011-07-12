@@ -169,110 +169,78 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 1,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_15'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_15'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 1,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_10'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_10'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 3,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_7'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_7'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_4'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_4'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 5,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_12'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_12'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_14'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_14'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 7,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_9'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_9'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_18'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_18'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 9,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_17'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_17'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_3'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_3'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 11,
-        (False,
-         League.Strings.Internals.Create
-          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_11'Access)));
+         AMF.Internals.Tables.Primitive_Types_String_Data.MS_11'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 12,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_16'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_16'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 12,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_1'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_1'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 13,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 13,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_6'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_6'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 14,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 14,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_13'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_13'Access);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 15,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 15,
-        League.Strings.Internals.Create
-         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_8'Access));
+        AMF.Internals.Tables.Primitive_Types_String_Data.MS_8'Access);
 
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,

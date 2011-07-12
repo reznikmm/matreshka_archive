@@ -308,10 +308,21 @@ package body Generator.Type_Mapping is
 
          --  XXX For enumeration types this can be computed.
 
-         return
-           Mapping.Element
+         if Mapping.Element
             (AMF.CMOF.Elements.CMOF_Element_Access
-              (The_Type)).Mapping (Representation).Ada_Type;
+              (The_Type)).Mapping (Representation).Internal_Ada_Type.Is_Empty
+         then
+            return
+              Mapping.Element
+               (AMF.CMOF.Elements.CMOF_Element_Access
+                 (The_Type)).Mapping (Representation).Ada_Type;
+
+         else
+            return
+              Mapping.Element
+               (AMF.CMOF.Elements.CMOF_Element_Access
+                 (The_Type)).Mapping (Representation).Internal_Ada_Type;
+         end if;
 
       else
          raise Program_Error;

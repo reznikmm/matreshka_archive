@@ -277,13 +277,10 @@ package body Generator.Reflection is
 
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
-                  when Value =>
+                  when Value | Holder =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String ("League.Holders.To_Holder");
-
-                  when Holder =>
-                     Holder_Name :=
-                       To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
+                       To_Unbounded_Wide_Wide_String
+                        ("AMF.Internals.Holders.To_Holder");
 
                   when Set =>
                      raise Program_Error;
@@ -611,11 +608,8 @@ package body Generator.Reflection is
 
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
-                  when Value =>
-                     Put ("League.Holders.Element (Value)");
-
-                  when Holder =>
-                     Put ("AMF.Holders.Element (Value)");
+                  when Value | Holder =>
+                     Put ("AMF.Internals.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -731,6 +725,7 @@ package body Generator.Reflection is
       Put_Line ("with AMF.Internals.CMOF_Elements;");
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
+      Put_Line ("with AMF.Internals.Holders;");
       Put_Line
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String

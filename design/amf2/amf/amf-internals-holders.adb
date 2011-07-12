@@ -4,7 +4,7 @@
 --                                                                          --
 --                          Ada Modeling Framework                          --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,91 +41,49 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides capability to specify mapping of model's data types
---  into Ada one.
-------------------------------------------------------------------------------
-private with Ada.Containers.Hashed_Maps;
-private with AMF.CMOF.Elements.Hash;
-with AMF.CMOF.Enumeration_Literals;
-with AMF.CMOF.Types;
+with League.Strings.Internals;
 
-package Generator.Type_Mapping is
+package body AMF.Internals.Holders is
 
-   procedure Load_Mapping;
-   --  Loads mapping data.
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
-   function Public_Ada_Type_Qualified_Name
-    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
-     Representation : Representation_Kinds)
-       return League.Strings.Universal_String;
-   --  Returns fully qualified name of Ada type which is used to represent
-   --  value of the specified type in public API.
+   -------------
+   -- Element --
+   -------------
 
-   function Internal_Ada_Type_Qualified_Name
-    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
-     Representation : Representation_Kinds)
-       return League.Strings.Universal_String;
-   --  Returns fully qualified name of Ada type which is used to represent
-   --  value of the specified type in the internal data structures.
+   function Element
+    (Holder : League.Holders.Holder)
+       return Matreshka.Internals.Strings.Shared_String_Access is
+   begin
+      if not League.Holders.Is_Universal_String (Holder) then
+         raise Constraint_Error;
+      end if;
 
-   function Member_Name
-    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
-     Representation : Representation_Kinds)
-       return League.Strings.Universal_String;
+      if League.Holders.Is_Empty (Holder) then
+         return null;
 
-   function Member_Kind_Name
-    (Element        : not null access AMF.CMOF.Elements.CMOF_Element'Class;
-     Representation : Representation_Kinds)
-       return League.Strings.Universal_String;
+      else
+         return
+           League.Strings.Internals.Internal (League.Holders.Element (Holder));
+      end if;
+   end Element;
 
-   function Ada_Enumeration_Literal_Name
-    (Element : not null access
-       AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class)
-       return League.Strings.Universal_String;
+   ---------------
+   -- To_Holder --
+   ---------------
 
-private
+   function To_Holder
+    (Item : Matreshka.Internals.Strings.Shared_String_Access)
+       return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag (Result, League.Holders.Universal_String_Tag);
 
-   type Representation_Mapping is record
-      Ada_Package       : League.Strings.Universal_String;
-      Ada_Type          : League.Strings.Universal_String;
-      Internal_Ada_Type : League.Strings.Universal_String;
-      Member_Name       : League.Strings.Universal_String;
-      Member_Kind_Name  : League.Strings.Universal_String;
-   end record;
+         if Item /= null then
+            League.Holders.Replace_Element
+             (Result, League.Strings.Internals.Create (Item));
+         end if;
+      end return;
+   end To_Holder;
 
-   type Representation_Mapping_Access is access all Representation_Mapping;
-
-   type Representation_Mappings is
-     array (Representation_Kinds) of Representation_Mapping_Access;
-
-   type Type_Mapping is record
-      Mapping : Representation_Mappings;
-   end record;
-
-   type Type_Mapping_Access is access all Type_Mapping;
-
-   package Mapping_Maps is
-     new Ada.Containers.Hashed_Maps
-          (AMF.CMOF.Elements.CMOF_Element_Access,
-           Type_Mapping_Access,
-           AMF.CMOF.Elements.Hash,
-           AMF.CMOF.Elements."=");
-
-   type Enumeration_Literal_Mapping is record
-      Ada_Name : League.Strings.Universal_String;
-   end record;
-
-   type Enumeration_Literal_Mapping_Access is
-     access all Enumeration_Literal_Mapping;
-
-   package Enumeration_Literal_Maps is
-     new Ada.Containers.Hashed_Maps
-          (AMF.CMOF.Elements.CMOF_Element_Access,
-           Enumeration_Literal_Mapping_Access,
-           AMF.CMOF.Elements.Hash,
-           AMF.CMOF.Elements."=");
-
-   Mapping : Mapping_Maps.Map;
-   Literal : Enumeration_Literal_Maps.Map;
-
-end Generator.Type_Mapping;
+end AMF.Internals.Holders;

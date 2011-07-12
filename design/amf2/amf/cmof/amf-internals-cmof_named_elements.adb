@@ -41,11 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
+with League.Strings.Internals;
+
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Named_Elements is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
    --------------
    -- Get_Name --
@@ -53,9 +57,18 @@ package body AMF.Internals.CMOF_Named_Elements is
 
    overriding function Get_Name
     (Self : not null access constant CMOF_Named_Element_Proxy)
-       return Optional_String is
+       return Optional_String
+   is
+      Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Internal_Get_Name (Self.Id);
+
    begin
-      return Internal_Get_Name (Self.Id);
+      if Aux = null then
+         return (Is_Empty => True);
+
+      else
+         return (False, League.Strings.Internals.Create (Aux));
+      end if;
    end Get_Name;
 
    --------------
@@ -66,7 +79,13 @@ package body AMF.Internals.CMOF_Named_Elements is
     (Self : not null access CMOF_Named_Element_Proxy;
      To   : Optional_String) is
    begin
-      Internal_Set_Name (Self.Id, To);
+      if To.Is_Empty then
+         Internal_Set_Name (Self.Id, null);
+
+      else
+         Internal_Set_Name
+          (Self.Id, League.Strings.Internals.Internal (To.Value));
+      end if;
    end Set_Name;
 
 end AMF.Internals.CMOF_Named_Elements;

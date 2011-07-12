@@ -1131,16 +1131,14 @@ package body Generator.Metamodel is
                      Put ("       (Base + ");
                      Put (Element_Numbers.Element (Element), Width => 0);
                      Put_Line (",");
-                     Put_Line ("        (False,");
-                     Put_Line ("         League.Strings.Internals.Create");
                      Put
-                      ("          (AMF.Internals.Tables."
+                      ("         AMF.Internals.Tables."
                          & Metamodel_Name.To_Wide_Wide_String
                          & "_String_Data.MS_");
                      Put
                       (String_Numbers.Element (League.Holders.Element (Value)),
                        Width => 0);
-                     Put_Line ("'Access)));");
+                     Put_Line ("'Access);");
                   end if;
 
                else
@@ -1150,15 +1148,14 @@ package body Generator.Metamodel is
                   Put ("       (Base + ");
                   Put (Element_Numbers.Element (Element), Width => 0);
                   Put_Line (",");
-                  Put_Line ("        League.Strings.Internals.Create");
                   Put
-                   ("         (AMF.Internals.Tables."
+                   ("        AMF.Internals.Tables."
                       & Metamodel_Name.To_Wide_Wide_String
                       & "_String_Data.MS_");
                   Put
                    (String_Numbers.Element (League.Holders.Element (Value)),
                     Width => 0);
-                  Put_Line ("'Access));");
+                  Put_Line ("'Access);");
                end if;
 
             elsif Is_Parameter_Direction_Kind_Type (Property_Type) then

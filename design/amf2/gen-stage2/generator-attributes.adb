@@ -47,6 +47,8 @@ with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Types;
+with AMF.Elements;
+with AMF.Internals.Helpers;
 with League.Strings;
 
 with Generator.Names;
@@ -62,6 +64,7 @@ package body Generator.Attributes is
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_String;
+   use type League.Strings.Universal_String;
 
    type Pair is record
       Class     : AMF.CMOF.Classes.CMOF_Class_Access;
@@ -156,6 +159,11 @@ package body Generator.Attributes is
       if Group = null then
          Group := new Homograph_Information;
          Group.Pairs.Append ((Class, Attribute));
+
+         if Set.Contains (Group) then
+            raise Program_Error;
+         end if;
+
          Set.Insert (Group);
 
       else
@@ -323,44 +331,15 @@ package body Generator.Attributes is
                --  String is handled in specific way.
 
                case Representation (Attribute) is
-                  when Value =>
+                  when Value | Holder =>
                      Put_Line ("            return");
-                     Put_Line
-                      ("              League.Strings.Internals.Create");
-                     Put_Line
-                      ("               ("
+                     Put_Line ("              "
                          & Metamodel_Name.To_Wide_Wide_String
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value);");
-
-                  when Holder =>
-                     Put_Line
-                      ("            if "
-                         & Metamodel_Name.To_Wide_Wide_String
-                         & "_Element_Table.Table (Self).Member ("
-                         & Trim
-                            (Integer'Wide_Wide_Image
-                              (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value = null then");
-                     Put_Line ("               return (Is_Empty => True);");
-                     New_Line;
-                     Put_Line ("            else");
-                     Put_Line ("               return");
-                     Put_Line ("                (False,");
-                     Put_Line
-                      ("                 League.Strings.Internals.Create");
-                     Put_Line
-                      ("                  ("
-                         & Metamodel_Name.To_Wide_Wide_String
-                         & "_Element_Table.Table (Self).Member ("
-                         & Trim
-                            (Integer'Wide_Wide_Image
-                              (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value));");
-                     Put_Line ("            end if;");
+                         & ").String_Value;");
 
                   when Set =>
                      raise Program_Error;
@@ -513,15 +492,13 @@ package body Generator.Attributes is
                   when Value =>
                      Put_Line ("            Old :=");
                      Put_Line
-                      ("              League.Strings.Internals.Wrap");
-                     Put_Line
-                      ("               ("
+                      ("              "
                          & Metamodel_Name.To_Wide_Wide_String
                          & "_Element_Table.Table (Self).Member ("
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value);");
+                         & ").String_Value;");
                      New_Line;
                      Put_Line
                       ("            "
@@ -530,10 +507,7 @@ package body Generator.Attributes is
                          & Trim
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value :=");
-                     Put_Line
-                      ("              "
-                         & "League.Strings.Internals.Internal (To);");
+                         & ").String_Value := To;");
                      Put_Line
                       ("            "
                          & "Matreshka.Internals.Strings.Reference");
@@ -552,9 +526,29 @@ package body Generator.Attributes is
                       ("             (Self, "
                          & Property_Constant_Name (Attribute)
                          & ", Old, To);");
-
+                     Put_Line
+                      ("            "
+                         & "Matreshka.Internals.Strings.Dereference (Old);");
 
                   when Holder =>
+                     Put_Line
+                      ("            Old := "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
+                         & Trim
+                            (Integer'Wide_Wide_Image
+                              (Info.Slot.Element (Attribute)), Both)
+                         & ").String_Value;");
+                     New_Line;
+                     Put_Line
+                      ("            "
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_Element_Table.Table (Self).Member ("
+                         & Trim
+                            (Integer'Wide_Wide_Image
+                              (Info.Slot.Element (Attribute)), Both)
+                         & ").String_Value := To;");
+                     New_Line;
                      Put_Line
                       ("            if "
                          & Metamodel_Name.To_Wide_Wide_String
@@ -563,43 +557,6 @@ package body Generator.Attributes is
                             (Integer'Wide_Wide_Image
                               (Info.Slot.Element (Attribute)), Both)
                          & ").String_Value /= null then");
-                     Put_Line ("               Old :=");
-                     Put_Line ("                (False,");
-                     Put_Line
-                      ("                 League.Strings.Internals.Wrap");
-                     Put_Line
-                      ("                  ("
-                         & Metamodel_Name.To_Wide_Wide_String
-                         & "_Element_Table.Table (Self).Member ("
-                         & Trim
-                            (Integer'Wide_Wide_Image
-                              (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value));");
-                     Put_Line ("            end if;");
-                     New_Line;
-                     Put_Line
-                      ("            if To.Is_Empty then");
-                     Put_Line
-                      ("               "
-                         & Metamodel_Name.To_Wide_Wide_String
-                         & "_Element_Table.Table (Self).Member ("
-                         & Trim
-                            (Integer'Wide_Wide_Image
-                              (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value := null;");
-                     New_Line;
-                     Put_Line ("            else");
-                     Put_Line
-                      ("               "
-                         & Metamodel_Name.To_Wide_Wide_String
-                         & "_Element_Table.Table (Self).Member ("
-                         & Trim
-                            (Integer'Wide_Wide_Image
-                              (Info.Slot.Element (Attribute)), Both)
-                         & ").String_Value :=");
-                     Put_Line
-                      ("                 "
-                         & "League.Strings.Internals.Internal (To.Value);");
                      Put_Line
                       ("               "
                          & "Matreshka.Internals.Strings.Reference");
@@ -619,6 +576,13 @@ package body Generator.Attributes is
                       ("             (Self, "
                          & Property_Constant_Name (Attribute)
                          & ", Old, To);");
+                     New_Line;
+                     Put_Line
+                      ("            if Old /= null then");
+                     Put_Line
+                      ("               "
+                         & "Matreshka.Internals.Strings.Reference (Old);");
+                     Put_Line ("            end if;");
 
                   when Set =>
                      raise Program_Error;
@@ -1045,7 +1009,7 @@ package body Generator.Attributes is
 
       Put_Header;
       Put_Line ("with AMF." & Metamodel_Name.To_Wide_Wide_String & ";");
-      Put_Line ("with League.Strings;");
+      Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line
        ("package AMF.Internals.Tables."
@@ -1090,13 +1054,13 @@ package body Generator.Attributes is
 
       elsif First_Type = Second_Type then
          --  Attributes has same type (and this type is not class), they are
-         --  distinguishable when has different representations
-         --  (value/holder/collection).
+         --  distinguishable when has different internal representations types.
 
          return
-           not (Representation (First) = Representation (Second)
-                  or else (Representation (First) in Set .. Sequence
-                             and Representation (Second) in Set .. Sequence));
+           Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
+            (First_Type, Representation (First))
+              /= Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
+                  (Second_TYpe, Representation (Second));
 
       else
          return True;

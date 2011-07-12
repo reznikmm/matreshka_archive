@@ -44,16 +44,16 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.CMOF;
-with League.Strings;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Alias
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Alias
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  ElementImport => ElementImport::alias
 
    function Internal_Get_Annotated_Element
@@ -85,10 +85,10 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Body
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Comment => Comment::body
 
    function Internal_Get_Body_Condition
@@ -132,10 +132,10 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Default
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Default
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Parameter => Parameter::default
    --  Property => Property::default
 
@@ -376,10 +376,10 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Name
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Name
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Association => NamedElement::name
    --  Class => NamedElement::name
    --  Constraint => NamedElement::name
@@ -393,13 +393,6 @@ package AMF.Internals.Tables.CMOF_Attributes is
    --  Parameter => NamedElement::name
    --  PrimitiveType => NamedElement::name
    --  Property => NamedElement::name
-
-   function Internal_Get_Name
-    (Self : AMF.Internals.CMOF_Element)
-       return League.Strings.Universal_String;
-   procedure Internal_Set_Name
-    (Self : AMF.Internals.CMOF_Element;
-     To   : League.Strings.Universal_String);
    --  Tag => Tag::name
 
    function Internal_Get_Namespace
@@ -635,7 +628,7 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Qualified_Name
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    --  Association => NamedElement::qualifiedName
    --  Class => NamedElement::qualifiedName
    --  Constraint => NamedElement::qualifiedName
@@ -757,18 +750,18 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Uri
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Uri
     (Self : AMF.Internals.CMOF_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Package => Package::uri
 
    function Internal_Get_Value
     (Self : AMF.Internals.CMOF_Element)
-       return League.Strings.Universal_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Value
     (Self : AMF.Internals.CMOF_Element;
-     To   : League.Strings.Universal_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Tag => Tag::value
 
    function Internal_Get_Visibility

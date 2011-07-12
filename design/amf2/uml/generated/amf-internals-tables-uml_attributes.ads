@@ -44,7 +44,7 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.UML;
-with League.Strings;
+with Matreshka.Internals.Strings;
 
 package AMF.Internals.Tables.UML_Attributes is
 

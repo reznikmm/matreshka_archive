@@ -10,8 +10,8 @@
     <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder_Value"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String">
-    <mapping representation="value" adaType="League.Strings.Universal_String"/>
-    <mapping representation="holder" adaType="AMF.Optional_String"/>
+    <mapping representation="value" adaType="League.Strings.Universal_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
+    <mapping representation="holder" adaType="AMF.Optional_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
     <mapping representation="set" adaType="AMF.CMOF.Set_Of_String"/>
     <mapping representation="ordered_set" adaType="AMF.CMOF.Ordered_Set_Of_String"/>
     <mapping representation="sequence" adaType="AMF.CMOF.Sequence_Of_String"/>

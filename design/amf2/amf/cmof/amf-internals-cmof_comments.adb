@@ -41,11 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
+with League.Strings.Internals;
+
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Comments is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
    --------------
    -- Get_Body --
@@ -53,9 +57,18 @@ package body AMF.Internals.CMOF_Comments is
 
    overriding function Get_Body
     (Self : not null access constant CMOF_Comment_Proxy)
-       return Optional_String is
+       return Optional_String
+   is
+      Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Internal_Get_Body (Self.Id);
+
    begin
-      return Internal_Get_Body (Self.Id);
+      if Aux = null then
+         return (Is_Empty => True);
+
+      else
+         return (False, League.Strings.Internals.Create (Aux));
+      end if;
    end Get_Body;
 
    -----------------------

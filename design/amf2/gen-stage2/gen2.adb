@@ -98,6 +98,6 @@ begin
 
    if Generator.Generate_Reflection then
       Put_Line (Standard_Error, "Generating relfection...");
---      Generator.Reflection.Generate_Reflection_Implementation;
+      Generator.Reflection.Generate_Reflection_Implementation;
    end if;
 end Gen2;

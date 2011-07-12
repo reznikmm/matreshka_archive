@@ -52,25 +52,27 @@ package body Generator.Type_Mapping.Handlers is
 
    use Ada.Wide_Wide_Text_IO;
 
-   Literal_Tag_Name                : constant League.Strings.Universal_String
+   Literal_Tag_Name                 : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("literal");
-   Mapping_Tag_Name                : constant League.Strings.Universal_String
+   Mapping_Tag_Name                 : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("mapping");
-   Type_Tag_Name                   : constant League.Strings.Universal_String
+   Type_Tag_Name                    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
-   Ada_Package_Attribute_Name      : constant League.Strings.Universal_String
+   Ada_Package_Attribute_Name       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaPackage");
-   Ada_Literal_Attribute_Name      : constant League.Strings.Universal_String
+   Ada_Literal_Attribute_Name       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaLiteral");
-   Ada_Type_Attribute_Name         : constant League.Strings.Universal_String
+   Ada_Type_Attribute_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("adaType");
-   Member_Name_Attribute_Name      : constant League.Strings.Universal_String
+   Internal_Ada_Type_Attribute_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("internalAdaType");
+   Member_Name_Attribute_Name       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("memberName");
-   Member_Kind_Name_Attribute_Name : constant League.Strings.Universal_String
+   Member_Kind_Name_Attribute_Name  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("memberKindName");
-   Representation_Attribute_Name   : constant League.Strings.Universal_String
+   Representation_Attribute_Name    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("representation");
-   URI_Attribute_Name              : constant League.Strings.Universal_String
+   URI_Attribute_Name               : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("uri");
 
    function Resolve
@@ -179,6 +181,8 @@ package body Generator.Type_Mapping.Handlers is
               Attributes.Value (Ada_Package_Attribute_Name);
             Self.Mapping.Mapping (Representation).Ada_Type :=
               Attributes.Value (Ada_Type_Attribute_Name);
+            Self.Mapping.Mapping (Representation).Internal_Ada_Type :=
+              Attributes.Value (Internal_Ada_Type_Attribute_Name);
             Self.Mapping.Mapping (Representation).Member_Name :=
               Attributes.Value (Member_Name_Attribute_Name);
             Self.Mapping.Mapping (Representation).Member_Kind_Name :=

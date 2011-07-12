@@ -41,12 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
+with League.Strings.Internals;
+
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
 
 package body AMF.Internals.CMOF_Packages is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
    --------------------------
    -- Get_Packaged_Element --
@@ -70,9 +74,18 @@ package body AMF.Internals.CMOF_Packages is
 
    overriding function Get_Uri
     (Self : not null access constant CMOF_Package_Proxy)
-       return Optional_String is
+       return Optional_String
+   is
+      Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Internal_Get_Uri (Self.Id);
+
    begin
-      return Internal_Get_Uri (Self.Id);
+      if Aux = null then
+         return (Is_Empty => True);
+
+      else
+         return (False, League.Strings.Internals.Create (Aux));
+      end if;
    end Get_Uri;
 
    -----------------------

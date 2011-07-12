@@ -226,4 +226,43 @@ package body CMOF.Internals.Notification is
         League.Holders.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
+     New_Value : Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      use type Matreshka.Internals.Strings.Shared_String_Access;
+
+      OV : League.Holders.Holder;
+      NV : League.Holders.Holder;
+
+   begin
+      League.Holders.Set_Tag (OV, League.Holders.Universal_String_Tag);
+
+      if Old_Value /= null then
+         League.Holders.Replace_Element
+          (OV, League.Strings.Internals.Create (Old_Value));
+      end if;
+
+      League.Holders.Set_Tag (NV, League.Holders.Universal_String_Tag);
+
+      if New_Value /= null then
+         League.Holders.Replace_Element
+          (NV, League.Strings.Internals.Create (New_Value));
+      end if;
+
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        OV,
+        NV);
+   end Notify_Attribute_Set;
+
 end CMOF.Internals.Notification;

@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
+with League.Strings.Internals;
+
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
@@ -49,6 +52,7 @@ package body AMF.Internals.CMOF_Properties is
 
    use AMF.Internals.Tables.CMOF_Attributes;
    use AMF.Internals.Element_Collections;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
    ---------------------
    -- Get_Association --
@@ -83,13 +87,17 @@ package body AMF.Internals.CMOF_Properties is
 
    overriding function Get_Default
     (Self : not null access constant CMOF_Property_Proxy)
-       return Optional_String is
+       return Optional_String
+   is
+      Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Internal_Get_Default (Self.Id);
+
    begin
-      if Internal_Get_Default (Self.Id).Is_Empty then
+      if Aux = null then
          return (Is_Empty => True);
 
       else
-         return Internal_Get_Default (Self.Id);
+         return (False, League.Strings.Internals.Create (Aux));
       end if;
    end Get_Default;
 

@@ -5882,37 +5882,16 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
-            if UML_Element_Table.Table (Self).Member (10).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (10).String_Value;
 
          when E_Package =>
-            if UML_Element_Table.Table (Self).Member (10).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (10).String_Value;
 
          when E_Profile =>
-            if UML_Element_Table.Table (Self).Member (10).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (10).String_Value;
 
          when others =>
             raise Program_Error;
@@ -6282,15 +6261,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when others =>
             raise Program_Error;
@@ -6617,15 +6589,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Comment =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when others =>
             raise Program_Error;
@@ -7916,15 +7881,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when others =>
             raise Program_Error;
@@ -8338,48 +8296,20 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            if UML_Element_Table.Table (Self).Member (24).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (24).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (24).String_Value;
 
          when E_Parameter =>
-            if UML_Element_Table.Table (Self).Member (16).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (16).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (16).String_Value;
 
          when E_Port =>
-            if UML_Element_Table.Table (Self).Member (24).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (24).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (24).String_Value;
 
          when E_Property =>
-            if UML_Element_Table.Table (Self).Member (24).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (24).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (24).String_Value;
 
          when others =>
             raise Program_Error;
@@ -8612,15 +8542,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
-            if UML_Element_Table.Table (Self).Member (17).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (17).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (17).String_Value;
 
          when others =>
             raise Program_Error;
@@ -9304,15 +9227,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
-            if UML_Element_Table.Table (Self).Member (18).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (18).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (18).String_Value;
 
          when others =>
             raise Program_Error;
@@ -9705,26 +9621,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Artifact =>
-            if UML_Element_Table.Table (Self).Member (15).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (15).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (15).String_Value;
 
          when E_Deployment_Specification =>
-            if UML_Element_Table.Table (Self).Member (15).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (15).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (15).String_Value;
 
          when others =>
             raise Program_Error;
@@ -9866,15 +9768,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
-            if UML_Element_Table.Table (Self).Member (3).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (3).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (3).String_Value;
 
          when others =>
             raise Program_Error;
@@ -14337,15 +14232,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
-            if UML_Element_Table.Table (Self).Member (4).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (4).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (4).String_Value;
 
          when others =>
             raise Program_Error;
@@ -14999,1874 +14887,684 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Accept_Call_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Accept_Event_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Action_Execution_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Action_Input_Pin =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Activity =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Activity_Final_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Activity_Parameter_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Activity_Partition =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Actor =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Add_Structural_Feature_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Add_Variable_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Any_Receive_Event =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Artifact =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Association =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Association_Class =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Behavior_Execution_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Broadcast_Signal_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Call_Behavior_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Call_Event =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Call_Operation_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Central_Buffer_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Change_Event =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Class =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Clear_Association_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Clear_Structural_Feature_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Clear_Variable_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Collaboration =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Collaboration_Use =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Combined_Fragment =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Communication_Path =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Component =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Component_Realization =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Conditional_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Connection_Point_Reference =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Connector =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Consider_Ignore_Fragment =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Constraint =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Continuation =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Control_Flow =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Create_Link_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Create_Link_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Create_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Data_Store_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Data_Type =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Decision_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Dependency =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Deployment =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Deployment_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Destroy_Link_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Destroy_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Destruction_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Device =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Duration =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Duration_Constraint =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Duration_Interval =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Duration_Observation =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Enumeration =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Enumeration_Literal =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Execution_Environment =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Execution_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Expansion_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Expansion_Region =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Expression =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Extend =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Extension =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Extension_End =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Extension_Point =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Final_State =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Flow_Final_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Fork_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Function_Behavior =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Gate =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_General_Ordering =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Generalization_Set =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Include =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Information_Flow =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Information_Item =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Initial_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Input_Pin =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Instance_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Instance_Value =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interaction =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interaction_Constraint =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interaction_Operand =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interaction_Use =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interface =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interface_Realization =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interruptible_Activity_Region =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interval =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Interval_Constraint =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Join_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Lifeline =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Literal_Boolean =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Literal_Integer =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Literal_Null =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Literal_Real =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Literal_String =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Literal_Unlimited_Natural =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Loop_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Manifestation =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Merge_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Message =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Message_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Model =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Object_Flow =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Opaque_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Opaque_Behavior =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Opaque_Expression =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Operation =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Output_Pin =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Package =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Parameter =>
-            if UML_Element_Table.Table (Self).Member (8).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (8).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (8).String_Value;
 
          when E_Parameter_Set =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Part_Decomposition =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Port =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Primitive_Type =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Profile =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Property =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Protocol_State_Machine =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Protocol_Transition =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Pseudostate =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Raise_Exception_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Extent_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Is_Classified_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Link_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Link_Object_End_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Self_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Structural_Feature_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Read_Variable_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Realization =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Reception =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Reclassify_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Redefinable_Template_Signature =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Reduce_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Region =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Remove_Structural_Feature_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Remove_Variable_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Reply_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Send_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Send_Signal_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Sequence_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Signal =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Signal_Event =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Start_Classifier_Behavior_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Start_Object_Behavior_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_State =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_State_Invariant =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_State_Machine =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Stereotype =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_String_Expression =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Structured_Activity_Node =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Substitution =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Test_Identity_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Time_Constraint =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Time_Event =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Time_Expression =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Time_Interval =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Time_Observation =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Transition =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Trigger =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Unmarshall_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Usage =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Use_Case =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Value_Pin =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Value_Specification_Action =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when E_Variable =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (2).String_Value;
 
          when others =>
             raise Program_Error;
@@ -22765,1874 +21463,684 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Accept_Call_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Accept_Event_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Action_Execution_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Action_Input_Pin =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Activity =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Activity_Final_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Activity_Parameter_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Activity_Partition =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Actor =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Add_Structural_Feature_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Add_Variable_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Any_Receive_Event =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Artifact =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Association =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Association_Class =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Behavior_Execution_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Broadcast_Signal_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Call_Behavior_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Call_Event =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Call_Operation_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Central_Buffer_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Change_Event =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Class =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Clear_Association_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Clear_Structural_Feature_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Clear_Variable_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Collaboration =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Collaboration_Use =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Combined_Fragment =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Communication_Path =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Component =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Component_Realization =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Conditional_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Connection_Point_Reference =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Connector =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Consider_Ignore_Fragment =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Constraint =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Continuation =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Control_Flow =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Create_Link_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Create_Link_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Create_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Data_Store_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Data_Type =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Decision_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Dependency =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Deployment =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Deployment_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Destroy_Link_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Destroy_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Destruction_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Device =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Duration =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Duration_Constraint =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Duration_Interval =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Duration_Observation =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Enumeration =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Enumeration_Literal =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Execution_Environment =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Execution_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Expansion_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Expansion_Region =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Expression =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Extend =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Extension =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Extension_End =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Extension_Point =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Final_State =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Flow_Final_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Fork_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Function_Behavior =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Gate =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_General_Ordering =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Generalization_Set =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Include =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Information_Flow =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Information_Item =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Initial_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Input_Pin =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Instance_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Instance_Value =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interaction =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interaction_Constraint =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interaction_Operand =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interaction_Use =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interface =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interface_Realization =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interruptible_Activity_Region =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interval =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Interval_Constraint =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Join_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Lifeline =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Literal_Boolean =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Literal_Integer =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Literal_Null =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Literal_Real =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Literal_String =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Literal_Unlimited_Natural =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Loop_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Manifestation =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Merge_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Message =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Message_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Model =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Object_Flow =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Occurrence_Specification =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Opaque_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Opaque_Behavior =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Opaque_Expression =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Operation =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Output_Pin =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Package =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Parameter =>
-            if UML_Element_Table.Table (Self).Member (11).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (11).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (11).String_Value;
 
          when E_Parameter_Set =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Part_Decomposition =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Port =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Primitive_Type =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Profile =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Property =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Protocol_State_Machine =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Protocol_Transition =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Pseudostate =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Raise_Exception_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Extent_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Is_Classified_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Link_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Link_Object_End_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Self_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Structural_Feature_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Read_Variable_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Realization =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Reception =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Reclassify_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Redefinable_Template_Signature =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Reduce_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Region =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Remove_Structural_Feature_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Remove_Variable_Value_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Reply_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Send_Object_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Send_Signal_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Sequence_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Signal =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Signal_Event =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Start_Classifier_Behavior_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Start_Object_Behavior_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_State =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_State_Invariant =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_State_Machine =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Stereotype =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_String_Expression =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Structured_Activity_Node =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Substitution =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Test_Identity_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Time_Constraint =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Time_Event =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Time_Expression =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Time_Interval =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Time_Observation =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Transition =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Trigger =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Unmarshall_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Usage =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Use_Case =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Value_Pin =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Value_Specification_Action =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when E_Variable =>
-            if UML_Element_Table.Table (Self).Member (5).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (5).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (5).String_Value;
 
          when others =>
             raise Program_Error;
@@ -27631,26 +25139,12 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Expression =>
-            if UML_Element_Table.Table (Self).Member (10).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (10).String_Value;
 
          when E_String_Expression =>
-            if UML_Element_Table.Table (Self).Member (10).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (10).String_Value;
 
          when others =>
             raise Program_Error;
@@ -28730,15 +26224,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Literal_String =>
-            if UML_Element_Table.Table (Self).Member (10).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (10).String_Value;
 
          when others =>
             raise Program_Error;
@@ -28891,15 +26378,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
-            if UML_Element_Table.Table (Self).Member (12).String_Value = null then
-               return (Is_Empty => True);
-
-            else
-               return
-                (False,
-                 League.Strings.Internals.Create
-                  (UML_Element_Table.Table (Self).Member (12).String_Value));
-            end if;
+            return
+              UML_Element_Table.Table (Self).Member (12).String_Value;
 
          when others =>
             raise Program_Error;
@@ -29710,67 +27190,55 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
+            Old := UML_Element_Table.Table (Self).Member (10).String_Value;
+
+            UML_Element_Table.Table (Self).Member (10).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (10).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (10).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_URI, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Package =>
+            Old := UML_Element_Table.Table (Self).Member (10).String_Value;
+
+            UML_Element_Table.Table (Self).Member (10).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (10).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (10).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_URI, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Profile =>
+            Old := UML_Element_Table.Table (Self).Member (10).String_Value;
+
+            UML_Element_Table.Table (Self).Member (10).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (10).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (10).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_URI, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -30402,25 +27870,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Element_Import_Alias, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -30657,25 +28121,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Comment =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Comment_Body, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -31148,25 +28608,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Image_Content, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -31365,19 +28821,11 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
+            Old := UML_Element_Table.Table (Self).Member (24).String_Value;
+
+            UML_Element_Table.Table (Self).Member (24).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (24).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (24).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (24).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (24).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (24).String_Value);
             end if;
@@ -31385,20 +28833,16 @@ package body AMF.Internals.Tables.UML_Attributes is
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default, Old, To);
 
-         when E_Parameter =>
-            if UML_Element_Table.Table (Self).Member (16).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (16).String_Value));
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
             end if;
 
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (16).String_Value := null;
+         when E_Parameter =>
+            Old := UML_Element_Table.Table (Self).Member (16).String_Value;
 
-            else
-               UML_Element_Table.Table (Self).Member (16).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
+            UML_Element_Table.Table (Self).Member (16).String_Value := To;
+
+            if UML_Element_Table.Table (Self).Member (16).String_Value /= null then
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (16).String_Value);
             end if;
@@ -31406,47 +28850,43 @@ package body AMF.Internals.Tables.UML_Attributes is
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Default, Old, To);
 
-         when E_Port =>
-            if UML_Element_Table.Table (Self).Member (24).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (24).String_Value));
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
             end if;
 
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (24).String_Value := null;
+         when E_Port =>
+            Old := UML_Element_Table.Table (Self).Member (24).String_Value;
 
-            else
-               UML_Element_Table.Table (Self).Member (24).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
+            UML_Element_Table.Table (Self).Member (24).String_Value := To;
+
+            if UML_Element_Table.Table (Self).Member (24).String_Value /= null then
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (24).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Property =>
+            Old := UML_Element_Table.Table (Self).Member (24).String_Value;
+
+            UML_Element_Table.Table (Self).Member (24).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (24).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (24).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (24).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (24).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (24).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -31604,25 +29044,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (17).String_Value;
+
+            UML_Element_Table.Table (Self).Member (17).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (17).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (17).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (17).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (17).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (17).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Deployment_Specification_Deployment_Location, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -32209,25 +29645,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (18).String_Value;
+
+            UML_Element_Table.Table (Self).Member (18).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (18).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (18).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (18).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (18).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (18).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Deployment_Specification_Execution_Location, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -32381,46 +29813,38 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Artifact =>
+            Old := UML_Element_Table.Table (Self).Member (15).String_Value;
+
+            UML_Element_Table.Table (Self).Member (15).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (15).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (15).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (15).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (15).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (15).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Artifact_File_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Deployment_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (15).String_Value;
+
+            UML_Element_Table.Table (Self).Member (15).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (15).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (15).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (15).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (15).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (15).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Artifact_File_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -32567,25 +29991,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
+            Old := UML_Element_Table.Table (Self).Member (3).String_Value;
+
+            UML_Element_Table.Table (Self).Member (3).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (3).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (3).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (3).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (3).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (3).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Image_Format, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -36673,25 +34093,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
+            Old := UML_Element_Table.Table (Self).Member (4).String_Value;
+
+            UML_Element_Table.Table (Self).Member (4).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (4).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (4).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (4).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (4).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (4).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Image_Location, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -37237,2392 +34653,1932 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Accept_Call_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Accept_Event_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Action_Execution_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Action_Input_Pin =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Activity =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Activity_Final_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Activity_Parameter_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Activity_Partition =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Actor =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Add_Structural_Feature_Value_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Add_Variable_Value_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Any_Receive_Event =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Artifact =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Association =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Association_Class =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Behavior_Execution_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Broadcast_Signal_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Call_Behavior_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Call_Event =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Call_Operation_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Central_Buffer_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Change_Event =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Class =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Clear_Association_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Clear_Structural_Feature_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Clear_Variable_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Collaboration =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Collaboration_Use =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Combined_Fragment =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Communication_Path =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Component =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Component_Realization =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Conditional_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Connection_Point_Reference =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Connector =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Consider_Ignore_Fragment =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Constraint =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Continuation =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Control_Flow =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Create_Link_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Create_Link_Object_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Create_Object_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Data_Store_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Data_Type =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Decision_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Dependency =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Deployment =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Deployment_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Destroy_Link_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Destroy_Object_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Destruction_Occurrence_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Device =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Duration =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Duration_Constraint =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Duration_Interval =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Duration_Observation =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Enumeration =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Enumeration_Literal =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Execution_Environment =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Execution_Occurrence_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Expansion_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Expansion_Region =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Expression =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Extend =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Extension =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Extension_End =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Extension_Point =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Final_State =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Flow_Final_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Fork_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Function_Behavior =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Gate =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_General_Ordering =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Generalization_Set =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Include =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Information_Flow =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Information_Item =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Initial_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Input_Pin =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Instance_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Instance_Value =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interaction =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interaction_Constraint =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interaction_Operand =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interaction_Use =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interface =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interface_Realization =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interruptible_Activity_Region =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interval =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Interval_Constraint =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Join_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Lifeline =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Literal_Boolean =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Literal_Integer =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Literal_Null =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Literal_Real =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Literal_String =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Literal_Unlimited_Natural =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Loop_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Manifestation =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Merge_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Message =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Message_Occurrence_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Model =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Object_Flow =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Occurrence_Specification =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Opaque_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Opaque_Behavior =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Opaque_Expression =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Operation =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Output_Pin =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Package =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
@@ -39630,20 +36586,16 @@ package body AMF.Internals.Tables.UML_Attributes is
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
-         when E_Parameter =>
-            if UML_Element_Table.Table (Self).Member (8).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (8).String_Value));
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
             end if;
 
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (8).String_Value := null;
+         when E_Parameter =>
+            Old := UML_Element_Table.Table (Self).Member (8).String_Value;
 
-            else
-               UML_Element_Table.Table (Self).Member (8).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
+            UML_Element_Table.Table (Self).Member (8).String_Value := To;
+
+            if UML_Element_Table.Table (Self).Member (8).String_Value /= null then
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (8).String_Value);
             end if;
@@ -39651,1160 +36603,944 @@ package body AMF.Internals.Tables.UML_Attributes is
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
-         when E_Parameter_Set =>
-            if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
             end if;
 
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
+         when E_Parameter_Set =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
 
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
+            if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Part_Decomposition =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Port =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Primitive_Type =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Profile =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Property =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Protocol_State_Machine =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Protocol_Transition =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Pseudostate =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Raise_Exception_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Extent_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Is_Classified_Object_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Link_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Link_Object_End_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Link_Object_End_Qualifier_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Self_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Structural_Feature_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Read_Variable_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Realization =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Reception =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Reclassify_Object_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Redefinable_Template_Signature =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Reduce_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Region =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Remove_Structural_Feature_Value_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Remove_Variable_Value_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Reply_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Send_Object_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Send_Signal_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Sequence_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Signal =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Signal_Event =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Start_Classifier_Behavior_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Start_Object_Behavior_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_State =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_State_Invariant =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_State_Machine =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Stereotype =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_String_Expression =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Structured_Activity_Node =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Substitution =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Test_Identity_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Time_Constraint =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Time_Event =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Time_Expression =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Time_Interval =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Time_Observation =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Transition =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Trigger =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Unmarshall_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Usage =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Use_Case =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Value_Pin =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Value_Specification_Action =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_Variable =>
+            Old := UML_Element_Table.Table (Self).Member (2).String_Value;
+
+            UML_Element_Table.Table (Self).Member (2).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (2).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (2).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (2).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (2).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -45343,46 +42079,38 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Expression =>
+            Old := UML_Element_Table.Table (Self).Member (10).String_Value;
+
+            UML_Element_Table.Table (Self).Member (10).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (10).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (10).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Expression_Symbol, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when E_String_Expression =>
+            Old := UML_Element_Table.Table (Self).Member (10).String_Value;
+
+            UML_Element_Table.Table (Self).Member (10).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (10).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (10).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Expression_Symbol, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -46735,25 +43463,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Literal_String =>
+            Old := UML_Element_Table.Table (Self).Member (10).String_Value;
+
+            UML_Element_Table.Table (Self).Member (10).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (10).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (10).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (10).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Literal_String_Value, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;
@@ -46929,25 +43653,21 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
+            Old := UML_Element_Table.Table (Self).Member (12).String_Value;
+
+            UML_Element_Table.Table (Self).Member (12).String_Value := To;
+
             if UML_Element_Table.Table (Self).Member (12).String_Value /= null then
-               Old :=
-                (False,
-                 League.Strings.Internals.Wrap
-                  (UML_Element_Table.Table (Self).Member (12).String_Value));
-            end if;
-
-            if To.Is_Empty then
-               UML_Element_Table.Table (Self).Member (12).String_Value := null;
-
-            else
-               UML_Element_Table.Table (Self).Member (12).String_Value :=
-                 League.Strings.Internals.Internal (To.Value);
                Matreshka.Internals.Strings.Reference
                 (UML_Element_Table.Table (Self).Member (12).String_Value);
             end if;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Model_Viewpoint, Old, To);
+
+            if Old /= null then
+               Matreshka.Internals.Strings.Reference (Old);
+            end if;
 
          when others =>
             raise Program_Error;

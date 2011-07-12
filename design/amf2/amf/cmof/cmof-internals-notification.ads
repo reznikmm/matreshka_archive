@@ -44,6 +44,7 @@
 --  Helper subprograms for element modification notification.
 ------------------------------------------------------------------------------
 with League.Strings;
+with Matreshka.Internals.Strings;
 
 with AMF.CMOF;
 
@@ -60,6 +61,12 @@ package CMOF.Internals.Notification is
      Property  : CMOF.CMOF_Property;
      Old_Value : League.Strings.Universal_String;
      New_Value : League.Strings.Universal_String);
+
+   procedure Notify_Attribute_Set
+    (Element   : CMOF.CMOF_Element;
+     Property  : CMOF.CMOF_Property;
+     Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
+     New_Value : Matreshka.Internals.Strings.Shared_String_Access);
 
    procedure Notify_Attribute_Set
     (Element   : CMOF.CMOF_Element;
