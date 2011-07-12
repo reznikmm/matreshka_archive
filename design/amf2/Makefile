@@ -68,4 +68,4 @@ gen-uml:
 	gnatmake -p -Puml/uml.gpr
 
 clean:
-	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj xmi/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
+	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj uml/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
