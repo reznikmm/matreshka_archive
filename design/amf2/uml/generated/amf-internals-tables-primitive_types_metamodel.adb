@@ -43,12 +43,15 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+
 with AMF.CMOF;
 with AMF.Internals.Extents;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
+with AMF.Internals.Tables.Primitive_Types_String_Data;
 
 package body AMF.Internals.Tables.Primitive_Types_Metamodel is
 
@@ -166,194 +169,226 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 1,
-        (False, League.Strings.To_Universal_String ("PrimitiveTypes")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_15'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 1,
-        (False, League.Strings.To_Universal_String ("http://www.omg.org/spec/PrimitiveTypes/20100901")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 2, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
-        (False, League.Strings.To_Universal_String ("Boolean")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_10'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 3,
-        (False, League.Strings.To_Universal_String ("A Boolean type is used for logical expression, consisting of the predefined values true and false.")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_7'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 4, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
-        (False, League.Strings.To_Universal_String ("Integer")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_4'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 5,
-        (False, League.Strings.To_Universal_String ("An integer is a primitive type representing integer values.")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_12'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 6, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
-        (False, League.Strings.To_Universal_String ("Real")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_14'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 7,
-        (False, League.Strings.To_Universal_String ("A real is a primitive type representing the mathematical concept of real.")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_9'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 8, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
-        (False, League.Strings.To_Universal_String ("String")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_18'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 9,
-        (False, League.Strings.To_Universal_String ("A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_17'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 10, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
-        (False, League.Strings.To_Universal_String ("UnlimitedNatural")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_3'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 11,
-        (False, League.Strings.To_Universal_String ("An unlimited natural is a primitive type representing unlimited natural values.")));
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.Primitive_Types_String_Data.MS_11'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 12,
-        (League.Strings.To_Universal_String ("org.omg.xmi.nsPrefix")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_16'Access));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 12,
-        (League.Strings.To_Universal_String ("primitives")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_1'Access));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 13,
-        (League.Strings.To_Universal_String ("org.omg.xmi.schemaType")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 13,
-        (League.Strings.To_Universal_String ("http://www.w3.org/2001/XMLSchema#boolean")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_6'Access));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 14,
-        (League.Strings.To_Universal_String ("org.omg.xmi.schemaType")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 14,
-        (League.Strings.To_Universal_String ("http://www.w3.org/2001/XMLSchema#integer")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_13'Access));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 15,
-        (League.Strings.To_Universal_String ("org.omg.xmi.schemaType")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_5'Access));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
        (Base + 15,
-        (League.Strings.To_Universal_String ("http://www.w3.org/2001/XMLSchema#double")));
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.Primitive_Types_String_Data.MS_8'Access));
 
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packaged_Element_Owning_Package,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
         Base + 2,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Packaged_Element_Owning_Package);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packaged_Element_Owning_Package,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
         Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Packaged_Element_Owning_Package);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packaged_Element_Owning_Package,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
         Base + 6,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Packaged_Element_Owning_Package);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packaged_Element_Owning_Package,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
         Base + 8,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Packaged_Element_Owning_Package);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packaged_Element_Owning_Package,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element,
         Base + 10,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Packaged_Element_Owning_Package);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Owned_Comment_Owning_Element,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Comment_Owned_Comment_Owning_Element,
         Base + 2,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
         Base + 3,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Owned_Comment_Owning_Element);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Annotated_Element_Comment,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Annotated_Element_Comment,
         Base + 3,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element,
         Base + 2,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Annotated_Element_Comment);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Owned_Comment_Owning_Element,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Comment_Owned_Comment_Owning_Element,
         Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
         Base + 5,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Owned_Comment_Owning_Element);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Annotated_Element_Comment,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Annotated_Element_Comment,
         Base + 5,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element,
         Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Annotated_Element_Comment);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Owned_Comment_Owning_Element,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Comment_Owned_Comment_Owning_Element,
         Base + 6,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
         Base + 7,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Owned_Comment_Owning_Element);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Annotated_Element_Comment,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Annotated_Element_Comment,
         Base + 7,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element,
         Base + 6,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Annotated_Element_Comment);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Owned_Comment_Owning_Element,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Comment_Owned_Comment_Owning_Element,
         Base + 8,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
         Base + 9,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Owned_Comment_Owning_Element);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Annotated_Element_Comment,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Annotated_Element_Comment,
         Base + 9,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element,
         Base + 8,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Annotated_Element_Comment);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Owned_Comment_Owning_Element,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Comment_Owned_Comment_Owning_Element,
         Base + 10,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Owned_Comment,
         Base + 11,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Owned_Comment_Owning_Element);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Annotated_Element_Comment,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Annotated_Element_Comment,
         Base + 11,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Comment_Annotated_Element,
         Base + 10,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Annotated_Element_Comment);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Tag,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Element_Tag,
         Base + 12,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
         Base + 1,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Tag);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Tag,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Element_Tag,
         Base + 13,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
         Base + 2,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Tag);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Tag,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Element_Tag,
         Base + 14,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
         Base + 4,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Tag);
       AMF.Internals.Links.Internal_Create_Link
-       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Tag,
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Element_Tag,
         Base + 15,
         AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Tag_Element,
         Base + 6,

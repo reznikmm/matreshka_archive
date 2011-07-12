@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+
 with AMF.CMOF;
 with AMF.Internals.Extents;
 with AMF.Internals.Links;
@@ -4546,58 +4548,106 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Extents.Internal_Append (Extent, Aux);
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 189, (False, AMF.Internals.Tables.CMOF_String_Data.MS_333));
+       (Base + 189,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_333'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
-       (Base + 189, (False, AMF.Internals.Tables.CMOF_String_Data.MS_112));
+       (Base + 189,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_112'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 190, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 190, (False, AMF.Internals.Tables.CMOF_String_Data.MS_372));
+       (Base + 190,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_372'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 191, (False, AMF.Internals.Tables.CMOF_String_Data.MS_334));
+       (Base + 191,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_334'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 192, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 192, (False, AMF.Internals.Tables.CMOF_String_Data.MS_358));
+       (Base + 192,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_358'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 193, (False, AMF.Internals.Tables.CMOF_String_Data.MS_141));
+       (Base + 193,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_141'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 194, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 194, (False, AMF.Internals.Tables.CMOF_String_Data.MS_65));
+       (Base + 194,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_65'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 195, (False, AMF.Internals.Tables.CMOF_String_Data.MS_205));
+       (Base + 195,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_205'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 196, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 196, (False, AMF.Internals.Tables.CMOF_String_Data.MS_470));
+       (Base + 196,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_470'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 197, (False, AMF.Internals.Tables.CMOF_String_Data.MS_279));
+       (Base + 197,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_279'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 4, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 4, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 4, (False, AMF.Internals.Tables.CMOF_String_Data.MS_312));
+       (Base + 4,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_312'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 198, (False, AMF.Internals.Tables.CMOF_String_Data.MS_155));
+       (Base + 198,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_155'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 199, (False, AMF.Internals.Tables.CMOF_String_Data.MS_512));
+       (Base + 199,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_512'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 200, (False, AMF.Internals.Tables.CMOF_String_Data.MS_393));
+       (Base + 200,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_393'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 202, (False, AMF.Internals.Tables.CMOF_String_Data.MS_257));
+       (Base + 202,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_257'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 203, (False, AMF.Internals.Tables.CMOF_String_Data.MS_471));
+       (Base + 203,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_471'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 43, False);
@@ -4609,11 +4659,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 43, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 43, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 43, (False, AMF.Internals.Tables.CMOF_String_Data.MS_313));
+       (Base + 43,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_313'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 43, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 205, (False, AMF.Internals.Tables.CMOF_String_Data.MS_493));
+       (Base + 205,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_493'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 44, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 44, True);
@@ -4624,11 +4680,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 44, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 44, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 44, (False, AMF.Internals.Tables.CMOF_String_Data.MS_164));
+       (Base + 44,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_164'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 44, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 206, (False, AMF.Internals.Tables.CMOF_String_Data.MS_306));
+       (Base + 206,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_306'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 45, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 45, False);
@@ -4639,11 +4701,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 45, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 45, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 45, (False, AMF.Internals.Tables.CMOF_String_Data.MS_150));
+       (Base + 45,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_150'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 45, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 207, (False, AMF.Internals.Tables.CMOF_String_Data.MS_25));
+       (Base + 207,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_25'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 46, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 46, True);
@@ -4654,14 +4722,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 46, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 46, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 46, (False, AMF.Internals.Tables.CMOF_String_Data.MS_163));
+       (Base + 46,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_163'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 46, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 208, (False, AMF.Internals.Tables.CMOF_String_Data.MS_59));
+       (Base + 208,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_59'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 81, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 81,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 81, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 81, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 81, False);
@@ -4671,11 +4748,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 81, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 81, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 81, (False, AMF.Internals.Tables.CMOF_String_Data.MS_185));
+       (Base + 81,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_185'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 81, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 209, (False, AMF.Internals.Tables.CMOF_String_Data.MS_315));
+       (Base + 209,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_315'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 210, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 210, False);
@@ -4683,14 +4766,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 210, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 210, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 210, (False, AMF.Internals.Tables.CMOF_String_Data.MS_332));
+       (Base + 210,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_332'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 210, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 211, (False, AMF.Internals.Tables.CMOF_String_Data.MS_505));
+       (Base + 211,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_505'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 212, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 212,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (214, AMF.CMOF.Return_Parameter);
@@ -4704,7 +4796,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 215, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 215, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 215, (False, AMF.Internals.Tables.CMOF_String_Data.MS_275));
+       (Base + 215,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_275'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 215, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 216, False);
@@ -4713,14 +4808,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 216, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 216, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 216, (False, AMF.Internals.Tables.CMOF_String_Data.MS_221));
+       (Base + 216,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_221'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 216, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 217, (False, AMF.Internals.Tables.CMOF_String_Data.MS_113));
+       (Base + 217,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_113'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 218, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 218,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (220, AMF.CMOF.Return_Parameter);
@@ -4735,14 +4839,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 221, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 221, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 221, (False, AMF.Internals.Tables.CMOF_String_Data.MS_150));
+       (Base + 221,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_150'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 221, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 222, (False, AMF.Internals.Tables.CMOF_String_Data.MS_6));
+       (Base + 222,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_6'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 223, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 223,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (225, AMF.CMOF.Return_Parameter);
@@ -4757,14 +4870,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 226, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 226, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 226, (False, AMF.Internals.Tables.CMOF_String_Data.MS_484));
+       (Base + 226,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_484'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 226, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 227, (False, AMF.Internals.Tables.CMOF_String_Data.MS_215));
+       (Base + 227,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_215'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 228, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 228,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (230, AMF.CMOF.Return_Parameter);
@@ -4779,14 +4901,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 231, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 231, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 231, (False, AMF.Internals.Tables.CMOF_String_Data.MS_163));
+       (Base + 231,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_163'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 231, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 232, (False, AMF.Internals.Tables.CMOF_String_Data.MS_428));
+       (Base + 232,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_428'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 233, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 233,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (235, AMF.CMOF.Return_Parameter);
@@ -4801,14 +4932,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 236, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 236, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 236, (False, AMF.Internals.Tables.CMOF_String_Data.MS_375));
+       (Base + 236,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_375'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 236, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 237, (False, AMF.Internals.Tables.CMOF_String_Data.MS_138));
+       (Base + 237,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_138'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 238, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 238,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (240, AMF.CMOF.Return_Parameter);
@@ -4823,16 +4963,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 241, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 241, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 241, (False, AMF.Internals.Tables.CMOF_String_Data.MS_145));
+       (Base + 241,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_145'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 241, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 242, (False, AMF.Internals.Tables.CMOF_String_Data.MS_125));
+       (Base + 242,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_125'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 245, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 245,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (247, AMF.CMOF.Return_Parameter);
@@ -4846,7 +4995,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 248, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 248, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 248, (False, AMF.Internals.Tables.CMOF_String_Data.MS_286));
+       (Base + 248,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_286'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 248, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 249, False);
@@ -4855,16 +5007,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 249, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 249, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 249, (False, AMF.Internals.Tables.CMOF_String_Data.MS_148));
+       (Base + 249,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_148'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 249, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 250, (False, AMF.Internals.Tables.CMOF_String_Data.MS_353));
+       (Base + 250,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_353'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 253, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 253,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (255, AMF.CMOF.Return_Parameter);
@@ -4878,7 +5039,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 256, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 256, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 256, (False, AMF.Internals.Tables.CMOF_String_Data.MS_31));
+       (Base + 256,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_31'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 256, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 257, False);
@@ -4887,14 +5051,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 257, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 257, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 257, (False, AMF.Internals.Tables.CMOF_String_Data.MS_335));
+       (Base + 257,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_335'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 257, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 258, (False, AMF.Internals.Tables.CMOF_String_Data.MS_367));
+       (Base + 258,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_367'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 259, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 259,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (261, AMF.CMOF.Return_Parameter);
@@ -4908,7 +5081,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 262, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 262, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 262, (False, AMF.Internals.Tables.CMOF_String_Data.MS_459));
+       (Base + 262,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_459'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 262, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 263, False);
@@ -4917,14 +5093,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 263, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 263, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 263, (False, AMF.Internals.Tables.CMOF_String_Data.MS_321));
+       (Base + 263,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_321'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 263, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 264, (False, AMF.Internals.Tables.CMOF_String_Data.MS_386));
+       (Base + 264,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_386'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 265, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 265,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (267, AMF.CMOF.Return_Parameter);
@@ -4938,16 +5123,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 268, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 268, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 268, (False, AMF.Internals.Tables.CMOF_String_Data.MS_286));
+       (Base + 268,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_286'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 268, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 8, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 8, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 8, (False, AMF.Internals.Tables.CMOF_String_Data.MS_301));
+       (Base + 8,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_301'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 269, (False, AMF.Internals.Tables.CMOF_String_Data.MS_314));
+       (Base + 269,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_314'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 51, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 51, True);
@@ -4958,11 +5152,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 51, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 51, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 51, (False, AMF.Internals.Tables.CMOF_String_Data.MS_432));
+       (Base + 51,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_432'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 51, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 270, (False, AMF.Internals.Tables.CMOF_String_Data.MS_322));
+       (Base + 270,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_322'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 52, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 52, True);
@@ -4973,32 +5173,56 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 52, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 52, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 52, (False, AMF.Internals.Tables.CMOF_String_Data.MS_231));
+       (Base + 52,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_231'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 52, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 271, (False, AMF.Internals.Tables.CMOF_String_Data.MS_140));
+       (Base + 271,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_140'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 9, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 9, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 9, (False, AMF.Internals.Tables.CMOF_String_Data.MS_217));
+       (Base + 9,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_217'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 272, (False, AMF.Internals.Tables.CMOF_String_Data.MS_218));
+       (Base + 272,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_218'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 273, (False, AMF.Internals.Tables.CMOF_String_Data.MS_250));
+       (Base + 273,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_250'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 274, (False, AMF.Internals.Tables.CMOF_String_Data.MS_457));
+       (Base + 274,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_457'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 276, (False, AMF.Internals.Tables.CMOF_String_Data.MS_132));
+       (Base + 276,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_132'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 277, (False, AMF.Internals.Tables.CMOF_String_Data.MS_436));
+       (Base + 277,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_436'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 54, True);
@@ -5010,11 +5234,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 54, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 54, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 54, (False, AMF.Internals.Tables.CMOF_String_Data.MS_422));
+       (Base + 54,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_422'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 54, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 279, (False, AMF.Internals.Tables.CMOF_String_Data.MS_340));
+       (Base + 279,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_340'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 85, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 85, True);
@@ -5025,11 +5255,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 85, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 85, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 85, (False, AMF.Internals.Tables.CMOF_String_Data.MS_341));
+       (Base + 85,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_341'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 85, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 280, (False, AMF.Internals.Tables.CMOF_String_Data.MS_57));
+       (Base + 280,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_57'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 53, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 53, False);
@@ -5040,11 +5276,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 53, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 53, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 53, (False, AMF.Internals.Tables.CMOF_String_Data.MS_450));
+       (Base + 53,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_450'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 53, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 281, (False, AMF.Internals.Tables.CMOF_String_Data.MS_444));
+       (Base + 281,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_444'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 282, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 282, False);
@@ -5052,14 +5294,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 282, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 282, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 282, (False, AMF.Internals.Tables.CMOF_String_Data.MS_89));
+       (Base + 282,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_89'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 282, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 283, (False, AMF.Internals.Tables.CMOF_String_Data.MS_123));
+       (Base + 283,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_123'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 284, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 284,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (286, AMF.CMOF.Return_Parameter);
@@ -5074,14 +5325,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 287, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 287, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 287, (False, AMF.Internals.Tables.CMOF_String_Data.MS_61));
+       (Base + 287,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_61'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 287, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 288, (False, AMF.Internals.Tables.CMOF_String_Data.MS_20));
+       (Base + 288,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_20'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 289, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 289,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (291, AMF.CMOF.Return_Parameter);
@@ -5093,10 +5353,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 14, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 14, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 14, (False, AMF.Internals.Tables.CMOF_String_Data.MS_455));
+       (Base + 14,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_455'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 292, (False, AMF.Internals.Tables.CMOF_String_Data.MS_416));
+       (Base + 292,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_416'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 57, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 57, True);
@@ -5107,36 +5373,63 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 57, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 57, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 57, (False, AMF.Internals.Tables.CMOF_String_Data.MS_443));
+       (Base + 57,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_443'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 57, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 293, (False, AMF.Internals.Tables.CMOF_String_Data.MS_174));
+       (Base + 293,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_174'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 15, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 15, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 15, (False, AMF.Internals.Tables.CMOF_String_Data.MS_339));
+       (Base + 15,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_339'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 294, (False, AMF.Internals.Tables.CMOF_String_Data.MS_266));
+       (Base + 294,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_266'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 295, (False, AMF.Internals.Tables.CMOF_String_Data.MS_278));
+       (Base + 295,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_278'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 296, (False, AMF.Internals.Tables.CMOF_String_Data.MS_29));
+       (Base + 296,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_29'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 298, (False, AMF.Internals.Tables.CMOF_String_Data.MS_67));
+       (Base + 298,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_67'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 299, (False, AMF.Internals.Tables.CMOF_String_Data.MS_216));
+       (Base + 299,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_216'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 91, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 91,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 91, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 91, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 91, False);
@@ -5146,14 +5439,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 91, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 91, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 91, (False, AMF.Internals.Tables.CMOF_String_Data.MS_276));
+       (Base + 91,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_276'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 91, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 301, (False, AMF.Internals.Tables.CMOF_String_Data.MS_293));
+       (Base + 301,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_293'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 92, (False, AMF.Internals.Tables.CMOF_String_Data.MS_159));
+       (Base + 92,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_159'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 92, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 92, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 92, False);
@@ -5163,14 +5465,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 92, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 92, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 92, (False, AMF.Internals.Tables.CMOF_String_Data.MS_377));
+       (Base + 92,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_377'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 92, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 302, (False, AMF.Internals.Tables.CMOF_String_Data.MS_234));
+       (Base + 302,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_234'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 93, (False, AMF.Internals.Tables.CMOF_String_Data.MS_346));
+       (Base + 93,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_346'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 93, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 93, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 93, False);
@@ -5180,14 +5491,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 93, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 93, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 93, (False, AMF.Internals.Tables.CMOF_String_Data.MS_16));
+       (Base + 93,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_16'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 93, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 303, (False, AMF.Internals.Tables.CMOF_String_Data.MS_63));
+       (Base + 303,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_63'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 94, (False, AMF.Internals.Tables.CMOF_String_Data.MS_346));
+       (Base + 94,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_346'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 94, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 94, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 94, False);
@@ -5197,11 +5517,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 94, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 94, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 94, (False, AMF.Internals.Tables.CMOF_String_Data.MS_242));
+       (Base + 94,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_242'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 94, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 304, (False, AMF.Internals.Tables.CMOF_String_Data.MS_382));
+       (Base + 304,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_382'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 305, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 305, False);
@@ -5209,16 +5535,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 305, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 305, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 305, (False, AMF.Internals.Tables.CMOF_String_Data.MS_258));
+       (Base + 305,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_258'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 305, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 306, (False, AMF.Internals.Tables.CMOF_String_Data.MS_18));
+       (Base + 306,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_18'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 309, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 309,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (311, AMF.CMOF.Return_Parameter);
@@ -5233,16 +5568,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 312, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 312, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 312, (False, AMF.Internals.Tables.CMOF_String_Data.MS_3));
+       (Base + 312,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_3'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 312, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 313, (False, AMF.Internals.Tables.CMOF_String_Data.MS_498));
+       (Base + 313,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_498'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 316, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 316,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (318, AMF.CMOF.Return_Parameter);
@@ -5256,7 +5600,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 319, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 319, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 319, (False, AMF.Internals.Tables.CMOF_String_Data.MS_438));
+       (Base + 319,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_438'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 319, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 320, False);
@@ -5265,16 +5612,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 320, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 320, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 320, (False, AMF.Internals.Tables.CMOF_String_Data.MS_295));
+       (Base + 320,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_295'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 320, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 321, (False, AMF.Internals.Tables.CMOF_String_Data.MS_343));
+       (Base + 321,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_343'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 324, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 324,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (326, AMF.CMOF.Return_Parameter);
@@ -5288,7 +5644,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 327, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 327, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 327, (False, AMF.Internals.Tables.CMOF_String_Data.MS_201));
+       (Base + 327,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_201'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 327, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 328, False);
@@ -5297,14 +5656,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 328, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 328, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 328, (False, AMF.Internals.Tables.CMOF_String_Data.MS_244));
+       (Base + 328,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_244'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 328, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 329, (False, AMF.Internals.Tables.CMOF_String_Data.MS_192));
+       (Base + 329,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_192'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 330, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 330,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (332, AMF.CMOF.Return_Parameter);
@@ -5319,14 +5687,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 333, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 333, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 333, (False, AMF.Internals.Tables.CMOF_String_Data.MS_311));
+       (Base + 333,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_311'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 333, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 334, (False, AMF.Internals.Tables.CMOF_String_Data.MS_189));
+       (Base + 334,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_189'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 335, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 335,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (337, AMF.CMOF.Return_Parameter);
@@ -5338,16 +5715,28 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 17, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 17, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 17, (False, AMF.Internals.Tables.CMOF_String_Data.MS_395));
+       (Base + 17,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_395'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 338, (False, AMF.Internals.Tables.CMOF_String_Data.MS_298));
+       (Base + 338,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_298'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 339, (False, AMF.Internals.Tables.CMOF_String_Data.MS_394));
+       (Base + 339,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_394'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 340, (False, AMF.Internals.Tables.CMOF_String_Data.MS_331));
+       (Base + 340,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_331'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 59, False);
@@ -5359,11 +5748,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 59, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 59, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 59, (False, AMF.Internals.Tables.CMOF_String_Data.MS_473));
+       (Base + 59,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_473'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 59, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 342, (False, AMF.Internals.Tables.CMOF_String_Data.MS_260));
+       (Base + 342,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_260'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 58, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 58, False);
@@ -5374,11 +5769,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 58, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 58, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 58, (False, AMF.Internals.Tables.CMOF_String_Data.MS_209));
+       (Base + 58,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_209'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 58, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 343, (False, AMF.Internals.Tables.CMOF_String_Data.MS_318));
+       (Base + 343,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_318'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 63, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 63, False);
@@ -5389,11 +5790,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 63, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 63, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 63, (False, AMF.Internals.Tables.CMOF_String_Data.MS_362));
+       (Base + 63,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_362'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 63, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 344, (False, AMF.Internals.Tables.CMOF_String_Data.MS_247));
+       (Base + 344,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_247'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 61, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 61, True);
@@ -5404,11 +5811,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 61, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 61, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 61, (False, AMF.Internals.Tables.CMOF_String_Data.MS_329));
+       (Base + 61,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_329'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 61, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 345, (False, AMF.Internals.Tables.CMOF_String_Data.MS_241));
+       (Base + 345,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_241'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 60, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 60, True);
@@ -5419,11 +5832,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 60, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 60, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 60, (False, AMF.Internals.Tables.CMOF_String_Data.MS_420));
+       (Base + 60,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_420'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 60, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 346, (False, AMF.Internals.Tables.CMOF_String_Data.MS_383));
+       (Base + 346,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_383'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 62, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 62, False);
@@ -5434,7 +5853,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 62, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 62, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 62, (False, AMF.Internals.Tables.CMOF_String_Data.MS_328));
+       (Base + 62,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_328'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 62, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 347, False);
@@ -5443,14 +5865,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 347, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 347, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 347, (False, AMF.Internals.Tables.CMOF_String_Data.MS_473));
+       (Base + 347,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_473'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 347, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 348, (False, AMF.Internals.Tables.CMOF_String_Data.MS_433));
+       (Base + 348,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_433'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 349, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 349,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (351, AMF.CMOF.Return_Parameter);
@@ -5465,14 +5896,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 352, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 352, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 352, (False, AMF.Internals.Tables.CMOF_String_Data.MS_349));
+       (Base + 352,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_349'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 352, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 353, (False, AMF.Internals.Tables.CMOF_String_Data.MS_486));
+       (Base + 353,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_486'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 354, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 354,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (356, AMF.CMOF.Return_Parameter);
@@ -5486,7 +5926,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 357, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 357, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 357, (False, AMF.Internals.Tables.CMOF_String_Data.MS_261));
+       (Base + 357,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_261'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 357, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 358, False);
@@ -5495,14 +5938,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 358, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 358, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 358, (False, AMF.Internals.Tables.CMOF_String_Data.MS_360));
+       (Base + 358,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_360'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 358, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 359, (False, AMF.Internals.Tables.CMOF_String_Data.MS_151));
+       (Base + 359,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_151'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 360, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 360,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (362, AMF.CMOF.Return_Parameter);
@@ -5516,7 +5968,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 363, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 363, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 363, (False, AMF.Internals.Tables.CMOF_String_Data.MS_299));
+       (Base + 363,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_299'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 363, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 364, False);
@@ -5525,14 +5980,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 364, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 364, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 364, (False, AMF.Internals.Tables.CMOF_String_Data.MS_288));
+       (Base + 364,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_288'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 364, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 365, (False, AMF.Internals.Tables.CMOF_String_Data.MS_482));
+       (Base + 365,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_482'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 366, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 366,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (368, AMF.CMOF.Return_Parameter);
@@ -5546,7 +6010,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 369, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 369, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 369, (False, AMF.Internals.Tables.CMOF_String_Data.MS_299));
+       (Base + 369,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_299'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 369, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 370, False);
@@ -5555,14 +6022,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 370, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 370, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 370, (False, AMF.Internals.Tables.CMOF_String_Data.MS_487));
+       (Base + 370,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_487'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 370, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 371, (False, AMF.Internals.Tables.CMOF_String_Data.MS_419));
+       (Base + 371,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_419'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 372, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 372,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (374, AMF.CMOF.Return_Parameter);
@@ -5574,38 +6050,68 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 23, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 23, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 23, (False, AMF.Internals.Tables.CMOF_String_Data.MS_310));
+       (Base + 23,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_310'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 375, (False, AMF.Internals.Tables.CMOF_String_Data.MS_88));
+       (Base + 375,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_88'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 27, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 27, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 27, (False, AMF.Internals.Tables.CMOF_String_Data.MS_396));
+       (Base + 27,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_396'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 376, (False, AMF.Internals.Tables.CMOF_String_Data.MS_338));
+       (Base + 376,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_338'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 377, (False, AMF.Internals.Tables.CMOF_String_Data.MS_92));
+       (Base + 377,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_92'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 378, (False, AMF.Internals.Tables.CMOF_String_Data.MS_270));
+       (Base + 378,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_270'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 380, (False, AMF.Internals.Tables.CMOF_String_Data.MS_127));
+       (Base + 380,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_127'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 381, (False, AMF.Internals.Tables.CMOF_String_Data.MS_442));
+       (Base + 381,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_442'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 383, (False, AMF.Internals.Tables.CMOF_String_Data.MS_351));
+       (Base + 383,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_351'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 384, (False, AMF.Internals.Tables.CMOF_String_Data.MS_213));
+       (Base + 384,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_213'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 76, False);
@@ -5617,11 +6123,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 76, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 76, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 76, (False, AMF.Internals.Tables.CMOF_String_Data.MS_214));
+       (Base + 76,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_214'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 76, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 386, (False, AMF.Internals.Tables.CMOF_String_Data.MS_91));
+       (Base + 386,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_91'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 75, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 75, True);
@@ -5632,14 +6144,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 75, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 75, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 75, (False, AMF.Internals.Tables.CMOF_String_Data.MS_479));
+       (Base + 75,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_479'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 75, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 387, (False, AMF.Internals.Tables.CMOF_String_Data.MS_281));
+       (Base + 387,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_281'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 130, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 130,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 130, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 130, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 130, False);
@@ -5649,11 +6170,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 130, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 130, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 130, (False, AMF.Internals.Tables.CMOF_String_Data.MS_161));
+       (Base + 130,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_161'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 130, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 388, (False, AMF.Internals.Tables.CMOF_String_Data.MS_309));
+       (Base + 388,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_309'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 389, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 389, False);
@@ -5661,14 +6188,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 389, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 389, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 389, (False, AMF.Internals.Tables.CMOF_String_Data.MS_27));
+       (Base + 389,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_27'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 389, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 390, (False, AMF.Internals.Tables.CMOF_String_Data.MS_452));
+       (Base + 390,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_452'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 391, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 391,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
 
@@ -5684,7 +6220,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 396, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 396, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 396, (False, AMF.Internals.Tables.CMOF_String_Data.MS_15));
+       (Base + 396,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_15'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 396, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 397, False);
@@ -5693,14 +6232,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 397, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 397, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 397, (False, AMF.Internals.Tables.CMOF_String_Data.MS_446));
+       (Base + 397,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_446'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 397, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 398, (False, AMF.Internals.Tables.CMOF_String_Data.MS_441));
+       (Base + 398,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_441'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 399, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 399,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (401, AMF.CMOF.Return_Parameter);
@@ -5714,16 +6262,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 402, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 402, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 402, (False, AMF.Internals.Tables.CMOF_String_Data.MS_154));
+       (Base + 402,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_154'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 402, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 28, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 28, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 28, (False, AMF.Internals.Tables.CMOF_String_Data.MS_44));
+       (Base + 28,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_44'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 403, (False, AMF.Internals.Tables.CMOF_String_Data.MS_451));
+       (Base + 403,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_451'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 77, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 77, True);
@@ -5734,27 +6291,45 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 77, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 77, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 77, (False, AMF.Internals.Tables.CMOF_String_Data.MS_73));
+       (Base + 77,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_73'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 77, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 404, (False, AMF.Internals.Tables.CMOF_String_Data.MS_103));
+       (Base + 404,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_103'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 29, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 29, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 29, (False, AMF.Internals.Tables.CMOF_String_Data.MS_390));
+       (Base + 29,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_390'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 405, (False, AMF.Internals.Tables.CMOF_String_Data.MS_304));
+       (Base + 405,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_304'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 32, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 32, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 32, (False, AMF.Internals.Tables.CMOF_String_Data.MS_345));
+       (Base + 32,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_345'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 406, (False, AMF.Internals.Tables.CMOF_String_Data.MS_399));
+       (Base + 406,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_399'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 135, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 135, False);
@@ -5765,19 +6340,31 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 135, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 135, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 135, (False, AMF.Internals.Tables.CMOF_String_Data.MS_407));
+       (Base + 135,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_407'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 135, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 407, (False, AMF.Internals.Tables.CMOF_String_Data.MS_143));
+       (Base + 407,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_143'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 33, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 33, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 33, (False, AMF.Internals.Tables.CMOF_String_Data.MS_506));
+       (Base + 33,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_506'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 408, (False, AMF.Internals.Tables.CMOF_String_Data.MS_121));
+       (Base + 408,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_121'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 409, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 409, False);
@@ -5785,14 +6372,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 409, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 409, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 409, (False, AMF.Internals.Tables.CMOF_String_Data.MS_181));
+       (Base + 409,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_181'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 409, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 410, (False, AMF.Internals.Tables.CMOF_String_Data.MS_196));
+       (Base + 410,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_196'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 411, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 411,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (413, AMF.CMOF.Return_Parameter);
@@ -5807,14 +6403,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 414, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 414, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 414, (False, AMF.Internals.Tables.CMOF_String_Data.MS_326));
+       (Base + 414,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_326'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 414, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 415, (False, AMF.Internals.Tables.CMOF_String_Data.MS_101));
+       (Base + 415,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_101'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 416, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 416,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (418, AMF.CMOF.Return_Parameter);
@@ -5829,14 +6434,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 419, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 419, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 419, (False, AMF.Internals.Tables.CMOF_String_Data.MS_147));
+       (Base + 419,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_147'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 419, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 420, (False, AMF.Internals.Tables.CMOF_String_Data.MS_319));
+       (Base + 420,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_319'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 421, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 421,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (423, AMF.CMOF.Return_Parameter);
@@ -5851,14 +6465,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 424, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 424, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 424, (False, AMF.Internals.Tables.CMOF_String_Data.MS_183));
+       (Base + 424,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_183'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 424, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 425, (False, AMF.Internals.Tables.CMOF_String_Data.MS_94));
+       (Base + 425,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_94'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 426, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 426,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (428, AMF.CMOF.Return_Parameter);
@@ -5873,14 +6496,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 429, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 429, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 429, (False, AMF.Internals.Tables.CMOF_String_Data.MS_49));
+       (Base + 429,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_49'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 429, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 430, (False, AMF.Internals.Tables.CMOF_String_Data.MS_68));
+       (Base + 430,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_68'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 431, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 431,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (433, AMF.CMOF.Return_Parameter);
@@ -5895,14 +6527,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 434, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 434, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 434, (False, AMF.Internals.Tables.CMOF_String_Data.MS_389));
+       (Base + 434,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_389'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 434, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 435, (False, AMF.Internals.Tables.CMOF_String_Data.MS_149));
+       (Base + 435,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_149'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 436, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 436,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (438, AMF.CMOF.Return_Parameter);
@@ -5914,41 +6555,74 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 1, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 1, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 1, (False, AMF.Internals.Tables.CMOF_String_Data.MS_105));
+       (Base + 1,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_105'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 439, (False, AMF.Internals.Tables.CMOF_String_Data.MS_71));
+       (Base + 439,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_71'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 440, (False, AMF.Internals.Tables.CMOF_String_Data.MS_5));
+       (Base + 440,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_5'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 441, (False, AMF.Internals.Tables.CMOF_String_Data.MS_440));
-
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 443, (False, AMF.Internals.Tables.CMOF_String_Data.MS_47));
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 444, (False, AMF.Internals.Tables.CMOF_String_Data.MS_448));
-
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 446, (False, AMF.Internals.Tables.CMOF_String_Data.MS_24));
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 447, (False, AMF.Internals.Tables.CMOF_String_Data.MS_200));
+       (Base + 441,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_440'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 449, (False, AMF.Internals.Tables.CMOF_String_Data.MS_503));
+       (Base + 443,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_47'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 450, (False, AMF.Internals.Tables.CMOF_String_Data.MS_411));
+       (Base + 444,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_448'Access)));
+
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 446,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_24'Access)));
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
+       (Base + 447,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_200'Access)));
+
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 449,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_503'Access)));
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
+       (Base + 450,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_411'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 79, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 79,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 79, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 79, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 79, False);
@@ -5958,11 +6632,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 79, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 79, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 79, (False, AMF.Internals.Tables.CMOF_String_Data.MS_453));
+       (Base + 79,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_453'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 79, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 452, (False, AMF.Internals.Tables.CMOF_String_Data.MS_30));
+       (Base + 452,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_30'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 37, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 37, False);
@@ -5973,11 +6653,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 37, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 37, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 37, (False, AMF.Internals.Tables.CMOF_String_Data.MS_371));
+       (Base + 37,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_371'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 37, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 453, (False, AMF.Internals.Tables.CMOF_String_Data.MS_308));
+       (Base + 453,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_308'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 34, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 34, True);
@@ -5988,11 +6674,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 34, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 34, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 34, (False, AMF.Internals.Tables.CMOF_String_Data.MS_364));
+       (Base + 34,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_364'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 34, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 454, (False, AMF.Internals.Tables.CMOF_String_Data.MS_235));
+       (Base + 454,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_235'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 35, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 35, False);
@@ -6003,11 +6695,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 35, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 35, (False, 2));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 35, (False, AMF.Internals.Tables.CMOF_String_Data.MS_108));
+       (Base + 35,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_108'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 35, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 455, (False, AMF.Internals.Tables.CMOF_String_Data.MS_499));
+       (Base + 455,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_499'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 36, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 36, False);
@@ -6018,11 +6716,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 36, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 36, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 36, (False, AMF.Internals.Tables.CMOF_String_Data.MS_87));
+       (Base + 36,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_87'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 36, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 456, (False, AMF.Internals.Tables.CMOF_String_Data.MS_368));
+       (Base + 456,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_368'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 457, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 457, False);
@@ -6030,14 +6734,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 457, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 457, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 457, (False, AMF.Internals.Tables.CMOF_String_Data.MS_364));
+       (Base + 457,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_364'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 457, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 458, (False, AMF.Internals.Tables.CMOF_String_Data.MS_404));
+       (Base + 458,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_404'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 459, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 459,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (461, AMF.CMOF.Return_Parameter);
@@ -6049,13 +6762,22 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 3, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 3, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 3, (False, AMF.Internals.Tables.CMOF_String_Data.MS_496));
+       (Base + 3,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_496'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 462, (False, AMF.Internals.Tables.CMOF_String_Data.MS_431));
+       (Base + 462,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_431'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 80, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 80,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 80, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 80, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 80, False);
@@ -6065,11 +6787,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 80, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 80, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 80, (False, AMF.Internals.Tables.CMOF_String_Data.MS_186));
+       (Base + 80,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_186'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 80, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 463, (False, AMF.Internals.Tables.CMOF_String_Data.MS_69));
+       (Base + 463,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_69'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 40, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 40, False);
@@ -6080,11 +6808,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 40, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 40, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 40, (False, AMF.Internals.Tables.CMOF_String_Data.MS_83));
+       (Base + 40,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_83'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 40, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 464, (False, AMF.Internals.Tables.CMOF_String_Data.MS_412));
+       (Base + 464,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_412'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 41, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 41, False);
@@ -6095,11 +6829,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 41, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 41, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 41, (False, AMF.Internals.Tables.CMOF_String_Data.MS_182));
+       (Base + 41,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_182'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 41, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 465, (False, AMF.Internals.Tables.CMOF_String_Data.MS_475));
+       (Base + 465,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_475'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 42, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 42, False);
@@ -6110,11 +6850,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 42, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 42, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 42, (False, AMF.Internals.Tables.CMOF_String_Data.MS_379));
+       (Base + 42,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_379'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 42, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 466, (False, AMF.Internals.Tables.CMOF_String_Data.MS_116));
+       (Base + 466,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_116'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 467, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 467, False);
@@ -6122,14 +6868,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 467, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 467, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 467, (False, AMF.Internals.Tables.CMOF_String_Data.MS_335));
+       (Base + 467,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_335'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 467, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 468, (False, AMF.Internals.Tables.CMOF_String_Data.MS_367));
+       (Base + 468,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_367'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 469, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 469,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (471, AMF.CMOF.Return_Parameter);
@@ -6143,68 +6898,122 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 472, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 472, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 472, (False, AMF.Internals.Tables.CMOF_String_Data.MS_459));
+       (Base + 472,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_459'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 472, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 26, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 26, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 26, (False, AMF.Internals.Tables.CMOF_String_Data.MS_119));
+       (Base + 26,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_119'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 473, (False, AMF.Internals.Tables.CMOF_String_Data.MS_106));
+       (Base + 473,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_106'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 474, (False, AMF.Internals.Tables.CMOF_String_Data.MS_297));
+       (Base + 474,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_297'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 475, (False, AMF.Internals.Tables.CMOF_String_Data.MS_327));
-
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 477, (False, AMF.Internals.Tables.CMOF_String_Data.MS_165));
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 478, (False, AMF.Internals.Tables.CMOF_String_Data.MS_38));
-
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 480, (False, AMF.Internals.Tables.CMOF_String_Data.MS_111));
-
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 481, (False, AMF.Internals.Tables.CMOF_String_Data.MS_240));
+       (Base + 475,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_327'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 483, (False, AMF.Internals.Tables.CMOF_String_Data.MS_237));
+       (Base + 477,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_165'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 484, (False, AMF.Internals.Tables.CMOF_String_Data.MS_36));
+       (Base + 478,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_38'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 486, (False, AMF.Internals.Tables.CMOF_String_Data.MS_173));
+       (Base + 480,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_111'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 487, (False, AMF.Internals.Tables.CMOF_String_Data.MS_429));
+       (Base + 481,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_240'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 489, (False, AMF.Internals.Tables.CMOF_String_Data.MS_109));
+       (Base + 483,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_237'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 490, (False, AMF.Internals.Tables.CMOF_String_Data.MS_294));
+       (Base + 484,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_36'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 492, (False, AMF.Internals.Tables.CMOF_String_Data.MS_156));
+       (Base + 486,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_173'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 493, (False, AMF.Internals.Tables.CMOF_String_Data.MS_146));
+       (Base + 487,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_429'Access)));
+
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 489,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_109'Access)));
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
+       (Base + 490,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_294'Access)));
+
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 492,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_156'Access)));
+
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
+       (Base + 493,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_146'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 127, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 127,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 127, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 127, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 127, False);
@@ -6214,11 +7023,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 127, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 127, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 127, (False, AMF.Internals.Tables.CMOF_String_Data.MS_97));
+       (Base + 127,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_97'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 127, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 495, (False, AMF.Internals.Tables.CMOF_String_Data.MS_344));
+       (Base + 495,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_344'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 123, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 123, False);
@@ -6229,14 +7044,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 123, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 123, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 123, (False, AMF.Internals.Tables.CMOF_String_Data.MS_468));
+       (Base + 123,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_468'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 123, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 496, (False, AMF.Internals.Tables.CMOF_String_Data.MS_13));
+       (Base + 496,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_13'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 124, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 124,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 124, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 124, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 124, False);
@@ -6246,14 +7070,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 124, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 124, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 124, (False, AMF.Internals.Tables.CMOF_String_Data.MS_274));
+       (Base + 124,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_274'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 124, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 497, (False, AMF.Internals.Tables.CMOF_String_Data.MS_222));
+       (Base + 497,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_222'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 125, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 125,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 125, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 125, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 125, False);
@@ -6263,14 +7096,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 125, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 125, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 125, (False, AMF.Internals.Tables.CMOF_String_Data.MS_453));
+       (Base + 125,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_453'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 125, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 498, (False, AMF.Internals.Tables.CMOF_String_Data.MS_179));
+       (Base + 498,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_179'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 126, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 126,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 126, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 126, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 126, False);
@@ -6280,11 +7122,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 126, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 126, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 126, (False, AMF.Internals.Tables.CMOF_String_Data.MS_262));
+       (Base + 126,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_262'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 126, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 499, (False, AMF.Internals.Tables.CMOF_String_Data.MS_93));
+       (Base + 499,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_93'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 121, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 121, False);
@@ -6295,11 +7143,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 121, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 121, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 121, (False, AMF.Internals.Tables.CMOF_String_Data.MS_42));
+       (Base + 121,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_42'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 121, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 500, (False, AMF.Internals.Tables.CMOF_String_Data.MS_243));
+       (Base + 500,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_243'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 129, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 129, False);
@@ -6310,11 +7164,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 129, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 129, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 129, (False, AMF.Internals.Tables.CMOF_String_Data.MS_373));
+       (Base + 129,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_373'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 129, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 501, (False, AMF.Internals.Tables.CMOF_String_Data.MS_492));
+       (Base + 501,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_492'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 73, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 73, False);
@@ -6325,11 +7185,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 73, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 73, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 73, (False, AMF.Internals.Tables.CMOF_String_Data.MS_357));
+       (Base + 73,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_357'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 73, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 502, (False, AMF.Internals.Tables.CMOF_String_Data.MS_177));
+       (Base + 502,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_177'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 74, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 74, False);
@@ -6340,11 +7206,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 74, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 74, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 74, (False, AMF.Internals.Tables.CMOF_String_Data.MS_424));
+       (Base + 74,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_424'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 74, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 503, (False, AMF.Internals.Tables.CMOF_String_Data.MS_391));
+       (Base + 503,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_391'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 128, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 128, True);
@@ -6355,11 +7227,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 128, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 128, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 128, (False, AMF.Internals.Tables.CMOF_String_Data.MS_160));
+       (Base + 128,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_160'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 128, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 504, (False, AMF.Internals.Tables.CMOF_String_Data.MS_497));
+       (Base + 504,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_497'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 122, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 122, False);
@@ -6370,11 +7248,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 122, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 122, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 122, (False, AMF.Internals.Tables.CMOF_String_Data.MS_464));
+       (Base + 122,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_464'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 122, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 505, (False, AMF.Internals.Tables.CMOF_String_Data.MS_202));
+       (Base + 505,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_202'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 120, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 120, False);
@@ -6385,11 +7269,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 120, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 120, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 120, (False, AMF.Internals.Tables.CMOF_String_Data.MS_513));
+       (Base + 120,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_513'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 120, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 506, (False, AMF.Internals.Tables.CMOF_String_Data.MS_483));
+       (Base + 506,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_483'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 507, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 507, False);
@@ -6397,14 +7287,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 507, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 507, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 507, (False, AMF.Internals.Tables.CMOF_String_Data.MS_160));
+       (Base + 507,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_160'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 507, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 508, (False, AMF.Internals.Tables.CMOF_String_Data.MS_21));
+       (Base + 508,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_21'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 509, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 509,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (511, AMF.CMOF.Return_Parameter);
@@ -6419,16 +7318,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 512, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 512, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 512, (False, AMF.Internals.Tables.CMOF_String_Data.MS_27));
+       (Base + 512,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_27'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 512, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 513, (False, AMF.Internals.Tables.CMOF_String_Data.MS_282));
+       (Base + 513,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_282'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 516, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 516,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (518, AMF.CMOF.Return_Parameter);
@@ -6442,7 +7350,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 519, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 519, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 519, (False, AMF.Internals.Tables.CMOF_String_Data.MS_15));
+       (Base + 519,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_15'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 519, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 520, False);
@@ -6451,14 +7362,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 520, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 520, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 520, (False, AMF.Internals.Tables.CMOF_String_Data.MS_363));
+       (Base + 520,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_363'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 520, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 521, (False, AMF.Internals.Tables.CMOF_String_Data.MS_350));
+       (Base + 521,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_350'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 522, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 522,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (524, AMF.CMOF.Return_Parameter);
@@ -6473,14 +7393,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 525, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 525, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 525, (False, AMF.Internals.Tables.CMOF_String_Data.MS_292));
+       (Base + 525,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_292'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 525, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 526, (False, AMF.Internals.Tables.CMOF_String_Data.MS_79));
+       (Base + 526,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_79'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 527, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 527,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (529, AMF.CMOF.Return_Parameter);
@@ -6495,14 +7424,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 530, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 530, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 530, (False, AMF.Internals.Tables.CMOF_String_Data.MS_324));
+       (Base + 530,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_324'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 530, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 531, (False, AMF.Internals.Tables.CMOF_String_Data.MS_264));
+       (Base + 531,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_264'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 532, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 532,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (534, AMF.CMOF.Return_Parameter);
@@ -6516,16 +7454,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 535, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 535, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 535, (False, AMF.Internals.Tables.CMOF_String_Data.MS_77));
+       (Base + 535,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_77'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 535, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 7, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 7, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 7, (False, AMF.Internals.Tables.CMOF_String_Data.MS_303));
+       (Base + 7,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_303'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 536, (False, AMF.Internals.Tables.CMOF_String_Data.MS_62));
+       (Base + 536,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_62'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 49, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 49, False);
@@ -6536,11 +7483,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 49, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 49, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 49, (False, AMF.Internals.Tables.CMOF_String_Data.MS_83));
+       (Base + 49,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_83'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 49, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 537, (False, AMF.Internals.Tables.CMOF_String_Data.MS_23));
+       (Base + 537,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_23'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 50, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 50, False);
@@ -6551,11 +7504,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 50, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 50, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 50, (False, AMF.Internals.Tables.CMOF_String_Data.MS_182));
+       (Base + 50,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_182'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 50, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 538, (False, AMF.Internals.Tables.CMOF_String_Data.MS_58));
+       (Base + 538,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_58'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 539, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 539, False);
@@ -6563,14 +7522,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 539, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 539, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 539, (False, AMF.Internals.Tables.CMOF_String_Data.MS_335));
+       (Base + 539,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_335'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 539, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 540, (False, AMF.Internals.Tables.CMOF_String_Data.MS_367));
+       (Base + 540,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_367'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 541, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 541,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (543, AMF.CMOF.Return_Parameter);
@@ -6584,16 +7552,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 544, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 544, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 544, (False, AMF.Internals.Tables.CMOF_String_Data.MS_459));
+       (Base + 544,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_459'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 544, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 11, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 11, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 11, (False, AMF.Internals.Tables.CMOF_String_Data.MS_33));
+       (Base + 11,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_33'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 545, (False, AMF.Internals.Tables.CMOF_String_Data.MS_458));
+       (Base + 545,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_458'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 55, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 55, False);
@@ -6604,19 +7581,31 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 55, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 55, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 55, (False, AMF.Internals.Tables.CMOF_String_Data.MS_225));
+       (Base + 55,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_225'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 55, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 546, (False, AMF.Internals.Tables.CMOF_String_Data.MS_135));
+       (Base + 546,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_135'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 12, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 12, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 12, (False, AMF.Internals.Tables.CMOF_String_Data.MS_99));
+       (Base + 12,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_99'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 547, (False, AMF.Internals.Tables.CMOF_String_Data.MS_248));
+       (Base + 547,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_248'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 90, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 90, False);
@@ -6627,40 +7616,70 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 90, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 90, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 90, (False, AMF.Internals.Tables.CMOF_String_Data.MS_223));
+       (Base + 90,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_223'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 90, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 548, (False, AMF.Internals.Tables.CMOF_String_Data.MS_402));
+       (Base + 548,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_402'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 25, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 25, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 25, (False, AMF.Internals.Tables.CMOF_String_Data.MS_378));
+       (Base + 25,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_378'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 549, (False, AMF.Internals.Tables.CMOF_String_Data.MS_80));
+       (Base + 549,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_80'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 6, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 6, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 6, (False, AMF.Internals.Tables.CMOF_String_Data.MS_502));
+       (Base + 6,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_502'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 550, (False, AMF.Internals.Tables.CMOF_String_Data.MS_129));
+       (Base + 550,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_129'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 551, (False, AMF.Internals.Tables.CMOF_String_Data.MS_204));
+       (Base + 551,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_204'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 552, (False, AMF.Internals.Tables.CMOF_String_Data.MS_296));
+       (Base + 552,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_296'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 554, (False, AMF.Internals.Tables.CMOF_String_Data.MS_28));
+       (Base + 554,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_28'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 555, (False, AMF.Internals.Tables.CMOF_String_Data.MS_494));
+       (Base + 555,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_494'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 48, False);
@@ -6672,11 +7691,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 48, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 48, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 48, (False, AMF.Internals.Tables.CMOF_String_Data.MS_253));
+       (Base + 48,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_253'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 48, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 557, (False, AMF.Internals.Tables.CMOF_String_Data.MS_100));
+       (Base + 557,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_100'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 84, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 84, False);
@@ -6687,11 +7712,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 84, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 84, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 84, (False, AMF.Internals.Tables.CMOF_String_Data.MS_252));
+       (Base + 84,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_252'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 84, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 558, (False, AMF.Internals.Tables.CMOF_String_Data.MS_256));
+       (Base + 558,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_256'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 83, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 83, False);
@@ -6702,22 +7733,37 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 83, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 83, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 83, (False, AMF.Internals.Tables.CMOF_String_Data.MS_110));
+       (Base + 83,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_110'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 83, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 18, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 18, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 18, (False, AMF.Internals.Tables.CMOF_String_Data.MS_413));
+       (Base + 18,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_413'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 559, (False, AMF.Internals.Tables.CMOF_String_Data.MS_232));
+       (Base + 559,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_232'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 560, (False, AMF.Internals.Tables.CMOF_String_Data.MS_199));
+       (Base + 560,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_199'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 561, (False, AMF.Internals.Tables.CMOF_String_Data.MS_64));
+       (Base + 561,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_64'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 99, True);
@@ -6729,11 +7775,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 99, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 99, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 99, (False, AMF.Internals.Tables.CMOF_String_Data.MS_323));
+       (Base + 99,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_323'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 99, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 563, (False, AMF.Internals.Tables.CMOF_String_Data.MS_342));
+       (Base + 563,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_342'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 100, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 100, False);
@@ -6744,36 +7796,63 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 100, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 100, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 100, (False, AMF.Internals.Tables.CMOF_String_Data.MS_415));
+       (Base + 100,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_415'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 100, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 564, (False, AMF.Internals.Tables.CMOF_String_Data.MS_509));
+       (Base + 564,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_509'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 19, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 19, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 19, (False, AMF.Internals.Tables.CMOF_String_Data.MS_117));
+       (Base + 19,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_117'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 565, (False, AMF.Internals.Tables.CMOF_String_Data.MS_463));
+       (Base + 565,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_463'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 566, (False, AMF.Internals.Tables.CMOF_String_Data.MS_439));
+       (Base + 566,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_439'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 567, (False, AMF.Internals.Tables.CMOF_String_Data.MS_245));
+       (Base + 567,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_245'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 569, (False, AMF.Internals.Tables.CMOF_String_Data.MS_398));
+       (Base + 569,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_398'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 570, (False, AMF.Internals.Tables.CMOF_String_Data.MS_50));
+       (Base + 570,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_50'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 105, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 105,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 105, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 105, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 105, False);
@@ -6783,14 +7862,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 105, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 105, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 105, (False, AMF.Internals.Tables.CMOF_String_Data.MS_34));
+       (Base + 105,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_34'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 105, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 572, (False, AMF.Internals.Tables.CMOF_String_Data.MS_55));
+       (Base + 572,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_55'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 104, (False, AMF.Internals.Tables.CMOF_String_Data.MS_104));
+       (Base + 104,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_104'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 104, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 104, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 104, False);
@@ -6800,14 +7888,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 104, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 104, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 104, (False, AMF.Internals.Tables.CMOF_String_Data.MS_276));
+       (Base + 104,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_276'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 104, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 573, (False, AMF.Internals.Tables.CMOF_String_Data.MS_143));
+       (Base + 573,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_143'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 106, (False, AMF.Internals.Tables.CMOF_String_Data.MS_159));
+       (Base + 106,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_159'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 106, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 106, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 106, False);
@@ -6817,14 +7914,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 106, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 106, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 106, (False, AMF.Internals.Tables.CMOF_String_Data.MS_377));
+       (Base + 106,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_377'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 106, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 574, (False, AMF.Internals.Tables.CMOF_String_Data.MS_143));
+       (Base + 574,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_143'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 107, (False, AMF.Internals.Tables.CMOF_String_Data.MS_346));
+       (Base + 107,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_346'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 107, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 107, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 107, False);
@@ -6834,14 +7940,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 107, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 107, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 107, (False, AMF.Internals.Tables.CMOF_String_Data.MS_16));
+       (Base + 107,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_16'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 107, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 575, (False, AMF.Internals.Tables.CMOF_String_Data.MS_143));
+       (Base + 575,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_143'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 109, (False, AMF.Internals.Tables.CMOF_String_Data.MS_346));
+       (Base + 109,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_346'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 109, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 109, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 109, False);
@@ -6851,11 +7966,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 109, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 109, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 109, (False, AMF.Internals.Tables.CMOF_String_Data.MS_242));
+       (Base + 109,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_242'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 109, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 576, (False, AMF.Internals.Tables.CMOF_String_Data.MS_143));
+       (Base + 576,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_143'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 102, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 102, False);
@@ -6866,11 +7987,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 102, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 102, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 102, (False, AMF.Internals.Tables.CMOF_String_Data.MS_42));
+       (Base + 102,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_42'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 102, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 577, (False, AMF.Internals.Tables.CMOF_String_Data.MS_56));
+       (Base + 577,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_56'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 103, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 103, False);
@@ -6881,11 +8008,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 103, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 103, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 103, (False, AMF.Internals.Tables.CMOF_String_Data.MS_464));
+       (Base + 103,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_464'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 103, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 578, (False, AMF.Internals.Tables.CMOF_String_Data.MS_32));
+       (Base + 578,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_32'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 67, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 67, False);
@@ -6896,11 +8029,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 67, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 67, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 67, (False, AMF.Internals.Tables.CMOF_String_Data.MS_365));
+       (Base + 67,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_365'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 67, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 579, (False, AMF.Internals.Tables.CMOF_String_Data.MS_130));
+       (Base + 579,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_130'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 68, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 68, False);
@@ -6911,11 +8050,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 68, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 68, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 68, (False, AMF.Internals.Tables.CMOF_String_Data.MS_430));
+       (Base + 68,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_430'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 68, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 580, (False, AMF.Internals.Tables.CMOF_String_Data.MS_84));
+       (Base + 580,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_84'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 108, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 108, True);
@@ -6926,11 +8071,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 108, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 108, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 108, (False, AMF.Internals.Tables.CMOF_String_Data.MS_407));
+       (Base + 108,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_407'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 108, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 581, (False, AMF.Internals.Tables.CMOF_String_Data.MS_143));
+       (Base + 581,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_143'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 64, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 64, False);
@@ -6941,11 +8092,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 64, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 64, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 64, (False, AMF.Internals.Tables.CMOF_String_Data.MS_491));
+       (Base + 64,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_491'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 64, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 582, (False, AMF.Internals.Tables.CMOF_String_Data.MS_246));
+       (Base + 582,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_246'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 66, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 66, False);
@@ -6956,7 +8113,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 66, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 66, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 66, (False, AMF.Internals.Tables.CMOF_String_Data.MS_267));
+       (Base + 66,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_267'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 66, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 65, True);
@@ -6968,7 +8128,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 65, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 65, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 65, (False, AMF.Internals.Tables.CMOF_String_Data.MS_507));
+       (Base + 65,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_507'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 65, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 101, True);
@@ -6980,7 +8143,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 101, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 101, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 101, (False, AMF.Internals.Tables.CMOF_String_Data.MS_120));
+       (Base + 101,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_120'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 101, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 583, False);
@@ -6989,14 +8155,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 583, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 583, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 583, (False, AMF.Internals.Tables.CMOF_String_Data.MS_276));
+       (Base + 583,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_276'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 583, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 584, (False, AMF.Internals.Tables.CMOF_String_Data.MS_19));
+       (Base + 584,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_19'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 585, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 585,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (587, AMF.CMOF.Return_Parameter);
@@ -7011,14 +8186,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 588, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 588, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 588, (False, AMF.Internals.Tables.CMOF_String_Data.MS_377));
+       (Base + 588,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_377'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 588, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 589, (False, AMF.Internals.Tables.CMOF_String_Data.MS_170));
+       (Base + 589,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_170'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 590, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 590,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (592, AMF.CMOF.Return_Parameter);
@@ -7033,14 +8217,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 593, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 593, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 593, (False, AMF.Internals.Tables.CMOF_String_Data.MS_16));
+       (Base + 593,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_16'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 593, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 594, (False, AMF.Internals.Tables.CMOF_String_Data.MS_210));
+       (Base + 594,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_210'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 595, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 595,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (597, AMF.CMOF.Return_Parameter);
@@ -7055,14 +8248,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 598, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 598, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 598, (False, AMF.Internals.Tables.CMOF_String_Data.MS_242));
+       (Base + 598,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_242'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 598, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 599, (False, AMF.Internals.Tables.CMOF_String_Data.MS_352));
+       (Base + 599,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_352'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 600, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 600,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (602, AMF.CMOF.Return_Parameter);
@@ -7077,14 +8279,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 603, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 603, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 603, (False, AMF.Internals.Tables.CMOF_String_Data.MS_407));
+       (Base + 603,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_407'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 603, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 604, (False, AMF.Internals.Tables.CMOF_String_Data.MS_481));
+       (Base + 604,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_481'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 605, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 605,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (607, AMF.CMOF.Return_Parameter);
@@ -7099,16 +8310,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 608, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 608, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 608, (False, AMF.Internals.Tables.CMOF_String_Data.MS_27));
+       (Base + 608,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_27'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 608, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 609, (False, AMF.Internals.Tables.CMOF_String_Data.MS_211));
+       (Base + 609,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_211'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 612, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 612,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (614, AMF.CMOF.Return_Parameter);
@@ -7122,7 +8342,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 615, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 615, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 615, (False, AMF.Internals.Tables.CMOF_String_Data.MS_15));
+       (Base + 615,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_15'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 615, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 616, False);
@@ -7131,11 +8354,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 616, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 616, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 616, (False, AMF.Internals.Tables.CMOF_String_Data.MS_435));
+       (Base + 616,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_435'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 616, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 617, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 617,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (619, AMF.CMOF.Return_Parameter);
@@ -7147,10 +8376,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 24, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 24, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 24, (False, AMF.Internals.Tables.CMOF_String_Data.MS_168));
+       (Base + 24,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_168'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 620, (False, AMF.Internals.Tables.CMOF_String_Data.MS_380));
+       (Base + 620,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_380'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 117, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 117, False);
@@ -7161,14 +8396,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 117, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 117, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 117, (False, AMF.Internals.Tables.CMOF_String_Data.MS_468));
+       (Base + 117,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_468'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 117, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 621, (False, AMF.Internals.Tables.CMOF_String_Data.MS_188));
+       (Base + 621,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_188'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 118, (False, AMF.Internals.Tables.CMOF_String_Data.MS_12));
+       (Base + 118,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_12'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 118, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 118, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 118, False);
@@ -7178,11 +8422,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 118, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 118, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 118, (False, AMF.Internals.Tables.CMOF_String_Data.MS_144));
+       (Base + 118,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_144'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 118, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 622, (False, AMF.Internals.Tables.CMOF_String_Data.MS_39));
+       (Base + 622,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_39'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 119, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 119, False);
@@ -7193,19 +8443,31 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 119, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 119, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 119, (False, AMF.Internals.Tables.CMOF_String_Data.MS_85));
+       (Base + 119,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_85'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 119, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 623, (False, AMF.Internals.Tables.CMOF_String_Data.MS_152));
+       (Base + 623,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_152'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 2, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 2, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 2, (False, AMF.Internals.Tables.CMOF_String_Data.MS_35));
+       (Base + 2,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_35'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 624, (False, AMF.Internals.Tables.CMOF_String_Data.MS_178));
+       (Base + 624,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_178'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 38, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 38, False);
@@ -7216,11 +8478,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 38, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 38, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 38, (False, AMF.Internals.Tables.CMOF_String_Data.MS_491));
+       (Base + 38,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_491'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 38, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 625, (False, AMF.Internals.Tables.CMOF_String_Data.MS_246));
+       (Base + 625,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_246'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 39, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 39, False);
@@ -7231,11 +8499,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 39, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 39, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 39, (False, AMF.Internals.Tables.CMOF_String_Data.MS_365));
+       (Base + 39,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_365'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 39, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 626, (False, AMF.Internals.Tables.CMOF_String_Data.MS_485));
+       (Base + 626,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_485'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 627, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 627, False);
@@ -7243,14 +8517,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 627, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 627, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 627, (False, AMF.Internals.Tables.CMOF_String_Data.MS_43));
+       (Base + 627,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_43'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 627, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 628, (False, AMF.Internals.Tables.CMOF_String_Data.MS_37));
+       (Base + 628,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_37'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 629, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 629,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (631, AMF.CMOF.Return_Parameter);
@@ -7264,7 +8547,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 632, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 632, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 632, (False, AMF.Internals.Tables.CMOF_String_Data.MS_31));
+       (Base + 632,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_31'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 632, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (633, AMF.CMOF.In_Parameter);
@@ -7272,33 +8558,57 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 633, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 633, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 633, (False, AMF.Internals.Tables.CMOF_String_Data.MS_78));
+       (Base + 633,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_78'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 633, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 10, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 10, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 10, (False, AMF.Internals.Tables.CMOF_String_Data.MS_511));
+       (Base + 10,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_511'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 634, (False, AMF.Internals.Tables.CMOF_String_Data.MS_176));
+       (Base + 634,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_176'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 635, (False, AMF.Internals.Tables.CMOF_String_Data.MS_70));
+       (Base + 635,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_70'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 636, (False, AMF.Internals.Tables.CMOF_String_Data.MS_220));
+       (Base + 636,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_220'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 638, (False, AMF.Internals.Tables.CMOF_String_Data.MS_467));
+       (Base + 638,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_467'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 639, (False, AMF.Internals.Tables.CMOF_String_Data.MS_423));
+       (Base + 639,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_423'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 89, (False, AMF.Internals.Tables.CMOF_String_Data.MS_60));
+       (Base + 89,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_60'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 89, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 89, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 89, False);
@@ -7308,11 +8618,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 89, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 89, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 89, (False, AMF.Internals.Tables.CMOF_String_Data.MS_495));
+       (Base + 89,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_495'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 89, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 641, (False, AMF.Internals.Tables.CMOF_String_Data.MS_466));
+       (Base + 641,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_466'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 86, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 86, False);
@@ -7323,11 +8639,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 86, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 86, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 86, (False, AMF.Internals.Tables.CMOF_String_Data.MS_300));
+       (Base + 86,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_300'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 86, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 642, (False, AMF.Internals.Tables.CMOF_String_Data.MS_203));
+       (Base + 642,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_203'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 87, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 87, False);
@@ -7338,11 +8660,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 87, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 87, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 87, (False, AMF.Internals.Tables.CMOF_String_Data.MS_255));
+       (Base + 87,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_255'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 87, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 643, (False, AMF.Internals.Tables.CMOF_String_Data.MS_8));
+       (Base + 643,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_8'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 88, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 88, False);
@@ -7353,11 +8681,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 88, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 88, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 88, (False, AMF.Internals.Tables.CMOF_String_Data.MS_254));
+       (Base + 88,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_254'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 88, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 644, (False, AMF.Internals.Tables.CMOF_String_Data.MS_434));
+       (Base + 644,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_434'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 645, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 645, False);
@@ -7365,14 +8699,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 645, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 645, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 645, (False, AMF.Internals.Tables.CMOF_String_Data.MS_212));
+       (Base + 645,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_212'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 645, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 646, (False, AMF.Internals.Tables.CMOF_String_Data.MS_397));
+       (Base + 646,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_397'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 647, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 647,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (649, AMF.CMOF.Return_Parameter);
@@ -7384,16 +8727,28 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 20, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 20, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 20, (False, AMF.Internals.Tables.CMOF_String_Data.MS_427));
+       (Base + 20,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_427'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 650, (False, AMF.Internals.Tables.CMOF_String_Data.MS_307));
+       (Base + 650,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_307'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 651, (False, AMF.Internals.Tables.CMOF_String_Data.MS_169));
+       (Base + 651,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_169'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 652, (False, AMF.Internals.Tables.CMOF_String_Data.MS_376));
+       (Base + 652,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_376'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 72, True);
@@ -7405,11 +8760,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 72, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 72, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 72, (False, AMF.Internals.Tables.CMOF_String_Data.MS_490));
+       (Base + 72,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_490'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 72, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 654, (False, AMF.Internals.Tables.CMOF_String_Data.MS_226));
+       (Base + 654,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_226'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 70, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 70, True);
@@ -7420,11 +8781,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 70, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 70, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 70, (False, AMF.Internals.Tables.CMOF_String_Data.MS_66));
+       (Base + 70,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_66'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 70, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 655, (False, AMF.Internals.Tables.CMOF_String_Data.MS_469));
+       (Base + 655,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_469'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 69, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 69, True);
@@ -7435,11 +8802,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 69, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 69, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 69, (False, AMF.Internals.Tables.CMOF_String_Data.MS_356));
+       (Base + 69,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_356'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 69, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 656, (False, AMF.Internals.Tables.CMOF_String_Data.MS_230));
+       (Base + 656,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_230'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 110, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 110, False);
@@ -7450,11 +8823,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 110, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 110, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 110, (False, AMF.Internals.Tables.CMOF_String_Data.MS_454));
+       (Base + 110,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_454'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 110, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 657, (False, AMF.Internals.Tables.CMOF_String_Data.MS_388));
+       (Base + 657,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_388'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 71, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 71, False);
@@ -7465,11 +8844,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 71, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 71, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 71, (False, AMF.Internals.Tables.CMOF_String_Data.MS_180));
+       (Base + 71,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_180'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 71, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 658, (False, AMF.Internals.Tables.CMOF_String_Data.MS_172));
+       (Base + 658,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_172'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 111, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 111, False);
@@ -7480,11 +8865,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 111, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 111, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 111, (False, AMF.Internals.Tables.CMOF_String_Data.MS_11));
+       (Base + 111,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_11'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 111, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 659, (False, AMF.Internals.Tables.CMOF_String_Data.MS_370));
+       (Base + 659,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_370'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 660, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 660, False);
@@ -7492,14 +8883,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 660, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 660, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 660, (False, AMF.Internals.Tables.CMOF_String_Data.MS_61));
+       (Base + 660,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_61'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 660, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 661, (False, AMF.Internals.Tables.CMOF_String_Data.MS_72));
+       (Base + 661,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_72'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 662, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 662,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (664, AMF.CMOF.Return_Parameter);
@@ -7514,14 +8914,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 665, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 665, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 665, (False, AMF.Internals.Tables.CMOF_String_Data.MS_284));
+       (Base + 665,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_284'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 665, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 666, (False, AMF.Internals.Tables.CMOF_String_Data.MS_317));
+       (Base + 666,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_317'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 667, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 667,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (669, AMF.CMOF.Return_Parameter);
@@ -7536,16 +8945,25 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 670, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 670, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 670, (False, AMF.Internals.Tables.CMOF_String_Data.MS_417));
+       (Base + 670,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_417'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 670, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 671, (False, AMF.Internals.Tables.CMOF_String_Data.MS_501));
+       (Base + 671,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_501'Access)));
 
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 674, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 674,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (676, AMF.CMOF.Return_Parameter);
@@ -7559,26 +8977,44 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 677, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 677, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 677, (False, AMF.Internals.Tables.CMOF_String_Data.MS_228));
+       (Base + 677,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_228'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 677, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 21, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 21, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 21, (False, AMF.Internals.Tables.CMOF_String_Data.MS_82));
+       (Base + 21,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_82'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 678, (False, AMF.Internals.Tables.CMOF_String_Data.MS_421));
+       (Base + 678,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_421'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 679, (False, AMF.Internals.Tables.CMOF_String_Data.MS_445));
+       (Base + 679,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_445'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 680, (False, AMF.Internals.Tables.CMOF_String_Data.MS_401));
+       (Base + 680,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_401'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 114, (False, AMF.Internals.Tables.CMOF_String_Data.MS_60));
+       (Base + 114,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_60'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 114, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 114, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 114, False);
@@ -7588,11 +9024,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 114, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 114, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 114, (False, AMF.Internals.Tables.CMOF_String_Data.MS_495));
+       (Base + 114,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_495'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 114, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 682, (False, AMF.Internals.Tables.CMOF_String_Data.MS_426));
+       (Base + 682,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_426'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 112, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 112, False);
@@ -7603,11 +9045,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 112, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 112, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 112, (False, AMF.Internals.Tables.CMOF_String_Data.MS_74));
+       (Base + 112,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_74'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 112, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 683, (False, AMF.Internals.Tables.CMOF_String_Data.MS_302));
+       (Base + 683,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_302'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 113, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 113, False);
@@ -7618,19 +9066,31 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 113, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 113, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 113, (False, AMF.Internals.Tables.CMOF_String_Data.MS_254));
+       (Base + 113,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_254'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 113, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 684, (False, AMF.Internals.Tables.CMOF_String_Data.MS_236));
+       (Base + 684,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_236'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 22, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 22, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 22, (False, AMF.Internals.Tables.CMOF_String_Data.MS_477));
+       (Base + 22,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_477'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 685, (False, AMF.Internals.Tables.CMOF_String_Data.MS_175));
+       (Base + 685,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_175'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 116, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 116, False);
@@ -7641,11 +9101,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 116, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 116, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 116, (False, AMF.Internals.Tables.CMOF_String_Data.MS_280));
+       (Base + 116,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_280'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 116, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 686, (False, AMF.Internals.Tables.CMOF_String_Data.MS_193));
+       (Base + 686,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_193'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 115, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 115, False);
@@ -7656,19 +9122,31 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 115, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 115, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 115, (False, AMF.Internals.Tables.CMOF_String_Data.MS_500));
+       (Base + 115,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_500'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 115, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 687, (False, AMF.Internals.Tables.CMOF_String_Data.MS_478));
+       (Base + 687,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_478'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 31, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 31, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 31, (False, AMF.Internals.Tables.CMOF_String_Data.MS_76));
+       (Base + 31,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_76'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 688, (False, AMF.Internals.Tables.CMOF_String_Data.MS_425));
+       (Base + 688,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_425'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 134, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 134, False);
@@ -7679,11 +9157,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 134, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 134, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 134, (False, AMF.Internals.Tables.CMOF_String_Data.MS_249));
+       (Base + 134,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_249'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 134, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 689, (False, AMF.Internals.Tables.CMOF_String_Data.MS_290));
+       (Base + 689,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_290'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 690, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 690, False);
@@ -7691,14 +9175,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 690, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 690, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 690, (False, AMF.Internals.Tables.CMOF_String_Data.MS_332));
+       (Base + 690,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_332'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 690, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 691, (False, AMF.Internals.Tables.CMOF_String_Data.MS_158));
+       (Base + 691,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_158'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 692, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 692,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (694, AMF.CMOF.Return_Parameter);
@@ -7712,36 +9205,63 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 695, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 695, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 695, (False, AMF.Internals.Tables.CMOF_String_Data.MS_275));
+       (Base + 695,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_275'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 695, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 16, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 16, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 16, (False, AMF.Internals.Tables.CMOF_String_Data.MS_348));
+       (Base + 16,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_348'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 696, (False, AMF.Internals.Tables.CMOF_String_Data.MS_122));
+       (Base + 696,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_122'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 697, (False, AMF.Internals.Tables.CMOF_String_Data.MS_291));
+       (Base + 697,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_291'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 698, (False, AMF.Internals.Tables.CMOF_String_Data.MS_283));
+       (Base + 698,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_283'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 700, (False, AMF.Internals.Tables.CMOF_String_Data.MS_233));
+       (Base + 700,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_233'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 701, (False, AMF.Internals.Tables.CMOF_String_Data.MS_128));
+       (Base + 701,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_128'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 703, (False, AMF.Internals.Tables.CMOF_String_Data.MS_465));
+       (Base + 703,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_465'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 704, (False, AMF.Internals.Tables.CMOF_String_Data.MS_287));
+       (Base + 704,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_287'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 95, False);
@@ -7753,11 +9273,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 95, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 95, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 95, (False, AMF.Internals.Tables.CMOF_String_Data.MS_139));
+       (Base + 95,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_139'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 95, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 706, (False, AMF.Internals.Tables.CMOF_String_Data.MS_410));
+       (Base + 706,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_410'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 98, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 98, False);
@@ -7768,11 +9294,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 98, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 98, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 98, (False, AMF.Internals.Tables.CMOF_String_Data.MS_495));
+       (Base + 98,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_495'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 98, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 707, (False, AMF.Internals.Tables.CMOF_String_Data.MS_95));
+       (Base + 707,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_95'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 96, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 96, True);
@@ -7783,11 +9315,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 96, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 96, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 96, (False, AMF.Internals.Tables.CMOF_String_Data.MS_489));
+       (Base + 96,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_489'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 96, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 708, (False, AMF.Internals.Tables.CMOF_String_Data.MS_406));
+       (Base + 708,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_406'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 97, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 97, True);
@@ -7798,11 +9336,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 97, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 97, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 97, (False, AMF.Internals.Tables.CMOF_String_Data.MS_1));
+       (Base + 97,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_1'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 97, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 709, (False, AMF.Internals.Tables.CMOF_String_Data.MS_381));
+       (Base + 709,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_381'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 710, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 710, False);
@@ -7810,14 +9354,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 710, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 710, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 710, (False, AMF.Internals.Tables.CMOF_String_Data.MS_508));
+       (Base + 710,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_508'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 710, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 711, (False, AMF.Internals.Tables.CMOF_String_Data.MS_75));
+       (Base + 711,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_75'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 712, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 712,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (714, AMF.CMOF.Return_Parameter);
@@ -7832,14 +9385,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 715, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 715, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 715, (False, AMF.Internals.Tables.CMOF_String_Data.MS_43));
+       (Base + 715,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_43'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 715, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 716, (False, AMF.Internals.Tables.CMOF_String_Data.MS_461));
+       (Base + 716,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_461'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 717, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 717,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (719, AMF.CMOF.Return_Parameter);
@@ -7853,7 +9415,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 720, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 720, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 720, (False, AMF.Internals.Tables.CMOF_String_Data.MS_31));
+       (Base + 720,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_31'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 720, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (721, AMF.CMOF.In_Parameter);
@@ -7861,7 +9426,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 721, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 721, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 721, (False, AMF.Internals.Tables.CMOF_String_Data.MS_78));
+       (Base + 721,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_78'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 721, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 722, False);
@@ -7870,14 +9438,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 722, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 722, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 722, (False, AMF.Internals.Tables.CMOF_String_Data.MS_133));
+       (Base + 722,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_133'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 722, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 723, (False, AMF.Internals.Tables.CMOF_String_Data.MS_107));
+       (Base + 723,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_107'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 724, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 724,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (726, AMF.CMOF.Return_Parameter);
@@ -7892,14 +9469,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 727, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 727, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 727, (False, AMF.Internals.Tables.CMOF_String_Data.MS_1));
+       (Base + 727,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_1'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 727, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 728, (False, AMF.Internals.Tables.CMOF_String_Data.MS_128));
+       (Base + 728,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_128'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 729, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 729,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (731, AMF.CMOF.Return_Parameter);
@@ -7911,10 +9497,16 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 13, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 13, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 13, (False, AMF.Internals.Tables.CMOF_String_Data.MS_409));
+       (Base + 13,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_409'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 732, (False, AMF.Internals.Tables.CMOF_String_Data.MS_289));
+       (Base + 732,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_289'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 56, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 56, False);
@@ -7925,19 +9517,31 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 56, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 56, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 56, (False, AMF.Internals.Tables.CMOF_String_Data.MS_405));
+       (Base + 56,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_405'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 56, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 733, (False, AMF.Internals.Tables.CMOF_String_Data.MS_269));
+       (Base + 733,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_269'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 5, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 5, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 5, (False, AMF.Internals.Tables.CMOF_String_Data.MS_449));
+       (Base + 5,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_449'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 734, (False, AMF.Internals.Tables.CMOF_String_Data.MS_40));
+       (Base + 734,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_40'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 82, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 82, False);
@@ -7948,11 +9552,17 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 82, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 82, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 82, (False, AMF.Internals.Tables.CMOF_String_Data.MS_323));
+       (Base + 82,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_323'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 82, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 735, (False, AMF.Internals.Tables.CMOF_String_Data.MS_480));
+       (Base + 735,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_480'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 47, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 47, False);
@@ -7963,49 +9573,91 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 47, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 47, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 47, (False, AMF.Internals.Tables.CMOF_String_Data.MS_369));
+       (Base + 47,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_369'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 47, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 736, (False, AMF.Internals.Tables.CMOF_String_Data.MS_136));
+       (Base + 736,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_136'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 737, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 737, (False, AMF.Internals.Tables.CMOF_String_Data.MS_22));
+       (Base + 737,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_22'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 738, (False, AMF.Internals.Tables.CMOF_String_Data.MS_330));
+       (Base + 738,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_330'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 739, (False, AMF.Internals.Tables.CMOF_String_Data.MS_12));
+       (Base + 739,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_12'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 740, (False, AMF.Internals.Tables.CMOF_String_Data.MS_26));
+       (Base + 740,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_26'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 741, (False, AMF.Internals.Tables.CMOF_String_Data.MS_224));
+       (Base + 741,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_224'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 742, (False, AMF.Internals.Tables.CMOF_String_Data.MS_157));
+       (Base + 742,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_157'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 743, (False, AMF.Internals.Tables.CMOF_String_Data.MS_198));
+       (Base + 743,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_198'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 744, (False, AMF.Internals.Tables.CMOF_String_Data.MS_239));
+       (Base + 744,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_239'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 745, (False, AMF.Internals.Tables.CMOF_String_Data.MS_447));
+       (Base + 745,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_447'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 746, (False, AMF.Internals.Tables.CMOF_String_Data.MS_153));
+       (Base + 746,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_153'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 747, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 747, (False, AMF.Internals.Tables.CMOF_String_Data.MS_403));
+       (Base + 747,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_403'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 748, (False, AMF.Internals.Tables.CMOF_String_Data.MS_488));
+       (Base + 748,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_488'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Leaf (Base + 749, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 749, False);
@@ -8013,14 +9665,23 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 749, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 749, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 749, (False, AMF.Internals.Tables.CMOF_String_Data.MS_171));
+       (Base + 749,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_171'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 749, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 750, (False, AMF.Internals.Tables.CMOF_String_Data.MS_46));
+       (Base + 750,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_46'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 751, (False, AMF.Internals.Tables.CMOF_String_Data.MS_134));
+       (Base + 751,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_134'Access)));
 
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Direction (753, AMF.CMOF.Return_Parameter);
@@ -8034,37 +9695,67 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 754, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 754, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 754, (False, AMF.Internals.Tables.CMOF_String_Data.MS_208));
+       (Base + 754,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_208'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 754, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 755, (False, AMF.Internals.Tables.CMOF_String_Data.MS_60));
+       (Base + 755,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_60'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 756, (False, AMF.Internals.Tables.CMOF_String_Data.MS_41));
+       (Base + 756,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_41'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 757, (False, AMF.Internals.Tables.CMOF_String_Data.MS_320));
+       (Base + 757,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_320'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 758, (False, AMF.Internals.Tables.CMOF_String_Data.MS_142));
+       (Base + 758,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_142'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 759, (False, AMF.Internals.Tables.CMOF_String_Data.MS_277));
+       (Base + 759,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_277'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 760, (False, AMF.Internals.Tables.CMOF_String_Data.MS_114));
+       (Base + 760,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_114'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 761, (False, AMF.Internals.Tables.CMOF_String_Data.MS_249));
+       (Base + 761,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_249'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
-       (Base + 762, (False, AMF.Internals.Tables.CMOF_String_Data.MS_359));
+       (Base + 762,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_359'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 153, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 153, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 153, (False, AMF.Internals.Tables.CMOF_String_Data.MS_510));
+       (Base + 153,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_510'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 763, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 763, False);
@@ -8075,28 +9766,43 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 763, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 763, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 763, (False, AMF.Internals.Tables.CMOF_String_Data.MS_462));
+       (Base + 763,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_462'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 763, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 155, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 155, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 155, (False, AMF.Internals.Tables.CMOF_String_Data.MS_197));
+       (Base + 155,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_197'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 156, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 156, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 156, (False, AMF.Internals.Tables.CMOF_String_Data.MS_219));
+       (Base + 156,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_219'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 158, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 158, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 158, (False, AMF.Internals.Tables.CMOF_String_Data.MS_7));
+       (Base + 158,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_7'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 159, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 159, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 159, (False, AMF.Internals.Tables.CMOF_String_Data.MS_162));
+       (Base + 159,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_162'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 764, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 764, False);
@@ -8107,13 +9813,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 764, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 764, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 764, (False, AMF.Internals.Tables.CMOF_String_Data.MS_272));
+       (Base + 764,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_272'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 764, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 162, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 162, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 162, (False, AMF.Internals.Tables.CMOF_String_Data.MS_504));
+       (Base + 162,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_504'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 765, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 765, False);
@@ -8124,13 +9836,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 765, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 765, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 765, (False, AMF.Internals.Tables.CMOF_String_Data.MS_118));
+       (Base + 765,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_118'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 765, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 164, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 164, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 164, (False, AMF.Internals.Tables.CMOF_String_Data.MS_98));
+       (Base + 164,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_98'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 766, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 766, False);
@@ -8141,13 +9859,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 766, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 766, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 766, (False, AMF.Internals.Tables.CMOF_String_Data.MS_118));
+       (Base + 766,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_118'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 766, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 166, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 166, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 166, (False, AMF.Internals.Tables.CMOF_String_Data.MS_456));
+       (Base + 166,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_456'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 767, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 767, False);
@@ -8158,13 +9882,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 767, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 767, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 767, (False, AMF.Internals.Tables.CMOF_String_Data.MS_118));
+       (Base + 767,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_118'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 767, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 168, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 168, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 168, (False, AMF.Internals.Tables.CMOF_String_Data.MS_263));
+       (Base + 168,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_263'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 768, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 768, False);
@@ -8175,13 +9905,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 768, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 768, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 768, (False, AMF.Internals.Tables.CMOF_String_Data.MS_42));
+       (Base + 768,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_42'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 768, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 170, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 170, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 170, (False, AMF.Internals.Tables.CMOF_String_Data.MS_238));
+       (Base + 170,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_238'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 769, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 769, False);
@@ -8192,28 +9928,43 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 769, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 769, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 769, (False, AMF.Internals.Tables.CMOF_String_Data.MS_513));
+       (Base + 769,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_513'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 769, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 172, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 172, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 172, (False, AMF.Internals.Tables.CMOF_String_Data.MS_354));
+       (Base + 172,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_354'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 174, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 174, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 174, (False, AMF.Internals.Tables.CMOF_String_Data.MS_476));
+       (Base + 174,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_476'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 175, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 175, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 175, (False, AMF.Internals.Tables.CMOF_String_Data.MS_167));
+       (Base + 175,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_167'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 177, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 177, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 177, (False, AMF.Internals.Tables.CMOF_String_Data.MS_460));
+       (Base + 177,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_460'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 770, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 770, False);
@@ -8224,13 +9975,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 770, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 770, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 770, (False, AMF.Internals.Tables.CMOF_String_Data.MS_85));
+       (Base + 770,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_85'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 770, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 179, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 179, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 179, (False, AMF.Internals.Tables.CMOF_String_Data.MS_251));
+       (Base + 179,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_251'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 771, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 771, False);
@@ -8241,13 +9998,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 771, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 771, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 771, (False, AMF.Internals.Tables.CMOF_String_Data.MS_85));
+       (Base + 771,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_85'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 771, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 181, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 181, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 181, (False, AMF.Internals.Tables.CMOF_String_Data.MS_194));
+       (Base + 181,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_194'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 772, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 772, False);
@@ -8258,13 +10021,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 772, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 772, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 772, (False, AMF.Internals.Tables.CMOF_String_Data.MS_190));
+       (Base + 772,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_190'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 772, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 183, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 183, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 183, (False, AMF.Internals.Tables.CMOF_String_Data.MS_96));
+       (Base + 183,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_96'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 773, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 773, False);
@@ -8275,13 +10044,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 773, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 773, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 773, (False, AMF.Internals.Tables.CMOF_String_Data.MS_206));
+       (Base + 773,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_206'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 773, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 185, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 185, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 185, (False, AMF.Internals.Tables.CMOF_String_Data.MS_305));
+       (Base + 185,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_305'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 774, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 774, False);
@@ -8292,13 +10067,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 774, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 774, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 774, (False, AMF.Internals.Tables.CMOF_String_Data.MS_489));
+       (Base + 774,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_489'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 774, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 187, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 187, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 187, (False, AMF.Internals.Tables.CMOF_String_Data.MS_54));
+       (Base + 187,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_54'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 775, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 775, False);
@@ -8309,13 +10090,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 775, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 775, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 775, (False, AMF.Internals.Tables.CMOF_String_Data.MS_362));
+       (Base + 775,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_362'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 775, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 136, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 136, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 136, (False, AMF.Internals.Tables.CMOF_String_Data.MS_384));
+       (Base + 136,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_384'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 776, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 776, False);
@@ -8326,23 +10113,35 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 776, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 776, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 776, (False, AMF.Internals.Tables.CMOF_String_Data.MS_209));
+       (Base + 776,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_209'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 776, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 137, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 137, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 137, (False, AMF.Internals.Tables.CMOF_String_Data.MS_336));
+       (Base + 137,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_336'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 138, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 138, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 138, (False, AMF.Internals.Tables.CMOF_String_Data.MS_268));
+       (Base + 138,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_268'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 139, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 139, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 139, (False, AMF.Internals.Tables.CMOF_String_Data.MS_408));
+       (Base + 139,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_408'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 777, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 777, False);
@@ -8353,28 +10152,43 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 777, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 777, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 777, (False, AMF.Internals.Tables.CMOF_String_Data.MS_316));
+       (Base + 777,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_316'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 777, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 141, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 141, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 141, (False, AMF.Internals.Tables.CMOF_String_Data.MS_472));
+       (Base + 141,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_472'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 143, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 143, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 143, (False, AMF.Internals.Tables.CMOF_String_Data.MS_115));
+       (Base + 143,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_115'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 144, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 144, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 144, (False, AMF.Internals.Tables.CMOF_String_Data.MS_14));
+       (Base + 144,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_14'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 145, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 145, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 145, (False, AMF.Internals.Tables.CMOF_String_Data.MS_184));
+       (Base + 145,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_184'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 778, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 778, False);
@@ -8385,18 +10199,27 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 778, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 778, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 778, (False, AMF.Internals.Tables.CMOF_String_Data.MS_85));
+       (Base + 778,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_85'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 778, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 146, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 146, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 146, (False, AMF.Internals.Tables.CMOF_String_Data.MS_437));
+       (Base + 146,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_437'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 147, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 147, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 147, (False, AMF.Internals.Tables.CMOF_String_Data.MS_374));
+       (Base + 147,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_374'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 779, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 779, False);
@@ -8407,18 +10230,27 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 779, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 779, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 779, (False, AMF.Internals.Tables.CMOF_String_Data.MS_180));
+       (Base + 779,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_180'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 779, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 148, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 148, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 148, (False, AMF.Internals.Tables.CMOF_String_Data.MS_325));
+       (Base + 148,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_325'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 149, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 149, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 149, (False, AMF.Internals.Tables.CMOF_String_Data.MS_126));
+       (Base + 149,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_126'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 780, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 780, False);
@@ -8429,13 +10261,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 780, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 780, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 780, (False, AMF.Internals.Tables.CMOF_String_Data.MS_366));
+       (Base + 780,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_366'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 780, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 150, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 150, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 150, (False, AMF.Internals.Tables.CMOF_String_Data.MS_166));
+       (Base + 150,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_166'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 781, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 781, False);
@@ -8446,13 +10284,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 781, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 781, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 781, (False, AMF.Internals.Tables.CMOF_String_Data.MS_229));
+       (Base + 781,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_229'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 781, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 151, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 151, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 151, (False, AMF.Internals.Tables.CMOF_String_Data.MS_400));
+       (Base + 151,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_400'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 782, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 782, False);
@@ -8463,13 +10307,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 782, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 782, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 782, (False, AMF.Internals.Tables.CMOF_String_Data.MS_2));
+       (Base + 782,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_2'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 782, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 152, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 152, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 152, (False, AMF.Internals.Tables.CMOF_String_Data.MS_195));
+       (Base + 152,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_195'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 783, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 783, False);
@@ -8480,13 +10330,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 783, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 783, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 783, (False, AMF.Internals.Tables.CMOF_String_Data.MS_2));
+       (Base + 783,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_2'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 783, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 154, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 154, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 154, (False, AMF.Internals.Tables.CMOF_String_Data.MS_347));
+       (Base + 154,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_347'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 784, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 784, False);
@@ -8497,13 +10353,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 784, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 784, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 784, (False, AMF.Internals.Tables.CMOF_String_Data.MS_259));
+       (Base + 784,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_259'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 784, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 157, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 157, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 157, (False, AMF.Internals.Tables.CMOF_String_Data.MS_265));
+       (Base + 157,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_265'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 785, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 785, False);
@@ -8514,18 +10376,27 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 785, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 785, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 785, (False, AMF.Internals.Tables.CMOF_String_Data.MS_259));
+       (Base + 785,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_259'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 785, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 160, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 160, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 160, (False, AMF.Internals.Tables.CMOF_String_Data.MS_227));
+       (Base + 160,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_227'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 161, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 161, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 161, (False, AMF.Internals.Tables.CMOF_String_Data.MS_474));
+       (Base + 161,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_474'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 786, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 786, False);
@@ -8536,13 +10407,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 786, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 786, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 786, (False, AMF.Internals.Tables.CMOF_String_Data.MS_414));
+       (Base + 786,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_414'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 786, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 163, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 163, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 163, (False, AMF.Internals.Tables.CMOF_String_Data.MS_271));
+       (Base + 163,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_271'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 787, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 787, False);
@@ -8553,13 +10430,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 787, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 787, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 787, (False, AMF.Internals.Tables.CMOF_String_Data.MS_10));
+       (Base + 787,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_10'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 787, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 165, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 165, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 165, (False, AMF.Internals.Tables.CMOF_String_Data.MS_45));
+       (Base + 165,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_45'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 788, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 788, False);
@@ -8570,18 +10453,27 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 788, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 788, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 788, (False, AMF.Internals.Tables.CMOF_String_Data.MS_272));
+       (Base + 788,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_272'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 788, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 167, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 167, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 167, (False, AMF.Internals.Tables.CMOF_String_Data.MS_86));
+       (Base + 167,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_86'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 169, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 169, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 169, (False, AMF.Internals.Tables.CMOF_String_Data.MS_52));
+       (Base + 169,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_52'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 789, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 789, False);
@@ -8592,13 +10484,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 789, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 789, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 789, (False, AMF.Internals.Tables.CMOF_String_Data.MS_489));
+       (Base + 789,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_489'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 789, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 171, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 171, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 171, (False, AMF.Internals.Tables.CMOF_String_Data.MS_4));
+       (Base + 171,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_4'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 790, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 790, False);
@@ -8609,13 +10507,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 790, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 790, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 790, (False, AMF.Internals.Tables.CMOF_String_Data.MS_131));
+       (Base + 790,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_131'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 790, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 173, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 173, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 173, (False, AMF.Internals.Tables.CMOF_String_Data.MS_48));
+       (Base + 173,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_48'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 791, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 791, False);
@@ -8626,18 +10530,27 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 791, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 791, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 791, (False, AMF.Internals.Tables.CMOF_String_Data.MS_513));
+       (Base + 791,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_513'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 791, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 176, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 176, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 176, (False, AMF.Internals.Tables.CMOF_String_Data.MS_191));
+       (Base + 176,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_191'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 178, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 178, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 178, (False, AMF.Internals.Tables.CMOF_String_Data.MS_102));
+       (Base + 178,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_102'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 792, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 792, False);
@@ -8648,13 +10561,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 792, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 792, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 792, (False, AMF.Internals.Tables.CMOF_String_Data.MS_285));
+       (Base + 792,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_285'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 792, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 180, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 180, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 180, (False, AMF.Internals.Tables.CMOF_String_Data.MS_53));
+       (Base + 180,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_53'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 793, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 793, False);
@@ -8665,13 +10584,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 793, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 793, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 793, (False, AMF.Internals.Tables.CMOF_String_Data.MS_272));
+       (Base + 793,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_272'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 793, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 182, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 182, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 182, (False, AMF.Internals.Tables.CMOF_String_Data.MS_9));
+       (Base + 182,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_9'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 794, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 794, False);
@@ -8682,13 +10607,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 794, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 794, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 794, (False, AMF.Internals.Tables.CMOF_String_Data.MS_385));
+       (Base + 794,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_385'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 794, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 184, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 184, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 184, (False, AMF.Internals.Tables.CMOF_String_Data.MS_124));
+       (Base + 184,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_124'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 795, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 795, False);
@@ -8699,13 +10630,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 795, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 795, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 795, (False, AMF.Internals.Tables.CMOF_String_Data.MS_361));
+       (Base + 795,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_361'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 795, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 186, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 186, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 186, (False, AMF.Internals.Tables.CMOF_String_Data.MS_387));
+       (Base + 186,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_387'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 796, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 796, False);
@@ -8716,18 +10653,27 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 796, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 796, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 796, (False, AMF.Internals.Tables.CMOF_String_Data.MS_392));
+       (Base + 796,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_392'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 796, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 188, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 188, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 188, (False, AMF.Internals.Tables.CMOF_String_Data.MS_187));
+       (Base + 188,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_187'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 30, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 30, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 30, (False, AMF.Internals.Tables.CMOF_String_Data.MS_418));
+       (Base + 30,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_418'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 131, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 131, False);
@@ -8738,7 +10684,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 131, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 131, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 131, (False, AMF.Internals.Tables.CMOF_String_Data.MS_139));
+       (Base + 131,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_139'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 131, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 133, False);
@@ -8750,7 +10699,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 133, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 133, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 133, (False, AMF.Internals.Tables.CMOF_String_Data.MS_337));
+       (Base + 133,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_337'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 133, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 78, False);
@@ -8762,7 +10714,10 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 78, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 78, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 78, (False, AMF.Internals.Tables.CMOF_String_Data.MS_261));
+       (Base + 78,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_261'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 78, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 132, False);
@@ -8774,13 +10729,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 132, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 132, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 132, (False, AMF.Internals.Tables.CMOF_String_Data.MS_81));
+       (Base + 132,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_81'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 132, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 140, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 140, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 140, (False, AMF.Internals.Tables.CMOF_String_Data.MS_207));
+       (Base + 140,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_207'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 797, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 797, False);
@@ -8791,13 +10752,19 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 797, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 797, (False, 1));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 797, (False, AMF.Internals.Tables.CMOF_String_Data.MS_51));
+       (Base + 797,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_51'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 797, (False, (False, 1)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 142, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 142, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 142, (False, AMF.Internals.Tables.CMOF_String_Data.MS_90));
+       (Base + 142,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_90'Access)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 798, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 798, False);
@@ -8808,18 +10775,29 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 798, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 798, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 798, (False, AMF.Internals.Tables.CMOF_String_Data.MS_137));
+       (Base + 798,
+        (False,
+         League.Strings.Internals.Create
+          (AMF.Internals.Tables.CMOF_String_Data.MS_137'Access)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 798, (False, (Unlimited => True)));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 799, AMF.Internals.Tables.CMOF_String_Data.MS_273);
+       (Base + 799,
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.CMOF_String_Data.MS_273'Access));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
-       (Base + 799, AMF.Internals.Tables.CMOF_String_Data.MS_355);
+       (Base + 799,
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.CMOF_String_Data.MS_355'Access));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
-       (Base + 800, AMF.Internals.Tables.CMOF_String_Data.MS_17);
+       (Base + 800,
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.CMOF_String_Data.MS_17'Access));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Value
-       (Base + 800, AMF.Internals.Tables.CMOF_String_Data.MS_112);
+       (Base + 800,
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.CMOF_String_Data.MS_112'Access));
 
       AMF.Internals.Links.Internal_Create_Link
        (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package,
