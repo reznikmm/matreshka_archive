@@ -151,9 +151,9 @@ package AMF.Internals.Tables.CMOF_Types is
             null;
 
          when others =>
-            Extent   : AMF_Extent;
-            Proxy    : AMF.Elements.Element_Access;
-            Member   : Member_Array;
+            Extent : AMF_Extent;
+            Proxy  : AMF.Elements.Element_Access;
+            Member : Member_Array;
             --  First element (with index 0) contains index of first collection
             --  of class instance. To save space all class's collections have
             --  sequential numbers, thus we need to store only first one. This
