@@ -63,7 +63,7 @@ gen-uml:
 	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
 	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/generated/{}
 	rm -r uml/generated/.new
-	gnatmake -p -Puml/uml.gpr -c -u amf-internals-tables-uml_constructors.adb
+	gnatmake -p -Puml/uml.gpr -c -u amf-internals-tables-uml_string_data.ads
 	gnatmake -p -Puml/uml.gpr -c -u amf-internals-tables-uml_metamodel.adb
 	gnatmake -p -Puml/uml.gpr
 

@@ -46,6 +46,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Holders.Booleans;
 with League.Holders.Integers;
+with League.Strings.Hash;
 
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
@@ -78,6 +79,20 @@ package body Generator.Metamodel is
            "<",
            AMF.CMOF.Elements."=");
 
+   package String_Sets is
+     new Ada.Containers.Hashed_Sets
+          (League.Strings.Universal_String,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Strings."=");
+
+   package String_Number_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           Natural,
+           League.Strings.Hash,
+           League.Strings."=");
+
    All_Associations : CMOF_Element_Sets.Set;
    All_Classes      : CMOF_Element_Sets.Set;
    All_Data_Types   : CMOF_Element_Sets.Set;
@@ -93,6 +108,9 @@ package body Generator.Metamodel is
    Elements : AMF.Elements.Collections.Reflective_Collection;
    --  XXX This collection need to be removed.
    Ordered  : Number_Element_Maps.Map;
+
+   Strings        : String_Sets.Set;
+   String_Numbers : String_Number_Maps.Map;
 
    procedure Generate_Metamodel_Initialization;
 
@@ -152,9 +170,15 @@ package body Generator.Metamodel is
 
       procedure Assign_Set (Position : CMOF_Element_Sets.Cursor);
 
-      Elements : AMF.Elements.Collections.Reflective_Collection
+      procedure Extract_String_Data
+       (Position : CMOF_Element_Sets.Cursor);
+
+      procedure Assign_String (Position : String_Sets.Cursor);
+
+      Elements    : AMF.Elements.Collections.Reflective_Collection
         := Extent.Elements;
-      Last     : Natural := 0;
+      Last        : Natural := 0;
+      Last_String : Natural := 0;
 
       ------------------------
       -- Assign_Ordered_Set --
@@ -246,7 +270,50 @@ package body Generator.Metamodel is
          end if;
       end Assign_Set;
 
+      -------------------
+      -- Assign_String --
+      -------------------
+
+      procedure Assign_String (Position : String_Sets.Cursor) is
+         Element : constant League.Strings.Universal_String
+           := String_Sets.Element (Position);
+
+      begin
+         Last_String := Last_String + 1;
+         String_Numbers.Insert (Element, Last_String);
+      end Assign_String;
+
       Element : AMF.CMOF.Elements.CMOF_Element_Access;
+
+      -------------------------
+      -- Extract_String_Data --
+      -------------------------
+
+      procedure Extract_String_Data
+       (Position : CMOF_Element_Sets.Cursor)
+      is
+         Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
+           := AMF.CMOF.Properties.CMOF_Property_Access
+               (CMOF_Element_Sets.Element (Position));
+         Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+           := Property.Get_Type;
+         Value         : constant League.Holders.Holder
+           := AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+
+      begin
+         if Is_String_Type (Property_Type) then
+            if Property.Is_Multivalued then
+               Put_Line
+                (Standard_Error,
+                 Property.Get_Name.Value.To_Wide_Wide_String
+                   & ": Multivalued string value");
+
+            elsif not League.Holders.Is_Empty (Value) then
+               Strings.Include (League.Holders.Element (Value));
+
+            end if;
+         end if;
+      end Extract_String_Data;
 
    begin
       --  Classify elements and fills All_Classes and All_Associations sets.
@@ -316,6 +383,21 @@ package body Generator.Metamodel is
          Generate_Constructors := False;
          Generate_Reflection := False;
       end if;
+
+      --  Collect string data.
+
+      for J in 1 .. Elements.Length loop
+         Element :=
+           AMF.CMOF.Elements.CMOF_Element_Access (Elements.Element (J));
+         Class_Properties_Except_Redefined
+          (AMF.Elements.Abstract_Element'Class
+            (Element.all).Get_Meta_Class).Iterate
+              (Extract_String_Data'Access);
+      end loop;
+
+      --  Assign number for strings.
+
+      Strings.Iterate (Assign_String'Access);
    end Assign_Numbers;
 
    ---------------------------------------
@@ -799,6 +881,11 @@ package body Generator.Metamodel is
          Put_Line ("with AMF.Internals.Tables.Primitive_Types_Metamodel;");
       end if;
 
+      Put_Line
+       ("with AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_String_Data;");
+
       New_Line;
       Put_Line
        ("package body AMF.Internals.Tables."
@@ -807,6 +894,9 @@ package body Generator.Metamodel is
 
       New_Line;
       Put_Line ("   Base : AMF.Internals.CMOF_Element := 0;");
+
+      --  Generate implementation of meta element query function.
+
       Sort (All_Packages).Iterate (Generate_Package_Constant'Access);
       Sort (All_Data_Types).Iterate (Generate_Data_Type_Constant'Access);
       Sort (All_Classes).Iterate (Generate_Class_Constant'Access);
@@ -1001,11 +1091,14 @@ package body Generator.Metamodel is
                          & To_Ada_Identifier (Property.Get_Name.Value));
                      Put ("       (Base + ");
                      Put (Element_Numbers.Element (Element), Width => 0);
-                     Put_Line (",");
-                     Put_Line
-                      ("        (False, League.Strings.To_Universal_String ("""
-                         & League.Holders.Element (Value).To_Wide_Wide_String
-                         & """)));");
+                     Put
+                      (", (False, AMF.Internals.Tables."
+                         & Metamodel_Name.To_Wide_Wide_String
+                         & "_String_Data.MS_");
+                     Put
+                      (String_Numbers.Element (League.Holders.Element (Value)),
+                       Width => 0);
+                     Put_Line ("));");
                   end if;
 
                else
@@ -1014,11 +1107,14 @@ package body Generator.Metamodel is
                       & To_Ada_Identifier (Property.Get_Name.Value));
                   Put ("       (Base + ");
                   Put (Element_Numbers.Element (Element), Width => 0);
-                  Put_Line (",");
-                  Put_Line
-                   ("        (League.Strings.To_Universal_String ("""
-                      & League.Holders.Element (Value).To_Wide_Wide_String
-                      & """)));");
+                  Put
+                   (", AMF.Internals.Tables."
+                      & Metamodel_Name.To_Wide_Wide_String
+                      & "_String_Data.MS_");
+                  Put
+                   (String_Numbers.Element (League.Holders.Element (Value)),
+                    Width => 0);
+                  Put_Line (");");
                end if;
 
             elsif Is_Parameter_Direction_Kind_Type (Property_Type) then
@@ -1317,6 +1413,50 @@ package body Generator.Metamodel is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Metamodel;");
    end Generate_Metamodel_Specification;
+
+   ------------------------------------
+   -- Generate_Metamodel_String_Data --
+   ------------------------------------
+
+   procedure Generate_Metamodel_String_Data is
+
+      procedure Generate_String_Constant (Position : String_Sets.Cursor);
+
+      ------------------------------
+      -- Generate_String_Constant --
+      ------------------------------
+
+      procedure Generate_String_Constant (Position : String_Sets.Cursor) is
+         Element : constant League.Strings.Universal_String
+           := String_Sets.Element (Position);
+
+      begin
+         Put ("   MS_");
+         Put (String_Numbers.Element (Element), Width => 0);
+         Put_Line (" : constant League.Strings.Universal_String");
+         Put_Line ("     := League.Strings.To_Universal_String");
+         Put_Line ("         (""" & Element.To_Wide_Wide_String & """);");
+      end Generate_String_Constant;
+
+   begin
+      Put_Header;
+      New_Line;
+      Put_Line
+       ("package AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_String_Data is");
+
+      --  Generate string constants.
+
+      New_Line;
+      Strings.Iterate (Generate_String_Constant'Access);
+
+      New_Line;
+      Put_Line
+       ("end AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_String_Data;");
+   end Generate_Metamodel_String_Data;
 
    ---------------------
    -- Is_Boolean_Type --

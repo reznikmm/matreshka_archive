@@ -92,11 +92,12 @@ begin
    end if;
 
    Put_Line (Standard_Error, "Generating metamodel initialization...");
+   Generator.Metamodel.Generate_Metamodel_String_Data;
    Generator.Metamodel.Generate_Metamodel_Specification;
    Generator.Metamodel.Generate_Metamodel_Implementation;
 
    if Generator.Generate_Reflection then
       Put_Line (Standard_Error, "Generating relfection...");
-      Generator.Reflection.Generate_Reflection_Implementation;
+--      Generator.Reflection.Generate_Reflection_Implementation;
    end if;
 end Gen2;
