@@ -378,8 +378,11 @@ package body Generator.Names is
 
          else
             if Is_Upper (To_Character (Name (J)))
-              and then J < Name'Last
-              and then not Is_Upper (To_Character (Name (J + 1)))
+              and then ((J /= Name'First
+                           and not Is_Upper (To_Character (Name (J - 1))))
+                           or (J < Name'Last
+                                 and then
+                                   not Is_Upper (To_Character (Name (J + 1)))))
             then
                Last := Last + 1;
                Aux (Last) := '_';

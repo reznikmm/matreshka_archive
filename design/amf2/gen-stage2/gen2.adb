@@ -80,15 +80,15 @@ begin
 
    if Generator.Generate_Attributes then
       Put_Line (Standard_Error, "Generating attributes...");
---      Generator.Attributes.Generate_Attributes_Mapping_Specification;
---      Generator.Attributes.Generate_Attributes_Specification;
---      Generator.Attributes.Generate_Attributes_Implementation;
+      Generator.Attributes.Generate_Attributes_Mapping_Specification;
+      Generator.Attributes.Generate_Attributes_Specification;
+      Generator.Attributes.Generate_Attributes_Implementation;
    end if;
 
    if Generator.Generate_Constructors then
       Put_Line (Standard_Error, "Generating constructors...");
---      Generator.Constructors.Generate_Constructors_Specification;
---      Generator.Constructors.Generate_Constructors_Implementation;
+      Generator.Constructors.Generate_Constructors_Specification;
+      Generator.Constructors.Generate_Constructors_Implementation;
    end if;
 
    Put_Line (Standard_Error, "Generating metamodel initialization...");
@@ -97,6 +97,6 @@ begin
 
    if Generator.Generate_Reflection then
       Put_Line (Standard_Error, "Generating relfection...");
---      Generator.Reflection.Generate_Reflection_Implementation;
+      Generator.Reflection.Generate_Reflection_Implementation;
    end if;
 end Gen2;

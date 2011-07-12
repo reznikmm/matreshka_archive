@@ -48,10 +48,10 @@ with League.Strings;
 
 package AMF.Internals.Tables.UML_Attributes is
 
-   function Internal_Get_U_R_I
+   function Internal_Get_URI
     (Self : AMF.Internals.UML_Element)
        return AMF.Optional_String;
-   procedure Internal_Set_U_R_I
+   procedure Internal_Set_URI
     (Self : AMF.Internals.UML_Element;
      To   : AMF.Optional_String);
    --  Model => Package::URI
@@ -2558,10 +2558,10 @@ package AMF.Internals.Tables.UML_Attributes is
    --  Stereotype => Classifier::isFinalSpecialization
    --  UseCase => Classifier::isFinalSpecialization
 
-   function Internal_Get_Is_I_D
+   function Internal_Get_Is_ID
     (Self : AMF.Internals.UML_Element)
        return Boolean;
-   procedure Internal_Set_Is_I_D
+   procedure Internal_Set_Is_ID
     (Self : AMF.Internals.UML_Element;
      To   : Boolean);
    --  ExtensionEnd => Property::isID

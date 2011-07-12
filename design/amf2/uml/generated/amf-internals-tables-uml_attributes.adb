@@ -5872,11 +5872,11 @@ package body AMF.Internals.Tables.UML_Attributes is
    --     1  Element::ownedComment
    --     2  Element::ownedElement
 
-   ------------------------
-   -- Internal_Get_U_R_I --
-   ------------------------
+   ----------------------
+   -- Internal_Get_URI --
+   ----------------------
 
-   function Internal_Get_U_R_I
+   function Internal_Get_URI
     (Self : AMF.Internals.UML_Element)
        return AMF.Optional_String is
    begin
@@ -5917,7 +5917,7 @@ package body AMF.Internals.Tables.UML_Attributes is
          when others =>
             raise Program_Error;
       end case;
-   end Internal_Get_U_R_I;
+   end Internal_Get_URI;
 
    ------------------------------
    -- Internal_Get_Abstraction --
@@ -12906,11 +12906,11 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Get_Is_Final_Specialization;
 
-   -------------------------
-   -- Internal_Get_Is_I_D --
-   -------------------------
+   ------------------------
+   -- Internal_Get_Is_ID --
+   ------------------------
 
-   function Internal_Get_Is_I_D
+   function Internal_Get_Is_ID
     (Self : AMF.Internals.UML_Element)
        return Boolean is
    begin
@@ -12927,7 +12927,7 @@ package body AMF.Internals.Tables.UML_Attributes is
          when others =>
             raise Program_Error;
       end case;
-   end Internal_Get_Is_I_D;
+   end Internal_Get_Is_ID;
 
    ---------------------------------------------
    -- Internal_Get_Is_Indirectly_Instantiated --
@@ -29697,11 +29697,11 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Get_When;
 
-   ------------------------
-   -- Internal_Set_U_R_I --
-   ------------------------
+   ----------------------
+   -- Internal_Set_URI --
+   ----------------------
 
-   procedure Internal_Set_U_R_I
+   procedure Internal_Set_URI
     (Self : AMF.Internals.UML_Element;
      To   : AMF.Optional_String)
    is
@@ -29728,7 +29728,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             end if;
 
             Notification.Notify_Attribute_Set
-             (Self, MP_UML_Package_U_R_I, Old, To);
+             (Self, MP_UML_Package_URI, Old, To);
 
          when E_Package =>
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
@@ -29749,7 +29749,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             end if;
 
             Notification.Notify_Attribute_Set
-             (Self, MP_UML_Package_U_R_I, Old, To);
+             (Self, MP_UML_Package_URI, Old, To);
 
          when E_Profile =>
             if UML_Element_Table.Table (Self).Member (10).String_Value /= null then
@@ -29770,12 +29770,12 @@ package body AMF.Internals.Tables.UML_Attributes is
             end if;
 
             Notification.Notify_Attribute_Set
-             (Self, MP_UML_Package_U_R_I, Old, To);
+             (Self, MP_UML_Package_URI, Old, To);
 
          when others =>
             raise Program_Error;
       end case;
-   end Internal_Set_U_R_I;
+   end Internal_Set_URI;
 
    ------------------------------
    -- Internal_Set_Abstraction --
@@ -34731,11 +34731,11 @@ package body AMF.Internals.Tables.UML_Attributes is
       end case;
    end Internal_Set_Is_Final_Specialization;
 
-   -------------------------
-   -- Internal_Set_Is_I_D --
-   -------------------------
+   ------------------------
+   -- Internal_Set_Is_ID --
+   ------------------------
 
-   procedure Internal_Set_Is_I_D
+   procedure Internal_Set_Is_ID
     (Self : AMF.Internals.UML_Element;
      To   : Boolean)
    is
@@ -34748,26 +34748,26 @@ package body AMF.Internals.Tables.UML_Attributes is
             UML_Element_Table.Table (Self).Member (30).Boolean_Value := To;
 
             Notification.Notify_Attribute_Set
-             (Self, MP_UML_Property_Is_I_D, Old, To);
+             (Self, MP_UML_Property_Is_ID, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (30).Boolean_Value;
             UML_Element_Table.Table (Self).Member (30).Boolean_Value := To;
 
             Notification.Notify_Attribute_Set
-             (Self, MP_UML_Property_Is_I_D, Old, To);
+             (Self, MP_UML_Property_Is_ID, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (30).Boolean_Value;
             UML_Element_Table.Table (Self).Member (30).Boolean_Value := To;
 
             Notification.Notify_Attribute_Set
-             (Self, MP_UML_Property_Is_I_D, Old, To);
+             (Self, MP_UML_Property_Is_ID, Old, To);
 
          when others =>
             raise Program_Error;
       end case;
-   end Internal_Set_Is_I_D;
+   end Internal_Set_Is_ID;
 
    ---------------------------------------------
    -- Internal_Set_Is_Indirectly_Instantiated --

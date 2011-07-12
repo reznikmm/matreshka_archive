@@ -750,7 +750,7 @@ package AMF.Internals.Tables.UML_Metamodel is
    function MP_UML_Property_Is_Composite return AMF.Internals.CMOF_Element;
    function MP_UML_Property_Is_Derived return AMF.Internals.CMOF_Element;
    function MP_UML_Property_Is_Derived_Union return AMF.Internals.CMOF_Element;
-   function MP_UML_Property_IsID return AMF.Internals.CMOF_Element;
+   function MP_UML_Property_Is_ID return AMF.Internals.CMOF_Element;
    function MP_UML_Property_Is_Read_Only return AMF.Internals.CMOF_Element;
    function MP_UML_Property_Opposite return AMF.Internals.CMOF_Element;
    function MP_UML_Property_Owning_Association return AMF.Internals.CMOF_Element;
