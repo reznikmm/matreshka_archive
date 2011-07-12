@@ -1016,6 +1016,8 @@ package body Generator.Metamodel is
          Property      : constant AMF.CMOF.Properties.CMOF_Property_Access
            := AMF.CMOF.Properties.CMOF_Property_Access
                (CMOF_Named_Element_Ordered_Sets.Element (Position));
+         Default       : constant AMF.Optional_String
+           := Property.Get_Default;
          Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Property.Get_Type;
          Value         : constant League.Holders.Holder
@@ -1024,6 +1026,16 @@ package body Generator.Metamodel is
       begin
          if Property_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
             if Is_Boolean_Type (Property_Type) then
+               if not Default.Is_Empty then
+                  if (Default.Value.To_Wide_Wide_String = "false"
+                        and then not League.Holders.Booleans.Element (Value))
+                    or else (Default.Value.To_Wide_Wide_String = "true"
+                        and then League.Holders.Booleans.Element (Value))
+                  then
+                     return;
+                  end if;
+               end if;
+
                Put
                 ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
                    & To_Ada_Identifier (Property.Get_Name.Value)
@@ -1039,6 +1051,15 @@ package body Generator.Metamodel is
                end if;
 
             elsif Is_Integer_Type (Property_Type) then
+               if not Default.Is_Empty then
+                  if League.Holders.Integers.Element (Value)
+                    = Integer'Wide_Wide_Value
+                       (Default.Value.To_Wide_Wide_String)
+                  then
+                     return;
+                  end if;
+               end if;
+
                if Property.Get_Lower = 0 then
                   Put
                    ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
@@ -1056,6 +1077,19 @@ package body Generator.Metamodel is
                end if;
 
             elsif Is_Unlimited_Natural_Type (Property_Type) then
+               if not Default.Is_Empty
+                 and then not League.Holders.Is_Empty (Value)
+                 and then not AMF.Holders.Unlimited_Naturals.Element
+                               (Value).Unlimited
+               then
+                  if AMF.Holders.Unlimited_Naturals.Element (Value).Value
+                    = Integer'Wide_Wide_Value
+                       (Default.Value.To_Wide_Wide_String)
+                  then
+                     return;
+                  end if;
+               end if;
+
                if Property.Get_Lower = 0 then
                   Put
                    ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"

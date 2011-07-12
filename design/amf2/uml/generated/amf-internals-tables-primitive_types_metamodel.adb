@@ -178,7 +178,6 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
          League.Strings.Internals.Create
           (AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access)));
 
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 2, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
         (False,
@@ -191,7 +190,6 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
          League.Strings.Internals.Create
           (AMF.Internals.Tables.Primitive_Types_String_Data.MS_7'Access)));
 
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 4, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
         (False,
@@ -204,7 +202,6 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
          League.Strings.Internals.Create
           (AMF.Internals.Tables.Primitive_Types_String_Data.MS_12'Access)));
 
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 6, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
         (False,
@@ -217,7 +214,6 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
          League.Strings.Internals.Create
           (AMF.Internals.Tables.Primitive_Types_String_Data.MS_9'Access)));
 
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 8, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
         (False,
@@ -230,7 +226,6 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
          League.Strings.Internals.Create
           (AMF.Internals.Tables.Primitive_Types_String_Data.MS_17'Access)));
 
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Final_Specialization (Base + 10, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
         (False,
