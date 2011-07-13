@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals;
 
 package AMF.CMOF is
 
@@ -68,11 +67,5 @@ package AMF.CMOF is
             null;
       end case;
    end record;
-
---   subtype Collection_Of_String is AMF.Internals.AMF_Collection_Of_String;
---
---   subtype Sequence_Of_String is AMF.Internals.AMF_Collection_Of_String;
---   subtype Set_Of_String is AMF.Internals.AMF_Collection_Of_String;
---   subtype Ordered_Set_Of_String is AMF.Internals.AMF_Collection_Of_String;
 
 end AMF.CMOF;
