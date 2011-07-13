@@ -50,10 +50,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_URI
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_URI
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Model => Package::URI
    --  Package => Package::URI
    --  Profile => Package::URI
@@ -195,10 +195,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Alias
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Alias
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  ElementImport => ElementImport::alias
 
    function Internal_Get_Allow_Substitutable
@@ -320,10 +320,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Body
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Comment => Comment::body
 
    function Internal_Get_Body
@@ -767,10 +767,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Content
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Content
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Image => Image::content
 
    function Internal_Get_Context
@@ -918,10 +918,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Default
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Default
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  ExtensionEnd => Property::default
    --  Parameter => Parameter::default
    --  Port => Property::default
@@ -1007,10 +1007,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Deployment_Location
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Deployment_Location
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  DeploymentSpecification => DeploymentSpecification::deploymentLocation
 
    function Internal_Get_Destroy_At
@@ -1264,10 +1264,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Execution_Location
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Execution_Location
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  DeploymentSpecification => DeploymentSpecification::executionLocation
 
    function Internal_Get_Exit
@@ -1403,10 +1403,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_File_Name
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_File_Name
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Artifact => Artifact::fileName
    --  DeploymentSpecification => Artifact::fileName
 
@@ -1464,10 +1464,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Format
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Format
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Image => Image::format
 
    function Internal_Get_Fragment
@@ -3092,10 +3092,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Location
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Location
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Image => Image::location
 
    function Internal_Get_Loop_Variable
@@ -3333,10 +3333,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Name
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Name
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Abstraction => NamedElement::name
    --  AcceptCallAction => NamedElement::name
    --  AcceptEventAction => NamedElement::name
@@ -5494,7 +5494,7 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Qualified_Name
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    --  Abstraction => NamedElement::qualifiedName
    --  AcceptCallAction => NamedElement::qualifiedName
    --  AcceptEventAction => NamedElement::qualifiedName
@@ -6720,10 +6720,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Symbol
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Symbol
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Expression => Expression::symbol
    --  StringExpression => Expression::symbol
 
@@ -7113,10 +7113,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Value
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Value
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  LiteralString => LiteralString::value
 
    function Internal_Get_Value
@@ -7172,10 +7172,10 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Viewpoint
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String;
+       return Matreshka.Internals.Strings.Shared_String_Access;
    procedure Internal_Set_Viewpoint
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String);
+     To   : Matreshka.Internals.Strings.Shared_String_Access);
    --  Model => Model::viewpoint
 
    function Internal_Get_Visibility

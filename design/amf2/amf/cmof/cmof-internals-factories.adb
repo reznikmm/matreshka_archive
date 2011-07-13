@@ -46,8 +46,8 @@ with Ada.Strings.Wide_Wide_Fixed;
 with League.Holders.Booleans;
 with League.Holders.Integers;
 
-with AMF.CMOF.Parameter_Direction_Kind_Holders;
-with AMF.CMOF.Visibility_Kind_Holders;
+with AMF.CMOF.Holders.Parameter_Direction_Kinds;
+with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
@@ -205,22 +205,22 @@ package body CMOF.Internals.Factories is
       elsif DT = MC_CMOF_Parameter_Direction_Kind then
          if Image = In_Image then
             return
-              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.In_Parameter);
 
          elsif Image = In_Out_Image then
             return
-              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.In_Out_Parameter);
 
          elsif Image = Out_Image then
             return
-              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.Out_Parameter);
 
          elsif Image = Return_Image then
             return
-              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (AMF.CMOF.Return_Parameter);
 
          else
@@ -230,22 +230,22 @@ package body CMOF.Internals.Factories is
       elsif DT = MC_CMOF_Visibility_Kind then
          if Image = Public_Image then
             return
-              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Public_Visibility);
 
          elsif Image = Private_Image then
             return
-              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Private_Visibility);
 
          elsif Image = Protected_Image then
             return
-              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Protected_Visibility);
 
          elsif Image = Package_Image then
             return
-              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (AMF.CMOF.Package_Visibility);
 
          else
@@ -335,7 +335,7 @@ package body CMOF.Internals.Factories is
          else
             declare
                Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
-                 := AMF.CMOF.Parameter_Direction_Kind_Holders.Element (Value);
+                 := AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value);
 
             begin
                case Kind is
@@ -361,7 +361,7 @@ package body CMOF.Internals.Factories is
          else
             declare
                Kind : constant AMF.CMOF.CMOF_Visibility_Kind
-                 := AMF.CMOF.Visibility_Kind_Holders.Element (Value);
+                 := AMF.CMOF.Holders.Visibility_Kinds.Element (Value);
 
             begin
                case Kind is

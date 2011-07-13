@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
-with AMF.CMOF;
+with AMF.Internals;
 
 package AMF.String_Collections is
 
@@ -51,8 +51,13 @@ package AMF.String_Collections is
 
    type Collection_Of_String is tagged private;
 
+   subtype Set_Of_String is Collection_Of_String;
+   subtype Ordered_Set_Of_String is Collection_Of_String;
+   subtype Sequence_Of_String is Collection_Of_String;
+
    function Wrap
-    (Collection : AMF.CMOF.Collection_Of_String) return Collection_Of_String;
+    (Collection : AMF.Internals.AMF_Collection_Of_String)
+       return Collection_Of_String;
 
 private
 

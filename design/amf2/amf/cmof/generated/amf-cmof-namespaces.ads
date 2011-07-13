@@ -52,6 +52,7 @@ with AMF.CMOF.Named_Elements;
 limited with AMF.CMOF.Named_Elements.Collections;
 limited with AMF.CMOF.Package_Imports.Collections;
 limited with AMF.CMOF.Packageable_Elements.Collections;
+with AMF.String_Collections;
 
 package AMF.CMOF.Namespaces is
 
@@ -105,7 +106,7 @@ package AMF.CMOF.Namespaces is
    not overriding function Get_Names_Of_Member
     (Self : not null access constant CMOF_Namespace;
      Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
-       return AMF.CMOF.Set_Of_String is abstract;
+       return AMF.String_Collections.Set_Of_String is abstract;
    --  The query getNamesOfMember() takes importing into account. It gives 
    --  back the set of names that an element would have in an importing 
    --  namespace, either because it is owned, or if not owned then imported 

@@ -500,7 +500,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.CMOF.Sequence_Of_String is
+       return AMF.Internals.AMF_Collection_Of_String is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Opaque_Expression =>
@@ -1146,7 +1146,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Language
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.CMOF.Ordered_Set_Of_String is
+       return AMF.Internals.AMF_Collection_Of_String is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Opaque_Expression =>

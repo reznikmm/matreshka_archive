@@ -12,9 +12,9 @@
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#String">
     <mapping representation="value" adaType="League.Strings.Universal_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
     <mapping representation="holder" adaType="AMF.Optional_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
-    <mapping representation="set" adaType="AMF.CMOF.Set_Of_String"/>
-    <mapping representation="ordered_set" adaType="AMF.CMOF.Ordered_Set_Of_String"/>
-    <mapping representation="sequence" adaType="AMF.CMOF.Sequence_Of_String"/>
+    <mapping representation="set" adaType="AMF.String_Collections.Set_Of_String" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
+    <mapping representation="ordered_set" adaType="AMF.String_Collections.Ordered_Set_Of_String" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
+    <mapping representation="sequence" adaType="AMF.String_Collections.Sequence_Of_String" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
   </type>
   <type uri="http://schema.omg.org/spec/MOF/2.0/cmof.xml#UnlimitedNatural">
     <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Natural_Value"/>
@@ -46,11 +46,11 @@
     <mapping representation="holder" adaType="AMF.Optional_Real"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#String">
-    <mapping representation="value" adaType="League.Strings.Universal_String"/>
-    <mapping representation="holder" adaType="AMF.Optional_String"/>
-    <mapping representation="set" adaType="AMF.UML.Set_Of_String"/>
-    <mapping representation="ordered_set" adaType="AMF.UML.Ordered_Set_Of_String"/>
-    <mapping representation="sequence" adaType="AMF.UML.Sequence_Of_String"/>
+    <mapping representation="value" adaType="League.Strings.Universal_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
+    <mapping representation="holder" adaType="AMF.Optional_String" internalAdaType="Matreshka.Internals.Strings.Shared_String_Access"/>
+    <mapping representation="set" adaType="AMF.String_Collections.Set_Of_String" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
+    <mapping representation="ordered_set" adaType="AMF.String_Collections.Ordered_Set_Of_String" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
+    <mapping representation="sequence" adaType="AMF.String_Collections.Sequence_Of_String" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural">
     <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Natural_Value"/>

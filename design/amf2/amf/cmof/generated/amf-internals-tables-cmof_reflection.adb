@@ -43,9 +43,8 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.CMOF.Holders;
-with AMF.CMOF.Parameter_Direction_Kind_Holders;
-with AMF.CMOF.Visibility_Kind_Holders;
+with AMF.CMOF.Holders.Parameter_Direction_Kinds;
+with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.String_Collections;
@@ -921,7 +920,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  ElementImport::visibility : VisibilityKind
 
             return
-              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (Internal_Get_Visibility (Self));
 
          else
@@ -1851,7 +1850,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  PackageImport::visibility : VisibilityKind
 
             return
-              AMF.CMOF.Visibility_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Visibility_Kinds.To_Holder
                (Internal_Get_Visibility (Self));
 
          else
@@ -1951,7 +1950,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Parameter::direction : ParameterDirectionKind
 
             return
-              AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder
+              AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
                (Internal_Get_Direction (Self));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
@@ -2883,7 +2882,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          elsif Property = MP_CMOF_Element_Import_Visibility then
             --  ElementImport::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Visibility_Kind_Holders.Element (Value));
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -3095,7 +3094,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          elsif Property = MP_CMOF_Package_Import_Visibility then
             --  PackageImport::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Visibility_Kind_Holders.Element (Value));
+            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -3137,7 +3136,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          elsif Property = MP_CMOF_Parameter_Direction then
             --  Parameter::direction : ParameterDirectionKind
 
-            Internal_Set_Direction (Self, AMF.CMOF.Parameter_Direction_Kind_Holders.Element (Value));
+            Internal_Set_Direction (Self, AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean

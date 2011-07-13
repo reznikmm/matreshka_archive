@@ -380,10 +380,9 @@ package body AMF.Internals.CMOF_Data_Types is
    -------------------------
 
    overriding function Get_Names_Of_Member
-     (Self : not null access constant CMOF_Data_Type_Proxy;
-      Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
-      return AMF.CMOF.Set_Of_String
-   is
+    (Self : not null access constant CMOF_Data_Type_Proxy;
+     Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
+       return AMF.String_Collections.Set_Of_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Names_Of_Member unimplemented");

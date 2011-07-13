@@ -42,9 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Holders;
-with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Properties;
-with AMF.CMOF.Visibility_Kind_Holders;
+with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
@@ -68,8 +68,8 @@ package body CMOF.Internals.Notification is
         AMF.CMOF.Properties.CMOF_Property_Access
          (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
-        AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder (Old_Value),
-        AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder (New_Value));
+        AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder (Old_Value),
+        AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
    --------------------------
@@ -87,8 +87,8 @@ package body CMOF.Internals.Notification is
         AMF.CMOF.Properties.CMOF_Property_Access
          (AMF.Internals.Helpers.To_Element (Property)),
         (Is_Empty => True),
-        AMF.CMOF.Visibility_Kind_Holders.To_Holder (Old_Value),
-        AMF.CMOF.Visibility_Kind_Holders.To_Holder (New_Value));
+        AMF.CMOF.Holders.Visibility_Kinds.To_Holder (Old_Value),
+        AMF.CMOF.Holders.Visibility_Kinds.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
    --------------------------
@@ -205,25 +205,6 @@ package body CMOF.Internals.Notification is
          (AMF.Internals.Helpers.To_Element (Old_Value)),
         AMF.Holders.Elements.To_Holder
          (AMF.Internals.Helpers.To_Element (New_Value)));
-   end Notify_Attribute_Set;
-
-   --------------------------
-   -- Notify_Attribute_Set --
-   --------------------------
-
-   procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : League.Strings.Universal_String;
-     New_Value : League.Strings.Universal_String) is
-   begin
-      AMF.Internals.Listener_Registry.Notify_Attribute_Set
-       (AMF.Internals.Helpers.To_Element (Element),
-        AMF.CMOF.Properties.CMOF_Property_Access
-         (AMF.Internals.Helpers.To_Element (Property)),
-        (Is_Empty => True),
-        League.Holders.To_Holder (Old_Value),
-        League.Holders.To_Holder (New_Value));
    end Notify_Attribute_Set;
 
    --------------------------

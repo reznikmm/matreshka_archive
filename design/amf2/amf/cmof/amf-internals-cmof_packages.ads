@@ -52,7 +52,7 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages.Collections;
 with AMF.CMOF.Types.Collections;
 with AMF.Internals.CMOF_Named_Elements;
-with CMOF;
+with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Packages is
 
@@ -143,7 +143,7 @@ package AMF.Internals.CMOF_Packages is
    overriding function Get_Names_Of_Member
     (Self : not null access constant CMOF_Package_Proxy;
      Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
-       return AMF.CMOF.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant CMOF_Package_Proxy;

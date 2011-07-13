@@ -43,6 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Holders.Generic_Enumerations;
 
-package AMF.CMOF.Parameter_Direction_Kind_Holders is
-  new League.Holders.Generic_Enumerations (CMOF_Parameter_Direction_Kind);
-pragma Preelaborate (AMF.CMOF.Parameter_Direction_Kind_Holders);
+package AMF.UML.Holders.Message_Sorts is
+  new League.Holders.Generic_Enumerations (UML_Message_Sort);
+pragma Preelaborate (AMF.UML.Holders.Message_Sorts);

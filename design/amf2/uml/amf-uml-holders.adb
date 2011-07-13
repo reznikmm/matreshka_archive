@@ -41,43 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.UML.Holders.Visibility_Kinds;
 
-package AMF.Internals is
+package body AMF.UML.Holders is
 
-   pragma Preelaborate;
+   -------------
+   -- Element --
+   -------------
 
-   --  XXX All types in this package can be replaced by modular types, but
-   --  this requires to replace GNAT.Tables package by own implementation.
+   function Element
+    (Holder : League.Holders.Holder) return Optional_UML_Visibility_Kind is
+   begin
+      if not League.Holders.Has_Tag
+          (Holder, AMF.UML.Holders.Visibility_Kinds.Value_Tag)
+      then
+         raise Constraint_Error;
+      end if;
 
-   type AMF_Metamodel is mod 2 ** 8;
-   --  Identifier of the metamodel. AMF can supports up to 255 metamodels.
+      if League.Holders.Is_Empty (Holder) then
+         return (Is_Empty => True);
 
-   CMOF_Metamodel  : constant AMF_Metamodel := 0;
-   UML_Metamodel   : constant AMF_Metamodel := 1;
-   UMLDI_Metamodel : constant AMF_Metamodel := 2;
+      else
+         return (False, AMF.UML.Holders.Visibility_Kinds.Element (Holder));
+      end if;
+   end Element;
 
-   type AMF_Element is range 0 .. 2 ** 31 - 1;
-   for AMF_Element'Size use 32;
-   --  Identifier of the element inside metamodel.
+   ---------------
+   -- To_Holder --
+   ---------------
 
-   subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
-   subtype UML_Element   is AMF_Element range 16#01000000# .. 16#01FFFFFF#;
-   subtype UMLDI_Element is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
+   function To_Holder
+    (Value : Optional_UML_Visibility_Kind) return League.Holders.Holder is
+   begin
+      return Result : League.Holders.Holder do
+         League.Holders.Set_Tag
+          (Result, AMF.UML.Holders.Visibility_Kinds.Value_Tag);
 
-   type AMF_Link is range 0 .. 2 ** 31 - 1;
-   for AMF_Link'Size use 32;
-   --  Identifier of the link between two elements.
+         if not Value.Is_Empty then
+            AMF.UML.Holders.Visibility_Kinds.Replace_Element
+             (Result, Value.Value);
+         end if;
+      end return;
+   end To_Holder;
 
-   type AMF_Collection_Of_Element is range 0 .. 2 ** 31 - 1;
-   for AMF_Collection_Of_Element'Size use 32;
-
-   type AMF_Extent is range 0 .. 2 ** 31 - 1;
-   for AMF_Extent'Size use 32;
-
-   type AMF_Collection_Of_Boolean is range 0 .. 2 ** 31 - 1;
-   for AMF_Collection_Of_Boolean'Size use 32;
-
-   type AMF_Collection_Of_String is range 0 .. 2 ** 31 - 1;
-   for AMF_Collection_Of_String'Size use 32;
-
-end AMF.Internals;
+end AMF.UML.Holders;

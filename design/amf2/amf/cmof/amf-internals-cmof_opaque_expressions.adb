@@ -378,9 +378,8 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
    --------------
 
    overriding function Get_Body
-     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-      return AMF.CMOF.Sequence_Of_String
-   is
+    (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+       return AMF.String_Collections.Sequence_Of_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Body unimplemented");
@@ -393,9 +392,8 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
    ------------------
 
    overriding function Get_Language
-     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-      return AMF.CMOF.Ordered_Set_Of_String
-   is
+    (Self : not null access constant CMOF_Opaque_Expression_Proxy)
+       return AMF.String_Collections.Set_Of_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Language unimplemented");

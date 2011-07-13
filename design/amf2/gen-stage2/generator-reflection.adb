@@ -46,6 +46,7 @@ with Ada.Tags;
 with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Enumerations;
 with AMF.CMOF.Types;
 with League.Strings;
 
@@ -57,22 +58,18 @@ package body Generator.Reflection is
    use Ada.Wide_Wide_Text_IO;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
-
-   Body_Name                     : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("body");
+   use type League.Strings.Universal_String;
 
    Boolean_Name                  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Boolean");
    Integer_Name                  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Integer");
-   Parameter_Direction_Kind_Name : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("ParameterDirectionKind");
+   Real_Name                     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Real");
    String_Name                   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
    Unlimited_Natural_Name        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("UnlimitedNatural");
-   Visibility_Kind_Name          : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("VisibilityKind");
 
    ----------------------------------------
    -- Generate_Reflection_Implementation --
@@ -161,7 +158,7 @@ package body Generator.Reflection is
                 := Attribute.Get_Class;
             Attribute_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
               := Attribute.Get_Type;
-            Holder_Name     : Unbounded_Wide_Wide_String;
+            Holder_Name     : League.Strings.Universal_String;
             Convertor_Name  : Unbounded_Wide_Wide_String;
 
          begin
@@ -179,11 +176,11 @@ package body Generator.Reflection is
 
             Put_Line
              ("            --  "
-                & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
+                & Attribute_Class.Get_Name.Value
                 & "::"
-                & Attribute.Get_Name.Value.To_Wide_Wide_String
+                & Attribute.Get_Name.Value
                 & " : "
-                & Attribute_Type.Get_Name.Value.To_Wide_Wide_String);
+                & Attribute_Type.Get_Name.Value);
             New_Line;
             Put_Line ("            return");
             Put ("              ");
@@ -191,7 +188,7 @@ package body Generator.Reflection is
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
                   Holder_Name :=
-                    To_Unbounded_Wide_Wide_String
+                    League.Strings.To_Universal_String
                      ("AMF.Holders.Elements.To_Holder");
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
@@ -199,7 +196,7 @@ package body Generator.Reflection is
 
                else
                   Holder_Name :=
-                    To_Unbounded_Wide_Wide_String
+                    League.Strings.To_Universal_String
                      ("AMF.Holders.Collections.To_Holder");
                   Convertor_Name :=
                     To_Unbounded_Wide_Wide_String
@@ -210,14 +207,18 @@ package body Generator.Reflection is
                case Representation (Attribute) is
                   when Value =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
+                       League.Strings.To_Universal_String
                         ("League.Holders.Booleans.To_Holder");
 
                   when Holder =>
-                     raise Program_Error;
+                     Holder_Name :=
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.To_Holder");
 
                   when Set =>
-                     raise Program_Error;
+                     Holder_Name :=
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.Boolean_Collections.To_Holder");
 
                   when Ordered_Set =>
                      raise Program_Error;
@@ -230,14 +231,16 @@ package body Generator.Reflection is
                end case;
 
             elsif Attribute_Type.Get_Name = Integer_Name then
-               null;
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Holder_Name :=
+                       League.Strings.To_Universal_String
+                        ("League.Holders.Integers.To_Holder");
 
                   when Holder =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.To_Holder");
 
                   when Set =>
                      raise Program_Error;
@@ -252,12 +255,12 @@ package body Generator.Reflection is
                      raise Program_Error;
                end case;
 
-            elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
+            elsif Attribute_Type.Get_Name = Real_Name then
                case Representation (Attribute) is
                   when Value =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
-                        ("AMF.CMOF.Parameter_Direction_Kind_Holders.To_Holder");
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.Reals.To_Holder");
 
                   when Holder =>
                      raise Program_Error;
@@ -279,7 +282,7 @@ package body Generator.Reflection is
                case Representation (Attribute) is
                   when Value | Holder =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
+                       League.Strings.To_Universal_String
                         ("AMF.Internals.Holders.To_Holder");
 
                   when Set =>
@@ -287,7 +290,7 @@ package body Generator.Reflection is
 
                   when Ordered_Set =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
+                       League.Strings.To_Universal_String
                         ("AMF.Holders.String_Collections.To_Holder");
                      Convertor_Name :=
                        To_Unbounded_Wide_Wide_String
@@ -298,7 +301,7 @@ package body Generator.Reflection is
 
                   when Sequence =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
+                       League.Strings.To_Universal_String
                         ("AMF.Holders.String_Collections.To_Holder");
                      Convertor_Name :=
                        To_Unbounded_Wide_Wide_String
@@ -308,11 +311,14 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Holder_Name :=
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.Unlimited_Naturals.To_Holder");
 
                   when Holder =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String ("AMF.Holders.To_Holder");
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.To_Holder");
 
                   when Set =>
                      raise Program_Error;
@@ -327,17 +333,22 @@ package body Generator.Reflection is
                      raise Program_Error;
                end case;
 
-            elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
+            elsif Attribute_Type.all
+                    in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+            then
                case Representation (Attribute) is
                   when Value =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
-                        ("AMF.CMOF.Visibility_Kind_Holders.To_Holder");
+                       "AMF."
+                         & Metamodel_Name
+                         & ".Holders."
+                         & Plural
+                            (To_Ada_Identifier (Attribute_Type.Get_Name.Value))
+                         & ".To_Holder";
 
                   when Holder =>
                      Holder_Name :=
-                       To_Unbounded_Wide_Wide_String
-                        ("AMF.CMOF.Holders.To_Holder");
+                       "AMF." & Metamodel_Name & ".Holders.To_Holder";
 
                   when Set =>
                      raise Program_Error;
@@ -353,17 +364,21 @@ package body Generator.Reflection is
                end case;
 
             else
+               Put_Line
+                (Standard_Error,
+                 Attribute_Type.Get_Name.Value.To_Wide_Wide_String);
+
                raise Program_Error;
             end if;
 
             if Convertor_Name = Null_Unbounded_Wide_Wide_String then
-               Put_Line (To_Wide_Wide_String (Holder_Name));
+               Put_Line (Holder_Name);
                Put_Line ("               (Internal_Get_"
                    & To_Ada_Identifier (Attribute.Get_Name.Value)
                    & " (Self));");
 
             else
-               Put_Line (To_Wide_Wide_String (Holder_Name));
+               Put_Line (Holder_Name);
                Put_Line
                 ("               (" & To_Wide_Wide_String (Convertor_Name));
                Put_Line
@@ -396,8 +411,6 @@ package body Generator.Reflection is
       procedure Generate_Getter_Specification
        (Position : Class_Information_Maps.Cursor)
       is
-         use type League.Strings.Universal_String;
-
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := Class_Information_Maps.Element (Position).Class;
          Name  : constant Wide_Wide_String
@@ -529,7 +542,11 @@ package body Generator.Reflection is
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
                   Put
-                   ("AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class"
+                   ("AMF.Internals."
+                      & Metamodel_Name
+                      & "_Elements."
+                      & Metamodel_Name
+                      & "_Element_Proxy'Class"
                       & " (AMF.Holders.Elements.Element"
                       & " (Value).all).Id");
 
@@ -543,29 +560,7 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Boolean_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put
-                      ("League.Holders.Booleans.Element (Value)");
-
-                  when Holder =>
-                     raise Program_Error;
-
-                  when Set =>
-                     raise Program_Error;
-
-                  when Ordered_Set =>
-                     raise Program_Error;
-
-                  when Bag =>
-                     raise Program_Error;
-
-                  when Sequence =>
-                     raise Program_Error;
-               end case;
-
-            elsif Attribute_Type.Get_Name = Integer_Name then
-               case Representation (Attribute) is
-                  when Value =>
-                     raise Program_Error;
+                     Put ("League.Holders.Booleans.Element (Value)");
 
                   when Holder =>
                      Put ("AMF.Holders.Element (Value)");
@@ -583,15 +578,57 @@ package body Generator.Reflection is
                      raise Program_Error;
                end case;
 
-            elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
+            elsif Attribute_Type.Get_Name = Integer_Name then
                case Representation (Attribute) is
                   when Value =>
-                     Put
-                      ("AMF.CMOF.Parameter_Direction_Kind_Holders.Element"
-                         & " (Value)");
+                     Put ("League.Holders.Integers.Element (Value)");
 
                   when Holder =>
+                     Put ("AMF.Holders.Element (Value)");
+
+                  when Set =>
                      raise Program_Error;
+
+                  when Ordered_Set =>
+                     raise Program_Error;
+
+                  when Bag =>
+                     raise Program_Error;
+
+                  when Sequence =>
+                     raise Program_Error;
+               end case;
+
+--            elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
+--               case Representation (Attribute) is
+--                  when Value =>
+--                     Put
+--                      ("AMF.CMOF.Parameter_Direction_Kind_Holders.Element"
+--                         & " (Value)");
+--
+--                  when Holder =>
+--                     raise Program_Error;
+--
+--                  when Set =>
+--                     raise Program_Error;
+--
+--                  when Ordered_Set =>
+--                     raise Program_Error;
+--
+--                  when Bag =>
+--                     raise Program_Error;
+--
+--                  when Sequence =>
+--                     raise Program_Error;
+--               end case;
+
+            elsif Attribute_Type.Get_Name = Real_Name then
+               case Representation (Attribute) is
+                  when Value =>
+                     Put ("AMF.Holders.Reals.Element (Value)");
+
+                  when Holder =>
+                     Put ("AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -627,7 +664,7 @@ package body Generator.Reflection is
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
                case Representation (Attribute) is
                   when Value =>
-                     raise Program_Error;
+                     Put ("AMF.Holders.Unlimited_Naturals.Element (Value)");
 
                   when Holder =>
                      Put ("AMF.Holders.Element (Value)");
@@ -645,14 +682,44 @@ package body Generator.Reflection is
                      raise Program_Error;
                end case;
 
-            elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
+--            elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
+--               case Representation (Attribute) is
+--                  when Value =>
+--                     Put
+--                      ("AMF.CMOF.Visibility_Kind_Holders.Element (Value)");
+--
+--                  when Holder =>
+--                     Put ("AMF.CMOF.Holders.Element (Value)");
+--
+--                  when Set =>
+--                     raise Program_Error;
+--
+--                  when Ordered_Set =>
+--                     raise Program_Error;
+--
+--                  when Bag =>
+--                     raise Program_Error;
+--
+--                  when Sequence =>
+--                     raise Program_Error;
+--               end case;
+
+            elsif Attribute_Type.all
+                    in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
+            then
                case Representation (Attribute) is
                   when Value =>
                      Put
-                      ("AMF.CMOF.Visibility_Kind_Holders.Element (Value)");
+                      ("AMF."
+                         & Metamodel_Name
+                         & ".Holders."
+                         & Plural
+                            (To_Ada_Identifier (Attribute_Type.Get_Name.Value))
+                         & ".Element (Value)");
 
                   when Holder =>
-                     Put ("AMF.CMOF.Holders.Element (Value)");
+                     Put
+                      ("AMF." & Metamodel_Name & ".Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -696,8 +763,6 @@ package body Generator.Reflection is
       procedure Generate_Setter_Specification
        (Position : Class_Information_Maps.Cursor)
       is
-         use type League.Strings.Universal_String;
-
          Class : constant AMF.CMOF.Classes.CMOF_Class_Access
            := Class_Information_Maps.Element (Position).Class;
          Name  : constant Wide_Wide_String
@@ -716,47 +781,57 @@ package body Generator.Reflection is
 
    begin
       Put_Header;
-      Put_Line ("with AMF.CMOF.Holders;");
-      Put_Line ("with AMF.CMOF.Parameter_Direction_Kind_Holders;");
-      Put_Line ("with AMF.CMOF.Visibility_Kind_Holders;");
+
+      if Metamodel_Name = League.Strings.To_Universal_String ("CMOF") then
+         Put_Line ("with AMF.CMOF.Holders.Parameter_Direction_Kinds;");
+         Put_Line ("with AMF.CMOF.Holders.Visibility_Kinds;");
+
+      elsif Metamodel_Name = League.Strings.To_Universal_String ("UML") then
+         Put_Line ("with AMF.UML.Holders.Aggregation_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Call_Concurrency_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Connector_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Expansion_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Interaction_Operator_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Message_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Message_Sorts;");
+         Put_Line ("with AMF.UML.Holders.Object_Node_Ordering_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Parameter_Direction_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Pseudostate_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Transition_Kinds;");
+         Put_Line ("with AMF.UML.Holders.Visibility_Kinds;");
+         Put_Line ("with League.Holders.Integers;");
+         Put_Line ("with AMF.Holders.Boolean_Collections;");
+         Put_Line ("with AMF.Holders.Reals;");
+         Put_Line ("with AMF.Holders.Unlimited_Naturals;");
+      end if;
+
       Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Holders.String_Collections;");
-      Put_Line ("with AMF.Internals.CMOF_Elements;");
+      Put_Line ("with AMF.Internals." & Metamodel_Name & "_Elements;");
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
       Put_Line ("with AMF.Internals.Holders;");
       Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attributes;");
+       ("with AMF.Internals.Tables." & Metamodel_Name & "_Attributes;");
+      Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
       Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line
-       ("with AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Element_Table;");
-      Put_Line ("with AMF.Internals.Tables.CMOF_Types;");
+       ("with AMF.Internals.Tables." & Metamodel_Name & "_Element_Table;");
+      Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Types;");
       Put_Line ("with AMF.String_Collections;");
       Put_Line ("with League.Holders.Booleans;");
       New_Line;
       Put_Line
        ("package body AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
+          & Metamodel_Name
           & "_Reflection is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
       Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Attributes;");
+       ("   use AMF.Internals.Tables." & Metamodel_Name & "_Attributes;");
       Put_Line
-       ("   use AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
-      Put_Line ("   use AMF.Internals.Tables.CMOF_Types;");
+       ("   use AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
+      Put_Line ("   use AMF.Internals.Tables." & Metamodel_Name & "_Types;");
       Put_Line ("   use type AMF.Internals.AMF_Element;");
 
       --  Getter
@@ -774,7 +849,10 @@ package body Generator.Reflection is
       Class_Info.Iterate (Generate_Getter_Implementation'Access);
       New_Line;
       Put_Line ("   begin");
-      Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
+      Put_Line
+       ("      case "
+          & Metamodel_Name
+          & "_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
       Put_Line ("            raise Program_Error;");
       Class_Info.Iterate (Generate_Getter_Call'Access);
@@ -791,7 +869,10 @@ package body Generator.Reflection is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Element) return CMOF_Element is");
       Put_Line ("   begin");
-      Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
+      Put_Line
+       ("      case "
+          & Metamodel_Name
+          & "_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
       Put_Line ("            return 0;");
       Class_Info.Iterate (Generate_Meta'Access);
@@ -813,7 +894,10 @@ package body Generator.Reflection is
       Class_Info.Iterate (Generate_Setter_Specification'Access);
       Class_Info.Iterate (Generate_Setter_Implementation'Access);
       Put_Line ("   begin");
-      Put_Line ("      case CMOF_Element_Table.Table (Self).Kind is");
+      Put_Line
+       ("      case "
+          & Metamodel_Name
+          & "_Element_Table.Table (Self).Kind is");
       Put_Line ("         when E_None =>");
       Put_Line ("            raise Program_Error;");
       Class_Info.Iterate (Generate_Setter_Call'Access);

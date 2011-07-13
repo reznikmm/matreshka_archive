@@ -129,7 +129,7 @@ package AMF.Internals.Tables.CMOF_Types is
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
 
          when M_Collection_Of_String =>
-            String_Collection_Value : AMF.CMOF.Collection_Of_String;
+            String_Collection_Value : AMF.Internals.AMF_Collection_Of_String;
 
          when M_Parameter_Direction_Kind =>
             Parameter_Direction_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;

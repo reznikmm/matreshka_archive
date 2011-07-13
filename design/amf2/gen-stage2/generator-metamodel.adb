@@ -55,7 +55,7 @@ with AMF.CMOF.Associations;
 with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
-with AMF.CMOF.Parameter_Direction_Kind_Holders;
+with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
@@ -1166,7 +1166,7 @@ package body Generator.Metamodel is
                Put (Element_Numbers.Element (Element), Width => 0);
                Put (", ");
 
-               case AMF.CMOF.Parameter_Direction_Kind_Holders.Element
+               case AMF.CMOF.Holders.Parameter_Direction_Kinds.Element
                      (Value)
                is
                   when AMF.CMOF.In_Parameter =>

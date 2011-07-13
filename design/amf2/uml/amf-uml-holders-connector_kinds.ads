@@ -43,6 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Holders.Generic_Enumerations;
 
-package AMF.CMOF.Visibility_Kind_Holders is
-  new League.Holders.Generic_Enumerations (CMOF_Visibility_Kind);
-pragma Preelaborate (AMF.CMOF.Visibility_Kind_Holders);
+package AMF.UML.Holders.Connector_Kinds is
+  new League.Holders.Generic_Enumerations (UML_Connector_Kind);
+pragma Preelaborate (AMF.UML.Holders.Connector_Kinds);

@@ -5878,7 +5878,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_URI
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
@@ -6257,7 +6257,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Alias
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
@@ -6585,7 +6585,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Comment =>
@@ -7877,7 +7877,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Content
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
@@ -8292,7 +8292,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Default
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
@@ -8538,7 +8538,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Deployment_Location
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
@@ -9223,7 +9223,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Execution_Location
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
@@ -9617,7 +9617,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_File_Name
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Artifact =>
@@ -9764,7 +9764,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Format
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
@@ -14228,7 +14228,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Location
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Image =>
@@ -14883,7 +14883,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Name
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
@@ -21459,7 +21459,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Qualified_Name
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
@@ -25135,7 +25135,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Symbol
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Expression =>
@@ -26220,7 +26220,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Value
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Literal_String =>
@@ -26374,7 +26374,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Viewpoint
     (Self : AMF.Internals.UML_Element)
-       return AMF.Optional_String is
+       return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
@@ -27183,9 +27183,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_URI
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -27863,9 +27863,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Alias
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -28114,9 +28114,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Body
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -28601,9 +28601,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Content
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -28814,9 +28814,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Default
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -29037,9 +29037,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Deployment_Location
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -29638,9 +29638,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Execution_Location
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -29806,9 +29806,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_File_Name
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -29984,9 +29984,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Format
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -34086,9 +34086,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Location
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -34646,9 +34646,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Name
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -42072,9 +42072,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Symbol
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -43456,9 +43456,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Value
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -43646,9 +43646,9 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Viewpoint
     (Self : AMF.Internals.UML_Element;
-     To   : AMF.Optional_String)
+     To   : Matreshka.Internals.Strings.Shared_String_Access)
    is
-      Old : AMF.Optional_String;
+      Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
       case UML_Element_Table.Table (Self).Kind is

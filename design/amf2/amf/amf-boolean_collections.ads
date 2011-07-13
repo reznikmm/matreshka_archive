@@ -41,43 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+private with Ada.Finalization;
 
-package AMF.Internals is
+with AMF.Internals;
+
+package AMF.Boolean_Collections is
 
    pragma Preelaborate;
 
-   --  XXX All types in this package can be replaced by modular types, but
-   --  this requires to replace GNAT.Tables package by own implementation.
+   type Collection_Of_Boolean is tagged private;
 
-   type AMF_Metamodel is mod 2 ** 8;
-   --  Identifier of the metamodel. AMF can supports up to 255 metamodels.
+   function Wrap
+    (Collection : AMF.Internals.AMF_Collection_Of_Boolean)
+       return Collection_Of_Boolean;
 
-   CMOF_Metamodel  : constant AMF_Metamodel := 0;
-   UML_Metamodel   : constant AMF_Metamodel := 1;
-   UMLDI_Metamodel : constant AMF_Metamodel := 2;
+private
 
-   type AMF_Element is range 0 .. 2 ** 31 - 1;
-   for AMF_Element'Size use 32;
-   --  Identifier of the element inside metamodel.
+   type Collection_Of_Boolean is
+     new Ada.Finalization.Controlled with null record;
 
-   subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
-   subtype UML_Element   is AMF_Element range 16#01000000# .. 16#01FFFFFF#;
-   subtype UMLDI_Element is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
-
-   type AMF_Link is range 0 .. 2 ** 31 - 1;
-   for AMF_Link'Size use 32;
-   --  Identifier of the link between two elements.
-
-   type AMF_Collection_Of_Element is range 0 .. 2 ** 31 - 1;
-   for AMF_Collection_Of_Element'Size use 32;
-
-   type AMF_Extent is range 0 .. 2 ** 31 - 1;
-   for AMF_Extent'Size use 32;
-
-   type AMF_Collection_Of_Boolean is range 0 .. 2 ** 31 - 1;
-   for AMF_Collection_Of_Boolean'Size use 32;
-
-   type AMF_Collection_Of_String is range 0 .. 2 ** 31 - 1;
-   for AMF_Collection_Of_String'Size use 32;
-
-end AMF.Internals;
+end AMF.Boolean_Collections;

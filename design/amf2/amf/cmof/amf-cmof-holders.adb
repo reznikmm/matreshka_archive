@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Visibility_Kind_Holders;
+with AMF.CMOF.Holders.Visibility_Kinds;
 
 package body AMF.CMOF.Holders is
 
@@ -53,7 +53,7 @@ package body AMF.CMOF.Holders is
     (Holder : League.Holders.Holder) return Optional_CMOF_Visibility_Kind is
    begin
       if not League.Holders.Has_Tag
-              (Holder, AMF.CMOF.Visibility_Kind_Holders.Value_Tag)
+              (Holder, AMF.CMOF.Holders.Visibility_Kinds.Value_Tag)
       then
          raise Constraint_Error;
       end if;
@@ -62,7 +62,7 @@ package body AMF.CMOF.Holders is
          return (Is_Empty => True);
 
       else
-         return (False, AMF.CMOF.Visibility_Kind_Holders.Element (Holder));
+         return (False, AMF.CMOF.Holders.Visibility_Kinds.Element (Holder));
       end if;
    end Element;
 
@@ -75,10 +75,10 @@ package body AMF.CMOF.Holders is
    begin
       return Result : League.Holders.Holder do
          League.Holders.Set_Tag
-          (Result, AMF.CMOF.Visibility_Kind_Holders.Value_Tag);
+          (Result, AMF.CMOF.Holders.Visibility_Kinds.Value_Tag);
 
          if not Item.Is_Empty then
-            AMF.CMOF.Visibility_Kind_Holders.Replace_Element
+            AMF.CMOF.Holders.Visibility_Kinds.Replace_Element
              (Result, Item.Value);
          end if;
       end return;

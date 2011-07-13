@@ -80,7 +80,7 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.CMOF.Sequence_Of_String;
+       return AMF.Internals.AMF_Collection_Of_String;
    --  OpaqueExpression => OpaqueExpression::body
 
    function Internal_Get_Body
@@ -337,7 +337,7 @@ package AMF.Internals.Tables.CMOF_Attributes is
 
    function Internal_Get_Language
     (Self : AMF.Internals.CMOF_Element)
-       return AMF.CMOF.Ordered_Set_Of_String;
+       return AMF.Internals.AMF_Collection_Of_String;
    --  OpaqueExpression => OpaqueExpression::language
 
    function Internal_Get_Lower
