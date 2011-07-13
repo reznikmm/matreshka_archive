@@ -50,6 +50,7 @@
 --  feature specifies that a classifier will respond to a designated request 
 --  by invoking its implementing method.
 ------------------------------------------------------------------------------
+with AMF.UML;
 limited with AMF.UML.Behaviors.Collections;
 with AMF.UML.Features;
 limited with AMF.UML.Named_Elements;

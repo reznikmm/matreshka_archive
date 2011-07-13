@@ -46,6 +46,7 @@
 --  A message defines a particular communication between lifelines of an 
 --  interaction.
 ------------------------------------------------------------------------------
+with AMF.UML;
 limited with AMF.UML.Connectors;
 limited with AMF.UML.Interactions;
 limited with AMF.UML.Message_Ends;

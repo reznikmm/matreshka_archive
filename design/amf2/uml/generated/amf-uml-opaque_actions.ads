@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  An action with implementation-specific semantics.
 ------------------------------------------------------------------------------
+with AMF.String_Collections;
 with AMF.UML.Actions;
 limited with AMF.UML.Input_Pins.Collections;
 limited with AMF.UML.Output_Pins.Collections;
@@ -62,7 +63,7 @@ package AMF.UML.Opaque_Actions is
 
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Action)
-       return AMF.UML.Sequence_Of_String is abstract;
+       return AMF.String_Collections.Sequence_Of_String is abstract;
    --  Specifies the action in one or more languages.
 
    not overriding function Get_Input_Value
@@ -72,7 +73,7 @@ package AMF.UML.Opaque_Actions is
 
    not overriding function Get_Language
     (Self : not null access constant UML_Opaque_Action)
-       return AMF.UML.Ordered_Set_Of_String is abstract;
+       return AMF.String_Collections.Ordered_Set_Of_String is abstract;
    --  Languages the body strings use, in the same order as the body strings
 
    not overriding function Get_Output_Value

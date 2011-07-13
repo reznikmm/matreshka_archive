@@ -47,6 +47,7 @@
 --  by a package.
 --  Packageable elements are able to serve as a template parameter.
 ------------------------------------------------------------------------------
+with AMF.UML;
 with AMF.UML.Named_Elements;
 with AMF.UML.Parameterable_Elements;
 

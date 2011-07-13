@@ -49,6 +49,7 @@
 --  complete response of the state machine to an occurrence of an event of a 
 --  particular type.
 ------------------------------------------------------------------------------
+with AMF.UML;
 limited with AMF.UML.Behaviors;
 limited with AMF.UML.Classifiers;
 limited with AMF.UML.Constraints;

@@ -46,6 +46,7 @@
 --  A namespace is an element in a model that contains a set of named elements 
 --  that can be identified by name.
 ------------------------------------------------------------------------------
+with AMF.String_Collections;
 limited with AMF.UML.Constraints.Collections;
 limited with AMF.UML.Element_Imports.Collections;
 with AMF.UML.Named_Elements;
@@ -107,7 +108,7 @@ package AMF.UML.Namespaces is
    not overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Namespace;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String is abstract;
+       return AMF.String_Collections.Set_Of_String is abstract;
    --  The query getNamesOfMember() takes importing into account. It gives 
    --  back the set of names that an element would have in an importing 
    --  namespace, either because it is owned, or if not owned then imported 

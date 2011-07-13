@@ -328,7 +328,7 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Body
     (Self : AMF.Internals.UML_Element)
-       return AMF.UML.Sequence_Of_String;
+       return AMF.Internals.AMF_Collection_Of_String;
    --  FunctionBehavior => OpaqueBehavior::body
    --  OpaqueAction => OpaqueAction::body
    --  OpaqueBehavior => OpaqueBehavior::body
@@ -2979,7 +2979,7 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Language
     (Self : AMF.Internals.UML_Element)
-       return AMF.UML.Ordered_Set_Of_String;
+       return AMF.Internals.AMF_Collection_Of_String;
    --  FunctionBehavior => OpaqueBehavior::language
    --  OpaqueAction => OpaqueAction::language
    --  OpaqueBehavior => OpaqueBehavior::language

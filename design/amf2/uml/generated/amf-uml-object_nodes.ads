@@ -49,6 +49,7 @@
 --  An object node is an abstract activity node that is part of defining 
 --  object flow in an activity.
 ------------------------------------------------------------------------------
+with AMF.UML;
 with AMF.UML.Activity_Nodes;
 limited with AMF.UML.Behaviors;
 limited with AMF.UML.States.Collections;

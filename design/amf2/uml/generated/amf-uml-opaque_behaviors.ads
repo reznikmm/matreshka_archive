@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  An behavior with implementation-specific semantics.
 ------------------------------------------------------------------------------
+with AMF.String_Collections;
 with AMF.UML.Behaviors;
 
 package AMF.UML.Opaque_Behaviors is
@@ -60,12 +61,12 @@ package AMF.UML.Opaque_Behaviors is
 
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Behavior)
-       return AMF.UML.Sequence_Of_String is abstract;
+       return AMF.String_Collections.Sequence_Of_String is abstract;
    --  Specifies the behavior in one or more languages.
 
    not overriding function Get_Language
     (Self : not null access constant UML_Opaque_Behavior)
-       return AMF.UML.Ordered_Set_Of_String is abstract;
+       return AMF.String_Collections.Ordered_Set_Of_String is abstract;
    --  Languages the body strings use in the same order as the body strings.
 
 end AMF.UML.Opaque_Behaviors;

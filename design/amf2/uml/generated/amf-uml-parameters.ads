@@ -48,6 +48,7 @@
 --  Parameters have support for streaming, exceptions, and parameter sets.
 --  Parameters are allowed to be treated as connectable elements.
 ------------------------------------------------------------------------------
+with AMF.UML;
 with AMF.UML.Connectable_Elements;
 with AMF.UML.Multiplicity_Elements;
 limited with AMF.UML.Operations;

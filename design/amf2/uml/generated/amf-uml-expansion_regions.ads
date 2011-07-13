@@ -46,6 +46,7 @@
 --  An expansion region is a structured activity region that executes multiple 
 --  times corresponding to elements of an input collection.
 ------------------------------------------------------------------------------
+with AMF.UML;
 limited with AMF.UML.Expansion_Nodes.Collections;
 with AMF.UML.Structured_Activity_Nodes;
 
