@@ -284,7 +284,7 @@ procedure Gen_API is
          Put_Line (";");
 
       else
-         Put_Line ("is abstract;");
+         Put_Line (" is abstract;");
       end if;
    end Generate_Attribute;
 
@@ -461,8 +461,6 @@ procedure Gen_API is
       Compute_With_For_Super_Classes;
       Compute_With_For_Attributes;
       Compute_With_For_Operations;
-
-      Put_Line (Standard_Error, Class.Get_Name.Value.To_Wide_Wide_String);
 
       Put_Header (Year_2010 => False);
 

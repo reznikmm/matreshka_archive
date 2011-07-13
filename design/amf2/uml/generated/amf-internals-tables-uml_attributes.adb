@@ -6238,13 +6238,13 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (19).Aggregation_Value;
+            return UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (19).Aggregation_Value;
+            return UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (19).Aggregation_Value;
+            return UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
 
          when others =>
             raise Program_Error;
@@ -7582,10 +7582,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Value;
+            return UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value;
 
          when E_Reception =>
-            return UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Value;
+            return UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value;
 
          when others =>
             raise Program_Error;
@@ -8649,7 +8649,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Value;
+            return UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Holder;
 
          when others =>
             raise Program_Error;
@@ -9680,10 +9680,10 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (11).Boolean_Collection_Value;
+            return UML_Element_Table.Table (Self).Member (11).Boolean_Collection;
 
          when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (9).Boolean_Collection_Value;
+            return UML_Element_Table.Table (Self).Member (9).Boolean_Collection;
 
          when others =>
             raise Program_Error;
@@ -9700,7 +9700,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (11).Boolean_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (11).Boolean_Holder;
 
          when others =>
             raise Program_Error;
@@ -13701,7 +13701,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Generalization =>
-            return UML_Element_Table.Table (Self).Member (3).Boolean_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (3).Boolean_Holder;
 
          when others =>
             raise Program_Error;
@@ -13842,7 +13842,7 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Connector =>
-            return UML_Element_Table.Table (Self).Member (9).Connector_Kind;
+            return UML_Element_Table.Table (Self).Member (9).Connector_Kind_Value;
 
          when others =>
             raise Program_Error;
@@ -14284,37 +14284,37 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (17).Integer_Holder;
 
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (4).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (4).Integer_Holder;
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (12).Integer_Holder;
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (17).Integer_Holder;
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (21).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (21).Integer_Holder;
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (17).Integer_Holder;
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (4).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (4).Integer_Holder;
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (12).Integer_Holder;
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (12).Integer_Holder;
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (17).Integer_Holder;
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (12).Integer_Holder;
 
          when others =>
             raise Program_Error;
@@ -17046,28 +17046,28 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
+            return UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
 
          when others =>
             raise Program_Error;
@@ -25915,37 +25915,37 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (19).Natural_Holder;
 
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (6).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (6).Natural_Holder;
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (14).Natural_Holder;
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (19).Natural_Holder;
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (23).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (23).Natural_Holder;
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (19).Natural_Holder;
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (6).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (6).Natural_Holder;
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (14).Natural_Holder;
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (14).Natural_Holder;
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (19).Natural_Holder;
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
+            return UML_Element_Table.Table (Self).Member (14).Natural_Holder;
 
          when others =>
             raise Program_Error;
@@ -27832,22 +27832,22 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Value;
-            UML_Element_Table.Table (Self).Member (19).Aggregation_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
+            UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Aggregation, Old, To);
 
          when E_Port =>
-            Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Value;
-            UML_Element_Table.Table (Self).Member (19).Aggregation_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
+            UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Aggregation, Old, To);
 
          when E_Property =>
-            Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Value;
-            UML_Element_Table.Table (Self).Member (19).Aggregation_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
+            UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Aggregation, Old, To);
@@ -28470,15 +28470,15 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Operation =>
-            Old := UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Value;
-            UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value;
+            UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavioral_Feature_Concurrency, Old, To);
 
          when E_Reception =>
-            Old := UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Value;
-            UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value;
+            UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavioral_Feature_Concurrency, Old, To);
@@ -29157,8 +29157,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Parameter =>
-            Old := UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Value;
-            UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Holder;
+            UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Effect, Old, To);
@@ -29919,8 +29919,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Time_Constraint =>
-            Old := UML_Element_Table.Table (Self).Member (11).Boolean_Holder_Value;
-            UML_Element_Table.Table (Self).Member (11).Boolean_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (11).Boolean_Holder;
+            UML_Element_Table.Table (Self).Member (11).Boolean_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Constraint_First_Event, Old, To);
@@ -33779,8 +33779,8 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Generalization =>
-            Old := UML_Element_Table.Table (Self).Member (3).Boolean_Holder_Value;
-            UML_Element_Table.Table (Self).Member (3).Boolean_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (3).Boolean_Holder;
+            UML_Element_Table.Table (Self).Member (3).Boolean_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_Is_Substitutable, Old, To);
@@ -34127,78 +34127,78 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Connector_End =>
-            Old := UML_Element_Table.Table (Self).Member (4).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (4).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (4).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (4).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Extension_End =>
-            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Extension_End_Lower, Old, To);
 
          when E_Input_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Operation =>
-            Old := UML_Element_Table.Table (Self).Member (21).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (21).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (21).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (21).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Lower, Old, To);
 
          when E_Output_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Parameter =>
-            Old := UML_Element_Table.Table (Self).Member (4).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (4).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (4).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (4).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Port =>
-            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Property =>
-            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Value_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (17).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Variable =>
-            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value;
-            UML_Element_Table.Table (Self).Member (12).Integer_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
+            UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
@@ -39041,57 +39041,57 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Activity_Parameter_Node =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Central_Buffer_Node =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Data_Store_Node =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Expansion_Node =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Input_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Output_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Value_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value;
-            UML_Element_Table.Table (Self).Member (12).Object_Mode_Ordering_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
+            UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
@@ -43089,78 +43089,78 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Connector_End =>
-            Old := UML_Element_Table.Table (Self).Member (6).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (6).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (6).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (6).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Extension_End =>
-            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Input_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Operation =>
-            Old := UML_Element_Table.Table (Self).Member (23).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (23).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (23).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (23).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Upper, Old, To);
 
          when E_Output_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Parameter =>
-            Old := UML_Element_Table.Table (Self).Member (6).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (6).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (6).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (6).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Port =>
-            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Property =>
-            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Value_Pin =>
-            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (19).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Variable =>
-            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value;
-            UML_Element_Table.Table (Self).Member (14).Natural_Holder_Value := To;
+            Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
+            UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
             Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);

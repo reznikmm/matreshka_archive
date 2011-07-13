@@ -34,12 +34,12 @@
 
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean">
     <mapping representation="value" adaType="Boolean" memberName="Boolean_Value"/>
-    <mapping representation="holder" adaType="AMF.Optional_Boolean" memberName="Boolean_Holder_Value"/>
-    <mapping representation="set" adaType="AMF.UML.Set_Of_Boolean" memberName="Boolean_Collection_Value"/>
+    <mapping representation="holder" adaType="AMF.Optional_Boolean" memberName="Boolean_Holder"/>
+    <mapping representation="set" adaType="AMF.UML.Set_Of_Boolean" memberName="Boolean_Collection"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer">
     <mapping representation="value" adaType="Integer" memberName="Integer_Value"/>
-    <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder_Value"/>
+    <mapping representation="holder" adaType="AMF.Optional_Integer" memberName="Integer_Holder"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Real">
     <mapping representation="value" adaType="AMF.Real" memberName="Real_Value"/>
@@ -54,29 +54,29 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural">
     <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Natural_Value"/>
-    <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Natural_Holder_Value"/>
+    <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Natural_Holder"/>
   </type>
 
   <!--  Enumeration types of UML package of UML specification  -->
 
   <type uri="http://www.omg.org/spec/UML/20100901/#AggregationKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/#AggregationKind-none" adaLiteral="None"/>
-    <mapping representation="value" memberName="Aggregation_Value" memberKindName="M_Aggregation_Kind"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/#AggregationKind-none" adaLiteral="AMF.UML.None"/>
+    <mapping representation="value" memberName="Aggregation_Kind_Value" memberKindName="M_Aggregation_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#CallConcurrencyKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/#CallConcurrencyKind-sequential" adaLiteral="Sequential"/>
-    <mapping representation="value" memberName="Call_Concurrency_Value" memberKindName="M_Call_Concurrency_Kind"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/#CallConcurrencyKind-sequential" adaLiteral="AMF.UML.Sequential"/>
+    <mapping representation="value" memberName="Call_Concurrency_Kind_Value" memberKindName="M_Call_Concurrency_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ConnectorKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#ConnectorKind-assembly" adaLiteral="AMF.UML.Assembly"/>
-    <mapping representation="value" memberName="Connector_Kind" memberKindName="M_Connector_Kind"/>
+    <mapping representation="value" memberName="Connector_Kind_Value" memberKindName="M_Connector_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind-iterative" adaLiteral="AMF.UML.Iterative"/>
     <mapping representation="value" memberName="Expansion_Kind" memberKindName="M_Expansion_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind-seq" adaLiteral="AMF.UML.Seq"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind-seq" adaLiteral="AMF.UML.Seq_Operator"/>
     <mapping representation="value" memberName="Interaction_Operator_Kind" memberKindName="M_Interaction_Operator_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#MessageKind">
@@ -89,17 +89,17 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ObjectNodeOrderingKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#ObjectNodeOrderingKind-FIFO" adaLiteral="AMF.UML.FIFO"/>
-    <mapping representation="value" memberName="Object_Mode_Ordering_Value" memberKindName="M_Object_Mode_Ordering_Kind"/>
+    <mapping representation="value" memberName="Object_Node_Ordering_Kind_Value" memberKindName="M_Object_Node_Ordering_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind-in" adaLiteral="AMF.UML.In_Parameter"/>
     <mapping representation="value" memberName="Paramenter_Direction_Value" memberKindName="M_Parameter_Direction_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ParameterEffectKind">
-    <mapping representation="holder" memberName="Parameter_Effect_Value" memberKindName="M_Parameter_Effect_Kind"/>
+    <mapping representation="holder" memberName="Parameter_Effect_Holder" memberKindName="M_Parameter_Effect_Kind_Holder"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind">
-    <literal uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind-initial" adaLiteral="AMF.UML.Initial"/>
+    <literal uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind-initial" adaLiteral="AMF.UML.Initial_Pseudostate"/>
     <mapping representation="value" memberName="Pseudostate_Value" memberKindName="M_Pseudostate_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#TransitionKind">

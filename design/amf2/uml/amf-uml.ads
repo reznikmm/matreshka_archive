@@ -46,44 +46,127 @@ package AMF.UML is
 
    pragma Preelaborate;
 
-   type UML_Visibility_Kind is null record;
+   type UML_Aggregation_Kind is
+    (None,
+     Shared,
+     Composite);
 
-   type Optional_UML_Visibility_Kind is null record;
+   type UML_Call_Concurrency_Kind is
+    (Sequential,
+     Guarded,
+     Concurrent);
 
-   type UML_Object_Node_Ordering_Kind is null record;
+   type UML_Connector_Kind is
+    (Assembly,
+     Delegation);
 
-   type UML_Transition_Kind is null record;
+   type UML_Expansion_Kind is
+    (Parallel,
+     Iterative,
+     Stream);
 
-   type UML_Expansion_Kind is null record;
+   type UML_Interaction_Operator_Kind is
+    (Alt_Operator,
+     Opt_Operator,
+     Par_Operator,
+     Loop_Operator,
+     Critical_Operator,
+     Neg_Operator,
+     Assert_Operator,
+     Strict_Operator,
+     Seq_Operator,
+     Ignore_Operator,
+     Consider_Operator);
 
-   type UML_Message_Kind is null record;
+   type UML_Message_Kind is
+    (Complete,
+     Lost,
+     Found,
+     Unknown);
 
-   type UML_Message_Sort is null record;
+   type UML_Message_Sort is
+    (Synch_Call,
+     Asynch_Call,
+     Asynch_Signal,
+     Create_Message,
+     Delete_Message,
+     Reply);
 
-   type UML_Pseudostate_Kind is null record;
+   type UML_Object_Node_Ordering_Kind is
+    (Unordered,
+     Ordered,
+     LIFO,
+     FIFO);
 
-   type UML_Aggregation_Kind is null record;
+   type UML_Parameter_Direction_Kind is
+    (In_Parameter,
+     In_Out_Parameter,
+     Out_Parameter,
+     Return_Parameter);
 
-   type UML_Interaction_Operator_Kind is null record;
+   type UML_Parameter_Effect_Kind is
+    (Create,
+     Read,
+     Update,
+     Delete);
 
-   type UML_Call_Concurrency_Kind is null record;
+   type UML_Pseudostate_Kind is
+    (Initial_Pseudostate,
+     Deep_History_Pseudostate,
+     Shallow_History_Pseudostate,
+     Join_Pseudostate,
+     Fork_Pseudostate,
+     Junction_Pseudostate,
+     Choice_Pseudostate,
+     Entry_Point_Pseudostate,
+     Exit_Point_Pseudostate,
+     Terminate_Pseudostate);
 
-   type UML_Parameter_Direction_Kind is null record;
+   type UML_Transition_Kind is
+    (External,
+     Internal,
+     Local);
 
-   type Optional_UML_Parameter_Effect_Kind is null record;
+   type UML_Visibility_Kind is
+    (Public_Visibility,
+     Private_Visibility,
+     Protected_Visibility,
+     Package_Visibility);
 
-   type UML_Connector_Kind is null record;
+   type Optional_UML_Parameter_Effect_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Parameter_Effect_Kind;
+      end case;
+   end record;
+
+   type Optional_UML_Visibility_Kind (Is_Empty : Boolean := True) is record
+      case Is_Empty is
+         when True =>
+            null;
+
+         when False =>
+            Value : UML_Visibility_Kind;
+      end case;
+   end record;
 
    --  XXX Should be reused between meta models.
 
-   type Set_Of_Boolean is null record;
+   type Collection_Of_Boolean is new Natural;
 
-   type Set_Of_String is null record;
+   subtype Set_Of_Boolean is Collection_Of_Boolean;
 
-   type Sequence_Of_String is null record;
+   type Collection_Of_String is new Natural;
 
-   type Ordered_Set_Of_String is null record;
+   subtype Set_Of_String is Collection_Of_String;
 
-   type Optional_Real is null record;
+   subtype Sequence_Of_String is Collection_Of_String;
+
+   subtype Ordered_Set_Of_String is Collection_Of_String;
+
+--   type Optional_Real is null record;
 
 end AMF.UML;

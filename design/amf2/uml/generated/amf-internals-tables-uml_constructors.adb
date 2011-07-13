@@ -822,7 +822,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -1478,7 +1478,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -3862,7 +3862,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -5311,7 +5311,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Interaction_Operator_Kind, AMF.UML.Seq),
+                     9      => (M_Interaction_Operator_Kind, AMF.UML.Seq_Operator),
                        --  interactionOperator
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6720,7 +6720,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Interaction_Operator_Kind, AMF.UML.Seq),
+                     9      => (M_Interaction_Operator_Kind, AMF.UML.Seq_Operator),
                        --  interactionOperator
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7596,7 +7596,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -10439,7 +10439,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -11294,7 +11294,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
                      18     => (M_Boolean, False),
                        --  isReadOnly
-                     19     => (M_Aggregation_Kind, None),
+                     19     => (M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
                      20     => (M_Element, 0),
                        --  association
@@ -13164,7 +13164,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -17471,7 +17471,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
                      8      => (M_Boolean, False),
                        --  isStatic
-                     9      => (M_Call_Concurrency_Kind, Sequential),
+                     9      => (M_Call_Concurrency_Kind, AMF.UML.Sequential),
                        --  concurrency
                      10     => (M_Boolean, False),
                        --  isAbstract
@@ -17740,7 +17740,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
@@ -18200,7 +18200,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  defaultValue
                      18     => (M_Parameter_Direction_Kind, AMF.UML.In_Parameter),
                        --  direction
-                     19     => (M_Parameter_Effect_Kind, (Is_Empty => True)),
+                     19     => (M_Parameter_Effect_Kind_Holder, (Is_Empty => True)),
                        --  effect
                      20     => (M_Boolean, False),
                        --  isException
@@ -18473,7 +18473,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
                      18     => (M_Boolean, False),
                        --  isReadOnly
-                     19     => (M_Aggregation_Kind, None),
+                     19     => (M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
                      20     => (M_Element, 0),
                        --  association
@@ -19145,7 +19145,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
                      18     => (M_Boolean, False),
                        --  isReadOnly
-                     19     => (M_Aggregation_Kind, None),
+                     19     => (M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
                      20     => (M_Element, 0),
                        --  association
@@ -19874,7 +19874,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Element, 0),
                        --  container
-                     8      => (M_Pseudostate_Kind, AMF.UML.Initial),
+                     8      => (M_Pseudostate_Kind, AMF.UML.Initial_Pseudostate),
                        --  kind
                      9      => (M_Element, 0),
                        --  state
@@ -21585,7 +21585,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
                      8      => (M_Boolean, False),
                        --  isStatic
-                     9      => (M_Call_Concurrency_Kind, Sequential),
+                     9      => (M_Call_Concurrency_Kind, AMF.UML.Sequential),
                        --  concurrency
                      10     => (M_Boolean, False),
                        --  isAbstract
@@ -26972,7 +26972,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
-                     12     => (M_Object_Mode_Ordering_Kind, AMF.UML.FIFO),
+                     12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
