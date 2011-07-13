@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,15 @@ package body Generator.Wide_Wide_Text_IO is
 
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
+
+   ---------
+   -- Put --
+   ---------
+
+   procedure Put (Item : League.Strings.Universal_String) is
+   begin
+      Put (Item.To_Wide_Wide_String);
+   end Put;
 
    ----------------
    -- Put_Header --
@@ -218,5 +227,14 @@ package body Generator.Wide_Wide_Text_IO is
       Put_Line (Indent & "-- " & Name & " --");
       Put_Line (Separator);
    end Put_Header;
+
+   --------------
+   -- Put_Line --
+   --------------
+
+   procedure Put_Line (Item : League.Strings.Universal_String) is
+   begin
+      Put_Line (Item.To_Wide_Wide_String);
+   end Put_Line;
 
 end Generator.Wide_Wide_Text_IO;

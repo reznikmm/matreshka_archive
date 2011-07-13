@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,5 +53,9 @@ package Generator.Wide_Wide_Text_IO is
     (Name   : Wide_Wide_String;
      Column : Ada.Wide_Wide_Text_IO.Positive_Count);
    --  Outputs subprograms header.
+
+   procedure Put (Item : League.Strings.Universal_String);
+
+   procedure Put_Line (Item : League.Strings.Universal_String);
 
 end Generator.Wide_Wide_Text_IO;
