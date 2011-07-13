@@ -61,6 +61,12 @@ package Generator.Type_Mapping is
    --  Returns fully qualified name of Ada type which is used to represent
    --  value of the specified type in public API.
 
+   function Public_Ada_Package_Name
+    (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
+     Representation : Representation_Kinds)
+       return League.Strings.Universal_String;
+   --  Constructs name of the package where user visible type is declared.
+
    function Internal_Ada_Type_Qualified_Name
     (The_Type       : not null access AMF.CMOF.Types.CMOF_Type'Class;
      Representation : Representation_Kinds)

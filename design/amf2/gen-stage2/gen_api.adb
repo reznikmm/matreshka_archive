@@ -328,7 +328,7 @@ procedure Gen_API is
             Attribute := Attributes.Element (J);
             The_Type := Attribute.Get_Type;
 
-            if The_Type.all not in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+            if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
               and (The_Type /= AMF.CMOF.Types.CMOF_Type_Access (Class)
                      or Attribute.Is_Multivalued)
             then
@@ -356,8 +356,18 @@ procedure Gen_API is
                      (AMF.CMOF.Classes.CMOF_Class_Access (The_Type));
                end if;
 
-               if not All_With.Contains (Name) then
-                  All_With.Insert (Name);
+               All_With.Include (Name);
+
+            elsif The_Type.all
+                    in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+            then
+               Name :=
+                 Type_Mapping.Public_Ada_Package_Name
+                  (The_Type, Representation (Attribute));
+
+               if not Name.Is_Empty then
+                  All_With.Include (Name);
+                  Ordinary_With.Include (Name);
                end if;
             end if;
          end loop;
@@ -382,7 +392,7 @@ procedure Gen_API is
                Parameter := Parameters.Element (J);
                The_Type := Parameter.Get_Type;
 
-               if The_Type.all not in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+               if The_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
                  and (The_Type /= AMF.CMOF.Types.CMOF_Type_Access (Class)
                         or Parameter.Is_Multivalued)
                then
@@ -412,6 +422,18 @@ procedure Gen_API is
 
                   if not All_With.Contains (Name) then
                      All_With.Insert (Name);
+                  end if;
+
+               elsif The_Type.all
+                       in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+               then
+                  Name :=
+                    Type_Mapping.Public_Ada_Package_Name
+                     (The_Type, Representation (Parameter));
+
+                  if not Name.Is_Empty then
+                     All_With.Include (Name);
+                     Ordinary_With.Include (Name);
                   end if;
                end if;
             end loop;
