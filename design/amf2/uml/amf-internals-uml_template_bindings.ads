@@ -41,11 +41,72 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Template_Bindings;
+with AMF.UML.Template_Parameter_Substitutions.Collections;
+with AMF.UML.Template_Signatures;
+with AMF.UML.Templateable_Elements;
 
 package AMF.Internals.UML_Template_Bindings is
 
    type UML_Template_Binding_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Template_Bindings.UML_Template_Binding with null record;
+       and AMF.UML.Template_Bindings.UML_Template_Binding with null record;
+
+   overriding function Get_Bound_Element
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access;
+
+   overriding procedure Set_Bound_Element
+    (Self : not null access UML_Template_Binding_Proxy;
+     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access);
+
+   overriding function Get_Parameter_Substitution
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Template_Parameter_Substitutions.Collections.Set_Of_UML_Template_Parameter_Substitution;
+
+   overriding function Get_Signature
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
+
+   overriding procedure Set_Signature
+    (Self : not null access UML_Template_Binding_Proxy;
+     To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
+
+   overriding function Get_Source
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Target
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Related_Element
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Template_Binding_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Template_Bindings;

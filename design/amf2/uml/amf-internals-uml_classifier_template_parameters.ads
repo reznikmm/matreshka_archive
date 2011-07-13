@@ -41,11 +41,101 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Classifier_Template_Parameters;
+with AMF.UML.Classifiers;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Parameterable_Elements;
+with AMF.UML.Template_Signatures;
 
 package AMF.Internals.UML_Classifier_Template_Parameters is
 
    type UML_Classifier_Template_Parameter_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter with null record;
+       and AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter with null record;
+
+   overriding function Get_Allow_Substitutable
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Allow_Substitutable
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Constraining_Classifier
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+
+   overriding function Get_Parametered_Element
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Classifiers.UML_Classifier_Access;
+
+   overriding procedure Set_Parametered_Element
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access);
+
+   overriding function Get_Default
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+
+   overriding procedure Set_Default
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+
+   overriding function Get_Owned_Default
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+
+   overriding procedure Set_Owned_Default
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+
+   overriding function Get_Owned_Parametered_Element
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+
+   overriding procedure Set_Owned_Parametered_Element
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+
+   overriding function Get_Parametered_Element
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+
+   overriding procedure Set_Parametered_Element
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+
+   overriding function Get_Signature
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
+
+   overriding procedure Set_Signature
+    (Self : not null access UML_Classifier_Template_Parameter_Proxy;
+     To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Classifier_Template_Parameter_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Classifier_Template_Parameters;

@@ -41,11 +41,76 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Input_Pins;
+with AMF.UML.Link_End_Creation_Datas;
+with AMF.UML.Properties;
+with AMF.UML.Qualifier_Values.Collections;
 
 package AMF.Internals.UML_Link_End_Creation_Datas is
 
    type UML_Link_End_Creation_Data_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Link_End_Creation_Datas.UML_Link_End_Creation_Data with null record;
+       and AMF.UML.Link_End_Creation_Datas.UML_Link_End_Creation_Data with null record;
+
+   overriding function Get_Insert_At
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access;
+
+   overriding procedure Set_Insert_At
+    (Self : not null access UML_Link_End_Creation_Data_Proxy;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
+
+   overriding function Get_Is_Replace_All
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Replace_All
+    (Self : not null access UML_Link_End_Creation_Data_Proxy;
+     To   : Boolean);
+
+   overriding function Get_End
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Properties.UML_Property_Access;
+
+   overriding procedure Set_End
+    (Self : not null access UML_Link_End_Creation_Data_Proxy;
+     To   : AMF.UML.Properties.UML_Property_Access);
+
+   overriding function Get_Qualifier
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Qualifier_Values.Collections.Set_Of_UML_Qualifier_Value;
+
+   overriding function Get_Value
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Input_Pins.UML_Input_Pin_Access;
+
+   overriding procedure Set_Value
+    (Self : not null access UML_Link_End_Creation_Data_Proxy;
+     To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Link_End_Creation_Data_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Link_End_Creation_Datas;

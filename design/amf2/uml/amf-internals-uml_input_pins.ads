@@ -41,11 +41,327 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Activities;
+with AMF.UML.Activity_Edges.Collections;
+with AMF.UML.Activity_Groups.Collections;
+with AMF.UML.Activity_Nodes.Collections;
+with AMF.UML.Activity_Partitions.Collections;
+with AMF.UML.Behaviors;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Input_Pins;
+with AMF.UML.Interruptible_Activity_Regions.Collections;
+with AMF.UML.Multiplicity_Elements;
+with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Redefinable_Elements;
+with AMF.UML.Redefinable_Elements.Collections;
+with AMF.UML.States.Collections;
+with AMF.UML.String_Expressions;
+with AMF.UML.Structured_Activity_Nodes;
+with AMF.UML.Types;
+with AMF.UML.Value_Specifications;
 
 package AMF.Internals.UML_Input_Pins is
 
    type UML_Input_Pin_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Input_Pins.UML_Input_Pin with null record;
+       and AMF.UML.Input_Pins.UML_Input_Pin with null record;
+
+   overriding function Get_Is_Control
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Control
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : Boolean);
+
+   overriding function Get_In_State
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.States.Collections.Set_Of_UML_State;
+
+   overriding function Get_Is_Control_Type
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Control_Type
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Ordering
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.UML_Object_Node_Ordering_Kind;
+
+   overriding procedure Set_Ordering
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.UML_Object_Node_Ordering_Kind);
+
+   overriding function Get_Selection
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Behaviors.UML_Behavior_Access;
+
+   overriding procedure Set_Selection
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Behaviors.UML_Behavior_Access);
+
+   overriding function Get_Upper_Bound
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+   overriding procedure Set_Upper_Bound
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+
+   overriding function Get_Activity
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Activities.UML_Activity_Access;
+
+   overriding procedure Set_Activity
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Activities.UML_Activity_Access);
+
+   overriding function Get_In_Group
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group;
+
+   overriding function Get_In_Interruptible_Region
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Interruptible_Activity_Regions.Collections.Set_Of_UML_Interruptible_Activity_Region;
+
+   overriding function Get_In_Partition
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition;
+
+   overriding function Get_In_Structured_Node
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access;
+
+   overriding procedure Set_In_Structured_Node
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access);
+
+   overriding function Get_Incoming
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge;
+
+   overriding function Get_Outgoing
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge;
+
+   overriding function Get_Redefined_Node
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node;
+
+   overriding function Get_Is_Leaf
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Leaf
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Redefined_Element
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element;
+
+   overriding function Get_Redefinition_Context
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+
+   overriding function Get_Client_Dependency
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Name_Expression
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access;
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+
+   overriding function Get_Namespace
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_String;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function Get_Type
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Types.UML_Type_Access;
+
+   overriding procedure Set_Type
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Types.UML_Type_Access);
+
+   overriding function Get_Is_Ordered
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Ordered
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Is_Unique
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Unique
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Lower
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_Integer;
+
+   overriding procedure Set_Lower
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.Optional_Integer);
+
+   overriding function Get_Lower_Value
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+   overriding procedure Set_Lower_Value
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+
+   overriding function Get_Upper
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_Unlimited_Natural;
+
+   overriding procedure Set_Upper
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.Optional_Unlimited_Natural);
+
+   overriding function Get_Upper_Value
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+   overriding procedure Set_Upper_Value
+    (Self : not null access UML_Input_Pin_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+
+   overriding function All_Owning_Packages
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean;
+
+   overriding function Namespace
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Qualified_Name
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Separator
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding function Compatible_With
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     Other : AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access)
+       return Boolean;
+
+   overriding function Includes_Cardinality
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     C : Integer)
+       return Boolean;
+
+   overriding function Includes_Multiplicity
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     M : AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element_Access)
+       return Boolean;
+
+   overriding function Iss
+    (Self : not null access constant UML_Input_Pin_Proxy;
+     Lowerbound : Integer;
+     Upperbound : Integer)
+       return Boolean;
+
+   overriding function Is_Multivalued
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return Boolean;
+
+   overriding function Lower
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_Integer;
+
+   overriding function Lower_Bound
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_Integer;
+
+   overriding function Upper
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_Unlimited_Natural;
+
+   overriding function Upper_Bound
+    (Self : not null access constant UML_Input_Pin_Proxy)
+       return AMF.Optional_Unlimited_Natural;
 
 end AMF.Internals.UML_Input_Pins;

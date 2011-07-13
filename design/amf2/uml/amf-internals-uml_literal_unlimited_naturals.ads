@@ -41,11 +41,189 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Literal_Unlimited_Naturals;
+with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Parameterable_Elements;
+with AMF.UML.String_Expressions;
+with AMF.UML.Template_Parameters;
+with AMF.UML.Types;
 
 package AMF.Internals.UML_Literal_Unlimited_Naturals is
 
    type UML_Literal_Unlimited_Natural_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural with null record;
+       and AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural with null record;
+
+   overriding function Get_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Unlimited_Natural;
+
+   overriding procedure Set_Value
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.Unlimited_Natural);
+
+   overriding function Get_Type
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Types.UML_Type_Access;
+
+   overriding procedure Set_Type
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Types.UML_Type_Access);
+
+   overriding function Get_Client_Dependency
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Name_Expression
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access;
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+
+   overriding function Get_Namespace
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_String;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.UML_Visibility_Kind);
+
+   overriding function Get_Owning_Template_Parameter
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access;
+
+   overriding procedure Set_Owning_Template_Parameter
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access);
+
+   overriding function Get_Template_Parameter
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access;
+
+   overriding procedure Set_Template_Parameter
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access);
+
+   overriding function Is_Computable
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return Boolean;
+
+   overriding function Unlimited_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_Unlimited_Natural;
+
+   overriding function Unlimited_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Unlimited_Natural;
+
+   overriding function Boolean_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_Boolean;
+
+   overriding function Integer_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_Integer;
+
+   overriding function Is_Compatible_With
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy;
+     P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
+       return Boolean;
+
+   overriding function Is_Null
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return Boolean;
+
+   overriding function Real_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_Real;
+
+   overriding function String_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_String;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+
+   overriding function All_Owning_Packages
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean;
+
+   overriding function Namespace
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Qualified_Name
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Separator
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return Boolean;
+
+   overriding function Is_Template_Parameter
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Literal_Unlimited_Naturals;

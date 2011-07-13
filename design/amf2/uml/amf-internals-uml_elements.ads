@@ -41,14 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
+
+with AMF.CMOF.Classes;
+with AMF.CMOF.Properties;
 with AMF.Internals.Elements;
+with AMF.UML.Elements;
 
 package AMF.Internals.UML_Elements is
 
    type UML_Element_Proxy is
      abstract limited new AMF.Internals.Elements.Element_Implementation
-       and AMF.UML.Elements.UML_Element with record
-      Id : UML_Element;
+       and AMF.UML.Elements.UML_Element with
+   record
+      Id : AMF.Internals.UML_Element;
    end record;
+
+   overriding function Get
+    (Self     : not null access constant UML_Element_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Holders.Holder;
+
+   overriding function Get_Meta_Class
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
+
+   overriding procedure Set
+    (Self     : not null access UML_Element_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Value    : League.Holders.Holder);
+
+   overriding function Element
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.Internals.AMF_Element;
 
 end AMF.Internals.UML_Elements;

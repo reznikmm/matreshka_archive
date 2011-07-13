@@ -41,11 +41,60 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Instance_Specifications;
+with AMF.UML.Slots;
+with AMF.UML.Structural_Features;
+with AMF.UML.Value_Specifications.Collections;
 
 package AMF.Internals.UML_Slots is
 
    type UML_Slot_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Slots.UML_Slot with null record;
+       and AMF.UML.Slots.UML_Slot with null record;
+
+   overriding function Get_Defining_Feature
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Structural_Features.UML_Structural_Feature_Access;
+
+   overriding procedure Set_Defining_Feature
+    (Self : not null access UML_Slot_Proxy;
+     To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access);
+
+   overriding function Get_Owning_Instance
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Instance_Specifications.UML_Instance_Specification_Access;
+
+   overriding procedure Set_Owning_Instance
+    (Self : not null access UML_Slot_Proxy;
+     To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access);
+
+   overriding function Get_Value
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification;
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Slot_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Slot_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Slots;

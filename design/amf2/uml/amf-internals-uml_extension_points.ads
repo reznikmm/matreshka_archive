@@ -41,11 +41,143 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Extension_Points;
+with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Redefinable_Elements;
+with AMF.UML.Redefinable_Elements.Collections;
+with AMF.UML.String_Expressions;
+with AMF.UML.Use_Cases;
 
 package AMF.Internals.UML_Extension_Points is
 
    type UML_Extension_Point_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Extension_Points.UML_Extension_Point with null record;
+       and AMF.UML.Extension_Points.UML_Extension_Point with null record;
+
+   overriding function Get_Use_Case
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Use_Cases.UML_Use_Case_Access;
+
+   overriding procedure Set_Use_Case
+    (Self : not null access UML_Extension_Point_Proxy;
+     To   : AMF.UML.Use_Cases.UML_Use_Case_Access);
+
+   overriding function Get_Is_Leaf
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Leaf
+    (Self : not null access UML_Extension_Point_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Redefined_Element
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element;
+
+   overriding function Get_Redefinition_Context
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+
+   overriding function Get_Client_Dependency
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Extension_Point_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Name_Expression
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access;
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Extension_Point_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+
+   overriding function Get_Namespace
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.Optional_String;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Extension_Point_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_Extension_Point_Proxy;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_Extension_Point_Proxy;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+
+   overriding function All_Owning_Packages
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Extension_Point_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean;
+
+   overriding function Namespace
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Qualified_Name
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Separator
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Extension_Point_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Extension_Points;

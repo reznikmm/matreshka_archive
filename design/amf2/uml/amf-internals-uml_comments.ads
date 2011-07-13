@@ -41,11 +41,49 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
 
 package AMF.Internals.UML_Comments is
 
    type UML_Comment_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Comments.UML_Comment with null record;
+       and AMF.UML.Comments.UML_Comment with null record;
+
+   overriding function Get_Annotated_Element
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Body
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Body
+    (Self : not null access UML_Comment_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Comment_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Comments;

@@ -41,11 +41,75 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Namespaces;
+with AMF.UML.Package_Imports;
+with AMF.UML.Packages;
 
 package AMF.Internals.UML_Package_Imports is
 
    type UML_Package_Import_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Package_Imports.UML_Package_Import with null record;
+       and AMF.UML.Package_Imports.UML_Package_Import with null record;
+
+   overriding function Get_Imported_Package
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Packages.UML_Package_Access;
+
+   overriding procedure Set_Imported_Package
+    (Self : not null access UML_Package_Import_Proxy;
+     To   : AMF.UML.Packages.UML_Package_Access);
+
+   overriding function Get_Importing_Namespace
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding procedure Set_Importing_Namespace
+    (Self : not null access UML_Package_Import_Proxy;
+     To   : AMF.UML.Namespaces.UML_Namespace_Access);
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Package_Import_Proxy;
+     To   : AMF.UML.UML_Visibility_Kind);
+
+   overriding function Get_Source
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Target
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Related_Element
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Package_Import_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Package_Imports;

@@ -41,11 +41,174 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Classifiers;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Redefinable_Elements;
+with AMF.UML.Redefinable_Elements.Collections;
+with AMF.UML.Redefinable_Template_Signatures;
+with AMF.UML.Redefinable_Template_Signatures.Collections;
+with AMF.UML.String_Expressions;
+with AMF.UML.Template_Parameters.Collections;
+with AMF.UML.Templateable_Elements;
 
 package AMF.Internals.UML_Redefinable_Template_Signatures is
 
    type UML_Redefinable_Template_Signature_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature with null record;
+       and AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature with null record;
+
+   overriding function Get_Classifier
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Classifiers.UML_Classifier_Access;
+
+   overriding procedure Set_Classifier
+    (Self : not null access UML_Redefinable_Template_Signature_Proxy;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access);
+
+   overriding function Get_Extended_Signature
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Redefinable_Template_Signatures.Collections.Set_Of_UML_Redefinable_Template_Signature;
+
+   overriding function Get_Inherited_Parameter
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Template_Parameters.Collections.Set_Of_UML_Template_Parameter;
+
+   overriding function Get_Is_Leaf
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Leaf
+    (Self : not null access UML_Redefinable_Template_Signature_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Redefined_Element
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element;
+
+   overriding function Get_Redefinition_Context
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+
+   overriding function Get_Client_Dependency
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Redefinable_Template_Signature_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Name_Expression
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access;
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Redefinable_Template_Signature_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+
+   overriding function Get_Namespace
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.Optional_String;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Redefinable_Template_Signature_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function Get_Owned_Parameter
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter;
+
+   overriding function Get_Parameter
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter;
+
+   overriding function Get_Template
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access;
+
+   overriding procedure Set_Template
+    (Self : not null access UML_Redefinable_Template_Signature_Proxy;
+     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access);
+
+   overriding function Inherited_Parameter
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Template_Parameters.Collections.Set_Of_UML_Template_Parameter;
+
+   overriding function Is_Consistent_With
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+
+   overriding function All_Owning_Packages
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean;
+
+   overriding function Namespace
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Qualified_Name
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Separator
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Redefinable_Template_Signature_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Redefinable_Template_Signatures;

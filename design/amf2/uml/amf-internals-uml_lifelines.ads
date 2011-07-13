@@ -41,11 +41,146 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Connectable_Elements;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Interaction_Fragments.Collections;
+with AMF.UML.Interactions;
+with AMF.UML.Lifelines;
+with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Part_Decompositions;
+with AMF.UML.String_Expressions;
+with AMF.UML.Value_Specifications;
 
 package AMF.Internals.UML_Lifelines is
 
    type UML_Lifeline_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Lifelines.UML_Lifeline with null record;
+       and AMF.UML.Lifelines.UML_Lifeline with null record;
+
+   overriding function Get_Covered_By
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Interaction_Fragments.Collections.Set_Of_UML_Interaction_Fragment;
+
+   overriding function Get_Decomposed_As
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access;
+
+   overriding procedure Set_Decomposed_As
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access);
+
+   overriding function Get_Interaction
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Interactions.UML_Interaction_Access;
+
+   overriding procedure Set_Interaction
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.UML.Interactions.UML_Interaction_Access);
+
+   overriding function Get_Represents
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access;
+
+   overriding procedure Set_Represents
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access);
+
+   overriding function Get_Selector
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+   overriding procedure Set_Selector
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+
+   overriding function Get_Client_Dependency
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Name_Expression
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access;
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+
+   overriding function Get_Namespace
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.Optional_String;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Lifeline_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+
+   overriding function All_Owning_Packages
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Lifeline_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean;
+
+   overriding function Namespace
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Qualified_Name
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Separator
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Lifeline_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Lifelines;

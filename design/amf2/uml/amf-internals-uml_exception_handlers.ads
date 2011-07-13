@@ -41,11 +41,68 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Exception_Handlers;
+with AMF.UML.Executable_Nodes;
+with AMF.UML.Object_Nodes;
 
 package AMF.Internals.UML_Exception_Handlers is
 
    type UML_Exception_Handler_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Exception_Handlers.UML_Exception_Handler with null record;
+       and AMF.UML.Exception_Handlers.UML_Exception_Handler with null record;
+
+   overriding function Get_Exception_Input
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Object_Nodes.UML_Object_Node_Access;
+
+   overriding procedure Set_Exception_Input
+    (Self : not null access UML_Exception_Handler_Proxy;
+     To   : AMF.UML.Object_Nodes.UML_Object_Node_Access);
+
+   overriding function Get_Exception_Type
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+
+   overriding function Get_Handler_Body
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Executable_Nodes.UML_Executable_Node_Access;
+
+   overriding procedure Set_Handler_Body
+    (Self : not null access UML_Exception_Handler_Proxy;
+     To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access);
+
+   overriding function Get_Protected_Node
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Executable_Nodes.UML_Executable_Node_Access;
+
+   overriding procedure Set_Protected_Node
+    (Self : not null access UML_Exception_Handler_Proxy;
+     To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Exception_Handler_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Exception_Handlers;

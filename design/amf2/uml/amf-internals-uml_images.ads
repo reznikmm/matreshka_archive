@@ -41,11 +41,61 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Images;
 
 package AMF.Internals.UML_Images is
 
    type UML_Image_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Images.UML_Image with null record;
+       and AMF.UML.Images.UML_Image with null record;
+
+   overriding function Get_Content
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Content
+    (Self : not null access UML_Image_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Format
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Format
+    (Self : not null access UML_Image_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Location
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Location
+    (Self : not null access UML_Image_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Image_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Image_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Images;

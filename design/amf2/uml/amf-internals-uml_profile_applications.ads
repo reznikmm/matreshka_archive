@@ -41,11 +41,75 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Packages;
+with AMF.UML.Profile_Applications;
+with AMF.UML.Profiles;
 
 package AMF.Internals.UML_Profile_Applications is
 
    type UML_Profile_Application_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Profile_Applications.UML_Profile_Application with null record;
+       and AMF.UML.Profile_Applications.UML_Profile_Application with null record;
+
+   overriding function Get_Applied_Profile
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Profiles.UML_Profile_Access;
+
+   overriding procedure Set_Applied_Profile
+    (Self : not null access UML_Profile_Application_Proxy;
+     To   : AMF.UML.Profiles.UML_Profile_Access);
+
+   overriding function Get_Applying_Package
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Packages.UML_Package_Access;
+
+   overriding procedure Set_Applying_Package
+    (Self : not null access UML_Profile_Application_Proxy;
+     To   : AMF.UML.Packages.UML_Package_Access);
+
+   overriding function Get_Is_Strict
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return Boolean;
+
+   overriding procedure Set_Is_Strict
+    (Self : not null access UML_Profile_Application_Proxy;
+     To   : Boolean);
+
+   overriding function Get_Source
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Target
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Related_Element
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Profile_Application_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Profile_Applications;

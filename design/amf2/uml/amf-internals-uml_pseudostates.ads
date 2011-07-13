@@ -41,11 +41,161 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Named_Elements;
+with AMF.UML.Namespaces;
+with AMF.UML.Namespaces.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Pseudostates;
+with AMF.UML.Regions;
+with AMF.UML.State_Machines;
+with AMF.UML.States;
+with AMF.UML.String_Expressions;
+with AMF.UML.Transitions.Collections;
 
 package AMF.Internals.UML_Pseudostates is
 
    type UML_Pseudostate_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Pseudostates.UML_Pseudostate with null record;
+       and AMF.UML.Pseudostates.UML_Pseudostate with null record;
+
+   overriding function Get_Kind
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.UML_Pseudostate_Kind;
+
+   overriding procedure Set_Kind
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.UML.UML_Pseudostate_Kind);
+
+   overriding function Get_State
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.States.UML_State_Access;
+
+   overriding procedure Set_State
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.UML.States.UML_State_Access);
+
+   overriding function Get_State_Machine
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.State_Machines.UML_State_Machine_Access;
+
+   overriding procedure Set_State_Machine
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.UML.State_Machines.UML_State_Machine_Access);
+
+   overriding function Get_Container
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Regions.UML_Region_Access;
+
+   overriding procedure Set_Container
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.UML.Regions.UML_Region_Access);
+
+   overriding function Get_Incoming
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition;
+
+   overriding function Get_Outgoing
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition;
+
+   overriding function Get_Client_Dependency
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+
+   overriding function Get_Name
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.Optional_String);
+
+   overriding function Get_Name_Expression
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access;
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+
+   overriding function Get_Namespace
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.Optional_String;
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Pseudostate_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function Containing_State_Machine
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.State_Machines.UML_State_Machine_Access;
+
+   overriding function Incoming
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition;
+
+   overriding function Outgoing
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Transitions.Collections.Set_Of_UML_Transition;
+
+   overriding function All_Namespaces
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+
+   overriding function All_Owning_Packages
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+
+   overriding function Is_Distinguishable_From
+    (Self : not null access constant UML_Pseudostate_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean;
+
+   overriding function Namespace
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access;
+
+   overriding function Qualified_Name
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function Separator
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return League.Strings.Universal_String;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Pseudostate_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Pseudostates;

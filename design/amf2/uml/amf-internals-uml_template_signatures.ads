@@ -41,11 +41,55 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Internals.UML_Elements;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Template_Parameters.Collections;
+with AMF.UML.Template_Signatures;
+with AMF.UML.Templateable_Elements;
 
 package AMF.Internals.UML_Template_Signatures is
 
    type UML_Template_Signature_Proxy is
      limited new AMF.Internals.UML_Elements.UML_Element_Proxy
-       and UML.Template_Signatures.UML_Template_Signature with null record;
+       and AMF.UML.Template_Signatures.UML_Template_Signature with null record;
+
+   overriding function Get_Owned_Parameter
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter;
+
+   overriding function Get_Parameter
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter;
+
+   overriding function Get_Template
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access;
+
+   overriding procedure Set_Template
+    (Self : not null access UML_Template_Signature_Proxy;
+     To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access);
+
+   overriding function Get_Owned_Comment
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Elements.UML_Element_Access;
+
+   overriding function All_Owned_Elements
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Template_Signature_Proxy)
+       return Boolean;
 
 end AMF.Internals.UML_Template_Signatures;
