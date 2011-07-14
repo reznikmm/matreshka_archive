@@ -104,4 +104,45 @@ package body Matreshka.Internals.Strings.Handlers is
       return 0;
    end Index;
 
+   -----------------
+   -- Starts_With --
+   -----------------
+
+   not overriding function Starts_With
+    (Self    : Abstract_String_Handler;
+     Item    : not null Shared_String_Access;
+     Pattern : not null Shared_String_Access) return Boolean
+   is
+      pragma Unreferenced (Self);
+
+      I_Position : Utf16_String_Index := 0;
+      P_Position : Utf16_String_Index := 0;
+      IC         : Code_Point;
+      PC         : Code_Point;
+
+   begin
+      if Item = Pattern then
+         --  Item and Pattern are same strings.
+
+         return True;
+      end if;
+
+      if Item.Unused < Pattern.Unused then
+         --  Item is shorter than Pattern, no match possible.
+
+         return False;
+      end if;
+
+      while P_Position < Pattern.Unused loop
+         Unchecked_Next (Item.Value, I_Position, IC);
+         Unchecked_Next (Pattern.Value, P_Position, PC);
+
+         if IC /= PC then
+            return False;
+         end if;
+      end loop;
+
+      return True;
+   end Starts_With;
+
 end Matreshka.Internals.Strings.Handlers;

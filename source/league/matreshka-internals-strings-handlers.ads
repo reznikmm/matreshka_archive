@@ -99,4 +99,10 @@ package Matreshka.Internals.Strings.Handlers is
        return Natural;
    --  Returns number of occurrences of Code in the string.
 
+   not overriding function Starts_With
+    (Self    : Abstract_String_Handler;
+     Item    : not null Shared_String_Access;
+     Pattern : not null Shared_String_Access) return Boolean;
+   --  Returns True if the string starts with Pattern; otherwise returns false.
+
 end Matreshka.Internals.Strings.Handlers;

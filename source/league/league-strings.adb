@@ -1137,6 +1137,28 @@ package body League.Strings is
    end Split;
 
    -----------------
+   -- Starts_With --
+   -----------------
+
+   function Starts_With
+    (Self    : Universal_String'Class;
+     Pattern : Universal_String'Class) return Boolean is
+   begin
+      return String_Handler.Starts_With (Self.Data, Pattern.Data);
+   end Starts_With;
+
+   -----------------
+   -- Starts_With --
+   -----------------
+
+   function Starts_With
+    (Self    : Universal_String'Class;
+     Pattern : Wide_Wide_String) return Boolean is
+   begin
+      return Self.Starts_With (To_Universal_String (Pattern));
+   end Starts_With;
+
+   -----------------
    -- To_Casefold --
    -----------------
 
