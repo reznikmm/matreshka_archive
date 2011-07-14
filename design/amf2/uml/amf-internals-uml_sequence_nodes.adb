@@ -824,7 +824,7 @@ package body AMF.Internals.UML_Sequence_Nodes is
    overriding function Get_Names_Of_Member
      (Self : not null access constant UML_Sequence_Node_Proxy;
       Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-      return AMF.UML.Set_Of_String
+      return AMF.String_Collections.Set_Of_String
    is
    begin
       --  Generated stub: replace with real body!

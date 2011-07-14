@@ -49,7 +49,6 @@ with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Literal_Booleans;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
@@ -155,13 +154,13 @@ package AMF.Internals.UML_Literal_Booleans is
     (Self : not null access constant UML_Literal_Boolean_Proxy)
        return Boolean;
 
-   overriding function Boolean_Value
-    (Self : not null access constant UML_Literal_Boolean_Proxy)
-       return AMF.Optional_Boolean;
-
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Boolean_Proxy)
        return Boolean;
+
+   overriding function Boolean_Value
+    (Self : not null access constant UML_Literal_Boolean_Proxy)
+       return AMF.Optional_Boolean;
 
    overriding function Integer_Value
     (Self : not null access constant UML_Literal_Boolean_Proxy)

@@ -57,18 +57,14 @@ with AMF.UML.Elements.Collections;
 with AMF.UML.Interfaces;
 with AMF.UML.Multiplicity_Elements;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
-with AMF.UML.Properties;
 with AMF.UML.Properties.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
-with AMF.UML.Types;
 with AMF.UML.Types.Collections;
 with AMF.UML.Value_Specifications;
 

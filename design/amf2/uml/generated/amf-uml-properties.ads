@@ -68,7 +68,6 @@
 --  the association. The type of the property is the type of the end of the 
 --  association.
 ------------------------------------------------------------------------------
-with AMF.UML;
 limited with AMF.UML.Associations;
 limited with AMF.UML.Classes;
 with AMF.UML.Connectable_Elements;

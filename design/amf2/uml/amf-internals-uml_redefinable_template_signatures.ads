@@ -44,18 +44,14 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
-with AMF.UML.Redefinable_Template_Signatures;
 with AMF.UML.Redefinable_Template_Signatures.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters.Collections;

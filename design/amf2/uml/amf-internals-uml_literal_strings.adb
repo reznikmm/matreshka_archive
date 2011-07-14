@@ -352,21 +352,6 @@ package body AMF.Internals.UML_Literal_Strings is
       return String_Value (Self);
    end String_Value;
 
-   ------------------
-   -- String_Value --
-   ------------------
-
-   overriding function String_Value
-     (Self : not null access constant UML_Literal_String_Proxy)
-      return AMF.Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "String_Value unimplemented");
-      raise Program_Error with "Unimplemented function String_Value";
-      return String_Value (Self);
-   end String_Value;
-
    -------------------
    -- Boolean_Value --
    -------------------
@@ -442,6 +427,21 @@ package body AMF.Internals.UML_Literal_Strings is
       raise Program_Error with "Unimplemented function Real_Value";
       return Real_Value (Self);
    end Real_Value;
+
+   ------------------
+   -- String_Value --
+   ------------------
+
+   overriding function String_Value
+     (Self : not null access constant UML_Literal_String_Proxy)
+      return AMF.Optional_String
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "String_Value unimplemented");
+      raise Program_Error with "Unimplemented function String_Value";
+      return String_Value (Self);
+   end String_Value;
 
    ---------------------
    -- Unlimited_Value --

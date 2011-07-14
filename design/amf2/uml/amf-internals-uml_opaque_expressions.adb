@@ -35,7 +35,7 @@ package body AMF.Internals.UML_Opaque_Expressions is
 
    overriding function Get_Body
      (Self : not null access constant UML_Opaque_Expression_Proxy)
-      return AMF.UML.Sequence_Of_String
+      return AMF.String_Collections.Sequence_Of_String
    is
    begin
       --  Generated stub: replace with real body!
@@ -50,7 +50,7 @@ package body AMF.Internals.UML_Opaque_Expressions is
 
    overriding function Get_Language
      (Self : not null access constant UML_Opaque_Expression_Proxy)
-      return AMF.UML.Ordered_Set_Of_String
+      return AMF.String_Collections.Ordered_Set_Of_String
    is
    begin
       --  Generated stub: replace with real body!

@@ -1323,22 +1323,6 @@ package body AMF.Internals.UML_Protocol_State_Machines is
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
 
-   -----------------------------------
-   -- Is_Redefinition_Context_Valid --
-   -----------------------------------
-
-   overriding function Is_Redefinition_Context_Valid
-     (Self : not null access constant UML_Protocol_State_Machine_Proxy;
-      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Is_Redefinition_Context_Valid unimplemented");
-      raise Program_Error with "Unimplemented function Is_Redefinition_Context_Valid";
-      return Is_Redefinition_Context_Valid (Self, Redefined);
-   end Is_Redefinition_Context_Valid;
-
    -------------
    -- Context --
    -------------
@@ -1577,7 +1561,7 @@ package body AMF.Internals.UML_Protocol_State_Machines is
    overriding function Get_Names_Of_Member
      (Self : not null access constant UML_Protocol_State_Machine_Proxy;
       Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-      return AMF.UML.Set_Of_String
+      return AMF.String_Collections.Set_Of_String
    is
    begin
       --  Generated stub: replace with real body!
@@ -1830,6 +1814,22 @@ package body AMF.Internals.UML_Protocol_State_Machines is
       raise Program_Error with "Unimplemented function Parameterable_Elements";
       return Parameterable_Elements (Self);
    end Parameterable_Elements;
+
+   -----------------------------------
+   -- Is_Redefinition_Context_Valid --
+   -----------------------------------
+
+   overriding function Is_Redefinition_Context_Valid
+     (Self : not null access constant UML_Protocol_State_Machine_Proxy;
+      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Redefinition_Context_Valid unimplemented");
+      raise Program_Error with "Unimplemented function Is_Redefinition_Context_Valid";
+      return Is_Redefinition_Context_Valid (Self, Redefined);
+   end Is_Redefinition_Context_Valid;
 
    ----------------
    -- Owned_Port --

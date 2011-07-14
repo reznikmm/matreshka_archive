@@ -343,21 +343,6 @@ package body AMF.Internals.UML_Literal_Reals is
 
    overriding function Real_Value
      (Self : not null access constant UML_Literal_Real_Proxy)
-      return AMF.Optional_Real
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Real_Value unimplemented");
-      raise Program_Error with "Unimplemented function Real_Value";
-      return Real_Value (Self);
-   end Real_Value;
-
-   ----------------
-   -- Real_Value --
-   ----------------
-
-   overriding function Real_Value
-     (Self : not null access constant UML_Literal_Real_Proxy)
       return AMF.Real
    is
    begin
@@ -427,6 +412,21 @@ package body AMF.Internals.UML_Literal_Reals is
       raise Program_Error with "Unimplemented function Is_Null";
       return Is_Null (Self);
    end Is_Null;
+
+   ----------------
+   -- Real_Value --
+   ----------------
+
+   overriding function Real_Value
+     (Self : not null access constant UML_Literal_Real_Proxy)
+      return AMF.Optional_Real
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Real_Value unimplemented");
+      raise Program_Error with "Unimplemented function Real_Value";
+      return Real_Value (Self);
+   end Real_Value;
 
    ------------------
    -- String_Value --

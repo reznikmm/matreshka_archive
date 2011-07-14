@@ -50,7 +50,6 @@ with AMF.UML.Duration_Intervals;
 with AMF.UML.Durations;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;

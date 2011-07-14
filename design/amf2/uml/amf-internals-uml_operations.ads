@@ -44,38 +44,32 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classes;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
-with AMF.UML.Constraints;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Data_Types;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Interfaces;
-with AMF.UML.Named_Elements;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Operation_Template_Parameters;
-with AMF.UML.Operations;
 with AMF.UML.Operations.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameter_Sets.Collections;
-with AMF.UML.Parameterable_Elements;
 with AMF.UML.Parameterable_Elements.Collections;
 with AMF.UML.Parameters.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Bindings.Collections;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
-with AMF.UML.Types;
 with AMF.UML.Types.Collections;
 
 package AMF.Internals.UML_Operations is
@@ -400,7 +394,7 @@ package AMF.Internals.UML_Operations is
    overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Operation_Proxy;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant UML_Operation_Proxy;

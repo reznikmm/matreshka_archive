@@ -44,11 +44,10 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Classes;
 with AMF.UML.Classifier_Template_Parameters;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Collaboration_Uses;
 with AMF.UML.Collaboration_Uses.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
@@ -60,19 +59,13 @@ with AMF.UML.Extensions;
 with AMF.UML.Features.Collections;
 with AMF.UML.Generalization_Sets.Collections;
 with AMF.UML.Generalizations.Collections;
-with AMF.UML.Named_Elements;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
-with AMF.UML.Packages;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Parameterable_Elements;
 with AMF.UML.Parameterable_Elements.Collections;
-with AMF.UML.Properties;
 with AMF.UML.Properties.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.Redefinable_Template_Signatures;
 with AMF.UML.String_Expressions;
@@ -80,7 +73,6 @@ with AMF.UML.Substitutions.Collections;
 with AMF.UML.Template_Bindings.Collections;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
-with AMF.UML.Types;
 with AMF.UML.Types.Collections;
 with AMF.UML.Use_Cases.Collections;
 
@@ -431,7 +423,7 @@ package AMF.Internals.UML_Extensions is
    overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Extension_Proxy;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant UML_Extension_Proxy;

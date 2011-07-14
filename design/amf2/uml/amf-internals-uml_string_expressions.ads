@@ -48,12 +48,9 @@ with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Parameterable_Elements;
 with AMF.UML.Parameterable_Elements.Collections;
-with AMF.UML.String_Expressions;
 with AMF.UML.String_Expressions.Collections;
 with AMF.UML.Template_Bindings.Collections;
 with AMF.UML.Template_Parameters;
@@ -187,10 +184,6 @@ package AMF.Internals.UML_String_Expressions is
     (Self : not null access constant UML_String_Expression_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function String_Value
-    (Self : not null access constant UML_String_Expression_Proxy)
-       return AMF.Optional_String;
-
    overriding function Boolean_Value
     (Self : not null access constant UML_String_Expression_Proxy)
        return AMF.Optional_Boolean;
@@ -215,6 +208,10 @@ package AMF.Internals.UML_String_Expressions is
    overriding function Real_Value
     (Self : not null access constant UML_String_Expression_Proxy)
        return AMF.Optional_Real;
+
+   overriding function String_Value
+    (Self : not null access constant UML_String_Expression_Proxy)
+       return AMF.Optional_String;
 
    overriding function Unlimited_Value
     (Self : not null access constant UML_String_Expression_Proxy)

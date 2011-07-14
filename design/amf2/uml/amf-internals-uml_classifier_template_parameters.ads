@@ -45,7 +45,6 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Classifier_Template_Parameters;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;

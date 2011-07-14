@@ -46,7 +46,6 @@
 --  A classifier template parameter exposes a classifier as a formal template 
 --  parameter.
 ------------------------------------------------------------------------------
-limited with AMF.UML.Classifiers;
 limited with AMF.UML.Classifiers.Collections;
 with AMF.UML.Template_Parameters;
 

@@ -52,7 +52,6 @@ with AMF.UML.Elements.Collections;
 with AMF.UML.Enumeration_Literals;
 with AMF.UML.Enumerations;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;

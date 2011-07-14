@@ -45,9 +45,7 @@
 ------------------------------------------------------------------------------
 --  A named element is an element in a model that may have a name.
 ------------------------------------------------------------------------------
-with AMF.CMOF;
 with AMF.CMOF.Elements;
-limited with AMF.CMOF.Namespaces;
 limited with AMF.CMOF.Namespaces.Collections;
 
 package AMF.CMOF.Named_Elements is

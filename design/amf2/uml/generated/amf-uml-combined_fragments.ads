@@ -48,7 +48,6 @@
 --  interaction operands. Through the use of combined fragments the user will 
 --  be able to describe a number of traces in a compact and concise manner.
 ------------------------------------------------------------------------------
-with AMF.UML;
 limited with AMF.UML.Gates.Collections;
 with AMF.UML.Interaction_Fragments;
 limited with AMF.UML.Interaction_Operands.Collections;

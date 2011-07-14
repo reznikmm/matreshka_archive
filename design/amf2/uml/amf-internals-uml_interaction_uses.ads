@@ -54,12 +54,10 @@ with AMF.UML.Interaction_Uses;
 with AMF.UML.Interactions;
 with AMF.UML.Lifelines.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Properties;
 with AMF.UML.String_Expressions;
-with AMF.UML.Value_Specifications;
 with AMF.UML.Value_Specifications.Collections;
 
 package AMF.Internals.UML_Interaction_Uses is

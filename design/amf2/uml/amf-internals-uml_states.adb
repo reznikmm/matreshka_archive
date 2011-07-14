@@ -771,22 +771,6 @@ package body AMF.Internals.UML_States is
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
 
-   -----------------------------------
-   -- Is_Redefinition_Context_Valid --
-   -----------------------------------
-
-   overriding function Is_Redefinition_Context_Valid
-     (Self : not null access constant UML_State_Proxy;
-      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Is_Redefinition_Context_Valid unimplemented");
-      raise Program_Error with "Unimplemented function Is_Redefinition_Context_Valid";
-      return Is_Redefinition_Context_Valid (Self, Redefined);
-   end Is_Redefinition_Context_Valid;
-
    ---------------
    -- Is_Simple --
    ---------------
@@ -831,6 +815,22 @@ package body AMF.Internals.UML_States is
       raise Program_Error with "Unimplemented function Redefinition_Context";
       return Redefinition_Context (Self);
    end Redefinition_Context;
+
+   -----------------------------------
+   -- Is_Redefinition_Context_Valid --
+   -----------------------------------
+
+   overriding function Is_Redefinition_Context_Valid
+     (Self : not null access constant UML_State_Proxy;
+      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+      return Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Is_Redefinition_Context_Valid unimplemented");
+      raise Program_Error with "Unimplemented function Is_Redefinition_Context_Valid";
+      return Is_Redefinition_Context_Valid (Self, Redefined);
+   end Is_Redefinition_Context_Valid;
 
    --------------------
    -- All_Namespaces --
@@ -977,7 +977,7 @@ package body AMF.Internals.UML_States is
    overriding function Get_Names_Of_Member
      (Self : not null access constant UML_State_Proxy;
       Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-      return AMF.UML.Set_Of_String
+      return AMF.String_Collections.Set_Of_String
    is
    begin
       --  Generated stub: replace with real body!

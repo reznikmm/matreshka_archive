@@ -44,7 +44,6 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Comments;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 

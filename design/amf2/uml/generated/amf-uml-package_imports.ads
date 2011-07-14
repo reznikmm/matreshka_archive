@@ -46,7 +46,6 @@
 --  A package import is a relationship that allows the use of unqualified 
 --  names to refer to package members from other namespaces.
 ------------------------------------------------------------------------------
-with AMF.UML;
 with AMF.UML.Directed_Relationships;
 limited with AMF.UML.Namespaces;
 limited with AMF.UML.Packages;

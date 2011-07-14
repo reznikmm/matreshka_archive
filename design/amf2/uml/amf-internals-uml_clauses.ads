@@ -44,12 +44,10 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
-with AMF.UML.Clauses;
 with AMF.UML.Clauses.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Executable_Nodes.Collections;
-with AMF.UML.Output_Pins;
 with AMF.UML.Output_Pins.Collections;
 
 package AMF.Internals.UML_Clauses is

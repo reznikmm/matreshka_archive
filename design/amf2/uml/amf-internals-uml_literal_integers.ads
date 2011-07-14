@@ -49,7 +49,6 @@ with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Literal_Integers;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
@@ -153,10 +152,6 @@ package AMF.Internals.UML_Literal_Integers is
 
    overriding function Integer_Value
     (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.Optional_Integer;
-
-   overriding function Integer_Value
-    (Self : not null access constant UML_Literal_Integer_Proxy)
        return Integer;
 
    overriding function Is_Computable
@@ -166,6 +161,10 @@ package AMF.Internals.UML_Literal_Integers is
    overriding function Boolean_Value
     (Self : not null access constant UML_Literal_Integer_Proxy)
        return AMF.Optional_Boolean;
+
+   overriding function Integer_Value
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return AMF.Optional_Integer;
 
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Literal_Integer_Proxy;

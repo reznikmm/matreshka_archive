@@ -328,21 +328,6 @@ package body AMF.Internals.UML_Literal_Integers is
 
    overriding function Integer_Value
      (Self : not null access constant UML_Literal_Integer_Proxy)
-      return AMF.Optional_Integer
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Integer_Value unimplemented");
-      raise Program_Error with "Unimplemented function Integer_Value";
-      return Integer_Value (Self);
-   end Integer_Value;
-
-   -------------------
-   -- Integer_Value --
-   -------------------
-
-   overriding function Integer_Value
-     (Self : not null access constant UML_Literal_Integer_Proxy)
       return Integer
    is
    begin
@@ -381,6 +366,21 @@ package body AMF.Internals.UML_Literal_Integers is
       raise Program_Error with "Unimplemented function Boolean_Value";
       return Boolean_Value (Self);
    end Boolean_Value;
+
+   -------------------
+   -- Integer_Value --
+   -------------------
+
+   overriding function Integer_Value
+     (Self : not null access constant UML_Literal_Integer_Proxy)
+      return AMF.Optional_Integer
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Integer_Value unimplemented");
+      raise Program_Error with "Unimplemented function Integer_Value";
+      return Integer_Value (Self);
+   end Integer_Value;
 
    ------------------------
    -- Is_Compatible_With --

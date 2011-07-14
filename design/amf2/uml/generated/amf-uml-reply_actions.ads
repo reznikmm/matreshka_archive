@@ -49,7 +49,6 @@
 --  call, completing execution of the call.
 ------------------------------------------------------------------------------
 with AMF.UML.Actions;
-limited with AMF.UML.Input_Pins;
 limited with AMF.UML.Input_Pins.Collections;
 limited with AMF.UML.Triggers;
 

@@ -44,21 +44,19 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Models;
-with AMF.UML.Named_Elements;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Package_Merges.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Parameterable_Elements;
 with AMF.UML.Parameterable_Elements.Collections;
 with AMF.UML.Profile_Applications.Collections;
 with AMF.UML.Profiles;
@@ -272,7 +270,7 @@ package AMF.Internals.UML_Models is
    overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Model_Proxy;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant UML_Model_Proxy;

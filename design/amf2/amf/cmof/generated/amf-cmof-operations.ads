@@ -49,13 +49,11 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Behavioral_Features;
 limited with AMF.CMOF.Classes;
-limited with AMF.CMOF.Constraints;
 limited with AMF.CMOF.Constraints.Collections;
 limited with AMF.CMOF.Data_Types;
 limited with AMF.CMOF.Operations.Collections;
 limited with AMF.CMOF.Parameters.Collections;
 limited with AMF.CMOF.Redefinable_Elements;
-limited with AMF.CMOF.Types;
 limited with AMF.CMOF.Types.Collections;
 
 package AMF.CMOF.Operations is

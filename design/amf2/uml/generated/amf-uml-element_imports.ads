@@ -46,7 +46,6 @@
 --  An element import identifies an element in another package, and allows the 
 --  element to be referenced using its name without a qualifier.
 ------------------------------------------------------------------------------
-with AMF.UML;
 with AMF.UML.Directed_Relationships;
 limited with AMF.UML.Namespaces;
 limited with AMF.UML.Packageable_Elements;

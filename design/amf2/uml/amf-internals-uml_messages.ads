@@ -52,7 +52,6 @@ with AMF.UML.Interactions;
 with AMF.UML.Message_Ends;
 with AMF.UML.Messages;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;

@@ -44,16 +44,14 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Actions.Collections;
 with AMF.UML.Behavioral_Features;
 with AMF.UML.Behaviored_Classifiers;
-with AMF.UML.Behaviors;
 with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classes.Collections;
 with AMF.UML.Classifier_Template_Parameters;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
-with AMF.UML.Collaboration_Uses;
 with AMF.UML.Collaboration_Uses.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Connectable_Elements.Collections;
@@ -74,23 +72,18 @@ with AMF.UML.Interactions;
 with AMF.UML.Interface_Realizations.Collections;
 with AMF.UML.Lifelines.Collections;
 with AMF.UML.Messages.Collections;
-with AMF.UML.Named_Elements;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Operations.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
-with AMF.UML.Packages;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameter_Sets.Collections;
-with AMF.UML.Parameterable_Elements;
 with AMF.UML.Parameterable_Elements.Collections;
 with AMF.UML.Parameters.Collections;
 with AMF.UML.Ports.Collections;
 with AMF.UML.Properties.Collections;
 with AMF.UML.Receptions.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.Redefinable_Template_Signatures;
 with AMF.UML.String_Expressions;
@@ -540,7 +533,7 @@ package AMF.Internals.UML_Interactions is
    overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Interaction_Proxy;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant UML_Interaction_Proxy;

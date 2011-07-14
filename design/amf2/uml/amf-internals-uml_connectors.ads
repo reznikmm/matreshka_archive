@@ -49,15 +49,12 @@ with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Connector_Ends.Collections;
-with AMF.UML.Connectors;
 with AMF.UML.Connectors.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 

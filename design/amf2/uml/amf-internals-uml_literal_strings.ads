@@ -49,7 +49,6 @@ with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Literal_Strings;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
@@ -159,10 +158,6 @@ package AMF.Internals.UML_Literal_Strings is
     (Self : not null access constant UML_Literal_String_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function String_Value
-    (Self : not null access constant UML_Literal_String_Proxy)
-       return AMF.Optional_String;
-
    overriding function Boolean_Value
     (Self : not null access constant UML_Literal_String_Proxy)
        return AMF.Optional_Boolean;
@@ -183,6 +178,10 @@ package AMF.Internals.UML_Literal_Strings is
    overriding function Real_Value
     (Self : not null access constant UML_Literal_String_Proxy)
        return AMF.Optional_Real;
+
+   overriding function String_Value
+    (Self : not null access constant UML_Literal_String_Proxy)
+       return AMF.Optional_String;
 
    overriding function Unlimited_Value
     (Self : not null access constant UML_Literal_String_Proxy)

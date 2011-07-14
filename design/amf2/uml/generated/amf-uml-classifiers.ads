@@ -61,7 +61,6 @@
 ------------------------------------------------------------------------------
 limited with AMF.UML.Classifier_Template_Parameters;
 limited with AMF.UML.Classifiers.Collections;
-limited with AMF.UML.Collaboration_Uses;
 limited with AMF.UML.Collaboration_Uses.Collections;
 limited with AMF.UML.Features.Collections;
 limited with AMF.UML.Generalization_Sets.Collections;

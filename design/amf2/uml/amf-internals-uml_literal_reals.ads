@@ -49,7 +49,6 @@ with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Literal_Reals;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Parameterable_Elements;
@@ -157,10 +156,6 @@ package AMF.Internals.UML_Literal_Reals is
 
    overriding function Real_Value
     (Self : not null access constant UML_Literal_Real_Proxy)
-       return AMF.Optional_Real;
-
-   overriding function Real_Value
-    (Self : not null access constant UML_Literal_Real_Proxy)
        return AMF.Real;
 
    overriding function Boolean_Value
@@ -179,6 +174,10 @@ package AMF.Internals.UML_Literal_Reals is
    overriding function Is_Null
     (Self : not null access constant UML_Literal_Real_Proxy)
        return Boolean;
+
+   overriding function Real_Value
+    (Self : not null access constant UML_Literal_Real_Proxy)
+       return AMF.Optional_Real;
 
    overriding function String_Value
     (Self : not null access constant UML_Literal_Real_Proxy)

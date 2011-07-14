@@ -338,21 +338,6 @@ package body AMF.Internals.UML_Literal_Booleans is
    end Boolean_Value;
 
    -------------------
-   -- Boolean_Value --
-   -------------------
-
-   overriding function Boolean_Value
-     (Self : not null access constant UML_Literal_Boolean_Proxy)
-      return AMF.Optional_Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Boolean_Value unimplemented");
-      raise Program_Error with "Unimplemented function Boolean_Value";
-      return Boolean_Value (Self);
-   end Boolean_Value;
-
-   -------------------
    -- Is_Computable --
    -------------------
 
@@ -366,6 +351,21 @@ package body AMF.Internals.UML_Literal_Booleans is
       raise Program_Error with "Unimplemented function Is_Computable";
       return Is_Computable (Self);
    end Is_Computable;
+
+   -------------------
+   -- Boolean_Value --
+   -------------------
+
+   overriding function Boolean_Value
+     (Self : not null access constant UML_Literal_Boolean_Proxy)
+      return AMF.Optional_Boolean
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Boolean_Value unimplemented");
+      raise Program_Error with "Unimplemented function Boolean_Value";
+      return Boolean_Value (Self);
+   end Boolean_Value;
 
    -------------------
    -- Integer_Value --

@@ -52,7 +52,6 @@ with AMF.UML.Interaction_Fragments.Collections;
 with AMF.UML.Interactions;
 with AMF.UML.Lifelines;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Part_Decompositions;

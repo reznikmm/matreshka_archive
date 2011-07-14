@@ -50,7 +50,6 @@
 limited with AMF.UML.Clauses.Collections;
 with AMF.UML.Elements;
 limited with AMF.UML.Executable_Nodes.Collections;
-limited with AMF.UML.Output_Pins;
 limited with AMF.UML.Output_Pins.Collections;
 
 package AMF.UML.Clauses is

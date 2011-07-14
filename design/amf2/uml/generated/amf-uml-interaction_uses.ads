@@ -53,7 +53,6 @@ limited with AMF.UML.Gates.Collections;
 with AMF.UML.Interaction_Fragments;
 limited with AMF.UML.Interactions;
 limited with AMF.UML.Properties;
-limited with AMF.UML.Value_Specifications;
 limited with AMF.UML.Value_Specifications.Collections;
 
 package AMF.UML.Interaction_Uses is

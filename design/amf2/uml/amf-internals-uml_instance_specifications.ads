@@ -51,7 +51,6 @@ with AMF.UML.Deployments.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Instance_Specifications;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;

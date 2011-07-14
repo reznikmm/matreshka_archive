@@ -62,7 +62,6 @@
 --  classifiers, connectors specify links between instances playing the 
 --  connected parts only.
 ------------------------------------------------------------------------------
-with AMF.UML;
 limited with AMF.UML.Associations;
 limited with AMF.UML.Behaviors.Collections;
 limited with AMF.UML.Connector_Ends.Collections;

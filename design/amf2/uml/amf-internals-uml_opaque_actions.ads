@@ -44,12 +44,12 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Activity_Groups.Collections;
 with AMF.UML.Activity_Nodes.Collections;
 with AMF.UML.Activity_Partitions.Collections;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
@@ -59,12 +59,10 @@ with AMF.UML.Exception_Handlers.Collections;
 with AMF.UML.Input_Pins.Collections;
 with AMF.UML.Interruptible_Activity_Regions.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Opaque_Actions;
 with AMF.UML.Output_Pins.Collections;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
@@ -77,7 +75,7 @@ package AMF.Internals.UML_Opaque_Actions is
 
    overriding function Get_Body
     (Self : not null access constant UML_Opaque_Action_Proxy)
-       return AMF.UML.Sequence_Of_String;
+       return AMF.String_Collections.Sequence_Of_String;
 
    overriding function Get_Input_Value
     (Self : not null access constant UML_Opaque_Action_Proxy)
@@ -85,7 +83,7 @@ package AMF.Internals.UML_Opaque_Actions is
 
    overriding function Get_Language
     (Self : not null access constant UML_Opaque_Action_Proxy)
-       return AMF.UML.Ordered_Set_Of_String;
+       return AMF.String_Collections.Ordered_Set_Of_String;
 
    overriding function Get_Output_Value
     (Self : not null access constant UML_Opaque_Action_Proxy)

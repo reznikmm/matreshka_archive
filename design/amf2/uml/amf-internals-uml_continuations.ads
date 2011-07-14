@@ -53,7 +53,6 @@ with AMF.UML.Interaction_Operands;
 with AMF.UML.Interactions;
 with AMF.UML.Lifelines.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;

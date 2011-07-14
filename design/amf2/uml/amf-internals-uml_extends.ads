@@ -51,7 +51,6 @@ with AMF.UML.Elements.Collections;
 with AMF.UML.Extends;
 with AMF.UML.Extension_Points.Collections;
 with AMF.UML.Named_Elements;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;

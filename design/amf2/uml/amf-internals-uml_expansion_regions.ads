@@ -44,12 +44,12 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Activity_Groups.Collections;
 with AMF.UML.Activity_Nodes.Collections;
 with AMF.UML.Activity_Partitions.Collections;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Constraints.Collections;
@@ -61,15 +61,12 @@ with AMF.UML.Expansion_Nodes.Collections;
 with AMF.UML.Expansion_Regions;
 with AMF.UML.Input_Pins.Collections;
 with AMF.UML.Interruptible_Activity_Regions.Collections;
-with AMF.UML.Named_Elements;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Output_Pins.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
@@ -317,7 +314,7 @@ package AMF.Internals.UML_Expansion_Regions is
    overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Expansion_Region_Proxy;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant UML_Expansion_Region_Proxy;

@@ -65,7 +65,6 @@ with AMF.UML.Parameterable_Elements;
 limited with AMF.UML.Parameters.Collections;
 limited with AMF.UML.Redefinable_Elements;
 with AMF.UML.Templateable_Elements;
-limited with AMF.UML.Types;
 limited with AMF.UML.Types.Collections;
 
 package AMF.UML.Operations is

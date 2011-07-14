@@ -343,21 +343,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
 
    overriding function Unlimited_Value
      (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-      return AMF.Optional_Unlimited_Natural
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Unlimited_Value unimplemented");
-      raise Program_Error with "Unimplemented function Unlimited_Value";
-      return Unlimited_Value (Self);
-   end Unlimited_Value;
-
-   ---------------------
-   -- Unlimited_Value --
-   ---------------------
-
-   overriding function Unlimited_Value
-     (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
       return AMF.Unlimited_Natural
    is
    begin
@@ -457,6 +442,21 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
       raise Program_Error with "Unimplemented function String_Value";
       return String_Value (Self);
    end String_Value;
+
+   ---------------------
+   -- Unlimited_Value --
+   ---------------------
+
+   overriding function Unlimited_Value
+     (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+      return AMF.Optional_Unlimited_Natural
+   is
+   begin
+      --  Generated stub: replace with real body!
+      pragma Compile_Time_Warning (Standard.True, "Unlimited_Value unimplemented");
+      raise Program_Error with "Unimplemented function Unlimited_Value";
+      return Unlimited_Value (Self);
+   end Unlimited_Value;
 
    --------------------
    -- All_Namespaces --

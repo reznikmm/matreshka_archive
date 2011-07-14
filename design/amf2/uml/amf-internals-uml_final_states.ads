@@ -44,28 +44,23 @@
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.String_Collections;
 with AMF.UML.Behaviors;
-with AMF.UML.Classifiers;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Connection_Point_References.Collections;
-with AMF.UML.Constraints;
 with AMF.UML.Constraints.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Element_Imports.Collections;
 with AMF.UML.Elements.Collections;
 with AMF.UML.Final_States;
-with AMF.UML.Named_Elements;
 with AMF.UML.Named_Elements.Collections;
-with AMF.UML.Namespaces;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Package_Imports.Collections;
 with AMF.UML.Packageable_Elements.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.Pseudostates.Collections;
-with AMF.UML.Redefinable_Elements;
 with AMF.UML.Redefinable_Elements.Collections;
-with AMF.UML.Regions;
 with AMF.UML.Regions.Collections;
 with AMF.UML.State_Machines;
 with AMF.UML.States;
@@ -286,11 +281,6 @@ package AMF.Internals.UML_Final_States is
 
    overriding function Is_Redefinition_Context_Valid
     (Self : not null access constant UML_Final_State_Proxy;
-     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-       return Boolean;
-
-   overriding function Is_Redefinition_Context_Valid
-    (Self : not null access constant UML_Final_State_Proxy;
      Redefined : AMF.UML.States.UML_State_Access)
        return Boolean;
 
@@ -305,6 +295,11 @@ package AMF.Internals.UML_Final_States is
    overriding function Redefinition_Context
     (Self : not null access constant UML_Final_State_Proxy)
        return AMF.UML.Classifiers.UML_Classifier_Access;
+
+   overriding function Is_Redefinition_Context_Valid
+    (Self : not null access constant UML_Final_State_Proxy;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean;
 
    overriding function All_Namespaces
     (Self : not null access constant UML_Final_State_Proxy)
@@ -348,7 +343,7 @@ package AMF.Internals.UML_Final_States is
    overriding function Get_Names_Of_Member
     (Self : not null access constant UML_Final_State_Proxy;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-       return AMF.UML.Set_Of_String;
+       return AMF.String_Collections.Set_Of_String;
 
    overriding function Import_Members
     (Self : not null access constant UML_Final_State_Proxy;

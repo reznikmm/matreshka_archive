@@ -46,7 +46,6 @@
 --  A pseudostate is an abstraction that encompasses different types of 
 --  transient vertices in the state machine graph.
 ------------------------------------------------------------------------------
-with AMF.UML;
 limited with AMF.UML.State_Machines;
 limited with AMF.UML.States;
 with AMF.UML.Vertexs;

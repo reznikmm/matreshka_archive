@@ -56,7 +56,6 @@ limited with AMF.UML.Pseudostates.Collections;
 limited with AMF.UML.Redefinable_Elements;
 limited with AMF.UML.Regions.Collections;
 limited with AMF.UML.State_Machines.Collections;
-limited with AMF.UML.States;
 limited with AMF.UML.States.Collections;
 
 package AMF.UML.State_Machines is
