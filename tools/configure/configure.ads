@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Containers.Indefinite_Vectors;
 with Ada.Containers.Hashed_Maps;
 with Ada.Strings.Unbounded.Hash;
 
@@ -54,6 +55,9 @@ package Configure is
            Ada.Strings.Unbounded.Unbounded_String,
            Ada.Strings.Unbounded.Hash,
            Ada.Strings.Unbounded."=");
+
+   package String_Vectors is
+     new Ada.Containers.Indefinite_Vectors (Positive, String);
 
    Substitutions : Maps.Map;
 

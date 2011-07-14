@@ -77,14 +77,24 @@ begin
 
    elsif Configure.Pkg_Config.Has_Pkg_Config then
       if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
-         Substitutions.Insert
-          (SQLite3_Library_Options,
-           To_Unbounded_String
-            ('"'
-               & Trim
-                  (Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name),
-                   Both)
-               & '"'));
+         declare
+            Libs : constant String_Vectors.Vector
+              := Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name);
+            Opts : Ada.Strings.Unbounded.Unbounded_String;
+
+         begin
+            for J in Libs.First_Index .. Libs.Last_Index loop
+               if Ada.Strings.Unbounded.Length (Opts) /= 0 then
+                  Ada.Strings.Unbounded.Append (Opts, ", ");
+               end if;
+
+               Ada.Strings.Unbounded.Append (Opts, '"');
+               Ada.Strings.Unbounded.Append (Opts, Libs.Element (J));
+               Ada.Strings.Unbounded.Append (Opts, '"');
+            end loop;
+
+            Substitutions.Insert (SQLite3_Library_Options, Opts);
+         end;
       end if;
    end if;
 
@@ -96,7 +106,6 @@ begin
          --  Switches don't allow to build application, remove them.
 
          Substitutions.Delete (SQLite3_Library_Options);
-         Substitutions.Delete (Has_SQLite3);
       end if;
    end if;
 
