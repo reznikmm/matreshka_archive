@@ -50,7 +50,7 @@ package Configure.Pkg_Config is
    function Has_Package (Package_Name : String) return Boolean;
    --  Returns True when specified package is installed.
 
-   function Package_Libs (Package_Name : String) return String;
+   function Package_Libs (Package_Name : String) return String_Vectors.Vector;
    --  Returns command line switches for linker.
 
 end Configure.Pkg_Config;

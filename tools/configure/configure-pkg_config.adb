@@ -103,7 +103,9 @@ package body Configure.Pkg_Config is
    -- Package_Libs --
    ------------------
 
-   function Package_Libs (Package_Name : String) return String is
+   function Package_Libs
+    (Package_Name : String) return String_Vectors.Vector
+   is
       Status : aliased Integer;
       Output : constant String :=
         Get_Command_Output
@@ -113,14 +115,44 @@ package body Configure.Pkg_Config is
           "",
           Status'Access,
           True);
+      Aux    : String_Vectors.Vector;
+      First  : Positive;
+      Last   : Natural;
+
 
    begin
       if Status = 0 then
-         return Output;
+         First := Output'First;
+         Last  := Output'First;
 
-      else
-         return "";
+         while Last <= Output'Last loop
+            if Output (Last) = ' ' then
+               --  Parameter separator found, add detected parameter to result.
+
+               Aux.Append (Output (First .. Last - 1));
+
+               First := Last;
+
+               --  Skip spaces.
+
+               while First <= Output'Last loop
+                  exit when Output (First) /= ' ';
+
+                  First := First + 1;
+               end loop;
+
+               Last := First;
+            end if;
+
+            Last := Last + 1;
+         end loop;
+
+         if First < Output'Last and First < Last then
+            Aux.Append (Output (First .. Last - 1));
+         end if;
       end if;
+
+      return Aux;
    end Package_Libs;
 
 end Configure.Pkg_Config;
