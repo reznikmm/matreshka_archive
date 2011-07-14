@@ -58,6 +58,11 @@ package Generator.Contexts is
      Is_Private : Boolean := False);
    --  Adds context clause for the specified compilation unit.
 
+   procedure Instantiate
+    (Self : in out Context;
+     Unit : League.Strings.Universal_String);
+   --  Correct context to be used for specified package.
+
    procedure Iterate
     (Self     : Context;
      Iterator : not null access procedure

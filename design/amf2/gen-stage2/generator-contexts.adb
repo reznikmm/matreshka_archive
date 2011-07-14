@@ -110,6 +110,33 @@ package body Generator.Contexts is
       end if;
    end Add;
 
+   -----------------
+   -- Instantiate --
+   -----------------
+
+   procedure Instantiate
+    (Self : in out Context;
+     Unit : League.Strings.Universal_String) is
+   begin
+      --  Remove context clauses for all parent packages.
+
+      Remove_Parents (Self, Unit, False, False);
+
+      --  Remove record for package itself if any.
+
+      declare
+         Position : String_Context_Maps.Cursor := Self.Map.Find (Unit);
+         Info     : Context_Information_Access;
+
+      begin
+         if String_Context_Maps.Has_Element (Position) then
+            Info := String_Context_Maps.Element (Position);
+            Free (Info);
+            Self.Map.Delete (Position);
+         end if;
+      end;
+   end Instantiate;
+
    -------------
    -- Iterate --
    -------------

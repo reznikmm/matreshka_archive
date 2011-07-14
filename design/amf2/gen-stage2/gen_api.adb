@@ -471,6 +471,7 @@ procedure Gen_API is
          Put_Line (78 * Wide_Wide_String'("-"));
       end;
 
+      Context.Instantiate (League.Strings.To_Universal_String (Package_Name));
       Context.Iterate (Generate_With_Clause'Access);
 
       New_Line;
@@ -850,8 +851,6 @@ procedure Gen_API is
              := Class.Get_Owned_Attribute;
          Attribute  : AMF.CMOF.Properties.CMOF_Property_Access;
          Redefines  : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property;
-         T1         : AMF.CMOF.Types.CMOF_Type_Access;
-         T2         : AMF.CMOF.Types.CMOF_Type_Access;
 
          function Is_Generated return Boolean;
 
@@ -902,21 +901,6 @@ procedure Gen_API is
 
                Generated_Attributes.Insert
                 (AMF.CMOF.Elements.CMOF_Element_Access (Attribute));
-
---               for J in 1 .. Redefines.Length loop
---                  T1 := Attribute.Get_Type;
---                  T2 := Redefines.Element (J).Get_Type;
---
---                  if Attribute.Get_Name = Redefines.Element (J).Get_Name
---                    and then T1 = T2
---                    and then Representation (Attribute)
---                               = Representation (Redefines.Element (J))
---                  then
---                     Generated_Attributes.Include
---                      (AMF.CMOF.Elements.CMOF_Element_Access
---                        (Redefines.Element (J)));
---                  end if;
---               end loop;
             end if;
          end loop;
 
@@ -1017,6 +1001,7 @@ procedure Gen_API is
       --  Generate package specification
 
       Put_Header (Year_2010 => False);
+      Context.Instantiate (Package_Name);
       Context.Iterate (Generate_With_Clause'Access);
       New_Line;
       Put_Line ("package " & Package_Name & " is");
