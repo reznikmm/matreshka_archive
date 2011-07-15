@@ -251,6 +251,7 @@ package AMF.Internals.Tables.UML_Types is
      M_Element,
      M_Collection_Of_Element,
      M_Boolean,
+     M_Boolean_Holder,
      M_Collection_Of_Boolean,
      M_String,
      M_Collection_Of_String,
@@ -280,13 +281,16 @@ package AMF.Internals.Tables.UML_Types is
             null;
 
          when M_Element =>
-            Element_Value : AMF.Internals.AMF_Element;
+            Element : AMF.Internals.AMF_Element;
 
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;
 
          when M_Boolean =>
             Boolean_Value : Boolean;
+
+         when M_Boolean_Holder =>
+            Boolean_Holder : AMF.Optional_Boolean;
 
          when M_Collection_Of_Boolean =>
             Boolean_Collection : AMF.UML.Collection_Of_Boolean;
@@ -295,7 +299,7 @@ package AMF.Internals.Tables.UML_Types is
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;
 
          when M_Collection_Of_String =>
-            String_Collection_Value : AMF.UML.Collection_Of_String;
+            String_Collection_Value : AMF.Internals.AMF_Collection_Of_String;
 
          when M_Integer =>
             Integer_Value : Integer;

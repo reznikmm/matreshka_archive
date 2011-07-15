@@ -53,8 +53,8 @@
     <mapping representation="sequence" adaType="Sequence_Of_String" adaPackage="AMF.String_Collections" internalAdaType="AMF.Internals.AMF_Collection_Of_String"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#UnlimitedNatural">
-    <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Natural_Value"/>
-    <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Natural_Holder"/>
+    <mapping representation="value" adaType="AMF.Unlimited_Natural" memberName="Unlimited_Natural_Value"/>
+    <mapping representation="holder" adaType="AMF.Optional_Unlimited_Natural" memberName="Unlimited_Natural_Holder"/>
   </type>
 
   <!--  Enumeration types of UML package of UML specification  -->
@@ -73,15 +73,15 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#ExpansionKind-iterative" adaLiteral="AMF.UML.Iterative"/>
-    <mapping representation="value" memberName="Expansion_Kind" memberKindName="M_Expansion_Kind"/>
+    <mapping representation="value" memberName="Expansion_Kind_Value" memberKindName="M_Expansion_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#InteractionOperatorKind-seq" adaLiteral="AMF.UML.Seq_Operator"/>
-    <mapping representation="value" memberName="Interaction_Operator_Kind" memberKindName="M_Interaction_Operator_Kind"/>
+    <mapping representation="value" memberName="Interaction_Operator_Kind_Value" memberKindName="M_Interaction_Operator_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#MessageKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#MessageKind-unknown" adaLiteral="AMF.UML.Unknown"/>
-    <mapping representation="value" memberName="Message_Value" memberKindName="M_Message_Kind"/>
+    <mapping representation="value" memberName="Message_Kind_Value" memberKindName="M_Message_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#MessageSort">
     <literal uri="http://www.omg.org/spec/UML/20100901/#MessageSort-synchCall" adaLiteral="AMF.UML.Synch_Call"/>
@@ -93,22 +93,22 @@
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#ParameterDirectionKind-in" adaLiteral="AMF.UML.In_Parameter"/>
-    <mapping representation="value" memberName="Paramenter_Direction_Value" memberKindName="M_Parameter_Direction_Kind"/>
+    <mapping representation="value" memberName="Parameter_Direction_Kind_Value" memberKindName="M_Parameter_Direction_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#ParameterEffectKind">
-    <mapping representation="holder" memberName="Parameter_Effect_Holder" memberKindName="M_Parameter_Effect_Kind_Holder"/>
+    <mapping representation="holder" memberName="Parameter_Effect_Kind_Holder" memberKindName="M_Parameter_Effect_Kind_Holder"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#PseudostateKind-initial" adaLiteral="AMF.UML.Initial_Pseudostate"/>
-    <mapping representation="value" memberName="Pseudostate_Value" memberKindName="M_Pseudostate_Kind"/>
+    <mapping representation="value" memberName="Pseudostate_Kind_Value" memberKindName="M_Pseudostate_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#TransitionKind">
     <literal uri="http://www.omg.org/spec/UML/20100901/#TransitionKind-external" adaLiteral="AMF.UML.External"/>
-    <mapping representation="value" memberName="Transition_Value" memberKindName="M_Transition_Kind"/>
+    <mapping representation="value" memberName="Transition_Kind_Value" memberKindName="M_Transition_Kind"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/#VisibilityKind">
      <literal uri="http://www.omg.org/spec/UML/20100901/#VisibilityKind-public" adaLiteral="AMF.UML.Public_Visibility"/>
-    <mapping representation="value" memberName="Visibility_Value" memberKindName="M_Visibility_Kind"/>
-    <mapping representation="holder" memberName="Visibility_Holder_Value" memberKindName="M_Visibility_Kind_Holder"/>
+    <mapping representation="value" memberName="Visibility_Kind_Value" memberKindName="M_Visibility_Kind"/>
+    <mapping representation="holder" memberName="Visibility_Kind_Holder" memberKindName="M_Visibility_Kind_Holder"/>
   </type>
 </mappings>

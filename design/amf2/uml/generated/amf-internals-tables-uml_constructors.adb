@@ -12393,7 +12393,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owner
                      2      => (M_Element, 0),
                        --  general
-                     3      => (M_Collection_Of_Boolean, 0),
+                     3      => (M_Boolean_Holder, (Is_Empty => True)),
                        --  isSubstitutable
                      4      => (M_Element, 0),
                        --  specific
@@ -25893,7 +25893,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      10     => (M_Element, 0),
                        --  specification
-                     11     => (M_Collection_Of_Boolean, 0),
+                     11     => (M_Boolean_Holder, (Is_Empty => True)),
                        --  firstEvent
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
