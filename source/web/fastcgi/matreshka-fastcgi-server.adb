@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Streams;
-with Ada.Unchecked_Conversion;
 
 with GNAT.Sockets;
 
@@ -57,11 +56,7 @@ package body Matreshka.FastCGI.Server is
    use League.Stream_Element_Vectors;
    use Matreshka.Internals.Unicode.Characters.Latin;
 
-   function To_Socket_Type is
-     new Ada.Unchecked_Conversion (Integer, GNAT.Sockets.Socket_Type);
-
-   FCGI_Listen_Socket : constant GNAT.Sockets.Socket_Type
-     := To_Socket_Type (0);
+   function FCGI_Listen_Socket return GNAT.Sockets.Socket_Type;
 
    type FCGI_Header is record
       Version               : Ada.Streams.Stream_Element;
@@ -389,6 +384,12 @@ package body Matreshka.FastCGI.Server is
       Dsc.Stdout.Clear;
       Dsc.Stderr.Clear;
    end Execute_Request;
+
+   ------------------------
+   -- FCGI_Listen_Socket --
+   ------------------------
+
+   function FCGI_Listen_Socket return GNAT.Sockets.Socket_Type is separate;
 
    ---------------------------
    -- Process_Begin_Request --

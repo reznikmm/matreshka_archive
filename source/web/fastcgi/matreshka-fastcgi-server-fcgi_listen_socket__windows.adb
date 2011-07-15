@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                               XML Processor                              --
+--                               Web Framework                              --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,36 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka/config.gpr";
-with "league.gpr";
+with Interfaces.C;
 
-library project FastCGI is
+separate (Matreshka.FastCGI.Server)
+function FCGI_Listen_Socket return GNAT.Sockets.Socket_Type is
 
-   Library_Name := "matreshka-fastcgi" & Config.RTL_Version_Suffix;
+   STD_INPUT_HANDLE : constant := -10;
 
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Source_Dirs use ("../../include/matreshka/fastcgi");
-   for Library_Dir use Config.Library_Dir;
-   for Library_ALI_Dir use Config.Library_ALI_Dir;
-   for Externally_Built use "True";
+   function GetStdHandle
+    (nStdHandle : Interfaces.C.int) return GNAT.Sockets.Socket_Type;
+   pragma Import (Stdcall, GetStdHandle, "GetStdHandle");
 
-   ------------
-   -- Naming --
-   ------------
-
-   package Naming is
-
-      case Matreshka_Config.Operating_System is
-         when "POSIX" =>
-            for Implementation ("Matreshka.FastCGI.Server.FCGI_Listen_Socket")
-              use "matreshka-fastcgi-server-fcgi_listen_socket__posix.adb";
-
-         when "Windows" =>
-            for Implementation ("Matreshka.FastCGI.Server.FCGI_Listen_Socket")
-              use "matreshka-fastcgi-server-fcgi_listen_socket__windows.adb";
-      end case;
-
-   end Naming;
-
-end FastCGI;
+begin
+   return GetStdHandle (STD_INPUT_HANDLE);
+end FCGI_Listen_Socket;

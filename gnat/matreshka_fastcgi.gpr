@@ -69,4 +69,22 @@ library project Matreshka_FastCGI is
 
    package Compiler renames Matreshka_Common.Compiler;
 
+   ------------
+   -- Naming --
+   ------------
+
+   package Naming is
+
+      case Matreshka_Config.Operating_System is
+         when "POSIX" =>
+            for Implementation ("Matreshka.FastCGI.Server.FCGI_Listen_Socket")
+              use "matreshka-fastcgi-server-fcgi_listen_socket__posix.adb";
+
+         when "Windows" =>
+            for Implementation ("Matreshka.FastCGI.Server.FCGI_Listen_Socket")
+              use "matreshka-fastcgi-server-fcgi_listen_socket__windows.adb";
+      end case;
+
+   end Naming;
+
 end Matreshka_FastCGI;
