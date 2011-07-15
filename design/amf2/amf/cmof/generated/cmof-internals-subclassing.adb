@@ -230,7 +230,7 @@ package body CMOF.Internals.Subclassing is
            | 30 => True,
          others => False));
 
-   Class : constant array (Class_Element_Kinds) of CMOF_Meta_Class :=
+   Class : constant array (Element_Kinds range E_Association .. E_Tag) of CMOF_Meta_Class :=
      (E_Association         => 1,
       E_Class               => 3,
       E_Comment             => 5,

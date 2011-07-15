@@ -78,12 +78,6 @@ package AMF.Internals.Tables.CMOF_Types is
       E_Property,
       E_Tag);
 
-   subtype Class_Element_Kinds is Element_Kinds
-     range E_Association .. E_Tag;
-
-   type Collection_Index is new Interfaces.Integer_8;
-   type Member_Index is new Interfaces.Integer_8;
-
    type Member_Kinds is
     (M_None,
      M_Element,

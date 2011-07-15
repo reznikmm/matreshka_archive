@@ -115,7 +115,7 @@ package body CMOF.Internals.Extents is
             --  must be reflective operation, but now it is hardcoded at
             --  CMOF level.
 
-            if Opposite in Cmof_Non_Collection_Of_Element_Property'Range then
+            if Opposite in Member_Offset'Range (2) then
                if Member_Offset
                    (CMOF_Element_Table.Table (Self).Kind, Opposite) /= 0
                then

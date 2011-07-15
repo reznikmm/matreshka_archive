@@ -204,6 +204,12 @@ package Generator is
    Metamodel_Names : CMOF_Element_String_Maps.Map;
    --  Metamodel name for elements.
 
+   First_Class_Property           : Positive;
+   Last_Class_Property            : Natural;
+   Last_Collection_Class_Property : Natural;
+   --  Offsets of first and last properties owned by classes and last property
+   --  of collection of element type owned by classes.
+
    Generate_Attributes   : Boolean := True;
    Generate_Constructors : Boolean := True;
    Generate_Reflection   : Boolean := True;

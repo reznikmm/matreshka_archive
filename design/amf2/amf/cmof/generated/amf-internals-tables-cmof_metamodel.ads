@@ -285,10 +285,6 @@ package AMF.Internals.Tables.CMOF_Metamodel is
    subtype CMOF_Meta_Class is
      AMF.Internals.CMOF_Element range 1 .. 33;
 
-   subtype CMOF_Collection_Of_Element_Property is
-     AMF.Internals.CMOF_Element range 34 .. 78;
-   subtype CMOF_Non_Collection_Of_Element_Property is
-     AMF.Internals.CMOF_Element range 79 .. 136;
 
    procedure Initialize;
 

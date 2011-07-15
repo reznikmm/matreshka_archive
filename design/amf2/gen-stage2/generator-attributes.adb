@@ -899,15 +899,17 @@ package body Generator.Attributes is
       Put_Line
        ("     array (AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & "_Types.Class_Element_Kinds,");
+          & "_Types.Element_Kinds,");
       Put_Line
-       ("            AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Collection_Of_Element_Property)");
-      Put_Line ("       of Interfaces.Integer_8 :=");
-      Put ("        (");
+       ("            AMF.Internals.CMOF_Element range"
+          & Integer'Wide_Wide_Image (First_Class_Property)
+          & " .."
+          & Integer'Wide_Wide_Image (Last_Collection_Class_Property)
+          & ")");
+      Put_Line ("       of AMF.Internals.AMF_Collection_Of_Element :=");
+      Put_Line ("        (E_None =>");
+      Put_Line ("          (others => 0),");
+      Put ("         ");
       Class_Info.Iterate (Generate_Collection'Access);
       Put_Line (");");
       New_Line;
@@ -915,14 +917,16 @@ package body Generator.Attributes is
       Put_Line
        ("     array (AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & "_Types.Class_Element_Kinds,");
+          & "_Types.Element_Kinds,");
       Put_Line
-       ("            AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Non_Collection_Of_Element_Property) of Natural :=");
-      Put_Line ("       (");
+       ("            AMF.Internals.CMOF_Element range"
+          & Integer'Wide_Wide_Image (Last_Collection_Class_Property + 1)
+          & " .."
+          & Integer'Wide_Wide_Image (Last_Class_Property)
+          & ") of Natural :=");
+      Put_Line ("        (E_None =>");
+      Put_Line ("          (others => 0),");
+      Put ("         ");
       First_Class := True;
       Class_Info.Iterate (Generate_Slot'Access);
       Put_Line (");");

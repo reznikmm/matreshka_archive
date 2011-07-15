@@ -102,11 +102,8 @@ package body Generator.Metamodel is
    All_Packages     : CMOF_Element_Sets.Set;
    --  All classes and associations in the model correspondingly.
 
-   First_Class                    : Positive;
-   Last_Class                     : Natural;
-   First_Class_Property           : Positive;
-   Last_Class_Property            : Natural;
-   Last_Collection_Class_Property : Natural;
+   First_Class : Positive;
+   Last_Class  : Natural;
 
    Elements : AMF.Elements.Collections.Reflective_Collection;
    --  XXX This collection need to be removed.
@@ -1429,25 +1426,10 @@ package body Generator.Metamodel is
              & Natural'Wide_Wide_Image (Last_Class)
              & ";");
          New_Line;
-         Put_Line ("   subtype CMOF_Collection_Of_Element_Property is");
-         Put_Line
-          ("     AMF.Internals.CMOF_Element range"
-             & Natural'Wide_Wide_Image (First_Class_Property)
-             & " .."
-             & Natural'Wide_Wide_Image (Last_Collection_Class_Property)
-             & ";");
-         Put_Line
-          ("   subtype CMOF_Non_Collection_Of_Element_Property is");
-         Put_Line
-          ("     AMF.Internals.CMOF_Element range"
-             & Natural'Wide_Wide_Image (Last_Collection_Class_Property + 1)
-             & " .."
-             & Natural'Wide_Wide_Image (Last_Class_Property + 1)
-             & ";");
-         New_Line;
-         Put_Line ("   procedure Initialize;");
       end if;
 
+      New_Line;
+      Put_Line ("   procedure Initialize;");
       New_Line;
       Put_Line
        ("end AMF.Internals.Tables."
@@ -1521,7 +1503,7 @@ package body Generator.Metamodel is
             if J /= 0 and J mod 8 = 0 then
                Put_Line (",");
                Put ("           ");
-               
+
             elsif J /= 0 then
                Put (", ");
             end if;

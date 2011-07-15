@@ -54,10 +54,12 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
    use AMF.Internals.Tables.CMOF_Metamodel;
 
    Collection_Offset : constant
-     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
-            AMF.Internals.Tables.CMOF_Metamodel.CMOF_Collection_Of_Element_Property)
-       of Interfaces.Integer_8 :=
-        (E_Association =>
+     array (AMF.Internals.Tables.CMOF_Types.Element_Kinds,
+            AMF.Internals.CMOF_Element range 34 .. 78)
+       of AMF.Internals.AMF_Collection_Of_Element :=
+        (E_None =>
+          (others => 0),
+         E_Association =>
           ( 43 => 9,
             58 => 4,
             34 => 15,
@@ -240,10 +242,11 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            others => 0));
 
    Member_Offset : constant
-     array (AMF.Internals.Tables.CMOF_Types.Class_Element_Kinds,
-            AMF.Internals.Tables.CMOF_Metamodel.CMOF_Non_Collection_Of_Element_Property) of Natural :=
-       (
-E_Association =>
+     array (AMF.Internals.Tables.CMOF_Types.Element_Kinds,
+            AMF.Internals.CMOF_Element range 79 .. 135) of Natural :=
+        (E_None =>
+          (others => 0),
+         E_Association =>
           ( 79 => 8,
             81 => 7,
             95 => 2,

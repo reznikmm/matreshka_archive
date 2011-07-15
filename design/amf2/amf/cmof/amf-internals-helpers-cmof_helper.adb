@@ -79,34 +79,33 @@ package body AMF.Internals.Helpers.CMOF_Helper is
       if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
           (Property).Value > 1
       then
-         if Property not in CMOF_Collection_Of_Element_Property then
+         if Property in Collection_Offset'Range (2) then
             AMF.Internals.Element_Collections.Internal_Append
-             (CMOF_Element_Table.Table (Element).Member (0).Collection,
+             (CMOF_Element_Table.Table (Element).Member (0).Collection
+                + Collection_Offset
+                   (CMOF_Element_Table.Table (Element).Kind, Property),
               Other,
               Link);
 
          else
             AMF.Internals.Element_Collections.Internal_Append
-             (CMOF_Element_Table.Table (Element).Member (0).Collection
-                + AMF_Collection_Of_Element
-                   (Collection_Offset
-                     (CMOF_Element_Table.Table (Element).Kind, Property)),
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
               Other,
               Link);
          end if;
 
       else
-         if Property not in CMOF_Non_Collection_Of_Element_Property then
-            AMF.Internals.Element_Collections.Internal_Append
-             (CMOF_Element_Table.Table (Element).Member (0).Collection,
-              Other,
-              Link);
-
-         else
+         if Property in Member_Offset'Range (2) then
             CMOF_Element_Table.Table (Element).Member
              (Member_Offset
                (CMOF_Element_Table.Table (Element).Kind,
                 Property)).Element := Other;
+
+         else
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
+              Other,
+              Link);
          end if;
       end if;
    end Connect_Link_End;

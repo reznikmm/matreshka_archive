@@ -54,10 +54,12 @@ package AMF.Internals.Tables.UML_Attribute_Mappings is
    use AMF.Internals.Tables.UML_Metamodel;
 
    Collection_Offset : constant
-     array (AMF.Internals.Tables.UML_Types.Class_Element_Kinds,
-            AMF.Internals.Tables.UML_Metamodel.UML_Collection_Of_Element_Property)
-       of Interfaces.Integer_8 :=
-        (E_Abstraction =>
+     array (AMF.Internals.Tables.UML_Types.Element_Kinds,
+            AMF.Internals.CMOF_Element range 243 .. 482)
+       of AMF.Internals.AMF_Collection_Of_Element :=
+        (E_None =>
+          (others => 0),
+         E_Abstraction =>
           ( 336 => 7,
             400 => 6,
             347 => 1,
@@ -3015,10 +3017,11 @@ package AMF.Internals.Tables.UML_Attribute_Mappings is
            others => 0));
 
    Member_Offset : constant
-     array (AMF.Internals.Tables.UML_Types.Class_Element_Kinds,
-            AMF.Internals.Tables.UML_Metamodel.UML_Non_Collection_Of_Element_Property) of Natural :=
-       (
-E_Abstraction =>
+     array (AMF.Internals.Tables.UML_Types.Element_Kinds,
+            AMF.Internals.CMOF_Element range 483 .. 866) of Natural :=
+        (E_None =>
+          (others => 0),
+         E_Abstraction =>
           ( 483 => 9,
             669 => 2,
             670 => 3,

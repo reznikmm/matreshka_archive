@@ -46,7 +46,7 @@
 with AMF.Internals.Tables.UML_Types;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
-with UML.Internals.Notification;
+with AMF.Internals.Tables.UML_Notification;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -54,7 +54,6 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    use AMF.Internals.Tables;
    use AMF.Internals.Tables.UML_Types;
-   use Standard.UML.Internals;
    use AMF.Internals.Tables.UML_Metamodel;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
@@ -27199,7 +27198,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_URI, Old, To);
 
             if Old /= null then
@@ -27216,7 +27215,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_URI, Old, To);
 
             if Old /= null then
@@ -27233,7 +27232,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_URI, Old, To);
 
             if Old /= null then
@@ -27261,7 +27260,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Component_Realization_Abstraction, Old, To);
 
          when others =>
@@ -27285,7 +27284,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Execution_Specification_Action, Old, To);
 
          when others =>
@@ -27309,413 +27308,413 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Action_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Activity_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Add_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Broadcast_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Control_Flow =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Activity, Old, To);
 
          when E_Create_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Decision_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Destroy_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Flow_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Fork_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Initial_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Join_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Merge_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Activity, Old, To);
 
          when E_Opaque_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Raise_Exception_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_Activity, Old, To);
 
          when others =>
@@ -27739,7 +27738,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Variable_Activity_Scope, Old, To);
 
          when others =>
@@ -27763,7 +27762,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Substitution_Actual, Old, To);
 
          when others =>
@@ -27787,7 +27786,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Include_Addition, Old, To);
 
          when others =>
@@ -27811,7 +27810,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_General_Ordering_After, Old, To);
 
          when others =>
@@ -27835,21 +27834,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
             UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Aggregation, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
             UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Aggregation, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value;
             UML_Element_Table.Table (Self).Member (19).Aggregation_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Aggregation, Old, To);
 
          when others =>
@@ -27879,7 +27878,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Element_Import_Alias, Old, To);
 
             if Old /= null then
@@ -27907,7 +27906,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter_Allow_Substitutable, Old, To);
 
          when others =>
@@ -27931,7 +27930,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Profile_Application_Applied_Profile, Old, To);
 
          when others =>
@@ -27955,7 +27954,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Profile_Application_Applying_Package, Old, To);
 
          when others =>
@@ -27979,28 +27978,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Clear_Association_Action_Association, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Association, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Association, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Association, Old, To);
 
          when others =>
@@ -28024,21 +28023,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (21).Element;
             UML_Element_Table.Table (Self).Member (21).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Association_End, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (21).Element;
             UML_Element_Table.Table (Self).Member (21).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Association_End, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (21).Element;
             UML_Element_Table.Table (Self).Member (21).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Association_End, Old, To);
 
          when others =>
@@ -28062,7 +28061,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_General_Ordering_Before, Old, To);
 
          when others =>
@@ -28086,21 +28085,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Execution_Specification_Behavior, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Behavior_Action_Behavior, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Opaque_Expression_Behavior, Old, To);
 
          when others =>
@@ -28130,7 +28129,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Comment_Body, Old, To);
 
             if Old /= null then
@@ -28158,7 +28157,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Body_Condition, Old, To);
 
          when others =>
@@ -28182,7 +28181,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Binding_Bound_Element, Old, To);
 
          when others =>
@@ -28206,7 +28205,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Change_Event_Change_Expression, Old, To);
 
          when others =>
@@ -28230,28 +28229,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Class, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Class, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Class, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Class, Old, To);
 
          when others =>
@@ -28275,28 +28274,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Create_Object_Action_Classifier, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Extent_Action_Classifier, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Is_Classified_Object_Action_Classifier, Old, To);
 
          when E_Redefinable_Template_Signature =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Template_Signature_Classifier, Old, To);
 
          when others =>
@@ -28320,112 +28319,112 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behaviored_Classifier_Classifier_Behavior, Old, To);
 
          when others =>
@@ -28449,7 +28448,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reduce_Action_Collection, Old, To);
 
          when others =>
@@ -28473,14 +28472,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value;
             UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavioral_Feature_Concurrency, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value;
             UML_Element_Table.Table (Self).Member (9).Call_Concurrency_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavioral_Feature_Concurrency, Old, To);
 
          when others =>
@@ -28504,7 +28503,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Extend_Condition, Old, To);
 
          when others =>
@@ -28528,7 +28527,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_Connector, Old, To);
 
          when others =>
@@ -28552,42 +28551,42 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Vertex_Container, Old, To);
 
          when E_Final_State =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Vertex_Container, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Container, Old, To);
 
          when E_Pseudostate =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Vertex_Container, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Vertex_Container, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Container, Old, To);
 
          when others =>
@@ -28617,7 +28616,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Image_Content, Old, To);
 
             if Old /= null then
@@ -28645,14 +28644,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interface_Realization_Contract, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Substitution_Contract, Old, To);
 
          when others =>
@@ -28676,28 +28675,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (23).Element;
             UML_Element_Table.Table (Self).Member (23).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Datatype, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Datatype, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (23).Element;
             UML_Element_Table.Table (Self).Member (23).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Datatype, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (23).Element;
             UML_Element_Table.Table (Self).Member (23).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Datatype, Old, To);
 
          when others =>
@@ -28721,14 +28720,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Clause_Decider, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Loop_Node_Decider, Old, To);
 
          when others =>
@@ -28752,7 +28751,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Decision_Node_Decision_Input, Old, To);
 
          when others =>
@@ -28776,7 +28775,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Decision_Node_Decision_Input_Flow, Old, To);
 
          when others =>
@@ -28800,7 +28799,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Lifeline_Decomposed_As, Old, To);
 
          when others =>
@@ -28830,7 +28829,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (24).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default, Old, To);
 
             if Old /= null then
@@ -28847,7 +28846,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (16).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Default, Old, To);
 
             if Old /= null then
@@ -28864,7 +28863,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (24).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default, Old, To);
 
             if Old /= null then
@@ -28881,7 +28880,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (24).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default, Old, To);
 
             if Old /= null then
@@ -28909,28 +28908,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Default, Old, To);
 
          when E_Connectable_Element_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Default, Old, To);
 
          when E_Operation_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Default, Old, To);
 
          when E_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Default, Old, To);
 
          when others =>
@@ -28954,28 +28953,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (25).Element;
             UML_Element_Table.Table (Self).Member (25).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default_Value, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Default_Value, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (25).Element;
             UML_Element_Table.Table (Self).Member (25).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default_Value, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (25).Element;
             UML_Element_Table.Table (Self).Member (25).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Default_Value, Old, To);
 
          when others =>
@@ -28999,7 +28998,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Slot_Defining_Feature, Old, To);
 
          when others =>
@@ -29023,7 +29022,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Deployment_Specification_Deployment, Old, To);
 
          when others =>
@@ -29053,7 +29052,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (17).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Deployment_Specification_Deployment_Location, Old, To);
 
             if Old /= null then
@@ -29081,7 +29080,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Destruction_Data_Destroy_At, Old, To);
 
          when others =>
@@ -29105,7 +29104,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (18).Paramenter_Direction_Value;
             UML_Element_Table.Table (Self).Member (18).Paramenter_Direction_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Direction, Old, To);
 
          when others =>
@@ -29129,14 +29128,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Do_Activity, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Do_Activity, Old, To);
 
          when others =>
@@ -29160,7 +29159,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Holder;
             UML_Element_Table.Table (Self).Member (19).Parameter_Effect_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Effect, Old, To);
 
          when others =>
@@ -29184,14 +29183,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Effect, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Effect, Old, To);
 
          when others =>
@@ -29215,98 +29214,98 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Behavior_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Combined_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Consider_Ignore_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Continuation =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Destruction_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Execution_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Interaction_Operand =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Interaction_Use =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Message_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when E_State_Invariant =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Interaction, Old, To);
 
          when others =>
@@ -29330,98 +29329,98 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Behavior_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Combined_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Consider_Ignore_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Continuation =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Destruction_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Execution_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (21).Element;
             UML_Element_Table.Table (Self).Member (21).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Interaction_Operand =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Interaction_Use =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Message_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when E_State_Invariant =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Fragment_Enclosing_Operand, Old, To);
 
          when others =>
@@ -29445,28 +29444,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Data_End, Old, To);
 
          when E_Link_End_Data =>
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Data_End, Old, To);
 
          when E_Link_End_Destruction_Data =>
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Data_End, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Object_End_Action_End, Old, To);
 
          when others =>
@@ -29490,14 +29489,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Entry, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Entry, Old, To);
 
          when others =>
@@ -29521,7 +29520,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Enumeration_Literal_Enumeration, Old, To);
 
          when others =>
@@ -29545,14 +29544,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Observation_Event, Old, To);
 
          when E_Trigger =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Trigger_Event, Old, To);
 
          when others =>
@@ -29576,7 +29575,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Raise_Exception_Action_Exception, Old, To);
 
          when others =>
@@ -29600,7 +29599,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Exception_Handler_Exception_Input, Old, To);
 
          when others =>
@@ -29624,7 +29623,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Execution_Occurrence_Specification_Execution, Old, To);
 
          when others =>
@@ -29654,7 +29653,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (18).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Deployment_Specification_Execution_Location, Old, To);
 
             if Old /= null then
@@ -29682,14 +29681,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Exit, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Exit, Old, To);
 
          when others =>
@@ -29713,14 +29712,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Duration_Expr, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Expression_Expr, Old, To);
 
          when others =>
@@ -29744,7 +29743,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Extend_Extended_Case, Old, To);
 
          when others =>
@@ -29768,7 +29767,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Region_Extended_Region, Old, To);
 
          when others =>
@@ -29792,7 +29791,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Extend_Extension, Old, To);
 
          when others =>
@@ -29822,7 +29821,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (15).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Artifact_File_Name, Old, To);
 
             if Old /= null then
@@ -29839,7 +29838,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (15).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Artifact_File_Name, Old, To);
 
             if Old /= null then
@@ -29867,14 +29866,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Execution_Specification_Finish, Old, To);
 
          when E_Behavior_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Execution_Specification_Finish, Old, To);
 
          when others =>
@@ -29898,7 +29897,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Test_Identity_Action_First, Old, To);
 
          when others =>
@@ -29922,7 +29921,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Holder;
             UML_Element_Table.Table (Self).Member (11).Boolean_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Constraint_First_Event, Old, To);
 
          when others =>
@@ -29946,7 +29945,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Observation_First_Event, Old, To);
 
          when others =>
@@ -29970,7 +29969,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Substitution_Formal, Old, To);
 
          when others =>
@@ -30000,7 +29999,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (3).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Image_Format, Old, To);
 
             if Old /= null then
@@ -30028,7 +30027,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Input_Pin_From_Action, Old, To);
 
          when others =>
@@ -30052,7 +30051,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_General, Old, To);
 
          when others =>
@@ -30076,7 +30075,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Protocol_Conformance_General_Machine, Old, To);
 
          when others =>
@@ -30100,35 +30099,35 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Guard, Old, To);
 
          when E_Interaction_Operand =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Operand_Guard, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Guard, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Guard, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Guard, Old, To);
 
          when others =>
@@ -30152,7 +30151,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Exception_Handler_Handler_Body, Old, To);
 
          when others =>
@@ -30176,7 +30175,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interface_Realization_Implementing_Classifier, Old, To);
 
          when others =>
@@ -30200,7 +30199,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Element_Import_Imported_Element, Old, To);
 
          when others =>
@@ -30224,7 +30223,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Import_Imported_Package, Old, To);
 
          when others =>
@@ -30248,14 +30247,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Element_Import_Importing_Namespace, Old, To);
 
          when E_Package_Import =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Import_Importing_Namespace, Old, To);
 
          when others =>
@@ -30279,49 +30278,49 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when E_Interruptible_Activity_Region =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Group_In_Activity, Old, To);
 
          when others =>
@@ -30345,413 +30344,413 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Action_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Activity_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Add_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Broadcast_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Control_Flow =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_In_Structured_Node, Old, To);
 
          when E_Create_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Decision_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Destroy_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Flow_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Fork_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Initial_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Join_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Merge_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_In_Structured_Node, Old, To);
 
          when E_Opaque_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Raise_Exception_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Node_In_Structured_Node, Old, To);
 
          when others =>
@@ -30775,7 +30774,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Include_Including_Case, Old, To);
 
          when others =>
@@ -30799,21 +30798,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Add_Structural_Feature_Value_Action_Insert_At, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Add_Variable_Value_Action_Insert_At, Old, To);
 
          when E_Link_End_Creation_Data =>
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Creation_Data_Insert_At, Old, To);
 
          when others =>
@@ -30837,7 +30836,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Instance_Value_Instance, Old, To);
 
          when others =>
@@ -30861,14 +30860,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Lifeline_Interaction, Old, To);
 
          when E_Message =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_Interaction, Old, To);
 
          when others =>
@@ -30892,14 +30891,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Interaction_Operator_Kind;
             UML_Element_Table.Table (Self).Member (9).Interaction_Operator_Kind := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Combined_Fragment_Interaction_Operator, Old, To);
 
          when E_Consider_Ignore_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (9).Interaction_Operator_Kind;
             UML_Element_Table.Table (Self).Member (9).Interaction_Operator_Kind := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Combined_Fragment_Interaction_Operator, Old, To);
 
          when others =>
@@ -30923,28 +30922,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (26).Element;
             UML_Element_Table.Table (Self).Member (26).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Interface, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Interface, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (26).Element;
             UML_Element_Table.Table (Self).Member (26).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Interface, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (26).Element;
             UML_Element_Table.Table (Self).Member (26).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Interface, Old, To);
 
          when others =>
@@ -30968,14 +30967,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Interrupts, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Interrupts, Old, To);
 
          when others =>
@@ -30999,7 +30998,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Invariant_Invariant, Old, To);
 
          when others =>
@@ -31023,203 +31022,203 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavioral_Feature_Is_Abstract, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavioral_Feature_Is_Abstract, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Abstract, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Abstract, Old, To);
 
          when others =>
@@ -31243,91 +31242,91 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (17).Boolean_Value;
             UML_Element_Table.Table (Self).Member (17).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Class_Is_Active, Old, To);
 
          when others =>
@@ -31351,7 +31350,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Conditional_Node_Is_Assured, Old, To);
 
          when others =>
@@ -31375,7 +31374,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (33).Boolean_Value;
             UML_Element_Table.Table (Self).Member (33).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Port_Is_Behavior, Old, To);
 
          when others =>
@@ -31399,7 +31398,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Join_Node_Is_Combine_Duplicate, Old, To);
 
          when others =>
@@ -31423,35 +31422,35 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (27).Boolean_Value;
             UML_Element_Table.Table (Self).Member (27).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Composite, Old, To);
 
          when E_Final_State =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Is_Composite, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (27).Boolean_Value;
             UML_Element_Table.Table (Self).Member (27).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Composite, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (27).Boolean_Value;
             UML_Element_Table.Table (Self).Member (27).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Composite, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Is_Composite, Old, To);
 
          when others =>
@@ -31475,7 +31474,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (34).Boolean_Value;
             UML_Element_Table.Table (Self).Member (34).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Port_Is_Conjugated, Old, To);
 
          when others =>
@@ -31499,28 +31498,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (21).Boolean_Value;
             UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pin_Is_Control, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (21).Boolean_Value;
             UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pin_Is_Control, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (21).Boolean_Value;
             UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pin_Is_Control, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (21).Boolean_Value;
             UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pin_Is_Control, Old, To);
 
          when others =>
@@ -31544,56 +31543,56 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Is_Control_Type, Old, To);
 
          when others =>
@@ -31617,7 +31616,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_Set_Is_Covering, Old, To);
 
          when others =>
@@ -31641,49 +31640,49 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Association_Is_Derived, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Association_Is_Derived, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Association_Is_Derived, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Association_Is_Derived, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (28).Boolean_Value;
             UML_Element_Table.Table (Self).Member (28).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Derived, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (28).Boolean_Value;
             UML_Element_Table.Table (Self).Member (28).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Derived, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (28).Boolean_Value;
             UML_Element_Table.Table (Self).Member (28).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Derived, Old, To);
 
          when others =>
@@ -31707,21 +31706,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (29).Boolean_Value;
             UML_Element_Table.Table (Self).Member (29).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Derived_Union, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (29).Boolean_Value;
             UML_Element_Table.Table (Self).Member (29).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Derived_Union, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (29).Boolean_Value;
             UML_Element_Table.Table (Self).Member (29).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Derived_Union, Old, To);
 
          when others =>
@@ -31745,7 +31744,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (5).Boolean_Value;
             UML_Element_Table.Table (Self).Member (5).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Destruction_Data_Is_Destroy_Duplicates, Old, To);
 
          when others =>
@@ -31769,7 +31768,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Destroy_Object_Action_Is_Destroy_Links, Old, To);
 
          when others =>
@@ -31793,7 +31792,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Destroy_Object_Action_Is_Destroy_Owned_Objects, Old, To);
 
          when others =>
@@ -31817,7 +31816,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Conditional_Node_Is_Determinate, Old, To);
 
          when others =>
@@ -31841,7 +31840,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Partition_Is_Dimension, Old, To);
 
          when others =>
@@ -31865,7 +31864,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Is_Classified_Object_Action_Is_Direct, Old, To);
 
          when others =>
@@ -31889,7 +31888,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_Set_Is_Disjoint, Old, To);
 
          when others =>
@@ -31913,7 +31912,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (20).Boolean_Value;
             UML_Element_Table.Table (Self).Member (20).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Is_Exception, Old, To);
 
          when others =>
@@ -31937,7 +31936,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Partition_Is_External, Old, To);
 
          when others =>
@@ -31961,189 +31960,189 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Is_Final_Specialization, Old, To);
 
          when others =>
@@ -32167,21 +32166,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (30).Boolean_Value;
             UML_Element_Table.Table (Self).Member (30).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_ID, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (30).Boolean_Value;
             UML_Element_Table.Table (Self).Member (30).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_ID, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (30).Boolean_Value;
             UML_Element_Table.Table (Self).Member (30).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_ID, Old, To);
 
          when others =>
@@ -32205,7 +32204,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (17).Boolean_Value;
             UML_Element_Table.Table (Self).Member (17).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Component_Is_Indirectly_Instantiated, Old, To);
 
          when others =>
@@ -32229,693 +32228,693 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Action_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Activity =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Activity_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Add_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Broadcast_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Connector =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Control_Flow =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Create_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Decision_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Destroy_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Extension_Point =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Final_State =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Flow_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Fork_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Initial_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Join_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Merge_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Opaque_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Raise_Exception_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Redefinable_Template_Signature =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Region =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (7).Boolean_Value;
             UML_Element_Table.Table (Self).Member (7).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Redefinable_Element_Is_Leaf, Old, To);
 
          when others =>
@@ -32939,294 +32938,294 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Add_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Broadcast_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Create_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Destroy_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Opaque_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Raise_Exception_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Action_Is_Locally_Reentrant, Old, To);
 
          when others =>
@@ -33250,7 +33249,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Flow_Is_Multicast, Old, To);
 
          when others =>
@@ -33274,7 +33273,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Flow_Is_Multireceive, Old, To);
 
          when others =>
@@ -33298,84 +33297,84 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Connector_End =>
             Old := UML_Element_Table.Table (Self).Member (2).Boolean_Value;
             UML_Element_Table.Table (Self).Member (2).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Is_Ordered, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (2).Boolean_Value;
             UML_Element_Table.Table (Self).Member (2).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reduce_Action_Is_Ordered, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Ordered, Old, To);
 
          when others =>
@@ -33399,7 +33398,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (19).Boolean_Value;
             UML_Element_Table.Table (Self).Member (19).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Is_Query, Old, To);
 
          when others =>
@@ -33423,28 +33422,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (20).Boolean_Value;
             UML_Element_Table.Table (Self).Member (20).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Is_Read_Only, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Read_Only, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Read_Only, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Is_Read_Only, Old, To);
 
          when others =>
@@ -33468,42 +33467,42 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Is_Reentrant, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Is_Reentrant, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Is_Reentrant, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Is_Reentrant, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Is_Reentrant, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (18).Boolean_Value;
             UML_Element_Table.Table (Self).Member (18).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Is_Reentrant, Old, To);
 
          when others =>
@@ -33527,7 +33526,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Event_Is_Relative, Old, To);
 
          when others =>
@@ -33551,14 +33550,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Remove_Structural_Feature_Value_Action_Is_Remove_Duplicates, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Boolean_Value;
             UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Remove_Variable_Value_Action_Is_Remove_Duplicates, Old, To);
 
          when others =>
@@ -33582,28 +33581,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (17).Boolean_Value;
             UML_Element_Table.Table (Self).Member (17).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Add_Structural_Feature_Value_Action_Is_Replace_All, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (15).Boolean_Value;
             UML_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Add_Variable_Value_Action_Is_Replace_All, Old, To);
 
          when E_Link_End_Creation_Data =>
             Old := UML_Element_Table.Table (Self).Member (5).Boolean_Value;
             UML_Element_Table.Table (Self).Member (5).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Creation_Data_Is_Replace_All, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reclassify_Object_Action_Is_Replace_All, Old, To);
 
          when others =>
@@ -33627,7 +33626,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (35).Boolean_Value;
             UML_Element_Table.Table (Self).Member (35).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Port_Is_Service, Old, To);
 
          when others =>
@@ -33651,7 +33650,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (21).Boolean_Value;
             UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Is_Single_Execution, Old, To);
 
          when others =>
@@ -33675,42 +33674,42 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Boolean_Value;
             UML_Element_Table.Table (Self).Member (8).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Feature_Is_Static, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (17).Boolean_Value;
             UML_Element_Table.Table (Self).Member (17).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Feature_Is_Static, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (8).Boolean_Value;
             UML_Element_Table.Table (Self).Member (8).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Feature_Is_Static, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (17).Boolean_Value;
             UML_Element_Table.Table (Self).Member (17).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Feature_Is_Static, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (17).Boolean_Value;
             UML_Element_Table.Table (Self).Member (17).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Feature_Is_Static, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (8).Boolean_Value;
             UML_Element_Table.Table (Self).Member (8).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Feature_Is_Static, Old, To);
 
          when others =>
@@ -33734,7 +33733,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (21).Boolean_Value;
             UML_Element_Table.Table (Self).Member (21).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Is_Stream, Old, To);
 
          when others =>
@@ -33758,7 +33757,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Boolean_Value;
             UML_Element_Table.Table (Self).Member (4).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Profile_Application_Is_Strict, Old, To);
 
          when others =>
@@ -33782,7 +33781,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Boolean_Holder;
             UML_Element_Table.Table (Self).Member (3).Boolean_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_Is_Substitutable, Old, To);
 
          when others =>
@@ -33806,21 +33805,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Action_Is_Synchronous, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Action_Is_Synchronous, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Boolean_Value;
             UML_Element_Table.Table (Self).Member (13).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Action_Is_Synchronous, Old, To);
 
          when others =>
@@ -33844,7 +33843,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Loop_Node_Is_Tested_First, Old, To);
 
          when others =>
@@ -33868,77 +33867,77 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Connector_End =>
             Old := UML_Element_Table.Table (Self).Member (3).Boolean_Value;
             UML_Element_Table.Table (Self).Member (3).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (20).Boolean_Value;
             UML_Element_Table.Table (Self).Member (20).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Is_Unique, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (3).Boolean_Value;
             UML_Element_Table.Table (Self).Member (3).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (16).Boolean_Value;
             UML_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (11).Boolean_Value;
             UML_Element_Table.Table (Self).Member (11).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Is_Unique, Old, To);
 
          when others =>
@@ -33962,14 +33961,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Accept_Event_Action_Is_Unmarshall, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Boolean_Value;
             UML_Element_Table.Table (Self).Member (12).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Accept_Event_Action_Is_Unmarshall, Old, To);
 
          when others =>
@@ -33993,7 +33992,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Join_Node_Join_Spec, Old, To);
 
          when others =>
@@ -34017,7 +34016,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Pseudostate_Value;
             UML_Element_Table.Table (Self).Member (8).Pseudostate_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pseudostate_Kind, Old, To);
 
          when others =>
@@ -34041,14 +34040,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Transition_Value;
             UML_Element_Table.Table (Self).Member (11).Transition_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Kind, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (11).Transition_Value;
             UML_Element_Table.Table (Self).Member (11).Transition_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Kind, Old, To);
 
          when others =>
@@ -34072,7 +34071,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Deployment_Location, Old, To);
 
          when others =>
@@ -34102,7 +34101,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (4).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Image_Location, Old, To);
 
             if Old /= null then
@@ -34130,77 +34129,77 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
             UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Connector_End =>
             Old := UML_Element_Table.Table (Self).Member (4).Integer_Holder;
             UML_Element_Table.Table (Self).Member (4).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
             UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Extension_End_Lower, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
             UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (21).Integer_Holder;
             UML_Element_Table.Table (Self).Member (21).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Lower, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
             UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (4).Integer_Holder;
             UML_Element_Table.Table (Self).Member (4).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
             UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
             UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (17).Integer_Holder;
             UML_Element_Table.Table (Self).Member (17).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (12).Integer_Holder;
             UML_Element_Table.Table (Self).Member (12).Integer_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower, Old, To);
 
          when others =>
@@ -34224,70 +34223,70 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Connector_End =>
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Lower_Value, Old, To);
 
          when others =>
@@ -34311,42 +34310,42 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Abstraction_Mapping, Old, To);
 
          when E_Component_Realization =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Abstraction_Mapping, Old, To);
 
          when E_Interface_Realization =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Abstraction_Mapping, Old, To);
 
          when E_Manifestation =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Abstraction_Mapping, Old, To);
 
          when E_Realization =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Abstraction_Mapping, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Abstraction_Mapping, Old, To);
 
          when others =>
@@ -34370,21 +34369,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Duration_Interval_Max, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interval_Max, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interval_Max, Old, To);
 
          when others =>
@@ -34408,7 +34407,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Constraint_Maxint, Old, To);
 
          when others =>
@@ -34432,7 +34431,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Merge_Merged_Package, Old, To);
 
          when others =>
@@ -34456,21 +34455,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_End_Message, Old, To);
 
          when E_Gate =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_End_Message, Old, To);
 
          when E_Message_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_End_Message, Old, To);
 
          when others =>
@@ -34494,7 +34493,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Message_Sort_Value;
             UML_Element_Table.Table (Self).Member (10).Message_Sort_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_Message_Sort, Old, To);
 
          when others =>
@@ -34518,21 +34517,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Duration_Interval_Min, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interval_Min, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interval_Min, Old, To);
 
          when others =>
@@ -34556,7 +34555,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Constraint_Minint, Old, To);
 
          when others =>
@@ -34580,7 +34579,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Expansion_Kind;
             UML_Element_Table.Table (Self).Member (15).Expansion_Kind := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Expansion_Region_Mode, Old, To);
 
          when others =>
@@ -34604,35 +34603,35 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Boolean_Value;
             UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structured_Activity_Node_Must_Isolate, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (14).Boolean_Value;
             UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structured_Activity_Node_Must_Isolate, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Boolean_Value;
             UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structured_Activity_Node_Must_Isolate, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Boolean_Value;
             UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structured_Activity_Node_Must_Isolate, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Boolean_Value;
             UML_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structured_Activity_Node_Must_Isolate, Old, To);
 
          when others =>
@@ -34662,7 +34661,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34679,7 +34678,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34696,7 +34695,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34713,7 +34712,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34730,7 +34729,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34747,7 +34746,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34764,7 +34763,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34781,7 +34780,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34798,7 +34797,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34815,7 +34814,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34832,7 +34831,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34849,7 +34848,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34866,7 +34865,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34883,7 +34882,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34900,7 +34899,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34917,7 +34916,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34934,7 +34933,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34951,7 +34950,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34968,7 +34967,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -34985,7 +34984,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35002,7 +35001,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35019,7 +35018,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35036,7 +35035,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35053,7 +35052,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35070,7 +35069,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35087,7 +35086,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35104,7 +35103,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35121,7 +35120,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35138,7 +35137,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35155,7 +35154,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35172,7 +35171,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35189,7 +35188,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35206,7 +35205,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35223,7 +35222,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35240,7 +35239,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35257,7 +35256,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35274,7 +35273,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35291,7 +35290,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35308,7 +35307,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35325,7 +35324,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35342,7 +35341,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35359,7 +35358,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35376,7 +35375,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35393,7 +35392,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35410,7 +35409,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35427,7 +35426,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35444,7 +35443,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35461,7 +35460,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35478,7 +35477,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35495,7 +35494,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35512,7 +35511,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35529,7 +35528,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35546,7 +35545,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35563,7 +35562,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35580,7 +35579,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35597,7 +35596,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35614,7 +35613,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35631,7 +35630,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35648,7 +35647,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35665,7 +35664,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35682,7 +35681,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35699,7 +35698,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35716,7 +35715,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35733,7 +35732,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35750,7 +35749,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35767,7 +35766,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35784,7 +35783,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35801,7 +35800,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35818,7 +35817,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35835,7 +35834,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35852,7 +35851,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35869,7 +35868,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35886,7 +35885,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35903,7 +35902,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35920,7 +35919,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35937,7 +35936,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35954,7 +35953,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35971,7 +35970,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -35988,7 +35987,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36005,7 +36004,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36022,7 +36021,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36039,7 +36038,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36056,7 +36055,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36073,7 +36072,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36090,7 +36089,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36107,7 +36106,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36124,7 +36123,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36141,7 +36140,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36158,7 +36157,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36175,7 +36174,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36192,7 +36191,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36209,7 +36208,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36226,7 +36225,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36243,7 +36242,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36260,7 +36259,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36277,7 +36276,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36294,7 +36293,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36311,7 +36310,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36328,7 +36327,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36345,7 +36344,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36362,7 +36361,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36379,7 +36378,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36396,7 +36395,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36413,7 +36412,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36430,7 +36429,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36447,7 +36446,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36464,7 +36463,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36481,7 +36480,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36498,7 +36497,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36515,7 +36514,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36532,7 +36531,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36549,7 +36548,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36566,7 +36565,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36583,7 +36582,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36600,7 +36599,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (8).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36617,7 +36616,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36634,7 +36633,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36651,7 +36650,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36668,7 +36667,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36685,7 +36684,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36702,7 +36701,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36719,7 +36718,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36736,7 +36735,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36753,7 +36752,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36770,7 +36769,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36787,7 +36786,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36804,7 +36803,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36821,7 +36820,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36838,7 +36837,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36855,7 +36854,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36872,7 +36871,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36889,7 +36888,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36906,7 +36905,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36923,7 +36922,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36940,7 +36939,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36957,7 +36956,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36974,7 +36973,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -36991,7 +36990,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37008,7 +37007,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37025,7 +37024,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37042,7 +37041,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37059,7 +37058,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37076,7 +37075,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37093,7 +37092,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37110,7 +37109,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37127,7 +37126,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37144,7 +37143,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37161,7 +37160,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37178,7 +37177,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37195,7 +37194,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37212,7 +37211,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37229,7 +37228,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37246,7 +37245,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37263,7 +37262,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37280,7 +37279,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37297,7 +37296,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37314,7 +37313,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37331,7 +37330,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37348,7 +37347,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37365,7 +37364,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37382,7 +37381,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37399,7 +37398,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37416,7 +37415,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37433,7 +37432,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37450,7 +37449,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37467,7 +37466,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37484,7 +37483,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37501,7 +37500,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37518,7 +37517,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37535,7 +37534,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (2).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name, Old, To);
 
             if Old /= null then
@@ -37563,1190 +37562,1190 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Accept_Call_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Action_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Action_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Activity =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Activity_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Activity_Partition =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Add_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Any_Receive_Event =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Behavior_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Broadcast_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Call_Event =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Change_Event =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Collaboration_Use =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Combined_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Component_Realization =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Connection_Point_Reference =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Connector =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Consider_Ignore_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Continuation =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Control_Flow =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Create_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Decision_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Dependency =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Deployment =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Destroy_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Destruction_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Duration =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Duration_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Duration_Interval =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Duration_Observation =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Enumeration_Literal =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Execution_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Expression =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Extend =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Extension_Point =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Final_State =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Flow_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Fork_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Gate =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_General_Ordering =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Generalization_Set =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Include =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Information_Flow =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Initial_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Instance_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Instance_Value =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interaction_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interaction_Operand =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interaction_Use =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interface_Realization =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interruptible_Activity_Region =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Interval_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Join_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Lifeline =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Literal_Boolean =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Literal_Integer =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Literal_Null =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Literal_Real =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Literal_String =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Literal_Unlimited_Natural =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Manifestation =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Merge_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Message =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Message_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Model =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Opaque_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Parameter_Set =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Pseudostate =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Raise_Exception_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Realization =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Redefinable_Template_Signature =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Region =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Signal_Event =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_State_Invariant =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Time_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Time_Event =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Time_Observation =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Trigger =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Usage =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Name_Expression, Old, To);
 
          when others =>
@@ -38770,21 +38769,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Nesting_Package, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Nesting_Package, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Nesting_Package, Old, To);
 
          when others =>
@@ -38808,84 +38807,84 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Object, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Clear_Association_Action_Object, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Object, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Is_Classified_Object_Action_Object, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Object_End_Action_Object, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Object_End_Qualifier_Action_Object, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Object, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reclassify_Object_Action_Object, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Object, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Start_Classifier_Behavior_Action_Object, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Start_Object_Behavior_Action_Object, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Unmarshall_Action_Object, Old, To);
 
          when others =>
@@ -38909,42 +38908,42 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Invocation_Action_On_Port, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Invocation_Action_On_Port, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Invocation_Action_On_Port, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Invocation_Action_On_Port, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Invocation_Action_On_Port, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Invocation_Action_On_Port, Old, To);
 
          when others =>
@@ -38968,21 +38967,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Event_Operation, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Operation_Action_Operation, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameter_Operation, Old, To);
 
          when others =>
@@ -39006,21 +39005,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (31).Element;
             UML_Element_Table.Table (Self).Member (31).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Opposite, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (31).Element;
             UML_Element_Table.Table (Self).Member (31).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Opposite, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (31).Element;
             UML_Element_Table.Table (Self).Member (31).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Opposite, Old, To);
 
          when others =>
@@ -39044,56 +39043,56 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value;
             UML_Element_Table.Table (Self).Member (12).Object_Node_Ordering_Kind_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Ordering, Old, To);
 
          when others =>
@@ -39117,7 +39116,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Substitution_Owned_Actual, Old, To);
 
          when others =>
@@ -39141,28 +39140,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Default, Old, To);
 
          when E_Connectable_Element_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Default, Old, To);
 
          when E_Operation_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Default, Old, To);
 
          when E_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Default, Old, To);
 
          when others =>
@@ -39186,28 +39185,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Parametered_Element, Old, To);
 
          when E_Connectable_Element_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Parametered_Element, Old, To);
 
          when E_Operation_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Parametered_Element, Old, To);
 
          when E_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Owned_Parametered_Element, Old, To);
 
          when others =>
@@ -39231,224 +39230,224 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Model =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Templateable_Element_Owned_Template_Signature, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Templateable_Element_Owned_Template_Signature, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Templateable_Element_Owned_Template_Signature, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Templateable_Element_Owned_Template_Signature, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Templateable_Element_Owned_Template_Signature, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Owned_Template_Signature, Old, To);
 
          when others =>
@@ -39472,21 +39471,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (32).Element;
             UML_Element_Table.Table (Self).Member (32).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Owning_Association, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (32).Element;
             UML_Element_Table.Table (Self).Member (32).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Owning_Association, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (32).Element;
             UML_Element_Table.Table (Self).Member (32).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Property_Owning_Association, Old, To);
 
          when others =>
@@ -39510,7 +39509,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_String_Expression_Owning_Expression, Old, To);
 
          when others =>
@@ -39534,7 +39533,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Slot_Owning_Instance, Old, To);
 
          when others =>
@@ -39558,532 +39557,532 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Activity =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Any_Receive_Event =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Call_Event =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Change_Event =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Component_Realization =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Dependency =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Deployment =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Duration =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Duration_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Duration_Interval =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Duration_Observation =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Enumeration_Literal =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Expression =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Generalization_Set =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Information_Flow =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Instance_Specification =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Instance_Value =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Interaction_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Interface_Realization =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Interval_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Literal_Boolean =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Literal_Integer =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Literal_Null =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Literal_Real =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Literal_String =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Literal_Unlimited_Natural =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Manifestation =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Model =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Realization =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Signal_Event =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Time_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Time_Event =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Time_Observation =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Usage =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Owning_Template_Parameter, Old, To);
 
          when others =>
@@ -40107,189 +40106,189 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Type_Package, Old, To);
 
          when others =>
@@ -40313,7 +40312,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Parameter_Node_Parameter, Old, To);
 
          when others =>
@@ -40337,28 +40336,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter_Parametered_Element, Old, To);
 
          when E_Connectable_Element_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connectable_Element_Template_Parameter_Parametered_Element, Old, To);
 
          when E_Operation_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Template_Parameter_Parametered_Element, Old, To);
 
          when E_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Parametered_Element, Old, To);
 
          when others =>
@@ -40382,7 +40381,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connector_End_Part_With_Port, Old, To);
 
          when others =>
@@ -40406,7 +40405,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Protocol_Transition_Post_Condition, Old, To);
 
          when others =>
@@ -40430,7 +40429,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_Set_Powertype, Old, To);
 
          when others =>
@@ -40454,7 +40453,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Protocol_Transition_Pre_Condition, Old, To);
 
          when others =>
@@ -40478,7 +40477,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Exception_Handler_Protected_Node, Old, To);
 
          when others =>
@@ -40502,14 +40501,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interface_Protocol, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (36).Element;
             UML_Element_Table.Table (Self).Member (36).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Port_Protocol, Old, To);
 
          when others =>
@@ -40533,14 +40532,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Qualifier_Value_Qualifier, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier, Old, To);
 
          when others =>
@@ -40564,7 +40563,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_Receive_Event, Old, To);
 
          when others =>
@@ -40588,7 +40587,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Merge_Receiving_Package, Old, To);
 
          when others =>
@@ -40612,14 +40611,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Redefined_State, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Redefined_State, Old, To);
 
          when others =>
@@ -40643,14 +40642,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Redefined_Transition, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Redefined_Transition, Old, To);
 
          when others =>
@@ -40674,7 +40673,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reduce_Action_Reducer, Old, To);
 
          when others =>
@@ -40698,14 +40697,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Use_Refers_To, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Use_Refers_To, Old, To);
 
          when others =>
@@ -40729,7 +40728,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Expansion_Node_Region_As_Input, Old, To);
 
          when others =>
@@ -40753,7 +40752,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (16).Element;
             UML_Element_Table.Table (Self).Member (16).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Expansion_Node_Region_As_Output, Old, To);
 
          when others =>
@@ -40777,14 +40776,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Remove_Structural_Feature_Value_Action_Remove_At, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Remove_Variable_Value_Action_Remove_At, Old, To);
 
          when others =>
@@ -40808,7 +40807,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reply_Action_Reply_To_Call, Old, To);
 
          when others =>
@@ -40832,189 +40831,189 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Representation, Old, To);
 
          when others =>
@@ -41038,14 +41037,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Partition_Represents, Old, To);
 
          when E_Lifeline =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Lifeline_Represents, Old, To);
 
          when others =>
@@ -41069,119 +41068,119 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Write_Structural_Feature_Action_Result, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Clear_Structural_Feature_Action_Result, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Create_Link_Object_Action_Result, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Create_Object_Action_Result, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Opaque_Expression_Result, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Extent_Action_Result, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Is_Classified_Object_Action_Result, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Action_Result, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Object_End_Action_Result, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Link_Object_End_Qualifier_Action_Result, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Self_Action_Result, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Structural_Feature_Action_Result, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Read_Variable_Action_Result, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reduce_Action_Result, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Write_Structural_Feature_Action_Result, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Test_Identity_Action_Result, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Value_Specification_Action_Result, Old, To);
 
          when others =>
@@ -41205,14 +41204,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Accept_Call_Action_Return_Information, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reply_Action_Return_Information, Old, To);
 
          when others =>
@@ -41236,14 +41235,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Use_Return_Value, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Use_Return_Value, Old, To);
 
          when others =>
@@ -41267,14 +41266,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Use_Return_Value_Recipient, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Interaction_Use_Return_Value_Recipient, Old, To);
 
          when others =>
@@ -41298,7 +41297,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connector_End_Role, Old, To);
 
          when others =>
@@ -41322,7 +41321,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Variable_Scope, Old, To);
 
          when others =>
@@ -41346,7 +41345,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Test_Identity_Action_Second, Old, To);
 
          when others =>
@@ -41370,63 +41369,63 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Flow_Selection, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Selection, Old, To);
 
          when others =>
@@ -41450,7 +41449,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Lifeline_Selector, Old, To);
 
          when others =>
@@ -41474,7 +41473,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_Send_Event, Old, To);
 
          when others =>
@@ -41498,7 +41497,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (9).Boolean_Value;
             UML_Element_Table.Table (Self).Member (9).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Continuation_Setting, Old, To);
 
          when others =>
@@ -41522,28 +41521,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Broadcast_Signal_Action_Signal, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Reception_Signal, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Send_Signal_Action_Signal, Old, To);
 
          when E_Signal_Event =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Signal_Event_Signal, Old, To);
 
          when others =>
@@ -41567,42 +41566,42 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (6).Element;
             UML_Element_Table.Table (Self).Member (6).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Signature, Old, To);
 
          when E_Connectable_Element_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (6).Element;
             UML_Element_Table.Table (Self).Member (6).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Signature, Old, To);
 
          when E_Message =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Message_Signature, Old, To);
 
          when E_Operation_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (6).Element;
             UML_Element_Table.Table (Self).Member (6).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Signature, Old, To);
 
          when E_Template_Binding =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Binding_Signature, Old, To);
 
          when E_Template_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (6).Element;
             UML_Element_Table.Table (Self).Member (6).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Signature, Old, To);
 
          when others =>
@@ -41626,28 +41625,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Source, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Source, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Source, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Source, Old, To);
 
          when others =>
@@ -41671,7 +41670,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (4).Element;
             UML_Element_Table.Table (Self).Member (4).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Generalization_Specific, Old, To);
 
          when others =>
@@ -41695,7 +41694,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Protocol_Conformance_Specific_Machine, Old, To);
 
          when others =>
@@ -41719,91 +41718,91 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (19).Element;
             UML_Element_Table.Table (Self).Member (19).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Specification, Old, To);
 
          when E_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Constraint_Specification, Old, To);
 
          when E_Duration_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Constraint_Specification, Old, To);
 
          when E_Enumeration_Literal =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Instance_Specification_Specification, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (19).Element;
             UML_Element_Table.Table (Self).Member (19).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Specification, Old, To);
 
          when E_Instance_Specification =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Instance_Specification_Specification, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (19).Element;
             UML_Element_Table.Table (Self).Member (19).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Specification, Old, To);
 
          when E_Interaction_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Constraint_Specification, Old, To);
 
          when E_Interval_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Constraint_Specification, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (19).Element;
             UML_Element_Table.Table (Self).Member (19).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Specification, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (19).Element;
             UML_Element_Table.Table (Self).Member (19).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Specification, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (19).Element;
             UML_Element_Table.Table (Self).Member (19).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Behavior_Specification, Old, To);
 
          when E_Time_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Constraint_Specification, Old, To);
 
          when others =>
@@ -41827,14 +41826,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Execution_Specification_Start, Old, To);
 
          when E_Behavior_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Execution_Specification_Start, Old, To);
 
          when others =>
@@ -41858,21 +41857,21 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connection_Point_Reference_State, Old, To);
 
          when E_Pseudostate =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pseudostate_State, Old, To);
 
          when E_Region =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Region_State, Old, To);
 
          when others =>
@@ -41896,14 +41895,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_State_Invariant, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (17).Element;
             UML_Element_Table.Table (Self).Member (17).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_State_Invariant, Old, To);
 
          when others =>
@@ -41927,14 +41926,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Pseudostate_State_Machine, Old, To);
 
          when E_Region =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Region_State_Machine, Old, To);
 
          when others =>
@@ -41958,28 +41957,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Structural_Feature, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Structural_Feature, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Structural_Feature, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Structural_Feature_Action_Structural_Feature, Old, To);
 
          when others =>
@@ -42003,14 +42002,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Submachine, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_State_Submachine, Old, To);
 
          when others =>
@@ -42034,7 +42033,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (11).Element;
             UML_Element_Table.Table (Self).Member (11).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Substitution_Substituting_Classifier, Old, To);
 
          when others =>
@@ -42058,7 +42057,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Partition_Super_Partition, Old, To);
 
          when others =>
@@ -42088,7 +42087,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Expression_Symbol, Old, To);
 
             if Old /= null then
@@ -42105,7 +42104,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Expression_Symbol, Old, To);
 
             if Old /= null then
@@ -42133,56 +42132,56 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Call_Operation_Action_Target, Old, To);
 
          when E_Control_Flow =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Target, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Destroy_Object_Action_Target, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Target, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Target, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Send_Object_Action_Target, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Send_Signal_Action_Target, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Transition_Target, Old, To);
 
          when others =>
@@ -42206,14 +42205,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Signature_Template, Old, To);
 
          when E_Template_Signature =>
             Old := UML_Element_Table.Table (Self).Member (2).Element;
             UML_Element_Table.Table (Self).Member (2).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Signature_Template, Old, To);
 
          when others =>
@@ -42237,7 +42236,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (5).Element;
             UML_Element_Table.Table (Self).Member (5).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Template_Parameter_Substitution_Template_Binding, Old, To);
 
          when others =>
@@ -42261,532 +42260,532 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Activity =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Any_Receive_Event =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Call_Event =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Change_Event =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Component_Realization =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Dependency =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Deployment =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Duration =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Duration_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Duration_Interval =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Duration_Observation =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Enumeration_Literal =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Expression =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connectable_Element_Template_Parameter, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Generalization_Set =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Information_Flow =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Instance_Specification =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Instance_Value =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Interaction_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Interface_Realization =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Interval_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Literal_Boolean =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Literal_Integer =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Literal_Null =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Literal_Real =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Literal_String =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Literal_Unlimited_Natural =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Manifestation =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Model =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Template_Parameter, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connectable_Element_Template_Parameter, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connectable_Element_Template_Parameter, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connectable_Element_Template_Parameter, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Realization =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Signal_Event =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Time_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Time_Event =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Time_Observation =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Usage =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Parameterable_Element_Template_Parameter, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Classifier_Template_Parameter, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (9).Element;
             UML_Element_Table.Table (Self).Member (9).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connectable_Element_Template_Parameter, Old, To);
 
          when others =>
@@ -42810,7 +42809,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (18).Element;
             UML_Element_Table.Table (Self).Member (18).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Flow_Transformation, Old, To);
 
          when others =>
@@ -42834,217 +42833,217 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Collaboration_Use =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Collaboration_Use_Type, Old, To);
 
          when E_Connector =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Connector_Type, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Duration =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Duration_Interval =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Expression =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Extension_End_Type, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Instance_Value =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Literal_Boolean =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Literal_Integer =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Literal_Null =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Literal_Real =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Literal_String =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Literal_Unlimited_Natural =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Type, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Typed_Element_Type, Old, To);
 
          when others =>
@@ -43068,7 +43067,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Unmarshall_Action_Unmarshall_Type, Old, To);
 
          when others =>
@@ -43092,77 +43091,77 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
             UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Connector_End =>
             Old := UML_Element_Table.Table (Self).Member (6).Natural_Holder;
             UML_Element_Table.Table (Self).Member (6).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
             UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
             UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (23).Natural_Holder;
             UML_Element_Table.Table (Self).Member (23).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Operation_Upper, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
             UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (6).Natural_Holder;
             UML_Element_Table.Table (Self).Member (6).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
             UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
             UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (19).Natural_Holder;
             UML_Element_Table.Table (Self).Member (19).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (14).Natural_Holder;
             UML_Element_Table.Table (Self).Member (14).Natural_Holder := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper, Old, To);
 
          when others =>
@@ -43186,56 +43185,56 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Object_Node_Upper_Bound, Old, To);
 
          when others =>
@@ -43259,70 +43258,70 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Connector_End =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (7).Element;
             UML_Element_Table.Table (Self).Member (7).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (20).Element;
             UML_Element_Table.Table (Self).Member (20).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Multiplicity_Element_Upper_Value, Old, To);
 
          when others =>
@@ -43346,7 +43345,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (8).Element;
             UML_Element_Table.Table (Self).Member (8).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Extension_Point_Use_Case, Old, To);
 
          when others =>
@@ -43370,7 +43369,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Manifestation_Utilized_Element, Old, To);
 
          when others =>
@@ -43394,7 +43393,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Boolean_Value;
             UML_Element_Table.Table (Self).Member (10).Boolean_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Literal_Boolean_Value, Old, To);
 
          when others =>
@@ -43418,7 +43417,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Integer_Value;
             UML_Element_Table.Table (Self).Member (10).Integer_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Literal_Integer_Value, Old, To);
 
          when others =>
@@ -43442,7 +43441,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Real_Value;
             UML_Element_Table.Table (Self).Member (10).Real_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Literal_Real_Value, Old, To);
 
          when others =>
@@ -43472,7 +43471,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (10).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Literal_String_Value, Old, To);
 
             if Old /= null then
@@ -43500,7 +43499,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Natural_Value;
             UML_Element_Table.Table (Self).Member (10).Natural_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Literal_Unlimited_Natural_Value, Old, To);
 
          when others =>
@@ -43524,70 +43523,70 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Write_Structural_Feature_Action_Value, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Write_Variable_Action_Value, Old, To);
 
          when E_Link_End_Creation_Data =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Data_Value, Old, To);
 
          when E_Link_End_Data =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Data_Value, Old, To);
 
          when E_Link_End_Destruction_Data =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Link_End_Data_Value, Old, To);
 
          when E_Qualifier_Value =>
             Old := UML_Element_Table.Table (Self).Member (3).Element;
             UML_Element_Table.Table (Self).Member (3).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Qualifier_Value_Value, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (15).Element;
             UML_Element_Table.Table (Self).Member (15).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Write_Structural_Feature_Action_Value, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Write_Variable_Action_Value, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (22).Element;
             UML_Element_Table.Table (Self).Member (22).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Value_Pin_Value, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (13).Element;
             UML_Element_Table.Table (Self).Member (13).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Value_Specification_Action_Value, Old, To);
 
          when others =>
@@ -43611,28 +43610,28 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Variable_Action_Variable, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Variable_Action_Variable, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Variable_Action_Variable, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (12).Element;
             UML_Element_Table.Table (Self).Member (12).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Variable_Action_Variable, Old, To);
 
          when others =>
@@ -43662,7 +43661,7 @@ package body AMF.Internals.Tables.UML_Attributes is
                 (UML_Element_Table.Table (Self).Member (12).String_Value);
             end if;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Model_Viewpoint, Old, To);
 
             if Old /= null then
@@ -43690,1190 +43689,1190 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Accept_Call_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Accept_Event_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Action_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Action_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Activity =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Activity_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Activity_Parameter_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Activity_Partition =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Add_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Add_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Any_Receive_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Behavior_Execution_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Broadcast_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Call_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Call_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Call_Operation_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Central_Buffer_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Change_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Clear_Association_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Clear_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Clear_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Collaboration_Use =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Combined_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Component_Realization =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Conditional_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Connection_Point_Reference =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Connector =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Consider_Ignore_Fragment =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Continuation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Control_Flow =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Create_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Create_Link_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Create_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Data_Store_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Decision_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Dependency =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Deployment =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Destroy_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Destroy_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Destruction_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Duration =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Duration_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Duration_Interval =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Duration_Observation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Enumeration_Literal =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Execution_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Expansion_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Expansion_Region =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Extend =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Extension_End =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Extension_Point =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Final_State =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Flow_Final_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Fork_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Gate =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_General_Ordering =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Generalization_Set =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Include =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Information_Flow =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Initial_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Input_Pin =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Instance_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Instance_Value =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interaction_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interaction_Operand =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interaction_Use =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interface_Realization =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interruptible_Activity_Region =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Interval_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Join_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Lifeline =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Literal_Boolean =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Literal_Integer =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Literal_Null =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Literal_Real =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Literal_String =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Literal_Unlimited_Natural =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Loop_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Manifestation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Merge_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Message =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Message_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Model =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Occurrence_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Opaque_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Operation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Output_Pin =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Parameter =>
             Old := UML_Element_Table.Table (Self).Member (12).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (12).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Parameter_Set =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Part_Decomposition =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Port =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Property =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Protocol_Transition =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Pseudostate =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Raise_Exception_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Extent_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Is_Classified_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Link_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Link_Object_End_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Self_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Structural_Feature_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Read_Variable_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Realization =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Reception =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Reclassify_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Redefinable_Template_Signature =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Reduce_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Region =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Remove_Structural_Feature_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Remove_Variable_Value_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Reply_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Send_Object_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Send_Signal_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Sequence_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Signal_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Start_Classifier_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Start_Object_Behavior_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_State =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_State_Invariant =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Structured_Activity_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Test_Identity_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Time_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Time_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Time_Observation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Transition =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Trigger =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Unmarshall_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Usage =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Value_Pin =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Value_Specification_Action =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when E_Variable =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Holder_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
 
          when others =>
@@ -44897,504 +44896,504 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Activity =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Actor =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Any_Receive_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Artifact =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Association =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Association_Class =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Call_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Change_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Class =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Collaboration =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Communication_Path =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Component =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Component_Realization =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Data_Type =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Dependency =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Deployment =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Deployment_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Device =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Duration =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Duration_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Duration_Interval =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Duration_Observation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Element_Import =>
             Old := UML_Element_Table.Table (Self).Member (5).Visibility_Value;
             UML_Element_Table.Table (Self).Member (5).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Element_Import_Visibility, Old, To);
 
          when E_Enumeration =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Enumeration_Literal =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Execution_Environment =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Extension =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Function_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Generalization_Set =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Information_Flow =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Information_Item =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Instance_Specification =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Instance_Value =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Interaction =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Interaction_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Interface =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Interface_Realization =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Interval =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Interval_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Literal_Boolean =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Literal_Integer =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Literal_Null =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Literal_Real =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Literal_String =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Literal_Unlimited_Natural =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Manifestation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Model =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Node =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Opaque_Behavior =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Opaque_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Package =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Package_Import =>
             Old := UML_Element_Table.Table (Self).Member (4).Visibility_Value;
             UML_Element_Table.Table (Self).Member (4).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Package_Import_Visibility, Old, To);
 
          when E_Primitive_Type =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Profile =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Protocol_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Realization =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Signal =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Signal_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_State_Machine =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Stereotype =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_String_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Substitution =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Time_Constraint =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Time_Event =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Time_Expression =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Time_Interval =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Time_Observation =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Usage =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when E_Use_Case =>
             Old := UML_Element_Table.Table (Self).Member (6).Visibility_Value;
             UML_Element_Table.Table (Self).Member (6).Visibility_Value := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when others =>
@@ -45418,14 +45417,14 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Weight, Old, To);
 
          when E_Object_Flow =>
             Old := UML_Element_Table.Table (Self).Member (14).Element;
             UML_Element_Table.Table (Self).Member (14).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Activity_Edge_Weight, Old, To);
 
          when others =>
@@ -45449,7 +45448,7 @@ package body AMF.Internals.Tables.UML_Attributes is
             Old := UML_Element_Table.Table (Self).Member (10).Element;
             UML_Element_Table.Table (Self).Member (10).Element := To;
 
-            Notification.Notify_Attribute_Set
+            UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Time_Event_When, Old, To);
 
          when others =>
