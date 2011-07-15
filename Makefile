@@ -47,12 +47,12 @@ ucd:
 
 regexp: yy_tools .gens-regexp
 	cd .gens-regexp && $(AYACC) ../source/league/regexp_parser.y
-	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league regexp_parser_tokens.ads
+	cd .gens-regexp && gcc -c -gnat12 -gnatct -I../source/league regexp_parser_tokens.ads
 	cd source/league/regexp && $(TOKEN_TRANSFORMER) regexp ../../../.gens-regexp/regexp_parser_tokens.adt ../matreshka-internals-regexps-compiler.ads.in
-	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_parser.adb
+	cd .gens-regexp && gcc -c -gnat12 -gnatct -I../source/league -I../source/league/regexp regexp_parser.adb
 	cd source/league/regexp && $(PARSER_TRANSFORMER) regexp ../../../.gens-regexp/regexp_parser.adt ../matreshka-internals-regexps-compiler-parser.adb.in
 	cd .gens-regexp && $(AFLEX) -v ../source/league/regexp_scanner.l
-	cd .gens-regexp && gcc -c -gnat05 -gnatct -I../source/league -I../source/league/regexp regexp_scanner.adb
+	cd .gens-regexp && gcc -c -gnat12 -gnatct -I../source/league -I../source/league/regexp regexp_scanner.adb
 	cd source/league/regexp && $(SCANNER_TRANSFORMER) regexp ../../../.gens-regexp/regexp_scanner.adt ../matreshka-internals-regexps-compiler-scanner.adb.in
 
 .gens-regexp:
@@ -60,12 +60,12 @@ regexp: yy_tools .gens-regexp
 
 xml:	yy_tools .gens-xml
 	cd .gens-xml && $(AYACC) ../source/xml/xml_parser.y
-	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser_tokens.ads
+	cd .gens-xml && gcc -c -gnat12 -gnatct -I../source/league -I../source/xml xml_parser_tokens.ads
 	cd source/xml/xml && $(TOKEN_TRANSFORMER) xml ../../../.gens-xml/xml_parser_tokens.adt ../xml-sax-simple_readers.ads.in
-	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_parser.adb
+	cd .gens-xml && gcc -c -gnat12 -gnatct -I../source/league -I../source/xml xml_parser.adb
 	cd source/xml/xml && $(PARSER_TRANSFORMER) xml ../../../.gens-xml/xml_parser.adt ../xml-sax-simple_readers-parser.adb.in
 	cd .gens-xml && $(AFLEX) -v -I ../source/xml/xml_scanner.l
-	cd .gens-xml && gcc -c -gnat05 -gnatct -I../source/league -I../source/xml xml_scanner.adb
+	cd .gens-xml && gcc -c -gnat12 -gnatct -I../source/league -I../source/xml xml_scanner.adb
 	cd source/xml/xml && $(SCANNER_TRANSFORMER) xml ../../../.gens-xml/xml_scanner.adt ../xml-sax-simple_readers-scanner.adb.in
 
 .gens-xml:
