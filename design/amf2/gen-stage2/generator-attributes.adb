@@ -256,9 +256,9 @@ package body Generator.Attributes is
                Put (Class.Collection.Element (Attribute), 2);
                Put_Line
                 ("  "
-                   & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
-                   & "::"
-                   & Attribute.Get_Name.Value.To_Wide_Wide_String);
+                   & Attribute_Class.Get_Name.Value
+                   & Attribute_Class.Separator
+                   & Attribute.Get_Name.Value);
             end if;
          end Dump_Collection;
 
@@ -279,7 +279,7 @@ package body Generator.Attributes is
                Put_Line
                 ("  "
                    & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
-                   & "::"
+                   & Attribute_Class.Separator
                    & Attribute.Get_Name.Value.To_Wide_Wide_String);
             end if;
          end Dump_Slot;
@@ -789,7 +789,10 @@ package body Generator.Attributes is
                 & ",");
             Set_Col (29);
             Put_Line
-             ("--  " & Owner.Get_Name.Value & "::" & Attribute.Get_Name.Value);
+             ("--  "
+                & Owner.Get_Name.Value
+                & Owner.Separator
+                & Attribute.Get_Name.Value);
          end Generate;
 
       begin
@@ -858,7 +861,10 @@ package body Generator.Attributes is
                 & ",");
             Set_Col (29);
             Put_Line
-             ("--  " & Owner.Get_Name.Value & "::" & Attribute.Get_Name.Value);
+             ("--  "
+                & Owner.Get_Name.Value
+                & Owner.Separator
+                & Attribute.Get_Name.Value);
          end Generate;
 
       begin
@@ -982,11 +988,11 @@ package body Generator.Attributes is
          begin
             Put_Line
              ("   --  "
-                & Class.Get_Name.Value.To_Wide_Wide_String
+                & Class.Get_Name.Value
                 & " => "
-                & Attribute_Class.Get_Name.Value.To_Wide_Wide_String
-                & "::"
-                & Attribute.Get_Name.Value.To_Wide_Wide_String);
+                & Attribute_Class.Get_Name.Value
+                & Attribute_Class.Separator
+                & Attribute.Get_Name.Value);
          end Generate_Usage;
 
          Getter         : constant Homograph_Information_Access
