@@ -15,7 +15,7 @@ PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
 all: Makefile.config
-	make -f Makefile.build SMP_MFLAGS=$(SMP_MFLAGS)
+	${MAKE} -f Makefile.build SMP_MFLAGS=$(SMP_MFLAGS)
 
 check: all
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
@@ -89,7 +89,7 @@ clean:
 	rm -rf .objs .libs .gens-regexp .gens-xml
 
 Makefile.config:
-	make reconfig
+	${MAKE} reconfig
 
 reconfig: config
 	./configure
@@ -98,4 +98,4 @@ config:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_configure.gpr
 
 install:
-	make -f Makefile.install
+	${MAKE} -f Makefile.install
