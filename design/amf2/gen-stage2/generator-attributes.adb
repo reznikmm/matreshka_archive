@@ -761,6 +761,8 @@ package body Generator.Attributes is
          procedure Generate (Position : CMOF_Property_Sets.Cursor) is
             Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
               := CMOF_Property_Sets.Element (Position);
+            Owner     : constant AMF.CMOF.Classes.CMOF_Class_Access
+              := Attribute.Get_Class;
 
          begin
             if not Class.Collection.Contains (Attribute) then
@@ -775,14 +777,19 @@ package body Generator.Attributes is
                Put ("           ");
             end if;
 
-            Put_Line
-             (Integer'Wide_Wide_Image
-               (Element_Numbers.Element
-                 (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)))
-                & " =>"
+            Put
+             (Element_Numbers.Element
+               (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)),
+              Width => 0);
+            Set_Col (18);
+            Put
+             (" =>"
                 & Integer'Wide_Wide_Image
                    (Class.Collection.Element (Attribute))
                 & ",");
+            Set_Col (29);
+            Put_Line
+             ("--  " & Owner.Get_Name.Value & "::" & Attribute.Get_Name.Value);
          end Generate;
 
       begin
@@ -823,6 +830,8 @@ package body Generator.Attributes is
          procedure Generate (Position : CMOF_Property_Sets.Cursor) is
             Attribute : constant AMF.CMOF.Properties.CMOF_Property_Access
               := CMOF_Property_Sets.Element (Position);
+            Owner     : constant AMF.CMOF.Classes.CMOF_Class_Access
+              := Attribute.Get_Class;
 
          begin
             if not Class.Slot.Contains (Attribute) then
@@ -837,14 +846,19 @@ package body Generator.Attributes is
                Put ("           ");
             end if;
 
-            Put_Line
-             (Integer'Wide_Wide_Image
-               (Element_Numbers.Element
-                 (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)))
-                & " =>"
+            Put
+             (Element_Numbers.Element
+               (AMF.CMOF.Elements.CMOF_Element_Access (Attribute)),
+              Width => 0);
+            Set_Col (18);
+            Put
+             (" =>"
                 & Integer'Wide_Wide_Image
                    (Class.Slot.Element (Attribute))
                 & ",");
+            Set_Col (29);
+            Put_Line
+             ("--  " & Owner.Get_Name.Value & "::" & Attribute.Get_Name.Value);
          end Generate;
 
       begin
