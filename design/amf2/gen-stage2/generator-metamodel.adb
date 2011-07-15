@@ -56,6 +56,7 @@ with AMF.CMOF.Classes.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
+with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
@@ -133,6 +134,10 @@ package body Generator.Metamodel is
    --  superclasses, but except redefined properties).
 
    function Is_Parameter_Direction_Kind_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean;
+
+   function Is_Visibility_Kind_Type
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
        return Boolean;
 
@@ -1156,6 +1161,8 @@ package body Generator.Metamodel is
                end if;
 
             elsif Is_Parameter_Direction_Kind_Type (Property_Type) then
+               --  XXX Check for default value is not implemented.
+
                Put
                 ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
                    & To_Ada_Identifier (Property.Get_Name.Value)
@@ -1178,6 +1185,34 @@ package body Generator.Metamodel is
                   when AMF.CMOF.Return_Parameter =>
                      Put_Line ("AMF.CMOF.Return_Parameter);");
                end case;
+
+            elsif Is_Visibility_Kind_Type (Property_Type) then
+               --  XXX Check for default value is not implemented.
+
+               if not League.Holders.Is_Empty (Value) then
+                  Put
+                   ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                      & To_Ada_Identifier (Property.Get_Name.Value)
+                      & " (");
+                  Put (Element_Numbers.Element (Element), Width => 0);
+                  Put (", ");
+
+                  case AMF.CMOF.Holders.Visibility_Kinds.Element
+                        (Value)
+                  is
+                     when AMF.CMOF.Public_Visibility =>
+                        Put_Line ("AMF.CMOF.Public_Visibility);");
+
+                     when AMF.CMOF.Private_Visibility =>
+                        Put_Line ("AMF.CMOF.Private_Visibility);");
+
+                     when AMF.CMOF.Protected_Visibility =>
+                        Put_Line ("AMF.CMOF.Protected_Visibility);");
+
+                     when AMF.CMOF.Package_Visibility =>
+                        Put_Line ("AMF.CMOF.Package_Visibility);");
+                  end case;
+               end if;
 
             else
                --  Enumeration
@@ -1588,6 +1623,19 @@ package body Generator.Metamodel is
         Element.Get_Name
           = League.Strings.To_Universal_String ("UnlimitedNatural");
    end Is_Unlimited_Natural_Type;
+
+   -----------------------------
+   -- Is_Visibility_Kind_Type --
+   -----------------------------
+
+   function Is_Visibility_Kind_Type
+    (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return Boolean is
+   begin
+      return
+        Element.Get_Name
+          = League.Strings.To_Universal_String ("VisibilityKind");
+   end Is_Visibility_Kind_Type;
 
    --------------------
    -- Is_String_Type --
