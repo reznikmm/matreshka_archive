@@ -521,7 +521,9 @@ package body Generator.Attributes is
                          & ").String_Value);");
                      New_Line;
                      Put_Line
-                      ("            Notification.Notify_Attribute_Set");
+                      ("            "
+                         & Metamodel_Name
+                         & "_Notification.Notify_Attribute_Set");
                      Put_Line
                       ("             (Self, "
                          & Property_Constant_Name (Attribute)
@@ -571,7 +573,9 @@ package body Generator.Attributes is
                      Put_Line ("            end if;");
                      New_Line;
                      Put_Line
-                      ("            Notification.Notify_Attribute_Set");
+                      ("            "
+                         & Metamodel_Name
+                         & "_Notification.Notify_Attribute_Set");
                      Put_Line
                       ("             (Self, "
                          & Property_Constant_Name (Attribute)
@@ -619,7 +623,10 @@ package body Generator.Attributes is
                    & Member_Name
                    & " := To;");
                New_Line;
-               Put_Line ("            Notification.Notify_Attribute_Set");
+               Put_Line
+                ("            "
+                   & Metamodel_Name
+                   & "_Notification.Notify_Attribute_Set");
                Put_Line
                 ("             (Self, "
                    & Property_Constant_Name (Attribute)
@@ -689,9 +696,9 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Metamodel;");
       Put_Line
-       ("with "
+       ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals.Notification;");
+          & "_Notification;");
       Put_Line ("with League.Strings.Internals;");
       Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
@@ -705,10 +712,6 @@ package body Generator.Attributes is
        ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Types;");
-      Put_Line
-       ("   use Standard."
-          & Metamodel_Name.To_Wide_Wide_String
-          & ".Internals;");
       Put_Line
        ("   use AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String

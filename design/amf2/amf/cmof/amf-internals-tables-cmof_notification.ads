@@ -43,65 +43,64 @@
 ------------------------------------------------------------------------------
 --  Helper subprograms for element modification notification.
 ------------------------------------------------------------------------------
-with League.Strings;
 with Matreshka.Internals.Strings;
 
 with AMF.CMOF;
 
-package CMOF.Internals.Notification is
+package AMF.Internals.Tables.CMOF_Notification is
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : Boolean;
      New_Value : Boolean);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
      New_Value : Matreshka.Internals.Strings.Shared_String_Access);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_String;
      New_Value : AMF.Optional_String);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Integer;
      New_Value : AMF.Optional_Integer);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Unlimited_Natural;
      New_Value : AMF.Optional_Unlimited_Natural);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : CMOF.CMOF_Element;
-     New_Value : CMOF.CMOF_Element);
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Internals.CMOF_Element;
+     New_Value : AMF.Internals.CMOF_Element);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
      New_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
      New_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind);
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.CMOF.CMOF_Visibility_Kind;
      New_Value : AMF.CMOF.CMOF_Visibility_Kind);
 
-end CMOF.Internals.Notification;
+end AMF.Internals.Tables.CMOF_Notification;

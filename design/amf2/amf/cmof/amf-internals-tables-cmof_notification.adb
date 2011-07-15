@@ -41,25 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Holders;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
-with AMF.CMOF.Properties;
 with AMF.CMOF.Holders.Visibility_Kinds;
+with AMF.CMOF.Properties;
 with AMF.Holders.Elements;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with League.Holders.Booleans;
 with League.Strings.Internals;
 
-package body CMOF.Internals.Notification is
+package body AMF.Internals.Tables.CMOF_Notification is
 
    --------------------------
    -- Notify_Attribute_Set --
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind;
      New_Value : AMF.CMOF.CMOF_Parameter_Direction_Kind) is
    begin
@@ -77,8 +76,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.CMOF.CMOF_Visibility_Kind;
      New_Value : AMF.CMOF.CMOF_Visibility_Kind) is
    begin
@@ -96,8 +95,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind;
      New_Value : AMF.CMOF.Optional_CMOF_Visibility_Kind) is
    begin
@@ -115,8 +114,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Integer;
      New_Value : AMF.Optional_Integer) is
    begin
@@ -134,8 +133,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_String;
      New_Value : AMF.Optional_String) is
    begin
@@ -153,8 +152,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.Optional_Unlimited_Natural;
      New_Value : AMF.Optional_Unlimited_Natural) is
    begin
@@ -172,8 +171,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : Boolean;
      New_Value : Boolean) is
    begin
@@ -191,10 +190,10 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
-     Old_Value : CMOF.CMOF_Element;
-     New_Value : CMOF.CMOF_Element) is
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.Internals.CMOF_Element;
+     New_Value : AMF.Internals.CMOF_Element) is
    begin
       AMF.Internals.Listener_Registry.Notify_Attribute_Set
        (AMF.Internals.Helpers.To_Element (Element),
@@ -212,8 +211,8 @@ package body CMOF.Internals.Notification is
    --------------------------
 
    procedure Notify_Attribute_Set
-    (Element   : CMOF.CMOF_Element;
-     Property  : CMOF.CMOF_Property;
+    (Element   : AMF.Internals.CMOF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : Matreshka.Internals.Strings.Shared_String_Access;
      New_Value : Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -246,4 +245,4 @@ package body CMOF.Internals.Notification is
         NV);
    end Notify_Attribute_Set;
 
-end CMOF.Internals.Notification;
+end AMF.Internals.Tables.CMOF_Notification;
