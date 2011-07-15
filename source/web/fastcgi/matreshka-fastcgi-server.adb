@@ -411,9 +411,9 @@ package body Matreshka.FastCGI.Server is
          raise Program_Error;
       end if;
 
-      if (Request.Flags and FCGI_Keep_Conn) /= 0 then
-         raise Program_Error;
-      end if;
+--        if (Request.Flags and FCGI_Keep_Conn) /= 0 then
+--           raise Program_Error;
+--        end if;
 
       if Dsc.Request_Id /= 0 then
          raise Program_Error;
