@@ -48,9 +48,11 @@ with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Types;
 with AMF.Elements;
+with AMF.CMOF.Properties.Collections;
 with AMF.Internals.Helpers;
 with League.Strings;
 
+with Generator.Attribute_Mapping;
 with Generator.Names;
 with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
@@ -61,6 +63,7 @@ package body Generator.Attributes is
    use Ada.Strings;
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
+   use Generator.Attribute_Mapping;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_String;
@@ -92,12 +95,6 @@ package body Generator.Attributes is
 
    procedure Analyze;
    --  Analyze classes and prepare information to generate getters and setters.
-
-   function Is_Distinguishable
-    (First  : AMF.CMOF.Properties.CMOF_Property_Access;
-     Second : AMF.CMOF.Properties.CMOF_Property_Access) return Boolean;
-   --  Returns True when getter/setter of the first attribute is
-   --  distinguishable from the getter/setter of the second attribute.
 
    procedure Add
     (Set       : in out Homograph_Sets.Set;
@@ -144,10 +141,11 @@ package body Generator.Attributes is
 
       procedure Find_Group (Position : Homograph_Sets.Cursor) is
       begin
-         if not Is_Distinguishable
+         if not Is_Ada_Distinguishable
                  (Homograph_Sets.Element
                    (Position).Pairs.First_Element.Attribute,
-                  Attribute)
+                  Attribute,
+                  Internal)
          then
             Group := Homograph_Sets.Element (Position);
          end if;
@@ -405,16 +403,23 @@ package body Generator.Attributes is
             New_Line;
          end Generate;
 
-         Getter         : constant Homograph_Information_Access
+         Getter    : constant Homograph_Information_Access
            := Homograph_Sets.Element (Position);
-         Attribute      : constant AMF.CMOF.Properties.CMOF_Property_Access
+         Attribute : AMF.CMOF.Properties.CMOF_Property_Access
            := Getter.Pairs.First_Element.Attribute;
-         Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
-           := Attribute.Get_Type;
-         Name           : constant Wide_Wide_String
+         Redefined : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+           := Attribute.Get_Redefined_Property;
+         Name      : constant Wide_Wide_String
            := "Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
 
       begin
+         --  Unwind to original property definition.
+
+         while not Redefined.Is_Empty loop
+            Attribute := Redefined.Element (1);
+            Redefined := Attribute.Get_Redefined_Property;
+         end loop;
+
          Put_Header (Name, 3);
          New_Line;
          Put_Line ("   function " & Name);
@@ -425,7 +430,7 @@ package body Generator.Attributes is
          Put_Line
           ("       return "
              & Type_Mapping.Internal_Ada_Type_Qualified_Name
-                (Attribute_Type,
+                (Attribute.Get_Type,
                  Representation (Attribute)).To_Wide_Wide_String
              & " is");
          Put_Line ("   begin");
@@ -995,22 +1000,30 @@ package body Generator.Attributes is
                 & Attribute.Get_Name.Value);
          end Generate_Usage;
 
-         Getter         : constant Homograph_Information_Access
+         Getter    : constant Homograph_Information_Access
            := Homograph_Sets.Element (Position);
-         Attribute      : constant AMF.CMOF.Properties.CMOF_Property_Access
+         Attribute : AMF.CMOF.Properties.CMOF_Property_Access
            := Getter.Pairs.First_Element.Attribute;
-         Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
-           := Attribute.Get_Type;
-         Get_Name       : constant Wide_Wide_String
+         Redefined : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+           := Attribute.Get_Redefined_Property;
+         Get_Name  : constant Wide_Wide_String
            := "Internal_Get_" & To_Ada_Identifier (Attribute.Get_Name.Value);
-         Set_Name       : constant Wide_Wide_String
+         Set_Name  : constant Wide_Wide_String
            := "Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
-         Type_Name      : constant Wide_Wide_String
-           := Type_Mapping.Internal_Ada_Type_Qualified_Name
-               (Attribute_Type,
-                Representation (Attribute)).To_Wide_Wide_String;
+         Type_Name : League.Strings.Universal_String;
 
       begin
+         --  Unwind to original property definition.
+
+         while not Redefined.Is_Empty loop
+            Attribute := Redefined.Element (1);
+            Redefined := Attribute.Get_Redefined_Property;
+         end loop;
+
+         Type_Name :=
+           Type_Mapping.Internal_Ada_Type_Qualified_Name
+               (Attribute.Get_Type, Representation (Attribute));
+
          New_Line;
          Put_Line ("   function " & Get_Name);
          Put_Line
@@ -1049,50 +1062,6 @@ package body Generator.Attributes is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Attributes;");
    end Generate_Attributes_Specification;
-
-   ------------------------
-   -- Is_Distinguishable --
-   ------------------------
-
-   function Is_Distinguishable
-    (First  : AMF.CMOF.Properties.CMOF_Property_Access;
-     Second : AMF.CMOF.Properties.CMOF_Property_Access) return Boolean
-   is
-      use type AMF.CMOF.Types.CMOF_Type_Access;
-
-      First_Type  : constant AMF.CMOF.Types.CMOF_Type_Access := First.Get_Type;
-      Second_Type : constant AMF.CMOF.Types.CMOF_Type_Access
-        := Second.Get_Type;
-
-   begin
-      if First.Get_Name /= Second.Get_Name then
-         --  Attributes has different names, they are distinguishable.
-
-         return True;
-      end if;
-
-      if First_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
-        and then Second_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
-      then
-         --  Type of both attributes is class, attributes are indistinguishable
-         --  if both are multivalued or not multivalued.
-
-         return Use_Member_Slot (First) xor Use_Member_Slot (Second);
-
-      elsif First_Type = Second_Type then
-         --  Attributes has same type (and this type is not class), they are
-         --  distinguishable when has different internal representations types.
-
-         return
-           Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
-            (First_Type, Representation (First))
-              /= Generator.Type_Mapping.Internal_Ada_Type_Qualified_Name
-                  (Second_TYpe, Representation (Second));
-
-      else
-         return True;
-      end if;
-   end Is_Distinguishable;
 
    ----------
    -- Less --

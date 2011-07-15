@@ -65,6 +65,7 @@ with XMI.Reader;
 
 with Generator.Contexts;
 with Generator.Names;
+with Generator.Attribute_Mapping;
 with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
 
@@ -74,6 +75,7 @@ procedure Gen_API is
    use Ada.Wide_Wide_Text_IO;
    use AMF.CMOF;
    use Generator;
+   use Generator.Attribute_Mapping;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use League.Strings;
@@ -127,8 +129,6 @@ procedure Gen_API is
    Model_Name : League.Strings.Universal_String
      := League.Application.Arguments.Element (2);
 
-   type Subprogram_Kinds is (Public, Internal, Proxy);
-
    procedure Compute_Ada_Context_For_Attribute
     (Context   : in out Generator.Contexts.Context;
      Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access;
@@ -147,13 +147,6 @@ procedure Gen_API is
      Operation_2 : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Mode        : Subprogram_Kinds) return Boolean;
    --  Returns True when specified operations is distingushable in Ada.
-
-   function Is_Ada_Distinguishable
-    (Attribute_1 : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Attribute_2 : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Mode        : Subprogram_Kinds) return Boolean;
-   --  Returns True when getter/setter of specified attributes is
-   --  distingushable in Ada.
 
    --------------------------------------
    -- Ada_API_Collections_Package_Name --
@@ -1098,34 +1091,6 @@ procedure Gen_API is
       end loop;
 
       return False;
-   end Is_Ada_Distinguishable;
-
-   ----------------------------
-   -- Is_Ada_Distinguishable --
-   ----------------------------
-
-   function Is_Ada_Distinguishable
-    (Attribute_1 : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Attribute_2 : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Mode        : Subprogram_Kinds) return Boolean is
-   begin
-      if Attribute_1.Get_Name /= Attribute_2.Get_Name then
-         --  Two subprograms with different names is distinguishable in Ada.
-
-         return True;
-      end if;
-
-      case Mode is
-         when Public | Proxy =>
-            return
-              Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
-               (Attribute_1.Get_Type, Representation (Attribute_1))
-                /= Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
-                    (Attribute_2.Get_Type, Representation (Attribute_2));
-
-         when Internal =>
-            raise Program_Error;
-      end case;
    end Is_Ada_Distinguishable;
 
    ----------------

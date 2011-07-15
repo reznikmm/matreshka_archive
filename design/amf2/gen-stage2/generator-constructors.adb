@@ -49,6 +49,7 @@ with AMF.CMOF.Enumerations;
 with AMF.CMOF.Types;
 with League.Strings;
 
+with Generator.Attribute_Mapping;
 with Generator.Names;
 with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
@@ -58,6 +59,7 @@ package body Generator.Constructors is
    use Ada.Strings;
    use Ada.Strings.Wide_Wide_Fixed;
    use Ada.Wide_Wide_Text_IO;
+   use Generator.Attribute_Mapping;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
 

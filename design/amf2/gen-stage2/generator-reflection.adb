@@ -50,12 +50,14 @@ with AMF.CMOF.Enumerations;
 with AMF.CMOF.Types;
 with League.Strings;
 
+with Generator.Attribute_Mapping;
 with Generator.Names;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Reflection is
 
    use Ada.Wide_Wide_Text_IO;
+   use Generator.Attribute_Mapping;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
    use type League.Strings.Universal_String;

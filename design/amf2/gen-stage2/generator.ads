@@ -223,12 +223,10 @@ package Generator is
     (Value, Holder, Set, Ordered_Set, Bag, Sequence);
 
    function Representation
-    (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return Representation_Kinds;
-
-   function Representation
     (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
        return Representation_Kinds;
+
+   type Subprogram_Kinds is (Public, Internal, Proxy);
 
    function Has_Setter
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
