@@ -104,35 +104,6 @@ package body AMF.Internals.CMOF_Expressions is
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
-   --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-     (Self : not null access constant CMOF_Expression_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error;
-      return Get_Name (Self);
-   end Get_Name;
-
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access CMOF_Expression_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error;
-   end Set_Name;
-
    --------------------
    -- Get_Visibility --
    --------------------
@@ -223,21 +194,6 @@ package body AMF.Internals.CMOF_Expressions is
       raise Program_Error;
       return Is_Distinguishable_From (Self, N, Ns);
    end Is_Distinguishable_From;
-
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-     (Self : not null access constant CMOF_Expression_Proxy)
-      return League.Strings.Universal_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error;
-      return Separator (Self);
-   end Separator;
 
    --------------------
    -- Qualified_Name --

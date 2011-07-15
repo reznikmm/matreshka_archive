@@ -73,10 +73,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return Boolean;
 
-   overriding procedure Set_Name
-    (Self : not null access CMOF_Enumeration_Literal_Proxy;
-     To   : Optional_String);
-
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return CMOF.Optional_CMOF_Visibility_Kind;
@@ -102,10 +98,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
-
-   overriding function Separator
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return League.Strings.Universal_String;
 
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)

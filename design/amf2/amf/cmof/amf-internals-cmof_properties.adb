@@ -423,21 +423,6 @@ package body AMF.Internals.CMOF_Properties is
       return Is_Distinguishable_From (Self, N, Ns);
    end Is_Distinguishable_From;
 
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-     (Self : not null access constant CMOF_Property_Proxy)
-      return League.Strings.Universal_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error;
-      return Separator (Self);
-   end Separator;
-
    --------------------
    -- Qualified_Name --
    --------------------

@@ -71,6 +71,17 @@ package body AMF.Internals.CMOF_Named_Elements is
       end if;
    end Get_Name;
 
+   ---------------
+   -- Separator --
+   ---------------
+
+   overriding function Separator
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.To_Universal_String ("::");
+   end Separator;
+
    --------------
    -- Set_Name --
    --------------

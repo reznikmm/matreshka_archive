@@ -46,12 +46,12 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Value_Specifications;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Named_Elements;
 
 package AMF.Internals.CMOF_Constraints is
 
    type CMOF_Constraint_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
        and AMF.CMOF.Constraints.CMOF_Constraint
          with null record;
 
@@ -72,14 +72,6 @@ package AMF.Internals.CMOF_Constraints is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Constraint_Proxy)
        return Boolean;
-
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Constraint_Proxy)
-       return Optional_String;
-
-   overriding procedure Set_Name
-    (Self : not null access CMOF_Constraint_Proxy;
-     To   : Optional_String);
 
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Constraint_Proxy)
@@ -106,10 +98,6 @@ package AMF.Internals.CMOF_Constraints is
      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean;
-
-   overriding function Separator
-    (Self : not null access constant CMOF_Constraint_Proxy)
-       return League.Strings.Universal_String;
 
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Constraint_Proxy)

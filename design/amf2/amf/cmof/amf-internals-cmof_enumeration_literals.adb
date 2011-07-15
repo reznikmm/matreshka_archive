@@ -122,20 +122,6 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access CMOF_Enumeration_Literal_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error;
-   end Set_Name;
-
    --------------------
    -- Get_Visibility --
    --------------------
@@ -226,21 +212,6 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
       raise Program_Error;
       return Is_Distinguishable_From (Self, N, Ns);
    end Is_Distinguishable_From;
-
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-      return League.Strings.Universal_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error;
-      return Separator (Self);
-   end Separator;
 
    --------------------
    -- Qualified_Name --
