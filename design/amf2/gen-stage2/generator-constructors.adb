@@ -300,7 +300,7 @@ package body Generator.Constructors is
                      end if;
 
                   when Holder =>
-                     Put (" (M_Collection_Of_Boolean, 0),");
+                     Put (" (M_Boolean_Holder, (Is_Empty => True)),");
 
                   when Set =>
                      Put (" (M_Collection_Of_Boolean, 0),");
