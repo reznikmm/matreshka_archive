@@ -399,7 +399,7 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Classifier
     (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+       return AMF.Internals.AMF_Collection_Of_Element;
    --  EnumerationLiteral => EnumerationLiteral::classifier
    --  InstanceSpecification => InstanceSpecification::classifier
 
@@ -6237,7 +6237,7 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Request
     (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element;
+       return AMF.Internals.AMF_Collection_Of_Element;
    --  SendObjectAction => SendObjectAction::request
 
    function Internal_Get_Required
@@ -7180,6 +7180,15 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Visibility
     (Self : AMF.Internals.UML_Element)
+       return AMF.UML.UML_Visibility_Kind;
+   procedure Internal_Set_Visibility
+    (Self : AMF.Internals.UML_Element;
+     To   : AMF.UML.UML_Visibility_Kind);
+   --  ElementImport => ElementImport::visibility
+   --  PackageImport => PackageImport::visibility
+
+   function Internal_Get_Visibility
+    (Self : AMF.Internals.UML_Element)
        return AMF.UML.Optional_UML_Visibility_Kind;
    procedure Internal_Set_Visibility
     (Self : AMF.Internals.UML_Element;
@@ -7354,85 +7363,6 @@ package AMF.Internals.Tables.UML_Attributes is
    --  ValuePin => NamedElement::visibility
    --  ValueSpecificationAction => NamedElement::visibility
    --  Variable => NamedElement::visibility
-
-   function Internal_Get_Visibility
-    (Self : AMF.Internals.UML_Element)
-       return AMF.UML.UML_Visibility_Kind;
-   procedure Internal_Set_Visibility
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.UML.UML_Visibility_Kind);
-   --  Abstraction => PackageableElement::visibility
-   --  Activity => PackageableElement::visibility
-   --  Actor => PackageableElement::visibility
-   --  AnyReceiveEvent => PackageableElement::visibility
-   --  Artifact => PackageableElement::visibility
-   --  Association => PackageableElement::visibility
-   --  AssociationClass => PackageableElement::visibility
-   --  CallEvent => PackageableElement::visibility
-   --  ChangeEvent => PackageableElement::visibility
-   --  Class => PackageableElement::visibility
-   --  Collaboration => PackageableElement::visibility
-   --  CommunicationPath => PackageableElement::visibility
-   --  Component => PackageableElement::visibility
-   --  ComponentRealization => PackageableElement::visibility
-   --  Constraint => PackageableElement::visibility
-   --  DataType => PackageableElement::visibility
-   --  Dependency => PackageableElement::visibility
-   --  Deployment => PackageableElement::visibility
-   --  DeploymentSpecification => PackageableElement::visibility
-   --  Device => PackageableElement::visibility
-   --  Duration => PackageableElement::visibility
-   --  DurationConstraint => PackageableElement::visibility
-   --  DurationInterval => PackageableElement::visibility
-   --  DurationObservation => PackageableElement::visibility
-   --  ElementImport => ElementImport::visibility
-   --  Enumeration => PackageableElement::visibility
-   --  EnumerationLiteral => PackageableElement::visibility
-   --  ExecutionEnvironment => PackageableElement::visibility
-   --  Expression => PackageableElement::visibility
-   --  Extension => PackageableElement::visibility
-   --  FunctionBehavior => PackageableElement::visibility
-   --  GeneralizationSet => PackageableElement::visibility
-   --  InformationFlow => PackageableElement::visibility
-   --  InformationItem => PackageableElement::visibility
-   --  InstanceSpecification => PackageableElement::visibility
-   --  InstanceValue => PackageableElement::visibility
-   --  Interaction => PackageableElement::visibility
-   --  InteractionConstraint => PackageableElement::visibility
-   --  Interface => PackageableElement::visibility
-   --  InterfaceRealization => PackageableElement::visibility
-   --  Interval => PackageableElement::visibility
-   --  IntervalConstraint => PackageableElement::visibility
-   --  LiteralBoolean => PackageableElement::visibility
-   --  LiteralInteger => PackageableElement::visibility
-   --  LiteralNull => PackageableElement::visibility
-   --  LiteralReal => PackageableElement::visibility
-   --  LiteralString => PackageableElement::visibility
-   --  LiteralUnlimitedNatural => PackageableElement::visibility
-   --  Manifestation => PackageableElement::visibility
-   --  Model => PackageableElement::visibility
-   --  Node => PackageableElement::visibility
-   --  OpaqueBehavior => PackageableElement::visibility
-   --  OpaqueExpression => PackageableElement::visibility
-   --  Package => PackageableElement::visibility
-   --  PackageImport => PackageImport::visibility
-   --  PrimitiveType => PackageableElement::visibility
-   --  Profile => PackageableElement::visibility
-   --  ProtocolStateMachine => PackageableElement::visibility
-   --  Realization => PackageableElement::visibility
-   --  Signal => PackageableElement::visibility
-   --  SignalEvent => PackageableElement::visibility
-   --  StateMachine => PackageableElement::visibility
-   --  Stereotype => PackageableElement::visibility
-   --  StringExpression => PackageableElement::visibility
-   --  Substitution => PackageableElement::visibility
-   --  TimeConstraint => PackageableElement::visibility
-   --  TimeEvent => PackageableElement::visibility
-   --  TimeExpression => PackageableElement::visibility
-   --  TimeInterval => PackageableElement::visibility
-   --  TimeObservation => PackageableElement::visibility
-   --  Usage => PackageableElement::visibility
-   --  UseCase => PackageableElement::visibility
 
    function Internal_Get_Weight
     (Self : AMF.Internals.UML_Element)

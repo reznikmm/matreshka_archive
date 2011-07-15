@@ -6784,7 +6784,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Classifier
     (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+       return AMF.Internals.AMF_Collection_Of_Element is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Enumeration_Literal =>
@@ -23814,7 +23814,7 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Request
     (Self : AMF.Internals.UML_Element)
-       return AMF.Internals.UML_Element is
+       return AMF.Internals.AMF_Collection_Of_Element is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Send_Object_Action =>
@@ -26391,6 +26391,26 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_Visibility
     (Self : AMF.Internals.UML_Element)
+       return AMF.UML.UML_Visibility_Kind is
+   begin
+      case UML_Element_Table.Table (Self).Kind is
+         when E_Element_Import =>
+            return UML_Element_Table.Table (Self).Member (5).Visibility_Kind_Value;
+
+         when E_Package_Import =>
+            return UML_Element_Table.Table (Self).Member (4).Visibility_Kind_Value;
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Get_Visibility;
+
+   -----------------------------
+   -- Internal_Get_Visibility --
+   -----------------------------
+
+   function Internal_Get_Visibility
+    (Self : AMF.Internals.UML_Element)
        return AMF.UML.Optional_UML_Visibility_Kind is
    begin
       case UML_Element_Table.Table (Self).Kind is
@@ -26903,236 +26923,6 @@ package body AMF.Internals.Tables.UML_Attributes is
 
          when E_Variable =>
             return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Holder;
-
-         when others =>
-            raise Program_Error;
-      end case;
-   end Internal_Get_Visibility;
-
-   -----------------------------
-   -- Internal_Get_Visibility --
-   -----------------------------
-
-   function Internal_Get_Visibility
-    (Self : AMF.Internals.UML_Element)
-       return AMF.UML.UML_Visibility_Kind is
-   begin
-      case UML_Element_Table.Table (Self).Kind is
-         when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Any_Receive_Event =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Association =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Class =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Component =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Dependency =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Device =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Element_Import =>
-            return UML_Element_Table.Table (Self).Member (5).Visibility_Kind_Value;
-
-         when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Information_Flow =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Model =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Node =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Package =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Package_Import =>
-            return UML_Element_Table.Table (Self).Member (4).Visibility_Kind_Value;
-
-         when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Usage =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-
-         when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
 
          when others =>
             raise Program_Error;
@@ -43679,6 +43469,37 @@ package body AMF.Internals.Tables.UML_Attributes is
 
    procedure Internal_Set_Visibility
     (Self : AMF.Internals.UML_Element;
+     To   : AMF.UML.UML_Visibility_Kind)
+   is
+      Old : AMF.UML.UML_Visibility_Kind;
+
+   begin
+      case UML_Element_Table.Table (Self).Kind is
+         when E_Element_Import =>
+            Old := UML_Element_Table.Table (Self).Member (5).Visibility_Kind_Value;
+            UML_Element_Table.Table (Self).Member (5).Visibility_Kind_Value := To;
+
+            UML_Notification.Notify_Attribute_Set
+             (Self, MP_UML_Element_Import_Visibility, Old, To);
+
+         when E_Package_Import =>
+            Old := UML_Element_Table.Table (Self).Member (4).Visibility_Kind_Value;
+            UML_Element_Table.Table (Self).Member (4).Visibility_Kind_Value := To;
+
+            UML_Notification.Notify_Attribute_Set
+             (Self, MP_UML_Package_Import_Visibility, Old, To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Visibility;
+
+   -----------------------------
+   -- Internal_Set_Visibility --
+   -----------------------------
+
+   procedure Internal_Set_Visibility
+    (Self : AMF.Internals.UML_Element;
      To   : AMF.UML.Optional_UML_Visibility_Kind)
    is
       Old : AMF.UML.Optional_UML_Visibility_Kind;
@@ -44874,527 +44695,6 @@ package body AMF.Internals.Tables.UML_Attributes is
 
             UML_Notification.Notify_Attribute_Set
              (Self, MP_UML_Named_Element_Visibility, Old, To);
-
-         when others =>
-            raise Program_Error;
-      end case;
-   end Internal_Set_Visibility;
-
-   -----------------------------
-   -- Internal_Set_Visibility --
-   -----------------------------
-
-   procedure Internal_Set_Visibility
-    (Self : AMF.Internals.UML_Element;
-     To   : AMF.UML.UML_Visibility_Kind)
-   is
-      Old : AMF.UML.UML_Visibility_Kind;
-
-   begin
-      case UML_Element_Table.Table (Self).Kind is
-         when E_Abstraction =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Activity =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Actor =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Any_Receive_Event =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Artifact =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Association =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Association_Class =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Call_Event =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Change_Event =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Class =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Collaboration =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Communication_Path =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Component =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Component_Realization =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Constraint =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Data_Type =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Dependency =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Deployment =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Deployment_Specification =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Device =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Duration =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Duration_Constraint =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Duration_Interval =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Duration_Observation =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Element_Import =>
-            Old := UML_Element_Table.Table (Self).Member (5).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (5).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Element_Import_Visibility, Old, To);
-
-         when E_Enumeration =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Enumeration_Literal =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Execution_Environment =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Expression =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Extension =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Function_Behavior =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Generalization_Set =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Information_Flow =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Information_Item =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Instance_Specification =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Instance_Value =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Interaction =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Interaction_Constraint =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Interface =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Interface_Realization =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Interval =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Interval_Constraint =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Literal_Boolean =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Literal_Integer =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Literal_Null =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Literal_Real =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Literal_String =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Literal_Unlimited_Natural =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Manifestation =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Model =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Node =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Opaque_Behavior =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Opaque_Expression =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Package =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Package_Import =>
-            Old := UML_Element_Table.Table (Self).Member (4).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (4).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Package_Import_Visibility, Old, To);
-
-         when E_Primitive_Type =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Profile =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Protocol_State_Machine =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Realization =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Signal =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Signal_Event =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_State_Machine =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Stereotype =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_String_Expression =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Substitution =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Time_Constraint =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Time_Event =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Time_Expression =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Time_Interval =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Time_Observation =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Usage =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
-
-         when E_Use_Case =>
-            Old := UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value;
-            UML_Element_Table.Table (Self).Member (6).Visibility_Kind_Value := To;
-
-            UML_Notification.Notify_Attribute_Set
-             (Self, MP_UML_Packageable_Element_Visibility, Old, To);
 
          when others =>
             raise Program_Error;
