@@ -43,6 +43,34 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Classifiers.Collections;
+with AMF.CMOF.Comments.Collections;
+with AMF.CMOF.Constraints.Collections;
+with AMF.CMOF.Data_Types;
+with AMF.CMOF.Element_Imports.Collections;
+with AMF.CMOF.Elements.Collections;
+with AMF.CMOF.Enumeration_Literals.Collections;
+with AMF.CMOF.Enumerations;
+with AMF.CMOF.Expressions;
+with AMF.CMOF.Features.Collections;
+with AMF.CMOF.Named_Elements.Collections;
+with AMF.CMOF.Namespaces;
+with AMF.CMOF.Opaque_Expressions;
+with AMF.CMOF.Operations.Collections;
+with AMF.CMOF.Package_Imports.Collections;
+with AMF.CMOF.Package_Merges.Collections;
+with AMF.CMOF.Packageable_Elements.Collections;
+with AMF.CMOF.Packages.Collections;
+with AMF.CMOF.Parameters.Collections;
+with AMF.CMOF.Primitive_Types;
+with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Redefinable_Elements.Collections;
+with AMF.CMOF.Tags;
+with AMF.CMOF.Types.Collections;
+with AMF.CMOF.Value_Specifications.Collections;
+with AMF.String_Collections;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Collections;
@@ -197,14 +225,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -226,8 +256,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -313,8 +344,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -329,7 +361,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -395,14 +428,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -416,8 +451,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -503,8 +539,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Class_Super_Class then
             --  Class::superClass : Class
@@ -519,7 +556,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -544,8 +582,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Comment::body : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Body (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Comments.CMOF_Comment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -602,8 +641,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -641,8 +681,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -657,7 +698,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -723,7 +765,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -737,8 +780,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -824,15 +868,17 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -849,8 +895,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  ElementImport::alias : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Alias (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Alias);
 
          elsif Property = MP_CMOF_Element_Import_Imported_Element then
             --  ElementImport::importedElement : PackageableElement
@@ -921,7 +968,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -987,7 +1035,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -1001,8 +1050,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1096,15 +1146,17 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1129,8 +1181,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1168,15 +1221,17 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1193,8 +1248,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Expressions.CMOF_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1240,8 +1296,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Expressions.CMOF_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -1256,7 +1313,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Expressions.CMOF_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1289,8 +1347,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1328,8 +1387,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -1344,7 +1404,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1410,35 +1471,40 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_CMOF_Operation_Is_Ordered then
             --  Operation::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_CMOF_Operation_Is_Query then
             --  Operation::isQuery : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Query (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Query);
 
          elsif Property = MP_CMOF_Operation_Is_Unique then
             --  Operation::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_CMOF_Operation_Lower then
             --  Operation::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -1452,8 +1518,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1547,8 +1614,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Operation_Raised_Exception then
             --  Operation::raisedException : Type
@@ -1603,14 +1671,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1651,8 +1721,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -1754,22 +1825,25 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Package_Uri then
             --  Package::uri : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Uri (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Uri);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1851,7 +1925,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.CMOF.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1943,43 +2018,49 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Parameter::default : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Default (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Default);
 
          elsif Property = MP_CMOF_Parameter_Direction then
             --  Parameter::direction : ParameterDirectionKind
 
             return
               AMF.CMOF.Holders.Parameter_Direction_Kinds.To_Holder
-               (Internal_Get_Direction (Self));
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Direction);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -2025,8 +2106,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
@@ -2041,14 +2123,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2114,7 +2198,8 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -2128,8 +2213,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -2215,15 +2301,17 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2264,8 +2352,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Property::default : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Default (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Default);
 
          elsif Property = MP_CMOF_Feature_Featuring_Classifier then
             --  Feature::featuringClassifier : Classifier
@@ -2280,63 +2369,72 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Composite (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Composite);
 
          elsif Property = MP_CMOF_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived_Union (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived_Union);
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Named_Element_Namespace then
             --  NamedElement::namespace : Namespace
@@ -2390,8 +2488,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -2438,14 +2537,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.CMOF.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2470,8 +2571,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Tag::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              League.Holders.To_Holder
+               (AMF.CMOF.Tags.CMOF_Tag_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -2509,8 +2611,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Tag::value : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Value (Self));
+              League.Holders.To_Holder
+               (AMF.CMOF.Tags.CMOF_Tag_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Value);
 
          else
             raise Program_Error;

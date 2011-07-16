@@ -53,6 +53,7 @@ with AMF.CMOF.Elements.Hash;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Parameters;
 with AMF.CMOF.Properties;
+with AMF.CMOF.Packages;
 
 package Generator is
 
@@ -203,6 +204,9 @@ package Generator is
 
    Metamodel_Names : CMOF_Element_String_Maps.Map;
    --  Metamodel name for elements.
+
+   Metamodel_Package : AMF.CMOF.Packages.CMOF_Package_Access;
+   --  Root package of metamodel.
 
    First_Class_Property           : Positive;
    Last_Class_Property            : Natural;

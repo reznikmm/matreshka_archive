@@ -73,10 +73,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return Boolean;
 
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return CMOF.Optional_CMOF_Visibility_Kind;
-
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Enumeration_Literal_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);

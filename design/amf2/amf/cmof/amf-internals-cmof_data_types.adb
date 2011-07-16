@@ -105,21 +105,6 @@ package body AMF.Internals.CMOF_Data_Types is
    end Must_Be_Owned;
 
    --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-     (Self : not null access constant CMOF_Data_Type_Proxy)
-      return CMOF.Optional_CMOF_Visibility_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error;
-      return Get_Visibility (Self);
-   end Get_Visibility;
-
-   --------------------
    -- Set_Visibility --
    --------------------
 
@@ -481,21 +466,6 @@ package body AMF.Internals.CMOF_Data_Types is
       raise Program_Error;
       return Get_Inherited_Member (Self);
    end Get_Inherited_Member;
-
-   ---------------------------------
-   -- Get_Is_Final_Specialization --
-   ---------------------------------
-
-   overriding function Get_Is_Final_Specialization
-     (Self : not null access constant CMOF_Data_Type_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Final_Specialization unimplemented");
-      raise Program_Error;
-      return Get_Is_Final_Specialization (Self);
-   end Get_Is_Final_Specialization;
 
    ---------------------------------
    -- Set_Is_Final_Specialization --

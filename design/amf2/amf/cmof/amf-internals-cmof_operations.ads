@@ -55,13 +55,13 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types.Collections;
-with AMF.Internals.CMOF_Named_Elements;
+with AMF.Internals.CMOF_Redefinable_Elements;
 with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Operations is
 
-   type CMOF_Operation_Proxy is
-     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
+   type CMOF_Operation_Proxy is limited
+     new AMF.Internals.CMOF_Redefinable_Elements.CMOF_Redefinable_Element_Proxy
        and AMF.CMOF.Operations.CMOF_Operation
          with null record;
 
@@ -82,10 +82,6 @@ package AMF.Internals.CMOF_Operations is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Operation_Proxy)
        return Boolean;
-
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return CMOF.Optional_CMOF_Visibility_Kind;
 
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Operation_Proxy;
@@ -167,10 +163,6 @@ package AMF.Internals.CMOF_Operations is
    overriding function Get_Redefined_Element
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element;
-
-   overriding function Get_Is_Leaf
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return Boolean;
 
    overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Operation_Proxy;

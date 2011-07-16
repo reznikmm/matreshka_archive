@@ -83,10 +83,6 @@ package AMF.Internals.CMOF_Data_Types is
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return Boolean;
 
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Data_Type_Proxy)
-       return CMOF.Optional_CMOF_Visibility_Kind;
-
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Data_Type_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);
@@ -188,10 +184,6 @@ package AMF.Internals.CMOF_Data_Types is
    overriding function Get_Inherited_Member
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
-
-   overriding function Get_Is_Final_Specialization
-    (Self : not null access constant CMOF_Data_Type_Proxy)
-       return Boolean;
 
    overriding procedure Set_Is_Final_Specialization
     (Self : not null access CMOF_Data_Type_Proxy;

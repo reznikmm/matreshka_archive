@@ -41,10 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+
 with AMF.Elements;
 with AMF.Internals.Helpers;
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Tags is
+
+   use AMF.Internals.Tables.CMOF_Attributes;
+
+   --------------
+   -- Get_Name --
+   --------------
+
+   overriding function Get_Name
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Internals.Create (Internal_Get_Name (Self.Id));
+   end Get_Name;
+
+   ---------------
+   -- Get_Value --
+   ---------------
+
+   overriding function Get_Value
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Internals.Create (Internal_Get_Value (Self.Id));
+   end Get_Value;
 
    -----------------
    -- Get_Element --
@@ -61,21 +88,6 @@ package body AMF.Internals.CMOF_Tags is
       return Get_Element (Self);
    end Get_Element;
 
-   --------------
-   -- Get_Name --
-   --------------
-
-   overriding function Get_Name
-     (Self : not null access constant CMOF_Tag_Proxy)
-      return League.Strings.Universal_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error with "Unimplemented function Get_Name";
-      return Get_Name (Self);
-   end Get_Name;
-
    -------------------
    -- Get_Tag_Owner --
    -------------------
@@ -87,21 +99,6 @@ package body AMF.Internals.CMOF_Tags is
       raise Program_Error;
       return null;
    end Get_Tag_Owner;
-
-   ---------------
-   -- Get_Value --
-   ---------------
-
-   overriding function Get_Value
-     (Self : not null access constant CMOF_Tag_Proxy)
-      return League.Strings.Universal_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Value unimplemented");
-      raise Program_Error with "Unimplemented function Get_Value";
-      return Get_Value (Self);
-   end Get_Value;
 
    --------------
    -- Set_Name --

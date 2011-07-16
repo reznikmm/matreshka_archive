@@ -73,10 +73,6 @@ package AMF.Internals.CMOF_Constraints is
     (Self : not null access constant CMOF_Constraint_Proxy)
        return Boolean;
 
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Constraint_Proxy)
-       return CMOF.Optional_CMOF_Visibility_Kind;
-
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Constraint_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);

@@ -76,9 +76,9 @@ package body Generator.Attribute_Mapping is
          when Public | Proxy =>
             return
               Type_Mapping.Public_Ada_Type_Qualified_Name
-               (Actual_1.Get_Type, Representation (Actual_1))
+               (Attribute_1.Get_Type, Representation (Attribute_1))
                 /= Type_Mapping.Public_Ada_Type_Qualified_Name
-                    (Actual_2.Get_Type, Representation (Actual_2));
+                    (Attribute_2.Get_Type, Representation (Attribute_2));
 
          when Internal =>
             --  Looking for deepest redefined property for each attribute. This

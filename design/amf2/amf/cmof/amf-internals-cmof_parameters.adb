@@ -41,11 +41,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Parameters is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   -----------------
+   -- Get_Default --
+   -----------------
+
+   overriding function Get_Default
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return Optional_String
+   is
+      Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+        := Internal_Get_Default (Self.Id);
+
+   begin
+      if Aux = null then
+         return (Is_Empty => True);
+
+      else
+         return (False, League.Strings.Internals.Create (Aux));
+      end if;
+   end Get_Default;
 
    -------------------
    -- Get_Direction --
@@ -208,21 +232,6 @@ package body AMF.Internals.CMOF_Parameters is
    end Set_Upper;
 
    --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return CMOF.Optional_CMOF_Visibility_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error;
-      return Get_Visibility (Self);
-   end Get_Visibility;
-
-   --------------------
    -- Set_Visibility --
    --------------------
 
@@ -326,21 +335,6 @@ package body AMF.Internals.CMOF_Parameters is
       pragma Compile_Time_Warning (Standard.True, "Set_Type unimplemented");
       raise Program_Error;
    end Set_Type;
-
-   -----------------
-   -- Get_Default --
-   -----------------
-
-   overriding function Get_Default
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return Optional_String
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Default unimplemented");
-      raise Program_Error;
-      return Get_Default (Self);
-   end Get_Default;
 
    -----------------
    -- Set_Default --

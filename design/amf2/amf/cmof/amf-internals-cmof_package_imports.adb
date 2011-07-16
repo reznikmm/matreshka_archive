@@ -41,8 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Package_Imports is
+
+   use AMF.Internals.Tables.CMOF_Attributes;
+
+   --------------------
+   -- Get_Visibility --
+   --------------------
+
+   overriding function Get_Visibility
+    (Self : not null access constant CMOF_Package_Import_Proxy)
+       return CMOF.CMOF_Visibility_Kind is
+   begin
+      return Internal_Get_Visibility (Self.Id);
+   end Get_Visibility;
 
    -----------------------
    -- Get_Owned_Element --
@@ -148,21 +162,6 @@ package body AMF.Internals.CMOF_Package_Imports is
       raise Program_Error;
       return Get_Target (Self);
    end Get_Target;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-     (Self : not null access constant CMOF_Package_Import_Proxy)
-      return CMOF.CMOF_Visibility_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error;
-      return Get_Visibility (Self);
-   end Get_Visibility;
 
    --------------------
    -- Set_Visibility --

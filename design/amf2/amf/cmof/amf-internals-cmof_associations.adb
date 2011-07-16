@@ -49,6 +49,16 @@ package body AMF.Internals.CMOF_Associations is
    use AMF.Internals.Tables.CMOF_Attributes;
 
    --------------------
+   -- Get_Is_Derived --
+   --------------------
+
+   overriding function Get_Is_Derived
+    (Self : not null access constant CMOF_Association_Proxy) return Boolean is
+   begin
+      return Internal_Get_Is_Derived (Self.Id);
+   end Get_Is_Derived;
+
+   --------------------
    -- Get_Member_End --
    --------------------
 
@@ -135,21 +145,6 @@ package body AMF.Internals.CMOF_Associations is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-     (Self : not null access constant CMOF_Association_Proxy)
-      return CMOF.Optional_CMOF_Visibility_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error;
-      return Get_Visibility (Self);
-   end Get_Visibility;
 
    --------------------
    -- Set_Visibility --
@@ -530,21 +525,6 @@ package body AMF.Internals.CMOF_Associations is
    end Get_Inherited_Member;
 
    ---------------------------------
-   -- Get_Is_Final_Specialization --
-   ---------------------------------
-
-   overriding function Get_Is_Final_Specialization
-     (Self : not null access constant CMOF_Association_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Final_Specialization unimplemented");
-      raise Program_Error;
-      return Get_Is_Final_Specialization (Self);
-   end Get_Is_Final_Specialization;
-
-   ---------------------------------
    -- Set_Is_Final_Specialization --
    ---------------------------------
 
@@ -712,21 +692,6 @@ package body AMF.Internals.CMOF_Associations is
       raise Program_Error;
       return May_Specialize_Type (Self, C);
    end May_Specialize_Type;
-
-   --------------------
-   -- Get_Is_Derived --
-   --------------------
-
-   overriding function Get_Is_Derived
-     (Self : not null access constant CMOF_Association_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Derived unimplemented");
-      raise Program_Error;
-      return Get_Is_Derived (Self);
-   end Get_Is_Derived;
 
    --------------------
    -- Set_Is_Derived --

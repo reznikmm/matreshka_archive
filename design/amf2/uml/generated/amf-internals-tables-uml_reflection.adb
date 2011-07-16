@@ -43,6 +43,231 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.String_Collections;
+with AMF.UML.Abstractions;
+with AMF.UML.Accept_Call_Actions;
+with AMF.UML.Accept_Event_Actions;
+with AMF.UML.Action_Execution_Specifications;
+with AMF.UML.Action_Input_Pins;
+with AMF.UML.Actions.Collections;
+with AMF.UML.Activities;
+with AMF.UML.Activity_Edges.Collections;
+with AMF.UML.Activity_Final_Nodes;
+with AMF.UML.Activity_Groups.Collections;
+with AMF.UML.Activity_Nodes.Collections;
+with AMF.UML.Activity_Parameter_Nodes;
+with AMF.UML.Activity_Partitions.Collections;
+with AMF.UML.Actors;
+with AMF.UML.Add_Structural_Feature_Value_Actions;
+with AMF.UML.Add_Variable_Value_Actions;
+with AMF.UML.Any_Receive_Events;
+with AMF.UML.Artifacts.Collections;
+with AMF.UML.Association_Classes;
+with AMF.UML.Associations;
+with AMF.UML.Behavior_Execution_Specifications;
+with AMF.UML.Behavioral_Features;
+with AMF.UML.Behaviored_Classifiers;
+with AMF.UML.Behaviors.Collections;
+with AMF.UML.Broadcast_Signal_Actions;
+with AMF.UML.Call_Behavior_Actions;
+with AMF.UML.Call_Events;
+with AMF.UML.Call_Operation_Actions;
+with AMF.UML.Central_Buffer_Nodes;
+with AMF.UML.Change_Events;
+with AMF.UML.Classes.Collections;
+with AMF.UML.Classifier_Template_Parameters;
+with AMF.UML.Classifiers.Collections;
+with AMF.UML.Clauses.Collections;
+with AMF.UML.Clear_Association_Actions;
+with AMF.UML.Clear_Structural_Feature_Actions;
+with AMF.UML.Clear_Variable_Actions;
+with AMF.UML.Collaboration_Uses.Collections;
+with AMF.UML.Collaborations;
+with AMF.UML.Combined_Fragments;
+with AMF.UML.Comments.Collections;
+with AMF.UML.Communication_Paths;
+with AMF.UML.Component_Realizations.Collections;
+with AMF.UML.Components;
+with AMF.UML.Conditional_Nodes;
+with AMF.UML.Connectable_Element_Template_Parameters;
+with AMF.UML.Connectable_Elements.Collections;
+with AMF.UML.Connection_Point_References.Collections;
+with AMF.UML.Connector_Ends.Collections;
+with AMF.UML.Connectors.Collections;
+with AMF.UML.Consider_Ignore_Fragments;
+with AMF.UML.Constraints.Collections;
+with AMF.UML.Continuations;
+with AMF.UML.Control_Flows;
+with AMF.UML.Create_Link_Actions;
+with AMF.UML.Create_Link_Object_Actions;
+with AMF.UML.Create_Object_Actions;
+with AMF.UML.Data_Store_Nodes;
+with AMF.UML.Data_Types;
+with AMF.UML.Decision_Nodes;
+with AMF.UML.Dependencies.Collections;
+with AMF.UML.Deployed_Artifacts.Collections;
+with AMF.UML.Deployment_Specifications.Collections;
+with AMF.UML.Deployment_Targets;
+with AMF.UML.Deployments.Collections;
+with AMF.UML.Destroy_Link_Actions;
+with AMF.UML.Destroy_Object_Actions;
+with AMF.UML.Destruction_Occurrence_Specifications;
+with AMF.UML.Devices;
+with AMF.UML.Duration_Constraints;
+with AMF.UML.Duration_Intervals;
+with AMF.UML.Duration_Observations;
+with AMF.UML.Durations;
+with AMF.UML.Element_Imports.Collections;
+with AMF.UML.Elements.Collections;
+with AMF.UML.Enumeration_Literals.Collections;
+with AMF.UML.Enumerations;
+with AMF.UML.Events;
+with AMF.UML.Exception_Handlers.Collections;
+with AMF.UML.Executable_Nodes.Collections;
+with AMF.UML.Execution_Environments;
+with AMF.UML.Execution_Occurrence_Specifications;
+with AMF.UML.Execution_Specifications;
+with AMF.UML.Expansion_Nodes.Collections;
+with AMF.UML.Expansion_Regions;
+with AMF.UML.Expressions;
+with AMF.UML.Extends.Collections;
+with AMF.UML.Extension_Ends;
+with AMF.UML.Extension_Points.Collections;
+with AMF.UML.Extensions.Collections;
+with AMF.UML.Features.Collections;
+with AMF.UML.Final_States;
+with AMF.UML.Flow_Final_Nodes;
+with AMF.UML.Fork_Nodes;
+with AMF.UML.Function_Behaviors;
+with AMF.UML.Gates.Collections;
+with AMF.UML.General_Orderings.Collections;
+with AMF.UML.Generalization_Sets.Collections;
+with AMF.UML.Generalizations.Collections;
+with AMF.UML.Images.Collections;
+with AMF.UML.Includes.Collections;
+with AMF.UML.Information_Flows;
+with AMF.UML.Information_Items;
+with AMF.UML.Initial_Nodes;
+with AMF.UML.Input_Pins.Collections;
+with AMF.UML.Instance_Specifications;
+with AMF.UML.Instance_Values;
+with AMF.UML.Interaction_Constraints;
+with AMF.UML.Interaction_Fragments.Collections;
+with AMF.UML.Interaction_Operands.Collections;
+with AMF.UML.Interaction_Uses;
+with AMF.UML.Interactions;
+with AMF.UML.Interface_Realizations.Collections;
+with AMF.UML.Interfaces.Collections;
+with AMF.UML.Interruptible_Activity_Regions.Collections;
+with AMF.UML.Interval_Constraints;
+with AMF.UML.Intervals;
+with AMF.UML.Join_Nodes;
+with AMF.UML.Lifelines.Collections;
+with AMF.UML.Link_End_Creation_Datas.Collections;
+with AMF.UML.Link_End_Datas.Collections;
+with AMF.UML.Link_End_Destruction_Datas.Collections;
+with AMF.UML.Literal_Booleans;
+with AMF.UML.Literal_Integers;
+with AMF.UML.Literal_Nulls;
+with AMF.UML.Literal_Reals;
+with AMF.UML.Literal_Strings;
+with AMF.UML.Literal_Unlimited_Naturals;
+with AMF.UML.Loop_Nodes;
+with AMF.UML.Manifestations.Collections;
+with AMF.UML.Merge_Nodes;
+with AMF.UML.Message_Ends;
+with AMF.UML.Message_Occurrence_Specifications;
+with AMF.UML.Messages.Collections;
+with AMF.UML.Models;
+with AMF.UML.Named_Elements.Collections;
+with AMF.UML.Namespaces;
+with AMF.UML.Nodes.Collections;
+with AMF.UML.Object_Flows;
+with AMF.UML.Object_Nodes;
+with AMF.UML.Observations.Collections;
+with AMF.UML.Occurrence_Specifications;
+with AMF.UML.Opaque_Actions;
+with AMF.UML.Opaque_Behaviors;
+with AMF.UML.Opaque_Expressions;
+with AMF.UML.Operation_Template_Parameters;
+with AMF.UML.Operations.Collections;
+with AMF.UML.Output_Pins.Collections;
+with AMF.UML.Package_Imports.Collections;
+with AMF.UML.Package_Merges.Collections;
+with AMF.UML.Packageable_Elements.Collections;
+with AMF.UML.Packages.Collections;
+with AMF.UML.Parameter_Sets.Collections;
+with AMF.UML.Parameterable_Elements;
+with AMF.UML.Parameters.Collections;
+with AMF.UML.Part_Decompositions;
+with AMF.UML.Ports.Collections;
+with AMF.UML.Primitive_Types;
+with AMF.UML.Profile_Applications.Collections;
+with AMF.UML.Profiles;
+with AMF.UML.Properties.Collections;
+with AMF.UML.Protocol_Conformances.Collections;
+with AMF.UML.Protocol_State_Machines;
+with AMF.UML.Protocol_Transitions;
+with AMF.UML.Pseudostates.Collections;
+with AMF.UML.Qualifier_Values.Collections;
+with AMF.UML.Raise_Exception_Actions;
+with AMF.UML.Read_Extent_Actions;
+with AMF.UML.Read_Is_Classified_Object_Actions;
+with AMF.UML.Read_Link_Actions;
+with AMF.UML.Read_Link_Object_End_Actions;
+with AMF.UML.Read_Link_Object_End_Qualifier_Actions;
+with AMF.UML.Read_Self_Actions;
+with AMF.UML.Read_Structural_Feature_Actions;
+with AMF.UML.Read_Variable_Actions;
+with AMF.UML.Realizations;
+with AMF.UML.Receptions.Collections;
+with AMF.UML.Reclassify_Object_Actions;
+with AMF.UML.Redefinable_Elements.Collections;
+with AMF.UML.Redefinable_Template_Signatures.Collections;
+with AMF.UML.Reduce_Actions;
+with AMF.UML.Regions.Collections;
+with AMF.UML.Relationships.Collections;
+with AMF.UML.Remove_Structural_Feature_Value_Actions;
+with AMF.UML.Remove_Variable_Value_Actions;
+with AMF.UML.Reply_Actions;
+with AMF.UML.Send_Object_Actions;
+with AMF.UML.Send_Signal_Actions;
+with AMF.UML.Sequence_Nodes;
+with AMF.UML.Signal_Events;
+with AMF.UML.Signals;
+with AMF.UML.Slots.Collections;
+with AMF.UML.Start_Classifier_Behavior_Actions;
+with AMF.UML.Start_Object_Behavior_Actions;
+with AMF.UML.State_Invariants;
+with AMF.UML.State_Machines.Collections;
+with AMF.UML.States.Collections;
+with AMF.UML.Stereotypes.Collections;
+with AMF.UML.String_Expressions.Collections;
+with AMF.UML.Structural_Features;
+with AMF.UML.Structured_Activity_Nodes.Collections;
+with AMF.UML.Substitutions.Collections;
+with AMF.UML.Template_Bindings.Collections;
+with AMF.UML.Template_Parameter_Substitutions.Collections;
+with AMF.UML.Template_Parameters.Collections;
+with AMF.UML.Template_Signatures;
+with AMF.UML.Templateable_Elements;
+with AMF.UML.Test_Identity_Actions;
+with AMF.UML.Time_Constraints;
+with AMF.UML.Time_Events;
+with AMF.UML.Time_Expressions;
+with AMF.UML.Time_Intervals;
+with AMF.UML.Time_Observations;
+with AMF.UML.Transitions.Collections;
+with AMF.UML.Triggers.Collections;
+with AMF.UML.Types.Collections;
+with AMF.UML.Unmarshall_Actions;
+with AMF.UML.Usages;
+with AMF.UML.Use_Cases.Collections;
+with AMF.UML.Value_Pins;
+with AMF.UML.Value_Specification_Actions;
+with AMF.UML.Value_Specifications.Collections;
+with AMF.UML.Variables.Collections;
+with AMF.UML.Vertexs.Collections;
 with AMF.UML.Holders.Aggregation_Kinds;
 with AMF.UML.Holders.Call_Concurrency_Kinds;
 with AMF.UML.Holders.Connector_Kinds;
@@ -703,8 +928,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Abstractions.UML_Abstraction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -758,8 +984,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Abstractions.UML_Abstraction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -806,14 +1033,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Abstractions.UML_Abstraction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Abstractions.UML_Abstraction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -911,21 +1140,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Accept_Event_Action_Is_Unmarshall then
             --  AcceptEventAction::isUnmarshall : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unmarshall (Self));
+               (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unmarshall);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -947,8 +1179,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -1010,8 +1243,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -1066,7 +1300,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Accept_Call_Actions.UML_Accept_Call_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1164,21 +1399,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Accept_Event_Action_Is_Unmarshall then
             --  AcceptEventAction::isUnmarshall : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unmarshall (Self));
+               (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unmarshall);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -1200,8 +1438,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -1263,8 +1502,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -1311,7 +1551,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Accept_Event_Actions.UML_Accept_Event_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1384,8 +1625,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Action_Execution_Specifications.UML_Action_Execution_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -1431,8 +1673,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Action_Execution_Specifications.UML_Action_Execution_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Execution_Specification_Start then
             --  ExecutionSpecification::start : OccurrenceSpecification
@@ -1447,7 +1690,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Action_Execution_Specifications.UML_Action_Execution_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1537,42 +1781,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control);
 
          elsif Property = MP_UML_Object_Node_Is_Control_Type then
             --  ObjectNode::isControlType : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -1586,8 +1836,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -1610,7 +1861,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -1648,8 +1900,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -1696,7 +1949,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Object_Node_Upper_Bound then
             --  ObjectNode::upperBound : ValueSpecification
@@ -1719,7 +1973,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Action_Input_Pins.UML_Action_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -1857,56 +2112,64 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Activity_Is_Read_Only then
             --  Activity::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Behavior_Is_Reentrant then
             --  Behavior::isReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Reentrant (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Reentrant);
 
          elsif Property = MP_UML_Activity_Is_Single_Execution then
             --  Activity::isSingleExecution : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Single_Execution (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Single_Execution);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -1920,8 +2183,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -2159,8 +2423,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavior_Redefined_Behavior then
             --  Behavior::redefinedBehavior : Behavior
@@ -2287,14 +2552,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Activities.UML_Activity_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2368,14 +2635,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Activity_Final_Nodes.UML_Activity_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activity_Final_Nodes.UML_Activity_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -2429,8 +2698,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activity_Final_Nodes.UML_Activity_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -2461,7 +2731,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Activity_Final_Nodes.UML_Activity_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2543,21 +2814,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -2580,7 +2854,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -2626,8 +2901,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -2682,7 +2958,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2740,21 +3017,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Dimension (Self));
+               (AMF.UML.Activity_Partitions.UML_Activity_Partition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Dimension);
 
          elsif Property = MP_UML_Activity_Partition_Is_External then
             --  ActivityPartition::isExternal : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_External (Self));
+               (AMF.UML.Activity_Partitions.UML_Activity_Partition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_External);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activity_Partitions.UML_Activity_Partition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -2808,8 +3088,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Activity_Partitions.UML_Activity_Partition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Activity_Partition_Represents then
             --  ActivityPartition::represents : Element
@@ -2856,7 +3137,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Activity_Partitions.UML_Activity_Partition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -2962,21 +3244,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -2990,8 +3275,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -3117,8 +3403,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -3197,14 +3484,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Actors.UML_Actor_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -3310,21 +3599,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Add_Structural_Feature_Value_Action_Is_Replace_All then
             --  AddStructuralFeatureValueAction::isReplaceAll : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Replace_All (Self));
+               (AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Replace_All);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -3346,8 +3638,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -3417,8 +3710,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -3473,7 +3767,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -3579,21 +3874,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Add_Variable_Value_Action_Is_Replace_All then
             --  AddVariableValueAction::isReplaceAll : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Replace_All (Self));
+               (AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Replace_All);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -3615,8 +3913,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -3678,8 +3977,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -3726,7 +4026,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -3751,8 +4052,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Any_Receive_Events.UML_Any_Receive_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -3806,8 +4108,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Any_Receive_Events.UML_Any_Receive_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -3822,14 +4125,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Any_Receive_Events.UML_Any_Receive_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Any_Receive_Events.UML_Any_Receive_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -3886,8 +4191,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Artifact::fileName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_File_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_File_Name);
 
          elsif Property = MP_UML_Classifier_General then
             --  Classifier::general : Classifier
@@ -3926,21 +4232,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Artifact_Manifestation then
             --  Artifact::manifestation : Manifestation
@@ -3962,8 +4271,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -4105,8 +4415,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -4185,14 +4496,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Artifacts.UML_Artifact_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -4290,28 +4603,32 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Association_Is_Derived then
             --  Association::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -4333,8 +4650,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -4468,8 +4786,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -4556,14 +4875,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Associations.UML_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -4685,42 +5006,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Association_Is_Derived then
             --  Association::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -4742,8 +5069,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -4949,8 +5277,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -5053,14 +5382,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Association_Classes.UML_Association_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -5133,8 +5464,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -5180,8 +5512,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Execution_Specification_Start then
             --  ExecutionSpecification::start : OccurrenceSpecification
@@ -5196,7 +5529,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -5302,14 +5636,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -5331,8 +5667,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -5402,8 +5739,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -5442,7 +5780,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -5556,21 +5895,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Call_Action_Is_Synchronous then
             --  CallAction::isSynchronous : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Synchronous (Self));
+               (AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Synchronous);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -5592,8 +5934,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -5663,8 +6006,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -5703,7 +6047,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Call_Behavior_Actions.UML_Call_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -5728,8 +6073,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Call_Events.UML_Call_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -5791,8 +6137,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Call_Events.UML_Call_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -5807,14 +6154,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Call_Events.UML_Call_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Call_Events.UML_Call_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -5920,21 +6269,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Call_Action_Is_Synchronous then
             --  CallAction::isSynchronous : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Synchronous (Self));
+               (AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Synchronous);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -5956,8 +6308,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -6035,8 +6388,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -6083,7 +6437,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Call_Operation_Actions.UML_Call_Operation_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -6165,21 +6520,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -6202,7 +6560,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -6240,8 +6599,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -6296,7 +6656,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Central_Buffer_Nodes.UML_Central_Buffer_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -6329,8 +6690,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Change_Events.UML_Change_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -6384,8 +6746,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Change_Events.UML_Change_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -6400,14 +6763,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Change_Events.UML_Change_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Change_Events.UML_Change_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -6521,35 +6886,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -6563,8 +6933,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -6754,8 +7125,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -6850,14 +7222,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Classes.UML_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -6875,7 +7249,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Allow_Substitutable (Self));
+               (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Allow_Substitutable);
 
          elsif Property = MP_UML_Classifier_Template_Parameter_Constraining_Classifier then
             --  ClassifierTemplateParameter::constrainingClassifier : Classifier
@@ -7144,14 +7519,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Clear_Association_Actions.UML_Clear_Association_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Clear_Association_Actions.UML_Clear_Association_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -7173,8 +7550,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Clear_Association_Actions.UML_Clear_Association_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -7244,8 +7622,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Clear_Association_Actions.UML_Clear_Association_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -7276,7 +7655,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Clear_Association_Actions.UML_Clear_Association_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -7374,14 +7754,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -7403,8 +7785,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -7474,8 +7857,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -7522,7 +7906,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -7620,14 +8005,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Clear_Variable_Actions.UML_Clear_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Clear_Variable_Actions.UML_Clear_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -7649,8 +8036,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Clear_Variable_Actions.UML_Clear_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -7712,8 +8100,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Clear_Variable_Actions.UML_Clear_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -7752,7 +8141,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Clear_Variable_Actions.UML_Clear_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -7866,21 +8256,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -7894,8 +8287,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -8045,8 +8439,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -8133,14 +8528,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Collaborations.UML_Collaboration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -8165,8 +8562,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -8212,8 +8610,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Collaboration_Use_Role_Binding then
             --  CollaborationUse::roleBinding : Dependency
@@ -8236,7 +8635,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -8302,14 +8702,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
-               (Internal_Get_Interaction_Operator (Self));
+               (AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Interaction_Operator);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -8363,15 +8765,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Combined_Fragments.UML_Combined_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -8396,8 +8800,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Comment::body : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Body (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Comments.UML_Comment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
          elsif Property = MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -8519,28 +8924,32 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Association_Is_Derived then
             --  Association::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -8562,8 +8971,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -8697,8 +9107,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -8785,14 +9196,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Communication_Paths.UML_Communication_Path_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -8906,42 +9319,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Component_Is_Indirectly_Instantiated then
             --  Component::isIndirectlyInstantiated : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Indirectly_Instantiated (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Indirectly_Instantiated);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -8955,8 +9374,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -9162,8 +9582,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Component_Realization then
             --  Component::realization : ComponentRealization
@@ -9274,14 +9695,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Components.UML_Component_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -9330,8 +9753,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Component_Realizations.UML_Component_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -9385,8 +9809,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Component_Realizations.UML_Component_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Component_Realization_Realizing_Classifier then
             --  ComponentRealization::realizingClassifier : Classifier
@@ -9441,14 +9866,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Component_Realizations.UML_Component_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Component_Realizations.UML_Component_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -9610,28 +10037,32 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Assured (Self));
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Assured);
 
          elsif Property = MP_UML_Conditional_Node_Is_Determinate then
             --  ConditionalNode::isDeterminate : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Determinate (Self));
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Determinate);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -9662,14 +10093,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Must_Isolate (Self));
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Must_Isolate);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -9763,8 +10196,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -9843,7 +10277,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Conditional_Nodes.UML_Conditional_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -9983,8 +10418,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Connection_Point_References.UML_Connection_Point_Reference_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -10038,8 +10474,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Connection_Point_References.UML_Connection_Point_Reference_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Connection_Point_Reference_State then
             --  ConnectionPointReference::state : State
@@ -10054,7 +10491,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Connection_Point_References.UML_Connection_Point_Reference_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -10104,28 +10542,32 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Connectors.UML_Connector_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Feature_Is_Static then
             --  Feature::isStatic : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Static (Self));
+               (AMF.UML.Connectors.UML_Connector_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Static);
 
          elsif Property = MP_UML_Connector_Kind then
             --  Connector::kind : ConnectorKind
 
             return
               AMF.UML.Holders.Connector_Kinds.To_Holder
-               (Internal_Get_Kind (Self));
+               (AMF.UML.Connectors.UML_Connector_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Connectors.UML_Connector_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -10171,8 +10613,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Connectors.UML_Connector_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Connector_Redefined_Connector then
             --  Connector::redefinedConnector : Connector
@@ -10211,7 +10654,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Connectors.UML_Connector_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -10237,21 +10681,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Connector_Ends.UML_Connector_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Connector_Ends.UML_Connector_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Connector_Ends.UML_Connector_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -10306,7 +10753,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Connector_Ends.UML_Connector_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Multiplicity_Element_Upper_Value then
             --  MultiplicityElement::upperValue : ValueSpecification
@@ -10380,7 +10828,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Interaction_Operator_Kinds.To_Holder
-               (Internal_Get_Interaction_Operator (Self));
+               (AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Interaction_Operator);
 
          elsif Property = MP_UML_Consider_Ignore_Fragment_Message then
             --  ConsiderIgnoreFragment::message : NamedElement
@@ -10394,8 +10843,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -10449,15 +10899,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -10498,8 +10950,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Constraints.UML_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -10553,8 +11006,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Constraints.UML_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -10577,14 +11031,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Constraints.UML_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Constraints.UML_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -10641,8 +11097,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Continuations.UML_Continuation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -10688,22 +11145,25 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Continuations.UML_Continuation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Continuation_Setting then
             --  Continuation::setting : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Setting (Self));
+               (AMF.UML.Continuations.UML_Continuation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Setting);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Continuations.UML_Continuation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -10777,14 +11237,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Control_Flows.UML_Control_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Control_Flows.UML_Control_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -10830,8 +11292,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Control_Flows.UML_Control_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Activity_Edge_Redefined_Edge then
             --  ActivityEdge::redefinedEdge : ActivityEdge
@@ -10878,7 +11341,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Control_Flows.UML_Control_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Activity_Edge_Weight then
             --  ActivityEdge::weight : ValueSpecification
@@ -11008,14 +11472,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Create_Link_Actions.UML_Create_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Create_Link_Actions.UML_Create_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -11037,8 +11503,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Create_Link_Actions.UML_Create_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -11100,8 +11567,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Create_Link_Actions.UML_Create_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -11132,7 +11600,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Create_Link_Actions.UML_Create_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -11254,14 +11723,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Create_Link_Object_Actions.UML_Create_Link_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Create_Link_Object_Actions.UML_Create_Link_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -11283,8 +11754,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Create_Link_Object_Actions.UML_Create_Link_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -11346,8 +11818,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Create_Link_Object_Actions.UML_Create_Link_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -11386,7 +11859,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Create_Link_Object_Actions.UML_Create_Link_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -11492,14 +11966,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Create_Object_Actions.UML_Create_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Create_Object_Actions.UML_Create_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -11521,8 +11997,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Create_Object_Actions.UML_Create_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -11584,8 +12061,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Create_Object_Actions.UML_Create_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -11624,7 +12102,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Create_Object_Actions.UML_Create_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -11706,21 +12185,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -11743,7 +12225,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -11781,8 +12264,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -11837,7 +12321,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Data_Store_Nodes.UML_Data_Store_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -11927,21 +12412,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -11955,8 +12443,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -12090,8 +12579,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -12170,14 +12660,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Data_Types.UML_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -12267,14 +12759,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Decision_Nodes.UML_Decision_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Decision_Nodes.UML_Decision_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -12328,8 +12822,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Decision_Nodes.UML_Decision_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -12360,7 +12855,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Decision_Nodes.UML_Decision_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -12393,8 +12889,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Dependencies.UML_Dependency_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -12448,8 +12945,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Dependencies.UML_Dependency_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -12496,14 +12994,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Dependencies.UML_Dependency_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Dependencies.UML_Dependency_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -12560,8 +13060,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployments.UML_Deployment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -12615,8 +13116,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployments.UML_Deployment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -12663,14 +13165,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Deployments.UML_Deployment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Deployments.UML_Deployment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -12719,8 +13223,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  DeploymentSpecification::deploymentLocation : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Deployment_Location (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Deployment_Location);
 
          elsif Property = MP_UML_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
@@ -12734,8 +13239,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  DeploymentSpecification::executionLocation : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Execution_Location (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Execution_Location);
 
          elsif Property = MP_UML_Classifier_Feature then
             --  Classifier::feature : Feature
@@ -12749,8 +13255,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Artifact::fileName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_File_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_File_Name);
 
          elsif Property = MP_UML_Classifier_General then
             --  Classifier::general : Classifier
@@ -12789,21 +13296,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Artifact_Manifestation then
             --  Artifact::manifestation : Manifestation
@@ -12825,8 +13335,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -12968,8 +13479,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -13048,14 +13560,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -13177,14 +13691,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Destroy_Link_Actions.UML_Destroy_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Destroy_Link_Actions.UML_Destroy_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -13206,8 +13722,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Destroy_Link_Actions.UML_Destroy_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -13269,8 +13786,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Destroy_Link_Actions.UML_Destroy_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -13301,7 +13819,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Destroy_Link_Actions.UML_Destroy_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -13399,28 +13918,32 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Destroy_Links (Self));
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Destroy_Links);
 
          elsif Property = MP_UML_Destroy_Object_Action_Is_Destroy_Owned_Objects then
             --  DestroyObjectAction::isDestroyOwnedObjects : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Destroy_Owned_Objects (Self));
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Destroy_Owned_Objects);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -13442,8 +13965,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -13505,8 +14029,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -13545,7 +14070,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Destroy_Object_Actions.UML_Destroy_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -13618,8 +14144,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -13665,8 +14192,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Occurrence_Specification_To_After then
             --  OccurrenceSpecification::toAfter : GeneralOrdering
@@ -13689,7 +14217,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -13819,35 +14348,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -13861,8 +14395,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -14060,8 +14595,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -14156,14 +14692,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Devices.UML_Device_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -14196,8 +14734,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Durations.UML_Duration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -14259,8 +14798,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Durations.UML_Duration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -14283,14 +14823,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Durations.UML_Duration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Durations.UML_Duration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -14332,14 +14874,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.Boolean_Collections.To_Holder
-               (Internal_Get_First_Event (Self));
+               (AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_First_Event);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -14393,8 +14937,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -14433,14 +14978,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -14497,8 +15044,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Duration_Intervals.UML_Duration_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -14552,8 +15100,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Duration_Intervals.UML_Duration_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -14576,14 +15125,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Duration_Intervals.UML_Duration_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Duration_Intervals.UML_Duration_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -14617,14 +15168,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.Boolean_Collections.To_Holder
-               (Internal_Get_First_Event (Self));
+               (AMF.UML.Duration_Observations.UML_Duration_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_First_Event);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Duration_Observations.UML_Duration_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -14678,8 +15231,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Duration_Observations.UML_Duration_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -14694,14 +15248,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Duration_Observations.UML_Duration_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Duration_Observations.UML_Duration_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -14718,8 +15274,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  ElementImport::alias : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Alias (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Element_Imports.UML_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Alias);
 
          elsif Property = MP_UML_Element_Import_Imported_Element then
             --  ElementImport::importedElement : PackageableElement
@@ -14790,7 +15347,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Element_Imports.UML_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -14880,21 +15438,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -14908,8 +15469,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -15051,8 +15613,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -15131,14 +15694,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Enumerations.UML_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -15203,8 +15768,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -15258,8 +15824,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Instance_Specification_Slot then
             --  InstanceSpecification::slot : Slot
@@ -15290,14 +15857,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -15494,35 +16063,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -15536,8 +16110,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -15735,8 +16310,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -15831,14 +16407,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Execution_Environments.UML_Execution_Environment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -15911,8 +16489,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -15958,8 +16537,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Occurrence_Specification_To_After then
             --  OccurrenceSpecification::toAfter : GeneralOrdering
@@ -15982,7 +16562,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -16064,21 +16645,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -16101,7 +16685,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -16139,8 +16724,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -16211,7 +16797,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Expansion_Nodes.UML_Expansion_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -16373,14 +16960,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -16411,21 +17000,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Expansion_Kinds.To_Holder
-               (Internal_Get_Mode (Self));
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Mode);
 
          elsif Property = MP_UML_Structured_Activity_Node_Must_Isolate then
             --  StructuredActivityNode::mustIsolate : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Must_Isolate (Self));
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Must_Isolate);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -16527,8 +17119,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -16599,7 +17192,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Expansion_Regions.UML_Expansion_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -16624,8 +17218,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expressions.UML_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -16687,15 +17282,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expressions.UML_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Expression_Symbol then
             --  Expression::symbol : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Symbol (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Expressions.UML_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Symbol);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -16718,14 +17315,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Expressions.UML_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Expressions.UML_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -16782,8 +17381,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extends.UML_Extend_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -16829,8 +17429,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extends.UML_Extend_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -16861,7 +17462,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Extends.UML_Extend_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -16959,35 +17561,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Association_Is_Derived then
             --  Association::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Extension_Is_Required then
             --  Extension::isRequired : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Required (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Required);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -17017,8 +17624,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -17160,8 +17768,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -17248,14 +17857,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Extensions.UML_Extension_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -17273,7 +17884,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Aggregation_Kinds.To_Holder
-               (Internal_Get_Aggregation (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Aggregation);
 
          elsif Property = MP_UML_Property_Association then
             --  Property::association : Association
@@ -17319,8 +17931,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Property::default : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Default (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Default);
 
          elsif Property = MP_UML_Property_Default_Value then
             --  Property::defaultValue : ValueSpecification
@@ -17375,84 +17988,96 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Composite (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Composite);
 
          elsif Property = MP_UML_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived_Union (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived_Union);
 
          elsif Property = MP_UML_Property_Is_ID then
             --  Property::isID : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_ID (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_ID);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Structural_Feature_Is_Read_Only then
             --  StructuralFeature::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Feature_Is_Static then
             --  Feature::isStatic : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Static (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Static);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Extension_End_Lower then
             --  ExtensionEnd::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -17466,8 +18091,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -17537,8 +18163,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Property_Qualifier then
             --  Property::qualifier : Property
@@ -17617,7 +18244,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Multiplicity_Element_Upper_Value then
             --  MultiplicityElement::upperValue : ValueSpecification
@@ -17632,7 +18260,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Extension_Ends.UML_Extension_End_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -17658,14 +18287,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Extension_Points.UML_Extension_Point_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extension_Points.UML_Extension_Point_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -17711,8 +18342,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Extension_Points.UML_Extension_Point_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -17743,7 +18375,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Extension_Points.UML_Extension_Point_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -17849,35 +18482,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Composite (Self));
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Composite);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_State_Is_Orthogonal then
             --  State::isOrthogonal : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Orthogonal (Self));
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Orthogonal);
 
          elsif Property = MP_UML_State_Is_Simple then
             --  State::isSimple : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Simple (Self));
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Simple);
 
          elsif Property = MP_UML_State_Is_Submachine_State then
             --  State::isSubmachineState : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Submachine_State (Self));
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Submachine_State);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -17891,8 +18529,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -17970,8 +18609,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -18034,7 +18674,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Final_States.UML_Final_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -18108,14 +18749,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Flow_Final_Nodes.UML_Flow_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Flow_Final_Nodes.UML_Flow_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -18169,8 +18812,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Flow_Final_Nodes.UML_Flow_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -18201,7 +18845,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Flow_Final_Nodes.UML_Flow_Final_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -18275,14 +18920,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Fork_Nodes.UML_Fork_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Fork_Nodes.UML_Fork_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -18336,8 +18983,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Fork_Nodes.UML_Fork_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -18368,7 +19016,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Fork_Nodes.UML_Fork_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -18498,42 +19147,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Behavior_Is_Reentrant then
             --  Behavior::isReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Reentrant (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Reentrant);
 
          elsif Property = MP_UML_Opaque_Behavior_Language then
             --  OpaqueBehavior::language : String
@@ -18555,8 +19210,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -18778,8 +19434,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavior_Redefined_Behavior then
             --  Behavior::redefinedBehavior : Behavior
@@ -18890,14 +19547,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -18930,8 +19589,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Gates.UML_Gate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -18977,15 +19637,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Gates.UML_Gate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Gates.UML_Gate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -19026,8 +19688,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.General_Orderings.UML_General_Ordering_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -19073,15 +19736,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.General_Orderings.UML_General_Ordering_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.General_Orderings.UML_General_Ordering_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -19115,7 +19780,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Is_Substitutable (Self));
+               (AMF.UML.Generalizations.UML_Generalization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Substitutable);
 
          elsif Property = MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -19205,21 +19871,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Covering (Self));
+               (AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Covering);
 
          elsif Property = MP_UML_Generalization_Set_Is_Disjoint then
             --  GeneralizationSet::isDisjoint : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Disjoint (Self));
+               (AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Disjoint);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -19281,8 +19950,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -19297,14 +19967,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -19321,22 +19993,25 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Image::content : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Content (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Images.UML_Image_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Content);
 
          elsif Property = MP_UML_Image_Format then
             --  Image::format : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Format (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Images.UML_Image_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Format);
 
          elsif Property = MP_UML_Image_Location then
             --  Image::location : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Location (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Images.UML_Image_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Location);
 
          elsif Property = MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -19401,8 +20076,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Includes.UML_Include_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -19448,8 +20124,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Includes.UML_Include_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -19480,7 +20157,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Includes.UML_Include_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -19529,8 +20207,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Information_Flows.UML_Information_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -19584,8 +20263,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Information_Flows.UML_Information_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Information_Flow_Realization then
             --  InformationFlow::realization : Relationship
@@ -19656,14 +20336,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Information_Flows.UML_Information_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Information_Flows.UML_Information_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -19753,21 +20435,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -19781,8 +20466,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -19900,8 +20586,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -19988,14 +20675,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Information_Items.UML_Information_Item_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -20069,14 +20758,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Initial_Nodes.UML_Initial_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Initial_Nodes.UML_Initial_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -20130,8 +20821,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Initial_Nodes.UML_Initial_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -20162,7 +20854,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Initial_Nodes.UML_Initial_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -20244,42 +20937,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control);
 
          elsif Property = MP_UML_Object_Node_Is_Control_Type then
             --  ObjectNode::isControlType : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -20293,8 +20992,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -20317,7 +21017,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -20355,8 +21056,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -20403,7 +21105,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Object_Node_Upper_Bound then
             --  ObjectNode::upperBound : ValueSpecification
@@ -20426,7 +21129,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Input_Pins.UML_Input_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -20475,8 +21179,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Instance_Specifications.UML_Instance_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -20530,8 +21235,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Instance_Specifications.UML_Instance_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Instance_Specification_Slot then
             --  InstanceSpecification::slot : Slot
@@ -20562,14 +21268,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Instance_Specifications.UML_Instance_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Instance_Specifications.UML_Instance_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -20602,8 +21310,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Instance_Values.UML_Instance_Value_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -20657,8 +21366,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Instance_Values.UML_Instance_Value_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -20681,14 +21391,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Instance_Values.UML_Instance_Value_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Instance_Values.UML_Instance_Value_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -20866,42 +21578,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Behavior_Is_Reentrant then
             --  Behavior::isReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Reentrant (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Reentrant);
 
          elsif Property = MP_UML_Interaction_Lifeline then
             --  Interaction::lifeline : Lifeline
@@ -20931,8 +21649,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -21154,8 +21873,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavior_Redefined_Behavior then
             --  Behavior::redefinedBehavior : Behavior
@@ -21266,14 +21986,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interactions.UML_Interaction_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -21330,8 +22052,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -21385,8 +22108,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -21409,14 +22133,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -21513,8 +22239,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -21584,15 +22311,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -21665,8 +22394,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interaction_Uses.UML_Interaction_Use_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -21712,8 +22442,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interaction_Uses.UML_Interaction_Use_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Interaction_Use_Refers_To then
             --  InteractionUse::refersTo : Interaction
@@ -21744,7 +22475,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interaction_Uses.UML_Interaction_Use_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -21834,21 +22566,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -21862,8 +22597,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22021,8 +22757,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -22109,14 +22846,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interfaces.UML_Interface_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -22173,8 +22912,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interface_Realizations.UML_Interface_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22228,8 +22968,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interface_Realizations.UML_Interface_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -22276,14 +23017,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interface_Realizations.UML_Interface_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interface_Realizations.UML_Interface_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -22340,8 +23083,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22395,8 +23139,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Activity_Group_Subgroup then
             --  ActivityGroup::subgroup : ActivityGroup
@@ -22419,7 +23164,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -22460,8 +23206,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Intervals.UML_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22515,8 +23262,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Intervals.UML_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -22539,14 +23287,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Intervals.UML_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Intervals.UML_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -22587,8 +23337,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interval_Constraints.UML_Interval_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22642,8 +23393,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Interval_Constraints.UML_Interval_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -22674,14 +23426,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interval_Constraints.UML_Interval_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Interval_Constraints.UML_Interval_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -22755,14 +23509,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Combine_Duplicate (Self));
+               (AMF.UML.Join_Nodes.UML_Join_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Combine_Duplicate);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Join_Nodes.UML_Join_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Join_Node_Join_Spec then
             --  JoinNode::joinSpec : ValueSpecification
@@ -22776,8 +23532,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Join_Nodes.UML_Join_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22831,8 +23588,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Join_Nodes.UML_Join_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -22863,7 +23621,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Join_Nodes.UML_Join_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -22912,8 +23671,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Lifelines.UML_Lifeline_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -22959,8 +23719,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Lifelines.UML_Lifeline_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Lifeline_Represents then
             --  Lifeline::represents : ConnectableElement
@@ -22983,7 +23744,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Lifelines.UML_Lifeline_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -23017,7 +23779,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Replace_All (Self));
+               (AMF.UML.Link_End_Creation_Datas.UML_Link_End_Creation_Data_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Replace_All);
 
          elsif Property = MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -23150,7 +23913,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Destroy_Duplicates (Self));
+               (AMF.UML.Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Destroy_Duplicates);
 
          elsif Property = MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -23215,8 +23979,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -23270,8 +24035,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -23294,21 +24060,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Value (Self));
+               (AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Value);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -23333,8 +24102,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Integers.UML_Literal_Integer_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -23388,8 +24158,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Integers.UML_Literal_Integer_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -23412,21 +24183,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Integers.To_Holder
-               (Internal_Get_Value (Self));
+               (AMF.UML.Literal_Integers.UML_Literal_Integer_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Value);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Integers.UML_Literal_Integer_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Integers.UML_Literal_Integer_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -23451,8 +24225,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Nulls.UML_Literal_Null_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -23506,8 +24281,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Nulls.UML_Literal_Null_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -23530,14 +24306,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Nulls.UML_Literal_Null_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Nulls.UML_Literal_Null_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -23562,8 +24340,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Reals.UML_Literal_Real_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -23617,8 +24396,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Reals.UML_Literal_Real_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -23641,21 +24421,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.Reals.To_Holder
-               (Internal_Get_Value (Self));
+               (AMF.UML.Literal_Reals.UML_Literal_Real_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Value);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Reals.UML_Literal_Real_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Reals.UML_Literal_Real_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -23680,8 +24463,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Strings.UML_Literal_String_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -23735,8 +24519,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Strings.UML_Literal_String_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -23758,22 +24543,25 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  LiteralString::value : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Value (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Strings.UML_Literal_String_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Value);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Strings.UML_Literal_String_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Strings.UML_Literal_String_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -23798,8 +24586,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -23853,8 +24642,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -23877,21 +24667,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.Unlimited_Naturals.To_Holder
-               (Internal_Get_Value (Self));
+               (AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Value);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -24069,21 +24862,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Loop_Node_Is_Tested_First then
             --  LoopNode::isTestedFirst : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Tested_First (Self));
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Tested_First);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -24130,14 +24926,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Must_Isolate (Self));
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Must_Isolate);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -24231,8 +25029,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -24327,7 +25126,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Loop_Nodes.UML_Loop_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -24368,8 +25168,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Manifestations.UML_Manifestation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -24423,8 +25224,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Manifestations.UML_Manifestation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -24479,14 +25281,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Manifestations.UML_Manifestation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Manifestations.UML_Manifestation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -24560,14 +25364,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Merge_Nodes.UML_Merge_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Merge_Nodes.UML_Merge_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -24621,8 +25427,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Merge_Nodes.UML_Merge_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -24653,7 +25460,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Merge_Nodes.UML_Merge_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -24703,21 +25511,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Message_Kinds.To_Holder
-               (Internal_Get_Message_Kind (Self));
+               (AMF.UML.Messages.UML_Message_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Message_Kind);
 
          elsif Property = MP_UML_Message_Message_Sort then
             --  Message::messageSort : MessageSort
 
             return
               AMF.UML.Holders.Message_Sorts.To_Holder
-               (Internal_Get_Message_Sort (Self));
+               (AMF.UML.Messages.UML_Message_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Message_Sort);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Messages.UML_Message_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -24763,8 +25574,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Messages.UML_Message_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Message_Receive_Event then
             --  Message::receiveEvent : MessageEnd
@@ -24795,7 +25607,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Messages.UML_Message_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -24868,8 +25681,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -24915,8 +25729,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Occurrence_Specification_To_After then
             --  OccurrenceSpecification::toAfter : GeneralOrdering
@@ -24939,7 +25754,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -24956,8 +25772,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Package::URI : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_URI (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Models.UML_Model_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_URI);
 
          elsif Property = MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -24995,8 +25812,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Models.UML_Model_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -25138,8 +25956,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Models.UML_Model_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Templateable_Element_Template_Binding then
             --  TemplateableElement::templateBinding : TemplateBinding
@@ -25161,22 +25980,25 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Model::viewpoint : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Viewpoint (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Models.UML_Model_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Viewpoint);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Models.UML_Model_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Models.UML_Model_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -25306,35 +26128,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -25348,8 +26175,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -25547,8 +26375,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -25643,14 +26472,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Nodes.UML_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -25724,28 +26555,32 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Object_Flows.UML_Object_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Object_Flow_Is_Multicast then
             --  ObjectFlow::isMulticast : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Multicast (Self));
+               (AMF.UML.Object_Flows.UML_Object_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Multicast);
 
          elsif Property = MP_UML_Object_Flow_Is_Multireceive then
             --  ObjectFlow::isMultireceive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Multireceive (Self));
+               (AMF.UML.Object_Flows.UML_Object_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Multireceive);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Object_Flows.UML_Object_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -25791,8 +26626,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Object_Flows.UML_Object_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Activity_Edge_Redefined_Edge then
             --  ActivityEdge::redefinedEdge : ActivityEdge
@@ -25855,7 +26691,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Object_Flows.UML_Object_Flow_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Activity_Edge_Weight then
             --  ActivityEdge::weight : ValueSpecification
@@ -25928,8 +26765,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -25975,8 +26813,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Occurrence_Specification_To_After then
             --  OccurrenceSpecification::toAfter : GeneralOrdering
@@ -25999,7 +26838,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -26113,14 +26953,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Opaque_Action_Language then
             --  OpaqueAction::language : String
@@ -26150,8 +26992,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -26221,8 +27064,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -26253,7 +27097,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -26383,42 +27228,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Behavior_Is_Reentrant then
             --  Behavior::isReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Reentrant (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Reentrant);
 
          elsif Property = MP_UML_Opaque_Behavior_Language then
             --  OpaqueBehavior::language : String
@@ -26440,8 +27291,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -26663,8 +27515,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavior_Redefined_Behavior then
             --  Behavior::redefinedBehavior : Behavior
@@ -26775,14 +27628,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -26831,8 +27686,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -26886,8 +27742,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Opaque_Expression_Result then
             --  OpaqueExpression::result : Parameter
@@ -26918,14 +27775,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -26967,7 +27826,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Call_Concurrency_Kinds.To_Holder
-               (Internal_Get_Concurrency (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Concurrency);
 
          elsif Property = MP_UML_Operation_Datatype then
             --  Operation::datatype : DataType
@@ -27014,49 +27874,56 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Operation_Is_Ordered then
             --  Operation::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Operation_Is_Query then
             --  Operation::isQuery : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Query (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Query);
 
          elsif Property = MP_UML_Feature_Is_Static then
             --  Feature::isStatic : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Static (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Static);
 
          elsif Property = MP_UML_Operation_Is_Unique then
             --  Operation::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Operation_Lower then
             --  Operation::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -27078,8 +27945,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -27205,8 +28073,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavioral_Feature_Raised_Exception then
             --  BehavioralFeature::raisedException : Type
@@ -27285,14 +28154,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Operations.UML_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -27457,42 +28328,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control);
 
          elsif Property = MP_UML_Object_Node_Is_Control_Type then
             --  ObjectNode::isControlType : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -27506,8 +28383,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -27530,7 +28408,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -27568,8 +28447,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -27616,7 +28496,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Object_Node_Upper_Bound then
             --  ObjectNode::upperBound : ValueSpecification
@@ -27639,7 +28520,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Output_Pins.UML_Output_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -27656,8 +28538,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Package::URI : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_URI (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Packages.UML_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_URI);
 
          elsif Property = MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -27695,8 +28578,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Packages.UML_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -27838,8 +28722,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Packages.UML_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Templateable_Element_Template_Binding then
             --  TemplateableElement::templateBinding : TemplateBinding
@@ -27862,14 +28747,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Packages.UML_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Packages.UML_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -27951,7 +28838,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Package_Imports.UML_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -28051,8 +28939,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Parameter::default : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Default (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Default);
 
          elsif Property = MP_UML_Parameter_Default_Value then
             --  Parameter::defaultValue : ValueSpecification
@@ -28067,14 +28956,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Parameter_Direction_Kinds.To_Holder
-               (Internal_Get_Direction (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Direction);
 
          elsif Property = MP_UML_Parameter_Effect then
             --  Parameter::effect : ParameterEffectKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Effect (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Effect);
 
          elsif Property = MP_UML_Connectable_Element_End then
             --  ConnectableElement::end : ConnectorEnd
@@ -28089,35 +28980,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Exception (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Exception);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Parameter_Is_Stream then
             --  Parameter::isStream : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Stream (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Stream);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -28131,8 +29027,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -28202,8 +29099,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Connectable_Element_Template_Parameter then
             --  ConnectableElement::templateParameter : ConnectableElementTemplateParameter
@@ -28234,7 +29132,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Multiplicity_Element_Upper_Value then
             --  MultiplicityElement::upperValue : ValueSpecification
@@ -28249,7 +29148,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Parameters.UML_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -28282,8 +29182,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Parameter_Sets.UML_Parameter_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -28337,15 +29238,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Parameter_Sets.UML_Parameter_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Parameter_Sets.UML_Parameter_Set_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -28418,8 +29321,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -28465,8 +29369,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Interaction_Use_Refers_To then
             --  InteractionUse::refersTo : Interaction
@@ -28497,7 +29402,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -28515,7 +29421,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Aggregation_Kinds.To_Holder
-               (Internal_Get_Aggregation (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Aggregation);
 
          elsif Property = MP_UML_Property_Association then
             --  Property::association : Association
@@ -28561,8 +29468,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Property::default : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Default (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Default);
 
          elsif Property = MP_UML_Property_Default_Value then
             --  Property::defaultValue : ValueSpecification
@@ -28617,98 +29525,112 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Behavior (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Behavior);
 
          elsif Property = MP_UML_Property_Is_Composite then
             --  Property::isComposite : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Composite (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Composite);
 
          elsif Property = MP_UML_Port_Is_Conjugated then
             --  Port::isConjugated : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Conjugated (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Conjugated);
 
          elsif Property = MP_UML_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived_Union (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived_Union);
 
          elsif Property = MP_UML_Property_Is_ID then
             --  Property::isID : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_ID (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_ID);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Structural_Feature_Is_Read_Only then
             --  StructuralFeature::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Port_Is_Service then
             --  Port::isService : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Service (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Service);
 
          elsif Property = MP_UML_Feature_Is_Static then
             --  Feature::isStatic : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Static (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Static);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -28722,8 +29644,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -28809,8 +29732,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Property_Qualifier then
             --  Property::qualifier : Property
@@ -28897,7 +29821,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Multiplicity_Element_Upper_Value then
             --  MultiplicityElement::upperValue : ValueSpecification
@@ -28912,7 +29837,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Ports.UML_Port_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -29002,21 +29928,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -29030,8 +29959,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -29165,8 +30095,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -29245,14 +30176,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Primitive_Types.UML_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -29269,8 +30202,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Package::URI : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_URI (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Profiles.UML_Profile_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_URI);
 
          elsif Property = MP_UML_Named_Element_Client_Dependency then
             --  NamedElement::clientDependency : Dependency
@@ -29324,8 +30258,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Profiles.UML_Profile_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -29467,8 +30402,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Profiles.UML_Profile_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Templateable_Element_Template_Binding then
             --  TemplateableElement::templateBinding : TemplateBinding
@@ -29491,14 +30427,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Profiles.UML_Profile_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Profiles.UML_Profile_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -29532,7 +30470,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Strict (Self));
+               (AMF.UML.Profile_Applications.UML_Profile_Application_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Strict);
 
          elsif Property = MP_UML_Element_Owned_Comment then
             --  Element::ownedComment : Comment
@@ -29598,7 +30537,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Aggregation_Kinds.To_Holder
-               (Internal_Get_Aggregation (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Aggregation);
 
          elsif Property = MP_UML_Property_Association then
             --  Property::association : Association
@@ -29644,8 +30584,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Property::default : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Default (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Default);
 
          elsif Property = MP_UML_Property_Default_Value then
             --  Property::defaultValue : ValueSpecification
@@ -29700,77 +30641,88 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Composite (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Composite);
 
          elsif Property = MP_UML_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived);
 
          elsif Property = MP_UML_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Derived_Union (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Derived_Union);
 
          elsif Property = MP_UML_Property_Is_ID then
             --  Property::isID : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_ID (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_ID);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Structural_Feature_Is_Read_Only then
             --  StructuralFeature::isReadOnly : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Read_Only (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Read_Only);
 
          elsif Property = MP_UML_Feature_Is_Static then
             --  Feature::isStatic : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Static (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Static);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -29784,8 +30736,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -29855,8 +30808,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Property_Qualifier then
             --  Property::qualifier : Property
@@ -29927,7 +30881,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Multiplicity_Element_Upper_Value then
             --  MultiplicityElement::upperValue : ValueSpecification
@@ -29942,7 +30897,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Properties.UML_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -30163,42 +31119,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Behavior_Is_Reentrant then
             --  Behavior::isReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Reentrant (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Reentrant);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -30212,8 +31174,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -30435,8 +31398,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavior_Redefined_Behavior then
             --  Behavior::redefinedBehavior : Behavior
@@ -30563,14 +31527,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -30636,14 +31602,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Protocol_Transitions.UML_Protocol_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Transition_Kind then
             --  Transition::kind : TransitionKind
 
             return
               AMF.UML.Holders.Transition_Kinds.To_Holder
-               (Internal_Get_Kind (Self));
+               (AMF.UML.Protocol_Transitions.UML_Protocol_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -30657,8 +31625,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Protocol_Transitions.UML_Protocol_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -30744,8 +31713,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Protocol_Transitions.UML_Protocol_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -30816,7 +31786,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Protocol_Transitions.UML_Protocol_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -30858,14 +31829,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Pseudostate_Kinds.To_Holder
-               (Internal_Get_Kind (Self));
+               (AMF.UML.Pseudostates.UML_Pseudostate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Pseudostates.UML_Pseudostate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -30919,8 +31892,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Pseudostates.UML_Pseudostate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Pseudostate_State then
             --  Pseudostate::state : State
@@ -30943,7 +31917,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Pseudostates.UML_Pseudostate_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -31100,14 +32075,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Raise_Exception_Actions.UML_Raise_Exception_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Raise_Exception_Actions.UML_Raise_Exception_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -31129,8 +32106,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Raise_Exception_Actions.UML_Raise_Exception_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -31192,8 +32170,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Raise_Exception_Actions.UML_Raise_Exception_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -31224,7 +32203,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Raise_Exception_Actions.UML_Raise_Exception_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -31330,14 +32310,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Extent_Actions.UML_Read_Extent_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Extent_Actions.UML_Read_Extent_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -31359,8 +32341,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Extent_Actions.UML_Read_Extent_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -31422,8 +32405,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Extent_Actions.UML_Read_Extent_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -31462,7 +32446,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Extent_Actions.UML_Read_Extent_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -31568,21 +32553,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Direct (Self));
+               (AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Direct);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -31604,8 +32592,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -31675,8 +32664,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -31715,7 +32705,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -31829,14 +32820,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Link_Actions.UML_Read_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Link_Actions.UML_Read_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -31858,8 +32851,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Link_Actions.UML_Read_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -31921,8 +32915,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Link_Actions.UML_Read_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -31961,7 +32956,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Link_Actions.UML_Read_Link_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -32067,14 +33063,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -32096,8 +33094,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -32167,8 +33166,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -32207,7 +33207,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -32305,14 +33306,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -32334,8 +33337,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -32405,8 +33409,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier then
             --  ReadLinkObjectEndQualifierAction::qualifier : Property
@@ -32453,7 +33458,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -32551,14 +33557,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Self_Actions.UML_Read_Self_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Self_Actions.UML_Read_Self_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -32580,8 +33588,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Self_Actions.UML_Read_Self_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -32643,8 +33652,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Self_Actions.UML_Read_Self_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -32683,7 +33693,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Self_Actions.UML_Read_Self_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -32781,14 +33792,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -32810,8 +33823,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -32881,8 +33895,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -32929,7 +33944,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -33027,14 +34043,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -33056,8 +34074,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -33119,8 +34138,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -33167,7 +34187,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -33208,8 +34229,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Realizations.UML_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -33263,8 +34285,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Realizations.UML_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -33311,14 +34334,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Realizations.UML_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Realizations.UML_Realization_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -33344,7 +34369,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Call_Concurrency_Kinds.To_Holder
-               (Internal_Get_Concurrency (Self));
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Concurrency);
 
          elsif Property = MP_UML_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
@@ -33375,21 +34401,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Feature_Is_Static then
             --  Feature::isStatic : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Static (Self));
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Static);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -33411,8 +34440,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -33498,8 +34528,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavioral_Feature_Raised_Exception then
             --  BehavioralFeature::raisedException : Type
@@ -33538,7 +34569,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Receptions.UML_Reception_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -33636,21 +34668,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Reclassify_Object_Action_Is_Replace_All then
             --  ReclassifyObjectAction::isReplaceAll : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Replace_All (Self));
+               (AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Replace_All);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -33672,8 +34707,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -33759,8 +34795,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -33791,7 +34828,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Reclassify_Object_Actions.UML_Reclassify_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -33841,14 +34879,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -33910,8 +34950,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -33942,7 +34983,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -34048,21 +35090,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Reduce_Actions.UML_Reduce_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Reduce_Actions.UML_Reduce_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Reduce_Action_Is_Ordered then
             --  ReduceAction::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Reduce_Actions.UML_Reduce_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -34084,8 +35129,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Reduce_Actions.UML_Reduce_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -34147,8 +35193,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Reduce_Actions.UML_Reduce_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -34195,7 +35242,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Reduce_Actions.UML_Reduce_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -34245,7 +35293,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Regions.UML_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -34259,8 +35308,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Regions.UML_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -34330,8 +35380,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Regions.UML_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -34394,7 +35445,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Regions.UML_Region_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -34492,21 +35544,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Remove_Structural_Feature_Value_Action_Is_Remove_Duplicates then
             --  RemoveStructuralFeatureValueAction::isRemoveDuplicates : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Remove_Duplicates (Self));
+               (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Remove_Duplicates);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -34528,8 +35583,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -34599,8 +35655,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -34663,7 +35720,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -34761,21 +35819,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Remove_Variable_Value_Action_Is_Remove_Duplicates then
             --  RemoveVariableValueAction::isRemoveDuplicates : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Remove_Duplicates (Self));
+               (AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Remove_Duplicates);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -34797,8 +35858,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -34860,8 +35922,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -34916,7 +35979,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -35014,14 +36078,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Reply_Actions.UML_Reply_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Reply_Actions.UML_Reply_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -35043,8 +36109,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Reply_Actions.UML_Reply_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -35106,8 +36173,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Reply_Actions.UML_Reply_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -35162,7 +36230,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Reply_Actions.UML_Reply_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -35268,14 +36337,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -35297,8 +36368,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -35368,8 +36440,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -35416,7 +36489,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Send_Object_Actions.UML_Send_Object_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -35522,14 +36596,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -35551,8 +36627,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -35622,8 +36699,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -35670,7 +36748,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -35832,14 +36911,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -35870,14 +36951,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Must_Isolate (Self));
+               (AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Must_Isolate);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -35971,8 +37054,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -36043,7 +37127,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Sequence_Nodes.UML_Sequence_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -36133,21 +37218,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -36161,8 +37249,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -36288,8 +37377,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -36368,14 +37458,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Signals.UML_Signal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -36400,8 +37492,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Signal_Events.UML_Signal_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -36455,8 +37548,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Signal_Events.UML_Signal_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Signal_Event_Signal then
             --  SignalEvent::signal : Signal
@@ -36479,14 +37573,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Signal_Events.UML_Signal_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Signal_Events.UML_Signal_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -36643,14 +37739,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -36672,8 +37770,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -36743,8 +37842,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -36775,7 +37875,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -36881,21 +37982,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Call_Action_Is_Synchronous then
             --  CallAction::isSynchronous : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Synchronous (Self));
+               (AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Synchronous);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -36917,8 +38021,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -36996,8 +38101,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -37036,7 +38142,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -37142,35 +38249,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Composite (Self));
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Composite);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_State_Is_Orthogonal then
             --  State::isOrthogonal : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Orthogonal (Self));
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Orthogonal);
 
          elsif Property = MP_UML_State_Is_Simple then
             --  State::isSimple : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Simple (Self));
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Simple);
 
          elsif Property = MP_UML_State_Is_Submachine_State then
             --  State::isSubmachineState : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Submachine_State (Self));
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Submachine_State);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -37184,8 +38296,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -37263,8 +38376,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -37327,7 +38441,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.States.UML_State_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -37400,8 +38515,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.State_Invariants.UML_State_Invariant_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -37447,15 +38563,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.State_Invariants.UML_State_Invariant_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.State_Invariants.UML_State_Invariant_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -37593,42 +38711,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Behavior_Is_Reentrant then
             --  Behavior::isReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Reentrant (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Reentrant);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -37642,8 +38766,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -37865,8 +38990,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Behavior_Redefined_Behavior then
             --  Behavior::redefinedBehavior : Behavior
@@ -37993,14 +39119,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.State_Machines.UML_State_Machine_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -38122,35 +39250,40 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Abstract then
             --  Classifier::isAbstract : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Class_Is_Active then
             --  Class::isActive : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Active (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Active);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -38164,8 +39297,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -38363,8 +39497,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -38459,14 +39594,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Stereotypes.UML_Stereotype_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -38491,8 +39628,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -38570,8 +39708,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_String_Expression_Sub_Expression then
             --  StringExpression::subExpression : StringExpression
@@ -38585,8 +39724,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  Expression::symbol : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Symbol (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.String_Expressions.UML_String_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Symbol);
 
          elsif Property = MP_UML_Templateable_Element_Template_Binding then
             --  TemplateableElement::templateBinding : TemplateBinding
@@ -38617,14 +39757,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.String_Expressions.UML_String_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.String_Expressions.UML_String_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -38778,14 +39920,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -38816,14 +39960,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Must_Isolate (Self));
+               (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Must_Isolate);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -38917,8 +40063,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -38989,7 +40136,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -39038,8 +40186,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Substitutions.UML_Substitution_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -39093,8 +40242,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Substitutions.UML_Substitution_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -39149,14 +40299,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Substitutions.UML_Substitution_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Substitutions.UML_Substitution_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -39546,14 +40698,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Test_Identity_Actions.UML_Test_Identity_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Test_Identity_Actions.UML_Test_Identity_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -39575,8 +40729,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Test_Identity_Actions.UML_Test_Identity_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -39638,8 +40793,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Test_Identity_Actions.UML_Test_Identity_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -39686,7 +40842,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Test_Identity_Actions.UML_Test_Identity_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -39728,14 +40885,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_First_Event (Self));
+               (AMF.UML.Time_Constraints.UML_Time_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_First_Event);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Constraints.UML_Time_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -39789,8 +40948,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Constraints.UML_Time_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
@@ -39829,14 +40989,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Constraints.UML_Time_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Constraints.UML_Time_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -39862,14 +41024,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Relative (Self));
+               (AMF.UML.Time_Events.UML_Time_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Relative);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Events.UML_Time_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -39923,8 +41087,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Events.UML_Time_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -39939,14 +41104,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Events.UML_Time_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Events.UML_Time_Event_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Time_Event_When then
             --  TimeEvent::when : TimeExpression
@@ -39987,8 +41154,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Expressions.UML_Time_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40050,8 +41218,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Expressions.UML_Time_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -40074,14 +41243,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Expressions.UML_Time_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Expressions.UML_Time_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -40138,8 +41309,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Intervals.UML_Time_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40193,8 +41365,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Intervals.UML_Time_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -40217,14 +41390,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Intervals.UML_Time_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Intervals.UML_Time_Interval_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -40258,14 +41433,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_First_Event (Self));
+               (AMF.UML.Time_Observations.UML_Time_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_First_Event);
 
          elsif Property = MP_UML_Named_Element_Name then
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Observations.UML_Time_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40319,8 +41496,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Time_Observations.UML_Time_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Parameterable_Element_Template_Parameter then
             --  ParameterableElement::templateParameter : TemplateParameter
@@ -40335,14 +41513,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Observations.UML_Time_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Time_Observations.UML_Time_Observation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -40408,14 +41588,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Transitions.UML_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Transition_Kind then
             --  Transition::kind : TransitionKind
 
             return
               AMF.UML.Holders.Transition_Kinds.To_Holder
-               (Internal_Get_Kind (Self));
+               (AMF.UML.Transitions.UML_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Kind);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -40429,8 +41611,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Transitions.UML_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40500,8 +41683,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Transitions.UML_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -40564,7 +41748,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Transitions.UML_Transition_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -40597,8 +41782,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Triggers.UML_Trigger_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40652,15 +41838,17 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Triggers.UML_Trigger_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Triggers.UML_Trigger_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -40758,14 +41946,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Unmarshall_Actions.UML_Unmarshall_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Unmarshall_Actions.UML_Unmarshall_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -40787,8 +41977,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Unmarshall_Actions.UML_Unmarshall_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40858,8 +42049,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Unmarshall_Actions.UML_Unmarshall_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -40906,7 +42098,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Unmarshall_Actions.UML_Unmarshall_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -40939,8 +42132,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -40994,8 +42188,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Usages.UML_Usage_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
@@ -41042,14 +42237,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Usages.UML_Usage_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Usages.UML_Usage_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -41179,21 +42376,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Abstract (Self));
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Abstract);
 
          elsif Property = MP_UML_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Final_Specialization (Self));
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Final_Specialization);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Namespace_Member then
             --  Namespace::member : NamedElement
@@ -41207,8 +42407,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -41334,8 +42535,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Classifier_Redefined_Classifier then
             --  Classifier::redefinedClassifier : Classifier
@@ -41422,14 +42624,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          elsif Property = MP_UML_Packageable_Element_Visibility then
             --  PackageableElement::visibility : VisibilityKind
 
             return
               AMF.UML.Holders.Visibility_Kinds.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Use_Cases.UML_Use_Case_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -41511,42 +42715,48 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control);
 
          elsif Property = MP_UML_Object_Node_Is_Control_Type then
             --  ObjectNode::isControlType : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Control_Type (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Control_Type);
 
          elsif Property = MP_UML_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -41560,8 +42770,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -41584,7 +42795,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.Object_Node_Ordering_Kinds.To_Holder
-               (Internal_Get_Ordering (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Ordering);
 
          elsif Property = MP_UML_Activity_Node_Outgoing then
             --  ActivityNode::outgoing : ActivityEdge
@@ -41622,8 +42834,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -41670,7 +42883,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Object_Node_Upper_Bound then
             --  ObjectNode::upperBound : ValueSpecification
@@ -41701,7 +42915,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Value_Pins.UML_Value_Pin_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -41799,14 +43014,16 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Leaf (Self));
+               (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
          elsif Property = MP_UML_Action_Is_Locally_Reentrant then
             --  Action::isLocallyReentrant : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Locally_Reentrant (Self));
+               (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Locally_Reentrant);
 
          elsif Property = MP_UML_Action_Local_Postcondition then
             --  Action::localPostcondition : Constraint
@@ -41828,8 +43045,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -41891,8 +43109,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
@@ -41939,7 +43158,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Value_Specification_Actions.UML_Value_Specification_Action_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;
@@ -41981,21 +43201,24 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Ordered (Self));
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Ordered);
 
          elsif Property = MP_UML_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
             return
               League.Holders.Booleans.To_Holder
-               (Internal_Get_Is_Unique (Self));
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Unique);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Lower (Self));
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Lower);
 
          elsif Property = MP_UML_Multiplicity_Element_Lower_Value then
             --  MultiplicityElement::lowerValue : ValueSpecification
@@ -42009,8 +43232,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::name : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
          elsif Property = MP_UML_Named_Element_Name_Expression then
             --  NamedElement::nameExpression : StringExpression
@@ -42064,8 +43288,9 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  NamedElement::qualifiedName : String
 
             return
-              AMF.Internals.Holders.To_Holder
-               (Internal_Get_Qualified_Name (Self));
+              AMF.Holders.To_Holder
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
          elsif Property = MP_UML_Variable_Scope then
             --  Variable::scope : StructuredActivityNode
@@ -42104,7 +43329,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.Holders.To_Holder
-               (Internal_Get_Upper (Self));
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Upper);
 
          elsif Property = MP_UML_Multiplicity_Element_Upper_Value then
             --  MultiplicityElement::upperValue : ValueSpecification
@@ -42119,7 +43345,8 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             return
               AMF.UML.Holders.To_Holder
-               (Internal_Get_Visibility (Self));
+               (AMF.UML.Variables.UML_Variable_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Visibility);
 
          else
             raise Program_Error;

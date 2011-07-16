@@ -47,11 +47,14 @@ with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Enumerations;
+with AMF.CMOF.Visitors;
 with AMF.CMOF.Types;
 with League.Strings;
 
 with Generator.Attribute_Mapping;
+with Generator.Contexts;
 with Generator.Names;
+with Generator.Type_Mapping;
 with Generator.Wide_Wide_Text_IO;
 
 package body Generator.Reflection is
@@ -62,16 +65,34 @@ package body Generator.Reflection is
    use Generator.Wide_Wide_Text_IO;
    use type League.Strings.Universal_String;
 
-   Boolean_Name                  : constant League.Strings.Universal_String
+   Boolean_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Boolean");
-   Integer_Name                  : constant League.Strings.Universal_String
+   Integer_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Integer");
-   Real_Name                     : constant League.Strings.Universal_String
+   Real_Name              : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Real");
-   String_Name                   : constant League.Strings.Universal_String
+   String_Name            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("String");
-   Unlimited_Natural_Name        : constant League.Strings.Universal_String
+   Unlimited_Natural_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("UnlimitedNatural");
+
+   type Ada_Context_Builder is
+     new AMF.CMOF.Visitors.Abstract_CMOF_Visitor with record
+      Context : Contexts.Context;
+   end record;
+
+   overriding procedure Visit_Class
+    (Self    : in out Ada_Context_Builder;
+     Element : not null access AMF.CMOF.Classes.CMOF_Class'Class);
+
+   overriding procedure Visit_Property
+    (Self    : in out Ada_Context_Builder;
+     Element : not null access AMF.CMOF.Properties.CMOF_Property'Class);
+
+   procedure Generate_With_Clause
+    (Unit       : League.Strings.Universal_String;
+     Is_Limited : Boolean;
+     Is_Private : Boolean);
 
    ----------------------------------------
    -- Generate_Reflection_Implementation --
@@ -282,10 +303,15 @@ package body Generator.Reflection is
 
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
-                  when Value | Holder =>
+                  when Value =>
                      Holder_Name :=
                        League.Strings.To_Universal_String
-                        ("AMF.Internals.Holders.To_Holder");
+                        ("League.Holders.To_Holder");
+
+                  when Holder =>
+                     Holder_Name :=
+                       League.Strings.To_Universal_String
+                        ("AMF.Holders.To_Holder");
 
                   when Set =>
                      raise Program_Error;
@@ -375,9 +401,15 @@ package body Generator.Reflection is
 
             if Convertor_Name = Null_Unbounded_Wide_Wide_String then
                Put_Line (Holder_Name);
-               Put_Line ("               (Internal_Get_"
+               Put_Line
+                ("               ("
+                   & Type_Mapping.Public_Ada_Type_Qualified_Name
+                      (Class.Class, Value));
+               Put_Line
+                ("                 ("
+                   & "AMF.Internals.Helpers.To_Element (Self)).Get_"
                    & To_Ada_Identifier (Attribute.Get_Name.Value)
-                   & " (Self));");
+                   & ");");
 
             else
                Put_Line (Holder_Name);
@@ -601,29 +633,6 @@ package body Generator.Reflection is
                      raise Program_Error;
                end case;
 
---            elsif Attribute_Type.Get_Name = Parameter_Direction_Kind_Name then
---               case Representation (Attribute) is
---                  when Value =>
---                     Put
---                      ("AMF.CMOF.Parameter_Direction_Kind_Holders.Element"
---                         & " (Value)");
---
---                  when Holder =>
---                     raise Program_Error;
---
---                  when Set =>
---                     raise Program_Error;
---
---                  when Ordered_Set =>
---                     raise Program_Error;
---
---                  when Bag =>
---                     raise Program_Error;
---
---                  when Sequence =>
---                     raise Program_Error;
---               end case;
-
             elsif Attribute_Type.Get_Name = Real_Name then
                case Representation (Attribute) is
                   when Value =>
@@ -683,28 +692,6 @@ package body Generator.Reflection is
                   when Sequence =>
                      raise Program_Error;
                end case;
-
---            elsif Attribute_Type.Get_Name = Visibility_Kind_Name then
---               case Representation (Attribute) is
---                  when Value =>
---                     Put
---                      ("AMF.CMOF.Visibility_Kind_Holders.Element (Value)");
---
---                  when Holder =>
---                     Put ("AMF.CMOF.Holders.Element (Value)");
---
---                  when Set =>
---                     raise Program_Error;
---
---                  when Ordered_Set =>
---                     raise Program_Error;
---
---                  when Bag =>
---                     raise Program_Error;
---
---                  when Sequence =>
---                     raise Program_Error;
---               end case;
 
             elsif Attribute_Type.all
                     in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
@@ -781,8 +768,15 @@ package body Generator.Reflection is
          end if;
       end Generate_Setter_Specification;
 
+      Builder : Ada_Context_Builder;
+
    begin
+      --  Compute Ada context.
+
+      Builder.Visit_Element (Metamodel_Package);
+
       Put_Header;
+      Builder.Context.Iterate (Generate_With_Clause'Access);
 
       if Metamodel_Name = League.Strings.To_Universal_String ("CMOF") then
          Put_Line ("with AMF.CMOF.Holders.Parameter_Direction_Kinds;");
@@ -912,5 +906,63 @@ package body Generator.Reflection is
           & Metamodel_Name.To_Wide_Wide_String
           & "_Reflection;");
    end Generate_Reflection_Implementation;
+
+   --------------------------
+   -- Generate_With_Clause --
+   --------------------------
+
+   procedure Generate_With_Clause
+    (Unit       : League.Strings.Universal_String;
+     Is_Limited : Boolean;
+     Is_Private : Boolean) is
+   begin
+      if Is_Limited then
+         Put ("limited ");
+      end if;
+
+      Put_Line ("with " & Unit & ";");
+   end Generate_With_Clause;
+
+   -----------------
+   -- Visit_Class --
+   -----------------
+
+   overriding procedure Visit_Class
+    (Self    : in out Ada_Context_Builder;
+     Element : not null access AMF.CMOF.Classes.CMOF_Class'Class) is
+   begin
+      if not Element.Get_Is_Abstract then
+         Self.Context.Add
+          (Type_Mapping.Public_Ada_Package_Name (Element, Value));
+      end if;
+
+      Self.Visit_Children (Element);
+   end Visit_Class;
+
+   --------------------
+   -- Visit_Property --
+   --------------------
+
+   overriding procedure Visit_Property
+    (Self    : in out Ada_Context_Builder;
+     Element : not null access AMF.CMOF.Properties.CMOF_Property'Class)
+   is
+      use AMF.CMOF.Classes;
+--      use type AMF.CMOF.Classes.CMOF_Class_Access;
+
+   begin
+      if Element.Get_Class = null then
+         Put_Line
+          (Standard_Error,
+           "Ignoring " & Element.Get_Name.Value.To_Wide_Wide_String);
+
+      else
+         Self.Context.Add
+          (Type_Mapping.Public_Ada_Package_Name
+            (Element.Get_Type, Representation (Element)));
+      end if;
+
+      Self.Visit_Children (Element);
+   end Visit_Property;
 
 end Generator.Reflection;

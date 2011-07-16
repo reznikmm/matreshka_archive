@@ -51,4 +51,8 @@ package AMF.Internals.CMOF_Classifiers is
        and AMF.CMOF.Classifiers.CMOF_Classifier
          with null record;
 
+   overriding function Get_Is_Final_Specialization
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return Boolean;
+
 end AMF.Internals.CMOF_Classifiers;

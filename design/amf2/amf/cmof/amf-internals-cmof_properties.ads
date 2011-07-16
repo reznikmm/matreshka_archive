@@ -52,7 +52,7 @@ with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types;
-with AMF.Internals.CMOF_Named_Elements;
+with AMF.Internals.CMOF_Redefinable_Elements;
 with AMF.Internals.CMOF_Multiplicity_Elements;
 pragma Elaborate (AMF.Internals.CMOF_Multiplicity_Elements);
 with AMF.Internals.CMOF_Typed_Elements;
@@ -62,7 +62,7 @@ package AMF.Internals.CMOF_Properties is
 
    package Multiplicity_Elements is
      new AMF.Internals.CMOF_Multiplicity_Elements
-          (AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy);
+          (AMF.Internals.CMOF_Redefinable_Elements.CMOF_Redefinable_Element_Proxy);
 
    package Typed_Elements is
      new AMF.Internals.CMOF_Typed_Elements
@@ -117,10 +117,6 @@ package AMF.Internals.CMOF_Properties is
      C : Integer)
        return Boolean;
 
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Property_Proxy)
-       return CMOF.Optional_CMOF_Visibility_Kind;
-
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Property_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);
@@ -158,10 +154,6 @@ package AMF.Internals.CMOF_Properties is
    overriding function Get_Redefined_Element
     (Self : not null access constant CMOF_Property_Proxy)
        return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element;
-
-   overriding function Get_Is_Leaf
-    (Self : not null access constant CMOF_Property_Proxy)
-       return Boolean;
 
    overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Property_Proxy;

@@ -167,21 +167,6 @@ package body AMF.Internals.CMOF_Operations is
    end Must_Be_Owned;
 
    --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return CMOF.Optional_CMOF_Visibility_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error;
-      return Get_Visibility (Self);
-   end Get_Visibility;
-
-   --------------------
    -- Set_Visibility --
    --------------------
 
@@ -468,21 +453,6 @@ package body AMF.Internals.CMOF_Operations is
       raise Program_Error;
       return Get_Redefined_Element (Self);
    end Get_Redefined_Element;
-
-   -----------------
-   -- Get_Is_Leaf --
-   -----------------
-
-   overriding function Get_Is_Leaf
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Leaf unimplemented");
-      raise Program_Error;
-      return Get_Is_Leaf (Self);
-   end Get_Is_Leaf;
 
    -----------------
    -- Set_Is_Leaf --

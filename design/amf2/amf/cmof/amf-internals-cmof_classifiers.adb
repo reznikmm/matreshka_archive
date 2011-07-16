@@ -41,73 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
-with League.Strings.Internals;
-
 with AMF.Internals.Tables.CMOF_Attributes;
 
-package body AMF.Internals.CMOF_Named_Elements is
+package body AMF.Internals.CMOF_Classifiers is
 
    use AMF.Internals.Tables.CMOF_Attributes;
-   use type Matreshka.Internals.Strings.Shared_String_Access;
 
-   --------------
-   -- Get_Name --
-   --------------
+   ---------------------------------
+   -- Get_Is_Final_Specialization --
+   ---------------------------------
 
-   overriding function Get_Name
-    (Self : not null access constant CMOF_Named_Element_Proxy)
-       return Optional_String
-   is
-      Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-        := Internal_Get_Name (Self.Id);
-
+   overriding function Get_Is_Final_Specialization
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return Boolean is
    begin
-      if Aux = null then
-         return (Is_Empty => True);
+      return Internal_Get_Is_Final_Specialization (Self.Id);
+   end Get_Is_Final_Specialization;
 
-      else
-         return (False, League.Strings.Internals.Create (Aux));
-      end if;
-   end Get_Name;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Named_Element_Proxy)
-       return AMF.CMOF.Optional_CMOF_Visibility_Kind is
-   begin
-      return Internal_Get_Visibility (Self.Id);
-   end Get_Visibility;
-
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-    (Self : not null access constant CMOF_Named_Element_Proxy)
-       return League.Strings.Universal_String is
-   begin
-      return League.Strings.To_Universal_String ("::");
-   end Separator;
-
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-    (Self : not null access CMOF_Named_Element_Proxy;
-     To   : Optional_String) is
-   begin
-      if To.Is_Empty then
-         Internal_Set_Name (Self.Id, null);
-
-      else
-         Internal_Set_Name
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
-      end if;
-   end Set_Name;
-
-end AMF.Internals.CMOF_Named_Elements;
+end AMF.Internals.CMOF_Classifiers;

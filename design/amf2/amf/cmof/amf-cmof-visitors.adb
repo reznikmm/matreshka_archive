@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Packageable_Elements.Collections;
+with AMF.CMOF.Properties.Collections;
 
 package body AMF.CMOF.Visitors is
 
@@ -67,62 +69,95 @@ package body AMF.CMOF.Visitors is
       --  but it is not implemented now, so children of each element are
       --  atraversed in element specific way.
 
-      if Element.all in AMF.CMOF.Associations.CMOF_Association then
+      if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
          null;
 
-      elsif Element.all in AMF.CMOF.Classes.CMOF_Class then
+      elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         declare
+            Children : constant
+              AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+                := AMF.CMOF.Classes.CMOF_Class'Class
+                    (Element.all).Get_Owned_Attribute;
+
+         begin
+            for J in 1 .. Children.Length loop
+               Self.Visit_Element (Children.Element (J));
+            end loop;
+         end;
+
+      elsif Element.all in AMF.CMOF.Comments.CMOF_Comment'Class then
          null;
 
-      elsif Element.all in AMF.CMOF.Comments.CMOF_Comment then
-         null;
-
-      elsif Element.all in AMF.CMOF.Constraints.CMOF_Constraint then
-         null;
-
-      elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type then
-         null;
-
-      elsif Element.all in AMF.CMOF.Element_Imports.CMOF_Element_Import then
+      elsif Element.all in AMF.CMOF.Constraints.CMOF_Constraint'Class then
          null;
 
       elsif Element.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
          null;
 
       elsif Element.all
-              in AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal
+              in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
       then
          null;
 
-      elsif Element.all in AMF.CMOF.Expressions.CMOF_Expression then
+      elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+         --  Enumeration and PrimitiveType are subclasses of DataType, thus
+         --  they should be handled above this check.
+
          null;
 
       elsif Element.all
-              in AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression
+              in AMF.CMOF.Element_Imports.CMOF_Element_Import'Class
+      then
+         null;
+
+      elsif Element.all
+              in AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class
+      then
+         null;
+
+      elsif Element.all in AMF.CMOF.Expressions.CMOF_Expression'Class then
+         null;
+
+      elsif Element.all
+              in AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression'Class
       then
          null;
 
       elsif Element.all in AMF.CMOF.Operations.CMOF_Operation'Class then
          null;
 
-      elsif Element.all in AMF.CMOF.Packages.CMOF_Package then
+      elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
+         declare
+            Children : constant
+              AMF.CMOF.Packageable_Elements.Collections.
+                Set_Of_CMOF_Packageable_Element
+                := AMF.CMOF.Packages.CMOF_Package'Class
+                    (Element.all).Get_Packaged_Element;
+
+         begin
+            for J in 1 .. Children.Length loop
+               Self.Visit_Element (Children.Element (J));
+            end loop;
+         end;
+
+
+      elsif Element.all
+              in AMF.CMOF.Package_Imports.CMOF_Package_Import'Class
+      then
          null;
 
-      elsif Element.all in AMF.CMOF.Package_Imports.CMOF_Package_Import then
+      elsif Element.all
+              in AMF.CMOF.Package_Merges.CMOF_Package_Merge'Class
+      then
          null;
 
-      elsif Element.all in AMF.CMOF.Package_Merges.CMOF_Package_Merge then
+      elsif Element.all in AMF.CMOF.Parameters.CMOF_Parameter'Class then
          null;
 
-      elsif Element.all in AMF.CMOF.Parameters.CMOF_Parameter then
+      elsif Element.all in AMF.CMOF.Properties.CMOF_Property'Class then
          null;
 
-      elsif Element.all in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type then
-         null;
-
-      elsif Element.all in AMF.CMOF.Properties.CMOF_Property then
-         null;
-
-      elsif Element.all in AMF.CMOF.Tags.CMOF_Tag then
+      elsif Element.all in AMF.CMOF.Tags.CMOF_Tag'Class then
          null;
 
       else
@@ -182,48 +217,58 @@ package body AMF.CMOF.Visitors is
     (Self    : in out Abstract_CMOF_Visitor'Class;
      Element : not null access AMF.CMOF.Elements.CMOF_Element'Class) is
    begin
-      if Element.all in AMF.CMOF.Associations.CMOF_Association then
+      if Element.all in AMF.CMOF.Associations.CMOF_Association'Class then
          Self.Visit_Association
           (AMF.CMOF.Associations.CMOF_Association'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Classes.CMOF_Class then
+      elsif Element.all in AMF.CMOF.Classes.CMOF_Class'Class then
          Self.Visit_Class
           (AMF.CMOF.Classes.CMOF_Class'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Comments.CMOF_Comment then
+      elsif Element.all in AMF.CMOF.Comments.CMOF_Comment'Class then
          Self.Visit_Comment
           (AMF.CMOF.Comments.CMOF_Comment'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Constraints.CMOF_Constraint then
+      elsif Element.all in AMF.CMOF.Constraints.CMOF_Constraint'Class then
          Self.Visit_Constraint
           (AMF.CMOF.Constraints.CMOF_Constraint'Class (Element.all)'Access);
-
-      elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type then
-         Self.Visit_Data_Type
-          (AMF.CMOF.Data_Types.CMOF_Data_Type'Class (Element.all)'Access);
-
-      elsif Element.all in AMF.CMOF.Element_Imports.CMOF_Element_Import then
-         Self.Visit_Element_Import
-          (AMF.CMOF.Element_Imports.CMOF_Element_Import'Class
-            (Element.all)'Access);
 
       elsif Element.all in AMF.CMOF.Enumerations.CMOF_Enumeration'Class then
          Self.Visit_Enumeration
           (AMF.CMOF.Enumerations.CMOF_Enumeration'Class (Element.all)'Access);
 
+      elsif Element.all in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type then
+         Self.Visit_Primitive_Type
+          (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
+            (Element.all)'Access);
+
+      elsif Element.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+         --  Enumeration and PrimitiveType are subclasses of DataType, thus
+         --  they should be handled above this check.
+
+         Self.Visit_Data_Type
+          (AMF.CMOF.Data_Types.CMOF_Data_Type'Class (Element.all)'Access);
+
       elsif Element.all
-              in AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal
+              in AMF.CMOF.Element_Imports.CMOF_Element_Import'Class
+      then
+         Self.Visit_Element_Import
+          (AMF.CMOF.Element_Imports.CMOF_Element_Import'Class
+            (Element.all)'Access);
+
+      elsif Element.all
+              in AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class
       then
          Self.Visit_Enumeration_Literal
           (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal'Class
             (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Expressions.CMOF_Expression then
+      elsif Element.all in AMF.CMOF.Expressions.CMOF_Expression'Class then
          Self.Visit_Expression
           (AMF.CMOF.Expressions.CMOF_Expression'Class (Element.all)'Access);
 
       elsif Element.all
-              in AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression
+              in AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression'Class
       then
          Self.Visit_Opaque_Expression
           (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression'Class
@@ -233,34 +278,33 @@ package body AMF.CMOF.Visitors is
          Self.Visit_Operation
           (AMF.CMOF.Operations.CMOF_Operation'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Packages.CMOF_Package then
+      elsif Element.all in AMF.CMOF.Packages.CMOF_Package'Class then
          Self.Visit_Package
           (AMF.CMOF.Packages.CMOF_Package'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Package_Imports.CMOF_Package_Import then
+      elsif Element.all
+              in AMF.CMOF.Package_Imports.CMOF_Package_Import'Class
+      then
          Self.Visit_Package_Import
           (AMF.CMOF.Package_Imports.CMOF_Package_Import'Class
             (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Package_Merges.CMOF_Package_Merge then
+      elsif Element.all
+              in AMF.CMOF.Package_Merges.CMOF_Package_Merge'Class
+      then
          Self.Visit_Package_Merge
           (AMF.CMOF.Package_Merges.CMOF_Package_Merge'Class
             (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Parameters.CMOF_Parameter then
+      elsif Element.all in AMF.CMOF.Parameters.CMOF_Parameter'Class then
          Self.Visit_Parameter
           (AMF.CMOF.Parameters.CMOF_Parameter'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Primitive_Types.CMOF_Primitive_Type then
-         Self.Visit_Primitive_Type
-          (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type'Class
-            (Element.all)'Access);
-
-      elsif Element.all in AMF.CMOF.Properties.CMOF_Property then
+      elsif Element.all in AMF.CMOF.Properties.CMOF_Property'Class then
          Self.Visit_Property
           (AMF.CMOF.Properties.CMOF_Property'Class (Element.all)'Access);
 
-      elsif Element.all in AMF.CMOF.Tags.CMOF_Tag then
+      elsif Element.all in AMF.CMOF.Tags.CMOF_Tag'Class then
          Self.Visit_Tag
           (AMF.CMOF.Tags.CMOF_Tag'Class (Element.all)'Access);
 

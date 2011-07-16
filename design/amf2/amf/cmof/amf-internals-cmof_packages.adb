@@ -149,21 +149,6 @@ package body AMF.Internals.CMOF_Packages is
    end Must_Be_Owned;
 
    --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Optional_CMOF_Visibility_Kind
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error;
-      return Get_Visibility (Self);
-   end Get_Visibility;
-
-   --------------------
    -- Set_Visibility --
    --------------------
 

@@ -302,11 +302,16 @@ package body Generator.Metamodel is
                (CMOF_Element_Sets.Element (Position));
          Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Property.Get_Type;
-         Value         : constant League.Holders.Holder
-           := AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+         Value         : League.Holders.Holder;
 
       begin
-         if Is_String_Type (Property_Type) then
+         if Is_String_Type (Property_Type)
+           and then not Property.Get_Is_Derived
+         then
+            Value
+              := AMF.Elements.Abstract_Element'Class
+                  (Element.all).Get (Property);
+
             if Property.Is_Multivalued then
                Put_Line
                 (Standard_Error,
@@ -519,8 +524,7 @@ package body Generator.Metamodel is
            := Property.Get_Type;
          Association   : constant AMF.CMOF.Associations.CMOF_Association_Access
            := Property.Get_Association;
-         Value         : constant League.Holders.Holder
-           := AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+         Value         : League.Holders.Holder;
 
          procedure Establish_Link
           (Association :
@@ -592,6 +596,9 @@ package body Generator.Metamodel is
 
       begin
          if Property_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+            Value :=
+              AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+
             if Property.Is_Multivalued then
                for J in 1 .. AMF.Holders.Collections.Element
                               (Value).Length
@@ -1022,11 +1029,15 @@ package body Generator.Metamodel is
            := Property.Get_Default;
          Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Property.Get_Type;
-         Value         : constant League.Holders.Holder
-           := AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+         Value         : League.Holders.Holder;
 
       begin
-         if Property_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class then
+         if Property_Type.all in AMF.CMOF.Data_Types.CMOF_Data_Type'Class
+           and then not Property.Get_Is_Derived
+         then
+            Value :=
+              AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+
             if Is_Boolean_Type (Property_Type) then
                if not Default.Is_Empty then
                   if (Default.Value.To_Wide_Wide_String = "false"

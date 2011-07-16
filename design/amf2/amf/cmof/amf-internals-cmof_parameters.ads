@@ -113,10 +113,6 @@ package AMF.Internals.CMOF_Parameters is
      C : Integer)
        return Boolean;
 
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return CMOF.Optional_CMOF_Visibility_Kind;
-
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Parameter_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);
