@@ -49,8 +49,11 @@ with League.Holders.Integers;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Unlimited_Naturals;
+with AMF.Internals.Elements;
 with AMF.Internals.Helpers.CMOF_Helper;
+pragma Unreferenced (AMF.Internals.Helpers.CMOF_Helper);
 with AMF.Internals.Tables.CMOF_Constructors;
+with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
 
 package body AMF.Internals.Factories.CMOF_Factory is
@@ -91,6 +94,20 @@ package body AMF.Internals.Factories.CMOF_Factory is
    Package_Image   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("package");
 
+   Factory : aliased CMOF_Factory;
+
+   --------------------
+   -- Connect_Extent --
+   --------------------
+
+   overriding procedure Connect_Extent
+    (Self    : not null access constant CMOF_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent) is
+   begin
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Element).Extent := Extent;
+   end Connect_Extent;
+
    ------------
    -- Create --
    ------------
@@ -101,8 +118,10 @@ package body AMF.Internals.Factories.CMOF_Factory is
        return not null AMF.Elements.Element_Access
    is
       MC      : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Helpers.To_Element
-            (AMF.Elements.Element_Access (Meta_Class));
+        := AMF.Internals.Elements.Element_Implementation'Class
+            (Meta_Class.all).Element;
+--        := Factory.To_Element
+--            (AMF.Elements.Element_Access (Meta_Class));
       Element : AMF.Internals.CMOF_Element;
 
    begin
@@ -172,7 +191,8 @@ package body AMF.Internals.Factories.CMOF_Factory is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      return AMF.Internals.Helpers.To_Element (Element);
+      return Factory.To_Element (Element);
+--      return AMF.Internals.Helpers.To_Element (Element);
    end Create;
 
    ------------------------
@@ -187,8 +207,10 @@ package body AMF.Internals.Factories.CMOF_Factory is
       use type League.Strings.Universal_String;
 
       DT : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Helpers.To_Element
-            (AMF.Elements.Element_Access (Data_Type));
+        := AMF.Internals.Elements.Element_Implementation'Class
+            (Data_Type.all).Element;
+--        := AMF.Internals.Helpers.To_Element
+--            (AMF.Elements.Element_Access (Data_Type));
 
    begin
       if DT = MC_CMOF_Boolean then
@@ -285,8 +307,10 @@ package body AMF.Internals.Factories.CMOF_Factory is
      Value     : League.Holders.Holder) return League.Strings.Universal_String
    is
       DT : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Helpers.To_Element
-            (AMF.Elements.Element_Access (Data_Type));
+        := AMF.Internals.Elements.Element_Implementation'Class
+            (Data_Type.all).Element;
+--        := AMF.Internals.Helpers.To_Element
+--            (AMF.Elements.Element_Access (Data_Type));
 
    begin
       if DT = MC_CMOF_Boolean then
@@ -367,6 +391,29 @@ package body AMF.Internals.Factories.CMOF_Factory is
       raise Program_Error;
    end Convert_To_String;
 
+   ----------------
+   -- Get_Extent --
+   ----------------
+
+   overriding function Get_Extent
+    (Self    : not null access constant CMOF_Factory;
+     Element : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Extent is
+   begin
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Element).Extent;
+   end Get_Extent;
+
+   -------------------
+   -- Get_Metamodel --
+   -------------------
+
+   overriding function Get_Metamodel
+    (Self : not null access constant CMOF_Factory)
+       return AMF.Internals.AMF_Metamodel is
+   begin
+      return AMF.Internals.CMOF_Metamodel;
+   end Get_Metamodel;
+
    -----------------
    -- Get_Package --
    -----------------
@@ -377,12 +424,27 @@ package body AMF.Internals.Factories.CMOF_Factory is
    begin
       return
         AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element (MM_CMOF_CMOF));
+         (Factory.To_Element (MM_CMOF_CMOF));
+--         (AMF.Internals.Helpers.To_Element (MM_CMOF_CMOF));
    end Get_Package;
 
-   Factory : aliased CMOF_Factory;
+   ----------------
+   -- To_Element --
+   ----------------
+
+   overriding function To_Element
+    (Self     : not null access constant CMOF_Factory;
+     Element  : AMF.Internals.AMF_Element)
+       return AMF.Elements.Element_Access is
+   begin
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Element).Proxy;
+   end To_Element;
 
 begin
+   --  Preliminary initialization to bootstrap.
+
+   AMF.Internals.Factories.Set_CMOF_Factory (Factory'Access);
+
    --  Initialize metamodel.
 
    AMF.Internals.Tables.CMOF_Metamodel.Initialize;

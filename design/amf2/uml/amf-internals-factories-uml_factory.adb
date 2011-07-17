@@ -227,6 +227,18 @@ package body AMF.Internals.Factories.UML_Factory is
    Package_Image   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("package");
 
+   --------------------
+   -- Connect_Extent --
+   --------------------
+
+   overriding procedure Connect_Extent
+    (Self    : not null access constant UML_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent) is
+   begin
+      AMF.Internals.Tables.UML_Element_Table.Table (Element).Extent := Extent;
+   end Connect_Extent;
+
    ------------
    -- Create --
    ------------
@@ -1543,6 +1555,29 @@ package body AMF.Internals.Factories.UML_Factory is
       raise Program_Error;
    end Convert_To_String;
 
+   ----------------
+   -- Get_Extent --
+   ----------------
+
+   overriding function Get_Extent
+    (Self    : not null access constant UML_Factory;
+     Element : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Extent is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Element).Extent;
+   end Get_Extent;
+
+   -------------------
+   -- Get_Metamodel --
+   -------------------
+
+   overriding function Get_Metamodel
+    (Self : not null access constant UML_Factory)
+       return AMF.Internals.AMF_Metamodel is
+   begin
+      return UML_Metamodel;
+   end Get_Metamodel;
+
    -----------------
    -- Get_Package --
    -----------------
@@ -1555,6 +1590,17 @@ package body AMF.Internals.Factories.UML_Factory is
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element (MM_UML_UML));
    end Get_Package;
+
+   ----------------
+   -- To_Element --
+   ----------------
+
+   overriding function To_Element
+    (Self     : not null access constant UML_Factory;
+     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access is
+   begin
+      return AMF.Internals.Tables.UML_Element_Table.Table (Element).Proxy;
+   end To_Element;
 
    Factory : aliased UML_Factory;
 

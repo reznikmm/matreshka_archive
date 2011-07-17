@@ -53,6 +53,16 @@ package AMF.Internals.Factories.UML_Factory is
    -- AMF_Factory's operations --
    ------------------------------
 
+   overriding procedure Connect_Extent
+    (Self    : not null access constant UML_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent);
+
+   overriding function Convert_To_String
+    (Self      : not null access UML_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+
    overriding function Create
     (Self       : not null access UML_Factory;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
@@ -63,13 +73,21 @@ package AMF.Internals.Factories.UML_Factory is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
-   overriding function Convert_To_String
-    (Self      : not null access UML_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+   overriding function Get_Extent
+    (Self    : not null access constant UML_Factory;
+     Element : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Extent;
+
+   overriding function Get_Metamodel
+    (Self : not null access constant UML_Factory)
+       return AMF.Internals.AMF_Metamodel;
 
    overriding function Get_Package
     (Self : not null access constant UML_Factory)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+   overriding function To_Element
+    (Self     : not null access constant UML_Factory;
+     Element  : AMF.Internals.AMF_Element) return AMF.Elements.Element_Access;
 
 end AMF.Internals.Factories.UML_Factory;

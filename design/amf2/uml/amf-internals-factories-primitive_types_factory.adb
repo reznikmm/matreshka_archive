@@ -70,6 +70,18 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
    Unlimited_Image : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("*");
 
+   --------------------
+   -- Connect_Extent --
+   --------------------
+
+   overriding procedure Connect_Extent
+    (Self    : not null access constant Primitive_Types_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent) is
+   begin
+      raise Program_Error;
+   end Connect_Extent;
+
    ------------
    -- Create --
    ------------
@@ -201,6 +213,30 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
       raise Program_Error;
    end Convert_To_String;
 
+   ----------------
+   -- Get_Extent --
+   ----------------
+
+   overriding function Get_Extent
+    (Self    : not null access constant Primitive_Types_Factory;
+     Element : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Extent is
+   begin
+      raise Program_Error;
+      return 0;
+   end Get_Extent;
+
+   -------------------
+   -- Get_Metamodel --
+   -------------------
+
+   overriding function Get_Metamodel
+    (Self : not null access constant Primitive_Types_Factory)
+       return AMF.Internals.AMF_Metamodel is
+   begin
+      return Primitive_Types_Metamodel;
+   end Get_Metamodel;
+
    -----------------
    -- Get_Package --
    -----------------
@@ -214,6 +250,19 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
          (AMF.Internals.Helpers.To_Element
            (MM_Primitive_Types_Primitive_Types));
    end Get_Package;
+
+   ----------------
+   -- To_Element --
+   ----------------
+
+   overriding function To_Element
+    (Self     : not null access constant Primitive_Types_Factory;
+     Element  : AMF.Internals.AMF_Element)
+       return AMF.Elements.Element_Access is
+   begin
+      raise Program_Error;
+      return null;
+   end To_Element;
 
    Factory : aliased Primitive_Types_Factory;
 

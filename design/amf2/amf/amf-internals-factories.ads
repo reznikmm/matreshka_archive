@@ -150,11 +150,43 @@ package AMF.Internals.Factories is
        return not null AMF.CMOF.Packages.CMOF_Package_Access is abstract;
    --  Returns the package this is a factory for.
 
+   not overriding function Get_Metamodel
+    (Self : not null access constant Abstract_Factory)
+       return AMF.Internals.AMF_Metamodel is abstract;
+   --  Returns metamodel to which is factory for.
+
+   not overriding function To_Element
+    (Self    : not null access constant Abstract_Factory;
+     Element : AMF.Internals.AMF_Element)
+       return AMF.Elements.Element_Access is abstract;
+   --  Converts internal element's identifier into element object.
+
+   not overriding procedure Connect_Extent
+    (Self    : not null access constant Abstract_Factory;
+     Element : AMF.Internals.AMF_Element;
+     Extent  : AMF.Internals.AMF_Extent) is abstract;
+   --  Connects element with extent.
+
+   not overriding function Get_Extent
+    (Self    : not null access constant Abstract_Factory;
+     Element : AMF.Internals.AMF_Element)
+       return AMF.Internals.AMF_Extent is abstract;
+   --  Returns extent witch contains specified element.
+
    procedure Register (Factory : not null Factory_Access);
    --  Registers factory.
 
    function Get_Factory
     (URI : League.Strings.Universal_String) return Factory_Access;
    --  Returns factory for the metamodel specified by URI.
+
+   function Get_Factory
+    (Metamodel : AMF.Internals.AMF_Metamodel) return Factory_Access;
+   --  Returns factory for the metamodel.
+
+   procedure Set_CMOF_Factory (Factory : not null Factory_Access);
+   --  Sets factory for CMOF metamodel to bootstrap internal CMOF metamodel.
+   --  This subprogram must be called before initialization of CMOF metamodel
+   --  package. CMOF factory must be registered later in usual way.
 
 end AMF.Internals.Factories;

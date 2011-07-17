@@ -58,7 +58,8 @@ package body AMF.Internals.Factories is
            League.Strings.Hash,
            League.Strings."=");
 
-   Registry : Universal_String_Factory_Maps.Map;
+   URI_Registry       : Universal_String_Factory_Maps.Map;
+   Metamodel_Registry : array (AMF.Internals.AMF_Metamodel) of Factory_Access;
 
    -----------------
    -- Get_Factory --
@@ -67,7 +68,17 @@ package body AMF.Internals.Factories is
    function Get_Factory
     (URI : League.Strings.Universal_String) return Factory_Access is
    begin
-      return Registry.Element (URI);
+      return URI_Registry.Element (URI);
+   end Get_Factory;
+
+   -----------------
+   -- Get_Factory --
+   -----------------
+
+   function Get_Factory
+    (Metamodel : AMF.Internals.AMF_Metamodel) return Factory_Access is
+   begin
+      return Metamodel_Registry (Metamodel);
    end Get_Factory;
 
    --------------
@@ -76,7 +87,17 @@ package body AMF.Internals.Factories is
 
    procedure Register (Factory : not null Factory_Access) is
    begin
-      Registry.Insert (Factory.Get_Package.Get_URI.Value, Factory);
+      URI_Registry.Insert (Factory.Get_Package.Get_URI.Value, Factory);
+      Metamodel_Registry (Factory.Get_Metamodel) := Factory;
    end Register;
+
+   ----------------------
+   -- Set_CMOF_Factory --
+   ----------------------
+
+   procedure Set_CMOF_Factory (Factory : not null Factory_Access) is
+   begin
+      Metamodel_Registry (Factory.Get_Metamodel) := Factory;
+   end Set_CMOF_Factory;
 
 end AMF.Internals.Factories;

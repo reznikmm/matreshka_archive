@@ -52,17 +52,16 @@ package AMF.Internals is
    type AMF_Metamodel is mod 2 ** 8;
    --  Identifier of the metamodel. AMF can supports up to 255 metamodels.
 
-   CMOF_Metamodel  : constant AMF_Metamodel := 0;
-   UML_Metamodel   : constant AMF_Metamodel := 1;
-   UMLDI_Metamodel : constant AMF_Metamodel := 2;
+   CMOF_Metamodel            : constant AMF_Metamodel := 0;
+   Primitive_Types_Metamodel : constant AMF_Metamodel := 1;
+   UML_Metamodel             : constant AMF_Metamodel := 2;
 
    type AMF_Element is range 0 .. 2 ** 31 - 1;
    for AMF_Element'Size use 32;
    --  Identifier of the element inside metamodel.
 
    subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
-   subtype UML_Element   is AMF_Element range 16#01000000# .. 16#01FFFFFF#;
-   subtype UMLDI_Element is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
+   subtype UML_Element   is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
 
    type AMF_Link is range 0 .. 2 ** 31 - 1;
    for AMF_Link'Size use 32;

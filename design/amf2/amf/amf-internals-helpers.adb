@@ -44,6 +44,7 @@
 with Interfaces;
 
 with AMF.Internals.Elements;
+with AMF.Internals.Factories;
 
 package body AMF.Internals.Helpers is
 
@@ -58,7 +59,7 @@ package body AMF.Internals.Helpers is
 
    procedure Connect_Extent (Element : AMF_Element; Extent : AMF_Extent) is
    begin
-      Metamodel_Helper
+      AMF.Internals.Factories.Get_Factory
        (AMF_Metamodel (U32 (Element) / 16#01000000#)).Connect_Extent
          (Element, Extent);
    end Connect_Extent;
@@ -85,7 +86,7 @@ package body AMF.Internals.Helpers is
    function Get_Extent (Element : AMF_Element) return AMF_Extent is
    begin
       return
-        Metamodel_Helper
+        AMF.Internals.Factories.Get_Factory
          (AMF_Metamodel (U32 (Element) / 16#01000000#)).Get_Extent (Element);
    end Get_Extent;
 
@@ -103,7 +104,7 @@ package body AMF.Internals.Helpers is
 
       else
          return
-           Metamodel_Helper
+           AMF.Internals.Factories.Get_Factory
             (AMF_Metamodel (U32 (Element) / 16#01000000#)).To_Element
               (Element);
       end if;
