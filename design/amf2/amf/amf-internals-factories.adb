@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,50 +41,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Factory for CMOF classes.
+--  This package provides interface type and registry for internal factories.
+--  Every metamodel should provide implementation of the interface type to
+--  allow AMF to create elements and convert data types.
 ------------------------------------------------------------------------------
-with League.Holders;
-with League.Strings;
+with Ada.Containers.Hashed_Maps;
 
-with AMF.CMOF.Associations;
-with AMF.CMOF.Classes;
-with AMF.CMOF.Data_Types;
-with AMF.CMOF.Packages;
-with AMF.Elements;
-with AMF.Factories;
+with League.Strings.Hash;
 
-package CMOF.Internals.Factories is
+package body AMF.Internals.Factories is
 
-   type CMOF_Factory is limited new AMF.Factories.Factory with null record;
+   package Universal_String_Factory_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           Factory_Access,
+           League.Strings.Hash,
+           League.Strings."=");
 
-   ------------------------------
-   -- AMF_Factory's operations --
-   ------------------------------
+   Registry : Universal_String_Factory_Maps.Map;
 
-   overriding function Create
-    (Self       : not null access CMOF_Factory;
-     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
-       return not null AMF.Elements.Element_Access;
+   -----------------
+   -- Get_Factory --
+   -----------------
 
-   overriding procedure Create_Link
-    (Self           : not null access CMOF_Factory;
-     Association    :
-       not null access AMF.CMOF.Associations.CMOF_Association'Class;
-     First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access);
+   function Get_Factory
+    (URI : League.Strings.Universal_String) return Factory_Access is
+   begin
+      return Registry.Element (URI);
+   end Get_Factory;
 
-   overriding function Create_From_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Image     : League.Strings.Universal_String) return League.Holders.Holder;
+   --------------
+   -- Register --
+   --------------
 
-   overriding function Convert_To_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+   procedure Register (Factory : not null Factory_Access) is
+   begin
+      Registry.Insert (Factory.Get_Package.Get_URI.Value, Factory);
+   end Register;
 
-   overriding function Get_Package
-    (Self : not null access constant CMOF_Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access;
-
-end CMOF.Internals.Factories;
+end AMF.Internals.Factories;

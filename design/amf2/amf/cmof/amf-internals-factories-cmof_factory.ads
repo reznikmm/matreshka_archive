@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,17 +41,44 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Registry of factories for all known meta models.
+--  Factory for CMOF classes.
 ------------------------------------------------------------------------------
+--with League.Holders;
+--with League.Strings;
+--
+--with AMF.CMOF.Associations;
+--with AMF.CMOF.Classes;
+--with AMF.CMOF.Data_Types;
+--with AMF.CMOF.Packages;
+--with AMF.Elements;
+--with AMF.Factories;
 
-package AMF.Factories.Registry is
+package AMF.Internals.Factories.CMOF_Factory is
 
-   procedure Register
-    (URI     : League.Strings.Universal_String;
-     Factory : not null Factory_Access);
+   type CMOF_Factory is
+     limited new AMF.Internals.Factories.Abstract_Factory with null record;
 
-   function Resolve
-    (URI : League.Strings.Universal_String)
-       return not null Factory_Access;
+   ------------------------------
+   -- AMF_Factory's operations --
+   ------------------------------
 
-end AMF.Factories.Registry;
+   overriding function Create
+    (Self       : not null access CMOF_Factory;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
+       return not null AMF.Elements.Element_Access;
+
+   overriding function Create_From_String
+    (Self      : not null access CMOF_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Image     : League.Strings.Universal_String) return League.Holders.Holder;
+
+   overriding function Convert_To_String
+    (Self      : not null access CMOF_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+
+   overriding function Get_Package
+    (Self : not null access constant CMOF_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+end AMF.Internals.Factories.CMOF_Factory;

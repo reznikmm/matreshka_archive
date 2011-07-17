@@ -48,17 +48,29 @@ with League.Holders.Integers;
 
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
-with AMF.Factories.Registry;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Internals.Helpers;
+pragma Elaborate_All (AMF.Internals.Helpers);
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
 
-package body CMOF.Internals.Factories is
+package body AMF.Internals.Factories.CMOF_Factory is
 
-   use AMF.CMOF;
    use AMF.Internals.Tables.CMOF_Metamodel;
-   use type AMF.Internals.AMF_Element;
+
+   --  Boolean's literals
+
+   False_Image : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("false");
+   True_Image  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("true");
+
+   --  UnlimitedNatural's literal.
+
+   Unlimited_Image : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("*");
+
+   --  ParameterDirectionKind's literals.
 
    In_Image     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("in");
@@ -68,6 +80,8 @@ package body CMOF.Internals.Factories is
      := League.Strings.To_Universal_String ("out");
    Return_Image : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("return");
+
+   --  VisibilityKind's literals.
 
    Public_Image    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("public");
@@ -87,10 +101,10 @@ package body CMOF.Internals.Factories is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      MC      : constant CMOF.CMOF_Class
+      MC      : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Meta_Class));
-      Element : CMOF.CMOF_Element;
+      Element : AMF.Internals.CMOF_Element;
 
    begin
       --  Create corresponding proxy element.
@@ -173,15 +187,21 @@ package body CMOF.Internals.Factories is
    is
       use type League.Strings.Universal_String;
 
-      DT : constant CMOF.CMOF_Data_Type
+      DT : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Data_Type));
 
    begin
       if DT = MC_CMOF_Boolean then
-         return
-           League.Holders.Booleans.To_Holder
-            (Boolean'Wide_Wide_Value (Image.To_Wide_Wide_String));
+         if Image = False_Image then
+            return League.Holders.Booleans.To_Holder (False);
+
+         elsif Image = True_Image then
+            return League.Holders.Booleans.To_Holder (True);
+
+         else
+            raise Constraint_Error;
+         end if;
 
       elsif DT = MC_CMOF_Integer then
          return
@@ -251,28 +271,10 @@ package body CMOF.Internals.Factories is
          else
             raise Constraint_Error;
          end if;
-
-      else
-         raise Program_Error with "Unknown CMOF data type";
       end if;
+
+      raise Program_Error with "Unknown CMOF data type";
    end Create_From_String;
-
-   -----------------
-   -- Create_Link --
-   -----------------
-
-   procedure Create_Link
-    (Self           : not null access CMOF_Factory;
-     Association    :
-       not null access AMF.CMOF.Associations.CMOF_Association'Class;
-     First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access) is
-   begin
-      --  XXX This subprogram must never be called, link establishment is
-      --  implemented at AMF layer.
-
-      raise Program_Error;
-   end Create_Link;
 
    -----------------------
    -- Convert_To_String --
@@ -283,20 +285,20 @@ package body CMOF.Internals.Factories is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String
    is
-      use Ada.Strings;
-      use Ada.Strings.Wide_Wide_Fixed;
+--      use Ada.Strings;
+--      use Ada.Strings.Wide_Wide_Fixed;
 
-      DT : constant CMOF.CMOF_Data_Type
+      DT : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Data_Type));
 
    begin
       if DT = MC_CMOF_Boolean then
          if League.Holders.Booleans.Element (Value) then
-            return League.Strings.To_Universal_String ("true");
+            return True_Image;
 
          else
-            return League.Strings.To_Universal_String ("false");
+            return False_Image;
          end if;
 
       elsif DT = MC_CMOF_Integer then
@@ -309,7 +311,7 @@ package body CMOF.Internals.Factories is
 
       elsif DT = MC_CMOF_Unlimited_Natural then
          if AMF.Holders.Unlimited_Naturals.Element (Value).Unlimited then
-            return League.Strings.To_Universal_String ("*");
+            return Unlimited_Image;
 
          else
             return
@@ -321,18 +323,18 @@ package body CMOF.Internals.Factories is
          end if;
 
       elsif DT = MC_CMOF_String then
-         if League.Holders.Is_Empty (Value) then
-            return League.Strings.Empty_Universal_String;
-
-         else
-            return League.Holders.Element (Value);
-         end if;
+--         if League.Holders.Is_Empty (Value) then
+--            return League.Strings.Empty_Universal_String;
+--
+--         else
+         return League.Holders.Element (Value);
+--         end if;
 
       elsif DT = MC_CMOF_Parameter_Direction_Kind then
-         if League.Holders.Is_Empty (Value) then
-            return League.Strings.Empty_Universal_String;
-
-         else
+--         if League.Holders.Is_Empty (Value) then
+--            return League.Strings.Empty_Universal_String;
+--
+--         else
             declare
                Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
                  := AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value);
@@ -352,13 +354,13 @@ package body CMOF.Internals.Factories is
                      return Return_Image;
                end case;
             end;
-         end if;
-
+--         end if;
+--
       elsif DT = MC_CMOF_Visibility_Kind then
-         if League.Holders.Is_Empty (Value) then
-            return League.Strings.Empty_Universal_String;
-
-         else
+--         if League.Holders.Is_Empty (Value) then
+--            return League.Strings.Empty_Universal_String;
+--
+--         else
             declare
                Kind : constant AMF.CMOF.CMOF_Visibility_Kind
                  := AMF.CMOF.Holders.Visibility_Kinds.Element (Value);
@@ -378,11 +380,10 @@ package body CMOF.Internals.Factories is
                      return Package_Image;
                end case;
             end;
-         end if;
-
-      else
-         raise Program_Error;
+--         end if;
       end if;
+
+      raise Program_Error;
    end Convert_To_String;
 
    -----------------
@@ -401,8 +402,12 @@ package body CMOF.Internals.Factories is
    Factory : aliased CMOF_Factory;
 
 begin
-   AMF.Factories.Registry.Register
-    (League.Strings.To_Universal_String
-      ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"),
-     Factory'Access);
-end CMOF.Internals.Factories;
+   --  Initialize metamodel.
+
+   AMF.Internals.Tables.CMOF_Metamodel.Initialize;
+
+   AMF.Internals.Factories.Register
+--    (League.Strings.To_Universal_String
+--      ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"),
+    (Factory'Access);
+end AMF.Internals.Factories.CMOF_Factory;

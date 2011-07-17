@@ -59,7 +59,6 @@ with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Extents;
 with AMF.Facility;
-with AMF.Factories.Registry;
 with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;

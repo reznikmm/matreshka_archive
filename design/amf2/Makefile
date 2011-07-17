@@ -2,6 +2,7 @@
 all:
 	make -C ../..
 	gprbuild -p -Pamf/amf.gpr
+	gprbuild -p -Puml/uml.gpr
 	gprbuild -p -Pxmi.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui.gpr

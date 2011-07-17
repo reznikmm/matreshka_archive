@@ -41,13 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  XXX Metamodel is hardcoded now to be CMOF. Nethertheless, it is possible
---  to do required metaclass to package navigation in less efficient way by
---  traversing elements in the metaclass extent.
+--  XXX Metamodel is hardcoded now to be CMOF for Get_Package.
 ------------------------------------------------------------------------------
-with AMF.Factories.Registry;
+with AMF.CMOF.Types;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Extents;
+with AMF.Internals.Factories;
 with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
@@ -56,6 +55,34 @@ with AMF.Internals.Tables.CMOF_Metamodel;
 with CMOF.Internals.Extents;
 
 package body AMF.Internals.AMF_URI_Stores is
+
+   function Factory
+    (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return AMF.Internals.Factories.Factory_Access;
+   --  Returns factory for the specified meta type.
+
+   -------------
+   -- Factory --
+   -------------
+
+   function Factory
+    (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return AMF.Internals.Factories.Factory_Access
+   is
+      Enclosing_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
+        := AMF.CMOF.Packages.CMOF_Package_Access
+            (AMF.Internals.Helpers.To_Element
+              (Standard.CMOF.Internals.Extents.Container
+                (AMF.Internals.Helpers.To_Element
+                  (AMF.Elements.Element_Access (Meta_Type)))));
+      --  := Meta_Type.Get_Package;
+      --
+      --  XXX Type:getPackage is derived property, it is not implemented now.
+
+   begin
+      return
+        AMF.Internals.Factories.Get_Factory (Enclosing_Package.Get_URI.Value);
+   end Factory;
 
    ------------
    -- Create --
@@ -66,16 +93,8 @@ package body AMF.Internals.AMF_URI_Stores is
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access
    is
-      Enclosing_Package : AMF.CMOF.Packages.CMOF_Package_Access
---        := Meta_Class.Get_Package;
---  XXX Type:getPackage is derived property, it is not implemented now.
-        := AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Internals.Helpers.To_Element
-              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
-      Factory           : AMF.Factories.Factory_Access
-        := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
-      Element           : AMF.Elements.Element_Access
-        := Factory.Create (Meta_Class);
+      Element : constant AMF.Elements.Element_Access
+        := Factory (Meta_Class).Create (Meta_Class);
 
    begin
       --  Add element to the store.
@@ -124,19 +143,9 @@ package body AMF.Internals.AMF_URI_Stores is
     (Self      : not null access AMF_URI_Store;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String)
-       return League.Holders.Holder
-   is
-      Enclosing_Package : AMF.CMOF.Packages.CMOF_Package_Access
---        := Data_Type.Get_Package;
---  XXX Type:getPackage is derived property, it is not implemented now.
-        := AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Internals.Helpers.To_Element
-              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
-      Factory           : AMF.Factories.Factory_Access
-        := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
-
+       return League.Holders.Holder is
    begin
-      return Factory.Create_From_String (Data_Type, Image);
+      return Factory (Data_Type).Create_From_String (Data_Type, Image);
    end Create_From_String;
 
    -----------------------
@@ -147,19 +156,9 @@ package body AMF.Internals.AMF_URI_Stores is
     (Self      : not null access AMF_URI_Store;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder)
-       return League.Strings.Universal_String
-   is
-      Enclosing_Package : AMF.CMOF.Packages.CMOF_Package_Access
---        := Data_Type.Get_Package;
---  XXX Type:getPackage is derived property, it is not implemented now.
-        := AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Internals.Helpers.To_Element
-              (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
-      Factory           : AMF.Factories.Factory_Access
-        := AMF.Factories.Registry.Resolve (Enclosing_Package.Get_URI.Value);
-
+       return League.Strings.Universal_String is
    begin
-      return Factory.Convert_To_String (Data_Type, Value);
+      return Factory (Data_Type).Convert_To_String (Data_Type, Value);
    end Convert_To_String;
 
    -------------
@@ -197,6 +196,8 @@ package body AMF.Internals.AMF_URI_Stores is
     (Self : not null access constant AMF_URI_Store)
        return not null AMF.CMOF.Packages.CMOF_Package_Access is
    begin
+      --  XXX Should be reviewed!!!
+
       return
         AMF.CMOF.Packages.CMOF_Package_Access
          (AMF.Internals.Helpers.To_Element
