@@ -54,6 +54,8 @@ package AMF.UML.Holders is
    function To_Holder
     (Value : Optional_UML_Visibility_Kind) return League.Holders.Holder;
 
+   --  ParameterEffectKind [0..1]
+
    function Element
     (Holder : League.Holders.Holder) return Optional_UML_Parameter_Effect_Kind;
    function To_Holder

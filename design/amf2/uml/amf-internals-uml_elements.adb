@@ -41,89 +41,67 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.UML.Holders.Parameter_Effect_Kinds;
-with AMF.UML.Holders.Visibility_Kinds;
+with AMF.Elements;
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.UML_Reflection;
 
-package body AMF.UML.Holders is
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Holder : League.Holders.Holder)
-       return Optional_UML_Parameter_Effect_Kind is
-   begin
-      if not League.Holders.Has_Tag
-          (Holder, AMF.UML.Holders.Parameter_Effect_Kinds.Value_Tag)
-      then
-         raise Constraint_Error;
-      end if;
-
-      if League.Holders.Is_Empty (Holder) then
-         return (Is_Empty => True);
-
-      else
-         return (False, AMF.UML.Holders.Parameter_Effect_Kinds.Element (Holder));
-      end if;
-   end Element;
+package body AMF.Internals.UML_Elements is
 
    -------------
    -- Element --
    -------------
 
-   function Element
-    (Holder : League.Holders.Holder) return Optional_UML_Visibility_Kind is
+   overriding function Element
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.Internals.AMF_Element is
    begin
-      if not League.Holders.Has_Tag
-          (Holder, AMF.UML.Holders.Visibility_Kinds.Value_Tag)
-      then
-         raise Constraint_Error;
-      end if;
-
-      if League.Holders.Is_Empty (Holder) then
-         return (Is_Empty => True);
-
-      else
-         return (False, AMF.UML.Holders.Visibility_Kinds.Element (Holder));
-      end if;
+      return Self.Id;
    end Element;
 
-   ---------------
-   -- To_Holder --
-   ---------------
+   ---------
+   -- Get --
+   ---------
 
-   function To_Holder
-    (Value : Optional_UML_Parameter_Effect_Kind)
+   overriding function Get
+    (Self     : not null access constant UML_Element_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return League.Holders.Holder is
    begin
-      return Result : League.Holders.Holder do
-         League.Holders.Set_Tag
-          (Result, AMF.UML.Holders.Parameter_Effect_Kinds.Value_Tag);
+      return
+        AMF.Internals.Tables.UML_Reflection.Get
+         (Self.Id,
+          AMF.Internals.Helpers.To_Element
+           (AMF.Elements.Element_Access (Property)));
+   end Get;
 
-         if not Value.Is_Empty then
-            AMF.UML.Holders.Parameter_Effect_Kinds.Replace_Element
-             (Result, Value.Value);
-         end if;
-      end return;
-   end To_Holder;
+   --------------------
+   -- Get_Meta_Class --
+   --------------------
 
-   ---------------
-   -- To_Holder --
-   ---------------
-
-   function To_Holder
-    (Value : Optional_UML_Visibility_Kind) return League.Holders.Holder is
+   overriding function Get_Meta_Class
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.CMOF.Classes.CMOF_Class_Access is
    begin
-      return Result : League.Holders.Holder do
-         League.Holders.Set_Tag
-          (Result, AMF.UML.Holders.Visibility_Kinds.Value_Tag);
+      return
+        AMF.CMOF.Classes.CMOF_Class_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Reflection.Get_Meta_Class (Self.Id)));
+   end Get_Meta_Class;
 
-         if not Value.Is_Empty then
-            AMF.UML.Holders.Visibility_Kinds.Replace_Element
-             (Result, Value.Value);
-         end if;
-      end return;
-   end To_Holder;
+   ---------
+   -- Set --
+   ---------
 
-end AMF.UML.Holders;
+   overriding procedure Set
+    (Self     : not null access UML_Element_Proxy;
+     Property : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Value    : League.Holders.Holder) is
+   begin
+      AMF.Internals.Tables.UML_Reflection.Set
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (Property)),
+        Value);
+   end Set;
+
+end AMF.Internals.UML_Elements;
