@@ -44,6 +44,7 @@
 with Matreshka.Internals.Strings;
 with League.Strings.Internals;
 
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Named_Elements is
@@ -70,6 +71,20 @@ package body AMF.Internals.CMOF_Named_Elements is
          return (False, League.Strings.Internals.Create (Aux));
       end if;
    end Get_Name;
+
+   -------------------
+   -- Get_Namespace --
+   -------------------
+
+   overriding function Get_Namespace
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access is
+   begin
+      return
+        AMF.CMOF.Namespaces.CMOF_Namespace_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Namespace (Self.Id)));
+   end Get_Namespace;
 
    --------------------
    -- Get_Visibility --

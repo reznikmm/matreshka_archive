@@ -52,12 +52,18 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages.Collections;
 with AMF.CMOF.Types.Collections;
 with AMF.Internals.CMOF_Named_Elements;
+with AMF.Internals.CMOF_Namespaces;
+pragma Elaborate (AMF.Internals.CMOF_Namespaces);
 with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Packages is
 
+   package CMOF_Namespace_Proxies is
+     new AMF.Internals.CMOF_Namespaces
+          (AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy);
+
    type CMOF_Package_Proxy is
-     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
+     limited new CMOF_Namespace_Proxies.CMOF_Namespace_Proxy
        and AMF.CMOF.Packages.CMOF_Package with null record;
 
    --  XXX These subprograms are stubs
@@ -82,10 +88,6 @@ package AMF.Internals.CMOF_Packages is
     (Self : not null access CMOF_Package_Proxy;
      To   : AMF.CMOF.Optional_CMOF_Visibility_Kind);
 
-   overriding function Get_Namespace
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
-
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Package_Proxy)
        return Optional_String;
@@ -104,23 +106,11 @@ package AMF.Internals.CMOF_Packages is
     (Self : not null access constant CMOF_Package_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function Get_Imported_Member
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
-
-   overriding function Get_Element_Import
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import;
-
    overriding function Get_Package_Import
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import;
 
    overriding function Get_Owned_Member
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
-
-   overriding function Get_Member
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
 

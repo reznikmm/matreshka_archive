@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Elements;
+with AMF.Elements.Collections;
 
 package body AMF.Generic_Collections is
 
@@ -66,6 +66,17 @@ package body AMF.Generic_Collections is
    begin
       return Element_Access (Self.Collection.Element (Index));
    end Element;
+
+   --------------
+   -- Internal --
+   --------------
+
+   function Internal
+    (Self : Collection'Class)
+       return AMF.Internals.Collections.Collection_Access is
+   begin
+      return Self.Collection;
+   end Internal;
 
    --------------
    -- Is_Empty --

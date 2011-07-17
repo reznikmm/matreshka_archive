@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Opaque_Expressions is
+
+   use AMF.Internals.Tables.CMOF_Attributes;
 
    -----------------------
    -- Get_Owned_Element --
@@ -324,8 +327,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Body unimplemented");
-      raise Program_Error;
-      return Get_Body (Self);
+      return AMF.String_Collections.Wrap (Internal_Get_Body (Self.Id));
    end Get_Body;
 
    ------------------
@@ -338,8 +340,7 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Language unimplemented");
-      raise Program_Error;
-      return Get_Language (Self);
+      return AMF.String_Collections.Wrap (Internal_Get_Language (Self.Id));
    end Get_Language;
 
 end AMF.Internals.CMOF_Opaque_Expressions;

@@ -41,79 +41,165 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
+with AMF.Elements;
+with AMF.Holders.Elements;
 
-with AMF.Elements.Collections;
-with AMF.Holders.Collections;
-
-package body AMF.Internals.Holders is
-
-   use type Matreshka.Internals.Strings.Shared_String_Access;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Holder : League.Holders.Holder)
-       return Matreshka.Internals.Strings.Shared_String_Access is
-   begin
-      if not League.Holders.Is_Universal_String (Holder) then
-         raise Constraint_Error;
-      end if;
-
-      if League.Holders.Is_Empty (Holder) then
-         return null;
-
-      else
-         return
-           League.Strings.Internals.Internal (League.Holders.Element (Holder));
-      end if;
-   end Element;
+package body AMF.Internals.Holders.CMOF_Holders is
 
    ---------------
    -- To_Holder --
    ---------------
 
    function To_Holder
-    (Item : Matreshka.Internals.Strings.Shared_String_Access)
-       return League.Holders.Holder is
-   begin
-      return Result : League.Holders.Holder do
-         League.Holders.Set_Tag (Result, League.Holders.Universal_String_Tag);
-
-         if Item /= null then
-            League.Holders.Replace_Element
-             (Result, League.Strings.Internals.Create (Item));
-         end if;
-      end return;
-   end To_Holder;
-
---   ---------------
---   -- To_Holder --
---   ---------------
---
---   function To_Holder
---    (Item : AMF.Internals.AMF_Collection_Of_Element)
---       return League.Holders.Holder is
---   begin
---      return
---        AMF.Holders.Collections.To_Holder
---         (AMF.Element_Collections.Wrap
---           (AMF.Internals.Element_Collections.Wrap (Item)));
---   end To_Holder;
-
-   ---------------
-   -- To_Holder --
-   ---------------
-
-   function To_Holder
-    (Item : AMF.Internals.Collections.Collection_Access)
+    (Item : AMF.CMOF.Associations.CMOF_Association_Access)
        return League.Holders.Holder is
    begin
       return
-        AMF.Holders.Collections.To_Holder
-         (AMF.Elements.Collections.Wrap (Item));
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
    end To_Holder;
 
-end AMF.Internals.Holders;
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Constraints.CMOF_Constraint_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Data_Types.CMOF_Data_Type_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Elements.CMOF_Element_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Enumerations.CMOF_Enumeration_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Operations.CMOF_Operation_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Packages.CMOF_Package_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Types.CMOF_Type_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access)
+       return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder (AMF.Elements.Element_Access (Item));
+   end To_Holder;
+
+end AMF.Internals.Holders.CMOF_Holders;

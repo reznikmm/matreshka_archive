@@ -46,6 +46,8 @@
 with League.Holders;
 with Matreshka.Internals.Strings;
 
+with AMF.Internals.Collections;
+
 package AMF.Internals.Holders is
 
    function Element
@@ -54,6 +56,10 @@ package AMF.Internals.Holders is
 
    function To_Holder
     (Item : Matreshka.Internals.Strings.Shared_String_Access)
+       return League.Holders.Holder;
+
+   function To_Holder
+    (Item : AMF.Internals.Collections.Collection_Access)
        return League.Holders.Holder;
 
 end AMF.Internals.Holders;

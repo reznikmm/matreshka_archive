@@ -51,6 +51,8 @@ package AMF.Boolean_Collections is
 
    type Collection_Of_Boolean is tagged private;
 
+   subtype Set_Of_Boolean is Collection_Of_Boolean;
+
    function Wrap
     (Collection : AMF.Internals.AMF_Collection_Of_Boolean)
        return Collection_Of_Boolean;

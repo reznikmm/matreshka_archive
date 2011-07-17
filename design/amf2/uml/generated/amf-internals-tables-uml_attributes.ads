@@ -1429,7 +1429,7 @@ package AMF.Internals.Tables.UML_Attributes is
 
    function Internal_Get_First_Event
     (Self : AMF.Internals.UML_Element)
-       return AMF.UML.Set_Of_Boolean;
+       return AMF.Internals.AMF_Collection_Of_Boolean;
    --  DurationConstraint => DurationConstraint::firstEvent
    --  DurationObservation => DurationObservation::firstEvent
 

@@ -41,77 +41,57 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Tables.CMOF_Attributes;
 
-with League.Holders;
+package body AMF.Internals.CMOF_Namespaces is
 
-with AMF.Internals.Collections;
+   use AMF.Internals.Tables.CMOF_Attributes;
 
-generic
-   type Abstract_Element is limited interface;
-   type Element_Access is access all Abstract_Element'Class;
+   ------------------------
+   -- Get_Element_Import --
+   ------------------------
 
-package AMF.Generic_Collections is
+   overriding function Get_Element_Import
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import
+   is
+   begin
+      return
+        AMF.CMOF.Element_Imports.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Element_Import (Self.Id)));
+   end Get_Element_Import;
 
-   pragma Preelaborate;
+   -------------------------
+   -- Get_Imported_Member --
+   -------------------------
 
-   type Collection is abstract tagged private;
+   overriding function Get_Imported_Member
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return
+         AMF.CMOF.Packageable_Elements.Collections.
+           Set_Of_CMOF_Packageable_Element
+   is
+   begin
+      return
+        AMF.CMOF.Packageable_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Imported_Member (Self.Id)));
+   end Get_Imported_Member;
 
-   type Set is new Collection with private;
+   ----------------
+   -- Get_Member --
+   ----------------
 
-   type Ordered_Set is new Collection with private;
+   overriding function Get_Member
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is
+   begin
+      return
+        AMF.CMOF.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Member (Self.Id)));
+   end Get_Member;
 
-   type Bag is new Collection with private;
-
-   type Sequence is new Collection with private;
-
-   --  XXX These subprograms must be reviewed.
-
-   function Is_Empty (Self : Collection'Class) return Boolean;
-
-   function Length (Self : Collection'Class) return Natural;
-
-   function Element
-    (Self : Collection'Class; Index : Positive) return not null Element_Access;
-
---   procedure Add (Self : Collection'Class; Item : not null Element_Access);
-   procedure Add
-    (Self : Collection'Class; Item : not null access Abstract_Element'Class);
-
-   --  XXX These subprograms must be removed after complete of the
-   --  implementation.
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access) return Set;
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access)
-       return Ordered_Set;
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access) return Bag;
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access)
-       return Sequence;
-
-   function Internal
-    (Self : Collection'Class)
-       return AMF.Internals.Collections.Collection_Access;
-
-private
-
-   type Collection is
-     abstract new Ada.Finalization.Controlled with record
-      Collection : AMF.Internals.Collections.Collection_Access;
-   end record;
-
-   type Set is new Collection with null record;
-
-   type Ordered_Set is new Collection with null record;
-
-   type Bag is new Collection with null record;
-
-   type Sequence is new Collection with null record;
-
-end AMF.Generic_Collections;
+end AMF.Internals.CMOF_Namespaces;

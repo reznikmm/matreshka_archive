@@ -35,7 +35,7 @@
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Boolean">
     <mapping representation="value" adaType="Boolean" memberName="Boolean_Value"/>
     <mapping representation="holder" adaType="AMF.Optional_Boolean" memberName="Boolean_Holder"/>
-    <mapping representation="set" adaType="AMF.UML.Set_Of_Boolean" memberName="Boolean_Collection"/>
+    <mapping representation="set" adaType="Set_Of_Boolean" adaPackage="AMF.Boolean_Collections" memberName="Boolean_Collection" internalAdaType="AMF.Internals.AMF_Collection_Of_Boolean"/>
   </type>
   <type uri="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi#Integer">
     <mapping representation="value" adaType="Integer" memberName="Integer_Value"/>

@@ -41,77 +41,72 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes;
+with AMF.CMOF.Constraints;
+with AMF.CMOF.Data_Types;
+with AMF.CMOF.Elements;
+with AMF.CMOF.Enumerations;
+with AMF.CMOF.Namespaces;
+with AMF.CMOF.Operations;
+with AMF.CMOF.Packageable_Elements;
+with AMF.CMOF.Packages;
+with AMF.CMOF.Properties;
+with AMF.CMOF.Types;
+with AMF.CMOF.Value_Specifications;
 
-with League.Holders;
+package AMF.Internals.Holders.CMOF_Holders is
 
-with AMF.Internals.Collections;
+   function To_Holder
+    (Item : AMF.CMOF.Associations.CMOF_Association_Access)
+       return League.Holders.Holder;
 
-generic
-   type Abstract_Element is limited interface;
-   type Element_Access is access all Abstract_Element'Class;
+   function To_Holder
+    (Item : AMF.CMOF.Classes.CMOF_Class_Access)
+       return League.Holders.Holder;
 
-package AMF.Generic_Collections is
+   function To_Holder
+    (Item : AMF.CMOF.Constraints.CMOF_Constraint_Access)
+       return League.Holders.Holder;
 
-   pragma Preelaborate;
+   function To_Holder
+    (Item : AMF.CMOF.Data_Types.CMOF_Data_Type_Access)
+       return League.Holders.Holder;
 
-   type Collection is abstract tagged private;
+   function To_Holder
+    (Item : AMF.CMOF.Elements.CMOF_Element_Access)
+       return League.Holders.Holder;
 
-   type Set is new Collection with private;
+   function To_Holder
+    (Item : AMF.CMOF.Enumerations.CMOF_Enumeration_Access)
+       return League.Holders.Holder;
 
-   type Ordered_Set is new Collection with private;
+   function To_Holder
+    (Item : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
+       return League.Holders.Holder;
 
-   type Bag is new Collection with private;
+   function To_Holder
+    (Item : AMF.CMOF.Operations.CMOF_Operation_Access)
+       return League.Holders.Holder;
 
-   type Sequence is new Collection with private;
+   function To_Holder
+    (Item : AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access)
+       return League.Holders.Holder;
 
-   --  XXX These subprograms must be reviewed.
+   function To_Holder
+    (Item : AMF.CMOF.Packages.CMOF_Package_Access)
+       return League.Holders.Holder;
 
-   function Is_Empty (Self : Collection'Class) return Boolean;
+   function To_Holder
+    (Item : AMF.CMOF.Properties.CMOF_Property_Access)
+       return League.Holders.Holder;
 
-   function Length (Self : Collection'Class) return Natural;
+   function To_Holder
+    (Item : AMF.CMOF.Types.CMOF_Type_Access)
+       return League.Holders.Holder;
 
-   function Element
-    (Self : Collection'Class; Index : Positive) return not null Element_Access;
+   function To_Holder
+    (Item : AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access)
+       return League.Holders.Holder;
 
---   procedure Add (Self : Collection'Class; Item : not null Element_Access);
-   procedure Add
-    (Self : Collection'Class; Item : not null access Abstract_Element'Class);
-
-   --  XXX These subprograms must be removed after complete of the
-   --  implementation.
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access) return Set;
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access)
-       return Ordered_Set;
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access) return Bag;
-
-   function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access)
-       return Sequence;
-
-   function Internal
-    (Self : Collection'Class)
-       return AMF.Internals.Collections.Collection_Access;
-
-private
-
-   type Collection is
-     abstract new Ada.Finalization.Controlled with record
-      Collection : AMF.Internals.Collections.Collection_Access;
-   end record;
-
-   type Set is new Collection with null record;
-
-   type Ordered_Set is new Collection with null record;
-
-   type Bag is new Collection with null record;
-
-   type Sequence is new Collection with null record;
-
-end AMF.Generic_Collections;
+end AMF.Internals.Holders.CMOF_Holders;

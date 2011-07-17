@@ -293,7 +293,7 @@ package AMF.Internals.Tables.UML_Types is
             Boolean_Holder : AMF.Optional_Boolean;
 
          when M_Collection_Of_Boolean =>
-            Boolean_Collection : AMF.UML.Collection_Of_Boolean;
+            Boolean_Collection : AMF.Internals.AMF_Collection_Of_Boolean;
 
          when M_String =>
             String_Value : Matreshka.Internals.Strings.Shared_String_Access;

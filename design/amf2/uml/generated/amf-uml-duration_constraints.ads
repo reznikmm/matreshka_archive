@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 --  A duration constraint is a constraint that refers to a duration interval.
 ------------------------------------------------------------------------------
+with AMF.Boolean_Collections;
 limited with AMF.UML.Duration_Intervals;
 with AMF.UML.Interval_Constraints;
 
@@ -61,7 +62,7 @@ package AMF.UML.Duration_Constraints is
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Duration_Constraint)
-       return AMF.UML.Set_Of_Boolean is abstract;
+       return AMF.Boolean_Collections.Set_Of_Boolean is abstract;
    --  The value of firstEvent[i] is related to constrainedElement[i] (where i 
    --  is 1 or 2). If firstEvent[i] is true, then the corresponding 
    --  observation event is the first time instant the execution enters 

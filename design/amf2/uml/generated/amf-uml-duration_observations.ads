@@ -47,6 +47,7 @@
 --  It points out the element(s) in the model to observe and whether the 
 --  observations are when this model element is entered or when it is exited.
 ------------------------------------------------------------------------------
+with AMF.Boolean_Collections;
 limited with AMF.UML.Named_Elements.Collections;
 with AMF.UML.Observations;
 
@@ -69,7 +70,7 @@ package AMF.UML.Duration_Observations is
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Duration_Observation)
-       return AMF.UML.Set_Of_Boolean is abstract;
+       return AMF.Boolean_Collections.Set_Of_Boolean is abstract;
    --  The value of firstEvent[i] is related to event[i] (where i is 1 or 2). 
    --  If firstEvent[i] is true, then the corresponding observation event is 
    --  the first time instant the execution enters event[i]. If firstEvent[i] 

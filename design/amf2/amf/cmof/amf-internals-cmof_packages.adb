@@ -44,13 +44,42 @@
 with Matreshka.Internals.Strings;
 with League.Strings.Internals;
 
-with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Packages is
 
    use AMF.Internals.Tables.CMOF_Attributes;
    use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   ------------------------
+   -- Get_Nested_Package --
+   ------------------------
+
+   overriding function Get_Nested_Package
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is
+   begin
+      return
+        AMF.CMOF.Packages.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Nested_Package (Self.Id)));
+   end Get_Nested_Package;
+
+   -------------------------
+   -- Get_Nesting_Package --
+   -------------------------
+
+   overriding function Get_Nesting_Package
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Nesting_Package (Self.Id)));
+   end Get_Nesting_Package;
 
    --------------------------
    -- Get_Packaged_Element --
@@ -162,21 +191,6 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
    end Set_Visibility;
 
-   -------------------
-   -- Get_Namespace --
-   -------------------
-
-   overriding function Get_Namespace
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Namespace unimplemented");
-      raise Program_Error;
-      return Get_Namespace (Self);
-   end Get_Namespace;
-
    ------------------------
    -- Get_Qualified_Name --
    ------------------------
@@ -239,36 +253,6 @@ package body AMF.Internals.CMOF_Packages is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   -------------------------
-   -- Get_Imported_Member --
-   -------------------------
-
-   overriding function Get_Imported_Member
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Imported_Member unimplemented");
-      raise Program_Error;
-      return Get_Imported_Member (Self);
-   end Get_Imported_Member;
-
-   ------------------------
-   -- Get_Element_Import --
-   ------------------------
-
-   overriding function Get_Element_Import
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Element_Import unimplemented");
-      raise Program_Error;
-      return Get_Element_Import (Self);
-   end Get_Element_Import;
-
    ------------------------
    -- Get_Package_Import --
    ------------------------
@@ -298,21 +282,6 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return Get_Owned_Member (Self);
    end Get_Owned_Member;
-
-   ----------------
-   -- Get_Member --
-   ----------------
-
-   overriding function Get_Member
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Member unimplemented");
-      raise Program_Error;
-      return Get_Member (Self);
-   end Get_Member;
 
    --------------------
    -- Get_Owned_Rule --
@@ -420,36 +389,6 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return Get_Owned_Type (Self);
    end Get_Owned_Type;
-
-   ------------------------
-   -- Get_Nested_Package --
-   ------------------------
-
-   overriding function Get_Nested_Package
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Nested_Package unimplemented");
-      raise Program_Error;
-      return Get_Nested_Package (Self);
-   end Get_Nested_Package;
-
-   -------------------------
-   -- Get_Nesting_Package --
-   -------------------------
-
-   overriding function Get_Nesting_Package
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Packages.CMOF_Package_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Nesting_Package unimplemented");
-      raise Program_Error;
-      return Get_Nesting_Package (Self);
-   end Get_Nesting_Package;
 
    -------------------------
    -- Set_Nesting_Package --

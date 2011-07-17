@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Named_Elements;
+with AMF.CMOF.Namespaces;
 with AMF.Internals.CMOF_Elements;
 
 package AMF.Internals.CMOF_Named_Elements is
@@ -53,6 +54,10 @@ package AMF.Internals.CMOF_Named_Elements is
    overriding function Get_Name
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return Optional_String;
+
+   overriding function Get_Namespace
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Named_Element_Proxy)

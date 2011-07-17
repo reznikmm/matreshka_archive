@@ -21,7 +21,7 @@ package body AMF.Internals.UML_Duration_Observations is
 
    overriding function Get_First_Event
      (Self : not null access constant UML_Duration_Observation_Proxy)
-      return AMF.UML.Set_Of_Boolean
+      return AMF.Boolean_Collections.Set_Of_Boolean
    is
    begin
       --  Generated stub: replace with real body!

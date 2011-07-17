@@ -153,20 +153,4 @@ package AMF.UML is
       end case;
    end record;
 
-   --  XXX Should be reused between meta models.
-
-   type Collection_Of_Boolean is new Natural;
-
-   subtype Set_Of_Boolean is Collection_Of_Boolean;
-
---   type Collection_Of_String is new Natural;
---
---   subtype Set_Of_String is Collection_Of_String;
---
---   subtype Sequence_Of_String is Collection_Of_String;
---
---   subtype Ordered_Set_Of_String is Collection_Of_String;
-
---   type Optional_Real is null record;
-
 end AMF.UML;
