@@ -46,6 +46,7 @@ pragma Unreferenced (AMF.Internals.Factories.Primitive_Types_Factory);
 --  Primitive_Types_Factory must be elaborated before eloboration of this unit.
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Constructors;
+with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.UML.Holders.Aggregation_Kinds;
 with AMF.UML.Holders.Call_Concurrency_Kinds;
@@ -1561,6 +1562,10 @@ begin
    --  Initialize metamodel.
 
    AMF.Internals.Tables.UML_Metamodel.Initialize;
+
+   --  Initialize element table.
+
+   AMF.Internals.Tables.UML_Element_Table.Increment_Last;
 
    --  Register factory.
 
