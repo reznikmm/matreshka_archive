@@ -57,7 +57,6 @@ package CMOF is
 
    subtype Cmof_Association is Cmof_Element;
    subtype Cmof_Class is Cmof_Element;
-   subtype CMOF_Data_Type is Cmof_Element;
    subtype CMOF_Property is Cmof_Element;
 
    subtype CMOF_Extent is AMF.Internals.AMF_Extent;
