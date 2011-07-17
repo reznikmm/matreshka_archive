@@ -49,8 +49,7 @@ with League.Holders.Integers;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Unlimited_Naturals;
-with AMF.Internals.Helpers;
-pragma Elaborate_All (AMF.Internals.Helpers);
+with AMF.Internals.Helpers.CMOF_Helper;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Metamodel;
 
@@ -285,9 +284,6 @@ package body AMF.Internals.Factories.CMOF_Factory is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String
    is
---      use Ada.Strings;
---      use Ada.Strings.Wide_Wide_Fixed;
-
       DT : constant AMF.Internals.CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Element_Access (Data_Type));
@@ -323,64 +319,49 @@ package body AMF.Internals.Factories.CMOF_Factory is
          end if;
 
       elsif DT = MC_CMOF_String then
---         if League.Holders.Is_Empty (Value) then
---            return League.Strings.Empty_Universal_String;
---
---         else
          return League.Holders.Element (Value);
---         end if;
 
       elsif DT = MC_CMOF_Parameter_Direction_Kind then
---         if League.Holders.Is_Empty (Value) then
---            return League.Strings.Empty_Universal_String;
---
---         else
-            declare
-               Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
-                 := AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value);
+         declare
+            Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
+              := AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value);
 
-            begin
-               case Kind is
-                  when AMF.CMOF.In_Parameter =>
-                     return In_Image;
+         begin
+            case Kind is
+               when AMF.CMOF.In_Parameter =>
+                  return In_Image;
 
-                  when AMF.CMOF.In_Out_Parameter =>
-                     return In_Out_Image;
+               when AMF.CMOF.In_Out_Parameter =>
+                  return In_Out_Image;
 
-                  when AMF.CMOF.Out_Parameter =>
-                     return Out_Image;
+               when AMF.CMOF.Out_Parameter =>
+                  return Out_Image;
 
-                  when AMF.CMOF.Return_Parameter =>
-                     return Return_Image;
-               end case;
-            end;
---         end if;
---
+               when AMF.CMOF.Return_Parameter =>
+                  return Return_Image;
+            end case;
+         end;
+
       elsif DT = MC_CMOF_Visibility_Kind then
---         if League.Holders.Is_Empty (Value) then
---            return League.Strings.Empty_Universal_String;
---
---         else
-            declare
-               Kind : constant AMF.CMOF.CMOF_Visibility_Kind
-                 := AMF.CMOF.Holders.Visibility_Kinds.Element (Value);
+         declare
+            Kind : constant AMF.CMOF.CMOF_Visibility_Kind
+              := AMF.CMOF.Holders.Visibility_Kinds.Element (Value);
 
-            begin
-               case Kind is
-                  when AMF.CMOF.Public_Visibility =>
-                     return Public_Image;
+         begin
+            case Kind is
+               when AMF.CMOF.Public_Visibility =>
+                  return Public_Image;
 
-                  when AMF.CMOF.Private_Visibility =>
-                     return Private_Image;
+               when AMF.CMOF.Private_Visibility =>
+                  return Private_Image;
 
-                  when AMF.CMOF.Protected_Visibility =>
-                     return Protected_Image;
+               when AMF.CMOF.Protected_Visibility =>
+                  return Protected_Image;
 
-                  when AMF.CMOF.Package_Visibility =>
-                     return Package_Image;
-               end case;
-            end;
---         end if;
+               when AMF.CMOF.Package_Visibility =>
+                  return Package_Image;
+            end case;
+         end;
       end if;
 
       raise Program_Error;
@@ -406,8 +387,7 @@ begin
 
    AMF.Internals.Tables.CMOF_Metamodel.Initialize;
 
-   AMF.Internals.Factories.Register
---    (League.Strings.To_Universal_String
---      ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"),
-    (Factory'Access);
+   --  Register factory.
+
+   AMF.Internals.Factories.Register (Factory'Access);
 end AMF.Internals.Factories.CMOF_Factory;

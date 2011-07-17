@@ -43,15 +43,6 @@
 ------------------------------------------------------------------------------
 --  Factory for CMOF classes.
 ------------------------------------------------------------------------------
---with League.Holders;
---with League.Strings;
---
---with AMF.CMOF.Associations;
---with AMF.CMOF.Classes;
---with AMF.CMOF.Data_Types;
---with AMF.CMOF.Packages;
---with AMF.Elements;
---with AMF.Factories;
 
 package AMF.Internals.Factories.CMOF_Factory is
 
