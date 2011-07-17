@@ -308,19 +308,21 @@ package body Generator.Metamodel is
          if Is_String_Type (Property_Type)
            and then not Property.Get_Is_Derived
          then
-            Value
-              := AMF.Elements.Abstract_Element'Class
-                  (Element.all).Get (Property);
-
             if Property.Is_Multivalued then
                Put_Line
                 (Standard_Error,
-                 Property.Get_Name.Value.To_Wide_Wide_String
-                   & ": Multivalued string value");
+                 "warning: "
+                   & Property.Get_Name.Value.To_Wide_Wide_String
+                   & ": multivalued string value is not supported");
 
-            elsif not League.Holders.Is_Empty (Value) then
-               Strings.Include (League.Holders.Element (Value));
+            else
+               Value
+                 := AMF.Elements.Abstract_Element'Class
+                     (Element.all).Get (Property);
 
+               if not League.Holders.Is_Empty (Value) then
+                  Strings.Include (League.Holders.Element (Value));
+               end if;
             end if;
          end if;
       end Extract_String_Data;

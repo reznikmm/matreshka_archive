@@ -182,7 +182,7 @@ package body Generator.Reflection is
             Attribute_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
               := Attribute.Get_Type;
             Holder_Name     : League.Strings.Universal_String;
-            Convertor_Name  : Unbounded_Wide_Wide_String;
+            Convertor_Name  : League.Strings.Universal_String;
 
          begin
             if First then
@@ -211,19 +211,26 @@ package body Generator.Reflection is
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
                   Holder_Name :=
-                    League.Strings.To_Universal_String
-                     ("AMF.Holders.Elements.To_Holder");
+                    "AMF.Internals.Holders."
+                      & Metamodel_Name
+                      & "_Holders.To_Holder";
                   Convertor_Name :=
-                    To_Unbounded_Wide_Wide_String
-                     ("AMF.Internals.Helpers.To_Element");
+                    Type_Mapping.Public_Ada_Type_Qualified_Name
+                     (Attribute_Type, Value)
+                      & "'";
 
                else
                   Holder_Name :=
                     League.Strings.To_Universal_String
-                     ("AMF.Holders.Collections.To_Holder");
+                     ("AMF.Internals.Holders.To_Holder");
                   Convertor_Name :=
-                    To_Unbounded_Wide_Wide_String
-                     ("AMF.Internals.Element_Collections.Wrap");
+                    Type_Mapping.Public_Ada_Package_Name
+                     (Attribute_Type, Representation (Attribute))
+                      & "."
+                      & Metamodel_Name
+                      & "_"
+                      & To_Ada_Identifier (Attribute_Type.Get_Name.Value)
+                      & "_Collections.Internal";
                end if;
 
             elsif Attribute_Type.Get_Name = Boolean_Name then
@@ -320,9 +327,6 @@ package body Generator.Reflection is
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("AMF.Holders.String_Collections.To_Holder");
-                     Convertor_Name :=
-                       To_Unbounded_Wide_Wide_String
-                        ("AMF.String_Collections.Wrap");
 
                   when Bag =>
                      raise Program_Error;
@@ -331,9 +335,6 @@ package body Generator.Reflection is
                      Holder_Name :=
                        League.Strings.To_Universal_String
                         ("AMF.Holders.String_Collections.To_Holder");
-                     Convertor_Name :=
-                       To_Unbounded_Wide_Wide_String
-                        ("AMF.String_Collections.Wrap");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
@@ -399,7 +400,7 @@ package body Generator.Reflection is
                raise Program_Error;
             end if;
 
-            if Convertor_Name = Null_Unbounded_Wide_Wide_String then
+            if Convertor_Name.Is_Empty then
                Put_Line (Holder_Name);
                Put_Line
                 ("               ("
@@ -413,12 +414,16 @@ package body Generator.Reflection is
 
             else
                Put_Line (Holder_Name);
+               Put_Line ("               (" & Convertor_Name);
                Put_Line
-                ("               (" & To_Wide_Wide_String (Convertor_Name));
+                ("                 ("
+                   & Type_Mapping.Public_Ada_Type_Qualified_Name
+                      (Class.Class, Value));
                Put_Line
-                ("                 (Internal_Get_"
+                ("                   ("
+                   & "AMF.Internals.Helpers.To_Element (Self)).Get_"
                    & To_Ada_Identifier (Attribute.Get_Name.Value)
-                   & " (Self)));");
+                   & "));");
             end if;
          end Generate_Attribute;
 
@@ -568,21 +573,24 @@ package body Generator.Reflection is
                 & " : "
                 & Attribute_Type.Get_Name.Value.To_Wide_Wide_String);
             New_Line;
+            Put_Line
+             ("            "
+                & Type_Mapping.Public_Ada_Type_Qualified_Name
+                   (Class.Class, Value));
+            Put_Line
+             ("             ("
+                & "AMF.Internals.Helpers.To_Element"
+                & " (Self)).Set_"
+                & To_Ada_Identifier (Attribute.Get_Name.Value));
             Put
-             ("            Internal_Set_"
-                & To_Ada_Identifier (Attribute.Get_Name.Value)
-                & " (Self, ");
+             ("               (");
 
             if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
                if Representation (Attribute) in Value .. Holder then
                   Put
-                   ("AMF.Internals."
-                      & Metamodel_Name
-                      & "_Elements."
-                      & Metamodel_Name
-                      & "_Element_Proxy'Class"
-                      & " (AMF.Holders.Elements.Element"
-                      & " (Value).all).Id");
+                   (Type_Mapping.Public_Ada_Type_Qualified_Name
+                     (Attribute_Type, Representation (Attribute))
+                      & " (AMF.Holders.Elements.Element (Value))");
 
                else
                   --  XXX all elements from the set should be copied into
@@ -656,8 +664,11 @@ package body Generator.Reflection is
 
             elsif Attribute_Type.Get_Name = String_Name then
                case Representation (Attribute) is
-                  when Value | Holder =>
-                     Put ("AMF.Internals.Holders.Element (Value)");
+                  when Value =>
+                     Put ("League.Holders.Element (Value)");
+
+                  when Holder =>
+                     Put ("AMF.Holders.Element (Value)");
 
                   when Set =>
                      raise Program_Error;
@@ -801,6 +812,7 @@ package body Generator.Reflection is
          Put_Line ("with AMF.Holders.Unlimited_Naturals;");
       end if;
 
+      Put_Line ("with AMF.Elements;");
       Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Holders.String_Collections;");
@@ -808,6 +820,7 @@ package body Generator.Reflection is
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
       Put_Line ("with AMF.Internals.Holders;");
+      Put_Line ("with AMF.Internals.Holders." & Metamodel_Name & "_Holders;");
       Put_Line
        ("with AMF.Internals.Tables." & Metamodel_Name & "_Attributes;");
       Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
@@ -949,6 +962,7 @@ package body Generator.Reflection is
    is
       use AMF.CMOF.Classes;
 --      use type AMF.CMOF.Classes.CMOF_Class_Access;
+      Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
    begin
       if Element.Get_Class = null then
@@ -957,9 +971,22 @@ package body Generator.Reflection is
            "Ignoring " & Element.Get_Name.Value.To_Wide_Wide_String);
 
       else
+         Attribute_Type := Element.Get_Type;
+
+         --  Add package where public type is declared.
+
          Self.Context.Add
           (Type_Mapping.Public_Ada_Package_Name
             (Element.Get_Type, Representation (Element)));
+
+         --  For classes add internals holders utilities package.
+
+         if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+            if Representation (Element) in Value .. Holder then
+               Self.Context.Add
+                ("AMF.Internals.Holders." & Metamodel_Name & "_Holders");
+            end if;
+         end if;
       end if;
 
       Self.Visit_Children (Element);
