@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,19 +41,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
+--  Factory for UML classes.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.Tables.Primitive_Types_Metamodel is
+package AMF.Internals.Factories.Primitive_Types_Factory is
 
-   function MM_Primitive_Types_Primitive_Types return AMF.Internals.CMOF_Element;
+   type Primitive_Types_Factory is
+     limited new AMF.Internals.Factories.Abstract_Factory with null record;
 
-   function MC_Primitive_Types_Boolean return AMF.Internals.CMOF_Element;
-   function MC_Primitive_Types_Integer return AMF.Internals.CMOF_Element;
-   function MC_Primitive_Types_Real return AMF.Internals.CMOF_Element;
-   function MC_Primitive_Types_String return AMF.Internals.CMOF_Element;
-   function MC_Primitive_Types_Unlimited_Natural return AMF.Internals.CMOF_Element;
+   ------------------------------
+   -- AMF_Factory's operations --
+   ------------------------------
 
-   procedure Initialize;
+   overriding function Create
+    (Self       : not null access Primitive_Types_Factory;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
+       return not null AMF.Elements.Element_Access;
 
-end AMF.Internals.Tables.Primitive_Types_Metamodel;
+   overriding function Create_From_String
+    (Self      : not null access Primitive_Types_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Image     : League.Strings.Universal_String) return League.Holders.Holder;
+
+   overriding function Convert_To_String
+    (Self      : not null access Primitive_Types_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String;
+
+   overriding function Get_Package
+    (Self : not null access constant Primitive_Types_Factory)
+       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+end AMF.Internals.Factories.Primitive_Types_Factory;
