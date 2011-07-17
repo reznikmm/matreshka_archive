@@ -99,17 +99,23 @@ private
    type XMI_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler with record
-      Extent           : AMF.URI_Stores.URI_Store_Access;
-      Current          : AMF.Elements.Element_Access;
-      Stack            : Element_Vectors.Vector;
-      Attribute        : AMF.CMOF.Properties.CMOF_Property_Access;
-      Text             : League.Strings.Universal_String;
-      Collect_Text     : Boolean := False;
-      Mapping          : String_Element_Maps.Map;
-      Postponed        : Postponed_Link_Vectors.Vector;
-      Skip_End_Element : Natural := 0;
-      Diagnosis        : League.Strings.Universal_String;
-      Locator          : XML.SAX.Locators.SAX_Locator;
+      Extent             : AMF.URI_Stores.URI_Store_Access;
+      Current            : AMF.Elements.Element_Access;
+      Stack              : Element_Vectors.Vector;
+      Attribute          : AMF.CMOF.Properties.CMOF_Property_Access;
+      Text               : League.Strings.Universal_String;
+      Collect_Text       : Boolean := False;
+      Mapping            : String_Element_Maps.Map;
+      Postponed          : Postponed_Link_Vectors.Vector;
+      Skip_End_Element   : Natural := 0;
+      XMI_Namespace      : League.Strings.Universal_String;
+      --  Actual namespace of the XMI document.
+      URI_Package_Map    : String_Element_Maps.Map;
+      Prefix_Package_Map : String_Element_Maps.Map;
+      --  Mapping from namespace URI and namespace prefix to the package of the
+      --  corresponding metamodel.
+      Diagnosis          : League.Strings.Universal_String;
+      Locator            : XML.SAX.Locators.SAX_Locator;
    end record;
 
    overriding procedure Characters

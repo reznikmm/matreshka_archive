@@ -61,6 +61,8 @@ with AMF.Extents;
 with AMF.Facility;
 with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.Extents;
+with AMF.Internals.Factories;
+--  XXX Direct use of AMF.Internals.Factories must be removed.
 with AMF.Internals.Helpers;
 
 package body AMF.Internals.XMI_Handlers is
@@ -69,14 +71,17 @@ package body AMF.Internals.XMI_Handlers is
    use type AMF.CMOF.Properties.CMOF_Property_Access;
    use type League.Strings.Universal_String;
 
-   XMI_Namespace  : constant League.Strings.Universal_String
+   XMI_2_1_Namespace : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://schema.omg.org/spec/XMI/2.1");
-   Id_Name        : constant League.Strings.Universal_String
+   XMI_2_4_Namespace : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/XMI/20100901");
+   Id_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
-   Type_Name      : constant League.Strings.Universal_String
+   Type_Name         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
-   Href_Name      : constant League.Strings.Universal_String
+   Href_Name         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("href");
 
    function Resolve_Owned_Attribute
@@ -240,7 +245,7 @@ package body AMF.Internals.XMI_Handlers is
       end Set_Attribute;
 
       Id         : constant League.Strings.Universal_String
-        := Attributes.Value (XMI_Namespace, Id_Name);
+        := Attributes.Value (Self.XMI_Namespace, Id_Name);
       Href_Index : constant Natural := Attributes.Index (Href_Name);
 
    begin
@@ -339,7 +344,7 @@ package body AMF.Internals.XMI_Handlers is
                end;
             end if;
 
-         elsif Attributes.Namespace_URI (J) = XMI_Namespace then
+         elsif Attributes.Namespace_URI (J) = Self.XMI_Namespace then
             --  XMI namespace is handled outside of this subprogram.
 
             null;
@@ -764,14 +769,16 @@ package body AMF.Internals.XMI_Handlers is
          Association := Property.Get_Association;
 
          if Association /= null then
-            if Attributes.Index (XMI_Namespace, Type_Name) /= 0 then
+            if Attributes.Index (Self.XMI_Namespace, Type_Name) /= 0 then
                --  Metaclass of the element is specified explicitly, resolve
                --  it.
 
-               Name := Attributes.Value (XMI_Namespace, Type_Name);
+               Name := Attributes.Value (Self.XMI_Namespace, Type_Name);
                Meta :=
                  Resolve_Owned_Class
-                  (Self.Extent.Get_Package,
+                  (AMF.CMOF.Packages.CMOF_Package_Access
+                    (Self.Prefix_Package_Map.Element
+                      (Name.Slice (1, Name.Index (':') - 1))),
                    Name.Slice (Name.Index (':') + 1, Name.Length));
 
                if Meta = null then
@@ -794,13 +801,17 @@ package body AMF.Internals.XMI_Handlers is
             Self.Text.Clear;
          end if;
 
-      elsif Namespace_URI = XMI_Namespace then
-         --  XXX XMI namespace is not processed now.
-
-         null;
+      elsif Namespace_URI = XMI_2_1_Namespace
+        or Namespace_URI = XMI_2_4_Namespace
+      then
+         Self.XMI_Namespace := Namespace_URI;
 
       else
-         Meta := Resolve_Owned_Class (Self.Extent.Get_Package, Local_Name);
+         Meta :=
+           Resolve_Owned_Class
+            (AMF.CMOF.Packages.CMOF_Package_Access
+              (Self.URI_Package_Map.Element (Namespace_URI)),
+             Local_Name);
 
          if Meta = null then
             Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
@@ -822,7 +833,23 @@ package body AMF.Internals.XMI_Handlers is
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean) is
    begin
-      null;
+      if Namespace_URI = XMI_2_1_Namespace
+        or Namespace_URI = XMI_2_4_Namespace
+      then
+         --  Ignore all XMI namespaces.
+
+         null;
+
+      else
+         Self.Prefix_Package_Map.Insert
+          (Prefix,
+           AMF.Elements.Element_Access
+            (AMF.Internals.Factories.Get_Factory (Namespace_URI).Get_Package));
+         Self.URI_Package_Map.Insert
+          (Namespace_URI,
+           AMF.Elements.Element_Access
+            (AMF.Internals.Factories.Get_Factory (Namespace_URI).Get_Package));
+      end if;
    end Start_Prefix_Mapping;
 
 end AMF.Internals.XMI_Handlers;
