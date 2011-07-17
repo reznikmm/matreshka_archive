@@ -49,6 +49,6 @@ package AMF.Internals.Tables.UML_Element_Table is
  new GNAT.Table
       (AMF.Internals.Tables.UML_Types.Element_Record,
        AMF.Internals.UML_Element,
-       1,
+       AMF.Internals.UML_Element'First,
        1_000,
        100);

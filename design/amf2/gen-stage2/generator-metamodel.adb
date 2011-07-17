@@ -1179,7 +1179,7 @@ package body Generator.Metamodel is
                Put
                 ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
                    & To_Ada_Identifier (Property.Get_Name.Value)
-                   & " (");
+                   & " (Base + ");
                Put (Element_Numbers.Element (Element), Width => 0);
                Put (", ");
 
@@ -1202,11 +1202,48 @@ package body Generator.Metamodel is
             elsif Is_Visibility_Kind_Type (Property_Type) then
                --  XXX Check for default value is not implemented.
 
-               if not League.Holders.Is_Empty (Value) then
+               if Property.Is_Multivalued then
+                  raise Program_Error;
+
+               elsif Property.Get_Lower = 0 then
+                  if League.Holders.Is_Empty (Value) then
+                     Put
+                      ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                         & To_Ada_Identifier (Property.Get_Name.Value)
+                         & " (Base + ");
+                     Put (Element_Numbers.Element (Element), Width => 0);
+                     Put_Line (", (Is_Empty => True));");
+
+                  else
+                     Put
+                      ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
+                         & To_Ada_Identifier (Property.Get_Name.Value)
+                         & " (Base + ");
+                     Put (Element_Numbers.Element (Element), Width => 0);
+                     Put (", (False, ");
+
+                     case AMF.CMOF.Holders.Visibility_Kinds.Element
+                           (Value)
+                     is
+                        when AMF.CMOF.Public_Visibility =>
+                           Put_Line ("AMF.CMOF.Public_Visibility));");
+
+                        when AMF.CMOF.Private_Visibility =>
+                           Put_Line ("AMF.CMOF.Private_Visibility));");
+
+                        when AMF.CMOF.Protected_Visibility =>
+                           Put_Line ("AMF.CMOF.Protected_Visibility));");
+
+                        when AMF.CMOF.Package_Visibility =>
+                           Put_Line ("AMF.CMOF.Package_Visibility));");
+                     end case;
+                  end if;
+
+               else
                   Put
                    ("      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_"
                       & To_Ada_Identifier (Property.Get_Name.Value)
-                      & " (");
+                      & " (Base + ");
                   Put (Element_Numbers.Element (Element), Width => 0);
                   Put (", ");
 
