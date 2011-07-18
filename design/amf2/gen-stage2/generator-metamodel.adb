@@ -75,6 +75,7 @@ package body Generator.Metamodel is
    use Generator.Wide_Wide_Text_IO;
    use type AMF.Optional_Integer;
    use type AMF.Optional_String;
+   use type League.Strings.Universal_String;
 
    package Number_Element_Maps is
      new Ada.Containers.Ordered_Maps
@@ -928,6 +929,16 @@ package body Generator.Metamodel is
 
       All_Associations.Iterate (Generate_Association_Constant'Access);
 
+      Put_Header ("MB_" & Metamodel_Name.To_Wide_Wide_String, 3);
+      New_Line;
+      Put_Line
+       ("   function MB_"
+          & Metamodel_Name
+          & " return AMF.Internals.AMF_Element is");
+      Put_Line ("   begin");
+      Put_Line ("      return Base;");
+      Put_Line ("   end MB_" & Metamodel_Name & ";");
+
       Generate_Metamodel_Initialization;
       New_Line;
       Put_Line
@@ -1514,12 +1525,14 @@ package body Generator.Metamodel is
       end if;
 
       New_Line;
+      Put_Line
+       ("   function MB_"
+          & Metamodel_Name
+          & " return AMF.Internals.AMF_Element;");
+      New_Line;
       Put_Line ("   procedure Initialize;");
       New_Line;
-      Put_Line
-       ("end AMF.Internals.Tables."
-          & Metamodel_Name.To_Wide_Wide_String
-          & "_Metamodel;");
+      Put_Line ("end AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
    end Generate_Metamodel_Specification;
 
    ------------------------------------

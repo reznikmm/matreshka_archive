@@ -155,6 +155,20 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
       raise Program_Error with "Unknown CMOF data type";
    end Create_From_String;
 
+   ----------------------
+   -- Connect_Link_End --
+   ----------------------
+
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant Primitive_Types_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element) is
+   begin
+      raise Program_Error;
+   end Connect_Link_End;
+
    -----------------------
    -- Convert_To_String --
    -----------------------

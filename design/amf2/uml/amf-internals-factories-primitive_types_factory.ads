@@ -58,6 +58,13 @@ package AMF.Internals.Factories.Primitive_Types_Factory is
      Element : AMF.Internals.AMF_Element;
      Extent  : AMF.Internals.AMF_Extent);
 
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant Primitive_Types_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element);
+
    overriding function Convert_To_String
     (Self      : not null access Primitive_Types_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;

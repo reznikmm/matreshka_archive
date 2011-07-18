@@ -74,7 +74,7 @@ package body AMF.Internals.Helpers is
      Link     : AMF_Link;
      Other    : AMF_Element) is
    begin
-      Metamodel_Helper
+      AMF.Internals.Factories.Get_Factory
        (AMF_Metamodel (U32 (Element) / 16#01000000#)).Connect_Link_End
          (Element, Property, Link, Other);
    end Connect_Link_End;

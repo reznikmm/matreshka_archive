@@ -49,9 +49,10 @@ with League.Holders.Integers;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Unlimited_Naturals;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Elements;
-with AMF.Internals.Helpers.CMOF_Helper;
-pragma Unreferenced (AMF.Internals.Helpers.CMOF_Helper);
+with AMF.Internals.Tables.CMOF_Attribute_Mappings;
+with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Constructors;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
@@ -296,6 +297,55 @@ package body AMF.Internals.Factories.CMOF_Factory is
 
       raise Program_Error with "Unknown CMOF data type";
    end Create_From_String;
+
+   ----------------------
+   -- Connect_Link_End --
+   ----------------------
+
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant CMOF_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element)
+   is
+      use AMF.Internals.Tables;
+      use AMF.Internals.Tables.CMOF_Attribute_Mappings;
+
+   begin
+      if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
+          (Property).Value > 1
+      then
+         if Property in Collection_Offset'Range (2) then
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection
+                + Collection_Offset
+                   (CMOF_Element_Table.Table (Element).Kind, Property),
+              Other,
+              Link);
+
+         else
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
+              Other,
+              Link);
+         end if;
+
+      else
+         if Property in Member_Offset'Range (2) then
+            CMOF_Element_Table.Table (Element).Member
+             (Member_Offset
+               (CMOF_Element_Table.Table (Element).Kind,
+                Property)).Element := Other;
+
+         else
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
+              Other,
+              Link);
+         end if;
+      end if;
+   end Connect_Link_End;
 
    -----------------------
    -- Convert_To_String --

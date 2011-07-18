@@ -58,6 +58,13 @@ package AMF.Internals.Factories.UML_Factory is
      Element : AMF.Internals.AMF_Element;
      Extent  : AMF.Internals.AMF_Extent);
 
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant UML_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element);
+
    overriding function Convert_To_String
     (Self      : not null access UML_Factory;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;

@@ -1,3 +1,6 @@
+with League.Strings.Internals;
+with AMF.Internals.Tables.UML_Attributes;
+
 package body AMF.Internals.UML_Packages is
 
    -------------
@@ -20,13 +23,16 @@ package body AMF.Internals.UML_Packages is
    -------------
 
    overriding procedure Set_URI
-     (Self : not null access UML_Package_Proxy;
-      To   : AMF.Optional_String)
-   is
+    (Self : not null access UML_Package_Proxy;
+     To   : AMF.Optional_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_URI unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_URI";
+      if To.Is_Empty then
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_URI (Self.Id, null);
+
+      else
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_URI
+          (Self.Id, League.Strings.Internals.Internal (To.Value));
+      end if;
    end Set_URI;
 
    ------------------------
@@ -273,13 +279,16 @@ package body AMF.Internals.UML_Packages is
    --------------
 
    overriding procedure Set_Name
-     (Self : not null access UML_Package_Proxy;
-      To   : AMF.Optional_String)
-   is
+    (Self : not null access UML_Package_Proxy;
+     To   : AMF.Optional_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name";
+      if To.Is_Empty then
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name (Self.Id, null);
+
+      else
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id, League.Strings.Internals.Internal (To.Value));
+      end if;
    end Set_Name;
 
    -------------------------

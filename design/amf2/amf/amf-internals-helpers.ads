@@ -49,7 +49,7 @@ with AMF.Extents;
 
 package AMF.Internals.Helpers is
 
---   pragma Preelaborate;
+   pragma Preelaborate;
 
    function To_Element
     (Element : AMF_Element) return AMF.Elements.Element_Access;
@@ -71,21 +71,5 @@ package AMF.Internals.Helpers is
 
    procedure Connect_Extent (Element : AMF_Element; Extent : AMF_Extent);
    --  Connects element to the extent.
-
-private
-
-   type Abstract_Metamodel_Helper is abstract tagged null record;
-
-   not overriding procedure Connect_Link_End
-    (Self     : not null access constant Abstract_Metamodel_Helper;
-     Element  : AMF_Element;
-     Property : CMOF_Element;
-     Link     : AMF_Link;
-     Other    : AMF_Element) is abstract;
-   --  Connects link end with specified element:property.
-
-   type Metamodel_Helper_Access is access all Abstract_Metamodel_Helper'Class;
-
-   Metamodel_Helper : array (AMF_Metamodel) of Metamodel_Helper_Access;
 
 end AMF.Internals.Helpers;

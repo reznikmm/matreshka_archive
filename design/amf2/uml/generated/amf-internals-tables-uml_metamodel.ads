@@ -1349,6 +1349,8 @@ package AMF.Internals.Tables.UML_Metamodel is
    function MA_UML_Value_Specification_Value_Owning_Slot return AMF.Internals.CMOF_Element;
    function MA_UML_Input_Pin_Value_Qualifier_Value return AMF.Internals.CMOF_Element;
 
+   function MB_UML return AMF.Internals.AMF_Element;
+
    procedure Initialize;
 
 end AMF.Internals.Tables.UML_Metamodel;

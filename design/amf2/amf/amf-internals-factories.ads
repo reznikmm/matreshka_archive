@@ -167,6 +167,14 @@ package AMF.Internals.Factories is
      Extent  : AMF.Internals.AMF_Extent) is abstract;
    --  Connects element with extent.
 
+   not overriding procedure Connect_Link_End
+    (Self     : not null access constant Abstract_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element) is abstract;
+   --  Connects link end with specified element:property.
+
    not overriding function Get_Extent
     (Self    : not null access constant Abstract_Factory;
      Element : AMF.Internals.AMF_Element)
