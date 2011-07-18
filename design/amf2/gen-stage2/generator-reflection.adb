@@ -977,12 +977,17 @@ package body Generator.Reflection is
 
          Self.Context.Add
           (Type_Mapping.Public_Ada_Package_Name
-            (Element.Get_Type, Representation (Element)));
+            (Element.Get_Type,
+             Representation
+              (AMF.CMOF.Properties.CMOF_Property_Access (Element))));
 
          --  For classes add internals holders utilities package.
 
          if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            if Representation (Element) in Value .. Holder then
+            if Representation
+                (AMF.CMOF.Properties.CMOF_Property_Access (Element))
+                 in Value .. Holder
+            then
                Self.Context.Add
                 ("AMF.Internals.Holders." & Metamodel_Name & "_Holders");
             end if;

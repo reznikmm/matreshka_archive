@@ -348,7 +348,8 @@ package body Generator.Type_Mapping is
      Representation : Representation_Kinds)
        return League.Strings.Universal_String
    is
-      Position : constant Mapping_Maps.Cursor := Mapping.Find (Element);
+      Position : constant Mapping_Maps.Cursor
+        := Mapping.Find (AMF.CMOF.Elements.CMOF_Element_Access (Element));
 
    begin
       if Mapping_Maps.Has_Element (Position)
@@ -357,7 +358,10 @@ package body Generator.Type_Mapping is
         and then not Mapping_Maps.Element
                       (Position).Mapping (Representation).Member_Name.Is_Empty
       then
-         return Mapping.Element (Element).Mapping (Representation).Member_Name;
+         return
+           Mapping.Element
+            (AMF.CMOF.Elements.CMOF_Element_Access (Element)).Mapping
+              (Representation).Member_Name;
 
       else
          Put_Line
@@ -381,7 +385,8 @@ package body Generator.Type_Mapping is
      Representation : Representation_Kinds)
        return League.Strings.Universal_String
    is
-      Position : constant Mapping_Maps.Cursor := Mapping.Find (Element);
+      Position : constant Mapping_Maps.Cursor
+        := Mapping.Find (AMF.CMOF.Elements.CMOF_Element_Access (Element));
 
    begin
       if Mapping_Maps.Has_Element (Position)
@@ -392,7 +397,9 @@ package body Generator.Type_Mapping is
                         (Representation).Member_Kind_Name.Is_Empty
       then
          return
-           Mapping.Element (Element).Mapping (Representation).Member_Kind_Name;
+           Mapping.Element
+            (AMF.CMOF.Elements.CMOF_Element_Access (Element)).Mapping
+              (Representation).Member_Kind_Name;
 
       else
          Put_Line
