@@ -68,7 +68,7 @@ package AMF.Internals.Tables.AMF_Tables is
    end record;
 
    package Extents is
-     new GNAT.Table (Extent_Record, AMF_Extent, 1, 100, 100);
+     new GNAT.Table (Extent_Record, AMF_Extent, 1, 10, 100);
 
    package Extent_Elements is
      new GNAT.Table
@@ -132,7 +132,7 @@ package AMF.Internals.Tables.AMF_Tables is
 --      end case;
 --   end record;
 
-   package Links is new GNAT.Table (Link_Record, AMF_Link, 1, 2_000, 100);
+   package Links is new GNAT.Table (Link_Record, AMF_Link, 1, 20_000, 100);
 
    -----------------------------
    -- Collections of Elements --
@@ -170,7 +170,7 @@ package AMF.Internals.Tables.AMF_Tables is
           (Collection_Record,
            AMF_Collection_Of_Element,
            1,
-           5_500,
+           50_000,
            100);
 
    package Collection_Elements is
@@ -178,7 +178,7 @@ package AMF.Internals.Tables.AMF_Tables is
           (Collection_Element_Record,
            Collection_Element_Identifier,
            1,
-           3_000,
+           20_000,
            100);
 
 end AMF.Internals.Tables.AMF_Tables;

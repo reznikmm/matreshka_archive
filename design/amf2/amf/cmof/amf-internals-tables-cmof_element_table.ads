@@ -50,5 +50,5 @@ package AMF.Internals.Tables.CMOF_Element_Table is
        (AMF.Internals.Tables.CMOF_Types.Element_Record,
         AMF.Internals.CMOF_Element,
         1,
-        1_000,
+        10_000,
         100);
