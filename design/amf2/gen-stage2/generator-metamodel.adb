@@ -224,7 +224,7 @@ package body Generator.Metamodel is
          for J in 1 .. Attributes.Length loop
             Attribute_Type := Attributes.Element (J).Get_Type;
 
-            if Attributes.Element (J).Is_Multivalued
+            if not Use_Member_Slot (Attributes.Element (J))
               and Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class
             then
                Properties.Insert
