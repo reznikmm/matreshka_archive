@@ -41,10 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Factories.Primitive_Types_Factory;
 pragma Unreferenced (AMF.Internals.Factories.Primitive_Types_Factory);
 --  Primitive_Types_Factory must be elaborated before eloboration of this unit.
 with AMF.Internals.Helpers;
+with AMF.Internals.Tables.UML_Attribute_Mappings;
 with AMF.Internals.Tables.UML_Constructors;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
@@ -226,6 +228,8 @@ package body AMF.Internals.Factories.UML_Factory is
      := League.Strings.To_Universal_String ("protected");
    Package_Image   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("package");
+
+   Factory : aliased UML_Factory;
 
    --------------------
    -- Connect_Extent --
@@ -839,7 +843,7 @@ package body AMF.Internals.Factories.UML_Factory is
          raise Program_Error with CMOF_Element'Image (MC);
       end if;
 
-      return AMF.Internals.Helpers.To_Element (Element);
+      return Factory.To_Element (Element);
    end Create;
 
    ------------------------
@@ -1244,45 +1248,34 @@ package body AMF.Internals.Factories.UML_Factory is
      Link     : AMF.Internals.AMF_Link;
      Other    : AMF.Internals.AMF_Element)
    is
---      use AMF.Internals.Tables;
---      use AMF.Internals.Tables.UML_Attribute_Mappings;
+      use AMF.Internals.Tables;
+      use AMF.Internals.Tables.UML_Attribute_Mappings;
 
---      PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
+      PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
 
    begin
-      null;
---      if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
---          (Property).Value > 1
---      then
-----         if Property in Collection_Offset'Range (2) then
-----            AMF.Internals.Element_Collections.Internal_Append
-----             (CMOF_Element_Table.Table (Element).Member (0).Collection
-----                + Collection_Offset
-----                   (CMOF_Element_Table.Table (Element).Kind, Property),
-----              Other,
-----              Link);
-----
-----         else
-----            AMF.Internals.Element_Collections.Internal_Append
-----             (CMOF_Element_Table.Table (Element).Member (0).Collection,
-----              Other,
-----              Link);
-----         end if;
-----
---      else
-----         if Property in Member_Offset'Range (2) then
-----            CMOF_Element_Table.Table (Element).Member
-----             (Member_Offset
-----               (CMOF_Element_Table.Table (Element).Kind,
-----                Property)).Element := Other;
-----
-----         else
-----            AMF.Internals.Element_Collections.Internal_Append
-----             (CMOF_Element_Table.Table (Element).Member (0).Collection,
-----              Other,
-----              Link);
-----         end if;
---      end if;
+      if PO in Collection_Offset'Range (2) then
+            AMF.Internals.Element_Collections.Internal_Append
+             (UML_Element_Table.Table (Element).Member (0).Collection
+                + Collection_Offset
+                   (UML_Element_Table.Table (Element).Kind, PO),
+              Other,
+              Link);
+
+      elsif PO in Collection_Offset'Range (2) then
+         AMF.Internals.Element_Collections.Internal_Append
+          (UML_Element_Table.Table (Element).Member (0).Collection
+             + Collection_Offset
+                (UML_Element_Table.Table (Element).Kind, Property),
+           Other,
+           Link);
+
+      else
+         AMF.Internals.Element_Collections.Internal_Append
+          (UML_Element_Table.Table (Element).Member (0).Collection,
+           Other,
+           Link);
+      end if;
    end Connect_Link_End;
 
    -----------------------
@@ -1653,8 +1646,6 @@ package body AMF.Internals.Factories.UML_Factory is
    begin
       return AMF.Internals.Tables.UML_Element_Table.Table (Element).Proxy;
    end To_Element;
-
-   Factory : aliased UML_Factory;
 
 begin
    --  Initialize metamodel.
