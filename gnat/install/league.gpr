@@ -60,8 +60,6 @@ library project League is
 
    package Naming is
 
-      --  Matreshka.Internals.Atomics.Counters
-
       for Implementation ("Matreshka.Internals.Atomics.Counters")
         use "matreshka-internals-atomics-counters__gcc.adb";
 
@@ -70,7 +68,7 @@ library project League is
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_32.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
             for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
@@ -80,7 +78,7 @@ library project League is
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__32.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_32.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
@@ -90,7 +88,7 @@ library project League is
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_64.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__be.ads";
             for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
@@ -100,7 +98,7 @@ library project League is
             for Implementation ("Matreshka.Internals.Atomics.Generic_Test_And_Set")
               use "matreshka-internals-atomics-generic_test_and_set__gcc__64.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
-              use "matreshka-internals-strings-configuration__portable_64.ads";
+              use "matreshka-internals-strings-configuration__portable.ads";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__le.ads";
             for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
@@ -135,12 +133,28 @@ library project League is
               use "league-application-initialize_arguments_environment__posix.adb";
             for Implementation ("League.Environment_Variables.To_Key")
               use "league-environment_variables-to_key__posix.adb";
+            for Implementation ("League.Text_Codecs.Initialize")
+              use "league-text_codecs-initialize__posix.adb";
+            for Implementation ("Matreshka.Internals.Calendars.Clocks")
+              use "matreshka-internals-calendars-clocks__posix.adb";
+            for Specification ("Matreshka.Internals.Settings.Configuration")
+              use "matreshka-internals-settings-configuration__posix.ads";
+            for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
+              use "matreshka-internals-settings-ini_managers-paths__posix.adb";
 
          when "Windows" =>
             for Implementation ("League.Application.Initialize_Arguments_Environment")
               use "league-application-initialize_arguments_environment__windows.adb";
             for Implementation ("League.Environment_Variables.To_Key")
               use "league-environment_variables-to_key__windows.adb";
+            for Implementation ("League.Text_Codecs.Initialize")
+              use "league-text_codecs-initialize__windows.adb";
+            for Implementation ("Matreshka.Internals.Calendars.Clocks")
+              use "matreshka-internals-calendars-clocks__windows.adb";
+            for Specification ("Matreshka.Internals.Settings.Configuration")
+              use "matreshka-internals-settings-configuration__windows.ads";
+            for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
+              use "matreshka-internals-settings-ini_managers-paths__windows.adb";
       end case;
 
    end Naming;
