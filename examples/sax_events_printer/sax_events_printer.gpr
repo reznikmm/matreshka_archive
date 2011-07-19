@@ -52,7 +52,7 @@ project SAX_Events_Printer is
    for Exec_Dir use ".";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-O2", "-gnat12", "-gnatn", "-gnatW8");
+      for Default_Switches ("Ada") use ("-g", "-O2", "-gnat05", "-gnatn", "-gnatW8");
    end Compiler;
 
 end SAX_Events_Printer;
