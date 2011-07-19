@@ -82,6 +82,9 @@ procedure Gen_API is
    use type AMF.CMOF.Types.CMOF_Type_Access;
    use type AMF.Optional_String;
 
+   String_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("String");
+
    function Ada_API_Package_Name
     (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
        return League.Strings.Universal_String;
@@ -105,13 +108,18 @@ procedure Gen_API is
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
    --  Generates collections package.
 
-   procedure Generate_Attribute
+   procedure Generate_Attribute_Specification
     (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
    --  Generates getter/setter specifications for attribute.
 
-   procedure Generate_Operation
+   procedure Generate_Operation_Implementation
+    (Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
+     Class_Type_Name : League.Strings.Universal_String);
+   --  Generate subprogram for the operation.
+
+   procedure Generate_Operation_Specification
     (Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
@@ -125,9 +133,6 @@ procedure Gen_API is
    function Split_Text
     (Text : Universal_String; Width : Positive)
        return League.String_Vectors.Universal_String_Vector;
-
-   Model_Name : League.Strings.Universal_String
-     := League.Application.Arguments.Element (2);
 
    procedure Compute_Ada_Context_For_Attribute
     (Context   : in out Generator.Contexts.Context;
@@ -148,6 +153,16 @@ procedure Gen_API is
      Mode        : Subprogram_Kinds) return Boolean;
    --  Returns True when specified operations is distingushable in Ada.
 
+   procedure Generate_Attribute_Setter_Specification
+    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Class_Type_Name : League.Strings.Universal_String;
+     Proxy           : Boolean);
+
+   procedure Generate_Attribute_Getter_Specification
+    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Class_Type_Name : League.Strings.Universal_String;
+     Proxy           : Boolean);
+
    --------------------------------------
    -- Ada_API_Collections_Package_Name --
    --------------------------------------
@@ -158,7 +173,7 @@ procedure Gen_API is
    begin
       return
         "AMF."
-          & Model_Name
+          & Metamodel_Name
           & "."
           & Plural (To_Ada_Identifier (Element.Get_Name.Value))
           & ".Collections";
@@ -174,7 +189,7 @@ procedure Gen_API is
    begin
       return
         "AMF."
-          & Model_Name
+          & Metamodel_Name
           & "."
           & Plural (To_Ada_Identifier (Element.Get_Name.Value));
    end Ada_API_Package_Name;
@@ -188,7 +203,7 @@ procedure Gen_API is
        return League.Strings.Universal_String is
    begin
       return
-        Model_Name & "_" & To_Ada_Identifier (Element.Get_Name.Value);
+        Metamodel_Name & "_" & To_Ada_Identifier (Element.Get_Name.Value);
    end Ada_API_Type_Name;
 
    ---------------------------------------
@@ -255,11 +270,235 @@ procedure Gen_API is
       end case;
    end Compute_Ada_Context_For_Parameter;
 
-   ------------------------
-   -- Generate_Attribute --
-   ------------------------
+   ---------------------------------------
+   -- Generate_Attribute_Implementation --
+   ---------------------------------------
 
-   procedure Generate_Attribute
+   procedure Generate_Attribute_Implementation
+    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Class_Type_Name : League.Strings.Universal_String)
+   is
+      Attribute_Name : constant Wide_Wide_String
+        := To_Ada_Identifier (Attribute.Get_Name.Value);
+      Attribute_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+        := Attribute.Get_Type;
+
+   begin
+      Put_Header ("Get_" & Attribute_Name, 3);
+
+      Generate_Attribute_Getter_Specification
+       (Attribute, Class_Type_Name, True);
+
+      Put_Line (" is");
+      Put_Line ("   begin");
+
+      if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         case Representation (Attribute) is
+            when Value | Holder =>
+               Put_Line ("      return");
+               Put_Line ("        " & Type_Mapping.Public_Ada_Type_Qualified_Name (Attribute_Type, Representation (Attribute)));
+               Put_Line ("         (AMF.Internals.Helpers.To_Element");
+               Put_Line ("           (AMF.Internals.Tables."
+                   & Metamodel_Name
+                   & "_Attributes.Internal_Get_"
+                   & Attribute_Name);
+               Put_Line ("             (Self.Id)));");
+
+            when others =>
+               Put_Line ("      return");
+               Put_Line ("        " & Type_Mapping.Public_Ada_Package_Name (Attribute_Type, Representation (Attribute)) & ".Wrap");
+               Put_Line ("         (AMF.Internals.Element_Collections.Wrap");
+               Put_Line ("           (AMF.Internals.Tables."
+                   & Metamodel_Name
+                   & "_Attributes.Internal_Get_"
+                   & Attribute_Name);
+               Put_Line ("             (Self.Id)));");
+         end case;
+
+      elsif Attribute_Type.Get_Name = String_Name then
+         case Representation (Attribute) is
+            when Value =>
+               Put_Line ("      null;");
+
+            when Holder =>
+               Put_Line ("      declare");
+               Put_Line
+                ("         use type"
+                   & " Matreshka.Internals.Strings.Shared_String_Access;");
+               New_Line;
+               Put_Line
+                ("         Aux : constant"
+                   & " Matreshka.Internals.Strings.Shared_String_Access");
+               Put_Line ("           := AMF.Internals.Tables."
+                   & Metamodel_Name
+                   & "_Attributes.Internal_Get_"
+                   & Attribute_Name
+                   & " (Self.Id);");
+               New_Line;
+               Put_Line ("      begin");
+               Put_Line ("         if Aux = null then");
+               Put_Line ("            return (Is_Empty => True);");
+               New_Line;
+               Put_Line ("         else");
+               Put_Line
+                ("            return"
+                   & " (False, League.Strings.Internals.Create (Aux));");
+               Put_Line ("         end if;");
+               Put_Line ("      end;");
+
+            when others =>
+               Put_Line ("      null;");
+         end case;
+
+      else
+         Put_Line
+          ("      return");
+         Put_Line
+          ("        AMF.Internals.Tables."
+             & Metamodel_Name
+             & "_Attributes.Internal_Get_"
+             & Attribute_Name);
+         Put_Line ("         (Self.Id);");
+      end if;
+
+      Put_Line ("   end Get_" & Attribute_Name & ";");
+
+      --  Generate setters for attributes which can be modified by application
+      --  and which is not a collections (because changes of collection, which
+      --  is returned by getter automatically applied to attribute's value.
+
+      if Attribute.Get_Is_Read_Only or Attribute.Is_Multivalued then
+         return;
+      end if;
+
+      Put_Header ("Set_" & Attribute_Name, 3);
+      Generate_Attribute_Setter_Specification
+       (Attribute, Class_Type_Name, True);
+
+      Put_Line (" is");
+      Put_Line ("   begin");
+
+      if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+         case Representation (Attribute) is
+            when Value | Holder =>
+               Put_Line
+                ("      AMF.Internals.Tables."
+                   & Metamodel_Name
+                   & "_Attributes.Internal_Set_"
+                   & Attribute_Name);
+               Put_Line ("       (Self.Id,");
+               Put_Line ("        AMF.Internals.Helpers.To_Element");
+               Put_Line ("         (AMF.Elements.Element_Access (To)));");
+
+            when others =>
+               null;
+         end case;
+
+      elsif Attribute_Type.Get_Name = String_Name then
+         case Representation (Attribute) is
+            when Value =>
+               null;
+
+            when Holder =>
+               Put_Line ("      if To.Is_Empty then");
+               Put_Line
+                ("         AMF.Internals.Tables."
+                   & Metamodel_Name
+                   & "_Attributes.Internal_Set_"
+                   & Attribute_Name);
+               Put_Line ("          (Self.Id, null);");
+               New_Line;
+               Put_Line ("      else");
+               Put_Line
+                ("         AMF.Internals.Tables."
+                   & Metamodel_Name
+                   & "_Attributes.Internal_Set_"
+                   & Attribute_Name);
+               Put_Line ("          (Self.Id,");
+               Put_Line
+                ("           League.Strings.Internals.Internal (To.Value));");
+               Put_Line ("      end if;");
+
+            when others =>
+               null;
+         end case;
+
+      else
+         Put_Line
+          ("      AMF.Internals.Tables."
+             & Metamodel_Name
+             & "_Attributes.Internal_Set_"
+             & Attribute_Name);
+         Put_Line ("       (Self.Id, To);");
+      end if;
+
+      Put_Line ("   end Set_" & Attribute_Name & ";");
+   end Generate_Attribute_Implementation;
+
+   --------------------------------------
+   -- Generate_Attribute_Specification --
+   --------------------------------------
+
+   procedure Generate_Attribute_Specification
+    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Class_Type_Name : League.Strings.Universal_String;
+     Proxy           : Boolean) is
+   begin
+      Generate_Attribute_Getter_Specification
+       (Attribute, Class_Type_Name, Proxy);
+
+      if Proxy then
+         Put_Line (";");
+         
+      else
+         Put_Line (" is abstract;");
+      end if;
+
+      --  Generate comment.
+
+      if not Proxy then
+         declare
+            Owned_Comments : constant
+              AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
+                := Attribute.Get_Owned_Comment;
+            Lines          : League.String_Vectors.Universal_String_Vector;
+
+         begin
+            for J in 1 .. Owned_Comments.Length loop
+               Lines :=
+                 Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+
+               for J in 1 .. Lines.Length loop
+                  Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+               end loop;
+            end loop;
+         end;
+      end if;
+
+      --  Generate setters for attributes which can be modified by application
+      --  and which is not a collections (because changes of collection, which
+      --  is returned by getter automatically applied to attribute's value.
+
+      if Attribute.Get_Is_Read_Only or Attribute.Is_Multivalued then
+         return;
+      end if;
+
+      Generate_Attribute_Setter_Specification
+       (Attribute, Class_Type_Name, Proxy);
+
+      if Proxy then
+         Put_Line (";");
+
+      else
+         Put_Line (" is abstract;");
+      end if;
+   end Generate_Attribute_Specification;
+
+   ---------------------------------------------
+   -- Generate_Attribute_Getter_Specification --
+   ---------------------------------------------
+
+   procedure Generate_Attribute_Getter_Specification
     (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean)
@@ -314,42 +553,54 @@ procedure Gen_API is
       Put_Line
        ("    (Self : not null access constant " & Class_Type_Name & ")");
       Put ("       return " & Type_Qualified_Name);
-     
-      if Proxy then
-         Put_Line (";");
-         
-      else
-         Put_Line (" is abstract;");
-      end if;
+   end Generate_Attribute_Getter_Specification;
 
-      --  Generate comment.
+   ---------------------------------------------
+   -- Generate_Attribute_Setter_Specification --
+   ---------------------------------------------
 
-      if not Proxy then
-         declare
-            Owned_Comments : constant
-              AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
-                := Attribute.Get_Owned_Comment;
-            Lines          : League.String_Vectors.Universal_String_Vector;
+   procedure Generate_Attribute_Setter_Specification
+    (Attribute       : not null AMF.CMOF.Properties.CMOF_Property_Access;
+     Class_Type_Name : League.Strings.Universal_String;
+     Proxy           : Boolean)
+   is
+      Redefines       : constant
+        AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+          := Attribute.Get_Redefined_Property;
+      Attribute_Name  : constant Wide_Wide_String
+        := To_Ada_Identifier (Attribute.Get_Name.Value);
+      Attribute_Type  : AMF.CMOF.Types.CMOF_Type_Access
+        := Attribute.Get_Type;
+      Ada_Overriding  : Boolean := False;
+      Type_1          : AMF.CMOF.Types.CMOF_Type_Access;
 
-         begin
-            for J in 1 .. Owned_Comments.Length loop
-               Lines :=
-                 Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+      -------------------------
+      -- Type_Qualified_Name --
+      -------------------------
 
-               for J in 1 .. Lines.Length loop
-                  Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
-               end loop;
-            end loop;
-         end;
-      end if;
+      function Type_Qualified_Name return Wide_Wide_String is
+      begin
+         return
+           Type_Mapping.Public_Ada_Type_Qualified_Name
+            (Attribute.Get_Type,
+             Representation (Attribute)).To_Wide_Wide_String;
+      end Type_Qualified_Name;
 
-      --  Generate setters for attributes which can be modified by application
-      --  and which is not a collections (because changes of collection, which
-      --  is returned by getter automatically applied to attribute's value.
+   begin
+      for J in 1 .. Redefines.Length loop
+         if Redefines.Element (J).Get_Name = Attribute.Get_Name then
+            Type_1 := Redefines.Element (J).Get_Type;
 
-      if Attribute.Get_Is_Read_Only or Attribute.Is_Multivalued then
-         return;
-      end if;
+            if Type_1 = Attribute_Type
+              and then Redefines.Element (J).Lower_Bound
+                         = Attribute.Lower_Bound
+            then
+               Ada_Overriding := True;
+            end if;
+
+            exit;
+         end if;
+      end loop;
 
       New_Line;
 
@@ -363,14 +614,7 @@ procedure Gen_API is
       Put_Line
        ("    (Self : not null access " & Class_Type_Name & ";");
       Put ("     To   : " & Type_Qualified_Name & ")");
-
-      if Proxy then
-         Put_Line (";");
-
-      else
-         Put_Line (" is abstract;");
-      end if;
-   end Generate_Attribute;
+   end Generate_Attribute_Setter_Specification;
 
    --------------------
    -- Generate_Class --
@@ -500,14 +744,14 @@ procedure Gen_API is
       --  Generate setters and getters.
 
       for J in 1 .. Attributes.Length loop
-         Generate_Attribute
+         Generate_Attribute_Specification
           (Attributes.Element (J), Ada_API_Type_Name (Class), False);
       end loop;
 
       --  Generate operations.
 
       for J in 1 .. Operations.Length loop
-         Generate_Operation
+         Generate_Operation_Specification
           (Operations.Element (J),
            Ada_API_Type_Name (Operations.Element (J).Get_Class),
            False);
@@ -562,11 +806,199 @@ procedure Gen_API is
       Put_Line ("end " & Package_Name & ".Collections;");
    end Generate_Collections;
 
-   ------------------------
-   -- Generate_Operation --
-   ------------------------
+   ---------------------------------------
+   -- Generate_Operation_Implementation --
+   ---------------------------------------
 
-   procedure Generate_Operation
+   procedure Generate_Operation_Implementation
+    (Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
+     Class_Type_Name : League.Strings.Universal_String)
+   is
+      use type AMF.CMOF.Parameters.CMOF_Parameter_Access;
+
+      function Type_Qualified_Name
+       (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
+          return Wide_Wide_String;
+      --  Returns full qualified name of the Ada type.
+
+      function Is_Overriding return Boolean;
+      --  Returns True when subprogram is overriding.
+
+      -------------------
+      -- Is_Overriding --
+      -------------------
+
+      function Is_Overriding return Boolean is
+         Redefines    :
+           AMF.CMOF.Operations.Collections.Set_Of_CMOF_Operation
+             := Operation.Get_Redefined_Operation;
+         Parameters   :
+           AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
+             := Operation.Get_Owned_Parameter;
+         Parameters_2 :
+           AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter;
+         Result       : Boolean := False;
+         Type_1       : AMF.CMOF.Types.CMOF_Type_Access;
+         Type_2       : AMF.CMOF.Types.CMOF_Type_Access;
+
+      begin
+         for J in 1 .. Redefines.Length loop
+            Parameters_2 := Redefines.Element (J).Get_Owned_Parameter;
+
+            if Parameters.Length = Parameters_2.Length then
+               Result := True;
+
+               for J in 1 .. Parameters.Length loop
+                  Type_1 := Parameters.Element (J).Get_Type;
+                  Type_2 := Parameters_2.Element (J).Get_Type;
+
+                  if Type_1 /= Type_2
+                    or Parameters.Element (J).Lower_Bound
+                         /= Parameters_2.Element (J).Lower_Bound
+                  then
+                     Result := False;
+
+                     exit;
+                  end if;
+               end loop;
+
+               if Result then
+                  return Result;
+               end if;
+            end if;
+         end loop;
+
+         return Result;
+      end Is_Overriding;
+
+      -------------------------
+      -- Type_Qualified_Name --
+      -------------------------
+
+      function Type_Qualified_Name
+       (Parameter : not null AMF.CMOF.Parameters.CMOF_Parameter_Access)
+          return Wide_Wide_String is
+      begin
+         return
+           Type_Mapping.Public_Ada_Type_Qualified_Name
+            (Parameter.Get_Type,
+             Representation (Parameter)).To_Wide_Wide_String;
+      end Type_Qualified_Name;
+
+      Parameters : constant
+        AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter
+          := Operation.Get_Owned_Parameter;
+      Returns    : AMF.CMOF.Parameters.CMOF_Parameter_Access;
+      Name       : League.Strings.Universal_String;
+
+   begin
+      --  Look for 'return' parameter.
+
+      for J in 1 .. Parameters.Length loop
+         if Parameters.Element (J).Get_Direction = Return_Parameter then
+            Returns := Parameters.Element (J);
+         end if;
+      end loop;
+
+      --  Compute name of the operation, XXX to rename 'type' operation.
+
+      Name := Operation.Get_Name.Value;
+
+      if Name = League.Strings.To_Universal_String ("type") then
+         Name := League.Strings.To_Universal_String ("Types");
+
+      elsif Name = League.Strings.To_Universal_String ("end") then
+         --  UML:ConnectableElement:end
+
+         Name := League.Strings.To_Universal_String ("Ends");
+
+      elsif Name = League.Strings.To_Universal_String ("is") then
+         --  UML:MultiplicityElement:is
+
+         Name := League.Strings.To_Universal_String ("Iss");
+
+      end if;
+
+      Put_Header (To_Ada_Identifier (Name), 3);
+      New_Line;
+      Put ("   overriding ");
+
+      if Returns /= null then
+         Put_Line ("function " & To_Ada_Identifier (Name));
+
+      else
+         Put_Line ("procedure " & To_Ada_Identifier (Name));
+      end if;
+
+      if Operation.Get_Is_Query then
+         Put ("    (Self : not null access constant " & Class_Type_Name);
+
+      else
+         Put ("    (Self : not null access " & Class_Type_Name);
+      end if;
+
+      for J in 1 .. Parameters.Length loop
+         if Parameters.Element (J).Get_Direction /= Return_Parameter then
+            if Parameters.Element (J).Get_Direction /= In_Parameter then
+               raise Program_Error;
+            end if;
+
+            Put_Line (";");
+            Put
+             ("     "
+                & To_Ada_Identifier (Parameters.Element (J).Get_Name.Value)
+                & " : "
+                & Type_Qualified_Name (Parameters.Element (J)));
+         end if;
+      end loop;
+
+      Put_Line (")");
+
+      if Returns /= null then
+         Put ("       return " & Type_Qualified_Name (Returns));
+      end if;
+
+      Put_Line (" is");
+      Put_Line ("   begin");
+      Put_Line ("      --  Generated stub: replace with real body!");
+      Put_Line
+       ("      pragma Compile_Time_Warning (Standard.True, """
+          & To_Ada_Identifier (Name)
+          & " unimplemented"");");
+      Put_Line
+       ("      raise Program_Error with ""Unimplemented procedure "
+          & Class_Type_Name
+          & "."
+          & To_Ada_Identifier (Name)
+          & """;");
+
+      if Returns /= null then
+         Put ("      return " & To_Ada_Identifier (Name) & " (Self");
+
+         for J in 1 .. Parameters.Length loop
+            if Parameters.Element (J).Get_Direction /= Return_Parameter then
+               if Parameters.Element (J).Get_Direction /= In_Parameter then
+                  raise Program_Error;
+               end if;
+
+               Put
+                (", "
+                   & To_Ada_Identifier
+                      (Parameters.Element (J).Get_Name.Value));
+            end if;
+         end loop;
+
+         Put_Line (");");
+      end if;
+
+      Put_Line ("   end " & To_Ada_Identifier (Name) & ";");
+   end Generate_Operation_Implementation;
+
+   --------------------------------------
+   -- Generate_Operation_Specification --
+   --------------------------------------
+
+   procedure Generate_Operation_Specification
     (Operation       : not null AMF.CMOF.Operations.CMOF_Operation_Access;
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean)
@@ -747,13 +1179,13 @@ procedure Gen_API is
             end loop;
          end;
       end if;
-   end Generate_Operation;
+   end Generate_Operation_Specification;
 
-   --------------------
-   -- Generate_Proxy --
-   --------------------
+   -----------------------------------
+   -- Generate_Proxy_Implementation --
+   -----------------------------------
 
-   procedure Generate_Proxy
+   procedure Generate_Proxy_Implementation
     (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
    is
       Package_Name         : constant League.Strings.Universal_String
@@ -889,7 +1321,7 @@ procedure Gen_API is
                     (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
             then
                if not Is_Generated then
-                  Generate_Attribute (Attribute, Type_Name, True);
+                  Generate_Attribute_Implementation (Attribute, Type_Name);
                end if;
 
                Generated_Attributes.Insert
@@ -959,7 +1391,273 @@ procedure Gen_API is
                     (AMF.CMOF.Elements.CMOF_Element_Access (Operation))
             then
                if not Is_Generated then
-                  Generate_Operation (Operation, Type_Name, True);
+                  Generate_Operation_Implementation (Operation, Type_Name);
+               end if;
+
+               Generated_Operations.Insert
+                (AMF.CMOF.Elements.CMOF_Element_Access (Operation));
+            end if;
+         end loop;
+
+         for J in 1 .. Super.Length loop
+            Generate_Operations (Super.Element (J));
+         end loop;
+      end Generate_Operations;
+
+   begin
+      if Class.Get_Is_Abstract then
+         --  Stubs are generated for non-abstract classes only.
+
+         return;
+      end if;
+
+      --  Compute with clauses
+
+      Context.Add
+       (League.Strings.To_Universal_String
+         ("AMF.Internals.Element_Collections"));
+      Context.Add
+       (League.Strings.To_Universal_String
+         ("Matreshka.Internals.Strings"));
+      Context.Add
+       (League.Strings.To_Universal_String
+         ("League.Strings.Internals"));
+      Context.Add
+       (League.Strings.To_Universal_String ("AMF.Internals.Helpers"));
+      Context.Add
+       (League.Strings.To_Universal_String ("AMF.Elements"));
+      Context.Add ("AMF.Internals.Tables." & Metamodel_Name & "_Attributes");
+
+--      Compute_With_For_Attributes (Class);
+--      Compute_With_For_Operations (Class);
+
+      --  Generate package specification
+
+      Put_Header (Year_2010 => False);
+      Context.Instantiate (Package_Name);
+      Context.Iterate (Generate_With_Clause'Access);
+      New_Line;
+      Put_Line ("package body " & Package_Name & " is");
+
+      Generate_Attributes (Class);
+      Generate_Operations (Class);
+
+      New_Line;
+      Put_Line ("end " & Package_Name & ";");
+   end Generate_Proxy_Implementation;
+
+   ----------------------------------
+   -- Generate_Proxy_Specification --
+   ----------------------------------
+
+   procedure Generate_Proxy_Specification
+    (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+   is
+      Package_Name         : constant League.Strings.Universal_String
+        := "AMF.Internals."
+             & Metamodel_Name
+             & "_"
+             & Plural (To_Ada_Identifier (Class.Get_Name.Value));
+      Type_Name            : constant League.Strings.Universal_String
+        := Metamodel_Name
+             & "_"
+             & To_Ada_Identifier (Class.Get_Name.Value)
+             & "_Proxy";
+      Context              : Contexts.Context;
+      Generated_Attributes : CMOF_Element_Sets.Set;
+      Generated_Operations : CMOF_Element_Sets.Set;
+
+      procedure Generate_Attributes
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
+
+      procedure Generate_Operations
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access);
+
+      ---------------------------------
+      -- Compute_With_For_Attributes --
+      ---------------------------------
+
+      procedure Compute_With_For_Attributes
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+      is
+         Super      : constant AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+           := Class.Get_Super_Class;
+         Attributes : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Class.Get_Owned_Attribute;
+
+      begin
+         for J in 1 .. Attributes.Length loop
+            Compute_Ada_Context_For_Attribute
+             (Context, Attributes.Element (J), Proxy);
+         end loop;
+
+         for J in 1 .. Super.Length loop
+            Compute_With_For_Attributes (Super.Element (J));
+         end loop;
+      end Compute_With_For_Attributes;
+
+      ---------------------------------
+      -- Compute_With_For_Operations --
+      ---------------------------------
+
+      procedure Compute_With_For_Operations
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+      is
+         Super      : constant AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+           := Class.Get_Super_Class;
+         Operations : constant
+           AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
+             := Class.Get_Owned_Operation;
+         Parameters :
+           AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter;
+
+      begin
+         for J in 1 .. Operations.Length loop
+            Parameters := Operations.Element (J).Get_Owned_Parameter;
+
+            for J in 1 .. Parameters.Length loop
+               Compute_Ada_Context_For_Parameter
+                (Context, Parameters.Element (J), Proxy);
+            end loop;
+         end loop;
+
+         for J in 1 .. Super.Length loop
+            Compute_With_For_Operations (Super.Element (J));
+         end loop;
+      end Compute_With_For_Operations;
+
+      -------------------------
+      -- Generate_Attributes --
+      -------------------------
+
+      procedure Generate_Attributes
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+      is
+         Super      : constant AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+           := Class.Get_Super_Class;
+         Attributes : constant
+           AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
+             := Class.Get_Owned_Attribute;
+         Attribute  : AMF.CMOF.Properties.CMOF_Property_Access;
+         Redefines  : AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property;
+
+         function Is_Generated return Boolean;
+
+         ------------------
+         -- Is_Generated --
+         ------------------
+
+         function Is_Generated return Boolean is
+
+            procedure Check (Position : CMOF_Element_Sets.Cursor);
+
+            Result : Boolean := False;
+
+            -----------
+            -- Check --
+            -----------
+
+            procedure Check (Position : CMOF_Element_Sets.Cursor) is
+               Attribute_2 : constant AMF.CMOF.Properties.CMOF_Property_Access
+                 := AMF.CMOF.Properties.CMOF_Property_Access
+                     (CMOF_Element_Sets.Element (Position));
+
+            begin
+               if not Is_Ada_Distinguishable
+                       (Attribute, Attribute_2, Proxy)
+               then
+                  Result := True;
+               end if;
+            end Check;
+
+         begin
+            Generated_Attributes.Iterate (Check'Access);
+
+            return Result;
+         end Is_Generated;
+
+      begin
+         for J in 1 .. Attributes.Length loop
+            Attribute := Attributes.Element (J);
+            Redefines := Attribute.Get_Redefined_Property;
+
+            if not Generated_Attributes.Contains
+                    (AMF.CMOF.Elements.CMOF_Element_Access (Attribute))
+            then
+               if not Is_Generated then
+                  Generate_Attribute_Specification
+                   (Attribute, Type_Name, True);
+               end if;
+
+               Generated_Attributes.Insert
+                (AMF.CMOF.Elements.CMOF_Element_Access (Attribute));
+            end if;
+         end loop;
+
+         for J in 1 .. Super.Length loop
+            Generate_Attributes (Super.Element (J));
+         end loop;
+      end Generate_Attributes;
+
+      -------------------------
+      -- Generate_Operations --
+      -------------------------
+
+      procedure Generate_Operations
+       (Class : not null AMF.CMOF.Classes.CMOF_Class_Access)
+      is
+         Super      : constant AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
+           := Class.Get_Super_Class;
+         Operations : constant
+           AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation
+             := Class.Get_Owned_Operation;
+         Operation  : AMF.CMOF.Operations.CMOF_Operation_Access;
+
+         function Is_Generated return Boolean;
+
+         ------------------
+         -- Is_Generated --
+         ------------------
+
+         function Is_Generated return Boolean is
+
+            procedure Check (Position : CMOF_Element_Sets.Cursor);
+
+            Result : Boolean := False;
+
+            -----------
+            -- Check --
+            -----------
+
+            procedure Check (Position : CMOF_Element_Sets.Cursor) is
+               Operation_2 : constant AMF.CMOF.Operations.CMOF_Operation_Access
+                 := AMF.CMOF.Operations.CMOF_Operation_Access
+                     (CMOF_Element_Sets.Element (Position));
+
+            begin
+               if not Is_Ada_Distinguishable
+                       (Operation, Operation_2, Proxy)
+               then
+                  Result := True;
+               end if;
+            end Check;
+
+         begin
+            Generated_Operations.Iterate (Check'Access);
+
+            return Result;
+         end Is_Generated;
+
+      begin
+         for J in 1 .. Operations.Length loop
+            Operation := Operations.Element (J);
+
+            if not Generated_Operations.Contains
+                    (AMF.CMOF.Elements.CMOF_Element_Access (Operation))
+            then
+               if not Is_Generated then
+                  Generate_Operation_Specification (Operation, Type_Name, True);
                end if;
 
                Generated_Operations.Insert
@@ -1022,7 +1720,7 @@ procedure Gen_API is
 
       New_Line;
       Put_Line ("end " & Package_Name & ";");
-   end Generate_Proxy;
+   end Generate_Proxy_Specification;
 
    --------------------------
    -- Generate_With_Clause --
@@ -1164,7 +1862,9 @@ begin
          end if;
 
          if Generate_API_Stubs then
-            Generate_Proxy
+            Generate_Proxy_Specification
+             (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
+            Generate_Proxy_Implementation
              (AMF.CMOF.Classes.CMOF_Class_Access (Elements.Element (J)));
          end if;
       end if;
