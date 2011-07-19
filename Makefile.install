@@ -87,7 +87,7 @@ sql:
 oci:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/oci
 	gnat ls -d -s -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' > sql_oci-src.aux
-	diff -u sql-src.aux sql_oci-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_oci-src.lst
+	cat league-src.lst sql-src.aux | diff -u - sql_oci-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_oci-src.lst
 	gnat ls -o -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
 	cat sql_oci-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
 	cat sql_oci-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -103,7 +103,7 @@ oci:
 postgresql:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/postgresql
 	gnat ls -d -s -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' > sql_postgresql-src.aux
-	diff -u sql-src.aux sql_postgresql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_postgresql-src.lst
+	cat league-src.lst sql-src.aux | diff -u - sql_postgresql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_postgresql-src.lst
 	gnat ls -o -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_postgresql-ali.lst
 	cat sql_postgresql-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/postgresql
 	cat sql_postgresql-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -119,7 +119,7 @@ postgresql:
 sqlite3:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/sqlite3
 	gnat ls -d -s -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' > sql_sqlite3-src.aux
-	diff -u sql-src.aux sql_sqlite3-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_sqlite3-src.lst
+	cat league-src.lst sql-src.aux | diff -u - sql_sqlite3-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_sqlite3-src.lst
 	gnat ls -o -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_sqlite3-ali.lst
 	cat sql_sqlite3-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/sqlite3
 	cat sql_sqlite3-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
