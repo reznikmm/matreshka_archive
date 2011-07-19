@@ -50,7 +50,7 @@ project Text_Codecs is
    for Exec_Dir use ".";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnatW8");
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
    end Compiler;
 
 end Text_Codecs;
