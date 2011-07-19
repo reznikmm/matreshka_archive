@@ -43,8 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
-with AMF.Internals.UML_Multiplicity_Elements;
+with AMF.Internals.UML_Elements;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Connectable_Element_Template_Parameters;
 with AMF.UML.Connector_Ends.Collections;
@@ -65,12 +64,8 @@ with AMF.UML.Value_Specifications;
 
 package AMF.Internals.UML_Parameters is
 
-   package Multiplicity_Elements is
-     new AMF.Internals.UML_Multiplicity_Elements
-          (AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy);
-
    type UML_Parameter_Proxy is
-     limited new Multiplicity_Elements.UML_Multiplicity_Element_Proxy
+     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Parameters.UML_Parameter with null record;
 
    overriding function Get_Default
@@ -136,6 +131,10 @@ package AMF.Internals.UML_Parameters is
    overriding function Get_Is_Ordered
     (Self : not null access constant UML_Parameter_Proxy)
        return Boolean;
+
+   overriding procedure Set_Is_Ordered
+    (Self : not null access UML_Parameter_Proxy;
+     To   : Boolean);
 
    overriding function Get_Is_Unique
     (Self : not null access constant UML_Parameter_Proxy)
@@ -217,6 +216,10 @@ package AMF.Internals.UML_Parameters is
     (Self : not null access constant UML_Parameter_Proxy)
        return AMF.Optional_String;
 
+   overriding procedure Set_Name
+    (Self : not null access UML_Parameter_Proxy;
+     To   : AMF.Optional_String);
+
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Parameter_Proxy)
        return AMF.UML.String_Expressions.UML_String_Expression_Access;
@@ -236,6 +239,10 @@ package AMF.Internals.UML_Parameters is
    overriding function Get_Visibility
     (Self : not null access constant UML_Parameter_Proxy)
        return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Parameter_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
 
    overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Parameter_Proxy)

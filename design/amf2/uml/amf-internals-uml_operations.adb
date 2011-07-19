@@ -41,7 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
 
 package body AMF.Internals.UML_Operations is
 
@@ -50,14 +57,14 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Get_Body_Condition
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Constraints.UML_Constraint_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Constraints.UML_Constraint_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Body_Condition unimplemented");
-      raise Program_Error with "Unimplemented function Get_Body_Condition";
-      return Get_Body_Condition (Self);
+      return
+        AMF.UML.Constraints.UML_Constraint_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Body_Condition
+             (Self.Id)));
    end Get_Body_Condition;
 
    ------------------------
@@ -65,13 +72,13 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding procedure Set_Body_Condition
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Constraints.UML_Constraint_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Body_Condition unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Body_Condition";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Body_Condition
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Body_Condition;
 
    ---------------
@@ -79,14 +86,14 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Get_Class
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Classes.UML_Class_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Classes.UML_Class_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Class unimplemented");
-      raise Program_Error with "Unimplemented function Get_Class";
-      return Get_Class (Self);
+      return
+        AMF.UML.Classes.UML_Class_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Class
+             (Self.Id)));
    end Get_Class;
 
    ---------------
@@ -94,13 +101,13 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding procedure Set_Class
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Classes.UML_Class_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Classes.UML_Class_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Class unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Class";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Class
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Class;
 
    ------------------
@@ -108,14 +115,14 @@ package body AMF.Internals.UML_Operations is
    ------------------
 
    overriding function Get_Datatype
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Data_Types.UML_Data_Type_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Data_Types.UML_Data_Type_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Datatype unimplemented");
-      raise Program_Error with "Unimplemented function Get_Datatype";
-      return Get_Datatype (Self);
+      return
+        AMF.UML.Data_Types.UML_Data_Type_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Datatype
+             (Self.Id)));
    end Get_Datatype;
 
    ------------------
@@ -123,13 +130,13 @@ package body AMF.Internals.UML_Operations is
    ------------------
 
    overriding procedure Set_Datatype
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Data_Types.UML_Data_Type_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Data_Types.UML_Data_Type_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Datatype unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Datatype";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Datatype
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Datatype;
 
    -------------------
@@ -137,14 +144,14 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding function Get_Interface
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Interfaces.UML_Interface_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Interfaces.UML_Interface_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Interface unimplemented");
-      raise Program_Error with "Unimplemented function Get_Interface";
-      return Get_Interface (Self);
+      return
+        AMF.UML.Interfaces.UML_Interface_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Interface
+             (Self.Id)));
    end Get_Interface;
 
    -------------------
@@ -152,13 +159,13 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding procedure Set_Interface
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Interfaces.UML_Interface_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Interfaces.UML_Interface_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Interface unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Interface";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Interface
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Interface;
 
    --------------------
@@ -166,14 +173,12 @@ package body AMF.Internals.UML_Operations is
    --------------------
 
    overriding function Get_Is_Ordered
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Ordered unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Ordered";
-      return Get_Is_Ordered (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Ordered
+         (Self.Id);
    end Get_Is_Ordered;
 
    ------------------
@@ -181,14 +186,12 @@ package body AMF.Internals.UML_Operations is
    ------------------
 
    overriding function Get_Is_Query
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Query unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Query";
-      return Get_Is_Query (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Query
+         (Self.Id);
    end Get_Is_Query;
 
    ------------------
@@ -199,7 +202,8 @@ package body AMF.Internals.UML_Operations is
     (Self : not null access UML_Operation_Proxy;
      To   : Boolean) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Query (Self.Id, To);
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Query
+       (Self.Id, To);
    end Set_Is_Query;
 
    -------------------
@@ -207,14 +211,12 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding function Get_Is_Unique
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Unique unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Unique";
-      return Get_Is_Unique (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Unique
+         (Self.Id);
    end Get_Is_Unique;
 
    ---------------
@@ -222,14 +224,12 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Get_Lower
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.Optional_Integer
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.Optional_Integer is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Lower unimplemented");
-      raise Program_Error with "Unimplemented function Get_Lower";
-      return Get_Lower (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Lower
+         (Self.Id);
    end Get_Lower;
 
    -------------------------
@@ -237,14 +237,14 @@ package body AMF.Internals.UML_Operations is
    -------------------------
 
    overriding function Get_Owned_Parameter
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Parameter";
-      return Get_Owned_Parameter (Self);
+      return
+        AMF.UML.Parameters.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Parameter
+             (Self.Id)));
    end Get_Owned_Parameter;
 
    -----------------------
@@ -252,14 +252,14 @@ package body AMF.Internals.UML_Operations is
    -----------------------
 
    overriding function Get_Postcondition
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Postcondition unimplemented");
-      raise Program_Error with "Unimplemented function Get_Postcondition";
-      return Get_Postcondition (Self);
+      return
+        AMF.UML.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Postcondition
+             (Self.Id)));
    end Get_Postcondition;
 
    ----------------------
@@ -267,14 +267,14 @@ package body AMF.Internals.UML_Operations is
    ----------------------
 
    overriding function Get_Precondition
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Precondition unimplemented");
-      raise Program_Error with "Unimplemented function Get_Precondition";
-      return Get_Precondition (Self);
+      return
+        AMF.UML.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Precondition
+             (Self.Id)));
    end Get_Precondition;
 
    --------------------------
@@ -282,14 +282,14 @@ package body AMF.Internals.UML_Operations is
    --------------------------
 
    overriding function Get_Raised_Exception
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Types.Collections.Set_Of_UML_Type
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Types.Collections.Set_Of_UML_Type is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Raised_Exception unimplemented");
-      raise Program_Error with "Unimplemented function Get_Raised_Exception";
-      return Get_Raised_Exception (Self);
+      return
+        AMF.UML.Types.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Raised_Exception
+             (Self.Id)));
    end Get_Raised_Exception;
 
    -----------------------------
@@ -297,14 +297,14 @@ package body AMF.Internals.UML_Operations is
    -----------------------------
 
    overriding function Get_Redefined_Operation
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Operations.Collections.Set_Of_UML_Operation
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Operations.Collections.Set_Of_UML_Operation is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefined_Operation unimplemented");
-      raise Program_Error with "Unimplemented function Get_Redefined_Operation";
-      return Get_Redefined_Operation (Self);
+      return
+        AMF.UML.Operations.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Operation
+             (Self.Id)));
    end Get_Redefined_Operation;
 
    ----------------------------
@@ -312,14 +312,14 @@ package body AMF.Internals.UML_Operations is
    ----------------------------
 
    overriding function Get_Template_Parameter
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Template_Parameter";
-      return Get_Template_Parameter (Self);
+      return
+        AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Parameter
+             (Self.Id)));
    end Get_Template_Parameter;
 
    ----------------------------
@@ -327,13 +327,13 @@ package body AMF.Internals.UML_Operations is
    ----------------------------
 
    overriding procedure Set_Template_Parameter
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Operation_Template_Parameters.UML_Operation_Template_Parameter_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Template_Parameter";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    --------------
@@ -341,14 +341,14 @@ package body AMF.Internals.UML_Operations is
    --------------
 
    overriding function Get_Type
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Types.UML_Type_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Types.UML_Type_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Type unimplemented");
-      raise Program_Error with "Unimplemented function Get_Type";
-      return Get_Type (Self);
+      return
+        AMF.UML.Types.UML_Type_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Type
+             (Self.Id)));
    end Get_Type;
 
    ---------------
@@ -356,14 +356,12 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Get_Upper
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.Optional_Unlimited_Natural
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.Optional_Unlimited_Natural is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Upper unimplemented");
-      raise Program_Error with "Unimplemented function Get_Upper";
-      return Get_Upper (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Upper
+         (Self.Id);
    end Get_Upper;
 
    ---------------------
@@ -371,14 +369,12 @@ package body AMF.Internals.UML_Operations is
    ---------------------
 
    overriding function Get_Concurrency
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.UML_Call_Concurrency_Kind
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.UML_Call_Concurrency_Kind is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Concurrency unimplemented");
-      raise Program_Error with "Unimplemented function Get_Concurrency";
-      return Get_Concurrency (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Concurrency
+         (Self.Id);
    end Get_Concurrency;
 
    ---------------------
@@ -386,13 +382,11 @@ package body AMF.Internals.UML_Operations is
    ---------------------
 
    overriding procedure Set_Concurrency
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.UML_Call_Concurrency_Kind)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.UML_Call_Concurrency_Kind) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Concurrency unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Concurrency";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Concurrency
+       (Self.Id, To);
    end Set_Concurrency;
 
    ---------------------
@@ -400,14 +394,12 @@ package body AMF.Internals.UML_Operations is
    ---------------------
 
    overriding function Get_Is_Abstract
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Abstract unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Abstract";
-      return Get_Is_Abstract (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Abstract
+         (Self.Id);
    end Get_Is_Abstract;
 
    ---------------------
@@ -415,13 +407,11 @@ package body AMF.Internals.UML_Operations is
    ---------------------
 
    overriding procedure Set_Is_Abstract
-     (Self : not null access UML_Operation_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Abstract unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Abstract";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Abstract
+       (Self.Id, To);
    end Set_Is_Abstract;
 
    ----------------
@@ -429,14 +419,14 @@ package body AMF.Internals.UML_Operations is
    ----------------
 
    overriding function Get_Method
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Method unimplemented");
-      raise Program_Error with "Unimplemented function Get_Method";
-      return Get_Method (Self);
+      return
+        AMF.UML.Behaviors.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Method
+             (Self.Id)));
    end Get_Method;
 
    -----------------------------
@@ -444,14 +434,14 @@ package body AMF.Internals.UML_Operations is
    -----------------------------
 
    overriding function Get_Owned_Parameter_Set
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Parameter_Set unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Parameter_Set";
-      return Get_Owned_Parameter_Set (Self);
+      return
+        AMF.UML.Parameter_Sets.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Parameter_Set
+             (Self.Id)));
    end Get_Owned_Parameter_Set;
 
    ------------------------------
@@ -459,14 +449,14 @@ package body AMF.Internals.UML_Operations is
    ------------------------------
 
    overriding function Get_Featuring_Classifier
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Featuring_Classifier unimplemented");
-      raise Program_Error with "Unimplemented function Get_Featuring_Classifier";
-      return Get_Featuring_Classifier (Self);
+      return
+        AMF.UML.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Featuring_Classifier
+             (Self.Id)));
    end Get_Featuring_Classifier;
 
    -------------------
@@ -474,14 +464,12 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding function Get_Is_Static
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Static unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Static";
-      return Get_Is_Static (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Static
+         (Self.Id);
    end Get_Is_Static;
 
    -------------------
@@ -489,13 +477,11 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding procedure Set_Is_Static
-     (Self : not null access UML_Operation_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Static unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Static";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Static
+       (Self.Id, To);
    end Set_Is_Static;
 
    -----------------
@@ -503,14 +489,12 @@ package body AMF.Internals.UML_Operations is
    -----------------
 
    overriding function Get_Is_Leaf
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Leaf unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Leaf";
-      return Get_Is_Leaf (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Leaf
+         (Self.Id);
    end Get_Is_Leaf;
 
    -----------------
@@ -518,13 +502,11 @@ package body AMF.Internals.UML_Operations is
    -----------------
 
    overriding procedure Set_Is_Leaf
-     (Self : not null access UML_Operation_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Leaf unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Leaf";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Leaf
+       (Self.Id, To);
    end Set_Is_Leaf;
 
    ---------------------------
@@ -532,14 +514,14 @@ package body AMF.Internals.UML_Operations is
    ---------------------------
 
    overriding function Get_Redefined_Element
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefined_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Redefined_Element";
-      return Get_Redefined_Element (Self);
+      return
+        AMF.UML.Redefinable_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Element
+             (Self.Id)));
    end Get_Redefined_Element;
 
    ------------------------------
@@ -547,14 +529,14 @@ package body AMF.Internals.UML_Operations is
    ------------------------------
 
    overriding function Get_Redefinition_Context
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefinition_Context unimplemented");
-      raise Program_Error with "Unimplemented function Get_Redefinition_Context";
-      return Get_Redefinition_Context (Self);
+      return
+        AMF.UML.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefinition_Context
+             (Self.Id)));
    end Get_Redefinition_Context;
 
    ---------------------------
@@ -562,14 +544,14 @@ package body AMF.Internals.UML_Operations is
    ---------------------------
 
    overriding function Get_Client_Dependency
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Client_Dependency unimplemented");
-      raise Program_Error with "Unimplemented function Get_Client_Dependency";
-      return Get_Client_Dependency (Self);
+      return
+        AMF.UML.Dependencies.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
+             (Self.Id)));
    end Get_Client_Dependency;
 
    --------------
@@ -577,29 +559,57 @@ package body AMF.Internals.UML_Operations is
    --------------
 
    overriding function Get_Name
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.Optional_String
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.Optional_String is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error with "Unimplemented function Get_Name";
-      return Get_Name (Self);
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
    end Get_Name;
+
+   --------------
+   -- Set_Name --
+   --------------
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.Optional_String) is
+   begin
+      if To.Is_Empty then
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id, null);
+
+      else
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id,
+           League.Strings.Internals.Internal (To.Value));
+      end if;
+   end Set_Name;
 
    -------------------------
    -- Get_Name_Expression --
    -------------------------
 
    overriding function Get_Name_Expression
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.String_Expressions.UML_String_Expression_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name_Expression unimplemented");
-      raise Program_Error with "Unimplemented function Get_Name_Expression";
-      return Get_Name_Expression (Self);
+      return
+        AMF.UML.String_Expressions.UML_String_Expression_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
+             (Self.Id)));
    end Get_Name_Expression;
 
    -------------------------
@@ -607,13 +617,13 @@ package body AMF.Internals.UML_Operations is
    -------------------------
 
    overriding procedure Set_Name_Expression
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.String_Expressions.UML_String_Expression_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name_Expression unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name_Expression";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -621,14 +631,14 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding function Get_Namespace
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Namespaces.UML_Namespace_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Namespace unimplemented");
-      raise Program_Error with "Unimplemented function Get_Namespace";
-      return Get_Namespace (Self);
+      return
+        AMF.UML.Namespaces.UML_Namespace_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
+             (Self.Id)));
    end Get_Namespace;
 
    ------------------------
@@ -636,14 +646,23 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Get_Qualified_Name
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.Optional_String
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.Optional_String is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Qualified_Name unimplemented");
-      raise Program_Error with "Unimplemented function Get_Qualified_Name";
-      return Get_Qualified_Name (Self);
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
    end Get_Qualified_Name;
 
    --------------------
@@ -651,29 +670,39 @@ package body AMF.Internals.UML_Operations is
    --------------------
 
    overriding function Get_Visibility
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Optional_UML_Visibility_Kind
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error with "Unimplemented function Get_Visibility";
-      return Get_Visibility (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
    end Get_Visibility;
+
+   --------------------
+   -- Set_Visibility --
+   --------------------
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
+   end Set_Visibility;
 
    -----------------------
    -- Get_Owned_Comment --
    -----------------------
 
    overriding function Get_Owned_Comment
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Comments.Collections.Set_Of_UML_Comment
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Comment";
-      return Get_Owned_Comment (Self);
+      return
+        AMF.UML.Comments.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
+             (Self.Id)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -681,14 +710,14 @@ package body AMF.Internals.UML_Operations is
    -----------------------
 
    overriding function Get_Owned_Element
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Element";
-      return Get_Owned_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
+             (Self.Id)));
    end Get_Owned_Element;
 
    ---------------
@@ -696,14 +725,14 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Get_Owner
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Elements.UML_Element_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Elements.UML_Element_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owner";
-      return Get_Owner (Self);
+      return
+        AMF.UML.Elements.UML_Element_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
+             (Self.Id)));
    end Get_Owner;
 
    ------------------------
@@ -711,14 +740,14 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Get_Element_Import
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Element_Import unimplemented");
-      raise Program_Error with "Unimplemented function Get_Element_Import";
-      return Get_Element_Import (Self);
+      return
+        AMF.UML.Element_Imports.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Element_Import
+             (Self.Id)));
    end Get_Element_Import;
 
    -------------------------
@@ -726,14 +755,14 @@ package body AMF.Internals.UML_Operations is
    -------------------------
 
    overriding function Get_Imported_Member
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Imported_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Imported_Member";
-      return Get_Imported_Member (Self);
+      return
+        AMF.UML.Packageable_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Imported_Member
+             (Self.Id)));
    end Get_Imported_Member;
 
    ----------------
@@ -741,14 +770,14 @@ package body AMF.Internals.UML_Operations is
    ----------------
 
    overriding function Get_Member
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Member";
-      return Get_Member (Self);
+      return
+        AMF.UML.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Member
+             (Self.Id)));
    end Get_Member;
 
    ----------------------
@@ -756,14 +785,14 @@ package body AMF.Internals.UML_Operations is
    ----------------------
 
    overriding function Get_Owned_Member
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Member";
-      return Get_Owned_Member (Self);
+      return
+        AMF.UML.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Member
+             (Self.Id)));
    end Get_Owned_Member;
 
    --------------------
@@ -771,14 +800,14 @@ package body AMF.Internals.UML_Operations is
    --------------------
 
    overriding function Get_Owned_Rule
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Rule unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Rule";
-      return Get_Owned_Rule (Self);
+      return
+        AMF.UML.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Rule
+             (Self.Id)));
    end Get_Owned_Rule;
 
    ------------------------
@@ -786,14 +815,14 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Get_Package_Import
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package_Import unimplemented");
-      raise Program_Error with "Unimplemented function Get_Package_Import";
-      return Get_Package_Import (Self);
+      return
+        AMF.UML.Package_Imports.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package_Import
+             (Self.Id)));
    end Get_Package_Import;
 
    ----------------------------------
@@ -801,14 +830,14 @@ package body AMF.Internals.UML_Operations is
    ----------------------------------
 
    overriding function Get_Owned_Template_Signature
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Template_Signatures.UML_Template_Signature_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Template_Signatures.UML_Template_Signature_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Template_Signature unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Template_Signature";
-      return Get_Owned_Template_Signature (Self);
+      return
+        AMF.UML.Template_Signatures.UML_Template_Signature_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Template_Signature
+             (Self.Id)));
    end Get_Owned_Template_Signature;
 
    ----------------------------------
@@ -816,13 +845,13 @@ package body AMF.Internals.UML_Operations is
    ----------------------------------
 
    overriding procedure Set_Owned_Template_Signature
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Owned_Template_Signature unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Owned_Template_Signature";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owned_Template_Signature;
 
    --------------------------
@@ -830,14 +859,14 @@ package body AMF.Internals.UML_Operations is
    --------------------------
 
    overriding function Get_Template_Binding
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Template_Binding unimplemented");
-      raise Program_Error with "Unimplemented function Get_Template_Binding";
-      return Get_Template_Binding (Self);
+      return
+        AMF.UML.Template_Bindings.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Binding
+             (Self.Id)));
    end Get_Template_Binding;
 
    -----------------------------------
@@ -845,14 +874,14 @@ package body AMF.Internals.UML_Operations is
    -----------------------------------
 
    overriding function Get_Owning_Template_Parameter
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Template_Parameters.UML_Template_Parameter_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owning_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owning_Template_Parameter";
-      return Get_Owning_Template_Parameter (Self);
+      return
+        AMF.UML.Template_Parameters.UML_Template_Parameter_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owning_Template_Parameter
+             (Self.Id)));
    end Get_Owning_Template_Parameter;
 
    -----------------------------------
@@ -860,13 +889,13 @@ package body AMF.Internals.UML_Operations is
    -----------------------------------
 
    overriding procedure Set_Owning_Template_Parameter
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Owning_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Owning_Template_Parameter";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
 
    ----------------------------
@@ -874,14 +903,14 @@ package body AMF.Internals.UML_Operations is
    ----------------------------
 
    overriding function Get_Template_Parameter
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Template_Parameters.UML_Template_Parameter_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Template_Parameter";
-      return Get_Template_Parameter (Self);
+      return
+        AMF.UML.Template_Parameters.UML_Template_Parameter_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Parameter
+             (Self.Id)));
    end Get_Template_Parameter;
 
    ----------------------------
@@ -889,13 +918,13 @@ package body AMF.Internals.UML_Operations is
    ----------------------------
 
    overriding procedure Set_Template_Parameter
-     (Self : not null access UML_Operation_Proxy;
-      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access)
-   is
+    (Self : not null access UML_Operation_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Template_Parameter";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    ------------------------
@@ -903,14 +932,13 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Is_Consistent_With
-     (Self : not null access constant UML_Operation_Proxy;
-      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Consistent_With unimplemented");
-      raise Program_Error with "Unimplemented function Is_Consistent_With";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Consistent_With";
       return Is_Consistent_With (Self, Redefinee);
    end Is_Consistent_With;
 
@@ -919,13 +947,12 @@ package body AMF.Internals.UML_Operations is
    ----------------
 
    overriding function Is_Ordered
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Ordered unimplemented");
-      raise Program_Error with "Unimplemented function Is_Ordered";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Ordered";
       return Is_Ordered (Self);
    end Is_Ordered;
 
@@ -934,13 +961,12 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Is_Unique
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Unique unimplemented");
-      raise Program_Error with "Unimplemented function Is_Unique";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Unique";
       return Is_Unique (Self);
    end Is_Unique;
 
@@ -949,13 +975,12 @@ package body AMF.Internals.UML_Operations is
    -----------
 
    overriding function Lower
-     (Self : not null access constant UML_Operation_Proxy)
-      return Integer
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Integer is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Lower unimplemented");
-      raise Program_Error with "Unimplemented function Lower";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Lower";
       return Lower (Self);
    end Lower;
 
@@ -964,13 +989,12 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding function Return_Result
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Return_Result unimplemented");
-      raise Program_Error with "Unimplemented function Return_Result";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Return_Result";
       return Return_Result (Self);
    end Return_Result;
 
@@ -979,13 +1003,12 @@ package body AMF.Internals.UML_Operations is
    -----------
 
    overriding function Types
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Types.UML_Type_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Types.UML_Type_Access is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Types unimplemented");
-      raise Program_Error with "Unimplemented function Types";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Types";
       return Types (Self);
    end Types;
 
@@ -994,13 +1017,12 @@ package body AMF.Internals.UML_Operations is
    -----------
 
    overriding function Upper
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.Unlimited_Natural
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.Unlimited_Natural is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Upper unimplemented");
-      raise Program_Error with "Unimplemented function Upper";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Upper";
       return Upper (Self);
    end Upper;
 
@@ -1009,15 +1031,14 @@ package body AMF.Internals.UML_Operations is
    -----------------------------
 
    overriding function Is_Distinguishable_From
-     (Self : not null access constant UML_Operation_Proxy;
-      N : AMF.UML.Named_Elements.UML_Named_Element_Access;
-      Ns : AMF.UML.Namespaces.UML_Namespace_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Distinguishable_From unimplemented");
-      raise Program_Error with "Unimplemented function Is_Distinguishable_From";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Distinguishable_From";
       return Is_Distinguishable_From (Self, N, Ns);
    end Is_Distinguishable_From;
 
@@ -1026,14 +1047,13 @@ package body AMF.Internals.UML_Operations is
    -----------------------------------
 
    overriding function Is_Redefinition_Context_Valid
-     (Self : not null access constant UML_Operation_Proxy;
-      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Redefinition_Context_Valid unimplemented");
-      raise Program_Error with "Unimplemented function Is_Redefinition_Context_Valid";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Redefinition_Context_Valid";
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
 
@@ -1042,13 +1062,12 @@ package body AMF.Internals.UML_Operations is
    --------------------
 
    overriding function All_Namespaces
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error with "Unimplemented function All_Namespaces";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.All_Namespaces";
       return All_Namespaces (Self);
    end All_Namespaces;
 
@@ -1057,13 +1076,12 @@ package body AMF.Internals.UML_Operations is
    -------------------------
 
    overriding function All_Owning_Packages
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Packages.Collections.Set_Of_UML_Package
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Owning_Packages unimplemented");
-      raise Program_Error with "Unimplemented function All_Owning_Packages";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.All_Owning_Packages";
       return All_Owning_Packages (Self);
    end All_Owning_Packages;
 
@@ -1072,13 +1090,12 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Namespace
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Namespaces.UML_Namespace_Access
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Namespace unimplemented");
-      raise Program_Error with "Unimplemented function Namespace";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Namespace";
       return Namespace (Self);
    end Namespace;
 
@@ -1087,13 +1104,12 @@ package body AMF.Internals.UML_Operations is
    --------------------
 
    overriding function Qualified_Name
-     (Self : not null access constant UML_Operation_Proxy)
-      return League.Strings.Universal_String
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return League.Strings.Universal_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
-      raise Program_Error with "Unimplemented function Qualified_Name";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Qualified_Name";
       return Qualified_Name (Self);
    end Qualified_Name;
 
@@ -1102,13 +1118,12 @@ package body AMF.Internals.UML_Operations is
    ---------------
 
    overriding function Separator
-     (Self : not null access constant UML_Operation_Proxy)
-      return League.Strings.Universal_String
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return League.Strings.Universal_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error with "Unimplemented function Separator";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Separator";
       return Separator (Self);
    end Separator;
 
@@ -1117,13 +1132,12 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function All_Owned_Elements
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error with "Unimplemented function All_Owned_Elements";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.All_Owned_Elements";
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
 
@@ -1132,13 +1146,12 @@ package body AMF.Internals.UML_Operations is
    -------------------
 
    overriding function Must_Be_Owned
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error with "Unimplemented function Must_Be_Owned";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Must_Be_Owned";
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
@@ -1147,14 +1160,13 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Exclude_Collisions
-     (Self : not null access constant UML_Operation_Proxy;
-      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Exclude_Collisions unimplemented");
-      raise Program_Error with "Unimplemented function Exclude_Collisions";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Exclude_Collisions";
       return Exclude_Collisions (Self, Imps);
    end Exclude_Collisions;
 
@@ -1163,14 +1175,13 @@ package body AMF.Internals.UML_Operations is
    -------------------------
 
    overriding function Get_Names_Of_Member
-     (Self : not null access constant UML_Operation_Proxy;
-      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-      return AMF.String_Collections.Set_Of_String
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
+       return AMF.String_Collections.Set_Of_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Names_Of_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Names_Of_Member";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Get_Names_Of_Member";
       return Get_Names_Of_Member (Self, Element);
    end Get_Names_Of_Member;
 
@@ -1179,14 +1190,13 @@ package body AMF.Internals.UML_Operations is
    --------------------
 
    overriding function Import_Members
-     (Self : not null access constant UML_Operation_Proxy;
-      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Import_Members unimplemented");
-      raise Program_Error with "Unimplemented function Import_Members";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Import_Members";
       return Import_Members (Self, Imps);
    end Import_Members;
 
@@ -1195,13 +1205,12 @@ package body AMF.Internals.UML_Operations is
    ---------------------
 
    overriding function Imported_Member
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Imported_Member unimplemented");
-      raise Program_Error with "Unimplemented function Imported_Member";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Imported_Member";
       return Imported_Member (Self);
    end Imported_Member;
 
@@ -1210,13 +1219,12 @@ package body AMF.Internals.UML_Operations is
    ---------------------------------
 
    overriding function Members_Are_Distinguishable
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Members_Are_Distinguishable unimplemented");
-      raise Program_Error with "Unimplemented function Members_Are_Distinguishable";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Members_Are_Distinguishable";
       return Members_Are_Distinguishable (Self);
    end Members_Are_Distinguishable;
 
@@ -1225,13 +1233,12 @@ package body AMF.Internals.UML_Operations is
    ------------------
 
    overriding function Owned_Member
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Owned_Member unimplemented");
-      raise Program_Error with "Unimplemented function Owned_Member";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Owned_Member";
       return Owned_Member (Self);
    end Owned_Member;
 
@@ -1240,13 +1247,12 @@ package body AMF.Internals.UML_Operations is
    -----------------
 
    overriding function Is_Template
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Template unimplemented");
-      raise Program_Error with "Unimplemented function Is_Template";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Template";
       return Is_Template (Self);
    end Is_Template;
 
@@ -1255,13 +1261,12 @@ package body AMF.Internals.UML_Operations is
    ----------------------------
 
    overriding function Parameterable_Elements
-     (Self : not null access constant UML_Operation_Proxy)
-      return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Parameterable_Elements unimplemented");
-      raise Program_Error with "Unimplemented function Parameterable_Elements";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Parameterable_Elements";
       return Parameterable_Elements (Self);
    end Parameterable_Elements;
 
@@ -1270,14 +1275,13 @@ package body AMF.Internals.UML_Operations is
    ------------------------
 
    overriding function Is_Compatible_With
-     (Self : not null access constant UML_Operation_Proxy;
-      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy;
+     P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Compatible_With unimplemented");
-      raise Program_Error with "Unimplemented function Is_Compatible_With";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Compatible_With";
       return Is_Compatible_With (Self, P);
    end Is_Compatible_With;
 
@@ -1286,13 +1290,12 @@ package body AMF.Internals.UML_Operations is
    ---------------------------
 
    overriding function Is_Template_Parameter
-     (Self : not null access constant UML_Operation_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Operation_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Is_Template_Parameter";
+      raise Program_Error with "Unimplemented procedure UML_Operation_Proxy.Is_Template_Parameter";
       return Is_Template_Parameter (Self);
    end Is_Template_Parameter;
 

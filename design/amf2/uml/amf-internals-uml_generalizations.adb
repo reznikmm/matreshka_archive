@@ -1,3 +1,55 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.UML_Attributes;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+
 package body AMF.Internals.UML_Generalizations is
 
    -----------------
@@ -5,14 +57,14 @@ package body AMF.Internals.UML_Generalizations is
    -----------------
 
    overriding function Get_General
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Classifiers.UML_Classifier_Access
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Classifiers.UML_Classifier_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_General unimplemented");
-      raise Program_Error with "Unimplemented function Get_General";
-      return Get_General (Self);
+      return
+        AMF.UML.Classifiers.UML_Classifier_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_General
+             (Self.Id)));
    end Get_General;
 
    -----------------
@@ -20,13 +72,13 @@ package body AMF.Internals.UML_Generalizations is
    -----------------
 
    overriding procedure Set_General
-     (Self : not null access UML_Generalization_Proxy;
-      To   : AMF.UML.Classifiers.UML_Classifier_Access)
-   is
+    (Self : not null access UML_Generalization_Proxy;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_General unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_General";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_General
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_General;
 
    ----------------------------
@@ -34,14 +86,14 @@ package body AMF.Internals.UML_Generalizations is
    ----------------------------
 
    overriding function Get_Generalization_Set
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Generalization_Set unimplemented");
-      raise Program_Error with "Unimplemented function Get_Generalization_Set";
-      return Get_Generalization_Set (Self);
+      return
+        AMF.UML.Generalization_Sets.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Generalization_Set
+             (Self.Id)));
    end Get_Generalization_Set;
 
    --------------------------
@@ -49,14 +101,12 @@ package body AMF.Internals.UML_Generalizations is
    --------------------------
 
    overriding function Get_Is_Substitutable
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.Optional_Boolean
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.Optional_Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Substitutable unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Substitutable";
-      return Get_Is_Substitutable (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Substitutable
+         (Self.Id);
    end Get_Is_Substitutable;
 
    --------------------------
@@ -64,13 +114,11 @@ package body AMF.Internals.UML_Generalizations is
    --------------------------
 
    overriding procedure Set_Is_Substitutable
-     (Self : not null access UML_Generalization_Proxy;
-      To   : AMF.Optional_Boolean)
-   is
+    (Self : not null access UML_Generalization_Proxy;
+     To   : AMF.Optional_Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Substitutable unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Substitutable";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Substitutable
+       (Self.Id, To);
    end Set_Is_Substitutable;
 
    ------------------
@@ -78,14 +126,14 @@ package body AMF.Internals.UML_Generalizations is
    ------------------
 
    overriding function Get_Specific
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Classifiers.UML_Classifier_Access
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Classifiers.UML_Classifier_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Specific unimplemented");
-      raise Program_Error with "Unimplemented function Get_Specific";
-      return Get_Specific (Self);
+      return
+        AMF.UML.Classifiers.UML_Classifier_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Specific
+             (Self.Id)));
    end Get_Specific;
 
    ------------------
@@ -93,13 +141,13 @@ package body AMF.Internals.UML_Generalizations is
    ------------------
 
    overriding procedure Set_Specific
-     (Self : not null access UML_Generalization_Proxy;
-      To   : AMF.UML.Classifiers.UML_Classifier_Access)
-   is
+    (Self : not null access UML_Generalization_Proxy;
+     To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Specific unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Specific";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Specific;
 
    ----------------
@@ -107,14 +155,14 @@ package body AMF.Internals.UML_Generalizations is
    ----------------
 
    overriding function Get_Source
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Source unimplemented");
-      raise Program_Error with "Unimplemented function Get_Source";
-      return Get_Source (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Source
+             (Self.Id)));
    end Get_Source;
 
    ----------------
@@ -122,14 +170,14 @@ package body AMF.Internals.UML_Generalizations is
    ----------------
 
    overriding function Get_Target
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Target unimplemented");
-      raise Program_Error with "Unimplemented function Get_Target";
-      return Get_Target (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Target
+             (Self.Id)));
    end Get_Target;
 
    -------------------------
@@ -137,14 +185,14 @@ package body AMF.Internals.UML_Generalizations is
    -------------------------
 
    overriding function Get_Related_Element
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Related_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Related_Element";
-      return Get_Related_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
+             (Self.Id)));
    end Get_Related_Element;
 
    -----------------------
@@ -152,14 +200,14 @@ package body AMF.Internals.UML_Generalizations is
    -----------------------
 
    overriding function Get_Owned_Comment
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Comments.Collections.Set_Of_UML_Comment
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Comment";
-      return Get_Owned_Comment (Self);
+      return
+        AMF.UML.Comments.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
+             (Self.Id)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -167,14 +215,14 @@ package body AMF.Internals.UML_Generalizations is
    -----------------------
 
    overriding function Get_Owned_Element
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Element";
-      return Get_Owned_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
+             (Self.Id)));
    end Get_Owned_Element;
 
    ---------------
@@ -182,14 +230,14 @@ package body AMF.Internals.UML_Generalizations is
    ---------------
 
    overriding function Get_Owner
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Elements.UML_Element_Access
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Elements.UML_Element_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owner";
-      return Get_Owner (Self);
+      return
+        AMF.UML.Elements.UML_Element_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
+             (Self.Id)));
    end Get_Owner;
 
    ------------------------
@@ -197,13 +245,12 @@ package body AMF.Internals.UML_Generalizations is
    ------------------------
 
    overriding function All_Owned_Elements
-     (Self : not null access constant UML_Generalization_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error with "Unimplemented function All_Owned_Elements";
+      raise Program_Error with "Unimplemented procedure UML_Generalization_Proxy.All_Owned_Elements";
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
 
@@ -212,13 +259,12 @@ package body AMF.Internals.UML_Generalizations is
    -------------------
 
    overriding function Must_Be_Owned
-     (Self : not null access constant UML_Generalization_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Generalization_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error with "Unimplemented function Must_Be_Owned";
+      raise Program_Error with "Unimplemented procedure UML_Generalization_Proxy.Must_Be_Owned";
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 

@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Elements;
 with AMF.String_Collections;
 with AMF.UML.Behaviors;
 with AMF.UML.Comments.Collections;
@@ -62,7 +62,7 @@ with AMF.UML.Types;
 package AMF.Internals.UML_Opaque_Expressions is
 
    type UML_Opaque_Expression_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Opaque_Expressions.UML_Opaque_Expression with null record;
 
    overriding function Get_Behavior
@@ -100,6 +100,10 @@ package AMF.Internals.UML_Opaque_Expressions is
    overriding function Get_Name
     (Self : not null access constant UML_Opaque_Expression_Proxy)
        return AMF.Optional_String;
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Opaque_Expression_Proxy;
+     To   : AMF.Optional_String);
 
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Opaque_Expression_Proxy)

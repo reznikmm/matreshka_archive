@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Named_Elements;
+with AMF.Internals.UML_Elements;
 with AMF.String_Collections;
 with AMF.UML.Associations;
 with AMF.UML.Classifier_Template_Parameters;
@@ -77,7 +77,7 @@ with AMF.UML.Use_Cases.Collections;
 package AMF.Internals.UML_Associations is
 
    type UML_Association_Proxy is
-     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
+     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Associations.UML_Association with null record;
 
    overriding function Get_End_Type
@@ -236,6 +236,10 @@ package AMF.Internals.UML_Associations is
     (Self : not null access constant UML_Association_Proxy)
        return AMF.Optional_String;
 
+   overriding procedure Set_Name
+    (Self : not null access UML_Association_Proxy;
+     To   : AMF.Optional_String);
+
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Association_Proxy)
        return AMF.UML.String_Expressions.UML_String_Expression_Access;
@@ -255,6 +259,10 @@ package AMF.Internals.UML_Associations is
    overriding function Get_Visibility
     (Self : not null access constant UML_Association_Proxy)
        return AMF.UML.Optional_UML_Visibility_Kind;
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Association_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind);
 
    overriding function Get_Package
     (Self : not null access constant UML_Association_Proxy)

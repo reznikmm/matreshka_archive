@@ -41,9 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
 
 package body AMF.Internals.UML_Comments is
 
@@ -52,14 +57,14 @@ package body AMF.Internals.UML_Comments is
    ---------------------------
 
    overriding function Get_Annotated_Element
-     (Self : not null access constant UML_Comment_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Annotated_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Annotated_Element";
-      return Get_Annotated_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Annotated_Element
+             (Self.Id)));
    end Get_Annotated_Element;
 
    --------------
@@ -67,14 +72,23 @@ package body AMF.Internals.UML_Comments is
    --------------
 
    overriding function Get_Body
-     (Self : not null access constant UML_Comment_Proxy)
-      return AMF.Optional_String
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.Optional_String is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Body unimplemented");
-      raise Program_Error with "Unimplemented function Get_Body";
-      return Get_Body (Self);
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Body (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
    end Get_Body;
 
    --------------
@@ -86,11 +100,13 @@ package body AMF.Internals.UML_Comments is
      To   : AMF.Optional_String) is
    begin
       if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Body (Self.Id, null);
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Body
+          (Self.Id, null);
 
       else
          AMF.Internals.Tables.UML_Attributes.Internal_Set_Body
-          (Self.Id, League.Strings.Internals.Internal (To.Value));
+          (Self.Id,
+           League.Strings.Internals.Internal (To.Value));
       end if;
    end Set_Body;
 
@@ -99,14 +115,14 @@ package body AMF.Internals.UML_Comments is
    -----------------------
 
    overriding function Get_Owned_Comment
-     (Self : not null access constant UML_Comment_Proxy)
-      return AMF.UML.Comments.Collections.Set_Of_UML_Comment
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Comment";
-      return Get_Owned_Comment (Self);
+      return
+        AMF.UML.Comments.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
+             (Self.Id)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -114,14 +130,14 @@ package body AMF.Internals.UML_Comments is
    -----------------------
 
    overriding function Get_Owned_Element
-     (Self : not null access constant UML_Comment_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Element";
-      return Get_Owned_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
+             (Self.Id)));
    end Get_Owned_Element;
 
    ---------------
@@ -129,14 +145,14 @@ package body AMF.Internals.UML_Comments is
    ---------------
 
    overriding function Get_Owner
-     (Self : not null access constant UML_Comment_Proxy)
-      return AMF.UML.Elements.UML_Element_Access
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.UML_Element_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owner";
-      return Get_Owner (Self);
+      return
+        AMF.UML.Elements.UML_Element_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
+             (Self.Id)));
    end Get_Owner;
 
    ------------------------
@@ -144,13 +160,12 @@ package body AMF.Internals.UML_Comments is
    ------------------------
 
    overriding function All_Owned_Elements
-     (Self : not null access constant UML_Comment_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error with "Unimplemented function All_Owned_Elements";
+      raise Program_Error with "Unimplemented procedure UML_Comment_Proxy.All_Owned_Elements";
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
 
@@ -159,13 +174,12 @@ package body AMF.Internals.UML_Comments is
    -------------------
 
    overriding function Must_Be_Owned
-     (Self : not null access constant UML_Comment_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Comment_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error with "Unimplemented function Must_Be_Owned";
+      raise Program_Error with "Unimplemented procedure UML_Comment_Proxy.Must_Be_Owned";
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 

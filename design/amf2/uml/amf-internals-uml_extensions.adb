@@ -1,3 +1,55 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                          Ada Modeling Framework                          --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  This file is generated, don't edit it.
+------------------------------------------------------------------------------
+with AMF.Elements;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.UML_Attributes;
+with League.Strings.Internals;
+with Matreshka.Internals.Strings;
+
 package body AMF.Internals.UML_Extensions is
 
    ---------------------
@@ -5,14 +57,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------------
 
    overriding function Get_Is_Required
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Required unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Required";
-      return Get_Is_Required (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Required
+         (Self.Id);
    end Get_Is_Required;
 
    -------------------
@@ -20,14 +70,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Get_Metaclass
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classes.UML_Class_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classes.UML_Class_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Metaclass unimplemented");
-      raise Program_Error with "Unimplemented function Get_Metaclass";
-      return Get_Metaclass (Self);
+      return
+        AMF.UML.Classes.UML_Class_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Metaclass
+             (Self.Id)));
    end Get_Metaclass;
 
    -------------------
@@ -35,13 +85,10 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Get_Owned_End
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Extension_Ends.UML_Extension_End_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Extension_Ends.UML_Extension_End_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_End unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_End";
+      raise Program_Error;
       return Get_Owned_End (Self);
    end Get_Owned_End;
 
@@ -50,13 +97,10 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding procedure Set_Owned_End
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Extension_Ends.UML_Extension_End_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Extension_Ends.UML_Extension_End_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Owned_End unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Owned_End";
+      raise Program_Error;
    end Set_Owned_End;
 
    ------------------
@@ -64,14 +108,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------
 
    overriding function Get_End_Type
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_End_Type unimplemented");
-      raise Program_Error with "Unimplemented function Get_End_Type";
-      return Get_End_Type (Self);
+      return
+        AMF.UML.Types.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_End_Type
+             (Self.Id)));
    end Get_End_Type;
 
    --------------------
@@ -79,14 +123,12 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Get_Is_Derived
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Derived unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Derived";
-      return Get_Is_Derived (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Derived
+         (Self.Id);
    end Get_Is_Derived;
 
    --------------------
@@ -94,13 +136,11 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding procedure Set_Is_Derived
-     (Self : not null access UML_Extension_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Derived unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Derived";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Derived
+       (Self.Id, To);
    end Set_Is_Derived;
 
    --------------------
@@ -108,14 +148,14 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Get_Member_End
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Member_End unimplemented");
-      raise Program_Error with "Unimplemented function Get_Member_End";
-      return Get_Member_End (Self);
+      return
+        AMF.UML.Properties.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Member_End
+             (Self.Id)));
    end Get_Member_End;
 
    -----------------------------
@@ -123,14 +163,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------------------
 
    overriding function Get_Navigable_Owned_End
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Properties.Collections.Set_Of_UML_Property
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Navigable_Owned_End unimplemented");
-      raise Program_Error with "Unimplemented function Get_Navigable_Owned_End";
-      return Get_Navigable_Owned_End (Self);
+      return
+        AMF.UML.Properties.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Navigable_Owned_End
+             (Self.Id)));
    end Get_Navigable_Owned_End;
 
    -------------------
@@ -138,14 +178,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Get_Owned_End
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_End unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_End";
-      return Get_Owned_End (Self);
+      return
+        AMF.UML.Properties.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_End
+             (Self.Id)));
    end Get_Owned_End;
 
    -------------------------
@@ -153,14 +193,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function Get_Related_Element
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Related_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Related_Element";
-      return Get_Related_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Related_Element
+             (Self.Id)));
    end Get_Related_Element;
 
    -----------------------
@@ -168,14 +208,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------------
 
    overriding function Get_Owned_Comment
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Comments.Collections.Set_Of_UML_Comment
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Comments.Collections.Set_Of_UML_Comment is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Comment unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Comment";
-      return Get_Owned_Comment (Self);
+      return
+        AMF.UML.Comments.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Comment
+             (Self.Id)));
    end Get_Owned_Comment;
 
    -----------------------
@@ -183,14 +223,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------------
 
    overriding function Get_Owned_Element
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Element";
-      return Get_Owned_Element (Self);
+      return
+        AMF.UML.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Element
+             (Self.Id)));
    end Get_Owned_Element;
 
    ---------------
@@ -198,14 +238,14 @@ package body AMF.Internals.UML_Extensions is
    ---------------
 
    overriding function Get_Owner
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Elements.UML_Element_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Elements.UML_Element_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owner";
-      return Get_Owner (Self);
+      return
+        AMF.UML.Elements.UML_Element_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owner
+             (Self.Id)));
    end Get_Owner;
 
    -------------------
@@ -213,14 +253,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Get_Attribute
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Properties.Collections.Set_Of_UML_Property
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Properties.Collections.Set_Of_UML_Property is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Attribute unimplemented");
-      raise Program_Error with "Unimplemented function Get_Attribute";
-      return Get_Attribute (Self);
+      return
+        AMF.UML.Properties.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Attribute
+             (Self.Id)));
    end Get_Attribute;
 
    ---------------------------
@@ -228,14 +268,14 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------
 
    overriding function Get_Collaboration_Use
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Collaboration_Uses.Collections.Set_Of_UML_Collaboration_Use
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Collaboration_Uses.Collections.Set_Of_UML_Collaboration_Use is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Collaboration_Use unimplemented");
-      raise Program_Error with "Unimplemented function Get_Collaboration_Use";
-      return Get_Collaboration_Use (Self);
+      return
+        AMF.UML.Collaboration_Uses.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Collaboration_Use
+             (Self.Id)));
    end Get_Collaboration_Use;
 
    -----------------
@@ -243,14 +283,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Get_Feature
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Features.Collections.Set_Of_UML_Feature
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Features.Collections.Set_Of_UML_Feature is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Feature unimplemented");
-      raise Program_Error with "Unimplemented function Get_Feature";
-      return Get_Feature (Self);
+      return
+        AMF.UML.Features.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Feature
+             (Self.Id)));
    end Get_Feature;
 
    -----------------
@@ -258,14 +298,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Get_General
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_General unimplemented");
-      raise Program_Error with "Unimplemented function Get_General";
-      return Get_General (Self);
+      return
+        AMF.UML.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_General
+             (Self.Id)));
    end Get_General;
 
    ------------------------
@@ -273,14 +313,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Get_Generalization
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Generalization unimplemented");
-      raise Program_Error with "Unimplemented function Get_Generalization";
-      return Get_Generalization (Self);
+      return
+        AMF.UML.Generalizations.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Generalization
+             (Self.Id)));
    end Get_Generalization;
 
    --------------------------
@@ -288,14 +328,14 @@ package body AMF.Internals.UML_Extensions is
    --------------------------
 
    overriding function Get_Inherited_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Inherited_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Inherited_Member";
-      return Get_Inherited_Member (Self);
+      return
+        AMF.UML.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Inherited_Member
+             (Self.Id)));
    end Get_Inherited_Member;
 
    ---------------------
@@ -303,14 +343,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------------
 
    overriding function Get_Is_Abstract
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Abstract unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Abstract";
-      return Get_Is_Abstract (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Abstract
+         (Self.Id);
    end Get_Is_Abstract;
 
    ---------------------
@@ -318,13 +356,11 @@ package body AMF.Internals.UML_Extensions is
    ---------------------
 
    overriding procedure Set_Is_Abstract
-     (Self : not null access UML_Extension_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Abstract unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Abstract";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Abstract
+       (Self.Id, To);
    end Set_Is_Abstract;
 
    ---------------------------------
@@ -332,14 +368,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------------
 
    overriding function Get_Is_Final_Specialization
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Final_Specialization unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Final_Specialization";
-      return Get_Is_Final_Specialization (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Final_Specialization
+         (Self.Id);
    end Get_Is_Final_Specialization;
 
    ---------------------------------
@@ -347,13 +381,11 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------------
 
    overriding procedure Set_Is_Final_Specialization
-     (Self : not null access UML_Extension_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Final_Specialization unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Final_Specialization";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Final_Specialization
+       (Self.Id, To);
    end Set_Is_Final_Specialization;
 
    ----------------------------------
@@ -361,14 +393,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------------
 
    overriding function Get_Owned_Template_Signature
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Template_Signature unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Template_Signature";
-      return Get_Owned_Template_Signature (Self);
+      return
+        AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Template_Signature
+             (Self.Id)));
    end Get_Owned_Template_Signature;
 
    ----------------------------------
@@ -376,13 +408,13 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------------
 
    overriding procedure Set_Owned_Template_Signature
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Owned_Template_Signature unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Owned_Template_Signature";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owned_Template_Signature;
 
    ------------------------
@@ -390,14 +422,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Get_Owned_Use_Case
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Use_Case unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Use_Case";
-      return Get_Owned_Use_Case (Self);
+      return
+        AMF.UML.Use_Cases.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Use_Case
+             (Self.Id)));
    end Get_Owned_Use_Case;
 
    --------------------------
@@ -405,14 +437,14 @@ package body AMF.Internals.UML_Extensions is
    --------------------------
 
    overriding function Get_Powertype_Extent
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Powertype_Extent unimplemented");
-      raise Program_Error with "Unimplemented function Get_Powertype_Extent";
-      return Get_Powertype_Extent (Self);
+      return
+        AMF.UML.Generalization_Sets.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Powertype_Extent
+             (Self.Id)));
    end Get_Powertype_Extent;
 
    ------------------------------
@@ -420,14 +452,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------------
 
    overriding function Get_Redefined_Classifier
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefined_Classifier unimplemented");
-      raise Program_Error with "Unimplemented function Get_Redefined_Classifier";
-      return Get_Redefined_Classifier (Self);
+      return
+        AMF.UML.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Classifier
+             (Self.Id)));
    end Get_Redefined_Classifier;
 
    ------------------------
@@ -435,14 +467,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Get_Representation
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Representation unimplemented");
-      raise Program_Error with "Unimplemented function Get_Representation";
-      return Get_Representation (Self);
+      return
+        AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Representation
+             (Self.Id)));
    end Get_Representation;
 
    ------------------------
@@ -450,13 +482,13 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding procedure Set_Representation
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Representation unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Representation";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Representation
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Representation;
 
    ----------------------
@@ -464,14 +496,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------------
 
    overriding function Get_Substitution
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Substitutions.Collections.Set_Of_UML_Substitution
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Substitutions.Collections.Set_Of_UML_Substitution is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Substitution unimplemented");
-      raise Program_Error with "Unimplemented function Get_Substitution";
-      return Get_Substitution (Self);
+      return
+        AMF.UML.Substitutions.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Substitution
+             (Self.Id)));
    end Get_Substitution;
 
    ----------------------------
@@ -479,14 +511,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------
 
    overriding function Get_Template_Parameter
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Template_Parameter";
-      return Get_Template_Parameter (Self);
+      return
+        AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Parameter
+             (Self.Id)));
    end Get_Template_Parameter;
 
    ----------------------------
@@ -494,13 +526,13 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------
 
    overriding procedure Set_Template_Parameter
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Template_Parameter";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    ------------------
@@ -508,14 +540,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------
 
    overriding function Get_Use_Case
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Use_Case unimplemented");
-      raise Program_Error with "Unimplemented function Get_Use_Case";
-      return Get_Use_Case (Self);
+      return
+        AMF.UML.Use_Cases.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Use_Case
+             (Self.Id)));
    end Get_Use_Case;
 
    ------------------------
@@ -523,14 +555,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Get_Element_Import
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Element_Import unimplemented");
-      raise Program_Error with "Unimplemented function Get_Element_Import";
-      return Get_Element_Import (Self);
+      return
+        AMF.UML.Element_Imports.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Element_Import
+             (Self.Id)));
    end Get_Element_Import;
 
    -------------------------
@@ -538,14 +570,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function Get_Imported_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Imported_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Imported_Member";
-      return Get_Imported_Member (Self);
+      return
+        AMF.UML.Packageable_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Imported_Member
+             (Self.Id)));
    end Get_Imported_Member;
 
    ----------------
@@ -553,14 +585,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------
 
    overriding function Get_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Member";
-      return Get_Member (Self);
+      return
+        AMF.UML.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Member
+             (Self.Id)));
    end Get_Member;
 
    ----------------------
@@ -568,14 +600,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------------
 
    overriding function Get_Owned_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Member";
-      return Get_Owned_Member (Self);
+      return
+        AMF.UML.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Member
+             (Self.Id)));
    end Get_Owned_Member;
 
    --------------------
@@ -583,14 +615,14 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Get_Owned_Rule
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Rule unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Rule";
-      return Get_Owned_Rule (Self);
+      return
+        AMF.UML.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Rule
+             (Self.Id)));
    end Get_Owned_Rule;
 
    ------------------------
@@ -598,14 +630,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Get_Package_Import
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package_Import unimplemented");
-      raise Program_Error with "Unimplemented function Get_Package_Import";
-      return Get_Package_Import (Self);
+      return
+        AMF.UML.Package_Imports.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package_Import
+             (Self.Id)));
    end Get_Package_Import;
 
    ---------------------------
@@ -613,14 +645,14 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------
 
    overriding function Get_Client_Dependency
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Client_Dependency unimplemented");
-      raise Program_Error with "Unimplemented function Get_Client_Dependency";
-      return Get_Client_Dependency (Self);
+      return
+        AMF.UML.Dependencies.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Client_Dependency
+             (Self.Id)));
    end Get_Client_Dependency;
 
    --------------
@@ -628,14 +660,23 @@ package body AMF.Internals.UML_Extensions is
    --------------
 
    overriding function Get_Name
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.Optional_String
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.Optional_String is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name unimplemented");
-      raise Program_Error with "Unimplemented function Get_Name";
-      return Get_Name (Self);
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Name (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
    end Get_Name;
 
    --------------
@@ -643,13 +684,18 @@ package body AMF.Internals.UML_Extensions is
    --------------
 
    overriding procedure Set_Name
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.Optional_String)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.Optional_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name";
+      if To.Is_Empty then
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id, null);
+
+      else
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id,
+           League.Strings.Internals.Internal (To.Value));
+      end if;
    end Set_Name;
 
    -------------------------
@@ -657,14 +703,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function Get_Name_Expression
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.String_Expressions.UML_String_Expression_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.String_Expressions.UML_String_Expression_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Name_Expression unimplemented");
-      raise Program_Error with "Unimplemented function Get_Name_Expression";
-      return Get_Name_Expression (Self);
+      return
+        AMF.UML.String_Expressions.UML_String_Expression_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Name_Expression
+             (Self.Id)));
    end Get_Name_Expression;
 
    -------------------------
@@ -672,13 +718,13 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding procedure Set_Name_Expression
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.String_Expressions.UML_String_Expression_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name_Expression unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name_Expression";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -686,14 +732,14 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Get_Namespace
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Namespaces.UML_Namespace_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Namespace unimplemented");
-      raise Program_Error with "Unimplemented function Get_Namespace";
-      return Get_Namespace (Self);
+      return
+        AMF.UML.Namespaces.UML_Namespace_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
+             (Self.Id)));
    end Get_Namespace;
 
    ------------------------
@@ -701,14 +747,23 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Get_Qualified_Name
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.Optional_String
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.Optional_String is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Qualified_Name unimplemented");
-      raise Program_Error with "Unimplemented function Get_Qualified_Name";
-      return Get_Qualified_Name (Self);
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
    end Get_Qualified_Name;
 
    --------------------
@@ -716,14 +771,12 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Get_Visibility
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Optional_UML_Visibility_Kind
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error with "Unimplemented function Get_Visibility";
-      return Get_Visibility (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
    end Get_Visibility;
 
    --------------------
@@ -731,13 +784,11 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding procedure Set_Visibility
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Optional_UML_Visibility_Kind)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Visibility";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
    end Set_Visibility;
 
    -----------------
@@ -745,14 +796,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Get_Package
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Packages.UML_Package_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Packages.UML_Package_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package unimplemented");
-      raise Program_Error with "Unimplemented function Get_Package";
-      return Get_Package (Self);
+      return
+        AMF.UML.Packages.UML_Package_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Package
+             (Self.Id)));
    end Get_Package;
 
    -----------------
@@ -760,13 +811,13 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding procedure Set_Package
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Packages.UML_Package_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Packages.UML_Package_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Package unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Package";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Package
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Package;
 
    --------------------
@@ -774,14 +825,12 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Get_Visibility
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.UML_Visibility_Kind
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.UML_Visibility_Kind is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Visibility unimplemented");
-      raise Program_Error with "Unimplemented function Get_Visibility";
-      return Get_Visibility (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
    end Get_Visibility;
 
    --------------------
@@ -789,13 +838,11 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding procedure Set_Visibility
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.UML_Visibility_Kind)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.UML_Visibility_Kind) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Visibility";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
    end Set_Visibility;
 
    -----------------------------------
@@ -803,14 +850,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------------------------
 
    overriding function Get_Owning_Template_Parameter
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Template_Parameters.UML_Template_Parameter_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owning_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owning_Template_Parameter";
-      return Get_Owning_Template_Parameter (Self);
+      return
+        AMF.UML.Template_Parameters.UML_Template_Parameter_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owning_Template_Parameter
+             (Self.Id)));
    end Get_Owning_Template_Parameter;
 
    -----------------------------------
@@ -818,13 +865,13 @@ package body AMF.Internals.UML_Extensions is
    -----------------------------------
 
    overriding procedure Set_Owning_Template_Parameter
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Owning_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Owning_Template_Parameter";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
 
    ----------------------------
@@ -832,14 +879,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------
 
    overriding function Get_Template_Parameter
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Template_Parameters.UML_Template_Parameter_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Get_Template_Parameter";
-      return Get_Template_Parameter (Self);
+      return
+        AMF.UML.Template_Parameters.UML_Template_Parameter_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Parameter
+             (Self.Id)));
    end Get_Template_Parameter;
 
    ----------------------------
@@ -847,13 +894,13 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------
 
    overriding procedure Set_Template_Parameter
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Template_Parameter";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    ----------------------------------
@@ -861,14 +908,14 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------------
 
    overriding function Get_Owned_Template_Signature
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Template_Signatures.UML_Template_Signature_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Template_Signatures.UML_Template_Signature_Access is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Template_Signature unimplemented");
-      raise Program_Error with "Unimplemented function Get_Owned_Template_Signature";
-      return Get_Owned_Template_Signature (Self);
+      return
+        AMF.UML.Template_Signatures.UML_Template_Signature_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Owned_Template_Signature
+             (Self.Id)));
    end Get_Owned_Template_Signature;
 
    ----------------------------------
@@ -876,13 +923,13 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------------
 
    overriding procedure Set_Owned_Template_Signature
-     (Self : not null access UML_Extension_Proxy;
-      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Owned_Template_Signature unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Owned_Template_Signature";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owned_Template_Signature;
 
    --------------------------
@@ -890,14 +937,14 @@ package body AMF.Internals.UML_Extensions is
    --------------------------
 
    overriding function Get_Template_Binding
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Template_Binding unimplemented");
-      raise Program_Error with "Unimplemented function Get_Template_Binding";
-      return Get_Template_Binding (Self);
+      return
+        AMF.UML.Template_Bindings.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Template_Binding
+             (Self.Id)));
    end Get_Template_Binding;
 
    -----------------
@@ -905,14 +952,12 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Get_Is_Leaf
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Is_Leaf unimplemented");
-      raise Program_Error with "Unimplemented function Get_Is_Leaf";
-      return Get_Is_Leaf (Self);
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Is_Leaf
+         (Self.Id);
    end Get_Is_Leaf;
 
    -----------------
@@ -920,13 +965,11 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding procedure Set_Is_Leaf
-     (Self : not null access UML_Extension_Proxy;
-      To   : Boolean)
-   is
+    (Self : not null access UML_Extension_Proxy;
+     To   : Boolean) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Leaf unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Leaf";
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Leaf
+       (Self.Id, To);
    end Set_Is_Leaf;
 
    ---------------------------
@@ -934,14 +977,14 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------
 
    overriding function Get_Redefined_Element
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefined_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Redefined_Element";
-      return Get_Redefined_Element (Self);
+      return
+        AMF.UML.Redefinable_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefined_Element
+             (Self.Id)));
    end Get_Redefined_Element;
 
    ------------------------------
@@ -949,14 +992,14 @@ package body AMF.Internals.UML_Extensions is
    ------------------------------
 
    overriding function Get_Redefinition_Context
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefinition_Context unimplemented");
-      raise Program_Error with "Unimplemented function Get_Redefinition_Context";
-      return Get_Redefinition_Context (Self);
+      return
+        AMF.UML.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Redefinition_Context
+             (Self.Id)));
    end Get_Redefinition_Context;
 
    -----------------
@@ -964,13 +1007,12 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Is_Required
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Required unimplemented");
-      raise Program_Error with "Unimplemented function Is_Required";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Required";
       return Is_Required (Self);
    end Is_Required;
 
@@ -979,13 +1021,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------
 
    overriding function Metaclass
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classes.UML_Class_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classes.UML_Class_Access is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Metaclass unimplemented");
-      raise Program_Error with "Unimplemented function Metaclass";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Metaclass";
       return Metaclass (Self);
    end Metaclass;
 
@@ -994,13 +1035,12 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Metaclass_End
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Properties.UML_Property_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Properties.UML_Property_Access is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Metaclass_End unimplemented");
-      raise Program_Error with "Unimplemented function Metaclass_End";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Metaclass_End";
       return Metaclass_End (Self);
    end Metaclass_End;
 
@@ -1009,13 +1049,12 @@ package body AMF.Internals.UML_Extensions is
    --------------
 
    overriding function End_Type
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "End_Type unimplemented");
-      raise Program_Error with "Unimplemented function End_Type";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.End_Type";
       return End_Type (Self);
    end End_Type;
 
@@ -1024,13 +1063,12 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function All_Owned_Elements
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Elements.Collections.Set_Of_UML_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Owned_Elements unimplemented");
-      raise Program_Error with "Unimplemented function All_Owned_Elements";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.All_Owned_Elements";
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
 
@@ -1039,13 +1077,12 @@ package body AMF.Internals.UML_Extensions is
    -------------------
 
    overriding function Must_Be_Owned
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error with "Unimplemented function Must_Be_Owned";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Must_Be_Owned";
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
@@ -1054,13 +1091,12 @@ package body AMF.Internals.UML_Extensions is
    ------------------
 
    overriding function All_Features
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Features.Collections.Set_Of_UML_Feature
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Features.Collections.Set_Of_UML_Feature is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Features unimplemented");
-      raise Program_Error with "Unimplemented function All_Features";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.All_Features";
       return All_Features (Self);
    end All_Features;
 
@@ -1069,13 +1105,12 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function All_Parents
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Parents unimplemented");
-      raise Program_Error with "Unimplemented function All_Parents";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.All_Parents";
       return All_Parents (Self);
    end All_Parents;
 
@@ -1084,14 +1119,13 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Conforms_To
-     (Self : not null access constant UML_Extension_Proxy;
-      Other : AMF.UML.Classifiers.UML_Classifier_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Other : AMF.UML.Classifiers.UML_Classifier_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Conforms_To unimplemented");
-      raise Program_Error with "Unimplemented function Conforms_To";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Conforms_To";
       return Conforms_To (Self, Other);
    end Conforms_To;
 
@@ -1100,13 +1134,12 @@ package body AMF.Internals.UML_Extensions is
    -------------
 
    overriding function General
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "General unimplemented");
-      raise Program_Error with "Unimplemented function General";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.General";
       return General (Self);
    end General;
 
@@ -1115,14 +1148,13 @@ package body AMF.Internals.UML_Extensions is
    -----------------------
 
    overriding function Has_Visibility_Of
-     (Self : not null access constant UML_Extension_Proxy;
-      N : AMF.UML.Named_Elements.UML_Named_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Has_Visibility_Of unimplemented");
-      raise Program_Error with "Unimplemented function Has_Visibility_Of";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Has_Visibility_Of";
       return Has_Visibility_Of (Self, N);
    end Has_Visibility_Of;
 
@@ -1131,14 +1163,13 @@ package body AMF.Internals.UML_Extensions is
    -------------
 
    overriding function Inherit
-     (Self : not null access constant UML_Extension_Proxy;
-      Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Inherit unimplemented");
-      raise Program_Error with "Unimplemented function Inherit";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Inherit";
       return Inherit (Self, Inhs);
    end Inherit;
 
@@ -1147,14 +1178,13 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function Inheritable_Members
-     (Self : not null access constant UML_Extension_Proxy;
-      C : AMF.UML.Classifiers.UML_Classifier_Access)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     C : AMF.UML.Classifiers.UML_Classifier_Access)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Inheritable_Members unimplemented");
-      raise Program_Error with "Unimplemented function Inheritable_Members";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Inheritable_Members";
       return Inheritable_Members (Self, C);
    end Inheritable_Members;
 
@@ -1163,13 +1193,12 @@ package body AMF.Internals.UML_Extensions is
    ----------------------
 
    overriding function Inherited_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Inherited_Member unimplemented");
-      raise Program_Error with "Unimplemented function Inherited_Member";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Inherited_Member";
       return Inherited_Member (Self);
    end Inherited_Member;
 
@@ -1178,13 +1207,12 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Is_Template
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Template unimplemented");
-      raise Program_Error with "Unimplemented function Is_Template";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Template";
       return Is_Template (Self);
    end Is_Template;
 
@@ -1193,14 +1221,13 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function May_Specialize_Type
-     (Self : not null access constant UML_Extension_Proxy;
-      C : AMF.UML.Classifiers.UML_Classifier_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     C : AMF.UML.Classifiers.UML_Classifier_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "May_Specialize_Type unimplemented");
-      raise Program_Error with "Unimplemented function May_Specialize_Type";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.May_Specialize_Type";
       return May_Specialize_Type (Self, C);
    end May_Specialize_Type;
 
@@ -1209,13 +1236,12 @@ package body AMF.Internals.UML_Extensions is
    -------------
 
    overriding function Parents
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Parents unimplemented");
-      raise Program_Error with "Unimplemented function Parents";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Parents";
       return Parents (Self);
    end Parents;
 
@@ -1224,14 +1250,13 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Exclude_Collisions
-     (Self : not null access constant UML_Extension_Proxy;
-      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Exclude_Collisions unimplemented");
-      raise Program_Error with "Unimplemented function Exclude_Collisions";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Exclude_Collisions";
       return Exclude_Collisions (Self, Imps);
    end Exclude_Collisions;
 
@@ -1240,14 +1265,13 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function Get_Names_Of_Member
-     (Self : not null access constant UML_Extension_Proxy;
-      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
-      return AMF.String_Collections.Set_Of_String
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
+       return AMF.String_Collections.Set_Of_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Get_Names_Of_Member unimplemented");
-      raise Program_Error with "Unimplemented function Get_Names_Of_Member";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Get_Names_Of_Member";
       return Get_Names_Of_Member (Self, Element);
    end Get_Names_Of_Member;
 
@@ -1256,14 +1280,13 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Import_Members
-     (Self : not null access constant UML_Extension_Proxy;
-      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Import_Members unimplemented");
-      raise Program_Error with "Unimplemented function Import_Members";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Import_Members";
       return Import_Members (Self, Imps);
    end Import_Members;
 
@@ -1272,13 +1295,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------------
 
    overriding function Imported_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Imported_Member unimplemented");
-      raise Program_Error with "Unimplemented function Imported_Member";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Imported_Member";
       return Imported_Member (Self);
    end Imported_Member;
 
@@ -1287,13 +1309,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------------
 
    overriding function Members_Are_Distinguishable
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Members_Are_Distinguishable unimplemented");
-      raise Program_Error with "Unimplemented function Members_Are_Distinguishable";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Members_Are_Distinguishable";
       return Members_Are_Distinguishable (Self);
    end Members_Are_Distinguishable;
 
@@ -1302,13 +1323,12 @@ package body AMF.Internals.UML_Extensions is
    ------------------
 
    overriding function Owned_Member
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Owned_Member unimplemented");
-      raise Program_Error with "Unimplemented function Owned_Member";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Owned_Member";
       return Owned_Member (Self);
    end Owned_Member;
 
@@ -1317,13 +1337,12 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function All_Namespaces
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Namespaces unimplemented");
-      raise Program_Error with "Unimplemented function All_Namespaces";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.All_Namespaces";
       return All_Namespaces (Self);
    end All_Namespaces;
 
@@ -1332,13 +1351,12 @@ package body AMF.Internals.UML_Extensions is
    -------------------------
 
    overriding function All_Owning_Packages
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Packages.Collections.Set_Of_UML_Package
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Packages.Collections.Set_Of_UML_Package is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "All_Owning_Packages unimplemented");
-      raise Program_Error with "Unimplemented function All_Owning_Packages";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.All_Owning_Packages";
       return All_Owning_Packages (Self);
    end All_Owning_Packages;
 
@@ -1347,15 +1365,14 @@ package body AMF.Internals.UML_Extensions is
    -----------------------------
 
    overriding function Is_Distinguishable_From
-     (Self : not null access constant UML_Extension_Proxy;
-      N : AMF.UML.Named_Elements.UML_Named_Element_Access;
-      Ns : AMF.UML.Namespaces.UML_Namespace_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     N : AMF.UML.Named_Elements.UML_Named_Element_Access;
+     Ns : AMF.UML.Namespaces.UML_Namespace_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Distinguishable_From unimplemented");
-      raise Program_Error with "Unimplemented function Is_Distinguishable_From";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Distinguishable_From";
       return Is_Distinguishable_From (Self, N, Ns);
    end Is_Distinguishable_From;
 
@@ -1364,13 +1381,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------
 
    overriding function Namespace
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Namespaces.UML_Namespace_Access
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Namespaces.UML_Namespace_Access is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Namespace unimplemented");
-      raise Program_Error with "Unimplemented function Namespace";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Namespace";
       return Namespace (Self);
    end Namespace;
 
@@ -1379,13 +1395,12 @@ package body AMF.Internals.UML_Extensions is
    --------------------
 
    overriding function Qualified_Name
-     (Self : not null access constant UML_Extension_Proxy)
-      return League.Strings.Universal_String
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return League.Strings.Universal_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Qualified_Name unimplemented");
-      raise Program_Error with "Unimplemented function Qualified_Name";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Qualified_Name";
       return Qualified_Name (Self);
    end Qualified_Name;
 
@@ -1394,13 +1409,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------
 
    overriding function Separator
-     (Self : not null access constant UML_Extension_Proxy)
-      return League.Strings.Universal_String
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return League.Strings.Universal_String is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error with "Unimplemented function Separator";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Separator";
       return Separator (Self);
    end Separator;
 
@@ -1409,14 +1423,13 @@ package body AMF.Internals.UML_Extensions is
    -----------------
 
    overriding function Conforms_To
-     (Self : not null access constant UML_Extension_Proxy;
-      Other : AMF.UML.Types.UML_Type_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Other : AMF.UML.Types.UML_Type_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Conforms_To unimplemented");
-      raise Program_Error with "Unimplemented function Conforms_To";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Conforms_To";
       return Conforms_To (Self, Other);
    end Conforms_To;
 
@@ -1425,14 +1438,13 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Is_Compatible_With
-     (Self : not null access constant UML_Extension_Proxy;
-      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Compatible_With unimplemented");
-      raise Program_Error with "Unimplemented function Is_Compatible_With";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Compatible_With";
       return Is_Compatible_With (Self, P);
    end Is_Compatible_With;
 
@@ -1441,13 +1453,12 @@ package body AMF.Internals.UML_Extensions is
    ---------------------------
 
    overriding function Is_Template_Parameter
-     (Self : not null access constant UML_Extension_Proxy)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Template_Parameter unimplemented");
-      raise Program_Error with "Unimplemented function Is_Template_Parameter";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Template_Parameter";
       return Is_Template_Parameter (Self);
    end Is_Template_Parameter;
 
@@ -1456,13 +1467,12 @@ package body AMF.Internals.UML_Extensions is
    ----------------------------
 
    overriding function Parameterable_Elements
-     (Self : not null access constant UML_Extension_Proxy)
-      return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element
-   is
+    (Self : not null access constant UML_Extension_Proxy)
+       return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Parameterable_Elements unimplemented");
-      raise Program_Error with "Unimplemented function Parameterable_Elements";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Parameterable_Elements";
       return Parameterable_Elements (Self);
    end Parameterable_Elements;
 
@@ -1471,14 +1481,13 @@ package body AMF.Internals.UML_Extensions is
    ------------------------
 
    overriding function Is_Consistent_With
-     (Self : not null access constant UML_Extension_Proxy;
-      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Consistent_With unimplemented");
-      raise Program_Error with "Unimplemented function Is_Consistent_With";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Consistent_With";
       return Is_Consistent_With (Self, Redefinee);
    end Is_Consistent_With;
 
@@ -1487,14 +1496,13 @@ package body AMF.Internals.UML_Extensions is
    -----------------------------------
 
    overriding function Is_Redefinition_Context_Valid
-     (Self : not null access constant UML_Extension_Proxy;
-      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
-      return Boolean
-   is
+    (Self : not null access constant UML_Extension_Proxy;
+     Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
+       return Boolean is
    begin
       --  Generated stub: replace with real body!
       pragma Compile_Time_Warning (Standard.True, "Is_Redefinition_Context_Valid unimplemented");
-      raise Program_Error with "Unimplemented function Is_Redefinition_Context_Valid";
+      raise Program_Error with "Unimplemented procedure UML_Extension_Proxy.Is_Redefinition_Context_Valid";
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
 
