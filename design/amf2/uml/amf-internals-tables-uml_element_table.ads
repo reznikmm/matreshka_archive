@@ -50,5 +50,5 @@ package AMF.Internals.Tables.UML_Element_Table is
       (AMF.Internals.Tables.UML_Types.Element_Record,
        AMF.Internals.UML_Element,
        AMF.Internals.UML_Element'First,
-       1_000,
+       10_000,
        100);
