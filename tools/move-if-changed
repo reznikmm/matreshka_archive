@@ -8,10 +8,11 @@ if [ $# != 2 ]; then
 fi
 #
 if [ ! -r "$2" ]; then
-  echo "$2 is updated"
+  echo "$2 is created"
   exec mv -f "$1" "$2"
 fi
 if cmp "$1" "$2" >/dev/null; then
   exec rm -f "$1"
 fi
+echo "$2 is updated"
 exec mv -f "$1" "$2"
