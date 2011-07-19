@@ -49,7 +49,7 @@ Url:            http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
 Group:          System/Libraries
 Source:         matreshka-0.2.0.tar.gz
 ##  Patch:
-BuildRequires:  gcc-ada postgresql-devel sqlite3-devel
+BuildRequires:  gcc-ada postgresql-devel sqlite3-devel pkg-config
 ##  PreReq:
 ##  Provides:
 %description
