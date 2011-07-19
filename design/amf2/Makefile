@@ -55,10 +55,7 @@ gen-uml-stubs: gens
 	test -d uml/generated/.new || mkdir uml/generated/.new
 	./gen-stage2/.obj/gen_api 'http://www.omg.org/spec/UML/20100901/' UML --stubs > uml/generated/.new/sources.ada
 	gnatchop -gnat12 -w uml/generated/.new/sources.ada uml/generated/.new
-	# ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/{}
-	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename > uml/generated/.new/ada.lst
-	cat uml/generated/.new/ada.lst | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/{}
-	cat uml/generated/.new/ada.lst | xargs -I{} gnat stub -Puml/uml.gpr -f uml/{}
+	ls uml/generated/.new/*.ad[sb] | xargs -L1 basename | xargs -I{} ../../tools/move-if-changed uml/generated/.new/{} uml/{}
 	rm -r uml/generated/.new
 
 gen-uml: gens
