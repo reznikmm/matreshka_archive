@@ -37,8 +37,8 @@ league:
 	$(INSTALL) -d ${INSTALL_ALI_DIR}
 	# GNATMAKE doesn't copy matreshka.ali and matreshka-internals.ali into
 	# .libs directory
-	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq > league-src.lst
-	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > league-ali.lst
+	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq | grep -v '^$$' > league-src.lst
+	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' | grep -v '^$$' > league-ali.lst
 	cat league-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
 	cat league-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
@@ -54,9 +54,9 @@ league:
 
 fastcgi:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/fastcgi
-	gnat ls -d -s -P gnat/matreshka_fastcgi.gpr | sort | uniq > fastcgi-src.aux
+	gnat ls -d -s -P gnat/matreshka_fastcgi.gpr | sort | uniq | grep -v '^$$' > fastcgi-src.aux
 	diff -u league-src.lst fastcgi-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > fastcgi-src.lst
-	gnat ls -o -P gnat/matreshka_fastcgi.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > fastcgi-ali.lst
+	gnat ls -o -P gnat/matreshka_fastcgi.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > fastcgi-ali.lst
 	cat fastcgi-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
 	cat fastcgi-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
@@ -70,9 +70,9 @@ fastcgi:
 
 sql:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql
-	gnat ls -d -s -P gnat/matreshka_sql.gpr | sort | uniq > sql-src.aux
+	gnat ls -d -s -P gnat/matreshka_sql.gpr | sort | uniq | grep -v '^$$' > sql-src.aux
 	diff -u league-src.lst sql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql-src.lst
-	gnat ls -o -P gnat/matreshka_sql.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > sql-ali.lst
+	gnat ls -o -P gnat/matreshka_sql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql-ali.lst
 	cat sql-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql
 	cat sql-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql.gpr $(INSTALL_PROJECT_DIR)/sql.gpr
@@ -86,9 +86,9 @@ sql:
 
 oci:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/oci
-	gnat ls -d -s -P gnat/matreshka_sql_oci.gpr | sort | uniq > sql_oci-src.aux
+	gnat ls -d -s -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' > sql_oci-src.aux
 	diff -u sql-src.aux sql_oci-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_oci-src.lst
-	gnat ls -o -P gnat/matreshka_sql_oci.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
+	gnat ls -o -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
 	cat sql_oci-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
 	cat sql_oci-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_oci.gpr $(INSTALL_PROJECT_DIR)/sql_oci.gpr
@@ -102,9 +102,9 @@ oci:
 
 postgresql:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/postgresql
-	gnat ls -d -s -P gnat/matreshka_sql_postgresql.gpr | sort | uniq > sql_postgresql-src.aux
+	gnat ls -d -s -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' > sql_postgresql-src.aux
 	diff -u sql-src.aux sql_postgresql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_postgresql-src.lst
-	gnat ls -o -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > sql_postgresql-ali.lst
+	gnat ls -o -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_postgresql-ali.lst
 	cat sql_postgresql-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/postgresql
 	cat sql_postgresql-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_postgresql.gpr $(INSTALL_PROJECT_DIR)/sql_postgresql.gpr
@@ -118,9 +118,9 @@ postgresql:
 
 sqlite3:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/sqlite3
-	gnat ls -d -s -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq > sql_sqlite3-src.aux
+	gnat ls -d -s -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' > sql_sqlite3-src.aux
 	diff -u sql-src.aux sql_sqlite3-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_sqlite3-src.lst
-	gnat ls -o -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | sed -e 's/.o$$/.ali/' > sql_sqlite3-ali.lst
+	gnat ls -o -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_sqlite3-ali.lst
 	cat sql_sqlite3-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/sqlite3
 	cat sql_sqlite3-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_sqlite3.gpr $(INSTALL_PROJECT_DIR)/sql_sqlite3.gpr
