@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Classifiers;
 with AMF.String_Collections;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers.Collections;
@@ -79,7 +79,7 @@ with AMF.UML.Use_Cases.Collections;
 package AMF.Internals.UML_Enumerations is
 
    type UML_Enumeration_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Classifiers.UML_Classifier_Proxy
        and AMF.UML.Enumerations.UML_Enumeration with null record;
 
    overriding function Get_Owned_Literal
@@ -209,10 +209,6 @@ package AMF.Internals.UML_Enumerations is
    overriding function Get_Name
     (Self : not null access constant UML_Enumeration_Proxy)
        return AMF.Optional_String;
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Enumeration_Proxy;
-     To   : AMF.Optional_String);
 
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Enumeration_Proxy)

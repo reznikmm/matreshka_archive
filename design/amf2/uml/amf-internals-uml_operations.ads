@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.String_Collections;
 with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classes;
@@ -75,7 +75,7 @@ with AMF.UML.Types.Collections;
 package AMF.Internals.UML_Operations is
 
    type UML_Operation_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Operations.UML_Operation with null record;
 
    overriding function Get_Body_Condition
@@ -226,10 +226,6 @@ package AMF.Internals.UML_Operations is
     (Self : not null access constant UML_Operation_Proxy)
        return AMF.Optional_String;
 
-   overriding procedure Set_Name
-    (Self : not null access UML_Operation_Proxy;
-     To   : AMF.Optional_String);
-
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Operation_Proxy)
        return AMF.UML.String_Expressions.UML_String_Expression_Access;
@@ -249,10 +245,6 @@ package AMF.Internals.UML_Operations is
    overriding function Get_Visibility
     (Self : not null access constant UML_Operation_Proxy)
        return AMF.UML.Optional_UML_Visibility_Kind;
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Operation_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind);
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Operation_Proxy)

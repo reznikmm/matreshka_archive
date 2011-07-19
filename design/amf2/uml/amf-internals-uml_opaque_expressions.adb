@@ -133,20 +133,6 @@ package body AMF.Internals.UML_Opaque_Expressions is
       return Get_Name (Self);
    end Get_Name;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access UML_Opaque_Expression_Proxy;
-      To   : AMF.Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name";
-   end Set_Name;
-
    -------------------------
    -- Get_Name_Expression --
    -------------------------

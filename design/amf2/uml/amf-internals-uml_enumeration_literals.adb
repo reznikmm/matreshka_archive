@@ -163,20 +163,6 @@ package body AMF.Internals.UML_Enumeration_Literals is
       return Get_Name (Self);
    end Get_Name;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access UML_Enumeration_Literal_Proxy;
-      To   : AMF.Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name";
-   end Set_Name;
-
    -------------------------
    -- Get_Name_Expression --
    -------------------------

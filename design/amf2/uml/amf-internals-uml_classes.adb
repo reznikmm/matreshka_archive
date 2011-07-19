@@ -30,20 +30,6 @@ package body AMF.Internals.UML_Classes is
       return Get_Is_Abstract (Self);
    end Get_Is_Abstract;
 
-   ---------------------
-   -- Set_Is_Abstract --
-   ---------------------
-
-   overriding procedure Set_Is_Abstract
-     (Self : not null access UML_Class_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Abstract unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Is_Abstract";
-   end Set_Is_Abstract;
-
    -------------------
    -- Get_Is_Active --
    -------------------
@@ -607,20 +593,6 @@ package body AMF.Internals.UML_Classes is
       raise Program_Error with "Unimplemented function Get_Name";
       return Get_Name (Self);
    end Get_Name;
-
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access UML_Class_Proxy;
-      To   : AMF.Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name";
-   end Set_Name;
 
    -------------------------
    -- Get_Name_Expression --

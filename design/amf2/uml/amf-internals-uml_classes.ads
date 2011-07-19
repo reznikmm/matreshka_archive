@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Classifiers;
 with AMF.String_Collections;
 with AMF.UML.Behaviors.Collections;
 with AMF.UML.Classes.Collections;
@@ -85,7 +85,7 @@ with AMF.UML.Use_Cases.Collections;
 package AMF.Internals.UML_Classes is
 
    type UML_Class_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Classifiers.UML_Classifier_Proxy
        and AMF.UML.Classes.UML_Class with null record;
 
    overriding function Get_Extension
@@ -95,10 +95,6 @@ package AMF.Internals.UML_Classes is
    overriding function Get_Is_Abstract
     (Self : not null access constant UML_Class_Proxy)
        return Boolean;
-
-   overriding procedure Set_Is_Abstract
-    (Self : not null access UML_Class_Proxy;
-     To   : Boolean);
 
    overriding function Get_Is_Active
     (Self : not null access constant UML_Class_Proxy)
@@ -251,10 +247,6 @@ package AMF.Internals.UML_Classes is
    overriding function Get_Name
     (Self : not null access constant UML_Class_Proxy)
        return AMF.Optional_String;
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Class_Proxy;
-     To   : AMF.Optional_String);
 
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Class_Proxy)
