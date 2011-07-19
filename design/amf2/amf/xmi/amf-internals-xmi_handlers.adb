@@ -79,6 +79,8 @@ package body AMF.Internals.XMI_Handlers is
          ("http://www.omg.org/spec/XMI/20100901");
    Id_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
+   Idref_Name        : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("idref");
    Type_Name         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
    Href_Name         : constant League.Strings.Universal_String
@@ -244,9 +246,11 @@ package body AMF.Internals.XMI_Handlers is
          end if;
       end Set_Attribute;
 
-      Id         : constant League.Strings.Universal_String
+      Id          : constant League.Strings.Universal_String
         := Attributes.Value (Self.XMI_Namespace, Id_Name);
-      Href_Index : constant Natural := Attributes.Index (Href_Name);
+      Href_Index  : constant Natural := Attributes.Index (Href_Name);
+      Idref_Index : constant Natural
+        := Attributes.Index (Self.XMI_Namespace, Idref_Name);
 
    begin
       --  Set Success flag.
@@ -299,6 +303,11 @@ package body AMF.Internals.XMI_Handlers is
                return;
             end if;
          end;
+
+      elsif Idref_Index /= 0 then
+         --  Process XMI 'idref' attribute if present.
+
+         Set_Attribute (Attribute, Attributes.Value (Idref_Index));
 
       else
          --  Create new element.
