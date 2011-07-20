@@ -66,21 +66,33 @@ package AMF.UML.General_Orderings is
    not overriding function Get_After
     (Self : not null access constant UML_General_Ordering)
        return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
+   --  Getter of GeneralOrdering::after.
+   --
    --  The OccurrenceSpecification referenced comes after the 
    --  OccurrenceSpecification referenced by before.
 
    not overriding procedure Set_After
     (Self : not null access UML_General_Ordering;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
+   --  Setter of GeneralOrdering::after.
+   --
+   --  The OccurrenceSpecification referenced comes after the 
+   --  OccurrenceSpecification referenced by before.
 
    not overriding function Get_Before
     (Self : not null access constant UML_General_Ordering)
        return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
+   --  Getter of GeneralOrdering::before.
+   --
    --  The OccurrenceSpecification referenced comes before the 
    --  OccurrenceSpecification referenced by after.
 
    not overriding procedure Set_Before
     (Self : not null access UML_General_Ordering;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
+   --  Setter of GeneralOrdering::before.
+   --
+   --  The OccurrenceSpecification referenced comes before the 
+   --  OccurrenceSpecification referenced by after.
 
 end AMF.UML.General_Orderings;

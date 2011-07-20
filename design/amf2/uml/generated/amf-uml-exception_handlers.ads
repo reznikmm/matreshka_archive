@@ -66,6 +66,8 @@ package AMF.UML.Exception_Handlers is
    not overriding function Get_Exception_Input
     (Self : not null access constant UML_Exception_Handler)
        return AMF.UML.Object_Nodes.UML_Object_Node_Access is abstract;
+   --  Getter of ExceptionHandler::exceptionInput.
+   --
    --  An object node within the handler body. When the handler catches an 
    --  exception, the exception token is placed in this node, causing the body 
    --  to execute.
@@ -73,10 +75,17 @@ package AMF.UML.Exception_Handlers is
    not overriding procedure Set_Exception_Input
     (Self : not null access UML_Exception_Handler;
      To   : AMF.UML.Object_Nodes.UML_Object_Node_Access) is abstract;
+   --  Setter of ExceptionHandler::exceptionInput.
+   --
+   --  An object node within the handler body. When the handler catches an 
+   --  exception, the exception token is placed in this node, causing the body 
+   --  to execute.
 
    not overriding function Get_Exception_Type
     (Self : not null access constant UML_Exception_Handler)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of ExceptionHandler::exceptionType.
+   --
    --  The kind of instances that the handler catches. If an exception occurs 
    --  whose type is any of the classifiers in the set, the handler catches 
    --  the exception and executes its body.
@@ -84,20 +93,31 @@ package AMF.UML.Exception_Handlers is
    not overriding function Get_Handler_Body
     (Self : not null access constant UML_Exception_Handler)
        return AMF.UML.Executable_Nodes.UML_Executable_Node_Access is abstract;
+   --  Getter of ExceptionHandler::handlerBody.
+   --
    --  A node that is executed if the handler satisfies an uncaught exception.
 
    not overriding procedure Set_Handler_Body
     (Self : not null access UML_Exception_Handler;
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is abstract;
+   --  Setter of ExceptionHandler::handlerBody.
+   --
+   --  A node that is executed if the handler satisfies an uncaught exception.
 
    not overriding function Get_Protected_Node
     (Self : not null access constant UML_Exception_Handler)
        return AMF.UML.Executable_Nodes.UML_Executable_Node_Access is abstract;
+   --  Getter of ExceptionHandler::protectedNode.
+   --
    --  The node protected by the handler. The handler is examined if an 
    --  exception propagates to the outside of the node.
 
    not overriding procedure Set_Protected_Node
     (Self : not null access UML_Exception_Handler;
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is abstract;
+   --  Setter of ExceptionHandler::protectedNode.
+   --
+   --  The node protected by the handler. The handler is examined if an 
+   --  exception propagates to the outside of the node.
 
 end AMF.UML.Exception_Handlers;

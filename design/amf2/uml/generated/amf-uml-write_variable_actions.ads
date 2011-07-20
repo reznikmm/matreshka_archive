@@ -63,10 +63,15 @@ package AMF.UML.Write_Variable_Actions is
    not overriding function Get_Value
     (Self : not null access constant UML_Write_Variable_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of WriteVariableAction::value.
+   --
    --  Value to be added or removed from the variable.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Write_Variable_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of WriteVariableAction::value.
+   --
+   --  Value to be added or removed from the variable.
 
 end AMF.UML.Write_Variable_Actions;

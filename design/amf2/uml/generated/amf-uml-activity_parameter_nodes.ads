@@ -63,10 +63,15 @@ package AMF.UML.Activity_Parameter_Nodes is
    not overriding function Get_Parameter
     (Self : not null access constant UML_Activity_Parameter_Node)
        return AMF.UML.Parameters.UML_Parameter_Access is abstract;
+   --  Getter of ActivityParameterNode::parameter.
+   --
    --  The parameter the object node will be accepting or providing values for.
 
    not overriding procedure Set_Parameter
     (Self : not null access UML_Activity_Parameter_Node;
      To   : AMF.UML.Parameters.UML_Parameter_Access) is abstract;
+   --  Setter of ActivityParameterNode::parameter.
+   --
+   --  The parameter the object node will be accepting or providing values for.
 
 end AMF.UML.Activity_Parameter_Nodes;

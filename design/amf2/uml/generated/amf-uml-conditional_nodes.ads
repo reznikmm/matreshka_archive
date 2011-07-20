@@ -64,29 +64,43 @@ package AMF.UML.Conditional_Nodes is
    not overriding function Get_Clause
     (Self : not null access constant UML_Conditional_Node)
        return AMF.UML.Clauses.Collections.Set_Of_UML_Clause is abstract;
+   --  Getter of ConditionalNode::clause.
+   --
    --  Set of clauses composing the conditional.
 
    not overriding function Get_Is_Assured
     (Self : not null access constant UML_Conditional_Node)
        return Boolean is abstract;
+   --  Getter of ConditionalNode::isAssured.
+   --
    --  If true, the modeler asserts that at least one test will succeed.
 
    not overriding procedure Set_Is_Assured
     (Self : not null access UML_Conditional_Node;
      To   : Boolean) is abstract;
+   --  Setter of ConditionalNode::isAssured.
+   --
+   --  If true, the modeler asserts that at least one test will succeed.
 
    not overriding function Get_Is_Determinate
     (Self : not null access constant UML_Conditional_Node)
        return Boolean is abstract;
+   --  Getter of ConditionalNode::isDeterminate.
+   --
    --  If true, the modeler asserts that at most one test will succeed.
 
    not overriding procedure Set_Is_Determinate
     (Self : not null access UML_Conditional_Node;
      To   : Boolean) is abstract;
+   --  Setter of ConditionalNode::isDeterminate.
+   --
+   --  If true, the modeler asserts that at most one test will succeed.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Conditional_Node)
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
+   --  Getter of ConditionalNode::result.
+   --
    --  A list of output pins that constitute the data flow outputs of the 
    --  conditional.
 

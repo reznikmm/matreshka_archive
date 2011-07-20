@@ -63,10 +63,15 @@ package AMF.UML.Behavior_Execution_Specifications is
    not overriding function Get_Behavior
     (Self : not null access constant UML_Behavior_Execution_Specification)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of BehaviorExecutionSpecification::behavior.
+   --
    --  Behavior whose execution is occurring.
 
    not overriding procedure Set_Behavior
     (Self : not null access UML_Behavior_Execution_Specification;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of BehaviorExecutionSpecification::behavior.
+   --
+   --  Behavior whose execution is occurring.
 
 end AMF.UML.Behavior_Execution_Specifications;

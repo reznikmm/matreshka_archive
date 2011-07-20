@@ -66,6 +66,8 @@ package AMF.UML.Extensions is
    not overriding function Get_Is_Required
     (Self : not null access constant UML_Extension)
        return Boolean is abstract;
+   --  Getter of Extension::isRequired.
+   --
    --  Indicates whether an instance of the extending stereotype must be 
    --  created when an instance of the extended class is created. The 
    --  attribute value is derived from the value of the lower property of the 
@@ -77,6 +79,8 @@ package AMF.UML.Extensions is
    not overriding function Get_Metaclass
     (Self : not null access constant UML_Extension)
        return AMF.UML.Classes.UML_Class_Access is abstract;
+   --  Getter of Extension::metaclass.
+   --
    --  References the Class that is extended through an Extension. The 
    --  property is derived from the type of the memberEnd that is not the 
    --  ownedEnd.
@@ -84,11 +88,16 @@ package AMF.UML.Extensions is
    not overriding function Get_Owned_End
     (Self : not null access constant UML_Extension)
        return AMF.UML.Extension_Ends.UML_Extension_End_Access is abstract;
+   --  Getter of Extension::ownedEnd.
+   --
    --  References the end of the extension that is typed by a Stereotype.
 
    not overriding procedure Set_Owned_End
     (Self : not null access UML_Extension;
      To   : AMF.UML.Extension_Ends.UML_Extension_End_Access) is abstract;
+   --  Setter of Extension::ownedEnd.
+   --
+   --  References the end of the extension that is typed by a Stereotype.
 
    not overriding function Is_Required
     (Self : not null access constant UML_Extension)

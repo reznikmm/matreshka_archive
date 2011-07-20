@@ -64,11 +64,16 @@ package AMF.UML.Types is
    not overriding function Get_Package
     (Self : not null access constant UML_Type)
        return AMF.UML.Packages.UML_Package_Access is abstract;
+   --  Getter of Type::package.
+   --
    --  Specifies the owning package of this classifier, if any.
 
    not overriding procedure Set_Package
     (Self : not null access UML_Type;
      To   : AMF.UML.Packages.UML_Package_Access) is abstract;
+   --  Setter of Type::package.
+   --
+   --  Specifies the owning package of this classifier, if any.
 
    not overriding function Conforms_To
     (Self : not null access constant UML_Type;

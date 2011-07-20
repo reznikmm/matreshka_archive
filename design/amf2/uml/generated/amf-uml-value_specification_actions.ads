@@ -64,19 +64,29 @@ package AMF.UML.Value_Specification_Actions is
    not overriding function Get_Result
     (Self : not null access constant UML_Value_Specification_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of ValueSpecificationAction::result.
+   --
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Value_Specification_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of ValueSpecificationAction::result.
+   --
+   --  Gives the output pin on which the result is put.
 
    not overriding function Get_Value
     (Self : not null access constant UML_Value_Specification_Action)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of ValueSpecificationAction::value.
+   --
    --  Value specification to be evaluated.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Value_Specification_Action;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of ValueSpecificationAction::value.
+   --
+   --  Value specification to be evaluated.
 
 end AMF.UML.Value_Specification_Actions;

@@ -60,41 +60,77 @@ package AMF.Internals.UML_Slots is
    overriding function Get_Defining_Feature
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Structural_Features.UML_Structural_Feature_Access;
+   --  Getter of Slot::definingFeature.
+   --
+   --  The structural feature that specifies the values that may be held by 
+   --  the slot.
 
    overriding procedure Set_Defining_Feature
     (Self : not null access UML_Slot_Proxy;
      To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access);
+   --  Setter of Slot::definingFeature.
+   --
+   --  The structural feature that specifies the values that may be held by 
+   --  the slot.
 
    overriding function Get_Owning_Instance
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Instance_Specifications.UML_Instance_Specification_Access;
+   --  Getter of Slot::owningInstance.
+   --
+   --  The instance specification that owns this slot.
 
    overriding procedure Set_Owning_Instance
     (Self : not null access UML_Slot_Proxy;
      To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access);
+   --  Setter of Slot::owningInstance.
+   --
+   --  The instance specification that owns this slot.
 
    overriding function Get_Value
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification;
+   --  Getter of Slot::value.
+   --
+   --  The value or values corresponding to the defining feature for the 
+   --  owning instance specification.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Slot_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Slot_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Slots;

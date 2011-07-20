@@ -75,6 +75,8 @@ package AMF.UML.Collaboration_Uses is
    not overriding function Get_Role_Binding
     (Self : not null access constant UML_Collaboration_Use)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is abstract;
+   --  Getter of CollaborationUse::roleBinding.
+   --
    --  A mapping between features of the collaboration type and features of 
    --  the owning classifier. This mapping indicates which connectable element 
    --  of the classifier plays which role(s) in the collaboration. A 
@@ -84,6 +86,8 @@ package AMF.UML.Collaboration_Uses is
    not overriding function Get_Type
     (Self : not null access constant UML_Collaboration_Use)
        return AMF.UML.Collaborations.UML_Collaboration_Access is abstract;
+   --  Getter of CollaborationUse::type.
+   --
    --  The collaboration which is used in this occurrence. The collaboration 
    --  defines the cooperation between its roles which are mapped to 
    --  properties of the classifier owning the collaboration use.
@@ -91,5 +95,10 @@ package AMF.UML.Collaboration_Uses is
    not overriding procedure Set_Type
     (Self : not null access UML_Collaboration_Use;
      To   : AMF.UML.Collaborations.UML_Collaboration_Access) is abstract;
+   --  Setter of CollaborationUse::type.
+   --
+   --  The collaboration which is used in this occurrence. The collaboration 
+   --  defines the cooperation between its roles which are mapped to 
+   --  properties of the classifier owning the collaboration use.
 
 end AMF.UML.Collaboration_Uses;

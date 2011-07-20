@@ -69,35 +69,50 @@ package AMF.CMOF.Packages is
    not overriding function Get_Packaged_Element
     (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Getter of Package::packagedElement.
+   --
    --  Specifies the packageable elements that are owned by this Package.
 
    not overriding function Get_Owned_Type
     (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
+   --  Getter of Package::ownedType.
+   --
    --  References the packaged elements that are Types.
 
    not overriding function Get_Nested_Package
     (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is abstract;
+   --  Getter of Package::nestedPackage.
+   --
    --  References the packaged elements that are Packages.
 
    not overriding function Get_Nesting_Package
     (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
+   --  Getter of Package::nestingPackage.
+   --
    --  References the Package that owns this Package.
 
    not overriding procedure Set_Nesting_Package
     (Self : not null access CMOF_Package;
      To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
+   --  Setter of Package::nestingPackage.
+   --
+   --  References the Package that owns this Package.
 
    not overriding function Get_Package_Merge
     (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Package_Merges.Collections.Set_Of_CMOF_Package_Merge is abstract;
+   --  Getter of Package::packageMerge.
+   --
    --  References the PackageMerges that are owned by this Package.
 
    not overriding function Get_Uri
     (Self : not null access constant CMOF_Package)
        return AMF.Optional_String is abstract;
+   --  Getter of Package::uri.
+   --
    --  Provides an identifier for the package that can be used for many 
    --  purposes. A URI is the universally unique identification of the package 
    --  following the IETF URI specification, RFC 2396 
@@ -108,16 +123,28 @@ package AMF.CMOF.Packages is
    not overriding procedure Set_Uri
     (Self : not null access CMOF_Package;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Package::uri.
+   --
+   --  Provides an identifier for the package that can be used for many 
+   --  purposes. A URI is the universally unique identification of the package 
+   --  following the IETF URI specification, RFC 2396 
+   --  http://www.ietf.org/rfc/rfc2396.txt. UML 1.4 and MOF 1.4 were assigned 
+   --  URIs to their outermost package. The package URI appears in XMI files 
+   --  when instances of the package’s classes are serialized.
 
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Package)
        return Boolean is abstract;
+   --  Operation Package::mustBeOwned.
+   --
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner.
 
    not overriding function Visible_Members
     (Self : not null access constant CMOF_Package)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Operation Package::visibleMembers.
+   --
    --  The query visibleMembers() defines which members of a Package can be 
    --  accessed outside it.
 
@@ -125,6 +152,8 @@ package AMF.CMOF.Packages is
     (Self : not null access constant CMOF_Package;
      El : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
        return Boolean is abstract;
+   --  Operation Package::makesVisible.
+   --
    --  The query makesVisible() defines whether a Package makes an element 
    --  visible outside itself. Elements with no visibility and elements with 
    --  public visibility are made visible.

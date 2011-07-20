@@ -72,6 +72,8 @@ package AMF.UML.State_Machines is
    not overriding function Get_Connection_Point
     (Self : not null access constant UML_State_Machine)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
+   --  Getter of StateMachine::connectionPoint.
+   --
    --  The connection points defined for this state machine. They represent 
    --  the interface of the state machine when used as part of submachine 
    --  state.
@@ -79,16 +81,22 @@ package AMF.UML.State_Machines is
    not overriding function Get_Extended_State_Machine
     (Self : not null access constant UML_State_Machine)
        return AMF.UML.State_Machines.Collections.Set_Of_UML_State_Machine is abstract;
+   --  Getter of StateMachine::extendedStateMachine.
+   --
    --  The state machines of which this is an extension.
 
    not overriding function Get_Region
     (Self : not null access constant UML_State_Machine)
        return AMF.UML.Regions.Collections.Set_Of_UML_Region is abstract;
+   --  Getter of StateMachine::region.
+   --
    --  The regions owned directly by the state machine.
 
    not overriding function Get_Submachine_State
     (Self : not null access constant UML_State_Machine)
        return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
+   --  Getter of StateMachine::submachineState.
+   --
    --  References the submachine(s) in case of a submachine state. Multiple 
    --  machines are referenced in case of a concurrent state.
 

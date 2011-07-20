@@ -63,11 +63,17 @@ package AMF.UML.Change_Events is
    not overriding function Get_Change_Expression
     (Self : not null access constant UML_Change_Event)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of ChangeEvent::changeExpression.
+   --
    --  A Boolean-valued expression that will result in a change event whenever 
    --  its value changes from false to true.
 
    not overriding procedure Set_Change_Expression
     (Self : not null access UML_Change_Event;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of ChangeEvent::changeExpression.
+   --
+   --  A Boolean-valued expression that will result in a change event whenever 
+   --  its value changes from false to true.
 
 end AMF.UML.Change_Events;

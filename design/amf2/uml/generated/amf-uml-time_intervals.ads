@@ -62,19 +62,29 @@ package AMF.UML.Time_Intervals is
    not overriding function Get_Max
     (Self : not null access constant UML_Time_Interval)
        return AMF.UML.Time_Expressions.UML_Time_Expression_Access is abstract;
+   --  Getter of TimeInterval::max.
+   --
    --  Refers to the TimeExpression denoting the maximum value of the range.
 
    not overriding procedure Set_Max
     (Self : not null access UML_Time_Interval;
      To   : AMF.UML.Time_Expressions.UML_Time_Expression_Access) is abstract;
+   --  Setter of TimeInterval::max.
+   --
+   --  Refers to the TimeExpression denoting the maximum value of the range.
 
    not overriding function Get_Min
     (Self : not null access constant UML_Time_Interval)
        return AMF.UML.Time_Expressions.UML_Time_Expression_Access is abstract;
+   --  Getter of TimeInterval::min.
+   --
    --  Refers to the TimeExpression denoting the minimum value of the range.
 
    not overriding procedure Set_Min
     (Self : not null access UML_Time_Interval;
      To   : AMF.UML.Time_Expressions.UML_Time_Expression_Access) is abstract;
+   --  Setter of TimeInterval::min.
+   --
+   --  Refers to the TimeExpression denoting the minimum value of the range.
 
 end AMF.UML.Time_Intervals;

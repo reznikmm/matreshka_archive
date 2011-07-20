@@ -73,12 +73,16 @@ package AMF.UML.Instance_Specifications is
    not overriding function Get_Classifier
     (Self : not null access constant UML_Instance_Specification)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of InstanceSpecification::classifier.
+   --
    --  The classifier or classifiers of the represented instance. If multiple 
    --  classifiers are specified, the instance is classified by all of them.
 
    not overriding function Get_Slot
     (Self : not null access constant UML_Instance_Specification)
        return AMF.UML.Slots.Collections.Set_Of_UML_Slot is abstract;
+   --  Getter of InstanceSpecification::slot.
+   --
    --  A slot giving the value or values of a structural feature of the 
    --  instance. An instance specification can have one slot per structural 
    --  feature of its classifiers, including inherited features. It is not 
@@ -88,10 +92,15 @@ package AMF.UML.Instance_Specifications is
    not overriding function Get_Specification
     (Self : not null access constant UML_Instance_Specification)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of InstanceSpecification::specification.
+   --
    --  A specification of how to compute, derive, or construct the instance.
 
    not overriding procedure Set_Specification
     (Self : not null access UML_Instance_Specification;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of InstanceSpecification::specification.
+   --
+   --  A specification of how to compute, derive, or construct the instance.
 
 end AMF.UML.Instance_Specifications;

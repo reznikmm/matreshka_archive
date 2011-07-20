@@ -63,11 +63,15 @@ package AMF.CMOF.Directed_Relationships is
    not overriding function Get_Source
     (Self : not null access constant CMOF_Directed_Relationship)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Getter of DirectedRelationship::source.
+   --
    --  Specifies the sources of the DirectedRelationship.
 
    not overriding function Get_Target
     (Self : not null access constant CMOF_Directed_Relationship)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Getter of DirectedRelationship::target.
+   --
    --  Specifies the targets of the DirectedRelationship.
 
 end AMF.CMOF.Directed_Relationships;

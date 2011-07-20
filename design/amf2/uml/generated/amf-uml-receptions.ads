@@ -66,10 +66,15 @@ package AMF.UML.Receptions is
    not overriding function Get_Signal
     (Self : not null access constant UML_Reception)
        return AMF.UML.Signals.UML_Signal_Access is abstract;
+   --  Getter of Reception::signal.
+   --
    --  The signal that this reception handles.
 
    not overriding procedure Set_Signal
     (Self : not null access UML_Reception;
      To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
+   --  Setter of Reception::signal.
+   --
+   --  The signal that this reception handles.
 
 end AMF.UML.Receptions;

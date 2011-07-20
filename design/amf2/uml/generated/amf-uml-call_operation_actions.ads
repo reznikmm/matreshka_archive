@@ -74,15 +74,22 @@ package AMF.UML.Call_Operation_Actions is
    not overriding function Get_Operation
     (Self : not null access constant UML_Call_Operation_Action)
        return AMF.UML.Operations.UML_Operation_Access is abstract;
+   --  Getter of CallOperationAction::operation.
+   --
    --  The operation to be invoked by the action execution.
 
    not overriding procedure Set_Operation
     (Self : not null access UML_Call_Operation_Action;
      To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
+   --  Setter of CallOperationAction::operation.
+   --
+   --  The operation to be invoked by the action execution.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Call_Operation_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of CallOperationAction::target.
+   --
    --  The target object to which the request is sent. The classifier of the 
    --  target object is used to dynamically determine a behavior to invoke. 
    --  This object constitutes the context of the execution of the operation.
@@ -90,5 +97,10 @@ package AMF.UML.Call_Operation_Actions is
    not overriding procedure Set_Target
     (Self : not null access UML_Call_Operation_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of CallOperationAction::target.
+   --
+   --  The target object to which the request is sent. The classifier of the 
+   --  target object is used to dynamically determine a behavior to invoke. 
+   --  This object constitutes the context of the execution of the operation.
 
 end AMF.UML.Call_Operation_Actions;

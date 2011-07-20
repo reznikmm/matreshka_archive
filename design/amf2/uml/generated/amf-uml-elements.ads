@@ -62,16 +62,22 @@ package AMF.UML.Elements is
    not overriding function Get_Owned_Comment
     (Self : not null access constant UML_Element)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment is abstract;
+   --  Getter of Element::ownedComment.
+   --
    --  The Comments owned by this element.
 
    not overriding function Get_Owned_Element
     (Self : not null access constant UML_Element)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
+   --  Getter of Element::ownedElement.
+   --
    --  The Elements owned by this element.
 
    not overriding function Get_Owner
     (Self : not null access constant UML_Element)
        return AMF.UML.Elements.UML_Element_Access is abstract;
+   --  Getter of Element::owner.
+   --
    --  The Element that owns this element.
 
    not overriding function All_Owned_Elements

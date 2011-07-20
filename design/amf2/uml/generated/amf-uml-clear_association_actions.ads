@@ -64,20 +64,31 @@ package AMF.UML.Clear_Association_Actions is
    not overriding function Get_Association
     (Self : not null access constant UML_Clear_Association_Action)
        return AMF.UML.Associations.UML_Association_Access is abstract;
+   --  Getter of ClearAssociationAction::association.
+   --
    --  Association to be cleared.
 
    not overriding procedure Set_Association
     (Self : not null access UML_Clear_Association_Action;
      To   : AMF.UML.Associations.UML_Association_Access) is abstract;
+   --  Setter of ClearAssociationAction::association.
+   --
+   --  Association to be cleared.
 
    not overriding function Get_Object
     (Self : not null access constant UML_Clear_Association_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of ClearAssociationAction::object.
+   --
    --  Gives the input pin from which is obtained the object whose 
    --  participation in the association is to be cleared.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Clear_Association_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of ClearAssociationAction::object.
+   --
+   --  Gives the input pin from which is obtained the object whose 
+   --  participation in the association is to be cleared.
 
 end AMF.UML.Clear_Association_Actions;

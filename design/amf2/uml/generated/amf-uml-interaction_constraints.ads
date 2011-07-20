@@ -63,19 +63,29 @@ package AMF.UML.Interaction_Constraints is
    not overriding function Get_Maxint
     (Self : not null access constant UML_Interaction_Constraint)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of InteractionConstraint::maxint.
+   --
    --  The maximum number of iterations of a loop
 
    not overriding procedure Set_Maxint
     (Self : not null access UML_Interaction_Constraint;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of InteractionConstraint::maxint.
+   --
+   --  The maximum number of iterations of a loop
 
    not overriding function Get_Minint
     (Self : not null access constant UML_Interaction_Constraint)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of InteractionConstraint::minint.
+   --
    --  The minimum number of iterations of a loop
 
    not overriding procedure Set_Minint
     (Self : not null access UML_Interaction_Constraint;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of InteractionConstraint::minint.
+   --
+   --  The minimum number of iterations of a loop
 
 end AMF.UML.Interaction_Constraints;

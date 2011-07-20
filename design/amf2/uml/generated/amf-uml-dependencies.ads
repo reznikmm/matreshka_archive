@@ -68,6 +68,8 @@ package AMF.UML.Dependencies is
    not overriding function Get_Client
     (Self : not null access constant UML_Dependency)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of Dependency::client.
+   --
    --  The element(s) dependent on the supplier element(s). In some cases 
    --  (such as a Trace Abstraction) the assignment of direction (that is, the 
    --  designation of the client element) is at the discretion of the modeler, 
@@ -76,6 +78,8 @@ package AMF.UML.Dependencies is
    not overriding function Get_Supplier
     (Self : not null access constant UML_Dependency)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of Dependency::supplier.
+   --
    --  The element(s) independent of the client element(s), in the same 
    --  respect and the same dependency relationship. In some directed 
    --  dependency relationships (such as Refinement Abstractions), a common 

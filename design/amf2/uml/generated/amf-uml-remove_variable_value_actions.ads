@@ -63,16 +63,24 @@ package AMF.UML.Remove_Variable_Value_Actions is
    not overriding function Get_Is_Remove_Duplicates
     (Self : not null access constant UML_Remove_Variable_Value_Action)
        return Boolean is abstract;
+   --  Getter of RemoveVariableValueAction::isRemoveDuplicates.
+   --
    --  Specifies whether to remove duplicates of the value in nonunique 
    --  variables.
 
    not overriding procedure Set_Is_Remove_Duplicates
     (Self : not null access UML_Remove_Variable_Value_Action;
      To   : Boolean) is abstract;
+   --  Setter of RemoveVariableValueAction::isRemoveDuplicates.
+   --
+   --  Specifies whether to remove duplicates of the value in nonunique 
+   --  variables.
 
    not overriding function Get_Remove_At
     (Self : not null access constant UML_Remove_Variable_Value_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of RemoveVariableValueAction::removeAt.
+   --
    --  Specifies the position of an existing value to remove in ordered 
    --  nonunique variables. The type of the pin is UnlimitedNatural, but the 
    --  value cannot be zero or unlimited.
@@ -80,5 +88,10 @@ package AMF.UML.Remove_Variable_Value_Actions is
    not overriding procedure Set_Remove_At
     (Self : not null access UML_Remove_Variable_Value_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of RemoveVariableValueAction::removeAt.
+   --
+   --  Specifies the position of an existing value to remove in ordered 
+   --  nonunique variables. The type of the pin is UnlimitedNatural, but the 
+   --  value cannot be zero or unlimited.
 
 end AMF.UML.Remove_Variable_Value_Actions;

@@ -62,30 +62,45 @@ package AMF.CMOF.Named_Elements is
    not overriding function Get_Name
     (Self : not null access constant CMOF_Named_Element)
        return AMF.Optional_String is abstract;
+   --  Getter of NamedElement::name.
+   --
    --  The name of the NamedElement.
 
    not overriding procedure Set_Name
     (Self : not null access CMOF_Named_Element;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    not overriding function Get_Visibility
     (Self : not null access constant CMOF_Named_Element)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind is abstract;
+   --  Getter of NamedElement::visibility.
+   --
    --  Determines where the NamedElement appears within different Namespaces 
    --  within the overall model, and its accessibility.
 
    not overriding procedure Set_Visibility
     (Self : not null access CMOF_Named_Element;
      To   : AMF.CMOF.Optional_CMOF_Visibility_Kind) is abstract;
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    not overriding function Get_Namespace
     (Self : not null access constant CMOF_Named_Element)
        return AMF.CMOF.Namespaces.CMOF_Namespace_Access is abstract;
+   --  Getter of NamedElement::namespace.
+   --
    --  Specifies the namespace that owns the NamedElement.
 
    not overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Named_Element)
        return AMF.Optional_String is abstract;
+   --  Getter of NamedElement::qualifiedName.
+   --
    --  A name which allows the NamedElement to be identified within a 
    --  hierarchy of nested Namespaces. It is constructed from the names of the 
    --  containing namespaces starting at the root of the hierarchy and ending 
@@ -94,6 +109,8 @@ package AMF.CMOF.Named_Elements is
    not overriding function All_Namespaces
     (Self : not null access constant CMOF_Named_Element)
        return AMF.CMOF.Namespaces.Collections.Ordered_Set_Of_CMOF_Namespace is abstract;
+   --  Operation NamedElement::allNamespaces.
+   --
    --  The query allNamespaces() gives the sequence of namespaces in which the 
    --  NamedElement is nested, working outwards.
 
@@ -102,6 +119,8 @@ package AMF.CMOF.Named_Elements is
      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean is abstract;
+   --  Operation NamedElement::isDistinguishableFrom.
+   --
    --  The query isDistinguishableFrom() determines whether two NamedElements 
    --  may logically co-exist within a Namespace. By default, two named 
    --  elements are distinguishable if (a) they have unrelated types or (b) 
@@ -110,12 +129,16 @@ package AMF.CMOF.Named_Elements is
    not overriding function Separator
     (Self : not null access constant CMOF_Named_Element)
        return League.Strings.Universal_String is abstract;
+   --  Operation NamedElement::separator.
+   --
    --  The query separator() gives the string that is used to separate names 
    --  when constructing a qualified name.
 
    not overriding function Qualified_Name
     (Self : not null access constant CMOF_Named_Element)
        return League.Strings.Universal_String is abstract;
+   --  Operation NamedElement::qualifiedName.
+   --
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.

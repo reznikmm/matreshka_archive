@@ -68,33 +68,45 @@ package AMF.UML.Namespaces is
    not overriding function Get_Element_Import
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Element_Imports.Collections.Set_Of_UML_Element_Import is abstract;
+   --  Getter of Namespace::elementImport.
+   --
    --  References the ElementImports owned by the Namespace.
 
    not overriding function Get_Imported_Member
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Getter of Namespace::importedMember.
+   --
    --  References the PackageableElements that are members of this Namespace 
    --  as a result of either PackageImports or ElementImports.
 
    not overriding function Get_Member
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of Namespace::member.
+   --
    --  A collection of NamedElements identifiable within the Namespace, either 
    --  by being owned or by being introduced by importing or inheritance.
 
    not overriding function Get_Owned_Member
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of Namespace::ownedMember.
+   --
    --  A collection of NamedElements owned by the Namespace.
 
    not overriding function Get_Owned_Rule
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
+   --  Getter of Namespace::ownedRule.
+   --
    --  Specifies a set of Constraints owned by this Namespace.
 
    not overriding function Get_Package_Import
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Package_Imports.Collections.Set_Of_UML_Package_Import is abstract;
+   --  Getter of Namespace::packageImport.
+   --
    --  References the PackageImports owned by the Namespace.
 
    not overriding function Exclude_Collisions

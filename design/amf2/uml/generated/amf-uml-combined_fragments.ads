@@ -66,22 +66,32 @@ package AMF.UML.Combined_Fragments is
    not overriding function Get_Cfragment_Gate
     (Self : not null access constant UML_Combined_Fragment)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
+   --  Getter of CombinedFragment::cfragmentGate.
+   --
    --  Specifies the gates that form the interface between this 
    --  CombinedFragment and its surroundings
 
    not overriding function Get_Interaction_Operator
     (Self : not null access constant UML_Combined_Fragment)
        return AMF.UML.UML_Interaction_Operator_Kind is abstract;
+   --  Getter of CombinedFragment::interactionOperator.
+   --
    --  Specifies the operation which defines the semantics of this combination 
    --  of InteractionFragments.
 
    not overriding procedure Set_Interaction_Operator
     (Self : not null access UML_Combined_Fragment;
      To   : AMF.UML.UML_Interaction_Operator_Kind) is abstract;
+   --  Setter of CombinedFragment::interactionOperator.
+   --
+   --  Specifies the operation which defines the semantics of this combination 
+   --  of InteractionFragments.
 
    not overriding function Get_Operand
     (Self : not null access constant UML_Combined_Fragment)
        return AMF.UML.Interaction_Operands.Collections.Ordered_Set_Of_UML_Interaction_Operand is abstract;
+   --  Getter of CombinedFragment::operand.
+   --
    --  The set of operands of the combined fragment.
 
 end AMF.UML.Combined_Fragments;

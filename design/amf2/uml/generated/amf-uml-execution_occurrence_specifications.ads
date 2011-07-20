@@ -63,11 +63,17 @@ package AMF.UML.Execution_Occurrence_Specifications is
    not overriding function Get_Execution
     (Self : not null access constant UML_Execution_Occurrence_Specification)
        return AMF.UML.Execution_Specifications.UML_Execution_Specification_Access is abstract;
+   --  Getter of ExecutionOccurrenceSpecification::execution.
+   --
    --  References the execution specification describing the execution that is 
    --  started or finished at this execution event.
 
    not overriding procedure Set_Execution
     (Self : not null access UML_Execution_Occurrence_Specification;
      To   : AMF.UML.Execution_Specifications.UML_Execution_Specification_Access) is abstract;
+   --  Setter of ExecutionOccurrenceSpecification::execution.
+   --
+   --  References the execution specification describing the execution that is 
+   --  started or finished at this execution event.
 
 end AMF.UML.Execution_Occurrence_Specifications;

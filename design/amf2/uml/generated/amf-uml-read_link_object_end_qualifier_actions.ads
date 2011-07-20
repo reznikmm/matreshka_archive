@@ -65,28 +65,43 @@ package AMF.UML.Read_Link_Object_End_Qualifier_Actions is
    not overriding function Get_Object
     (Self : not null access constant UML_Read_Link_Object_End_Qualifier_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of ReadLinkObjectEndQualifierAction::object.
+   --
    --  Gives the input pin from which the link object is obtained.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Read_Link_Object_End_Qualifier_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of ReadLinkObjectEndQualifierAction::object.
+   --
+   --  Gives the input pin from which the link object is obtained.
 
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Read_Link_Object_End_Qualifier_Action)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of ReadLinkObjectEndQualifierAction::qualifier.
+   --
    --  The attribute representing the qualifier to be read.
 
    not overriding procedure Set_Qualifier
     (Self : not null access UML_Read_Link_Object_End_Qualifier_Action;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of ReadLinkObjectEndQualifierAction::qualifier.
+   --
+   --  The attribute representing the qualifier to be read.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Read_Link_Object_End_Qualifier_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of ReadLinkObjectEndQualifierAction::result.
+   --
    --  Pin where the result value is placed.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Read_Link_Object_End_Qualifier_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of ReadLinkObjectEndQualifierAction::result.
+   --
+   --  Pin where the result value is placed.
 
 end AMF.UML.Read_Link_Object_End_Qualifier_Actions;

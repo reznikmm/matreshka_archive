@@ -59,37 +59,69 @@ package AMF.Internals.UML_Template_Signatures is
    overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter;
+   --  Getter of TemplateSignature::ownedParameter.
+   --
+   --  The formal template parameters that are owned by this template 
+   --  signature.
 
    overriding function Get_Parameter
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter;
+   --  Getter of TemplateSignature::parameter.
+   --
+   --  The ordered set of all formal template parameters for this template 
+   --  signature.
 
    overriding function Get_Template
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access;
+   --  Getter of TemplateSignature::template.
+   --
+   --  The element that owns this template signature.
 
    overriding procedure Set_Template
     (Self : not null access UML_Template_Signature_Proxy;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access);
+   --  Setter of TemplateSignature::template.
+   --
+   --  The element that owns this template signature.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Template_Signature_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Template_Signature_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Template_Signatures;

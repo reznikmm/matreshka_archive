@@ -63,6 +63,8 @@ package AMF.CMOF.Enumerations is
    not overriding function Get_Owned_Literal
     (Self : not null access constant CMOF_Enumeration)
        return AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal is abstract;
+   --  Getter of Enumeration::ownedLiteral.
+   --
    --  The ordered set of literals for this Enumeration.
 
 end AMF.CMOF.Enumerations;

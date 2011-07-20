@@ -63,10 +63,15 @@ package AMF.CMOF.Typed_Elements is
    not overriding function Get_Type
     (Self : not null access constant CMOF_Typed_Element)
        return AMF.CMOF.Types.CMOF_Type_Access is abstract;
+   --  Getter of TypedElement::type.
+   --
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Type
     (Self : not null access CMOF_Typed_Element;
      To   : AMF.CMOF.Types.CMOF_Type_Access) is abstract;
+   --  Setter of TypedElement::type.
+   --
+   --  This information is derived from the return result for this Operation.
 
 end AMF.CMOF.Typed_Elements;

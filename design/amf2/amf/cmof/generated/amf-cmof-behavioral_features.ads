@@ -67,12 +67,16 @@ package AMF.CMOF.Behavioral_Features is
    not overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Behavioral_Feature)
        return AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter is abstract;
+   --  Getter of BehavioralFeature::ownedParameter.
+   --
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
 
    not overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Behavioral_Feature)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
+   --  Getter of BehavioralFeature::raisedException.
+   --
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this feature.
 
@@ -81,6 +85,8 @@ package AMF.CMOF.Behavioral_Features is
      N : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access;
      Ns : AMF.CMOF.Namespaces.CMOF_Namespace_Access)
        return Boolean is abstract;
+   --  Operation BehavioralFeature::isDistinguishableFrom.
+   --
    --  The query isDistinguishableFrom() determines whether two 
    --  BehavioralFeatures may coexist in the same Namespace. It specifies that 
    --  they have to have different signatures.

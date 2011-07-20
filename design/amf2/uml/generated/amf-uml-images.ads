@@ -61,6 +61,8 @@ package AMF.UML.Images is
    not overriding function Get_Content
     (Self : not null access constant UML_Image)
        return AMF.Optional_String is abstract;
+   --  Getter of Image::content.
+   --
    --  This contains the serialization of the image according to the format. 
    --  The value could represent a bitmap, image such as a GIF file, or 
    --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
@@ -69,10 +71,18 @@ package AMF.UML.Images is
    not overriding procedure Set_Content
     (Self : not null access UML_Image;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Image::content.
+   --
+   --  This contains the serialization of the image according to the format. 
+   --  The value could represent a bitmap, image such as a GIF file, or 
+   --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
+   --  (SVG) (which is XML based).
 
    not overriding function Get_Format
     (Self : not null access constant UML_Image)
        return AMF.Optional_String is abstract;
+   --  Getter of Image::format.
+   --
    --  This indicates the format of the content - which is how the string 
    --  content should be interpreted. The following values are reserved: SVG, 
    --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
@@ -83,15 +93,29 @@ package AMF.UML.Images is
    not overriding procedure Set_Format
     (Self : not null access UML_Image;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Image::format.
+   --
+   --  This indicates the format of the content - which is how the string 
+   --  content should be interpreted. The following values are reserved: SVG, 
+   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
+   --  reserved. This option can be used as an alternative to express the 
+   --  reserved values above, for example 'SVG' could instead be expressed as 
+   --  'MIME: image/svg+xml'.
 
    not overriding function Get_Location
     (Self : not null access constant UML_Image)
        return AMF.Optional_String is abstract;
+   --  Getter of Image::location.
+   --
    --  This contains a location that can be used by a tool to locate the image 
    --  as an alternative to embedding it in the stereotype.
 
    not overriding procedure Set_Location
     (Self : not null access UML_Image;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Image::location.
+   --
+   --  This contains a location that can be used by a tool to locate the image 
+   --  as an alternative to embedding it in the stereotype.
 
 end AMF.UML.Images;

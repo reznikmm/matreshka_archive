@@ -65,21 +65,33 @@ package AMF.UML.Execution_Specifications is
    not overriding function Get_Finish
     (Self : not null access constant UML_Execution_Specification)
        return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
+   --  Getter of ExecutionSpecification::finish.
+   --
    --  References the OccurrenceSpecification that designates the finish of 
    --  the Action or Behavior.
 
    not overriding procedure Set_Finish
     (Self : not null access UML_Execution_Specification;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
+   --  Setter of ExecutionSpecification::finish.
+   --
+   --  References the OccurrenceSpecification that designates the finish of 
+   --  the Action or Behavior.
 
    not overriding function Get_Start
     (Self : not null access constant UML_Execution_Specification)
        return AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access is abstract;
+   --  Getter of ExecutionSpecification::start.
+   --
    --  References the OccurrenceSpecification that designates the start of the 
    --  Action or Behavior
 
    not overriding procedure Set_Start
     (Self : not null access UML_Execution_Specification;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is abstract;
+   --  Setter of ExecutionSpecification::start.
+   --
+   --  References the OccurrenceSpecification that designates the start of the 
+   --  Action or Behavior
 
 end AMF.UML.Execution_Specifications;

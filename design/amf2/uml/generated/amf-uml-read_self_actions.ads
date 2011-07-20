@@ -63,10 +63,15 @@ package AMF.UML.Read_Self_Actions is
    not overriding function Get_Result
     (Self : not null access constant UML_Read_Self_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of ReadSelfAction::result.
+   --
    --  Gives the output pin on which the hosting object is placed.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Read_Self_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of ReadSelfAction::result.
+   --
+   --  Gives the output pin on which the hosting object is placed.
 
 end AMF.UML.Read_Self_Actions;

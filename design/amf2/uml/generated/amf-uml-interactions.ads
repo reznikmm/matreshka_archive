@@ -69,27 +69,37 @@ package AMF.UML.Interactions is
    not overriding function Get_Action
     (Self : not null access constant UML_Interaction)
        return AMF.UML.Actions.Collections.Set_Of_UML_Action is abstract;
+   --  Getter of Interaction::action.
+   --
    --  Actions owned by the Interaction.
 
    not overriding function Get_Formal_Gate
     (Self : not null access constant UML_Interaction)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
+   --  Getter of Interaction::formalGate.
+   --
    --  Specifies the gates that form the message interface between this 
    --  Interaction and any InteractionUses which reference it.
 
    not overriding function Get_Fragment
     (Self : not null access constant UML_Interaction)
        return AMF.UML.Interaction_Fragments.Collections.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
+   --  Getter of Interaction::fragment.
+   --
    --  The ordered set of fragments in the Interaction.
 
    not overriding function Get_Lifeline
     (Self : not null access constant UML_Interaction)
        return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline is abstract;
+   --  Getter of Interaction::lifeline.
+   --
    --  Specifies the participants in this Interaction.
 
    not overriding function Get_Message
     (Self : not null access constant UML_Interaction)
        return AMF.UML.Messages.Collections.Set_Of_UML_Message is abstract;
+   --  Getter of Interaction::message.
+   --
    --  The Messages contained in this Interaction.
 
 end AMF.UML.Interactions;

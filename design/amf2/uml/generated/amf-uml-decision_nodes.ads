@@ -63,21 +63,33 @@ package AMF.UML.Decision_Nodes is
    not overriding function Get_Decision_Input
     (Self : not null access constant UML_Decision_Node)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of DecisionNode::decisionInput.
+   --
    --  Provides input to guard specifications on edges outgoing from the 
    --  decision node.
 
    not overriding procedure Set_Decision_Input
     (Self : not null access UML_Decision_Node;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of DecisionNode::decisionInput.
+   --
+   --  Provides input to guard specifications on edges outgoing from the 
+   --  decision node.
 
    not overriding function Get_Decision_Input_Flow
     (Self : not null access constant UML_Decision_Node)
        return AMF.UML.Object_Flows.UML_Object_Flow_Access is abstract;
+   --  Getter of DecisionNode::decisionInputFlow.
+   --
    --  An additional edge incoming to the decision node that provides a 
    --  decision input value.
 
    not overriding procedure Set_Decision_Input_Flow
     (Self : not null access UML_Decision_Node;
      To   : AMF.UML.Object_Flows.UML_Object_Flow_Access) is abstract;
+   --  Setter of DecisionNode::decisionInputFlow.
+   --
+   --  An additional edge incoming to the decision node that provides a 
+   --  decision input value.
 
 end AMF.UML.Decision_Nodes;

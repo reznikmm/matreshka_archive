@@ -63,12 +63,16 @@ package AMF.UML.Deployment_Targets is
    not overriding function Get_Deployed_Element
     (Self : not null access constant UML_Deployment_Target)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Getter of DeploymentTarget::deployedElement.
+   --
    --  The set of elements that are manifested in an Artifact that is involved 
    --  in Deployment to a DeploymentTarget.
 
    not overriding function Get_Deployment
     (Self : not null access constant UML_Deployment_Target)
        return AMF.UML.Deployments.Collections.Set_Of_UML_Deployment is abstract;
+   --  Getter of DeploymentTarget::deployment.
+   --
    --  The set of Deployments for a DeploymentTarget.
 
    not overriding function Deployed_Element

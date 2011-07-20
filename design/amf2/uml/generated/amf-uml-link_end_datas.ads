@@ -72,25 +72,38 @@ package AMF.UML.Link_End_Datas is
    not overriding function Get_End
     (Self : not null access constant UML_Link_End_Data)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of LinkEndData::end.
+   --
    --  Association end for which this link-end data specifies values.
 
    not overriding procedure Set_End
     (Self : not null access UML_Link_End_Data;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of LinkEndData::end.
+   --
+   --  Association end for which this link-end data specifies values.
 
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Link_End_Data)
        return AMF.UML.Qualifier_Values.Collections.Set_Of_UML_Qualifier_Value is abstract;
+   --  Getter of LinkEndData::qualifier.
+   --
    --  List of qualifier values
 
    not overriding function Get_Value
     (Self : not null access constant UML_Link_End_Data)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of LinkEndData::value.
+   --
    --  Input pin that provides the specified object for the given end. This 
    --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Link_End_Data;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of LinkEndData::value.
+   --
+   --  Input pin that provides the specified object for the given end. This 
+   --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
 end AMF.UML.Link_End_Datas;

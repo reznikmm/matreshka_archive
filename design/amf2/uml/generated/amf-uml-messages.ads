@@ -66,67 +66,102 @@ package AMF.UML.Messages is
    not overriding function Get_Argument
     (Self : not null access constant UML_Message)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
+   --  Getter of Message::argument.
+   --
    --  The arguments of the Message
 
    not overriding function Get_Connector
     (Self : not null access constant UML_Message)
        return AMF.UML.Connectors.UML_Connector_Access is abstract;
+   --  Getter of Message::connector.
+   --
    --  The Connector on which this Message is sent.
 
    not overriding procedure Set_Connector
     (Self : not null access UML_Message;
      To   : AMF.UML.Connectors.UML_Connector_Access) is abstract;
+   --  Setter of Message::connector.
+   --
+   --  The Connector on which this Message is sent.
 
    not overriding function Get_Interaction
     (Self : not null access constant UML_Message)
        return AMF.UML.Interactions.UML_Interaction_Access is abstract;
+   --  Getter of Message::interaction.
+   --
    --  The enclosing Interaction owning the Message
 
    not overriding procedure Set_Interaction
     (Self : not null access UML_Message;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
+   --  Setter of Message::interaction.
+   --
+   --  The enclosing Interaction owning the Message
 
    not overriding function Get_Message_Kind
     (Self : not null access constant UML_Message)
        return AMF.UML.UML_Message_Kind is abstract;
+   --  Getter of Message::messageKind.
+   --
    --  The derived kind of the Message (complete, lost, found or unknown)
 
    not overriding function Get_Message_Sort
     (Self : not null access constant UML_Message)
        return AMF.UML.UML_Message_Sort is abstract;
+   --  Getter of Message::messageSort.
+   --
    --  The sort of communication reflected by the Message
 
    not overriding procedure Set_Message_Sort
     (Self : not null access UML_Message;
      To   : AMF.UML.UML_Message_Sort) is abstract;
+   --  Setter of Message::messageSort.
+   --
+   --  The sort of communication reflected by the Message
 
    not overriding function Get_Receive_Event
     (Self : not null access constant UML_Message)
        return AMF.UML.Message_Ends.UML_Message_End_Access is abstract;
+   --  Getter of Message::receiveEvent.
+   --
    --  References the Receiving of the Message
 
    not overriding procedure Set_Receive_Event
     (Self : not null access UML_Message;
      To   : AMF.UML.Message_Ends.UML_Message_End_Access) is abstract;
+   --  Setter of Message::receiveEvent.
+   --
+   --  References the Receiving of the Message
 
    not overriding function Get_Send_Event
     (Self : not null access constant UML_Message)
        return AMF.UML.Message_Ends.UML_Message_End_Access is abstract;
+   --  Getter of Message::sendEvent.
+   --
    --  References the Sending of the Message.
 
    not overriding procedure Set_Send_Event
     (Self : not null access UML_Message;
      To   : AMF.UML.Message_Ends.UML_Message_End_Access) is abstract;
+   --  Setter of Message::sendEvent.
+   --
+   --  References the Sending of the Message.
 
    not overriding function Get_Signature
     (Self : not null access constant UML_Message)
        return AMF.UML.Named_Elements.UML_Named_Element_Access is abstract;
+   --  Getter of Message::signature.
+   --
    --  The signature of the Message is the specification of its content. It 
    --  refers either an Operation or a Signal.
 
    not overriding procedure Set_Signature
     (Self : not null access UML_Message;
      To   : AMF.UML.Named_Elements.UML_Named_Element_Access) is abstract;
+   --  Setter of Message::signature.
+   --
+   --  The signature of the Message is the specification of its content. It 
+   --  refers either an Operation or a Signal.
 
    not overriding function Message_Kind
     (Self : not null access constant UML_Message)

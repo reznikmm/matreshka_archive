@@ -65,20 +65,31 @@ package AMF.UML.Includes is
    not overriding function Get_Addition
     (Self : not null access constant UML_Include)
        return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
+   --  Getter of Include::addition.
+   --
    --  References the use case that is to be included.
 
    not overriding procedure Set_Addition
     (Self : not null access UML_Include;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
+   --  Setter of Include::addition.
+   --
+   --  References the use case that is to be included.
 
    not overriding function Get_Including_Case
     (Self : not null access constant UML_Include)
        return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
+   --  Getter of Include::includingCase.
+   --
    --  References the use case which will include the addition and owns the 
    --  include relationship.
 
    not overriding procedure Set_Including_Case
     (Self : not null access UML_Include;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
+   --  Setter of Include::includingCase.
+   --
+   --  References the use case which will include the addition and owns the 
+   --  include relationship.
 
 end AMF.UML.Includes;

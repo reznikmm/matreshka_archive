@@ -63,6 +63,8 @@ package AMF.UML.Duration_Constraints is
    not overriding function Get_First_Event
     (Self : not null access constant UML_Duration_Constraint)
        return AMF.Boolean_Collections.Set_Of_Boolean is abstract;
+   --  Getter of DurationConstraint::firstEvent.
+   --
    --  The value of firstEvent[i] is related to constrainedElement[i] (where i 
    --  is 1 or 2). If firstEvent[i] is true, then the corresponding 
    --  observation event is the first time instant the execution enters 
@@ -75,10 +77,15 @@ package AMF.UML.Duration_Constraints is
    not overriding function Get_Specification
     (Self : not null access constant UML_Duration_Constraint)
        return AMF.UML.Duration_Intervals.UML_Duration_Interval_Access is abstract;
+   --  Getter of DurationConstraint::specification.
+   --
    --  The interval constraining the duration.
 
    not overriding procedure Set_Specification
     (Self : not null access UML_Duration_Constraint;
      To   : AMF.UML.Duration_Intervals.UML_Duration_Interval_Access) is abstract;
+   --  Setter of DurationConstraint::specification.
+   --
+   --  The interval constraining the duration.
 
 end AMF.UML.Duration_Constraints;

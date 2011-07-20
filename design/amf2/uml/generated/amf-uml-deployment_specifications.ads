@@ -66,30 +66,47 @@ package AMF.UML.Deployment_Specifications is
    not overriding function Get_Deployment
     (Self : not null access constant UML_Deployment_Specification)
        return AMF.UML.Deployments.UML_Deployment_Access is abstract;
+   --  Getter of DeploymentSpecification::deployment.
+   --
    --  The deployment with which the DeploymentSpecification is associated.
 
    not overriding procedure Set_Deployment
     (Self : not null access UML_Deployment_Specification;
      To   : AMF.UML.Deployments.UML_Deployment_Access) is abstract;
+   --  Setter of DeploymentSpecification::deployment.
+   --
+   --  The deployment with which the DeploymentSpecification is associated.
 
    not overriding function Get_Deployment_Location
     (Self : not null access constant UML_Deployment_Specification)
        return AMF.Optional_String is abstract;
+   --  Getter of DeploymentSpecification::deploymentLocation.
+   --
    --  The location where an Artifact is deployed onto a Node. This is 
    --  typically a 'directory' or 'memory address'.
 
    not overriding procedure Set_Deployment_Location
     (Self : not null access UML_Deployment_Specification;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of DeploymentSpecification::deploymentLocation.
+   --
+   --  The location where an Artifact is deployed onto a Node. This is 
+   --  typically a 'directory' or 'memory address'.
 
    not overriding function Get_Execution_Location
     (Self : not null access constant UML_Deployment_Specification)
        return AMF.Optional_String is abstract;
+   --  Getter of DeploymentSpecification::executionLocation.
+   --
    --  The location where a component Artifact executes. This may be a local 
    --  or remote location.
 
    not overriding procedure Set_Execution_Location
     (Self : not null access UML_Deployment_Specification;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of DeploymentSpecification::executionLocation.
+   --
+   --  The location where a component Artifact executes. This may be a local 
+   --  or remote location.
 
 end AMF.UML.Deployment_Specifications;

@@ -82,12 +82,16 @@ package AMF.UML.Connectors is
    not overriding function Get_Contract
     (Self : not null access constant UML_Connector)
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
+   --  Getter of Connector::contract.
+   --
    --  The set of Behaviors that specify the valid interaction patterns across 
    --  the connector.
 
    not overriding function Get_End
     (Self : not null access constant UML_Connector)
        return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End is abstract;
+   --  Getter of Connector::end.
+   --
    --  A connector consists of at least two connector ends, each representing 
    --  the participation of instances of the classifiers typing the 
    --  connectable elements attached to this end. The set of connector ends is 
@@ -96,6 +100,8 @@ package AMF.UML.Connectors is
    not overriding function Get_Kind
     (Self : not null access constant UML_Connector)
        return AMF.UML.UML_Connector_Kind is abstract;
+   --  Getter of Connector::kind.
+   --
    --  Indicates the kind of connector. This is derived: a connector with one 
    --  or more ends connected to a Port which is not on a Part and which is 
    --  not a behavior port is a delegation; otherwise it is an assembly.
@@ -103,6 +109,8 @@ package AMF.UML.Connectors is
    not overriding function Get_Redefined_Connector
     (Self : not null access constant UML_Connector)
        return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
+   --  Getter of Connector::redefinedConnector.
+   --
    --  A connector may be redefined when its containing classifier is 
    --  specialized. The redefining connector may have a type that specializes 
    --  the type of the redefined connector. The types of the connector ends of 
@@ -113,12 +121,18 @@ package AMF.UML.Connectors is
    not overriding function Get_Type
     (Self : not null access constant UML_Connector)
        return AMF.UML.Associations.UML_Association_Access is abstract;
+   --  Getter of Connector::type.
+   --
    --  An optional association that specifies the link corresponding to this 
    --  connector.
 
    not overriding procedure Set_Type
     (Self : not null access UML_Connector;
      To   : AMF.UML.Associations.UML_Association_Access) is abstract;
+   --  Setter of Connector::type.
+   --
+   --  An optional association that specifies the link corresponding to this 
+   --  connector.
 
    not overriding function Kind
     (Self : not null access constant UML_Connector)

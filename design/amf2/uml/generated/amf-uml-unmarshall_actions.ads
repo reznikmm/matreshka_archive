@@ -66,24 +66,36 @@ package AMF.UML.Unmarshall_Actions is
    not overriding function Get_Object
     (Self : not null access constant UML_Unmarshall_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of UnmarshallAction::object.
+   --
    --  The object to be unmarshalled.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Unmarshall_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of UnmarshallAction::object.
+   --
+   --  The object to be unmarshalled.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Unmarshall_Action)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
+   --  Getter of UnmarshallAction::result.
+   --
    --  The values of the structural features of the input object.
 
    not overriding function Get_Unmarshall_Type
     (Self : not null access constant UML_Unmarshall_Action)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of UnmarshallAction::unmarshallType.
+   --
    --  The type of the object to be unmarshalled.
 
    not overriding procedure Set_Unmarshall_Type
     (Self : not null access UML_Unmarshall_Action;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of UnmarshallAction::unmarshallType.
+   --
+   --  The type of the object to be unmarshalled.
 
 end AMF.UML.Unmarshall_Actions;

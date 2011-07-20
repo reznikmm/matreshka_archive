@@ -59,57 +59,112 @@ package AMF.Internals.UML_Package_Imports is
    overriding function Get_Imported_Package
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Packages.UML_Package_Access;
+   --  Getter of PackageImport::importedPackage.
+   --
+   --  Specifies the Package whose members are imported into a Namespace.
 
    overriding procedure Set_Imported_Package
     (Self : not null access UML_Package_Import_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access);
+   --  Setter of PackageImport::importedPackage.
+   --
+   --  Specifies the Package whose members are imported into a Namespace.
 
    overriding function Get_Importing_Namespace
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Getter of PackageImport::importingNamespace.
+   --
+   --  Specifies the Namespace that imports the members from a Package.
 
    overriding procedure Set_Importing_Namespace
     (Self : not null access UML_Package_Import_Proxy;
      To   : AMF.UML.Namespaces.UML_Namespace_Access);
+   --  Setter of PackageImport::importingNamespace.
+   --
+   --  Specifies the Namespace that imports the members from a Package.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.UML_Visibility_Kind;
+   --  Getter of PackageImport::visibility.
+   --
+   --  Specifies the visibility of the imported PackageableElements within the 
+   --  importing Namespace, i.e., whether imported elements will in turn be 
+   --  visible to other packages that use that importingPackage as an 
+   --  importedPackage. If the PackageImport is public, the imported elements 
+   --  will be visible outside the package, while if it is private they will 
+   --  not.
 
    overriding procedure Set_Visibility
     (Self : not null access UML_Package_Import_Proxy;
      To   : AMF.UML.UML_Visibility_Kind);
+   --  Setter of PackageImport::visibility.
+   --
+   --  Specifies the visibility of the imported PackageableElements within the 
+   --  importing Namespace, i.e., whether imported elements will in turn be 
+   --  visible to other packages that use that importingPackage as an 
+   --  importedPackage. If the PackageImport is public, the imported elements 
+   --  will be visible outside the package, while if it is private they will 
+   --  not.
 
    overriding function Get_Source
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Package_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Package_Import_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Package_Imports;

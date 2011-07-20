@@ -64,24 +64,36 @@ package AMF.UML.Package_Imports is
    not overriding function Get_Imported_Package
     (Self : not null access constant UML_Package_Import)
        return AMF.UML.Packages.UML_Package_Access is abstract;
+   --  Getter of PackageImport::importedPackage.
+   --
    --  Specifies the Package whose members are imported into a Namespace.
 
    not overriding procedure Set_Imported_Package
     (Self : not null access UML_Package_Import;
      To   : AMF.UML.Packages.UML_Package_Access) is abstract;
+   --  Setter of PackageImport::importedPackage.
+   --
+   --  Specifies the Package whose members are imported into a Namespace.
 
    not overriding function Get_Importing_Namespace
     (Self : not null access constant UML_Package_Import)
        return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  Getter of PackageImport::importingNamespace.
+   --
    --  Specifies the Namespace that imports the members from a Package.
 
    not overriding procedure Set_Importing_Namespace
     (Self : not null access UML_Package_Import;
      To   : AMF.UML.Namespaces.UML_Namespace_Access) is abstract;
+   --  Setter of PackageImport::importingNamespace.
+   --
+   --  Specifies the Namespace that imports the members from a Package.
 
    not overriding function Get_Visibility
     (Self : not null access constant UML_Package_Import)
        return AMF.UML.UML_Visibility_Kind is abstract;
+   --  Getter of PackageImport::visibility.
+   --
    --  Specifies the visibility of the imported PackageableElements within the 
    --  importing Namespace, i.e., whether imported elements will in turn be 
    --  visible to other packages that use that importingPackage as an 
@@ -92,5 +104,13 @@ package AMF.UML.Package_Imports is
    not overriding procedure Set_Visibility
     (Self : not null access UML_Package_Import;
      To   : AMF.UML.UML_Visibility_Kind) is abstract;
+   --  Setter of PackageImport::visibility.
+   --
+   --  Specifies the visibility of the imported PackageableElements within the 
+   --  importing Namespace, i.e., whether imported elements will in turn be 
+   --  visible to other packages that use that importingPackage as an 
+   --  importedPackage. If the PackageImport is public, the imported elements 
+   --  will be visible outside the package, while if it is private they will 
+   --  not.
 
 end AMF.UML.Package_Imports;

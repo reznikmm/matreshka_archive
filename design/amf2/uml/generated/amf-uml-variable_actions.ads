@@ -63,10 +63,15 @@ package AMF.UML.Variable_Actions is
    not overriding function Get_Variable
     (Self : not null access constant UML_Variable_Action)
        return AMF.UML.Variables.UML_Variable_Access is abstract;
+   --  Getter of VariableAction::variable.
+   --
    --  Variable to be read.
 
    not overriding procedure Set_Variable
     (Self : not null access UML_Variable_Action;
      To   : AMF.UML.Variables.UML_Variable_Access) is abstract;
+   --  Setter of VariableAction::variable.
+   --
+   --  Variable to be read.
 
 end AMF.UML.Variable_Actions;

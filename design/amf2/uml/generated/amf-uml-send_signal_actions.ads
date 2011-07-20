@@ -69,19 +69,29 @@ package AMF.UML.Send_Signal_Actions is
    not overriding function Get_Signal
     (Self : not null access constant UML_Send_Signal_Action)
        return AMF.UML.Signals.UML_Signal_Access is abstract;
+   --  Getter of SendSignalAction::signal.
+   --
    --  The type of signal transmitted to the target object.
 
    not overriding procedure Set_Signal
     (Self : not null access UML_Send_Signal_Action;
      To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
+   --  Setter of SendSignalAction::signal.
+   --
+   --  The type of signal transmitted to the target object.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Send_Signal_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of SendSignalAction::target.
+   --
    --  The target object to which the signal is sent.
 
    not overriding procedure Set_Target
     (Self : not null access UML_Send_Signal_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of SendSignalAction::target.
+   --
+   --  The target object to which the signal is sent.
 
 end AMF.UML.Send_Signal_Actions;

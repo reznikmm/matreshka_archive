@@ -60,53 +60,97 @@ package AMF.Internals.UML_Template_Bindings is
    overriding function Get_Bound_Element
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access;
+   --  Getter of TemplateBinding::boundElement.
+   --
+   --  The element that is bound by this binding.
 
    overriding procedure Set_Bound_Element
     (Self : not null access UML_Template_Binding_Proxy;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access);
+   --  Setter of TemplateBinding::boundElement.
+   --
+   --  The element that is bound by this binding.
 
    overriding function Get_Parameter_Substitution
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Template_Parameter_Substitutions.Collections.Set_Of_UML_Template_Parameter_Substitution;
+   --  Getter of TemplateBinding::parameterSubstitution.
+   --
+   --  The parameter substitutions owned by this template binding.
 
    overriding function Get_Signature
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
+   --  Getter of TemplateBinding::signature.
+   --
+   --  The template signature for the template that is the target of the 
+   --  binding.
 
    overriding procedure Set_Signature
     (Self : not null access UML_Template_Binding_Proxy;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
+   --  Setter of TemplateBinding::signature.
+   --
+   --  The template signature for the template that is the target of the 
+   --  binding.
 
    overriding function Get_Source
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Template_Binding_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Template_Binding_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Template_Bindings;

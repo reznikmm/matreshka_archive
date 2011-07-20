@@ -69,17 +69,25 @@ package AMF.UML.Invocation_Actions is
    not overriding function Get_Argument
     (Self : not null access constant UML_Invocation_Action)
        return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin is abstract;
+   --  Getter of InvocationAction::argument.
+   --
    --  Specification of the ordered set of argument values that appears during 
    --  execution.
 
    not overriding function Get_On_Port
     (Self : not null access constant UML_Invocation_Action)
        return AMF.UML.Ports.UML_Port_Access is abstract;
+   --  Getter of InvocationAction::onPort.
+   --
    --  A optional port of the receiver object on which the behavioral feature 
    --  is invoked.
 
    not overriding procedure Set_On_Port
     (Self : not null access UML_Invocation_Action;
      To   : AMF.UML.Ports.UML_Port_Access) is abstract;
+   --  Setter of InvocationAction::onPort.
+   --
+   --  A optional port of the receiver object on which the behavioral feature 
+   --  is invoked.
 
 end AMF.UML.Invocation_Actions;

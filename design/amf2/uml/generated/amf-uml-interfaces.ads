@@ -78,37 +78,53 @@ package AMF.UML.Interfaces is
    not overriding function Get_Nested_Classifier
     (Self : not null access constant UML_Interface)
        return AMF.UML.Classifiers.Collections.Ordered_Set_Of_UML_Classifier is abstract;
+   --  Getter of Interface::nestedClassifier.
+   --
    --  References all the Classifiers that are defined (nested) within the 
    --  Class.
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Interface)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of Interface::ownedAttribute.
+   --
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Interface)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
+   --  Getter of Interface::ownedOperation.
+   --
    --  The operations owned by the class.
 
    not overriding function Get_Owned_Reception
     (Self : not null access constant UML_Interface)
        return AMF.UML.Receptions.Collections.Set_Of_UML_Reception is abstract;
+   --  Getter of Interface::ownedReception.
+   --
    --  Receptions that objects providing this interface are willing to accept.
 
    not overriding function Get_Protocol
     (Self : not null access constant UML_Interface)
        return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
+   --  Getter of Interface::protocol.
+   --
    --  References a protocol state machine specifying the legal sequences of 
    --  the invocation of the behavioral features described in the interface.
 
    not overriding procedure Set_Protocol
     (Self : not null access UML_Interface;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
+   --  Setter of Interface::protocol.
+   --
+   --  References a protocol state machine specifying the legal sequences of 
+   --  the invocation of the behavioral features described in the interface.
 
    not overriding function Get_Redefined_Interface
     (Self : not null access constant UML_Interface)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Getter of Interface::redefinedInterface.
+   --
    --  References all the Interfaces redefined by this Interface.
 
 end AMF.UML.Interfaces;

@@ -63,6 +63,8 @@ package AMF.CMOF.Expressions is
    not overriding function Get_Operand
     (Self : not null access constant CMOF_Expression)
        return AMF.CMOF.Value_Specifications.Collections.Ordered_Set_Of_CMOF_Value_Specification is abstract;
+   --  Getter of Expression::operand.
+   --
    --  Specifies a sequence of operands.
 
 end AMF.CMOF.Expressions;

@@ -67,19 +67,29 @@ package AMF.UML.State_Invariants is
    not overriding function Get_Covered
     (Self : not null access constant UML_State_Invariant)
        return AMF.UML.Lifelines.UML_Lifeline_Access is abstract;
+   --  Getter of StateInvariant::covered.
+   --
    --  References the Lifeline on which the StateInvariant appears.
 
    not overriding procedure Set_Covered
     (Self : not null access UML_State_Invariant;
      To   : AMF.UML.Lifelines.UML_Lifeline_Access) is abstract;
+   --  Setter of StateInvariant::covered.
+   --
+   --  References the Lifeline on which the StateInvariant appears.
 
    not overriding function Get_Invariant
     (Self : not null access constant UML_State_Invariant)
        return AMF.UML.Constraints.UML_Constraint_Access is abstract;
+   --  Getter of StateInvariant::invariant.
+   --
    --  A Constraint that should hold at runtime for this StateInvariant
 
    not overriding procedure Set_Invariant
     (Self : not null access UML_State_Invariant;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
+   --  Setter of StateInvariant::invariant.
+   --
+   --  A Constraint that should hold at runtime for this StateInvariant
 
 end AMF.UML.State_Invariants;

@@ -66,19 +66,29 @@ package AMF.UML.Expansion_Nodes is
    not overriding function Get_Region_As_Input
     (Self : not null access constant UML_Expansion_Node)
        return AMF.UML.Expansion_Regions.UML_Expansion_Region_Access is abstract;
+   --  Getter of ExpansionNode::regionAsInput.
+   --
    --  The expansion region for which the node is an input.
 
    not overriding procedure Set_Region_As_Input
     (Self : not null access UML_Expansion_Node;
      To   : AMF.UML.Expansion_Regions.UML_Expansion_Region_Access) is abstract;
+   --  Setter of ExpansionNode::regionAsInput.
+   --
+   --  The expansion region for which the node is an input.
 
    not overriding function Get_Region_As_Output
     (Self : not null access constant UML_Expansion_Node)
        return AMF.UML.Expansion_Regions.UML_Expansion_Region_Access is abstract;
+   --  Getter of ExpansionNode::regionAsOutput.
+   --
    --  The expansion region for which the node is an output.
 
    not overriding procedure Set_Region_As_Output
     (Self : not null access UML_Expansion_Node;
      To   : AMF.UML.Expansion_Regions.UML_Expansion_Region_Access) is abstract;
+   --  Setter of ExpansionNode::regionAsOutput.
+   --
+   --  The expansion region for which the node is an output.
 
 end AMF.UML.Expansion_Nodes;

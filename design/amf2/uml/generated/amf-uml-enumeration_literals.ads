@@ -62,17 +62,24 @@ package AMF.UML.Enumeration_Literals is
    not overriding function Get_Classifier
     (Self : not null access constant UML_Enumeration_Literal)
        return AMF.UML.Enumerations.UML_Enumeration_Access is abstract;
+   --  Getter of EnumerationLiteral::classifier.
+   --
    --  The classifier of this EnumerationLiteral derived to be equal to its 
    --  enumeration.
 
    not overriding function Get_Enumeration
     (Self : not null access constant UML_Enumeration_Literal)
        return AMF.UML.Enumerations.UML_Enumeration_Access is abstract;
+   --  Getter of EnumerationLiteral::enumeration.
+   --
    --  The Enumeration that this EnumerationLiteral is a member of.
 
    not overriding procedure Set_Enumeration
     (Self : not null access UML_Enumeration_Literal;
      To   : AMF.UML.Enumerations.UML_Enumeration_Access) is abstract;
+   --  Setter of EnumerationLiteral::enumeration.
+   --
+   --  The Enumeration that this EnumerationLiteral is a member of.
 
    not overriding function Classifier
     (Self : not null access constant UML_Enumeration_Literal)

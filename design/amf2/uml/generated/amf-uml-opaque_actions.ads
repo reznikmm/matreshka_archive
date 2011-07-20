@@ -64,21 +64,29 @@ package AMF.UML.Opaque_Actions is
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Action)
        return AMF.String_Collections.Sequence_Of_String is abstract;
+   --  Getter of OpaqueAction::body.
+   --
    --  Specifies the action in one or more languages.
 
    not overriding function Get_Input_Value
     (Self : not null access constant UML_Opaque_Action)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
+   --  Getter of OpaqueAction::inputValue.
+   --
    --  Provides input to the action.
 
    not overriding function Get_Language
     (Self : not null access constant UML_Opaque_Action)
        return AMF.String_Collections.Ordered_Set_Of_String is abstract;
+   --  Getter of OpaqueAction::language.
+   --
    --  Languages the body strings use, in the same order as the body strings
 
    not overriding function Get_Output_Value
     (Self : not null access constant UML_Opaque_Action)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
+   --  Getter of OpaqueAction::outputValue.
+   --
    --  Takes output from the action.
 
 end AMF.UML.Opaque_Actions;

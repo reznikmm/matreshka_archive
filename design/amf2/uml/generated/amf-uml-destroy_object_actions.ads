@@ -62,30 +62,47 @@ package AMF.UML.Destroy_Object_Actions is
    not overriding function Get_Is_Destroy_Links
     (Self : not null access constant UML_Destroy_Object_Action)
        return Boolean is abstract;
+   --  Getter of DestroyObjectAction::isDestroyLinks.
+   --
    --  Specifies whether links in which the object participates are destroyed 
    --  along with the object.
 
    not overriding procedure Set_Is_Destroy_Links
     (Self : not null access UML_Destroy_Object_Action;
      To   : Boolean) is abstract;
+   --  Setter of DestroyObjectAction::isDestroyLinks.
+   --
+   --  Specifies whether links in which the object participates are destroyed 
+   --  along with the object.
 
    not overriding function Get_Is_Destroy_Owned_Objects
     (Self : not null access constant UML_Destroy_Object_Action)
        return Boolean is abstract;
+   --  Getter of DestroyObjectAction::isDestroyOwnedObjects.
+   --
    --  Specifies whether objects owned by the object are destroyed along with 
    --  the object.
 
    not overriding procedure Set_Is_Destroy_Owned_Objects
     (Self : not null access UML_Destroy_Object_Action;
      To   : Boolean) is abstract;
+   --  Setter of DestroyObjectAction::isDestroyOwnedObjects.
+   --
+   --  Specifies whether objects owned by the object are destroyed along with 
+   --  the object.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Destroy_Object_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of DestroyObjectAction::target.
+   --
    --  The input pin providing the object to be destroyed.
 
    not overriding procedure Set_Target
     (Self : not null access UML_Destroy_Object_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of DestroyObjectAction::target.
+   --
+   --  The input pin providing the object to be destroyed.
 
 end AMF.UML.Destroy_Object_Actions;

@@ -64,10 +64,15 @@ package AMF.UML.Signal_Events is
    not overriding function Get_Signal
     (Self : not null access constant UML_Signal_Event)
        return AMF.UML.Signals.UML_Signal_Access is abstract;
+   --  Getter of SignalEvent::signal.
+   --
    --  The specific signal that is associated with this event.
 
    not overriding procedure Set_Signal
     (Self : not null access UML_Signal_Event;
      To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
+   --  Setter of SignalEvent::signal.
+   --
+   --  The specific signal that is associated with this event.
 
 end AMF.UML.Signal_Events;

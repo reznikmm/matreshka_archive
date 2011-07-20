@@ -64,16 +64,24 @@ package AMF.UML.Time_Observations is
    not overriding function Get_Event
     (Self : not null access constant UML_Time_Observation)
        return AMF.UML.Named_Elements.UML_Named_Element_Access is abstract;
+   --  Getter of TimeObservation::event.
+   --
    --  The observation is determined by the entering or exiting of the event 
    --  element during execution.
 
    not overriding procedure Set_Event
     (Self : not null access UML_Time_Observation;
      To   : AMF.UML.Named_Elements.UML_Named_Element_Access) is abstract;
+   --  Setter of TimeObservation::event.
+   --
+   --  The observation is determined by the entering or exiting of the event 
+   --  element during execution.
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Time_Observation)
        return Boolean is abstract;
+   --  Getter of TimeObservation::firstEvent.
+   --
    --  The value of firstEvent is related to event. If firstEvent is true, 
    --  then the corresponding observation event is the first time instant the 
    --  execution enters event. If firstEvent is false, then the corresponding 
@@ -82,5 +90,11 @@ package AMF.UML.Time_Observations is
    not overriding procedure Set_First_Event
     (Self : not null access UML_Time_Observation;
      To   : Boolean) is abstract;
+   --  Setter of TimeObservation::firstEvent.
+   --
+   --  The value of firstEvent is related to event. If firstEvent is true, 
+   --  then the corresponding observation event is the first time instant the 
+   --  execution enters event. If firstEvent is false, then the corresponding 
+   --  observation event is the time instant the execution exits event.
 
 end AMF.UML.Time_Observations;

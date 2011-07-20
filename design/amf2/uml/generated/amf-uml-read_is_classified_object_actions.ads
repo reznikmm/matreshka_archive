@@ -65,39 +65,61 @@ package AMF.UML.Read_Is_Classified_Object_Actions is
    not overriding function Get_Classifier
     (Self : not null access constant UML_Read_Is_Classified_Object_Action)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of ReadIsClassifiedObjectAction::classifier.
+   --
    --  The classifier against which the classification of the input object is 
    --  tested.
 
    not overriding procedure Set_Classifier
     (Self : not null access UML_Read_Is_Classified_Object_Action;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of ReadIsClassifiedObjectAction::classifier.
+   --
+   --  The classifier against which the classification of the input object is 
+   --  tested.
 
    not overriding function Get_Is_Direct
     (Self : not null access constant UML_Read_Is_Classified_Object_Action)
        return Boolean is abstract;
+   --  Getter of ReadIsClassifiedObjectAction::isDirect.
+   --
    --  Indicates whether the classifier must directly classify the input 
    --  object.
 
    not overriding procedure Set_Is_Direct
     (Self : not null access UML_Read_Is_Classified_Object_Action;
      To   : Boolean) is abstract;
+   --  Setter of ReadIsClassifiedObjectAction::isDirect.
+   --
+   --  Indicates whether the classifier must directly classify the input 
+   --  object.
 
    not overriding function Get_Object
     (Self : not null access constant UML_Read_Is_Classified_Object_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of ReadIsClassifiedObjectAction::object.
+   --
    --  Holds the object whose classification is to be tested.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Read_Is_Classified_Object_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of ReadIsClassifiedObjectAction::object.
+   --
+   --  Holds the object whose classification is to be tested.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Read_Is_Classified_Object_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of ReadIsClassifiedObjectAction::result.
+   --
    --  After termination of the action, will hold the result of the test.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Read_Is_Classified_Object_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of ReadIsClassifiedObjectAction::result.
+   --
+   --  After termination of the action, will hold the result of the test.
 
 end AMF.UML.Read_Is_Classified_Object_Actions;

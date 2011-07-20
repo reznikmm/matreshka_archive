@@ -61,11 +61,16 @@ package AMF.UML.Literal_Booleans is
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_Boolean)
        return Boolean is abstract;
+   --  Getter of LiteralBoolean::value.
+   --
    --  The specified Boolean value.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Literal_Boolean;
      To   : Boolean) is abstract;
+   --  Setter of LiteralBoolean::value.
+   --
+   --  The specified Boolean value.
 
    not overriding function Boolean_Value
     (Self : not null access constant UML_Literal_Boolean)

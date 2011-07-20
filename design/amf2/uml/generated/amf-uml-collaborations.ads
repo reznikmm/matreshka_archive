@@ -66,6 +66,8 @@ package AMF.UML.Collaborations is
    not overriding function Get_Collaboration_Role
     (Self : not null access constant UML_Collaboration)
        return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
+   --  Getter of Collaboration::collaborationRole.
+   --
    --  References connectable elements (possibly owned by other classifiers) 
    --  which represent roles that instances may play in this collaboration.
 

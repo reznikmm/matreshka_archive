@@ -73,6 +73,8 @@ package AMF.UML.Behavioral_Features is
    not overriding function Get_Concurrency
     (Self : not null access constant UML_Behavioral_Feature)
        return AMF.UML.UML_Call_Concurrency_Kind is abstract;
+   --  Getter of BehavioralFeature::concurrency.
+   --
    --  Specifies the semantics of concurrent calls to the same passive 
    --  instance (i.e., an instance originating from a class with isActive 
    --  being false). Active instances control access to their own behavioral 
@@ -81,10 +83,18 @@ package AMF.UML.Behavioral_Features is
    not overriding procedure Set_Concurrency
     (Self : not null access UML_Behavioral_Feature;
      To   : AMF.UML.UML_Call_Concurrency_Kind) is abstract;
+   --  Setter of BehavioralFeature::concurrency.
+   --
+   --  Specifies the semantics of concurrent calls to the same passive 
+   --  instance (i.e., an instance originating from a class with isActive 
+   --  being false). Active instances control access to their own behavioral 
+   --  features.
 
    not overriding function Get_Is_Abstract
     (Self : not null access constant UML_Behavioral_Feature)
        return Boolean is abstract;
+   --  Getter of BehavioralFeature::isAbstract.
+   --
    --  If true, then the behavioral feature does not have an implementation, 
    --  and one must be supplied by a more specific element. If false, the 
    --  behavioral feature must have an implementation in the classifier or one 
@@ -93,10 +103,18 @@ package AMF.UML.Behavioral_Features is
    not overriding procedure Set_Is_Abstract
     (Self : not null access UML_Behavioral_Feature;
      To   : Boolean) is abstract;
+   --  Setter of BehavioralFeature::isAbstract.
+   --
+   --  If true, then the behavioral feature does not have an implementation, 
+   --  and one must be supplied by a more specific element. If false, the 
+   --  behavioral feature must have an implementation in the classifier or one 
+   --  must be inherited from a more general element.
 
    not overriding function Get_Method
     (Self : not null access constant UML_Behavioral_Feature)
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
+   --  Getter of BehavioralFeature::method.
+   --
    --  A behavioral description that implements the behavioral feature. There 
    --  may be at most one behavior for a particular pairing of a classifier 
    --  (as owner of the behavior) and a behavioral feature (as specification 
@@ -105,17 +123,23 @@ package AMF.UML.Behavioral_Features is
    not overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Behavioral_Feature)
        return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter is abstract;
+   --  Getter of BehavioralFeature::ownedParameter.
+   --
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
 
    not overriding function Get_Owned_Parameter_Set
     (Self : not null access constant UML_Behavioral_Feature)
        return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is abstract;
+   --  Getter of BehavioralFeature::ownedParameterSet.
+   --
    --  The ParameterSets owned by this BehavioralFeature.
 
    not overriding function Get_Raised_Exception
     (Self : not null access constant UML_Behavioral_Feature)
        return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
+   --  Getter of BehavioralFeature::raisedException.
+   --
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this feature.
 

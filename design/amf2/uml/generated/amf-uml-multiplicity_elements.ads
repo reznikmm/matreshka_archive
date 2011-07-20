@@ -65,58 +65,90 @@ package AMF.UML.Multiplicity_Elements is
    not overriding function Get_Is_Ordered
     (Self : not null access constant UML_Multiplicity_Element)
        return Boolean is abstract;
+   --  Getter of MultiplicityElement::isOrdered.
+   --
    --  For a multivalued multiplicity, this attribute specifies whether the 
    --  values in an instantiation of this element are sequentially ordered.
 
    not overriding procedure Set_Is_Ordered
     (Self : not null access UML_Multiplicity_Element;
      To   : Boolean) is abstract;
+   --  Setter of MultiplicityElement::isOrdered.
+   --
+   --  For a multivalued multiplicity, this attribute specifies whether the 
+   --  values in an instantiation of this element are sequentially ordered.
 
    not overriding function Get_Is_Unique
     (Self : not null access constant UML_Multiplicity_Element)
        return Boolean is abstract;
+   --  Getter of MultiplicityElement::isUnique.
+   --
    --  For a multivalued multiplicity, this attributes specifies whether the 
    --  values in an instantiation of this element are unique.
 
    not overriding procedure Set_Is_Unique
     (Self : not null access UML_Multiplicity_Element;
      To   : Boolean) is abstract;
+   --  Setter of MultiplicityElement::isUnique.
+   --
+   --  For a multivalued multiplicity, this attributes specifies whether the 
+   --  values in an instantiation of this element are unique.
 
    not overriding function Get_Lower
     (Self : not null access constant UML_Multiplicity_Element)
        return AMF.Optional_Integer is abstract;
+   --  Getter of MultiplicityElement::lower.
+   --
    --  Specifies the lower bound of the multiplicity interval.
 
    not overriding procedure Set_Lower
     (Self : not null access UML_Multiplicity_Element;
      To   : AMF.Optional_Integer) is abstract;
+   --  Setter of MultiplicityElement::lower.
+   --
+   --  Specifies the lower bound of the multiplicity interval.
 
    not overriding function Get_Lower_Value
     (Self : not null access constant UML_Multiplicity_Element)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of MultiplicityElement::lowerValue.
+   --
    --  The specification of the lower bound for this multiplicity.
 
    not overriding procedure Set_Lower_Value
     (Self : not null access UML_Multiplicity_Element;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of MultiplicityElement::lowerValue.
+   --
+   --  The specification of the lower bound for this multiplicity.
 
    not overriding function Get_Upper
     (Self : not null access constant UML_Multiplicity_Element)
        return AMF.Optional_Unlimited_Natural is abstract;
+   --  Getter of MultiplicityElement::upper.
+   --
    --  Specifies the upper bound of the multiplicity interval.
 
    not overriding procedure Set_Upper
     (Self : not null access UML_Multiplicity_Element;
      To   : AMF.Optional_Unlimited_Natural) is abstract;
+   --  Setter of MultiplicityElement::upper.
+   --
+   --  Specifies the upper bound of the multiplicity interval.
 
    not overriding function Get_Upper_Value
     (Self : not null access constant UML_Multiplicity_Element)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of MultiplicityElement::upperValue.
+   --
    --  The specification of the upper bound for this multiplicity.
 
    not overriding procedure Set_Upper_Value
     (Self : not null access UML_Multiplicity_Element;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of MultiplicityElement::upperValue.
+   --
+   --  The specification of the upper bound for this multiplicity.
 
    not overriding function Compatible_With
     (Self : not null access constant UML_Multiplicity_Element;

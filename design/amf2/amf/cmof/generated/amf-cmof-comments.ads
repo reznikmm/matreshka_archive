@@ -63,15 +63,22 @@ package AMF.CMOF.Comments is
    not overriding function Get_Body
     (Self : not null access constant CMOF_Comment)
        return AMF.Optional_String is abstract;
+   --  Getter of Comment::body.
+   --
    --  Specifies a string that is the comment.
 
    not overriding procedure Set_Body
     (Self : not null access CMOF_Comment;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Comment::body.
+   --
+   --  Specifies a string that is the comment.
 
    not overriding function Get_Annotated_Element
     (Self : not null access constant CMOF_Comment)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Getter of Comment::annotatedElement.
+   --
    --  References the Element(s) being commented.
 
 end AMF.CMOF.Comments;

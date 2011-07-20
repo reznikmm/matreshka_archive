@@ -66,15 +66,22 @@ package AMF.UML.Triggers is
    not overriding function Get_Event
     (Self : not null access constant UML_Trigger)
        return AMF.UML.Events.UML_Event_Access is abstract;
+   --  Getter of Trigger::event.
+   --
    --  The event that causes the trigger.
 
    not overriding procedure Set_Event
     (Self : not null access UML_Trigger;
      To   : AMF.UML.Events.UML_Event_Access) is abstract;
+   --  Setter of Trigger::event.
+   --
+   --  The event that causes the trigger.
 
    not overriding function Get_Port
     (Self : not null access constant UML_Trigger)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
+   --  Getter of Trigger::port.
+   --
    --  A optional port of the receiver object on which the behavioral feature 
    --  is invoked.
 

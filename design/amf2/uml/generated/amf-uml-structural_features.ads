@@ -69,10 +69,15 @@ package AMF.UML.Structural_Features is
    not overriding function Get_Is_Read_Only
     (Self : not null access constant UML_Structural_Feature)
        return Boolean is abstract;
+   --  Getter of StructuralFeature::isReadOnly.
+   --
    --  States whether the feature's value may be modified by a client.
 
    not overriding procedure Set_Is_Read_Only
     (Self : not null access UML_Structural_Feature;
      To   : Boolean) is abstract;
+   --  Setter of StructuralFeature::isReadOnly.
+   --
+   --  States whether the feature's value may be modified by a client.
 
 end AMF.UML.Structural_Features;

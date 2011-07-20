@@ -65,6 +65,8 @@ package AMF.UML.Information_Items is
    not overriding function Get_Represented
     (Self : not null access constant UML_Information_Item)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of InformationItem::represented.
+   --
    --  Determines the classifiers that will specify the structure and nature 
    --  of the information. An information item represents all its represented 
    --  classifiers.

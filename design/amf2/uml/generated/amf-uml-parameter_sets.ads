@@ -64,6 +64,8 @@ package AMF.UML.Parameter_Sets is
    not overriding function Get_Condition
     (Self : not null access constant UML_Parameter_Set)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
+   --  Getter of ParameterSet::condition.
+   --
    --  Constraint that should be satisfied for the owner of the parameters in 
    --  an input parameter set to start execution using the values provided for 
    --  those parameters, or the owner of the parameters in an output parameter 
@@ -73,6 +75,8 @@ package AMF.UML.Parameter_Sets is
    not overriding function Get_Parameter
     (Self : not null access constant UML_Parameter_Set)
        return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter is abstract;
+   --  Getter of ParameterSet::parameter.
+   --
    --  Parameters in the parameter set.
 
 end AMF.UML.Parameter_Sets;

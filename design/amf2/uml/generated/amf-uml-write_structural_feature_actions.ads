@@ -64,19 +64,29 @@ package AMF.UML.Write_Structural_Feature_Actions is
    not overriding function Get_Result
     (Self : not null access constant UML_Write_Structural_Feature_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of WriteStructuralFeatureAction::result.
+   --
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Write_Structural_Feature_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of WriteStructuralFeatureAction::result.
+   --
+   --  Gives the output pin on which the result is put.
 
    not overriding function Get_Value
     (Self : not null access constant UML_Write_Structural_Feature_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of WriteStructuralFeatureAction::value.
+   --
    --  Value to be added or removed from the structural feature.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Write_Structural_Feature_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of WriteStructuralFeatureAction::value.
+   --
+   --  Value to be added or removed from the structural feature.
 
 end AMF.UML.Write_Structural_Feature_Actions;

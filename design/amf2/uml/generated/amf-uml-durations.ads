@@ -63,15 +63,22 @@ package AMF.UML.Durations is
    not overriding function Get_Expr
     (Self : not null access constant UML_Duration)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of Duration::expr.
+   --
    --  The value of the Duration.
 
    not overriding procedure Set_Expr
     (Self : not null access UML_Duration;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of Duration::expr.
+   --
+   --  The value of the Duration.
 
    not overriding function Get_Observation
     (Self : not null access constant UML_Duration)
        return AMF.UML.Observations.Collections.Set_Of_UML_Observation is abstract;
+   --  Getter of Duration::observation.
+   --
    --  Refers to the time and duration observations that are involved in expr.
 
 end AMF.UML.Durations;

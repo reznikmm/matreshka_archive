@@ -63,11 +63,17 @@ package AMF.UML.Read_Link_Actions is
    not overriding function Get_Result
     (Self : not null access constant UML_Read_Link_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of ReadLinkAction::result.
+   --
    --  The pin on which are put the objects participating in the association 
    --  at the end not specified by the inputs.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Read_Link_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of ReadLinkAction::result.
+   --
+   --  The pin on which are put the objects participating in the association 
+   --  at the end not specified by the inputs.
 
 end AMF.UML.Read_Link_Actions;

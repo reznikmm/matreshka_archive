@@ -63,6 +63,8 @@ package AMF.UML.Encapsulated_Classifiers is
    not overriding function Get_Owned_Port
     (Self : not null access constant UML_Encapsulated_Classifier)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
+   --  Getter of EncapsulatedClassifier::ownedPort.
+   --
    --  References a set of ports that an encapsulated classifier owns.
 
    not overriding function Owned_Port

@@ -68,6 +68,8 @@ package AMF.UML.Accept_Call_Actions is
    not overriding function Get_Return_Information
     (Self : not null access constant UML_Accept_Call_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of AcceptCallAction::returnInformation.
+   --
    --  Pin where a value is placed containing sufficient information to 
    --  perform a subsequent reply and return control to the caller. The 
    --  contents of this value are opaque. It can be passed and copied but it 
@@ -76,5 +78,11 @@ package AMF.UML.Accept_Call_Actions is
    not overriding procedure Set_Return_Information
     (Self : not null access UML_Accept_Call_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of AcceptCallAction::returnInformation.
+   --
+   --  Pin where a value is placed containing sufficient information to 
+   --  perform a subsequent reply and return control to the caller. The 
+   --  contents of this value are opaque. It can be passed and copied but it 
+   --  cannot be manipulated by the model.
 
 end AMF.UML.Accept_Call_Actions;

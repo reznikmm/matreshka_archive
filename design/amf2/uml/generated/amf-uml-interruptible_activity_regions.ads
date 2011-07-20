@@ -64,12 +64,16 @@ package AMF.UML.Interruptible_Activity_Regions is
    not overriding function Get_Interrupting_Edge
     (Self : not null access constant UML_Interruptible_Activity_Region)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
+   --  Getter of InterruptibleActivityRegion::interruptingEdge.
+   --
    --  The edges leaving the region that will abort other tokens flowing in 
    --  the region.
 
    not overriding function Get_Node
     (Self : not null access constant UML_Interruptible_Activity_Region)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
+   --  Getter of InterruptibleActivityRegion::node.
+   --
    --  Nodes immediately contained in the group.
 
 end AMF.UML.Interruptible_Activity_Regions;

@@ -64,11 +64,17 @@ package AMF.UML.Typed_Elements is
    not overriding function Get_Type
     (Self : not null access constant UML_Typed_Element)
        return AMF.UML.Types.UML_Type_Access is abstract;
+   --  Getter of TypedElement::type.
+   --
    --  The type of the TypedElement.
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Type
     (Self : not null access UML_Typed_Element;
      To   : AMF.UML.Types.UML_Type_Access) is abstract;
+   --  Setter of TypedElement::type.
+   --
+   --  The type of the TypedElement.
+   --  This information is derived from the return result for this Operation.
 
 end AMF.UML.Typed_Elements;

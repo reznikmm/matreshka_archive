@@ -62,6 +62,8 @@ package AMF.UML.Create_Link_Actions is
    not overriding function Get_End_Data
     (Self : not null access constant UML_Create_Link_Action)
        return AMF.UML.Link_End_Creation_Datas.Collections.Set_Of_UML_Link_End_Creation_Data is abstract;
+   --  Getter of CreateLinkAction::endData.
+   --
    --  Specifies ends of association and inputs.
 
 end AMF.UML.Create_Link_Actions;

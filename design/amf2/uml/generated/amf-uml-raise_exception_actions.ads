@@ -63,10 +63,15 @@ package AMF.UML.Raise_Exception_Actions is
    not overriding function Get_Exception
     (Self : not null access constant UML_Raise_Exception_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of RaiseExceptionAction::exception.
+   --
    --  An input pin whose value becomes an exception object.
 
    not overriding procedure Set_Exception
     (Self : not null access UML_Raise_Exception_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of RaiseExceptionAction::exception.
+   --
+   --  An input pin whose value becomes an exception object.
 
 end AMF.UML.Raise_Exception_Actions;

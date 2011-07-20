@@ -63,6 +63,8 @@ package AMF.CMOF.Features is
    not overriding function Get_Featuring_Classifier
     (Self : not null access constant CMOF_Feature)
        return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is abstract;
+   --  Getter of Feature::featuringClassifier.
+   --
    --  The Classifiers that have this Feature as a feature.
 
 end AMF.CMOF.Features;

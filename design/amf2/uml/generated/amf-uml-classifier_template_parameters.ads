@@ -63,16 +63,24 @@ package AMF.UML.Classifier_Template_Parameters is
    not overriding function Get_Allow_Substitutable
     (Self : not null access constant UML_Classifier_Template_Parameter)
        return Boolean is abstract;
+   --  Getter of ClassifierTemplateParameter::allowSubstitutable.
+   --
    --  Constrains the required relationship between an actual parameter and 
    --  the parameteredElement for this formal parameter.
 
    not overriding procedure Set_Allow_Substitutable
     (Self : not null access UML_Classifier_Template_Parameter;
      To   : Boolean) is abstract;
+   --  Setter of ClassifierTemplateParameter::allowSubstitutable.
+   --
+   --  Constrains the required relationship between an actual parameter and 
+   --  the parameteredElement for this formal parameter.
 
    not overriding function Get_Constraining_Classifier
     (Self : not null access constant UML_Classifier_Template_Parameter)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of ClassifierTemplateParameter::constrainingClassifier.
+   --
    --  The classifiers that constrain the argument that can be used for the 
    --  parameter. If the allowSubstitutable attribute is true, then any 
    --  classifier that is compatible with this constraining classifier can be 
@@ -83,10 +91,15 @@ package AMF.UML.Classifier_Template_Parameters is
    not overriding function Get_Parametered_Element
     (Self : not null access constant UML_Classifier_Template_Parameter)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of ClassifierTemplateParameter::parameteredElement.
+   --
    --  The parameterable classifier for this template parameter.
 
    not overriding procedure Set_Parametered_Element
     (Self : not null access UML_Classifier_Template_Parameter;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of ClassifierTemplateParameter::parameteredElement.
+   --
+   --  The parameterable classifier for this template parameter.
 
 end AMF.UML.Classifier_Template_Parameters;

@@ -64,20 +64,30 @@ package AMF.UML.Parameterable_Elements is
    not overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Parameterable_Element)
        return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is abstract;
+   --  Getter of ParameterableElement::owningTemplateParameter.
+   --
    --  The formal template parameter that owns this element.
 
    not overriding procedure Set_Owning_Template_Parameter
     (Self : not null access UML_Parameterable_Element;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is abstract;
+   --  Setter of ParameterableElement::owningTemplateParameter.
+   --
+   --  The formal template parameter that owns this element.
 
    not overriding function Get_Template_Parameter
     (Self : not null access constant UML_Parameterable_Element)
        return AMF.UML.Template_Parameters.UML_Template_Parameter_Access is abstract;
+   --  Getter of ParameterableElement::templateParameter.
+   --
    --  The template parameter that exposes this element as a formal parameter.
 
    not overriding procedure Set_Template_Parameter
     (Self : not null access UML_Parameterable_Element;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is abstract;
+   --  Setter of ParameterableElement::templateParameter.
+   --
+   --  The template parameter that exposes this element as a formal parameter.
 
    not overriding function Is_Compatible_With
     (Self : not null access constant UML_Parameterable_Element;

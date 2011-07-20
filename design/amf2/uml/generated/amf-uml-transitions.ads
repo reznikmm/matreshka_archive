@@ -74,25 +74,38 @@ package AMF.UML.Transitions is
    not overriding function Get_Container
     (Self : not null access constant UML_Transition)
        return AMF.UML.Regions.UML_Region_Access is abstract;
+   --  Getter of Transition::container.
+   --
    --  Designates the region that owns this transition.
 
    not overriding procedure Set_Container
     (Self : not null access UML_Transition;
      To   : AMF.UML.Regions.UML_Region_Access) is abstract;
+   --  Setter of Transition::container.
+   --
+   --  Designates the region that owns this transition.
 
    not overriding function Get_Effect
     (Self : not null access constant UML_Transition)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of Transition::effect.
+   --
    --  Specifies an optional behavior to be performed when the transition 
    --  fires.
 
    not overriding procedure Set_Effect
     (Self : not null access UML_Transition;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of Transition::effect.
+   --
+   --  Specifies an optional behavior to be performed when the transition 
+   --  fires.
 
    not overriding function Get_Guard
     (Self : not null access constant UML_Transition)
        return AMF.UML.Constraints.UML_Constraint_Access is abstract;
+   --  Getter of Transition::guard.
+   --
    --  A guard is a constraint that provides a fine-grained control over the 
    --  firing of the transition. The guard is evaluated when an event 
    --  occurrence is dispatched by the state machine. If the guard is true at 
@@ -103,54 +116,88 @@ package AMF.UML.Transitions is
    not overriding procedure Set_Guard
     (Self : not null access UML_Transition;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
+   --  Setter of Transition::guard.
+   --
+   --  A guard is a constraint that provides a fine-grained control over the 
+   --  firing of the transition. The guard is evaluated when an event 
+   --  occurrence is dispatched by the state machine. If the guard is true at 
+   --  that time, the transition may be enabled, otherwise, it is disabled. 
+   --  Guards should be pure expressions without side effects. Guard 
+   --  expressions with side effects are ill formed.
 
    not overriding function Get_Kind
     (Self : not null access constant UML_Transition)
        return AMF.UML.UML_Transition_Kind is abstract;
+   --  Getter of Transition::kind.
+   --
    --  Indicates the precise type of the transition.
 
    not overriding procedure Set_Kind
     (Self : not null access UML_Transition;
      To   : AMF.UML.UML_Transition_Kind) is abstract;
+   --  Setter of Transition::kind.
+   --
+   --  Indicates the precise type of the transition.
 
    not overriding function Get_Redefined_Transition
     (Self : not null access constant UML_Transition)
        return AMF.UML.Transitions.UML_Transition_Access is abstract;
+   --  Getter of Transition::redefinedTransition.
+   --
    --  The transition that is redefined by this transition.
 
    not overriding procedure Set_Redefined_Transition
     (Self : not null access UML_Transition;
      To   : AMF.UML.Transitions.UML_Transition_Access) is abstract;
+   --  Setter of Transition::redefinedTransition.
+   --
+   --  The transition that is redefined by this transition.
 
    not overriding function Get_Redefinition_Context
     (Self : not null access constant UML_Transition)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of Transition::redefinitionContext.
+   --
    --  References the classifier in which context this element may be 
    --  redefined.
 
    not overriding function Get_Source
     (Self : not null access constant UML_Transition)
        return AMF.UML.Vertexs.UML_Vertex_Access is abstract;
+   --  Getter of Transition::source.
+   --
    --  Designates the originating vertex (state or pseudostate) of the 
    --  transition.
 
    not overriding procedure Set_Source
     (Self : not null access UML_Transition;
      To   : AMF.UML.Vertexs.UML_Vertex_Access) is abstract;
+   --  Setter of Transition::source.
+   --
+   --  Designates the originating vertex (state or pseudostate) of the 
+   --  transition.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Transition)
        return AMF.UML.Vertexs.UML_Vertex_Access is abstract;
+   --  Getter of Transition::target.
+   --
    --  Designates the target vertex that is reached when the transition is 
    --  taken.
 
    not overriding procedure Set_Target
     (Self : not null access UML_Transition;
      To   : AMF.UML.Vertexs.UML_Vertex_Access) is abstract;
+   --  Setter of Transition::target.
+   --
+   --  Designates the target vertex that is reached when the transition is 
+   --  taken.
 
    not overriding function Get_Trigger
     (Self : not null access constant UML_Transition)
        return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
+   --  Getter of Transition::trigger.
+   --
    --  Specifies the triggers that may fire the transition.
 
    not overriding function Containing_State_Machine

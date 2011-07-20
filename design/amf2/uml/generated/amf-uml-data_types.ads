@@ -66,11 +66,15 @@ package AMF.UML.Data_Types is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Data_Type)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of DataType::ownedAttribute.
+   --
    --  The Attributes owned by the DataType.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Data_Type)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
+   --  Getter of DataType::ownedOperation.
+   --
    --  The Operations owned by the DataType.
 
    overriding function Inherit

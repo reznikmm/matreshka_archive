@@ -68,44 +68,68 @@ package AMF.UML.Lifelines is
    not overriding function Get_Covered_By
     (Self : not null access constant UML_Lifeline)
        return AMF.UML.Interaction_Fragments.Collections.Set_Of_UML_Interaction_Fragment is abstract;
+   --  Getter of Lifeline::coveredBy.
+   --
    --  References the InteractionFragments in which this Lifeline takes part.
 
    not overriding function Get_Decomposed_As
     (Self : not null access constant UML_Lifeline)
        return AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access is abstract;
+   --  Getter of Lifeline::decomposedAs.
+   --
    --  References the Interaction that represents the decomposition.
 
    not overriding procedure Set_Decomposed_As
     (Self : not null access UML_Lifeline;
      To   : AMF.UML.Part_Decompositions.UML_Part_Decomposition_Access) is abstract;
+   --  Setter of Lifeline::decomposedAs.
+   --
+   --  References the Interaction that represents the decomposition.
 
    not overriding function Get_Interaction
     (Self : not null access constant UML_Lifeline)
        return AMF.UML.Interactions.UML_Interaction_Access is abstract;
+   --  Getter of Lifeline::interaction.
+   --
    --  References the Interaction enclosing this Lifeline.
 
    not overriding procedure Set_Interaction
     (Self : not null access UML_Lifeline;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
+   --  Setter of Lifeline::interaction.
+   --
+   --  References the Interaction enclosing this Lifeline.
 
    not overriding function Get_Represents
     (Self : not null access constant UML_Lifeline)
        return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access is abstract;
+   --  Getter of Lifeline::represents.
+   --
    --  References the ConnectableElement within the classifier that contains 
    --  the enclosing interaction.
 
    not overriding procedure Set_Represents
     (Self : not null access UML_Lifeline;
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
+   --  Setter of Lifeline::represents.
+   --
+   --  References the ConnectableElement within the classifier that contains 
+   --  the enclosing interaction.
 
    not overriding function Get_Selector
     (Self : not null access constant UML_Lifeline)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of Lifeline::selector.
+   --
    --  If the referenced ConnectableElement is multivalued, then this 
    --  specifies the specific individual part within that set.
 
    not overriding procedure Set_Selector
     (Self : not null access UML_Lifeline;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of Lifeline::selector.
+   --
+   --  If the referenced ConnectableElement is multivalued, then this 
+   --  specifies the specific individual part within that set.
 
 end AMF.UML.Lifelines;

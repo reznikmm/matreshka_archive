@@ -97,52 +97,80 @@ package AMF.UML.Properties is
    not overriding function Get_Aggregation
     (Self : not null access constant UML_Property)
        return AMF.UML.UML_Aggregation_Kind is abstract;
+   --  Getter of Property::aggregation.
+   --
    --  Specifies the kind of aggregation that applies to the Property.
 
    not overriding procedure Set_Aggregation
     (Self : not null access UML_Property;
      To   : AMF.UML.UML_Aggregation_Kind) is abstract;
+   --  Setter of Property::aggregation.
+   --
+   --  Specifies the kind of aggregation that applies to the Property.
 
    not overriding function Get_Association
     (Self : not null access constant UML_Property)
        return AMF.UML.Associations.UML_Association_Access is abstract;
+   --  Getter of Property::association.
+   --
    --  References the association of which this property is a member, if any.
 
    not overriding procedure Set_Association
     (Self : not null access UML_Property;
      To   : AMF.UML.Associations.UML_Association_Access) is abstract;
+   --  Setter of Property::association.
+   --
+   --  References the association of which this property is a member, if any.
 
    not overriding function Get_Association_End
     (Self : not null access constant UML_Property)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of Property::associationEnd.
+   --
    --  Designates the optional association end that owns a qualifier attribute.
 
    not overriding procedure Set_Association_End
     (Self : not null access UML_Property;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of Property::associationEnd.
+   --
+   --  Designates the optional association end that owns a qualifier attribute.
 
    not overriding function Get_Class
     (Self : not null access constant UML_Property)
        return AMF.UML.Classes.UML_Class_Access is abstract;
+   --  Getter of Property::class.
+   --
    --  References the Class that owns the Property.
    --  References the Class that owns the Property.
 
    not overriding procedure Set_Class
     (Self : not null access UML_Property;
      To   : AMF.UML.Classes.UML_Class_Access) is abstract;
+   --  Setter of Property::class.
+   --
+   --  References the Class that owns the Property.
+   --  References the Class that owns the Property.
 
    not overriding function Get_Datatype
     (Self : not null access constant UML_Property)
        return AMF.UML.Data_Types.UML_Data_Type_Access is abstract;
+   --  Getter of Property::datatype.
+   --
    --  The DataType that owns this Property.
 
    not overriding procedure Set_Datatype
     (Self : not null access UML_Property;
      To   : AMF.UML.Data_Types.UML_Data_Type_Access) is abstract;
+   --  Setter of Property::datatype.
+   --
+   --  The DataType that owns this Property.
 
    not overriding function Get_Default
     (Self : not null access constant UML_Property)
        return AMF.Optional_String is abstract;
+   --  Getter of Property::default.
+   --
    --  A String that is evaluated to give a default value for the Property 
    --  when an object of the owning Classifier is instantiated.
    --  Specifies a String that represents a value to be used when no argument 
@@ -151,29 +179,48 @@ package AMF.UML.Properties is
    not overriding procedure Set_Default
     (Self : not null access UML_Property;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Property::default.
+   --
+   --  A String that is evaluated to give a default value for the Property 
+   --  when an object of the owning Classifier is instantiated.
+   --  Specifies a String that represents a value to be used when no argument 
+   --  is supplied for the Property.
 
    not overriding function Get_Default_Value
     (Self : not null access constant UML_Property)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of Property::defaultValue.
+   --
    --  A ValueSpecification that is evaluated to give a default value for the 
    --  Property when an object of the owning Classifier is instantiated.
 
    not overriding procedure Set_Default_Value
     (Self : not null access UML_Property;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of Property::defaultValue.
+   --
+   --  A ValueSpecification that is evaluated to give a default value for the 
+   --  Property when an object of the owning Classifier is instantiated.
 
    not overriding function Get_Interface
     (Self : not null access constant UML_Property)
        return AMF.UML.Interfaces.UML_Interface_Access is abstract;
+   --  Getter of Property::interface.
+   --
    --  References the Interface that owns the Property
 
    not overriding procedure Set_Interface
     (Self : not null access UML_Property;
      To   : AMF.UML.Interfaces.UML_Interface_Access) is abstract;
+   --  Setter of Property::interface.
+   --
+   --  References the Interface that owns the Property
 
    not overriding function Get_Is_Composite
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Getter of Property::isComposite.
+   --
    --  If isComposite is true, the object containing the attribute is a 
    --  container for the object or value contained in the attribute.
    --  This is a derived value, indicating whether the aggregation of the 
@@ -182,10 +229,18 @@ package AMF.UML.Properties is
    not overriding procedure Set_Is_Composite
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
+   --  Setter of Property::isComposite.
+   --
+   --  If isComposite is true, the object containing the attribute is a 
+   --  container for the object or value contained in the attribute.
+   --  This is a derived value, indicating whether the aggregation of the 
+   --  Property is composite or not.
 
    not overriding function Get_Is_Derived
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Getter of Property::isDerived.
+   --
    --  Specifies whether the Property is derived, i.e., whether its value or 
    --  values can be computed from other information.
    --  If isDerived is true, the value of the attribute is derived from 
@@ -194,30 +249,50 @@ package AMF.UML.Properties is
    not overriding procedure Set_Is_Derived
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
+   --  Setter of Property::isDerived.
+   --
+   --  Specifies whether the Property is derived, i.e., whether its value or 
+   --  values can be computed from other information.
+   --  If isDerived is true, the value of the attribute is derived from 
+   --  information elsewhere.
 
    not overriding function Get_Is_Derived_Union
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Getter of Property::isDerivedUnion.
+   --
    --  Specifies whether the property is derived as the union of all of the 
    --  properties that are constrained to subset it.
 
    not overriding procedure Set_Is_Derived_Union
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
+   --  Setter of Property::isDerivedUnion.
+   --
+   --  Specifies whether the property is derived as the union of all of the 
+   --  properties that are constrained to subset it.
 
    not overriding function Get_Is_ID
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Getter of Property::isID.
+   --
    --  True indicates this property can be used to uniquely identify an 
    --  instance of the containing Class.
 
    not overriding procedure Set_Is_ID
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
+   --  Setter of Property::isID.
+   --
+   --  True indicates this property can be used to uniquely identify an 
+   --  instance of the containing Class.
 
    overriding function Get_Is_Read_Only
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Getter of Property::isReadOnly.
+   --
    --  If isReadOnly is true, the attribute may not be written to after 
    --  initialization.
    --  If true, the attribute may only be read, and not written.
@@ -225,40 +300,62 @@ package AMF.UML.Properties is
    overriding procedure Set_Is_Read_Only
     (Self : not null access UML_Property;
      To   : Boolean) is abstract;
+   --  Setter of Property::isReadOnly.
+   --
+   --  If isReadOnly is true, the attribute may not be written to after 
+   --  initialization.
+   --  If true, the attribute may only be read, and not written.
 
    not overriding function Get_Opposite
     (Self : not null access constant UML_Property)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of Property::opposite.
+   --
    --  In the case where the property is one navigable end of a binary 
    --  association with both ends navigable, this gives the other end.
 
    not overriding procedure Set_Opposite
     (Self : not null access UML_Property;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of Property::opposite.
+   --
+   --  In the case where the property is one navigable end of a binary 
+   --  association with both ends navigable, this gives the other end.
 
    not overriding function Get_Owning_Association
     (Self : not null access constant UML_Property)
        return AMF.UML.Associations.UML_Association_Access is abstract;
+   --  Getter of Property::owningAssociation.
+   --
    --  References the owning association of this property, if any.
 
    not overriding procedure Set_Owning_Association
     (Self : not null access UML_Property;
      To   : AMF.UML.Associations.UML_Association_Access) is abstract;
+   --  Setter of Property::owningAssociation.
+   --
+   --  References the owning association of this property, if any.
 
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Property)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of Property::qualifier.
+   --
    --  An optional list of ordered qualifier attributes for the end. If the 
    --  list is empty, then the Association is not qualified.
 
    not overriding function Get_Redefined_Property
     (Self : not null access constant UML_Property)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
+   --  Getter of Property::redefinedProperty.
+   --
    --  References the properties that are redefined by this property.
 
    not overriding function Get_Subsetted_Property
     (Self : not null access constant UML_Property)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
+   --  Getter of Property::subsettedProperty.
+   --
    --  References the properties of which this property is constrained to be a 
    --  subset.
 

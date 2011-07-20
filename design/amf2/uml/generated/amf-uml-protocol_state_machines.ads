@@ -71,6 +71,8 @@ package AMF.UML.Protocol_State_Machines is
    not overriding function Get_Conformance
     (Self : not null access constant UML_Protocol_State_Machine)
        return AMF.UML.Protocol_Conformances.Collections.Set_Of_UML_Protocol_Conformance is abstract;
+   --  Getter of ProtocolStateMachine::conformance.
+   --
    --  Conformance between protocol state machines.
 
 end AMF.UML.Protocol_State_Machines;

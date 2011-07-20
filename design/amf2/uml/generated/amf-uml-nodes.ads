@@ -66,6 +66,8 @@ package AMF.UML.Nodes is
    not overriding function Get_Nested_Node
     (Self : not null access constant UML_Node)
        return AMF.UML.Nodes.Collections.Set_Of_UML_Node is abstract;
+   --  Getter of Node::nestedNode.
+   --
    --  The Nodes that are defined (nested) within the Node.
 
 end AMF.UML.Nodes;

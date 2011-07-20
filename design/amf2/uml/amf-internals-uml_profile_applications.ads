@@ -59,57 +59,106 @@ package AMF.Internals.UML_Profile_Applications is
    overriding function Get_Applied_Profile
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Profiles.UML_Profile_Access;
+   --  Getter of ProfileApplication::appliedProfile.
+   --
+   --  References the Profiles that are applied to a Package through this 
+   --  ProfileApplication.
 
    overriding procedure Set_Applied_Profile
     (Self : not null access UML_Profile_Application_Proxy;
      To   : AMF.UML.Profiles.UML_Profile_Access);
+   --  Setter of ProfileApplication::appliedProfile.
+   --
+   --  References the Profiles that are applied to a Package through this 
+   --  ProfileApplication.
 
    overriding function Get_Applying_Package
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Packages.UML_Package_Access;
+   --  Getter of ProfileApplication::applyingPackage.
+   --
+   --  The package that owns the profile application.
 
    overriding procedure Set_Applying_Package
     (Self : not null access UML_Profile_Application_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access);
+   --  Setter of ProfileApplication::applyingPackage.
+   --
+   --  The package that owns the profile application.
 
    overriding function Get_Is_Strict
     (Self : not null access constant UML_Profile_Application_Proxy)
        return Boolean;
+   --  Getter of ProfileApplication::isStrict.
+   --
+   --  Specifies that the Profile filtering rules for the metaclasses of the 
+   --  referenced metamodel shall be strictly applied.
 
    overriding procedure Set_Is_Strict
     (Self : not null access UML_Profile_Application_Proxy;
      To   : Boolean);
+   --  Setter of ProfileApplication::isStrict.
+   --
+   --  Specifies that the Profile filtering rules for the metaclasses of the 
+   --  referenced metamodel shall be strictly applied.
 
    overriding function Get_Source
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Profile_Application_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Profile_Application_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Profile_Applications;

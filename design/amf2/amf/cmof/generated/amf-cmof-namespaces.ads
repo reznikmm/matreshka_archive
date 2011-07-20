@@ -68,37 +68,51 @@ package AMF.CMOF.Namespaces is
    not overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Getter of Namespace::importedMember.
+   --
    --  References the PackageableElements that are members of this Namespace 
    --  as a result of either PackageImports or ElementImports.
 
    not overriding function Get_Element_Import
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import is abstract;
+   --  Getter of Namespace::elementImport.
+   --
    --  References the ElementImports owned by the Namespace.
 
    not overriding function Get_Package_Import
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import is abstract;
+   --  Getter of Namespace::packageImport.
+   --
    --  References the PackageImports owned by the Namespace.
 
    not overriding function Get_Owned_Member
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
+   --  Getter of Namespace::ownedMember.
+   --
    --  A collection of NamedElements owned by the Namespace.
 
    not overriding function Get_Member
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
+   --  Getter of Namespace::member.
+   --
    --  A collection of NamedElements identifiable within the Namespace, either 
    --  by being owned or by being introduced by importing or inheritance.
 
    not overriding function Get_Owned_Rule
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
+   --  Getter of Namespace::ownedRule.
+   --
 
    not overriding function Imported_Member
     (Self : not null access constant CMOF_Namespace)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Operation Namespace::importedMember.
+   --
    --  The importedMember property is derived from the ElementImports and the 
    --  PackageImports. References the PackageableElements that are members of 
    --  this Namespace as a result of either PackageImports or ElementImports.
@@ -107,6 +121,8 @@ package AMF.CMOF.Namespaces is
     (Self : not null access constant CMOF_Namespace;
      Element : AMF.CMOF.Named_Elements.CMOF_Named_Element_Access)
        return AMF.String_Collections.Set_Of_String is abstract;
+   --  Operation Namespace::getNamesOfMember.
+   --
    --  The query getNamesOfMember() takes importing into account. It gives 
    --  back the set of names that an element would have in an importing 
    --  namespace, either because it is owned, or if not owned then imported 
@@ -116,6 +132,8 @@ package AMF.CMOF.Namespaces is
     (Self : not null access constant CMOF_Namespace;
      Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Operation Namespace::importMembers.
+   --
    --  The query importMembers() defines which of a set of PackageableElements 
    --  are actually imported into the namespace. This excludes hidden ones, 
    --  i.e., those which have names that conflict with names of owned members, 
@@ -125,6 +143,8 @@ package AMF.CMOF.Namespaces is
     (Self : not null access constant CMOF_Namespace;
      Imps : AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element is abstract;
+   --  Operation Namespace::excludeCollisions.
+   --
    --  The query excludeCollisions() excludes from a set of 
    --  PackageableElements any that would not be distinguishable from each 
    --  other in this namespace.
@@ -132,6 +152,8 @@ package AMF.CMOF.Namespaces is
    not overriding function Members_Are_Distinguishable
     (Self : not null access constant CMOF_Namespace)
        return Boolean is abstract;
+   --  Operation Namespace::membersAreDistinguishable.
+   --
    --  The Boolean query membersAreDistinguishable() determines whether all of 
    --  the namespace's members are distinguishable within it.
 

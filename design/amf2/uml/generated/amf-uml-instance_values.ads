@@ -62,10 +62,15 @@ package AMF.UML.Instance_Values is
    not overriding function Get_Instance
     (Self : not null access constant UML_Instance_Value)
        return AMF.UML.Instance_Specifications.UML_Instance_Specification_Access is abstract;
+   --  Getter of InstanceValue::instance.
+   --
    --  The instance that is the specified value.
 
    not overriding procedure Set_Instance
     (Self : not null access UML_Instance_Value;
      To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access) is abstract;
+   --  Setter of InstanceValue::instance.
+   --
+   --  The instance that is the specified value.
 
 end AMF.UML.Instance_Values;

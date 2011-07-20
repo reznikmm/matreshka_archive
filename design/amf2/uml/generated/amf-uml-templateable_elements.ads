@@ -65,16 +65,24 @@ package AMF.UML.Templateable_Elements is
    not overriding function Get_Owned_Template_Signature
     (Self : not null access constant UML_Templateable_Element)
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access is abstract;
+   --  Getter of TemplateableElement::ownedTemplateSignature.
+   --
    --  The optional template signature specifying the formal template 
    --  parameters.
 
    not overriding procedure Set_Owned_Template_Signature
     (Self : not null access UML_Templateable_Element;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is abstract;
+   --  Setter of TemplateableElement::ownedTemplateSignature.
+   --
+   --  The optional template signature specifying the formal template 
+   --  parameters.
 
    not overriding function Get_Template_Binding
     (Self : not null access constant UML_Templateable_Element)
        return AMF.UML.Template_Bindings.Collections.Set_Of_UML_Template_Binding is abstract;
+   --  Getter of TemplateableElement::templateBinding.
+   --
    --  The optional bindings from this element to templates.
 
    not overriding function Is_Template

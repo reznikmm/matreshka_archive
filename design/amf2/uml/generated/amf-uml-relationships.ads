@@ -63,6 +63,8 @@ package AMF.UML.Relationships is
    not overriding function Get_Related_Element
     (Self : not null access constant UML_Relationship)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
+   --  Getter of Relationship::relatedElement.
+   --
    --  Specifies the elements related by the Relationship.
 
 end AMF.UML.Relationships;

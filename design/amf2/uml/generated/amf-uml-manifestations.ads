@@ -63,10 +63,15 @@ package AMF.UML.Manifestations is
    not overriding function Get_Utilized_Element
     (Self : not null access constant UML_Manifestation)
        return AMF.UML.Packageable_Elements.UML_Packageable_Element_Access is abstract;
+   --  Getter of Manifestation::utilizedElement.
+   --
    --  The model element that is utilized in the manifestation in an Artifact.
 
    not overriding procedure Set_Utilized_Element
     (Self : not null access UML_Manifestation;
      To   : AMF.UML.Packageable_Elements.UML_Packageable_Element_Access) is abstract;
+   --  Setter of Manifestation::utilizedElement.
+   --
+   --  The model element that is utilized in the manifestation in an Artifact.
 
 end AMF.UML.Manifestations;

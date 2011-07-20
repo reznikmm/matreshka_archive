@@ -80,6 +80,8 @@ package AMF.UML.Packages is
    not overriding function Get_URI
     (Self : not null access constant UML_Package)
        return AMF.Optional_String is abstract;
+   --  Getter of Package::URI.
+   --
    --  Provides an identifier for the package that can be used for many 
    --  purposes. A URI is the universally unique identification of the package 
    --  following the IETF URI specification, RFC 2396 
@@ -89,44 +91,68 @@ package AMF.UML.Packages is
    not overriding procedure Set_URI
     (Self : not null access UML_Package;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Package::URI.
+   --
+   --  Provides an identifier for the package that can be used for many 
+   --  purposes. A URI is the universally unique identification of the package 
+   --  following the IETF URI specification, RFC 2396 
+   --  http://www.ietf.org/rfc/rfc2396.txt and it must comply with those 
+   --  syntax rules.
 
    not overriding function Get_Nested_Package
     (Self : not null access constant UML_Package)
        return AMF.UML.Packages.Collections.Set_Of_UML_Package is abstract;
+   --  Getter of Package::nestedPackage.
+   --
    --  References the packaged elements that are Packages.
 
    not overriding function Get_Nesting_Package
     (Self : not null access constant UML_Package)
        return AMF.UML.Packages.UML_Package_Access is abstract;
+   --  Getter of Package::nestingPackage.
+   --
    --  References the Package that owns this Package.
 
    not overriding procedure Set_Nesting_Package
     (Self : not null access UML_Package;
      To   : AMF.UML.Packages.UML_Package_Access) is abstract;
+   --  Setter of Package::nestingPackage.
+   --
+   --  References the Package that owns this Package.
 
    not overriding function Get_Owned_Stereotype
     (Self : not null access constant UML_Package)
        return AMF.UML.Stereotypes.Collections.Set_Of_UML_Stereotype is abstract;
+   --  Getter of Package::ownedStereotype.
+   --
    --  References the Stereotypes that are owned by the Package
 
    not overriding function Get_Owned_Type
     (Self : not null access constant UML_Package)
        return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
+   --  Getter of Package::ownedType.
+   --
    --  References the packaged elements that are Types.
 
    not overriding function Get_Package_Merge
     (Self : not null access constant UML_Package)
        return AMF.UML.Package_Merges.Collections.Set_Of_UML_Package_Merge is abstract;
+   --  Getter of Package::packageMerge.
+   --
    --  References the PackageMerges that are owned by this Package.
 
    not overriding function Get_Packaged_Element
     (Self : not null access constant UML_Package)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Getter of Package::packagedElement.
+   --
    --  Specifies the packageable elements that are owned by this Package.
 
    not overriding function Get_Profile_Application
     (Self : not null access constant UML_Package)
        return AMF.UML.Profile_Applications.Collections.Set_Of_UML_Profile_Application is abstract;
+   --  Getter of Package::profileApplication.
+   --
    --  References the ProfileApplications that indicate which profiles have 
    --  been applied to the Package.
 

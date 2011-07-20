@@ -65,11 +65,17 @@ package AMF.UML.Pins is
    not overriding function Get_Is_Control
     (Self : not null access constant UML_Pin)
        return Boolean is abstract;
+   --  Getter of Pin::isControl.
+   --
    --  Tells whether the pins provide data to the actions, or just controls 
    --  when it executes it.
 
    not overriding procedure Set_Is_Control
     (Self : not null access UML_Pin;
      To   : Boolean) is abstract;
+   --  Setter of Pin::isControl.
+   --
+   --  Tells whether the pins provide data to the actions, or just controls 
+   --  when it executes it.
 
 end AMF.UML.Pins;

@@ -66,17 +66,23 @@ package AMF.CMOF.Data_Types is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant CMOF_Data_Type)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
+   --  Getter of DataType::ownedAttribute.
+   --
    --  The Attributes owned by the DataType.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant CMOF_Data_Type)
        return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is abstract;
+   --  Getter of DataType::ownedOperation.
+   --
    --  The Operations owned by the DataType.
 
    overriding function Inherit
     (Self : not null access constant CMOF_Data_Type;
      Inhs : AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
+   --  Operation DataType::inherit.
+   --
    --  The inherit operation is overridden to exclude redefined properties.
 
 end AMF.CMOF.Data_Types;

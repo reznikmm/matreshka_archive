@@ -59,69 +59,140 @@ package AMF.Internals.UML_Element_Imports is
    overriding function Get_Alias
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.Optional_String;
+   --  Getter of ElementImport::alias.
+   --
+   --  Specifies the name that should be added to the namespace of the 
+   --  importing package in lieu of the name of the imported packagable 
+   --  element. The aliased name must not clash with any other member name in 
+   --  the importing package. By default, no alias is used.
 
    overriding procedure Set_Alias
     (Self : not null access UML_Element_Import_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of ElementImport::alias.
+   --
+   --  Specifies the name that should be added to the namespace of the 
+   --  importing package in lieu of the name of the imported packagable 
+   --  element. The aliased name must not clash with any other member name in 
+   --  the importing package. By default, no alias is used.
 
    overriding function Get_Imported_Element
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Packageable_Elements.UML_Packageable_Element_Access;
+   --  Getter of ElementImport::importedElement.
+   --
+   --  Specifies the PackageableElement whose name is to be added to a 
+   --  Namespace.
 
    overriding procedure Set_Imported_Element
     (Self : not null access UML_Element_Import_Proxy;
      To   : AMF.UML.Packageable_Elements.UML_Packageable_Element_Access);
+   --  Setter of ElementImport::importedElement.
+   --
+   --  Specifies the PackageableElement whose name is to be added to a 
+   --  Namespace.
 
    overriding function Get_Importing_Namespace
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Getter of ElementImport::importingNamespace.
+   --
+   --  Specifies the Namespace that imports a PackageableElement from another 
+   --  Package.
 
    overriding procedure Set_Importing_Namespace
     (Self : not null access UML_Element_Import_Proxy;
      To   : AMF.UML.Namespaces.UML_Namespace_Access);
+   --  Setter of ElementImport::importingNamespace.
+   --
+   --  Specifies the Namespace that imports a PackageableElement from another 
+   --  Package.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.UML_Visibility_Kind;
+   --  Getter of ElementImport::visibility.
+   --
+   --  Specifies the visibility of the imported PackageableElement within the 
+   --  importing Package. The default visibility is the same as that of the 
+   --  imported element. If the imported element does not have a visibility, 
+   --  it is possible to add visibility to the element import.
 
    overriding procedure Set_Visibility
     (Self : not null access UML_Element_Import_Proxy;
      To   : AMF.UML.UML_Visibility_Kind);
+   --  Setter of ElementImport::visibility.
+   --
+   --  Specifies the visibility of the imported PackageableElement within the 
+   --  importing Package. The default visibility is the same as that of the 
+   --  imported element. If the imported element does not have a visibility, 
+   --  it is possible to add visibility to the element import.
 
    overriding function Get_Source
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function Get_Name
     (Self : not null access constant UML_Element_Import_Proxy)
        return League.Strings.Universal_String;
+   --  Operation ElementImport::getName.
+   --
+   --  The query getName() returns the name under which the imported 
+   --  PackageableElement will be known in the importing namespace.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Element_Import_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Element_Import_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Element_Imports;

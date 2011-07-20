@@ -67,15 +67,22 @@ package AMF.UML.Interaction_Operands is
    not overriding function Get_Fragment
     (Self : not null access constant UML_Interaction_Operand)
        return AMF.UML.Interaction_Fragments.Collections.Ordered_Set_Of_UML_Interaction_Fragment is abstract;
+   --  Getter of InteractionOperand::fragment.
+   --
    --  The fragments of the operand.
 
    not overriding function Get_Guard
     (Self : not null access constant UML_Interaction_Operand)
        return AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access is abstract;
+   --  Getter of InteractionOperand::guard.
+   --
    --  Constraint of the operand.
 
    not overriding procedure Set_Guard
     (Self : not null access UML_Interaction_Operand;
      To   : AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access) is abstract;
+   --  Setter of InteractionOperand::guard.
+   --
+   --  Constraint of the operand.
 
 end AMF.UML.Interaction_Operands;

@@ -57,45 +57,99 @@ package AMF.Internals.UML_Images is
    overriding function Get_Content
     (Self : not null access constant UML_Image_Proxy)
        return AMF.Optional_String;
+   --  Getter of Image::content.
+   --
+   --  This contains the serialization of the image according to the format. 
+   --  The value could represent a bitmap, image such as a GIF file, or 
+   --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
+   --  (SVG) (which is XML based).
 
    overriding procedure Set_Content
     (Self : not null access UML_Image_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of Image::content.
+   --
+   --  This contains the serialization of the image according to the format. 
+   --  The value could represent a bitmap, image such as a GIF file, or 
+   --  drawing 'instructions' using a standard such as Scalable Vector Graphic 
+   --  (SVG) (which is XML based).
 
    overriding function Get_Format
     (Self : not null access constant UML_Image_Proxy)
        return AMF.Optional_String;
+   --  Getter of Image::format.
+   --
+   --  This indicates the format of the content - which is how the string 
+   --  content should be interpreted. The following values are reserved: SVG, 
+   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
+   --  reserved. This option can be used as an alternative to express the 
+   --  reserved values above, for example 'SVG' could instead be expressed as 
+   --  'MIME: image/svg+xml'.
 
    overriding procedure Set_Format
     (Self : not null access UML_Image_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of Image::format.
+   --
+   --  This indicates the format of the content - which is how the string 
+   --  content should be interpreted. The following values are reserved: SVG, 
+   --  GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also 
+   --  reserved. This option can be used as an alternative to express the 
+   --  reserved values above, for example 'SVG' could instead be expressed as 
+   --  'MIME: image/svg+xml'.
 
    overriding function Get_Location
     (Self : not null access constant UML_Image_Proxy)
        return AMF.Optional_String;
+   --  Getter of Image::location.
+   --
+   --  This contains a location that can be used by a tool to locate the image 
+   --  as an alternative to embedding it in the stereotype.
 
    overriding procedure Set_Location
     (Self : not null access UML_Image_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of Image::location.
+   --
+   --  This contains a location that can be used by a tool to locate the image 
+   --  as an alternative to embedding it in the stereotype.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Image_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Image_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Image_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Image_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Image_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Images;

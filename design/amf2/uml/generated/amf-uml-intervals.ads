@@ -61,21 +61,33 @@ package AMF.UML.Intervals is
    not overriding function Get_Max
     (Self : not null access constant UML_Interval)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of Interval::max.
+   --
    --  Refers to the ValueSpecification denoting the maximum value of the 
    --  range.
 
    not overriding procedure Set_Max
     (Self : not null access UML_Interval;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of Interval::max.
+   --
+   --  Refers to the ValueSpecification denoting the maximum value of the 
+   --  range.
 
    not overriding function Get_Min
     (Self : not null access constant UML_Interval)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of Interval::min.
+   --
    --  Refers to the ValueSpecification denoting the minimum value of the 
    --  range.
 
    not overriding procedure Set_Min
     (Self : not null access UML_Interval;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of Interval::min.
+   --
+   --  Refers to the ValueSpecification denoting the minimum value of the 
+   --  range.
 
 end AMF.UML.Intervals;

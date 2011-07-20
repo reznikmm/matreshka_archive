@@ -64,16 +64,24 @@ package AMF.UML.Accept_Event_Actions is
    not overriding function Get_Is_Unmarshall
     (Self : not null access constant UML_Accept_Event_Action)
        return Boolean is abstract;
+   --  Getter of AcceptEventAction::isUnmarshall.
+   --
    --  Indicates whether there is a single output pin for the event, or 
    --  multiple output pins for attributes of the event.
 
    not overriding procedure Set_Is_Unmarshall
     (Self : not null access UML_Accept_Event_Action;
      To   : Boolean) is abstract;
+   --  Setter of AcceptEventAction::isUnmarshall.
+   --
+   --  Indicates whether there is a single output pin for the event, or 
+   --  multiple output pins for attributes of the event.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Accept_Event_Action)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
+   --  Getter of AcceptEventAction::result.
+   --
    --  Pins holding the received event objects or their attributes. Event 
    --  objects may be copied in transmission, so identity might not be 
    --  preserved.
@@ -81,6 +89,8 @@ package AMF.UML.Accept_Event_Actions is
    not overriding function Get_Trigger
     (Self : not null access constant UML_Accept_Event_Action)
        return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
+   --  Getter of AcceptEventAction::trigger.
+   --
    --  The type of events accepted by the action, as specified by triggers. 
    --  For triggers with signal events, a signal of the specified type or any 
    --  subtype of the specified signal type is accepted.

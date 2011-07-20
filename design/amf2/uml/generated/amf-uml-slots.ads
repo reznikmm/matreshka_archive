@@ -65,25 +65,38 @@ package AMF.UML.Slots is
    not overriding function Get_Defining_Feature
     (Self : not null access constant UML_Slot)
        return AMF.UML.Structural_Features.UML_Structural_Feature_Access is abstract;
+   --  Getter of Slot::definingFeature.
+   --
    --  The structural feature that specifies the values that may be held by 
    --  the slot.
 
    not overriding procedure Set_Defining_Feature
     (Self : not null access UML_Slot;
      To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access) is abstract;
+   --  Setter of Slot::definingFeature.
+   --
+   --  The structural feature that specifies the values that may be held by 
+   --  the slot.
 
    not overriding function Get_Owning_Instance
     (Self : not null access constant UML_Slot)
        return AMF.UML.Instance_Specifications.UML_Instance_Specification_Access is abstract;
+   --  Getter of Slot::owningInstance.
+   --
    --  The instance specification that owns this slot.
 
    not overriding procedure Set_Owning_Instance
     (Self : not null access UML_Slot;
      To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access) is abstract;
+   --  Setter of Slot::owningInstance.
+   --
+   --  The instance specification that owns this slot.
 
    not overriding function Get_Value
     (Self : not null access constant UML_Slot)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
+   --  Getter of Slot::value.
+   --
    --  The value or values corresponding to the defining feature for the 
    --  owning instance specification.
 

@@ -64,6 +64,8 @@ package AMF.UML.Extension_Ends is
    overriding function Get_Lower
     (Self : not null access constant UML_Extension_End)
        return AMF.Optional_Integer is abstract;
+   --  Getter of ExtensionEnd::lower.
+   --
    --  This redefinition changes the default multiplicity of association ends, 
    --  since model elements are usually extended by 0 or 1 instance of the 
    --  extension stereotype.
@@ -71,16 +73,27 @@ package AMF.UML.Extension_Ends is
    overriding procedure Set_Lower
     (Self : not null access UML_Extension_End;
      To   : AMF.Optional_Integer) is abstract;
+   --  Setter of ExtensionEnd::lower.
+   --
+   --  This redefinition changes the default multiplicity of association ends, 
+   --  since model elements are usually extended by 0 or 1 instance of the 
+   --  extension stereotype.
 
    not overriding function Get_Type
     (Self : not null access constant UML_Extension_End)
        return AMF.UML.Stereotypes.UML_Stereotype_Access is abstract;
+   --  Getter of ExtensionEnd::type.
+   --
    --  References the type of the ExtensionEnd. Note that this association 
    --  restricts the possible types of an ExtensionEnd to only be Stereotypes.
 
    not overriding procedure Set_Type
     (Self : not null access UML_Extension_End;
      To   : AMF.UML.Stereotypes.UML_Stereotype_Access) is abstract;
+   --  Setter of ExtensionEnd::type.
+   --
+   --  References the type of the ExtensionEnd. Note that this association 
+   --  restricts the possible types of an ExtensionEnd to only be Stereotypes.
 
    overriding function Lower_Bound
     (Self : not null access constant UML_Extension_End)

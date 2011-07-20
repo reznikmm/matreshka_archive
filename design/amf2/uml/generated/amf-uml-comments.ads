@@ -63,15 +63,22 @@ package AMF.UML.Comments is
    not overriding function Get_Annotated_Element
     (Self : not null access constant UML_Comment)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
+   --  Getter of Comment::annotatedElement.
+   --
    --  References the Element(s) being commented.
 
    not overriding function Get_Body
     (Self : not null access constant UML_Comment)
        return AMF.Optional_String is abstract;
+   --  Getter of Comment::body.
+   --
    --  Specifies a string that is the comment.
 
    not overriding procedure Set_Body
     (Self : not null access UML_Comment;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Comment::body.
+   --
+   --  Specifies a string that is the comment.
 
 end AMF.UML.Comments;

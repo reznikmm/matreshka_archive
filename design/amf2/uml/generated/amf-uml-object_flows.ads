@@ -65,38 +65,59 @@ package AMF.UML.Object_Flows is
    not overriding function Get_Is_Multicast
     (Self : not null access constant UML_Object_Flow)
        return Boolean is abstract;
+   --  Getter of ObjectFlow::isMulticast.
+   --
    --  Tells whether the objects in the flow are passed by multicasting.
 
    not overriding procedure Set_Is_Multicast
     (Self : not null access UML_Object_Flow;
      To   : Boolean) is abstract;
+   --  Setter of ObjectFlow::isMulticast.
+   --
+   --  Tells whether the objects in the flow are passed by multicasting.
 
    not overriding function Get_Is_Multireceive
     (Self : not null access constant UML_Object_Flow)
        return Boolean is abstract;
+   --  Getter of ObjectFlow::isMultireceive.
+   --
    --  Tells whether the objects in the flow are gathered from respondents to 
    --  multicasting.
 
    not overriding procedure Set_Is_Multireceive
     (Self : not null access UML_Object_Flow;
      To   : Boolean) is abstract;
+   --  Setter of ObjectFlow::isMultireceive.
+   --
+   --  Tells whether the objects in the flow are gathered from respondents to 
+   --  multicasting.
 
    not overriding function Get_Selection
     (Self : not null access constant UML_Object_Flow)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of ObjectFlow::selection.
+   --
    --  Selects tokens from a source object node.
 
    not overriding procedure Set_Selection
     (Self : not null access UML_Object_Flow;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of ObjectFlow::selection.
+   --
+   --  Selects tokens from a source object node.
 
    not overriding function Get_Transformation
     (Self : not null access constant UML_Object_Flow)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of ObjectFlow::transformation.
+   --
    --  Changes or replaces data tokens flowing along edge.
 
    not overriding procedure Set_Transformation
     (Self : not null access UML_Object_Flow;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of ObjectFlow::transformation.
+   --
+   --  Changes or replaces data tokens flowing along edge.
 
 end AMF.UML.Object_Flows;

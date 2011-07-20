@@ -66,25 +66,38 @@ package AMF.UML.Constraints is
    not overriding function Get_Constrained_Element
     (Self : not null access constant UML_Constraint)
        return AMF.UML.Elements.Collections.Ordered_Set_Of_UML_Element is abstract;
+   --  Getter of Constraint::constrainedElement.
+   --
    --  The ordered set of Elements referenced by this Constraint.
 
    not overriding function Get_Context
     (Self : not null access constant UML_Constraint)
        return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  Getter of Constraint::context.
+   --
    --  Specifies the namespace that owns the NamedElement.
 
    not overriding procedure Set_Context
     (Self : not null access UML_Constraint;
      To   : AMF.UML.Namespaces.UML_Namespace_Access) is abstract;
+   --  Setter of Constraint::context.
+   --
+   --  Specifies the namespace that owns the NamedElement.
 
    not overriding function Get_Specification
     (Self : not null access constant UML_Constraint)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of Constraint::specification.
+   --
    --  A condition that must be true when evaluated in order for the 
    --  constraint to be satisfied.
 
    not overriding procedure Set_Specification
     (Self : not null access UML_Constraint;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of Constraint::specification.
+   --
+   --  A condition that must be true when evaluated in order for the 
+   --  constraint to be satisfied.
 
 end AMF.UML.Constraints;

@@ -63,10 +63,15 @@ package AMF.UML.Action_Input_Pins is
    not overriding function Get_From_Action
     (Self : not null access constant UML_Action_Input_Pin)
        return AMF.UML.Actions.UML_Action_Access is abstract;
+   --  Getter of ActionInputPin::fromAction.
+   --
    --  The action used to provide values.
 
    not overriding procedure Set_From_Action
     (Self : not null access UML_Action_Input_Pin;
      To   : AMF.UML.Actions.UML_Action_Access) is abstract;
+   --  Setter of ActionInputPin::fromAction.
+   --
+   --  The action used to provide values.
 
 end AMF.UML.Action_Input_Pins;

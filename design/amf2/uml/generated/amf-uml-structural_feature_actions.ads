@@ -64,20 +64,31 @@ package AMF.UML.Structural_Feature_Actions is
    not overriding function Get_Object
     (Self : not null access constant UML_Structural_Feature_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of StructuralFeatureAction::object.
+   --
    --  Gives the input pin from which the object whose structural feature is 
    --  to be read or written is obtained.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Structural_Feature_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of StructuralFeatureAction::object.
+   --
+   --  Gives the input pin from which the object whose structural feature is 
+   --  to be read or written is obtained.
 
    not overriding function Get_Structural_Feature
     (Self : not null access constant UML_Structural_Feature_Action)
        return AMF.UML.Structural_Features.UML_Structural_Feature_Access is abstract;
+   --  Getter of StructuralFeatureAction::structuralFeature.
+   --
    --  Structural feature to be read.
 
    not overriding procedure Set_Structural_Feature
     (Self : not null access UML_Structural_Feature_Action;
      To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access) is abstract;
+   --  Setter of StructuralFeatureAction::structuralFeature.
+   --
+   --  Structural feature to be read.
 
 end AMF.UML.Structural_Feature_Actions;

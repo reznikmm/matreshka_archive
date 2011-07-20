@@ -63,6 +63,8 @@ package AMF.UML.Add_Structural_Feature_Value_Actions is
    not overriding function Get_Insert_At
     (Self : not null access constant UML_Add_Structural_Feature_Value_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of AddStructuralFeatureValueAction::insertAt.
+   --
    --  Gives the position at which to insert a new value or move an existing 
    --  value in ordered structural features. The type of the pin is 
    --  UnlimitedNatural, but the value cannot be zero. This pin is omitted for 
@@ -71,15 +73,27 @@ package AMF.UML.Add_Structural_Feature_Value_Actions is
    not overriding procedure Set_Insert_At
     (Self : not null access UML_Add_Structural_Feature_Value_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of AddStructuralFeatureValueAction::insertAt.
+   --
+   --  Gives the position at which to insert a new value or move an existing 
+   --  value in ordered structural features. The type of the pin is 
+   --  UnlimitedNatural, but the value cannot be zero. This pin is omitted for 
+   --  unordered structural features.
 
    not overriding function Get_Is_Replace_All
     (Self : not null access constant UML_Add_Structural_Feature_Value_Action)
        return Boolean is abstract;
+   --  Getter of AddStructuralFeatureValueAction::isReplaceAll.
+   --
    --  Specifies whether existing values of the structural feature of the 
    --  object should be removed before adding the new value.
 
    not overriding procedure Set_Is_Replace_All
     (Self : not null access UML_Add_Structural_Feature_Value_Action;
      To   : Boolean) is abstract;
+   --  Setter of AddStructuralFeatureValueAction::isReplaceAll.
+   --
+   --  Specifies whether existing values of the structural feature of the 
+   --  object should be removed before adding the new value.
 
 end AMF.UML.Add_Structural_Feature_Value_Actions;

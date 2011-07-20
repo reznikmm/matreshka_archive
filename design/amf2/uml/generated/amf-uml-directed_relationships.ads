@@ -63,11 +63,15 @@ package AMF.UML.Directed_Relationships is
    not overriding function Get_Source
     (Self : not null access constant UML_Directed_Relationship)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
+   --  Getter of DirectedRelationship::source.
+   --
    --  Specifies the sources of the DirectedRelationship.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Directed_Relationship)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
+   --  Getter of DirectedRelationship::target.
+   --
    --  Specifies the targets of the DirectedRelationship.
 
 end AMF.UML.Directed_Relationships;

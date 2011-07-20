@@ -64,30 +64,45 @@ package AMF.UML.Reclassify_Object_Actions is
    not overriding function Get_Is_Replace_All
     (Self : not null access constant UML_Reclassify_Object_Action)
        return Boolean is abstract;
+   --  Getter of ReclassifyObjectAction::isReplaceAll.
+   --
    --  Specifies whether existing classifiers should be removed before adding 
    --  the new classifiers.
 
    not overriding procedure Set_Is_Replace_All
     (Self : not null access UML_Reclassify_Object_Action;
      To   : Boolean) is abstract;
+   --  Setter of ReclassifyObjectAction::isReplaceAll.
+   --
+   --  Specifies whether existing classifiers should be removed before adding 
+   --  the new classifiers.
 
    not overriding function Get_New_Classifier
     (Self : not null access constant UML_Reclassify_Object_Action)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of ReclassifyObjectAction::newClassifier.
+   --
    --  A set of classifiers to be added to the classifiers of the object.
 
    not overriding function Get_Object
     (Self : not null access constant UML_Reclassify_Object_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of ReclassifyObjectAction::object.
+   --
    --  Holds the object to be reclassified.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Reclassify_Object_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of ReclassifyObjectAction::object.
+   --
+   --  Holds the object to be reclassified.
 
    not overriding function Get_Old_Classifier
     (Self : not null access constant UML_Reclassify_Object_Action)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of ReclassifyObjectAction::oldClassifier.
+   --
    --  A set of classifiers to be removed from the classifiers of the object.
 
 end AMF.UML.Reclassify_Object_Actions;

@@ -66,16 +66,22 @@ package AMF.UML.Structured_Classifiers is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of StructuredClassifier::ownedAttribute.
+   --
    --  References the properties owned by the classifier.
 
    not overriding function Get_Owned_Connector
     (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
+   --  Getter of StructuredClassifier::ownedConnector.
+   --
    --  References the connectors owned by the classifier.
 
    not overriding function Get_Part
     (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
+   --  Getter of StructuredClassifier::part.
+   --
    --  References the properties specifying instances that the classifier owns 
    --  by composition. This association is derived, selecting those owned 
    --  properties where isComposite is true.
@@ -83,6 +89,8 @@ package AMF.UML.Structured_Classifiers is
    not overriding function Get_Role
     (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Connectable_Elements.Collections.Set_Of_UML_Connectable_Element is abstract;
+   --  Getter of StructuredClassifier::role.
+   --
    --  References the roles that instances may play in this classifier.
 
    not overriding function Part

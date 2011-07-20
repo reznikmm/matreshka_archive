@@ -60,49 +60,96 @@ package AMF.Internals.UML_Exception_Handlers is
    overriding function Get_Exception_Input
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Object_Nodes.UML_Object_Node_Access;
+   --  Getter of ExceptionHandler::exceptionInput.
+   --
+   --  An object node within the handler body. When the handler catches an 
+   --  exception, the exception token is placed in this node, causing the body 
+   --  to execute.
 
    overriding procedure Set_Exception_Input
     (Self : not null access UML_Exception_Handler_Proxy;
      To   : AMF.UML.Object_Nodes.UML_Object_Node_Access);
+   --  Setter of ExceptionHandler::exceptionInput.
+   --
+   --  An object node within the handler body. When the handler catches an 
+   --  exception, the exception token is placed in this node, causing the body 
+   --  to execute.
 
    overriding function Get_Exception_Type
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier;
+   --  Getter of ExceptionHandler::exceptionType.
+   --
+   --  The kind of instances that the handler catches. If an exception occurs 
+   --  whose type is any of the classifiers in the set, the handler catches 
+   --  the exception and executes its body.
 
    overriding function Get_Handler_Body
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Executable_Nodes.UML_Executable_Node_Access;
+   --  Getter of ExceptionHandler::handlerBody.
+   --
+   --  A node that is executed if the handler satisfies an uncaught exception.
 
    overriding procedure Set_Handler_Body
     (Self : not null access UML_Exception_Handler_Proxy;
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access);
+   --  Setter of ExceptionHandler::handlerBody.
+   --
+   --  A node that is executed if the handler satisfies an uncaught exception.
 
    overriding function Get_Protected_Node
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Executable_Nodes.UML_Executable_Node_Access;
+   --  Getter of ExceptionHandler::protectedNode.
+   --
+   --  The node protected by the handler. The handler is examined if an 
+   --  exception propagates to the outside of the node.
 
    overriding procedure Set_Protected_Node
     (Self : not null access UML_Exception_Handler_Proxy;
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access);
+   --  Setter of ExceptionHandler::protectedNode.
+   --
+   --  The node protected by the handler. The handler is examined if an 
+   --  exception propagates to the outside of the node.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Exception_Handler_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Exception_Handlers;

@@ -64,6 +64,8 @@ package AMF.UML.Pseudostates is
    not overriding function Get_Kind
     (Self : not null access constant UML_Pseudostate)
        return AMF.UML.UML_Pseudostate_Kind is abstract;
+   --  Getter of Pseudostate::kind.
+   --
    --  Determines the precise type of the Pseudostate and can be one of: 
    --  entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, 
    --  fork, junction, terminate or choice.
@@ -71,24 +73,40 @@ package AMF.UML.Pseudostates is
    not overriding procedure Set_Kind
     (Self : not null access UML_Pseudostate;
      To   : AMF.UML.UML_Pseudostate_Kind) is abstract;
+   --  Setter of Pseudostate::kind.
+   --
+   --  Determines the precise type of the Pseudostate and can be one of: 
+   --  entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, 
+   --  fork, junction, terminate or choice.
 
    not overriding function Get_State
     (Self : not null access constant UML_Pseudostate)
        return AMF.UML.States.UML_State_Access is abstract;
+   --  Getter of Pseudostate::state.
+   --
    --  The State that owns this pseudostate and in which it appears.
 
    not overriding procedure Set_State
     (Self : not null access UML_Pseudostate;
      To   : AMF.UML.States.UML_State_Access) is abstract;
+   --  Setter of Pseudostate::state.
+   --
+   --  The State that owns this pseudostate and in which it appears.
 
    not overriding function Get_State_Machine
     (Self : not null access constant UML_Pseudostate)
        return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  Getter of Pseudostate::stateMachine.
+   --
    --  The StateMachine in which this Pseudostate is defined. This only 
    --  applies to Pseudostates of the kind entryPoint or exitPoint.
 
    not overriding procedure Set_State_Machine
     (Self : not null access UML_Pseudostate;
      To   : AMF.UML.State_Machines.UML_State_Machine_Access) is abstract;
+   --  Setter of Pseudostate::stateMachine.
+   --
+   --  The StateMachine in which this Pseudostate is defined. This only 
+   --  applies to Pseudostates of the kind entryPoint or exitPoint.
 
 end AMF.UML.Pseudostates;

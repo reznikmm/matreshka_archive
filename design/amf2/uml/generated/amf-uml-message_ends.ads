@@ -63,10 +63,15 @@ package AMF.UML.Message_Ends is
    not overriding function Get_Message
     (Self : not null access constant UML_Message_End)
        return AMF.UML.Messages.UML_Message_Access is abstract;
+   --  Getter of MessageEnd::message.
+   --
    --  References a Message.
 
    not overriding procedure Set_Message
     (Self : not null access UML_Message_End;
      To   : AMF.UML.Messages.UML_Message_Access) is abstract;
+   --  Setter of MessageEnd::message.
+   --
+   --  References a Message.
 
 end AMF.UML.Message_Ends;

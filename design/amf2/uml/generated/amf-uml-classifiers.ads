@@ -92,17 +92,23 @@ package AMF.UML.Classifiers is
    not overriding function Get_Attribute
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
+   --  Getter of Classifier::attribute.
+   --
    --  Refers to all of the Properties that are direct (i.e. not inherited or 
    --  imported) attributes of the classifier.
 
    not overriding function Get_Collaboration_Use
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Collaboration_Uses.Collections.Set_Of_UML_Collaboration_Use is abstract;
+   --  Getter of Classifier::collaborationUse.
+   --
    --  References the collaboration uses owned by the classifier.
 
    not overriding function Get_Feature
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Features.Collections.Set_Of_UML_Feature is abstract;
+   --  Getter of Classifier::feature.
+   --
    --  Specifies each feature defined in the classifier.
    --  Note that there may be members of the Classifier that are of the type 
    --  Feature but are not included in this association, e.g. inherited 
@@ -111,12 +117,16 @@ package AMF.UML.Classifiers is
    not overriding function Get_General
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of Classifier::general.
+   --
    --  Specifies the general Classifiers for this Classifier.
    --  References the general classifier in the Generalization relationship.
 
    not overriding function Get_Generalization
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Generalizations.Collections.Set_Of_UML_Generalization is abstract;
+   --  Getter of Classifier::generalization.
+   --
    --  Specifies the Generalization relationships for this Classifier. These 
    --  Generalizations navigaten to more general classifiers in the 
    --  generalization hierarchy.
@@ -124,12 +134,16 @@ package AMF.UML.Classifiers is
    not overriding function Get_Inherited_Member
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of Classifier::inheritedMember.
+   --
    --  Specifies all elements inherited by this classifier from the general 
    --  classifiers.
 
    not overriding function Get_Is_Abstract
     (Self : not null access constant UML_Classifier)
        return Boolean is abstract;
+   --  Getter of Classifier::isAbstract.
+   --
    --  If true, the Classifier does not provide a complete declaration and can 
    --  typically not be instantiated. An abstract classifier is intended to be 
    --  used by other classifiers e.g. as the target of general 
@@ -138,10 +152,18 @@ package AMF.UML.Classifiers is
    not overriding procedure Set_Is_Abstract
     (Self : not null access UML_Classifier;
      To   : Boolean) is abstract;
+   --  Setter of Classifier::isAbstract.
+   --
+   --  If true, the Classifier does not provide a complete declaration and can 
+   --  typically not be instantiated. An abstract classifier is intended to be 
+   --  used by other classifiers e.g. as the target of general 
+   --  metarelationships or generalization relationships.
 
    not overriding function Get_Is_Final_Specialization
     (Self : not null access constant UML_Classifier)
        return Boolean is abstract;
+   --  Getter of Classifier::isFinalSpecialization.
+   --
    --  If true, the Classifier cannot be specialized by generalization. Note 
    --  that this property is preserved through package merge operations; that 
    --  is, the capability to specialize a Classifier (i.e., 
@@ -154,60 +176,97 @@ package AMF.UML.Classifiers is
    not overriding procedure Set_Is_Final_Specialization
     (Self : not null access UML_Classifier;
      To   : Boolean) is abstract;
+   --  Setter of Classifier::isFinalSpecialization.
+   --
+   --  If true, the Classifier cannot be specialized by generalization. Note 
+   --  that this property is preserved through package merge operations; that 
+   --  is, the capability to specialize a Classifier (i.e., 
+   --  isFinalSpecialization =false) must be preserved in the resulting 
+   --  Classifier of a package merge operation where a Classifier with 
+   --  isFinalSpecialization =false is merged with a matching Classifier with 
+   --  isFinalSpecialization =true: the resulting Classifier will have 
+   --  isFinalSpecialization =false.
 
    not overriding function Get_Owned_Template_Signature
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access is abstract;
+   --  Getter of Classifier::ownedTemplateSignature.
+   --
    --  The optional template signature specifying the formal template 
    --  parameters.
 
    not overriding procedure Set_Owned_Template_Signature
     (Self : not null access UML_Classifier;
      To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access) is abstract;
+   --  Setter of Classifier::ownedTemplateSignature.
+   --
+   --  The optional template signature specifying the formal template 
+   --  parameters.
 
    not overriding function Get_Owned_Use_Case
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
+   --  Getter of Classifier::ownedUseCase.
+   --
    --  References the use cases owned by this classifier.
 
    not overriding function Get_Powertype_Extent
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Generalization_Sets.Collections.Set_Of_UML_Generalization_Set is abstract;
+   --  Getter of Classifier::powertypeExtent.
+   --
    --  Designates the GeneralizationSet of which the associated Classifier is 
    --  a power type.
 
    not overriding function Get_Redefined_Classifier
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of Classifier::redefinedClassifier.
+   --
    --  References the Classifiers that are redefined by this Classifier.
 
    not overriding function Get_Representation
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access is abstract;
+   --  Getter of Classifier::representation.
+   --
    --  References a collaboration use which indicates the collaboration that 
    --  represents this classifier.
 
    not overriding procedure Set_Representation
     (Self : not null access UML_Classifier;
      To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access) is abstract;
+   --  Setter of Classifier::representation.
+   --
+   --  References a collaboration use which indicates the collaboration that 
+   --  represents this classifier.
 
    not overriding function Get_Substitution
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Substitutions.Collections.Set_Of_UML_Substitution is abstract;
+   --  Getter of Classifier::substitution.
+   --
    --  References the substitutions that are owned by this Classifier.
 
    not overriding function Get_Template_Parameter
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access is abstract;
+   --  Getter of Classifier::templateParameter.
+   --
    --  The template parameter that exposes this element as a formal parameter.
 
    not overriding procedure Set_Template_Parameter
     (Self : not null access UML_Classifier;
      To   : AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access) is abstract;
+   --  Setter of Classifier::templateParameter.
+   --
+   --  The template parameter that exposes this element as a formal parameter.
 
    not overriding function Get_Use_Case
     (Self : not null access constant UML_Classifier)
        return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
+   --  Getter of Classifier::useCase.
+   --
    --  The set of use cases for which this Classifier is the subject.
 
    not overriding function All_Features

@@ -66,20 +66,31 @@ package AMF.UML.Substitutions is
    not overriding function Get_Contract
     (Self : not null access constant UML_Substitution)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of Substitution::contract.
+   --
    --  The contract with which the substituting classifier complies.
 
    not overriding procedure Set_Contract
     (Self : not null access UML_Substitution;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of Substitution::contract.
+   --
+   --  The contract with which the substituting classifier complies.
 
    not overriding function Get_Substituting_Classifier
     (Self : not null access constant UML_Substitution)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of Substitution::substitutingClassifier.
+   --
    --  Instances of the substituting classifier are runtime substitutable 
    --  where instances of the contract classifier are expected.
 
    not overriding procedure Set_Substituting_Classifier
     (Self : not null access UML_Substitution;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of Substitution::substitutingClassifier.
+   --
+   --  Instances of the substituting classifier are runtime substitutable 
+   --  where instances of the contract classifier are expected.
 
 end AMF.UML.Substitutions;

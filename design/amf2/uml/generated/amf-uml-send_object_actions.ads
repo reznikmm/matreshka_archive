@@ -67,6 +67,8 @@ package AMF.UML.Send_Object_Actions is
    not overriding function Get_Request
     (Self : not null access constant UML_Send_Object_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of SendObjectAction::request.
+   --
    --  The request object, which is transmitted to the target object. The 
    --  object may be copied in transmission, so identity might not be 
    --  preserved.
@@ -74,14 +76,24 @@ package AMF.UML.Send_Object_Actions is
    not overriding procedure Set_Request
     (Self : not null access UML_Send_Object_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of SendObjectAction::request.
+   --
+   --  The request object, which is transmitted to the target object. The 
+   --  object may be copied in transmission, so identity might not be 
+   --  preserved.
 
    not overriding function Get_Target
     (Self : not null access constant UML_Send_Object_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of SendObjectAction::target.
+   --
    --  The target object to which the object is sent.
 
    not overriding procedure Set_Target
     (Self : not null access UML_Send_Object_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of SendObjectAction::target.
+   --
+   --  The target object to which the object is sent.
 
 end AMF.UML.Send_Object_Actions;

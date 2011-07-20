@@ -66,20 +66,31 @@ package AMF.UML.Protocol_Conformances is
    not overriding function Get_General_Machine
     (Self : not null access constant UML_Protocol_Conformance)
        return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
+   --  Getter of ProtocolConformance::generalMachine.
+   --
    --  Specifies the protocol state machine to which the specific state 
    --  machine conforms.
 
    not overriding procedure Set_General_Machine
     (Self : not null access UML_Protocol_Conformance;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
+   --  Setter of ProtocolConformance::generalMachine.
+   --
+   --  Specifies the protocol state machine to which the specific state 
+   --  machine conforms.
 
    not overriding function Get_Specific_Machine
     (Self : not null access constant UML_Protocol_Conformance)
        return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
+   --  Getter of ProtocolConformance::specificMachine.
+   --
    --  Specifies the state machine which conforms to the general state machine.
 
    not overriding procedure Set_Specific_Machine
     (Self : not null access UML_Protocol_Conformance;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
+   --  Setter of ProtocolConformance::specificMachine.
+   --
+   --  Specifies the state machine which conforms to the general state machine.
 
 end AMF.UML.Protocol_Conformances;

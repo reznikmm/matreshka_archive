@@ -63,6 +63,8 @@ package AMF.UML.Enumerations is
    not overriding function Get_Owned_Literal
     (Self : not null access constant UML_Enumeration)
        return AMF.UML.Enumeration_Literals.Collections.Ordered_Set_Of_UML_Enumeration_Literal is abstract;
+   --  Getter of Enumeration::ownedLiteral.
+   --
    --  The ordered set of literals for this Enumeration.
 
 end AMF.UML.Enumerations;

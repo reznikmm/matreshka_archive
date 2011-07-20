@@ -79,37 +79,51 @@ package AMF.UML.Information_Flows is
    not overriding function Get_Conveyed
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of InformationFlow::conveyed.
+   --
    --  Specifies the information items that may circulate on this information 
    --  flow.
 
    not overriding function Get_Information_Source
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of InformationFlow::informationSource.
+   --
    --  Defines from which source the conveyed InformationItems are initiated.
 
    not overriding function Get_Information_Target
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of InformationFlow::informationTarget.
+   --
    --  Defines to which target the conveyed InformationItems are directed.
 
    not overriding function Get_Realization
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Relationships.Collections.Set_Of_UML_Relationship is abstract;
+   --  Getter of InformationFlow::realization.
+   --
    --  Determines which Relationship will realize the specified flow
 
    not overriding function Get_Realizing_Activity_Edge
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
+   --  Getter of InformationFlow::realizingActivityEdge.
+   --
    --  Determines which ActivityEdges will realize the specified flow.
 
    not overriding function Get_Realizing_Connector
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Connectors.Collections.Set_Of_UML_Connector is abstract;
+   --  Getter of InformationFlow::realizingConnector.
+   --
    --  Determines which Connectors will realize the specified flow.
 
    not overriding function Get_Realizing_Message
     (Self : not null access constant UML_Information_Flow)
        return AMF.UML.Messages.Collections.Set_Of_UML_Message is abstract;
+   --  Getter of InformationFlow::realizingMessage.
+   --
    --  Determines which Messages will realize the specified flow.
 
 end AMF.UML.Information_Flows;

@@ -64,6 +64,8 @@ package AMF.UML.Consider_Ignore_Fragments is
    not overriding function Get_Message
     (Self : not null access constant UML_Consider_Ignore_Fragment)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of ConsiderIgnoreFragment::message.
+   --
    --  The set of messages that apply to this fragment
 
 end AMF.UML.Consider_Ignore_Fragments;

@@ -66,11 +66,17 @@ package AMF.UML.Start_Object_Behavior_Actions is
    not overriding function Get_Object
     (Self : not null access constant UML_Start_Object_Behavior_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of StartObjectBehaviorAction::object.
+   --
    --  Holds the object which is either a behavior to be started or has a 
    --  classifier behavior to be started.
 
    not overriding procedure Set_Object
     (Self : not null access UML_Start_Object_Behavior_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of StartObjectBehaviorAction::object.
+   --
+   --  Holds the object which is either a behavior to be started or has a 
+   --  classifier behavior to be started.
 
 end AMF.UML.Start_Object_Behavior_Actions;

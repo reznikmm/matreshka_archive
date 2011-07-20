@@ -66,15 +66,22 @@ package AMF.UML.String_Expressions is
    not overriding function Get_Owning_Expression
     (Self : not null access constant UML_String_Expression)
        return AMF.UML.String_Expressions.UML_String_Expression_Access is abstract;
+   --  Getter of StringExpression::owningExpression.
+   --
    --  The string expression of which this expression is a substring.
 
    not overriding procedure Set_Owning_Expression
     (Self : not null access UML_String_Expression;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is abstract;
+   --  Setter of StringExpression::owningExpression.
+   --
+   --  The string expression of which this expression is a substring.
 
    not overriding function Get_Sub_Expression
     (Self : not null access constant UML_String_Expression)
        return AMF.UML.String_Expressions.Collections.Set_Of_UML_String_Expression is abstract;
+   --  Getter of StringExpression::subExpression.
+   --
    --  The StringExpressions that constitute this StringExpression.
 
    not overriding function String_Value

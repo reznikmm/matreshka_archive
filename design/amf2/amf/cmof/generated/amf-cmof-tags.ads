@@ -61,29 +61,43 @@ package AMF.CMOF.Tags is
    not overriding function Get_Name
     (Self : not null access constant CMOF_Tag)
        return League.Strings.Universal_String is abstract;
+   --  Getter of Tag::name.
+   --
 
    not overriding procedure Set_Name
     (Self : not null access CMOF_Tag;
      To   : League.Strings.Universal_String) is abstract;
+   --  Setter of Tag::name.
+   --
 
    not overriding function Get_Value
     (Self : not null access constant CMOF_Tag)
        return League.Strings.Universal_String is abstract;
+   --  Getter of Tag::value.
+   --
 
    not overriding procedure Set_Value
     (Self : not null access CMOF_Tag;
      To   : League.Strings.Universal_String) is abstract;
+   --  Setter of Tag::value.
+   --
 
    not overriding function Get_Element
     (Self : not null access constant CMOF_Tag)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Getter of Tag::element.
+   --
 
    not overriding function Get_Tag_Owner
     (Self : not null access constant CMOF_Tag)
        return AMF.CMOF.Elements.CMOF_Element_Access is abstract;
+   --  Getter of Tag::tagOwner.
+   --
 
    not overriding procedure Set_Tag_Owner
     (Self : not null access CMOF_Tag;
      To   : AMF.CMOF.Elements.CMOF_Element_Access) is abstract;
+   --  Setter of Tag::tagOwner.
+   --
 
 end AMF.CMOF.Tags;

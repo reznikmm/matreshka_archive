@@ -63,10 +63,15 @@ package AMF.UML.Value_Pins is
    not overriding function Get_Value
     (Self : not null access constant UML_Value_Pin)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of ValuePin::value.
+   --
    --  Value that the pin will provide.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Value_Pin;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of ValuePin::value.
+   --
+   --  Value that the pin will provide.
 
 end AMF.UML.Value_Pins;

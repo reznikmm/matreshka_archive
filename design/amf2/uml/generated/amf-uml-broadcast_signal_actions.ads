@@ -68,10 +68,15 @@ package AMF.UML.Broadcast_Signal_Actions is
    not overriding function Get_Signal
     (Self : not null access constant UML_Broadcast_Signal_Action)
        return AMF.UML.Signals.UML_Signal_Access is abstract;
+   --  Getter of BroadcastSignalAction::signal.
+   --
    --  The specification of signal object transmitted to the target objects.
 
    not overriding procedure Set_Signal
     (Self : not null access UML_Broadcast_Signal_Action;
      To   : AMF.UML.Signals.UML_Signal_Access) is abstract;
+   --  Setter of BroadcastSignalAction::signal.
+   --
+   --  The specification of signal object transmitted to the target objects.
 
 end AMF.UML.Broadcast_Signal_Actions;

@@ -63,6 +63,8 @@ package AMF.CMOF.Relationships is
    not overriding function Get_Related_Element
     (Self : not null access constant CMOF_Relationship)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Getter of Relationship::relatedElement.
+   --
    --  Specifies the elements related by the Relationship.
 
 end AMF.CMOF.Relationships;

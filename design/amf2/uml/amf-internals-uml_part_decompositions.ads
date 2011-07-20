@@ -69,139 +69,259 @@ package AMF.Internals.UML_Part_Decompositions is
    overriding function Get_Actual_Gate
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate;
+   --  Getter of InteractionUse::actualGate.
+   --
+   --  The actual gates of the InteractionUse
 
    overriding function Get_Argument
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification;
+   --  Getter of InteractionUse::argument.
+   --
+   --  The actual arguments of the Interaction
 
    overriding function Get_Refers_To
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Interactions.UML_Interaction_Access;
+   --  Getter of InteractionUse::refersTo.
+   --
+   --  Refers to the Interaction that defines its meaning
 
    overriding procedure Set_Refers_To
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.Interactions.UML_Interaction_Access);
+   --  Setter of InteractionUse::refersTo.
+   --
+   --  Refers to the Interaction that defines its meaning
 
    overriding function Get_Return_Value
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+   --  Getter of InteractionUse::returnValue.
+   --
+   --  The value of the executed Interaction.
 
    overriding procedure Set_Return_Value
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access);
+   --  Setter of InteractionUse::returnValue.
+   --
+   --  The value of the executed Interaction.
 
    overriding function Get_Return_Value_Recipient
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Properties.UML_Property_Access;
+   --  Getter of InteractionUse::returnValueRecipient.
+   --
+   --  The recipient of the return value.
 
    overriding procedure Set_Return_Value_Recipient
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access);
+   --  Setter of InteractionUse::returnValueRecipient.
+   --
+   --  The recipient of the return value.
 
    overriding function Get_Covered
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline;
+   --  Getter of InteractionFragment::covered.
+   --
+   --  References the Lifelines that the InteractionFragment involves.
 
    overriding function Get_Enclosing_Interaction
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Interactions.UML_Interaction_Access;
+   --  Getter of InteractionFragment::enclosingInteraction.
+   --
+   --  The Interaction enclosing this InteractionFragment.
 
    overriding procedure Set_Enclosing_Interaction
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.Interactions.UML_Interaction_Access);
+   --  Setter of InteractionFragment::enclosingInteraction.
+   --
+   --  The Interaction enclosing this InteractionFragment.
 
    overriding function Get_Enclosing_Operand
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access;
+   --  Getter of InteractionFragment::enclosingOperand.
+   --
+   --  The operand enclosing this InteractionFragment (they may nest 
+   --  recursively)
 
    overriding procedure Set_Enclosing_Operand
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access);
+   --  Setter of InteractionFragment::enclosingOperand.
+   --
+   --  The operand enclosing this InteractionFragment (they may nest 
+   --  recursively)
 
    overriding function Get_General_Ordering
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering;
+   --  Getter of InteractionFragment::generalOrdering.
+   --
+   --  The general ordering relationships contained in this fragment.
 
    overriding function Get_Client_Dependency
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+   --  Getter of NamedElement::clientDependency.
+   --
+   --  Indicates the dependencies that reference the client.
 
    overriding function Get_Name
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.Optional_String;
+   --  Getter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding procedure Set_Name
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.String_Expressions.UML_String_Expression_Access;
+   --  Getter of NamedElement::nameExpression.
+   --
+   --  The string expression used to define the name of this named element.
 
    overriding procedure Set_Name_Expression
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+   --  Setter of NamedElement::nameExpression.
+   --
+   --  The string expression used to define the name of this named element.
 
    overriding function Get_Namespace
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Getter of NamedElement::namespace.
+   --
+   --  Specifies the namespace that owns the NamedElement.
 
    overriding function Get_Qualified_Name
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.Optional_String;
+   --  Getter of NamedElement::qualifiedName.
+   --
+   --  A name which allows the NamedElement to be identified within a 
+   --  hierarchy of nested Namespaces. It is constructed from the names of the 
+   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Optional_UML_Visibility_Kind;
+   --  Getter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
     (Self : not null access UML_Part_Decomposition_Proxy;
      To   : AMF.UML.Optional_UML_Visibility_Kind);
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Namespaces
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+   --  Operation NamedElement::allNamespaces.
+   --
+   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+   --  Operation NamedElement::allOwningPackages.
+   --
+   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  owning packages.
 
    overriding function Is_Distinguishable_From
     (Self : not null access constant UML_Part_Decomposition_Proxy;
      N : AMF.UML.Named_Elements.UML_Named_Element_Access;
      Ns : AMF.UML.Namespaces.UML_Namespace_Access)
        return Boolean;
+   --  Operation NamedElement::isDistinguishableFrom.
+   --
+   --  The query isDistinguishableFrom() determines whether two NamedElements 
+   --  may logically co-exist within a Namespace. By default, two named 
+   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  they have related types but different names.
 
    overriding function Namespace
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Operation NamedElement::namespace.
+   --
+   --  Missing derivation for NamedElement::/namespace : Namespace
 
    overriding function Qualified_Name
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return League.Strings.Universal_String;
+   --  Operation NamedElement::qualifiedName.
+   --
+   --  When there is a name, and all of the containing namespaces have a name, 
+   --  the qualified name is constructed from the names of the containing 
+   --  namespaces.
 
    overriding function Separator
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return League.Strings.Universal_String;
+   --  Operation NamedElement::separator.
+   --
+   --  The query separator() gives the string that is used to separate names 
+   --  when constructing a qualified name.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Part_Decomposition_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Part_Decompositions;

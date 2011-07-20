@@ -61,11 +61,16 @@ package AMF.UML.Literal_Integers is
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_Integer)
        return Integer is abstract;
+   --  Getter of LiteralInteger::value.
+   --
    --  The specified Integer value.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Literal_Integer;
      To   : Integer) is abstract;
+   --  Setter of LiteralInteger::value.
+   --
+   --  The specified Integer value.
 
    not overriding function Integer_Value
     (Self : not null access constant UML_Literal_Integer)

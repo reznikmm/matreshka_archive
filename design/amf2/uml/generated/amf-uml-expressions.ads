@@ -66,15 +66,22 @@ package AMF.UML.Expressions is
    not overriding function Get_Operand
     (Self : not null access constant UML_Expression)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
+   --  Getter of Expression::operand.
+   --
    --  Specifies a sequence of operands.
 
    not overriding function Get_Symbol
     (Self : not null access constant UML_Expression)
        return AMF.Optional_String is abstract;
+   --  Getter of Expression::symbol.
+   --
    --  The symbol associated with the node in the expression tree.
 
    not overriding procedure Set_Symbol
     (Self : not null access UML_Expression;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Expression::symbol.
+   --
+   --  The symbol associated with the node in the expression tree.
 
 end AMF.UML.Expressions;

@@ -69,11 +69,17 @@ package AMF.UML.Call_Behavior_Actions is
    not overriding function Get_Behavior
     (Self : not null access constant UML_Call_Behavior_Action)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of CallBehaviorAction::behavior.
+   --
    --  The invoked behavior. It must be capable of accepting and returning 
    --  control.
 
    not overriding procedure Set_Behavior
     (Self : not null access UML_Call_Behavior_Action;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of CallBehaviorAction::behavior.
+   --
+   --  The invoked behavior. It must be capable of accepting and returning 
+   --  control.
 
 end AMF.UML.Call_Behavior_Actions;

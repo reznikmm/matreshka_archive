@@ -66,6 +66,8 @@ package AMF.UML.Redefinable_Elements is
    not overriding function Get_Is_Leaf
     (Self : not null access constant UML_Redefinable_Element)
        return Boolean is abstract;
+   --  Getter of RedefinableElement::isLeaf.
+   --
    --  Indicates whether it is possible to further redefine a 
    --  RedefinableElement. If the value is true, then it is not possible to 
    --  further redefine the RedefinableElement. Note that this property is 
@@ -79,15 +81,30 @@ package AMF.UML.Redefinable_Elements is
    not overriding procedure Set_Is_Leaf
     (Self : not null access UML_Redefinable_Element;
      To   : Boolean) is abstract;
+   --  Setter of RedefinableElement::isLeaf.
+   --
+   --  Indicates whether it is possible to further redefine a 
+   --  RedefinableElement. If the value is true, then it is not possible to 
+   --  further redefine the RedefinableElement. Note that this property is 
+   --  preserved through package merge operations; that is, the capability to 
+   --  redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in 
+   --  the resulting RedefinableElement of a package merge operation where a 
+   --  RedefinableElement with isLeaf=false is merged with a matching 
+   --  RedefinableElement with isLeaf=true: the resulting RedefinableElement 
+   --  will have isLeaf=false. Default value is false.
 
    not overriding function Get_Redefined_Element
     (Self : not null access constant UML_Redefinable_Element)
        return AMF.UML.Redefinable_Elements.Collections.Set_Of_UML_Redefinable_Element is abstract;
+   --  Getter of RedefinableElement::redefinedElement.
+   --
    --  The redefinable element that is being redefined by this element.
 
    not overriding function Get_Redefinition_Context
     (Self : not null access constant UML_Redefinable_Element)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of RedefinableElement::redefinitionContext.
+   --
    --  References the contexts that this element may be redefined from.
 
    not overriding function Is_Consistent_With

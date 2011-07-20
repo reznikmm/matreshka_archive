@@ -63,12 +63,16 @@ package AMF.UML.Expansion_Regions is
    not overriding function Get_Input_Element
     (Self : not null access constant UML_Expansion_Region)
        return AMF.UML.Expansion_Nodes.Collections.Set_Of_UML_Expansion_Node is abstract;
+   --  Getter of ExpansionRegion::inputElement.
+   --
    --  An object node that holds a separate element of the input collection 
    --  during each of the multiple executions of the region.
 
    not overriding function Get_Mode
     (Self : not null access constant UML_Expansion_Region)
        return AMF.UML.UML_Expansion_Kind is abstract;
+   --  Getter of ExpansionRegion::mode.
+   --
    --  The way in which the executions interact: parallel: all interactions 
    --  are independent iterative: the interactions occur in order of the 
    --  elements stream: a stream of values flows into a single execution
@@ -76,10 +80,17 @@ package AMF.UML.Expansion_Regions is
    not overriding procedure Set_Mode
     (Self : not null access UML_Expansion_Region;
      To   : AMF.UML.UML_Expansion_Kind) is abstract;
+   --  Setter of ExpansionRegion::mode.
+   --
+   --  The way in which the executions interact: parallel: all interactions 
+   --  are independent iterative: the interactions occur in order of the 
+   --  elements stream: a stream of values flows into a single execution
 
    not overriding function Get_Output_Element
     (Self : not null access constant UML_Expansion_Region)
        return AMF.UML.Expansion_Nodes.Collections.Set_Of_UML_Expansion_Node is abstract;
+   --  Getter of ExpansionRegion::outputElement.
+   --
    --  An object node that accepts a separate element of the output collection 
    --  during each of the multiple executions of the region. The values are 
    --  formed into a collection that is available when the execution of the 

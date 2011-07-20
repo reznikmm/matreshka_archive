@@ -65,16 +65,23 @@ package AMF.CMOF.Types is
    not overriding function Get_Package
     (Self : not null access constant CMOF_Type)
        return AMF.CMOF.Packages.CMOF_Package_Access is abstract;
+   --  Getter of Type::package.
+   --
    --  Specifies the owning package of this classifier, if any.
 
    not overriding procedure Set_Package
     (Self : not null access CMOF_Type;
      To   : AMF.CMOF.Packages.CMOF_Package_Access) is abstract;
+   --  Setter of Type::package.
+   --
+   --  Specifies the owning package of this classifier, if any.
 
    not overriding function Conforms_To
     (Self : not null access constant CMOF_Type;
      Other : AMF.CMOF.Types.CMOF_Type_Access)
        return Boolean is abstract;
+   --  Operation Type::conformsTo.
+   --
    --  The query conformsTo() gives true for a type that conforms to another. 
    --  By default, two types do not conform to each other. This query is 
    --  intended to be redefined for specific conformance situations.

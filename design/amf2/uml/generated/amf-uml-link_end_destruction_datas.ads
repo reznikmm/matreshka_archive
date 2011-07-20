@@ -64,6 +64,8 @@ package AMF.UML.Link_End_Destruction_Datas is
    not overriding function Get_Destroy_At
     (Self : not null access constant UML_Link_End_Destruction_Data)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of LinkEndDestructionData::destroyAt.
+   --
    --  Specifies the position of an existing link to be destroyed in ordered 
    --  nonunique association ends. The type of the pin is UnlimitedNatural, 
    --  but the value cannot be zero or unlimited.
@@ -71,15 +73,26 @@ package AMF.UML.Link_End_Destruction_Datas is
    not overriding procedure Set_Destroy_At
     (Self : not null access UML_Link_End_Destruction_Data;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of LinkEndDestructionData::destroyAt.
+   --
+   --  Specifies the position of an existing link to be destroyed in ordered 
+   --  nonunique association ends. The type of the pin is UnlimitedNatural, 
+   --  but the value cannot be zero or unlimited.
 
    not overriding function Get_Is_Destroy_Duplicates
     (Self : not null access constant UML_Link_End_Destruction_Data)
        return Boolean is abstract;
+   --  Getter of LinkEndDestructionData::isDestroyDuplicates.
+   --
    --  Specifies whether to destroy duplicates of the value in nonunique 
    --  association ends.
 
    not overriding procedure Set_Is_Destroy_Duplicates
     (Self : not null access UML_Link_End_Destruction_Data;
      To   : Boolean) is abstract;
+   --  Setter of LinkEndDestructionData::isDestroyDuplicates.
+   --
+   --  Specifies whether to destroy duplicates of the value in nonunique 
+   --  association ends.
 
 end AMF.UML.Link_End_Destruction_Datas;

@@ -79,6 +79,8 @@ package AMF.UML.States is
    not overriding function Get_Connection
     (Self : not null access constant UML_State)
        return AMF.UML.Connection_Point_References.Collections.Set_Of_UML_Connection_Point_Reference is abstract;
+   --  Getter of State::connection.
+   --
    --  The entry and exit connection points used in conjunction with this 
    --  (submachine) state, i.e. as targets and sources, respectively, in the 
    --  region with the submachine state. A connection point reference 
@@ -88,6 +90,8 @@ package AMF.UML.States is
    not overriding function Get_Connection_Point
     (Self : not null access constant UML_State)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
+   --  Getter of State::connectionPoint.
+   --
    --  The entry and exit pseudostates of a composite state. These can only be 
    --  entry or exit Pseudostates, and they must have different names. They 
    --  can only be defined for composite states.
@@ -95,6 +99,8 @@ package AMF.UML.States is
    not overriding function Get_Deferrable_Trigger
     (Self : not null access constant UML_State)
        return AMF.UML.Triggers.Collections.Set_Of_UML_Trigger is abstract;
+   --  Getter of State::deferrableTrigger.
+   --
    --  A list of triggers that are candidates to be retained by the state 
    --  machine if they trigger no transitions out of the state (not consumed). 
    --  A deferred trigger is retained until the state machine reaches a state 
@@ -103,6 +109,8 @@ package AMF.UML.States is
    not overriding function Get_Do_Activity
     (Self : not null access constant UML_State)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of State::doActivity.
+   --
    --  An optional behavior that is executed while being in the state. The 
    --  execution starts when this state is entered, and stops either by 
    --  itself, or when the state is exited, whichever comes first.
@@ -110,10 +118,17 @@ package AMF.UML.States is
    not overriding procedure Set_Do_Activity
     (Self : not null access UML_State;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of State::doActivity.
+   --
+   --  An optional behavior that is executed while being in the state. The 
+   --  execution starts when this state is entered, and stops either by 
+   --  itself, or when the state is exited, whichever comes first.
 
    not overriding function Get_Entry
     (Self : not null access constant UML_State)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of State::entry.
+   --
    --  An optional behavior that is executed whenever this state is entered 
    --  regardless of the transition taken to reach the state. If defined, 
    --  entry actions are always executed to completion prior to any internal 
@@ -122,10 +137,18 @@ package AMF.UML.States is
    not overriding procedure Set_Entry
     (Self : not null access UML_State;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of State::entry.
+   --
+   --  An optional behavior that is executed whenever this state is entered 
+   --  regardless of the transition taken to reach the state. If defined, 
+   --  entry actions are always executed to completion prior to any internal 
+   --  behavior or transitions performed within the state.
 
    not overriding function Get_Exit
     (Self : not null access constant UML_State)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of State::exit.
+   --
    --  An optional behavior that is executed whenever this state is exited 
    --  regardless of which transition was taken out of the state. If defined, 
    --  exit actions are always executed to completion only after all internal 
@@ -134,22 +157,34 @@ package AMF.UML.States is
    not overriding procedure Set_Exit
     (Self : not null access UML_State;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of State::exit.
+   --
+   --  An optional behavior that is executed whenever this state is exited 
+   --  regardless of which transition was taken out of the state. If defined, 
+   --  exit actions are always executed to completion only after all internal 
+   --  activities and transition actions have completed execution.
 
    not overriding function Get_Is_Composite
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Getter of State::isComposite.
+   --
    --  A state with isComposite=true is said to be a composite state. A 
    --  composite state is a state that contains at least one region.
 
    not overriding function Get_Is_Orthogonal
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Getter of State::isOrthogonal.
+   --
    --  A state with isOrthogonal=true is said to be an orthogonal composite 
    --  state. An orthogonal composite state contains two or more regions.
 
    not overriding function Get_Is_Simple
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Getter of State::isSimple.
+   --
    --  A state with isSimple=true is said to be a simple state. A simple state 
    --  does not have any regions and it does not refer to any submachine state 
    --  machine.
@@ -157,32 +192,45 @@ package AMF.UML.States is
    not overriding function Get_Is_Submachine_State
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Getter of State::isSubmachineState.
+   --
    --  A state with isSubmachineState=true is said to be a submachine state. 
    --  Such a state refers to a state machine (submachine).
 
    not overriding function Get_Redefined_State
     (Self : not null access constant UML_State)
        return AMF.UML.States.UML_State_Access is abstract;
+   --  Getter of State::redefinedState.
+   --
    --  The state of which this state is a redefinition.
 
    not overriding procedure Set_Redefined_State
     (Self : not null access UML_State;
      To   : AMF.UML.States.UML_State_Access) is abstract;
+   --  Setter of State::redefinedState.
+   --
+   --  The state of which this state is a redefinition.
 
    not overriding function Get_Redefinition_Context
     (Self : not null access constant UML_State)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of State::redefinitionContext.
+   --
    --  References the classifier in which context this element may be 
    --  redefined.
 
    not overriding function Get_Region
     (Self : not null access constant UML_State)
        return AMF.UML.Regions.Collections.Set_Of_UML_Region is abstract;
+   --  Getter of State::region.
+   --
    --  The regions owned directly by the state.
 
    not overriding function Get_State_Invariant
     (Self : not null access constant UML_State)
        return AMF.UML.Constraints.UML_Constraint_Access is abstract;
+   --  Getter of State::stateInvariant.
+   --
    --  Specifies conditions that are always true when this state is the 
    --  current state. In protocol state machines, state invariants are 
    --  additional conditions to the preconditions of the outgoing transitions, 
@@ -191,16 +239,28 @@ package AMF.UML.States is
    not overriding procedure Set_State_Invariant
     (Self : not null access UML_State;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
+   --  Setter of State::stateInvariant.
+   --
+   --  Specifies conditions that are always true when this state is the 
+   --  current state. In protocol state machines, state invariants are 
+   --  additional conditions to the preconditions of the outgoing transitions, 
+   --  and to the postcondition of the incoming transitions.
 
    not overriding function Get_Submachine
     (Self : not null access constant UML_State)
        return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  Getter of State::submachine.
+   --
    --  The state machine that is to be inserted in place of the (submachine) 
    --  state.
 
    not overriding procedure Set_Submachine
     (Self : not null access UML_State;
      To   : AMF.UML.State_Machines.UML_State_Machine_Access) is abstract;
+   --  Setter of State::submachine.
+   --
+   --  The state machine that is to be inserted in place of the (submachine) 
+   --  state.
 
    overriding function Containing_State_Machine
     (Self : not null access constant UML_State)

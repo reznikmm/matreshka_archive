@@ -64,10 +64,15 @@ package AMF.UML.Extension_Points is
    not overriding function Get_Use_Case
     (Self : not null access constant UML_Extension_Point)
        return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
+   --  Getter of ExtensionPoint::useCase.
+   --
    --  References the use case that owns this extension point.
 
    not overriding procedure Set_Use_Case
     (Self : not null access UML_Extension_Point;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
+   --  Setter of ExtensionPoint::useCase.
+   --
+   --  References the use case that owns this extension point.
 
 end AMF.UML.Extension_Points;

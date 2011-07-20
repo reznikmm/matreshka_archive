@@ -61,10 +61,14 @@ package AMF.UML.Literal_Reals is
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_Real)
        return AMF.Real is abstract;
+   --  Getter of LiteralReal::value.
+   --
 
    not overriding procedure Set_Value
     (Self : not null access UML_Literal_Real;
      To   : AMF.Real) is abstract;
+   --  Setter of LiteralReal::value.
+   --
 
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Real)

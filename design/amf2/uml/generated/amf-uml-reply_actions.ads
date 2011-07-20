@@ -66,26 +66,39 @@ package AMF.UML.Reply_Actions is
    not overriding function Get_Reply_To_Call
     (Self : not null access constant UML_Reply_Action)
        return AMF.UML.Triggers.UML_Trigger_Access is abstract;
+   --  Getter of ReplyAction::replyToCall.
+   --
    --  The trigger specifying the operation whose call is being replied to.
 
    not overriding procedure Set_Reply_To_Call
     (Self : not null access UML_Reply_Action;
      To   : AMF.UML.Triggers.UML_Trigger_Access) is abstract;
+   --  Setter of ReplyAction::replyToCall.
+   --
+   --  The trigger specifying the operation whose call is being replied to.
 
    not overriding function Get_Reply_Value
     (Self : not null access constant UML_Reply_Action)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
+   --  Getter of ReplyAction::replyValue.
+   --
    --  A list of pins containing the reply values of the operation. These 
    --  values are returned to the caller.
 
    not overriding function Get_Return_Information
     (Self : not null access constant UML_Reply_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of ReplyAction::returnInformation.
+   --
    --  A pin containing the return information value produced by an earlier 
    --  AcceptCallAction.
 
    not overriding procedure Set_Return_Information
     (Self : not null access UML_Reply_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of ReplyAction::returnInformation.
+   --
+   --  A pin containing the return information value produced by an earlier 
+   --  AcceptCallAction.
 
 end AMF.UML.Reply_Actions;

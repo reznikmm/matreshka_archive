@@ -69,49 +69,71 @@ package AMF.UML.Activity_Nodes is
    not overriding function Get_Activity
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activities.UML_Activity_Access is abstract;
+   --  Getter of ActivityNode::activity.
+   --
    --  Activity containing the node.
 
    not overriding procedure Set_Activity
     (Self : not null access UML_Activity_Node;
      To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
+   --  Setter of ActivityNode::activity.
+   --
+   --  Activity containing the node.
 
    not overriding function Get_In_Group
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
+   --  Getter of ActivityNode::inGroup.
+   --
    --  Groups containing the node.
 
    not overriding function Get_In_Interruptible_Region
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Interruptible_Activity_Regions.Collections.Set_Of_UML_Interruptible_Activity_Region is abstract;
+   --  Getter of ActivityNode::inInterruptibleRegion.
+   --
    --  Interruptible regions containing the node.
 
    not overriding function Get_In_Partition
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
+   --  Getter of ActivityNode::inPartition.
+   --
    --  Partitions containing the node.
 
    not overriding function Get_In_Structured_Node
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access is abstract;
+   --  Getter of ActivityNode::inStructuredNode.
+   --
    --  Structured activity node containing the node.
 
    not overriding procedure Set_In_Structured_Node
     (Self : not null access UML_Activity_Node;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is abstract;
+   --  Setter of ActivityNode::inStructuredNode.
+   --
+   --  Structured activity node containing the node.
 
    not overriding function Get_Incoming
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
+   --  Getter of ActivityNode::incoming.
+   --
    --  Edges that have the node as target.
 
    not overriding function Get_Outgoing
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
+   --  Getter of ActivityNode::outgoing.
+   --
    --  Edges that have the node as source.
 
    not overriding function Get_Redefined_Node
     (Self : not null access constant UML_Activity_Node)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
+   --  Getter of ActivityNode::redefinedNode.
+   --
    --  Inherited nodes replaced by this node in a specialization of the 
    --  activity.
 

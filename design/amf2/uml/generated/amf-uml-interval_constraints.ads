@@ -62,11 +62,17 @@ package AMF.UML.Interval_Constraints is
    not overriding function Get_Specification
     (Self : not null access constant UML_Interval_Constraint)
        return AMF.UML.Intervals.UML_Interval_Access is abstract;
+   --  Getter of IntervalConstraint::specification.
+   --
    --  A condition that must be true when evaluated in order for the 
    --  constraint to be satisfied.
 
    not overriding procedure Set_Specification
     (Self : not null access UML_Interval_Constraint;
      To   : AMF.UML.Intervals.UML_Interval_Access) is abstract;
+   --  Setter of IntervalConstraint::specification.
+   --
+   --  A condition that must be true when evaluated in order for the 
+   --  constraint to be satisfied.
 
 end AMF.UML.Interval_Constraints;

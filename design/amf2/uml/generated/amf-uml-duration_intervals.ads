@@ -62,19 +62,29 @@ package AMF.UML.Duration_Intervals is
    not overriding function Get_Max
     (Self : not null access constant UML_Duration_Interval)
        return AMF.UML.Durations.UML_Duration_Access is abstract;
+   --  Getter of DurationInterval::max.
+   --
    --  Refers to the Duration denoting the maximum value of the range.
 
    not overriding procedure Set_Max
     (Self : not null access UML_Duration_Interval;
      To   : AMF.UML.Durations.UML_Duration_Access) is abstract;
+   --  Setter of DurationInterval::max.
+   --
+   --  Refers to the Duration denoting the maximum value of the range.
 
    not overriding function Get_Min
     (Self : not null access constant UML_Duration_Interval)
        return AMF.UML.Durations.UML_Duration_Access is abstract;
+   --  Getter of DurationInterval::min.
+   --
    --  Refers to the Duration denoting the minimum value of the range.
 
    not overriding procedure Set_Min
     (Self : not null access UML_Duration_Interval;
      To   : AMF.UML.Durations.UML_Duration_Access) is abstract;
+   --  Setter of DurationInterval::min.
+   --
+   --  Refers to the Duration denoting the minimum value of the range.
 
 end AMF.UML.Duration_Intervals;

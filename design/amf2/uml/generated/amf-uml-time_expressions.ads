@@ -63,15 +63,22 @@ package AMF.UML.Time_Expressions is
    not overriding function Get_Expr
     (Self : not null access constant UML_Time_Expression)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of TimeExpression::expr.
+   --
    --  The value of the time expression.
 
    not overriding procedure Set_Expr
     (Self : not null access UML_Time_Expression;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of TimeExpression::expr.
+   --
+   --  The value of the time expression.
 
    not overriding function Get_Observation
     (Self : not null access constant UML_Time_Expression)
        return AMF.UML.Observations.Collections.Set_Of_UML_Observation is abstract;
+   --  Getter of TimeExpression::observation.
+   --
    --  Refers to the time and duration observations that are involved in expr.
 
 end AMF.UML.Time_Expressions;

@@ -67,20 +67,29 @@ package AMF.UML.Redefinable_Template_Signatures is
    not overriding function Get_Classifier
     (Self : not null access constant UML_Redefinable_Template_Signature)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of RedefinableTemplateSignature::classifier.
+   --
    --  The classifier that owns this template signature.
 
    not overriding procedure Set_Classifier
     (Self : not null access UML_Redefinable_Template_Signature;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of RedefinableTemplateSignature::classifier.
+   --
+   --  The classifier that owns this template signature.
 
    not overriding function Get_Extended_Signature
     (Self : not null access constant UML_Redefinable_Template_Signature)
        return AMF.UML.Redefinable_Template_Signatures.Collections.Set_Of_UML_Redefinable_Template_Signature is abstract;
+   --  Getter of RedefinableTemplateSignature::extendedSignature.
+   --
    --  The template signature that is extended by this template signature.
 
    not overriding function Get_Inherited_Parameter
     (Self : not null access constant UML_Redefinable_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Set_Of_UML_Template_Parameter is abstract;
+   --  Getter of RedefinableTemplateSignature::inheritedParameter.
+   --
    --  The formal template parameters of the extendedSignature.
 
    not overriding function Inherited_Parameter

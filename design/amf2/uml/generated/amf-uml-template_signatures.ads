@@ -64,22 +64,31 @@ package AMF.UML.Template_Signatures is
    not overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter is abstract;
+   --  Getter of TemplateSignature::ownedParameter.
+   --
    --  The formal template parameters that are owned by this template 
    --  signature.
 
    not overriding function Get_Parameter
     (Self : not null access constant UML_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Ordered_Set_Of_UML_Template_Parameter is abstract;
+   --  Getter of TemplateSignature::parameter.
+   --
    --  The ordered set of all formal template parameters for this template 
    --  signature.
 
    not overriding function Get_Template
     (Self : not null access constant UML_Template_Signature)
        return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access is abstract;
+   --  Getter of TemplateSignature::template.
+   --
    --  The element that owns this template signature.
 
    not overriding procedure Set_Template
     (Self : not null access UML_Template_Signature;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is abstract;
+   --  Setter of TemplateSignature::template.
+   --
+   --  The element that owns this template signature.
 
 end AMF.UML.Template_Signatures;

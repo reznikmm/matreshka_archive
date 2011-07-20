@@ -67,30 +67,45 @@ package AMF.UML.Interaction_Fragments is
    not overriding function Get_Covered
     (Self : not null access constant UML_Interaction_Fragment)
        return AMF.UML.Lifelines.Collections.Set_Of_UML_Lifeline is abstract;
+   --  Getter of InteractionFragment::covered.
+   --
    --  References the Lifelines that the InteractionFragment involves.
 
    not overriding function Get_Enclosing_Interaction
     (Self : not null access constant UML_Interaction_Fragment)
        return AMF.UML.Interactions.UML_Interaction_Access is abstract;
+   --  Getter of InteractionFragment::enclosingInteraction.
+   --
    --  The Interaction enclosing this InteractionFragment.
 
    not overriding procedure Set_Enclosing_Interaction
     (Self : not null access UML_Interaction_Fragment;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
+   --  Setter of InteractionFragment::enclosingInteraction.
+   --
+   --  The Interaction enclosing this InteractionFragment.
 
    not overriding function Get_Enclosing_Operand
     (Self : not null access constant UML_Interaction_Fragment)
        return AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access is abstract;
+   --  Getter of InteractionFragment::enclosingOperand.
+   --
    --  The operand enclosing this InteractionFragment (they may nest 
    --  recursively)
 
    not overriding procedure Set_Enclosing_Operand
     (Self : not null access UML_Interaction_Fragment;
      To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access) is abstract;
+   --  Setter of InteractionFragment::enclosingOperand.
+   --
+   --  The operand enclosing this InteractionFragment (they may nest 
+   --  recursively)
 
    not overriding function Get_General_Ordering
     (Self : not null access constant UML_Interaction_Fragment)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
+   --  Getter of InteractionFragment::generalOrdering.
+   --
    --  The general ordering relationships contained in this fragment.
 
 end AMF.UML.Interaction_Fragments;

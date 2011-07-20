@@ -61,11 +61,16 @@ package AMF.UML.Literal_Strings is
    not overriding function Get_Value
     (Self : not null access constant UML_Literal_String)
        return AMF.Optional_String is abstract;
+   --  Getter of LiteralString::value.
+   --
    --  The specified String value.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Literal_String;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of LiteralString::value.
+   --
+   --  The specified String value.
 
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_String)

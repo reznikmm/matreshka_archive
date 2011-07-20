@@ -64,19 +64,29 @@ package AMF.UML.Read_Extent_Actions is
    not overriding function Get_Classifier
     (Self : not null access constant UML_Read_Extent_Action)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of ReadExtentAction::classifier.
+   --
    --  The classifier whose instances are to be retrieved.
 
    not overriding procedure Set_Classifier
     (Self : not null access UML_Read_Extent_Action;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is abstract;
+   --  Setter of ReadExtentAction::classifier.
+   --
+   --  The classifier whose instances are to be retrieved.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Read_Extent_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of ReadExtentAction::result.
+   --
    --  The runtime instances of the classifier.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Read_Extent_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of ReadExtentAction::result.
+   --
+   --  The runtime instances of the classifier.
 
 end AMF.UML.Read_Extent_Actions;

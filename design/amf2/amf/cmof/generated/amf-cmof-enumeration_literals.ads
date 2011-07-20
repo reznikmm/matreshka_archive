@@ -62,10 +62,15 @@ package AMF.CMOF.Enumeration_Literals is
    not overriding function Get_Enumeration
     (Self : not null access constant CMOF_Enumeration_Literal)
        return AMF.CMOF.Enumerations.CMOF_Enumeration_Access is abstract;
+   --  Getter of EnumerationLiteral::enumeration.
+   --
    --  The Enumeration that this EnumerationLiteral is a member of.
 
    not overriding procedure Set_Enumeration
     (Self : not null access CMOF_Enumeration_Literal;
      To   : AMF.CMOF.Enumerations.CMOF_Enumeration_Access) is abstract;
+   --  Setter of EnumerationLiteral::enumeration.
+   --
+   --  The Enumeration that this EnumerationLiteral is a member of.
 
 end AMF.CMOF.Enumeration_Literals;

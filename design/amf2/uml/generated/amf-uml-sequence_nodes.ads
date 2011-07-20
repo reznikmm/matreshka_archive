@@ -63,6 +63,8 @@ package AMF.UML.Sequence_Nodes is
    not overriding function Get_Executable_Node
     (Self : not null access constant UML_Sequence_Node)
        return AMF.UML.Executable_Nodes.Collections.Ordered_Set_Of_UML_Executable_Node is abstract;
+   --  Getter of SequenceNode::executableNode.
+   --
    --  An ordered set of executable nodes.
 
 end AMF.UML.Sequence_Nodes;

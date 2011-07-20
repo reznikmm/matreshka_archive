@@ -79,6 +79,8 @@ package AMF.UML.Classes is
    not overriding function Get_Extension
     (Self : not null access constant UML_Class)
        return AMF.UML.Extensions.Collections.Set_Of_UML_Extension is abstract;
+   --  Getter of Class::extension.
+   --
    --  References the Extensions that specify additional properties of the 
    --  metaclass. The property is derived from the extensions whose memberEnds 
    --  are typed by the Class.
@@ -86,6 +88,8 @@ package AMF.UML.Classes is
    overriding function Get_Is_Abstract
     (Self : not null access constant UML_Class)
        return Boolean is abstract;
+   --  Getter of Class::isAbstract.
+   --
    --  True when a class is abstract.
    --  If true, the Classifier does not provide a complete declaration and can 
    --  typically not be instantiated. An abstract classifier is intended to be 
@@ -95,10 +99,19 @@ package AMF.UML.Classes is
    overriding procedure Set_Is_Abstract
     (Self : not null access UML_Class;
      To   : Boolean) is abstract;
+   --  Setter of Class::isAbstract.
+   --
+   --  True when a class is abstract.
+   --  If true, the Classifier does not provide a complete declaration and can 
+   --  typically not be instantiated. An abstract classifier is intended to be 
+   --  used by other classifiers e.g. as the target of general 
+   --  metarelationships or generalization relationships.
 
    not overriding function Get_Is_Active
     (Self : not null access constant UML_Class)
        return Boolean is abstract;
+   --  Getter of Class::isActive.
+   --
    --  Determines whether an object specified by this class is active or not. 
    --  If true, then the owning class is referred to as an active class. If 
    --  false, then such a class is referred to as a passive class.
@@ -106,31 +119,46 @@ package AMF.UML.Classes is
    not overriding procedure Set_Is_Active
     (Self : not null access UML_Class;
      To   : Boolean) is abstract;
+   --  Setter of Class::isActive.
+   --
+   --  Determines whether an object specified by this class is active or not. 
+   --  If true, then the owning class is referred to as an active class. If 
+   --  false, then such a class is referred to as a passive class.
 
    not overriding function Get_Nested_Classifier
     (Self : not null access constant UML_Class)
        return AMF.UML.Classifiers.Collections.Ordered_Set_Of_UML_Classifier is abstract;
+   --  Getter of Class::nestedClassifier.
+   --
    --  References all the Classifiers that are defined (nested) within the 
    --  Class.
 
    overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Class)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of Class::ownedAttribute.
+   --
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Class)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
+   --  Getter of Class::ownedOperation.
+   --
    --  The operations owned by the class.
 
    not overriding function Get_Owned_Reception
     (Self : not null access constant UML_Class)
        return AMF.UML.Receptions.Collections.Set_Of_UML_Reception is abstract;
+   --  Getter of Class::ownedReception.
+   --
    --  Receptions that objects of this class are willing to accept.
 
    not overriding function Get_Super_Class
     (Self : not null access constant UML_Class)
        return AMF.UML.Classes.Collections.Set_Of_UML_Class is abstract;
+   --  Getter of Class::superClass.
+   --
    --  This gives the superclasses of a class.
 
    not overriding function Extension

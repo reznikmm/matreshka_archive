@@ -68,6 +68,8 @@ package AMF.UML.Extends is
    not overriding function Get_Condition
     (Self : not null access constant UML_Extend)
        return AMF.UML.Constraints.UML_Constraint_Access is abstract;
+   --  Getter of Extend::condition.
+   --
    --  References the condition that must hold when the first extension point 
    --  is reached for the extension to take place. If no constraint is 
    --  associated with the extend relationship, the extension is unconditional.
@@ -75,29 +77,47 @@ package AMF.UML.Extends is
    not overriding procedure Set_Condition
     (Self : not null access UML_Extend;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is abstract;
+   --  Setter of Extend::condition.
+   --
+   --  References the condition that must hold when the first extension point 
+   --  is reached for the extension to take place. If no constraint is 
+   --  associated with the extend relationship, the extension is unconditional.
 
    not overriding function Get_Extended_Case
     (Self : not null access constant UML_Extend)
        return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
+   --  Getter of Extend::extendedCase.
+   --
    --  References the use case that is being extended.
 
    not overriding procedure Set_Extended_Case
     (Self : not null access UML_Extend;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
+   --  Setter of Extend::extendedCase.
+   --
+   --  References the use case that is being extended.
 
    not overriding function Get_Extension
     (Self : not null access constant UML_Extend)
        return AMF.UML.Use_Cases.UML_Use_Case_Access is abstract;
+   --  Getter of Extend::extension.
+   --
    --  References the use case that represents the extension and owns the 
    --  extend relationship.
 
    not overriding procedure Set_Extension
     (Self : not null access UML_Extend;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is abstract;
+   --  Setter of Extend::extension.
+   --
+   --  References the use case that represents the extension and owns the 
+   --  extend relationship.
 
    not overriding function Get_Extension_Location
     (Self : not null access constant UML_Extend)
        return AMF.UML.Extension_Points.Collections.Ordered_Set_Of_UML_Extension_Point is abstract;
+   --  Getter of Extend::extensionLocation.
+   --
    --  An ordered list of extension points belonging to the extended use case, 
    --  specifying where the respective behavioral fragments of the extending 
    --  use case are to be inserted. The first fragment in the extending use 

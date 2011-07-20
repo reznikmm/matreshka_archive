@@ -64,20 +64,31 @@ package AMF.UML.Qualifier_Values is
    not overriding function Get_Qualifier
     (Self : not null access constant UML_Qualifier_Value)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of QualifierValue::qualifier.
+   --
    --  Attribute representing the qualifier for which the value is to be 
    --  specified.
 
    not overriding procedure Set_Qualifier
     (Self : not null access UML_Qualifier_Value;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of QualifierValue::qualifier.
+   --
+   --  Attribute representing the qualifier for which the value is to be 
+   --  specified.
 
    not overriding function Get_Value
     (Self : not null access constant UML_Qualifier_Value)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of QualifierValue::value.
+   --
    --  Input pin from which the specified value for the qualifier is taken.
 
    not overriding procedure Set_Value
     (Self : not null access UML_Qualifier_Value;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of QualifierValue::value.
+   --
+   --  Input pin from which the specified value for the qualifier is taken.
 
 end AMF.UML.Qualifier_Values;

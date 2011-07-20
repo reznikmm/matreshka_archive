@@ -65,22 +65,31 @@ package AMF.UML.Connection_Point_References is
    not overriding function Get_Entry
     (Self : not null access constant UML_Connection_Point_Reference)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
+   --  Getter of ConnectionPointReference::entry.
+   --
    --  The entryPoint kind pseudo states corresponding to this connection 
    --  point.
 
    not overriding function Get_Exit
     (Self : not null access constant UML_Connection_Point_Reference)
        return AMF.UML.Pseudostates.Collections.Set_Of_UML_Pseudostate is abstract;
+   --  Getter of ConnectionPointReference::exit.
+   --
    --  The exitPoints kind pseudo states corresponding to this connection 
    --  point.
 
    not overriding function Get_State
     (Self : not null access constant UML_Connection_Point_Reference)
        return AMF.UML.States.UML_State_Access is abstract;
+   --  Getter of ConnectionPointReference::state.
+   --
    --  The State in which the connection point refreshens are defined.
 
    not overriding procedure Set_State
     (Self : not null access UML_Connection_Point_Reference;
      To   : AMF.UML.States.UML_State_Access) is abstract;
+   --  Setter of ConnectionPointReference::state.
+   --
+   --  The State in which the connection point refreshens are defined.
 
 end AMF.UML.Connection_Point_References;

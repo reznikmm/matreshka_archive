@@ -65,6 +65,8 @@ package AMF.UML.Executable_Nodes is
    not overriding function Get_Handler
     (Self : not null access constant UML_Executable_Node)
        return AMF.UML.Exception_Handlers.Collections.Set_Of_UML_Exception_Handler is abstract;
+   --  Getter of ExecutableNode::handler.
+   --
    --  A set of exception handlers that are examined if an uncaught exception 
    --  propagates to the outer level of the executable node.
 

@@ -67,6 +67,8 @@ package AMF.UML.Signals is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Signal)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of Signal::ownedAttribute.
+   --
    --  The attributes owned by the signal.
 
 end AMF.UML.Signals;

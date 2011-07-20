@@ -70,6 +70,8 @@ package AMF.CMOF.Operations is
    not overriding function Get_Is_Query
     (Self : not null access constant CMOF_Operation)
        return Boolean is abstract;
+   --  Getter of Operation::isQuery.
+   --
    --  Specifies whether an execution of the BehavioralFeature leaves the 
    --  state of the system unchanged (isQuery=true) or whether side effects 
    --  may occur (isQuery=false).
@@ -77,130 +79,194 @@ package AMF.CMOF.Operations is
    not overriding procedure Set_Is_Query
     (Self : not null access CMOF_Operation;
      To   : Boolean) is abstract;
+   --  Setter of Operation::isQuery.
+   --
+   --  Specifies whether an execution of the BehavioralFeature leaves the 
+   --  state of the system unchanged (isQuery=true) or whether side effects 
+   --  may occur (isQuery=false).
 
    not overriding function Get_Is_Ordered
     (Self : not null access constant CMOF_Operation)
        return Boolean is abstract;
+   --  Getter of Operation::isOrdered.
+   --
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Is_Ordered
     (Self : not null access CMOF_Operation;
      To   : Boolean) is abstract;
+   --  Setter of Operation::isOrdered.
+   --
+   --  This information is derived from the return result for this Operation.
 
    not overriding function Get_Is_Unique
     (Self : not null access constant CMOF_Operation)
        return Boolean is abstract;
+   --  Getter of Operation::isUnique.
+   --
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Is_Unique
     (Self : not null access CMOF_Operation;
      To   : Boolean) is abstract;
+   --  Setter of Operation::isUnique.
+   --
+   --  This information is derived from the return result for this Operation.
 
    not overriding function Get_Lower
     (Self : not null access constant CMOF_Operation)
        return AMF.Optional_Integer is abstract;
+   --  Getter of Operation::lower.
+   --
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Lower
     (Self : not null access CMOF_Operation;
      To   : AMF.Optional_Integer) is abstract;
+   --  Setter of Operation::lower.
+   --
+   --  This information is derived from the return result for this Operation.
 
    not overriding function Get_Upper
     (Self : not null access constant CMOF_Operation)
        return AMF.Optional_Unlimited_Natural is abstract;
+   --  Getter of Operation::upper.
+   --
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Upper
     (Self : not null access CMOF_Operation;
      To   : AMF.Optional_Unlimited_Natural) is abstract;
+   --  Setter of Operation::upper.
+   --
+   --  This information is derived from the return result for this Operation.
 
    not overriding function Get_Class
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Classes.CMOF_Class_Access is abstract;
+   --  Getter of Operation::class.
+   --
    --  The class that owns the operation.
 
    not overriding procedure Set_Class
     (Self : not null access CMOF_Operation;
      To   : AMF.CMOF.Classes.CMOF_Class_Access) is abstract;
+   --  Setter of Operation::class.
+   --
+   --  The class that owns the operation.
 
    not overriding function Get_Datatype
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Data_Types.CMOF_Data_Type_Access is abstract;
+   --  Getter of Operation::datatype.
+   --
    --  The DataType that owns this Operation.
 
    not overriding procedure Set_Datatype
     (Self : not null access CMOF_Operation;
      To   : AMF.CMOF.Data_Types.CMOF_Data_Type_Access) is abstract;
+   --  Setter of Operation::datatype.
+   --
+   --  The DataType that owns this Operation.
 
    overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
+   --  Getter of Operation::raisedException.
+   --
    --  References the Types representing exceptions that may be raised during 
    --  an invocation of this operation.
 
    not overriding function Get_Redefined_Operation
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Operations.Collections.Set_Of_CMOF_Operation is abstract;
+   --  Getter of Operation::redefinedOperation.
+   --
    --  References the Operations that are redefined by this Operation.
 
    not overriding function Get_Type
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Types.CMOF_Type_Access is abstract;
+   --  Getter of Operation::type.
+   --
    --  This information is derived from the return result for this Operation.
 
    not overriding procedure Set_Type
     (Self : not null access CMOF_Operation;
      To   : AMF.CMOF.Types.CMOF_Type_Access) is abstract;
+   --  Setter of Operation::type.
+   --
+   --  This information is derived from the return result for this Operation.
 
    overriding function Get_Owned_Parameter
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Parameters.Collections.Ordered_Set_Of_CMOF_Parameter is abstract;
+   --  Getter of Operation::ownedParameter.
+   --
    --  Specifies the ordered set of formal parameters of this 
    --  BehavioralFeature.
 
    not overriding function Get_Precondition
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
+   --  Getter of Operation::precondition.
+   --
 
    not overriding function Get_Postcondition
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is abstract;
+   --  Getter of Operation::postcondition.
+   --
 
    not overriding function Get_Body_Condition
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Constraints.CMOF_Constraint_Access is abstract;
+   --  Getter of Operation::bodyCondition.
+   --
 
    not overriding procedure Set_Body_Condition
     (Self : not null access CMOF_Operation;
      To   : AMF.CMOF.Constraints.CMOF_Constraint_Access) is abstract;
+   --  Setter of Operation::bodyCondition.
+   --
 
    not overriding function Is_Ordered
     (Self : not null access constant CMOF_Operation)
        return Boolean is abstract;
+   --  Operation Operation::isOrdered.
+   --
    --  If this operation has a return parameter, isOrdered equals the value of 
    --  isOrdered for that parameter. Otherwise isOrdered is false.
 
    not overriding function Is_Unique
     (Self : not null access constant CMOF_Operation)
        return Boolean is abstract;
+   --  Operation Operation::isUnique.
+   --
    --  If this operation has a return parameter, isUnique equals the value of 
    --  isUnique for that parameter. Otherwise isUnique is true.
 
    not overriding function Lower
     (Self : not null access constant CMOF_Operation)
        return Integer is abstract;
+   --  Operation Operation::lower.
+   --
    --  If this operation has a return parameter, lower equals the value of 
    --  lower for that parameter. Otherwise lower is not defined.
 
    not overriding function Upper
     (Self : not null access constant CMOF_Operation)
        return AMF.Unlimited_Natural is abstract;
+   --  Operation Operation::upper.
+   --
    --  If this operation has a return parameter, upper equals the value of 
    --  upper for that parameter. Otherwise upper is not defined.
 
    not overriding function Types
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Types.CMOF_Type_Access is abstract;
+   --  Operation Operation::type.
+   --
    --  If this operation has a return parameter, type equals the value of type 
    --  for that parameter. Otherwise type is not defined.
 
@@ -208,6 +274,8 @@ package AMF.CMOF.Operations is
     (Self : not null access constant CMOF_Operation;
      Redefinee : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation Operation::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies, for any two Operations in a 
    --  context in which redefinition is possible, whether redefinition would 
    --  be consistent in the sense of maintaining type covariance. Other senses 
@@ -219,5 +287,7 @@ package AMF.CMOF.Operations is
    not overriding function Return_Result
     (Self : not null access constant CMOF_Operation)
        return AMF.CMOF.Parameters.Collections.Set_Of_CMOF_Parameter is abstract;
+   --  Operation Operation::returnResult.
+   --
 
 end AMF.CMOF.Operations;

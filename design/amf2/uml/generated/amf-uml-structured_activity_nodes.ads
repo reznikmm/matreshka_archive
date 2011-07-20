@@ -86,43 +86,64 @@ package AMF.UML.Structured_Activity_Nodes is
    overriding function Get_Activity
     (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Activities.UML_Activity_Access is abstract;
+   --  Getter of StructuredActivityNode::activity.
+   --
    --  Activity immediately containing the node.
 
    overriding procedure Set_Activity
     (Self : not null access UML_Structured_Activity_Node;
      To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
+   --  Setter of StructuredActivityNode::activity.
+   --
+   --  Activity immediately containing the node.
 
    not overriding function Get_Edge
     (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
+   --  Getter of StructuredActivityNode::edge.
+   --
    --  Edges immediately contained in the structured node.
 
    not overriding function Get_Must_Isolate
     (Self : not null access constant UML_Structured_Activity_Node)
        return Boolean is abstract;
+   --  Getter of StructuredActivityNode::mustIsolate.
+   --
    --  If true, then the actions in the node execute in isolation from actions 
    --  outside the node.
 
    not overriding procedure Set_Must_Isolate
     (Self : not null access UML_Structured_Activity_Node;
      To   : Boolean) is abstract;
+   --  Setter of StructuredActivityNode::mustIsolate.
+   --
+   --  If true, then the actions in the node execute in isolation from actions 
+   --  outside the node.
 
    not overriding function Get_Node
     (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
+   --  Getter of StructuredActivityNode::node.
+   --
    --  Nodes immediately contained in the group.
 
    not overriding function Get_Structured_Node_Input
     (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Input_Pins.Collections.Set_Of_UML_Input_Pin is abstract;
+   --  Getter of StructuredActivityNode::structuredNodeInput.
+   --
 
    not overriding function Get_Structured_Node_Output
     (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Output_Pins.Collections.Set_Of_UML_Output_Pin is abstract;
+   --  Getter of StructuredActivityNode::structuredNodeOutput.
+   --
 
    not overriding function Get_Variable
     (Self : not null access constant UML_Structured_Activity_Node)
        return AMF.UML.Variables.Collections.Set_Of_UML_Variable is abstract;
+   --  Getter of StructuredActivityNode::variable.
+   --
    --  A variable defined in the scope of the structured activity node. It has 
    --  no value and may not be accessed
 

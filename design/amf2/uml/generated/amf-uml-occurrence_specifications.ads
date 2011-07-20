@@ -65,21 +65,30 @@ package AMF.UML.Occurrence_Specifications is
    not overriding function Get_Covered
     (Self : not null access constant UML_Occurrence_Specification)
        return AMF.UML.Lifelines.UML_Lifeline_Access is abstract;
+   --  Getter of OccurrenceSpecification::covered.
+   --
    --  References the Lifeline on which the OccurrenceSpecification appears.
 
    not overriding procedure Set_Covered
     (Self : not null access UML_Occurrence_Specification;
      To   : AMF.UML.Lifelines.UML_Lifeline_Access) is abstract;
+   --  Setter of OccurrenceSpecification::covered.
+   --
+   --  References the Lifeline on which the OccurrenceSpecification appears.
 
    not overriding function Get_To_After
     (Self : not null access constant UML_Occurrence_Specification)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
+   --  Getter of OccurrenceSpecification::toAfter.
+   --
    --  References the GeneralOrderings that specify EventOcurrences that must 
    --  occur after this OccurrenceSpecification
 
    not overriding function Get_To_Before
     (Self : not null access constant UML_Occurrence_Specification)
        return AMF.UML.General_Orderings.Collections.Set_Of_UML_General_Ordering is abstract;
+   --  Getter of OccurrenceSpecification::toBefore.
+   --
    --  References the GeneralOrderings that specify EventOcurrences that must 
    --  occur before this OccurrenceSpecification
 

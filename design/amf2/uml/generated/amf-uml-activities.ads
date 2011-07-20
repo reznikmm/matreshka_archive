@@ -69,16 +69,22 @@ package AMF.UML.Activities is
    not overriding function Get_Edge
     (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Edges.Collections.Set_Of_UML_Activity_Edge is abstract;
+   --  Getter of Activity::edge.
+   --
    --  Edges expressing flow between nodes of the activity.
 
    not overriding function Get_Group
     (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Groups.Collections.Set_Of_UML_Activity_Group is abstract;
+   --  Getter of Activity::group.
+   --
    --  Top-level groups in the activity.
 
    not overriding function Get_Is_Read_Only
     (Self : not null access constant UML_Activity)
        return Boolean is abstract;
+   --  Getter of Activity::isReadOnly.
+   --
    --  If true, this activity must not make any changes to variables outside 
    --  the activity or to objects. (This is an assertion, not an executable 
    --  property. It may be used by an execution engine to optimize model 
@@ -89,35 +95,57 @@ package AMF.UML.Activities is
    not overriding procedure Set_Is_Read_Only
     (Self : not null access UML_Activity;
      To   : Boolean) is abstract;
+   --  Setter of Activity::isReadOnly.
+   --
+   --  If true, this activity must not make any changes to variables outside 
+   --  the activity or to objects. (This is an assertion, not an executable 
+   --  property. It may be used by an execution engine to optimize model 
+   --  execution. If the assertion is violated by the action, then the model 
+   --  is ill-formed.) The default is false (an activity may make nonlocal 
+   --  changes).
 
    not overriding function Get_Is_Single_Execution
     (Self : not null access constant UML_Activity)
        return Boolean is abstract;
+   --  Getter of Activity::isSingleExecution.
+   --
    --  If true, all invocations of the activity are handled by the same 
    --  execution.
 
    not overriding procedure Set_Is_Single_Execution
     (Self : not null access UML_Activity;
      To   : Boolean) is abstract;
+   --  Setter of Activity::isSingleExecution.
+   --
+   --  If true, all invocations of the activity are handled by the same 
+   --  execution.
 
    not overriding function Get_Node
     (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Nodes.Collections.Set_Of_UML_Activity_Node is abstract;
+   --  Getter of Activity::node.
+   --
    --  Nodes coordinated by the activity.
 
    not overriding function Get_Partition
     (Self : not null access constant UML_Activity)
        return AMF.UML.Activity_Partitions.Collections.Set_Of_UML_Activity_Partition is abstract;
+   --  Getter of Activity::partition.
+   --
    --  Top-level partitions in the activity.
 
    not overriding function Get_Structured_Node
     (Self : not null access constant UML_Activity)
        return AMF.UML.Structured_Activity_Nodes.Collections.Set_Of_UML_Structured_Activity_Node is abstract;
+   --  Getter of Activity::structuredNode.
+   --
    --  Top-level structured nodes in the activity.
 
    not overriding function Get_Variable
     (Self : not null access constant UML_Activity)
        return AMF.UML.Variables.Collections.Set_Of_UML_Variable is abstract;
+   --  Getter of Activity::variable.
+   --
    --  Top-level variables in the activity.
 
    not overriding function Structured_Node

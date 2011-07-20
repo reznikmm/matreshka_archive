@@ -63,10 +63,15 @@ package AMF.UML.Connectable_Element_Template_Parameters is
    not overriding function Get_Parametered_Element
     (Self : not null access constant UML_Connectable_Element_Template_Parameter)
        return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access is abstract;
+   --  Getter of ConnectableElementTemplateParameter::parameteredElement.
+   --
    --  The ConnectableElement for this template parameter.
 
    not overriding procedure Set_Parametered_Element
     (Self : not null access UML_Connectable_Element_Template_Parameter;
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
+   --  Setter of ConnectableElementTemplateParameter::parameteredElement.
+   --
+   --  The ConnectableElement for this template parameter.
 
 end AMF.UML.Connectable_Element_Template_Parameters;

@@ -65,16 +65,24 @@ package AMF.UML.Behaviored_Classifiers is
    not overriding function Get_Classifier_Behavior
     (Self : not null access constant UML_Behaviored_Classifier)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of BehavioredClassifier::classifierBehavior.
+   --
    --  A behavior specification that specifies the behavior of the classifier 
    --  itself.
 
    not overriding procedure Set_Classifier_Behavior
     (Self : not null access UML_Behaviored_Classifier;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of BehavioredClassifier::classifierBehavior.
+   --
+   --  A behavior specification that specifies the behavior of the classifier 
+   --  itself.
 
    not overriding function Get_Interface_Realization
     (Self : not null access constant UML_Behaviored_Classifier)
        return AMF.UML.Interface_Realizations.Collections.Set_Of_UML_Interface_Realization is abstract;
+   --  Getter of BehavioredClassifier::interfaceRealization.
+   --
    --  The set of InterfaceRealizations owned by the BehavioredClassifier. 
    --  Interface realizations reference the Interfaces of which the 
    --  BehavioredClassifier is an implementation.
@@ -82,6 +90,8 @@ package AMF.UML.Behaviored_Classifiers is
    not overriding function Get_Owned_Behavior
     (Self : not null access constant UML_Behaviored_Classifier)
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
+   --  Getter of BehavioredClassifier::ownedBehavior.
+   --
    --  References behavior specifications owned by a classifier.
 
 end AMF.UML.Behaviored_Classifiers;

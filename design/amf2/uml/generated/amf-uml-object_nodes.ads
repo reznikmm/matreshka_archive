@@ -70,45 +70,69 @@ package AMF.UML.Object_Nodes is
    not overriding function Get_In_State
     (Self : not null access constant UML_Object_Node)
        return AMF.UML.States.Collections.Set_Of_UML_State is abstract;
+   --  Getter of ObjectNode::inState.
+   --
    --  The required states of the object available at this point in the 
    --  activity.
 
    not overriding function Get_Is_Control_Type
     (Self : not null access constant UML_Object_Node)
        return Boolean is abstract;
+   --  Getter of ObjectNode::isControlType.
+   --
    --  Tells whether the type of the object node is to be treated as control.
 
    not overriding procedure Set_Is_Control_Type
     (Self : not null access UML_Object_Node;
      To   : Boolean) is abstract;
+   --  Setter of ObjectNode::isControlType.
+   --
+   --  Tells whether the type of the object node is to be treated as control.
 
    not overriding function Get_Ordering
     (Self : not null access constant UML_Object_Node)
        return AMF.UML.UML_Object_Node_Ordering_Kind is abstract;
+   --  Getter of ObjectNode::ordering.
+   --
    --  Tells whether and how the tokens in the object node are ordered for 
    --  selection to traverse edges outgoing from the object node.
 
    not overriding procedure Set_Ordering
     (Self : not null access UML_Object_Node;
      To   : AMF.UML.UML_Object_Node_Ordering_Kind) is abstract;
+   --  Setter of ObjectNode::ordering.
+   --
+   --  Tells whether and how the tokens in the object node are ordered for 
+   --  selection to traverse edges outgoing from the object node.
 
    not overriding function Get_Selection
     (Self : not null access constant UML_Object_Node)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of ObjectNode::selection.
+   --
    --  Selects tokens for outgoing edges.
 
    not overriding procedure Set_Selection
     (Self : not null access UML_Object_Node;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of ObjectNode::selection.
+   --
+   --  Selects tokens for outgoing edges.
 
    not overriding function Get_Upper_Bound
     (Self : not null access constant UML_Object_Node)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of ObjectNode::upperBound.
+   --
    --  The maximum number of tokens allowed in the node. Objects cannot flow 
    --  into the node if the upper bound is reached.
 
    not overriding procedure Set_Upper_Bound
     (Self : not null access UML_Object_Node;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of ObjectNode::upperBound.
+   --
+   --  The maximum number of tokens allowed in the node. Objects cannot flow 
+   --  into the node if the upper bound is reached.
 
 end AMF.UML.Object_Nodes;

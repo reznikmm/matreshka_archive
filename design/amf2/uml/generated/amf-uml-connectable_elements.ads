@@ -70,18 +70,26 @@ package AMF.UML.Connectable_Elements is
    not overriding function Get_End
     (Self : not null access constant UML_Connectable_Element)
        return AMF.UML.Connector_Ends.Collections.Ordered_Set_Of_UML_Connector_End is abstract;
+   --  Getter of ConnectableElement::end.
+   --
    --  Denotes a set of connector ends that attaches to this connectable 
    --  element.
 
    not overriding function Get_Template_Parameter
     (Self : not null access constant UML_Connectable_Element)
        return AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access is abstract;
+   --  Getter of ConnectableElement::templateParameter.
+   --
    --  The ConnectableElementTemplateParameter for this ConnectableElement 
    --  parameter.
 
    not overriding procedure Set_Template_Parameter
     (Self : not null access UML_Connectable_Element;
      To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access) is abstract;
+   --  Setter of ConnectableElement::templateParameter.
+   --
+   --  The ConnectableElementTemplateParameter for this ConnectableElement 
+   --  parameter.
 
    not overriding function Ends
     (Self : not null access constant UML_Connectable_Element)

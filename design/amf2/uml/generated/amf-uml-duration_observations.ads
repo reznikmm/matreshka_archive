@@ -65,12 +65,16 @@ package AMF.UML.Duration_Observations is
    not overriding function Get_Event
     (Self : not null access constant UML_Duration_Observation)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Getter of DurationObservation::event.
+   --
    --  The observation is determined by the entering or exiting of the event 
    --  element during execution.
 
    not overriding function Get_First_Event
     (Self : not null access constant UML_Duration_Observation)
        return AMF.Boolean_Collections.Set_Of_Boolean is abstract;
+   --  Getter of DurationObservation::firstEvent.
+   --
    --  The value of firstEvent[i] is related to event[i] (where i is 1 or 2). 
    --  If firstEvent[i] is true, then the corresponding observation event is 
    --  the first time instant the execution enters event[i]. If firstEvent[i] 

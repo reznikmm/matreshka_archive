@@ -63,10 +63,15 @@ package AMF.UML.Operation_Template_Parameters is
    not overriding function Get_Parametered_Element
     (Self : not null access constant UML_Operation_Template_Parameter)
        return AMF.UML.Operations.UML_Operation_Access is abstract;
+   --  Getter of OperationTemplateParameter::parameteredElement.
+   --
    --  The operation for this template parameter.
 
    not overriding procedure Set_Parametered_Element
     (Self : not null access UML_Operation_Template_Parameter;
      To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
+   --  Setter of OperationTemplateParameter::parameteredElement.
+   --
+   --  The operation for this template parameter.
 
 end AMF.UML.Operation_Template_Parameters;

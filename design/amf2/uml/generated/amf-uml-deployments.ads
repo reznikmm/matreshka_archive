@@ -68,22 +68,31 @@ package AMF.UML.Deployments is
    not overriding function Get_Configuration
     (Self : not null access constant UML_Deployment)
        return AMF.UML.Deployment_Specifications.Collections.Set_Of_UML_Deployment_Specification is abstract;
+   --  Getter of Deployment::configuration.
+   --
    --  The specification of properties that parameterize the deployment and 
    --  execution of one or more Artifacts.
 
    not overriding function Get_Deployed_Artifact
     (Self : not null access constant UML_Deployment)
        return AMF.UML.Deployed_Artifacts.Collections.Set_Of_UML_Deployed_Artifact is abstract;
+   --  Getter of Deployment::deployedArtifact.
+   --
    --  The Artifacts that are deployed onto a Node. This association 
    --  specializes the supplier association.
 
    not overriding function Get_Location
     (Self : not null access constant UML_Deployment)
        return AMF.UML.Deployment_Targets.UML_Deployment_Target_Access is abstract;
+   --  Getter of Deployment::location.
+   --
    --  The DeployedTarget which is the target of a Deployment.
 
    not overriding procedure Set_Location
     (Self : not null access UML_Deployment;
      To   : AMF.UML.Deployment_Targets.UML_Deployment_Target_Access) is abstract;
+   --  Setter of Deployment::location.
+   --
+   --  The DeployedTarget which is the target of a Deployment.
 
 end AMF.UML.Deployments;

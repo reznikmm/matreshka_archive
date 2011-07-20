@@ -69,34 +69,50 @@ package AMF.UML.Named_Elements is
    not overriding function Get_Client_Dependency
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency is abstract;
+   --  Getter of NamedElement::clientDependency.
+   --
    --  Indicates the dependencies that reference the client.
 
    not overriding function Get_Name
     (Self : not null access constant UML_Named_Element)
        return AMF.Optional_String is abstract;
+   --  Getter of NamedElement::name.
+   --
    --  The name of the NamedElement.
 
    not overriding procedure Set_Name
     (Self : not null access UML_Named_Element;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    not overriding function Get_Name_Expression
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.String_Expressions.UML_String_Expression_Access is abstract;
+   --  Getter of NamedElement::nameExpression.
+   --
    --  The string expression used to define the name of this named element.
 
    not overriding procedure Set_Name_Expression
     (Self : not null access UML_Named_Element;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is abstract;
+   --  Setter of NamedElement::nameExpression.
+   --
+   --  The string expression used to define the name of this named element.
 
    not overriding function Get_Namespace
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  Getter of NamedElement::namespace.
+   --
    --  Specifies the namespace that owns the NamedElement.
 
    not overriding function Get_Qualified_Name
     (Self : not null access constant UML_Named_Element)
        return AMF.Optional_String is abstract;
+   --  Getter of NamedElement::qualifiedName.
+   --
    --  A name which allows the NamedElement to be identified within a 
    --  hierarchy of nested Namespaces. It is constructed from the names of the 
    --  containing namespaces starting at the root of the hierarchy and ending 
@@ -105,12 +121,18 @@ package AMF.UML.Named_Elements is
    not overriding function Get_Visibility
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.Optional_UML_Visibility_Kind is abstract;
+   --  Getter of NamedElement::visibility.
+   --
    --  Determines where the NamedElement appears within different Namespaces 
    --  within the overall model, and its accessibility.
 
    not overriding procedure Set_Visibility
     (Self : not null access UML_Named_Element;
      To   : AMF.UML.Optional_UML_Visibility_Kind) is abstract;
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    not overriding function All_Namespaces
     (Self : not null access constant UML_Named_Element)

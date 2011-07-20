@@ -65,6 +65,8 @@ package AMF.UML.Stereotypes is
    not overriding function Get_Icon
     (Self : not null access constant UML_Stereotype)
        return AMF.UML.Images.Collections.Set_Of_UML_Image is abstract;
+   --  Getter of Stereotype::icon.
+   --
    --  Stereotype can change the graphical appearance of the extended model 
    --  element by using attached icons. When this association is not null, it 
    --  references the location of the icon content to be displayed within 
@@ -73,6 +75,8 @@ package AMF.UML.Stereotypes is
    not overriding function Get_Profile
     (Self : not null access constant UML_Stereotype)
        return AMF.UML.Profiles.UML_Profile_Access is abstract;
+   --  Getter of Stereotype::profile.
+   --
    --  The profile that directly or indirectly contains this stereotype.
 
    not overriding function Containing_Profile

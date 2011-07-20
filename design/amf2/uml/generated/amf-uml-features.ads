@@ -63,16 +63,24 @@ package AMF.UML.Features is
    not overriding function Get_Featuring_Classifier
     (Self : not null access constant UML_Feature)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of Feature::featuringClassifier.
+   --
    --  The Classifiers that have this Feature as a feature.
 
    not overriding function Get_Is_Static
     (Self : not null access constant UML_Feature)
        return Boolean is abstract;
+   --  Getter of Feature::isStatic.
+   --
    --  Specifies whether this feature characterizes individual instances 
    --  classified by the classifier (false) or the classifier itself (true).
 
    not overriding procedure Set_Is_Static
     (Self : not null access UML_Feature;
      To   : Boolean) is abstract;
+   --  Setter of Feature::isStatic.
+   --
+   --  Specifies whether this feature characterizes individual instances 
+   --  classified by the classifier (false) or the classifier itself (true).
 
 end AMF.UML.Features;

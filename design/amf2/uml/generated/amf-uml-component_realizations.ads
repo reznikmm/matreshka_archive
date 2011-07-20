@@ -66,16 +66,24 @@ package AMF.UML.Component_Realizations is
    not overriding function Get_Abstraction
     (Self : not null access constant UML_Component_Realization)
        return AMF.UML.Components.UML_Component_Access is abstract;
+   --  Getter of ComponentRealization::abstraction.
+   --
    --  The Component that owns this ComponentRealization and which is 
    --  implemented by its realizing classifiers.
 
    not overriding procedure Set_Abstraction
     (Self : not null access UML_Component_Realization;
      To   : AMF.UML.Components.UML_Component_Access) is abstract;
+   --  Setter of ComponentRealization::abstraction.
+   --
+   --  The Component that owns this ComponentRealization and which is 
+   --  implemented by its realizing classifiers.
 
    not overriding function Get_Realizing_Classifier
     (Self : not null access constant UML_Component_Realization)
        return AMF.UML.Classifiers.Collections.Set_Of_UML_Classifier is abstract;
+   --  Getter of ComponentRealization::realizingClassifier.
+   --
    --  The classifiers that are involved in the implementation of the 
    --  Component that owns this Realization.
 

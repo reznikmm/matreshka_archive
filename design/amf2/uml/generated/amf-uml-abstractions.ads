@@ -64,6 +64,8 @@ package AMF.UML.Abstractions is
    not overriding function Get_Mapping
     (Self : not null access constant UML_Abstraction)
        return AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access is abstract;
+   --  Getter of Abstraction::mapping.
+   --
    --  An composition of an Expression that states the abstraction 
    --  relationship between the supplier and the client. In some cases, such 
    --  as Derivation, it is usually formal and unidirectional; in other cases, 
@@ -74,5 +76,13 @@ package AMF.UML.Abstractions is
    not overriding procedure Set_Mapping
     (Self : not null access UML_Abstraction;
      To   : AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access) is abstract;
+   --  Setter of Abstraction::mapping.
+   --
+   --  An composition of an Expression that states the abstraction 
+   --  relationship between the supplier and the client. In some cases, such 
+   --  as Derivation, it is usually formal and unidirectional; in other cases, 
+   --  such as Trace, it is usually informal and bidirectional. The mapping 
+   --  expression is optional and may be omitted if the precise relationship 
+   --  between the elements is not specified.
 
 end AMF.UML.Abstractions;

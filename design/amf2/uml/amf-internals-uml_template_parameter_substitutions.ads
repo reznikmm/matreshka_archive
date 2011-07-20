@@ -60,53 +60,95 @@ package AMF.Internals.UML_Template_Parameter_Substitutions is
    overriding function Get_Actual
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+   --  Getter of TemplateParameterSubstitution::actual.
+   --
+   --  The element that is the actual parameter for this substitution.
 
    overriding procedure Set_Actual
     (Self : not null access UML_Template_Parameter_Substitution_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+   --  Setter of TemplateParameterSubstitution::actual.
+   --
+   --  The element that is the actual parameter for this substitution.
 
    overriding function Get_Formal
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Template_Parameters.UML_Template_Parameter_Access;
+   --  Getter of TemplateParameterSubstitution::formal.
+   --
+   --  The formal template parameter that is associated with this substitution.
 
    overriding procedure Set_Formal
     (Self : not null access UML_Template_Parameter_Substitution_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access);
+   --  Setter of TemplateParameterSubstitution::formal.
+   --
+   --  The formal template parameter that is associated with this substitution.
 
    overriding function Get_Owned_Actual
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+   --  Getter of TemplateParameterSubstitution::ownedActual.
+   --
+   --  The actual parameter that is owned by this substitution.
 
    overriding procedure Set_Owned_Actual
     (Self : not null access UML_Template_Parameter_Substitution_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+   --  Setter of TemplateParameterSubstitution::ownedActual.
+   --
+   --  The actual parameter that is owned by this substitution.
 
    overriding function Get_Template_Binding
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Template_Bindings.UML_Template_Binding_Access;
+   --  Getter of TemplateParameterSubstitution::templateBinding.
+   --
+   --  The optional bindings from this element to templates.
 
    overriding procedure Set_Template_Binding
     (Self : not null access UML_Template_Parameter_Substitution_Proxy;
      To   : AMF.UML.Template_Bindings.UML_Template_Binding_Access);
+   --  Setter of TemplateParameterSubstitution::templateBinding.
+   --
+   --  The optional bindings from this element to templates.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Template_Parameter_Substitution_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Template_Parameter_Substitutions;

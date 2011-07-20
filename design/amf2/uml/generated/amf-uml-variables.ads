@@ -75,20 +75,30 @@ package AMF.UML.Variables is
    not overriding function Get_Activity_Scope
     (Self : not null access constant UML_Variable)
        return AMF.UML.Activities.UML_Activity_Access is abstract;
+   --  Getter of Variable::activityScope.
+   --
    --  An activity that owns the variable.
 
    not overriding procedure Set_Activity_Scope
     (Self : not null access UML_Variable;
      To   : AMF.UML.Activities.UML_Activity_Access) is abstract;
+   --  Setter of Variable::activityScope.
+   --
+   --  An activity that owns the variable.
 
    not overriding function Get_Scope
     (Self : not null access constant UML_Variable)
        return AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access is abstract;
+   --  Getter of Variable::scope.
+   --
    --  A structured activity node that owns the variable.
 
    not overriding procedure Set_Scope
     (Self : not null access UML_Variable;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is abstract;
+   --  Setter of Variable::scope.
+   --
+   --  A structured activity node that owns the variable.
 
    not overriding function Is_Accessible_By
     (Self : not null access constant UML_Variable;

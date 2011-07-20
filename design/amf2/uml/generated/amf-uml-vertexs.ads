@@ -65,20 +65,29 @@ package AMF.UML.Vertexs is
    not overriding function Get_Container
     (Self : not null access constant UML_Vertex)
        return AMF.UML.Regions.UML_Region_Access is abstract;
+   --  Getter of Vertex::container.
+   --
    --  The region that contains this vertex.
 
    not overriding procedure Set_Container
     (Self : not null access UML_Vertex;
      To   : AMF.UML.Regions.UML_Region_Access) is abstract;
+   --  Setter of Vertex::container.
+   --
+   --  The region that contains this vertex.
 
    not overriding function Get_Incoming
     (Self : not null access constant UML_Vertex)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
+   --  Getter of Vertex::incoming.
+   --
    --  Specifies the transitions entering this vertex.
 
    not overriding function Get_Outgoing
     (Self : not null access constant UML_Vertex)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
+   --  Getter of Vertex::outgoing.
+   --
    --  Specifies the transitions departing from this vertex.
 
    not overriding function Containing_State_Machine

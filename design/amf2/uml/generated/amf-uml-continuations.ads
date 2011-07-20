@@ -63,11 +63,17 @@ package AMF.UML.Continuations is
    not overriding function Get_Setting
     (Self : not null access constant UML_Continuation)
        return Boolean is abstract;
+   --  Getter of Continuation::setting.
+   --
    --  True: when the Continuation is at the end of the enclosing 
    --  InteractionFragment and False when it is in the beginning.
 
    not overriding procedure Set_Setting
     (Self : not null access UML_Continuation;
      To   : Boolean) is abstract;
+   --  Setter of Continuation::setting.
+   --
+   --  True: when the Continuation is at the end of the enclosing 
+   --  InteractionFragment and False when it is in the beginning.
 
 end AMF.UML.Continuations;

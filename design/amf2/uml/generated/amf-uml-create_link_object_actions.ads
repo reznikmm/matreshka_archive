@@ -62,10 +62,15 @@ package AMF.UML.Create_Link_Object_Actions is
    not overriding function Get_Result
     (Self : not null access constant UML_Create_Link_Object_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of CreateLinkObjectAction::result.
+   --
    --  Gives the output pin on which the result is put.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Create_Link_Object_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of CreateLinkObjectAction::result.
+   --
+   --  Gives the output pin on which the result is put.
 
 end AMF.UML.Create_Link_Object_Actions;

@@ -63,10 +63,15 @@ package AMF.UML.Call_Events is
    not overriding function Get_Operation
     (Self : not null access constant UML_Call_Event)
        return AMF.UML.Operations.UML_Operation_Access is abstract;
+   --  Getter of CallEvent::operation.
+   --
    --  Designates the operation whose invocation raised the call event.
 
    not overriding procedure Set_Operation
     (Self : not null access UML_Call_Event;
      To   : AMF.UML.Operations.UML_Operation_Access) is abstract;
+   --  Setter of CallEvent::operation.
+   --
+   --  Designates the operation whose invocation raised the call event.
 
 end AMF.UML.Call_Events;

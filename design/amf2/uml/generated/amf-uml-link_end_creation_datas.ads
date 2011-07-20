@@ -64,6 +64,8 @@ package AMF.UML.Link_End_Creation_Datas is
    not overriding function Get_Insert_At
     (Self : not null access constant UML_Link_End_Creation_Data)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of LinkEndCreationData::insertAt.
+   --
    --  Specifies where the new link should be inserted for ordered association 
    --  ends, or where an existing link should be moved to. The type of the 
    --  input is UnlimitedNatural, but the input cannot be zero. This pin is 
@@ -72,15 +74,27 @@ package AMF.UML.Link_End_Creation_Datas is
    not overriding procedure Set_Insert_At
     (Self : not null access UML_Link_End_Creation_Data;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of LinkEndCreationData::insertAt.
+   --
+   --  Specifies where the new link should be inserted for ordered association 
+   --  ends, or where an existing link should be moved to. The type of the 
+   --  input is UnlimitedNatural, but the input cannot be zero. This pin is 
+   --  omitted for association ends that are not ordered.
 
    not overriding function Get_Is_Replace_All
     (Self : not null access constant UML_Link_End_Creation_Data)
        return Boolean is abstract;
+   --  Getter of LinkEndCreationData::isReplaceAll.
+   --
    --  Specifies whether the existing links emanating from the object on this 
    --  end should be destroyed before creating a new link.
 
    not overriding procedure Set_Is_Replace_All
     (Self : not null access UML_Link_End_Creation_Data;
      To   : Boolean) is abstract;
+   --  Setter of LinkEndCreationData::isReplaceAll.
+   --
+   --  Specifies whether the existing links emanating from the object on this 
+   --  end should be destroyed before creating a new link.
 
 end AMF.UML.Link_End_Creation_Datas;

@@ -68,20 +68,29 @@ package AMF.UML.Opaque_Expressions is
    not overriding function Get_Behavior
     (Self : not null access constant UML_Opaque_Expression)
        return AMF.UML.Behaviors.UML_Behavior_Access is abstract;
+   --  Getter of OpaqueExpression::behavior.
+   --
    --  Specifies the behavior of the opaque expression.
 
    not overriding procedure Set_Behavior
     (Self : not null access UML_Opaque_Expression;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is abstract;
+   --  Setter of OpaqueExpression::behavior.
+   --
+   --  Specifies the behavior of the opaque expression.
 
    not overriding function Get_Body
     (Self : not null access constant UML_Opaque_Expression)
        return AMF.String_Collections.Sequence_Of_String is abstract;
+   --  Getter of OpaqueExpression::body.
+   --
    --  The text of the expression, possibly in multiple languages.
 
    not overriding function Get_Language
     (Self : not null access constant UML_Opaque_Expression)
        return AMF.String_Collections.Ordered_Set_Of_String is abstract;
+   --  Getter of OpaqueExpression::language.
+   --
    --  Specifies the languages in which the expression is stated. The 
    --  interpretation of the expression body depends on the languages. If the 
    --  languages are unspecified, they might be implicit from the expression 
@@ -90,6 +99,8 @@ package AMF.UML.Opaque_Expressions is
    not overriding function Get_Result
     (Self : not null access constant UML_Opaque_Expression)
        return AMF.UML.Parameters.UML_Parameter_Access is abstract;
+   --  Getter of OpaqueExpression::result.
+   --
    --  Restricts an opaque expression to return exactly one return result. 
    --  When the invocation of the opaque expression completes, a single set of 
    --  values is returned to its owner. This association is derived from the 

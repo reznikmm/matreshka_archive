@@ -63,16 +63,24 @@ package AMF.UML.Remove_Structural_Feature_Value_Actions is
    not overriding function Get_Is_Remove_Duplicates
     (Self : not null access constant UML_Remove_Structural_Feature_Value_Action)
        return Boolean is abstract;
+   --  Getter of RemoveStructuralFeatureValueAction::isRemoveDuplicates.
+   --
    --  Specifies whether to remove duplicates of the value in nonunique 
    --  structural features.
 
    not overriding procedure Set_Is_Remove_Duplicates
     (Self : not null access UML_Remove_Structural_Feature_Value_Action;
      To   : Boolean) is abstract;
+   --  Setter of RemoveStructuralFeatureValueAction::isRemoveDuplicates.
+   --
+   --  Specifies whether to remove duplicates of the value in nonunique 
+   --  structural features.
 
    not overriding function Get_Remove_At
     (Self : not null access constant UML_Remove_Structural_Feature_Value_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of RemoveStructuralFeatureValueAction::removeAt.
+   --
    --  Specifies the position of an existing value to remove in ordered 
    --  nonunique structural features. The type of the pin is UnlimitedNatural, 
    --  but the value cannot be zero or unlimited.
@@ -80,5 +88,10 @@ package AMF.UML.Remove_Structural_Feature_Value_Actions is
    not overriding procedure Set_Remove_At
     (Self : not null access UML_Remove_Structural_Feature_Value_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of RemoveStructuralFeatureValueAction::removeAt.
+   --
+   --  Specifies the position of an existing value to remove in ordered 
+   --  nonunique structural features. The type of the pin is UnlimitedNatural, 
+   --  but the value cannot be zero or unlimited.
 
 end AMF.UML.Remove_Structural_Feature_Value_Actions;

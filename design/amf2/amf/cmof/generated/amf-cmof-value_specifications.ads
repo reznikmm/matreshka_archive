@@ -64,6 +64,8 @@ package AMF.CMOF.Value_Specifications is
    not overriding function Is_Computable
     (Self : not null access constant CMOF_Value_Specification)
        return Boolean is abstract;
+   --  Operation ValueSpecification::isComputable.
+   --
    --  The query isComputable() determines whether a value specification can 
    --  be computed in a model. This operation cannot be fully defined in OCL. 
    --  A conforming implementation is expected to deliver true for this 
@@ -75,30 +77,40 @@ package AMF.CMOF.Value_Specifications is
    not overriding function Integer_Value
     (Self : not null access constant CMOF_Value_Specification)
        return Integer is abstract;
+   --  Operation ValueSpecification::integerValue.
+   --
    --  The query integerValue() gives a single Integer value when one can be 
    --  computed.
 
    not overriding function Boolean_Value
     (Self : not null access constant CMOF_Value_Specification)
        return Boolean is abstract;
+   --  Operation ValueSpecification::booleanValue.
+   --
    --  The query booleanValue() gives a single Boolean value when one can be 
    --  computed.
 
    not overriding function String_Value
     (Self : not null access constant CMOF_Value_Specification)
        return League.Strings.Universal_String is abstract;
+   --  Operation ValueSpecification::stringValue.
+   --
    --  The query stringValue() gives a single String value when one can be 
    --  computed.
 
    not overriding function Unlimited_Value
     (Self : not null access constant CMOF_Value_Specification)
        return AMF.Unlimited_Natural is abstract;
+   --  Operation ValueSpecification::unlimitedValue.
+   --
    --  The query unlimitedValue() gives a single UnlimitedNatural value when 
    --  one can be computed.
 
    not overriding function Is_Null
     (Self : not null access constant CMOF_Value_Specification)
        return Boolean is abstract;
+   --  Operation ValueSpecification::isNull.
+   --
    --  The query isNull() returns true when it can be computed that the value 
    --  is null.
 

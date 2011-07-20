@@ -58,49 +58,90 @@ package AMF.Internals.UML_Protocol_Conformances is
    overriding function Get_General_Machine
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access;
+   --  Getter of ProtocolConformance::generalMachine.
+   --
+   --  Specifies the protocol state machine to which the specific state 
+   --  machine conforms.
 
    overriding procedure Set_General_Machine
     (Self : not null access UML_Protocol_Conformance_Proxy;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access);
+   --  Setter of ProtocolConformance::generalMachine.
+   --
+   --  Specifies the protocol state machine to which the specific state 
+   --  machine conforms.
 
    overriding function Get_Specific_Machine
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access;
+   --  Getter of ProtocolConformance::specificMachine.
+   --
+   --  Specifies the state machine which conforms to the general state machine.
 
    overriding procedure Set_Specific_Machine
     (Self : not null access UML_Protocol_Conformance_Proxy;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access);
+   --  Setter of ProtocolConformance::specificMachine.
+   --
+   --  Specifies the state machine which conforms to the general state machine.
 
    overriding function Get_Source
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Protocol_Conformance_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Protocol_Conformances;

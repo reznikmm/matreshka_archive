@@ -64,47 +64,73 @@ package AMF.UML.Template_Parameters is
    not overriding function Get_Default
     (Self : not null access constant UML_Template_Parameter)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access is abstract;
+   --  Getter of TemplateParameter::default.
+   --
    --  The element that is the default for this formal template parameter.
 
    not overriding procedure Set_Default
     (Self : not null access UML_Template_Parameter;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is abstract;
+   --  Setter of TemplateParameter::default.
+   --
+   --  The element that is the default for this formal template parameter.
 
    not overriding function Get_Owned_Default
     (Self : not null access constant UML_Template_Parameter)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access is abstract;
+   --  Getter of TemplateParameter::ownedDefault.
+   --
    --  The element that is owned by this template parameter for the purpose of 
    --  providing a default.
 
    not overriding procedure Set_Owned_Default
     (Self : not null access UML_Template_Parameter;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is abstract;
+   --  Setter of TemplateParameter::ownedDefault.
+   --
+   --  The element that is owned by this template parameter for the purpose of 
+   --  providing a default.
 
    not overriding function Get_Owned_Parametered_Element
     (Self : not null access constant UML_Template_Parameter)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access is abstract;
+   --  Getter of TemplateParameter::ownedParameteredElement.
+   --
    --  The element that is owned by this template parameter.
 
    not overriding procedure Set_Owned_Parametered_Element
     (Self : not null access UML_Template_Parameter;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is abstract;
+   --  Setter of TemplateParameter::ownedParameteredElement.
+   --
+   --  The element that is owned by this template parameter.
 
    not overriding function Get_Parametered_Element
     (Self : not null access constant UML_Template_Parameter)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access is abstract;
+   --  Getter of TemplateParameter::parameteredElement.
+   --
    --  The element exposed by this template parameter.
 
    not overriding procedure Set_Parametered_Element
     (Self : not null access UML_Template_Parameter;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is abstract;
+   --  Setter of TemplateParameter::parameteredElement.
+   --
+   --  The element exposed by this template parameter.
 
    not overriding function Get_Signature
     (Self : not null access constant UML_Template_Parameter)
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access is abstract;
+   --  Getter of TemplateParameter::signature.
+   --
    --  The template signature that owns this template parameter.
 
    not overriding procedure Set_Signature
     (Self : not null access UML_Template_Parameter;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is abstract;
+   --  Setter of TemplateParameter::signature.
+   --
+   --  The template signature that owns this template parameter.
 
 end AMF.UML.Template_Parameters;

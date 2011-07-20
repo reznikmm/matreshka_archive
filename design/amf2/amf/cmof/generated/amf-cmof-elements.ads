@@ -62,27 +62,37 @@ package AMF.CMOF.Elements is
    not overriding function Get_Owned_Element
     (Self : not null access constant CMOF_Element)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Getter of Element::ownedElement.
+   --
    --  The Elements owned by this element.
 
    not overriding function Get_Owner
     (Self : not null access constant CMOF_Element)
        return AMF.CMOF.Elements.CMOF_Element_Access is abstract;
+   --  Getter of Element::owner.
+   --
    --  The Element that owns this element.
 
    not overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Element)
        return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment is abstract;
+   --  Getter of Element::ownedComment.
+   --
    --  The Comments owned by this element.
 
    not overriding function All_Owned_Elements
     (Self : not null access constant CMOF_Element)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is abstract;
+   --  Operation Element::allOwnedElements.
+   --
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
    not overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Element)
        return Boolean is abstract;
+   --  Operation Element::mustBeOwned.
+   --
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner. Subclasses of Element that do not require an owner must 
    --  override this operation.

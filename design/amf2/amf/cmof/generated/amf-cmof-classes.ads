@@ -66,31 +66,44 @@ package AMF.CMOF.Classes is
    not overriding function Get_Is_Abstract
     (Self : not null access constant CMOF_Class)
        return Boolean is abstract;
+   --  Getter of Class::isAbstract.
+   --
    --  True when a class is abstract.
 
    not overriding procedure Set_Is_Abstract
     (Self : not null access CMOF_Class;
      To   : Boolean) is abstract;
+   --  Setter of Class::isAbstract.
+   --
+   --  True when a class is abstract.
 
    not overriding function Get_Owned_Attribute
     (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
+   --  Getter of Class::ownedAttribute.
+   --
    --  The attributes (i.e. the properties) owned by the class.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation is abstract;
+   --  Getter of Class::ownedOperation.
+   --
    --  The operations owned by the class.
 
    not overriding function Get_Super_Class
     (Self : not null access constant CMOF_Class)
        return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class is abstract;
+   --  Getter of Class::superClass.
+   --
    --  This gives the superclasses of a class.
 
    overriding function Inherit
     (Self : not null access constant CMOF_Class;
      Inhs : AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is abstract;
+   --  Operation Class::inherit.
+   --
    --  The inherit operation is overridden to exclude redefined properties.
 
 end AMF.CMOF.Classes;

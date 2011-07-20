@@ -64,28 +64,43 @@ package AMF.UML.Test_Identity_Actions is
    not overriding function Get_First
     (Self : not null access constant UML_Test_Identity_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of TestIdentityAction::first.
+   --
    --  Gives the pin on which an object is placed.
 
    not overriding procedure Set_First
     (Self : not null access UML_Test_Identity_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of TestIdentityAction::first.
+   --
+   --  Gives the pin on which an object is placed.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Test_Identity_Action)
        return AMF.UML.Output_Pins.UML_Output_Pin_Access is abstract;
+   --  Getter of TestIdentityAction::result.
+   --
    --  Tells whether the two input objects are identical.
 
    not overriding procedure Set_Result
     (Self : not null access UML_Test_Identity_Action;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is abstract;
+   --  Setter of TestIdentityAction::result.
+   --
+   --  Tells whether the two input objects are identical.
 
    not overriding function Get_Second
     (Self : not null access constant UML_Test_Identity_Action)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access is abstract;
+   --  Getter of TestIdentityAction::second.
+   --
    --  Gives the pin on which an object is placed.
 
    not overriding procedure Set_Second
     (Self : not null access UML_Test_Identity_Action;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is abstract;
+   --  Setter of TestIdentityAction::second.
+   --
+   --  Gives the pin on which an object is placed.
 
 end AMF.UML.Test_Identity_Actions;

@@ -63,6 +63,8 @@ package AMF.UML.Call_Actions is
    not overriding function Get_Is_Synchronous
     (Self : not null access constant UML_Call_Action)
        return Boolean is abstract;
+   --  Getter of CallAction::isSynchronous.
+   --
    --  If true, the call is synchronous and the caller waits for completion of 
    --  the invoked behavior. If false, the call is asynchronous and the caller 
    --  proceeds immediately and does not expect a return values.
@@ -70,10 +72,17 @@ package AMF.UML.Call_Actions is
    not overriding procedure Set_Is_Synchronous
     (Self : not null access UML_Call_Action;
      To   : Boolean) is abstract;
+   --  Setter of CallAction::isSynchronous.
+   --
+   --  If true, the call is synchronous and the caller waits for completion of 
+   --  the invoked behavior. If false, the call is asynchronous and the caller 
+   --  proceeds immediately and does not expect a return values.
 
    not overriding function Get_Result
     (Self : not null access constant UML_Call_Action)
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
+   --  Getter of CallAction::result.
+   --
    --  A list of output pins where the results of performing the invocation 
    --  are placed.
 

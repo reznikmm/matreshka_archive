@@ -65,6 +65,8 @@ package AMF.UML.Connector_Ends is
    not overriding function Get_Defining_End
     (Self : not null access constant UML_Connector_End)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of ConnectorEnd::definingEnd.
+   --
    --  A derived association referencing the corresponding association end on 
    --  the association which types the connector owing this connector end. 
    --  This association is derived by selecting the association end at the 
@@ -73,16 +75,24 @@ package AMF.UML.Connector_Ends is
    not overriding function Get_Part_With_Port
     (Self : not null access constant UML_Connector_End)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of ConnectorEnd::partWithPort.
+   --
    --  Indicates the role of the internal structure of a classifier with the 
    --  port to which the connector end is attached.
 
    not overriding procedure Set_Part_With_Port
     (Self : not null access UML_Connector_End;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of ConnectorEnd::partWithPort.
+   --
+   --  Indicates the role of the internal structure of a classifier with the 
+   --  port to which the connector end is attached.
 
    not overriding function Get_Role
     (Self : not null access constant UML_Connector_End)
        return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access is abstract;
+   --  Getter of ConnectorEnd::role.
+   --
    --  The connectable element attached at this connector end. When an 
    --  instance of the containing classifier is created, a link may (depending 
    --  on the multiplicities) be created to an instance of the classifier that 
@@ -91,6 +101,12 @@ package AMF.UML.Connector_Ends is
    not overriding procedure Set_Role
     (Self : not null access UML_Connector_End;
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is abstract;
+   --  Setter of ConnectorEnd::role.
+   --
+   --  The connectable element attached at this connector end. When an 
+   --  instance of the containing classifier is created, a link may (depending 
+   --  on the multiplicities) be created to an instance of the classifier that 
+   --  types this connectable element.
 
    not overriding function Defining_End
     (Self : not null access constant UML_Connector_End)

@@ -63,10 +63,15 @@ package AMF.UML.Action_Execution_Specifications is
    not overriding function Get_Action
     (Self : not null access constant UML_Action_Execution_Specification)
        return AMF.UML.Actions.UML_Action_Access is abstract;
+   --  Getter of ActionExecutionSpecification::action.
+   --
    --  Action whose execution is occurring.
 
    not overriding procedure Set_Action
     (Self : not null access UML_Action_Execution_Specification;
      To   : AMF.UML.Actions.UML_Action_Access) is abstract;
+   --  Setter of ActionExecutionSpecification::action.
+   --
+   --  Action whose execution is occurring.
 
 end AMF.UML.Action_Execution_Specifications;

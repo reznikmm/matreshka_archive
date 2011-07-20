@@ -68,38 +68,54 @@ package AMF.CMOF.Associations is
    not overriding function Get_Is_Derived
     (Self : not null access constant CMOF_Association)
        return Boolean is abstract;
+   --  Getter of Association::isDerived.
+   --
    --  Specifies whether the association is derived from other model elements 
    --  such as other associations or constraints.
 
    not overriding procedure Set_Is_Derived
     (Self : not null access CMOF_Association;
      To   : Boolean) is abstract;
+   --  Setter of Association::isDerived.
+   --
+   --  Specifies whether the association is derived from other model elements 
+   --  such as other associations or constraints.
 
    not overriding function Get_Owned_End
     (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
+   --  Getter of Association::ownedEnd.
+   --
    --  The ends that are owned by the association itself.
 
    not overriding function Get_End_Type
     (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is abstract;
+   --  Getter of Association::endType.
+   --
    --  References the classifiers that are used as types of the ends of the 
    --  association.
 
    not overriding function Get_Member_End
     (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property is abstract;
+   --  Getter of Association::memberEnd.
+   --
    --  Each end represents participation of instances of the classifier 
    --  connected to the end in links of the association.
 
    not overriding function Get_Navigable_Owned_End
     (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is abstract;
+   --  Getter of Association::navigableOwnedEnd.
+   --
    --  The navigable ends that are owned by the association itself.
 
    not overriding function End_Type
     (Self : not null access constant CMOF_Association)
        return AMF.CMOF.Types.Collections.Ordered_Set_Of_CMOF_Type is abstract;
+   --  Operation Association::endType.
+   --
    --  endType is derived from the types of the member ends.
 
 end AMF.CMOF.Associations;

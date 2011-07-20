@@ -63,6 +63,8 @@ package AMF.UML.Destroy_Link_Actions is
    not overriding function Get_End_Data
     (Self : not null access constant UML_Destroy_Link_Action)
        return AMF.UML.Link_End_Destruction_Datas.Collections.Set_Of_UML_Link_End_Destruction_Data is abstract;
+   --  Getter of DestroyLinkAction::endData.
+   --
    --  Specifies ends of association and inputs.
 
 end AMF.UML.Destroy_Link_Actions;

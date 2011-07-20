@@ -58,49 +58,92 @@ package AMF.Internals.UML_Package_Merges is
    overriding function Get_Merged_Package
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Packages.UML_Package_Access;
+   --  Getter of PackageMerge::mergedPackage.
+   --
+   --  References the Package that is to be merged with the receiving package 
+   --  of the PackageMerge.
 
    overriding procedure Set_Merged_Package
     (Self : not null access UML_Package_Merge_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access);
+   --  Setter of PackageMerge::mergedPackage.
+   --
+   --  References the Package that is to be merged with the receiving package 
+   --  of the PackageMerge.
 
    overriding function Get_Receiving_Package
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Packages.UML_Package_Access;
+   --  Getter of PackageMerge::receivingPackage.
+   --
+   --  References the Package that is being extended with the contents of the 
+   --  merged package of the PackageMerge.
 
    overriding procedure Set_Receiving_Package
     (Self : not null access UML_Package_Merge_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access);
+   --  Setter of PackageMerge::receivingPackage.
+   --
+   --  References the Package that is being extended with the contents of the 
+   --  merged package of the PackageMerge.
 
    overriding function Get_Source
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Package_Merge_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Package_Merge_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Package_Merges;

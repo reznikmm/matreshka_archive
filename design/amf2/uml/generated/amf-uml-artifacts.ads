@@ -73,16 +73,24 @@ package AMF.UML.Artifacts is
    not overriding function Get_File_Name
     (Self : not null access constant UML_Artifact)
        return AMF.Optional_String is abstract;
+   --  Getter of Artifact::fileName.
+   --
    --  A concrete name that is used to refer to the Artifact in a physical 
    --  context. Example: file system name, universal resource locator.
 
    not overriding procedure Set_File_Name
     (Self : not null access UML_Artifact;
      To   : AMF.Optional_String) is abstract;
+   --  Setter of Artifact::fileName.
+   --
+   --  A concrete name that is used to refer to the Artifact in a physical 
+   --  context. Example: file system name, universal resource locator.
 
    not overriding function Get_Manifestation
     (Self : not null access constant UML_Artifact)
        return AMF.UML.Manifestations.Collections.Set_Of_UML_Manifestation is abstract;
+   --  Getter of Artifact::manifestation.
+   --
    --  The set of model elements that are manifested in the Artifact. That is, 
    --  these model elements are utilized in the construction (or generation) 
    --  of the artifact.
@@ -90,6 +98,8 @@ package AMF.UML.Artifacts is
    not overriding function Get_Nested_Artifact
     (Self : not null access constant UML_Artifact)
        return AMF.UML.Artifacts.Collections.Set_Of_UML_Artifact is abstract;
+   --  Getter of Artifact::nestedArtifact.
+   --
    --  The Artifacts that are defined (nested) within the Artifact. The 
    --  association is a specialization of the ownedMember association from 
    --  Namespace to NamedElement.
@@ -97,12 +107,16 @@ package AMF.UML.Artifacts is
    not overriding function Get_Owned_Attribute
     (Self : not null access constant UML_Artifact)
        return AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property is abstract;
+   --  Getter of Artifact::ownedAttribute.
+   --
    --  The attributes or association ends defined for the Artifact. The 
    --  association is a specialization of the ownedMember association.
 
    not overriding function Get_Owned_Operation
     (Self : not null access constant UML_Artifact)
        return AMF.UML.Operations.Collections.Ordered_Set_Of_UML_Operation is abstract;
+   --  Getter of Artifact::ownedOperation.
+   --
    --  The Operations defined for the Artifact. The association is a 
    --  specialization of the ownedMember association.
 

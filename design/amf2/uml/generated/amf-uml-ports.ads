@@ -71,6 +71,8 @@ package AMF.UML.Ports is
    not overriding function Get_Is_Behavior
     (Self : not null access constant UML_Port)
        return Boolean is abstract;
+   --  Getter of Port::isBehavior.
+   --
    --  Specifies whether requests arriving at this port are sent to the 
    --  classifier behavior of this classifier. Such ports are referred to as 
    --  behavior port. Any invocation of a behavioral feature targeted at a 
@@ -80,20 +82,35 @@ package AMF.UML.Ports is
    not overriding procedure Set_Is_Behavior
     (Self : not null access UML_Port;
      To   : Boolean) is abstract;
+   --  Setter of Port::isBehavior.
+   --
+   --  Specifies whether requests arriving at this port are sent to the 
+   --  classifier behavior of this classifier. Such ports are referred to as 
+   --  behavior port. Any invocation of a behavioral feature targeted at a 
+   --  behavior port will be handled by the instance of the owning classifier 
+   --  itself, rather than by any instances that this classifier may contain.
 
    not overriding function Get_Is_Conjugated
     (Self : not null access constant UML_Port)
        return Boolean is abstract;
+   --  Getter of Port::isConjugated.
+   --
    --  Specifies the way that the provided and required interfaces are derived 
    --  from the Port’s Type. The default value is false.
 
    not overriding procedure Set_Is_Conjugated
     (Self : not null access UML_Port;
      To   : Boolean) is abstract;
+   --  Setter of Port::isConjugated.
+   --
+   --  Specifies the way that the provided and required interfaces are derived 
+   --  from the Port’s Type. The default value is false.
 
    not overriding function Get_Is_Service
     (Self : not null access constant UML_Port)
        return Boolean is abstract;
+   --  Getter of Port::isService.
+   --
    --  If true indicates that this port is used to provide the published 
    --  functionality of a classifier; if false, this port is used to implement 
    --  the classifier but is not part of the essential externally-visible 
@@ -104,20 +121,36 @@ package AMF.UML.Ports is
    not overriding procedure Set_Is_Service
     (Self : not null access UML_Port;
      To   : Boolean) is abstract;
+   --  Setter of Port::isService.
+   --
+   --  If true indicates that this port is used to provide the published 
+   --  functionality of a classifier; if false, this port is used to implement 
+   --  the classifier but is not part of the essential externally-visible 
+   --  functionality of the classifier and can, therefore, be altered or 
+   --  deleted along with the internal implementation of the classifier and 
+   --  other properties that are considered part of its implementation.
 
    not overriding function Get_Protocol
     (Self : not null access constant UML_Port)
        return AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access is abstract;
+   --  Getter of Port::protocol.
+   --
    --  References an optional protocol state machine which describes valid 
    --  interactions at this interaction point.
 
    not overriding procedure Set_Protocol
     (Self : not null access UML_Port;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is abstract;
+   --  Setter of Port::protocol.
+   --
+   --  References an optional protocol state machine which describes valid 
+   --  interactions at this interaction point.
 
    not overriding function Get_Provided
     (Self : not null access constant UML_Port)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Getter of Port::provided.
+   --
    --  References the interfaces specifying the set of operations and 
    --  receptions that the classifier offers to its environment via this port, 
    --  and which it will handle either directly or by forwarding it to a part 
@@ -132,6 +165,8 @@ package AMF.UML.Ports is
    not overriding function Get_Redefined_Port
     (Self : not null access constant UML_Port)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
+   --  Getter of Port::redefinedPort.
+   --
    --  A port may be redefined when its containing classifier is specialized. 
    --  The redefining port may have additional interfaces to those that are 
    --  associated with the redefined port or it may replace an interface by 
@@ -140,6 +175,8 @@ package AMF.UML.Ports is
    not overriding function Get_Required
     (Self : not null access constant UML_Port)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Getter of Port::required.
+   --
    --  References the interfaces specifying the set of operations and 
    --  receptions that the classifier expects its environment to handle via 
    --  this port. This association is derived according to the value of 

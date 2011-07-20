@@ -72,6 +72,8 @@ package AMF.UML.Behaviors is
    not overriding function Get_Context
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access is abstract;
+   --  Getter of Behavior::context.
+   --
    --  The classifier that is the context for the execution of the behavior. 
    --  If the behavior is owned by a BehavioredClassifier, that classifier is 
    --  the context. Otherwise, the context is the first BehavioredClassifier 
@@ -84,16 +86,24 @@ package AMF.UML.Behaviors is
    not overriding function Get_Is_Reentrant
     (Self : not null access constant UML_Behavior)
        return Boolean is abstract;
+   --  Getter of Behavior::isReentrant.
+   --
    --  Tells whether the behavior can be invoked while it is still executing 
    --  from a previous invocation.
 
    not overriding procedure Set_Is_Reentrant
     (Self : not null access UML_Behavior;
      To   : Boolean) is abstract;
+   --  Setter of Behavior::isReentrant.
+   --
+   --  Tells whether the behavior can be invoked while it is still executing 
+   --  from a previous invocation.
 
    not overriding function Get_Owned_Parameter
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Parameters.Collections.Ordered_Set_Of_UML_Parameter is abstract;
+   --  Getter of Behavior::ownedParameter.
+   --
    --  References a list of parameters to the behavior which describes the 
    --  order and type of arguments that can be given when the behavior is 
    --  invoked and of the values which will be returned when the behavior 
@@ -102,11 +112,15 @@ package AMF.UML.Behaviors is
    not overriding function Get_Owned_Parameter_Set
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Parameter_Sets.Collections.Set_Of_UML_Parameter_Set is abstract;
+   --  Getter of Behavior::ownedParameterSet.
+   --
    --  The ParameterSets owned by this Behavior.
 
    not overriding function Get_Postcondition
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
+   --  Getter of Behavior::postcondition.
+   --
    --  An optional set of Constraints specifying what is fulfilled after the 
    --  execution of the behavior is completed, if its precondition was 
    --  fulfilled before its invocation.
@@ -114,12 +128,16 @@ package AMF.UML.Behaviors is
    not overriding function Get_Precondition
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
+   --  Getter of Behavior::precondition.
+   --
    --  An optional set of Constraints specifying what must be fulfilled when 
    --  the behavior is invoked.
 
    not overriding function Get_Redefined_Behavior
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Behaviors.Collections.Set_Of_UML_Behavior is abstract;
+   --  Getter of Behavior::redefinedBehavior.
+   --
    --  References a behavior that this behavior redefines. A subtype of 
    --  Behavior may redefine any other subtype of Behavior. If the behavior 
    --  implements a behavioral feature, it replaces the redefined behavior. If 
@@ -129,6 +147,8 @@ package AMF.UML.Behaviors is
    not overriding function Get_Specification
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access is abstract;
+   --  Getter of Behavior::specification.
+   --
    --  Designates a behavioral feature that the behavior implements. The 
    --  behavioral feature must be owned by the classifier that owns the 
    --  behavior or be inherited by it. The parameters of the behavioral 
@@ -140,6 +160,15 @@ package AMF.UML.Behaviors is
    not overriding procedure Set_Specification
     (Self : not null access UML_Behavior;
      To   : AMF.UML.Behavioral_Features.UML_Behavioral_Feature_Access) is abstract;
+   --  Setter of Behavior::specification.
+   --
+   --  Designates a behavioral feature that the behavior implements. The 
+   --  behavioral feature must be owned by the classifier that owns the 
+   --  behavior or be inherited by it. The parameters of the behavioral 
+   --  feature and the implementing behavior must match. A behavior does not 
+   --  need to have a specification, in which case it either is the classifer 
+   --  behavior of a BehavioredClassifier or it can only be invoked by another 
+   --  behavior of the classifier.
 
    not overriding function Context
     (Self : not null access constant UML_Behavior)

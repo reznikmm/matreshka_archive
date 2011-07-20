@@ -60,57 +60,110 @@ package AMF.Internals.UML_Link_End_Destruction_Datas is
    overriding function Get_Destroy_At
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access;
+   --  Getter of LinkEndDestructionData::destroyAt.
+   --
+   --  Specifies the position of an existing link to be destroyed in ordered 
+   --  nonunique association ends. The type of the pin is UnlimitedNatural, 
+   --  but the value cannot be zero or unlimited.
 
    overriding procedure Set_Destroy_At
     (Self : not null access UML_Link_End_Destruction_Data_Proxy;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
+   --  Setter of LinkEndDestructionData::destroyAt.
+   --
+   --  Specifies the position of an existing link to be destroyed in ordered 
+   --  nonunique association ends. The type of the pin is UnlimitedNatural, 
+   --  but the value cannot be zero or unlimited.
 
    overriding function Get_Is_Destroy_Duplicates
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return Boolean;
+   --  Getter of LinkEndDestructionData::isDestroyDuplicates.
+   --
+   --  Specifies whether to destroy duplicates of the value in nonunique 
+   --  association ends.
 
    overriding procedure Set_Is_Destroy_Duplicates
     (Self : not null access UML_Link_End_Destruction_Data_Proxy;
      To   : Boolean);
+   --  Setter of LinkEndDestructionData::isDestroyDuplicates.
+   --
+   --  Specifies whether to destroy duplicates of the value in nonunique 
+   --  association ends.
 
    overriding function Get_End
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Properties.UML_Property_Access;
+   --  Getter of LinkEndData::end.
+   --
+   --  Association end for which this link-end data specifies values.
 
    overriding procedure Set_End
     (Self : not null access UML_Link_End_Destruction_Data_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access);
+   --  Setter of LinkEndData::end.
+   --
+   --  Association end for which this link-end data specifies values.
 
    overriding function Get_Qualifier
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Qualifier_Values.Collections.Set_Of_UML_Qualifier_Value;
+   --  Getter of LinkEndData::qualifier.
+   --
+   --  List of qualifier values
 
    overriding function Get_Value
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Input_Pins.UML_Input_Pin_Access;
+   --  Getter of LinkEndData::value.
+   --
+   --  Input pin that provides the specified object for the given end. This 
+   --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
    overriding procedure Set_Value
     (Self : not null access UML_Link_End_Destruction_Data_Proxy;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access);
+   --  Setter of LinkEndData::value.
+   --
+   --  Input pin that provides the specified object for the given end. This 
+   --  pin is omitted if the link-end data specifies an 'open' end for reading.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Link_End_Destruction_Data_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Link_End_Destruction_Datas;

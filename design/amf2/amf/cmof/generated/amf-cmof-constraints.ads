@@ -66,24 +66,36 @@ package AMF.CMOF.Constraints is
    not overriding function Get_Constrained_Element
     (Self : not null access constant CMOF_Constraint)
        return AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element is abstract;
+   --  Getter of Constraint::constrainedElement.
+   --
    --  The ordered set of Elements referenced by this Constraint.
 
    not overriding function Get_Specification
     (Self : not null access constant CMOF_Constraint)
        return AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access is abstract;
+   --  Getter of Constraint::specification.
+   --
    --  A condition that must be true when evaluated in order for the 
    --  constraint to be satisfied.
 
    not overriding procedure Set_Specification
     (Self : not null access CMOF_Constraint;
      To   : AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access) is abstract;
+   --  Setter of Constraint::specification.
+   --
+   --  A condition that must be true when evaluated in order for the 
+   --  constraint to be satisfied.
 
    not overriding function Get_Context
     (Self : not null access constant CMOF_Constraint)
        return AMF.CMOF.Namespaces.CMOF_Namespace_Access is abstract;
+   --  Getter of Constraint::context.
+   --
 
    not overriding procedure Set_Context
     (Self : not null access CMOF_Constraint;
      To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access) is abstract;
+   --  Setter of Constraint::context.
+   --
 
 end AMF.CMOF.Constraints;

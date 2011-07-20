@@ -66,25 +66,38 @@ package AMF.UML.Template_Bindings is
    not overriding function Get_Bound_Element
     (Self : not null access constant UML_Template_Binding)
        return AMF.UML.Templateable_Elements.UML_Templateable_Element_Access is abstract;
+   --  Getter of TemplateBinding::boundElement.
+   --
    --  The element that is bound by this binding.
 
    not overriding procedure Set_Bound_Element
     (Self : not null access UML_Template_Binding;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is abstract;
+   --  Setter of TemplateBinding::boundElement.
+   --
+   --  The element that is bound by this binding.
 
    not overriding function Get_Parameter_Substitution
     (Self : not null access constant UML_Template_Binding)
        return AMF.UML.Template_Parameter_Substitutions.Collections.Set_Of_UML_Template_Parameter_Substitution is abstract;
+   --  Getter of TemplateBinding::parameterSubstitution.
+   --
    --  The parameter substitutions owned by this template binding.
 
    not overriding function Get_Signature
     (Self : not null access constant UML_Template_Binding)
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access is abstract;
+   --  Getter of TemplateBinding::signature.
+   --
    --  The template signature for the template that is the target of the 
    --  binding.
 
    not overriding procedure Set_Signature
     (Self : not null access UML_Template_Binding;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is abstract;
+   --  Setter of TemplateBinding::signature.
+   --
+   --  The template signature for the template that is the target of the 
+   --  binding.
 
 end AMF.UML.Template_Bindings;

@@ -65,144 +65,292 @@ package AMF.Internals.UML_Realizations is
    overriding function Get_Mapping
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access;
+   --  Getter of Abstraction::mapping.
+   --
+   --  An composition of an Expression that states the abstraction 
+   --  relationship between the supplier and the client. In some cases, such 
+   --  as Derivation, it is usually formal and unidirectional; in other cases, 
+   --  such as Trace, it is usually informal and bidirectional. The mapping 
+   --  expression is optional and may be omitted if the precise relationship 
+   --  between the elements is not specified.
 
    overriding procedure Set_Mapping
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access);
+   --  Setter of Abstraction::mapping.
+   --
+   --  An composition of an Expression that states the abstraction 
+   --  relationship between the supplier and the client. In some cases, such 
+   --  as Derivation, it is usually formal and unidirectional; in other cases, 
+   --  such as Trace, it is usually informal and bidirectional. The mapping 
+   --  expression is optional and may be omitted if the precise relationship 
+   --  between the elements is not specified.
 
    overriding function Get_Client
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
+   --  Getter of Dependency::client.
+   --
+   --  The element(s) dependent on the supplier element(s). In some cases 
+   --  (such as a Trace Abstraction) the assignment of direction (that is, the 
+   --  designation of the client element) is at the discretion of the modeler, 
+   --  and is a stipulation.
 
    overriding function Get_Supplier
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element;
+   --  Getter of Dependency::supplier.
+   --
+   --  The element(s) independent of the client element(s), in the same 
+   --  respect and the same dependency relationship. In some directed 
+   --  dependency relationships (such as Refinement Abstractions), a common 
+   --  convention in the domain of class-based OO software is to put the more 
+   --  abstract element in this role. Despite this convention, users of UML 
+   --  may stipulate a sense of dependency suitable for their domain, which 
+   --  makes a more abstract element dependent on that which is more specific.
 
    overriding function Get_Source
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::source.
+   --
+   --  Specifies the sources of the DirectedRelationship.
 
    overriding function Get_Target
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of DirectedRelationship::target.
+   --
+   --  Specifies the targets of the DirectedRelationship.
 
    overriding function Get_Related_Element
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Relationship::relatedElement.
+   --
+   --  Specifies the elements related by the Relationship.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.UML_Visibility_Kind;
+   --  Getter of PackageableElement::visibility.
+   --
+   --  Indicates that packageable elements must always have a visibility, 
+   --  i.e., visibility is not optional.
 
    overriding procedure Set_Visibility
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.UML.UML_Visibility_Kind);
+   --  Setter of PackageableElement::visibility.
+   --
+   --  Indicates that packageable elements must always have a visibility, 
+   --  i.e., visibility is not optional.
 
    overriding function Get_Client_Dependency
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
+   --  Getter of NamedElement::clientDependency.
+   --
+   --  Indicates the dependencies that reference the client.
 
    overriding function Get_Name
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.Optional_String;
+   --  Getter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding procedure Set_Name
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding function Get_Name_Expression
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.String_Expressions.UML_String_Expression_Access;
+   --  Getter of NamedElement::nameExpression.
+   --
+   --  The string expression used to define the name of this named element.
 
    overriding procedure Set_Name_Expression
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access);
+   --  Setter of NamedElement::nameExpression.
+   --
+   --  The string expression used to define the name of this named element.
 
    overriding function Get_Namespace
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Getter of NamedElement::namespace.
+   --
+   --  Specifies the namespace that owns the NamedElement.
 
    overriding function Get_Qualified_Name
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.Optional_String;
+   --  Getter of NamedElement::qualifiedName.
+   --
+   --  A name which allows the NamedElement to be identified within a 
+   --  hierarchy of nested Namespaces. It is constructed from the names of the 
+   --  containing namespaces starting at the root of the hierarchy and ending 
+   --  with the name of the NamedElement itself.
 
    overriding function Get_Visibility
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Optional_UML_Visibility_Kind;
+   --  Getter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    overriding procedure Set_Visibility
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.UML.Optional_UML_Visibility_Kind);
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
    overriding function Get_Owning_Template_Parameter
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Template_Parameters.UML_Template_Parameter_Access;
+   --  Getter of ParameterableElement::owningTemplateParameter.
+   --
+   --  The formal template parameter that owns this element.
 
    overriding procedure Set_Owning_Template_Parameter
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access);
+   --  Setter of ParameterableElement::owningTemplateParameter.
+   --
+   --  The formal template parameter that owns this element.
 
    overriding function Get_Template_Parameter
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Template_Parameters.UML_Template_Parameter_Access;
+   --  Getter of ParameterableElement::templateParameter.
+   --
+   --  The template parameter that exposes this element as a formal parameter.
 
    overriding procedure Set_Template_Parameter
     (Self : not null access UML_Realization_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access);
+   --  Setter of ParameterableElement::templateParameter.
+   --
+   --  The template parameter that exposes this element as a formal parameter.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Realization_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
    overriding function All_Namespaces
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;
+   --  Operation NamedElement::allNamespaces.
+   --
+   --  The query allNamespaces() gives the sequence of namespaces in which the 
+   --  NamedElement is nested, working outwards.
 
    overriding function All_Owning_Packages
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;
+   --  Operation NamedElement::allOwningPackages.
+   --
+   --  The query allOwningPackages() returns all the directly or indirectly 
+   --  owning packages.
 
    overriding function Is_Distinguishable_From
     (Self : not null access constant UML_Realization_Proxy;
      N : AMF.UML.Named_Elements.UML_Named_Element_Access;
      Ns : AMF.UML.Namespaces.UML_Namespace_Access)
        return Boolean;
+   --  Operation NamedElement::isDistinguishableFrom.
+   --
+   --  The query isDistinguishableFrom() determines whether two NamedElements 
+   --  may logically co-exist within a Namespace. By default, two named 
+   --  elements are distinguishable if (a) they have unrelated types or (b) 
+   --  they have related types but different names.
 
    overriding function Namespace
     (Self : not null access constant UML_Realization_Proxy)
        return AMF.UML.Namespaces.UML_Namespace_Access;
+   --  Operation NamedElement::namespace.
+   --
+   --  Missing derivation for NamedElement::/namespace : Namespace
 
    overriding function Qualified_Name
     (Self : not null access constant UML_Realization_Proxy)
        return League.Strings.Universal_String;
+   --  Operation NamedElement::qualifiedName.
+   --
+   --  When there is a name, and all of the containing namespaces have a name, 
+   --  the qualified name is constructed from the names of the containing 
+   --  namespaces.
 
    overriding function Separator
     (Self : not null access constant UML_Realization_Proxy)
        return League.Strings.Universal_String;
+   --  Operation NamedElement::separator.
+   --
+   --  The query separator() gives the string that is used to separate names 
+   --  when constructing a qualified name.
 
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Realization_Proxy;
      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
        return Boolean;
+   --  Operation ParameterableElement::isCompatibleWith.
+   --
+   --  The query isCompatibleWith() determines if this parameterable element 
+   --  is compatible with the specified parameterable element. By default 
+   --  parameterable element P is compatible with parameterable element Q if 
+   --  the kind of P is the same or a subtype as the kind of Q. Subclasses 
+   --  should override this operation to specify different compatibility 
+   --  constraints.
 
    overriding function Is_Template_Parameter
     (Self : not null access constant UML_Realization_Proxy)
        return Boolean;
+   --  Operation ParameterableElement::isTemplateParameter.
+   --
+   --  The query isTemplateParameter() determines if this parameterable 
+   --  element is exposed as a formal template parameter.
 
 end AMF.Internals.UML_Realizations;

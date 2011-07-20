@@ -60,69 +60,125 @@ package AMF.Internals.UML_Connectable_Element_Template_Parameters is
    overriding function Get_Parametered_Element
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Connectable_Elements.UML_Connectable_Element_Access;
+   --  Getter of ConnectableElementTemplateParameter::parameteredElement.
+   --
+   --  The ConnectableElement for this template parameter.
 
    overriding procedure Set_Parametered_Element
     (Self : not null access UML_Connectable_Element_Template_Parameter_Proxy;
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access);
+   --  Setter of ConnectableElementTemplateParameter::parameteredElement.
+   --
+   --  The ConnectableElement for this template parameter.
 
    overriding function Get_Default
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+   --  Getter of TemplateParameter::default.
+   --
+   --  The element that is the default for this formal template parameter.
 
    overriding procedure Set_Default
     (Self : not null access UML_Connectable_Element_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+   --  Setter of TemplateParameter::default.
+   --
+   --  The element that is the default for this formal template parameter.
 
    overriding function Get_Owned_Default
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+   --  Getter of TemplateParameter::ownedDefault.
+   --
+   --  The element that is owned by this template parameter for the purpose of 
+   --  providing a default.
 
    overriding procedure Set_Owned_Default
     (Self : not null access UML_Connectable_Element_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+   --  Setter of TemplateParameter::ownedDefault.
+   --
+   --  The element that is owned by this template parameter for the purpose of 
+   --  providing a default.
 
    overriding function Get_Owned_Parametered_Element
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+   --  Getter of TemplateParameter::ownedParameteredElement.
+   --
+   --  The element that is owned by this template parameter.
 
    overriding procedure Set_Owned_Parametered_Element
     (Self : not null access UML_Connectable_Element_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+   --  Setter of TemplateParameter::ownedParameteredElement.
+   --
+   --  The element that is owned by this template parameter.
 
    overriding function Get_Parametered_Element
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access;
+   --  Getter of TemplateParameter::parameteredElement.
+   --
+   --  The element exposed by this template parameter.
 
    overriding procedure Set_Parametered_Element
     (Self : not null access UML_Connectable_Element_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access);
+   --  Setter of TemplateParameter::parameteredElement.
+   --
+   --  The element exposed by this template parameter.
 
    overriding function Get_Signature
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Template_Signatures.UML_Template_Signature_Access;
+   --  Getter of TemplateParameter::signature.
+   --
+   --  The template signature that owns this template parameter.
 
    overriding procedure Set_Signature
     (Self : not null access UML_Connectable_Element_Template_Parameter_Proxy;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access);
+   --  Setter of TemplateParameter::signature.
+   --
+   --  The template signature that owns this template parameter.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Connectable_Element_Template_Parameter_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Connectable_Element_Template_Parameters;

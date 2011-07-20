@@ -70,17 +70,23 @@ package AMF.UML.Actions is
    not overriding function Get_Context
     (Self : not null access constant UML_Action)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of Action::context.
+   --
    --  The classifier that owns the behavior of which this action is a part.
 
    not overriding function Get_Input
     (Self : not null access constant UML_Action)
        return AMF.UML.Input_Pins.Collections.Ordered_Set_Of_UML_Input_Pin is abstract;
+   --  Getter of Action::input.
+   --
    --  The ordered set of input pins connected to the Action. These are among 
    --  the total set of inputs.
 
    not overriding function Get_Is_Locally_Reentrant
     (Self : not null access constant UML_Action)
        return Boolean is abstract;
+   --  Getter of Action::isLocallyReentrant.
+   --
    --  If true, the action can begin a new, concurrent execution, even if 
    --  there is already another execution of the action ongoing. If false, the 
    --  action cannot begin a new execution until any previous execution has 
@@ -89,20 +95,32 @@ package AMF.UML.Actions is
    not overriding procedure Set_Is_Locally_Reentrant
     (Self : not null access UML_Action;
      To   : Boolean) is abstract;
+   --  Setter of Action::isLocallyReentrant.
+   --
+   --  If true, the action can begin a new, concurrent execution, even if 
+   --  there is already another execution of the action ongoing. If false, the 
+   --  action cannot begin a new execution until any previous execution has 
+   --  completed.
 
    not overriding function Get_Local_Postcondition
     (Self : not null access constant UML_Action)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
+   --  Getter of Action::localPostcondition.
+   --
    --  Constraint that must be satisfied when executed is completed.
 
    not overriding function Get_Local_Precondition
     (Self : not null access constant UML_Action)
        return AMF.UML.Constraints.Collections.Set_Of_UML_Constraint is abstract;
+   --  Getter of Action::localPrecondition.
+   --
    --  Constraint that must be satisfied when execution is started.
 
    not overriding function Get_Output
     (Self : not null access constant UML_Action)
        return AMF.UML.Output_Pins.Collections.Ordered_Set_Of_UML_Output_Pin is abstract;
+   --  Getter of Action::output.
+   --
    --  The ordered set of output pins connected to the Action. The action 
    --  places its results onto pins in this set.
 

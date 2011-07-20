@@ -56,33 +56,60 @@ package AMF.Internals.UML_Comments is
    overriding function Get_Annotated_Element
     (Self : not null access constant UML_Comment_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Comment::annotatedElement.
+   --
+   --  References the Element(s) being commented.
 
    overriding function Get_Body
     (Self : not null access constant UML_Comment_Proxy)
        return AMF.Optional_String;
+   --  Getter of Comment::body.
+   --
+   --  Specifies a string that is the comment.
 
    overriding procedure Set_Body
     (Self : not null access UML_Comment_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of Comment::body.
+   --
+   --  Specifies a string that is the comment.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UML_Comment_Proxy)
        return AMF.UML.Comments.Collections.Set_Of_UML_Comment;
+   --  Getter of Element::ownedComment.
+   --
+   --  The Comments owned by this element.
 
    overriding function Get_Owned_Element
     (Self : not null access constant UML_Comment_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Getter of Element::ownedElement.
+   --
+   --  The Elements owned by this element.
 
    overriding function Get_Owner
     (Self : not null access constant UML_Comment_Proxy)
        return AMF.UML.Elements.UML_Element_Access;
+   --  Getter of Element::owner.
+   --
+   --  The Element that owns this element.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Comment_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;
+   --  Operation Element::allOwnedElements.
+   --
+   --  The query allOwnedElements() gives all of the direct and indirect owned 
+   --  elements of an element.
 
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Comment_Proxy)
        return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
 end AMF.Internals.UML_Comments;

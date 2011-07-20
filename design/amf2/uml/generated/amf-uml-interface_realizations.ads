@@ -65,20 +65,31 @@ package AMF.UML.Interface_Realizations is
    not overriding function Get_Contract
     (Self : not null access constant UML_Interface_Realization)
        return AMF.UML.Interfaces.UML_Interface_Access is abstract;
+   --  Getter of InterfaceRealization::contract.
+   --
    --  References the Interface specifying the conformance contract.
 
    not overriding procedure Set_Contract
     (Self : not null access UML_Interface_Realization;
      To   : AMF.UML.Interfaces.UML_Interface_Access) is abstract;
+   --  Setter of InterfaceRealization::contract.
+   --
+   --  References the Interface specifying the conformance contract.
 
    not overriding function Get_Implementing_Classifier
     (Self : not null access constant UML_Interface_Realization)
        return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access is abstract;
+   --  Getter of InterfaceRealization::implementingClassifier.
+   --
    --  References the BehavioredClassifier that owns this Interfacerealization 
    --  (i.e., the classifier that realizes the Interface to which it points).
 
    not overriding procedure Set_Implementing_Classifier
     (Self : not null access UML_Interface_Realization;
      To   : AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access) is abstract;
+   --  Setter of InterfaceRealization::implementingClassifier.
+   --
+   --  References the BehavioredClassifier that owns this Interfacerealization 
+   --  (i.e., the classifier that realizes the Interface to which it points).
 
 end AMF.UML.Interface_Realizations;

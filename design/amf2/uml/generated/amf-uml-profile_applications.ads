@@ -64,30 +64,47 @@ package AMF.UML.Profile_Applications is
    not overriding function Get_Applied_Profile
     (Self : not null access constant UML_Profile_Application)
        return AMF.UML.Profiles.UML_Profile_Access is abstract;
+   --  Getter of ProfileApplication::appliedProfile.
+   --
    --  References the Profiles that are applied to a Package through this 
    --  ProfileApplication.
 
    not overriding procedure Set_Applied_Profile
     (Self : not null access UML_Profile_Application;
      To   : AMF.UML.Profiles.UML_Profile_Access) is abstract;
+   --  Setter of ProfileApplication::appliedProfile.
+   --
+   --  References the Profiles that are applied to a Package through this 
+   --  ProfileApplication.
 
    not overriding function Get_Applying_Package
     (Self : not null access constant UML_Profile_Application)
        return AMF.UML.Packages.UML_Package_Access is abstract;
+   --  Getter of ProfileApplication::applyingPackage.
+   --
    --  The package that owns the profile application.
 
    not overriding procedure Set_Applying_Package
     (Self : not null access UML_Profile_Application;
      To   : AMF.UML.Packages.UML_Package_Access) is abstract;
+   --  Setter of ProfileApplication::applyingPackage.
+   --
+   --  The package that owns the profile application.
 
    not overriding function Get_Is_Strict
     (Self : not null access constant UML_Profile_Application)
        return Boolean is abstract;
+   --  Getter of ProfileApplication::isStrict.
+   --
    --  Specifies that the Profile filtering rules for the metaclasses of the 
    --  referenced metamodel shall be strictly applied.
 
    not overriding procedure Set_Is_Strict
     (Self : not null access UML_Profile_Application;
      To   : Boolean) is abstract;
+   --  Setter of ProfileApplication::isStrict.
+   --
+   --  Specifies that the Profile filtering rules for the metaclasses of the 
+   --  referenced metamodel shall be strictly applied.
 
 end AMF.UML.Profile_Applications;

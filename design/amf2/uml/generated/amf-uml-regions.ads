@@ -69,46 +69,69 @@ package AMF.UML.Regions is
    not overriding function Get_Extended_Region
     (Self : not null access constant UML_Region)
        return AMF.UML.Regions.UML_Region_Access is abstract;
+   --  Getter of Region::extendedRegion.
+   --
    --  The region of which this region is an extension.
 
    not overriding procedure Set_Extended_Region
     (Self : not null access UML_Region;
      To   : AMF.UML.Regions.UML_Region_Access) is abstract;
+   --  Setter of Region::extendedRegion.
+   --
+   --  The region of which this region is an extension.
 
    not overriding function Get_Redefinition_Context
     (Self : not null access constant UML_Region)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Getter of Region::redefinitionContext.
+   --
    --  References the classifier in which context this element may be 
    --  redefined.
 
    not overriding function Get_State
     (Self : not null access constant UML_Region)
        return AMF.UML.States.UML_State_Access is abstract;
+   --  Getter of Region::state.
+   --
    --  The State that owns the Region. If a Region is owned by a State, then 
    --  it cannot also be owned by a StateMachine.
 
    not overriding procedure Set_State
     (Self : not null access UML_Region;
      To   : AMF.UML.States.UML_State_Access) is abstract;
+   --  Setter of Region::state.
+   --
+   --  The State that owns the Region. If a Region is owned by a State, then 
+   --  it cannot also be owned by a StateMachine.
 
    not overriding function Get_State_Machine
     (Self : not null access constant UML_Region)
        return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  Getter of Region::stateMachine.
+   --
    --  The StateMachine that owns the Region. If a Region is owned by a 
    --  StateMachine, then it cannot also be owned by a State.
 
    not overriding procedure Set_State_Machine
     (Self : not null access UML_Region;
      To   : AMF.UML.State_Machines.UML_State_Machine_Access) is abstract;
+   --  Setter of Region::stateMachine.
+   --
+   --  The StateMachine that owns the Region. If a Region is owned by a 
+   --  StateMachine, then it cannot also be owned by a State.
 
    not overriding function Get_Subvertex
     (Self : not null access constant UML_Region)
        return AMF.UML.Vertexs.Collections.Set_Of_UML_Vertex is abstract;
+   --  Getter of Region::subvertex.
+   --
    --  The set of vertices that are owned by this region.
 
    not overriding function Get_Transition
     (Self : not null access constant UML_Region)
        return AMF.UML.Transitions.Collections.Set_Of_UML_Transition is abstract;
+   --  Getter of Region::transition.
+   --
    --  The set of transitions owned by the region.
 
    not overriding function Belongs_To_PSM

@@ -69,38 +69,57 @@ package AMF.UML.Interaction_Uses is
    not overriding function Get_Actual_Gate
     (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Gates.Collections.Set_Of_UML_Gate is abstract;
+   --  Getter of InteractionUse::actualGate.
+   --
    --  The actual gates of the InteractionUse
 
    not overriding function Get_Argument
     (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Value_Specifications.Collections.Ordered_Set_Of_UML_Value_Specification is abstract;
+   --  Getter of InteractionUse::argument.
+   --
    --  The actual arguments of the Interaction
 
    not overriding function Get_Refers_To
     (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Interactions.UML_Interaction_Access is abstract;
+   --  Getter of InteractionUse::refersTo.
+   --
    --  Refers to the Interaction that defines its meaning
 
    not overriding procedure Set_Refers_To
     (Self : not null access UML_Interaction_Use;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is abstract;
+   --  Setter of InteractionUse::refersTo.
+   --
+   --  Refers to the Interaction that defines its meaning
 
    not overriding function Get_Return_Value
     (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Value_Specifications.UML_Value_Specification_Access is abstract;
+   --  Getter of InteractionUse::returnValue.
+   --
    --  The value of the executed Interaction.
 
    not overriding procedure Set_Return_Value
     (Self : not null access UML_Interaction_Use;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is abstract;
+   --  Setter of InteractionUse::returnValue.
+   --
+   --  The value of the executed Interaction.
 
    not overriding function Get_Return_Value_Recipient
     (Self : not null access constant UML_Interaction_Use)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Getter of InteractionUse::returnValueRecipient.
+   --
    --  The recipient of the return value.
 
    not overriding procedure Set_Return_Value_Recipient
     (Self : not null access UML_Interaction_Use;
      To   : AMF.UML.Properties.UML_Property_Access) is abstract;
+   --  Setter of InteractionUse::returnValueRecipient.
+   --
+   --  The recipient of the return value.
 
 end AMF.UML.Interaction_Uses;
