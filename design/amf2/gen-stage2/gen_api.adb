@@ -456,24 +456,32 @@ procedure Gen_API is
 
       --  Generate comment.
 
-      if not Proxy then
-         declare
-            Owned_Comments : constant
-              AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
-                := Attribute.Get_Owned_Comment;
-            Lines          : League.String_Vectors.Universal_String_Vector;
+      declare
+         Class          : constant AMF.CMOF.Classes.CMOF_Class_Access
+           := Attribute.Get_Class;
+         Owned_Comments : constant
+           AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
+             := Attribute.Get_Owned_Comment;
+         Lines          : League.String_Vectors.Universal_String_Vector;
 
-         begin
-            for J in 1 .. Owned_Comments.Length loop
-               Lines :=
-                 Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+      begin
+         Put_Line
+          ("   --  Getter of "
+             & Class.Get_Name.Value
+             & Attribute.Separator
+             & Attribute.Get_Name.Value
+             & ".");
+         Put_Line ("   --");
 
-               for J in 1 .. Lines.Length loop
-                  Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
-               end loop;
+         for J in 1 .. Owned_Comments.Length loop
+            Lines :=
+              Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+
+            for J in 1 .. Lines.Length loop
+               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
             end loop;
-         end;
-      end if;
+         end loop;
+      end;
 
       --  Generate setters for attributes which can be modified by application
       --  and which is not a collections (because changes of collection, which
@@ -492,6 +500,35 @@ procedure Gen_API is
       else
          Put_Line (" is abstract;");
       end if;
+
+      --  Generate comment.
+
+      declare
+         Class          : constant AMF.CMOF.Classes.CMOF_Class_Access
+           := Attribute.Get_Class;
+         Owned_Comments : constant
+           AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
+             := Attribute.Get_Owned_Comment;
+         Lines          : League.String_Vectors.Universal_String_Vector;
+
+      begin
+         Put_Line
+          ("   --  Setter of "
+             & Class.Get_Name.Value
+             & Attribute.Separator
+             & Attribute.Get_Name.Value
+             & ".");
+         Put_Line ("   --");
+
+         for J in 1 .. Owned_Comments.Length loop
+            Lines :=
+              Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+
+            for J in 1 .. Lines.Length loop
+               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
+            end loop;
+         end loop;
+      end;
    end Generate_Attribute_Specification;
 
    ---------------------------------------------
