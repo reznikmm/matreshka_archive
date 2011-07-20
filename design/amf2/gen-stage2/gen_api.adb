@@ -1198,24 +1198,32 @@ procedure Gen_API is
 
       --  Generate comment.
 
-      if not Proxy then
-         declare
-            Owned_Comments : constant
-              AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
-                := Operation.Get_Owned_Comment;
-            Lines          : League.String_Vectors.Universal_String_Vector;
+      declare
+         Class          : constant AMF.CMOF.Classes.CMOF_Class_Access
+           := Operation.Get_Class;
+         Owned_Comments : constant
+           AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment
+             := Operation.Get_Owned_Comment;
+         Lines          : League.String_Vectors.Universal_String_Vector;
 
-         begin
-            for J in 1 .. Owned_Comments.Length loop
-               Lines :=
-                 Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+      begin
+         Put_Line
+          ("   --  Operation "
+             & Class.Get_Name.Value
+             & Operation.Separator
+             & Operation.Get_Name.Value
+             & ".");
+         Put_Line ("   --");
 
-               for J in 1 .. Lines.Length loop
-                  Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
-               end loop;
+         for J in 1 .. Owned_Comments.Length loop
+            Lines :=
+              Split_Text (Owned_Comments.Element (J).Get_Body.Value, 71);
+
+            for J in 1 .. Lines.Length loop
+               Put_Line ("   --  " & Lines.Element (J).To_Wide_Wide_String);
             end loop;
-         end;
-      end if;
+         end loop;
+      end;
    end Generate_Operation_Specification;
 
    -----------------------------------
