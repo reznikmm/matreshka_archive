@@ -62,8 +62,8 @@ library project Matreshka_League is
      "../source/league/iana",
      "../source/league/regexp",
      "../source/league/ucd",
-     "../source/xml",
-     "../source/xml/xml");
+     "../source/xml/sax",
+     "../source/xml/sax/xml");
 
    Operating_System_Dirs := ();
 
