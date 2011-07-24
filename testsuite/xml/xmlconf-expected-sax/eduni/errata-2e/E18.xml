@@ -7,7 +7,7 @@
   </resolveEntity>
   <resolveEntity>
     <name>%extpe</name>
-    <systemID>subdir1/../subdir2/E18-extpe</systemID>
+    <systemID>../subdir2/E18-extpe</systemID>
   </resolveEntity>
   <startElement>
     <namespaceURI/>

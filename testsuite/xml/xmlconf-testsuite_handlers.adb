@@ -48,6 +48,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with Put_Line;
 with Read_File;
+with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
@@ -58,16 +59,8 @@ package body XMLConf.Testsuite_Handlers is
 
    use type League.Strings.Universal_String;
 
-   XML_URI             : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String
-         ("http://www.w3.org/XML/1998/namespace");
-   Base_Name           : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("base");
-
    Test_Tag            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("TEST");
-   Testcases_Tag       : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("TESTCASES");
    Id_Name             : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("ID");
    URI_Name            : constant League.Strings.Universal_String
@@ -100,7 +93,6 @@ package body XMLConf.Testsuite_Handlers is
    procedure Execute_Test
     (Self       : in out Testsuite_Handler;
      Id         : League.Strings.Universal_String;
-     Base       : League.Strings.Universal_String;
      URI        : League.Strings.Universal_String;
      Kind       : Test_Kinds;
      Namespaces : Boolean;
@@ -113,13 +105,14 @@ package body XMLConf.Testsuite_Handlers is
    procedure Execute_Test
     (Self       : in out Testsuite_Handler;
      Id         : League.Strings.Universal_String;
-     Base       : League.Strings.Universal_String;
      URI        : League.Strings.Universal_String;
      Kind       : Test_Kinds;
      Namespaces : Boolean;
      Output     : League.Strings.Universal_String)
    is
-      Failed : Boolean := False;
+      Base_URI : constant League.Strings.Universal_String
+        := Self.Locator.Base_URI;
+      Failed   : Boolean := False;
 
    begin
       --  Skip suppressed tests.
@@ -133,11 +126,6 @@ package body XMLConf.Testsuite_Handlers is
       --  SAX test.
 
       declare
-         Cwd      : constant String := Ada.Directories.Current_Directory;
-         Dwd      : constant String
-           := Ada.Directories.Containing_Directory
-               (Ada.Characters.Conversions.To_String
-                 (League.Strings.To_Wide_Wide_String (Base & URI)));
          Source   : aliased
            XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
          Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
@@ -147,10 +135,14 @@ package body XMLConf.Testsuite_Handlers is
       begin
          Expected :=
            Read_File
-            ("../xmlconf-expected-sax/"
-               & Ada.Characters.Conversions.To_String
-                  (League.Strings.To_Wide_Wide_String (Base & URI)));
-         Ada.Directories.Set_Directory (Dwd);
+            (Ada.Characters.Conversions.To_String
+              (League.Strings.To_Wide_Wide_String
+                (Self.Testsuite_Base_URI
+                  & "-expected-sax"
+                  & Matreshka.Internals.URI_Utilities.Construct_System_Id
+                     (Base_URI.Slice
+                       (Self.Testsuite_Base_URI.Length + 1, Base_URI.Length),
+                      URI))));
 
          select
             delay 60.0;
@@ -169,9 +161,9 @@ package body XMLConf.Testsuite_Handlers is
             end if;
 
             Source.Open
-             (Ada.Directories.Simple_Name
-               (Ada.Characters.Conversions.To_String
-                 (URI.To_Wide_Wide_String)));
+             (Ada.Characters.Conversions.To_String
+               (Matreshka.Internals.URI_Utilities.Construct_System_Id
+                 (Base_URI, URI).To_Wide_Wide_String));
             Reader.Parse (Source'Access);
             Writer.Done;
 
@@ -209,11 +201,8 @@ package body XMLConf.Testsuite_Handlers is
             end if;
          end select;
 
-         Ada.Directories.Set_Directory (Cwd);
-
       exception
          when X : others =>
-            Ada.Directories.Set_Directory (Cwd);
             Self.Results (Kind).Crash := Self.Results (Kind).Crash + 1;
             Put_Line (Id & ": crashed");
             Put_Line
@@ -227,11 +216,6 @@ package body XMLConf.Testsuite_Handlers is
 
       if not Failed and not Output.Is_Empty then
          declare
-            Cwd      : constant String := Ada.Directories.Current_Directory;
-            Dwd      : constant String
-              := Ada.Directories.Containing_Directory
-                  (Ada.Characters.Conversions.To_String
-                    (League.Strings.To_Wide_Wide_String (Base & URI)));
             Source   : aliased
               XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
             Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
@@ -243,9 +227,9 @@ package body XMLConf.Testsuite_Handlers is
             Expected :=
               Read_File
                (Ada.Characters.Conversions.To_String
-                 (Base.To_Wide_Wide_String & Output.To_Wide_Wide_String));
-
-            Ada.Directories.Set_Directory (Dwd);
+                 (League.Strings.To_Wide_Wide_String
+                   (Matreshka.Internals.URI_Utilities.Construct_System_Id
+                     (Base_URI, Output))));
 
             select
                delay 3.0;
@@ -260,9 +244,9 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Set_Enable_Namespaces (Namespaces);
 
                Source.Open
-                (Ada.Directories.Simple_Name
-                  (Ada.Characters.Conversions.To_String
-                    (URI.To_Wide_Wide_String)));
+                (Ada.Characters.Conversions.To_String
+                  (Matreshka.Internals.URI_Utilities.Construct_System_Id
+                    (Base_URI, URI).To_Wide_Wide_String));
                Reader.Parse (Source'Access);
 
                if Expected /= Writer.Text then
@@ -275,11 +259,8 @@ package body XMLConf.Testsuite_Handlers is
                end if;
             end select;
 
-            Ada.Directories.Set_Directory (Cwd);
-
          exception
             when X : others =>
-               Ada.Directories.Set_Directory (Cwd);
                Self.Results (Kind).Crash := Self.Results (Kind).Crash + 1;
                Put_Line (Id & ": crashed (output test)");
                Put_Line
@@ -355,6 +336,28 @@ package body XMLConf.Testsuite_Handlers is
 
       Ada.Wide_Wide_Text_IO.Close (File);
    end Read_Suppressed;
+
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Testsuite_Handler;
+     Locator : XML.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
+
+   --------------------
+   -- Start_Document --
+   --------------------
+
+   overriding procedure Start_Document
+    (Self    : in out Testsuite_Handler;
+     Success : in out Boolean) is
+   begin
+      Self.Testsuite_Base_URI := Self.Locator.Base_URI;
+   end Start_Document;
 
    -------------------
    -- Start_Element --
@@ -451,15 +454,7 @@ package body XMLConf.Testsuite_Handlers is
          end if;
 
          if not Skip and Self.Enabled (Test_Kind) then
-            Execute_Test
-             (Self, Id, Self.Base, URI, Test_Kind, Namespaces, Output);
-         end if;
-
-      elsif Qualified_Name = Testcases_Tag then
-         Index := Attributes.Index (XML_URI, Base_Name);
-
-         if Index /= 0 then
-            Self.Base := Attributes.Value (Index);
+            Execute_Test (Self, Id, URI, Test_Kind, Namespaces, Output);
          end if;
       end if;
    end Start_Element;

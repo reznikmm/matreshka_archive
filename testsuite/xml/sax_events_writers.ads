@@ -61,6 +61,10 @@ package SAX_Events_Writers is
        and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
        and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
+   not overriding procedure Set_Test_URI
+    (Self : in out SAX_Events_Writer;
+     URI  : League.Strings.Universal_String);
+
    not overriding procedure Done (Self : in out SAX_Events_Writer);
 
    not overriding function Has_Fatal_Errors
@@ -186,6 +190,7 @@ private
       Fatal_Errors : Boolean := False;
       Errors       : Boolean := False;
       Result       : League.Strings.Universal_String;
+      URI          : League.Strings.Universal_String;
    end record;
 
    not overriding procedure Add_Line

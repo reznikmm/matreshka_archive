@@ -46,6 +46,7 @@ with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Containers.Ordered_Maps;
 
 with League.Characters;
+with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Input_Sources.Streams.Files;
 
 package body SAX_Events_Writers is
@@ -433,6 +434,10 @@ package body SAX_Events_Writers is
    is
       use XML.SAX.Input_Sources.Streams.Files;
 
+      Actual_System_Id : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Base_URI, System_Id);
+
    begin
       Self.Add_Line (To_Universal_String ("  <resolveEntity>"));
       Self.Add_Line ("    <name>" & Escape_String (Name) & "</name>");
@@ -451,7 +456,7 @@ package body SAX_Events_Writers is
       Source := new File_Input_Source;
       File_Input_Source'Class (Source.all).Open
        (Ada.Characters.Conversions.To_String
-         (System_Id.To_Wide_Wide_String));
+         (Actual_System_Id.To_Wide_Wide_String));
    end Resolve_Entity;
 
    --------------------------
@@ -464,6 +469,17 @@ package body SAX_Events_Writers is
    begin
       null;
    end Set_Document_Locator;
+
+   ------------------
+   -- Set_Test_URI --
+   ------------------
+
+   not overriding procedure Set_Test_URI
+    (Self : in out SAX_Events_Writer;
+     URI  : League.Strings.Universal_String) is
+   begin
+      Self.URI := URI;
+   end Set_Test_URI;
 
    --------------------
    -- Skipped_Entity --

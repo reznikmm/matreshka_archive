@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
 
+with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Input_Sources.Streams.Files;
 
 package body XMLConf.Entity_Resolvers is
@@ -73,11 +74,15 @@ package body XMLConf.Entity_Resolvers is
    is
       use XML.SAX.Input_Sources.Streams.Files;
 
+      Absolute_System_Id : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Base_URI, System_ID);
+
    begin
       Source := new File_Input_Source;
       File_Input_Source'Class (Source.all).Open
        (Ada.Characters.Conversions.To_String
-         (System_Id.To_Wide_Wide_String));
+         (Absolute_System_Id.To_Wide_Wide_String));
    end Resolve_Entity;
 
 end XMLConf.Entity_Resolvers;

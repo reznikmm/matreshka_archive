@@ -62,9 +62,7 @@ procedure XMLConf_Test is
 
    type Percent is delta 0.01 range 0.00 .. 100.00;
 
-   Cwd        : constant String := Ada.Directories.Current_Directory;
    Data       : constant String := Ada.Command_Line.Argument (1);
-   Dwd        : constant String := Ada.Directories.Containing_Directory (Data);
    Source     : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Reader     : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Resolver   : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
@@ -102,20 +100,19 @@ begin
    --  Load set of suppressed tests.
 
    Handler.Read_Suppressed
-    (Ada.Directories.Containing_Directory (Dwd) & "/suppressed.lst");
+    (Ada.Directories.Containing_Directory
+      (Ada.Directories.Containing_Directory (Data)) & "/suppressed.lst");
 
    --  Because of limitations of current implementation in tracking relative
    --  paths for entities the current working directory is changed to the
    --  containing directory of the testsuite description file.
 
-   Ada.Directories.Set_Directory (Dwd);
    Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Source.Open (Ada.Directories.Simple_Name (Data));
+   Source.Open (Data);
    Handler.Enabled := Enabled;
    Reader.Parse (Source'Access);
-   Ada.Directories.Set_Directory (Cwd);
 
    Passed :=
      Handler.Results (Valid).Passed
@@ -244,10 +241,4 @@ begin
    then
       raise Program_Error;
    end if;
-
-exception
-   when others =>
-      Ada.Directories.Set_Directory (Cwd);
-
-      raise;
 end XMLConf_Test;

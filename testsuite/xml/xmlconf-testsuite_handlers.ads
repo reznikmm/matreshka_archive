@@ -47,6 +47,7 @@ with League.Strings.Hash;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 with XML.SAX.Error_Handlers;
+with XML.SAX.Locators;
 with XML.SAX.Parse_Exceptions;
 
 package XMLConf.Testsuite_Handlers is
@@ -73,11 +74,12 @@ package XMLConf.Testsuite_Handlers is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Error_Handlers.SAX_Error_Handler
    with record
-      Enabled    : Test_Flags;
-      Base       : League.Strings.Universal_String;
-      --  Base path to tests' data.
-      Results    : Result_Array;
-      Suppressed : Universal_String_Sets.Set;
+      Locator            : XML.SAX.Locators.SAX_Locator;
+      Enabled            : Test_Flags;
+      Testsuite_Base_URI : League.Strings.Universal_String;
+      --  Base URI of the testsuite data.
+      Results            : Result_Array;
+      Suppressed         : Universal_String_Sets.Set;
    end record;
 
    procedure Read_Suppressed
@@ -87,6 +89,14 @@ package XMLConf.Testsuite_Handlers is
    overriding function Error_String
     (Self : Testsuite_Handler)
        return League.Strings.Universal_String;
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Testsuite_Handler;
+     Locator : XML.SAX.Locators.SAX_Locator);
+
+   overriding procedure Start_Document
+    (Self    : in out Testsuite_Handler;
+     Success : in out Boolean);
 
    overriding procedure Start_Element
     (Self           : in out Testsuite_Handler;
