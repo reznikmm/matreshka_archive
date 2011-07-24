@@ -10,9 +10,9 @@ GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 CPP = cpp -undef -nostdinc -fdirectives-only -P -E
 AFLEX = ../tools/aflex/src/aflex
 AYACC = ../tools/ayacc/src/ayacc
-TOKEN_TRANSFORMER = ../../../tools/token_transformer/token_transformer
-PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
-SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
+TOKEN_TRANSFORMER = ../../../../tools/token_transformer/token_transformer
+PARSER_TRANSFORMER = ../../../../tools/parser_transformer/parser_transformer
+SCANNER_TRANSFORMER = ../../../../tools/scanner_transformer/scanner_transformer
 
 all: Makefile.config
 	${MAKE} -f Makefile.build SMP_MFLAGS=$(SMP_MFLAGS)
@@ -61,12 +61,12 @@ regexp: yy_tools .gens-regexp
 xml:	yy_tools .gens-xml
 	cd .gens-xml && $(AYACC) ../source/xml/sax/xml_parser.y
 	cd .gens-xml && gcc -c -gnat12 -gnatct -I../source/league -I../source/xml/sax xml_parser_tokens.ads
-	cd source/xml/sax/xml && $(TOKEN_TRANSFORMER) xml ../../../.gens-xml/xml_parser_tokens.adt ../xml-sax-simple_readers.ads.in
+	cd source/xml/sax/xml && $(TOKEN_TRANSFORMER) xml ../../../../.gens-xml/xml_parser_tokens.adt ../xml-sax-simple_readers.ads.in
 	cd .gens-xml && gcc -c -gnat12 -gnatct -I../source/league -I../source/xml/sax xml_parser.adb
-	cd source/xml/sax/xml && $(PARSER_TRANSFORMER) xml ../../../.gens-xml/xml_parser.adt ../xml-sax-simple_readers-parser.adb.in
+	cd source/xml/sax/xml && $(PARSER_TRANSFORMER) xml ../../../../.gens-xml/xml_parser.adt ../xml-sax-simple_readers-parser.adb.in
 	cd .gens-xml && $(AFLEX) -v -I ../source/xml/sax/xml_scanner.l
 	cd .gens-xml && gcc -c -gnat12 -gnatct -I../source/league -I../source/xml/sax xml_scanner.adb
-	cd source/xml/sax/xml && $(SCANNER_TRANSFORMER) xml ../../../.gens-xml/xml_scanner.adt ../xml-sax-simple_readers-scanner.adb.in
+	cd source/xml/sax/xml && $(SCANNER_TRANSFORMER) xml ../../../../.gens-xml/xml_scanner.adt ../xml-sax-simple_readers-scanner.adb.in
 
 .gens-xml:
 	mkdir .gens-xml
