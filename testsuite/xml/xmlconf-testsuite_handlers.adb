@@ -150,6 +150,7 @@ package body XMLConf.Testsuite_Handlers is
             raise Program_Error with "terminated by timeout";
 
          then abort
+            Writer.Set_Testsuite_URI (Self.Testsuite_Base_URI);
             Reader.Set_Content_Handler (Writer'Unchecked_Access);
             Reader.Set_DTD_Handler (Writer'Unchecked_Access);
             Reader.Set_Error_Handler (Writer'Unchecked_Access);

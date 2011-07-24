@@ -434,17 +434,28 @@ package body SAX_Events_Writers is
    is
       use XML.SAX.Input_Sources.Streams.Files;
 
-      Actual_System_Id : constant League.Strings.Universal_String
+      Actual_System_Id  : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
             (Base_URI, System_Id);
+      Stripped_Base_URI : League.Strings.Universal_String := Base_URI;
 
    begin
+      if Base_URI.Starts_With (Self.URI) then
+         Stripped_Base_URI :=
+           Base_URI.Slice (Self.URI.Length + 1, Base_URI.Length);
+      end if;
+
       Self.Add_Line (To_Universal_String ("  <resolveEntity>"));
       Self.Add_Line ("    <name>" & Escape_String (Name) & "</name>");
 
       if not Public_Id.Is_Empty then
          Self.Add_Line
           ("    <publicID>" & Escape_String (Public_Id) & "</publicID>");
+      end if;
+
+      if not Stripped_Base_URI.Is_Empty then
+         Self.Add_Line
+          ("    <baseURI>" & Escape_String (Stripped_Base_URI) & "</baseURI>");
       end if;
 
       if not System_Id.Is_Empty then
@@ -470,16 +481,16 @@ package body SAX_Events_Writers is
       null;
    end Set_Document_Locator;
 
-   ------------------
-   -- Set_Test_URI --
-   ------------------
+   -----------------------
+   -- Set_Testsuite_URI --
+   -----------------------
 
-   not overriding procedure Set_Test_URI
+   not overriding procedure Set_Testsuite_URI
     (Self : in out SAX_Events_Writer;
      URI  : League.Strings.Universal_String) is
    begin
-      Self.URI := URI;
-   end Set_Test_URI;
+      Self.URI := URI & '/';
+   end Set_Testsuite_URI;
 
    --------------------
    -- Skipped_Entity --
