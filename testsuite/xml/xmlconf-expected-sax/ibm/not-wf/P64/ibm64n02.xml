@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/not-wf/P64</baseURI>
     <systemID>ibm64n02.dtd</systemID>
   </resolveEntity>
   <fatalError>syntax&#x20;error</fatalError>

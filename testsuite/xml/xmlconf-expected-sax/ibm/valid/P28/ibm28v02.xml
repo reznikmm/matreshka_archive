@@ -11,6 +11,7 @@
   </processingInstruction>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/valid/P28</baseURI>
     <systemID>ibm28v02.dtd</systemID>
   </resolveEntity>
   <startElement>

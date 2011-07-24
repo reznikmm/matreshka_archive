@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>sun/not-wf</baseURI>
     <systemID>../valid/sa.dtd</systemID>
   </resolveEntity>
   <notation>

@@ -5,6 +5,7 @@
   <resolveEntity>
     <name>[dtd]</name>
     <publicID>whatever</publicID>
+    <baseURI>xmltest/valid/not-sa</baseURI>
     <systemID>009.ent</systemID>
   </resolveEntity>
   <warning/>

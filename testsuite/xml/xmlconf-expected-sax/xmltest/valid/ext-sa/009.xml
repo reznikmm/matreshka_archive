@@ -9,6 +9,7 @@
   </startElement>
   <resolveEntity>
     <name>e</name>
+    <baseURI>xmltest/valid/ext-sa</baseURI>
     <systemID>009.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>

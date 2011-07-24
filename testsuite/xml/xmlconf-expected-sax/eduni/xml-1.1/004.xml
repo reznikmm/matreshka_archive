@@ -9,6 +9,7 @@
   </startElement>
   <resolveEntity>
     <name>ent</name>
+    <baseURI>eduni/xml-1.1</baseURI>
     <systemID>004.ent</systemID>
   </resolveEntity>
   <fatalError>external&#x20;general&#x20;entity&#x20;has&#x20;later&#x20;version&#x20;number</fatalError>

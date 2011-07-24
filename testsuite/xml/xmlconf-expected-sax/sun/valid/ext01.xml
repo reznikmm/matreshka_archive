@@ -10,6 +10,7 @@
   <characters>&#x20;</characters>
   <resolveEntity>
     <name>root</name>
+    <baseURI>sun/valid</baseURI>
     <systemID>ext01.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
@@ -170,6 +171,7 @@
   <characters>&#x20;</characters>
   <resolveEntity>
     <name>null</name>
+    <baseURI>sun/valid</baseURI>
     <systemID>null.ent</systemID>
   </resolveEntity>
   <characters>&#x20;</characters>

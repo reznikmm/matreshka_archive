@@ -10,6 +10,7 @@
   <resolveEntity>
     <name>e</name>
     <publicID>a&#x20;not&#x20;very&#x20;interesting&#x20;file</publicID>
+    <baseURI>xmltest/valid/ext-sa</baseURI>
     <systemID>011.ent</systemID>
   </resolveEntity>
   <characters>x</characters>

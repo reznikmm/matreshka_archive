@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>xmltest/not-wf/not-sa</baseURI>
     <systemID>009.ent</systemID>
   </resolveEntity>
   <fatalError>unexpected&#x20;character</fatalError>

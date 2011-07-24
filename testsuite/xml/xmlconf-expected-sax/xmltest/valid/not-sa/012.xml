@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>%e</name>
+    <baseURI>xmltest/valid/not-sa</baseURI>
     <systemID>012.ent</systemID>
   </resolveEntity>
   <startElement>

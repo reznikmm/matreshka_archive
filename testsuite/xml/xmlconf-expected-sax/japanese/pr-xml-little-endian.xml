@@ -12,6 +12,7 @@
   <warning/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>japanese</baseURI>
     <systemID>spec.dtd</systemID>
   </resolveEntity>
   <warning/>

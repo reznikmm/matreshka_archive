@@ -4,6 +4,7 @@
   <warning/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/not-wf/P63</baseURI>
     <systemID>ibm63n02.dtd</systemID>
   </resolveEntity>
   <fatalError>conditional&#x20;directive&#x20;is&#x20;missing</fatalError>

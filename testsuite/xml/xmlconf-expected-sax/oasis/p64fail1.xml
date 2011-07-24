@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>oasis</baseURI>
     <systemID>p64fail1.dtd</systemID>
   </resolveEntity>
   <fatalError>&apos;]]&gt;&apos;&#x20;doesn&apos;t&#x20;close&#x20;conditional&#x20;section</fatalError>

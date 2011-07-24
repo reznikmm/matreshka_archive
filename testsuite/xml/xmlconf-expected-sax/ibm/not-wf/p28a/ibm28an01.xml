@@ -11,6 +11,7 @@
   </processingInstruction>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/not-wf/p28a</baseURI>
     <systemID>ibm28an01.dtd</systemID>
   </resolveEntity>
   <fatalError>syntax&#x20;error</fatalError>

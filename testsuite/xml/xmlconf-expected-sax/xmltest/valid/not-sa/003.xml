@@ -3,10 +3,12 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>xmltest/valid/not-sa</baseURI>
     <systemID>003-1.ent</systemID>
   </resolveEntity>
   <resolveEntity>
     <name>%e</name>
+    <baseURI>xmltest/valid/not-sa</baseURI>
     <systemID>003-2.ent</systemID>
   </resolveEntity>
   <startElement>

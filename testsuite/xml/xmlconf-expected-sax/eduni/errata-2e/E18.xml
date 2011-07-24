@@ -3,10 +3,12 @@
   <startDocument/>
   <resolveEntity>
     <name>%pe</name>
+    <baseURI>eduni/errata-2e</baseURI>
     <systemID>subdir1/E18-pe</systemID>
   </resolveEntity>
   <resolveEntity>
     <name>%extpe</name>
+    <baseURI>eduni/errata-2e/subdir1</baseURI>
     <systemID>../subdir2/E18-extpe</systemID>
   </resolveEntity>
   <startElement>
@@ -17,6 +19,7 @@
   </startElement>
   <resolveEntity>
     <name>ent</name>
+    <baseURI>eduni/errata-2e</baseURI>
     <systemID>E18-ent</systemID>
   </resolveEntity>
   <characters>e</characters>

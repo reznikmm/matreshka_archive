@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>japanese</baseURI>
     <systemID>weekly-utf-8.dtd</systemID>
   </resolveEntity>
   <warning/>

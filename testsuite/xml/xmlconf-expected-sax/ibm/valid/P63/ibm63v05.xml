@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/valid/P63</baseURI>
     <systemID>ibm63v05.dtd</systemID>
   </resolveEntity>
   <startElement>

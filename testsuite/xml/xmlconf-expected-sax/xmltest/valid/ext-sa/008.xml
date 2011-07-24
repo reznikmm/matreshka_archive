@@ -10,6 +10,7 @@
   <characters>X</characters>
   <resolveEntity>
     <name>e</name>
+    <baseURI>xmltest/valid/ext-sa</baseURI>
     <systemID>008.ent</systemID>
   </resolveEntity>
   <characters>Y</characters>

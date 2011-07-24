@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>%pe1</name>
+    <baseURI>ibm/valid/P68</baseURI>
     <systemID>ibm68v02.ent</systemID>
   </resolveEntity>
   <startElement>

@@ -9,6 +9,7 @@
   </startElement>
   <resolveEntity>
     <name>aExternal</name>
+    <baseURI>ibm/not-wf/P78</baseURI>
     <systemID>ibm78n01.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>

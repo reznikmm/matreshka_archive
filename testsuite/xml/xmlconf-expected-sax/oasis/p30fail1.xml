@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>oasis</baseURI>
     <systemID>p30fail1.dtd</systemID>
   </resolveEntity>
   <fatalError>syntax&#x20;error</fatalError>

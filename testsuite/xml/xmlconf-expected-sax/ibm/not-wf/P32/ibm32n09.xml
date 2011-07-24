@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/not-wf/P32</baseURI>
     <systemID>ibm32n09.dtd</systemID>
   </resolveEntity>
   <startElement>

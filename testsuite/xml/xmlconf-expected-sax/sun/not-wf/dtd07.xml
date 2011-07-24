@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>sun/not-wf</baseURI>
     <systemID>dtd07.dtd</systemID>
   </resolveEntity>
   <fatalError>syntax&#x20;error</fatalError>

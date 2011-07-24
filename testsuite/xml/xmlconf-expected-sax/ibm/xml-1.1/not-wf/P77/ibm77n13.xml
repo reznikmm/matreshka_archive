@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/xml-1.1/not-wf/P77</baseURI>
     <systemID>ibm77n13.dtd</systemID>
   </resolveEntity>
   <startElement>
@@ -13,6 +14,7 @@
   </startElement>
   <resolveEntity>
     <name>e</name>
+    <baseURI>ibm/xml-1.1/not-wf/P77</baseURI>
     <systemID>ibm77n13.ent</systemID>
   </resolveEntity>
   <fatalError>external&#x20;general&#x20;entity&#x20;has&#x20;later&#x20;version&#x20;number</fatalError>

@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>sun/valid</baseURI>
     <systemID>dtdtest.dtd</systemID>
   </resolveEntity>
   <startElement>

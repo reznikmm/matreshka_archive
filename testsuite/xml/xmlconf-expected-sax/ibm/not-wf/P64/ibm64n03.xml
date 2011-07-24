@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/not-wf/P64</baseURI>
     <systemID>ibm64n03.dtd</systemID>
   </resolveEntity>
   <fatalError>unexpected&#x20;character</fatalError>

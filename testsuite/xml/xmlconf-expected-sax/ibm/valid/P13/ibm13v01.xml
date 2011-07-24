@@ -4,6 +4,7 @@
   <resolveEntity>
     <name>[dtd]</name>
     <publicID>#x20&#x20;#xD&#x20;#xA&#x20;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x20;-&apos;()+,./:=?;!*#@$_%</publicID>
+    <baseURI>ibm/valid/P13</baseURI>
     <systemID>student.dtd</systemID>
   </resolveEntity>
   <startElement>

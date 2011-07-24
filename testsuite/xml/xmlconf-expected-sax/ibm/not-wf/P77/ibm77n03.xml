@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>%pExternal</name>
+    <baseURI>ibm/not-wf/P77</baseURI>
     <systemID>ibm77n03.ent</systemID>
   </resolveEntity>
   <fatalError>unexpected&#x20;character</fatalError>

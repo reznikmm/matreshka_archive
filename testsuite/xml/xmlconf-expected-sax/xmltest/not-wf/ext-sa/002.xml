@@ -9,6 +9,7 @@
   </startElement>
   <resolveEntity>
     <name>e</name>
+    <baseURI>xmltest/not-wf/ext-sa</baseURI>
     <systemID>002.ent</systemID>
   </resolveEntity>
   <fatalError>syntax&#x20;error</fatalError>

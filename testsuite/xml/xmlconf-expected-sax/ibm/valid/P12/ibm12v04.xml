@@ -4,6 +4,7 @@
   <resolveEntity>
     <name>[dtd]</name>
     <publicID>The&#x20;latest&#x20;version</publicID>
+    <baseURI>ibm/valid/P12</baseURI>
     <systemID>student.dtd</systemID>
   </resolveEntity>
   <startElement>

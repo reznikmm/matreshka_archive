@@ -4,6 +4,7 @@
   <warning/>
   <resolveEntity>
     <name>%epe</name>
+    <baseURI>ibm/valid/P79</baseURI>
     <systemID>ibm79v01.ent</systemID>
   </resolveEntity>
   <startElement>

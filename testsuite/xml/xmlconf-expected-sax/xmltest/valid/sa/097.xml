@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>%e</name>
+    <baseURI>xmltest/valid/sa</baseURI>
     <systemID>097.ent</systemID>
   </resolveEntity>
   <warning/>

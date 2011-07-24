@@ -10,6 +10,7 @@
   <ignorableWhitespace>&#x20;</ignorableWhitespace>
   <resolveEntity>
     <name>utf16b</name>
+    <baseURI>sun/valid</baseURI>
     <systemID>../invalid/utf16b.xml</systemID>
   </resolveEntity>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
@@ -28,6 +29,7 @@
   <ignorableWhitespace>&#x20;</ignorableWhitespace>
   <resolveEntity>
     <name>utf16l</name>
+    <baseURI>sun/valid</baseURI>
     <systemID>../invalid/utf16l.xml</systemID>
   </resolveEntity>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>

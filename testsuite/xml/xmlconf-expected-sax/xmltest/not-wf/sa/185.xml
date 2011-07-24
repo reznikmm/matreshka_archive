@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>xmltest/not-wf/sa</baseURI>
     <systemID>185.ent</systemID>
   </resolveEntity>
   <startElement>

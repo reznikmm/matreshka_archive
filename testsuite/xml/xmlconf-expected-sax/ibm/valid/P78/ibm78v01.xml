@@ -9,6 +9,7 @@
   </startElement>
   <resolveEntity>
     <name>epe1</name>
+    <baseURI>ibm/valid/P78</baseURI>
     <systemID>ibm78v01.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
@@ -71,6 +72,7 @@
   <characters>0</characters>
   <resolveEntity>
     <name>epe2</name>
+    <baseURI>ibm/valid/P78</baseURI>
     <systemID>ibm78v02.ent</systemID>
   </resolveEntity>
   <characters>&#xA;</characters>
@@ -125,6 +127,7 @@
   <characters>7</characters>
   <resolveEntity>
     <name>epe3</name>
+    <baseURI>ibm/valid/P78</baseURI>
     <systemID>ibm78v03.ent</systemID>
   </resolveEntity>
   <characters>a</characters>

@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>oasis</baseURI>
     <systemID>p30pass2.dtd</systemID>
   </resolveEntity>
   <startElement>

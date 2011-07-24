@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>ibm/not-wf/P62</baseURI>
     <systemID>ibm62n04.dtd</systemID>
   </resolveEntity>
   <fatalError>conditional&#x20;directive&#x20;is&#x20;missing</fatalError>

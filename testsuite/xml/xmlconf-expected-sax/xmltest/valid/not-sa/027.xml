@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>[dtd]</name>
+    <baseURI>xmltest/valid/not-sa</baseURI>
     <systemID>027.ent</systemID>
   </resolveEntity>
   <startElement>

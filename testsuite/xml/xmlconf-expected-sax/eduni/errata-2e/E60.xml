@@ -3,6 +3,7 @@
   <startDocument/>
   <resolveEntity>
     <name>%e</name>
+    <baseURI>eduni/errata-2e</baseURI>
     <systemID>E60.ent</systemID>
   </resolveEntity>
   <startElement>

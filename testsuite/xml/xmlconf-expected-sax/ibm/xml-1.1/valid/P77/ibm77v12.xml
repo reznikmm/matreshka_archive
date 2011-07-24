@@ -9,6 +9,7 @@
   </startElement>
   <resolveEntity>
     <name>e</name>
+    <baseURI>ibm/xml-1.1/valid/P77</baseURI>
     <systemID>ibm77v12.ent</systemID>
   </resolveEntity>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>

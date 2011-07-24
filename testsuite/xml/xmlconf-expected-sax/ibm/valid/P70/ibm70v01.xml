@@ -14,6 +14,7 @@
   <resolveEntity>
     <name>%pe2</name>
     <publicID>-//w3c//any</publicID>
+    <baseURI>ibm/valid/P70</baseURI>
     <systemID>ibm70v01.ent</systemID>
   </resolveEntity>
   <startElement>
