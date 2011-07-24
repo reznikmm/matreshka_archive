@@ -80,7 +80,7 @@ package XML.SAX.Input_Sources.Streams is
     (Self : in out Stream_Input_Source;
      Id   : League.Strings.Universal_String);
 
-   not overriding procedure Set_System_Id
+   overriding procedure Set_System_Id
     (Self : in out Stream_Input_Source;
      Id   : League.Strings.Universal_String);
 

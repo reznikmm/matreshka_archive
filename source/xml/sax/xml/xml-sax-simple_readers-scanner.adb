@@ -58,6 +58,7 @@ package body XML.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.Unicode.Characters.Latin;
    use Matreshka.Internals.Utf16;
    use Matreshka.Internals.XML;
+   use Matreshka.Internals.XML.Base_Scopes;
    use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Symbol_Tables;
    use XML.SAX.Simple_Readers.Scanner.Tables;
@@ -173,6 +174,9 @@ package body XML.SAX.Simple_Readers.Scanner is
      In_Document_Type : Boolean;
      In_Literal       : Boolean) return Boolean
    is
+      use type Matreshka.Internals.Strings.Shared_String_Access;
+      use type League.Strings.Universal_String;
+
       Source     : XML.SAX.Input_Sources.SAX_Input_Source_Access;
       Text       : Matreshka.Internals.Strings.Shared_String_Access;
       Last_Match : Boolean;
@@ -185,14 +189,9 @@ package body XML.SAX.Simple_Readers.Scanner is
          Callbacks.Call_Resolve_Entity
           (Self.all,
            Entity,
-           League.Strings.Internals.Create
-            (Public_Id (Self.Entities, Entity)),
-           League.Strings.Empty_Universal_String,
-           Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (League.Strings.Internals.Create
-              (Base (Self.Entities, Entity)),
-             League.Strings.Internals.Create
-              (System_Id (Self.Entities, Entity))),
+           Public_Id (Self.Entities, Entity),
+           Enclosing_Base_URI (Self.Entities, Entity),
+           System_Id (Self.Entities, Entity),
            Source);
          Text       := Matreshka.Internals.Strings.Shared_Empty'Access;
          Last_Match := False;
@@ -207,6 +206,11 @@ package body XML.SAX.Simple_Readers.Scanner is
          end if;
 
          Set_Is_Resolved (Self.Entities, Entity, True);
+         Set_Entity_Base_URI
+          (Self.Entities,
+           Entity,
+           Matreshka.Internals.URI_Utilities.Directory_Name
+            (Source.System_Id));
 
          case Self.Version is
             when XML_1_0 =>
@@ -271,12 +275,22 @@ package body XML.SAX.Simple_Readers.Scanner is
         Entity        => Entity,
         In_Literal    => In_Literal,
         Delimiter     => 0,
-        Base          =>
-          Matreshka.Internals.URI_Utilities.Construct_Base
-           (Self.Scanner_State.Base,
-            League.Strings.Internals.Create
-             (System_Id (Self.Entities, Entity))),
         others        => <>);
+
+      --  Push base URI into the stack. Entity base URI is used for external
+      --  entities; current base URI is used for internal entities.
+
+      if Entity_Base_URI (Self.Entities, Entity)
+           = Matreshka.Internals.Strings.Shared_Empty'Access
+      then
+         Matreshka.Internals.XML.Base_Scopes.Push_Scope (Self.Bases);
+
+      else
+         Matreshka.Internals.XML.Base_Scopes.Push_Scope
+          (Self.Bases,
+           League.Strings.Internals.Create
+            (Entity_Base_URI (Self.Entities, Entity)));
+      end if;
 
       if Last_Match then
          Self.Scanner_State.YY_Current_Position :=
@@ -1613,6 +1627,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;
+                           Pop_Scope (Self.Bases);
                            Enter_Start_Condition (Self, YY_Start_Condition);
 
                            --  [XML 4.4.8] Included as PE
@@ -1668,6 +1683,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;
+                           Pop_Scope (Self.Bases);
                            YY_End_Of_Buffer_Action := YY_Report_Entity_End;
 
                         else
@@ -1675,6 +1691,7 @@ package body XML.SAX.Simple_Readers.Scanner is
                            Self.Scanner_State :=
                              Self.Scanner_Stack.Last_Element;
                            Self.Scanner_Stack.Delete_Last;
+                           Pop_Scope (Self.Bases);
                            YY_End_Of_Buffer_Action := YY_Continue_Scan;
                         end if;
 

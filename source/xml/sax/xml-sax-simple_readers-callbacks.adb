@@ -393,9 +393,9 @@ package body XML.SAX.Simple_Readers.Callbacks is
    procedure Call_Resolve_Entity
     (Self      : in out SAX_Simple_Reader'Class;
      Entity    : Matreshka.Internals.XML.Entity_Identifier;
-     Public_Id : League.Strings.Universal_String;
-     Base_URI  : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
+     Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Base_URI  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     System_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access)
    is
       Name : League.Strings.Universal_String
@@ -422,9 +422,9 @@ package body XML.SAX.Simple_Readers.Callbacks is
 
       Self.Entity_Resolver.Resolve_Entity
        (Name      => Name,
-        Public_Id => Public_Id,
-        Base_URI  => Base_URI,
-        System_Id => System_Id,
+        Public_Id => League.Strings.Internals.Create (Public_Id),
+        Base_URI  => League.Strings.Internals.Create (Base_URI),
+        System_Id => League.Strings.Internals.Create (System_Id),
         Source    => Source,
         Success   => Self.Continue);
 

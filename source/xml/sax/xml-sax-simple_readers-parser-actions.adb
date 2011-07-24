@@ -44,6 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Text_Codecs;
 with Matreshka.Internals.Unicode.Characters.Latin;
+with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Analyzer;
 with XML.SAX.Simple_Readers.Scanner;
@@ -55,6 +56,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Attributes;
    use Matreshka.Internals.XML.Attribute_Tables;
+   use Matreshka.Internals.XML.Base_Scopes;
    use Matreshka.Internals.XML.Element_Tables;
    use Matreshka.Internals.XML.Entity_Tables;
    use Matreshka.Internals.XML.Namespace_Scopes;
@@ -403,6 +405,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
                     Prefix_Name (Self.Symbols, Symbol))),
               Local_Name     => Local_Name (Self.Symbols, Symbol),
               Qualified_Name => Name (Self.Symbols, Symbol));
+            Pop_Scope (Self.Bases);
             Pop_Scope (Self.Namespace_Scope, Notify_Unmap'Access);
 
          else
@@ -413,6 +416,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               Local_Name     =>
                 Matreshka.Internals.Strings.Shared_Empty'Access,
               Qualified_Name => Name (Self.Symbols, Symbol));
+            Pop_Scope (Self.Bases);
          end if;
 
          Self.Element_Names.Delete_Last;
@@ -514,7 +518,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               Symbol,
               Self.Public_Id,
               Self.System_Id,
-              Self.Scanner_State.Base,
+              Base_URI (Self.Bases),
               Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_External_Entity_Declaration
@@ -804,13 +808,17 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       if Is_External then
+         if Base_URI (Self.Bases).Is_Empty then
+            raise Program_Error;
+         end if;
+
          New_External_Parameter_Entity
           (Self.Entities,
            Self.Scanner_State.Entity,
            Symbol,
            Self.Public_Id,
            Self.System_Id,
-           Self.Scanner_State.Base,
+           Base_URI (Self.Bases),
            Entity);
          Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
 
@@ -822,7 +830,11 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             A := League.Strings.Internals.Internal (Value);
             Matreshka.Internals.Strings.Reference (A);
             New_Internal_Parameter_Entity
-             (Self.Entities, Self.Scanner_State.Entity, Symbol, A, Entity);
+             (Self.Entities,
+              Self.Scanner_State.Entity,
+              Symbol,
+              A,
+              Entity);
             Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
          end;
       end if;
@@ -1024,7 +1036,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Self.Scanner_State.Entity,
            Self.Public_Id,
            Self.System_Id,
-           Self.Scanner_State.Base,
+           Base_URI (Self.Bases),
            Self.External_Subset_Entity);
          Callbacks.Call_Start_DTD
           (Self.all,
@@ -1084,6 +1096,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    procedure On_Start_Tag (Self : not null access SAX_Simple_Reader'Class) is
 
       procedure Convert;
+      --  Converts internal set of element's attributes into user visible set.
+      --  Namespace declaration attributes are ignored when namespace
+      --  processing is enabled and reporting of namespace prefixes is turned
+      --  off.
 
       -------------
       -- Convert --
@@ -1191,6 +1207,36 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
             end loop;
          end;
       end if;
+
+      --  [XMLBase] - look for 'xml:base' attribute, compute new base URI when
+      --  necessary and push scope.
+
+      declare
+         Found : Boolean := False;
+
+      begin
+         for J in 1 .. Length (Self.Attribute_Set) loop
+            if Qualified_Name (Self.Attribute_Set, J) = Symbol_xml_base then
+               --  'xml:base' detected by its qualified name, because namespace
+               --  resolution is not done at this point and nor 'xml' prefix
+               --  nor namespace can't be bound to another prefix/namespace.
+
+               Push_Scope
+                (Self.Bases,
+                 Matreshka.Internals.URI_Utilities.Construct_Base_URI
+                  (Base_URI (Self.Bases),
+                   League.Strings.Internals.Create
+                    (Value (Self.Attribute_Set, J))));
+               Found := True;
+
+               exit;
+            end if;
+         end loop;
+
+         if not Found then
+            Push_Scope (Self.Bases);
+         end if;
+      end;
 
       if Self.Namespaces.Enabled then
          Push_Scope (Self.Namespace_Scope);

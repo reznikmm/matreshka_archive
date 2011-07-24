@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,72 +41,57 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Characters;
+--  This package provides data structures to track base URI of the current
+--  scope. Note, scope of base URI includes not only elements, but entities
+--  substitution also.
+------------------------------------------------------------------------------
+with League.Strings;
 
-package body Matreshka.Internals.URI_Utilities is
+package Matreshka.Internals.XML.Base_Scopes is
 
-   use type League.Strings.Universal_String;
+   pragma Preelaborate;
 
-   ------------------------
-   -- Construct_Base_URI --
-   ------------------------
+   type Base_Scope is limited private;
 
-   function Construct_Base_URI
-    (Enclosing_Base_URI : League.Strings.Universal_String;
-     XML_Base           : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      --  XXX Implementation of this subprogram must be extended to handle
-      --  absolute URI defined in 'xml:base' attribute.
+   procedure Push_Scope (Self : in out Base_Scope);
+   --  Push scope into the stack. Base URI of the new scope is the same as
+   --  enclosing scope.
 
-      if not Enclosing_Base_URI.Is_Empty then
-         if not XML_Base.Is_Empty then
-            return Enclosing_Base_URI & '/' & XML_Base;
+   procedure Push_Scope
+    (Self : in out Base_Scope; Base_URI : League.Strings.Universal_String);
+   --  Push scope into the stack. Base URI of the new scope is set to the
+   --  specified value.
 
-         else
-            return Enclosing_Base_URI;
-         end if;
+   procedure Pop_Scope (Self : in out Base_Scope);
+   --  Pop scope from the stack.
 
-      else
-         return XML_Base;
-      end if;
-   end Construct_Base_URI;
+   function Base_URI
+    (Self : in out Base_Scope) return League.Strings.Universal_String;
+   --  Returns base URI of the current scope.
 
-   -------------------------
-   -- Construct_System_Id --
-   -------------------------
+   procedure Initialize (Self : in out Base_Scope);
+   --  Initialize internal state.
 
-   function Construct_System_Id
-    (Base      : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      if not Base.Is_Empty then
-         return Base & '/' & System_Id;
+   procedure Finalize (Self : in out Base_Scope);
+   --  Release all resources.
 
-      else
-         return System_Id;
-      end if;
-   end Construct_System_Id;
+   procedure Reset (Self : in out Base_Scope);
+   --  Resets internal structures to initial state.
 
-   --------------------
-   -- Directory_Name --
-   --------------------
+private
 
-   function Directory_Name
-    (Base : League.Strings.Universal_String)
-       return League.Strings.Universal_String
-   is
-      use type League.Characters.Universal_Character;
+   type Scope_Record is record
+      Base_URI : League.Strings.Universal_String;
+      Counter  : Natural;
+   end record;
 
-   begin
-      for J in reverse 1 .. Base.Length loop
-         if Base.Element (J) = '/' then
-            return Base.Slice (1, J - 1);
-         end if;
-      end loop;
+   type Scope_Array is array (Positive range <>) of Scope_Record;
 
-      return League.Strings.Empty_Universal_String;
-   end Directory_Name;
+   type Scope_Array_Access is access all Scope_Array;
 
-end Matreshka.Internals.URI_Utilities;
+   type Base_Scope is limited record
+      Scopes : Scope_Array_Access;
+      Last   : Natural;
+   end record;
+
+end Matreshka.Internals.XML.Base_Scopes;

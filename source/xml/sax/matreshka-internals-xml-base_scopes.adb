@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,72 +41,85 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Characters;
+with Ada.Unchecked_Deallocation;
 
-package body Matreshka.Internals.URI_Utilities is
+package body Matreshka.Internals.XML.Base_Scopes is
 
-   use type League.Strings.Universal_String;
+   --------------
+   -- Base_URI --
+   --------------
 
-   ------------------------
-   -- Construct_Base_URI --
-   ------------------------
-
-   function Construct_Base_URI
-    (Enclosing_Base_URI : League.Strings.Universal_String;
-     XML_Base           : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+   function Base_URI
+    (Self : in out Base_Scope) return League.Strings.Universal_String is
    begin
-      --  XXX Implementation of this subprogram must be extended to handle
-      --  absolute URI defined in 'xml:base' attribute.
+      return Self.Scopes (Self.Last).Base_URI;
+   end Base_URI;
 
-      if not Enclosing_Base_URI.Is_Empty then
-         if not XML_Base.Is_Empty then
-            return Enclosing_Base_URI & '/' & XML_Base;
+   --------------
+   -- Finalize --
+   --------------
 
-         else
-            return Enclosing_Base_URI;
-         end if;
+   procedure Finalize (Self : in out Base_Scope) is
+      procedure Free is
+        new Ada.Unchecked_Deallocation (Scope_Array, Scope_Array_Access);
+
+   begin
+      Free (Self.Scopes);
+   end Finalize;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize (Self : in out Base_Scope) is
+   begin
+      Self.Scopes := new Scope_Array (1 .. 16);
+      Self.Last := 0;
+   end Initialize;
+
+   ---------------
+   -- Pop_Scope --
+   ---------------
+
+   procedure Pop_Scope (Self : in out Base_Scope) is
+   begin
+      if Self.Scopes (Self.Last).Counter = 1 then
+         Self.Last := Self.Last - 1;
 
       else
-         return XML_Base;
+         Self.Scopes (Self.LasT).Counter :=
+           Self.Scopes (Self.LasT).Counter - 1;
       end if;
-   end Construct_Base_URI;
+   end Pop_Scope;
 
-   -------------------------
-   -- Construct_System_Id --
-   -------------------------
+   ----------------
+   -- Push_Scope --
+   ----------------
 
-   function Construct_System_Id
-    (Base      : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+   procedure Push_Scope (Self : in out Base_Scope) is
    begin
-      if not Base.Is_Empty then
-         return Base & '/' & System_Id;
+      Self.Scopes (Self.Last).Counter :=
+        Self.Scopes (Self.Last).Counter + 1;
+   end Push_Scope;
 
-      else
-         return System_Id;
-      end if;
-   end Construct_System_Id;
+   ----------------
+   -- Push_Scope --
+   ----------------
 
-   --------------------
-   -- Directory_Name --
-   --------------------
-
-   function Directory_Name
-    (Base : League.Strings.Universal_String)
-       return League.Strings.Universal_String
-   is
-      use type League.Characters.Universal_Character;
-
+   procedure Push_Scope
+    (Self : in out Base_Scope; Base_URI : League.Strings.Universal_String) is
    begin
-      for J in reverse 1 .. Base.Length loop
-         if Base.Element (J) = '/' then
-            return Base.Slice (1, J - 1);
-         end if;
-      end loop;
+      Self.Last := Self.Last + 1;
+      Self.Scopes (Self.last) := (Base_URI, 1);
+   end Push_Scope;
 
-      return League.Strings.Empty_Universal_String;
-   end Directory_Name;
+   -----------
+   -- Reset --
+   -----------
 
-end Matreshka.Internals.URI_Utilities;
+   procedure Reset (Self : in out Base_Scope) is
+   begin
+      Self.Last := 0;
+   end Reset;
+
+end Matreshka.Internals.XML.Base_Scopes;

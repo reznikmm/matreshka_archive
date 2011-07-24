@@ -55,6 +55,17 @@ package body XML.SAX.Simple_Readers is
    procedure Reset (Self : not null access SAX_Simple_Reader);
    --  Resets reader to start to read data from new input source.
 
+   --------------
+   -- Base_URI --
+   --------------
+
+   overriding function Base_URI
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String is
+   begin
+      return Matreshka.Internals.XML.Base_Scopes.Base_URI (Self.Reader.Bases);
+   end Base_URI;
+
    -----------
    -- Clear --
    -----------
@@ -183,6 +194,7 @@ package body XML.SAX.Simple_Readers is
       Matreshka.Internals.Strings.Dereference (Self.Character_Buffer);
       Matreshka.Internals.Strings.Dereference (Self.Character_Data);
       Matreshka.Internals.XML.Attribute_Tables.Finalize (Self.Attributes);
+      Matreshka.Internals.XML.Base_Scopes.Finalize (Self.Bases);
       Matreshka.Internals.XML.Element_Tables.Finalize (Self.Elements);
       Matreshka.Internals.XML.Symbol_Tables.Finalize (Self.Symbols);
       Matreshka.Internals.XML.Entity_Tables.Finalize (Self.Entities);
@@ -198,6 +210,7 @@ package body XML.SAX.Simple_Readers is
    overriding procedure Initialize (Self : in out SAX_Simple_Reader) is
    begin
       Matreshka.Internals.XML.Attributes.Initialize (Self.Attribute_Set);
+      Matreshka.Internals.XML.Base_Scopes.Initialize (Self.Bases);
       Matreshka.Internals.XML.Namespace_Scopes.Initialize
        (Self.Namespace_Scope);
       Matreshka.Internals.XML.Entity_Tables.Initialize (Self.Entities);
@@ -314,6 +327,7 @@ package body XML.SAX.Simple_Readers is
       --  Reset reader's state to initial.
 
       Matreshka.Internals.XML.Attribute_Tables.Reset (Self.Attributes);
+      Matreshka.Internals.XML.Base_Scopes.Reset (Self.Bases);
       Matreshka.Internals.XML.Element_Tables.Reset (Self.Elements);
       Matreshka.Internals.XML.Entity_Tables.Reset (Self.Entities);
       Matreshka.Internals.XML.Namespace_Scopes.Reset (Self.Namespace_Scope);
@@ -329,21 +343,26 @@ package body XML.SAX.Simple_Readers is
        (Self.Entities,
         Self.Configuration.Source.Public_Id,
         Self.Configuration.Source.System_Id,
-        Self.Configuration.Source.System_Id,
+        Matreshka.Internals.URI_Utilities.Directory_Name
+         (Self.Configuration.Source.System_Id),
         Entity);
       Self.Scanner_State :=
        (Entity      => Entity,
         Source      => Self.Configuration.Source,
         Data        => Matreshka.Internals.Strings.Shared_Empty'Access,
         Incremental => Self.Configuration.Incremental,
-        Base        =>
-          Matreshka.Internals.URI_Utilities.Directory_Name
-           (Self.Configuration.Source.System_Id),
         others      => <>);
       Self.Parser_State.TOS        := 0;
       Self.Parser_State.Look_Ahead := True;
       Self.Parser_State.Error      := False;
       Scanner.Initialize (Self.all);
+
+      --  Initialize base URI.
+
+      Matreshka.Internals.XML.Base_Scopes.Push_Scope
+       (Self.Bases,
+        Matreshka.Internals.URI_Utilities.Directory_Name
+         (Self.Configuration.Source.System_Id));
 
       Self.Configuration.Reset := False;
       Self.Configuration.Source := null;

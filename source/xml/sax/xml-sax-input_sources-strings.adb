@@ -118,7 +118,7 @@ package body XML.SAX.Input_Sources.Strings is
    -- Set_System_Id --
    -------------------
 
-   not overriding procedure Set_System_Id
+   overriding procedure Set_System_Id
     (Self : in out String_Input_Source;
      Id   : League.Strings.Universal_String) is
    begin

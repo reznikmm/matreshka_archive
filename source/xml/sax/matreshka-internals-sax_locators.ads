@@ -84,6 +84,10 @@ package Matreshka.Internals.SAX_Locators is
     (Self : not null access constant Shared_Abstract_Locator)
        return League.Strings.Universal_String is abstract;
 
+   not overriding function Base_URI
+    (Self : not null access constant Shared_Abstract_Locator)
+       return League.Strings.Universal_String is abstract;
+
    type Shared_Locator_Access is access all Shared_Abstract_Locator'Class;
 
    procedure Reference (Self : not null Shared_Locator_Access);

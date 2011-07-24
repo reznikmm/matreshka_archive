@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -82,10 +82,11 @@ package XML.SAX.Input_Sources is
 --   not overriding procedure Set_Public_Id
 --    (Self : in out SAX_Input_Source;
 --     Id   : League.Strings.Universal_String) is abstract;
---
---   not overriding procedure Set_System_Id
---    (Self : in out SAX_Input_Source;
---     Id   : League.Strings.Universal_String) is abstract;
+
+   not overriding procedure Set_System_Id
+    (Self : in out SAX_Input_Source;
+     Id   : League.Strings.Universal_String) is abstract;
+   --  Sets system identifier of the entity.
 
    not overriding procedure Set_Version
     (Self    : in out SAX_Input_Source;

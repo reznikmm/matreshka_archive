@@ -57,6 +57,7 @@ private with Matreshka.Internals.Unicode;
 private with Matreshka.Internals.Utf16;
 private with Matreshka.Internals.XML.Attribute_Tables;
 private with Matreshka.Internals.XML.Attributes;
+private with Matreshka.Internals.XML.Base_Scopes;
 private with Matreshka.Internals.XML.Element_Tables;
 private with Matreshka.Internals.XML.Entity_Tables;
 private with Matreshka.Internals.XML.Namespace_Scopes;
@@ -240,7 +241,6 @@ private
       --  ignored.
       --  XXX The same behavior can be achived by resetting Delimiter to
       --  any symbol.
-      Base                 : League.Strings.Universal_String;
    end record;
 
    package Scanner_State_Vectors is
@@ -428,6 +428,11 @@ private
       Namespace_Scope        :
         Matreshka.Internals.XML.Namespace_Scopes.Namespace_Scope;
 
+      --  XML Base handling state
+
+      Bases                  : Matreshka.Internals.XML.Base_Scopes.Base_Scope;
+      --  Tracks current base URI.
+
       --  Validator state
 
       Validation             : Validation_Options;
@@ -519,6 +524,10 @@ private
        return League.Strings.Universal_String;
 
    overriding function System_Id
+    (Self : not null access constant Simple_Shared_Locator)
+       return League.Strings.Universal_String;
+
+   overriding function Base_URI
     (Self : not null access constant Simple_Shared_Locator)
        return League.Strings.Universal_String;
 

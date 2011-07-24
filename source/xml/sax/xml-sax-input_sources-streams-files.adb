@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,10 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
+with Ada.Directories;
 
 package body XML.SAX.Input_Sources.Streams.Files is
 
    use Ada.Streams.Stream_IO;
+
+   function Full_Name (Name : String) return String;
+   --  Construct full name of the file.
 
    --------------
    -- Finalize --
@@ -60,6 +64,20 @@ package body XML.SAX.Input_Sources.Streams.Files is
       Stream_Input_Source (Self).Finalize;
    end Finalize;
 
+   ---------------
+   -- Full_Name --
+   ---------------
+
+   function Full_Name (Name : String) return String is
+   begin
+      if Name (Name'First) = '/' then
+         return Name;
+
+      else
+         return Ada.Directories.Current_Directory & '/' & Name;
+      end if;
+   end Full_Name;
+
    ----------
    -- Open --
    ----------
@@ -71,7 +89,7 @@ package body XML.SAX.Input_Sources.Streams.Files is
       Open (Self.File, Ada.Streams.Stream_IO.In_File, Name);
       Self.Set_System_Id
        (League.Strings.To_Universal_String
-         (Ada.Characters.Conversions.To_Wide_Wide_String (Name)));
+         (Ada.Characters.Conversions.To_Wide_Wide_String (Full_Name (Name))));
       Self.Set_Stream (Stream_Access (Stream (Self.File)));
    end Open;
 

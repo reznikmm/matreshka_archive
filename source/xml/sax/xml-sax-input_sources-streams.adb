@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -532,7 +532,7 @@ package body XML.SAX.Input_Sources.Streams is
    -- Set_System_Id --
    -------------------
 
-   not overriding procedure Set_System_Id
+   overriding procedure Set_System_Id
     (Self : in out Stream_Input_Source;
      Id   : League.Strings.Universal_String) is
    begin

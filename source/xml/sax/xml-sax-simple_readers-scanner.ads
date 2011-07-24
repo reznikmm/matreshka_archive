@@ -68,8 +68,8 @@ private package XML.SAX.Simple_Readers.Scanner is
      Entity           : Matreshka.Internals.XML.Entity_Identifier;
      In_Document_Type : Boolean;
      In_Literal       : Boolean) return Boolean;
-   --  Pushs replacement text of the entity into the scanner stack. Resolve
-   --  entity when necessary.
+   --  Pushs replacement text of the entity into the scanner stack and push
+   --  base URI scope. Resolve entity when necessary.
 
 private
 

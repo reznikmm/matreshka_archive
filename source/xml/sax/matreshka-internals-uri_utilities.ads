@@ -54,11 +54,12 @@ package Matreshka.Internals.URI_Utilities is
        return League.Strings.Universal_String;
    --  Removes last component and returns result.
 
-   function Construct_Base
-    (Base      : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String)
+   function Construct_Base_URI
+    (Enclosing_Base_URI : League.Strings.Universal_String;
+     XML_Base           : League.Strings.Universal_String)
        return League.Strings.Universal_String;
-   --  Constructs URI base.
+   --  Constructs base URI. Enclosing_Base_URI is base URI of enclosing element
+   --  and New_Base_URI is value of 'xml:base' attribute of current element.
 
    function Construct_System_Id
     (Base      : League.Strings.Universal_String;

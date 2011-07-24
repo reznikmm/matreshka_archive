@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -87,6 +87,7 @@ package Matreshka.Internals.XML is
    Symbol_xmlns    : constant Symbol_Identifier;
    Symbol_xml_NS   : constant Symbol_Identifier;
    Symbol_xmlns_NS : constant Symbol_Identifier;
+   Symbol_xml_base : constant Symbol_Identifier;
    --  Internal identifier of symbol. Symbols are used to associate different
    --  kinds of items with name, and to minimize amount of used memory to store
    --  names.
@@ -130,5 +131,6 @@ private
    Symbol_xmlns    : constant Symbol_Identifier := 16;
    Symbol_xml_NS   : constant Symbol_Identifier := 17;
    Symbol_xmlns_NS : constant Symbol_Identifier := 18;
+   Symbol_xml_base : constant Symbol_Identifier := 19;
 
 end Matreshka.Internals.XML;

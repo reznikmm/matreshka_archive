@@ -62,13 +62,13 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Parameter_Entity
-    (Self             : in out Entity_Table;
-     Enclosing_Entity : Entity_Identifier;
-     Name             : Matreshka.Internals.XML.Symbol_Identifier;
-     Public_Id        : League.Strings.Universal_String;
-     System_Id        : League.Strings.Universal_String;
-     Base             : League.Strings.Universal_String;
-     Entity           : out Entity_Identifier);
+    (Self               : in out Entity_Table;
+     Enclosing_Entity   : Entity_Identifier;
+     Name               : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id          : League.Strings.Universal_String;
+     System_Id          : League.Strings.Universal_String;
+     Enclosing_Base_URI : League.Strings.Universal_String;
+     Entity             : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -83,13 +83,13 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_External_Parsed_General_Entity
-    (Self             : in out Entity_Table;
-     Enclosing_Entity : Entity_Identifier;
-     Name             : Matreshka.Internals.XML.Symbol_Identifier;
-     Public_Id        : League.Strings.Universal_String;
-     System_Id        : League.Strings.Universal_String;
-     Base             : League.Strings.Universal_String;
-     Entity           : out Entity_Identifier);
+    (Self               : in out Entity_Table;
+     Enclosing_Entity   : Entity_Identifier;
+     Name               : Matreshka.Internals.XML.Symbol_Identifier;
+     Public_Id          : League.Strings.Universal_String;
+     System_Id          : League.Strings.Universal_String;
+     Enclosing_Base_URI : League.Strings.Universal_String;
+     Entity             : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -103,21 +103,21 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  entity.
 
    procedure New_Document_Entity
-    (Self      : in out Entity_Table;
-     Public_Id : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String;
-     Entity    : out Entity_Identifier);
+    (Self             : in out Entity_Table;
+     Public_Id        : League.Strings.Universal_String;
+     System_Id        : League.Strings.Universal_String;
+     Entity_Base_URI  : League.Strings.Universal_String;
+     Entity           : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
    procedure New_External_Subset_Entity
-    (Self             : in out Entity_Table;
-     Enclosing_Entity : Entity_Identifier;
-     Public_Id        : League.Strings.Universal_String;
-     System_Id        : League.Strings.Universal_String;
-     Base             : League.Strings.Universal_String;
-     Entity           : out Entity_Identifier);
+    (Self               : in out Entity_Table;
+     Enclosing_Entity   : Entity_Identifier;
+     Public_Id          : League.Strings.Universal_String;
+     System_Id          : League.Strings.Universal_String;
+     Enclosing_Base_URI : League.Strings.Universal_String;
+     Entity             : out Entity_Identifier);
    --  Allocates space for the entity and returns identifier of the allocated
    --  entity.
 
@@ -185,10 +185,24 @@ package Matreshka.Internals.XML.Entity_Tables is
    --  Returns identifier of notation of the entity for unparsed entity and
    --  No_Symbol for others.
 
-   function Base
+   function Enclosing_Base_URI
     (Self   : Entity_Table;
      Entity : Entity_Identifier)
        return not null Matreshka.Internals.Strings.Shared_String_Access;
+   --  Returns base URI of entity's declaration element to be used to resolve
+   --  relative entity's system identifier.
+
+   function Entity_Base_URI
+    (Self   : Entity_Table;
+     Entity : Entity_Identifier)
+       return not null Matreshka.Internals.Strings.Shared_String_Access;
+   --  Returns base URI of the entity.
+
+   procedure Set_Entity_Base_URI
+    (Self            : in out Entity_Table;
+     Entity          : Entity_Identifier;
+     Entity_Base_URI : League.Strings.Universal_String);
+   --  Sets base URI of the entity.
 
    function Is_Resolved
     (Self   : Entity_Table;
@@ -257,16 +271,17 @@ private
      External_Unparsed_General_Entity);
 
    type Entity_Record is record
-      Kind             : Entity_Kinds;
-      Enclosing        : Entity_Identifier;
-      Name             : Symbol_Identifier;
-      Notation         : Symbol_Identifier;
-      Public_Id        : Matreshka.Internals.Strings.Shared_String_Access;
-      System_Id        : Matreshka.Internals.Strings.Shared_String_Access;
-      Base             : Matreshka.Internals.Strings.Shared_String_Access;
-      Is_Resolved      : Boolean;
-      Replacement_Text : Matreshka.Internals.Strings.Shared_String_Access;
-      First_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+      Kind               : Entity_Kinds;
+      Enclosing          : Entity_Identifier;
+      Name               : Symbol_Identifier;
+      Notation           : Symbol_Identifier;
+      Public_Id          : Matreshka.Internals.Strings.Shared_String_Access;
+      System_Id          : Matreshka.Internals.Strings.Shared_String_Access;
+      Enclosing_Base_URI : Matreshka.Internals.Strings.Shared_String_Access;
+      Entity_Base_URI    : Matreshka.Internals.Strings.Shared_String_Access;
+      Is_Resolved        : Boolean;
+      Replacement_Text   : Matreshka.Internals.Strings.Shared_String_Access;
+      First_Position     : Matreshka.Internals.Utf16.Utf16_String_Index;
    end record;
 
    type Entity_Array is array (Entity_Identifier range <>) of Entity_Record;

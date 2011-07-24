@@ -214,6 +214,7 @@ package body Matreshka.Internals.XML.Symbol_Tables is
          ("http://www.w3.org/XML/1998/namespace"));
       Register_Symbol
        (League.Strings.To_Universal_String ("http://www.w3.org/2000/xmlns/"));
+      Register_Symbol (League.Strings.To_Universal_String ("xml:base"));
    end Initialize;
 
    ------------
