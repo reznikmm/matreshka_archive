@@ -1,0 +1,1 @@
+<?xml version="1.0"?><asp:root xmlns:asp="http://www.ada-ru.org/ASP"><asp:with package="League.Calendars.ISO_8601"/><html xmlns="http://www.w3.org/1999/xhtml"><p>Текущее время <asp:expression>League.Calendars.ISO_8601.Image(League.Calendars.Clock)</asp:expression></p></html></asp:root>

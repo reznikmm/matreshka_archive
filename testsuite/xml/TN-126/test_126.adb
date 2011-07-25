@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,32 +41,48 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_xml.gpr";
+--  Initial implementation of SAX writer has bugs in namespace mapping
+--  management.
+------------------------------------------------------------------------------
+with Ada.Command_Line;
 
-project Matreshka_XML_Tests is
+with League.Strings;
+with Put_Line;
+with Read_File;
+with XML.SAX.Input_Sources.Strings;
+with XML.SAX.Simple_Readers;
+with XML.SAX.Pretty_Writers;
 
-   for Main use
-    ("xmlconf_test.adb",
-     "test_126.adb",
-     "test_20.adb",
-     "test_26.adb",
-     "test_99.adb",
-     "simple_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-126",
-     "../testsuite/xml/TN-20",
-     "../testsuite/xml/TN-26",
-     "../testsuite/xml/TN-99",
-     "../testsuite/xml/pretty_writer/simple_test");
+procedure Test_126 is
 
-   package Compiler is
-      for Default_Switches ("Ada") use
-        Matreshka_Common.Common_Ada_Switches
-          & ("-gnatW8");
-   end Compiler;
+   use type League.Strings.Universal_String;
 
-end Matreshka_XML_Tests;
+   Source : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Writer : aliased XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+
+   Root     : constant String := Ada.Command_Line.Argument (1);
+   Input    : constant League.Strings.Universal_String
+     := Read_File (Root & "a.xml");
+   Expected : constant League.Strings.Universal_String
+     := Read_File (Root & "a-expected.xml");
+   Output   : League.Strings.Universal_String;
+
+begin
+   Reader.Set_Content_Handler (Writer'Unchecked_Access);
+
+   --  Parse XML document.
+
+   Source.Set_String (Input);
+   Reader.Parse (Source'Access);
+   Output := Writer.Text;
+
+   --  Check output document.
+
+   if Output /= Expected then
+      Put_Line ("Expected: '" & Expected & ''');
+      Put_Line ("Actual  : '" & Output & ''');
+
+      raise Program_Error;
+   end if;
+end Test_126;
