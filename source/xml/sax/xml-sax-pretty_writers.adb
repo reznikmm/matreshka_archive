@@ -501,6 +501,10 @@ package body XML.SAX.Pretty_Writers is
    begin
       Self.Text.Append ("<?xml version=""" & Image (Self.Version) & """?>");
       Self.Nesting := 0;
+
+      --  Reset namespace mapping and initialize it by XML namespace URI mapped
+      --  to 'xml' prefix.
+
       Self.Current.Mapping.Clear;
       Self.Current.Mapping.Insert (XML_Namespace, XML_Prefix);
    end Start_Document;
