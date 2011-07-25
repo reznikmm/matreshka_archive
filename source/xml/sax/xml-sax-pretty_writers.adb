@@ -53,7 +53,7 @@ package body XML.SAX.Pretty_Writers is
      := League.Strings.To_Universal_String
          ("http://www.w3.org/XML/1998/namespace");
    XML_Prefix            : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("xml:");
+     := League.Strings.To_Universal_String ("xml");
    XMLNS_Prefix          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("xmlns");
    Amp_Entity_Reference  : constant League.Strings.Universal_String
