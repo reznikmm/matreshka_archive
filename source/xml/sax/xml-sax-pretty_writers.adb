@@ -47,16 +47,7 @@ with Matreshka.Internals.Unicode;
 package body XML.SAX.Pretty_Writers is
 
    use Matreshka.Internals.Unicode;
-   use type Mappings.Cursor;
-   use type Banks.Cursor;
-
    use type League.Strings.Universal_String;
-
-   function "+" (Item : Wide_Wide_String)
-     return League.Strings.Universal_String
-       renames League.Strings.To_Universal_String;
-
-   function Image (X_V : XML_Version) return League.Strings.Universal_String;
 
    XML_Namespace         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
@@ -64,7 +55,7 @@ package body XML.SAX.Pretty_Writers is
    XML_Prefix            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("xml:");
    XMLNS_Prefix          : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String (" xmlns");
+     := League.Strings.To_Universal_String ("xmlns");
    Amp_Entity_Reference  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("&amp;");
    Apos_Entity_Reference : constant League.Strings.Universal_String
@@ -75,6 +66,22 @@ package body XML.SAX.Pretty_Writers is
      := League.Strings.To_Universal_String ("&gt;");
    Lt_Entity_Reference   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("&lt;");
+   XML_1_0_Image         : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("1.0");
+   XML_1_1_Image         : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("1.1");
+
+   procedure Output_Name
+    (Self           : in out SAX_Pretty_Writer;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean);
+   --  Do vilidity checks, resolve namespace prefix when necessary and output
+   --  name (of the tag or attribute).
+
+   function Image (X_V : XML_Version) return League.Strings.Universal_String;
+   --  Returns text representation of XML version.
 
    ----------------
    -- Characters --
@@ -155,78 +162,49 @@ package body XML.SAX.Pretty_Writers is
 
    overriding procedure End_Element
     (Self           : in out SAX_Pretty_Writer;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean)
    is
       C  : Mappings.Cursor := Mappings.No_Element;
 
    begin
+      --  Validity check: Namespace_URI, Local_Name and Qualified_Name of close
+      --  tag must match open tag.
+
+      if Self.Current.Namespace_URI /= Namespace_URI
+        or Self.Current.Local_Name /= Local_Name
+        or Self.Current.Qualified_Name /= Qualified_Name
+      then
+         Self.Error :=
+           League.Strings.To_Universal_String
+            ("namespace URI, local name or qualified name doesn't match"
+                & " open tag");
+         Success := False;
+
+         return;
+      end if;
+
+      --  Use empty tag when there are no any content inside the tag.
+
       if Self.Tag_Opened then
          Self.Text.Append ("/>");
          Self.Tag_Opened := False;
 
       else
          Self.Text.Append ("</");
-
-         if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
-            --  XXX error should be reported
-            Success := False;
-            Self.Error
-              := +"Both Qualified_Name and Local_Name"
-                   & "cannot be specified for one element: "
-                   & "Qualified_Name : " & Qualified_Name
-                   & "Local_Name : " & Local_Name;
-            return;
-         end if;
-
-         if not Local_Name.Is_Empty then
-            if Namespace_URI.Is_Empty then
-               --  XXX error should be reported
-               Success := False;
-               return;
-            end if;
-
-            C := Self.Current.Find (Namespace_URI);
-
-            if C /= Mappings.No_Element then
-               if not Mappings.Element (C).Is_Empty then
-                  Self.Text.Append (Mappings.Element (C));
-                  Self.Text.Append (':');
-               end if;
-
-            else
-               Success := False;
-               Self.Error := "Namespace URI ("
-                               & Namespace_URI
-                               &") is not defined for '"
-                               & Local_Name & "' element";
-               return;
-            end if;
-
-            Self.Text.Append (Local_Name);
-
-            Self.Pop (Self.Current, Local_Name);
-
-         elsif not Qualified_Name.Is_Empty then
-            Self.Text.Append (Qualified_Name);
-
-         else
-            --  XXX error should be reported
-            Success :=  False;
-            Self.Error := +"No Local_Name and Qualified_Name specified";
-            return;
-         end if;
+         Output_Name (Self, Namespace_URI, Local_Name, Qualified_Name, Success);
 
          Self.Text.Append ('>');
       end if;
 
+      --  Pop current element information.
+
+      Self.Current := Self.Stack.Last_Element;
+      Self.Stack.Delete_Last;
+
       Self.Nesting := Self.Nesting - 1;
-      Success := True;
    end End_Element;
 
    ----------------
@@ -348,10 +326,10 @@ package body XML.SAX.Pretty_Writers is
    begin
       case X_V is
          when XML_1_0 =>
-            return +"1.0";
+            return XML_1_0_Image;
 
          when XML_1_1 =>
-            return +"1.1";
+            return XML_1_1_Image;
       end case;
    end Image;
 
@@ -373,20 +351,75 @@ package body XML.SAX.Pretty_Writers is
       end loop;
    end Merge;
 
-   ---------
-   -- Pop --
-   ---------
+   -----------------
+   -- Output_Name --
+   -----------------
 
-   procedure Pop
-    (Self  : in out SAX_Pretty_Writer;
-     Scope : out Mappings.Map;
-     Tag   : League.Strings.Universal_String) is
+   procedure Output_Name
+    (Self           : in out SAX_Pretty_Writer;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean) is
    begin
-      if Self.Stack.Last_Element.Tag = Tag then
-         Scope := Self.Stack.Last_Element.Mapping;
-         Self.Stack.Delete_Last;
+      if Namespace_URI.Is_Empty then
+         --  Non-namespaces mode.
+
+         --  Validity check: Qualified_Name must not be empty.
+
+         if Qualified_Name.Is_Empty then
+            Self.Error :=
+              League.Strings.To_Universal_String ("qualified name is empty");
+            Success := False;
+
+            return;
+         end if;
+
+         --  Append qualified name of the tag.
+
+         Self.Text.Append (Qualified_Name);
+
+      else
+         --  Namespaces mode.
+
+         --  Validity check: local name must not be empty.
+
+         if Local_Name.Is_Empty then
+            Self.Error :=
+              League.Strings.To_Universal_String
+               ("namespace is provides but local name is empty");
+            Success := False;
+
+            return;
+         end if;
+
+         --  Lookup for namespace prefix.
+
+         declare
+            Position : constant Mappings.Cursor
+              := Self.Current.Mapping.Find (Namespace_URI);
+
+         begin
+            if not Mappings.Has_Element (Position) then
+               Self.Error :=
+                 League.Strings.To_Universal_String
+                  ("namespace is not mapped to any prefix");
+               Success := False;
+
+               return;
+            end if;
+
+            --  Output namespace prexif when namespace is not default.
+
+            if not Mappings.Element (Position).Is_Empty then
+               Self.Text.Append (Mappings.Element (Position));
+               Self.Text.Append (':');
+            end if;
+         end;
+
+         Self.Text.Append (Local_Name);
       end if;
-   end Pop;
+   end Output_Name;
 
    ----------------------------
    -- Processing_Instruction --
@@ -395,24 +428,11 @@ package body XML.SAX.Pretty_Writers is
    overriding procedure Processing_Instruction
     (Self    : in out SAX_Pretty_Writer;
      Target  : League.Strings.Universal_String;
-     Data    : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Data    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
       null;
    end Processing_Instruction;
-
-   ----------
-   -- Push --
-   ----------
-
-   procedure Push
-    (Self  : in out SAX_Pretty_Writer;
-     Scope : Mappings.Map;
-     Tag   : League.Strings.Universal_String) is
-   begin
-      Self.Stack.Append ((Tag => Tag, Mapping => Scope));
-   end Push;
 
    -----------
    -- Reset --
@@ -481,6 +501,8 @@ package body XML.SAX.Pretty_Writers is
    begin
       Self.Text.Append ("<?xml version=""" & Image (Self.Version) & """?>");
       Self.Nesting := 0;
+      Self.Current.Mapping.Clear;
+      Self.Current.Mapping.Insert (XML_Namespace, XML_Prefix);
    end Start_Document;
 
    ---------------
@@ -490,10 +512,8 @@ package body XML.SAX.Pretty_Writers is
    overriding procedure Start_DTD
     (Self      : in out SAX_Pretty_Writer;
      Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     System_Id : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
      Success   : in out Boolean) is
    begin
       null;
@@ -505,14 +525,10 @@ package body XML.SAX.Pretty_Writers is
 
    overriding procedure Start_Element
     (Self           : in out SAX_Pretty_Writer;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes
-       := XML.SAX.Attributes.Empty_SAX_Attributes;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
       NS : League.Strings.Universal_String;
@@ -525,144 +541,76 @@ package body XML.SAX.Pretty_Writers is
          Self.Tag_Opened := False;
       end if;
 
-      if not Self.Bank.Is_Empty then
-         --  Push to stack current namspaces scope
+      --  Push to stack current element and namespace mapping
 
-         Self.Push (Self.Current, Local_Name);
+      Self.Stack.Append (Self.Current);
 
+      Self.Current.Namespace_URI  := Namespace_URI;
+      Self.Current.Local_Name     := Local_Name;
+      Self.Current.Qualified_Name := Qualified_Name;
+
+      if not Self.Requested_NS.Is_Empty then
          --  Append Bank and Current namespaces.
 
-         Self.Merge (Self.Current, Self.Bank);
+         Self.Merge (Self.Current.Mapping, Self.Requested_NS);
       end if;
 
       Self.Text.Append ('<');
+      Output_Name (Self, Namespace_URI, Local_Name, Qualified_Name, Success);
 
-      if not Local_Name.Is_Empty and not Qualified_Name.Is_Empty then
-         Success := False;
+      if not Success then
          return;
       end if;
 
-      if not Local_Name.Is_Empty then
-         if Namespace_URI.Is_Empty then
-            Success := False;
-            return;
-         end if;
+      --  Output namespace mappings.
 
-         --  If namespaces was not defined for current element, than it was
-         --  defined by previous.
+      declare
+         Position : Banks.Cursor := Self.Requested_NS.First;
 
-         if not Self.Bank.Is_Empty then
-            declare
-               C  : Banks.Cursor := Self.Bank.First;
+      begin
+         while Banks.Has_Element (Position) loop
+            Self.Text.Append (' ');
+            Self.Text.Append (XMLNS_Prefix);
 
-            begin
-               while Banks.Has_Element (C) loop
-                  NS.Append (XMLNS_Prefix);
+            if not Banks.Element (Position).Is_Empty then
+               --  Non-default prefix.
 
-                  if not Banks.Element (C).Is_Empty then
-                     --  Adding prefix to xmlns attribute
-
-                     NS.Append (':' & Banks.Element (C));
-
-                     --  Adding prefix to tag
-
-                     Self.Text.Append (Banks.Element (C) & ':');
-                  end if;
-
-                  --  Adding URI of namespace
-
-                  NS.Append ("=""" & Banks.Key (C) & """");
-
-                  Banks.Next (C);
-               end loop;
-            end;
-
-         else
-            declare
-               C  : constant Mappings.Cursor
-                 := Self.Current.Find (Namespace_URI);
-
-            begin
-               if C /= Mappings.No_Element then
-                  if not Mappings.Element (C).Is_Empty then
-                     --  Adding prefix to tag
-
-                     Self.Text.Append (Mappings.Element (C) & ':');
-                  end if;
-
-               else
-                  --  If we did not find appropriate namespace, return error
-
-                  Success := False;
-                  return;
-               end if;
-            end;
-         end if;
-
-         Self.Text.Append (Local_Name);
-         Self.Text.Append (NS);
-
-         Self.Bank.Clear;
-
-      elsif not Qualified_Name.Is_Empty then
-         Self.Text.Append (Qualified_Name);
-      end if;
-
-      --  Setting attributes
-
-      for J in 1 .. Attributes.Length loop
-         if not Attributes.Local_Name (J).Is_Empty then
-            if not Attributes.Namespace_URI (J).Is_Empty then
-               Self.Text.Append (' ');
-
-               if Attributes.Namespace_URI (J) = XML_Namespace then
-                  Self.Text.Append (XML_Prefix);
-
-               else
-                  declare
-                     C : constant Mappings.Cursor
-                       := Self.Current.Find (Attributes.Namespace_URI (J));
-
-                  begin
-                     if C /= Mappings.No_Element then
-                        if not Mappings.Element (C).Is_Empty then
-                           Self.Text.Append (Mappings.Element (C));
-                           Self.Text.Append (':');
-                        end if;
-                     end if;
-                  end;
-               end if;
-
-               Self.Text.Append (Attributes.Local_Name (J));
-               Self.Text.Append ("=""");
-               Self.Text.Append (Attributes.Value (J));
-               Self.Text.Append ('"');
-
-            else
-               --  XXX: Error should be reported
-               Success := False;
-               return;
+               Self.Text.Append (':');
+               Self.Text.Append (Banks.Element (Position));
             end if;
 
-         elsif not Attributes.Qualified_Name (J).Is_Empty then
-            Self.Text.Append (' ');
-            Self.Text.Append (Attributes.Qualified_Name (J));
-            Self.Text.Append ("=""");
-            Self.Text.Append (Attributes.Value (J));
+            Self.Text.Append ('=');
+            Self.Text.Append ('"');
+            Self.Text.Append (Banks.Key (Position));
             Self.Text.Append ('"');
 
-         else
-            --  XXX: Error should be reported
-            Success := False;
+            Banks.Next (Position);
+         end loop;
+      end;
+
+      --  Output attributes.
+
+      for J in 1 .. Attributes.Length loop
+         Self.Text.Append (' ');
+         Output_Name
+          (Self,
+           Attributes.Namespace_URI (J),
+           Attributes.Local_Name (J),
+           Attributes.Qualified_Name (J),
+           Success);
+
+         if not Success then
             return;
          end if;
 
+         Self.Text.Append ("=""");
+         Self.Text.Append (Attributes.Value (J));
+         Self.Text.Append ('"');
       end loop;
 
       Self.Nesting := Self.Nesting + 1;
       Self.Tag_Opened := True;
-      Success := True;
-      Self.Bank.Clear;
+      Self.Requested_NS.Clear;
    end Start_Element;
 
    ------------------
@@ -696,7 +644,7 @@ package body XML.SAX.Pretty_Writers is
 
       --  Append prefix mapping, to temp set of mapping scope
 
-      Self.Bank.Insert (Namespace_URI, Prefix);
+      Self.Requested_NS.Include (Namespace_URI, Prefix);
    end Start_Prefix_Mapping;
 
    ----------

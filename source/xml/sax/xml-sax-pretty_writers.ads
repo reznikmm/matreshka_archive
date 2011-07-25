@@ -95,12 +95,9 @@ package XML.SAX.Pretty_Writers is
 
    overriding procedure End_Element
     (Self           : in out SAX_Pretty_Writer;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean);
 
    overriding procedure End_Entity
@@ -125,8 +122,7 @@ package XML.SAX.Pretty_Writers is
    overriding procedure Processing_Instruction
     (Self    : in out SAX_Pretty_Writer;
      Target  : League.Strings.Universal_String;
-     Data    : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Data    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure Skipped_Entity
@@ -145,22 +141,16 @@ package XML.SAX.Pretty_Writers is
    overriding procedure Start_DTD
     (Self      : in out SAX_Pretty_Writer;
      Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     System_Id : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
+     Public_Id : League.Strings.Universal_String;
+     System_Id : League.Strings.Universal_String;
      Success   : in out Boolean);
 
    overriding procedure Start_Element
     (Self           : in out SAX_Pretty_Writer;
-     Namespace_URI  : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Local_Name     : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Qualified_Name : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Attributes     : XML.SAX.Attributes.SAX_Attributes
-       := XML.SAX.Attributes.Empty_SAX_Attributes;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean);
 
    overriding procedure Start_Entity
@@ -192,24 +182,15 @@ private
             League.Strings."<",
             League.Strings."=");
 
-   type Stack_Obj is record
-      Tag     : League.Strings.Universal_String
-        := League.Strings.Empty_Universal_String;
-      Mapping : Mappings.Map;
+   type Element_Record is record
+      Namespace_URI  : League.Strings.Universal_String;
+      Local_Name     : League.Strings.Universal_String;
+      Qualified_Name : League.Strings.Universal_String;
+      Mapping        : Mappings.Map;
    end record;
 
-   package Stacks is
-      new Ada.Containers.Vectors (Natural, Stack_Obj);
-
-   procedure Push
-    (Self  : in out SAX_Pretty_Writer;
-     Scope : Mappings.Map;
-     Tag   : League.Strings.Universal_String);
-
-   procedure Pop
-    (Self  : in out SAX_Pretty_Writer;
-     Scope : out Mappings.Map;
-     Tag   : League.Strings.Universal_String);
+   package Element_Vector is
+      new Ada.Containers.Vectors (Natural, Element_Record);
 
    procedure Merge
     (Self    : in out SAX_Pretty_Writer;
@@ -219,15 +200,23 @@ private
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
    record
-      Text        : League.Strings.Universal_String;
-      Nesting     : Natural := 0;
-      Version     : XML_Version := XML_1_0;
-      Tag_Opened  : Boolean := False;
-      Bank        : Banks.Map;
-      Current     : Mappings.Map; --  Mapping for current element
-      Stack       : Stacks.Vector;
-      Error       : League.Strings.Universal_String;
-      Destination : XML.SAX.Writers.SAX_Output_Destination_Access;
+      Text         : League.Strings.Universal_String;
+      --  Accumulated output text.
+
+      Nesting      : Natural := 0;
+      Version      : XML_Version := XML_1_0;
+      Tag_Opened   : Boolean := False;
+      Error        : League.Strings.Universal_String;
+      Destination  : XML.SAX.Writers.SAX_Output_Destination_Access;
+
+      Stack       : Element_Vector.Vector;
+      --  Stack of elements.
+
+      Requested_NS : Banks.Map;
+      --  Set of namespace mappings requested for the next element.
+
+      Current      : Element_Record;
+      --  Current processing element including effective namespace mapping.
    end record;
 
    function Escape
