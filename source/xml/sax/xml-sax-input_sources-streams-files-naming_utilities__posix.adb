@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,82 +41,98 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This is implementation of package for POSIX systems.
+------------------------------------------------------------------------------
+with Ada.Directories;
 
-package body XML.SAX.Input_Sources.Streams.Files is
+with League.Characters;
+with League.Text_Codecs;
 
-   use Ada.Streams.Stream_IO;
+separate (XML.SAX.Input_Sources.Streams.Files)
+package body Naming_Utilities is
 
-   package Naming_Utilities is
+   use type League.Characters.Universal_Character;
+   use type League.Strings.Universal_String;
 
-      function Absolute_Name
-       (Name : League.Strings.Universal_String)
-          return League.Strings.Universal_String;
-      --  Constructs absolute name of the file when specified name is relative.
+   File_Protocol_Prefix : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("file://");
 
-      function File_Name_To_URI
-       (File_Name : League.Strings.Universal_String)
-          return League.Strings.Universal_String;
-      --  Extracts file name from the URI.
+   -------------------
+   -- Absolute_Name --
+   -------------------
 
-      function URI_To_File_Name
-       (URI : League.Strings.Universal_String)
-          return League.Strings.Universal_String;
-      --  Extracts file name from the URI.
-
-      function To_Ada_RTL_File_Name
-       (Name : League.Strings.Universal_String) return String;
-      --  Converts file name to Ada RTL convention.
-
-   end Naming_Utilities;
-
-   --------------
-   -- Finalize --
-   --------------
-
-   overriding procedure Finalize (Self : in out File_Input_Source) is
-   begin
-      if Is_Open (Self.File) then
-         Close (Self.File);
-      end if;
-
-      Stream_Input_Source (Self).Finalize;
-   end Finalize;
-
-   ----------------------
-   -- Naming_Utilities --
-   ----------------------
-
-   package body Naming_Utilities is separate;
-
-   -----------------------
-   -- Open_By_File_Name --
-   -----------------------
-
-   not overriding procedure Open_By_File_Name
-    (Self : in out File_Input_Source;
-     Name : League.Strings.Universal_String)
+   function Absolute_Name
+    (Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String
    is
-      File_Name : constant League.Strings.Universal_String
-        := Naming_Utilities.Absolute_Name (Name);
+
+      function Current_Directory return League.Strings.Universal_String;
+
+      -----------------------
+      -- Current_Directory --
+      -----------------------
+
+      function Current_Directory return League.Strings.Universal_String is
+         Aux : constant String := Ada.Directories.Current_Directory;
+         Xua : Ada.Streams.Stream_Element_Array (1 .. Aux'Length);
+         for Xua'Address use Aux'Address;
+
+      begin
+         return
+           League.Text_Codecs.Codec_For_Application_Locale.Decode (Xua);
+      end Current_Directory;
 
    begin
-      Open
-       (Self.File,
-        Ada.Streams.Stream_IO.In_File,
-        Naming_Utilities.To_Ada_RTL_File_Name (File_Name));
-      Self.Set_System_Id (Naming_Utilities.File_Name_To_URI (File_Name));
-      Self.Set_Stream (Stream_Access (Stream (Self.File)));
-   end Open_By_File_Name;
+      if Name.Element (1) = '/' then
+         return Name;
 
-   -----------------
-   -- Open_By_URI --
-   -----------------
+      else
+         return Current_Directory & '/' & Name;
+      end if;
+   end Absolute_Name;
 
-   not overriding procedure Open_By_URI
-    (Self : in out File_Input_Source;
-     URI  : League.Strings.Universal_String) is
+   ----------------------
+   -- File_Name_To_URI --
+   ----------------------
+
+   function File_Name_To_URI
+    (File_Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
    begin
-      Self.Open_By_File_Name (Naming_Utilities.URI_To_File_Name (URI));
-   end Open_By_URI;
+      return File_Protocol_Prefix & File_Name;
+   end File_Name_To_URI;
 
-end XML.SAX.Input_Sources.Streams.Files;
+   --------------------------
+   -- To_Ada_RTL_File_Name --
+   --------------------------
+
+   function To_Ada_RTL_File_Name
+    (Name : League.Strings.Universal_String) return String
+   is
+      Aux    : constant Ada.Streams.Stream_Element_Array
+        := League.Text_Codecs.Codec_For_Application_Locale.Encode
+            (Name).To_Stream_Element_Array;
+      Result : String (1 .. Aux'Length);
+      for Result'Address use Aux'Address;
+
+   begin
+      return Result;
+   end To_Ada_RTL_File_Name;
+
+   ----------------------
+   -- URI_To_File_Name --
+   ----------------------
+
+   function URI_To_File_Name
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      if URI.Starts_With (File_Protocol_Prefix) then
+         return URI.Slice (8, URI.Length);
+
+      else
+         raise Constraint_Error;
+      end if;
+   end URI_To_File_Name;
+
+end Naming_Utilities;
