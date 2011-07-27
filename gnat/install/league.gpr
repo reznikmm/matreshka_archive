@@ -141,6 +141,8 @@ library project League is
               use "matreshka-internals-settings-configuration__posix.ads";
             for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
               use "matreshka-internals-settings-ini_managers-paths__posix.adb";
+            for Implementation ("XML.SAX.Input_Sources.Streams.Files.Naming_Utilities")
+              use "xml-sax-input_sources-streams-files-naming_utilities__posix.adb";
 
          when "Windows" =>
             for Implementation ("League.Application.Initialize_Arguments_Environment")
@@ -155,6 +157,8 @@ library project League is
               use "matreshka-internals-settings-configuration__windows.ads";
             for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
               use "matreshka-internals-settings-ini_managers-paths__windows.adb";
+            for Implementation ("XML.SAX.Input_Sources.Streams.Files.Naming_Utilities")
+              use "xml-sax-input_sources-streams-files-naming_utilities__windows.adb";
       end case;
 
    end Naming;
