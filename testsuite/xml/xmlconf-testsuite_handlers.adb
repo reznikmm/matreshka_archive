@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Characters.Conversions;
-with Ada.Directories;
 with Ada.Exceptions;
 with Ada.Wide_Wide_Text_IO;
 
@@ -136,14 +135,13 @@ package body XMLConf.Testsuite_Handlers is
          Expected :=
            Read_File
             (Ada.Characters.Conversions.To_String
-              (League.Strings.To_Wide_Wide_String
-                (Self.Testsuite_Base_URI.Slice
-                  (8, Self.Testsuite_Base_URI.Length)
-                  & "-expected-sax"
-                  & Matreshka.Internals.URI_Utilities.Construct_System_Id
-                     (Base_URI.Slice
-                       (Self.Testsuite_Base_URI.Length + 1, Base_URI.Length),
-                      URI))));
+              (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                (Self.Testsuite_Base_URI
+                   & "-expected-sax"
+                   & Matreshka.Internals.URI_Utilities.Construct_System_Id
+                      (Base_URI.Slice
+                        (Self.Testsuite_Base_URI.Length + 1, Base_URI.Length),
+                       URI)).To_Wide_Wide_String));
 
          select
             delay 60.0;
@@ -228,9 +226,9 @@ package body XMLConf.Testsuite_Handlers is
             Expected :=
               Read_File
                (Ada.Characters.Conversions.To_String
-                 (League.Strings.To_Wide_Wide_String
+                 (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
                    (Matreshka.Internals.URI_Utilities.Construct_System_Id
-                     (Base_URI.Slice (8, Base_URI.Length), Output))));
+                     (Base_URI, Output)).To_Wide_Wide_String));
 
             select
                delay 3.0;

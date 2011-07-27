@@ -43,19 +43,46 @@
 ------------------------------------------------------------------------------
 --  This is implementation of package for Microsoft Windows.
 ------------------------------------------------------------------------------
-with Ada.Directories;
-
-with League.Characters;
+with League.Strings.Internals;
 with League.Text_Codecs;
+with Matreshka.Internals.Strings.C;
+with Matreshka.Internals.Utf16;
+with Matreshka.Internals.Windows;
 
 separate (XML.SAX.Input_Sources.Streams.Files)
 package body Naming_Utilities is
 
-   use type League.Characters.Universal_Character;
+   use Matreshka.Internals.Windows;
    use type League.Strings.Universal_String;
 
-   File_Protocol_Prefix : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("file://");
+   subtype HRESULT is LONG;
+   subtype PCWSTR is LPCWSTR;
+   subtype PWSTR is LPWSTR;
+
+   MAX_PATH                : constant := 260;
+   INTERNET_MAX_URL_LENGTH : constant := 32 + 3 + 2048;
+
+   function GetFullPathName
+    (lpFileName    : LPCWSTR;
+     nBufferLength : DWORD;
+     lpBuffer      : LPWSTR;
+     lpFilePart    : out LPWSTR) return DWORD;
+   pragma Import (Stdcall, GetFullPathName, "GetFullPathNameW");
+
+   function PathCreateFromUrl
+    (pszUrl   : PCWSTR;
+     pszPath  : PWSTR;
+     pcchPath : in out DWORD;
+     dwFlags  : DWORD) return HRESULT;
+   pragma Import (Stdcall, PathCreateFromUrl, "PathCreateFromUrlW");
+
+   function UrlCreateFromPath
+    (pszPath : PCWSTR;
+     pszUrl  : PWSTR;
+     pcchUrl : in out DWORD;
+     dwFlags : DWORD) return HRESULT;
+   pragma Import (Stdcall, UrlCreateFromPath, "UrlCreateFromPathW");
+
    -------------------
    -- Absolute_Name --
    -------------------
@@ -64,32 +91,35 @@ package body Naming_Utilities is
     (Name : League.Strings.Universal_String)
        return League.Strings.Universal_String
    is
-
-      function Current_Directory return League.Strings.Universal_String;
-
-      -----------------------
-      -- Current_Directory --
-      -----------------------
-
-      function Current_Directory return League.Strings.Universal_String is
-         Aux : constant String := Ada.Directories.Current_Directory;
-         Xua : Ada.Streams.Stream_Element_Array (1 .. Aux'Length);
-         for Xua'Address use Aux'Address;
-
-      begin
-         return
-           League.Text_Codecs.Codec_For_Application_Locale.Decode (Xua);
-      end Current_Directory;
+      Result : Matreshka.Internals.Strings.Shared_String_Access;
+      Size   : DWORD;
+      Valid  : Boolean;
+      Dummy  : LPWSTR;
+      pragma Warnings (Off, Dummy);
 
    begin
-      --  This is POSIX version of implementation.
+      Size :=
+        GetFullPathName
+         (League.Strings.Internals.Internal (Name).Value (0)'Access,
+          0,
+          null,
+          Dummy);
 
-      if Name.Element (1) = '/' then
-         return Name;
+      Result :=
+        Matreshka.Internals.Strings.Allocate
+         (Matreshka.Internals.Utf16.Utf16_String_Index (Size));
 
-      else
-         return Current_Directory & '/' & Name;
-      end if;
+      Size :=
+        GetFullPathName
+         (League.Strings.Internals.Internal (Name).Value (0)'Access,
+          DWORD (Result.Size),
+          Result.Value (0)'Access,
+          Dummy);
+
+      Matreshka.Internals.Strings.C.Validate_And_Fixup
+       (Result, Matreshka.Internals.Utf16.Utf16_String_Index (Size), Valid);
+
+      return League.Strings.Internals.Wrap (Result);
    end Absolute_Name;
 
    ----------------------
@@ -98,11 +128,27 @@ package body Naming_Utilities is
 
    function File_Name_To_URI
     (File_Name : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      --  This is POSIX version of implementation.
+     return League.Strings.Universal_String
+   is
+      Result : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Allocate (INTERNET_MAX_URL_LENGTH);
+      Size   : DWORD := INTERNET_MAX_URL_LENGTH;
+      Valid  : Boolean;
+      Dummy  : HRESULT;
+      pragma Warnings (Off, Dummy);
 
-      return File_Protocol_Prefix & File_Name;
+   begin
+      Dummy :=
+        UrlCreateFromPath
+         (League.Strings.Internals.Internal (File_Name).Value (0)'Access,
+          Result.Value (0)'Access,
+          Size,
+          0);
+
+      Matreshka.Internals.Strings.C.Validate_And_Fixup
+       (Result, Matreshka.Internals.Utf16.Utf16_String_Index (Size), Valid);
+
+      return League.Strings.Internals.Wrap (Result);
    end File_Name_To_URI;
 
    --------------------------
@@ -128,16 +174,27 @@ package body Naming_Utilities is
 
    function URI_To_File_Name
     (URI : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      Result : Matreshka.Internals.Strings.Shared_String_Access
+        := Matreshka.Internals.Strings.Allocate (MAX_PATH);
+      Size   : DWORD := MAX_PATH;
+      Valid  : Boolean;
+      Dummy  : HRESULT;
+      pragma Warnings (Off, Dummy);
+
    begin
-      --  This is POSIX version of implementation.
+      Dummy :=
+        PathCreateFromUrl
+         (League.Strings.Internals.Internal (URI).Value (0)'Access,
+          Result.Value (0)'Access,
+          Size,
+          0);
 
-      if URI.Starts_With (File_Protocol_Prefix) then
-         return URI.Slice (8, URI.Length);
+      Matreshka.Internals.Strings.C.Validate_And_Fixup
+       (Result, Matreshka.Internals.Utf16.Utf16_String_Index (Size), Valid);
 
-      else
-         raise Constraint_Error;
-      end if;
+      return League.Strings.Internals.Wrap (Result);
    end URI_To_File_Name;
 
 end Naming_Utilities;

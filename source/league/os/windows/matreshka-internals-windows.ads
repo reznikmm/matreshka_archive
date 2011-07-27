@@ -52,6 +52,9 @@ package Matreshka.Internals.Windows is
 
    pragma Preelaborate;
 
+   subtype DWORD is interfaces.C.unsigned_long;
+   subtype LONG is Interfaces.C.long;
+
    subtype LPWSTR is Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
 
    subtype LPWCH is LPWSTR;

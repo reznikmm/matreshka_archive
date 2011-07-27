@@ -55,6 +55,14 @@ library project Matreshka_League is
    for Library_ALI_Dir use "../.libs/matreshka";
    for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
 
+   case Matreshka_Config.Operating_System is
+      when "POSIX" =>
+         null;
+
+      when "Windows" =>
+         for Library_Options use ("-lshlwapi");
+   end case;
+
    Common_Source_Dirs :=
     ("../source/league",
      "../source/league/codecs",

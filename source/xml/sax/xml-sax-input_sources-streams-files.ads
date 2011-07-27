@@ -60,6 +60,14 @@ package XML.SAX.Input_Sources.Streams.Files is
    overriding procedure Finalize (Self : in out File_Input_Source);
    --  GNAT GCC 4.5 bug: this subprogram must be moved into private part.
 
+   function URI_To_File_Name
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Extracts file name from the URI.
+   --
+   --  XXX This function is added temporary for use in XMLConf testsuite
+   --  driver.
+
 private
 
    type File_Input_Source is new Stream_Input_Source with record

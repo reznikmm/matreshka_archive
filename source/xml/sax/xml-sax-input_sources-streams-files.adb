@@ -119,4 +119,13 @@ package body XML.SAX.Input_Sources.Streams.Files is
       Self.Open_By_File_Name (Naming_Utilities.URI_To_File_Name (URI));
    end Open_By_URI;
 
+   ----------------------
+   -- URI_To_File_Name --
+   ----------------------
+
+   function URI_To_File_Name
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+         renames Naming_Utilities.URI_To_File_Name;
+
 end XML.SAX.Input_Sources.Streams.Files;

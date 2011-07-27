@@ -52,6 +52,7 @@ with Matreshka.Internals.Windows;
 
 package body Matreshka.Internals.Settings.Registry is
 
+   use Matreshka.Internals.Windows;
    use type League.Characters.Universal_Character;
 
    -----------------
@@ -70,9 +71,6 @@ package body Matreshka.Internals.Settings.Registry is
 
    KEY_WRITE : constant REGSAM := 16#20006#;
    KEY_READ  : constant REGSAM := 16#20019#;
-
-   subtype LONG is Interfaces.C.long;
-   subtype DWORD is interfaces.C.unsigned_long;
 
    use type LONG;
 
@@ -311,8 +309,6 @@ package body Matreshka.Internals.Settings.Registry is
                  Read_Only => Read_Only)
       do
          declare
-            use type LONG;
-
             Self : Registry_Settings'Class
               renames Registry_Settings'Class (Aux.all);
 
