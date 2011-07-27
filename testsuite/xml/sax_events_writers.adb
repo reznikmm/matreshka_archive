@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Conversions;
 with Ada.Characters.Wide_Wide_Latin_1;
 with Ada.Containers.Ordered_Maps;
 
@@ -465,9 +464,7 @@ package body SAX_Events_Writers is
       Self.Add_Line (To_Universal_String ("  </resolveEntity>"));
 
       Source := new File_Input_Source;
-      File_Input_Source'Class (Source.all).Open
-       (Ada.Characters.Conversions.To_String
-         (Actual_System_Id.To_Wide_Wide_String));
+      File_Input_Source'Class (Source.all).Open_By_URI (Actual_System_Id);
    end Resolve_Entity;
 
    --------------------------

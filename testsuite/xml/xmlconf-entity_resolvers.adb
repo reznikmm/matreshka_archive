@@ -41,12 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Conversions;
-
 with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Input_Sources.Streams.Files;
 
 package body XMLConf.Entity_Resolvers is
+
+   File_Protocol_Prefix : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("file:");
 
    ------------------
    -- Error_String --
@@ -79,10 +80,13 @@ package body XMLConf.Entity_Resolvers is
             (Base_URI, System_ID);
 
    begin
-      Source := new File_Input_Source;
-      File_Input_Source'Class (Source.all).Open
-       (Ada.Characters.Conversions.To_String
-         (Absolute_System_Id.To_Wide_Wide_String));
+      if Absolute_System_Id.Starts_With (File_Protocol_Prefix) then
+         Source := new File_Input_Source;
+         File_Input_Source'Class (Source.all).Open_By_URI (Absolute_System_Id);
+
+      else
+         raise Constraint_Error;
+      end if;
    end Resolve_Entity;
 
 end XMLConf.Entity_Resolvers;

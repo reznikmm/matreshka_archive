@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,7 +61,7 @@ package League.Translator is
 --       return League.Strings.Universal_String;
 --   --  Translates message make in sence plural form.
 
-   procedure Initialize (File : String);
+   procedure Initialize (File : League.Strings.Universal_String);
    --  Loads translations from the specified file.
 
    procedure Finalize;

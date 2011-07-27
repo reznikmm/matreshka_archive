@@ -42,10 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
+with Ada.Characters.Conversions;
 with Ada.Directories;
 with Ada.Integer_Text_IO;
 with Ada.Text_IO;
 
+with League.Application;
 with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
@@ -62,7 +64,8 @@ procedure XMLConf_Test is
 
    type Percent is delta 0.01 range 0.00 .. 100.00;
 
-   Data       : constant String := Ada.Command_Line.Argument (1);
+   Data       : constant League.Strings.Universal_String
+     := League.Application.Arguments.Element (1);
    Source     : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Reader     : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Resolver   : aliased XMLConf.Entity_Resolvers.Entity_Resolver;
@@ -101,7 +104,9 @@ begin
 
    Handler.Read_Suppressed
     (Ada.Directories.Containing_Directory
-      (Ada.Directories.Containing_Directory (Data)) & "/suppressed.lst");
+      (Ada.Directories.Containing_Directory
+        (Ada.Characters.Conversions.To_String (Data.To_Wide_Wide_String)))
+         & "/suppressed.lst");
 
    --  Because of limitations of current implementation in tracking relative
    --  paths for entities the current working directory is changed to the
@@ -110,7 +115,7 @@ begin
    Reader.Set_Entity_Resolver (Resolver'Unchecked_Access);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Source.Open (Data);
+   Source.Open_By_File_Name (Data);
    Handler.Enabled := Enabled;
    Reader.Parse (Source'Access);
 

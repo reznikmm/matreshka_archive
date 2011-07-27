@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,14 +60,14 @@ package body League.Translator is
    -- Initialize --
    ----------------
 
-   procedure Initialize (File : String) is
+   procedure Initialize (File : League.Strings.Universal_String) is
       Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
       Handler :
         aliased Matreshka.Internals.Translator.XLIFF_Readers.XLIFF_Reader;
       Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
 
    begin
-      Source.Open (File);
+      Source.Open_By_File_Name (File);
       Reader.Set_Content_Handler (Handler'Unchecked_Access);
       Reader.Parse (Source'Unchecked_Access);
    end Initialize;

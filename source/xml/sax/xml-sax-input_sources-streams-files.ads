@@ -47,9 +47,15 @@ package XML.SAX.Input_Sources.Streams.Files is
 
    type File_Input_Source is new Stream_Input_Source with private;
 
-   not overriding procedure Open
+   not overriding procedure Open_By_File_Name
     (Self : in out File_Input_Source;
-     Name : String);
+     Name : League.Strings.Universal_String);
+   --  Opens file with specified name.
+
+   not overriding procedure Open_By_URI
+    (Self : in out File_Input_Source;
+     URI  : League.Strings.Universal_String);
+   --  Opens file with specified URI.
 
    overriding procedure Finalize (Self : in out File_Input_Source);
    --  GNAT GCC 4.5 bug: this subprogram must be moved into private part.

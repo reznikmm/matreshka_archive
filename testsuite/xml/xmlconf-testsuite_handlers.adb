@@ -126,18 +126,19 @@ package body XMLConf.Testsuite_Handlers is
       --  SAX test.
 
       declare
-         Source   : aliased
+         Source    : aliased
            XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-         Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-         Writer   : aliased SAX_Events_Writers.SAX_Events_Writer;
-         Expected : League.Strings.Universal_String;
+         Reader    : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+         Writer    : aliased SAX_Events_Writers.SAX_Events_Writer;
+         Expected  : League.Strings.Universal_String;
 
       begin
          Expected :=
            Read_File
             (Ada.Characters.Conversions.To_String
               (League.Strings.To_Wide_Wide_String
-                (Self.Testsuite_Base_URI
+                (Self.Testsuite_Base_URI.Slice
+                  (8, Self.Testsuite_Base_URI.Length)
                   & "-expected-sax"
                   & Matreshka.Internals.URI_Utilities.Construct_System_Id
                      (Base_URI.Slice
@@ -161,10 +162,9 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Set_Enable_Validation (True);
             end if;
 
-            Source.Open
-             (Ada.Characters.Conversions.To_String
-               (Matreshka.Internals.URI_Utilities.Construct_System_Id
-                 (Base_URI, URI).To_Wide_Wide_String));
+            Source.Open_By_URI
+             (Matreshka.Internals.URI_Utilities.Construct_System_Id
+               (Base_URI, URI));
             Reader.Parse (Source'Access);
             Writer.Done;
 
@@ -230,7 +230,7 @@ package body XMLConf.Testsuite_Handlers is
                (Ada.Characters.Conversions.To_String
                  (League.Strings.To_Wide_Wide_String
                    (Matreshka.Internals.URI_Utilities.Construct_System_Id
-                     (Base_URI, Output))));
+                     (Base_URI.Slice (8, Base_URI.Length), Output))));
 
             select
                delay 3.0;
@@ -244,10 +244,9 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Set_Lexical_Handler (Writer'Unchecked_Access);
                Reader.Set_Enable_Namespaces (Namespaces);
 
-               Source.Open
-                (Ada.Characters.Conversions.To_String
-                  (Matreshka.Internals.URI_Utilities.Construct_System_Id
-                    (Base_URI, URI).To_Wide_Wide_String));
+               Source.Open_By_URI
+                (Matreshka.Internals.URI_Utilities.Construct_System_Id
+                  (Base_URI, URI));
                Reader.Parse (Source'Access);
 
                if Expected /= Writer.Text then
