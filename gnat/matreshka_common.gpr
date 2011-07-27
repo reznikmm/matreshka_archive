@@ -49,6 +49,7 @@ abstract project Matreshka_Common is
 
    Common_Ada_Switches :=
     ("-g",
+     "-gnatwa",
      "-gnat12");
    --  Common switches to be used for every unit.
 
@@ -91,7 +92,7 @@ abstract project Matreshka_Common is
 
       when "DEBUG" =>
          Debug_Ada_Switches :=
-          ("-gnatwa", "-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
+          ("-gnatyaAbcdefhiIkmnoOprsStux", "-gnato", "-fstack-check");
    end case;
 
    --------------
