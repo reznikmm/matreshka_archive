@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
-
 with Qt_Ada.Application;
 with Qt4.Core_Applications;
 with Qt4.Strings;
@@ -50,6 +48,7 @@ with Qt4.Tree_Views.Constructors;
 
 with AMF.Facility;
 with AMF.URI_Stores;
+with League.Application;
 with XMI.Reader;
 
 with CMOF_Tree_Models;
@@ -75,7 +74,7 @@ begin
 
    AMF.Facility.Initialize;
 
-   Root := XMI.Reader (Ada.Command_Line.Argument (1));
+   Root := XMI.Reader (League.Application.Arguments.Element (1));
 
    Model := CMOF_Tree_Models.Constructors.Create;
    Model.Set_Extent (Root);

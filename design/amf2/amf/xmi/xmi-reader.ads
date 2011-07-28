@@ -42,6 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.URI_Stores;
+with League.Strings;
 
 function XMI.Reader
- (File_Name : String) return AMF.URI_Stores.URI_Store_Access;
+ (File_Name : League.Strings.Universal_String)
+    return AMF.URI_Stores.URI_Store_Access;

@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  Generates public API of the model.
-with Ada.Command_Line;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
@@ -1892,7 +1891,7 @@ begin
       end if;
    end if;
 
-   Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   Extent := XMI.Reader (League.Application.Arguments.Element (1));
    Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;

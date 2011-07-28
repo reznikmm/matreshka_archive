@@ -447,10 +447,7 @@ package body AMF.Internals.XMI_Handlers is
             if Universal_String_Sets.Has_Element (Position) then
                URI := Universal_String_Sets.Element (Position);
                URI_Queue.Delete (Position);
-               Extent :=
-                 XMI.Reader
-                  (Ada.Characters.Conversions.To_String
-                    (URI.To_Wide_Wide_String));
+               Extent := XMI.Reader (URI);
             end if;
          end;
 

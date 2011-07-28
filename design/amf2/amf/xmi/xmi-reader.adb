@@ -48,8 +48,15 @@ with XML.SAX.Simple_Readers;
 with AMF.Internals.XMI_Handlers;
 
 function XMI.Reader
- (File_Name : String) return AMF.URI_Stores.URI_Store_Access
+ (File_Name : League.Strings.Universal_String)
+    return AMF.URI_Stores.URI_Store_Access
 is
+   use type League.Strings.Universal_String;
+
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+
    Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Handler : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
@@ -58,28 +65,27 @@ begin
    --  XXX It would be nice to use XML Catalogs here, but it is not supported
    --  by Matreshka XML Processor now; so, simple hack is used here.
 
-   if File_Name = "http://schema.omg.org/spec/MOF/2.0/cmof.xml" then
-      Input.Open ("data/CMOF.cmof");
-      Input.Set_System_Id
-       (League.Strings.To_Universal_String
-         ("http://schema.omg.org/spec/MOF/2.0/cmof.xml"));
+   if File_Name = +"http://schema.omg.org/spec/MOF/2.0/cmof.xml" then
+      Input.Open_By_File_Name (+"data/CMOF.cmof");
+      Input.Set_System_Id (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
 
-   elsif File_Name = "http://www.omg.org/spec/UML/20100901/" then
-      Input.Open ("data/UML24.cmof");
-      Input.Set_System_Id
-       (League.Strings.To_Universal_String
-         ("http://www.omg.org/spec/UML/20100901/"));
+   elsif File_Name = +"http://www.omg.org/spec/UML/20100901/" then
+      Input.Open_By_File_Name (+"data/UML24.cmof");
+      Input.Set_System_Id (+"http://www.omg.org/spec/UML/20100901/");
+
+   elsif File_Name = +"http://www.omg.org/spec/UML/20100901/UML.xmi" then
+      Input.Open_By_File_Name (+"UML.xmi");
+      Input.Set_System_Id (+"http://www.omg.org/spec/UML/20100901/UML.xmi");
 
    elsif File_Name
-           = "http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"
+           = +"http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"
    then
-      Input.Open ("data/PrimitiveTypes24.cmof");
+      Input.Open_By_File_Name (+"data/PrimitiveTypes24.cmof");
       Input.Set_System_Id
-       (League.Strings.To_Universal_String
-         ("http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"));
+       (+"http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi");
 
    else
-      Input.Open (File_Name);
+      Input.Open_By_File_Name (File_Name);
    end if;
 
    Reader.Set_Content_Handler (Handler'Unchecked_Access);

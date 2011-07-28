@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
 with Ada.Wide_Wide_Text_IO;
 
 with League.Application;
@@ -69,7 +68,7 @@ begin
    Generator.Metamodel_Name := League.Application.Arguments.Element (2);
 
    AMF.Facility.Initialize;
-   Extent := XMI.Reader (Ada.Command_Line.Argument (1));
+   Extent := XMI.Reader (League.Application.Arguments.Element (1));
    Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;

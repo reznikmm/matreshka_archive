@@ -333,7 +333,8 @@ package body Generator.Type_Mapping is
       Handler : aliased Generator.Type_Mapping.Handlers.Mapping_Handler;
 
    begin
-      Input.Open ("mapping.xml");
+      Input.Open_By_File_Name
+       (League.Strings.To_Universal_String ("mapping.xml"));
       Reader.Set_Content_Handler (Handler'Unchecked_Access);
 --      Reader.Set_Error_Handler (Handler'Unchecked_Access);
       Reader.Parse (Input'Unchecked_Access);
