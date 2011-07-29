@@ -39,7 +39,7 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: 653 $ $Date: 2010-06-29 20:26:10 +0400 (Tue, 29 Jun 2010) $
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "../../gnat/matreshka_league.gpr";
 with "../../gnat/matreshka_xml.gpr";
