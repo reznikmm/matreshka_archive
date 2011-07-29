@@ -42,32 +42,72 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body XML.Catalogs.Entity_Resolvers is
+package body Matreshka.XML_Catalogs.Entry_Files is
 
-   ------------------
-   -- Error_String --
-   ------------------
+   ------------
+   -- Append --
+   ------------
 
-   overriding function Error_String
-    (Self : Catalogs_Entity_Resolver) return League.Strings.Universal_String is
+   procedure Append
+    (Self                  : in out Catalog_Entry_File;
+     Delegate_Public_Entry : not null Delegate_Public_Entry_Access) is
    begin
-      return League.Strings.Empty_Universal_String;
-   end Error_String;
+      Self.Delegate_Public_Entries.Append (Delegate_Public_Entry);
+   end Append;
 
-   --------------------
-   -- Resolve_Entity --
-   --------------------
+   ------------
+   -- Append --
+   ------------
 
-   overriding procedure Resolve_Entity
-    (Self      : in out Catalogs_Entity_Resolver;
-     Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String;
-     Base_URI  : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
-     Success   : in out Boolean) is
+   procedure Append
+    (Self                  : in out Catalog_Entry_File;
+     Delegate_System_Entry : not null Delegate_System_Entry_Access) is
    begin
-      null;
-   end Resolve_Entity;
+      Self.Delegate_System_Entries.Append (Delegate_System_Entry);
+   end Append;
 
-end XML.Catalogs.Entity_Resolvers;
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self         : in out Catalog_Entry_File;
+     Public_Entry : not null Public_Entry_Access) is
+   begin
+      Self.Public_Entries.Append (Public_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self                 : in out Catalog_Entry_File;
+     Rewrite_System_Entry : not null Rewrite_System_Entry_Access) is
+   begin
+      Self.Rewrite_System_Entries.Append (Rewrite_System_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self         : in out Catalog_Entry_File;
+     System_Entry : not null System_Entry_Access) is
+   begin
+      Self.System_Entries.Append (System_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self                : in out Catalog_Entry_File;
+     System_Suffix_Entry : not null System_Suffix_Entry_Access) is
+   begin
+      Self.System_Suffix_Entries.Append (System_Suffix_Entry);
+   end Append;
+
+end Matreshka.XML_Catalogs.Entry_Files;

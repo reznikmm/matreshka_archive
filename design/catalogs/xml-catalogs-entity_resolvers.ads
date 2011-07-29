@@ -57,6 +57,8 @@ package XML.Catalogs.Entity_Resolvers is
 
    overriding function Error_String
     (Self : Catalogs_Entity_Resolver) return League.Strings.Universal_String;
+   --  The reader calls this function to get an error string, e.g. if any of
+   --  the handler subprograms sets Success to False.
 
    overriding procedure Resolve_Entity
     (Self      : in out Catalogs_Entity_Resolver;

@@ -42,32 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body XML.Catalogs.Entity_Resolvers is
+package Matreshka.XML_Catalogs is
 
-   ------------------
-   -- Error_String --
-   ------------------
+   pragma Pure;
 
-   overriding function Error_String
-    (Self : Catalogs_Entity_Resolver) return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Error_String;
-
-   --------------------
-   -- Resolve_Entity --
-   --------------------
-
-   overriding procedure Resolve_Entity
-    (Self      : in out Catalogs_Entity_Resolver;
-     Name      : League.Strings.Universal_String;
-     Public_Id : League.Strings.Universal_String;
-     Base_URI  : League.Strings.Universal_String;
-     System_Id : League.Strings.Universal_String;
-     Source    : out XML.SAX.Input_Sources.SAX_Input_Source_Access;
-     Success   : in out Boolean) is
-   begin
-      null;
-   end Resolve_Entity;
-
-end XML.Catalogs.Entity_Resolvers;
+end Matreshka.XML_Catalogs;
