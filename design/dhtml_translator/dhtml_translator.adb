@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                               Web Framework                              --
 --                                                                          --
---                             Examples Component                           --
+--                            Examples Component                            --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright B© 2011, Vadim Godunko <vgodunko@gmail.com>                    --
+-- Copyright Â© 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with Ada.Command_Line;
 
 with League.Strings;
