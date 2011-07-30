@@ -1,0 +1,27 @@
+
+This is an un-official OASIS XML Catalog Test Suite, with no 
+endorsement from the OASIS organization or similar.
+
+The amount of coverage of the specification is currently undefined. Rob Lugt,
+the original author, said he wrote tests what he "considered difficult". I, Frans
+Englich, completed with tests in kde/ for what I ad-hoc found was missing or needed
+deeper testing. If a definite indication of testing of the specification is of
+interest, all dictations in the specification must be outlined and tests must exist
+accordingly(and the existing ones verified).
+
+See the TODO file in the same directory as this file for status information.
+
+Background
+----------
+The majority of the work is done by Elcel Technologies, http://www.elcel.com/.
+Rob Lugt, <roblugt@elcel.com>, which is the initial author, proposed to the 
+Entity Resolution Technical Committee that they should endorse it, but he 
+received no replies:
+
+http://lists.oasis-open.org/archives/entity-resolution/200105/msg00199.html
+
+Three years later I, started looking for an OASIS XML Catalog Test Suite
+for KDE's DOM implementation KDOM, and got in contact with Rob, who kindly donated 
+the test suite to KDE. KDE's code repository is now the "home" of this test suite, 
+maintained by me.
+

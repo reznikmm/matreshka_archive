@@ -1,0 +1,9 @@
+
+- Note, the runTests.{py,xsl} is non-functional and needs to be completed.
+
+- It is a good idea to make a Sourceforge project out of this.
+
+- runTests.pl is specific to ElCel. It needs to be generalized and documented, if it is to be a public Test Suite.
+
+- Note, kdenonbeta/kdom/catalog/TestSuite/Makefile.am is specific to kdom, and should be removed if the Test Suite
+	is moved to Sourceforge or similar

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    Copyright 2005 Frans Englich <frans.englich@telia.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is fur-
+nished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+
+-->
+<TestCases Author="Frans Englich, KDE" Desc="Valid tests" xml:base="kde/" >
+
+<EntityTest type="nomatch" id="kde-valid-001" catalog="cat1.xml"
+  prefer="public" publicId="pubdelnext" systemId="" expectedFile="none">
+  Test that further nextCatalogs are not searched after a failed systemDelegation.
+</EntityTest> 
+
+<EntityTest type="nomatch" id="kde-valid-002" catalog="cat1.xml"
+  prefer="system" publicId="" systemId="sysdelnext" expectedFile="none">
+  Test that further nextCatalogs are not searched after a failed delegateSystem.
+</EntityTest> 
+
+<EntityTest type="match" id="kde-valid-003" catalog="cat1.xml"
+	prefer="system" publicId="ISO 8879:1986//ENTITIES Added Latin 1//EN" 
+	systemId="urn:publicid:ISO+8879%3A1986:ENTITIES+Added+Latin+1:EN"
+	expectedUri="http://www.example.com/dummy">
+	Test that an entity resolution with a publicId, and a
+	systemId which is an URN equal to the publicId when unwrapped,
+	matches the correct public entry as if only the publicId was 
+	supplied.
+</EntityTest>
+
+<EntityTest type="nomatch" id="kde-valid-004" catalog="cat1.xml"
+	prefer="public" systemId="urn:publicid:ISO%2FIEC+10179%3AERROR1996:DTD+DSSSL+Architecture:EN" 
+	publicId="ISO/IEC 10179:1996//DTD DSSSL Architecture//EN" expectedFile="none">
+	Tests that an entity resolution with a publicId, and a systemId which 
+	is an URN and not equal to the publicId when unwrapped, is reported 
+	as a 'nomatch'. This dictates a certain implementation since the 
+	specification leaves it open for interpretation. This approach
+	is "strict", and denies invalid input, similar to how XML processing
+	stops when encountering non-wellformedness.
+</EntityTest> 
+
+<EntityTest type="match" id="kde-valid-005" catalog="cat_a.xml"
+	prefer="public" publicId="pubdel" systemId="" expectedFile="nocirc">
+	It is valid for a catalog to contain entries that point to the same catalog, and
+	it should not be detected as circularity or any other type of error.
+</EntityTest> 
+
+<UriTest type="match" id="kde-valid-006" catalog="cat1.xml"
+  uri="uri025%20with%20spaces%20and%20[%5E*)(]"
+  expectedFile="res025">
+  Test that normalised URIs match equivalent unnormalized string in catalog.
+</UriTest> 
+
+<UriTest type="match" id="kde-valid-007" catalog="cat1.xml"
+  uri="uri026 with spaces"
+  expectedFile="res026">
+  Test that unnormalized URIs match equivalent normalized string in catalog.
+</UriTest> 
+
+<UriTest type="match" id="kde-valid-008" catalog="suff.xml"
+	uri="/uniqueName.xsd"
+  expectedUri="file:///share/mirrors/schemas/example/uniqueName.xsd">
+  Simple test of uriSuffix.
+</UriTest> 
+
+<UriTest type="match" id="kde-valid-009" catalog="suff.xml"
+	uri="longest-match.uri"
+	expectedUri="http://www.example.org/long-uri-match">
+  Test that the longest uriSuffix entry is used.
+</UriTest> 
+
+<EntityTest type="match" id="kde-valid-010" catalog="suff.xml"
+	prefer="system" publicId="" systemId="html1-strict.dtd"
+	expectedUri="file:///share/mirrors/w3c/xhtml1/xhtml1-strict.dtd">
+  Simple test of systemSuffix.
+</EntityTest> 
+
+<EntityTest type="match" id="kde-valid-011" catalog="suff.xml"
+	prefer="system" publicId="" systemId="longest-match.dtd"
+	expectedUri="http://www.example.org/longestMatch">
+  Test that the longest systemSuffix entry is used.
+</EntityTest> 
+
+</TestCases>

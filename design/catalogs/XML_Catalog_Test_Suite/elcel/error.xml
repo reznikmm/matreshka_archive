@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    XML Catalog Conformance Tests
+    Copyright 2001 ElCel Technology Limited
+    All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is fur-
+nished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+
+-->
+<TestCases Author="Rob Lugt, ElCel Technology Limited"
+           Desc="Valid tests"
+           xml:base="elcel/"
+>
+
+<EntityTest type="error" id="elcel-error-002" catalog="notwf1.xml"
+  prefer="public" systemId="sys002" publicId="pub002" expectedUri="sys002">
+  Tests for well-formed xml
+</EntityTest> 
+
+<EntityTest type="error" id="elcel-error-001" catalog="circ1.xml"
+  prefer="public"  systemId="sys001" publicId="pub001" expectedUri="sys001">
+  Tests that circular catalogs are trapped when resolving entities
+</EntityTest> 
+
+<UriTest type="error" id="elcel-error-003" catalog="circ1.xml"
+  uri="urn" expectedUri="urn">
+  Tests that circular catalogs are trapped for URIs
+</UriTest> 
+
+<UriTest type="error" id="elcel-error-004" catalog="circ2.xml"
+  uri="urn" expectedUri="urn">
+  Tests that duplicate nextCatalogs are detected even in different
+  file in the same set
+</UriTest> 
+
+<UriTest type="error" id="elcel-error-005" catalog="notvalid1.xml"
+  uri="x" expectedUri="x">
+  Tests validity checking of catalog element
+</UriTest> 
+
+<UriTest type="error" id="elcel-error-006" catalog="notvalid2.xml"
+  uri="x" expectedUri="x">
+  Tests validity checking of group element
+</UriTest> 
+
+</TestCases>

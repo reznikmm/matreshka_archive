@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+
+    XML Catalog Conformance Tests
+    Copyright 2001 ElCel Technology Limited
+    All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is fur-
+nished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+
+-->
+<TestCases Author="Rob Lugt, ElCel Technology Limited"
+           Desc="Valid tests"
+           xml:base="elcel/"
+>
+
+<EntityTest type="nomatch" id="elcel-valid-001a" catalog="cat1.xml"
+  prefer="system" systemId="sys001" publicId="pub001" expectedFile="sys001">
+  Tests that global prefer value works correctly
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-001b" catalog="cat1.xml"
+  prefer="public" systemId="sys001" publicId="pub001" expectedFile="res001">
+  Tests that global prefer value works correctly
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-002" catalog="cat1.xml"
+  prefer="public" systemId="sys002" publicId="pubdel002" expectedFile="res002">
+  Tests that delegate entries are sorted correctly
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-003" catalog="cat1.xml"
+  prefer="public" systemId="sys003" publicId="pubdel003" expectedFile="res003">
+  Tests that system identifiers are not tested after public delegation
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-004" catalog="cat1.xml"
+  prefer="public" systemId="sys004" publicId="pub004" expectedFile="res004">
+  Tests that system identifiers are preferred to public even when prefer=public
+  Also tests that document order is maintained.
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-005" catalog="cat1.xml"
+  prefer="system" systemId="sys005" publicId="pub005" expectedFile="res005">
+  Tests that global prefer value is ignored when specified within the catalog.
+  Also tests that nextCatalog entries are processed.
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-006" catalog="cat1.xml"
+  prefer="public" systemId="sysdel006" publicId="pub006" expectedFile="res006">
+  Tests that public identifiers are discarded after system delegation
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-007" catalog="cat1.xml"
+  prefer="public" systemId="sysdel007" publicId="pub007" expectedFile="res007">
+  Tests that public identifiers are discarded after system delegation and that
+  all matching delegate files are searched
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-008" catalog="cat1.xml"
+  prefer="public" systemId="sys008" publicId="pub 008" expectedFile="res008">
+  Tests that public identifiers are normalized correctly
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-009" catalog="cat1.xml"
+  prefer="public" systemId="sys009" publicId="pub del 009" expectedFile="res009">
+  Tests that public identifiers are normalized correctly when delegating
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-010" catalog="cat1.xml"
+  prefer="public" systemId="sys010" publicId="pub010" expectedFile="res010">
+  Tests that nextCatalogs are processed in correct order
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-011" catalog="cat1.xml"
+  prefer="public" systemId="error"
+  publicId="urn:publicid:-:OASIS:DTD+DocBook+XML+V4.1.2:EN" expectedFile="docbookx.dtd">
+  Test that public identifier in publicid namespace is correctly unwrapped
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-012" catalog="cat1.xml"
+  prefer="public" systemId="error"
+  publicId="urn:publicid:ISO%2FIEC+10179%3A1996:DTD+DSSSL+Architecture:EN" expectedFile="dsssl.dtd">
+  Test that public identifier in publicid namespace is correctly unwrapped
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-013" catalog="cat1.xml"
+  prefer="system" systemId="urn:publicid:-:Acme,+Inc.:DTD+Book+Version+1.0"
+  expectedFile="book.dtd">
+  Test that system identifier in publicid namespace is correctly unwrapped and
+  that the system identifier is removed.
+</EntityTest> 
+
+<UriTest type="match" id="elcel-valid-014" catalog="cat1.xml"
+  uri="urn:publicid:-:Acme,+Inc.:DTD+Book+Version+1.0"
+  expectedFile="book.dtd">
+  Test that uri in publicid namespace is correctly unwrapped and
+  then processed according to external identifier resolution.
+</UriTest> 
+
+<UriTest type="match" id="elcel-valid-015" catalog="cat1.xml"
+  uri="uri015" expectedFile="res015">
+  Test that uri entries are processed in document order.
+</UriTest> 
+
+<UriTest type="match" id="elcel-valid-016" catalog="cat1.xml"
+  uri="uridel016" expectedFile="res016">
+  Test that uri delegation occurs correctly.
+</UriTest> 
+
+<UriTest type="nomatch" id="elcel-valid-017" catalog="cat1.xml"
+  uri="nomatch" expectedFile="uridel017">
+  Test that further catalogs are not searched after delegation.
+</UriTest> 
+
+<EntityTest type="nomatch" id="elcel-valid-018" catalog="cat1.xml"
+  prefer="public" systemId="sysdel018" publicId="pub018"
+  expectedFile="sysdel018">
+  Test that system delegation occurs before public matching.
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-019" catalog="cat1.xml"
+  prefer="public" systemId="error" publicId="pubdel019"
+  expectedFile="res019">
+  Test that public matching occurs before public delegation.
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-020" catalog="cat1.xml"
+  prefer="public" systemId="sysdel020" publicId="pub020"
+  expectedFile="res020">
+  Test that system matching occurs before system delegation.
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-021" catalog="cat1.xml"
+  prefer="public" systemId="http://www.sys021.com/rewrite.dtd" publicId="pub021"
+  expectedUri="../TestSuite/elcel/error/rewrite.dtd">
+  Test that rewriteSystem works as specified
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-022" catalog="cat1.xml"
+  prefer="public" systemId="http://www.sys022.com/rewrite.dtd" publicId="pub022"
+  expectedUri="http://www.newbase.com/dtds/rewrite.dtd">
+  Test that relative rewriteSystem works with xml:base
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-023" catalog="cat1.xml"
+  prefer="public" systemId="http://www.sys023.com/rewrite.dtd" publicId="pub023"
+  expectedUri="http://www.groupbase.com/dtds/rewrite.dtd">
+  Test that relative rewriteSystem works with xml:base at group level
+</EntityTest> 
+
+<UriTest type="match" id="elcel-valid-024" catalog="cat1.xml"
+  uri="http://www.sys024.com" expectedUri="http://www.res024.com">
+  Test that URI rewrite entries work.
+</UriTest> 
+
+<EntityTest type="match" id="elcel-valid-025" catalog="cat1.xml"
+  prefer="public" systemId="sys025%20with%20spaces%20and%20[%5E*)(]" publicId="pub025"
+  expectedFile="res025">
+  Test that normalised uris match equivalent unnormalised string in catalog
+</EntityTest> 
+
+<EntityTest type="match" id="elcel-valid-026" catalog="cat1.xml"
+  prefer="public" systemId="sys026 with spaces" publicId="pub026"
+  expectedFile="res026">
+  Test that unnormalised uris match equivalent normalised string in catalog
+</EntityTest> 
+
+
+</TestCases>

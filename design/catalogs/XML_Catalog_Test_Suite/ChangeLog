@@ -1,0 +1,141 @@
+2005-05-30  Frans Englich <frans.englich@telia.com>
+	
+	A slew of fixes to runTests.xsl, by Dave Pawson from xml-dev.
+
+2005-04-14  Frans Englich <frans.englich@telia.com>
+	
+	Added four tests, kde-valid-008 - 011, for testing uriSuffix and
+	systemSuffix, the new entries in XML Catalog 1.1, as per:
+
+	http://www.oasis-open.org/committees/download.php/12075/xml-catalogs.html
+
+2005-03-31  Frans Englich <frans.englich@telia.com>
+
+	Added test kde-valid-005, for testing that entries pointing
+	to the same catalog are not detected as circularities.
+
+2005-03-31  Frans Englich <frans.englich@telia.com>
+
+	Added tests kde-error-001, kde-error-002, kde-error-003, for testing
+	circularity detection when performing delegation for uri, system and
+	public.
+
+	Since the specification allows catalog loading at lookup time, the
+	circularity can emerge at isolated times, depending on type of
+	lookup.
+
+2005-03-30  Frans Englich <frans.englich@telia.com>
+	
+	Changed the XML format to not have the prefer attribute on UriTests
+	since the prefer option is irrelevant for URI resolution.
+
+	runTests.pl, xmlcatconf.dtd, and the test files were updated
+	accordingly.
+
+2005-03-29  Frans Englich <frans.englich@telia.com>
+
+	* kde/valid.xml:
+	* kde/cat1.xml:
+
+	Added test cases kde-valid-005 and kde-valid-006 which 
+	tests URI absolutization when performing URI resolution. ElCel has
+	tests for URI absolutization of systemIds in external 
+	identifier resolution.
+
+2005-03-29  Frans Englich <frans.englich@telia.com>
+
+	* kde/valid.xml:
+	* kde/cat1.xml:
+
+	Added two tests:
+
+	kde-valid-003:
+
+	Test that an entity resolution with a publicId, and a
+	systemId which is an URN equal to the publicId when unwrapped, 
+	matches the correct public entry as if only the publicId was 
+	supplied.
+
+	kde-valid-004:
+
+	Tests that an entity resolution with a publicId, and a systemId which 
+	is an URN and not equal to the publicId when unwrapped, is reported 
+	as a 'nomatch'. This dictates a certain implementation since the 
+	specification leaves it open for interpretation. This approach
+	is "strict", and denies invalid input, similar to how XML processing
+	stops when encountering non-wellformedness.
+
+2005-03-29  Frans Englich <frans.englich@telia.com>
+
+	* elcel/valid.xml:
+
+	elcel-valid-005
+2005-03-29  Frans Englich <frans.englich@telia.com>
+
+	* runTests.pl:
+	
+	Fixed a bug where test cases of type 'nomatch' were not reported as
+	success. I don't know if this introduces a regression for Elcel, if
+	they use this tool again. However, such things are hard to avoid since
+	the interfaces to the test suite aren't well defined. In either case
+	can older versions be retrieved from CVS.
+
+2005-03-28  Frans Englich <frans.englich@telia.com>
+
+	* runTests.py:
+	* runTests.xsl:
+
+	These are alternatives to runTests.pl which is not finished but work
+	in progress. The Python program outputs XML which runTests.xsl then 
+	transforms to an XHTML page, with statistics and so forth. It can be 
+	brought up to speed when the Test Suite becomes too large.
+	
+	* Makefile.am:
+
+	Added the target "xtests" for the new test utility.
+
+2005-03-28  Frans Englich <frans.englich@telia.com>
+	
+	* kde/:
+
+	Initial commit of tests from KDE. Two were commited: testing that the
+	external identifier algorithm does not continue into any nextCatalogs when 
+	having done system delegation or public delegation. Elcel's test had one, 
+	for URI delegation.
+
+2005-03-28  Frans Englich <frans.englich@telia.com>
+
+	* xmlcatconf.dtd:
+	* elcel/error.xml:
+
+	Made them validate, by fixing EntiyTest which should be UriTest, and
+	adding left out attributes in the DTD.
+
+2005-03-27  Frans Englich <frans.englich@telia.com>
+
+	* runTests.pl:
+	
+	Made print strings consistent.
+
+2005-03-20  Frans Englich <frans.englich@telia.com>
+
+	Rob Lugt noticed an error in the license preamble, which
+	was corrected in all files.
+
+2005-03-20  Frans Englich <frans.englich@telia.com>
+
+	* runTests.pl:
+		Did various small fixes. Removed various ElCel specific parts, 
+		removed a couple of Perl warnings, unified the tabbing.
+	
+2005-03-19  Frans Englich <frans.englich@telia.com>
+
+	* Changlog:
+	Added this Changelog file.
+
+2005-03-16  Frans Englich <frans.englich@telia.com>
+
+	Initial commit. The files recieved in private mail 
+	from Rob Lugt(ElCel Technology) were given license headers as 
+	per his instructions, and a TODO and README file was added.
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    XML Catalog Conformance Tests
+    Copyright 2001 ElCel Technology Limited
+    All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is fur-
+nished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+
+-->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+ <!-- This placed at start to prove that location of nextCatalog is irrelevant -->
+
+ <nextCatalog catalog="cat2.xml"/>
+
+ <!-- This catalog does not have a global prefer value.  This will
+      test the applications ability to set global prefer value -->
+
+ <public publicId="pub001" uri="res001"/>
+
+ <!-- tests to check delegates are processed in the correct order.
+      They should be processed in the order of length of the StartString -->
+
+ <delegatePublic publicIdStartString="pubde"  catalog="pubdel1.xml"/>
+ <delegatePublic publicIdStartString="pubdel" catalog="pubdel2.xml"/>
+ <delegateSystem systemIdStartString="sysde"  catalog="sysdel1.xml"/>
+ <delegateSystem systemIdStartString="sysdel" catalog="sysdel2.xml"/>
+ <delegateURI uriStartString="uride"  catalog="uridel1.xml"/>
+ <delegateURI uriStartString="uridel" catalog="uridel2.xml"/>
+
+ <!-- tests to check publicIdStartString is normalized -->
+
+ <delegatePublic publicIdStartString=" pub	 del " catalog="pubdel2.xml"/>
+
+ <!-- tests to check that system entries are preferred and that
+      document order is maintained -->
+
+ <public publicId="pub004" uri="error"/>
+ <system systemId="sys004" uri="res004"/>
+ <system systemId="sys004" uri="error"/>
+
+ <!-- tests to check public identifiers in the publicid namespace -->
+
+ <public publicId="-//OASIS//DTD DocBook XML V4.1.2//EN" uri="docbookx.dtd"/>
+ <public publicId="ISO/IEC 10179:1996//DTD DSSSL Architecture//EN" uri="dsssl.dtd"/>
+ <public publicId="-//Acme, Inc.//DTD Book Version 1.0" uri="book.dtd"/>
+ <system systemId="-//Acme, Inc.//DTD Book Version 1.0" uri="error"/>
+
+ <!-- tests to check uri entries are processed in document order -->
+ <uri name="uri015" uri="res015"/>
+ <uri name="uri015" uri="error"/>
+ <uri name="uri015" uri="error"/>
+
+ <!-- tests to check system delegation occurs before public matching -->
+ <public publicId="pub018" uri="error"/>
+
+ <!-- tests to check public delegation occurs after public matching -->
+ <public publicId="pubdel019" uri="res019"/>
+
+ <!-- tests to check system delegation occurs after system matching -->
+ <system systemId="sysdel020" uri="res020"/>
+
+ <!-- rewrite tests -->
+ <!-- add error entry to test that rewrite entries use longest match -->
+ <rewriteSystem systemIdStartString="http://www.sys021.com" rewritePrefix="error"/>
+ <rewriteSystem systemIdStartString="http://www.sys021.com" rewritePrefix="/dtds"/>
+ <rewriteSystem systemIdStartString="http://www.sys022.com"  rewritePrefix="dtds" xml:base="http://www.newbase.com/"/>
+ 
+ <group xml:base="http://www.groupbase.com/">
+  <rewriteSystem systemIdStartString="http://www.sys023.com" rewritePrefix="dtds"/>
+ </group>
+ 
+ <rewriteURI uriStartString="http://www.sys024.com" rewritePrefix="http://www.res024.com"/>
+
+ <!-- system id escaping tests -->
+ <system systemId="sys025 with spaces and [^*)(]" uri="res025"/>
+ <system systemId="sys026%20with%20spaces" uri="res026"/>
+
+</catalog>
