@@ -55,4 +55,12 @@ package Matreshka.XML_Catalogs.Resolvers is
      Resolved_URI : out League.Strings.Universal_String;
      Success      : out Boolean);
 
+   procedure Resolve_URI
+    (List         :
+       not null
+         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
+     URI          : League.Strings.Universal_String;
+     Resolved_URI : out League.Strings.Universal_String;
+     Success      : out Boolean);
+
 end Matreshka.XML_Catalogs.Resolvers;

@@ -70,6 +70,18 @@ package Matreshka.XML_Catalogs.Entry_Files is
    type Delegate_System_Entry;
    type Delegate_System_Entry_Access is access all Delegate_System_Entry;
 
+   type URI_Entry;
+   type URI_Entry_Access is access all URI_Entry;
+
+   type Rewrite_URI_Entry;
+   type Rewrite_URI_Entry_Access is access all Rewrite_URI_Entry;
+
+   type URI_Suffix_Entry;
+   type URI_Suffix_Entry_Access is access all URI_Suffix_Entry;
+
+   type Delegate_URI_Entry;
+   type Delegate_URI_Entry_Access is access all Delegate_URI_Entry;
+
    package Catalog_Entry_File_Vectors is
      new Ada.Containers.Vectors (Positive, Catalog_Entry_File_Access);
 
@@ -90,6 +102,18 @@ package Matreshka.XML_Catalogs.Entry_Files is
 
    package Delegate_System_Entry_Vectors is
      new Ada.Containers.Vectors (Positive, Delegate_System_Entry_Access);
+
+   package URI_Entry_Vectors is
+     new Ada.Containers.Vectors (Positive, URI_Entry_Access);
+
+   package Rewrite_URI_Entry_Vectors is
+     new Ada.Containers.Vectors (Positive, Rewrite_URI_Entry_Access);
+
+   package URI_Suffix_Entry_Vectors is
+     new Ada.Containers.Vectors (Positive, URI_Suffix_Entry_Access);
+
+   package Delegate_URI_Entry_Vectors is
+     new Ada.Containers.Vectors (Positive, Delegate_URI_Entry_Access);
 
    type Public_Entry is limited record
       Public_Id : League.Strings.Universal_String;
@@ -123,6 +147,26 @@ package Matreshka.XML_Catalogs.Entry_Files is
       Catalog   : League.Strings.Universal_String;
    end record;
 
+   type URI_Entry is limited record
+      Name : League.Strings.Universal_String;
+      URI  : League.Strings.Universal_String;
+   end record;
+
+   type Rewrite_URI_Entry is limited record
+      Prefix  : League.Strings.Universal_String;
+      Rewrite : League.Strings.Universal_String;
+   end record;
+
+   type URI_Suffix_Entry is limited record
+      Suffix : League.Strings.Universal_String;
+      URI    : League.Strings.Universal_String;
+   end record;
+
+   type Delegate_URI_Entry is limited record
+      Prefix  : League.Strings.Universal_String;
+      Catalog : League.Strings.Universal_String;
+   end record;
+
    type Catalog_Entry_File is tagged limited record
       Public_Entries          : Public_Entry_Vectors.Vector;
       --  List of 'public' entries of entry file.
@@ -141,6 +185,18 @@ package Matreshka.XML_Catalogs.Entry_Files is
 
       Delegate_System_Entries : Delegate_System_Entry_Vectors.Vector;
       --  List of 'delegateSystem' entries on the entry file.
+
+      URI_Entries             : URI_Entry_Vectors.Vector;
+      --  List of 'uri' entries of entry file.
+
+      Rewrite_URI_Entries     : Rewrite_URI_Entry_Vectors.Vector;
+      --  List of 'rewriteURI' entries of entry file.
+
+      URI_Suffix_Entries      : URI_Suffix_Entry_Vectors.Vector;
+      --  List of 'uriSuffix' entries of entry file.
+
+      Delegate_URI_Entries    : Delegate_URI_Entry_Vectors.Vector;
+      --  List of 'delegateURI' entries of entry file.
    end record;
 
    type Catalog_Entry_File_List is tagged limited record
@@ -184,5 +240,29 @@ package Matreshka.XML_Catalogs.Entry_Files is
      Delegate_System_Entry : not null Delegate_System_Entry_Access);
    --  Adds 'delegateSystem' entry into the end of list of 'delegateSystem'
    --  entries of the entry file.
+
+   procedure Append
+    (Self      : in out Catalog_Entry_File;
+     URI_Entry : not null URI_Entry_Access);
+   --  Adds 'uri' entry into the end of list of 'uri' entries of the entry
+   --  file.
+
+   procedure Append
+    (Self              : in out Catalog_Entry_File;
+     Rewrite_URI_Entry : not null Rewrite_URI_Entry_Access);
+   --  Adds 'rewriteURI' entry into the end of list of 'rewriteURI' entries of
+   --  the entry file.
+
+   procedure Append
+    (Self             : in out Catalog_Entry_File;
+     URI_Suffix_Entry : not null URI_Suffix_Entry_Access);
+   --  Adds 'uriSuffix' entry into the end of list of 'uriSuffix' entries of
+   --  the entry file.
+
+   procedure Append
+    (Self               : in out Catalog_Entry_File;
+     Delegate_URI_Entry : not null Delegate_URI_Entry_Access);
+   --  Adds 'delegateURI' entry into the end of list of 'delegateURI' entries
+   --  of the entry file.
 
 end Matreshka.XML_Catalogs.Entry_Files;

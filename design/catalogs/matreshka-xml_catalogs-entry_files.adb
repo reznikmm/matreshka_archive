@@ -71,6 +71,17 @@ package body Matreshka.XML_Catalogs.Entry_Files is
    ------------
 
    procedure Append
+    (Self               : in out Catalog_Entry_File;
+     Delegate_URI_Entry : not null Delegate_URI_Entry_Access) is
+   begin
+      Self.Delegate_URI_Entries.Append (Delegate_URI_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
     (Self         : in out Catalog_Entry_File;
      Public_Entry : not null Public_Entry_Access) is
    begin
@@ -93,6 +104,17 @@ package body Matreshka.XML_Catalogs.Entry_Files is
    ------------
 
    procedure Append
+    (Self              : in out Catalog_Entry_File;
+     Rewrite_URI_Entry : not null Rewrite_URI_Entry_Access) is
+   begin
+      Self.Rewrite_URI_Entries.Append (Rewrite_URI_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
     (Self         : in out Catalog_Entry_File;
      System_Entry : not null System_Entry_Access) is
    begin
@@ -108,6 +130,28 @@ package body Matreshka.XML_Catalogs.Entry_Files is
      System_Suffix_Entry : not null System_Suffix_Entry_Access) is
    begin
       Self.System_Suffix_Entries.Append (System_Suffix_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self      : in out Catalog_Entry_File;
+     URI_Entry : not null URI_Entry_Access) is
+   begin
+      Self.URI_Entries.Append (URI_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
+    (Self             : in out Catalog_Entry_File;
+     URI_Suffix_Entry : not null URI_Suffix_Entry_Access) is
+   begin
+      Self.URI_Suffix_Entries.Append (URI_Suffix_Entry);
    end Append;
 
 end Matreshka.XML_Catalogs.Entry_Files;

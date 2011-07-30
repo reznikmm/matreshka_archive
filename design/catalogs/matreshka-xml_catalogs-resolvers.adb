@@ -56,8 +56,17 @@ package body Matreshka.XML_Catalogs.Resolvers is
      Resolved_URI : out League.Strings.Universal_String;
      Delegate     : out
        Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access);
-   --  Attempts to resolve external identifier in the specified catalog entry
+   --  Attempts to resolve external identifier using specified catalog entry
    --  file.
+
+   procedure Resolve_URI
+    (File         :
+       not null Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access;
+     URI          : League.Strings.Universal_String;
+     Resolved_URI : out League.Strings.Universal_String;
+     Delegate     : out
+       Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access);
+   --  Attempts to resolve URI using specified catalog entry file.
 
    ---------------------------------
    -- Resolve_External_Identifier --
@@ -434,5 +443,229 @@ package body Matreshka.XML_Catalogs.Resolvers is
       --  entry file list, immediately after the current catalog entry file.
 
    end Resolve_External_Identifier;
+
+   -----------------
+   -- Resolve_URI --
+   -----------------
+
+   procedure Resolve_URI
+    (List         :
+       not null
+         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
+     URI          : League.Strings.Universal_String;
+     Resolved_URI : out League.Strings.Universal_String;
+     Success      : out Boolean)
+   is
+      Current_List :
+        Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access
+          := List;
+      Delegate :
+        Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
+
+   begin
+      Success := False;
+      Resolved_URI := League.Strings.Empty_Universal_String;
+
+      --  External loop handles delegation processing.
+
+      Delegation : loop
+         --  [XML Catalogs] 7.2.2. Resolution of URI references
+         --
+         --  "1.  Resolution begins in the first catalog entry file in the
+         --  current catalog list."
+
+         null;
+
+         for J in Current_List.Catalog_Entry_Files.First_Index
+                    ..  Current_List.Catalog_Entry_Files.Last_Index
+         loop
+            Resolve_URI
+             (Current_List.Catalog_Entry_Files.Element (J),
+              URI,
+              Resolved_URI,
+              Delegate);
+
+            if Delegate /= null then
+               exit;
+
+            elsif not Resolved_URI.Is_Empty then
+               Success := True;
+
+               return;
+            end if;
+
+            --  [XML Catalogs] 7.2.2. Resolution of URI references
+            --
+            --  "7. If there are one or more catalog entry files remaining on
+            --  the current catalog entry file list, load the next catalog
+            --  entry file and continue resolution efforts: return to step 2."
+         end loop;
+
+         exit when Delegate = null;
+         --  URI is not resolved and there is no delegation requested, return.
+
+         --  Make requested delegation list to be current list.
+
+         Current_List := Delegate;
+         Delegate := null;
+      end loop Delegation;
+   end Resolve_URI;
+
+   -----------------
+   -- Resolve_URI --
+   -----------------
+
+   procedure Resolve_URI
+    (File         :
+       not null Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access;
+     URI          : League.Strings.Universal_String;
+     Resolved_URI : out League.Strings.Universal_String;
+     Delegate     : out
+       Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access)
+   is
+      Length       : Natural;
+      Inserted        : Boolean;
+      Rewrite_URI  :
+        Matreshka.XML_Catalogs.Entry_Files.Rewrite_URI_Entry_Access;
+      URI_Suffix   :
+        Matreshka.XML_Catalogs.Entry_Files.URI_Suffix_Entry_Access;
+      Delegate_URI :
+        Matreshka.XML_Catalogs.Entry_Files.Delegate_URI_Entry_Vectors.Vector;
+
+   begin
+      --  [XML Catalogs] 7.2.2. Resolution of URI references
+      --
+      --  "2. If at least one matching uri entry exists, the (absolutized)
+      --  value of the uri attribute of the first matching uri entry is
+      --  returned."
+
+      for J in File.URI_Entries.First_Index .. File.URI_Entries.Last_Index loop
+         if URI = File.URI_Entries.Element (J).Name then
+            Resolved_URI := File.URI_Entries.Element (J).URI;
+
+            return;
+         end if;
+      end loop;
+
+      --  [XML Catalogs] 7.2.2. Resolution of URI references
+      --
+      --  "3. If at least one matching rewriteURI entry exists, rewriting is
+      --  performed.
+      --
+      --  If more than one rewriteURI entry matches, the matching entry with
+      --  the longest normalized uriStartString value is used.
+      --
+      --  Rewriting removes the matching prefix and replaces it with the
+      --  rewrite prefix identified by the matching rewriteURI entry. The
+      --  rewritten string is returned."
+
+      Length := 0;
+
+      for J in File.Rewrite_URI_Entries.First_Index
+                 .. File.Rewrite_URI_Entries.Last_Index
+      loop
+         if URI.Starts_With (File.Rewrite_URI_Entries.Element (J).Prefix) then
+            if Length < File.Rewrite_URI_Entries.Element (J).Prefix.Length then
+               Rewrite_URI := File.Rewrite_URI_Entries.Element (J);
+               Length := File.Rewrite_URI_Entries.Element (J).Prefix.Length;
+            end if;
+         end if;
+      end loop;
+
+      if Rewrite_URI /= null then
+         Resolved_URI :=
+           Rewrite_URI.Rewrite
+             & URI.Slice (Rewrite_URI.Prefix.Length + 1, URI.Length);
+
+         return;
+      end if;
+
+      --  [XML Catalogs] 7.2.2. Resolution of URI references
+      --
+      --  "4. If at least one matching uriSuffix entry exists, the
+      --  (absolutized) value of the uri attribute of the matching entry with
+      --  the longest normalized uriSuffix value is returned."
+
+      Length := 0;
+
+      for J in File.URI_Suffix_Entries.First_Index
+                 .. File.URI_Suffix_Entries.Last_Index
+      loop
+         if URI.Ends_With (File.URI_Suffix_Entries.Element (J).Suffix) then
+            if Length < File.URI_Suffix_Entries.Element (J).Suffix.Length then
+               URI_Suffix := File.URI_Suffix_Entries.Element (J);
+               Length := File.URI_Suffix_Entries.Element (J).Suffix.Length;
+            end if;
+         end if;
+      end loop;
+
+      if URI_Suffix /= null then
+         Resolved_URI := URI_Suffix.URI;
+
+         return;
+      end if;
+
+      --  [XML Catalogs] 7.2.2. Resolution of URI references
+      --
+      --  "5. If one or more delegateURI entries match, delegation is
+      --  performed.
+      --
+      --  If delegation is to be performed, a new catalog entry file list is
+      --  generated from the set of all matching delegateURI entries. The
+      --  (absolutized) value of the catalog attribute of each matching
+      --  delegateURI entry is inserted into the new catalog entry file list
+      --  such that the delegate entry with the longest matching uriStartString
+      --  is first on the list, the entry with the second longest match is
+      --  second, etc.
+      --
+      --  These are the only catalog entry files on the list, the current list
+      --  is not considered for the purpose of delegation. If delegation fails
+      --  to find a match, resolution for this entity does not resume with the
+      --  current list. (A subsequent resolution attempt for a different entity
+      --  begins with the original list; in other words the catalog entry file
+      --  list used for delegation is distinct and unrelated to the "normal"
+      --  catalog entry file list.)
+      --
+      --  Catalog resolution restarts using exclusively the catalog entry files
+      --  in this new list and the given URI reference: return to step 1.
+
+      for J in File.Delegate_URI_Entries.First_Index
+                 .. File.Delegate_URI_Entries.Last_Index
+      loop
+         if URI.Starts_With (File.Delegate_URI_Entries.Element (J).Prefix) then
+            Inserted := False;
+
+            for K in Delegate_URI.First_Index .. Delegate_URI.Last_Index loop
+               if File.Delegate_URI_Entries.Element (J).Prefix.Length
+                    > Delegate_URI.Element (K).Prefix.Length
+               then
+                  Delegate_URI.Insert
+                   (K, File.Delegate_URI_Entries.Element (J));
+                  Inserted := True;
+
+                  exit;
+               end if;
+            end loop;
+
+            if not Inserted then
+               Delegate_URI.Append
+                (File.Delegate_URI_Entries.Element (J));
+            end if;
+         end if;
+      end loop;
+
+      if not Delegate_URI.Is_Empty then
+         Delegate :=
+           new Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
+
+         for J in Delegate_URI.First_Index .. Delegate_URI.Last_Index loop
+            Delegate.Catalog_Entry_Files.Append
+             (Matreshka.XML_Catalogs.Loader.Load
+               (Delegate_URI.Element (J).Catalog));
+         end loop;
+
+         return;
+      end if;
+   end Resolve_URI;
 
 end Matreshka.XML_Catalogs.Resolvers;

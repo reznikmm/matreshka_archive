@@ -69,6 +69,8 @@ package body Matreshka.XML_Catalogs.Handlers is
      := League.Strings.To_Universal_String ("delegatePublic");
    Delegate_System_Tag_Name   : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("delegateSystem");
+   Delegate_URI_Tag_Name      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("delegateURI");
    Group_Tag_Name             : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("group");
    Next_Catalog_Tag_Name      : constant League.Strings.Universal_String
@@ -77,15 +79,23 @@ package body Matreshka.XML_Catalogs.Handlers is
      := League.Strings.To_Universal_String ("public");
    Rewrite_System_Tag_Name    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("rewriteSystem");
+   Rewrite_URI_Tag_Name       : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("rewriteURI");
    System_Tag_Name            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("system");
    System_Suffix_Tag_Name     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("systemSuffix");
+   URI_Tag_Name               : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("uri");
+   URI_Suffix_Tag_Name        : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("uriSuffix");
 
    --  Attributes names
 
    Catalog_Attribute_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("catalog");
+   Name_Attribute_Name             : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("name");
    Prefer_Attribute_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("prefer");
    Public_Id_Attribute_Name        : constant League.Strings.Universal_String
@@ -104,6 +114,10 @@ package body Matreshka.XML_Catalogs.Handlers is
        := League.Strings.To_Universal_String ("systemIdSuffix");
    URI_Attribute_Name              : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("uri");
+   URI_Start_String_Attribute_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("uriStartString");
+   URI_Suffix_Attribute_Name       : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("uriSuffix");
 
    --  Attribute values images
 
@@ -121,6 +135,11 @@ package body Matreshka.XML_Catalogs.Handlers is
     (System_Identifier : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Normalizes specified system identifier.
+
+   function Normalize_URI
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Normalizes specified URI.
 
    procedure Error
     (Self    : in out XML_Catalog_Handler'Class;
@@ -192,6 +211,30 @@ package body Matreshka.XML_Catalogs.Handlers is
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Success    : in out Boolean);
    --  Processes start of "delegateSystem" element.
+
+   procedure Process_URI_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean);
+   --  Processes start of "uri" element.
+
+   procedure Process_Rewrite_URI_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean);
+   --  Processes start of "rewriteURI" element.
+
+   procedure Process_URI_Suffix_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean);
+   --  Processes start of "uriSuffix" element.
+
+   procedure Process_Delegate_URI_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean);
+   --  Processes start of "delegateURI" element.
 
    ----------------------------------
    -- Check_No_Fragment_Identifier --
@@ -289,6 +332,19 @@ package body Matreshka.XML_Catalogs.Handlers is
 
       return System_Identifier;
    end Normalize_System_Identifier;
+
+   -------------------
+   -- Normalize_URI --
+   -------------------
+
+   function Normalize_URI
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      --  XXX Not implemented yet.
+
+      return URI;
+   end Normalize_URI;
 
    -----------------------------------
    -- Process_Catalog_Start_Element --
@@ -439,6 +495,53 @@ package body Matreshka.XML_Catalogs.Handlers is
       Self.Entry_File.Append
        (new Delegate_System_Entry'(System_Id, Catalog));
    end Process_Delegate_System_Start_Element;
+
+   ----------------------------------------
+   -- Process_Delegate_URI_Start_Element --
+   ----------------------------------------
+
+   procedure Process_Delegate_URI_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean)
+   is
+      --  [XML Catalogs] 6.5.12. The delegateURI Element
+      --
+      --  "The delegateURI element associates an alternate catalog with a
+      --  partial URI reference.
+      --
+      --  <delegateURI
+      --    id = id
+      --    uriStartString = string
+      --    catalog = uri-reference
+      --    xml:base = uri-reference />
+      --
+      --  A delegateURI entry matches a URI reference if the normalized value
+      --  (Section 6.3, “System Identifier and URI Normalization”) of the URI
+      --  reference begins precisely with the normalized value of the
+      --  uriStartString attribute of the entry.
+      --
+      --  If the value of the catalog attribute is relative, it must be made
+      --  absolute with respect to the base URI currently in effect."
+
+      URI     : constant League.Strings.Universal_String
+        := Normalize_URI (Attributes.Value (URI_Start_String_Attribute_Name));
+      Catalog : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Self.Locator.Base_URI,
+             Attributes.Value (Catalog_Attribute_Name));
+
+   begin
+      --  Check that 'uriStartString' is not empty.
+
+      if URI.Is_Empty then
+         Error (Self, "uriStartString is empty", Success);
+
+         return;
+      end if;
+
+      Self.Entry_File.Append (new Delegate_URI_Entry'(URI, Catalog));
+   end Process_Delegate_URI_Start_Element;
 
    -------------------------------
    -- Process_Group_End_Element --
@@ -605,6 +708,53 @@ package body Matreshka.XML_Catalogs.Handlers is
        (new Rewrite_System_Entry'(System_Id_Start_String, Rewrite_Prefix));
    end Process_Rewrite_System_Start_Element;
 
+   ---------------------------------------
+   -- Process_Rewrite_URI_Start_Element --
+   ---------------------------------------
+
+   procedure Process_Rewrite_URI_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean)
+   is
+      --  [XML Catalogs] 6.5.10. The rewriteURI Element
+      --
+      --  The rewriteURI element rewrites the beginning of a URI reference that
+      --  is not part of an external identifier.
+      --
+      --  <rewriteURI
+      --    id = id
+      --    uriStartString = string
+      --    rewritePrefix = uri-reference />
+      --
+      --  A rewriteURI entry matches a URI reference if the normalized value
+      --  (Section 6.3, “System Identifier and URI Normalization”) of the URI
+      --  reference begins precisely with the normalized value of the
+      --  uriStartString attribute of the entry.
+      --
+      --  If the value of the rewritePrefix attribute is relative, it must be
+      --  made absolute with respect to the base URI currently in effect.
+
+      URI_Start_String : constant League.Strings.Universal_String
+        := Normalize_URI (Attributes.Value (URI_Start_String_Attribute_Name));
+      Rewrite_Prefix   : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Self.Locator.Base_URI,
+             Attributes.Value (Rewrite_Prefix_Attribute_Name));
+
+   begin
+      --  Check that 'uriStartString' is not empty.
+
+      if URI_Start_String.Is_Empty then
+         Error (Self, "'uriStartString' is empty", Success);
+
+         return;
+      end if;
+
+      Self.Entry_File.Append
+       (new Rewrite_URI_Entry'(URI_Start_String, Rewrite_Prefix));
+   end Process_Rewrite_URI_Start_Element;
+
    ----------------------------------
    -- Process_System_Start_Element --
    ----------------------------------
@@ -719,6 +869,99 @@ package body Matreshka.XML_Catalogs.Handlers is
       Self.Entry_File.Append (new System_Suffix_Entry'(System_Id_Suffix, URI));
    end Process_System_Suffix_Start_Element;
 
+   -------------------------------
+   -- Process_URI_Start_Element --
+   -------------------------------
+
+   procedure Process_URI_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean)
+   is
+      --  [XML Catalogs] 6.5.9. The uri Element
+      --
+      --  The uri element associates an alternate URI reference with a URI
+      --  reference that is not part of an external identifier.
+      --
+      --  <uri
+      --    id = id
+      --    name = string
+      --    uri = uri-reference
+      --    xml:base = uri-reference />
+      --
+      --  A uri entry matches a URI reference if the normalized value (Section
+      --  6.3, “System Identifier and URI Normalization”) of the URI reference
+      --  is lexically identical to the normalized value of the name attribute
+      --  of the entry."
+      --
+      --  "If the value of the uri attribute is relative, it must be made
+      --  absolute with respect to the base URI currently in effect."
+
+      Name : constant League.Strings.Universal_String
+        := Normalize_URI (Attributes.Value (Name_Attribute_Name));
+      URI  : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Self.Locator.Base_URI, Attributes.Value (URI_Attribute_Name));
+
+   begin
+      --  Check that 'name' is not empty.
+
+      if Name.Is_Empty then
+         Error (Self, "name is empty", Success);
+
+         return;
+      end if;
+
+      Self.Entry_File.Append (new URI_Entry'(Name, URI));
+   end Process_URI_Start_Element;
+
+   --------------------------------------
+   -- Process_URI_Suffix_Start_Element --
+   --------------------------------------
+
+   procedure Process_URI_Suffix_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean)
+   is
+      --  [XML Catalogs] 6.5.11. The uriSuffix Element
+      --
+      --  "The uriSuffix element associates a URI reference with the suffix
+      --  portion of a URI reference that is not part of an external
+      --  identifier.
+      --
+      --  <uriSuffix
+      --    id = id
+      --    uriSuffix = string
+      --    uri = uri-reference
+      --    xml:base = uri-reference />
+      --
+      --  A uriSuffix entry matches a URI if the normalized value (Section 6.3,
+      --  “System Identifier and URI Normalization”) of the URI ends precisely
+      --  with the normalized value of the uriSuffix attribute of the entry.
+      --
+      --  If the value of the uri attribute is relative, it must be made
+      --  absolute with respect to the base URI currently in effect.
+
+      URI_Suffix : constant League.Strings.Universal_String
+        := Normalize_URI (Attributes.Value (URI_Suffix_Attribute_Name));
+      URI        : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Self.Locator.Base_URI,
+             Attributes.Value (URI_Attribute_Name));
+
+   begin
+      --  Check that 'uriSuffix' is not empty.
+
+      if URI_Suffix.Is_Empty then
+         Error (Self, "uriSuffix is empty", Success);
+
+         return;
+      end if;
+
+      Self.Entry_File.Append (new URI_Suffix_Entry'(URI_Suffix, URI));
+   end Process_URI_Suffix_Start_Element;
+
    --------------------------
    -- Set_Document_Locator --
    --------------------------
@@ -789,6 +1032,9 @@ package body Matreshka.XML_Catalogs.Handlers is
       elsif Local_Name = Delegate_System_Tag_Name then
          Process_Delegate_System_Start_Element (Self, Attributes, Success);
 
+      elsif Local_Name = Delegate_URI_Tag_Name then
+         Process_Delegate_URI_Start_Element (Self, Attributes, Success);
+
       elsif Local_Name = Group_Tag_Name then
          Process_Group_Start_Element (Self, Attributes, Success);
 
@@ -801,11 +1047,20 @@ package body Matreshka.XML_Catalogs.Handlers is
       elsif Local_Name = Rewrite_System_Tag_Name then
          Process_Rewrite_System_Start_Element (Self, Attributes, Success);
 
+      elsif Local_Name = Rewrite_URI_Tag_Name then
+         Process_Rewrite_URI_Start_Element (Self, Attributes, Success);
+
       elsif Local_Name = System_Tag_Name then
          Process_System_Start_Element (Self, Attributes, Success);
 
       elsif Local_Name = System_Suffix_Tag_Name then
          Process_System_Suffix_Start_Element (Self, Attributes, Success);
+
+      elsif Local_Name = URI_Tag_Name then
+         Process_URI_Start_Element (Self, Attributes, Success);
+
+      elsif Local_Name = URI_Suffix_Tag_Name then
+         Process_URI_Suffix_Start_Element (Self, Attributes, Success);
       end if;
    end Start_Element;
 
