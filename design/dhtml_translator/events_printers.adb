@@ -143,14 +143,7 @@ package body Events_Printers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean) is
    begin
-      if not (Namespace_URI = ASP_Namespace) then
-         Put_Line(+"      Writer.End_Element (Namespace_URI => +" & '"'
-                  & Namespace_URI & '"' & ",");
-         Put_Line(+"                            Local_Name => +" & '"'
-                  & Local_Name & '"' & ",");
-         Put_Line(+"                            Qualified_Name => +" & '"'
-                  & Qualified_Name & '"' & ");");
-      else
+      if Namespace_URI = ASP_Namespace then
          declare
             Tag : constant ASP_Tags := ASP_Tags'Value
               (Ada.Characters.Conversions.To_String
@@ -174,7 +167,13 @@ package body Events_Printers is
                when others => null;
             end case;
          end;
-
+      else
+         Put_Line(+"      Writer.End_Element (Namespace_URI => +" & '"'
+                  & Namespace_URI & '"' & ",");
+         Put_Line(+"                            Local_Name => +" & '"'
+                  & Local_Name & '"' & ",");
+         Put_Line(+"                            Qualified_Name => +" & '"'
+                  & Qualified_Name & '"' & ");");
       end if;
    end End_Element;
 
@@ -281,34 +280,7 @@ package body Events_Printers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean) is
    begin
-      if not (Namespace_URI = ASP_Namespace) then
-         Put_Line (+"      Attributes.Clear;");
-         for J in 1 .. Attributes.Length loop
-            if not (Attributes.Namespace_URI (J) = ASP_Namespace) then
-               Put_Line (+"      Attributes.Set_Value (Qualified_Name => +"
-                         & '"' & Attributes.Qualified_Name (J) & '"' & ", "
-                         & "Value => +" & '"' & Attributes.Value (J) & '"'
-                         & ");");
-            else
-               declare
-                  --Program_Attribute : ASP_Attributes;
-               begin
-                  -- exclusive situation
-                  null;
-               end;
-            end if;
-         end loop;
-
-         Put_Line(+"      Writer.Start_Element (Namespace_URI => +" & '"'
-                  & Namespace_URI & '"' & ",");
-         Put_Line(+"                            Local_Name => +" & '"'
-                  & Local_Name & '"' & ",");
-         Put_Line(+"                            Qualified_Name => +" & '"'
-                  & Qualified_Name & '"' & ",");
-         Put_Line(+"                            Attributes => Attributes);");
-
-
-      else
+      if Namespace_URI = ASP_Namespace then
          declare
             Tag : constant ASP_Tags := ASP_Tags'Value
               (Ada.Characters.Conversions.To_String
@@ -348,6 +320,32 @@ package body Events_Printers is
                when others => null;
             end case;
          end;
+      else
+         Put_Line (+"      Attributes.Clear;");
+         for J in 1 .. Attributes.Length loop
+            if not (Attributes.Namespace_URI (J) = ASP_Namespace) then
+               Put_Line (+"      Attributes.Set_Value (Qualified_Name => +"
+                         & '"' & Attributes.Qualified_Name (J) & '"' & ", "
+                         & "Value => +" & '"' & Attributes.Value (J) & '"'
+                         & ");");
+            else
+               declare
+                  --Program_Attribute : ASP_Attributes;
+               begin
+                  -- exclusive situation
+                  null;
+               end;
+            end if;
+         end loop;
+
+         Put_Line(+"      Writer.Start_Element (Namespace_URI => +" & '"'
+                  & Namespace_URI & '"' & ",");
+         Put_Line(+"                            Local_Name => +" & '"'
+                  & Local_Name & '"' & ",");
+         Put_Line(+"                            Qualified_Name => +" & '"'
+                  & Qualified_Name & '"' & ",");
+         Put_Line(+"                            Attributes => Attributes);");
+
       end if;
    end Start_Element;
 
