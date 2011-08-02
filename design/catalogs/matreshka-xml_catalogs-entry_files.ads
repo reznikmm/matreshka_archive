@@ -82,6 +82,9 @@ package Matreshka.XML_Catalogs.Entry_Files is
    type Delegate_URI_Entry;
    type Delegate_URI_Entry_Access is access all Delegate_URI_Entry;
 
+   type Next_Catalog_Entry;
+   type Next_Catalog_Entry_Access is access all Next_Catalog_Entry;
+
    package Catalog_Entry_File_Vectors is
      new Ada.Containers.Vectors (Positive, Catalog_Entry_File_Access);
 
@@ -114,6 +117,9 @@ package Matreshka.XML_Catalogs.Entry_Files is
 
    package Delegate_URI_Entry_Vectors is
      new Ada.Containers.Vectors (Positive, Delegate_URI_Entry_Access);
+
+   package Next_Catalog_Entry_Vectors is
+     new Ada.Containers.Vectors (Positive, Next_Catalog_Entry_Access);
 
    type Public_Entry is limited record
       Public_Id : League.Strings.Universal_String;
@@ -167,6 +173,12 @@ package Matreshka.XML_Catalogs.Entry_Files is
       Catalog : League.Strings.Universal_String;
    end record;
 
+   type Next_Catalog_Entry is limited record
+      Catalog             : League.Strings.Universal_String;
+      Default_Prefer_Mode : Prefer_Mode;
+      File                : Catalog_Entry_File_Access;
+   end record;
+
    type Catalog_Entry_File is tagged limited record
       Default_Prefer_Mode     : Prefer_Mode;
       --  Default prefer mode.
@@ -200,6 +212,9 @@ package Matreshka.XML_Catalogs.Entry_Files is
 
       Delegate_URI_Entries    : Delegate_URI_Entry_Vectors.Vector;
       --  List of 'delegateURI' entries of entry file.
+
+      Next_Catalog_Entries    : Next_Catalog_Entry_Vectors.Vector;
+      --  List of 'nextCatalog' entries of entry file.
    end record;
 
    type Catalog_Entry_File_List is tagged limited record
@@ -266,6 +281,12 @@ package Matreshka.XML_Catalogs.Entry_Files is
     (Self               : in out Catalog_Entry_File;
      Delegate_URI_Entry : not null Delegate_URI_Entry_Access);
    --  Adds 'delegateURI' entry into the end of list of 'delegateURI' entries
+   --  of the entry file.
+
+   procedure Append
+    (Self               : in out Catalog_Entry_File;
+     Next_Catalog_Entry : not null Next_Catalog_Entry_Access);
+   --  Adds 'nextCatalog' entry into the end of list of 'nextCatalog' entries
    --  of the entry file.
 
 end Matreshka.XML_Catalogs.Entry_Files;

@@ -235,6 +235,12 @@ package body Matreshka.XML_Catalogs.Handlers is
      Success    : in out Boolean);
    --  Processes start of "delegateURI" element.
 
+   procedure Process_Next_Catalog_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean);
+   --  Processes start of "nextCatalog" element.
+
    ----------------------------------
    -- Check_No_Fragment_Identifier --
    ----------------------------------
@@ -409,13 +415,10 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  </catalog>"
 
       Prefer_Index : constant Natural
-        := Attributes.Index (XML_Catalogs_Namespace, Prefer_Attribute_Name);
+        := Attributes.Index (Prefer_Attribute_Name);
 
    begin
-      --  Analyze 'prefer' attribute when present, otherwise set preference
-      --  mode to unknown.
-      --
-      --  XXX Default value should be checked in Specification.
+      --  Analyze 'prefer' attribute when present.
 
       if Prefer_Index /= 0 then
          if Attributes.Value (Prefer_Index) = Public_Image then
@@ -433,6 +436,7 @@ package body Matreshka.XML_Catalogs.Handlers is
 
       Self.Entry_File :=
         new Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File;
+      Self.Entry_File.Default_Prefer_Mode := Self.Default_Prefer_Mode;
    end Process_Catalog_Start_Element;
 
    -------------------------------------------
@@ -619,7 +623,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  </group>"
 
       Prefer_Index : constant Natural
-        := Attributes.Index (XML_Catalogs_Namespace, Prefer_Attribute_Name);
+        := Attributes.Index (Prefer_Attribute_Name);
 
    begin
       --  Save current preference mode, analyze 'prefer' attribute when
@@ -639,6 +643,43 @@ package body Matreshka.XML_Catalogs.Handlers is
          end if;
       end if;
    end Process_Group_Start_Element;
+
+   ----------------------------------------
+   -- Process_Next_Catalog_Start_Element --
+   ----------------------------------------
+
+   procedure Process_Next_Catalog_Start_Element
+    (Self       : in out XML_Catalog_Handler'Class;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean)
+   is
+      --  [XML Catalogs] 6.5.13. The nextCatalog Element
+      --
+      --  "The nextCatalog elements indicate additional catalog entry file(s)
+      --  to be considered during the process of resolution.
+      --
+      --  <nextCatalog
+      --    id = id
+      --    catalog = uri-reference
+      --    xml:base = uri-reference />
+      --
+      --  If the value of the catalog attribute is relative, it must be made
+      --  absolute with respect to the base URI currently in effect.
+      --
+      --  Catalogs loaded due to a nextCatalog directive have an initial base
+      --  URI that is dependent on the location of the loaded catalog entry
+      --  file. No xml:base information is inherited from the originating
+      --  catalog.
+
+      Catalog : constant League.Strings.Universal_String
+        := Matreshka.Internals.URI_Utilities.Construct_System_Id
+            (Self.Locator.Base_URI,
+             Attributes.Value (Catalog_Attribute_Name));
+
+   begin
+      Self.Entry_File.Append
+       (new Next_Catalog_Entry'(Catalog, Self.Default_Prefer_Mode, null));
+   end Process_Next_Catalog_Start_Element;
 
    ----------------------------------
    -- Process_Public_Start_Element --
@@ -1088,7 +1129,7 @@ package body Matreshka.XML_Catalogs.Handlers is
          Process_Group_Start_Element (Self, Attributes, Success);
 
       elsif Local_Name = Next_Catalog_Tag_Name then
-         null;
+         Process_Next_Catalog_Start_Element (Self, Attributes, Success);
 
       elsif Local_Name = Public_Tag_Name then
          Process_Public_Start_Element (Self, Attributes, Success);

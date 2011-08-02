@@ -82,6 +82,17 @@ package body Matreshka.XML_Catalogs.Entry_Files is
    ------------
 
    procedure Append
+    (Self               : in out Catalog_Entry_File;
+     Next_Catalog_Entry : not null Next_Catalog_Entry_Access) is
+   begin
+      Self.Next_Catalog_Entries.Append (Next_Catalog_Entry);
+   end Append;
+
+   ------------
+   -- Append --
+   ------------
+
+   procedure Append
     (Self         : in out Catalog_Entry_File;
      Public_Entry : not null Public_Entry_Access) is
    begin
