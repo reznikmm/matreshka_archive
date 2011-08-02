@@ -44,6 +44,7 @@
 with Ada.Wide_Wide_Text_IO;
 
 with Matreshka.Internals.URI_Utilities;
+with Matreshka.XML_Catalogs.Normalization;
 
 package body Matreshka.XML_Catalogs.Handlers is
 
@@ -124,21 +125,6 @@ package body Matreshka.XML_Catalogs.Handlers is
      := League.Strings.To_Universal_String ("system");
    Public_Image : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("public");
-
-   function Normalize_Public_Identifier
-    (Public_Identifier : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Normalizes specified public identifier.
-
-   function Normalize_System_Identifier
-    (System_Identifier : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Normalizes specified system identifier.
-
-   function Normalize_URI
-    (URI : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Normalizes specified URI.
 
    procedure Error
     (Self    : in out XML_Catalog_Handler'Class;
@@ -351,45 +337,6 @@ package body Matreshka.XML_Catalogs.Handlers is
       return Self.Entry_File;
    end Get_Catalog_Entry_File;
 
-   ---------------------------------
-   -- Normalize_Public_Identifier --
-   ---------------------------------
-
-   function Normalize_Public_Identifier
-    (Public_Identifier : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      --  XXX Not implemented yet.
-
-      return Public_Identifier;
-   end Normalize_Public_Identifier;
-
-   ---------------------------------
-   -- Normalize_System_Identifier --
-   ---------------------------------
-
-   function Normalize_System_Identifier
-    (System_Identifier : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      --  XXX Not implemented yet.
-
-      return System_Identifier;
-   end Normalize_System_Identifier;
-
-   -------------------
-   -- Normalize_URI --
-   -------------------
-
-   function Normalize_URI
-    (URI : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      --  XXX Not implemented yet.
-
-      return URI;
-   end Normalize_URI;
-
    -----------------------------------
    -- Process_Catalog_Start_Element --
    -----------------------------------
@@ -468,7 +415,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  absolute with respect to the base URI currently in effect."
 
       Public_Id : constant League.Strings.Universal_String
-        := Normalize_Public_Identifier
+        := Matreshka.XML_Catalogs.Normalization.Normalize_Public_Identifier
             (Attributes.Value (Public_Id_Start_String_Attribute_Name));
       Catalog   : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
@@ -518,7 +465,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  absolute with respect to the base URI currently in effect."
 
       System_Id : constant League.Strings.Universal_String
-        := Normalize_System_Identifier
+        := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Start_String_Attribute_Name));
       Catalog   : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
@@ -567,7 +514,8 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  absolute with respect to the base URI currently in effect."
 
       URI     : constant League.Strings.Universal_String
-        := Normalize_URI (Attributes.Value (URI_Start_String_Attribute_Name));
+        := Matreshka.XML_Catalogs.Normalization.Normalize_URI
+            (Attributes.Value (URI_Start_String_Attribute_Name));
       Catalog : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
             (Self.Locator.Base_URI,
@@ -711,7 +659,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  reference should not include a fragment identifier."
 
       Public_Id : constant League.Strings.Universal_String
-        := Normalize_Public_Identifier
+        := Matreshka.XML_Catalogs.Normalization.Normalize_Public_Identifier
             (Attributes.Value (Public_Id_Attribute_Name));
       URI       : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
@@ -767,7 +715,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  made absolute with respect to the base URI currently in effect.
 
       System_Id_Start_String : constant League.Strings.Universal_String
-        := Normalize_System_Identifier
+        := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Start_String_Attribute_Name));
       Rewrite_Prefix         : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
@@ -815,7 +763,8 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  made absolute with respect to the base URI currently in effect.
 
       URI_Start_String : constant League.Strings.Universal_String
-        := Normalize_URI (Attributes.Value (URI_Start_String_Attribute_Name));
+        := Matreshka.XML_Catalogs.Normalization.Normalize_URI
+            (Attributes.Value (URI_Start_String_Attribute_Name));
       Rewrite_Prefix   : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
             (Self.Locator.Base_URI,
@@ -864,7 +813,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  reference should not include a fragment identifier."
 
       System_Id : constant League.Strings.Universal_String
-        := Normalize_System_Identifier
+        := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Attribute_Name));
       URI       : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
@@ -921,7 +870,7 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  reference should not include a fragment identifier."
 
       System_Id_Suffix : constant League.Strings.Universal_String
-        := Normalize_System_Identifier
+        := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Suffix_Attribute_Name));
       URI              : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
@@ -977,7 +926,8 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  absolute with respect to the base URI currently in effect."
 
       Name : constant League.Strings.Universal_String
-        := Normalize_URI (Attributes.Value (Name_Attribute_Name));
+        := Matreshka.XML_Catalogs.Normalization.Normalize_URI
+            (Attributes.Value (Name_Attribute_Name));
       URI  : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
             (Self.Locator.Base_URI, Attributes.Value (URI_Attribute_Name));
@@ -1023,7 +973,8 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  absolute with respect to the base URI currently in effect.
 
       URI_Suffix : constant League.Strings.Universal_String
-        := Normalize_URI (Attributes.Value (URI_Suffix_Attribute_Name));
+        := Matreshka.XML_Catalogs.Normalization.Normalize_URI
+            (Attributes.Value (URI_Suffix_Attribute_Name));
       URI        : constant League.Strings.Universal_String
         := Matreshka.Internals.URI_Utilities.Construct_System_Id
             (Self.Locator.Base_URI,
