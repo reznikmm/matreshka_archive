@@ -46,8 +46,14 @@ with Matreshka.XML_Catalogs.Entry_Files;
 
 package Matreshka.XML_Catalogs.Loader is
 
+   function Load_By_File_Name
+    (Name   : League.Strings.Universal_String;
+     Prefer : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode)
+       return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access;
+
    function Load
-    (URI : League.Strings.Universal_String)
+    (URI    : League.Strings.Universal_String;
+     Prefer : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode)
        return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access;
 
 end Matreshka.XML_Catalogs.Loader;

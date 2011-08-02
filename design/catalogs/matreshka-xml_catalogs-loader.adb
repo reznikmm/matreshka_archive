@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.XML_Catalogs.Handlers;
+with XML.SAX.Input_Sources.Streams.Files;
+with XML.SAX.Simple_Readers;
 
 package body Matreshka.XML_Catalogs.Loader is
 
@@ -49,10 +52,46 @@ package body Matreshka.XML_Catalogs.Loader is
    ----------
 
    function Load
-    (URI : League.Strings.Universal_String)
-       return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access is
+    (URI    : League.Strings.Universal_String;
+     Prefer : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode)
+       return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access
+   is
+      Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+      Handler : aliased Matreshka.XML_Catalogs.Handlers.XML_Catalog_Handler;
+      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+
    begin
-      return null;
+      Handler.Set_Default_Prefer_Mode (Prefer);
+      Reader.Set_Content_Handler (Handler'Unchecked_Access);
+
+      Source.Open_By_URI (URI);
+      Reader.Parse (Source'Unchecked_Access);
+
+      return Handler.Get_Catalog_Entry_File;
    end Load;
+
+   -----------------------
+   -- Load_By_File_Name --
+   -----------------------
+
+   function Load_By_File_Name
+    (Name   : League.Strings.Universal_String;
+     Prefer : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode)
+       return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access
+   is
+      Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+      Handler : aliased Matreshka.XML_Catalogs.Handlers.XML_Catalog_Handler;
+      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+
+   begin
+      Handler.Set_Default_Prefer_Mode (Prefer);
+      Reader.Set_Content_Handler (Handler'Unchecked_Access);
+      Reader.Set_Error_Handler (Handler'Unchecked_Access);
+
+      Source.Open_By_File_Name (Name);
+      Reader.Parse (Source'Unchecked_Access);
+
+      return Handler.Get_Catalog_Entry_File;
+   end Load_By_File_Name;
 
 end Matreshka.XML_Catalogs.Loader;

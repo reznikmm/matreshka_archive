@@ -44,7 +44,7 @@
 with League.Strings;
 with Matreshka.XML_Catalogs.Entry_Files;
 
-package Matreshka.XML_Catalogs.Resolvers is
+package Matreshka.XML_Catalogs.Resolver is
 
    procedure Resolve_External_Identifier
     (List         :
@@ -63,4 +63,4 @@ package Matreshka.XML_Catalogs.Resolvers is
      Resolved_URI : out League.Strings.Universal_String;
      Success      : out Boolean);
 
-end Matreshka.XML_Catalogs.Resolvers;
+end Matreshka.XML_Catalogs.Resolver;

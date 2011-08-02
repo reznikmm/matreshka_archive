@@ -168,6 +168,9 @@ package Matreshka.XML_Catalogs.Entry_Files is
    end record;
 
    type Catalog_Entry_File is tagged limited record
+      Default_Prefer_Mode     : Prefer_Mode;
+      --  Default prefer mode.
+
       Public_Entries          : Public_Entry_Vectors.Vector;
       --  List of 'public' entries of entry file.
 

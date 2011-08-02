@@ -41,15 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+
 with Matreshka.Internals.URI_Utilities;
 
 package body Matreshka.XML_Catalogs.Handlers is
 
    use Matreshka.XML_Catalogs.Entry_Files;
    use type League.Strings.Universal_String;
-
-   Default_Prefer_Mode : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode
-     := System;
 
    XML_Catalogs_Namespace     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
@@ -297,6 +296,20 @@ package body Matreshka.XML_Catalogs.Handlers is
       Success := False;
    end Error;
 
+   -----------
+   -- Error --
+   -----------
+
+   overriding procedure Error
+    (Self       : in out XML_Catalog_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Ada.Wide_Wide_Text_IO.Standard_Error,
+        "(error) " & Occurrence.Message.To_Wide_Wide_String);
+   end Error;
+
    ------------------
    -- Error_String --
    ------------------
@@ -306,6 +319,31 @@ package body Matreshka.XML_Catalogs.Handlers is
    begin
       return Self.Diagnosis;
    end Error_String;
+
+   -----------------
+   -- Fatal_Error --
+   -----------------
+
+   overriding procedure Fatal_Error
+    (Self       : in out XML_Catalog_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Ada.Wide_Wide_Text_IO.Standard_Error,
+        "(fatal) " & Occurrence.Message.To_Wide_Wide_String);
+   end Fatal_Error;
+
+   ----------------------------
+   -- Get_Catalog_Entry_File --
+   ----------------------------
+
+   function Get_Catalog_Entry_File
+    (Self : XML_Catalog_Handler)
+       return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access is
+   begin
+      return Self.Entry_File;
+   end Get_Catalog_Entry_File;
 
    ---------------------------------
    -- Normalize_Public_Identifier --
@@ -962,6 +1000,17 @@ package body Matreshka.XML_Catalogs.Handlers is
       Self.Entry_File.Append (new URI_Suffix_Entry'(URI_Suffix, URI));
    end Process_URI_Suffix_Start_Element;
 
+   -----------------------------
+   -- Set_Default_Prefer_Mode --
+   -----------------------------
+
+   procedure Set_Default_Prefer_Mode
+    (Self : in out XML_Catalog_Handler'Class;
+     Mode : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode) is
+   begin
+      Self.Default_Prefer_Mode := Mode;
+   end Set_Default_Prefer_Mode;
+
    --------------------------
    -- Set_Document_Locator --
    --------------------------
@@ -982,7 +1031,7 @@ package body Matreshka.XML_Catalogs.Handlers is
      Success : in out Boolean) is
    begin
       Self.Diagnosis := League.Strings.Empty_Universal_String;
-      Self.Current_Prefer_Mode := Default_Prefer_Mode;
+      Self.Current_Prefer_Mode := Self.Default_Prefer_Mode;
    end Start_Document;
 
    ---------------
@@ -1063,5 +1112,19 @@ package body Matreshka.XML_Catalogs.Handlers is
          Process_URI_Suffix_Start_Element (Self, Attributes, Success);
       end if;
    end Start_Element;
+
+   -------------
+   -- Warning --
+   -------------
+
+   overriding procedure Warning
+    (Self       : in out XML_Catalog_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean) is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Ada.Wide_Wide_Text_IO.Standard_Error,
+        "(warning) " & Occurrence.Message.To_Wide_Wide_String);
+   end Warning;
 
 end Matreshka.XML_Catalogs.Handlers;

@@ -47,23 +47,39 @@
 private with League.Strings;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
+with XML.SAX.Error_Handlers;
 with XML.SAX.Lexical_Handlers;
 private with XML.SAX.Locators;
+private with XML.SAX.Parse_Exceptions;
 
-private with Matreshka.XML_Catalogs.Entry_Files;
+with Matreshka.XML_Catalogs.Entry_Files;
 
 package Matreshka.XML_Catalogs.Handlers is
 
    type XML_Catalog_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.Error_Handlers.SAX_Error_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with private;
+
+   function Get_Catalog_Entry_File
+    (Self : XML_Catalog_Handler)
+       return Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access;
+
+   procedure Set_Default_Prefer_Mode
+    (Self : in out XML_Catalog_Handler'Class;
+     Mode : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode);
 
 private
 
    type XML_Catalog_Handler is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
+       and XML.SAX.Error_Handlers.SAX_Error_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
+      Default_Prefer_Mode  : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode
+        := Matreshka.XML_Catalogs.Entry_Files.Public;
+      --  Default prefer mode.
+
       Current_Prefer_Mode  : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode;
       Previous_Prefer_Mode : Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode;
       --  Preference mode can be defined for two grouping elements: "catalog"
@@ -100,10 +116,20 @@ private
    --  reports an error. The reader uses the function Error_String to get the
    --  error message.
 
+   overriding procedure Error
+    (Self       : in out XML_Catalog_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
+
    overriding function Error_String
     (Self : XML_Catalog_Handler) return League.Strings.Universal_String;
    --  The reader calls this function to get an error string, e.g. if any of
    --  the handler subprograms sets Success to False.
+
+   overriding procedure Fatal_Error
+    (Self       : in out XML_Catalog_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
    overriding procedure Set_Document_Locator
     (Self    : in out XML_Catalog_Handler;
@@ -204,5 +230,10 @@ private
    --  If this subprogram sets Success to False the reader stops parsing and
    --  reports an error. The reader uses the function Error_String to get the
    --  error message.
+
+   overriding procedure Warning
+    (Self       : in out XML_Catalog_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+     Success    : in out Boolean);
 
 end Matreshka.XML_Catalogs.Handlers;

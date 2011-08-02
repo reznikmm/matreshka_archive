@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.XML_Catalogs.Loader;
 
-package body Matreshka.XML_Catalogs.Resolvers is
+package body Matreshka.XML_Catalogs.Resolver is
 
    use Matreshka.XML_Catalogs.Entry_Files;
    use type League.Strings.Universal_String;
@@ -139,6 +139,8 @@ package body Matreshka.XML_Catalogs.Resolvers is
          Current_List := Delegate;
          Delegate := null;
       end loop Delegation;
+
+      Resolved_URI := System_Id;
    end Resolve_External_Identifier;
 
    ---------------------------------
@@ -320,7 +322,8 @@ package body Matreshka.XML_Catalogs.Resolvers is
             loop
                Delegate.Catalog_Entry_Files.Append
                 (Matreshka.XML_Catalogs.Loader.Load
-                  (Delegate_System.Element (J).Catalog));
+                  (Delegate_System.Element (J).Catalog,
+                   File.Default_Prefer_Mode));
             end loop;
 
             Public_Id.Clear;
@@ -425,7 +428,8 @@ package body Matreshka.XML_Catalogs.Resolvers is
             loop
                Delegate.Catalog_Entry_Files.Append
                 (Matreshka.XML_Catalogs.Loader.Load
-                  (Delegate_Public.Element (J).Catalog));
+                  (Delegate_Public.Element (J).Catalog,
+                   File.Default_Prefer_Mode));
             end loop;
 
             System_Id.Clear;
@@ -509,6 +513,8 @@ package body Matreshka.XML_Catalogs.Resolvers is
          Current_List := Delegate;
          Delegate := null;
       end loop Delegation;
+
+      Resolved_URI := URI;
    end Resolve_URI;
 
    -----------------
@@ -661,11 +667,12 @@ package body Matreshka.XML_Catalogs.Resolvers is
          for J in Delegate_URI.First_Index .. Delegate_URI.Last_Index loop
             Delegate.Catalog_Entry_Files.Append
              (Matreshka.XML_Catalogs.Loader.Load
-               (Delegate_URI.Element (J).Catalog));
+               (Delegate_URI.Element (J).Catalog,
+                File.Default_Prefer_Mode));
          end loop;
 
          return;
       end if;
    end Resolve_URI;
 
-end Matreshka.XML_Catalogs.Resolvers;
+end Matreshka.XML_Catalogs.Resolver;
