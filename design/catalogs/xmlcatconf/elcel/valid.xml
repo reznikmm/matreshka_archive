@@ -148,7 +148,7 @@ IN THE SOFTWARE.
 
 <EntityTest type="match" id="elcel-valid-021" catalog="cat1.xml"
   prefer="public" systemId="http://www.sys021.com/rewrite.dtd" publicId="pub021"
-  expectedUri="../TestSuite/elcel/error/rewrite.dtd">
+  expectedUri="error/rewrite.dtd">
   Test that rewriteSystem works as specified
 </EntityTest> 
 
