@@ -165,10 +165,7 @@ package body XML.SAX.Pretty_Writers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean)
-   is
-      C  : Mappings.Cursor := Mappings.No_Element;
-
+     Success        : in out Boolean) is
    begin
       --  Validity check: Namespace_URI, Local_Name and Qualified_Name of close
       --  tag must match open tag.
@@ -337,11 +334,7 @@ package body XML.SAX.Pretty_Writers is
    -- Merge --
    -----------
 
-   procedure Merge
-    (Self    : in out SAX_Pretty_Writer;
-     Current : in out Mappings.Map;
-     Bank    : Banks.Map)
-   is
+   procedure Merge (Current : in out Mappings.Map; Bank : Banks.Map) is
       C : Banks.Cursor := Banks.First (Bank);
 
    begin
@@ -533,10 +526,7 @@ package body XML.SAX.Pretty_Writers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean)
-   is
-      NS : League.Strings.Universal_String;
-
+     Success        : in out Boolean) is
    begin
       --  Closing Tag, which was opened before.
 
@@ -556,7 +546,7 @@ package body XML.SAX.Pretty_Writers is
       if not Self.Requested_NS.Is_Empty then
          --  Append Bank and Current namespaces.
 
-         Self.Merge (Self.Current.Mapping, Self.Requested_NS);
+         Merge (Self.Current.Mapping, Self.Requested_NS);
       end if;
 
       Self.Text.Append ('<');

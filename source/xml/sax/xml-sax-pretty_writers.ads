@@ -192,10 +192,9 @@ private
    package Element_Vector is
       new Ada.Containers.Vectors (Natural, Element_Record);
 
-   procedure Merge
-    (Self    : in out SAX_Pretty_Writer;
-     Current : in out Mappings.Map;
-     Bank    : Banks.Map);
+   procedure Merge (Current : in out Mappings.Map; Bank : Banks.Map);
+   --  Merges namespaces declared for current element into the set of all
+   --  namespaces.
 
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
