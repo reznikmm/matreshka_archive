@@ -45,8 +45,7 @@
 --  Some operations in this package and its children packages depends from the
 --  current or explicitly specified locale.
 --
---  Primary purpose of Universal_Character type is to provide the gateway to
---  Unicode Character Database.
+--  Universal_Character provides the gateway to Unicode Character Database.
 ------------------------------------------------------------------------------
 private with Matreshka.Internals.Unicode;
 
@@ -92,23 +91,56 @@ package League.Characters is
 
    overriding function "="
     (Left : Universal_Character; Right : Universal_Character) return Boolean;
+   not overriding function "<"
+    (Left : Universal_Character; Right : Universal_Character) return Boolean;
+   not overriding function "<="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean;
+   not overriding function ">"
+    (Left : Universal_Character; Right : Universal_Character) return Boolean;
+   not overriding function ">="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean;
    not overriding function "="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
+   not overriding function "<"
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
+   not overriding function "<="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
+   not overriding function ">"
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
+   not overriding function ">="
     (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean;
    not overriding function "="
     (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
-   --  Compare subprograms.
+   not overriding function "<"
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
+   not overriding function "<="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
+   not overriding function ">"
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
+   not overriding function ">="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean;
+   --  Subprograms to compare characters in code point order.
 
 private
+
+   Invalid : constant Matreshka.Internals.Unicode.Code_Unit_32
+     := Matreshka.Internals.Unicode.Code_Unit_32'Last;
+   --  Invalid code point to be used to represent uninitialized
+   --  Universal_Character object.
 
    -------------------------
    -- Universal_Character --
    -------------------------
 
    type Universal_Character is tagged record
-      Code : Matreshka.Internals.Unicode.Code_Unit_32 := 16#FFFF_FFFF#;
+      Code : Matreshka.Internals.Unicode.Code_Unit_32 := Invalid;
    end record;
 
+   pragma Inline ("<");
+   pragma Inline ("<=");
    pragma Inline ("=");
+   pragma Inline (">");
+   pragma Inline (">=");
    pragma Inline (To_Wide_Wide_Character);
 
 end League.Characters;

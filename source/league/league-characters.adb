@@ -48,6 +48,66 @@ package body League.Characters is
    use type Matreshka.Internals.Unicode.Code_Unit_32;
 
    ---------
+   -- "<" --
+   ---------
+
+   not overriding function "<"
+    (Left : Universal_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Left.Code < Right.Code;
+   end "<";
+
+   ---------
+   -- "<" --
+   ---------
+
+   not overriding function "<"
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
+   begin
+      return Left.Code < Wide_Wide_Character'Pos (Right);
+   end "<";
+
+   ---------
+   -- "<" --
+   ---------
+
+   not overriding function "<"
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Wide_Wide_Character'Pos (Left) < Right.Code;
+   end "<";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   not overriding function "<="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Left.Code <= Right.Code;
+   end "<=";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   not overriding function "<="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
+   begin
+      return Left.Code <= Wide_Wide_Character'Pos (Right);
+   end "<=";
+
+   ----------
+   -- "<=" --
+   ----------
+
+   not overriding function "<="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Wide_Wide_Character'Pos (Left) <= Right.Code;
+   end "<=";
+
+   ---------
    -- "=" --
    ---------
 
@@ -76,6 +136,66 @@ package body League.Characters is
    begin
       return Wide_Wide_Character'Pos (Left) = Right.Code;
    end "=";
+
+   ---------
+   -- ">" --
+   ---------
+
+   not overriding function ">"
+    (Left : Universal_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Left.Code > Right.Code;
+   end ">";
+
+   ---------
+   -- ">" --
+   ---------
+
+   not overriding function ">"
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
+   begin
+      return Left.Code > Wide_Wide_Character'Pos (Right);
+   end ">";
+
+   ---------
+   -- ">" --
+   ---------
+
+   not overriding function ">"
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Wide_Wide_Character'Pos (Left) > Right.Code;
+   end ">";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   not overriding function ">="
+    (Left : Universal_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Left.Code >= Right.Code;
+   end ">=";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   not overriding function ">="
+    (Left : Universal_Character; Right : Wide_Wide_Character) return Boolean is
+   begin
+      return Left.Code >= Wide_Wide_Character'Pos (Right);
+   end ">=";
+
+   ----------
+   -- ">=" --
+   ----------
+
+   not overriding function ">="
+    (Left : Wide_Wide_Character; Right : Universal_Character) return Boolean is
+   begin
+      return Wide_Wide_Character'Pos (Left) >= Right.Code;
+   end ">=";
 
    --------------------
    -- Is_ID_Continue --
