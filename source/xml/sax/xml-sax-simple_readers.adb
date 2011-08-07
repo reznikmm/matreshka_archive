@@ -145,7 +145,10 @@ package body XML.SAX.Simple_Readers is
 
    overriding function Encoding
     (Self : not null access constant Simple_Shared_Locator)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Encoding;
