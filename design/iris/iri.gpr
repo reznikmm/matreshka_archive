@@ -1,0 +1,10 @@
+with "../../gnat/matreshka_common.gpr";
+with "../../gnat/matreshka_league.gpr";
+
+project IRI is
+
+   for Object_Dir use ".objs";
+
+   package Compiler renames Matreshka_Common.Compiler;
+
+end IRI;
