@@ -48,11 +48,16 @@
 private with Ada.Finalization;
 
 with League.Stream_Element_Vectors;
+private with League.String_Vectors;
 with League.Strings;
 
 package League.IRIs is
 
+--   pragma Preelaborate;
+--   pragma Remote_Types;
+
    type IRI is tagged private;
+--   pragma Preelaborable_Initialization (IRI);
 
    function From_Universal_String
     (Item : League.Strings.Universal_String) return IRI;
@@ -75,6 +80,8 @@ package League.IRIs is
      To   : League.Stream_Element_Vectors.Stream_Element_Vector);
 
    function Is_Valid (Self : IRI'Class) return Boolean;
+
+   procedure Clear (Self : in out IRI'Class);
 
    function Scheme (Self : IRI'Class) return League.Strings.Universal_String;
 
@@ -178,7 +185,18 @@ package League.IRIs is
 private
 
    type IRI is new Ada.Finalization.Controlled with record
-      null;
+      Scheme           : League.Strings.Universal_String;
+
+      Has_Authority    : Boolean;
+      User_Info        : League.Strings.Universal_String;
+      Host             : League.Strings.Universal_String;
+      Port             : Natural := 0;
+
+      Path_Is_Absolute : Boolean;
+      Path             : League.String_Vectors.Universal_String_Vector;
+
+      Query            : League.Strings.Universal_String;
+      Fragment         : League.Strings.Universal_String;
    end record;
 
 end League.IRIs;
