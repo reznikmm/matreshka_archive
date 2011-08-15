@@ -1172,11 +1172,12 @@ package body League.IRIs is
             C2 := Image.Element (First + 2);
 
             if Is_HEXDIG (C1) and Is_HEXDIG (C2) then
-               --  XXX Should converted to upper case.
+               --  Append to result parsed and normalized (converted to
+               --  uppercase) characters.
 
                Result.Append (Percent_Sign);
-               Result.Append (C1);
-               Result.Append (C2);
+               Result.Append (C1.Simple_Uppercase_Mapping);
+               Result.Append (C2.Simple_Uppercase_Mapping);
                First := First + 3;
                Success := True;
 
@@ -1242,9 +1243,9 @@ package body League.IRIs is
             return;
 
          else
-            --  XXX Should be converted into lower case.
+            --  Convert to lowercase and append to result.
 
-            Self.Scheme.Append (C);
+            Self.Scheme.Append (C.Simple_Lowercase_Mapping);
             Current := Current + 1;
          end if;
 
@@ -1258,9 +1259,9 @@ package body League.IRIs is
                 and C /= Hyphen_Minus
                 and C /= Full_Stop;
 
-            --  XXX Should be converted into lower case.
+            --  Convert to lowercase and append to result.
 
-            Self.Scheme.Append (C);
+            Self.Scheme.Append (C.Simple_Lowercase_Mapping);
             Current := Current + 1;
          end loop;
 

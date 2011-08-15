@@ -12,6 +12,6 @@ procedure Main is
    Ref : League.IRIs.IRI;
 
 begin
-   Ref.Set_IRI (+"http://vadim:nopasswd@qtada.com/download//file%2F?x=y#f");
+   Ref.Set_IRI (+"hTtP://vadim:nopasswd@qtada.com/download//file%2f?x=y#f");
    Ada.Wide_Wide_Text_IO.Put_Line (Ref.To_Universal_String.To_Wide_Wide_String);
 end Main;
