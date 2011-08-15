@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Unicode.Ucd.Cases;
 with Matreshka.Internals.Unicode.Ucd.Core;
 
 package body Matreshka.Internals.Unicode.Properties is
@@ -51,6 +52,15 @@ package body Matreshka.Internals.Unicode.Properties is
            Matreshka.Internals.Unicode.Ucd.Core_Second_Stage,
            Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
            Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
+
+   function Element is
+     new Matreshka.Internals.Unicode.Ucd.Generic_Element
+          (Matreshka.Internals.Unicode.Ucd.Case_Mapping,
+           Matreshka.Internals.Unicode.Ucd.Case_Mapping_Second_Stage,
+           Matreshka.Internals.Unicode.Ucd.Case_Mapping_Second_Stage_Access,
+           Matreshka.Internals.Unicode.Ucd.Case_Mapping_First_Stage);
+
+   pragma Inline (Element);
 
    --------------------
    -- Is_ID_Continue --
@@ -99,5 +109,67 @@ package body Matreshka.Internals.Unicode.Properties is
          (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
            (Matreshka.Internals.Unicode.Ucd.Unified_Ideograph);
    end Is_Unified_Ideograph;
+
+   ------------------------------
+   -- Simple_Lowercase_Mapping --
+   ------------------------------
+
+   function Simple_Lowercase_Mapping (Code : Code_Point) return Code_Point is
+      C : constant Code_Point
+        := Element
+            (Matreshka.Internals.Unicode.Ucd.Cases.Mapping, Code).Simple
+              (Matreshka.Internals.Unicode.Ucd.Lower);
+
+   begin
+      if C /= 0 then
+         return C;
+
+      else
+         return Code;
+      end if;
+   end Simple_Lowercase_Mapping;
+
+   ------------------------------
+   -- Simple_Titlecase_Mapping --
+   ------------------------------
+
+   function Simple_Titlecase_Mapping (Code : Code_Point) return Code_Point is
+      C : constant Code_Point
+        := Element
+            (Matreshka.Internals.Unicode.Ucd.Cases.Mapping, Code).Simple
+              (Matreshka.Internals.Unicode.Ucd.Title);
+
+   begin
+      if C /= 0 then
+         return C;
+
+      else
+         --  [UAX #44]
+         --
+         --  "Note: If this field is null, then the Simple_Titlecase_Mapping is
+         --  the same as the Simple_Uppercase_Mapping for this character."
+
+         return Simple_Uppercase_Mapping (Code);
+      end if;
+   end Simple_Titlecase_Mapping;
+
+   ------------------------------
+   -- Simple_Uppercase_Mapping --
+   ------------------------------
+
+   function Simple_Uppercase_Mapping (Code : Code_Point) return Code_Point is
+      C : constant Code_Point
+        := Element
+            (Matreshka.Internals.Unicode.Ucd.Cases.Mapping, Code).Simple
+              (Matreshka.Internals.Unicode.Ucd.Upper);
+
+   begin
+      if C /= 0 then
+         return C;
+
+      else
+         return Code;
+      end if;
+   end Simple_Uppercase_Mapping;
 
 end Matreshka.Internals.Unicode.Properties;

@@ -62,4 +62,13 @@ package Matreshka.Internals.Unicode.Properties is
    pragma Inline (Is_ID_Continue);
    --  Code points which continue identifier.
 
+   function Simple_Lowercase_Mapping (Code : Code_Point) return Code_Point;
+   --  Returns simple lowercase mapping for the specified code point.
+
+   function Simple_Titlecase_Mapping (Code : Code_Point) return Code_Point;
+   --  Returns simple titlecase mapping for the specified code point.
+
+   function Simple_Uppercase_Mapping (Code : Code_Point) return Code_Point;
+   --  Returns simple uppercase mapping for the specified code point.
+
 end Matreshka.Internals.Unicode.Properties;

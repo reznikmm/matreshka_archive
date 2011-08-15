@@ -244,6 +244,45 @@ package body League.Characters is
       return Matreshka.Internals.Unicode.Is_Valid (Self.Code);
    end Is_Valid;
 
+   ------------------------------
+   -- Simple_Lowercase_Mapping --
+   ------------------------------
+
+   function Simple_Lowercase_Mapping
+    (Self : Universal_Character'Class) return Universal_Character is
+   begin
+      return
+       (Code =>
+          Matreshka.Internals.Unicode.Properties.Simple_Lowercase_Mapping
+           (Self.Code));
+   end Simple_Lowercase_Mapping;
+
+   ------------------------------
+   -- Simple_Titlecase_Mapping --
+   ------------------------------
+
+   function Simple_Titlecase_Mapping
+    (Self : Universal_Character'Class) return Universal_Character is
+   begin
+      return
+       (Code =>
+          Matreshka.Internals.Unicode.Properties.Simple_Titlecase_Mapping
+           (Self.Code));
+   end Simple_Titlecase_Mapping;
+
+   ------------------------------
+   -- Simple_Uppercase_Mapping --
+   ------------------------------
+
+   function Simple_Uppercase_Mapping
+    (Self : Universal_Character'Class) return Universal_Character is
+   begin
+      return
+       (Code =>
+          Matreshka.Internals.Unicode.Properties.Simple_Uppercase_Mapping
+           (Self.Code));
+   end Simple_Uppercase_Mapping;
+
    ----------------------------
    -- To_Universal_Character --
    ----------------------------

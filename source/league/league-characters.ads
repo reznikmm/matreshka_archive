@@ -89,6 +89,18 @@ package League.Characters is
    --  plus stability extensions, minus Pattern_Syntax and Pattern_White_Space
    --  code points."
 
+   function Simple_Uppercase_Mapping
+    (Self : Universal_Character'Class) return Universal_Character;
+   --  Returns simple uppercase mapping for the specified character.
+
+   function Simple_Lowercase_Mapping
+    (Self : Universal_Character'Class) return Universal_Character;
+   --  Returns simple lowercase mapping for the specified character.
+
+   function Simple_Titlecase_Mapping
+    (Self : Universal_Character'Class) return Universal_Character;
+   --  Returns simple titlecase mapping for the specified character.
+
    overriding function "="
     (Left : Universal_Character; Right : Universal_Character) return Boolean;
    not overriding function "<"

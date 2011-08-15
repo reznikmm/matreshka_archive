@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -393,10 +393,14 @@ package Matreshka.Internals.Unicode.Ucd is
    type Case_Mapping_Ranges is
      array (Case_Mapping_Kinds) of Case_Mapping_Range;
 
+   type Simple_Case_Mappings is
+     array (Case_Mapping_Kinds range Lower .. Title) of Code_Point;
+
    type Casing_Context_Mapping_Ranges is
      array (Case_Mapping_Kinds range Lower .. Title) of Case_Mapping_Range;
 
    type Case_Mapping is record
+      Simple        : Simple_Case_Mappings;
       Ranges        : Case_Mapping_Ranges;
       Context_First : Sequence_Count;
       Context_Last  : Sequence_Count;
@@ -412,7 +416,7 @@ package Matreshka.Internals.Unicode.Ucd is
      array (Second_Stage_Index) of Case_Mapping;
 
    type Case_Mapping_Second_Stage_Access is
-     access constant Case_Mapping_Second_Stage;
+     not null access constant Case_Mapping_Second_Stage;
 
    type Case_Mapping_First_Stage is
      array (First_Stage_Index) of Case_Mapping_Second_Stage_Access;
@@ -500,7 +504,7 @@ package Matreshka.Internals.Unicode.Ucd is
      array (Second_Stage_Index) of Collation_Record;
 
    type Collation_Second_Stage_Access is
-     access constant Collation_Second_Stage;
+     not null access constant Collation_Second_Stage;
 
    type Collation_First_Stage is
      array (First_Stage_Index) of Collation_Second_Stage_Access;

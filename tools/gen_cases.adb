@@ -87,7 +87,7 @@ procedure Gen_Cases (Source_Directory : String) is
    end record;
 
    Case_Info : array (Code_Point) of Case_Mapping
-     := (others => (((0, 0), (0, 0), (0, 0), (0, 0)), 0, 0));
+     := (others => ((0, 0, 0), ((0, 0), (0, 0), (0, 0), (0, 0)), 0, 0));
    Cont_Info : Casing_Context_Mapping_Sequence (Sequence_Index);
    Cont_Last : Sequence_Count := 0;
    Case_Seq  : Code_Point_Sequence (Sequence_Index);
@@ -143,10 +143,22 @@ procedure Gen_Cases (Source_Directory : String) is
    ---------
 
    procedure Put (File : Ada.Text_IO.File_Type; Item : Case_Mapping) is
+      Column : Ada.Text_IO.Count := Ada.Text_IO.Col (File);
+
    begin
       Ada.Text_IO.Put
        (File,
-        "((("
+        "((16#"
+          & Code_Point_Image (Item.Simple (Lower))
+          & "#, 16#"
+          & Code_Point_Image (Item.Simple (Upper))
+          & "#, 16#"
+          & Code_Point_Image (Item.Simple (Title))
+          & "#),");
+      Ada.Text_IO.Set_Col (File, Column);
+      Ada.Text_IO.Put
+       (File,
+        " (("
           & Sequence_Count_Image (Item.Ranges (Lower).First)
           & ", "
           & Sequence_Count_Image (Item.Ranges (Lower).Last)
@@ -181,6 +193,8 @@ begin
       then
          --  Process data for default casing context.
 
+         --  Uppercase mapping.
+
          if Cases (J).FUM.Default /= null then
             if Cases (J).FUM.Default'Length /= 1
               or else Cases (J).FUM.Default (1) /= J
@@ -199,6 +213,15 @@ begin
                  Case_Info (J).Ranges (Upper).Last);
             end if;
          end if;
+
+         if Cases (J).SUM.Present then
+            Case_Info (J).Simple (Upper) := Cases (J).SUM.C;
+
+         else
+            Case_Info (J).Simple (Upper) := 0;
+         end if;
+
+         --  Lowercase mapping.
 
          if Cases (J).FLM.Default /= null then
             if Cases (J).FLM.Default'Length /= 1
@@ -219,6 +242,15 @@ begin
             end if;
          end if;
 
+         if Cases (J).SLM.Present then
+            Case_Info (J).Simple (Lower) := Cases (J).SLM.C;
+
+         else
+            Case_Info (J).Simple (Lower) := 0;
+         end if;
+
+         --  Titlecase mapping.
+
          if Cases (J).FTM.Default /= null then
             if Cases (J).FTM.Default'Length /= 1
               or else Cases (J).FTM.Default (1) /= J
@@ -236,6 +268,13 @@ begin
                  Case_Info (J).Ranges (Title).First,
                  Case_Info (J).Ranges (Title).Last);
             end if;
+         end if;
+
+         if Cases (J).STM.Present then
+            Case_Info (J).Simple (Title) := Cases (J).STM.C;
+
+         else
+            Case_Info (J).Simple (Title) := 0;
          end if;
 
          if Cases (J).FCF /= null then
