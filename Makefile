@@ -4,8 +4,11 @@ UCADATA = unicode/UCA/6.0.0
 CLDR = unicode/cldr/1.9.0
 
 override SMP_MFLAGS ?=
+## Distribution-specific OPTFLAGS
+## %{GNAT_optflags} for Fedora
+GNAT_OPTFLAGS ?=
 GPRBUILD = gnatmake
-GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
+GPRBUILD_FLAGS = -p $(SMP_MFLAGS) ${GNAT_OPTFLAGS}
 
 CPP = cpp -undef -nostdinc -fdirectives-only -P -E
 AFLEX = ../tools/aflex/src/aflex
