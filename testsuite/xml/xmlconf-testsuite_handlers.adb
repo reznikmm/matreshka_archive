@@ -47,7 +47,6 @@ with Ada.Wide_Wide_Text_IO;
 
 with Put_Line;
 with Read_File;
-with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
@@ -109,8 +108,7 @@ package body XMLConf.Testsuite_Handlers is
      Namespaces : Boolean;
      Output     : League.Strings.Universal_String)
    is
-      Base_URI : constant League.Strings.Universal_String
-        := Self.Locator.Base_URI;
+      Base_URI : constant League.IRIs.IRI := Self.Locator.Base_URI;
       Failed   : Boolean := False;
 
    begin
@@ -136,12 +134,13 @@ package body XMLConf.Testsuite_Handlers is
            Read_File
             (Ada.Characters.Conversions.To_String
               (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
-                (Self.Testsuite_Base_URI
-                   & "-expected-sax"
-                   & Matreshka.Internals.URI_Utilities.Construct_System_Id
-                      (Base_URI.Slice
-                        (Self.Testsuite_Base_URI.Length + 1, Base_URI.Length),
-                       URI)).To_Wide_Wide_String));
+                (Self.Expected_Base_URI.Resolve
+                  (League.IRIs.From_Universal_String
+                    (Base_URI.To_Universal_String.Slice
+                      (Self.Testsuite_Base_URI.To_Universal_String.Length + 2,
+                       Base_URI.To_Universal_String.Length))).Resolve
+                        (League.IRIs.From_Universal_String
+                          (URI)).To_Universal_String).To_Wide_Wide_String));
 
          select
             delay 60.0;
@@ -149,7 +148,8 @@ package body XMLConf.Testsuite_Handlers is
             raise Program_Error with "terminated by timeout";
 
          then abort
-            Writer.Set_Testsuite_URI (Self.Testsuite_Base_URI);
+            Writer.Set_Testsuite_URI
+             (Self.Testsuite_Base_URI.To_Universal_String);
             Reader.Set_Content_Handler (Writer'Unchecked_Access);
             Reader.Set_DTD_Handler (Writer'Unchecked_Access);
             Reader.Set_Error_Handler (Writer'Unchecked_Access);
@@ -161,8 +161,8 @@ package body XMLConf.Testsuite_Handlers is
             end if;
 
             Source.Open_By_URI
-             (Matreshka.Internals.URI_Utilities.Construct_System_Id
-               (Base_URI, URI));
+             (Base_URI.Resolve
+               (League.IRIs.From_Universal_String (URI)).To_Universal_String);
             Reader.Parse (Source'Access);
             Writer.Done;
 
@@ -227,8 +227,9 @@ package body XMLConf.Testsuite_Handlers is
               Read_File
                (Ada.Characters.Conversions.To_String
                  (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
-                   (Matreshka.Internals.URI_Utilities.Construct_System_Id
-                     (Base_URI, Output)).To_Wide_Wide_String));
+                   (Base_URI.Resolve
+                     (League.IRIs.From_Universal_String
+                       (Output)).To_Universal_String).To_Wide_Wide_String));
 
             select
                delay 3.0;
@@ -243,8 +244,9 @@ package body XMLConf.Testsuite_Handlers is
                Reader.Set_Enable_Namespaces (Namespaces);
 
                Source.Open_By_URI
-                (Matreshka.Internals.URI_Utilities.Construct_System_Id
-                  (Base_URI, URI));
+                (Base_URI.Resolve
+                  (League.IRIs.From_Universal_String
+                    (URI)).To_Universal_String);
                Reader.Parse (Source'Access);
 
                if Expected /= Writer.Text then
@@ -355,6 +357,9 @@ package body XMLConf.Testsuite_Handlers is
      Success : in out Boolean) is
    begin
       Self.Testsuite_Base_URI := Self.Locator.Base_URI;
+      Self.Expected_Base_URI :=
+        League.IRIs.From_Universal_String
+         (Self.Locator.Base_URI.To_Universal_String & "-expected-sax");
    end Start_Document;
 
    -------------------

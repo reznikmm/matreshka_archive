@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.URI_Utilities;
+with League.IRIs;
 with XML.SAX.Input_Sources.Streams.Files;
 
 package body XMLConf.Entity_Resolvers is
@@ -76,8 +76,10 @@ package body XMLConf.Entity_Resolvers is
       use XML.SAX.Input_Sources.Streams.Files;
 
       Absolute_System_Id : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Base_URI, System_ID);
+        := League.IRIs.From_Universal_String
+            (Base_URI).Resolve
+              (League.IRIs.From_Universal_String
+                (System_Id)).To_Universal_String;
 
    begin
       if Absolute_System_Id.Starts_With (File_Protocol_Prefix) then

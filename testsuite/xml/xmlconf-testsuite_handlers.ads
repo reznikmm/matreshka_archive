@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Sets;
 
+with League.IRIs;
 with League.Strings.Hash;
 with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
@@ -76,8 +77,10 @@ package XMLConf.Testsuite_Handlers is
    with record
       Locator            : XML.SAX.Locators.SAX_Locator;
       Enabled            : Test_Flags;
-      Testsuite_Base_URI : League.Strings.Universal_String;
+      Testsuite_Base_URI : League.IRIs.IRI;
       --  Base URI of the testsuite data.
+      Expected_Base_URI  : League.IRIs.IRI;
+      --  Base URI of the expected SAX events data.
       Results            : Result_Array;
       Suppressed         : Universal_String_Sets.Set;
    end record;
