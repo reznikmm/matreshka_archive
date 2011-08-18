@@ -187,6 +187,17 @@ package body League.String_Vectors is
       return Self.Data.Length;
    end Length;
 
+   -------------
+   -- Prepend --
+   -------------
+
+   procedure Prepend
+    (Self : in out Universal_String_Vector'Class;
+     Item : Universal_String_Vector'Class) is
+   begin
+      Matreshka.Internals.String_Vectors.Prepend (Self.Data, Item.Data);
+   end Prepend;
+
    ----------
    -- Read --
    ----------

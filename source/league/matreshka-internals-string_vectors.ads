@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -101,5 +101,12 @@ package Matreshka.Internals.String_Vectors is
      String : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Append string to the vector, reallocate vector then necessary. String's
    --  reference counter is not incremented.
+
+   procedure Prepend
+    (Self   : in out Shared_String_Vector_Access;
+     Vector : not null Shared_String_Vector_Access);
+   --  Prepends strings from vector to the vector, reallocates vector then
+   --  necessary. Both vectors are still valid after this operation, reference
+   --  counters of all prepended strings are incremented.
 
 end Matreshka.Internals.String_Vectors;

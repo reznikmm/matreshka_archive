@@ -77,6 +77,11 @@ package League.String_Vectors is
     (Self : in out Universal_String_Vector'Class;
      Item : League.Strings.Universal_String'Class);
 
+   procedure Prepend
+    (Self : in out Universal_String_Vector'Class;
+     Item : Universal_String_Vector'Class);
+   --  Inserts strings from Item before first string of Self.
+
 private
 
    procedure Read
