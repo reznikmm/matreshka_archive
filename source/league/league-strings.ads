@@ -233,13 +233,21 @@ package League.Strings is
      Character : Wide_Wide_Character) return Natural;
    --  Returns the number of occurrences of the Character in this string.
 
+   function Ends_With
+    (Self    : Universal_String'Class;
+     Pattern : Universal_String'Class) return Boolean;
+   function Ends_With
+    (Self    : Universal_String'Class;
+     Pattern : Wide_Wide_String) return Boolean;
+   --  Returns True if the string ends with Pattern; otherwise returns False.
+
    function Starts_With
     (Self    : Universal_String'Class;
      Pattern : Universal_String'Class) return Boolean;
    function Starts_With
     (Self    : Universal_String'Class;
      Pattern : Wide_Wide_String) return Boolean;
-   --  Returns True if the string starts with Pattern; otherwise returns false.
+   --  Returns True if the string starts with Pattern; otherwise returns False.
 
    -----------------
    -- Conversions --

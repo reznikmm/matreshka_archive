@@ -698,6 +698,31 @@ package body League.Strings is
 --      end loop;
 --   end Emit_Changed;
 
+   ---------------
+   -- Ends_With --
+   ---------------
+
+   function Ends_With
+    (Self    : Universal_String'Class;
+     Pattern : Universal_String'Class) return Boolean is
+   begin
+      return
+        Self.Length >= Pattern.Length
+          and then Self.Slice (Self.Length - Pattern.Length + 1, Self.Length)
+                     = Universal_String (Pattern);
+   end Ends_With;
+
+   ---------------
+   -- Ends_With --
+   ---------------
+
+   function Ends_With
+    (Self    : Universal_String'Class;
+     Pattern : Wide_Wide_String) return Boolean is
+   begin
+      return Self.Ends_With (To_Universal_String (Pattern));
+   end Ends_With;
+
    --------------
    -- Finalize --
    --------------
