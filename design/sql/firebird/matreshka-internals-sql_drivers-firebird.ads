@@ -281,6 +281,7 @@ private
    pragma Import (Stdcall, Isc_Interprete, "isc_interprete");
    pragma Import (Stdcall, Isc_Commit_Retaining, "isc_commit_retaining");
    pragma Import (Stdcall, Isc_Start_Multiple, "isc_start_multiple");
-   pragma Import (Stdcall, Isc_Rollback_Transaction, "isc_rollback_transaction");
+   pragma Import
+     (Stdcall, Isc_Rollback_Transaction, "isc_rollback_transaction");
 
 end Matreshka.Internals.SQL_Drivers.Firebird;

@@ -48,8 +48,7 @@ with League.Text_Codecs;
 package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
    UTF8_Codec : constant League.Text_Codecs.Text_Codec :=
-     League.Text_Codecs.Codec
-       (League.Strings.To_Universal_String ("UTF-8"));
+     League.Text_Codecs.Codec (League.Strings.To_Universal_String ("UTF-8"));
 
    ------------------
    -- Check_Result --
@@ -91,20 +90,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    ------------
 
    overriding procedure Commit (Self : not null access Firebird_Database) is
-      Result : Isc_Status;
    begin
       if Self.TR_Handle = Null_Isc_Transaction_Handle then
          Self.Set_Error ("No active transaction");
          return;
       end if;
 
-      Result := Isc_Commit_Retaining
-        (Self.Status'Access, Self.TR_Handle'Access);
+      Self.Check_Result
+        (Isc_Commit_Retaining (Self.Status'Access, Self.TR_Handle'Access));
 
-      if Result > 0 then
-         Self.TR_Handle := Null_Isc_Transaction_Handle;
-         Self.Check_Result (Result);
-      end if;
+      Self.TR_Handle := Null_Isc_Transaction_Handle;
    end Commit;
 
    -------------------
@@ -373,7 +368,6 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
            (1 .. 1 =>
               (Self.DB_Handle'Access, TPB'Length, TPB'Unchecked_Access));
       begin
-         --  Finally, start the transaction
          Result := Isc_Start_Multiple
            (Self.Status'Access, Self.TR_Handle'Access, 1, Tebs'Access);
       end;
@@ -424,8 +418,12 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
         (Self.Status'Access, Self.TR_Handle'Access);
 
       if Result > 0 then
-         Result := Isc_Rollback_Transaction
-           (Self.Status'Access, Self.TR_Handle'Access);
+         --  Force close transaction
+         Self.Check_Result (Result);
+
+         Self.Check_Result
+           (Isc_Rollback_Transaction
+              (Self.Status'Access, Self.TR_Handle'Access));
       end if;
 
       Self.TR_Handle := Null_Isc_Transaction_Handle;
