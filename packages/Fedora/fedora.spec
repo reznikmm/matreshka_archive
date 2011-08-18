@@ -1,17 +1,17 @@
 ## rpmbuild cannot create debuginfo
 %define debug_package %{nil}
 Name:       matreshka
-Version:    0.1.0
-Release:    2%{?dist}
+Version:    0.1.1
+Release:    5%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
 License:    BSD
 URL:        http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
-Source0:    http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka/downloader/download/file/11/matreshka-0.1.0.tar.gz  
+Source0:    http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka/downloader/download/file/13/%{name}-%{version}.tar.gz  
 ## fedora specific
-Patch0:          %%{name}-directories.patch
-Patch1:          %{name}-gprbuild.patch
-Patch2:          matreshka-gnatflags.patch
+Patch1:          %{name}-gpr.patch
+## fedora has stable release ABI. so we haven't to specify RTL
+Patch3:          matreshka_RTL.patch
 BuildRequires:   fedora-gnat-project-common  >= 2
 BuildRequires:   chrpath
 BuildRequires:   gprbuild
@@ -135,27 +135,28 @@ Requires:   fedora-gnat-project-common  >= 2
 
 %prep
 %setup -q 
-###%%%patch0 -p1
 %patch1 -p1
-%patch2 -p1
+%patch3 -p1
+## http://adaforge.qtada.com/matreshka/ticket/134
+sed 's/SMP_MFLAGS/GNAT_OPTFLAGS/' -i Makefile
 
 %build
-## export GPRBUILD_FLAGS=$(echo %{GNAT_optflags} | sed 's/-O2//g')
-make %{?_smp_mflags} GPRBUILD_FLAGS="%{GNAT_optflags}"
+make config 
+%configure
+make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}"
 
 %check 
-make check
+## find libs without RPATH, Fedora specific
+export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/:$LD_LIBRARY_PATH"
+make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" check
 
 %install
 rm -rf %{buildroot}
 make install DESTDIR=%{buildroot} INSTALL_LIBRARY_DIR=%{buildroot}/%{_libdir} PREFIX=%{_prefix} INSTALL_PROJECT_DIR="%{buildroot}/%{_GNAT_project_dir}"
-rm -rf .objs .libs
-find %{buildroot}/%{_includedir} -type f -exec chmod -x {} \;
-find %{buildroot}/%{_libdir} -type f -name "*.ali" -exec chmod -x {} \;
-find %{buildroot}/%{_GNAT_project_dir} -type f -name "*.gpr" -exec chmod -x {} \;
 ## Delete rpath
 chrpath --delete %{buildroot}%{_libdir}/lib*
-## mv -f %{buildroot}%{_GNAT_project_dir}/*.gpr %{buildroot}%{_GNAT_project_dir}/%{name}/
+## https://bugzilla.redhat.com/show_bug.cgi?id=675557#c11
+cd %{buildroot}%{_GNAT_project_dir} && for file in $(ls *.gpr); do mv $file matreshka_$file; done 
 
 %post     -p /sbin/ldconfig
 %postun   -p /sbin/ldconfig
@@ -175,7 +176,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files
 %defattr(-,root,root,-)
 %doc AUTHORS LICENSE
-%{_libdir}/libleague.so.0.1.0
+%{_libdir}/libleague.so.%{version}
 
 %files devel
 %defattr(-,root,root,-)
@@ -211,7 +212,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files fastcgi
 %defattr(-,root,root,-)
 %doc
-%{_libdir}/lib%{name}-fastcgi.so.0.1.0
+%{_libdir}/lib%{name}-fastcgi.so.%{version}
 
 %files fastcgi-devel
 %defattr(-,root,root,-)
@@ -225,7 +226,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-core
 %defattr(-,root,root,-)
 %doc
-%{_libdir}/lib%{name}-sql.so.0.1.0
+%{_libdir}/lib%{name}-sql.so.%{version}
 
 %files sql-core-devel
 %defattr(-,root,root,-)
@@ -246,7 +247,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-sqlite
 %defattr(-,root,root,-)
 %doc
-%{_libdir}/lib%{name}-sql-sqlite3.so.0.1.0
+%{_libdir}/lib%{name}-sql-sqlite3.so.%{version}
 
 %files sql-sqlite-devel
 %defattr(-,root,root,-)
@@ -259,7 +260,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-postgresql
 %defattr(-,root,root,-)
 %doc
-%{_libdir}/lib%{name}-sql-postgresql.so.0.1.0
+%{_libdir}/lib%{name}-sql-postgresql.so.%{version}
 
 %files sql-postgresql-devel
 %defattr(-,root,root,-)
@@ -269,6 +270,15 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_GNAT_project_dir}/matreshka_sql_postgresql.gpr
 
 %changelog
+* Wed Aug 17 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.1-5
+- Add gpr patch
+- Remove unuseable code
+- Add optflags to check
+- Fix LD_LIBRARY_PATH in tests 
+
+* Wed Jul 06 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.1-1
+- Update to upstream release
+
 * Tue May 24 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.0-1
 - Update to upstream release
 
