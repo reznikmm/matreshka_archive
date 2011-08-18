@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.IRIs;
 with League.Strings.Internals;
 with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Simple_Readers.Callbacks;
