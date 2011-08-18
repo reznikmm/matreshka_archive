@@ -53,8 +53,8 @@ with League.Strings;
 
 package League.IRIs is
 
---   pragma Preelaborate;
---   pragma Remote_Types;
+   pragma Preelaborate;
+   pragma Remote_Types;
 
    type IRI is tagged private;
 --   pragma Preelaborable_Initialization (IRI);
@@ -179,6 +179,15 @@ package League.IRIs is
    procedure Set_Encoded_Fragment
     (Self : in out IRI'Class;
      To   : League.Stream_Element_Vectors.Stream_Element_Vector);
+
+   function Resolve (Self : IRI'Class; Relative : IRI'Class) return IRI;
+   --  Returns the result of the merge of this IRI with Relative. This IRI is
+   --  used as a base to convert relative to an absolute IRI.
+   --
+   --  If Relative is not a relative IRI, this function will return Relative
+   --  directly. Otherwise, the paths of the two IRIs are merged, and the new
+   --  IRI returned has the scheme and authority of the base IRI, but with the
+   --  merged path.
 
    function "=" (Left : IRI; Right : IRI) return Boolean;
 

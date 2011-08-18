@@ -59,6 +59,8 @@ package body League.IRIs is
 
    end URI_Parser;
 
+   procedure Normalize_Path (Self : in out IRI'Class);
+
    ---------
    -- "=" --
    ---------
@@ -245,10 +247,9 @@ package body League.IRIs is
    function From_Universal_String
     (Item : League.Strings.Universal_String) return IRI is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "From_Universal_String unimplemented");
-      raise Program_Error;
-      return From_Universal_String (Item);
+      return Result : IRI do
+         Result.Set_IRI (Item);
+      end return;
    end From_Universal_String;
 
    ----------
@@ -375,6 +376,14 @@ package body League.IRIs is
         Success : out Boolean);
       --  Parses 'ifragment' production up to first unexpected character. First
       --  will point to that character.
+
+      procedure Parse_IPath_Noscheme
+       (Self    : in out IRI'Class;
+        Image   : League.Strings.Universal_String;
+        First   : in out Positive;
+        Success : out Boolean);
+      --  Parses 'ipath-noscheme' production up to first unexpected character.
+      --  First will point to that character.
 
       procedure Parse_Pct_Encoded
        (Self    : in out IRI'Class;
@@ -845,6 +854,78 @@ package body League.IRIs is
          Success := True;
       end Parse_IPath_Absolute;
 
+      --------------------------
+      -- Parse_IPath_Noscheme --
+      --------------------------
+
+      procedure Parse_IPath_Noscheme
+       (Self    : in out IRI'Class;
+        Image   : League.Strings.Universal_String;
+        First   : in out Positive;
+        Success : out Boolean)
+      is
+         --  [RFC 3987]
+         --
+         --  ipath-noscheme = isegment-nz-nc *( "/" isegment )
+         --
+         --  isegment-nz-nc = 1*( iunreserved / pct-encoded / sub-delims
+         --                         / "@" )
+
+         Segment : League.Strings.Universal_String;
+         Current : Positive := First;
+         C       : League.Characters.Universal_Character;
+
+      begin
+         Self.Path_Is_Absolute := False;
+
+         while Current <= Image.Length loop
+            C := Image.Element (Current);
+
+            if Is_IUnreserved (C)
+              or Is_Sub_Delims (C)
+              or C = Commercial_At
+            then
+               Segment.Append (C);
+               Current := Current + 1;
+
+            elsif C = Percent_Sign then
+               Parse_Pct_Encoded (Self, Image, Current, Success, Segment);
+
+               if not Success then
+                  return;
+               end if;
+
+            else
+               exit;
+            end if;
+         end loop;
+
+         if Segment.Is_Empty then
+            Success := False;
+
+            return;
+         end if;
+
+         Self.Path.Append (Segment);
+
+         while Current <= Image.Length loop
+            if Image.Element (Current) = Solidus then
+               Current := Current + 1;
+               Parse_ISegment (Self, Image, Current, Success);
+
+               if not Success then
+                  return;
+               end if;
+
+            else
+               exit;
+            end if;
+         end loop;
+
+         First := Current;
+         Success := True;
+      end Parse_IPath_Noscheme;
+
       ------------------
       -- Parse_IQuery --
       ------------------
@@ -920,7 +1001,27 @@ package body League.IRIs is
             if Is_IUnreserved (C)
               or Is_Sub_Delims (C)
             then
-               Self.Host.Append (C);
+               --  [RFC 3986]
+               --
+               --  "Although host is case-insensitive, producers and
+               --  normalizers should use lowercase for registered names and
+               --  hexadecimal addresses for the sake of uniformity, while only
+               --  using uppercase letters for percent-encodings."
+               --
+               --  [RFC 3987] 5.3.2.1. Case Normalization
+               --
+               --  "When an IRI uses components of the generic syntax, the
+               --  component syntax equivalence rules always apply; namely,
+               --  that the scheme and US-ASCII only host are case insensitive
+               --  and therefore should be normalized to lowercase.
+
+               if Is_ALPHA (C) then
+                  Self.Host.Append (C.Simple_Lowercase_Mapping);
+
+               else
+                  Self.Host.Append (C);
+               end if;
+
                Current := Current + 1;
 
             elsif C = Percent_Sign then
@@ -961,6 +1062,10 @@ package body League.IRIs is
          --                      / ipath-absolute
          --                      / ipath-noscheme
          --                      / ipath-empty
+         --
+         --  ipath-absolute = "/" [ isegment-nz *( "/" isegment ) ]
+         --
+         --  ipath-noscheme = isegment-nz-nc *( "/" isegment )
 
          Success : Boolean;
          Current : Positive := 1;
@@ -983,10 +1088,45 @@ package body League.IRIs is
                raise Constraint_Error;
             end if;
 
-         else
-            --  XXX Not implemented.
+         elsif Current + 2 <= Image.Length
+           and then Image.Element (Current) = Solidus
+           and then Image.Element (Current + 1) = Solidus
+         then
+            --  Parse 'iauthority' and 'ihier-part' productions.
 
-            raise Program_Error;
+            Current := Current + 2;
+            Parse_IAuthority (Self, Image, Current, Success);
+
+            if not Success then
+               raise Constraint_Error;
+            end if;
+
+            Parse_IPath_Abempty (Self, Image, Current, Success);
+
+            if not Success then
+               raise Constraint_Error;
+            end if;
+
+         elsif Current < Image.Length
+           and then Image.Element (Current) = Solidus
+         then
+            --  Parse 'ipath-absolute' production.
+
+            Parse_IPath_Absolute (Self, Image, Current, Success);
+
+            if not Success then
+               raise Constraint_Error;
+            end if;
+
+         elsif Current <= Image.Length then
+            --  Parse 'ipath-noscheme' production.
+
+            Parse_IPath_Noscheme (Self, Image, Current, Success);
+
+            if not Success then
+               raise Constraint_Error;
+            end if;
+
          end if;
 
          --  Parse 'iquery' production if present.
@@ -1292,6 +1432,17 @@ package body League.IRIs is
       return Is_Valid (Self);
    end Is_Valid;
 
+   --------------------
+   -- Normalize_Path --
+   --------------------
+
+   procedure Normalize_Path (Self : in out IRI'Class) is
+   begin
+      --  XXX Not implemented.
+
+      null;
+   end Normalize_Path;
+
    ----------
    -- Path --
    ----------
@@ -1329,6 +1480,30 @@ package body League.IRIs is
    begin
       return Self.Query;
    end Query;
+
+   -------------
+   -- Resolve --
+   -------------
+
+   function Resolve (Self : IRI'Class; Relative : IRI'Class) return IRI is
+   begin
+      return Result : IRI := IRI (Relative) do
+         if Result.Scheme.Is_Empty then
+            Result.Scheme := Self.Scheme;
+         end if;
+
+         if not Result.Has_Authority then
+            Result.Has_Authority := Self.Has_Authority;
+         end if;
+
+         if not Result.Path_Is_Absolute then
+            Result.Path.Prepend (Self.Path);
+            Result.Path_Is_Absolute := Self.Path_Is_Absolute;
+         end if;
+
+         Normalize_Path (Result);
+      end return;
+   end Resolve;
 
    ------------
    -- Scheme --
