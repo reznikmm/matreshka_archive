@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,6 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  This package provides utilities to manipulate with components of URI.
+--
+--  This package is obsolete and should not be used in new code. For URI
+--  manipulations League.IRIs package must be used.
 ------------------------------------------------------------------------------
 with League.Strings;
 
@@ -53,13 +56,6 @@ package Matreshka.Internals.URI_Utilities is
     (Base : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Removes last component and returns result.
-
-   function Construct_Base_URI
-    (Enclosing_Base_URI : League.Strings.Universal_String;
-     XML_Base           : League.Strings.Universal_String)
-       return League.Strings.Universal_String;
-   --  Constructs base URI. Enclosing_Base_URI is base URI of enclosing element
-   --  and New_Base_URI is value of 'xml:base' attribute of current element.
 
    function Construct_System_Id
     (Base      : League.Strings.Universal_String;

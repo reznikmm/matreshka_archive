@@ -55,6 +55,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with League.IRIs;
 with League.Strings;
 private with Matreshka.Internals.SAX_Locators;
 
@@ -88,8 +89,7 @@ package XML.SAX.Locators is
     (Self : SAX_Locator'Class) return League.Strings.Universal_String;
    --  Returns the version of XML used for the entity.
 
-   function Base_URI
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String;
+   function Base_URI (Self : SAX_Locator'Class) return League.IRIs.IRI;
    --  Returns base URI. XXX This is Matreshka's extension!
 
 private

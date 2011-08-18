@@ -47,31 +47,6 @@ package body Matreshka.Internals.URI_Utilities is
 
    use type League.Strings.Universal_String;
 
-   ------------------------
-   -- Construct_Base_URI --
-   ------------------------
-
-   function Construct_Base_URI
-    (Enclosing_Base_URI : League.Strings.Universal_String;
-     XML_Base           : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
-   begin
-      --  XXX Implementation of this subprogram must be extended to handle
-      --  absolute URI defined in 'xml:base' attribute.
-
-      if not Enclosing_Base_URI.Is_Empty then
-         if not XML_Base.Is_Empty then
-            return Enclosing_Base_URI & '/' & XML_Base;
-
-         else
-            return Enclosing_Base_URI;
-         end if;
-
-      else
-         return XML_Base;
-      end if;
-   end Construct_Base_URI;
-
    -------------------------
    -- Construct_System_Id --
    -------------------------

@@ -50,7 +50,7 @@ package body Matreshka.Internals.XML.Base_Scopes is
    --------------
 
    function Base_URI
-    (Self : in out Base_Scope) return League.Strings.Universal_String is
+    (Self : in out Base_Scope) return League.IRIs.IRI is
    begin
       return Self.Scopes (Self.Last).Base_URI;
    end Base_URI;
@@ -107,7 +107,7 @@ package body Matreshka.Internals.XML.Base_Scopes is
    ----------------
 
    procedure Push_Scope
-    (Self : in out Base_Scope; Base_URI : League.Strings.Universal_String) is
+    (Self : in out Base_Scope; Base_URI : League.IRIs.IRI) is
    begin
       Self.Last := Self.Last + 1;
       Self.Scopes (Self.last) := (Base_URI, 1);

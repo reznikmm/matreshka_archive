@@ -50,6 +50,7 @@ private with Ada.Exceptions;
 private with Ada.Finalization;
 private with Interfaces;
 
+with League.IRIs;
 with League.Strings;
 private with Matreshka.Internals.SAX_Locators;
 private with Matreshka.Internals.Strings;
@@ -467,6 +468,6 @@ private
 
    overriding function Base_URI
     (Self : not null access constant Simple_Shared_Locator)
-       return League.Strings.Universal_String;
+       return League.IRIs.IRI;
 
 end XML.SAX.Simple_Readers;

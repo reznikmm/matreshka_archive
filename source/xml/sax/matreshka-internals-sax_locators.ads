@@ -49,6 +49,7 @@
 --  reader's internal data structures, thus locator should not be updated
 --  each time when user callback is called.
 ------------------------------------------------------------------------------
+with League.IRIs;
 with League.Strings;
 with Matreshka.Internals.Atomics.Counters;
 
@@ -86,7 +87,7 @@ package Matreshka.Internals.SAX_Locators is
 
    not overriding function Base_URI
     (Self : not null access constant Shared_Abstract_Locator)
-       return League.Strings.Universal_String is abstract;
+       return League.IRIs.IRI is abstract;
 
    type Shared_Locator_Access is access all Shared_Abstract_Locator'Class;
 

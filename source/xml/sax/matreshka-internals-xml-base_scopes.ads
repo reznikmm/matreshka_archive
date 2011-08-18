@@ -45,7 +45,7 @@
 --  scope. Note, scope of base URI includes not only elements, but entities
 --  substitution also.
 ------------------------------------------------------------------------------
-with League.Strings;
+with League.IRIs;
 
 package Matreshka.Internals.XML.Base_Scopes is
 
@@ -58,7 +58,7 @@ package Matreshka.Internals.XML.Base_Scopes is
    --  enclosing scope.
 
    procedure Push_Scope
-    (Self : in out Base_Scope; Base_URI : League.Strings.Universal_String);
+    (Self : in out Base_Scope; Base_URI : League.IRIs.IRI);
    --  Push scope into the stack. Base URI of the new scope is set to the
    --  specified value.
 
@@ -66,7 +66,7 @@ package Matreshka.Internals.XML.Base_Scopes is
    --  Pop scope from the stack.
 
    function Base_URI
-    (Self : in out Base_Scope) return League.Strings.Universal_String;
+    (Self : in out Base_Scope) return League.IRIs.IRI;
    --  Returns base URI of the current scope.
 
    procedure Initialize (Self : in out Base_Scope);
@@ -81,7 +81,7 @@ package Matreshka.Internals.XML.Base_Scopes is
 private
 
    type Scope_Record is record
-      Base_URI : League.Strings.Universal_String;
+      Base_URI : League.IRIs.IRI;
       Counter  : Natural;
    end record;
 

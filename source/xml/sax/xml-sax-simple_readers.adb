@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.IRIs;
 with League.Strings.Internals;
 with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Simple_Readers.Callbacks;
@@ -61,7 +62,7 @@ package body XML.SAX.Simple_Readers is
 
    overriding function Base_URI
     (Self : not null access constant Simple_Shared_Locator)
-       return League.Strings.Universal_String is
+       return League.IRIs.IRI is
    begin
       return Matreshka.Internals.XML.Base_Scopes.Base_URI (Self.Reader.Bases);
    end Base_URI;
@@ -364,8 +365,9 @@ package body XML.SAX.Simple_Readers is
 
       Matreshka.Internals.XML.Base_Scopes.Push_Scope
        (Self.Bases,
-        Matreshka.Internals.URI_Utilities.Directory_Name
-         (Self.Configuration.Source.System_Id));
+        League.IRIs.From_Universal_String
+         (Matreshka.Internals.URI_Utilities.Directory_Name
+           (Self.Configuration.Source.System_Id)));
 
       Self.Configuration.Reset := False;
       Self.Configuration.Source := null;

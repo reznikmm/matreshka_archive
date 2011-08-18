@@ -41,10 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.IRIs;
 with League.Strings.Internals;
 with Matreshka.Internals.Text_Codecs;
 with Matreshka.Internals.Unicode.Characters.Latin;
-with Matreshka.Internals.URI_Utilities;
 with XML.SAX.Attributes.Internals;
 with XML.SAX.Simple_Readers.Analyzer;
 with XML.SAX.Simple_Readers.Scanner;
@@ -518,7 +518,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
               Symbol,
               Self.Public_Id,
               Self.System_Id,
-              Base_URI (Self.Bases),
+              Base_URI (Self.Bases).To_Universal_String,
               Entity);
             Set_General_Entity (Self.Symbols, Symbol, Entity);
             Callbacks.Call_External_Entity_Declaration
@@ -808,9 +808,9 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
       end if;
 
       if Is_External then
-         if Base_URI (Self.Bases).Is_Empty then
-            raise Program_Error;
-         end if;
+--         if Base_URI (Self.Bases).Is_Empty then
+--            raise Program_Error;
+--         end if;
 
          New_External_Parameter_Entity
           (Self.Entities,
@@ -818,7 +818,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Symbol,
            Self.Public_Id,
            Self.System_Id,
-           Base_URI (Self.Bases),
+           Base_URI (Self.Bases).To_Universal_String,
            Entity);
          Set_Parameter_Entity (Self.Symbols, Symbol, Entity);
 
@@ -1036,7 +1036,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
            Self.Scanner_State.Entity,
            Self.Public_Id,
            Self.System_Id,
-           Base_URI (Self.Bases),
+           Base_URI (Self.Bases).To_Universal_String,
            Self.External_Subset_Entity);
          Callbacks.Call_Start_DTD
           (Self.all,
@@ -1223,10 +1223,10 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
                Push_Scope
                 (Self.Bases,
-                 Matreshka.Internals.URI_Utilities.Construct_Base_URI
-                  (Base_URI (Self.Bases),
-                   League.Strings.Internals.Create
-                    (Value (Self.Attribute_Set, J))));
+                 Base_URI (Self.Bases).Resolve
+                  (League.IRIs.From_Universal_String
+                    (League.Strings.Internals.Create
+                      (Value (Self.Attribute_Set, J)))));
                Found := True;
 
                exit;

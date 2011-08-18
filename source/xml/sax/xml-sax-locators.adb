@@ -61,8 +61,7 @@ package body XML.SAX.Locators is
    -- Base_URI --
    --------------
 
-   function Base_URI
-    (Self : SAX_Locator'Class) return League.Strings.Universal_String is
+   function Base_URI (Self : SAX_Locator'Class) return League.IRIs.IRI is
    begin
       return Self.Data.Base_URI;
    end Base_URI;

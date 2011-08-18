@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
+with League.IRIs;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Characters.Latin;
@@ -288,8 +289,9 @@ package body XML.SAX.Simple_Readers.Scanner is
       else
          Matreshka.Internals.XML.Base_Scopes.Push_Scope
           (Self.Bases,
-           League.Strings.Internals.Create
-            (Entity_Base_URI (Self.Entities, Entity)));
+           League.IRIs.From_Universal_String
+            (League.Strings.Internals.Create
+              (Entity_Base_URI (Self.Entities, Entity))));
       end if;
 
       if Last_Match then
