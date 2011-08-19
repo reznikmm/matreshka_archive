@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
 
+with League.Application;
 with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
@@ -67,7 +68,7 @@ begin
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Set_Lexical_Handler (Handler'Unchecked_Access);
 
-   Source.Open (Ada.Command_Line.Argument (1));
+   Source.Open_By_File_Name (League.Application.Arguments.Element (1));
    Events_Printers.Create (Ada.Command_Line.Argument (2));
    Events_Printers.Set_Resault_File_Name (Ada.Command_Line.Argument (2));
 
