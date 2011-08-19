@@ -25,12 +25,12 @@ IN THE SOFTWARE.
 <TestCases Author="Frans Englich, KDE" Desc="Valid tests">
 
 <EntityTest type="nomatch" id="kde-valid-001" catalog="cat1.xml"
-  prefer="public" publicId="pubdelnext" systemId="" expectedFile="none">
+  prefer="public" publicId="pubdelnext" systemId="" expectedFile="">
   Test that further nextCatalogs are not searched after a failed systemDelegation.
 </EntityTest> 
 
 <EntityTest type="nomatch" id="kde-valid-002" catalog="cat1.xml"
-  prefer="system" publicId="" systemId="sysdelnext" expectedFile="none">
+  prefer="system" publicId="" systemId="sysdelnext" expectedFile="sysdelnext">
   Test that further nextCatalogs are not searched after a failed delegateSystem.
 </EntityTest> 
 
@@ -46,7 +46,7 @@ IN THE SOFTWARE.
 
 <EntityTest type="nomatch" id="kde-valid-004" catalog="cat1.xml"
 	prefer="public" systemId="urn:publicid:ISO%2FIEC+10179%3AERROR1996:DTD+DSSSL+Architecture:EN" 
-	publicId="ISO/IEC 10179:1996//DTD DSSSL Architecture//EN" expectedFile="none">
+	publicId="ISO/IEC 10179:1996//DTD DSSSL Architecture//EN" expectedFile="">
 	Tests that an entity resolution with a publicId, and a systemId which 
 	is an URN and not equal to the publicId when unwrapped, is reported 
 	as a 'nomatch'. This dictates a certain implementation since the 

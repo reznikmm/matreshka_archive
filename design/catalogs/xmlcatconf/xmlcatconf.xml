@@ -39,10 +39,10 @@ IN THE SOFTWARE.
 
 <TestSuite>
 
-&ElCel-error;
+<!--  &ElCel-error;  -->
 &ElCel-valid;
 
-&KDE-error;
+<!--  &KDE-error;  -->
 &KDE-valid;
 
 </TestSuite>

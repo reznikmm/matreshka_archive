@@ -123,7 +123,7 @@ IN THE SOFTWARE.
 </UriTest> 
 
 <UriTest type="nomatch" id="elcel-valid-017" catalog="cat1.xml"
-  uri="nomatch" expectedFile="uridel017">
+  uri="uridel017" expectedFile="uridel017">
   Test that further catalogs are not searched after delegation.
 </UriTest> 
 
