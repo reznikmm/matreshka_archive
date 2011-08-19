@@ -43,6 +43,7 @@ check: all
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/test_99
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid --not-wellformed
+	.objs/xmlcatconf_test testsuite/xml/xmlcatconf/xmlcatconf.xml
 
 ucd:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
