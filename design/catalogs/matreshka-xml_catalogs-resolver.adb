@@ -44,6 +44,7 @@
 with Ada.Containers.Vectors;
 
 with Matreshka.XML_Catalogs.Loader;
+with Matreshka.XML_Catalogs.Normalization;
 
 package body Matreshka.XML_Catalogs.Resolver is
 
@@ -99,10 +100,86 @@ package body Matreshka.XML_Catalogs.Resolver is
       Current_System_Id : League.Strings.Universal_String := System_Id;
       Delegate          :
         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
+      Identifier        : League.Strings.Universal_String;
+      Unwrapped         : Boolean;
 
    begin
       Success := False;
       Resolved_URI := League.Strings.Empty_Universal_String;
+
+      --  Normalization and unwrapping.
+
+      --  [XML Catalogs] 7.1.1. Input to the Resolver
+      --
+      --  "If the public identifier is a URN in the publicid namespace ([RFC
+      --  3151]), it is converted into another public identifier by
+      --  "unwrapping" the URN (Section 6.4, “URN "Unwrapping"”). This may be
+      --  done, for example, so that a URN can be specified as the public
+      --  identifier and a URL as the system identifier, in the absence of
+      --  widely deployed URN-resolution facilities."
+
+      Matreshka.XML_Catalogs.Normalization.Unwrap_URN
+       (Current_Public_Id, Identifier, Unwrapped);
+
+      if Unwrapped then
+         Current_Public_Id := Identifier;
+      end if;
+
+      --  [XML Catalogs] 7.1.1. Input to the Resolver
+      --
+      --  "If the system identifier is a URN in the publicid namespace, it is
+      --  converted into a public identifier by "unwrapping" the URN. In this
+      --  case, one of the following must apply:
+      --
+      --  1. No public identifier was provided. Resolution continues as if the
+      --  public identifier constructed by unwrapping the URN was supplied as
+      --  the original public identifier and no system identifier was provided.
+      --
+      --  2. The normalized public identifier provided is lexically identical
+      --  to the public identifier constructed by unwrapping the URN.
+      --  Resolution continues as if the system identifier had not been
+      --  supplied.
+      --
+      --  3. The normalized public identifier provided is different from the
+      --  public identifier constructed by unwrapping the URN. This is an
+      --  error. Applications may recover from this error by discarding the
+      --  system identifier and proceeding with the original public
+      --  identifier."
+
+      Matreshka.XML_Catalogs.Normalization.Unwrap_URN
+       (Current_System_Id, Identifier, Unwrapped);
+
+      if Unwrapped then
+         Current_System_Id.Clear;
+
+         if Current_Public_Id.Is_Empty then
+            Current_Public_Id := Identifier;
+
+         else
+            Current_Public_Id :=
+              Matreshka.XML_Catalogs.Normalization.Normalize_Public_Identifier
+               (Current_Public_Id);
+
+            if Current_Public_Id /= Identifier then
+               --  XXX Error reporting is not implemented yet. KDE's test from
+               --  XmlCatConf require to return empty URI and report resolution
+               --  failure.
+
+               Resolved_URI.Clear;
+               Success := False;
+
+               return;
+            end if;
+         end if;
+
+      else
+         Current_Public_Id :=
+           Matreshka.XML_Catalogs.Normalization.Normalize_Public_Identifier
+            (Current_Public_Id);
+         Current_System_Id :=
+           Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
+            (Current_System_Id);
+      end if;
 
       --  External loop handles delegation processing.
 
