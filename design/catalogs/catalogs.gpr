@@ -2,10 +2,16 @@ with "../../gnat/matreshka_xml.gpr";
 
 project Catalogs is
 
+   for Main use ("xmlcatconf-driver.adb");
+   for Source_Dirs use (".", "../../testsuite/xml");
    for Object_Dir use ".obj";
 
    package Compiler is
       for Default_Switches ("Ada") use ("-g", "-gnat12");
    end Compiler;
+
+   package Builder is
+      for Executable ("xmlcatconf-driver.adb") use "xmlcatconf_test";
+   end Builder;
 
 end Catalogs;
