@@ -572,7 +572,9 @@ package body League.IRIs is
 
          --  Check port delimiter and parse 'port' production.
 
-         if Image.Element (Current) = Colon then
+         if Current <= Image.Length
+           and then Image.Element (Current) = Colon
+         then
             Parse_Port (Self, Image, Current, Success);
 
             if not Success then
