@@ -1,6 +1,6 @@
 with Ada.Calendar;
-with Ada.Command_Line;
 
+with League.Application;
 with League.Strings;
 --with XML.SAX.Input_Sources.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
@@ -35,7 +35,7 @@ begin
    Reader.Set_Entity_Resolver (Handler'Unchecked_Access);
 
    Load_Start := Ada.Calendar.Clock;
-   Source.Open (Ada.Command_Line.Argument (1));
+   Source.Open_By_File_Name (League.Application.Arguments.Element (1));
 --   Source.Set_String (Read_File (Ada.Command_Line.Argument (1)));
    Parse_Start := Ada.Calendar.Clock;
    Reader.Parse (Source'Access);
