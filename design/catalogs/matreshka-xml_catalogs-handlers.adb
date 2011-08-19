@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Wide_Wide_Text_IO;
 
-with Matreshka.Internals.URI_Utilities;
+with League.IRIs;
 with Matreshka.XML_Catalogs.Normalization;
 
 package body Matreshka.XML_Catalogs.Handlers is
@@ -418,9 +418,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_Public_Identifier
             (Attributes.Value (Public_Id_Start_String_Attribute_Name));
       Catalog   : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (Catalog_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (Catalog_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'publicIdStartString' is not empty.
@@ -468,9 +468,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Start_String_Attribute_Name));
       Catalog   : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (Catalog_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (Catalog_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'systemIdStartString' is not empty.
@@ -517,9 +517,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_URI
             (Attributes.Value (URI_Start_String_Attribute_Name));
       Catalog : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (Catalog_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (Catalog_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'uriStartString' is not empty.
@@ -620,9 +620,9 @@ package body Matreshka.XML_Catalogs.Handlers is
       --  catalog.
 
       Catalog : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (Catalog_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (Catalog_Attribute_Name))).To_Universal_String;
 
    begin
       Self.Entry_File.Append
@@ -662,9 +662,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_Public_Identifier
             (Attributes.Value (Public_Id_Attribute_Name));
       URI       : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (URI_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (URI_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'publicId' is not empty.
@@ -718,9 +718,10 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Start_String_Attribute_Name));
       Rewrite_Prefix         : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (Rewrite_Prefix_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value
+                (Rewrite_Prefix_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'systemIdStartString' is not empty.
@@ -766,9 +767,10 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_URI
             (Attributes.Value (URI_Start_String_Attribute_Name));
       Rewrite_Prefix   : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (Rewrite_Prefix_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value
+                (Rewrite_Prefix_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'uriStartString' is not empty.
@@ -816,9 +818,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Attribute_Name));
       URI       : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (URI_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (URI_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'systemId' is not empty.
@@ -873,9 +875,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_System_Identifier
             (Attributes.Value (System_Id_Suffix_Attribute_Name));
       URI              : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (URI_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (URI_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'systemIdSuffix' is not empty.
@@ -929,8 +931,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_URI
             (Attributes.Value (Name_Attribute_Name));
       URI  : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI, Attributes.Value (URI_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (URI_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'name' is not empty.
@@ -976,9 +979,9 @@ package body Matreshka.XML_Catalogs.Handlers is
         := Matreshka.XML_Catalogs.Normalization.Normalize_URI
             (Attributes.Value (URI_Suffix_Attribute_Name));
       URI        : constant League.Strings.Universal_String
-        := Matreshka.Internals.URI_Utilities.Construct_System_Id
-            (Self.Locator.Base_URI,
-             Attributes.Value (URI_Attribute_Name));
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (URI_Attribute_Name))).To_Universal_String;
 
    begin
       --  Check that 'uriSuffix' is not empty.
