@@ -598,6 +598,7 @@ package body Matreshka.XML_Catalogs.Resolver is
           := List;
       Delegate     :
         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
+      Current_URI  : League.Strings.Universal_String;
       Identifier   : League.Strings.Universal_String;
       Unwrapped    : Boolean;
 
@@ -630,6 +631,8 @@ package body Matreshka.XML_Catalogs.Resolver is
          return;
       end if;
 
+      Current_URI := Matreshka.XML_Catalogs.Normalization.Normalize_URI (URI);
+
       --  External loop handles delegation processing.
 
       Delegation : loop
@@ -643,7 +646,7 @@ package body Matreshka.XML_Catalogs.Resolver is
          loop
             Resolve_URI
              (Current_List.Catalog_Entry_Files.Element (J),
-              URI,
+              Current_URI,
               Resolved_URI,
               Delegate);
 
@@ -672,7 +675,7 @@ package body Matreshka.XML_Catalogs.Resolver is
          Delegate := null;
       end loop Delegation;
 
-      Resolved_URI := URI;
+      Resolved_URI := Current_URI;
    end Resolve_URI;
 
    -----------------
