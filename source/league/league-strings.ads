@@ -62,6 +62,8 @@
 --  iterators - character, grapheme cluster, word, sentence, line breaks.
 --  See these packages for detailed information.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 private with Ada.Finalization;
 private with Ada.Streams;
 

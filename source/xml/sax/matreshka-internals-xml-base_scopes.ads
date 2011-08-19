@@ -45,6 +45,8 @@
 --  scope. Note, scope of base URI includes not only elements, but entities
 --  substitution also.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 with League.IRIs;
 
 package Matreshka.Internals.XML.Base_Scopes is
