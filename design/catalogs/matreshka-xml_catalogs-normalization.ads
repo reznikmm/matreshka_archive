@@ -63,4 +63,10 @@ package Matreshka.XML_Catalogs.Normalization is
          renames Normalize_URI;
    --  Normalizes specified system identifier.
 
+   procedure Unwrap_URN
+    (URI        : League.Strings.Universal_String;
+     Identifier : out League.Strings.Universal_String;
+     Unwrapped  : out Boolean);
+   --  Unwrap URN in the publicid URN Namespace and normalize it.
+
 end Matreshka.XML_Catalogs.Normalization;
