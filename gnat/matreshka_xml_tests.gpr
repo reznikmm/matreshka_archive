@@ -48,6 +48,7 @@ project Matreshka_XML_Tests is
 
    for Main use
     ("xmlconf_test.adb",
+     "xmlcatconf-driver.adb",
      "test_126.adb",
      "test_20.adb",
      "test_26.adb",
@@ -68,5 +69,9 @@ project Matreshka_XML_Tests is
         Matreshka_Common.Common_Ada_Switches
           & ("-gnatW8");
    end Compiler;
+
+   package Builder is
+      for Executable ("xmlcatconf-driver.adb") use "xmlcatconf_test";
+   end Builder;
 
 end Matreshka_XML_Tests;
