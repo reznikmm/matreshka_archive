@@ -90,9 +90,6 @@ package body Matreshka.XML_Catalogs.Resolver is
      Resolved_URI : out League.Strings.Universal_String;
      Success      : out Boolean)
    is
-      use type
-        Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
-
       Current_List      :
         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access
           := List;
@@ -241,9 +238,6 @@ package body Matreshka.XML_Catalogs.Resolver is
      Delegate     : out
        Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access)
    is
-      use type Matreshka.XML_Catalogs.Entry_Files.Rewrite_System_Entry_Access;
-      use type Matreshka.XML_Catalogs.Entry_Files.System_Suffix_Entry_Access;
-
       Length          : Natural;
       Inserted        : Boolean;
       Current_File    :
@@ -602,12 +596,39 @@ package body Matreshka.XML_Catalogs.Resolver is
       Current_List :
         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access
           := List;
-      Delegate :
+      Delegate     :
         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List_Access;
+      Identifier   : League.Strings.Universal_String;
+      Unwrapped    : Boolean;
 
    begin
       Success := False;
       Resolved_URI := League.Strings.Empty_Universal_String;
+
+      --  [XML Catalogs]  7.2.1. Input to the Resolver
+      --
+      --  "If the URI reference is a URN in the publicid namespace ([RFC
+      --  3151]), it is converted into a public identifier by "unwrapping" the
+      --  URN (Section 6.4, “URN "Unwrapping"”). Resolution continues by
+      --  following the semantics of external identifier resolution (Section
+      --  7.1, “External Identifier Resolution”) as if the public identifier
+      --  constructed by unwrapping the URN had been provided and no system
+      --  identifier had been provided. Otherwise, resolution of the URI
+      --  reference proceeds according to the steps below."
+
+      Matreshka.XML_Catalogs.Normalization.Unwrap_URN
+       (URI, Identifier, Unwrapped);
+
+      if Unwrapped then
+         Resolve_External_Identifier
+          (List,
+           Identifier,
+           League.Strings.Empty_Universal_String,
+           Resolved_URI,
+           Success);
+
+         return;
+      end if;
 
       --  External loop handles delegation processing.
 
@@ -616,8 +637,6 @@ package body Matreshka.XML_Catalogs.Resolver is
          --
          --  "1.  Resolution begins in the first catalog entry file in the
          --  current catalog list."
-
-         null;
 
          for J in Current_List.Catalog_Entry_Files.First_Index
                     ..  Current_List.Catalog_Entry_Files.Last_Index
