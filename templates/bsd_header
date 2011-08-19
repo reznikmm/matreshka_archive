@@ -6,8 +6,6 @@
 --                               XML Processor                              --
 --                               Web Framework                              --
 --                          Ada Modeling Framework                          --
---                      Complete Meta Object Facility                       --
---                         XML Metadata Interchange                         --
 --                      Orthogonal Persistence Manager                      --
 --                       Content Management Framework                       --
 --                           SQL Database Access                            --
@@ -16,6 +14,7 @@
 --                        Runtime Library Component                         --
 --                            Testsuite Component                           --
 --                              Tools Component                             --
+--                            Examples Component                            --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
