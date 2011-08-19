@@ -22,7 +22,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 
 -->
-<TestCases Author="Frans Englich, KDE" Desc="Valid tests" xml:base="kde/" >
+<TestCases Author="Frans Englich, KDE" Desc="Valid tests">
 
 <EntityTest type="nomatch" id="kde-valid-001" catalog="cat1.xml"
   prefer="public" publicId="pubdelnext" systemId="" expectedFile="none">

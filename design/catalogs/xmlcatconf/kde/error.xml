@@ -22,7 +22,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 
 -->
-<TestCases Author="Frans Englich, KDE" Desc="Error tests" xml:base="kde/" >
+<TestCases Author="Frans Englich, KDE" Desc="Error tests">
 
 <UriTest type="error" id="kde-error-001" catalog="circ1.xml"
   uri="str" expectedUri="none">

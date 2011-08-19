@@ -26,7 +26,6 @@ IN THE SOFTWARE.
 -->
 <TestCases Author="Rob Lugt, ElCel Technology Limited"
            Desc="Valid tests"
-           xml:base="elcel/"
 >
 
 <EntityTest type="nomatch" id="elcel-valid-001a" catalog="cat1.xml"
