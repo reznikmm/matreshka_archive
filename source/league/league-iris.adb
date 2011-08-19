@@ -1498,6 +1498,18 @@ package body League.IRIs is
             Result.Has_Authority := Self.Has_Authority;
          end if;
 
+         if Result.User_Info.Is_Empty then
+            Result.User_Info := Self.User_Info;
+         end if;
+
+         if Result.Host.Is_Empty then
+            Result.Host := Self.Host;
+         end if;
+
+         if Result.Port = 0 then
+            Result.Port := Self.Port;
+         end if;
+
          if not Result.Path_Is_Absolute then
             Result.Path.Prepend (Self.Path);
             Result.Path_Is_Absolute := Self.Path_Is_Absolute;
