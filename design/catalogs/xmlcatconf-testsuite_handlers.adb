@@ -83,6 +83,8 @@ package body XMLCatConf.Testsuite_Handlers is
      := League.Strings.To_Universal_String ("systemId");
    Type_Attribute          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("type");
+   URI_Attribute           : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("uri");
 
    --  Literals
 
@@ -98,6 +100,11 @@ package body XMLCatConf.Testsuite_Handlers is
      := League.Strings.To_Universal_String ("system");
 
    procedure Process_Entity_Test_Start_Tag
+    (Self       : in out Testsuite_Handler;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean);
+
+   procedure Process_Uri_Test_Start_Tag
     (Self       : in out Testsuite_Handler;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Success    : in out Boolean);
@@ -165,33 +172,30 @@ package body XMLCatConf.Testsuite_Handlers is
         := Self.Locator.Base_URI.Resolve
             (League.IRIs.From_Universal_String
               (Attributes.Value (Catalog_Attribute))).To_Universal_String;
-      Public_Id     : constant League.Strings.Universal_String
-        := Attributes.Value (Public_Id_Attribute);
-      System_Id     : constant League.Strings.Universal_String
-        := Attributes.Value (System_Id_Attribute);
-      Prefer        : constant Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode
-        := Value (Attributes.Value (Prefer_Attribute));
       Expected_File : constant League.Strings.Universal_String
         := Attributes.Value (Expected_File_Attribute);
       Expected_URI  : constant League.Strings.Universal_String
         := Attributes.Value (Expected_URI_Attribute);
       Kind          : constant Test_Type
         := Value (Attributes.Value (Type_Attribute));
+      Public_Id     : constant League.Strings.Universal_String
+        := Attributes.Value (Public_Id_Attribute);
+      System_Id     : constant League.Strings.Universal_String
+        := Attributes.Value (System_Id_Attribute);
+      Prefer        : constant Matreshka.XML_Catalogs.Entry_Files.Prefer_Mode
+        := Value (Attributes.Value (Prefer_Attribute));
+
       Expected      : League.Strings.Universal_String;
       Resolved_URI  : League.Strings.Universal_String;
       Resolved      : Boolean;
-
-      File      :
+      File          :
         Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access
           := Matreshka.XML_Catalogs.Loader.Load (Catalog, Prefer);
-      List      :
+      List          :
         aliased Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
 
    begin
       List.Catalog_Entry_Files.Append (File);
-
-      Matreshka.XML_Catalogs.Resolver.Resolve_External_Identifier
-       (List'Unchecked_Access, Public_Id, System_Id, Resolved_URI, Resolved);
 
       if Expected_File.Is_Empty and not Expected_URI.Is_Empty then
          Expected := Expected_URI;
@@ -203,6 +207,11 @@ package body XMLCatConf.Testsuite_Handlers is
          Expected.Clear;
       end if;
 
+      --  Resolve document.
+
+      Matreshka.XML_Catalogs.Resolver.Resolve_External_Identifier
+       (List'Unchecked_Access, Public_Id, System_Id, Resolved_URI, Resolved);
+
       case Kind is
          when Error =>
             if Resolved then
@@ -211,6 +220,8 @@ package body XMLCatConf.Testsuite_Handlers is
 
          when Match =>
             if not Resolved then
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("FAIL " & Id.To_Wide_Wide_String);
                Ada.Wide_Wide_Text_IO.Put_Line
                 ("Expected: '" & Expected.To_Wide_Wide_String & ''');
 
@@ -253,6 +264,110 @@ package body XMLCatConf.Testsuite_Handlers is
       end case;
    end Process_Entity_Test_Start_Tag;
 
+   --------------------------------
+   -- Process_Uri_Test_Start_Tag --
+   --------------------------------
+
+   procedure Process_Uri_Test_Start_Tag
+    (Self       : in out Testsuite_Handler;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Success    : in out Boolean)
+   is
+      Id            : constant League.Strings.Universal_String
+        := Attributes.Value (Id_Attribute);
+      Catalog       : constant League.Strings.Universal_String
+        := Self.Locator.Base_URI.Resolve
+            (League.IRIs.From_Universal_String
+              (Attributes.Value (Catalog_Attribute))).To_Universal_String;
+      Expected_File : constant League.Strings.Universal_String
+        := Attributes.Value (Expected_File_Attribute);
+      Expected_URI  : constant League.Strings.Universal_String
+        := Attributes.Value (Expected_URI_Attribute);
+      Kind          : constant Test_Type
+        := Value (Attributes.Value (Type_Attribute));
+      URI           : constant League.Strings.Universal_String
+        := Attributes.Value (URI_Attribute);
+
+      Expected      : League.Strings.Universal_String;
+      Resolved_URI  : League.Strings.Universal_String;
+      Resolved      : Boolean;
+      File          :
+        Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_Access
+          := Matreshka.XML_Catalogs.Loader.Load
+              (Catalog, Matreshka.XML_Catalogs.Entry_Files.System);
+      List          :
+        aliased Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
+
+   begin
+      List.Catalog_Entry_Files.Append (File);
+
+      if Expected_File.Is_Empty and not Expected_URI.Is_Empty then
+         Expected := Expected_URI;
+
+      elsif not Expected_File.Is_Empty and Expected_URI.Is_Empty then
+         Expected := Expected_File;
+
+      else
+         Expected.Clear;
+      end if;
+
+      --  Resolve URI.
+
+      Matreshka.XML_Catalogs.Resolver.Resolve_URI
+       (List'Unchecked_Access, URI, Resolved_URI, Resolved);
+
+      case Kind is
+         when Error =>
+            if Resolved then
+               raise Program_Error;
+            end if;
+
+         when Match =>
+            if not Resolved then
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("FAIL " & Id.To_Wide_Wide_String);
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("  Expected: '" & Expected.To_Wide_Wide_String & ''');
+
+               raise Program_Error;
+            end if;
+
+            --  Construct expected absolute URI.
+
+            Expected :=
+              Self.Locator.Base_URI.Resolve
+               (League.IRIs.From_Universal_String
+                 (Expected)).To_Universal_String;
+
+            if Resolved_URI /= Expected then
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("FAIL " & Id.To_Wide_Wide_String);
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("  Expected: '" & Expected.To_Wide_Wide_String & ''');
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("  Resolved: '" & Resolved_URI.To_Wide_Wide_String & ''');
+
+               raise Program_Error;
+            end if;
+
+         when No_Match =>
+            if Resolved then
+               raise Program_Error;
+            end if;
+
+            if Resolved_URI /= Expected then
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("FAIL " & Id.To_Wide_Wide_String);
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("  Expected: '" & Expected.To_Wide_Wide_String & ''');
+               Ada.Wide_Wide_Text_IO.Put_Line
+                ("  Resolved: '" & Resolved_URI.To_Wide_Wide_String & ''');
+
+               raise Program_Error;
+            end if;
+      end case;
+   end Process_Uri_Test_Start_Tag;
+
    --------------------------
    -- Set_Document_Locator --
    --------------------------
@@ -286,8 +401,7 @@ package body XMLCatConf.Testsuite_Handlers is
          Process_Entity_Test_Start_Tag (Self, Attributes, Success);
 
       elsif Qualified_Name = Uri_Test_Tag then
-      Ada.Wide_Wide_Text_IO.Put_Line (Qualified_Name.To_Wide_Wide_String);
-         null;
+         Process_Uri_Test_Start_Tag (Self, Attributes, Success);
 
       else
          raise Program_Error;
