@@ -41,8 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Conversions;
-
+with League.IRIs;
 with Put_Line;
 with XML.SAX.Input_Sources.Streams.Files;
 
@@ -273,9 +272,9 @@ package body Events_Printers is
 
    begin
       Source := new File_Input_Source;
-      File_Input_Source'Class (Source.all).Open
-       (Ada.Characters.Conversions.To_String
-         (System_Id.To_Wide_Wide_String));
+      File_Input_Source'Class (Source.all).Open_By_URI
+       (League.IRIs.From_Universal_String (Base_URI).Resolve
+         (League.IRIs.From_Universal_String (System_Id)).To_Universal_String);
    end Resolve_Entity;
 
    --------------------------
