@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,9 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
-
-with XML.SAX.Attributes;
+private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 
 package Matreshka.Internals.Translator.XLIFF_Readers is
@@ -53,12 +51,8 @@ package Matreshka.Internals.Translator.XLIFF_Readers is
 
 private
 
-   --  GNAT GPL 2010: This type need not to be derived from Limited_Controlled
-   --  but this is done to workaround compiler's bug.
-
    type XLIFF_Reader is
-     new Ada.Finalization.Limited_Controlled
-       and XML.SAX.Content_Handlers.SAX_Content_Handler with
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with
    record
       Context   : Context_Access;
       Source    : League.Strings.Universal_String;
