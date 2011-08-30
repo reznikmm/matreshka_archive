@@ -41,16 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Conversions;
---  Use of this unit must be replaced to use of Text_Codec for application's
---  locale.
+with League.Text_Codecs;
 
 package body XML.SAX.Writers is
-
-   function To_Application_Locale_8_Bit_String
-    (Item : League.Strings.Universal_String) return String;
-   --  Converts Universal_String into standard String recoding it to encoding
-   --  of application's locale (not the current locale of the thread).
 
    ----------------
    -- Characters --
@@ -67,7 +60,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Characters;
 
@@ -86,7 +79,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Comment;
 
@@ -102,7 +95,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end End_CDATA;
 
@@ -118,7 +111,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end End_Document;
 
@@ -134,7 +127,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end End_DTD;
 
@@ -158,7 +151,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end End_Element;
 
@@ -177,7 +170,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end End_Entity;
 
@@ -197,7 +190,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end End_Prefix_Mapping;
 
@@ -216,7 +209,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Ignorable_Whitespace;
 
@@ -237,7 +230,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Processing_Instruction;
 
@@ -256,7 +249,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Skipped_Entity;
 
@@ -272,7 +265,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Start_CDATA;
 
@@ -288,7 +281,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Start_Document;
 
@@ -311,7 +304,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Start_DTD;
 
@@ -338,7 +331,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Start_Element;
 
@@ -357,7 +350,7 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Start_Entity;
 
@@ -378,20 +371,8 @@ package body XML.SAX.Writers is
 
       if not Success then
          raise Constraint_Error
-           with To_Application_Locale_8_Bit_String (Self.Error_String);
+           with League.Text_Codecs.To_Exception_Message (Self.Error_String);
       end if;
    end Start_Prefix_Mapping;
-
-   ----------------------------------------
-   -- To_Application_Locale_8_Bit_String --
-   ----------------------------------------
-
-   function To_Application_Locale_8_Bit_String
-    (Item : League.Strings.Universal_String) return String is
-   begin
-      return Ada.Characters.Conversions.To_String (Item.To_Wide_Wide_String);
-      --  XXX This is stub, encoding of actual application's locale must be
-      --  used here.
-   end To_Application_Locale_8_Bit_String;
 
 end XML.SAX.Writers;
