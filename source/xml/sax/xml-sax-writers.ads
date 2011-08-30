@@ -52,8 +52,6 @@ with XML.SAX.Output_Destinations;
 
 package XML.SAX.Writers is
 
-   pragma Preelaborate;
-
    type SAX_Output_Destination_Access is
      access all XML.SAX.Output_Destinations.SAX_Output_Destination'Class;
 
@@ -61,11 +59,9 @@ package XML.SAX.Writers is
      and XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler;
 
-   procedure Set_Destination
+   not overriding procedure Set_Destination
     (Self        : in out SAX_Writer;
-     Destination : SAX_Output_Destination_Access) is abstract;
---     Destination : not null SAX_Output_Destination_Access) is abstract;
---  GNAT GPL 2010: crash when 'not null' is specified.
+     Destination : not null SAX_Output_Destination_Access) is abstract;
    --  Sets output destination to be used to output generated XML stream.
 
    procedure Characters

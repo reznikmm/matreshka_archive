@@ -57,9 +57,6 @@ package XML.SAX.Input_Sources.Streams.Files is
      URI  : League.Strings.Universal_String);
    --  Opens file with specified URI.
 
-   overriding procedure Finalize (Self : in out File_Input_Source);
-   --  GNAT GCC 4.5 bug: this subprogram must be moved into private part.
-
    function URI_To_File_Name
     (URI : League.Strings.Universal_String)
        return League.Strings.Universal_String;
@@ -73,5 +70,7 @@ private
    type File_Input_Source is new Stream_Input_Source with record
       File : Ada.Streams.Stream_IO.File_Type;
    end record;
+
+   overriding procedure Finalize (Self : in out File_Input_Source);
 
 end XML.SAX.Input_Sources.Streams.Files;
