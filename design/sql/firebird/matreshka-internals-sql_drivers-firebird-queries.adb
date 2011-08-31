@@ -41,23 +41,19 @@
 ------------------------------------------------------------------------------
 --  $Revision: 1803 $ $Date: 2011-06-19 22:56:58 +0300 (Вс, 19 июн 2011) $
 ------------------------------------------------------------------------------
---  with Ada.Streams;
---  with Ada.Unchecked_Conversion;
---  with System;
---
---  with League.Text_Codecs;
---  with Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL;
+
+with Ada.Numerics.Discrete_Random;
+
+with Matreshka.Internals.SQL_Parameter_Rewriters.Firebird;
+with Matreshka.Internals.SQL_Drivers.Firebird.Fields;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
-   use type Interfaces.C.int;
+   SQL_Dialect : constant Isc_Db_Dialect := 3;
 
-   Codec : constant League.Text_Codecs.Text_Codec :=
-     League.Text_Codecs.Codec (League.Strings.To_Universal_String ("UTF-8"));
-   --  It is used everywhere to convert text data, PostgreSQL_Database is
-   --  responsible to set client encodings to UTF-8.
-   Rewriter : SQL_Parameter_Rewriters.PostgreSQL.PostgreSQL_Parameter_Rewriter;
-   --  SQL statement parameter rewriter.
+   Rewriter : SQL_Parameter_Rewriters.Firebird.Firebird_Parameter_Rewriter;
+
+   function Random_String (Length : Interfaces.C.size_t) return Isc_String;
 
    ----------------
    -- Bind_Value --
@@ -67,7 +63,9 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
     (Self      : not null access Firebird_Query;
      Name      : League.Strings.Universal_String;
      Value     : League.Holders.Holder;
-     Direction : SQL.Parameter_Directions) is
+     Direction : SQL.Parameter_Directions)
+   is
+      pragma Unreferenced (Direction);
    begin
       Self.Parameters.Set_Value (Name, Value);
    end Bind_Value;
@@ -79,7 +77,10 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    overriding function Bound_Value
     (Self : not null access Firebird_Query;
      Name : League.Strings.Universal_String)
-       return League.Holders.Holder is
+     return League.Holders.Holder
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Name);
    begin
       return League.Holders.Empty_Holder;
    end Bound_Value;
@@ -103,108 +104,168 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
     (Self : not null access Firebird_Query) return Boolean
    is
       Value  : League.Holders.Holder;
-      Params : Interfaces.C.Strings.chars_ptr_array
-                (1 .. Interfaces.C.size_t
-                       (Self.Parameters.Number_Of_Positional));
-
+      Result : Isc_Result_Code;
    begin
       --  Prepare parameter values.
-
-      for J in Params'Range loop
-         Value := Self.Parameters.Value (Positive (J));
-
-         if League.Holders.Is_Empty (Value) then
-            Params (J) := Interfaces.C.Strings.Null_Ptr;
-
-         elsif League.Holders.Is_Universal_String (Value) then
-            Params (J) :=
-              Databases.New_String (League.Holders.Element (Value));
-
-         elsif League.Holders.Is_Abstract_Integer (Value) then
-            Params (J) :=
-              Interfaces.C.Strings.New_String
-               (League.Holders.Universal_Integer'Image
-                 (League.Holders.Element (Value)));
-
-         elsif League.Holders.Is_Abstract_Float (Value) then
-            Params (J) :=
-              Interfaces.C.Strings.New_String
-               (League.Holders.Universal_Float'Image
-                 (League.Holders.Element (Value)));
-         end if;
+      for Idx in 1 .. Self.Parameters.Number_Of_Positional loop
+         Value := Self.Parameters.Value (Idx);
+         Self.Sql_Params.Fields.Element
+           (Isc_Valid_Field_Index (Idx)).Value (Value);
       end loop;
 
-      --  Execute statement with prepared parameters.
+      Self.Sql_Record.Clear_Values;
 
-      Self.Result :=
-        PQexecPrepared
-         (Databases.PostgreSQL_Database'Class (Self.Database.all).Handle,
-          Self.Name,
-          Params'Length,
-          Params,
-          null,
-          null,
-          0);
-
-      --  Release parameter values.
-
-      for J in Params'Range loop
-         Interfaces.C.Strings.Free (Params (J));
-      end loop;
-
-      --  "The result is a PGresult pointer or possibly a null pointer. A
-      --  non-null pointer will generally be returned except in out-of-memory
-      --  conditions or serious errors such as inability to send the command to
-      --  the server. If a null pointer is returned, it should be treated like
-      --  a PGRES_FATAL_ERROR result. Use PQerrorMessage to get more
-      --  information about such errors."
-
-      --  Handle fatal error.
-
-      if Self.Result = null then
-         --  Obtain current error message.
-
-         Self.Error :=
-           Databases.PostgreSQL_Database'Class
-            (Self.Database.all).Get_Error_Message;
-
-         return False;
+      if Self.Sql_Type = DDL then
+         return Self.Execute_Immediate;
       end if;
 
-      --  Handle non-fatal errors.
+      case Self.Sql_Type is
+         when Simple_Select | Select_For_Update =>
+            Result := Isc_Dsql_Execute
+              (Self.Status'Access, Databases.Firebird_Database'Class
+                 (Self.Database.all).Transaction_Handle,
+               Self.Stmt_Handle'Access, Sql_Dialect, Self.Sql_Params.Sqlda);
 
-      case PQresultStatus (Self.Result) is
-         when PGRES_COMMAND_OK
-           | PGRES_TUPLES_OK
-         =>
-            Self.Row := -1;
+            if Result > 0 then
+               Self.Error := Get_Error (Self.Status'Access);
+               return False;
+            end if;
 
-         when others =>
-            --  Obtain error message.
+            Self.State := Active;
+            Self.Sql_Record.Clear_Values;
 
-            Self.Error :=
-              Databases.PostgreSQL_Database'Class
-               (Self.Database.all).Get_Error_Message;
+         when Exec_Procedure =>
+            Result := Isc_Dsql_Execute2
+              (Self.Status'Access, Databases.Firebird_Database'Class
+                 (Self.Database.all).Transaction_Handle,
+               Self.Stmt_Handle'Access, Sql_Dialect,
+               Self.Sql_Params.Sqlda, Self.Sql_Record.Sqlda);
 
-            --  Cleanup.
+            if Self.Status (1) = 1
+              and then Self.Status (2) > 0
+            then
+               Self.Error := Get_Error (Self.Status'Access);
+               return False;
+            end if;
 
-            PQclear (Self.Result);
-            Self.Result := null;
-
+         when Commit | Rollback =>
             return False;
+
+         when Unknown       | Insert            | Update      |
+              Delete        | DDL               | Get_Segment |
+              Put_Segment   | Start_Transaction |
+              Set_Generator | Save_Point_Operation =>
+
+            Result := Isc_Dsql_Execute
+              (Self.Status'Access, Databases.Firebird_Database'Class
+                 (Self.Database.all).Transaction_Handle,
+               Self.Stmt_Handle'Access, Sql_Dialect, Self.Sql_Params.Sqlda);
+
+            if Result > 0 then
+               Self.Error := Get_Error (Self.Status'Access);
+               return False;
+            end if;
       end case;
 
       return True;
+   exception
+      when others =>
+         Self.Free_Handle;
+         return False;
    end Execute;
+
+   -----------------------
+   -- Execute_Immediate --
+   -----------------------
+
+   function Execute_Immediate
+     (Self : not null access Firebird_Query)
+      return Boolean
+   is
+      Result : Isc_Result_Code;
+   begin
+      Self.Free_Handle;
+
+      declare
+         Statement : constant Isc_String := To_Isc_String (Self.Sql_Text);
+      begin
+         Result := Isc_Dsql_Execute_Immediate
+           (Self.Status'Access,
+            Databases.Firebird_Database'Class
+              (Self.Database.all).Database_Handle,
+            Databases.Firebird_Database'Class
+              (Self.Database.all).Transaction_Handle,
+            Statement'Length, Statement,
+            Sql_Dialect, Self.Sql_Params.Sqlda);
+      end;
+
+      if Result > 0 then
+         Self.Error := Get_Error (Self.Status'Access);
+         return False;
+      end if;
+
+      return True;
+   end Execute_Immediate;
 
    ------------
    -- Finish --
    ------------
 
    overriding procedure Finish (Self : not null access Firebird_Query) is
+      use type Isc_Long;
+
+      EC : constant Isc_Result_Codes (1 .. 2) :=
+        (Isc_Bad_Stmt_Handle, Isc_Dsql_Cursor_Close_Err);
+
+      Result : Isc_Result_Code;
+      pragma Warnings (Off, Result);
    begin
-      raise Program_Error;
+      if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
+         case Self.Sql_Type is
+            when Simple_Select | Select_For_Update =>
+               Result := Isc_Dsql_Free_Statement
+                 (Self.Status'Access, Self.Stmt_Handle'Access, Isc_Sql_Close);
+
+               if Self.Status (1) = 1
+                 and then Self.Status (2) > 0
+                 and then not Check_For_Error (Self.Status'Access, EC)
+               then
+                  Self.Error := Get_Error (Self.Status'Access);
+               end if;
+
+            when others =>
+               Self.Free_Handle;
+         end case;
+      end if;
+
+      Self.State := Inactive;
    end Finish;
+
+   -----------------
+   -- Free_Handle --
+   -----------------
+
+   procedure Free_Handle (Self : not null access Firebird_Query) is
+      use type Isc_Long;
+      Result : Isc_Result_Code;
+   begin
+      Self.Sql_Record.Count (0);
+
+      if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
+         Result := Isc_Dsql_Free_Statement
+           (Self.Status'Access, Self.Stmt_Handle'Access, Isc_Sql_Drop);
+
+         Self.Stmt_Handle := Null_Isc_Stmt_Handle;
+         Self.State       := Inactive;
+
+         if Self.Status (1) = 1
+           and then Result > 0
+           and then Result /= Isc_Bad_Stmt_Handle
+         then
+            Self.Error := Get_Error (Self.Status'Access);
+         end if;
+      end if;
+   end Free_Handle;
 
    ----------------
    -- Initialize --
@@ -212,8 +273,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
    procedure Initialize
     (Self     : not null access Firebird_Query'Class;
-     Database : not null access Databases.PostgreSQL_Database'Class) is
+     Database : not null access Databases.Firebird_Database'Class;
+     Codec    : access League.Text_Codecs.Text_Codec;
+     Utf      : Boolean)
+   is
    begin
+      Self.Sql_Record.Codec := Codec;
+      Self.Sql_Params.Codec := Codec;
+      Self.Sql_Record.Utf   := Utf;
+      Self.Sql_Params.Utf   := Utf;
+
       SQL_Drivers.Initialize (Self, Database_Access (Database));
    end Initialize;
 
@@ -223,17 +292,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
    overriding procedure Invalidate (Self : not null access Firebird_Query) is
    begin
-      if Self.Database /= null then
-         Interfaces.C.Strings.Free (Self.Name);
+      Self.Finish;
 
-         if Self.Result /= null then
-            PQclear (Self.Result);
-            Self.Result := null;
-         end if;
+      if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
+         Self.Free_Handle;
       end if;
 
-      --  Call Invalidate of parent tagged type.
+      Self.Sql_Params.Finalize;
+      Self.Sql_Record.Finalize;
 
+      --  Call Invalidate of parent tagged type.
       Abstract_Query (Self.all).Invalidate;
    end Invalidate;
 
@@ -244,7 +312,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    overriding function Is_Active
     (Self : not null access Firebird_Query) return Boolean is
    begin
-      return Self.Result /= null;
+      return Self.State = Active;
    end Is_Active;
 
    ----------
@@ -252,15 +320,34 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
    ----------
 
    overriding function Next
-    (Self : not null access Firebird_Query) return Boolean is
+     (Self : not null access Firebird_Query) return Boolean
+   is
+      use type Isc_Long;
+      Result : Isc_Result_Code;
    begin
-      if Self.Row + 1 < PQntuples (Self.Result) then
-         Self.Row := Self.Row + 1;
+      Result := Isc_Dsql_Fetch
+        (Self.Status'Access, Self.Stmt_Handle'Access,
+         Sql_Dialect, Self.Sql_Record.Sqlda);
 
-         return True;
-
+      if Result > 0 then
+         if Result = 100 then
+            return False;
+         else
+            declare
+               EC : constant Isc_Result_Codes (1 .. 1) :=
+                 (others => Isc_Dsql_Cursor_Err);
+            begin
+               if Check_For_Error (Self.Status'Access, EC) then
+                  return False;
+               else
+                  Self.Error := Get_Error (Self.Status'Access);
+                  Self.Finish;
+                  return False;
+               end if;
+            end;
+         end if;
       else
-         return False;
+         return True;
       end if;
    end Next;
 
@@ -272,94 +359,195 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
     (Self  : not null access Firebird_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
-      use type Interfaces.C.Strings.chars_ptr;
+      use type Records.Isc_Sqlda_Access;
 
-      Rewritten : League.Strings.Universal_String;
-      C_Query   : Interfaces.C.Strings.chars_ptr;
-      Result    : PGresult_Access;
-
+      Result : Isc_Result_Code;
+      Field  : Fields.Field_Access;
    begin
-      --  Clear existing result set.
+      Self.Finish;
 
-      if Self.Result /= null then
-         PQclear (Self.Result);
-         Self.Result := null;
-      end if;
+      Rewriter.Rewrite (Query, Self.Sql_Text, Self.Parameters);
+      Self.Sql_Params.Count
+        (Isc_Field_Index (Self.Parameters.Number_Of_Positional));
 
-      --  Rewrite statement and prepare set of parameters.
+      --  add params
+      for Idx in 1 .. Isc_Field_Index
+        (Self.Parameters.Number_Of_Positional)
+      loop
+         Field := Self.Sql_Params.Fields.Element (Idx);
+         Field.Set_Null (True);
+         Field.Sqlvar.Sqltype := Isc_Type_Empty;
+      end loop;
 
-      Rewriter.Rewrite (Query, Rewritten, Self.Parameters);
+      Result := Isc_Dsql_Alloc_Statement2
+        (Self.Status'Access,
+         Databases.Firebird_Database'Class (Self.Database.all).Database_Handle,
+         Self.Stmt_Handle'Access);
 
-      --  Convert rewrittent statement into string in client library format.
-
-      C_Query := Databases.New_String (Rewritten);
-
-      --  Allocates name for the statement when it is not allocated.
-
-      if Self.Name = Interfaces.C.Strings.Null_Ptr then
-         Self.Name :=
-           Databases.PostgreSQL_Database'Class
-            (Self.Database.all).Allocate_Statement_Name;
-      end if;
-
-      --  Prepare statement and let server to handle parameters' types.
-
-      Result :=
-        PQprepare
-         (Databases.PostgreSQL_Database'Class (Self.Database.all).Handle,
-          Self.Name,
-          C_Query,
-          0,
-          null);
-
-      --  Cleanup.
-
-      Interfaces.C.Strings.Free (C_Query);
-
-      --  "The result is normally a PGresult object whose contents indicate
-      --  server-side success or failure. A null result indicates out-of-memory
-      --  or inability to send the command at all. Use PQerrorMessage to get
-      --  more information about such errors."
-
-      --  Handle fatal error.
-
-      if Result = null then
-         --  Obtain error message.
-
-         Self.Error :=
-           Databases.PostgreSQL_Database'Class
-            (Self.Database.all).Get_Error_Message;
-
-         --  Cleanup.
-
-         Interfaces.C.Strings.Free (Self.Name);
-
+      if Result > 0 then
+         Self.Error := Get_Error (Self.Status'Access);
          return False;
       end if;
 
-      --  Handle non-fatal errors.
+      Self.Sql_Record.Count (1);
 
-      if PQresultStatus (Result) /= PGRES_COMMAND_OK then
-         --  Obtain error message.
+      declare
+         Statement : constant Isc_String := To_Isc_String (Self.Sql_Text);
+      begin
+         Result := Isc_Dsql_Prepare
+           (Self.Status'Access,
+            Databases.Firebird_Database'Class
+              (Self.Database.all).Transaction_Handle,
+            Self.Stmt_Handle'Access, 0, Statement,
+            Sql_Dialect, Self.Sql_Record.Sqlda);
 
-         Self.Error :=
-           Databases.PostgreSQL_Database'Class
-            (Self.Database.all).Get_Error_Message;
+         if Result > 0 then
+            Self.Error := Get_Error (Self.Status'Access);
+            return False;
+         end if;
+      end;
 
-         --  Cleanup.
+      --  Get the type of the statement
+      declare
+         use type Interfaces.C.char;
 
-         Interfaces.C.Strings.Free (Self.Name);
-         PQclear (Result);
+         Len    : Isc_Long;
+         Buffer : aliased Isc_String := (1 .. 9 => Interfaces.C.nul);
+         Item   : Isc_String (1 .. 1);
+      begin
+         Item (1) := Isc_Info_Sql_Stmt_Type;
 
-         return False;
+         Result := Isc_Dsql_Sql_Info
+           (Self.Status'Access, Self.Stmt_Handle'Access,
+            1, Item, 8, Buffer'Access);
+
+         if Result > 0 then
+            Self.Error := Get_Error (Self.Status'Access);
+            return False;
+         end if;
+
+         if Buffer (1) /= Isc_Info_Sql_Stmt_Type then
+            return False;
+         end if;
+
+         Len := Isc_Vax_Integer (Buffer (2 .. 4), 2);
+
+         Self.Sql_Type := Query_Sql_Type'Val
+             (Isc_Vax_Integer (Buffer (4 .. 9), Isc_Short (Len)));
+      end;
+
+      if Self.Sql_Type = Select_For_Update then
+         Self.Cursor_Name := Random_String (10);
+
+         Result := Isc_Dsql_Set_Cursor_Name
+           (Self.Status'Access, Self.Stmt_Handle'Access, Self.Cursor_Name, 0);
+
+         if Result > 0 then
+            Self.Error := Get_Error (Self.Status'Access);
+            return False;
+         end if;
       end if;
 
-      --  Local cleanup.
+      --  Done getting the type
+      case Self.Sql_Type is
+         when Get_Segment | Put_Segment | Start_Transaction =>
+            Self.Free_Handle;
+            return False;
 
-      PQclear (Result);
+         when Insert | Update | Delete | Simple_Select |
+              Select_For_Update | Exec_Procedure =>
+
+            if Self.Sql_Params.Sqlda /= null then
+               Result := Isc_Dsql_Describe_Bind
+                 (Self.Status'Access, Self.Stmt_Handle'Access,
+                  Sql_Dialect, Self.Sql_Params.Sqlda);
+
+               if Result > 0 then
+                  Self.Error := Get_Error (Self.Status'Access);
+                  return False;
+               end if;
+            end if;
+
+            Self.Sql_Params.Init;
+
+            case Self.Sql_Type is
+               when Simple_Select | Select_For_Update | Exec_Procedure =>
+                  if Self.Sql_Record.Sqlda.Sqld >
+                    Self.Sql_Record.Sqlda.Sqln
+                  then
+                     Self.Sql_Record.Count (Self.Sql_Record.Sqlda.Sqld);
+
+                     Result := Isc_Dsql_Describe
+                       (Self.Status'Access, Self.Stmt_Handle'Access,
+                        Sql_Dialect, Self.Sql_Record.Sqlda);
+
+                     if Result > 0 then
+                        Self.Error := Get_Error (Self.Status'Access);
+                        return False;
+                     end if;
+                  else
+                     if Self.Sql_Record.Sqlda.Sqld = 0 then
+                        Self.Sql_Record.Count (0);
+                     end if;
+                  end if;
+
+                  Self.Sql_Record.Init;
+
+               when Unknown     | Insert            | Update      |
+                    Delete      | DDL               | Get_Segment |
+                    Put_Segment | Start_Transaction | Commit      |
+                    Rollback    | Set_Generator     | Save_Point_Operation =>
+
+                  Self.Sql_Record.Count (0);
+            end case;
+
+         when Unknown | DDL | Commit | Rollback | Set_Generator |
+              Save_Point_Operation =>
+            null;
+      end case;
 
       return True;
+   exception
+      when others =>
+         if Self.Stmt_Handle /= Null_Isc_Stmt_Handle then
+            Self.Free_Handle;
+         end if;
+         return False;
    end Prepare;
+
+   -------------------
+   -- Random_String --
+   -------------------
+
+   function Random_String (Length : Interfaces.C.size_t) return Isc_String
+   is
+      use type Interfaces.C.size_t;
+      use type Interfaces.C.char;
+
+      subtype A_Z is Interfaces.C.char range '0' .. 'z';
+
+      package Rand is new Ada.Numerics.Discrete_Random (A_Z);
+
+      Gen  : Rand.Generator;
+      Str  : Isc_String (1 .. Length);
+      Char : Interfaces.C.char;
+   begin
+      Rand.Reset (Gen);
+      for Idx in 1 .. Length - 1 loop
+         loop
+            Char := Rand.Random (Gen);
+            exit when
+              (Char >= '0' and then  Char <= '9')
+              or else (Char >= 'A' and then Char <= 'Z')
+              or else (Char >= 'a' and then Char <= 'z');
+         end loop;
+
+         Str (Idx) := Char;
+      end loop;
+
+      Str (Str'Last) := Interfaces.C.nul;
+      return Str;
+   end Random_String;
 
    -----------
    -- Value --
@@ -369,74 +557,9 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
     (Self  : not null access Firebird_Query;
      Index : Positive) return League.Holders.Holder
    is
-      Column : constant Interfaces.C.int := Interfaces.C.int (Index - 1);
-      Value  : League.Holders.Holder;
-
    begin
-      case Databases.PostgreSQL_Database'Class
-            (Self.Database.all).Get_Type (PQftype (Self.Result, Column))
-      is
-         when Databases.Text_Data =>
-            --  Process text data.
-
-            League.Holders.Set_Tag
-             (Value, League.Holders.Universal_String_Tag);
-
-            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
-               declare
-                  function To_Address is
-                    new Ada.Unchecked_Conversion
-                         (Interfaces.C.Strings.chars_ptr, System.Address);
-
-                  S : Ada.Streams.Stream_Element_Array
-                       (1 .. Ada.Streams.Stream_Element_Offset
-                              (PQgetlength (Self.Result, Self.Row, Column)));
-                  for S'Address use
-                    To_Address (PQgetvalue (Self.Result, Self.Row, Column));
-                  pragma Import (Ada, S);
-
-               begin
-                  League.Holders.Replace_Element (Value, Codec.Decode (S));
-               end;
-            end if;
-
-         when Databases.Integer_Data =>
-            --  Process integer data.
-
-            League.Holders.Set_Tag
-             (Value, League.Holders.Universal_Integer_Tag);
-
-            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
-               declare
-                  Image : constant String
-                    := Interfaces.C.Strings.Value
-                        (PQgetvalue (Self.Result, Self.Row, Column));
-
-               begin
-                  League.Holders.Replace_Element
-                   (Value, League.Holders.Universal_Integer'Value (Image));
-               end;
-            end if;
-
-         when Databases.Float_Data =>
-            --  Process float data.
-
-            League.Holders.Set_Tag (Value, League.Holders.Universal_Float_Tag);
-
-            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
-               declare
-                  Image : constant String
-                    := Interfaces.C.Strings.Value
-                        (PQgetvalue (Self.Result, Self.Row, Column));
-
-               begin
-                  League.Holders.Replace_Element
-                   (Value, League.Holders.Universal_Float'Value (Image));
-               end;
-            end if;
-      end case;
-
-      return Value;
+      return Self.Sql_Record.Fields.Element
+        (Isc_Valid_Field_Index (Index)).Value;
    end Value;
 
 end Matreshka.Internals.SQL_Drivers.Firebird.Queries;

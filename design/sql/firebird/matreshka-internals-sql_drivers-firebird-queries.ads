@@ -43,8 +43,12 @@
 ------------------------------------------------------------------------------
 --  This package provides implementation of Query abstraction for PostgreSQL.
 ------------------------------------------------------------------------------
+
 with Matreshka.Internals.SQL_Drivers.Firebird.Databases;
+with League.Text_Codecs;
+
 private with Matreshka.Internals.SQL_Parameter_Sets;
+private with Matreshka.Internals.SQL_Drivers.Firebird.Records;
 
 package Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
@@ -52,17 +56,33 @@ package Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
    procedure Initialize
     (Self     : not null access Firebird_Query'Class;
-     Database : not null access Databases.Firebird_Database'Class);
+     Database : not null access Databases.Firebird_Database'Class;
+     Codec    : access League.Text_Codecs.Text_Codec;
+     Utf      : Boolean);
 
 private
 
+   type Query_State is (Active, Inactive);
+
+   type Query_Sql_Type is
+     (Unknown,           Simple_Select, Insert,
+      Update,            Delete,        DDL,
+      Get_Segment,       Put_Segment,   Exec_Procedure,
+      Start_Transaction, Commit,        Rollback,
+      Select_For_Update, Set_Generator, Save_Point_Operation);
+
    type Firebird_Query is new Abstract_Query with record
---        Name       : Interfaces.C.Strings.chars_ptr
---          := Interfaces.C.Strings.Null_Ptr;
-      Error      : League.Strings.Universal_String;
-      Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
---        Result     : PGresult_Access;
-      Row        : Interfaces.C.int;
+      State       : Query_State    := Inactive;
+      Sql_Type    : Query_Sql_Type := Unknown;
+      Stmt_Handle : aliased Isc_Stmt_Handle := Null_Isc_Stmt_Handle;
+      Sql_Record  : Records.Sql_Record;
+      Sql_Params  : Records.Sql_Record;
+      Sql_Text    : League.Strings.Universal_String;
+
+      Parameters  : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
+      Cursor_Name : Isc_String (1 .. 10);
+      Status      : aliased Isc_Results := (others => 0);
+      Error       : League.Strings.Universal_String;
    end record;
 
    overriding procedure Bind_Value
@@ -100,5 +120,11 @@ private
    overriding function Value
     (Self  : not null access Firebird_Query;
      Index : Positive) return League.Holders.Holder;
+
+   procedure Free_Handle (Self : not null access Firebird_Query);
+
+   function Execute_Immediate
+     (Self : not null access Firebird_Query)
+      return Boolean;
 
 end Matreshka.Internals.SQL_Drivers.Firebird.Queries;

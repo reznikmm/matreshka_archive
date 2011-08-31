@@ -39,92 +39,35 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: $ $Date: $
-------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Firebird database.
+--  $Revision: 1562 $ $Date: 2011-03-02 11:40:23 +0200 (Ср, 02 мар 2011) $
 ------------------------------------------------------------------------------
 
-with Ada.Containers.Vectors;
-with League.Stream_Element_Vectors;
-with League.Text_Codecs;
+package body Matreshka.Internals.SQL_Parameter_Rewriters.Firebird is
 
-package Matreshka.Internals.SQL_Drivers.Firebird.Databases is
+   --------------------------
+   -- Database_Placeholder --
+   --------------------------
 
-   -----------------------
-   -- Firebird_Database --
-   -----------------------
+   overriding procedure Database_Placeholder
+    (Self        : Firebird_Parameter_Rewriter;
+     Name        : League.Strings.Universal_String;
+     Number      : Positive;
+     Placeholder : out League.Strings.Universal_String;
+     Parameters  : in out SQL_Parameter_Sets.Parameter_Set)
+   is
+      use type League.Strings.Universal_String;
 
-   type Firebird_Database is new Abstract_Database with private;
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Number);
 
-   function Database_Handle
-     (Self : Firebird_Database)
-      return Isc_Database_Handle_Access;
-   pragma Inline (Database_Handle);
+   begin
+      if not Parameters.Has_Parameter (Name) then
+         --  Parameter is new, register it.
 
-   function Transaction_Handle
-     (Self : Firebird_Database)
-      return Isc_Transaction_Handle_Access;
-   pragma Inline (Transaction_Handle);
+         Parameters.Append (Name);
+      end if;
 
-private
+      Placeholder := League.Strings.To_Universal_String ("?");
+   end Database_Placeholder;
 
-   use type Isc_Long;
-
-   type Db_Param is record
-      Param : Isc_Dpb_Code;
-      Value : League.Strings.Universal_String;
-   end record;
-
-   package Params_List is new Ada.Containers.Vectors (Positive, Db_Param);
-
-   type Text_Codec_Access is access all League.Text_Codecs.Text_Codec;
-
-   type Firebird_Database is new Abstract_Database with record
-      DB_Handle : aliased Isc_Database_Handle    := Null_Isc_Database_Handle;
-      TR_Handle : aliased Isc_Transaction_Handle :=
-        Null_Isc_Transaction_Handle;
-
-      DB_Params_Block : League.Stream_Element_Vectors.Stream_Element_Vector;
-
-      Status : aliased Isc_Results := (others => 0);
-      Error  : League.Strings.Universal_String;
-      Params : Params_List.Vector;
-      Codec  : Text_Codec_Access;
-      Utf    : Boolean := False;
-   end record;
-
-   overriding procedure Close (Self : not null access Firebird_Database);
-
-   overriding procedure Commit (Self : not null access Firebird_Database);
-
-   overriding function Error_Message
-     (Self : not null access Firebird_Database)
-      return League.Strings.Universal_String;
-
-   overriding function Query
-    (Self : not null access Firebird_Database) return not null Query_Access;
-
-   overriding procedure Finalize (Self : not null access Firebird_Database);
-
-   overriding function Open
-    (Self    : not null access Firebird_Database;
-     Options : League.Strings.Universal_String) return Boolean;
-
-   procedure Check_Result
-     (Self   : not null access Firebird_Database;
-      Result : Isc_Result_Code);
-
-   procedure Set_Error
-    (Self : not null access Firebird_Database;
-     Text : Wide_Wide_String);
-
-   procedure Generate_DB_Params_Block
-     (Self : not null access Firebird_Database);
-
-   function Start_Transaction
-     (Self : not null access Firebird_Database)
-      return Boolean;
-
-   procedure Rollback_Transaction (Self : not null access Firebird_Database);
-
-end Matreshka.Internals.SQL_Drivers.Firebird.Databases;
+end Matreshka.Internals.SQL_Parameter_Rewriters.Firebird;

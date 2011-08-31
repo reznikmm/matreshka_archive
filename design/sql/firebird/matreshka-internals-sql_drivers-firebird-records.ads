@@ -39,92 +39,41 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: $ $Date: $
+--  $Revision: 1793 $ $Date: 2011-06-11 10:40:44 +0300 (Сб, 11 июн 2011) $
 ------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Firebird database.
+--  This package provides implementation of Query abstraction for PostgreSQL.
 ------------------------------------------------------------------------------
-
+with Ada.Finalization;
 with Ada.Containers.Vectors;
-with League.Stream_Element_Vectors;
+with Matreshka.Internals.SQL_Drivers.Firebird.Fields;
 with League.Text_Codecs;
 
-package Matreshka.Internals.SQL_Drivers.Firebird.Databases is
+package Matreshka.Internals.SQL_Drivers.Firebird.Records is
 
-   -----------------------
-   -- Firebird_Database --
-   -----------------------
+   type Sqlda_Buffer is array (Positive range <>) of aliased Isc_Long;
+   type Sqlda_Buffer_Access is access all Sqlda_Buffer;
 
-   type Firebird_Database is new Abstract_Database with private;
+   type Isc_Sqlda_Access is access all Isc_Sqlda;
+   pragma No_Strict_Aliasing (Isc_Sqlda_Access);
 
-   function Database_Handle
-     (Self : Firebird_Database)
-      return Isc_Database_Handle_Access;
-   pragma Inline (Database_Handle);
+   package Fields_Containers is
+     new Ada.Containers.Vectors
+       (Isc_Valid_Field_Index, Fields.Field_Access, "=" => Fields."=");
 
-   function Transaction_Handle
-     (Self : Firebird_Database)
-      return Isc_Transaction_Handle_Access;
-   pragma Inline (Transaction_Handle);
-
-private
-
-   use type Isc_Long;
-
-   type Db_Param is record
-      Param : Isc_Dpb_Code;
-      Value : League.Strings.Universal_String;
+   type Sql_Record is new Ada.Finalization.Controlled with record
+      Cnt       : Isc_Field_Index     := 0; -- reserved data length
+      Size      : Isc_Field_Index     := 0; -- real used data
+      Sqlda_Buf : Sqlda_Buffer_Access := null;
+      Sqlda     : Isc_Sqlda_Access    := null;
+      Fields    : Fields_Containers.Vector;
+      Codec     : access League.Text_Codecs.Text_Codec;
+      Utf       : Boolean;
    end record;
 
-   package Params_List is new Ada.Containers.Vectors (Positive, Db_Param);
+   overriding procedure Finalize (Self : in out Sql_Record);
+   procedure Count (Self : in out Sql_Record; Value : Isc_Field_Index);
+   procedure Free_Fields (Self : in out Sql_Record);
+   procedure Init (Self : in out Sql_Record);
+   procedure Clear_Values (Self : in out Sql_Record);
 
-   type Text_Codec_Access is access all League.Text_Codecs.Text_Codec;
-
-   type Firebird_Database is new Abstract_Database with record
-      DB_Handle : aliased Isc_Database_Handle    := Null_Isc_Database_Handle;
-      TR_Handle : aliased Isc_Transaction_Handle :=
-        Null_Isc_Transaction_Handle;
-
-      DB_Params_Block : League.Stream_Element_Vectors.Stream_Element_Vector;
-
-      Status : aliased Isc_Results := (others => 0);
-      Error  : League.Strings.Universal_String;
-      Params : Params_List.Vector;
-      Codec  : Text_Codec_Access;
-      Utf    : Boolean := False;
-   end record;
-
-   overriding procedure Close (Self : not null access Firebird_Database);
-
-   overriding procedure Commit (Self : not null access Firebird_Database);
-
-   overriding function Error_Message
-     (Self : not null access Firebird_Database)
-      return League.Strings.Universal_String;
-
-   overriding function Query
-    (Self : not null access Firebird_Database) return not null Query_Access;
-
-   overriding procedure Finalize (Self : not null access Firebird_Database);
-
-   overriding function Open
-    (Self    : not null access Firebird_Database;
-     Options : League.Strings.Universal_String) return Boolean;
-
-   procedure Check_Result
-     (Self   : not null access Firebird_Database;
-      Result : Isc_Result_Code);
-
-   procedure Set_Error
-    (Self : not null access Firebird_Database;
-     Text : Wide_Wide_String);
-
-   procedure Generate_DB_Params_Block
-     (Self : not null access Firebird_Database);
-
-   function Start_Transaction
-     (Self : not null access Firebird_Database)
-      return Boolean;
-
-   procedure Rollback_Transaction (Self : not null access Firebird_Database);
-
-end Matreshka.Internals.SQL_Drivers.Firebird.Databases;
+end Matreshka.Internals.SQL_Drivers.Firebird.Records;

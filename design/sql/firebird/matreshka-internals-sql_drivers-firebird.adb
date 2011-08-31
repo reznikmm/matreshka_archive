@@ -47,15 +47,65 @@ with League.Text_Codecs;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird is
 
+   ASCII_Codec : constant League.Text_Codecs.Text_Codec :=
+     League.Text_Codecs.Codec
+       (League.Strings.To_Universal_String ("ISO-8859-1"));
+   --  It is used everywhere to convert text data.
+
+   function To_Universal_String
+     (Buffer : access Isc_String;
+      From   : Interfaces.C.size_t;
+      Last   : Interfaces.C.size_t)
+      return League.Strings.Universal_String;
+
+   ---------------------
+   -- Check_For_Error --
+   ---------------------
+
+   function Check_For_Error
+     (Status : access Isc_Results;
+      Codes  : Isc_Result_Codes)
+      return Boolean
+   is
+      use type Interfaces.C.long;
+
+      Idx : Integer := Status'First;
+   begin
+      while Idx <= Status'Last
+        and then Status (Idx) /= 0
+      loop
+         case Status (Idx) is
+            when 3 =>
+               Idx := Idx + 3;
+
+            when 1 | 4 =>
+               Idx := Idx + 1;
+
+               for I in Codes'Range loop
+                  if Status (Idx) = Codes (I) then
+                     return True;
+                  end if;
+               end loop;
+
+               Idx := Idx + 1;
+
+            when others =>
+               Idx := Idx + 2;
+         end case;
+      end loop;
+
+      return False;
+   end Check_For_Error;
+
    ---------------
    -- Get_Error --
    ---------------
 
    function Get_Error
-     (Status : access Isc_Statuses)
+     (Status : access Isc_Results)
       return League.Strings.Universal_String
    is
-      use type Isc_Status;
+      use type Isc_Result_Code;
 
       sqlcode : Isc_Short;
 
@@ -63,7 +113,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
         (1 .. Huge_Buffer_Length => Interfaces.C.nul);
       pragma Warnings (Off, Buffer);
 
-      Pos : aliased Isc_Status_Access :=
+      Pos : aliased Isc_Results_Access :=
         Status (Status'First)'Unchecked_Access;
 
       Result : League.Strings.Universal_String;
@@ -106,6 +156,53 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
       return Result;
    end Get_Error;
 
+   ----------------------
+   -- Is_Datetime_Type --
+   ----------------------
+
+   function Is_Datetime_Type (Sql_Type : Isc_Sqltype) return Boolean is
+   begin
+      return Sql_Type = Isc_Type_Timestamp
+        or else Sql_Type = Isc_Type_Date
+        or else Sql_Type = Isc_Type_Time;
+   end Is_Datetime_Type;
+
+   ---------------------
+   -- Is_Numeric_Type --
+   ---------------------
+
+   function Is_Numeric_Type (Sql_Type : Isc_Sqltype) return Boolean is
+   begin
+      return Sql_Type = Isc_Type_Int64
+        or else Sql_Type = Isc_Type_Long
+        or else Sql_Type = Isc_Type_Short
+        or else Sql_Type = Isc_Type_Double
+        or else Sql_Type = Isc_Type_Float
+        or else Sql_Type = Isc_Type_D_Float;
+   end Is_Numeric_Type;
+
+   -------------------
+   -- To_Isc_String --
+   -------------------
+
+   function To_Isc_String
+    (Item : League.Strings.Universal_String)
+     return Isc_String
+   is
+      --  XXX This subprogram can be optimized by direct access to
+      --  Stream_Element_Vector internal storage. This storage can be renamed
+      --  to S_Item object, thus there is no copy of data needed.
+
+      V_Item : constant Ada.Streams.Stream_Element_Array :=
+        ASCII_Codec.Encode (Item).To_Stream_Element_Array;
+      S_Item : String (1 .. V_Item'Length);
+      for S_Item'Address use V_Item'Address;
+      pragma Import (Ada, S_Item);
+
+   begin
+      return Interfaces.C.To_C (S_Item);
+   end To_Isc_String;
+
    -------------------------
    -- To_Universal_String --
    -------------------------
@@ -122,10 +219,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird is
       for Source'Address use Buffer (From)'Address;
       pragma Import (Ada, Source);
    begin
-      return League.Text_Codecs.Decode
-        (League.Text_Codecs.Codec
-           (League.Strings.To_Universal_String ("utf-8")),
-         Source);
+      return League.Text_Codecs.Decode (ASCII_Codec, Source);
    end To_Universal_String;
 
 end Matreshka.Internals.SQL_Drivers.Firebird;

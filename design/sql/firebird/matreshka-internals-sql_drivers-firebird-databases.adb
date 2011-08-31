@@ -42,13 +42,17 @@
 --  $Revision: $ $Date: $
 ------------------------------------------------------------------------------
 
-with Ada.Calendar;
-with League.Text_Codecs;
+with Ada.Unchecked_Deallocation;
+with Matreshka.Internals.SQL_Drivers.Firebird.Queries;
 
 package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
-   UTF8_Codec : constant League.Text_Codecs.Text_Codec :=
-     League.Text_Codecs.Codec (League.Strings.To_Universal_String ("UTF-8"));
+   ASCII_Codec : constant League.Text_Codecs.Text_Codec :=
+     League.Text_Codecs.Codec
+       (League.Strings.To_Universal_String ("ISO-8859-1"));
+
+   procedure Free is new Ada.Unchecked_Deallocation
+     (League.Text_Codecs.Text_Codec, Text_Codec_Access);
 
    ------------------
    -- Check_Result --
@@ -56,9 +60,8 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
    procedure Check_Result
      (Self   : not null access Firebird_Database;
-      Result : Isc_Status)
+      Result : Isc_Result_Code)
    is
-      use type Isc_Long;
    begin
       Self.Error.Clear;
 
@@ -102,6 +105,18 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
       Self.TR_Handle := Null_Isc_Transaction_Handle;
    end Commit;
 
+   ---------------------
+   -- Database_Handle --
+   ---------------------
+
+   function Database_Handle
+     (Self : Firebird_Database)
+      return Isc_Database_Handle_Access
+   is
+   begin
+      return Self.DB_Handle'Unchecked_Access;
+   end Database_Handle;
+
    -------------------
    -- Error_Message --
    -------------------
@@ -121,6 +136,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    overriding procedure Finalize (Self : not null access Firebird_Database) is
    begin
       Self.Close;
+      Free (Self.Codec);
    end Finalize;
 
    ------------------------------
@@ -158,7 +174,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
                Append
                  (Self.DB_Params_Block,
-                  UTF8_Codec.Encode (Current.Value).To_Stream_Element_Array);
+                  ASCII_Codec.Encode (Current.Value).To_Stream_Element_Array);
 
 --              when Isc_Dpb_Sql_Dialect =>
 --                 Append
@@ -201,17 +217,71 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
       Options : League.Strings.Universal_String)
       return Boolean
    is
-      use Ada.Calendar;
-      use type Isc_Status;
+      use type Isc_Result_Code;
 
-      Result : Isc_Status := 0;
+      Result : Isc_Result_Code := 0;
 
       function Get_User     return League.Strings.Universal_String;
       function Get_Password return League.Strings.Universal_String;
       function Get_Database return Isc_String;
+      procedure Create_Codec;
 
       Pwd_Separator : constant Natural := Options.Index ('/');
       DB_Separator  : constant Natural := Options.Index ('@');
+
+      ------------------
+      -- Create_Codec --
+      ------------------
+
+      procedure Create_Codec is
+         use type Interfaces.C.char;
+
+         Request : Isc_String (1 .. 1);
+         Buffer  : aliased Isc_String := (1 .. 512 => Interfaces.C.nul);
+         Len     : Isc_Short;
+         Set     : Isc_Character_Set;
+      begin
+         Request (1) := Frb_Info_Att_Charset;
+
+         Result := Isc_Database_Info
+           (Self.Status'Access, Self.DB_Handle'Access,
+            1, Request, 512, Buffer'Access);
+
+         if Result > 0
+           or else Buffer (1) /= Frb_Info_Att_Charset
+         then
+            Self.Codec := new League.Text_Codecs.Text_Codec'
+              (League.Text_Codecs.Codec
+                 (League.Strings.To_Universal_String ("UTF-8")));
+            Self.Utf := True;
+            return;
+         end if;
+
+         Len := Isc_Short (Isc_Vax_Integer (Buffer (2 .. 512), 2));
+         Set := Character_Set
+           (Isc_Short (Isc_Vax_Integer (Buffer (4 .. 512), Len)));
+
+         case Set is
+            when UNKNOWN | UNICODE_FSS | UFT8 =>
+               Self.Codec := new League.Text_Codecs.Text_Codec'
+                 (League.Text_Codecs.Codec
+                    (League.Strings.To_Universal_String ("UTF-8")));
+               Self.Utf := True;
+
+            when others =>
+               Self.Codec := new League.Text_Codecs.Text_Codec'
+                 (League.Text_Codecs.Codec
+                    (League.Strings.To_Universal_String
+                       (Isc_Character_Set'Wide_Wide_Image (Set))));
+         end case;
+
+      exception
+         when others =>
+            Self.Codec := new League.Text_Codecs.Text_Codec'
+              (League.Text_Codecs.Codec
+                 (League.Strings.To_Universal_String ("UTF-8")));
+            Self.Utf := True;
+      end Create_Codec;
 
       ------------------
       -- Get_Database --
@@ -223,7 +293,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
          if DB_Separator /= 0 then
             declare
                V_Item : constant Ada.Streams.Stream_Element_Array :=
-                 UTF8_Codec.Encode
+                 ASCII_Codec.Encode
                    (Options.Slice (DB_Separator + 1, Options.Length)).
                  To_Stream_Element_Array;
 
@@ -320,6 +390,8 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
          return False;
       end if;
 
+      Create_Codec;
+
       return Self.Start_Transaction;
    end Open;
 
@@ -331,7 +403,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
      (Self : not null access Firebird_Database)
       return Boolean
    is
-      Result :         Isc_Status := 0;
+      Result :         Isc_Result_code := 0;
       TPB    : aliased Isc_String :=  (1 .. 5 => (Interfaces.C.nul));
 
       procedure Generate_Tpb;
@@ -393,6 +465,18 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
       Self.Error := League.Strings.To_Universal_String (Text);
    end Set_Error;
 
+   ------------------------
+   -- Transaction_Handle --
+   ------------------------
+
+   function Transaction_Handle
+     (Self : Firebird_Database)
+      return Isc_Transaction_Handle_Access
+   is
+   begin
+      return Self.TR_Handle'Unchecked_Access;
+   end Transaction_Handle;
+
    -----------
    -- Query --
    -----------
@@ -400,7 +484,12 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    overriding function Query
      (Self : not null access Firebird_Database) return not null Query_Access is
    begin
-      return null;
+      return Aux : constant not null Query_Access := new Queries.Firebird_Query
+      do
+         Queries.Initialize
+           (Queries.Firebird_Query'Class (Aux.all)'Access,
+            Self, Self.Codec, Self.Utf);
+      end return;
    end Query;
 
    --------------------------
@@ -408,7 +497,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
    --------------------------
 
    procedure Rollback_Transaction (Self : not null access Firebird_Database) is
-      Result : Isc_Status;
+      Result : Isc_Result_Code;
    begin
       if Self.TR_Handle = Null_Isc_Transaction_Handle then
          return;
