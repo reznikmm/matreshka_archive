@@ -58,6 +58,7 @@ package body Events_Printers is
 
    Resault_File      : aliased Ada.Wide_Wide_Text_IO.File_Type;
    Is_Program_Code   : Boolean := False;
+   Is_Declare_Tag_Be : Boolean := False;
    Resault_File_Name : String (1..128);
    Resault_File_Name_Length : Positive;
    ASP_Namespace     : constant League.Strings.Universal_String
@@ -113,7 +114,7 @@ package body Events_Printers is
      Success : in out Boolean) is
    begin
       if Is_Program_Code then
-         Put_Line (+"      Writer.Characters (" & Text & ");");
+         Put_Line (+"      " & Text);
       else
          Put_Line (+"      Writer.Characters (+" & '"' & Text & '"' & ");");
       end if;
@@ -152,6 +153,7 @@ package body Events_Printers is
             case Tag is
                when Root_Tag => null;
                when With_Tag => null;
+               when Declare_Tag => Is_Program_Code := False;
                when Body_Tag =>
                   Put_Line (+"      Writer.End_Document;");
                   Put_Line (+"      return AWS.Response.Build");
@@ -163,6 +165,7 @@ package body Events_Printers is
                   Put (+"end ");
                   Put (+Ada.Characters.Conversions.To_Wide_Wide_String
                        (Resault_File_Name (1..Resault_File_Name_Length)) & ";");
+                  Is_Declare_Tag_Be := False;
                when Expression_Tag => Is_Program_Code := False;
                when others => null;
             end case;
@@ -292,8 +295,9 @@ package body Events_Printers is
                   Put_Line (+"with League.Text_Codecs;");
                   Put_Line (+"with League.Strings;");
                when With_Tag => Put_Line (+"with "
-                                                 & Attributes.Value (1) & ";");
-               when Body_Tag =>
+                                          & Attributes.Value (1) & ";");
+               when Declare_Tag =>
+                  Is_Declare_Tag_Be := True;
                   Put (+"package body ");
                   Put
                     (+Ada.Characters.Conversions.To_Wide_Wide_String
@@ -314,6 +318,34 @@ package body Events_Printers is
                             & "XML.SAX.Pretty_Writers.SAX_Pretty_Writer;");
                   Put_Line (+"      Attributes : "
                             & "XML.SAX.Attributes.SAX_Attributes;");
+                  Is_Program_Code := True;
+               when Body_Tag =>
+                  if not Is_Declare_Tag_Be then
+                  begin
+                     Put (+"package body ");
+                     Put
+                       (+Ada.Characters.Conversions.To_Wide_Wide_String
+                          (Resault_File_Name (1..Resault_File_Name_Length)));
+                     Put_Line (+" is");
+                     Put_Line (+"   function " & '"' & "+" & '"'
+                               & " (Item : Wide_Wide_String)"
+                               & " return League.Strings.Universal_String");
+                     Put_Line (+"                 renames"
+                               & " League.Strings.To_Universal_String;");
+                     Put_Line (+"   function Call_Back (Request : "
+                               & "AWS.Status.Data)"
+                               & " return AWS.Response.Data is");
+                     Put_Line (+"      pragma Unreferenced (Request);");
+                     Put_Line (+"      Encoder : "
+                               & "League.Text_Codecs.Text_Codec");
+                     Put_Line (+"        := League.Text_Codecs.Codec (+" & '"'
+                               & "utf-8" & '"' & ");");
+                     Put_Line (+"      Writer     : "
+                               & "XML.SAX.Pretty_Writers.SAX_Pretty_Writer;");
+                     Put_Line (+"      Attributes : "
+                               & "XML.SAX.Attributes.SAX_Attributes;");
+                  end;
+                  end if;
                   Put_Line (+"   begin");
                   Put_Line (+"      Writer.Start_Document;");
                when Expression_Tag => Is_Program_Code := True;
