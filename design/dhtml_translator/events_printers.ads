@@ -72,7 +72,8 @@ package Events_Printers is
 
    type File_Access is access all Ada.Wide_Wide_Text_IO.File_Type;
 
-   type ASP_Tags is (Root_Tag, With_Tag, Body_Tag, Expression_Tag);
+   type ASP_Tags is (Root_Tag, With_Tag, Body_Tag,
+                     Expression_Tag, Declare_Tag);
 
    type ASP_Attributes is (Color_Attribute, Font_Size_Attribute,
                            Bg_Color_Attribute, Font_Color_Attribute);
