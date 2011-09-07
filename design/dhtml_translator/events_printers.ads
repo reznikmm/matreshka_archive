@@ -69,26 +69,8 @@ package Events_Printers is
    --  GNAT GPL 2010: compiler is unable to compile declaration of this type
    --  when it is declared as private.
 
-
-   type File_Access is access all Ada.Wide_Wide_Text_IO.File_Type;
-
-   type ASP_Tags is (Root_Tag, With_Tag, Body_Tag,
-                     Expression_Tag, Declare_Tag);
-
-   type ASP_Attributes is (Color_Attribute, Font_Size_Attribute,
-                           Bg_Color_Attribute, Font_Color_Attribute);
-
-   procedure Create (File_Name : String);
-
-   procedure Open (File_Name : String);
-
+   procedure Initialize;
    procedure Close;
-
-   procedure Write (Item : League.Strings.Universal_String);
-
-   function Get_File return File_Access;
-
-   procedure Set_Resault_File_Name (Name : String);
 
    overriding procedure Characters
     (Self    : in out Events_Printer;

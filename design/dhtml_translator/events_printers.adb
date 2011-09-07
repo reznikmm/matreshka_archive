@@ -41,68 +41,47 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Wide_Wide_Text_IO;
 with Ada.Characters.Conversions;
+with Ada.Directories;
+with Ada.Streams.Stream_IO;
 with Ada.Wide_Wide_Text_IO;
-with Put_Line;
-with Put;
+
+with League.Text_Codecs;
+with League.Application;
+
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Attributes;
 with XML.SAX.Pretty_Writers;
 
 package body Events_Printers is
 
-   function "+" (Item : Wide_Wide_String) return League.Strings.Universal_String
-                 renames League.Strings.To_Universal_String;
    use type League.Strings.Universal_String;
 
-   Resault_File      : aliased Ada.Wide_Wide_Text_IO.File_Type;
-   Is_Program_Code   : Boolean := False;
-   Is_Declare_Tag_Be : Boolean := False;
-   Resault_File_Name : String (1..128);
-   Resault_File_Name_Length : Positive;
-   ASP_Namespace     : constant League.Strings.Universal_String
-     					:= +"http://www.ada-ru.org/ASP";
+   type ASP_Tags is (Root_Tag, With_Tag, Body_Tag,
+                     Expression_Tag, Declare_Tag);
 
+   Open_Tags  : array (ASP_Tags) of League.Strings.Universal_String;
+   Close_Tags : array (ASP_Tags) of League.Strings.Universal_String;
 
-   procedure Set_Resault_File_Name (Name : String) is
-   begin
-      Resault_File_Name (1..Name'Length-4) := Name(Name'First..Name'Last-4);
-      Resault_File_Name_Length := Name'Length-4;
-   end Set_Resault_File_Name;
+   type ASP_Attributes is (Color_Attribute, Font_Size_Attribute,
+                           Bg_Color_Attribute, Font_Color_Attribute);
 
-   procedure Open (File_Name : String) is
-   begin
-      Ada.Wide_Wide_Text_IO.Open  (Resault_File,
-                                   Ada.Wide_Wide_Text_IO.Out_File,
-                                   File_Name);
-   end Open;
-
-   procedure Create (File_Name : String) is
-   begin
-      Ada.Wide_Wide_Text_IO.Create (Resault_File,
-                                    Ada.Wide_Wide_Text_IO.Out_File,
-                                    File_Name);
-   end Create;
-
-   procedure Close is
-   begin
-      Ada.Wide_Wide_Text_IO.Close (Resault_File);
-   end Close;
-
-   procedure Write (Item : League.Strings.Universal_String) is
-   begin
-      Put_Line (Item);
-   end Write;
-
-   function Get_File return File_Access is
-   begin
-      return Resault_File'Access;
-   end Get_File;
-
+   function "+" (Item : Wide_Wide_String)
+     return League.Strings.Universal_String
+     renames League.Strings.To_Universal_String;
 
    function Image (Item : XML.SAX.Locators.SAX_Locator)
      return League.Strings.Universal_String;
+
+   procedure Put_Line (Item : League.Strings.Universal_String);
+
+   Result_Text       : League.Strings.Universal_String;
+   Is_Program_Code   : Boolean := False;
+   Is_Declare_Tag_Be : Boolean := False;
+   ASP_Namespace     : constant League.Strings.Universal_String
+     := +"http://www.ada-ru.org/ASP";
+
+   NL : constant Wide_Wide_Character := Wide_Wide_Character'Val (10);
 
    ----------------
    -- Characters --
@@ -116,10 +95,19 @@ package body Events_Printers is
       if Is_Program_Code then
          Put_Line (+"      " & Text);
       else
-         Put_Line (+"      Writer.Characters (+" & '"' & Text & '"' & ");");
+         Put_Line (+"      Writer.Characters (+""" & Text & """);");
       end if;
 
    end Characters;
+
+   -----------
+   -- Close --
+   -----------
+
+   procedure Close is
+   begin
+      Ada.Wide_Wide_Text_IO.Put_Line (Result_Text.To_Wide_Wide_String);
+   end Close;
 
    -------------
    -- Comment --
@@ -150,33 +138,26 @@ package body Events_Printers is
               (Ada.Characters.Conversions.To_String
                  (Local_Name.To_Wide_Wide_String) & "_Tag");
          begin
+            Put_Line (Close_Tags (Tag));
+
             case Tag is
-               when Root_Tag => null;
-               when With_Tag => null;
-               when Declare_Tag => Is_Program_Code := False;
+               when Declare_Tag =>
+                  Is_Program_Code := False;
                when Body_Tag =>
-                  Put_Line (+"      Writer.End_Document;");
-                  Put_Line (+"      return AWS.Response.Build");
-                  Put_Line (+"       (" & '"' & "application/xhtml+xml"
-                            & '"' & ",");
-                  Put_Line (+"        Encoder.Encode "
-                            & "(Writer.Text).To_Stream_Element_Array);");
-                  Put_Line (+"   end Call_Back;");
-                  Put (+"end ");
-                  Put (+Ada.Characters.Conversions.To_Wide_Wide_String
-                       (Resault_File_Name (1..Resault_File_Name_Length)) & ";");
                   Is_Declare_Tag_Be := False;
-               when Expression_Tag => Is_Program_Code := False;
-               when others => null;
+               when Expression_Tag =>
+                  Is_Program_Code := False;
+               when others =>
+                  null;
             end case;
          end;
       else
-         Put_Line(+"      Writer.End_Element (Namespace_URI => +" & '"'
-                  & Namespace_URI & '"' & ",");
-         Put_Line(+"                            Local_Name => +" & '"'
-                  & Local_Name & '"' & ",");
-         Put_Line(+"                            Qualified_Name => +" & '"'
-                  & Qualified_Name & '"' & ");");
+         Put_Line (+"      Writer.End_Element (Namespace_URI => +"""
+                  & Namespace_URI & """,");
+         Put_Line (+"                            Local_Name => +"""
+                  & Local_Name & """,");
+         Put_Line (+"                            Qualified_Name => +"""
+                  & Qualified_Name & """);");
       end if;
    end End_Element;
 
@@ -260,6 +241,140 @@ package body Events_Printers is
             & C (C'First + 1 .. C'Last));
    end Image;
 
+   ----------------
+   -- Initialize --
+   ----------------
+
+   procedure Initialize is
+
+      Package_Name_Index : Positive := 2;
+
+      function Read_File
+        (Name : League.Strings.Universal_String)
+        return League.Strings.Universal_String
+      is
+         File_Name : constant String :=
+           League.Text_Codecs.To_Exception_Message (Name);
+      begin
+         if Ada.Directories.Exists (File_Name) then
+            declare
+               Decoder : League.Text_Codecs.Text_Codec :=
+                 League.Text_Codecs.Codec (+"utf-8");
+
+               Size : constant Ada.Directories.File_Size :=
+                 Ada.Directories.Size (File_Name);
+
+               Length : constant Ada.Streams.Stream_Element_Offset :=
+                 Ada.Streams.Stream_Element_Count (Size);
+
+               File   : Ada.Streams.Stream_IO.File_Type;
+               Data   : Ada.Streams.Stream_Element_Array (1 .. Length);
+               Last   : Ada.Streams.Stream_Element_Offset;
+            begin
+               Ada.Streams.Stream_IO.Open
+                 (File, Ada.Streams.Stream_IO.In_File, File_Name);
+               Ada.Streams.Stream_IO.Read (File, Data, Last);
+               Ada.Streams.Stream_IO.Close (File);
+
+               return Decoder.Decode (Data (1 .. Last));
+
+            end;
+         else
+            return League.Strings.Empty_Universal_String;
+         end if;
+      end Read_File;
+
+      procedure Read_Template_Files is
+      begin
+         for J in ASP_Tags loop
+            Open_Tags (J) := Read_File
+              (League.Application.Arguments.Element (3) &
+                 "OPEN_" & ASP_Tags'Wide_Wide_Image (J));
+
+            Close_Tags (J) := Read_File
+              (League.Application.Arguments.Element (3) &
+                 "CLOSE_" & ASP_Tags'Wide_Wide_Image (J));
+         end loop;
+      end Read_Template_Files;
+
+      procedure Substitute_Variables
+        (Text : in out League.Strings.Universal_String)
+      is
+         Index : Natural := Text.Index ('$');
+         Name  : constant League.Strings.Universal_String := +"$Package_Name$";
+      begin
+         if Index /= 0 and then
+           Text.Slice (Index, Index + Name.Length - 1) = Name
+         then
+            Text.Replace
+              (Index,
+               Index + Name.Length - 1,
+               League.Application.Arguments.Element (Package_Name_Index));
+         end if;
+      end Substitute_Variables;
+
+      NL : constant Wide_Wide_Character := Wide_Wide_Character'Val (10);
+   begin
+      if League.Application.Arguments.Element (2) = +"--templates" then
+
+         Package_Name_Index := Package_Name_Index + 2;
+
+         Read_Template_Files;
+
+      else
+
+         Open_Tags (Root_Tag) :=
+           +"with XML.SAX.Attributes;" & NL &
+           "with XML.SAX.Pretty_Writers;" & NL &
+           "with League.Text_Codecs;" & NL &
+           "with League.Strings;";
+
+         Open_Tags (Declare_Tag) :=
+           +"package body $Package_Name$ is" & NL &
+           "   function ""+"" (Item : Wide_Wide_String)" &
+           " return League.Strings.Universal_String" & NL &
+           "     renames League.Strings.To_Universal_String;" & NL & NL &
+           "   function Call_Back (Request : AWS.Status.Data)" &
+           "return AWS.Response.Data is" & NL &
+           "      pragma Unreferenced (Request);" & NL &
+           "      Encoder : League.Text_Codecs.Text_Codec" & NL &
+           "        := League.Text_Codecs.Codec (+""utf-8""" & NL &
+           "      Writer     : " &
+           "XML.SAX.Pretty_Writers.SAX_Pretty_Writer;" & NL &
+           "      Attributes : " &
+           "XML.SAX.Attributes.SAX_Attributes;" & NL & NL;
+
+         Open_Tags (Body_Tag) :=
+           +"   begin" & NL &
+           "      Writer.Start_Document;" & NL;
+
+         Close_Tags (Body_Tag) :=
+           +"      Writer.End_Document;" & NL &
+           "      return AWS.Response.Build" & NL &
+           "       (""application/xhtml+xml""," & NL &
+           "        Encoder.Encode (Writer.Text).To_Stream_Element_Array);" &
+           NL &
+           "   end Call_Back;" & NL &
+           "end $Package_Name$;" & NL;
+      end if;
+
+      for J in ASP_Tags loop
+         Substitute_Variables (Open_Tags (J));
+         Substitute_Variables (Close_Tags (J));
+      end loop;
+
+   end Initialize;
+
+   --------------
+   -- Put_Line --
+   --------------
+
+   procedure Put_Line (Item : League.Strings.Universal_String) is
+   begin
+      Result_Text.Append (Item);
+      Result_Text.Append (NL);
+   end Put_Line;
+
    --------------------------
    -- Set_Document_Locator --
    --------------------------
@@ -290,65 +405,21 @@ package body Events_Printers is
                  (Local_Name.To_Wide_Wide_String) & "_Tag");
          begin
             case Tag is
-               when Root_Tag => Put_Line (+"with XML.SAX.Attributes;");
-                  Put_Line (+"with XML.SAX.Pretty_Writers;");
-                  Put_Line (+"with League.Text_Codecs;");
-                  Put_Line (+"with League.Strings;");
-               when With_Tag => Put_Line (+"with "
-                                          & Attributes.Value (1) & ";");
+               when Root_Tag =>
+                  Put_Line (Open_Tags (Tag));
+               when With_Tag =>
+                  Put_Line (+"with " & Attributes.Value (1) & ";");
                when Declare_Tag =>
                   Is_Declare_Tag_Be := True;
-                  Put (+"package body ");
-                  Put
-                    (+Ada.Characters.Conversions.To_Wide_Wide_String
-                       (Resault_File_Name (1..Resault_File_Name_Length)));
-                  Put_Line (+" is");
-                  Put_Line (+"   function " & '"' & "+" & '"'
-                            & " (Item : Wide_Wide_String)"
-                            & " return League.Strings.Universal_String");
-                  Put_Line (+"                 renames"
-                            & " League.Strings.To_Universal_String;");
-                  Put_Line (+"   function Call_Back (Request : AWS.Status.Data)"
-                            & "return AWS.Response.Data is");
-                  Put_Line (+"      pragma Unreferenced (Request);");
-                  Put_Line (+"      Encoder : League.Text_Codecs.Text_Codec");
-                  Put_Line (+"        := League.Text_Codecs.Codec (+" & '"'
-                            & "utf-8" & '"' & ");");
-                  Put_Line (+"      Writer     : "
-                            & "XML.SAX.Pretty_Writers.SAX_Pretty_Writer;");
-                  Put_Line (+"      Attributes : "
-                            & "XML.SAX.Attributes.SAX_Attributes;");
+                  Put_Line (Open_Tags (Tag));
                   Is_Program_Code := True;
                when Body_Tag =>
                   if not Is_Declare_Tag_Be then
-                  begin
-                     Put (+"package body ");
-                     Put
-                       (+Ada.Characters.Conversions.To_Wide_Wide_String
-                          (Resault_File_Name (1..Resault_File_Name_Length)));
-                     Put_Line (+" is");
-                     Put_Line (+"   function " & '"' & "+" & '"'
-                               & " (Item : Wide_Wide_String)"
-                               & " return League.Strings.Universal_String");
-                     Put_Line (+"                 renames"
-                               & " League.Strings.To_Universal_String;");
-                     Put_Line (+"   function Call_Back (Request : "
-                               & "AWS.Status.Data)"
-                               & " return AWS.Response.Data is");
-                     Put_Line (+"      pragma Unreferenced (Request);");
-                     Put_Line (+"      Encoder : "
-                               & "League.Text_Codecs.Text_Codec");
-                     Put_Line (+"        := League.Text_Codecs.Codec (+" & '"'
-                               & "utf-8" & '"' & ");");
-                     Put_Line (+"      Writer     : "
-                               & "XML.SAX.Pretty_Writers.SAX_Pretty_Writer;");
-                     Put_Line (+"      Attributes : "
-                               & "XML.SAX.Attributes.SAX_Attributes;");
-                  end;
+                     Put_Line (Open_Tags (Declare_Tag));
                   end if;
-                  Put_Line (+"   begin");
-                  Put_Line (+"      Writer.Start_Document;");
-               when Expression_Tag => Is_Program_Code := True;
+                  Put_Line (Open_Tags (Tag));
+               when Expression_Tag =>
+                  Is_Program_Code := True;
                when others => null;
             end case;
          end;
@@ -357,8 +428,8 @@ package body Events_Printers is
          for J in 1 .. Attributes.Length loop
             if not (Attributes.Namespace_URI (J) = ASP_Namespace) then
                Put_Line (+"      Attributes.Set_Value (Qualified_Name => +"
-                         & '"' & Attributes.Qualified_Name (J) & '"' & ", "
-                         & "Value => +" & '"' & Attributes.Value (J) & '"'
+                         & '"' & Attributes.Qualified_Name (J) & """, "
+                         & "Value => +""" & Attributes.Value (J) & '"'
                          & ");");
             else
                declare
@@ -370,13 +441,13 @@ package body Events_Printers is
             end if;
          end loop;
 
-         Put_Line(+"      Writer.Start_Element (Namespace_URI => +" & '"'
-                  & Namespace_URI & '"' & ",");
-         Put_Line(+"                            Local_Name => +" & '"'
-                  & Local_Name & '"' & ",");
-         Put_Line(+"                            Qualified_Name => +" & '"'
-                  & Qualified_Name & '"' & ",");
-         Put_Line(+"                            Attributes => Attributes);");
+         Put_Line (+"      Writer.Start_Element (Namespace_URI => +"""
+                  & Namespace_URI & """,");
+         Put_Line (+"                            Local_Name => +"""
+                  & Local_Name & """,");
+         Put_Line (+"                            Qualified_Name => +"""
+                  & Qualified_Name & """,");
+         Put_Line (+"                            Attributes => Attributes);");
 
       end if;
    end Start_Element;
@@ -394,8 +465,8 @@ package body Events_Printers is
       if Namespace_URI = ASP_Namespace then
          null;
       else
-         Put_Line (+"      Writer.Start_Prefix_Mapping(+"& '"' & Prefix & '"'
-                   & ", +" & '"' & Namespace_URI & '"' & ");");
+         Put_Line (+"      Writer.Start_Prefix_Mapping (+""" & Prefix
+                     & """, +""" & Namespace_URI & """);");
       end if;
    end Start_Prefix_Mapping;
 

@@ -1,0 +1,6 @@
+procedure Request_User
+  (Request           : Axe.Requests.Request;
+   Reply             : out Axe.Replies.Reply)
+is
+   Writer  : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+   Attributes : XML.SAX.Attributes.SAX_Attributes;

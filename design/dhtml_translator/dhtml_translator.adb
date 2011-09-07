@@ -49,18 +49,16 @@ with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
 with Events_Printers;
-with Put_Line;
 
 
 procedure DHTML_Translator is
 
-   function "+" (Item : Wide_Wide_String) return League.Strings.Universal_String
-     renames League.Strings.To_Universal_String;
    Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Handler : aliased Events_Printers.Events_Printer;
 begin
-   XML.SAX.Simple_Readers.Put_Line := Put_Line'Access;
+   Events_Printers.Initialize;
+
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Declaration_Handler (Handler'Unchecked_Access);
    Reader.Set_DTD_Handler (Handler'Unchecked_Access);
@@ -69,10 +67,8 @@ begin
    Reader.Set_Lexical_Handler (Handler'Unchecked_Access);
 
    Source.Open_By_File_Name (League.Application.Arguments.Element (1));
-   Events_Printers.Create (Ada.Command_Line.Argument (2));
-   Events_Printers.Set_Resault_File_Name (Ada.Command_Line.Argument (2));
 
    Reader.Parse (Source'Access);
-   Events_Printers.Close;
 
+   Events_Printers.Close;
 end DHTML_Translator;
