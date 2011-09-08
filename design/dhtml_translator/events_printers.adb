@@ -46,6 +46,7 @@ with Ada.Directories;
 with Ada.Streams.Stream_IO;
 with Ada.Wide_Wide_Text_IO;
 
+with League.String_Vectors;
 with League.Text_Codecs;
 with League.Application;
 
@@ -95,9 +96,20 @@ package body Events_Printers is
       if Is_Program_Code then
          Put_Line (+"      " & Text);
       else
-         Put_Line (+"      Writer.Characters (+""" & Text & """);");
+         declare
+            Lines : constant League.String_Vectors.Universal_String_Vector :=
+              Text.Split (NL);
+         begin
+            for J in 1 .. Lines.Length - 1 loop
+               Put_Line (+"      Writer.Characters (+(""" &
+                           Lines.Element (J) &
+                           """ & Wide_Wide_Character'Val (10)));");
+            end loop;
+            
+            Put_Line (+"      Writer.Characters (+""" &
+                        Lines.Element (Lines.Length) & """);");
+         end;
       end if;
-
    end Characters;
 
    -----------
