@@ -115,6 +115,13 @@ package body XML.SAX.Pretty_Writers is
       pragma Unreferenced (Success);
 
    begin
+      --  Closing DTD, which was opened before.
+      
+      if Self.DTD_Opened then
+         Self.Text.Append ('>');
+         Self.DTD_Opened := False;
+      end if;
+      
       Self.Text.Append ("<!-- ");
       Self.Text.Append (Text);
       Self.Text.Append (" -->");
@@ -153,7 +160,8 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
-      null;
+      Self.Text.Append ('>');
+      Self.DTD_Opened := False;
    end End_DTD;
 
    -----------------
@@ -424,7 +432,12 @@ package body XML.SAX.Pretty_Writers is
      Data    : League.Strings.Universal_String;
      Success : in out Boolean) is
    begin
-      null;
+      --  Closing DTD, which was opened before.
+      
+      if Self.DTD_Opened then
+         Self.Text.Append ('>');
+         Self.DTD_Opened := False;
+      end if;
    end Processing_Instruction;
 
    -----------
@@ -513,7 +526,15 @@ package body XML.SAX.Pretty_Writers is
      System_Id : League.Strings.Universal_String;
      Success   : in out Boolean) is
    begin
-      null;
+      Self.Text.Append ("<!DOCTYPE " & Name);
+      
+      if not Public_Id.Is_Empty then
+         Self.Text.Append (" PUBLIC " & Public_Id & " " & System_Id);
+      elsif not System_Id.Is_Empty then
+         Self.Text.Append (" SYSTEM' " & System_Id);
+      end if;
+      
+      Self.DTD_Opened := True;
    end Start_DTD;
 
    -------------------
@@ -528,6 +549,13 @@ package body XML.SAX.Pretty_Writers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean) is
    begin
+      --  Closing DTD, which was opened before.
+      
+      if Self.DTD_Opened then
+         Self.Text.Append ('>');
+         Self.DTD_Opened := False;
+      end if;
+      
       --  Closing Tag, which was opened before.
 
       if Self.Tag_Opened then

@@ -205,6 +205,7 @@ private
       Nesting      : Natural := 0;
       Version      : XML_Version := XML_1_0;
       Tag_Opened   : Boolean := False;
+      DTD_Opened   : Boolean := False;
       Error        : League.Strings.Universal_String;
       Destination  : XML.SAX.Writers.SAX_Output_Destination_Access;
 
