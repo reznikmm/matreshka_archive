@@ -128,9 +128,19 @@ package body Events_Printers is
    overriding procedure Comment
     (Self    : in out Events_Printer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      Lines : constant League.String_Vectors.Universal_String_Vector :=
+        Text.Split (NL);
    begin
-      Put_Line ("-- " & Text);
+      Put_Line (+"      Writer.Comment (+(");
+      
+      for J in 1 .. Lines.Length - 1 loop
+         Put_Line (+"        """ & Lines.Element (J) &
+                     """ & Wide_Wide_Character'Val (10) &");
+      end loop;
+      
+      Put_Line (+"        """ & Lines.Element (Lines.Length) & """));");
    end Comment;
 
    -----------------
