@@ -37,5 +37,5 @@ league:
 	.objs/xmlcatconf_test testsuite/xml/xmlcatconf/xmlcatconf.xml
 
 sqlite3:
-#	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
-#	.objs/test_142
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
+	.objs/test_142
