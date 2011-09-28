@@ -69,5 +69,7 @@ package Matreshka.Internals.SQL_Parameter_Rewriters is
    --  Sets Placeholder to database specific placeholder for parameter with
    --  Name and number Number. Implementation must modify Parameters
    --  accordingly.
+   --
+   --  Note: passed parameter's name is casefolded.
 
 end Matreshka.Internals.SQL_Parameter_Rewriters;
