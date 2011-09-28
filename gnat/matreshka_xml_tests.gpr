@@ -65,9 +65,7 @@ project Matreshka_XML_Tests is
      "../testsuite/xml/pretty_writer/simple_test");
 
    package Compiler is
-      for Default_Switches ("Ada") use
-        Matreshka_Common.Common_Ada_Switches
-          & ("-gnatW8");
+      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
    end Compiler;
 
    package Builder is

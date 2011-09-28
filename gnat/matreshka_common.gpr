@@ -50,7 +50,8 @@ abstract project Matreshka_Common is
    Common_Ada_Switches :=
     ("-g",
      "-gnatwa",
-     "-gnat12");
+     "-gnat12",
+     "-gnatW8");
    --  Common switches to be used for every unit.
 
    Optimization_Ada_Switches :=

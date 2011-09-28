@@ -74,9 +74,7 @@ project Matreshka_League_Tests is
      "../tools");
 
    package Compiler is
-      for Default_Switches ("Ada") use
-        Matreshka_Common.Common_Ada_Switches
-          & ("-gnatW8");
+      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
    end Compiler;
 
 end Matreshka_League_Tests;
