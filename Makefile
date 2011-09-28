@@ -21,29 +21,7 @@ all: Makefile.config
 	${MAKE} -f Makefile.build SMP_MFLAGS=$(SMP_MFLAGS)
 
 check: all
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_league_tests.gpr
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_xml_tests.gpr
-#	valgrind .objs/library_level_test
-	.objs/string_hash_test
-	.objs/string_operations_test
-	.objs/string_compare_test
-	.objs/character_cursor_test
-	.objs/grapheme_cluster_cursor_test $(UNIDATA)
-	.objs/case_conversion_test
-	.objs/case_folding_test
-	.objs/normalization_test $(UNIDATA)
-	.objs/additional_normalization_test
-	.objs/collation_test $(UCADATA)
-	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
-	.objs/test_35
-	.objs/test_104
-	.objs/test_106
-	.objs/test_126 testsuite/xml/TN-126/
-	.objs/test_20 testsuite/xml/TN-20/
-	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
-	.objs/test_99
-	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid --not-wellformed
-	.objs/xmlcatconf_test testsuite/xml/xmlcatconf/xmlcatconf.xml
+	${MAKE} -f Makefile.check SMP_MFLAGS=$(SMP_MFLAGS) UNIDATA=$(UNIDATA) UCADATA=$(UCADATA)
 
 ucd:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
