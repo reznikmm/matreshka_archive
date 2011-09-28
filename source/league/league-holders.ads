@@ -271,7 +271,7 @@ private
    overriding procedure Finalize (Self : in out Holder);
 
    Empty_Holder : constant Holder
-     := (Ada.Finalization.Controlled with null);
+     := (Ada.Finalization.Controlled with Shared_Empty'Access);
 
    --------------------------------
    -- Universal_String_Container --
