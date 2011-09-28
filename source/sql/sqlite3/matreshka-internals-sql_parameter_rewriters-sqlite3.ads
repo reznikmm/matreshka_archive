@@ -41,63 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
-private with Matreshka.Internals.SQL_Parameter_Sets;
+--  This package provides implementation of SQL statement parameter rewriter
+--  for SQLite3: every :name parameter placeholder is replaced by $N parameter
+--  placeholder. Duplicate names are replaced by the same parameter
+--  placeholder.
+------------------------------------------------------------------------------
 
-package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
+package Matreshka.Internals.SQL_Parameter_Rewriters.SQLite3 is
 
-   type SQLite3_Query is new Abstract_Query with private;
+   type SQLite3_Parameter_Rewriter is
+     new Abstract_Parameter_Rewriter with null record;
 
-   procedure Initialize
-    (Self     : not null access SQLite3_Query'Class;
-     Database : not null access Databases.SQLite3_Database'Class);
+   overriding procedure Database_Placeholder
+    (Self        : SQLite3_Parameter_Rewriter;
+     Name        : League.Strings.Universal_String;
+     Number      : Positive;
+     Placeholder : out League.Strings.Universal_String;
+     Parameters  : in out SQL_Parameter_Sets.Parameter_Set);
+   --  Sets Placeholder to database specific placeholder for parameter with
+   --  Name and number Number. Implementation must modify Parameters
+   --  accordingly.
 
-private
-
-   type SQLite3_Query is new Abstract_Query with record
-      Handle     : aliased sqlite3_stmt_Access;
-      Is_Active  : Boolean := False;
-      Has_Row    : Boolean := False;
-      Skip_Step  : Boolean := False;
-      Error      : League.Strings.Universal_String;
-      Success    : Boolean := True;
-      Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
-   end record;
-
-   overriding procedure Bind_Value
-    (Self      : not null access SQLite3_Query;
-     Name      : League.Strings.Universal_String;
-     Value     : League.Holders.Holder;
-     Direction : SQL.Parameter_Directions);
-
-   overriding function Bound_Value
-    (Self : not null access SQLite3_Query;
-     Name : League.Strings.Universal_String)
-       return League.Holders.Holder;
-
-   overriding function Error_Message
-    (Self : not null access SQLite3_Query)
-       return League.Strings.Universal_String;
-
-   overriding function Execute
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding procedure Finish (Self : not null access SQLite3_Query);
-
-   overriding procedure Invalidate (Self : not null access SQLite3_Query);
-
-   overriding function Is_Active
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding function Next
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding function Prepare
-    (Self  : not null access SQLite3_Query;
-     Query : League.Strings.Universal_String) return Boolean;
-
-   overriding function Value
-    (Self  : not null access SQLite3_Query;
-     Index : Positive) return League.Holders.Holder;
-
-end Matreshka.Internals.SQL_Drivers.SQLite3.Queries;
+end Matreshka.Internals.SQL_Parameter_Rewriters.SQLite3;

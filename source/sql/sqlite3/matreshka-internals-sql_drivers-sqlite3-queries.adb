@@ -41,14 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
 with Interfaces.C;
 
 with League.Strings.Internals;
-with League.Text_Codecs;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Unicode;
 with Matreshka.Internals.Strings.C;
+with Matreshka.Internals.SQL_Parameter_Rewriters.SQLite3;
 
 package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
@@ -67,12 +66,8 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    --  Converts text starting at specified position with specified length into
    --  Universal_String.
 
-   Codec : constant League.Text_Codecs.Text_Codec
-     := League.Text_Codecs.Codec
-         (League.Strings.To_Universal_String ("utf-8"));
-   --  Codec to convert Universal_String into UTF-8 encoding. It is used to
-   --  convert parameter name. Unfortunately, SQLite3 doesn't provide relevant
-   --  UTF-16 version of function.
+   Rewriter : SQL_Parameter_Rewriters.SQLite3.SQLite3_Parameter_Rewriter;
+   --  SQL statement parameter rewriter.
 
    ----------------
    -- Bind_Value --
@@ -84,73 +79,11 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
      Value     : League.Holders.Holder;
      Direction : SQL.Parameter_Directions)
    is
-      use type Ada.Streams.Stream_Element_Array;
-
-      U_Name : constant Ada.Streams.Stream_Element_Array
-        := Codec.Encode (Name).To_Stream_Element_Array & 0;
-      C_Name : Interfaces.C.char_array (1 .. U_Name'Length);
-      for C_Name'Address use U_Name'Address;
-      pragma Import (Ada, C_Name);
-      Index  : Interfaces.C.int;
+      pragma Unreferenced (Direction);
+      --  SQLite3 supports 'in' parameters only.
 
    begin
-      if Self.Handle = null then
-         --  Statement was not prepared.
-
-         return;
-      end if;
-
-      Index := sqlite3_bind_parameter_index (Self.Handle, C_Name);
-
-      if Index = 0 then
-         --  There is no parameter with specified name.
-
-         return;
-      end if;
-
-      Self.Parameters.Include (Name, Value);
-
-      if League.Holders.Is_Empty (Value) then
-         --  Bind NULL value of any type (SQLite3 doesn't distinguish type of
-         --  NULL value).
-
-         Self.Call (sqlite3_bind_null (Self.Handle, Index));
-
-      elsif League.Holders.Is_Universal_String (Value) then
-         --  Bind text value.
-
-         Self.Call
-          (sqlite3_bind_text16
-            (Self.Handle,
-             Index,
-             League.Strings.Internals.Internal
-              (League.Holders.Element (Value)).Value (0)'Access,
-             Interfaces.C.int
-              (League.Strings.Internals.Internal
-                (League.Holders.Element (Value)).Unused * 2),
-             null));
-         --  Copy of string value is stored in the parameters map, so provides
-         --  warranty that it will not be deallocated/modified till another
-         --  value will be bind. As result, copy of string data is not needed.
-
-      elsif League.Holders.Is_Abstract_Integer (Value) then
-         --  Bind integer value.
-
-         Self.Call
-          (sqlite3_bind_int64
-            (Self.Handle, Index, League.Holders.Element (Value)));
-
-      elsif League.Holders.Is_Abstract_Float (Value) then
-         --  Bind float value.
-
-         Self.Call
-          (sqlite3_bind_double
-            (Self.Handle,
-             Index,
-             Interfaces.C.double
-              (League.Holders.Universal_Float'
-                (League.Holders.Element (Value)))));
-      end if;
+      Self.Parameters.Set_Value (Name, Value);
    end Bind_Value;
 
    -----------------
@@ -224,7 +157,10 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    -------------
 
    overriding function Execute
-    (Self : not null access SQLite3_Query) return Boolean is
+    (Self : not null access SQLite3_Query) return Boolean
+   is
+      Value : League.Holders.Holder;
+
    begin
       if Self.Handle = null then
          --  Statement was not prepared.
@@ -237,6 +173,59 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
          Self.Finish;
       end if;
+
+      --  Bind parameters.
+
+      for J in 1 .. Self.Parameters.Number_Of_Positional loop
+         Value := Self.Parameters.Value (J);
+
+         if League.Holders.Is_Empty (Value) then
+            --  Bind NULL value of any type (SQLite3 doesn't distinguish type
+            --  of NULL value).
+
+            Self.Call (sqlite3_bind_null (Self.Handle, Interfaces.C.int (J)));
+
+         elsif League.Holders.Is_Universal_String (Value) then
+            --  Bind text value.
+
+            Self.Call
+             (sqlite3_bind_text16
+               (Self.Handle,
+                Interfaces.C.int (J),
+                League.Strings.Internals.Internal
+                 (League.Holders.Element (Value)).Value (0)'Access,
+                Interfaces.C.int
+                 (League.Strings.Internals.Internal
+                   (League.Holders.Element (Value)).Unused * 2),
+                null));
+            --  Copy of string value is stored in the parameters map, so
+            --  provides warranty that it will not be deallocated/modified till
+            --  another value will be bind. As result, copy of string data is
+            --  not needed.
+
+         elsif League.Holders.Is_Abstract_Integer (Value) then
+            --  Bind integer value.
+
+            Self.Call
+             (sqlite3_bind_int64
+               (Self.Handle,
+                Interfaces.C.int (J),
+                League.Holders.Element (Value)));
+
+         elsif League.Holders.Is_Abstract_Float (Value) then
+            --  Bind float value.
+
+            Self.Call
+             (sqlite3_bind_double
+               (Self.Handle,
+                Interfaces.C.int (J),
+                Interfaces.C.double
+                 (League.Holders.Universal_Float'
+                   (League.Holders.Element (Value)))));
+         end if;
+      end loop;
+
+      --  Execute statement.
 
       Self.Call (sqlite3_step (Self.Handle));
       Self.Skip_Step := Self.Has_Row;
@@ -334,7 +323,8 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
     (Self  : not null access SQLite3_Query;
      Query : League.Strings.Universal_String) return Boolean
    is
-      Aux : aliased Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
+      Rewritten : League.Strings.Universal_String;
+      Aux       : aliased Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
 
    begin
       if Self.Handle /= null then
@@ -343,6 +333,10 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
          Self.Call (sqlite3_finalize (Self.Handle));
          Self.Handle := null;
       end if;
+
+      --  Rewrite statement and prepare set of parameters.
+
+      Rewriter.Rewrite (Query, Rewritten, Self.Parameters);
 
       --  Note: http://www.sqlite.org/c3ref/prepare.html
       --
@@ -356,9 +350,9 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       Self.Call
        (sqlite3_prepare16_v2
          (Databases.SQLite3_Database'Class (Self.Database.all).Database_Handle,
-          League.Strings.Internals.Internal (Query).Value,
+          League.Strings.Internals.Internal (Rewritten).Value,
           Interfaces.C.int
-           ((League.Strings.Internals.Internal (Query).Unused + 1) * 2),
+           ((League.Strings.Internals.Internal (Rewritten).Unused + 1) * 2),
           Self.Handle'Unchecked_Access,
           Aux'Unchecked_Access));
       Self.Is_Active := False;

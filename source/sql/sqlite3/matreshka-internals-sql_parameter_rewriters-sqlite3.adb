@@ -41,63 +41,46 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Drivers.SQLite3.Databases;
-private with Matreshka.Internals.SQL_Parameter_Sets;
 
-package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
+package body Matreshka.Internals.SQL_Parameter_Rewriters.SQLite3 is
 
-   type SQLite3_Query is new Abstract_Query with private;
+   function Image (Item : Positive) return League.Strings.Universal_String;
+   --  Returns text representation of the specified integer number. Text
+   --  representation doesn't contain any leading or trailing spaces.
 
-   procedure Initialize
-    (Self     : not null access SQLite3_Query'Class;
-     Database : not null access Databases.SQLite3_Database'Class);
+   -----------
+   -- Image --
+   -----------
 
-private
+   function Image (Item : Positive) return League.Strings.Universal_String is
+      Aux : constant Wide_Wide_String := Integer'Wide_Wide_Image (Item);
 
-   type SQLite3_Query is new Abstract_Query with record
-      Handle     : aliased sqlite3_stmt_Access;
-      Is_Active  : Boolean := False;
-      Has_Row    : Boolean := False;
-      Skip_Step  : Boolean := False;
-      Error      : League.Strings.Universal_String;
-      Success    : Boolean := True;
-      Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
-   end record;
+   begin
+      return
+        League.Strings.To_Universal_String (Aux (Aux'First + 1 .. Aux'Last));
+   end Image;
 
-   overriding procedure Bind_Value
-    (Self      : not null access SQLite3_Query;
-     Name      : League.Strings.Universal_String;
-     Value     : League.Holders.Holder;
-     Direction : SQL.Parameter_Directions);
+   --------------------------
+   -- Database_Placeholder --
+   --------------------------
 
-   overriding function Bound_Value
-    (Self : not null access SQLite3_Query;
-     Name : League.Strings.Universal_String)
-       return League.Holders.Holder;
+   overriding procedure Database_Placeholder
+    (Self        : SQLite3_Parameter_Rewriter;
+     Name        : League.Strings.Universal_String;
+     Number      : Positive;
+     Placeholder : out League.Strings.Universal_String;
+     Parameters  : in out SQL_Parameter_Sets.Parameter_Set)
+   is
+      use type League.Strings.Universal_String;
 
-   overriding function Error_Message
-    (Self : not null access SQLite3_Query)
-       return League.Strings.Universal_String;
+   begin
+      if not Parameters.Has_Parameter (Name) then
+         --  Parameter is new, register it.
 
-   overriding function Execute
-    (Self : not null access SQLite3_Query) return Boolean;
+         Parameters.Append (Name);
+      end if;
 
-   overriding procedure Finish (Self : not null access SQLite3_Query);
+      Placeholder := '$' & Image (Parameters.Index (Name));
+   end Database_Placeholder;
 
-   overriding procedure Invalidate (Self : not null access SQLite3_Query);
-
-   overriding function Is_Active
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding function Next
-    (Self : not null access SQLite3_Query) return Boolean;
-
-   overriding function Prepare
-    (Self  : not null access SQLite3_Query;
-     Query : League.Strings.Universal_String) return Boolean;
-
-   overriding function Value
-    (Self  : not null access SQLite3_Query;
-     Index : Positive) return League.Holders.Holder;
-
-end Matreshka.Internals.SQL_Drivers.SQLite3.Queries;
+end Matreshka.Internals.SQL_Parameter_Rewriters.SQLite3;
