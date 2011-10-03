@@ -41,18 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka/config.gpr";
+with "matreshka/matreshka_config.gpr";
 with "league.gpr";
 
 library project FastCGI is
 
-   Library_Name := "matreshka-fastcgi" & Config.RTL_Version_Suffix;
+   Library_Name := "matreshka-fastcgi" & Matreshka_Config.RTL_Version_Suffix;
 
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Source_Dirs use ("../../include/matreshka/fastcgi");
-   for Library_Dir use Config.Library_Dir;
-   for Library_ALI_Dir use Config.Library_ALI_Dir;
+   for Library_Dir use Matreshka_Config.Library_Dir;
+   for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
 
    ------------

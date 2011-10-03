@@ -41,14 +41,14 @@ league:
 	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' | grep -v '^$$' > league-ali.lst
 	cat league-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
 	cat league-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
-	$(INSTALL_project) gnat/install/config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/config.gpr
+	$(INSTALL_project) gnat/install/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/matreshka_config.gpr
 	$(INSTALL_project) gnat/install/league.gpr  $(INSTALL_PROJECT_DIR)/league.gpr
 	$(INSTALL) .libs/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) libleague$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/league-lib.files
 	cat league-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/league/{}" > .objs/league-devel.files
 	cat league-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/league-devel.files
-	echo "%attr(-,root,root) %{_prefix}/lib/gnat/matreshka/config.gpr" >> .objs/league-devel.files
+	echo "%attr(-,root,root) %{_prefix}/lib/gnat/matreshka/matreshka_config.gpr" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/league.gpr" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libleague$(RTL_VERSION).$(LIBEXT)" >> .objs/league-devel.files
 

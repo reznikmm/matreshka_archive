@@ -89,7 +89,7 @@ begin
    end;
 
    Configure.Instantiate ("Makefile.config");
-   Configure.Instantiate ("gnat/install/config.gpr");
+   Configure.Instantiate ("gnat/install/matreshka_config.gpr");
    Configure.Instantiate ("gnat/matreshka_config.gpr");
 
 exception
