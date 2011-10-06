@@ -41,74 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects parameters to link with OCI (Oracle Call interface)
+--  This test detects parameters to link with OCI (Oracle Call Interface)
+--  library.
+--
+--  It sets following substitution variables:
+--   - HAS_OCI
+--   - OCI_LIBRARY_OPTIONS
 ------------------------------------------------------------------------------
-with Ada.Strings.Fixed;
+with Configure.Abstract_Tests;
 
-with Configure.Builder;
-with Ada.Environment_Variables;
+package Configure.Tests.OCI is
 
-procedure Configure.OCI is
+   type OCI_Test is new Configure.Abstract_Tests.Abstract_Test with private;
 
-   use Ada.Strings;
-   use Ada.Strings.Fixed;
-   use Ada.Strings.Unbounded;
+   overriding function Help (Self : OCI_Test) return Unbounded_String_Vector;
+   --  Returns help information for test.
 
-   OCI_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("OCI_LIBRARY_OPTIONS");
-   Has_OCI             : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("HAS_OCI");
+   overriding procedure Execute (Self : in out OCI_Test);
+   --  Executes test.
 
-   function Library_Name return String;
+private
 
-   function Library_Name return String is
-   begin
-      if Is_Windows then
-         return "oci";
-      else
-         return "clntsh";
-      end if;
-   end Library_Name;
+   type OCI_Test is
+     new Configure.Abstract_Tests.Abstract_Test with null record;
 
-begin
-   --  Command line parameter has preference other automatic detection.
-
-   if Has_Parameter ("--with-oci-libdir") then
-      Substitutions.Insert
-       (OCI_Library_Options,
-        To_Unbounded_String
-         ("""-L"
-            & Parameter_Value ("--with-oci-libdir")
-            & """, ""-l" & Library_Name & '"'));
-   elsif Ada.Environment_Variables.Exists ("ORACLE_HOME") then
-      Substitutions.Insert
-       (OCI_Library_Options,
-        To_Unbounded_String
-         ("""-L"
-            & Ada.Environment_Variables.Value ("ORACLE_HOME")
-            & "/lib"", ""-l" & Library_Name & '"'));
-   end if;
-
-   --  Check that oci application can be linked with specified/detected
-   --  set of options.
-
-   if Substitutions.Contains (OCI_Library_Options) then
-      if not Configure.Builder.Build ("config.tests/oci/") then
-         --  Switches don't allow to build application, remove them.
-
-         Substitutions.Delete (OCI_Library_Options);
-      end if;
-   end if;
-
-   --  Insert empty value for substitution variable when SQLite3 driver module
-   --  is disabled.
-
-   if not Substitutions.Contains (OCI_Library_Options) then
-      Information ("OCI driver module is disabled");
-      Substitutions.Insert (OCI_Library_Options, Null_Unbounded_String);
-      Substitutions.Insert (Has_OCI, Null_Unbounded_String);
-
-   else
-      Substitutions.Insert (Has_OCI, To_Unbounded_String ("true"));
-   end if;
-end Configure.OCI;
+end Configure.Tests.OCI;

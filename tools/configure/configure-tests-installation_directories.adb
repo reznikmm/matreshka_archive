@@ -44,17 +44,91 @@
 with Ada.Command_Line;
 with Ada.Directories;
 
-procedure Configure.Directories is
-
-   function Starts_With (Item : String; Prefix : String) return Boolean;
+package body Configure.Tests.Installation_Directories is
 
    Prefix_Switch : constant String := "--prefix=";
    Libdir_Switch : constant String := "--libdir=";
 
-   Prefix_Name : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("PREFIX");
-   Libdir_Name : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("LIBDIR");
+   Prefix_Name : constant Unbounded_String := +"PREFIX";
+   Libdir_Name : constant Unbounded_String := +"LIBDIR";
+
+   function Starts_With (Item : String; Prefix : String) return Boolean;
+
+   -------------
+   -- Execute --
+   -------------
+
+   overriding procedure Execute
+    (Self : in out Installation_Directories_Test) is
+   begin
+      --  Set default value for PREFIX.
+
+      Substitutions.Insert
+       (Prefix_Name, Ada.Strings.Unbounded.To_Unbounded_String ("/usr/local"));
+
+      --  Looking for '--prefix=' and otherwrite default value when found.
+
+      for J in 1 .. Ada.Command_Line.Argument_Count loop
+         declare
+            Arg : constant String := Ada.Command_Line.Argument (J);
+
+         begin
+            if Starts_With (Arg, Prefix_Switch) then
+               Substitutions.Replace
+                (Prefix_Name,
+                 +Arg (Arg'First + Prefix_Switch'Length .. Arg'Last));
+
+               exit;
+            end if;
+         end;
+      end loop;
+
+      --  Compute other directories.
+
+      Substitutions.Insert
+       (Libdir_Name,
+        +Ada.Directories.Compose
+          (+Substitutions.Element (Prefix_Name), "lib"));
+
+      --  Looking for '--libdir=' and otherwrite default value when found.
+
+      for J in 1 .. Ada.Command_Line.Argument_Count loop
+         declare
+            Arg : constant String := Ada.Command_Line.Argument (J);
+
+         begin
+            if Starts_With (Arg, Libdir_Switch) then
+               Substitutions.Replace
+                (Libdir_Name,
+                 Ada.Strings.Unbounded.To_Unbounded_String
+                  (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
+
+               exit;
+            end if;
+         end;
+      end loop;
+   end Execute;
+
+   ----------
+   -- Help --
+   ----------
+
+   overriding function Help
+    (Self : Installation_Directories_Test) return Unbounded_String_Vector is
+   begin
+      return Result : Unbounded_String_Vector do
+         Result.Append (+"Installation directories:");
+         Result.Append
+          (+"  --prefix=PREFIX         "
+              & "install architecture-independent files in PREFIX");
+         Result.Append (+"                          [/usr/local]");
+         Result.Append (Null_Unbounded_String);
+         Result.Append (+"Fine tuning of the installation directories:");
+         Result.Append
+          (+"  --libdir=DIR            "
+              & "object code libraries [EPREFIX/lib]");
+      end return;
+   end Help;
 
    -----------------
    -- Starts_With --
@@ -68,54 +142,4 @@ procedure Configure.Directories is
                      = Prefix;
    end Starts_With;
 
-begin
-   --  Set default value for PREFIX.
-
-   Substitutions.Insert
-    (Prefix_Name, Ada.Strings.Unbounded.To_Unbounded_String ("/usr/local"));
-
-   --  Looking for '--prefix=' and otherwrite default value when found.
-
-   for J in 1 .. Ada.Command_Line.Argument_Count loop
-      declare
-         Arg : constant String := Ada.Command_Line.Argument (J);
-
-      begin
-         if Starts_With (Arg, Prefix_Switch) then
-            Substitutions.Replace
-             (Prefix_Name,
-              Ada.Strings.Unbounded.To_Unbounded_String
-               (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
-
-            exit;
-         end if;
-      end;
-   end loop;
-
-   --  Compute other directories.
-
-   Substitutions.Insert
-    (Libdir_Name,
-     Ada.Strings.Unbounded.To_Unbounded_String
-      (Ada.Directories.Compose
-        (Ada.Strings.Unbounded.To_String (Substitutions.Element (Prefix_Name)),
-         "lib")));
-
-   --  Looking for '--libdir=' and otherwrite default value when found.
-
-   for J in 1 .. Ada.Command_Line.Argument_Count loop
-      declare
-         Arg : constant String := Ada.Command_Line.Argument (J);
-
-      begin
-         if Starts_With (Arg, Libdir_Switch) then
-            Substitutions.Replace
-             (Libdir_Name,
-              Ada.Strings.Unbounded.To_Unbounded_String
-               (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
-
-            exit;
-         end if;
-      end;
-   end loop;
-end Configure.Directories;
+end Configure.Tests.Installation_Directories;

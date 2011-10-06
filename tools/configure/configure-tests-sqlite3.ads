@@ -41,83 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects parameters to link with SQLite3 library.
+--  This test detects parameters to link with SQLite3 library.
+--
+--  It sets following substitutions variables:
+--   - HAS_SQLITE3
+--   - SQLITE3_LIBRARY_OPTIONS
 ------------------------------------------------------------------------------
-with Ada.Strings.Fixed;
+with Configure.Abstract_Tests;
 
-with Configure.Builder;
-with Configure.Pkg_Config;
+package Configure.Tests.SQLite3 is
 
-procedure Configure.SQLite3 is
+   type SQLite3_Test is
+     new Configure.Abstract_Tests.Abstract_Test with private;
 
-   use Ada.Strings;
-   use Ada.Strings.Fixed;
-   use Ada.Strings.Unbounded;
+   overriding function Help
+    (Self : SQLite3_Test) return Unbounded_String_Vector;
+   --  Returns help information for test.
 
-   SQLite3_Package_Name : constant String := "sqlite3";
+   overriding procedure Execute (Self : in out SQLite3_Test);
+   --  Executes test.
 
-   SQLite3_Library_Options : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("SQLITE3_LIBRARY_OPTIONS");
-   Has_SQLite3             : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("HAS_SQLITE3");
+private
 
-begin
-   --  Command line parameter has preference other automatic detection.
+   type SQLite3_Test is
+     new Configure.Abstract_Tests.Abstract_Test with null record;
 
-   if Has_Parameter ("--with-sqlite3-libdir") then
-      Substitutions.Insert
-       (SQLite3_Library_Options,
-        To_Unbounded_String
-         ("""-L"
-            & Parameter_Value ("--with-sqlite3-libdir")
-            & """, ""-lsqlite3"""));
-
-   --  When pkg-config is installed, it is used to check whether SQLite3 is
-   --  installed and to retrieve linker switches to link with it.
-
-   elsif Configure.Pkg_Config.Has_Pkg_Config then
-      if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
-         declare
-            Libs : constant String_Vectors.Vector
-              := Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name);
-            Opts : Ada.Strings.Unbounded.Unbounded_String;
-
-         begin
-            for J in Libs.First_Index .. Libs.Last_Index loop
-               if Ada.Strings.Unbounded.Length (Opts) /= 0 then
-                  Ada.Strings.Unbounded.Append (Opts, ", ");
-               end if;
-
-               Ada.Strings.Unbounded.Append (Opts, '"');
-               Ada.Strings.Unbounded.Append (Opts, Libs.Element (J));
-               Ada.Strings.Unbounded.Append (Opts, '"');
-            end loop;
-
-            Substitutions.Insert (SQLite3_Library_Options, Opts);
-         end;
-      end if;
-   end if;
-
-   --  Check that SQLite3 application can be linked with specified/detected
-   --  set of options.
-
-   if Substitutions.Contains (SQLite3_Library_Options) then
-      if not Configure.Builder.Build ("config.tests/sqlite3/") then
-         --  Switches don't allow to build application, remove them.
-
-         Substitutions.Delete (SQLite3_Library_Options);
-      end if;
-   end if;
-
-   --  Insert empty value for substitution variable when SQLite3 driver module
-   --  is disabled.
-
-   if not Substitutions.Contains (SQLite3_Library_Options) then
-      Information ("SQLite3 driver module is disabled");
-      Substitutions.Insert (SQLite3_Library_Options, Null_Unbounded_String);
-      Substitutions.Insert (Has_SQLite3, Null_Unbounded_String);
-
-   else
-      Substitutions.Insert (Has_SQLite3, To_Unbounded_String ("true"));
-   end if;
-end Configure.SQLite3;
+end Configure.Tests.SQLite3;

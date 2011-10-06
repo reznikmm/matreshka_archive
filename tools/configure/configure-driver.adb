@@ -47,25 +47,92 @@ with Ada.Strings.Unbounded.Text_IO;
 with Ada.Text_IO;
 
 with Configure.Architecture;
-with Configure.Directories;
 with Configure.Instantiate;
-with Configure.OCI;
 with Configure.Operating_System;
-with Configure.PostgreSQL;
 with Configure.RTL_Version;
-with Configure.SQLite3;
+with Configure.Tests.Installation_Directories;
+with Configure.Tests.OCI;
+with Configure.Tests.PostgreSQL;
+with Configure.Tests.SQLite3;
 
 procedure Configure.Driver is
    use Ada.Command_Line;
 
+   function Is_Help_Requested return Boolean;
+   --  Returns True when help information is requested by the user.
+
+   procedure Help_Output (Position : Unbounded_String_Vectors.Cursor);
+   --  Outputs line of help information.
+
+   -----------------
+   -- Help_Output --
+   -----------------
+
+   procedure Help_Output (Position : Unbounded_String_Vectors.Cursor) is
+      Line : constant Unbounded_String
+        := Unbounded_String_Vectors.Element (Position);
+
+   begin
+      Ada.Strings.Unbounded.Text_IO.Put_Line (Line);
+   end Help_Output;
+
+   -----------------------
+   -- Is_Help_Requested --
+   -----------------------
+
+   function Is_Help_Requested return Boolean is
+   begin
+      for J in 1 .. Argument_Count loop
+         if Argument (J) = "--help" then
+            return True;
+         end if;
+      end loop;
+
+      return False;
+   end Is_Help_Requested;
+
+   Dirs_Test       :
+     Configure.Tests.Installation_Directories.Installation_Directories_Test;
+   OCI_Test        : Configure.Tests.OCI.OCI_Test;
+   PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
+   SQLite3_Test    : Configure.Tests.SQLite3.SQLite3_Test;
+
 begin
-   Configure.Directories;
+   if Is_Help_Requested then
+      Ada.Text_IO.Put_Line
+       ("`"
+          & Ada.Directories.Simple_Name (Command_Name)
+          & "' configures Matreshka to adapt to many kinds of systems.");
+      Ada.Text_IO.New_Line;
+      Ada.Text_IO.Put_Line ("Usage: " & Command_Name & " [OPTION]...");
+      Ada.Text_IO.New_Line;
+      Ada.Text_IO.Put_Line
+       ("Defaults for the options are specified in brackets.");
+      Ada.Text_IO.New_Line;
+      Ada.Text_IO.Put_Line ("Configuration:");
+      Ada.Text_IO.Put_Line
+       ("  --help                  display this help and exit");
+
+      Ada.Text_IO.New_Line;
+      Dirs_Test.Help.Iterate (Help_Output'Access);
+
+      Ada.Text_IO.New_Line;
+      Ada.Text_IO.Put_Line ("Optional Packages:");
+
+      OCI_Test.Help.Iterate (Help_Output'Access);
+      PostgreSQL_Test.Help.Iterate (Help_Output'Access);
+      SQLite3_Test.Help.Iterate (Help_Output'Access);
+
+      return;
+   end if;
+
+   Dirs_Test.Execute;
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;
-   Configure.SQLite3;
-   Configure.PostgreSQL;
-   Configure.OCI;
+   OCI_Test.Execute;
+   PostgreSQL_Test.Execute;
+   SQLite3_Test.Execute;
 
    declare
       use Ada.Directories;
