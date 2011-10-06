@@ -41,21 +41,79 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_sql.gpr";
-with "matreshka_sql_sqlite3.gpr";
+with League.Strings;
+with League.Holders.Integers;
+with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
+with SQL.Databases;
+with SQL.Queries;
 
-project Matreshka_SQL_SQLite3_Tests is
+procedure Test_138 is
 
-   for Main use ("test_138.adb", "test_142.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/sql/TN-138",
-     "../testsuite/sql/TN-142");
+   use type League.Strings.Universal_String;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
-end Matreshka_SQL_SQLite3_Tests;
+   DB_Driver  : constant League.Strings.Universal_String := +"SQLITE3";
+   DB_Options : constant League.Strings.Universal_String := +":memory:";
+
+   DB         : SQL.Databases.SQL_Database
+     := SQL.Databases.Create (DB_Driver, DB_Options);
+   Query      : SQL.Queries.SQL_Query := DB.Query;
+
+   Result_1   : League.Strings.Universal_String;
+   Result_2   : League.Strings.Universal_String;
+
+begin
+   DB.Open;
+
+   --  Create database schema.
+
+   Query.Prepare
+    (+"CREATE TABLE test138 (x INTEGER, y CHARACTER VARYING)");
+   Query.Execute;
+
+   --  Fill initial data.
+
+   Query.Prepare (+"INSERT INTO test138 (x, y) VALUES (:x, :y)");
+   Query.Bind_Value (+":y", League.Holders.To_Holder (+"xyz"));
+   Query.Bind_Value (+":x", League.Holders.Integers.To_Holder (5));
+   Query.Execute;
+   Query.Bind_Value (+":y", League.Holders.To_Holder (+"abc"));
+   Query.Bind_Value (+":x", League.Holders.Integers.To_Holder (6));
+   Query.Execute;
+
+   --  Retrieve first value.
+
+   Query.Prepare (+"SELECT y FROM test138 WHERE x=:x");
+   Query.Bind_Value (+":x", League.Holders.Integers.To_Holder (5));
+   Query.Execute;
+
+   if Query.Next then
+      Result_1 := League.Holders.Element (Query.Value (1));
+
+   else
+      raise Program_Error;
+   end if;
+      
+   --  Retrieve second value.
+
+   Query.Bind_Value (+":x", League.Holders.Integers.To_Holder (6));
+   Query.Execute;
+
+   if Query.Next then
+      Result_2 := League.Holders.Element (Query.Value (1));
+
+   else
+      raise Program_Error;
+   end if;
+
+   --  Compare values was retrieved, they should be different.
+
+   if Result_1 = Result_2 then
+      raise Program_Error;
+   end if;
+
+   DB.Close;
+end Test_138;
