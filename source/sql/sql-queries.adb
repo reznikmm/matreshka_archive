@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Text_Codecs;
-with SQL.Databases.Internals;
 
 package body SQL.Queries is
 
@@ -116,7 +115,7 @@ package body SQL.Queries is
    -- Execute --
    -------------
 
-   function Execute (Self : not null access SQL_Query'Class) return Boolean is
+   function Execute (Self : in out SQL_Query'Class) return Boolean is
    begin
       if not Self.Data.Is_Valid then
          --  Returns when internal object was invalidated.
@@ -185,8 +184,7 @@ package body SQL.Queries is
    -- Next --
    ----------
 
---   function Next (Self : in out SQL_Query'Class) return Boolean;
-   function Next (Self : not null access SQL_Query'Class) return Boolean is
+   function Next (Self : in out SQL_Query'Class) return Boolean is
    begin
       if not Self.Data.Is_Valid then
          --  Returns when internal object was invalidated.
@@ -202,8 +200,7 @@ package body SQL.Queries is
    -------------
 
    function Prepare
---    (Self  : in out SQL_Query'Class;
-    (Self  : not null access SQL_Query'Class;
+    (Self  : in out SQL_Query'Class;
      Query : League.Strings.Universal_String) return Boolean is
    begin
       if not Self.Data.Is_Valid then

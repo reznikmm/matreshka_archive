@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 private with Ada.Finalization;
 
 with League.Holders;
@@ -68,7 +70,7 @@ package SQL.Queries is
    function Error_Message
     (Self : SQL_Query'Class) return League.Strings.Universal_String;
 
---   function Execute (Self : in out SQL_Query'Class) return Boolean;
+   function Execute (Self : in out SQL_Query'Class) return Boolean;
    --  Executes a previously prepared SQL query. Returns True if the query
    --  executed successfully; otherwise returns False.
    --
@@ -108,12 +110,11 @@ package SQL.Queries is
    --  before committing or rolling back, you should make your active SELECT
    --  statement query inactive using one of the ways listed above.
 
---   function Next (Self : in out SQL_Query'Class) return Boolean;
-   function Next (Self : not null access SQL_Query'Class) return Boolean;
+   function Next (Self : in out SQL_Query'Class) return Boolean;
 
---   function Prepare
---    (Self  : in out SQL_Query'Class;
---     Query : League.Strings.Universal_String) return Boolean;
+   function Prepare
+    (Self  : in out SQL_Query'Class;
+     Query : League.Strings.Universal_String) return Boolean;
    --  Prepares the SQL query query for execution. Returns True if the query is
    --  prepared successfully; otherwise returns False.
    --

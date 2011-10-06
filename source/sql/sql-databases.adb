@@ -131,8 +131,7 @@ package body SQL.Databases is
    -----------
 
    function Query
---    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query is
-    (Self : not null access SQL_Database'Class) return SQL.Queries.SQL_Query is
+    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query is
    begin
       return SQL.Queries.Internals.Wrap (Self.Data.Query);
    end Query;
@@ -142,8 +141,7 @@ package body SQL.Databases is
    -----------
 
    function Query
---    (Self  : in out SQL_Database'Class;
-    (Self  : not null access SQL_Database'Class;
+    (Self  : in out SQL_Database'Class;
      Query : League.Strings.Universal_String) return SQL.Queries.SQL_Query is
    begin
       return Aux : SQL.Queries.SQL_Query := Self.Query do
