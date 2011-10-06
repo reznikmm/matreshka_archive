@@ -106,7 +106,9 @@ procedure Configure.Architecture is
             Fatal_Error ("compiler doesn't support SSE builtins");
          end if;
 
-      elsif Arch = "x86_64" then
+      elsif Arch = "x86_64" or else Arch = "amd64" then
+         --  For most BSDs, the x86_64 is identified as amd64.
+
          if Configure.Builder.Build ("config.tests/sse_builtins/") then
             Substitutions.Replace (Architecture_Name, +"x86_64");
          end if;
