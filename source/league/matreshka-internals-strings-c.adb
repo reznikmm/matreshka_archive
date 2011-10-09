@@ -50,7 +50,6 @@ with Matreshka.Internals.Unicode;
 package body Matreshka.Internals.Strings.C is
 
    use Matreshka.Internals.Strings.Configuration;
-   use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
    package Utf16_Code_Unit_Pointers is
      new Interfaces.C.Pointers
@@ -66,7 +65,7 @@ package body Matreshka.Internals.Strings.C is
    function To_Valid_Universal_String
     (Text : Utf16_Code_Unit_Access) return League.Strings.Universal_String
    is
-      Size        : Matreshka.Internals.Utf16.Utf16_String_Index
+      Size        : constant Matreshka.Internals.Utf16.Utf16_String_Index
         := Matreshka.Internals.Utf16.Utf16_String_Index
             (Utf16_Code_Unit_Pointers.Virtual_Length
               (Utf16_Code_Unit_Pointers.Pointer (Text)));
