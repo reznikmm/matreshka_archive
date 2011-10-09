@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Atomics.Counters;
 with Matreshka.Internals.Strings;
 
 package Matreshka.Internals.String_Vectors is
@@ -53,7 +53,7 @@ package Matreshka.Internals.String_Vectors is
        of Matreshka.Internals.Strings.Shared_String_Access;
 
    type Shared_String_Vector (Size : Natural) is limited record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter : aliased Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       Length  : Natural := 0;

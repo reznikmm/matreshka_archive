@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,9 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This is GCC version for 64-bit target.
+------------------------------------------------------------------------------
+with System;
 
-package Matreshka.Internals.Atomics is
+function Matreshka.Atomics.Generic_Test_And_Set
+ (Target         : not null access T_Access;
+  Expected_Value : T_Access;
+  New_Value      : T_Access)
+    return Boolean
+is
+   pragma Assert (T_Access'Size = System.Address'Size);
+   pragma Assert (T_Access'Size = 32);
 
-   pragma Pure;
+   function Sync_Bool_Compare_And_Swap_32
+     (Ptr     : not null access T_Access;
+      Old_Val : T_Access;
+      New_Val : T_Access) return Boolean;
+   pragma Import
+     (Intrinsic,
+      Sync_Bool_Compare_And_Swap_32,
+      "__sync_bool_compare_and_swap_4");
 
-end Matreshka.Internals.Atomics;
+begin
+   return Sync_Bool_Compare_And_Swap_32 (Target, Expected_Value, New_Value);
+end Matreshka.Atomics.Generic_Test_And_Set;

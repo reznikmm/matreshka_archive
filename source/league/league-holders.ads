@@ -51,7 +51,7 @@ with Interfaces;
 
 with League.Calendars;
 with League.Strings;
-private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Atomics.Counters;
 private with Matreshka.Internals.Strings;
 
 package League.Holders is
@@ -215,7 +215,7 @@ private
    --  reference counter and boolean field to mark null value.
 
    type Abstract_Container is abstract tagged limited record
-      Counter  : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter  : aliased Matreshka.Atomics.Counters.Counter;
       Is_Empty : Boolean := True;
    end record;
 

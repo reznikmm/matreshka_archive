@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Streams;
 
-with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Atomics.Counters;
 
 package Matreshka.Internals.Stream_Element_Vectors is
 
@@ -54,7 +54,7 @@ package Matreshka.Internals.Stream_Element_Vectors is
    type Shared_Stream_Element_Vector
     (Size : Ada.Streams.Stream_Element_Offset) is limited
    record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter : aliased Matreshka.Atomics.Counters.Counter;
       Length  : Ada.Streams.Stream_Element_Offset := 0;
       Value   : Ada.Streams.Stream_Element_Array (0 .. Size);
    end record;

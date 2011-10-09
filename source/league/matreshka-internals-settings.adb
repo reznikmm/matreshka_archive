@@ -56,9 +56,7 @@ package body Matreshka.Internals.Settings is
              (Abstract_Settings'Class, Settings_Access);
 
    begin
-      if Matreshka.Internals.Atomics.Counters.Decrement
-          (Self.Counter'Access)
-      then
+      if Matreshka.Atomics.Counters.Decrement (Self.Counter'Access) then
          Self.Finalize;
          Free (Self);
 
@@ -73,7 +71,7 @@ package body Matreshka.Internals.Settings is
 
    procedure Reference (Self : not null Settings_Access) is
    begin
-      Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
    end Reference;
 
 end Matreshka.Internals.Settings;

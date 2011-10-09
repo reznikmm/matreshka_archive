@@ -46,7 +46,7 @@
 private with Ada.Finalization;
 
 with League.Strings;
-private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Atomics.Counters;
 private with Matreshka.Internals.Strings;
 
 package XML.SAX.Attributes is
@@ -296,7 +296,7 @@ private
    type Attribute_Array is array (Positive range <>) of Attribute;
 
    type Shared_Attributes (Last : Natural) is record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter : aliased Matreshka.Atomics.Counters.Counter;
       Values  : Attribute_Array (1 .. Last);
       Length  : Natural := 0;
    end record;

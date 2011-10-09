@@ -54,7 +54,7 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 with League.Holders;
-private with Matreshka.Internals.Atomics.Counters;
+private with Matreshka.Atomics.Counters;
 with SQL;
 
 package Matreshka.Internals.SQL_Drivers is
@@ -217,13 +217,13 @@ package Matreshka.Internals.SQL_Drivers is
 private
 
    type Abstract_Database is abstract tagged limited record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter : aliased Matreshka.Atomics.Counters.Counter;
       Head    : Query_Access;
       Tail    : Query_Access;
    end record;
 
    type Abstract_Query is abstract tagged limited record
-      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter   : aliased Matreshka.Atomics.Counters.Counter;
       Database  : Database_Access;
       Next      : Query_Access;
       Previous  : Query_Access;

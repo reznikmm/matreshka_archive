@@ -41,35 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is GCC version for 64-bit target.
+--  Atomic test-and-set operation on access type.
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
-with Interfaces;
-with System;
 
-function Matreshka.Internals.Atomics.Generic_Test_And_Set
+generic
+   type T (<>) is limited private;
+   type T_Access is access T;
+
+function Matreshka.Atomics.Generic_Test_And_Set
  (Target         : not null access T_Access;
   Expected_Value : T_Access;
   New_Value      : T_Access)
-    return Boolean
-is
-   pragma Assert (T_Access'Size = System.Address'Size);
-   pragma Assert (T_Access'Size = 64);
-
-   function To_Unsigned_64 is
-     new Ada.Unchecked_Conversion (T_Access, Interfaces.Unsigned_64);
-
-   function Sync_Bool_Compare_And_Swap_64
-    (Ptr     : not null access T_Access;
-     Old_Val : Interfaces.Unsigned_64;
-     New_Val : Interfaces.Unsigned_64) return Boolean;
-   pragma Import
-    (Intrinsic,
-     Sync_Bool_Compare_And_Swap_64,
-     "__sync_bool_compare_and_swap_8");
-
-begin
-   return
-     Sync_Bool_Compare_And_Swap_64
-      (Target, To_Unsigned_64 (Expected_Value), To_Unsigned_64 (New_Value));
-end Matreshka.Internals.Atomics.Generic_Test_And_Set;
+    return Boolean;
+pragma Preelaborate (Matreshka.Atomics.Generic_Test_And_Set);

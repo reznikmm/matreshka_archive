@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,26 +43,33 @@
 ------------------------------------------------------------------------------
 --  This is GCC version for 64-bit target.
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Conversion;
+with Interfaces;
 with System;
 
-function Matreshka.Internals.Atomics.Generic_Test_And_Set
+function Matreshka.Atomics.Generic_Test_And_Set
  (Target         : not null access T_Access;
   Expected_Value : T_Access;
   New_Value      : T_Access)
     return Boolean
 is
    pragma Assert (T_Access'Size = System.Address'Size);
-   pragma Assert (T_Access'Size = 32);
+   pragma Assert (T_Access'Size = 64);
 
-   function Sync_Bool_Compare_And_Swap_32
-     (Ptr     : not null access T_Access;
-      Old_Val : T_Access;
-      New_Val : T_Access) return Boolean;
+   function To_Unsigned_64 is
+     new Ada.Unchecked_Conversion (T_Access, Interfaces.Unsigned_64);
+
+   function Sync_Bool_Compare_And_Swap_64
+    (Ptr     : not null access T_Access;
+     Old_Val : Interfaces.Unsigned_64;
+     New_Val : Interfaces.Unsigned_64) return Boolean;
    pragma Import
-     (Intrinsic,
-      Sync_Bool_Compare_And_Swap_32,
-      "__sync_bool_compare_and_swap_4");
+    (Intrinsic,
+     Sync_Bool_Compare_And_Swap_64,
+     "__sync_bool_compare_and_swap_8");
 
 begin
-   return Sync_Bool_Compare_And_Swap_32 (Target, Expected_Value, New_Value);
-end Matreshka.Internals.Atomics.Generic_Test_And_Set;
+   return
+     Sync_Bool_Compare_And_Swap_64
+      (Target, To_Unsigned_64 (Expected_Value), To_Unsigned_64 (New_Value));
+end Matreshka.Atomics.Generic_Test_And_Set;

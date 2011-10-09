@@ -72,8 +72,7 @@ package body Matreshka.Internals.Stream_Element_Vectors is
    procedure Dereference (Item : in out Shared_Stream_Element_Vector_Access) is
    begin
       if Item /= Empty_Shared_Stream_Element_Vector'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Item.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter'Access)
       then
          Free (Item);
 
@@ -89,7 +88,7 @@ package body Matreshka.Internals.Stream_Element_Vectors is
    procedure Reference (Item : Shared_Stream_Element_Vector_Access) is
    begin
       if Item /= Empty_Shared_Stream_Element_Vector'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Item.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Item.Counter'Access);
       end if;
    end Reference;
 

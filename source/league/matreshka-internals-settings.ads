@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Holders;
 with League.Strings;
-with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Atomics.Counters;
 
 package Matreshka.Internals.Settings is
 
@@ -56,7 +56,7 @@ package Matreshka.Internals.Settings is
    type Abstract_Settings (Manager : not null access Abstract_Manager'Class) is
      abstract tagged limited
    record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter : aliased Matreshka.Atomics.Counters.Counter;
    end record;
 
    not overriding function Contains

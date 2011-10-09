@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Atomic test-and-set operation on access type.
+--  Atomic counters. Any objects of Counter type has value 1 by default.
+--  This assumption allows declaration of implicitly initialized objects in
+--  the preelaborateable units.
 ------------------------------------------------------------------------------
+private with Interfaces;
 
-generic
-   type T (<>) is limited private;
-   type T_Access is access T;
+package Matreshka.Atomics.Counters is
 
-function Matreshka.Internals.Atomics.Generic_Test_And_Set
- (Target         : not null access T_Access;
-  Expected_Value : T_Access;
-  New_Value      : T_Access)
-    return Boolean;
-pragma Preelaborate (Matreshka.Internals.Atomics.Generic_Test_And_Set);
+   pragma Preelaborate;
+   pragma Remote_Types;
+
+   type Counter is limited private;
+
+   procedure Increment (Self : not null access Counter);
+   pragma Inline (Increment);
+   --  Atomicaly increment counter value.
+
+   function Decrement (Self : not null access Counter) return Boolean;
+   pragma Inline (Decrement);
+   --  Atomicaly decrement counter value. Returns True if counter has zero
+   --  value after decrement.
+
+   procedure Decrement (Self : not null access Counter);
+   pragma Inline (Decrement);
+   --  Atomicaly decrement counter value.
+
+   function Is_Zero (Self : not null access Counter) return Boolean;
+   pragma Inline (Is_Zero);
+   --  Returns True if counter has zero value.
+
+   function Is_One (Self : not null access Counter) return Boolean;
+   pragma Inline (Is_One);
+   --  Returns True if counter has one value.
+
+   function Zero return Counter;
+   pragma Inline (Zero);
+   --  Initialize counter to zero value.
+
+   function One return Counter;
+   pragma Inline (One);
+   --  Initialize counter to one value.
+
+private
+
+   type Counter is limited record
+      Value : aliased Interfaces.Integer_32 := 1;
+      pragma Atomic (Value);
+   end record;
+   --  Note: Record type is used for automatic initial value assignment.
+
+end Matreshka.Atomics.Counters;

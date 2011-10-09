@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Atomics.Generic_Test_And_Set;
+with Matreshka.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Strings.Configuration;
 
 package body Matreshka.Internals.Strings is
@@ -78,8 +78,7 @@ package body Matreshka.Internals.Strings is
      new Ada.Unchecked_Deallocation (Shared_String, Shared_String_Access);
 
    function Test_And_Set is
-     new Matreshka.Internals.Atomics.Generic_Test_And_Set
-          (Index_Map, Index_Map_Access);
+     new Matreshka.Atomics.Generic_Test_And_Set (Index_Map, Index_Map_Access);
 
    function Aligned_Size (Size : Utf16_String_Index) return Utf16_String_Index;
    pragma Inline (Aligned_Size);
@@ -136,8 +135,7 @@ package body Matreshka.Internals.Strings is
       return
         Self /= Shared_Empty'Access
           and Self.Size > Size
-          and Matreshka.Internals.Atomics.Counters.Is_One
-               (Self.Counter'Access);
+          and Matreshka.Atomics.Counters.Is_One (Self.Counter'Access);
    end Can_Be_Reused;
 
    -----------------------
@@ -188,8 +186,7 @@ package body Matreshka.Internals.Strings is
 
    begin
       if Self /= Shared_Empty_Key'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-          (Self.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Self.Counter'Access)
       then
          Free (Self);
       end if;
@@ -207,8 +204,7 @@ package body Matreshka.Internals.Strings is
 
    begin
       if Self /= Shared_Empty'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Self.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Self.Counter'Access)
       then
          Free (Self.Index_Map);
          Free (Self);
@@ -296,7 +292,7 @@ package body Matreshka.Internals.Strings is
    procedure Reference (Self : Shared_Sort_Key_Access) is
    begin
       if Self /= Shared_Empty_Key'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
 
@@ -307,7 +303,7 @@ package body Matreshka.Internals.Strings is
    procedure Reference (Self : Shared_String_Access) is
    begin
       if Self /= Shared_Empty'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
 

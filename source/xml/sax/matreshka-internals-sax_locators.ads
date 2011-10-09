@@ -51,14 +51,14 @@
 ------------------------------------------------------------------------------
 with League.IRIs;
 with League.Strings;
-with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Atomics.Counters;
 
 package Matreshka.Internals.SAX_Locators is
 
    pragma Preelaborate;
 
    type Shared_Abstract_Locator is abstract tagged limited record
-      Counter : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter : aliased Matreshka.Atomics.Counters.Counter;
    end record;
 
    not overriding function Line

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,40 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is inefficient but fully portable version of the package.
+--  This is GCC specific version.
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.Atomics.Counters is
+package body Matreshka.Atomics.Counters is
 
-   use type Interfaces.C.int;
+   use type Interfaces.Integer_32;
 
-   protected Guard is
+   procedure Sync_Add_And_Fetch_32
+     (Ptr   : not null access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32);
+   pragma Import (Intrinsic, Sync_Add_And_Fetch_32, "__sync_add_and_fetch_4");
 
-      procedure Increment (Self : not null access Counter);
+   function Sync_Sub_And_Fetch_32
+     (Ptr   : not null access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32) return Interfaces.Integer_32;
+   procedure Sync_Sub_And_Fetch_32
+     (Ptr   : not null access Interfaces.Integer_32;
+      Value : Interfaces.Integer_32);
+   pragma Import (Intrinsic, Sync_Sub_And_Fetch_32, "__sync_sub_and_fetch_4");
 
-      procedure Decrement (Self : not null access Counter);
-
-      procedure Decrement
-       (Self    : not null access Counter;
-        Is_Zero : out Boolean);
-
-      function Is_Zero (Self : not null access Counter) return Boolean;
-
-      function Is_One (Self : not null access Counter) return Boolean;
-
-   end Guard;
+   procedure Sync_Synchronize;
+   pragma Import (Intrinsic, Sync_Synchronize, "__sync_synchronize");
 
    ---------------
    -- Decrement --
    ---------------
 
    function Decrement (Self : not null access Counter) return Boolean is
-      Result : Boolean;
-
    begin
-      Guard.Decrement (Self, Result);
-
-      return Result;
+      return Sync_Sub_And_Fetch_32 (Self.Value'Access, 1) = 0;
    end Decrement;
 
    ---------------
@@ -83,65 +79,8 @@ package body Matreshka.Internals.Atomics.Counters is
 
    procedure Decrement (Self : not null access Counter) is
    begin
-      Guard.Decrement (Self);
+      Sync_Sub_And_Fetch_32 (Self.Value'Access, 1);
    end Decrement;
-
-   -----------
-   -- Guard --
-   -----------
-
-   protected body Guard is
-
-      ---------------
-      -- Decrement --
-      ---------------
-
-      procedure Decrement
-       (Self    : not null access Counter;
-        Is_Zero : out Boolean)
-      is
-      begin
-         Self.Value := Self.Value - 1;
-         Is_Zero    := Self.Value = 0;
-      end Decrement;
-
-      ---------------
-      -- Decrement --
-      ---------------
-
-      procedure Decrement (Self : not null access Counter) is
-      begin
-         Self.Value := Self.Value - 1;
-      end Decrement;
-
-      ---------------
-      -- Increment --
-      ---------------
-
-      procedure Increment (Self : not null access Counter) is
-      begin
-         Self.Value := Self.Value + 1;
-      end Increment;
-
-      ------------
-      -- Is_One --
-      ------------
-
-      function Is_One (Self : not null access Counter) return Boolean is
-      begin
-         return Self.Value = 1;
-      end Is_One;
-
-      -------------
-      -- Is_Zero --
-      -------------
-
-      function Is_Zero (Self : not null access Counter) return Boolean is
-      begin
-         return Self.Value = 0;
-      end Is_Zero;
-
-   end Guard;
 
    ---------------
    -- Increment --
@@ -149,7 +88,7 @@ package body Matreshka.Internals.Atomics.Counters is
 
    procedure Increment (Self : not null access Counter) is
    begin
-      Guard.Increment (Self);
+      Sync_Add_And_Fetch_32 (Self.Value'Access, 1);
    end Increment;
 
    ------------
@@ -158,7 +97,9 @@ package body Matreshka.Internals.Atomics.Counters is
 
    function Is_One (Self : not null access Counter) return Boolean is
    begin
-      return Guard.Is_One (Self);
+      Sync_Synchronize;
+
+      return Self.Value = 1;
    end Is_One;
 
    -------------
@@ -167,7 +108,9 @@ package body Matreshka.Internals.Atomics.Counters is
 
    function Is_Zero (Self : not null access Counter) return Boolean is
    begin
-      return Guard.Is_Zero (Self);
+      Sync_Synchronize;
+
+      return Self.Value = 0;
    end Is_Zero;
 
    ---------
@@ -188,4 +131,4 @@ package body Matreshka.Internals.Atomics.Counters is
       return Counter'(Value => 0);
    end Zero;
 
-end Matreshka.Internals.Atomics.Counters;
+end Matreshka.Atomics.Counters;

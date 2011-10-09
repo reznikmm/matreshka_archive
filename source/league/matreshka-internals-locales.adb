@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -73,9 +73,7 @@ package body Matreshka.Internals.Locales is
         new Ada.Unchecked_Deallocation (Locale_Data, Locale_Data_Access);
 
    begin
-      if Matreshka.Internals.Atomics.Counters.Decrement
-          (Self.Counter'Access)
-      then
+      if Matreshka.Atomics.Counters.Decrement (Self.Counter'Access) then
          pragma Assert (Self /= Default_Locale'Access);
 
          Free (Self);
@@ -122,7 +120,7 @@ package body Matreshka.Internals.Locales is
 
    procedure Reference (Self : Locale_Data_Access) is
    begin
-      Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+      Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
    end Reference;
 
 end Matreshka.Internals.Locales;

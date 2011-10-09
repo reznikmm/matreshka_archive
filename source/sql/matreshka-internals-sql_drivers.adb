@@ -86,8 +86,7 @@ package body Matreshka.Internals.SQL_Drivers is
 
    begin
       if Self /= Dummy.Empty_Database'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Self.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Self.Counter'Access)
       then
          Self.Finalize;
          Free (Self);
@@ -108,8 +107,7 @@ package body Matreshka.Internals.SQL_Drivers is
 
    begin
       if Self /= Dummy.Empty_Query'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Self.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Self.Counter'Access)
       then
          Self.Finalize;
          Free (Self);
@@ -224,7 +222,7 @@ package body Matreshka.Internals.SQL_Drivers is
    procedure Reference (Self : not null Database_Access) is
    begin
       if Self /= Dummy.Empty_Database'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
 
@@ -235,7 +233,7 @@ package body Matreshka.Internals.SQL_Drivers is
    procedure Reference (Self : not null Query_Access) is
    begin
       if Self /= Dummy.Empty_Query'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
       end if;
    end Reference;
 

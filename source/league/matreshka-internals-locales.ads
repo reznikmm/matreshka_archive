@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,7 +44,7 @@
 --  This package provides type for representations of the locale's data and
 --  internal operations on locales data.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Atomics.Counters;
 with Matreshka.Internals.Unicode.Ucd;
 
 package Matreshka.Internals.Locales is
@@ -68,7 +68,7 @@ package Matreshka.Internals.Locales is
    end record;
 
    type Locale_Data is tagged limited record
-      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter   : aliased Matreshka.Atomics.Counters.Counter;
 
       Core      : Unicode.Ucd.Core_First_Stage_Access;
       Casing    : Casing_Data;

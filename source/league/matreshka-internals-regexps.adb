@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Atomics.Generic_Test_And_Set;
+with Matreshka.Atomics.Generic_Test_And_Set;
 with Matreshka.Internals.Strings.Operations;
 
 package body Matreshka.Internals.Regexps is
@@ -52,7 +52,7 @@ package body Matreshka.Internals.Regexps is
    use Matreshka.Internals.Utf16;
 
    function Test_And_Set is
-     new Matreshka.Internals.Atomics.Generic_Test_And_Set
+     new Matreshka.Atomics.Generic_Test_And_Set
           (Shared_String, Shared_String_Access);
 
    -------------
@@ -104,8 +104,7 @@ package body Matreshka.Internals.Regexps is
 
    begin
       if Item /= Empty_Shared_Match'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Item.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter'Access)
       then
          if Item.Source /= null then
             Dereference (Item.Source);
@@ -136,8 +135,7 @@ package body Matreshka.Internals.Regexps is
 
    begin
       if Item /= Empty_Shared_Pattern'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Item.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter'Access)
       then
          Free (Item);
 
@@ -153,7 +151,7 @@ package body Matreshka.Internals.Regexps is
    procedure Reference (Item : not null Shared_Match_Access) is
    begin
       if Item /= Empty_Shared_Match'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Item.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Item.Counter'Access);
       end if;
    end Reference;
 
@@ -164,7 +162,7 @@ package body Matreshka.Internals.Regexps is
    procedure Reference (Item : not null Shared_Pattern_Access) is
    begin
       if Item /= Empty_Shared_Pattern'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Item.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Item.Counter'Access);
       end if;
    end Reference;
 
