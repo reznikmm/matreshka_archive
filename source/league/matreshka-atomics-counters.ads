@@ -50,7 +50,6 @@ private with Interfaces;
 package Matreshka.Atomics.Counters is
 
    pragma Preelaborate;
-   pragma Remote_Types;
 
    type Counter is limited private;
 
