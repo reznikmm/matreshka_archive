@@ -68,7 +68,7 @@ package body Matreshka.Atomics.Counters is
    -- Decrement --
    ---------------
 
-   function Decrement (Self : not null access Counter) return Boolean is
+   function Decrement (Self : in out Counter) return Boolean is
    begin
       return Sync_Sub_And_Fetch_32 (Self.Value'Access, 1) = 0;
    end Decrement;
@@ -77,7 +77,7 @@ package body Matreshka.Atomics.Counters is
    -- Decrement --
    ---------------
 
-   procedure Decrement (Self : not null access Counter) is
+   procedure Decrement (Self : in out Counter) is
    begin
       Sync_Sub_And_Fetch_32 (Self.Value'Access, 1);
    end Decrement;
@@ -86,7 +86,7 @@ package body Matreshka.Atomics.Counters is
    -- Increment --
    ---------------
 
-   procedure Increment (Self : not null access Counter) is
+   procedure Increment (Self : in out Counter) is
    begin
       Sync_Add_And_Fetch_32 (Self.Value'Access, 1);
    end Increment;
@@ -95,7 +95,7 @@ package body Matreshka.Atomics.Counters is
    -- Is_One --
    ------------
 
-   function Is_One (Self : not null access Counter) return Boolean is
+   function Is_One (Self : in out Counter) return Boolean is
    begin
       Sync_Synchronize;
 
@@ -106,7 +106,7 @@ package body Matreshka.Atomics.Counters is
    -- Is_Zero --
    -------------
 
-   function Is_Zero (Self : not null access Counter) return Boolean is
+   function Is_Zero (Self : in out Counter) return Boolean is
    begin
       Sync_Synchronize;
 

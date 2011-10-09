@@ -53,7 +53,7 @@ package Matreshka.Internals.String_Vectors is
        of Matreshka.Internals.Strings.Shared_String_Access;
 
    type Shared_String_Vector (Size : Natural) is limited record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       Length  : Natural := 0;

@@ -104,7 +104,7 @@ package body Matreshka.Internals.Regexps is
 
    begin
       if Item /= Empty_Shared_Match'Access
-        and then Matreshka.Atomics.Counters.Decrement (Item.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter)
       then
          if Item.Source /= null then
             Dereference (Item.Source);
@@ -135,7 +135,7 @@ package body Matreshka.Internals.Regexps is
 
    begin
       if Item /= Empty_Shared_Pattern'Access
-        and then Matreshka.Atomics.Counters.Decrement (Item.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter)
       then
          Free (Item);
 
@@ -151,7 +151,7 @@ package body Matreshka.Internals.Regexps is
    procedure Reference (Item : not null Shared_Match_Access) is
    begin
       if Item /= Empty_Shared_Match'Access then
-         Matreshka.Atomics.Counters.Increment (Item.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Item.Counter);
       end if;
    end Reference;
 
@@ -162,7 +162,7 @@ package body Matreshka.Internals.Regexps is
    procedure Reference (Item : not null Shared_Pattern_Access) is
    begin
       if Item /= Empty_Shared_Pattern'Access then
-         Matreshka.Atomics.Counters.Increment (Item.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Item.Counter);
       end if;
    end Reference;
 

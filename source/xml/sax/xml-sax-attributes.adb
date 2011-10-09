@@ -70,7 +70,7 @@ package body XML.SAX.Attributes is
 
    function Can_Be_Reused (Self : Shared_Attributes_Access) return Boolean is
    begin
-      return Matreshka.Atomics.Counters.Is_One (Self.Counter'Access);
+      return Matreshka.Atomics.Counters.Is_One (Self.Counter);
    end Can_Be_Reused;
 
    -----------
@@ -108,7 +108,7 @@ package body XML.SAX.Attributes is
    procedure Dereference (Self : in out Shared_Attributes_Access) is
    begin
       if Self /= Shared_Empty'Access then
-         if Matreshka.Atomics.Counters.Decrement (Self.Counter'Access) then
+         if Matreshka.Atomics.Counters.Decrement (Self.Counter) then
             for J in 1 .. Self.Length loop
                Matreshka.Internals.Strings.Dereference
                 (Self.Values (J).Namespace_URI);
@@ -424,7 +424,7 @@ package body XML.SAX.Attributes is
    procedure Reference (Self : Shared_Attributes_Access) is
    begin
       if Self /= Shared_Empty'Access then
-         Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter);
       end if;
    end Reference;
 

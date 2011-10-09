@@ -296,7 +296,7 @@ private
    type Attribute_Array is array (Positive range <>) of Attribute;
 
    type Shared_Attributes (Last : Natural) is record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter : Matreshka.Atomics.Counters.Counter;
       Values  : Attribute_Array (1 .. Last);
       Length  : Natural := 0;
    end record;

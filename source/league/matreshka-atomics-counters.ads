@@ -45,6 +45,8 @@
 --  This assumption allows declaration of implicitly initialized objects in
 --  the preelaborateable units.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 private with Interfaces;
 
 package Matreshka.Atomics.Counters is
@@ -53,24 +55,24 @@ package Matreshka.Atomics.Counters is
 
    type Counter is limited private;
 
-   procedure Increment (Self : not null access Counter);
+   procedure Increment (Self : in out Counter);
    pragma Inline (Increment);
    --  Atomicaly increment counter value.
 
-   function Decrement (Self : not null access Counter) return Boolean;
+   function Decrement (Self : in out Counter) return Boolean;
    pragma Inline (Decrement);
    --  Atomicaly decrement counter value. Returns True if counter has zero
    --  value after decrement.
 
-   procedure Decrement (Self : not null access Counter);
+   procedure Decrement (Self : in out Counter);
    pragma Inline (Decrement);
    --  Atomicaly decrement counter value.
 
-   function Is_Zero (Self : not null access Counter) return Boolean;
+   function Is_Zero (Self : in out Counter) return Boolean;
    pragma Inline (Is_Zero);
    --  Returns True if counter has zero value.
 
-   function Is_One (Self : not null access Counter) return Boolean;
+   function Is_One (Self : in out Counter) return Boolean;
    pragma Inline (Is_One);
    --  Returns True if counter has one value.
 

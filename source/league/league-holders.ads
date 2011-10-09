@@ -215,7 +215,7 @@ private
    --  reference counter and boolean field to mark null value.
 
    type Abstract_Container is abstract tagged limited record
-      Counter  : aliased Matreshka.Atomics.Counters.Counter;
+      Counter  : Matreshka.Atomics.Counters.Counter;
       Is_Empty : Boolean := True;
    end record;
 

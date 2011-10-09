@@ -56,7 +56,7 @@ package Matreshka.Internals.Settings is
    type Abstract_Settings (Manager : not null access Abstract_Manager'Class) is
      abstract tagged limited
    record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter : Matreshka.Atomics.Counters.Counter;
    end record;
 
    not overriding function Contains

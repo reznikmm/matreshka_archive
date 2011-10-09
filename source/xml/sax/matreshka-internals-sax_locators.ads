@@ -58,7 +58,7 @@ package Matreshka.Internals.SAX_Locators is
    pragma Preelaborate;
 
    type Shared_Abstract_Locator is abstract tagged limited record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter : Matreshka.Atomics.Counters.Counter;
    end record;
 
    not overriding function Line

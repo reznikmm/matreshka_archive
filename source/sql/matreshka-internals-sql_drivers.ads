@@ -217,13 +217,13 @@ package Matreshka.Internals.SQL_Drivers is
 private
 
    type Abstract_Database is abstract tagged limited record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter : Matreshka.Atomics.Counters.Counter;
       Head    : Query_Access;
       Tail    : Query_Access;
    end record;
 
    type Abstract_Query is abstract tagged limited record
-      Counter   : aliased Matreshka.Atomics.Counters.Counter;
+      Counter   : Matreshka.Atomics.Counters.Counter;
       Database  : Database_Access;
       Next      : Query_Access;
       Previous  : Query_Access;

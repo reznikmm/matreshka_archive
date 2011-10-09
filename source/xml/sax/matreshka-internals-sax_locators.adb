@@ -55,7 +55,7 @@ package body Matreshka.Internals.SAX_Locators is
              (Shared_Abstract_Locator'Class, Shared_Locator_Access);
 
    begin
-      if Matreshka.Atomics.Counters.Decrement (Self.Counter'Access) then
+      if Matreshka.Atomics.Counters.Decrement (Self.Counter) then
          Free (Self);
 
       else
@@ -69,7 +69,7 @@ package body Matreshka.Internals.SAX_Locators is
 
    procedure Reference (Self : not null Shared_Locator_Access) is
    begin
-      Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
+      Matreshka.Atomics.Counters.Increment (Self.Counter);
    end Reference;
 
 end Matreshka.Internals.SAX_Locators;

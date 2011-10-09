@@ -50,17 +50,17 @@ package body Matreshka.Atomics.Counters is
 
    protected Guard is
 
-      procedure Increment (Self : not null access Counter);
+      procedure Increment (Self : in out Counter);
 
-      procedure Decrement (Self : not null access Counter);
+      procedure Decrement (Self : in out Counter);
 
       procedure Decrement
-       (Self    : not null access Counter;
+       (Self    : in out Counter;
         Is_Zero : out Boolean);
 
-      function Is_Zero (Self : not null access Counter) return Boolean;
+      function Is_Zero (Self : in out Counter) return Boolean;
 
-      function Is_One (Self : not null access Counter) return Boolean;
+      function Is_One (Self : in out Counter) return Boolean;
 
    end Guard;
 
@@ -68,7 +68,7 @@ package body Matreshka.Atomics.Counters is
    -- Decrement --
    ---------------
 
-   function Decrement (Self : not null access Counter) return Boolean is
+   function Decrement (Self : in out Counter) return Boolean is
       Result : Boolean;
 
    begin
@@ -81,7 +81,7 @@ package body Matreshka.Atomics.Counters is
    -- Decrement --
    ---------------
 
-   procedure Decrement (Self : not null access Counter) is
+   procedure Decrement (Self : in out Counter) is
    begin
       Guard.Decrement (Self);
    end Decrement;
@@ -97,7 +97,7 @@ package body Matreshka.Atomics.Counters is
       ---------------
 
       procedure Decrement
-       (Self    : not null access Counter;
+       (Self    : in out Counter;
         Is_Zero : out Boolean)
       is
       begin
@@ -109,7 +109,7 @@ package body Matreshka.Atomics.Counters is
       -- Decrement --
       ---------------
 
-      procedure Decrement (Self : not null access Counter) is
+      procedure Decrement (Self : in out Counter) is
       begin
          Self.Value := Self.Value - 1;
       end Decrement;
@@ -118,7 +118,7 @@ package body Matreshka.Atomics.Counters is
       -- Increment --
       ---------------
 
-      procedure Increment (Self : not null access Counter) is
+      procedure Increment (Self : in out Counter) is
       begin
          Self.Value := Self.Value + 1;
       end Increment;
@@ -127,7 +127,7 @@ package body Matreshka.Atomics.Counters is
       -- Is_One --
       ------------
 
-      function Is_One (Self : not null access Counter) return Boolean is
+      function Is_One (Self : in out Counter) return Boolean is
       begin
          return Self.Value = 1;
       end Is_One;
@@ -136,7 +136,7 @@ package body Matreshka.Atomics.Counters is
       -- Is_Zero --
       -------------
 
-      function Is_Zero (Self : not null access Counter) return Boolean is
+      function Is_Zero (Self : in out Counter) return Boolean is
       begin
          return Self.Value = 0;
       end Is_Zero;
@@ -147,7 +147,7 @@ package body Matreshka.Atomics.Counters is
    -- Increment --
    ---------------
 
-   procedure Increment (Self : not null access Counter) is
+   procedure Increment (Self : in out Counter) is
    begin
       Guard.Increment (Self);
    end Increment;
@@ -156,7 +156,7 @@ package body Matreshka.Atomics.Counters is
    -- Is_One --
    ------------
 
-   function Is_One (Self : not null access Counter) return Boolean is
+   function Is_One (Self : in out Counter) return Boolean is
    begin
       return Guard.Is_One (Self);
    end Is_One;
@@ -165,7 +165,7 @@ package body Matreshka.Atomics.Counters is
    -- Is_Zero --
    -------------
 
-   function Is_Zero (Self : not null access Counter) return Boolean is
+   function Is_Zero (Self : in out Counter) return Boolean is
    begin
       return Guard.Is_Zero (Self);
    end Is_Zero;

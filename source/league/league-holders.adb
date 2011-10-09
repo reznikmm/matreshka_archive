@@ -93,8 +93,7 @@ package body League.Holders is
 
    begin
       if not Self.Data.Is_Empty then
-         if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access)
-         then
+         if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
             --  Internal object is shared, allocate new own.
 
             Dereference (Self.Data);
@@ -233,7 +232,7 @@ package body League.Holders is
 
    begin
       if Self /= Shared_Empty'Access
-        and then Matreshka.Atomics.Counters.Decrement (Self.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Self.Counter)
       then
          Self.Finalize;
          Free (Self);
@@ -588,7 +587,7 @@ package body League.Holders is
    procedure Reference (Self : not null Container_Access) is
    begin
       if Self /= Shared_Empty'Access then
-         Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter);
       end if;
    end Reference;
 
@@ -606,8 +605,7 @@ package body League.Holders is
 
       --  Create new shared object when existing one can't be reused.
 
-      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access)
-      then
+      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
          Dereference (Self.Data);
          Self.Data :=
            new Date_Container'(Counter => <>, Is_Empty => False, Value => To);
@@ -632,7 +630,7 @@ package body League.Holders is
 
       --  Create new shared object when existing one can't be reused.
 
-      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access) then
+      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
          Dereference (Self.Data);
          Self.Data :=
            new Date_Time_Container'
@@ -658,7 +656,7 @@ package body League.Holders is
 
       --  Create new shared object when existing one can't be reused.
 
-      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access) then
+      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
          Dereference (Self.Data);
          Self.Data :=
            new Time_Container'(Counter => <>, Is_Empty => False, Value => To);
@@ -689,7 +687,7 @@ package body League.Holders is
 
       --  Create new shared object when existing one can't be reused.
 
-      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access) then
+      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
          Dereference (Self.Data);
          Self.Data :=
            new Universal_String_Container'
@@ -721,7 +719,7 @@ package body League.Holders is
 
       --  Create new shared object when existing one can't be reused.
 
-      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access) then
+      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
          Dereference (Self.Data);
          Self.Data :=
            new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
@@ -748,7 +746,7 @@ package body League.Holders is
 
       --  Create new shared object when existing one can't be reused.
 
-      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter'Access) then
+      if not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter) then
          Dereference (Self.Data);
          Self.Data :=
            new Abstract_Container'Class'(Create (Tag, Is_Empty'Access));
@@ -794,8 +792,7 @@ package body League.Holders is
 
    begin
       if Self.Data'Tag /= Ada.Tags.Tag (To)
-        or else not Matreshka.Atomics.Counters.Is_One
-                     (Self.Data.Counter'Access)
+        or else not Matreshka.Atomics.Counters.Is_One (Self.Data.Counter)
       then
          --  Tag of the value is changed, or value is shared, dereference
          --  shared object and allocate new one.

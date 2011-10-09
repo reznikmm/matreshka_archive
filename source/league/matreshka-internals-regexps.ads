@@ -163,7 +163,7 @@ package Matreshka.Internals.Regexps is
 
    type Shared_Pattern (Size : Natural; List_Size : Node_List_Count) is limited
    record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter   : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       AST       : AST_Array (1 .. Size);
@@ -203,7 +203,7 @@ package Matreshka.Internals.Regexps is
    type Slice_Array is array (Natural range <>) of Slice;
 
    type Shared_Match (Groups : Natural) is limited record
-      Counter   : aliased Matreshka.Atomics.Counters.Counter;
+      Counter   : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       Is_Matched : Boolean := False;

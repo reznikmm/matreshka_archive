@@ -73,7 +73,7 @@ package body Matreshka.Internals.Locales is
         new Ada.Unchecked_Deallocation (Locale_Data, Locale_Data_Access);
 
    begin
-      if Matreshka.Atomics.Counters.Decrement (Self.Counter'Access) then
+      if Matreshka.Atomics.Counters.Decrement (Self.Counter) then
          pragma Assert (Self /= Default_Locale'Access);
 
          Free (Self);
@@ -120,7 +120,7 @@ package body Matreshka.Internals.Locales is
 
    procedure Reference (Self : Locale_Data_Access) is
    begin
-      Matreshka.Atomics.Counters.Increment (Self.Counter'Access);
+      Matreshka.Atomics.Counters.Increment (Self.Counter);
    end Reference;
 
 end Matreshka.Internals.Locales;

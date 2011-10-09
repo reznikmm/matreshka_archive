@@ -54,7 +54,7 @@ package Matreshka.Internals.Stream_Element_Vectors is
    type Shared_Stream_Element_Vector
     (Size : Ada.Streams.Stream_Element_Offset) is limited
    record
-      Counter : aliased Matreshka.Atomics.Counters.Counter;
+      Counter : Matreshka.Atomics.Counters.Counter;
       Length  : Ada.Streams.Stream_Element_Offset := 0;
       Value   : Ada.Streams.Stream_Element_Array (0 .. Size);
    end record;

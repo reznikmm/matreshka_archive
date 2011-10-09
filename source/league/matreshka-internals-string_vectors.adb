@@ -85,7 +85,7 @@ package body Matreshka.Internals.String_Vectors is
 
    begin
       if Item /= Empty_Shared_String_Vector'Access
-        and then Matreshka.Atomics.Counters.Decrement (Item.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Item.Counter)
       then
          for J in 1 .. Item.Length loop
             Matreshka.Internals.Strings.Dereference (Item.Value (J));
@@ -128,7 +128,7 @@ package body Matreshka.Internals.String_Vectors is
       --  of items, or used somewhere; allocate new one and copy existing data.
 
       elsif Destination.Size < Size
-        or else Matreshka.Atomics.Counters.Is_One (Source.Counter'Access)
+        or else Matreshka.Atomics.Counters.Is_One (Source.Counter)
       then
          Destination := Allocate (Size);
 
@@ -185,7 +185,7 @@ package body Matreshka.Internals.String_Vectors is
    procedure Reference (Item : Shared_String_Vector_Access) is
    begin
       if Item /= Empty_Shared_String_Vector'Access then
-         Matreshka.Atomics.Counters.Increment (Item.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Item.Counter);
       end if;
    end Reference;
 

@@ -87,7 +87,7 @@ package Matreshka.Internals.Strings is
 
    type Shared_String (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
      is limited record
-      Counter   : aliased Matreshka.Atomics.Counters.Counter;
+      Counter   : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       Unused    : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
@@ -172,7 +172,7 @@ package Matreshka.Internals.Strings is
        of Matreshka.Internals.Unicode.Ucd.Collation_Weight;
 
    type Shared_Sort_Key (Size : Natural) is record
-      Counter  : aliased Matreshka.Atomics.Counters.Counter;
+      Counter  : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       Data     : Sort_Key_Array (1 .. Size);

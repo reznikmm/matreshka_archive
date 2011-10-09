@@ -68,7 +68,7 @@ package Matreshka.Internals.Locales is
    end record;
 
    type Locale_Data is tagged limited record
-      Counter   : aliased Matreshka.Atomics.Counters.Counter;
+      Counter   : Matreshka.Atomics.Counters.Counter;
 
       Core      : Unicode.Ucd.Core_First_Stage_Access;
       Casing    : Casing_Data;
