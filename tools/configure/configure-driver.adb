@@ -128,11 +128,11 @@ begin
       return;
    end if;
 
-   Dirs_Test.Execute;
-   Install_Test.Execute;
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;
+   Dirs_Test.Execute;
+   Install_Test.Execute;
    OCI_Test.Execute;
    PostgreSQL_Test.Execute;
    SQLite3_Test.Execute;
