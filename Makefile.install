@@ -38,8 +38,8 @@ league:
 	# .libs directory
 	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq | grep -v '^$$' > league-src.lst
 	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' | grep -v '^$$' > league-ali.lst
-	cat league-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
-	cat league-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat league-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
+	cat league-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/matreshka_config.gpr
 	$(INSTALL_project) gnat/install/league.gpr  $(INSTALL_PROJECT_DIR)/league.gpr
 	$(INSTALL) .libs/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)
@@ -56,8 +56,8 @@ fastcgi:
 	gnat ls -d -s -P gnat/matreshka_fastcgi.gpr | sort | uniq | grep -v '^$$' > fastcgi-src.aux
 	diff -u league-src.lst fastcgi-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > fastcgi-src.lst
 	gnat ls -o -P gnat/matreshka_fastcgi.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > fastcgi-ali.lst
-	cat fastcgi-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
-	cat fastcgi-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat fastcgi-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
+	cat fastcgi-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
 	$(INSTALL) .libs/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)
@@ -72,8 +72,8 @@ sql:
 	gnat ls -d -s -P gnat/matreshka_sql.gpr | sort | uniq | grep -v '^$$' > sql-src.aux
 	diff -u league-src.lst sql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql-src.lst
 	gnat ls -o -P gnat/matreshka_sql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql-ali.lst
-	cat sql-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql
-	cat sql-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat sql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql
+	cat sql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql.gpr $(INSTALL_PROJECT_DIR)/sql.gpr
 	$(INSTALL) .libs/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql$(RTL_VERSION).$(LIBEXT)
@@ -88,8 +88,8 @@ oci:
 	gnat ls -d -s -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' > sql_oci-src.aux
 	cat league-src.lst sql-src.aux | diff -u - sql_oci-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_oci-src.lst
 	gnat ls -o -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
-	cat sql_oci-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
-	cat sql_oci-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat sql_oci-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
+	cat sql_oci-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_oci.gpr $(INSTALL_PROJECT_DIR)/sql_oci.gpr
 	$(INSTALL) .libs/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)
@@ -104,8 +104,8 @@ postgresql:
 	gnat ls -d -s -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' > sql_postgresql-src.aux
 	cat league-src.lst sql-src.aux | diff -u - sql_postgresql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_postgresql-src.lst
 	gnat ls -o -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_postgresql-ali.lst
-	cat sql_postgresql-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/postgresql
-	cat sql_postgresql-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat sql_postgresql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/postgresql
+	cat sql_postgresql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_postgresql.gpr $(INSTALL_PROJECT_DIR)/sql_postgresql.gpr
 	$(INSTALL) .libs/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)
@@ -120,8 +120,8 @@ sqlite3:
 	gnat ls -d -s -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' > sql_sqlite3-src.aux
 	cat league-src.lst sql-src.aux | diff -u - sql_sqlite3-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_sqlite3-src.lst
 	gnat ls -o -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_sqlite3-ali.lst
-	cat sql_sqlite3-src.lst | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/sqlite3
-	cat sql_sqlite3-ali.lst | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	cat sql_sqlite3-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/sqlite3
+	cat sql_sqlite3-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_sqlite3.gpr $(INSTALL_PROJECT_DIR)/sql_sqlite3.gpr
 	$(INSTALL) .libs/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)
