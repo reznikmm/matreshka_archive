@@ -37,6 +37,9 @@ INSTALL_TARGETS += cleanup
 install: $(INSTALL_TARGETS)
 
 league:
+ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) -d $(INSTALL_EXEC_DIR)
+endif
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
 	$(INSTALL) -d ${INSTALL_PROJECT_DIR}/matreshka
 	$(INSTALL) -d ${INSTALL_ALI_DIR}
