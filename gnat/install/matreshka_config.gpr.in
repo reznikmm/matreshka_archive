@@ -67,11 +67,12 @@ abstract project Matreshka_Config is
    --  Shared libraries version suffix, library and ALI directories.
 
    RTL_Version_Suffix := "@RTL_VERSION_SUFFIX@";
+   Library_Dir := "@LIBDIR@";
    Library_ALI_Dir := "@LIBDIR@/matreshka";
 
-   case Operating_Systems is
+   case Operating_System is
       when "POSIX" =>
-         Library_Dir := "@LIBDIR@";
+         null;
 
       when "Windows" =>
          Library_Dir := "@BINDIR@";
