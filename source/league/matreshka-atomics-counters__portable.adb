@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This is inefficient but fully portable version of the package.
 ------------------------------------------------------------------------------
+pragma Ada_2012;
 
 package body Matreshka.Atomics.Counters is
 
