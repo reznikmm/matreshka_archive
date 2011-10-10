@@ -131,6 +131,18 @@ package body Configure.Tests.Installation_Directories is
             end if;
          end;
       end loop;
+
+      --  Transform paths on Windows to be compatible with sh.
+
+      Substitutions.Replace
+       (Prefix_Name,
+        Convert_Windows_Path (Substitutions.Element (Prefix_Name)));
+      Substitutions.Replace
+       (Bindir_Name,
+        Convert_Windows_Path (Substitutions.Element (Bindir_Name)));
+      Substitutions.Replace
+       (Libdir_Name,
+        Convert_Windows_Path (Substitutions.Element (Libdir_Name)));
    end Execute;
 
    ----------

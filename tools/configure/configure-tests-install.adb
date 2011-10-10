@@ -48,7 +48,7 @@ with GNAT.OS_Lib;
 
 package body Configure.Tests.Install is
 
-   Install : constant Unbounded_String := +"INSTALL";
+   Install_Name : constant Unbounded_String := +"INSTALL";
 
    -------------
    -- Execute --
@@ -59,7 +59,8 @@ package body Configure.Tests.Install is
         := GNAT.OS_Lib.Locate_Exec_On_Path ("install");
 
    begin
-      Substitutions.Insert (Install, +Install_Path.all);
+      Substitutions.Insert
+       (Install_Name, Convert_Windows_Path (+Install_Path.all));
    end Execute;
 
    ----------

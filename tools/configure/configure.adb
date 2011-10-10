@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Ada.Command_Line;
 with Ada.Directories;
+with Ada.Strings.Fixed;
+with Ada.Strings.Maps;
 with Ada.Text_IO;
 
 package body Configure is
@@ -50,6 +52,24 @@ package body Configure is
    use Ada.Command_Line;
    use Ada.Directories;
    use Ada.Text_IO;
+
+   --------------------------
+   -- Convert_Windows_Path --
+   --------------------------
+
+   function Convert_Windows_Path
+    (Path : Unbounded_String) return Unbounded_String
+   is
+      use Ada.Strings.Maps;
+
+   begin
+      if Is_Windows then
+         return Translate (Path, To_Mapping ("\", "/"));
+
+      else
+         return Path;
+      end if;
+   end Convert_Windows_Path;
 
    -----------------
    -- Fatal_Error --

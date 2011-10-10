@@ -106,6 +106,12 @@ package Configure is
 
    Is_Windows : Boolean := False;
 
+   function Convert_Windows_Path
+    (Path : Unbounded_String) return Unbounded_String;
+   --  Converts '\' to '/' to be compatible with sh.
+   --
+   --  XXX Should be removed after implementation of own install utility.
+
    Internal_Error : exception;
 
 end Configure;
