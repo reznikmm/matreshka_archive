@@ -2,6 +2,7 @@ include Makefile.config
 DESTDIR ?=
 INSTALL_PROJECT_DIR ?= $(DESTDIR)${PREFIX}/lib/gnat
 INSTALL_INCLUDE_DIR ?= $(DESTDIR)$(PREFIX)/include/matreshka
+INSTALL_EXEC_DIR    ?= $(DESTDIR)$(BINDIR)
 INSTALL_LIBRARY_DIR ?= $(DESTDIR)$(LIBDIR)
 INSTALL_ALI_DIR ?= ${INSTALL_LIBRARY_DIR}/matreshka
 INSTALL_ali = $(INSTALL) -m 444
@@ -10,7 +11,12 @@ INSTALL_source = $(INSTALL) -m 644
 CHMOD = chmod
 LN_S = ln -sf
 MKDIR = mkdir -p 
+
+ifeq ($(OPERATING_SYSTEM), POSIX)
 LIBEXT = so
+else ifeq ($(OPERATING_SYSTEM), Windows)
+LIBEXT = dll
+endif
 
 INSTALL_TARGETS = league fastcgi sql
 
@@ -42,9 +48,14 @@ league:
 	cat league-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/matreshka_config.gpr
 	$(INSTALL_project) gnat/install/league.gpr  $(INSTALL_PROJECT_DIR)/league.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) libleague$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/league-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libleague$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libleague$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libleague$(RTL_VERSION).$(LIBEXT)" > .objs/league-lib.files
+endif
 	cat league-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/league/{}" > .objs/league-devel.files
 	cat league-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/matreshka/matreshka_config.gpr" >> .objs/league-devel.files
@@ -59,9 +70,14 @@ fastcgi:
 	cat fastcgi-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
 	cat fastcgi-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/fastcgi.gpr $(INSTALL_PROJECT_DIR)/fastcgi.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/fastcgi-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)" > .objs/fastcgi-lib.files
+endif
 	cat fastcgi-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/fastcgi/{}" > .objs/fastcgi-devel.files
 	cat fastcgi-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/fastcgi-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/fastcgi.gpr" >> .objs/fastcgi-devel.files
@@ -75,9 +91,14 @@ sql:
 	cat sql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql
 	cat sql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql.gpr $(INSTALL_PROJECT_DIR)/sql.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/sql-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-sql$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-sql$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-sql$(RTL_VERSION).$(LIBEXT)" > .objs/sql-lib.files
+endif
 	cat sql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/{}" > .objs/sql-devel.files
 	cat sql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql.gpr" >> .objs/sql-devel.files
@@ -91,9 +112,14 @@ oci:
 	cat sql_oci-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
 	cat sql_oci-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_oci.gpr $(INSTALL_PROJECT_DIR)/sql_oci.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/sql_oci-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)" > .objs/sql_oci-lib.files
+endif
 	cat sql_oci-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/oci/{}" > .objs/sql_oci-devel.files
 	cat sql_oci-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_oci-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_oci.gpr" >> .objs/sql_oci-devel.files
@@ -107,9 +133,14 @@ postgresql:
 	cat sql_postgresql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/postgresql
 	cat sql_postgresql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_postgresql.gpr $(INSTALL_PROJECT_DIR)/sql_postgresql.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/sql_postgresql-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)" > .objs/sql_postgresql-lib.files
+endif
 	cat sql_postgresql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/postgresql/{}" > .objs/sql_postgresql-devel.files
 	cat sql_postgresql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_postgresql-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_postgresql.gpr" >> .objs/sql_postgresql-devel.files
@@ -123,9 +154,14 @@ sqlite3:
 	cat sql_sqlite3-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/sqlite3
 	cat sql_sqlite3-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_sqlite3.gpr $(INSTALL_PROJECT_DIR)/sql_sqlite3.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/sql_sqlite3-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)" > .objs/sql_sqlite3-lib.files
+endif
 	cat sql_sqlite3-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/sqlite3/{}" > .objs/sql_sqlite3-devel.files
 	cat sql_sqlite3-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_sqlite3-devel.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_sqlite3.gpr" >> .objs/sql_sqlite3-devel.files

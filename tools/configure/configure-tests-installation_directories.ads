@@ -45,6 +45,7 @@
 --  substitution variables:
 --
 --   - PREFIX
+--   - BINDIR
 --   - LIBDIR
 ------------------------------------------------------------------------------
 with Configure.Abstract_Tests;

@@ -47,9 +47,11 @@ with Ada.Directories;
 package body Configure.Tests.Installation_Directories is
 
    Prefix_Switch : constant String := "--prefix=";
+   Bindir_Switch : constant String := "--bindir=";
    Libdir_Switch : constant String := "--libdir=";
 
    Prefix_Name : constant Unbounded_String := +"PREFIX";
+   Bindir_Name : constant Unbounded_String := +"BINDIR";
    Libdir_Name : constant Unbounded_String := +"LIBDIR";
 
    function Starts_With (Item : String; Prefix : String) return Boolean;
@@ -86,9 +88,31 @@ package body Configure.Tests.Installation_Directories is
       --  Compute other directories.
 
       Substitutions.Insert
+       (Bindir_Name,
+        +Ada.Directories.Compose
+          (+Substitutions.Element (Prefix_Name), "bin"));
+      Substitutions.Insert
        (Libdir_Name,
         +Ada.Directories.Compose
           (+Substitutions.Element (Prefix_Name), "lib"));
+
+      --  Looking for '--bindir=' and otherwrite default value when found.
+
+      for J in 1 .. Ada.Command_Line.Argument_Count loop
+         declare
+            Arg : constant String := Ada.Command_Line.Argument (J);
+
+         begin
+            if Starts_With (Arg, Bindir_Switch) then
+               Substitutions.Replace
+                (Bindir_Name,
+                 Ada.Strings.Unbounded.To_Unbounded_String
+                  (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
+
+               exit;
+            end if;
+         end;
+      end loop;
 
       --  Looking for '--libdir=' and otherwrite default value when found.
 
@@ -124,6 +148,9 @@ package body Configure.Tests.Installation_Directories is
          Result.Append (+"                          [/usr/local]");
          Result.Append (Null_Unbounded_String);
          Result.Append (+"Fine tuning of the installation directories:");
+         Result.Append
+          (+"  --bindir=DIR            "
+              & "user executables [EPREFIX/bin]");
          Result.Append
           (+"  --libdir=DIR            "
               & "object code libraries [EPREFIX/lib]");
