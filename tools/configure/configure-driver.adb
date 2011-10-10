@@ -50,6 +50,7 @@ with Configure.Architecture;
 with Configure.Instantiate;
 with Configure.Operating_System;
 with Configure.RTL_Version;
+with Configure.Tests.Install;
 with Configure.Tests.Installation_Directories;
 with Configure.Tests.OCI;
 with Configure.Tests.PostgreSQL;
@@ -93,6 +94,7 @@ procedure Configure.Driver is
 
    Dirs_Test       :
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
+   Install_Test    : Configure.Tests.Install.Install_Test;
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
    PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
    SQLite3_Test    : Configure.Tests.SQLite3.SQLite3_Test;
@@ -127,6 +129,7 @@ begin
    end if;
 
    Dirs_Test.Execute;
+   Install_Test.Execute;
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;

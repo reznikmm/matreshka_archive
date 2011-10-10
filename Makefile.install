@@ -4,7 +4,6 @@ INSTALL_PROJECT_DIR ?= $(DESTDIR)${PREFIX}/lib/gnat
 INSTALL_INCLUDE_DIR ?= $(DESTDIR)$(PREFIX)/include/matreshka
 INSTALL_LIBRARY_DIR ?= $(DESTDIR)$(LIBDIR)
 INSTALL_ALI_DIR ?= ${INSTALL_LIBRARY_DIR}/matreshka
-INSTALL = /usr/bin/install -c
 INSTALL_ali = $(INSTALL) -m 444
 INSTALL_project = $(INSTALL) -m 644
 INSTALL_source = $(INSTALL) -m 644
