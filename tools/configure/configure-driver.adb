@@ -55,6 +55,7 @@ with Configure.Tests.Installation_Directories;
 with Configure.Tests.OCI;
 with Configure.Tests.PostgreSQL;
 with Configure.Tests.SQLite3;
+with Configure.Tests.Valgrind;
 
 procedure Configure.Driver is
    use Ada.Command_Line;
@@ -98,6 +99,7 @@ procedure Configure.Driver is
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
    PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
    SQLite3_Test    : Configure.Tests.SQLite3.SQLite3_Test;
+   Valgrind_Test   : Configure.Tests.Valgrind.Valgrind_Test;
 
 begin
    if Is_Help_Requested then
@@ -136,6 +138,7 @@ begin
    OCI_Test.Execute;
    PostgreSQL_Test.Execute;
    SQLite3_Test.Execute;
+   Valgrind_Test.Execute;
 
    declare
       use Ada.Directories;
