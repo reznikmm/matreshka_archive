@@ -436,8 +436,15 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 
             League.Holders.Set_Tag
              (Value, League.Holders.Universal_String_Tag);
-            League.Holders.Replace_Element
-             (Value, To_Universal_String (Text, Length / 2));
+
+            if Length = 0 then
+               League.Holders.Replace_Element
+                (Value, League.Strings.Empty_Universal_String);
+
+            else
+               League.Holders.Replace_Element
+                (Value, To_Universal_String (Text, Length / 2));
+            end if;
 
          when SQLITE_BLOB =>
             --  Not supported yet.
