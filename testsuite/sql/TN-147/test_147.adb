@@ -41,22 +41,56 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_sql.gpr";
-with "matreshka_sql_sqlite3.gpr";
+with League.Strings;
+with League.Holders;
+with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
+with SQL.Databases;
+with SQL.Queries;
 
-project Matreshka_SQL_SQLite3_Tests is
+procedure Test_147 is
 
-   for Main use ("test_138.adb", "test_142.adb", "test_147.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/sql/TN-138",
-     "../testsuite/sql/TN-142",
-     "../testsuite/sql/TN-147");
+   use type League.Strings.Universal_String;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
-end Matreshka_SQL_SQLite3_Tests;
+   DB_Driver  : constant League.Strings.Universal_String := +"SQLITE3";
+   DB_Options : constant League.Strings.Universal_String := +":memory:";
+
+   DB    : SQL.Databases.SQL_Database
+     := SQL.Databases.Create (DB_Driver, DB_Options);
+   Query : SQL.Queries.SQL_Query := DB.Query;
+
+begin
+   DB.Open;
+
+   --  Create database scheme
+
+   Query.Prepare (+"CREATE TABLE test_147 (x CHARACTER VARYING)");
+   Query.Execute;
+
+   --  Filling data
+
+   Query.Prepare (+"INSERT INTO test_147 (x) VALUES (:x)");
+   Query.Bind_Value
+    (+":x", League.Holders.To_Holder (League.Strings.Empty_Universal_String));
+   Query.Execute;
+
+   --  Retreiving data
+
+   Query.Prepare (+"SELECT x FROM test_147");
+   Query.Execute;
+
+   if not Query.Next then
+      raise Program_Error;
+   end if;
+
+   if League.Holders.Element (Query.Value (1))
+        /= League.Strings.Empty_Universal_String
+   then
+      raise Program_Error;
+   end if;
+
+   DB.Close;
+end Test_147;

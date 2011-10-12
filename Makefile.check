@@ -41,3 +41,4 @@ sqlite3:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
 	.objs/test_138
 	.objs/test_142
+	.objs/test_147
