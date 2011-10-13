@@ -60,6 +60,13 @@ package Matreshka.Internals.Strings.C is
    --  Converts null-terminated text segment starting at specified position
    --  into Universal_String. String is trimed when invalid data is found.
 
+   function To_Valid_Universal_String
+    (Text : Utf16_Code_Unit_Access;
+     Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+       return League.Strings.Universal_String;
+   --  Converts text segment starting at specified position into
+   --  Universal_String. String is trimed when invalid data is found.
+
    procedure Validate_And_Fixup
     (String : in out Shared_String_Access;
      Valid  : out Boolean);
