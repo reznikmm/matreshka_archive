@@ -87,9 +87,9 @@ procedure Initialize_Arguments_Environment is
    pragma Import (Stdcall, FreeEnvironmentStrings, "FreeEnvironmentStringsW");
 
    Win_Argc : aliased Interfaces.C.int;
-   Win_Argv : LPWSTR_Pointers.Pointer
+   Win_Argv : constant LPWSTR_Pointers.Pointer
      := CommandLineToArgv (LPCWSTR (GetCommandLine), Win_Argc'Access);
-   Win_Envp : LPWCH := GetEnvironmentStrings;
+   Win_Envp : constant LPWCH := GetEnvironmentStrings;
    Envp     : LPWCH := Win_Envp;
 
 begin
