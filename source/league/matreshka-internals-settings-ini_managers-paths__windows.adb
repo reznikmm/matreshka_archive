@@ -54,7 +54,6 @@ separate (Matreshka.Internals.Settings.Ini_Managers)
 package body Paths is
 
    use Matreshka.Internals.Windows;
-   use type League.Strings.Universal_String;
 
    type HWND is new System.Address;
 
