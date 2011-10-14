@@ -1036,7 +1036,15 @@ package body League.Strings is
       Size   : Utf16_String_Index;
 
    begin
-      if Low <= High and then (Low > D.Length or else High > D.Length) then
+      if Low > High then
+         --  By Ada conventions, slice is empty when Low is greater than High.
+         --  Actual values of Low and High is not important here.
+
+         return Empty_Universal_String;
+
+      elsif Low > D.Length or else High > D.Length then
+         --  Otherwise, both Low and High should be less or equal to Length.
+
          raise Constraint_Error with "Index is out of range";
       end if;
 
