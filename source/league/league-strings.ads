@@ -117,6 +117,9 @@ package League.Strings is
      Low  : Positive;
      High : Natural) return Universal_String;
 
+   procedure Slice
+    (Self : in out Universal_String'Class; Low : Positive; High : Natural);
+
    function "&"
     (Left  : Universal_String'Class;
      Right : Universal_String'Class) return Universal_String;

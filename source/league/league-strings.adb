@@ -1083,6 +1083,70 @@ package body League.Strings is
    end Slice;
 
    -----------
+   -- Slice --
+   -----------
+
+   procedure Slice
+    (Self : in out Universal_String'Class; Low : Positive; High : Natural)
+   is
+      D      : Shared_String_Access := Self.Data;
+      Length : Natural;
+      First  : Utf16_String_Index;
+      Size   : Utf16_String_Index;
+
+   begin
+      if Low > High then
+         --  By Ada conventions, slice is empty when Low is greater than High.
+         --  Actual values of Low and High is not important here.
+
+         Dereference (D);
+         Self.Data := Matreshka.Internals.Strings.Shared_Empty'Access;
+
+      elsif Low > D.Length or else High > D.Length then
+         --  Otherwise, both Low and High should be less or equal to Length.
+
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      Length := Natural'Max (High - Low + 1, 0);
+
+      if Integer (D.Unused) = D.Length then
+         First := Utf16_String_Index (Low - 1);
+         Size  := Utf16_String_Index (High - Low + 1);
+
+      elsif Integer (D.Unused) = D.Length * 2 then
+         First := Utf16_String_Index ((Low - 1) * 2);
+         Size  := Utf16_String_Index (High - Low + 1) * 2;
+
+      else
+         declare
+            M : Index_Map_Access := D.Index_Map;
+
+         begin
+            if M = null then
+               Compute_Index_Map (D.all);
+               M := D.Index_Map;
+            end if;
+
+            First := M.Map (Utf16_String_Index (Low - 1));
+
+            if High = D.Length then
+               Size := D.Unused - First;
+
+            else
+               Size := M.Map (Utf16_String_Index (High - 1)) - First + 1;
+            end if;
+         end;
+      end if;
+
+      --  XXX This operation can be optimized in case of modification in place,
+      --  so, then reference counter is equal to one.
+
+      Self.Data := Slice (D, First, Size, Length);
+      Dereference (D);
+   end Slice;
+
+   -----------
    -- Split --
    -----------
 
