@@ -168,7 +168,7 @@ begin
       end loop;
    end;
 
-   --  Check whether all arguments in the command line are distinguished and
+   --  Check whether all arguments in the command line are recognized and
    --  removed.
 
    if not Arguments.Is_Empty then
@@ -185,7 +185,7 @@ begin
 
          begin
             Warning
-             ("command line argument '" & (+Arg) & "' in not distingushed");
+             ("command line argument '" & (+Arg) & "' is not recognized");
          end Output;
 
       begin
