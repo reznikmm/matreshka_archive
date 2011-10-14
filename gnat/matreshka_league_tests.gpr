@@ -65,6 +65,7 @@ project Matreshka_League_Tests is
      "test_104.adb",
      "test_106.adb",
      "test_139.adb",
+     "test_150.adb",
      "arguments_environment_test.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use
@@ -73,6 +74,7 @@ project Matreshka_League_Tests is
      "../testsuite/league/TN-104",
      "../testsuite/league/TN-106",
      "../testsuite/league/TN-139",
+     "../testsuite/league/TN-150",
      "../tools");
 
    package Compiler is
