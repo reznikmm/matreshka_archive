@@ -56,7 +56,10 @@ package body Configure.Tests.OCI is
    -- Execute --
    -------------
 
-   overriding procedure Execute (Self : in out OCI_Test) is
+   overriding procedure Execute
+    (Self      : in out OCI_Test;
+     Arguments : in out Unbounded_String_Vector)
+   is
 
       function OCI_Library_Name return String;
       --  Returns platform dependent name of OCI library.
@@ -78,12 +81,13 @@ package body Configure.Tests.OCI is
    begin
       --  Command line parameter has preference other automatic detection.
 
-      if Has_Parameter (OCI_LibDir_Switch) then
+      if Has_Parameter (Arguments, OCI_LibDir_Switch) then
          Substitutions.Insert
           (OCI_Library_Options,
-           +"""-L"
-              & Parameter_Value (OCI_LibDir_Switch)
-              & """, ""-l" & OCI_Library_Name & '"');
+           """-L"
+             & Parameter_Value (Arguments, OCI_LibDir_Switch)
+             & """, ""-l" & OCI_Library_Name & '"');
+         Remove_Parameter (Arguments, OCI_LibDir_Switch);
 
       elsif Ada.Environment_Variables.Exists ("ORACLE_HOME") then
          Substitutions.Insert

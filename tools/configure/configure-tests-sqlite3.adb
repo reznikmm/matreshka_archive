@@ -62,16 +62,19 @@ package body Configure.Tests.SQLite3 is
    -- Execute --
    -------------
 
-   overriding procedure Execute (Self : in out SQLite3_Test) is
+   overriding procedure Execute
+    (Self      : in out SQLite3_Test;
+     Arguments : in out Unbounded_String_Vector) is
    begin
       --  Command line parameter has preference other automatic detection.
 
-      if Has_Parameter (SQLite3_LibDir_Switch) then
+      if Has_Parameter (Arguments, SQLite3_LibDir_Switch) then
          Substitutions.Insert
           (SQLite3_Library_Options,
            +"""-L"
-              & Parameter_Value (SQLite3_LibDir_Switch)
+              & Parameter_Value (Arguments, SQLite3_LibDir_Switch)
               & """, ""-lsqlite3""");
+         Remove_Parameter (Arguments, SQLite3_LibDir_Switch);
 
       --  When pkg-config is installed, it is used to check whether SQLite3 is
       --  installed and to retrieve linker switches to link with it.

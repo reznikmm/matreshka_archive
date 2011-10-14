@@ -54,7 +54,10 @@ package body Configure.Tests.Install is
    -- Execute --
    -------------
 
-   overriding procedure Execute (Self : in out Install_Test) is
+   overriding procedure Execute
+    (Self      : in out Install_Test;
+     Arguments : in out Unbounded_String_Vector)
+   is
       Install_Path : constant GNAT.Strings.String_Access
         := GNAT.OS_Lib.Locate_Exec_On_Path ("install");
 

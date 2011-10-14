@@ -52,8 +52,11 @@ package Configure.Abstract_Tests is
     (Self : Abstract_Test) return Unbounded_String_Vector is abstract;
    --  Returns help information for test.
 
-   not overriding procedure Execute (Self : in out Abstract_Test) is abstract;
-   --  Executes test's actions.
+   not overriding procedure Execute
+    (Self      : in out Abstract_Test;
+     Arguments : in out Unbounded_String_Vector) is abstract;
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
 private
 

@@ -58,8 +58,11 @@ package Configure.Tests.SQLite3 is
     (Self : SQLite3_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
 
-   overriding procedure Execute (Self : in out SQLite3_Test);
-   --  Executes test.
+   overriding procedure Execute
+    (Self      : in out SQLite3_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
 private
 

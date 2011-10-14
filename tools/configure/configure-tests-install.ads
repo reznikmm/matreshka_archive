@@ -54,8 +54,11 @@ package Configure.Tests.Install is
     (Self : Install_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
 
-   overriding procedure Execute (Self : in out Install_Test);
-   --  Executes test.
+   overriding procedure Execute
+    (Self      : in out Install_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
 private
 

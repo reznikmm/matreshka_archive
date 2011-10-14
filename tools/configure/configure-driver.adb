@@ -93,6 +93,7 @@ procedure Configure.Driver is
       return False;
    end Is_Help_Requested;
 
+   Arguments       : Unbounded_String_Vector;
    Dirs_Test       :
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
@@ -130,15 +131,21 @@ begin
       return;
    end if;
 
+   --  Convert command line arguments into the vector.
+
+   for J in 1 .. Ada.Command_Line.Argument_Count loop
+      Arguments.Append (+Ada.Command_Line.Argument (J));
+   end loop;
+
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;
-   Dirs_Test.Execute;
-   Install_Test.Execute;
-   OCI_Test.Execute;
-   PostgreSQL_Test.Execute;
-   SQLite3_Test.Execute;
-   Valgrind_Test.Execute;
+   Dirs_Test.Execute (Arguments);
+   Install_Test.Execute (Arguments);
+   OCI_Test.Execute (Arguments);
+   PostgreSQL_Test.Execute (Arguments);
+   SQLite3_Test.Execute (Arguments);
+   Valgrind_Test.Execute (Arguments);
 
    declare
       use Ada.Directories;
@@ -160,6 +167,31 @@ begin
          Next (P);
       end loop;
    end;
+
+   --  Check whether all arguments in the command line are distinguished and
+   --  removed.
+
+   if not Arguments.Is_Empty then
+      declare
+         procedure Output (Position : Unbounded_String_Vectors.Cursor);
+
+         ------------
+         -- Output --
+         ------------
+
+         procedure Output (Position : Unbounded_String_Vectors.Cursor) is
+            Arg : constant Unbounded_String
+              := Unbounded_String_Vectors.Element (Position);
+
+         begin
+            Warning
+             ("command line argument '" & (+Arg) & "' in not distingushed");
+         end Output;
+
+      begin
+         Arguments.Iterate (Output'Access);
+      end;
+   end if;
 
    Configure.Instantiate ("Makefile.config");
    Configure.Instantiate ("gnat/install/matreshka_config.gpr");

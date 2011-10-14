@@ -57,8 +57,11 @@ package Configure.Tests.OCI is
    overriding function Help (Self : OCI_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
 
-   overriding procedure Execute (Self : in out OCI_Test);
-   --  Executes test.
+   overriding procedure Execute
+    (Self      : in out OCI_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
 private
 

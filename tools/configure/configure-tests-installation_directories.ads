@@ -59,8 +59,11 @@ package Configure.Tests.Installation_Directories is
     (Self : Installation_Directories_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
 
-   overriding procedure Execute (Self : in out Installation_Directories_Test);
-   --  Executes test.
+   overriding procedure Execute
+    (Self      : in out Installation_Directories_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
 private
 

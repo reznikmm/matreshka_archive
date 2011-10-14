@@ -87,17 +87,22 @@ package body Configure is
    -- Has_Parameter --
    -------------------
 
-   function Has_Parameter (Name : String) return Boolean is
+   function Has_Parameter
+    (Arguments : Unbounded_String_Vector; Name : String) return Boolean is
    begin
-      for J in 1 .. Ada.Command_Line.Argument_Count loop
+      for J in Arguments.First_Index .. Arguments.Last_Index loop
          declare
-            Arg : constant String := Ada.Command_Line.Argument (J);
+            Arg : constant Unbounded_String := Arguments.Element (J);
 
          begin
-            if Arg'Length > Name'Length then
-               if Arg (Arg'First .. Arg'First + Name'Length) = Name & '=' then
-                  return True;
-               end if;
+            if Length (Arg) = Name'Length then
+               return Arg = Name;
+
+            elsif Length (Arg) > Name'Length
+              and then Slice (Arg, 1, Name'Length) = Name
+              and then Element (Arg, Name'Length + 1) = '='
+            then
+               return True;
             end if;
          end;
       end loop;
@@ -119,23 +124,58 @@ package body Configure is
    -- Parameter_Value --
    ---------------------
 
-   function Parameter_Value (Name : String) return String is
+   function Parameter_Value
+    (Arguments : Unbounded_String_Vector;
+     Name      : String) return Unbounded_String is
    begin
-      for J in 1 .. Ada.Command_Line.Argument_Count loop
+      for J in Arguments.First_Index .. Arguments.Last_Index loop
          declare
-            Arg : constant String := Ada.Command_Line.Argument (J);
+            Arg : constant Unbounded_String := Arguments.Element (J);
 
          begin
-            if Arg'Length > Name'Length then
-               if Arg (Arg'First .. Arg'First + Name'Length) = Name & '=' then
-                  return Arg (Arg'First + Name'Length + 1 .. Arg'Last);
-               end if;
+            if Length (Arg) = Name'Length then
+               return Null_Unbounded_String;
+
+            elsif Length (Arg) > Name'Length
+              and then Slice (Arg, 1, Name'Length) = Name
+              and then Element (Arg, Name'Length + 1) = '='
+            then
+               return Unbounded_Slice (Arg, Name'Length + 2, Length (Arg));
             end if;
          end;
       end loop;
 
-      return "";
+      return Null_Unbounded_String;
    end Parameter_Value;
+
+   ----------------------
+   -- Remove_Parameter --
+   ----------------------
+
+   procedure Remove_Parameter
+    (Arguments : in out Unbounded_String_Vector; Name : String) is
+   begin
+      for J in Arguments.First_Index .. Arguments.Last_Index loop
+         declare
+            Arg : constant Unbounded_String := Arguments.Element (J);
+
+         begin
+            if Length (Arg) = Name'Length then
+               Arguments.Delete (J);
+
+               return;
+
+            elsif Length (Arg) > Name'Length
+              and then Slice (Arg, 1, Name'Length) = Name
+              and then Element (Arg, Name'Length + 1) = '='
+            then
+               Arguments.Delete (J);
+
+               return;
+            end if;
+         end;
+      end loop;
+   end Remove_Parameter;
 
    -------------
    -- Warning --

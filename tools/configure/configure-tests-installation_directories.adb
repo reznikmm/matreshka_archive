@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
 with Ada.Directories;
 
 package body Configure.Tests.Installation_Directories is
@@ -54,14 +53,14 @@ package body Configure.Tests.Installation_Directories is
    Bindir_Name : constant Unbounded_String := +"BINDIR";
    Libdir_Name : constant Unbounded_String := +"LIBDIR";
 
-   function Starts_With (Item : String; Prefix : String) return Boolean;
-
    -------------
    -- Execute --
    -------------
 
    overriding procedure Execute
-    (Self : in out Installation_Directories_Test) is
+    (Self      : in out Installation_Directories_Test;
+     Arguments : in out Unbounded_String_Vector)
+   is
    begin
       --  Set default value for PREFIX.
 
@@ -70,20 +69,12 @@ package body Configure.Tests.Installation_Directories is
 
       --  Looking for '--prefix=' and otherwrite default value when found.
 
-      for J in 1 .. Ada.Command_Line.Argument_Count loop
-         declare
-            Arg : constant String := Ada.Command_Line.Argument (J);
-
-         begin
-            if Starts_With (Arg, Prefix_Switch) then
-               Substitutions.Replace
-                (Prefix_Name,
-                 +Arg (Arg'First + Prefix_Switch'Length .. Arg'Last));
-
-               exit;
-            end if;
-         end;
-      end loop;
+      if Has_Parameter (Arguments, Prefix_Switch) then
+         Substitutions.Replace
+          (Prefix_Name,
+           Parameter_Value (Arguments, Prefix_Switch));
+         Remove_Parameter (Arguments, Prefix_Switch);
+      end if;
 
       --  Compute other directories.
 
@@ -98,39 +89,21 @@ package body Configure.Tests.Installation_Directories is
 
       --  Looking for '--bindir=' and otherwrite default value when found.
 
-      for J in 1 .. Ada.Command_Line.Argument_Count loop
-         declare
-            Arg : constant String := Ada.Command_Line.Argument (J);
-
-         begin
-            if Starts_With (Arg, Bindir_Switch) then
-               Substitutions.Replace
-                (Bindir_Name,
-                 Ada.Strings.Unbounded.To_Unbounded_String
-                  (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
-
-               exit;
-            end if;
-         end;
-      end loop;
+      if Has_Parameter (Arguments, Bindir_Switch) then
+         Substitutions.Replace
+          (Bindir_Name,
+           Parameter_Value (Arguments, Bindir_Switch));
+         Remove_Parameter (Arguments, Bindir_Switch);
+      end if;
 
       --  Looking for '--libdir=' and otherwrite default value when found.
 
-      for J in 1 .. Ada.Command_Line.Argument_Count loop
-         declare
-            Arg : constant String := Ada.Command_Line.Argument (J);
-
-         begin
-            if Starts_With (Arg, Libdir_Switch) then
-               Substitutions.Replace
-                (Libdir_Name,
-                 Ada.Strings.Unbounded.To_Unbounded_String
-                  (Arg (Arg'First + Prefix_Switch'Length .. Arg'Last)));
-
-               exit;
-            end if;
-         end;
-      end loop;
+      if Has_Parameter (Arguments, Libdir_Switch) then
+         Substitutions.Replace
+          (Libdir_Name,
+           Parameter_Value (Arguments, Libdir_Switch));
+         Remove_Parameter (Arguments, Libdir_Switch);
+      end if;
 
       --  Transform paths on Windows to be compatible with sh.
 
@@ -168,17 +141,5 @@ package body Configure.Tests.Installation_Directories is
               & "object code libraries [EPREFIX/lib]");
       end return;
    end Help;
-
-   -----------------
-   -- Starts_With --
-   -----------------
-
-   function Starts_With (Item : String; Prefix : String) return Boolean is
-   begin
-      return
-        Item'Length >= Prefix'Length
-          and then Item (Item'First .. Item'First + Prefix'Length - 1)
-                     = Prefix;
-   end Starts_With;
 
 end Configure.Tests.Installation_Directories;

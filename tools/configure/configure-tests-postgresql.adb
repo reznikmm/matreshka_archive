@@ -58,8 +58,10 @@ package body Configure.Tests.PostgreSQL is
    -- Execute --
    -------------
 
-   overriding procedure Execute (Self : in out PostgreSQL_Test) is
-
+   overriding procedure Execute
+    (Self      : in out PostgreSQL_Test;
+     Arguments : in out Unbounded_String_Vector)
+   is
       use Ada.Strings;
       use Ada.Strings.Fixed;
       use GNAT.Expect;
@@ -177,12 +179,13 @@ package body Configure.Tests.PostgreSQL is
    begin
       --  Command line parameter has preference other automatic detection.
 
-      if Has_Parameter (PostgreSQL_LibDir_Switch) then
+      if Has_Parameter (Arguments, PostgreSQL_LibDir_Switch) then
          Substitutions.Insert
           (PostgreSQL_Library_Options,
            +"""-L"
-              & Parameter_Value (PostgreSQL_LibDir_Switch)
+              & Parameter_Value (Arguments, PostgreSQL_LibDir_Switch)
               & """, ""-lpq""");
+         Remove_Parameter (Arguments, PostgreSQL_LibDir_Switch);
 
       --  When pg_config is installed, it is used to check whether PostgreSQL
       --  is installed and to retrieve linker switches to link with it.

@@ -87,11 +87,18 @@ package Configure is
 
    --  Command line parameters handling.
 
-   function Has_Parameter (Name : String) return Boolean;
-   --  Returns True when parameter's value is specified in command line.
+   function Has_Parameter
+    (Arguments : Unbounded_String_Vector; Name : String) return Boolean;
+   --  Returns True when parameter's value is specified in Arguments.
 
-   function Parameter_Value (Name : String) return String;
-   --  Returns value of the parameter specified in command line.
+   function Parameter_Value
+    (Arguments : Unbounded_String_Vector;
+     Name      : String) return Unbounded_String;
+   --  Returns value of the parameter specified in Arguments.
+
+   procedure Remove_Parameter
+    (Arguments : in out Unbounded_String_Vector; Name : String);
+   --  Removes value of the parameter from Arguments.
 
    --  Output and fatal error handling.
 

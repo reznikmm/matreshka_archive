@@ -53,8 +53,10 @@ package body Configure.Tests.Valgrind is
    -- Execute --
    -------------
 
-   overriding procedure Execute (Self : in out Valgrind_Test) is
-
+   overriding procedure Execute
+    (Self      : in out Valgrind_Test;
+     Arguments : in out Unbounded_String_Vector)
+   is
       use type GNAT.Strings.String_Access;
 
       Valgrind : constant GNAT.Strings.String_Access
