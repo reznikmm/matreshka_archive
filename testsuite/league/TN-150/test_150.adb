@@ -46,7 +46,7 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
-procedure Test is
+procedure Test_150 is
    A : League.Strings.Universal_String
      := League.Strings.To_Universal_String ("HKEY_CLASSES_ROOT");
    B : League.Strings.Universal_String := A.Slice (A.Length + 3, A.Length);
@@ -55,4 +55,4 @@ begin
    if not B.Is_Empty then
       raise Program_Error;
    end if;
-end Test;
+end Test_150;
