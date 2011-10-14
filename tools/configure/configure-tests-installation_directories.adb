@@ -45,9 +45,9 @@ with Ada.Directories;
 
 package body Configure.Tests.Installation_Directories is
 
-   Prefix_Switch : constant String := "--prefix=";
-   Bindir_Switch : constant String := "--bindir=";
-   Libdir_Switch : constant String := "--libdir=";
+   Prefix_Switch : constant String := "--prefix";
+   Bindir_Switch : constant String := "--bindir";
+   Libdir_Switch : constant String := "--libdir";
 
    Prefix_Name : constant Unbounded_String := +"PREFIX";
    Bindir_Name : constant Unbounded_String := +"BINDIR";
