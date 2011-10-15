@@ -50,6 +50,7 @@ with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
 with Matreshka.Internals.Text_Codecs.Windows1250;
 with Matreshka.Internals.Text_Codecs.Windows1251;
+with Matreshka.Internals.Text_Codecs.Windows1252;
 with Matreshka.Internals.Unicode.Characters.General_Punctuation;
 with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.Internals.Utf16;
@@ -66,6 +67,7 @@ package body Matreshka.Internals.Text_Codecs is
    MIB_SHIFTJIS    : constant Character_Set := 17;
    MIB_WINDOWS1250 : constant Character_Set := 2250;
    MIB_WINDOWS1251 : constant Character_Set := 2251;
+   MIB_WINDOWS1252 : constant Character_Set := 2252;
 
    Decoders : constant array (Character_Set) of Decoder_Factory
      := (MIB_ISO88591    => ISO88591.Decoder'Access,
@@ -75,6 +77,7 @@ package body Matreshka.Internals.Text_Codecs is
          MIB_UTF16LE     => UTF16.LE_Decoder'Access,
          MIB_WINDOWS1250 => Windows1250.Decoder'Access,
          MIB_WINDOWS1251 => Windows1251.Decoder'Access,
+         MIB_WINDOWS1252 => Windows1252.Decoder'Access,
          others          => null);
 
    Encoders : constant array (Character_Set) of Encoder_Factory
@@ -82,6 +85,7 @@ package body Matreshka.Internals.Text_Codecs is
          MIB_UTF8        => UTF8.Encoder'Access,
          MIB_WINDOWS1250 => Windows1250.Encoder'Access,
          MIB_WINDOWS1251 => Windows1251.Encoder'Access,
+         MIB_WINDOWS1252 => Windows1252.Encoder'Access,
          others          => null);
 
    ------------
