@@ -55,6 +55,10 @@ package Configure.Tests.Installation_Directories is
    type Installation_Directories_Test is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
+   overriding function Name
+    (Self : Installation_Directories_Test) return String;
+   --  Returns name of the test to be used in reports.
+
    overriding function Help
     (Self : Installation_Directories_Test) return Unbounded_String_Vector;
    --  Returns help information for test.

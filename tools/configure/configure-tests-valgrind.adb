@@ -83,4 +83,13 @@ package body Configure.Tests.Valgrind is
       return Result : Unbounded_String_Vector;
    end Help;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name (Self : Valgrind_Test) return String is
+   begin
+      return "valgrind";
+   end Name;
+
 end Configure.Tests.Valgrind;

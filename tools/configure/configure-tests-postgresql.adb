@@ -241,4 +241,13 @@ package body Configure.Tests.PostgreSQL is
       end return;
    end Help;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name (Self : PostgreSQL_Test) return String is
+   begin
+      return "postgresql";
+   end Name;
+
 end Configure.Tests.PostgreSQL;

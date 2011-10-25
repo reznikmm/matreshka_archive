@@ -76,4 +76,13 @@ package body Configure.Tests.Install is
       return Result : Unbounded_String_Vector;
    end Help;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name (Self : Install_Test) return String is
+   begin
+      return "install";
+   end Name;
+
 end Configure.Tests.Install;

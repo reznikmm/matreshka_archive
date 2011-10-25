@@ -41,26 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Characters.Latin_1;
+with Ada.Strings.Fixed;
+with Ada.Text_IO;
 
-package Configure.Pkg_Config is
+package body Configure.Abstract_Tests is
 
-   function Has_Pkg_Config return Boolean;
-   --  Returns True when pkg-config is found.
+   use Ada.Text_IO;
 
-   function Has_Package (Package_Name : String) return Boolean;
-   --  Returns True when specified package is installed.
+   ------------------
+   -- Report_Check --
+   ------------------
 
-   function Package_Version (Package_Name : String) return String;
-   --  Returns version of the specified package. Returns empty string on error.
+   procedure Report_Check (Self : Abstract_Test'Class; Message : String) is
+      Name : constant String  := Self.Name;
+      Last : constant Natural := Integer'Min (Name'Length, 10);
+      Msg  : String           := "[          ] " & Message & "...";
 
-   function Package_Version_At_Least
-    (Package_Name : String;
-     Expected     : String;
-     Actual       : access Unbounded_String) return Boolean;
-   --  Returns True when actual version of the specified package at least equal
-   --  to expected. Returns actual version of the package also.
+   begin
+      Msg (2 .. Last + 1) := Name (1 .. Last);
+      Put (Standard_Error, Msg);
+      Flush (Standard_Error);
+   end Report_Check;
 
-   function Package_Libs (Package_Name : String) return String_Vectors.Vector;
-   --  Returns command line switches for linker.
+   -------------------
+   -- Report_Status --
+   -------------------
 
-end Configure.Pkg_Config;
+   procedure Report_Status (Self : Abstract_Test'Class; Message : String) is
+      use Ada.Characters.Latin_1;
+      use Ada.Strings.Fixed;
+
+   begin
+      Put_Line (Standard_Error, (3 * BS) & ": " & Message);
+   end Report_Status;
+
+end Configure.Abstract_Tests;

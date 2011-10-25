@@ -48,6 +48,10 @@ package Configure.Abstract_Tests is
 
    type Abstract_Test is abstract tagged limited private;
 
+   not overriding function Name
+    (Self : Abstract_Test) return String is abstract;
+   --  Returns name of the test to be used in reports.
+
    not overriding function Help
     (Self : Abstract_Test) return Unbounded_String_Vector is abstract;
    --  Returns help information for test.
@@ -57,6 +61,12 @@ package Configure.Abstract_Tests is
      Arguments : in out Unbounded_String_Vector) is abstract;
    --  Executes test's actions. All used arguments must be removed from
    --  Arguments.
+
+   procedure Report_Check (Self : Abstract_Test'Class; Message : String);
+   --  Outputs check message.
+
+   procedure Report_Status (Self : Abstract_Test'Class; Message : String);
+   --  Outputs check status message.
 
 private
 

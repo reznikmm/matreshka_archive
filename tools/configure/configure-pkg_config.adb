@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with GNAT.Expect;
 
 package body Configure.Pkg_Config is
@@ -154,5 +153,70 @@ package body Configure.Pkg_Config is
 
       return Aux;
    end Package_Libs;
+
+   ---------------------
+   -- Package_Version --
+   ---------------------
+
+   function Package_Version (Package_Name : String) return String is
+   begin
+      declare
+         Status : aliased Integer;
+         Output : constant String :=
+           Get_Command_Output
+            ("pkg-config",
+             (1 => new String'("--modversion"),
+              2 => new String'(Package_Name)),
+             "",
+             Status'Access,
+             True);
+
+      begin
+         if Status = 0 then
+            return Output;
+
+         else
+            return "";
+         end if;
+      end;
+
+   exception
+      when GNAT.Expect.Invalid_Process =>
+         return "";
+   end Package_Version;
+
+   ------------------------------
+   -- Package_Version_At_Least --
+   ------------------------------
+
+   function Package_Version_At_Least
+    (Package_Name : String;
+     Expected     : String;
+     Actual       : access Unbounded_String) return Boolean is
+   begin
+      declare
+         Status : aliased Integer;
+         Output : constant String :=
+           Get_Command_Output
+            ("pkg-config",
+             (1 => new String'("--modversion"),
+              2 => new String'("--atleast-version=" & Expected),
+              3 => new String'(Package_Name)),
+             "",
+             Status'Access,
+             True);
+
+      begin
+         Actual.all := +Output;
+
+         return Status = 0;
+      end;
+
+   exception
+      when GNAT.Expect.Invalid_Process =>
+         Actual.all := Null_Unbounded_String;
+
+         return False;
+   end Package_Version_At_Least;
 
 end Configure.Pkg_Config;

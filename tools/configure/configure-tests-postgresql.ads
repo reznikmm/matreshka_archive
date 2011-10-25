@@ -54,6 +54,9 @@ package Configure.Tests.PostgreSQL is
    type PostgreSQL_Test is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
+   overriding function Name (Self : PostgreSQL_Test) return String;
+   --  Returns name of the test to be used in reports.
+
    overriding function Help
     (Self : PostgreSQL_Test) return Unbounded_String_Vector;
    --  Returns help information for test.

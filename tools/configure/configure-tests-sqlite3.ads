@@ -54,6 +54,9 @@ package Configure.Tests.SQLite3 is
    type SQLite3_Test is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
+   overriding function Name (Self : SQLite3_Test) return String;
+   --  Returns name of the test to be used in reports.
+
    overriding function Help
     (Self : SQLite3_Test) return Unbounded_String_Vector;
    --  Returns help information for test.

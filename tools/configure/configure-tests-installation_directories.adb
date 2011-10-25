@@ -142,4 +142,14 @@ package body Configure.Tests.Installation_Directories is
       end return;
    end Help;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name
+    (Self : Installation_Directories_Test) return String is
+   begin
+      return "instdirs";
+   end Name;
+
 end Configure.Tests.Installation_Directories;

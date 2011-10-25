@@ -136,4 +136,13 @@ package body Configure.Tests.OCI is
       end return;
    end Help;
 
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name (Self : OCI_Test) return String is
+   begin
+      return "oci";
+   end Name;
+
 end Configure.Tests.OCI;

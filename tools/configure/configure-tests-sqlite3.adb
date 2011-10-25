@@ -68,6 +68,8 @@ package body Configure.Tests.SQLite3 is
    begin
       --  Command line parameter has preference other automatic detection.
 
+      Self.Report_Check ("checking whether to build SQLite3 module");
+
       if Has_Parameter (Arguments, SQLite3_LibDir_Switch) then
          Substitutions.Insert
           (SQLite3_Library_Options,
@@ -76,29 +78,58 @@ package body Configure.Tests.SQLite3 is
               & """, ""-lsqlite3""");
          Remove_Parameter (Arguments, SQLite3_LibDir_Switch);
 
+         Self.Report_Status ("yes (command line)");
+
       --  When pkg-config is installed, it is used to check whether SQLite3 is
       --  installed and to retrieve linker switches to link with it.
 
       elsif Configure.Pkg_Config.Has_Pkg_Config then
          if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
+            Self.Report_Status ("yes (pkg-config)");
+
+            --  Check for SQLite3 version using pkg-config.
+
+            Self.Report_Check ("checking for SQLite3 version");
+
             declare
-               Libs : constant String_Vectors.Vector
-                 := Configure.Pkg_Config.Package_Libs (SQLite3_Package_Name);
-               Opts : Unbounded_String;
+               Version : aliased Unbounded_String;
 
             begin
-               for J in Libs.First_Index .. Libs.Last_Index loop
-                  if Ada.Strings.Unbounded.Length (Opts) /= 0 then
-                     Ada.Strings.Unbounded.Append (Opts, ", ");
-                  end if;
+               if Configure.Pkg_Config.Package_Version_At_Least
+                   (SQLite3_Package_Name, "3.6", Version'Access)
+               then
+                  Self.Report_Status (+Version);
+                  Self.Report_Check ("checking for linker switches");
 
-                  Ada.Strings.Unbounded.Append (Opts, '"');
-                  Ada.Strings.Unbounded.Append (Opts, Libs.Element (J));
-                  Ada.Strings.Unbounded.Append (Opts, '"');
-               end loop;
+                  declare
+                     Libs : constant String_Vectors.Vector
+                       := Configure.Pkg_Config.Package_Libs
+                           (SQLite3_Package_Name);
+                     Opts : Unbounded_String;
 
-               Substitutions.Insert (SQLite3_Library_Options, Opts);
+                  begin
+                     for J in Libs.First_Index .. Libs.Last_Index loop
+                        if Ada.Strings.Unbounded.Length (Opts) /= 0 then
+                           Ada.Strings.Unbounded.Append (Opts, ", ");
+                        end if;
+
+                        Ada.Strings.Unbounded.Append (Opts, '"');
+                        Ada.Strings.Unbounded.Append (Opts, Libs.Element (J));
+                        Ada.Strings.Unbounded.Append (Opts, '"');
+                     end loop;
+
+                     Substitutions.Insert (SQLite3_Library_Options, Opts);
+
+                     Self.Report_Status (+Opts);
+                  end;
+
+               else
+                  Self.Report_Status (+Version & " (unsupported)");
+               end if;
             end;
+
+         else
+            Self.Report_Status ("not found");
          end if;
       end if;
 
@@ -106,7 +137,14 @@ package body Configure.Tests.SQLite3 is
       --  set of options.
 
       if Substitutions.Contains (SQLite3_Library_Options) then
-         if not Configure.Builder.Build ("config.tests/sqlite3/") then
+         Self.Report_Check
+          ("checking whether SQLite3 library is usable");
+
+         if Configure.Builder.Build ("config.tests/sqlite3/") then
+            Self.Report_Status ("yes");
+
+         else
+            Self.Report_Status ("no");
             --  Switches don't allow to build application, remove them.
 
             Substitutions.Delete (SQLite3_Library_Options);
@@ -143,5 +181,14 @@ package body Configure.Tests.SQLite3 is
               & "enable SQLite3 support, lookup for libraries in ARG");
       end return;
    end Help;
+
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name (Self : SQLite3_Test) return String is
+   begin
+      return "sqlite3";
+   end Name;
 
 end Configure.Tests.SQLite3;

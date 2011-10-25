@@ -50,6 +50,9 @@ package Configure.Tests.Install is
    type Install_Test is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
+   overriding function Name (Self : Install_Test) return String;
+   --  Returns name of the test to be used in reports.
+
    overriding function Help
     (Self : Install_Test) return Unbounded_String_Vector;
    --  Returns help information for test.

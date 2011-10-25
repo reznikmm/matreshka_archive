@@ -53,6 +53,9 @@ package Configure.Tests.Valgrind is
    type Valgrind_Test is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
+   overriding function Name (Self : Valgrind_Test) return String;
+   --  Returns name of the test to be used in reports.
+
    overriding function Help
     (Self : Valgrind_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
