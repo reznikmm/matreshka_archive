@@ -109,29 +109,39 @@ package AMF.UML.Opaque_Expressions is
    not overriding function Is_Integral
     (Self : not null access constant UML_Opaque_Expression)
        return Boolean is abstract;
+   --  Operation OpaqueExpression::isIntegral.
+   --
    --  The query isIntegral() tells whether an expression is intended to 
    --  produce an integer.
 
    not overriding function Is_Non_Negative
     (Self : not null access constant UML_Opaque_Expression)
        return Boolean is abstract;
+   --  Operation OpaqueExpression::isNonNegative.
+   --
    --  The query isNonNegative() tells whether an integer expression has a 
    --  non-negative value.
 
    not overriding function Is_Positive
     (Self : not null access constant UML_Opaque_Expression)
        return Boolean is abstract;
+   --  Operation OpaqueExpression::isPositive.
+   --
    --  The query isPositive() tells whether an integer expression has a 
    --  positive value.
 
    not overriding function Result
     (Self : not null access constant UML_Opaque_Expression)
        return AMF.UML.Parameters.UML_Parameter_Access is abstract;
+   --  Operation OpaqueExpression::result.
+   --
    --  Missing derivation for OpaqueExpression::/result : Parameter
 
    not overriding function Value
     (Self : not null access constant UML_Opaque_Expression)
        return Integer is abstract;
+   --  Operation OpaqueExpression::value.
+   --
    --  The query value() gives an integer value for an expression intended to 
    --  produce one.
 

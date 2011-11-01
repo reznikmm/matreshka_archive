@@ -96,6 +96,8 @@ package AMF.UML.Structured_Classifiers is
    not overriding function Part
     (Self : not null access constant UML_Structured_Classifier)
        return AMF.UML.Properties.Collections.Set_Of_UML_Property is abstract;
+   --  Operation StructuredClassifier::part.
+   --
    --  Missing derivation for StructuredClassifier::/part : Property
 
 end AMF.UML.Structured_Classifiers;

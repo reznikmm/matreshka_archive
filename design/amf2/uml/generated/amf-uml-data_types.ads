@@ -81,6 +81,8 @@ package AMF.UML.Data_Types is
     (Self : not null access constant UML_Data_Type;
      Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Operation DataType::inherit.
+   --
    --  The inherit operation is overridden to exclude redefined properties.
 
 end AMF.UML.Data_Types;

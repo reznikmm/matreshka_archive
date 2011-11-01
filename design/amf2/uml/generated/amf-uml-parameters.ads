@@ -188,6 +188,8 @@ package AMF.UML.Parameters is
    not overriding function Default
     (Self : not null access constant UML_Parameter)
        return AMF.Optional_String is abstract;
+   --  Operation Parameter::default.
+   --
    --  Missing derivation for Parameter::/default : String
 
 end AMF.UML.Parameters;

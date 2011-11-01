@@ -127,6 +127,8 @@ package AMF.UML.Actions is
    not overriding function Context
     (Self : not null access constant UML_Action)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Operation Action::context.
+   --
    --  Missing derivation for Action::/context : Classifier
 
 end AMF.UML.Actions;

@@ -94,6 +94,8 @@ package AMF.UML.Connectable_Elements is
    not overriding function Ends
     (Self : not null access constant UML_Connectable_Element)
        return AMF.UML.Connector_Ends.Collections.Set_Of_UML_Connector_End is abstract;
+   --  Operation ConnectableElement::end.
+   --
    --  Missing derivation for ConnectableElement::/end : ConnectorEnd
 
 end AMF.UML.Connectable_Elements;

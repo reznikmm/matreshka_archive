@@ -111,6 +111,8 @@ package AMF.UML.Connector_Ends is
    not overriding function Defining_End
     (Self : not null access constant UML_Connector_End)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Operation ConnectorEnd::definingEnd.
+   --
    --  Missing derivation for ConnectorEnd::/definingEnd : Property
 
 end AMF.UML.Connector_Ends;

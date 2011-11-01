@@ -118,6 +118,8 @@ package AMF.UML.Associations is
    not overriding function End_Type
     (Self : not null access constant UML_Association)
        return AMF.UML.Types.Collections.Ordered_Set_Of_UML_Type is abstract;
+   --  Operation Association::endType.
+   --
    --  endType is derived from the types of the member ends.
 
 end AMF.UML.Associations;

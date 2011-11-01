@@ -136,6 +136,8 @@ package AMF.UML.Element_Imports is
    not overriding function Get_Name
     (Self : not null access constant UML_Element_Import)
        return League.Strings.Universal_String is abstract;
+   --  Operation ElementImport::getName.
+   --
    --  The query getName() returns the name under which the imported 
    --  PackageableElement will be known in the importing namespace.
 

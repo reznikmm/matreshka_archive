@@ -70,6 +70,8 @@ package AMF.UML.Encapsulated_Classifiers is
    not overriding function Owned_Port
     (Self : not null access constant UML_Encapsulated_Classifier)
        return AMF.UML.Ports.Collections.Set_Of_UML_Port is abstract;
+   --  Operation EncapsulatedClassifier::ownedPort.
+   --
    --  Missing derivation for EncapsulatedClassifier::/ownedPort : Port
 
 end AMF.UML.Encapsulated_Classifiers;

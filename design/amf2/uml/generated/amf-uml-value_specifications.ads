@@ -68,12 +68,16 @@ package AMF.UML.Value_Specifications is
    not overriding function Boolean_Value
     (Self : not null access constant UML_Value_Specification)
        return AMF.Optional_Boolean is abstract;
+   --  Operation ValueSpecification::booleanValue.
+   --
    --  The query booleanValue() gives a single Boolean value when one can be 
    --  computed.
 
    not overriding function Integer_Value
     (Self : not null access constant UML_Value_Specification)
        return AMF.Optional_Integer is abstract;
+   --  Operation ValueSpecification::integerValue.
+   --
    --  The query integerValue() gives a single Integer value when one can be 
    --  computed.
 
@@ -81,6 +85,8 @@ package AMF.UML.Value_Specifications is
     (Self : not null access constant UML_Value_Specification;
      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
        return Boolean is abstract;
+   --  Operation ValueSpecification::isCompatibleWith.
+   --
    --  The query isCompatibleWith() determines if this parameterable element 
    --  is compatible with the specified parameterable element. By default 
    --  parameterable element P is compatible with parameterable element Q if 
@@ -91,6 +97,8 @@ package AMF.UML.Value_Specifications is
    not overriding function Is_Computable
     (Self : not null access constant UML_Value_Specification)
        return Boolean is abstract;
+   --  Operation ValueSpecification::isComputable.
+   --
    --  The query isComputable() determines whether a value specification can 
    --  be computed in a model. This operation cannot be fully defined in OCL. 
    --  A conforming implementation is expected to deliver true for this 
@@ -102,24 +110,32 @@ package AMF.UML.Value_Specifications is
    not overriding function Is_Null
     (Self : not null access constant UML_Value_Specification)
        return Boolean is abstract;
+   --  Operation ValueSpecification::isNull.
+   --
    --  The query isNull() returns true when it can be computed that the value 
    --  is null.
 
    not overriding function Real_Value
     (Self : not null access constant UML_Value_Specification)
        return AMF.Optional_Real is abstract;
+   --  Operation ValueSpecification::realValue.
+   --
    --  The query realValue() gives a single Real value when one can be 
    --  computed.
 
    not overriding function String_Value
     (Self : not null access constant UML_Value_Specification)
        return AMF.Optional_String is abstract;
+   --  Operation ValueSpecification::stringValue.
+   --
    --  The query stringValue() gives a single String value when one can be 
    --  computed.
 
    not overriding function Unlimited_Value
     (Self : not null access constant UML_Value_Specification)
        return AMF.Optional_Unlimited_Natural is abstract;
+   --  Operation ValueSpecification::unlimitedValue.
+   --
    --  The query unlimitedValue() gives a single UnlimitedNatural value when 
    --  one can be computed.
 

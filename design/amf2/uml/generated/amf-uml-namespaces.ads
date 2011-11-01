@@ -113,6 +113,8 @@ package AMF.UML.Namespaces is
     (Self : not null access constant UML_Namespace;
      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Operation Namespace::excludeCollisions.
+   --
    --  The query excludeCollisions() excludes from a set of 
    --  PackageableElements any that would not be distinguishable from each 
    --  other in this namespace.
@@ -121,6 +123,8 @@ package AMF.UML.Namespaces is
     (Self : not null access constant UML_Namespace;
      Element : AMF.UML.Named_Elements.UML_Named_Element_Access)
        return AMF.String_Collections.Set_Of_String is abstract;
+   --  Operation Namespace::getNamesOfMember.
+   --
    --  The query getNamesOfMember() takes importing into account. It gives 
    --  back the set of names that an element would have in an importing 
    --  namespace, either because it is owned, or if not owned then imported 
@@ -137,6 +141,8 @@ package AMF.UML.Namespaces is
     (Self : not null access constant UML_Namespace;
      Imps : AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Operation Namespace::importMembers.
+   --
    --  The query importMembers() defines which of a set of PackageableElements 
    --  are actually imported into the namespace. This excludes hidden ones, 
    --  i.e., those which have names that conflict with names of owned members, 
@@ -145,6 +151,8 @@ package AMF.UML.Namespaces is
    not overriding function Imported_Member
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Operation Namespace::importedMember.
+   --
    --  The importedMember property is derived from the ElementImports and the 
    --  PackageImports. References the PackageableElements that are members of 
    --  this Namespace as a result of either PackageImports or ElementImports.
@@ -152,12 +160,16 @@ package AMF.UML.Namespaces is
    not overriding function Members_Are_Distinguishable
     (Self : not null access constant UML_Namespace)
        return Boolean is abstract;
+   --  Operation Namespace::membersAreDistinguishable.
+   --
    --  The Boolean query membersAreDistinguishable() determines whether all of 
    --  the namespace's members are distinguishable within it.
 
    not overriding function Owned_Member
     (Self : not null access constant UML_Namespace)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Operation Namespace::ownedMember.
+   --
    --  Missing derivation for Namespace::/ownedMember : NamedElement
 
 end AMF.UML.Namespaces;

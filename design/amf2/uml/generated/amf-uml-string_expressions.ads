@@ -87,6 +87,8 @@ package AMF.UML.String_Expressions is
    not overriding function String_Value
     (Self : not null access constant UML_String_Expression)
        return League.Strings.Universal_String is abstract;
+   --  Operation StringExpression::stringValue.
+   --
    --  The query stringValue() returns the string that concatenates, in order, 
    --  all the component string literals of all the subexpressions that are 
    --  part of the StringExpression.

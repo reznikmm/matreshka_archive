@@ -148,6 +148,8 @@ package AMF.UML.Behavioral_Features is
      N : AMF.UML.Named_Elements.UML_Named_Element_Access;
      Ns : AMF.UML.Namespaces.UML_Namespace_Access)
        return Boolean is abstract;
+   --  Operation BehavioralFeature::isDistinguishableFrom.
+   --
    --  The query isDistinguishableFrom() determines whether two 
    --  BehavioralFeatures may coexist in the same Namespace. It specifies that 
    --  they have to have different signatures.

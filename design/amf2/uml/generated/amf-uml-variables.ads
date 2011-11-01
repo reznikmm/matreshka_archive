@@ -104,6 +104,8 @@ package AMF.UML.Variables is
     (Self : not null access constant UML_Variable;
      A : AMF.UML.Actions.UML_Action_Access)
        return Boolean is abstract;
+   --  Operation Variable::isAccessibleBy.
+   --
    --  The isAccessibleBy() operation is not defined in standard UML. 
    --  Implementations should define it to specify which actions can access a 
    --  variable.

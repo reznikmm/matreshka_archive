@@ -118,6 +118,8 @@ package AMF.UML.Protocol_Transitions is
    not overriding function Referred
     (Self : not null access constant UML_Protocol_Transition)
        return AMF.UML.Operations.Collections.Set_Of_UML_Operation is abstract;
+   --  Operation ProtocolTransition::referred.
+   --
    --  Missing derivation for ProtocolTransition::/referred : Operation
 
 end AMF.UML.Protocol_Transitions;

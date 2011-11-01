@@ -137,12 +137,16 @@ package AMF.UML.Named_Elements is
    not overriding function All_Namespaces
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace is abstract;
+   --  Operation NamedElement::allNamespaces.
+   --
    --  The query allNamespaces() gives the sequence of namespaces in which the 
    --  NamedElement is nested, working outwards.
 
    not overriding function All_Owning_Packages
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.Packages.Collections.Set_Of_UML_Package is abstract;
+   --  Operation NamedElement::allOwningPackages.
+   --
    --  The query allOwningPackages() returns all the directly or indirectly 
    --  owning packages.
 
@@ -151,6 +155,8 @@ package AMF.UML.Named_Elements is
      N : AMF.UML.Named_Elements.UML_Named_Element_Access;
      Ns : AMF.UML.Namespaces.UML_Namespace_Access)
        return Boolean is abstract;
+   --  Operation NamedElement::isDistinguishableFrom.
+   --
    --  The query isDistinguishableFrom() determines whether two NamedElements 
    --  may logically co-exist within a Namespace. By default, two named 
    --  elements are distinguishable if (a) they have unrelated types or (b) 
@@ -159,11 +165,15 @@ package AMF.UML.Named_Elements is
    not overriding function Namespace
     (Self : not null access constant UML_Named_Element)
        return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  Operation NamedElement::namespace.
+   --
    --  Missing derivation for NamedElement::/namespace : Namespace
 
    not overriding function Qualified_Name
     (Self : not null access constant UML_Named_Element)
        return League.Strings.Universal_String is abstract;
+   --  Operation NamedElement::qualifiedName.
+   --
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
@@ -171,6 +181,8 @@ package AMF.UML.Named_Elements is
    not overriding function Separator
     (Self : not null access constant UML_Named_Element)
        return League.Strings.Universal_String is abstract;
+   --  Operation NamedElement::separator.
+   --
    --  The query separator() gives the string that is used to separate names 
    --  when constructing a qualified name.
 

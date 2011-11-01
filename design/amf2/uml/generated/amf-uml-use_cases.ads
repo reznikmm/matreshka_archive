@@ -99,6 +99,8 @@ package AMF.UML.Use_Cases is
    not overriding function All_Included_Use_Cases
     (Self : not null access constant UML_Use_Case)
        return AMF.UML.Use_Cases.Collections.Set_Of_UML_Use_Case is abstract;
+   --  Operation UseCase::allIncludedUseCases.
+   --
    --  The query allIncludedUseCases() returns the transitive closure of all 
    --  use cases (directly or indirectly) included by this use case.
 

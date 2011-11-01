@@ -137,6 +137,8 @@ package AMF.UML.Connectors is
    not overriding function Kind
     (Self : not null access constant UML_Connector)
        return AMF.UML.UML_Connector_Kind is abstract;
+   --  Operation Connector::kind.
+   --
    --  Missing derivation for Connector::/kind : ConnectorKind
 
 end AMF.UML.Connectors;

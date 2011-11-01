@@ -79,6 +79,8 @@ package AMF.UML.Types is
     (Self : not null access constant UML_Type;
      Other : AMF.UML.Types.UML_Type_Access)
        return Boolean is abstract;
+   --  Operation Type::conformsTo.
+   --
    --  The query conformsTo() gives true for a type that conforms to another. 
    --  By default, two types do not conform to each other. This query is 
    --  intended to be redefined for specific conformance situations.

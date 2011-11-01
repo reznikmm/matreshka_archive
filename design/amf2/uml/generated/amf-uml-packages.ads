@@ -159,6 +159,8 @@ package AMF.UML.Packages is
    not overriding function All_Applicable_Stereotypes
     (Self : not null access constant UML_Package)
        return AMF.UML.Stereotypes.Collections.Set_Of_UML_Stereotype is abstract;
+   --  Operation Package::allApplicableStereotypes.
+   --
    --  The query allApplicableStereotypes() returns all the directly or 
    --  indirectly owned stereotypes, including stereotypes contained in 
    --  sub-profiles.
@@ -166,6 +168,8 @@ package AMF.UML.Packages is
    not overriding function Containing_Profile
     (Self : not null access constant UML_Package)
        return AMF.UML.Profiles.UML_Profile_Access is abstract;
+   --  Operation Package::containingProfile.
+   --
    --  The query containingProfile() returns the closest profile directly or 
    --  indirectly containing this package (or this package itself, if it is a 
    --  profile).
@@ -174,6 +178,8 @@ package AMF.UML.Packages is
     (Self : not null access constant UML_Package;
      El : AMF.UML.Named_Elements.UML_Named_Element_Access)
        return Boolean is abstract;
+   --  Operation Package::makesVisible.
+   --
    --  The query makesVisible() defines whether a Package makes an element 
    --  visible outside itself. Elements with no visibility and elements with 
    --  public visibility are made visible.
@@ -181,27 +187,37 @@ package AMF.UML.Packages is
    overriding function Must_Be_Owned
     (Self : not null access constant UML_Package)
        return Boolean is abstract;
+   --  Operation Package::mustBeOwned.
+   --
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner.
 
    not overriding function Nested_Package
     (Self : not null access constant UML_Package)
        return AMF.UML.Packages.Collections.Set_Of_UML_Package is abstract;
+   --  Operation Package::nestedPackage.
+   --
    --  Missing derivation for Package::/nestedPackage : Package
 
    not overriding function Owned_Stereotype
     (Self : not null access constant UML_Package)
        return AMF.UML.Stereotypes.Collections.Set_Of_UML_Stereotype is abstract;
+   --  Operation Package::ownedStereotype.
+   --
    --  Missing derivation for Package::/ownedStereotype : Stereotype
 
    not overriding function Owned_Type
     (Self : not null access constant UML_Package)
        return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
+   --  Operation Package::ownedType.
+   --
    --  Missing derivation for Package::/ownedType : Type
 
    not overriding function Visible_Members
     (Self : not null access constant UML_Package)
        return AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element is abstract;
+   --  Operation Package::visibleMembers.
+   --
    --  The query visibleMembers() defines which members of a Package can be 
    --  accessed outside it.
 

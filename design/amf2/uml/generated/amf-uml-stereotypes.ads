@@ -82,12 +82,16 @@ package AMF.UML.Stereotypes is
    not overriding function Containing_Profile
     (Self : not null access constant UML_Stereotype)
        return AMF.UML.Profiles.UML_Profile_Access is abstract;
+   --  Operation Stereotype::containingProfile.
+   --
    --  The query containingProfile returns the closest profile directly or 
    --  indirectly containing this stereotype.
 
    not overriding function Profile
     (Self : not null access constant UML_Stereotype)
        return AMF.UML.Profiles.UML_Profile_Access is abstract;
+   --  Operation Stereotype::profile.
+   --
    --  A stereotype must be contained, directly or indirectly, in a profile.
 
 end AMF.UML.Stereotypes;

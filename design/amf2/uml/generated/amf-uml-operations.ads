@@ -254,6 +254,8 @@ package AMF.UML.Operations is
     (Self : not null access constant UML_Operation;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation Operation::isConsistentWith.
+   --
    --  A redefining operation is consistent with a redefined operation if it 
    --  has the same number of owned parameters, and the type of each owned 
    --  parameter conforms to the type of the corresponding redefined parameter.
@@ -268,24 +270,32 @@ package AMF.UML.Operations is
    not overriding function Is_Ordered
     (Self : not null access constant UML_Operation)
        return Boolean is abstract;
+   --  Operation Operation::isOrdered.
+   --
    --  If this operation has a return parameter, isOrdered equals the value of 
    --  isOrdered for that parameter. Otherwise isOrdered is false.
 
    not overriding function Is_Unique
     (Self : not null access constant UML_Operation)
        return Boolean is abstract;
+   --  Operation Operation::isUnique.
+   --
    --  If this operation has a return parameter, isUnique equals the value of 
    --  isUnique for that parameter. Otherwise isUnique is true.
 
    not overriding function Lower
     (Self : not null access constant UML_Operation)
        return Integer is abstract;
+   --  Operation Operation::lower.
+   --
    --  If this operation has a return parameter, lower equals the value of 
    --  lower for that parameter. Otherwise lower is not defined.
 
    not overriding function Return_Result
     (Self : not null access constant UML_Operation)
        return AMF.UML.Parameters.Collections.Set_Of_UML_Parameter is abstract;
+   --  Operation Operation::returnResult.
+   --
    --  The query returnResult() returns the set containing the return 
    --  parameter of the Operation if one exists, otherwise, it returns an 
    --  empty set
@@ -293,12 +303,16 @@ package AMF.UML.Operations is
    not overriding function Types
     (Self : not null access constant UML_Operation)
        return AMF.UML.Types.UML_Type_Access is abstract;
+   --  Operation Operation::type.
+   --
    --  If this operation has a return parameter, type equals the value of type 
    --  for that parameter. Otherwise type is not defined.
 
    not overriding function Upper
     (Self : not null access constant UML_Operation)
        return AMF.Unlimited_Natural is abstract;
+   --  Operation Operation::upper.
+   --
    --  If this operation has a return parameter, upper equals the value of 
    --  upper for that parameter. Otherwise upper is not defined.
 

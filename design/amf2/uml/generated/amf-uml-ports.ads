@@ -190,11 +190,15 @@ package AMF.UML.Ports is
    not overriding function Provided
     (Self : not null access constant UML_Port)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Operation Port::provided.
+   --
    --  Missing derivation for Port::/provided : Interface
 
    not overriding function Required
     (Self : not null access constant UML_Port)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Operation Port::required.
+   --
    --  Missing derivation for Port::/required : Interface
 
 end AMF.UML.Ports;

@@ -98,6 +98,8 @@ package AMF.UML.Extension_Ends is
    overriding function Lower_Bound
     (Self : not null access constant UML_Extension_End)
        return AMF.Optional_Integer is abstract;
+   --  Operation ExtensionEnd::lowerBound.
+   --
    --  The query lowerBound() returns the lower bound of the multiplicity as 
    --  an Integer. This is a redefinition of the default lower bound, which 
    --  normally, for MultiplicityElements, evaluates to 1 if empty.

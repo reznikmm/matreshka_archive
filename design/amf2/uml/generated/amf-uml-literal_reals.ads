@@ -73,11 +73,15 @@ package AMF.UML.Literal_Reals is
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Real)
        return Boolean is abstract;
+   --  Operation LiteralReal::isComputable.
+   --
    --  The query isComputable() is redefined to be true.
 
    not overriding function Real_Value
     (Self : not null access constant UML_Literal_Real)
        return AMF.Real is abstract;
+   --  Operation LiteralReal::realValue.
+   --
    --  The query realValue() gives the value.
 
 end AMF.UML.Literal_Reals;

@@ -362,12 +362,16 @@ package AMF.UML.Properties is
    not overriding function Default
     (Self : not null access constant UML_Property)
        return AMF.Optional_String is abstract;
+   --  Operation Property::default.
+   --
    --  Missing derivation for Property::/default : String
 
    not overriding function Is_Attribute
     (Self : not null access constant UML_Property;
      P : AMF.UML.Properties.UML_Property_Access)
        return Boolean is abstract;
+   --  Operation Property::isAttribute.
+   --
    --  The query isAttribute() is true if the Property is defined as an 
    --  attribute of some classifier.
 
@@ -375,6 +379,8 @@ package AMF.UML.Properties is
     (Self : not null access constant UML_Property;
      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
        return Boolean is abstract;
+   --  Operation Property::isCompatibleWith.
+   --
    --  The query isCompatibleWith() determines if this parameterable element 
    --  is compatible with the specified parameterable element. By default 
    --  parameterable element P is compatible with parameterable element Q if 
@@ -385,12 +391,16 @@ package AMF.UML.Properties is
    not overriding function Is_Composite
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Operation Property::isComposite.
+   --
    --  The value of isComposite is true only if aggregation is composite.
 
    overriding function Is_Consistent_With
     (Self : not null access constant UML_Property;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation Property::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies, for any two Properties in a 
    --  context in which redefinition is possible, whether redefinition would 
    --  be logically consistent. A redefining property is consistent with a 
@@ -409,12 +419,16 @@ package AMF.UML.Properties is
    not overriding function Is_Navigable
     (Self : not null access constant UML_Property)
        return Boolean is abstract;
+   --  Operation Property::isNavigable.
+   --
    --  The query isNavigable() indicates whether it is possible to navigate 
    --  across the property.
 
    not overriding function Opposite
     (Self : not null access constant UML_Property)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Operation Property::opposite.
+   --
    --  If this property is owned by a class, associated with a binary 
    --  association, and the other end of the association is also owned by a 
    --  class, then opposite gives the other end.
@@ -422,6 +436,8 @@ package AMF.UML.Properties is
    not overriding function Subsetting_Context
     (Self : not null access constant UML_Property)
        return AMF.UML.Types.Collections.Set_Of_UML_Type is abstract;
+   --  Operation Property::subsettingContext.
+   --
    --  The query subsettingContext() gives the context for subsetting a 
    --  property. It consists, in the case of an attribute, of the 
    --  corresponding classifier, and in the case of an association end, all of 

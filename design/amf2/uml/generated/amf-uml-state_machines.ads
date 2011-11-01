@@ -105,6 +105,8 @@ package AMF.UML.State_Machines is
      S1 : AMF.UML.States.UML_State_Access;
      S2 : AMF.UML.States.UML_State_Access)
        return AMF.UML.Namespaces.UML_Namespace_Access is abstract;
+   --  Operation StateMachine::LCA.
+   --
    --  The operation LCA(s1,s2) returns an orthogonal state or region which is 
    --  the least common ancestor of states s1 and s2, based on the 
    --  statemachine containment hierarchy.
@@ -114,6 +116,8 @@ package AMF.UML.State_Machines is
      S1 : AMF.UML.States.UML_State_Access;
      S2 : AMF.UML.States.UML_State_Access)
        return Boolean is abstract;
+   --  Operation StateMachine::ancestor.
+   --
    --  The query ancestor(s1, s2) checks whether s1 is an ancestor state of 
    --  state s2.
 
@@ -121,6 +125,8 @@ package AMF.UML.State_Machines is
     (Self : not null access constant UML_State_Machine;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation StateMachine::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies that a redefining state machine 
    --  is consistent with a redefined state machine provided that the 
    --  redefining state machine is an extension of the redefined state 
@@ -133,6 +139,8 @@ package AMF.UML.State_Machines is
     (Self : not null access constant UML_State_Machine;
      Redefined : AMF.UML.State_Machines.UML_State_Machine_Access)
        return Boolean is abstract;
+   --  Operation StateMachine::isRedefinitionContextValid.
+   --
    --  The query isRedefinitionContextValid() specifies whether the 
    --  redefinition contexts of a statemachine are properly related to the 
    --  redefinition contexts of the specified statemachine to allow this 

@@ -102,18 +102,24 @@ package AMF.UML.Extensions is
    not overriding function Is_Required
     (Self : not null access constant UML_Extension)
        return Boolean is abstract;
+   --  Operation Extension::isRequired.
+   --
    --  The query isRequired() is true if the owned end has a multiplicity with 
    --  the lower bound of 1.
 
    not overriding function Metaclass
     (Self : not null access constant UML_Extension)
        return AMF.UML.Classes.UML_Class_Access is abstract;
+   --  Operation Extension::metaclass.
+   --
    --  The query metaclass() returns the metaclass that is being extended (as 
    --  opposed to the extending stereotype).
 
    not overriding function Metaclass_End
     (Self : not null access constant UML_Extension)
        return AMF.UML.Properties.UML_Property_Access is abstract;
+   --  Operation Extension::metaclassEnd.
+   --
    --  The query metaclassEnd() returns the Property that is typed by a 
    --  metaclass (as opposed to a stereotype).
 

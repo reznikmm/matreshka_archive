@@ -81,6 +81,8 @@ package AMF.UML.Link_Actions is
    not overriding function Association
     (Self : not null access constant UML_Link_Action)
        return AMF.UML.Associations.UML_Association_Access is abstract;
+   --  Operation LinkAction::association.
+   --
    --  The association operates on LinkAction. It returns the association of 
    --  the action.
 

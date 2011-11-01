@@ -83,12 +83,16 @@ package AMF.UML.Elements is
    not overriding function All_Owned_Elements
     (Self : not null access constant UML_Element)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is abstract;
+   --  Operation Element::allOwnedElements.
+   --
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
    not overriding function Must_Be_Owned
     (Self : not null access constant UML_Element)
        return Boolean is abstract;
+   --  Operation Element::mustBeOwned.
+   --
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner. Subclasses of Element that do not require an owner must 
    --  override this operation.

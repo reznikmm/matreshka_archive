@@ -137,12 +137,16 @@ package AMF.UML.Regions is
    not overriding function Belongs_To_PSM
     (Self : not null access constant UML_Region)
        return Boolean is abstract;
+   --  Operation Region::belongsToPSM.
+   --
    --  The operation belongsToPSM () checks if the region belongs to a 
    --  protocol state machine
 
    not overriding function Containing_State_Machine
     (Self : not null access constant UML_Region)
        return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  Operation Region::containingStateMachine.
+   --
    --  The operation containingStateMachine() returns the sate machine in 
    --  which this Region is defined
 
@@ -150,6 +154,8 @@ package AMF.UML.Regions is
     (Self : not null access constant UML_Region;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation Region::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies that a redefining region is 
    --  consistent with a redefined region provided that the redefining region 
    --  is an extension of the redefined region, i.e. it adds vertices and 
@@ -160,6 +166,8 @@ package AMF.UML.Regions is
     (Self : not null access constant UML_Region;
      Redefined : AMF.UML.Regions.UML_Region_Access)
        return Boolean is abstract;
+   --  Operation Region::isRedefinitionContextValid.
+   --
    --  The query isRedefinitionContextValid() specifies whether the 
    --  redefinition contexts of a region are properly related to the 
    --  redefinition contexts of the specified region to allow this element to 
@@ -170,6 +178,8 @@ package AMF.UML.Regions is
    not overriding function Redefinition_Context
     (Self : not null access constant UML_Region)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Operation Region::redefinitionContext.
+   --
    --  The redefinition context of a region is the nearest containing 
    --  statemachine
 

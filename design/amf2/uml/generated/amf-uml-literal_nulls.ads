@@ -61,11 +61,15 @@ package AMF.UML.Literal_Nulls is
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Null)
        return Boolean is abstract;
+   --  Operation LiteralNull::isComputable.
+   --
    --  The query isComputable() is redefined to be true.
 
    overriding function Is_Null
     (Self : not null access constant UML_Literal_Null)
        return Boolean is abstract;
+   --  Operation LiteralNull::isNull.
+   --
    --  The query isNull() returns true.
 
 end AMF.UML.Literal_Nulls;

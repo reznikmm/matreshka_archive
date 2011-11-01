@@ -75,11 +75,15 @@ package AMF.UML.Literal_Strings is
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_String)
        return Boolean is abstract;
+   --  Operation LiteralString::isComputable.
+   --
    --  The query isComputable() is redefined to be true.
 
    not overriding function String_Value
     (Self : not null access constant UML_Literal_String)
        return League.Strings.Universal_String is abstract;
+   --  Operation LiteralString::stringValue.
+   --
    --  The query stringValue() gives the value.
 
 end AMF.UML.Literal_Strings;

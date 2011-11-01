@@ -88,12 +88,16 @@ package AMF.UML.Templateable_Elements is
    not overriding function Is_Template
     (Self : not null access constant UML_Templateable_Element)
        return Boolean is abstract;
+   --  Operation TemplateableElement::isTemplate.
+   --
    --  The query isTemplate() returns whether this templateable element is 
    --  actually a template.
 
    not overriding function Parameterable_Elements
     (Self : not null access constant UML_Templateable_Element)
        return AMF.UML.Parameterable_Elements.Collections.Set_Of_UML_Parameterable_Element is abstract;
+   --  Operation TemplateableElement::parameterableElements.
+   --
    --  The query parameterableElements() returns the set of elements that may 
    --  be used as the parametered elements for a template parameter of this 
    --  templateable element. By default, this set includes all the owned 

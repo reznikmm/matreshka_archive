@@ -111,6 +111,8 @@ package AMF.UML.Redefinable_Elements is
     (Self : not null access constant UML_Redefinable_Element;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation RedefinableElement::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies, for any two RedefinableElements 
    --  in a context in which redefinition is possible, whether redefinition 
    --  would be logically consistent. By default, this is false; this 
@@ -121,6 +123,8 @@ package AMF.UML.Redefinable_Elements is
     (Self : not null access constant UML_Redefinable_Element;
      Redefined : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation RedefinableElement::isRedefinitionContextValid.
+   --
    --  The query isRedefinitionContextValid() specifies whether the 
    --  redefinition contexts of this RedefinableElement are properly related 
    --  to the redefinition contexts of the specified RedefinableElement to 

@@ -173,6 +173,8 @@ package AMF.UML.Behaviors is
    not overriding function Context
     (Self : not null access constant UML_Behavior)
        return AMF.UML.Behaviored_Classifiers.UML_Behaviored_Classifier_Access is abstract;
+   --  Operation Behavior::context.
+   --
    --  Missing derivation for Behavior::/context : BehavioredClassifier
 
 end AMF.UML.Behaviors;

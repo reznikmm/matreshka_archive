@@ -93,6 +93,8 @@ package AMF.UML.Parameterable_Elements is
     (Self : not null access constant UML_Parameterable_Element;
      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
        return Boolean is abstract;
+   --  Operation ParameterableElement::isCompatibleWith.
+   --
    --  The query isCompatibleWith() determines if this parameterable element 
    --  is compatible with the specified parameterable element. By default 
    --  parameterable element P is compatible with parameterable element Q if 
@@ -103,6 +105,8 @@ package AMF.UML.Parameterable_Elements is
    not overriding function Is_Template_Parameter
     (Self : not null access constant UML_Parameterable_Element)
        return Boolean is abstract;
+   --  Operation ParameterableElement::isTemplateParameter.
+   --
    --  The query isTemplateParameter() determines if this parameterable 
    --  element is exposed as a formal template parameter.
 

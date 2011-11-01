@@ -151,6 +151,8 @@ package AMF.UML.Activities is
    not overriding function Structured_Node
     (Self : not null access constant UML_Activity)
        return AMF.UML.Structured_Activity_Nodes.Collections.Set_Of_UML_Structured_Activity_Node is abstract;
+   --  Operation Activity::structuredNode.
+   --
    --  Missing derivation for Activity::/structuredNode : 
    --  StructuredActivityNode
 

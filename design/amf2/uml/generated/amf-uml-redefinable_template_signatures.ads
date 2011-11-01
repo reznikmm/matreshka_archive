@@ -95,6 +95,8 @@ package AMF.UML.Redefinable_Template_Signatures is
    not overriding function Inherited_Parameter
     (Self : not null access constant UML_Redefinable_Template_Signature)
        return AMF.UML.Template_Parameters.Collections.Set_Of_UML_Template_Parameter is abstract;
+   --  Operation RedefinableTemplateSignature::inheritedParameter.
+   --
    --  Missing derivation for 
    --  RedefinableTemplateSignature::/inheritedParameter : TemplateParameter
 
@@ -102,6 +104,8 @@ package AMF.UML.Redefinable_Template_Signatures is
     (Self : not null access constant UML_Redefinable_Template_Signature;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation RedefinableTemplateSignature::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies, for any two 
    --  RedefinableTemplateSignatures in a context in which redefinition is 
    --  possible, whether redefinition would be logically consistent. A 

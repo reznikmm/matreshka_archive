@@ -75,11 +75,15 @@ package AMF.UML.Literal_Integers is
    not overriding function Integer_Value
     (Self : not null access constant UML_Literal_Integer)
        return Integer is abstract;
+   --  Operation LiteralInteger::integerValue.
+   --
    --  The query integerValue() gives the value.
 
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Integer)
        return Boolean is abstract;
+   --  Operation LiteralInteger::isComputable.
+   --
    --  The query isComputable() is redefined to be true.
 
 end AMF.UML.Literal_Integers;

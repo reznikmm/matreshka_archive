@@ -76,11 +76,15 @@ package AMF.UML.Literal_Unlimited_Naturals is
    overriding function Is_Computable
     (Self : not null access constant UML_Literal_Unlimited_Natural)
        return Boolean is abstract;
+   --  Operation LiteralUnlimitedNatural::isComputable.
+   --
    --  The query isComputable() is redefined to be true.
 
    not overriding function Unlimited_Value
     (Self : not null access constant UML_Literal_Unlimited_Natural)
        return AMF.Unlimited_Natural is abstract;
+   --  Operation LiteralUnlimitedNatural::unlimitedValue.
+   --
    --  The query unlimitedValue() gives the value.
 
 end AMF.UML.Literal_Unlimited_Naturals;

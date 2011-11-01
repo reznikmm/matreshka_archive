@@ -265,18 +265,24 @@ package AMF.UML.States is
    overriding function Containing_State_Machine
     (Self : not null access constant UML_State)
        return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  Operation State::containingStateMachine.
+   --
    --  The query containingStateMachine() returns the state machine that 
    --  contains the state either directly or transitively.
 
    not overriding function Is_Composite
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Operation State::isComposite.
+   --
    --  A composite state is a state with at least one region.
 
    overriding function Is_Consistent_With
     (Self : not null access constant UML_State;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation State::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies that a redefining state is 
    --  consistent with a redefined state provided that the redefining state is 
    --  an extension of the redefined state: A simple state can be redefined 
@@ -288,12 +294,16 @@ package AMF.UML.States is
    not overriding function Is_Orthogonal
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Operation State::isOrthogonal.
+   --
    --  An orthogonal state is a composite state with at least 2 regions
 
    not overriding function Is_Redefinition_Context_Valid
     (Self : not null access constant UML_State;
      Redefined : AMF.UML.States.UML_State_Access)
        return Boolean is abstract;
+   --  Operation State::isRedefinitionContextValid.
+   --
    --  The query isRedefinitionContextValid() specifies whether the 
    --  redefinition contexts of a state are properly related to the 
    --  redefinition contexts of the specified state to allow this element to 
@@ -303,16 +313,22 @@ package AMF.UML.States is
    not overriding function Is_Simple
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Operation State::isSimple.
+   --
    --  A simple state is a state without any regions.
 
    not overriding function Is_Submachine_State
     (Self : not null access constant UML_State)
        return Boolean is abstract;
+   --  Operation State::isSubmachineState.
+   --
    --  Only submachine states can have a reference statemachine.
 
    not overriding function Redefinition_Context
     (Self : not null access constant UML_State)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Operation State::redefinitionContext.
+   --
    --  The redefinition context of a state is the nearest containing 
    --  statemachine.
 

@@ -139,23 +139,31 @@ package AMF.UML.Components is
    not overriding function Provided
     (Self : not null access constant UML_Component)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Operation Component::provided.
+   --
    --  Missing derivation for Component::/provided : Interface
 
    not overriding function Realized_Interfaces
     (Self : not null access constant UML_Component;
      Classifier : AMF.UML.Classifiers.UML_Classifier_Access)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Operation Component::realizedInterfaces.
+   --
    --  Utility returning the set of realized interfaces of a component.
 
    not overriding function Required
     (Self : not null access constant UML_Component)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Operation Component::required.
+   --
    --  Missing derivation for Component::/required : Interface
 
    not overriding function Used_Interfaces
     (Self : not null access constant UML_Component;
      Classifier : AMF.UML.Classifiers.UML_Classifier_Access)
        return AMF.UML.Interfaces.Collections.Set_Of_UML_Interface is abstract;
+   --  Operation Component::usedInterfaces.
+   --
    --  Utility returning the set of used interfaces of a component.
 
 end AMF.UML.Components;

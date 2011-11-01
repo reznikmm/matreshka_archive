@@ -164,17 +164,23 @@ package AMF.UML.Classes is
    not overriding function Extension
     (Self : not null access constant UML_Class)
        return AMF.UML.Extensions.Collections.Set_Of_UML_Extension is abstract;
+   --  Operation Class::extension.
+   --
    --  Missing derivation for Class::/extension : Extension
 
    overriding function Inherit
     (Self : not null access constant UML_Class;
      Inhs : AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element)
        return AMF.UML.Named_Elements.Collections.Set_Of_UML_Named_Element is abstract;
+   --  Operation Class::inherit.
+   --
    --  The inherit operation is overridden to exclude redefined properties.
 
    not overriding function Super_Class
     (Self : not null access constant UML_Class)
        return AMF.UML.Classes.Collections.Set_Of_UML_Class is abstract;
+   --  Operation Class::superClass.
+   --
    --  Missing derivation for Class::/superClass : Class
 
 end AMF.UML.Classes;

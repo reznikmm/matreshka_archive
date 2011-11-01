@@ -203,6 +203,8 @@ package AMF.UML.Transitions is
    not overriding function Containing_State_Machine
     (Self : not null access constant UML_Transition)
        return AMF.UML.State_Machines.UML_State_Machine_Access is abstract;
+   --  Operation Transition::containingStateMachine.
+   --
    --  The query containingStateMachine() returns the state machine that 
    --  contains the transition either directly or transitively.
 
@@ -210,6 +212,8 @@ package AMF.UML.Transitions is
     (Self : not null access constant UML_Transition;
      Redefinee : AMF.UML.Redefinable_Elements.UML_Redefinable_Element_Access)
        return Boolean is abstract;
+   --  Operation Transition::isConsistentWith.
+   --
    --  The query isConsistentWith() specifies that a redefining transition is 
    --  consistent with a redefined transition provided that the redefining 
    --  transition has the following relation to the redefined transition: A 
@@ -219,6 +223,8 @@ package AMF.UML.Transitions is
    not overriding function Redefinition_Context
     (Self : not null access constant UML_Transition)
        return AMF.UML.Classifiers.UML_Classifier_Access is abstract;
+   --  Operation Transition::redefinitionContext.
+   --
    --  The redefinition context of a transition is the nearest containing 
    --  statemachine.
 

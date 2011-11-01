@@ -166,6 +166,8 @@ package AMF.UML.Messages is
    not overriding function Message_Kind
     (Self : not null access constant UML_Message)
        return AMF.UML.UML_Message_Kind is abstract;
+   --  Operation Message::messageKind.
+   --
    --  Missing derivation for Message::/messageKind : MessageKind
 
 end AMF.UML.Messages;
