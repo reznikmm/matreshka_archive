@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "../../../gnat/matreshka_league.gpr";
+with "../../../gnat/matreshka_common.gpr";
 
 library project AMF is
 
@@ -52,7 +53,9 @@ library project AMF is
    for Library_Kind use "relocatable";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnatW8");
+      for Default_Switches ("Ada")
+        use Matreshka_Common.Common_Ada_Switches
+              & ("-g", "-gnat12", "-gnatW8");
    end Compiler;
 
 end AMF;
