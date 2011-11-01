@@ -88,6 +88,7 @@ begin
       Input.Open_By_File_Name (File_Name);
    end if;
 
+   Handler.Set_Alias (File_Name);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Parse (Input'Unchecked_Access);

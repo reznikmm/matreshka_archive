@@ -71,6 +71,12 @@ package body AMF.Internals.XMI_Handlers is
    XMI_2_4_Namespace : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/XMI/20100901");
+   UML_2_3_Namespace : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/UML/20090901");
+   UML_2_4_Namespace : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.omg.org/spec/UML/20100901");
    XMI_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("XMI");
    Id_Name           : constant League.Strings.Universal_String
@@ -431,6 +437,7 @@ package body AMF.Internals.XMI_Handlers is
          --  Register extent.
 
          Documents.Insert (Self.Locator.System_Id, Self.Extent);
+         Documents.Insert (Self.Alias, Self.Extent);
 
          --  Load next document in queue.
 
@@ -707,6 +714,16 @@ package body AMF.Internals.XMI_Handlers is
       return Self.Extent;
    end Root;
 
+   ---------------
+   -- Set_Alias --
+   ---------------
+
+   procedure Set_Alias
+    (Self : in out XMI_Handler; Alias : League.Strings.Universal_String) is
+   begin
+      Self.Alias := Alias;
+   end Set_Alias;
+
    --------------------------
    -- Set_Document_Locator --
    --------------------------
@@ -914,7 +931,14 @@ package body AMF.Internals.XMI_Handlers is
       else
          --  Resolve element's factory.
 
-         Factory := AMF.Internals.Factories.Get_Factory (Namespace_URI);
+         if Namespace_URI = UML_2_3_Namespace then
+            --  XXX Special handling for handling of UML 2.3 models as UML 2.4.
+
+            Factory := AMF.Internals.Factories.Get_Factory (UML_2_4_Namespace);
+
+         else
+            Factory := AMF.Internals.Factories.Get_Factory (Namespace_URI);
+         end if;
 
          --  Resolve root package of metamodel when factory is available.
 
