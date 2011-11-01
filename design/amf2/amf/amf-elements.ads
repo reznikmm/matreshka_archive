@@ -58,6 +58,12 @@ package AMF.Elements is
        return AMF.CMOF.Classes.CMOF_Class_Access is abstract;
    --  Returns the Class that describes this element.
 
+   not overriding function Container
+    (Self : not null access constant Abstract_Element)
+       return AMF.Elements.Element_Access is abstract;
+   --  Returns the parent container of this element if any. Return null if
+   --  there is no containing element.
+
    not overriding function Get
     (Self     : not null access constant Abstract_Element;
      Property : not null AMF.CMOF.Properties.CMOF_Property_Access)

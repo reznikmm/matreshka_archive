@@ -54,4 +54,17 @@ package AMF.Internals.Elements is
     (Self : not null access constant Element_Implementation)
        return AMF_Element is abstract;
 
+   overriding function Container
+    (Self : not null access constant Element_Implementation)
+       return AMF.Elements.Element_Access;
+   --  Returns the parent container of this element if any. Return null if
+   --  there is no containing element.
+   --
+   --  This operation provides generic implementation based on reflection. It
+   --  can be overridden for elements of specific model, in this case please
+   --  remove comment below.
+   --
+   --  XXX It looks possible to generalize implementation of this subprogram
+   --  for any metamodels, so it can be made class wide but not dispatching.
+
 end AMF.Internals.Elements;
