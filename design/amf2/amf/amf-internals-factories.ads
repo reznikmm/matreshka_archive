@@ -186,7 +186,8 @@ package AMF.Internals.Factories is
 
    function Get_Factory
     (URI : League.Strings.Universal_String) return Factory_Access;
-   --  Returns factory for the metamodel specified by URI.
+   --  Returns factory for the metamodel specified by URI or null when
+   --  metamodel is not registered.
 
    function Get_Factory
     (Metamodel : AMF.Internals.AMF_Metamodel) return Factory_Access;

@@ -66,9 +66,18 @@ package body AMF.Internals.Factories is
    -----------------
 
    function Get_Factory
-    (URI : League.Strings.Universal_String) return Factory_Access is
+    (URI : League.Strings.Universal_String) return Factory_Access
+   is
+      Position : Universal_String_Factory_Maps.Cursor
+        := URI_Registry.Find (URI);
+
    begin
-      return URI_Registry.Element (URI);
+      if Universal_String_Factory_Maps.Has_Element (Position) then
+         return Universal_String_Factory_Maps.Element (Position);
+
+      else
+         return null;
+      end if;
    end Get_Factory;
 
    -----------------
