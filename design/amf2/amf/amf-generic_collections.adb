@@ -45,6 +45,8 @@ with AMF.Elements.Collections;
 
 package body AMF.Generic_Collections is
 
+   use type AMF.Internals.Collections.Collection_Access;
+
    ---------
    -- Add --
    ---------
@@ -84,7 +86,7 @@ package body AMF.Generic_Collections is
 
    function Is_Empty (Self : Collection'Class) return Boolean is
    begin
-      return Self.Collection.Length = 0;
+      return Self.Collection = null or else Self.Collection.Length = 0;
    end Is_Empty;
 
    ------------
@@ -93,7 +95,12 @@ package body AMF.Generic_Collections is
 
    function Length (Self : Collection'Class) return Natural is
    begin
-      return Self.Collection.Length;
+      if Self.Collection = null then
+         return 0;
+
+      else
+         return Self.Collection.Length;
+      end if;
    end Length;
 
    ----------
