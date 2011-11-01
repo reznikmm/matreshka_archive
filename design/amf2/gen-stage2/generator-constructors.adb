@@ -62,6 +62,7 @@ package body Generator.Constructors is
    use Generator.Attribute_Mapping;
    use Generator.Names;
    use Generator.Wide_Wide_Text_IO;
+   use League.Strings;
 
    Boolean_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Boolean");
@@ -163,7 +164,10 @@ package body Generator.Constructors is
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        Put (" (M_Element, 0),");
+                        Put
+                         (" (M_Element, "
+                            & Metamodel_Name
+                            & "_Element'First),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
