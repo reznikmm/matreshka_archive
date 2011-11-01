@@ -437,7 +437,7 @@ package body AMF.Internals.XMI_Handlers is
          --  Register extent.
 
          Documents.Insert (Self.Locator.System_Id, Self.Extent);
-         Documents.Insert (Self.Alias, Self.Extent);
+         Documents.Include (Self.Alias, Self.Extent);
 
          --  Load next document in queue.
 
