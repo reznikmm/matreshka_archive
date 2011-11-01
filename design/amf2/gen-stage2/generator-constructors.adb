@@ -183,7 +183,10 @@ package body Generator.Constructors is
 
                   when Holder =>
                      if Default.Is_Empty then
-                        Put (" (M_Element, 0),");
+                        Put
+                         (" (M_Element, "
+                            & Metamodel_Name
+                            & "_Element'First),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
