@@ -41,12 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Conversions;
 with Ada.Containers.Hashed_Sets;
 with Ada.Wide_Wide_Text_IO;
 
-with League.Characters;
-with League.Strings.Hash;
 with League.String_Vectors;
 with XMI.Reader;
 
@@ -57,13 +54,10 @@ with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Extents;
 with AMF.Facility;
-with AMF.Internals.AMF_URI_Stores;
 with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 --  XXX Direct use of AMF.Internals.Factories must be removed.
-with AMF.Internals.Helpers;
 
 package body AMF.Internals.XMI_Handlers is
 
@@ -77,6 +71,8 @@ package body AMF.Internals.XMI_Handlers is
    XMI_2_4_Namespace : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/XMI/20100901");
+   XMI_Name          : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("XMI");
    Id_Name           : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("id");
    Idref_Name        : constant League.Strings.Universal_String
@@ -186,7 +182,6 @@ package body AMF.Internals.XMI_Handlers is
       is
          use type AMF.CMOF.Types.CMOF_Type_Access;
 
-         Association    : AMF.CMOF.Associations.CMOF_Association_Access;
          Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
       begin
@@ -208,8 +203,6 @@ package body AMF.Internals.XMI_Handlers is
                 Value));
 
          else
-            Association := Property.Get_Association;
-
             if Property.Is_Multivalued then
                declare
                   Ids : constant League.String_Vectors.Universal_String_Vector
@@ -267,8 +260,6 @@ package body AMF.Internals.XMI_Handlers is
          --  Process XLink 'href' attribute if present.
 
          declare
-            use type AMF.Elements.Element_Access;
-
             URI       : constant League.Strings.Universal_String
               := Attributes.Value (Href_Index);
             Separator : constant Positive := URI.Index ('#');
@@ -332,7 +323,7 @@ package body AMF.Internals.XMI_Handlers is
                --  XLink 'href' handled outside of this subprogram.
 
                declare
-                  Property : AMF.CMOF.Properties.CMOF_Property_Access
+                  Property : constant AMF.CMOF.Properties.CMOF_Property_Access
                     := Resolve_Owned_Attribute
                         (Meta_Class, Attributes.Qualified_Name (J));
 
@@ -380,7 +371,10 @@ package body AMF.Internals.XMI_Handlers is
    overriding procedure Characters
     (Self    : in out XMI_Handler;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if Self.Collect_Text then
          Self.Text.Append (Text);
@@ -395,6 +389,8 @@ package body AMF.Internals.XMI_Handlers is
     (Self    : in out XMI_Handler;
      Success : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       procedure Establish_Link (Position : Postponed_Link_Vectors.Cursor);
 
       --------------------
@@ -442,6 +438,7 @@ package body AMF.Internals.XMI_Handlers is
             Position : Universal_String_Sets.Cursor := URI_Queue.First;
             URI      : League.Strings.Universal_String;
             Extent   : AMF.URI_Stores.URI_Store_Access;
+            pragma Unreferenced (Extent);
 
          begin
             if Universal_String_Sets.Has_Element (Position) then
@@ -473,11 +470,16 @@ package body AMF.Internals.XMI_Handlers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean)
    is
+      pragma Unreferenced (Namespace_URI);
+      pragma Unreferenced (Local_Name);
+      pragma Unreferenced (Qualified_Name);
+      pragma Unreferenced (Success);
+
       Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
 
    begin
-      if Self.Skip_End_Element /= 0 then
-         Self.Skip_End_Element := Self.Skip_End_Element - 1;
+      if Self.Skip_Element /= 0 then
+         Self.Skip_Element := Self.Skip_Element - 1;
 
       elsif not Self.Stack.Is_Empty then
          if Self.Collect_Text then
@@ -597,6 +599,7 @@ package body AMF.Internals.XMI_Handlers is
    begin
       if Self.Diagnosis.Is_Empty then
          Self.Diagnosis := "XML fatal error: " & Occurrence.Message;
+         Success := False;
       end if;
    end Fatal_Error;
 
@@ -667,7 +670,7 @@ package body AMF.Internals.XMI_Handlers is
    is
       use type AMF.Optional_String;
 
-      Packaged_Elements :
+      Packaged_Elements : constant
         AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
           := Root.Get_Packaged_Element;
       Element           :
@@ -726,7 +729,10 @@ package body AMF.Internals.XMI_Handlers is
 
    overriding procedure Start_Document
     (Self    : in out XMI_Handler;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Extent := AMF.Facility.Create_URI_Store;
    end Start_Document;
@@ -743,17 +749,30 @@ package body AMF.Internals.XMI_Handlers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       use type AMF.CMOF.Associations.CMOF_Association_Access;
       use type AMF.CMOF.Classes.CMOF_Class_Access;
+      use type AMF.CMOF.Packages.CMOF_Package_Access;
 
       Association   : AMF.CMOF.Associations.CMOF_Association_Access;
       Name          : League.Strings.Universal_String;
       Meta          : AMF.CMOF.Classes.CMOF_Class_Access;
       Property      : AMF.CMOF.Properties.CMOF_Property_Access;
       Property_Type : AMF.CMOF.Types.CMOF_Type_Access;
+      The_Package   : AMF.CMOF.Packages.CMOF_Package_Access;
 
    begin
-      if Namespace_URI.Is_Empty then
+      --  Skip nested elements for unknown element.
+
+      if Self.Skip_Element /= 0 then
+         Self.Skip_Element := Self.Skip_Element + 1;
+
+      --  Namespace is missing, XML element represents value of property. This
+      --  is most useful case, so it is checked first to achive some
+      --  performance improvement.
+
+      elsif Namespace_URI.Is_Empty then
          --  Property of the element, resolve it.
 
          Property :=
@@ -807,25 +826,63 @@ package body AMF.Internals.XMI_Handlers is
             Self.Text.Clear;
          end if;
 
+      --  Process element from XMI namespace before all others, because they
+      --  have special meaning.
+
       elsif Namespace_URI = XMI_2_1_Namespace
         or Namespace_URI = XMI_2_4_Namespace
       then
-         Self.XMI_Namespace := Namespace_URI;
+         if Local_Name = XMI_Name then
+            Self.XMI_Namespace := Namespace_URI;
 
-      else
-         Meta :=
-           Resolve_Owned_Class
-            (AMF.CMOF.Packages.CMOF_Package_Access
-              (Self.URI_Package_Map.Element (Namespace_URI)),
-             Local_Name);
-
-         if Meta = null then
-            Put_Line (Standard_Error, Namespace_URI.To_Wide_Wide_String);
-
-            raise Program_Error;
+         else
+            Self.Skip_Element := 1;
          end if;
 
-         Analyze_Object_Element (Self, Meta, null, Attributes, Success);
+      --  Process element from other namespace, it is one of root elements of
+      --  the loaded document.
+
+      else
+         --  Looking for package associated with namespace URI.
+
+         The_Package :=
+           AMF.CMOF.Packages.CMOF_Package_Access
+            (Self.URI_Package_Map.Element (Namespace_URI));
+
+         if The_Package = null then
+            --  Null package means what corresponding metamodel was not found,
+            --  report warning.
+
+            Put_Line
+             (Standard_Error,
+              "Element of unknown namespace '"
+                & Namespace_URI.To_Wide_Wide_String
+                & "' is ignored");
+
+            Self.Skip_Element := 1;
+
+         else
+            --  Resolve specified class name in the package.
+
+            Meta := Resolve_Owned_Class (The_Package, Local_Name);
+
+            if Meta = null then
+               --  Null metaclass means that specified class is not resolved in
+               --  the package, treat it as fatal error.
+
+               Put_Line
+                (Standard_Error,
+                 "Class '"
+                   & Local_Name.To_Wide_Wide_String
+                   & "' is not defined in '"
+                   & Namespace_URI.To_Wide_Wide_String
+                   & ''');
+
+               raise Program_Error;
+            end if;
+
+            Analyze_Object_Element (Self, Meta, null, Attributes, Success);
+         end if;
       end if;
    end Start_Element;
 
@@ -837,7 +894,15 @@ package body AMF.Internals.XMI_Handlers is
     (Self          : in out XMI_Handler;
      Prefix        : League.Strings.Universal_String;
      Namespace_URI : League.Strings.Universal_String;
-     Success       : in out Boolean) is
+     Success       : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
+      use type AMF.Internals.Factories.Factory_Access;
+
+      Factory     : AMF.Internals.Factories.Factory_Access;
+      The_Package : AMF.Elements.Element_Access;
+
    begin
       if Namespace_URI = XMI_2_1_Namespace
         or Namespace_URI = XMI_2_4_Namespace
@@ -847,14 +912,29 @@ package body AMF.Internals.XMI_Handlers is
          null;
 
       else
-         Self.Prefix_Package_Map.Insert
-          (Prefix,
-           AMF.Elements.Element_Access
-            (AMF.Internals.Factories.Get_Factory (Namespace_URI).Get_Package));
-         Self.URI_Package_Map.Insert
-          (Namespace_URI,
-           AMF.Elements.Element_Access
-            (AMF.Internals.Factories.Get_Factory (Namespace_URI).Get_Package));
+         --  Resolve element's factory.
+
+         Factory := AMF.Internals.Factories.Get_Factory (Namespace_URI);
+
+         --  Resolve root package of metamodel when factory is available.
+
+         if Factory /= null then
+            The_Package := AMF.Elements.Element_Access (Factory.Get_Package);
+
+         else
+            Put_Line
+             (Standard_Error,
+              "No factory for '"
+                & Namespace_URI.To_Wide_Wide_String
+                & ''');
+         end if;
+
+         --  Associate metamodel's package with namespace URI and prefix. Both
+         --  are mapped to null when factory is not found; but only prefix
+         --  mapping is important because it allows to detect errors in XMI.
+
+         Self.Prefix_Package_Map.Insert (Prefix, The_Package);
+         Self.URI_Package_Map.Insert (Namespace_URI, The_Package);
       end if;
    end Start_Prefix_Mapping;
 

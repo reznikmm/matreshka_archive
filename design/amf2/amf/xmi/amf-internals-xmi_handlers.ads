@@ -107,7 +107,7 @@ private
       Collect_Text       : Boolean := False;
       Mapping            : String_Element_Maps.Map;
       Postponed          : Postponed_Link_Vectors.Vector;
-      Skip_End_Element   : Natural := 0;
+      Skip_Element       : Natural := 0;
       XMI_Namespace      : League.Strings.Universal_String;
       --  Actual namespace of the XMI document.
       URI_Package_Map    : String_Element_Maps.Map;
