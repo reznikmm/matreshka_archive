@@ -390,7 +390,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
                      12     => (M_Boolean, False),
                        --  isUnmarshall
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  returnInformation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -734,11 +734,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  finish
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  start
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  action
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -826,7 +826,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -843,7 +843,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  upperValue
                      21     => (M_Boolean, False),
                        --  isControl
-                     22     => (M_Element, 0),
+                     22     => (M_Element, UML_Element'First),
                        --  fromAction
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1482,9 +1482,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
-                     15     => (M_Element, 0),
+                     15     => (M_Element, UML_Element'First),
                        --  parameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1959,9 +1959,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  structuralFeature
                      14     => (M_Element, 0),
                        --  result
@@ -2130,7 +2130,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  variable
                      13     => (M_Element, 0),
                        --  value
@@ -3180,9 +3180,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  finish
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  start
                      11     => (M_Element, 0),
                        --  behavior
@@ -3270,7 +3270,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
                      12     => (M_Element, 0),
                        --  onPort
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  signal
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3442,7 +3442,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  onPort
                      13     => (M_Boolean, True),
                        --  isSynchronous
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  behavior
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3611,7 +3611,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      8      => (M_Element, 0),
                        --  templateParameter
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  operation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3685,9 +3685,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  onPort
                      13     => (M_Boolean, True),
                        --  isSynchronous
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  operation
-                     15     => (M_Element, 0),
+                     15     => (M_Element, UML_Element'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3866,7 +3866,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3993,7 +3993,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      8      => (M_Element, 0),
                        --  templateParameter
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  changeExpression
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4344,9 +4344,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedDefault
                      4      => (M_Element, 0),
                        --  ownedParameteredElement
-                     5      => (M_Element, 0),
+                     5      => (M_Element, UML_Element'First),
                        --  parameteredElement
-                     6      => (M_Element, 0),
+                     6      => (M_Element, UML_Element'First),
                        --  signature
                      7      => (M_Boolean, True),
                        --  allowSubstitutable
@@ -4398,7 +4398,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  decider
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4496,9 +4496,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  association
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4659,9 +4659,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  structuralFeature
                      14     => (M_Element, 0),
                        --  result
@@ -4824,7 +4824,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  variable
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5240,7 +5240,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, 0),
+                     7      => (M_Element, UML_Element'First),
                        --  type
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6403,9 +6403,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedDefault
                      4      => (M_Element, 0),
                        --  ownedParameteredElement
-                     5      => (M_Element, 0),
+                     5      => (M_Element, UML_Element'First),
                        --  parameteredElement
-                     6      => (M_Element, 0),
+                     6      => (M_Element, UML_Element'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6663,7 +6663,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  definingEnd
                      9      => (M_Element, 0),
                        --  partWithPort
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  role
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6821,7 +6821,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  context
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6970,17 +6970,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
                      8      => (M_Element, 0),
                        --  activity
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  guard
                      10     => (M_Element, 0),
                        --  inStructuredNode
                      11     => (M_Element, 0),
                        --  interrupts
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  source
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  target
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  weight
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7258,7 +7258,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7433,9 +7433,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  classifier
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7600,7 +7600,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8176,7 +8176,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      8      => (M_Element, 0),
                        --  templateParameter
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  location
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8722,7 +8722,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isDestroyLinks
                      13     => (M_Boolean, False),
                        --  isDestroyOwnedObjects
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9360,7 +9360,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  context
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  specification
                      11     => (M_Collection_Of_Boolean, 0),
                        --  firstEvent
@@ -9435,9 +9435,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      9      => (M_Element, 0),
                        --  templateParameter
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  max
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  min
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9560,9 +9560,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owner
                      2      => (M_String, null),
                        --  alias
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  importedElement
-                     4      => (M_Element, 0),
+                     4      => (M_Element, UML_Element'First),
                        --  importingNamespace
                      5      => (M_Visibility_Kind, AMF.UML.Public_Visibility),
                        --  visibility
@@ -9957,11 +9957,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  exceptionInput
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  handlerBody
-                     4      => (M_Element, 0),
+                     4      => (M_Element, UML_Element'First),
                        --  protectedNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10341,7 +10341,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  execution
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10443,7 +10443,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      15     => (M_Element, 0),
                        --  regionAsInput
@@ -10924,9 +10924,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Element, 0),
                        --  condition
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  extendedCase
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  extension
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11034,7 +11034,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isDerived
                      16     => (M_Boolean, False),
                        --  isRequired
-                     17     => (M_Element, 0),
+                     17     => (M_Element, UML_Element'First),
                        --  metaclass
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11445,7 +11445,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  useCase
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12339,9 +12339,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, 0),
+                     7      => (M_Element, UML_Element'First),
                        --  after
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  before
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12391,11 +12391,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  general
                      3      => (M_Boolean_Holder, (Is_Empty => True)),
                        --  isSubstitutable
-                     4      => (M_Element, 0),
+                     4      => (M_Element, UML_Element'First),
                        --  specific
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12598,9 +12598,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, 0),
+                     7      => (M_Element, UML_Element'First),
                        --  addition
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  includingCase
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13168,7 +13168,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -13404,7 +13404,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      9      => (M_Element, 0),
                        --  templateParameter
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  instance
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13859,7 +13859,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  context
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  specification
                      11     => (M_Element, 0),
                        --  maxint
@@ -14061,7 +14061,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  refersTo
                      10     => (M_Element, 0),
                        --  returnValue
@@ -14410,9 +14410,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  mapping
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  contract
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  implementingClassifier
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14610,9 +14610,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      9      => (M_Element, 0),
                        --  templateParameter
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  max
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  min
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14678,7 +14678,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  context
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14753,7 +14753,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  inStructuredNode
                      10     => (M_Boolean, True),
                        --  isCombineDuplicate
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  joinSpec
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14871,7 +14871,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Element, 0),
                        --  decomposedAs
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  interaction
                      9      => (M_Element, 0),
                        --  represents
@@ -14932,7 +14932,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  end
                      3      => (M_Element, 0),
                        --  value
@@ -14988,7 +14988,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  end
                      3      => (M_Element, 0),
                        --  value
@@ -15040,7 +15040,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  end
                      3      => (M_Element, 0),
                        --  value
@@ -15516,7 +15516,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
                      14     => (M_Boolean, False),
                        --  mustIsolate
-                     15     => (M_Element, 0),
+                     15     => (M_Element, UML_Element'First),
                        --  decider
                      16     => (M_Boolean, False),
                        --  isTestedFirst
@@ -15808,7 +15808,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  mapping
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  utilizedElement
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16025,7 +16025,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Element, 0),
                        --  connector
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  interaction
                      9      => (M_Message_Kind, AMF.UML.Unknown),
                        --  messageKind
@@ -16675,17 +16675,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLeaf
                      8      => (M_Element, 0),
                        --  activity
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  guard
                      10     => (M_Element, 0),
                        --  inStructuredNode
                      11     => (M_Element, 0),
                        --  interrupts
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  source
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  target
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  weight
                      15     => (M_Boolean, False),
                        --  isMulticast
@@ -17675,9 +17675,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedDefault
                      4      => (M_Element, 0),
                        --  ownedParameteredElement
-                     5      => (M_Element, 0),
+                     5      => (M_Element, UML_Element'First),
                        --  parameteredElement
-                     6      => (M_Element, 0),
+                     6      => (M_Element, UML_Element'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17744,7 +17744,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -18031,9 +18031,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  importedPackage
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  importingNamespace
                      4      => (M_Visibility_Kind, AMF.UML.Public_Visibility),
                        --  visibility
@@ -18099,9 +18099,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  mergedPackage
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  receivingPackage
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18356,7 +18356,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  refersTo
                      10     => (M_Element, 0),
                        --  returnValue
@@ -19042,9 +19042,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  appliedProfile
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  applyingPackage
                      4      => (M_Boolean, False),
                        --  isStrict
@@ -19284,9 +19284,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  generalMachine
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  specificMachine
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19726,7 +19726,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  container
                      9      => (M_Element, 0),
                        --  effect
@@ -19736,9 +19736,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  kind
                      12     => (M_Element, 0),
                        --  redefinedTransition
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  source
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  target
                      15     => (M_Element, 0),
                        --  postCondition
@@ -19942,9 +19942,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  qualifier
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20007,7 +20007,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  exception
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20168,9 +20168,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  classifier
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20331,13 +20331,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  classifier
                      13     => (M_Boolean, False),
                        --  isDirect
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  object
-                     15     => (M_Element, 0),
+                     15     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20498,7 +20498,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20673,11 +20673,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  end
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  object
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20838,11 +20838,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  qualifier
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21003,7 +21003,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21164,11 +21164,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  structuralFeature
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21329,9 +21329,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  variable
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21589,7 +21589,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  concurrency
                      10     => (M_Boolean, False),
                        --  isAbstract
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  signal
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21752,7 +21752,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
                      12     => (M_Boolean, False),
                        --  isReplaceAll
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21919,7 +21919,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  template
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22031,13 +22031,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  collection
                      13     => (M_Boolean, False),
                        --  isOrdered
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  reducer
-                     15     => (M_Element, 0),
+                     15     => (M_Element, UML_Element'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22334,9 +22334,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  structuralFeature
                      14     => (M_Element, 0),
                        --  result
@@ -22505,7 +22505,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  variable
                      13     => (M_Element, 0),
                        --  value
@@ -22672,9 +22672,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  replyToCall
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  returnInformation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22844,7 +22844,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
                      12     => (M_Element, 0),
                        --  onPort
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23014,9 +23014,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isLocallyReentrant
                      12     => (M_Element, 0),
                        --  onPort
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  signal
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23662,7 +23662,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      8      => (M_Element, 0),
                        --  templateParameter
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  signal
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23712,9 +23712,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  definingFeature
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  owningInstance
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23784,7 +23784,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23949,7 +23949,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  onPort
                      13     => (M_Boolean, True),
                        --  isSynchronous
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24298,7 +24298,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  enclosingInteraction
                      8      => (M_Element, 0),
                        --  enclosingOperand
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  invariant
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24749,7 +24749,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, 0),
+                     17     => (M_Element, UML_Element'First),
                        --  profile
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25393,9 +25393,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  mapping
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  contract
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  substitutingClassifier
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25480,9 +25480,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  boundElement
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25559,9 +25559,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ownedDefault
                      4      => (M_Element, 0),
                        --  ownedParameteredElement
-                     5      => (M_Element, 0),
+                     5      => (M_Element, UML_Element'First),
                        --  parameteredElement
-                     6      => (M_Element, 0),
+                     6      => (M_Element, UML_Element'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25604,13 +25604,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  actual
-                     3      => (M_Element, 0),
+                     3      => (M_Element, UML_Element'First),
                        --  formal
                      4      => (M_Element, 0),
                        --  ownedActual
-                     5      => (M_Element, 0),
+                     5      => (M_Element, UML_Element'First),
                        --  templateBinding
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25653,7 +25653,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Member   => (0      => (Kind => M_None),
                      1      => (M_Element, 0),
                        --  owner
-                     2      => (M_Element, 0),
+                     2      => (M_Element, UML_Element'First),
                        --  template
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25730,11 +25730,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  first
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  result
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  second
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25891,7 +25891,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Element, 0),
                        --  context
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  specification
                      11     => (M_Boolean_Holder, (Is_Empty => True)),
                        --  firstEvent
@@ -25966,7 +25966,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  templateParameter
                      9      => (M_Boolean, False),
                        --  isRelative
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  when
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26105,9 +26105,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      9      => (M_Element, 0),
                        --  templateParameter
-                     10     => (M_Element, 0),
+                     10     => (M_Element, UML_Element'First),
                        --  max
-                     11     => (M_Element, 0),
+                     11     => (M_Element, UML_Element'First),
                        --  min
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26171,7 +26171,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owningTemplateParameter
                      8      => (M_Element, 0),
                        --  templateParameter
-                     9      => (M_Element, 0),
+                     9      => (M_Element, UML_Element'First),
                        --  event
                      10     => (M_Boolean, False),
                        --  firstEvent
@@ -26235,7 +26235,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, 0),
+                     8      => (M_Element, UML_Element'First),
                        --  container
                      9      => (M_Element, 0),
                        --  effect
@@ -26245,9 +26245,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  kind
                      12     => (M_Element, 0),
                        --  redefinedTransition
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  source
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26370,7 +26370,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, 0),
+                     7      => (M_Element, UML_Element'First),
                        --  event
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26447,9 +26447,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  object
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  unmarshallType
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26976,7 +26976,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  ordering
                      13     => (M_Element, 0),
                        --  selection
-                     14     => (M_Element, 0),
+                     14     => (M_Element, UML_Element'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -26993,7 +26993,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  upperValue
                      21     => (M_Boolean, False),
                        --  isControl
-                     22     => (M_Element, 0),
+                     22     => (M_Element, UML_Element'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27126,9 +27126,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, 0),
+                     12     => (M_Element, UML_Element'First),
                        --  result
-                     13     => (M_Element, 0),
+                     13     => (M_Element, UML_Element'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
