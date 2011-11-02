@@ -1262,7 +1262,10 @@ package body AMF.Internals.Factories.UML_Factory is
            Other,
            Link);
 
-      elsif PO in Member_Offset'Range (2) then
+      elsif PO in Member_Offset'Range (2)
+        and then Member_Offset (UML_Element_Table.Table (Element).Kind, PO)
+                   /= 0
+      then
          UML_Element_Table.Table (Element).Member
           (Member_Offset
             (UML_Element_Table.Table (Element).Kind, PO)).Element := Other;
