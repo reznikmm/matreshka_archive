@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
-with Matreshka.Internals.String_Vectors;
 
 package body League.String_Vectors is
 
