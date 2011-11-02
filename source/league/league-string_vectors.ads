@@ -106,7 +106,6 @@ private
    Empty_Universal_String_Vector : constant Universal_String_Vector
      := (Ada.Finalization.Controlled with others => <>);
 
-   pragma Inline ("=");
    pragma Inline (Adjust);
    pragma Inline (Clear);
    pragma Inline (Finalize);
