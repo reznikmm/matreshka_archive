@@ -56,7 +56,9 @@ library project AMF is
    package Compiler is
       for Default_Switches ("Ada")
         use Matreshka_Common.Common_Ada_Switches
-              & ("-g", "-gnat12", "-gnatW8");
+              & Matreshka_Common.Optimization_Ada_Switches;
+      for Switches ("amf-internals-tables-cmof_string_data.ads")
+        use Matreshka_Common.Common_Ada_Switches;
    end Compiler;
 
 end AMF;

@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "../../../gnat/matreshka_league.gpr";
+with "../../../gnat/matreshka_common.gpr";
 with "../amf/amf.gpr";
 
 library project UML is
@@ -54,7 +55,11 @@ library project UML is
    for Library_Kind use "relocatable";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnatW8", "-gnat12", "-gnatyo");
+      for Default_Switches ("Ada")
+        use Matreshka_Common.Common_Ada_Switches
+              & Matreshka_Common.Optimization_Ada_Switches;
+      for Switches ("amf-internals-tables-uml_string_data.ads")
+        use Matreshka_Common.Common_Ada_Switches;
    end Compiler;
 
 end UML;
