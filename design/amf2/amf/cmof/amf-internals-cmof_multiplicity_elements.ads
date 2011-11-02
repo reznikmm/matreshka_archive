@@ -83,4 +83,20 @@ package AMF.Internals.CMOF_Multiplicity_Elements is
     (Self : not null access constant CMOF_Multiplicity_Element_Proxy)
        return Unlimited_Natural;
 
+   overriding procedure Set_Is_Ordered
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Boolean);
+
+   overriding procedure Set_Is_Unique
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Boolean);
+
+   overriding procedure Set_Lower
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Optional_Integer);
+
+   overriding procedure Set_Upper
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Optional_Unlimited_Natural);
+
 end AMF.Internals.CMOF_Multiplicity_Elements;

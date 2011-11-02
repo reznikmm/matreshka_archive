@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 
-with AMF.Elements;
-with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Tags is
@@ -73,6 +71,28 @@ package body AMF.Internals.CMOF_Tags is
       return League.Strings.Internals.Create (Internal_Get_Value (Self.Id));
    end Get_Value;
 
+   --------------
+   -- Set_Name --
+   --------------
+
+   overriding procedure Set_Name
+    (Self : not null access CMOF_Tag_Proxy;
+     To   : League.Strings.Universal_String) is
+   begin
+      Internal_Set_Name (Self.Id, League.Strings.Internals.Internal (To));
+   end Set_Name;
+
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   overriding procedure Set_Value
+    (Self : not null access CMOF_Tag_Proxy;
+     To   : League.Strings.Universal_String) is
+   begin
+      Internal_Set_Value (Self.Id, League.Strings.Internals.Internal (To));
+   end Set_Value;
+
    -----------------
    -- Get_Element --
    -----------------
@@ -100,20 +120,6 @@ package body AMF.Internals.CMOF_Tags is
       return null;
    end Get_Tag_Owner;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-     (Self : not null access CMOF_Tag_Proxy;
-      To   : League.Strings.Universal_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Name unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Name";
-   end Set_Name;
-
    -------------------
    -- Set_Tag_Owner --
    -------------------
@@ -124,20 +130,6 @@ package body AMF.Internals.CMOF_Tags is
    begin
       raise Program_Error;
    end Set_Tag_Owner;
-
-   ---------------
-   -- Set_Value --
-   ---------------
-
-   overriding procedure Set_Value
-     (Self : not null access CMOF_Tag_Proxy;
-      To   : League.Strings.Universal_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure Set_Value";
-   end Set_Value;
 
    ------------------------
    -- All_Owned_Elements --
@@ -150,30 +142,6 @@ package body AMF.Internals.CMOF_Tags is
       raise Program_Error;
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
-
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is
-   begin
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
-
-   ---------------
-   -- Get_Owner --
-   ---------------
-
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access is
-   begin
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
 
    -------------------
    -- Must_Be_Owned --

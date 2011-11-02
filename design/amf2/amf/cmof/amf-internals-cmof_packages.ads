@@ -41,12 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Constraints.Collections;
-with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Named_Elements.Collections;
+with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
-with AMF.CMOF.Package_Imports.Collections;
 with AMF.CMOF.Package_Merges.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages.Collections;
@@ -67,14 +64,6 @@ package AMF.Internals.CMOF_Packages is
        and AMF.CMOF.Packages.CMOF_Package with null record;
 
    --  XXX These subprograms are stubs
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function All_Owned_Elements
     (Self : not null access constant CMOF_Package_Proxy)
@@ -105,18 +94,6 @@ package AMF.Internals.CMOF_Packages is
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Package_Proxy)
        return League.Strings.Universal_String;
-
-   overriding function Get_Package_Import
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import;
-
-   overriding function Get_Owned_Member
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
-
-   overriding function Get_Owned_Rule
-    (Self : not null access constant CMOF_Package_Proxy)
-       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
 
    overriding function Imported_Member
     (Self : not null access constant CMOF_Package_Proxy)
@@ -164,6 +141,9 @@ package AMF.Internals.CMOF_Packages is
    overriding function Get_Package_Merge
     (Self : not null access constant CMOF_Package_Proxy)
        return AMF.CMOF.Package_Merges.Collections.Set_Of_CMOF_Package_Merge;
+   --  Getter of Package::packageMerge.
+   --
+   --  References the PackageMerges that are owned by this Package.
 
    overriding function Get_Uri
     (Self : not null access constant CMOF_Package_Proxy)

@@ -41,11 +41,68 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Classifiers is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+
+   -------------------
+   -- Get_Attribute --
+   -------------------
+
+   overriding function Get_Attribute
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is
+   begin
+      return
+        AMF.CMOF.Properties.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Attribute (Self.Id)));
+   end Get_Attribute;
+
+   -----------------
+   -- Get_Feature --
+   -----------------
+
+   overriding function Get_Feature
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return AMF.CMOF.Features.Collections.Set_Of_CMOF_Feature is
+   begin
+      return
+        AMF.CMOF.Features.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Feature (Self.Id)));
+   end Get_Feature;
+
+   -----------------
+   -- Get_General --
+   -----------------
+
+   overriding function Get_General
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is
+   begin
+      return
+        AMF.CMOF.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_General (Self.Id)));
+   end Get_General;
+
+   --------------------------
+   -- Get_Inherited_Member --
+   --------------------------
+
+   overriding function Get_Inherited_Member
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is
+   begin
+      return
+        AMF.CMOF.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Inherited_Member (Self.Id)));
+   end Get_Inherited_Member;
 
    ---------------------------------
    -- Get_Is_Final_Specialization --

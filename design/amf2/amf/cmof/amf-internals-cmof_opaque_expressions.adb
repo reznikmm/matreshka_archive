@@ -47,36 +47,6 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
-
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
-
-   ---------------
-   -- Get_Owner --
-   ---------------
-
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
-
    ------------------------
    -- All_Owned_Elements --
    ------------------------
@@ -120,21 +90,6 @@ package body AMF.Internals.CMOF_Opaque_Expressions is
       pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
       raise Program_Error;
    end Set_Visibility;
-
-   -------------------
-   -- Get_Namespace --
-   -------------------
-
-   overriding function Get_Namespace
-     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Namespace unimplemented");
-      raise Program_Error;
-      return Get_Namespace (Self);
-   end Get_Namespace;
 
    ------------------------
    -- Get_Qualified_Name --

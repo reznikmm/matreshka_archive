@@ -57,14 +57,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
 
    --  XXX These subprograms are stubs
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access;
-
    overriding function All_Owned_Elements
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
@@ -76,10 +68,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Enumeration_Literal_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);
-
-   overriding function Get_Namespace
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)

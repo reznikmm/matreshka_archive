@@ -81,6 +81,34 @@ package body AMF.Internals.CMOF_Packages is
            (Internal_Get_Nesting_Package (Self.Id)));
    end Get_Nesting_Package;
 
+   --------------------
+   -- Get_Owned_Type --
+   --------------------
+
+   overriding function Get_Owned_Type
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is
+   begin
+      return
+        AMF.CMOF.Types.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Type (Self.Id)));
+   end Get_Owned_Type;
+
+   -----------------------
+   -- Get_Package_Merge --
+   -----------------------
+
+   overriding function Get_Package_Merge
+    (Self : not null access constant CMOF_Package_Proxy)
+       return AMF.CMOF.Package_Merges.Collections.Set_Of_CMOF_Package_Merge is
+   begin
+      return
+        AMF.CMOF.Package_Merges.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Package_Merge (Self.Id)));
+   end Get_Package_Merge;
+
    --------------------------
    -- Get_Packaged_Element --
    --------------------------
@@ -117,35 +145,22 @@ package body AMF.Internals.CMOF_Packages is
       end if;
    end Get_Uri;
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
+   -------------
+   -- Set_Uri --
+   -------------
 
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
+   overriding procedure Set_Uri
+    (Self : not null access CMOF_Package_Proxy;
+     To   : Optional_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
+      if To.Is_Empty then
+         Internal_Set_Uri (Self.Id, null);
 
-   ---------------
-   -- Get_Owner --
-   ---------------
-
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
+      else
+         Internal_Set_Uri
+          (Self.Id, League.Strings.Internals.Internal (To.Value));
+      end if;
+   end Set_Uri;
 
    ------------------------
    -- All_Owned_Elements --
@@ -253,51 +268,6 @@ package body AMF.Internals.CMOF_Packages is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   ------------------------
-   -- Get_Package_Import --
-   ------------------------
-
-   overriding function Get_Package_Import
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package_Import unimplemented");
-      raise Program_Error;
-      return Get_Package_Import (Self);
-   end Get_Package_Import;
-
-   ----------------------
-   -- Get_Owned_Member --
-   ----------------------
-
-   overriding function Get_Owned_Member
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Member unimplemented");
-      raise Program_Error;
-      return Get_Owned_Member (Self);
-   end Get_Owned_Member;
-
-   --------------------
-   -- Get_Owned_Rule --
-   --------------------
-
-   overriding function Get_Owned_Rule
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Rule unimplemented");
-      raise Program_Error;
-      return Get_Owned_Rule (Self);
-   end Get_Owned_Rule;
-
    ---------------------
    -- Imported_Member --
    ---------------------
@@ -375,21 +345,6 @@ package body AMF.Internals.CMOF_Packages is
       return Members_Are_Distinguishable (Self);
    end Members_Are_Distinguishable;
 
-   --------------------
-   -- Get_Owned_Type --
-   --------------------
-
-   overriding function Get_Owned_Type
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Type unimplemented");
-      raise Program_Error;
-      return Get_Owned_Type (Self);
-   end Get_Owned_Type;
-
    -------------------------
    -- Set_Nesting_Package --
    -------------------------
@@ -403,35 +358,6 @@ package body AMF.Internals.CMOF_Packages is
       pragma Compile_Time_Warning (Standard.True, "Set_Nesting_Package unimplemented");
       raise Program_Error;
    end Set_Nesting_Package;
-
-   -----------------------
-   -- Get_Package_Merge --
-   -----------------------
-
-   overriding function Get_Package_Merge
-     (Self : not null access constant CMOF_Package_Proxy)
-      return AMF.CMOF.Package_Merges.Collections.Set_Of_CMOF_Package_Merge
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package_Merge unimplemented");
-      raise Program_Error;
-      return Get_Package_Merge (Self);
-   end Get_Package_Merge;
-
-   -------------
-   -- Set_Uri --
-   -------------
-
-   overriding procedure Set_Uri
-     (Self : not null access CMOF_Package_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Uri unimplemented");
-      raise Program_Error;
-   end Set_Uri;
 
    ---------------------
    -- Visible_Members --

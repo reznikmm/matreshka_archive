@@ -58,14 +58,6 @@ package AMF.Internals.CMOF_Expressions is
 
    --  XXX These subprograms are stubs
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access;
-
    overriding function All_Owned_Elements
     (Self : not null access constant CMOF_Expression_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
@@ -77,10 +69,6 @@ package AMF.Internals.CMOF_Expressions is
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Expression_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);
-
-   overriding function Get_Namespace
-    (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Expression_Proxy)

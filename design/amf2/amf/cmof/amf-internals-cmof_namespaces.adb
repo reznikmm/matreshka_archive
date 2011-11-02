@@ -94,4 +94,46 @@ package body AMF.Internals.CMOF_Namespaces is
            (Internal_Get_Member (Self.Id)));
    end Get_Member;
 
+   ----------------------
+   -- Get_Owned_Member --
+   ----------------------
+
+   overriding function Get_Owned_Member
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element is
+   begin
+      return
+        AMF.CMOF.Named_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Member (Self.Id)));
+   end Get_Owned_Member;
+
+   --------------------
+   -- Get_Owned_Rule --
+   --------------------
+
+   overriding function Get_Owned_Rule
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is
+   begin
+      return
+        AMF.CMOF.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Rule (Self.Id)));
+   end Get_Owned_Rule;
+
+   ------------------------
+   -- Get_Package_Import --
+   ------------------------
+
+   overriding function Get_Package_Import
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import is
+   begin
+      return
+        AMF.CMOF.Package_Imports.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Package_Import (Self.Id)));
+   end Get_Package_Import;
+
 end AMF.Internals.CMOF_Namespaces;

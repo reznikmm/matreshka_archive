@@ -45,35 +45,31 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Classifiers.Collections;
 with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Data_Types;
-with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Named_Elements.Collections;
+with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations.Collections;
-with AMF.CMOF.Package_Imports.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Parameters.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types.Collections;
+with AMF.Internals.CMOF_Namespaces;
+pragma Elaborate (AMF.Internals.CMOF_Namespaces);
 with AMF.Internals.CMOF_Redefinable_Elements;
 with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Operations is
 
+   package Namespaces is
+     new AMF.Internals.CMOF_Namespaces
+          (AMF.Internals.CMOF_Redefinable_Elements.CMOF_Redefinable_Element_Proxy);
+
    type CMOF_Operation_Proxy is limited
-     new AMF.Internals.CMOF_Redefinable_Elements.CMOF_Redefinable_Element_Proxy
+     new Namespaces.CMOF_Namespace_Proxy
        and AMF.CMOF.Operations.CMOF_Operation
          with null record;
 
    --  XXX These subprograms are stubs
-
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding function All_Owned_Elements
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -86,10 +82,6 @@ package AMF.Internals.CMOF_Operations is
    overriding procedure Set_Visibility
     (Self : not null access CMOF_Operation_Proxy;
      To   : CMOF.Optional_CMOF_Visibility_Kind);
-
-   overriding function Get_Namespace
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -108,30 +100,6 @@ package AMF.Internals.CMOF_Operations is
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Operation_Proxy)
        return League.Strings.Universal_String;
-
-   overriding function Get_Imported_Member
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
-
-   overriding function Get_Element_Import
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import;
-
-   overriding function Get_Package_Import
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import;
-
-   overriding function Get_Owned_Member
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
-
-   overriding function Get_Member
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
-
-   overriding function Get_Owned_Rule
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
 
    overriding function Imported_Member
     (Self : not null access constant CMOF_Operation_Proxy)

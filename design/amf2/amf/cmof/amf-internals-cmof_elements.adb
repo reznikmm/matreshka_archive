@@ -103,6 +103,34 @@ package body AMF.Internals.CMOF_Elements is
            (Internal_Get_Owned_Comment (Self.Id)));
    end Get_Owned_Comment;
 
+   -----------------------
+   -- Get_Owned_Element --
+   -----------------------
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is
+   begin
+      return
+        AMF.CMOF.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Owned_Element (Self.Id)));
+   end Get_Owned_Element;
+
+   ---------------
+   -- Get_Owner --
+   ---------------
+
+   overriding function Get_Owner
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access is
+   begin
+      return
+        AMF.CMOF.Elements.CMOF_Element_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Owner (Self.Id)));
+   end Get_Owner;
+
    ---------
    -- Set --
    ---------

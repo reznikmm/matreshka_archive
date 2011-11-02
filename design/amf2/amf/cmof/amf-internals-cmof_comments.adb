@@ -71,20 +71,22 @@ package body AMF.Internals.CMOF_Comments is
       end if;
    end Get_Body;
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
+   --------------
+   -- Set_Body --
+   --------------
 
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
+   overriding procedure Set_Body
+    (Self : not null access CMOF_Comment_Proxy;
+     To   : Optional_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
+      if To.Is_Empty then
+         Internal_Set_Body (Self.Id, null);
+
+      else
+         Internal_Set_Body
+          (Self.Id, League.Strings.Internals.Internal (To.Value));
+      end if;
+   end Set_Body;
 
    ---------------
    -- Get_Owner --
@@ -130,20 +132,6 @@ package body AMF.Internals.CMOF_Comments is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   --------------
-   -- Set_Body --
-   --------------
-
-   overriding procedure Set_Body
-     (Self : not null access CMOF_Comment_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Body unimplemented");
-      raise Program_Error;
-   end Set_Body;
 
    ---------------------------
    -- Get_Annotated_Element --

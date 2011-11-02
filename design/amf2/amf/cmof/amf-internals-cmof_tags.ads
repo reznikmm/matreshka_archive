@@ -63,14 +63,6 @@ package AMF.Internals.CMOF_Tags is
     (Self : not null access constant CMOF_Tag_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function Get_Owned_Element
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access;
-
    overriding function Get_Tag_Owner
     (Self : not null access constant CMOF_Tag_Proxy)
        return AMF.CMOF.Elements.CMOF_Element_Access;

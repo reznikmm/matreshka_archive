@@ -41,9 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Element_Imports.Collections;
 with AMF.CMOF.Named_Elements.Collections;
 with AMF.CMOF.Namespaces;
+with AMF.CMOF.Package_Imports.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.Internals.CMOF_Named_Elements;
 
@@ -61,15 +63,44 @@ package AMF.Internals.CMOF_Namespaces is
    overriding function Get_Element_Import
     (Self : not null access constant CMOF_Namespace_Proxy)
        return AMF.CMOF.Element_Imports.Collections.Set_Of_CMOF_Element_Import;
+   --  Getter of Namespace::elementImport.
+   --
+   --  References the ElementImports owned by the Namespace.
 
    overriding function Get_Imported_Member
     (Self : not null access constant CMOF_Namespace_Proxy)
-       return
-         AMF.CMOF.Packageable_Elements.Collections.
-           Set_Of_CMOF_Packageable_Element;
+       return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
+   --  Getter of Namespace::importedMember.
+   --
+   --  References the PackageableElements that are members of this Namespace 
+   --  as a result of either PackageImports or ElementImports.
 
    overriding function Get_Member
     (Self : not null access constant CMOF_Namespace_Proxy)
        return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
+   --  Getter of Namespace::member.
+   --
+   --  A collection of NamedElements identifiable within the Namespace, either 
+   --  by being owned or by being introduced by importing or inheritance.
+
+
+   overriding function Get_Owned_Member
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Named_Elements.Collections.Set_Of_CMOF_Named_Element;
+   --  Getter of Namespace::ownedMember.
+   --
+   --  A collection of NamedElements owned by the Namespace.
+
+   overriding function Get_Owned_Rule
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
+   --  Getter of Namespace::ownedRule.
+
+   overriding function Get_Package_Import
+    (Self : not null access constant CMOF_Namespace_Proxy)
+       return AMF.CMOF.Package_Imports.Collections.Set_Of_CMOF_Package_Import;
+   --  Getter of Namespace::packageImport.
+   --
+   --  References the PackageImports owned by the Namespace.
 
 end AMF.Internals.CMOF_Namespaces;

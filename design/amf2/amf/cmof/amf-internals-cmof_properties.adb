@@ -184,35 +184,89 @@ package body AMF.Internals.CMOF_Properties is
            (Internal_Get_Subsetted_Property (Self.Id)));
    end Get_Subsetted_Property;
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
+   -----------------
+   -- Set_Default --
+   -----------------
 
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
+   overriding procedure Set_Default
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Optional_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
+      if To.Is_Empty then
+         Internal_Set_Default (Self.Id, null);
+
+      else
+         Internal_Set_Default
+          (Self.Id, League.Strings.Internals.Internal (To.Value));
+      end if;
+   end Set_Default;
+
+   ----------------------
+   -- Set_Is_Composite --
+   ----------------------
+
+   overriding procedure Set_Is_Composite
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Composite (Self.Id, To);
+   end Set_Is_Composite;
+
+   --------------------
+   -- Set_Is_Derived --
+   --------------------
+
+   overriding procedure Set_Is_Derived
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Derived (Self.Id, To);
+   end Set_Is_Derived;
+
+   --------------------------
+   -- Set_Is_Derived_Union --
+   --------------------------
+
+   overriding procedure Set_Is_Derived_Union
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Derived_Union (Self.Id, To);
+   end Set_Is_Derived_Union;
+
+   ----------------------
+   -- Set_Is_Read_Only --
+   ----------------------
+
+   overriding procedure Set_Is_Read_Only
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Read_Only (Self.Id, To);
+   end Set_Is_Read_Only;
 
    ---------------
-   -- Get_Owner --
+   -- Set_Lower --
    ---------------
 
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
+   overriding procedure Set_Lower
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Optional_Integer) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
+      Internal_Set_Lower (Self.Id, To);
+   end Set_Lower;
+
+   ---------------
+   -- Set_Upper --
+   ---------------
+
+   overriding procedure Set_Upper
+    (Self : not null access CMOF_Property_Proxy;
+     To   : Optional_Unlimited_Natural) is
+   begin
+      Internal_Set_Upper (Self.Id, To);
+   end Set_Upper;
+
 
    ------------------------
    -- All_Owned_Elements --
@@ -243,62 +297,6 @@ package body AMF.Internals.CMOF_Properties is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   --------------------
-   -- Set_Is_Ordered --
-   --------------------
-
-   overriding procedure Set_Is_Ordered
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Ordered unimplemented");
-      raise Program_Error;
-   end Set_Is_Ordered;
-
-   -------------------
-   -- Set_Is_Unique --
-   -------------------
-
-   overriding procedure Set_Is_Unique
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Unique unimplemented");
-      raise Program_Error;
-   end Set_Is_Unique;
-
-   ---------------
-   -- Set_Lower --
-   ---------------
-
-   overriding procedure Set_Lower
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Optional_Integer)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Lower unimplemented");
-      raise Program_Error;
-   end Set_Lower;
-
-   ---------------
-   -- Set_Upper --
-   ---------------
-
-   overriding procedure Set_Upper
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Optional_Unlimited_Natural)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Upper unimplemented");
-      raise Program_Error;
-   end Set_Upper;
 
    ---------------------------
    -- Includes_Multiplicity --
@@ -345,21 +343,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
       raise Program_Error;
    end Set_Visibility;
-
-   -------------------
-   -- Get_Namespace --
-   -------------------
-
-   overriding function Get_Namespace
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Namespace unimplemented");
-      raise Program_Error;
-      return Get_Namespace (Self);
-   end Get_Namespace;
 
    ------------------------
    -- Get_Qualified_Name --
@@ -511,76 +494,6 @@ package body AMF.Internals.CMOF_Properties is
       raise Program_Error;
       return Get_Featuring_Classifier (Self);
    end Get_Featuring_Classifier;
-
-   ----------------------
-   -- Set_Is_Read_Only --
-   ----------------------
-
-   overriding procedure Set_Is_Read_Only
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Read_Only unimplemented");
-      raise Program_Error;
-   end Set_Is_Read_Only;
-
-   -----------------
-   -- Set_Default --
-   -----------------
-
-   overriding procedure Set_Default
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Optional_String)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Default unimplemented");
-      raise Program_Error;
-   end Set_Default;
-
-   ----------------------
-   -- Set_Is_Composite --
-   ----------------------
-
-   overriding procedure Set_Is_Composite
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Composite unimplemented");
-      raise Program_Error;
-   end Set_Is_Composite;
-
-   --------------------
-   -- Set_Is_Derived --
-   --------------------
-
-   overriding procedure Set_Is_Derived
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Derived unimplemented");
-      raise Program_Error;
-   end Set_Is_Derived;
-
-   --------------------------
-   -- Set_Is_Derived_Union --
-   --------------------------
-
-   overriding procedure Set_Is_Derived_Union
-     (Self : not null access CMOF_Property_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Derived_Union unimplemented");
-      raise Program_Error;
-   end Set_Is_Derived_Union;
 
    ---------------
    -- Set_Class --

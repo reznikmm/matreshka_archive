@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes;
 with AMF.CMOF.Comments.Collections;
-with AMF.CMOF.Elements;
+with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Properties;
 with AMF.Internals.Elements;
 with League.Holders;
@@ -69,6 +69,14 @@ package AMF.Internals.CMOF_Elements is
    overriding function Get_Owned_Comment
     (Self : not null access constant CMOF_Element_Proxy)
        return AMF.CMOF.Comments.Collections.Set_Of_CMOF_Comment;
+
+   overriding function Get_Owned_Element
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+
+   overriding function Get_Owner
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access;
 
    overriding procedure Set
     (Self     : not null access CMOF_Element_Proxy;

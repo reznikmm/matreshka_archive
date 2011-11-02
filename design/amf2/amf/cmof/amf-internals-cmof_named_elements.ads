@@ -58,6 +58,9 @@ package AMF.Internals.CMOF_Named_Elements is
    overriding function Get_Namespace
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
+   --  Getter of NamedElement::namespace.
+   --
+   --  Specifies the namespace that owns the NamedElement.
 
    overriding function Get_Visibility
     (Self : not null access constant CMOF_Named_Element_Proxy)

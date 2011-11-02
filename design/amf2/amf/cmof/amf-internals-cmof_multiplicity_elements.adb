@@ -159,6 +159,50 @@ package body AMF.Internals.CMOF_Multiplicity_Elements is
       end if;
    end Lower_Bound;
 
+   --------------------
+   -- Set_Is_Ordered --
+   --------------------
+
+   overriding procedure Set_Is_Ordered
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Ordered (Self.Id, To);
+   end Set_Is_Ordered;
+
+   -------------------
+   -- Set_Is_Unique --
+   -------------------
+
+   overriding procedure Set_Is_Unique
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Unique (Self.Id, To);
+   end Set_Is_Unique;
+
+   ---------------
+   -- Set_Lower --
+   ---------------
+
+   overriding procedure Set_Lower
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Optional_Integer) is
+   begin
+      Internal_Set_Lower (Self.Id, To);
+   end Set_Lower;
+
+   ---------------
+   -- Set_Upper --
+   ---------------
+
+   overriding procedure Set_Upper
+    (Self : not null access CMOF_Multiplicity_Element_Proxy;
+     To   : Optional_Unlimited_Natural) is
+   begin
+      Internal_Set_Upper (Self.Id, To);
+   end Set_Upper;
+
    -----------------
    -- Upper_Bound --
    -----------------

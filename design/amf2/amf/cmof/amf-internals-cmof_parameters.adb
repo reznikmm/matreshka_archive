@@ -82,36 +82,19 @@ package body AMF.Internals.CMOF_Parameters is
       return Internal_Get_Direction (Self.Id);
    end Get_Direction;
 
+   -------------------
+   -- Set_Direction --
+   -------------------
 
-   -----------------------
-   -- Get_Owned_Element --
-   -----------------------
-
-   overriding function Get_Owned_Element
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
+   overriding procedure Set_Direction
+    (Self : not null access CMOF_Parameter_Proxy;
+     To   : CMOF.CMOF_Parameter_Direction_Kind) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owned_Element unimplemented");
-      raise Program_Error;
-      return Get_Owned_Element (Self);
-   end Get_Owned_Element;
+      Internal_Set_Direction (Self.Id, To);
+   end Set_Direction;
 
-   ---------------
-   -- Get_Owner --
-   ---------------
 
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
+
 
    ------------------------
    -- All_Owned_Elements --
@@ -143,20 +126,6 @@ package body AMF.Internals.CMOF_Parameters is
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
-   --------------------
-   -- Set_Is_Ordered --
-   --------------------
-
-   overriding procedure Set_Is_Ordered
-     (Self : not null access CMOF_Parameter_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Ordered unimplemented");
-      raise Program_Error;
-   end Set_Is_Ordered;
-
    -------------------
    -- Set_Is_Unique --
    -------------------
@@ -170,20 +139,6 @@ package body AMF.Internals.CMOF_Parameters is
       pragma Compile_Time_Warning (Standard.True, "Set_Is_Unique unimplemented");
       raise Program_Error;
    end Set_Is_Unique;
-
-   ---------------
-   -- Set_Lower --
-   ---------------
-
-   overriding procedure Set_Lower
-     (Self : not null access CMOF_Parameter_Proxy;
-      To   : Optional_Integer)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Lower unimplemented");
-      raise Program_Error;
-   end Set_Lower;
 
    ---------------------------
    -- Includes_Multiplicity --
@@ -217,20 +172,6 @@ package body AMF.Internals.CMOF_Parameters is
       return Includes_Cardinality (Self, C);
    end Includes_Cardinality;
 
-   ---------------
-   -- Set_Upper --
-   ---------------
-
-   overriding procedure Set_Upper
-     (Self : not null access CMOF_Parameter_Proxy;
-      To   : Optional_Unlimited_Natural)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Upper unimplemented");
-      raise Program_Error;
-   end Set_Upper;
-
    --------------------
    -- Set_Visibility --
    --------------------
@@ -244,21 +185,6 @@ package body AMF.Internals.CMOF_Parameters is
       pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
       raise Program_Error;
    end Set_Visibility;
-
-   -------------------
-   -- Get_Namespace --
-   -------------------
-
-   overriding function Get_Namespace
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Namespace unimplemented");
-      raise Program_Error;
-      return Get_Namespace (Self);
-   end Get_Namespace;
 
    ------------------------
    -- Get_Qualified_Name --
@@ -349,20 +275,6 @@ package body AMF.Internals.CMOF_Parameters is
       pragma Compile_Time_Warning (Standard.True, "Set_Default unimplemented");
       raise Program_Error;
    end Set_Default;
-
-   -------------------
-   -- Set_Direction --
-   -------------------
-
-   overriding procedure Set_Direction
-     (Self : not null access CMOF_Parameter_Proxy;
-      To   : CMOF.CMOF_Parameter_Direction_Kind)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Direction unimplemented");
-      raise Program_Error;
-   end Set_Direction;
 
    -------------------
    -- Get_Operation --
