@@ -6,13 +6,17 @@ all:
 	gprbuild -p -Pxmi.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui_moc.gpr
 	gprbuild -p -Pgui/cmof_tree_view/gui.gpr
-	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=MOC
-	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=APP
+#	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=MOC
+#	gprbuild -p -Pgui/modeler/modeler.gpr -XBUILD_MODE=APP
 #	gprbuild -p -Pgen-stage1/generator.gpr
 	gprbuild -p -Pgen-stage2/gens.gpr
 #	time ./demo-reader data/cmof.cmof
 #	./demo-viewer data/cmof.cmof
 #	(cd data/2.4 && ../../demo-viewer UML.cmof)
+
+sqldemo:
+	gprbuild -P demo/demo.gpr
+	(cd demo && ../demo-gen DemoSQL.xml)
 
 gens:
 	gprbuild -p -Pgen-stage2/gens.gpr

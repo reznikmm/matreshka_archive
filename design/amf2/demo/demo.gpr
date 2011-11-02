@@ -1,0 +1,19 @@
+with "../amf/amf.gpr";
+with "../uml/uml.gpr";
+
+project Demo is
+
+   for Source_Dirs use (".");
+   for Object_Dir use "../.objs";
+   for Exec_Dir use "..";
+   for Main use ("demo.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-g", "-gnat12");
+   end Compiler;
+
+   package Builder is
+      for Executable ("demo.adb") use "demo-gen";
+   end Builder;
+
+end Demo;

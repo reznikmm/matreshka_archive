@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xmi:XMI xmi:version='2.1' xmlns:uml='http://www.omg.org/spec/UML/20090901' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:Validation_Profile='http://www.magicdraw.com/schemas/Validation_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/schemas/MagicDraw_Profile.xmi' xmlns:StandardProfileL3='http://schema.omg.org/spec/UML/2.3/StandardProfileL3.xmi' xmlns:Traceability_customization='http://www.magicdraw.com/schemas/Traceability_customization.xmi' xmlns:DSL_Customization='http://www.magicdraw.com/schemas/DSL_Customization.xmi' xmlns:StandardProfileL2='http://schema.omg.org/spec/UML/2.3/StandardProfileL2.xmi'>
+	<uml:Model xmi:id='eee_1045467100313_135436_1' name='Data' visibility='public'>
+           <packagedElement xmi:type='uml:Package' xmi:id='magicdraw_uml_standard_profile_v_0001' name='UML Standard Profile' visibility='public'/>
+                </uml:Model>
+             </xmi:XMI>
