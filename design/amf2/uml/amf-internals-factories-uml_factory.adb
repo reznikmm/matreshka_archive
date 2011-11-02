@@ -1255,20 +1255,17 @@ package body AMF.Internals.Factories.UML_Factory is
 
    begin
       if PO in Collection_Offset'Range (2) then
-            AMF.Internals.Element_Collections.Internal_Append
-             (UML_Element_Table.Table (Element).Member (0).Collection
-                + Collection_Offset
-                   (UML_Element_Table.Table (Element).Kind, PO),
-              Other,
-              Link);
-
-      elsif PO in Collection_Offset'Range (2) then
          AMF.Internals.Element_Collections.Internal_Append
           (UML_Element_Table.Table (Element).Member (0).Collection
              + Collection_Offset
-                (UML_Element_Table.Table (Element).Kind, Property),
+                (UML_Element_Table.Table (Element).Kind, PO),
            Other,
            Link);
+
+      elsif PO in Member_Offset'Range (2) then
+         UML_Element_Table.Table (Element).Member
+          (Member_Offset
+            (UML_Element_Table.Table (Element).Kind, PO)).Element := Other;
 
       else
          AMF.Internals.Element_Collections.Internal_Append
