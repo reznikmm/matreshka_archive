@@ -88,7 +88,7 @@ private
 
    type Counter is limited record
       Value : aliased Interfaces.Integer_32 := 1;
-      pragma Atomic (Value);
+      pragma Volatile (Value);
    end record;
    --  Note: Record type is used for automatic initial value assignment.
 

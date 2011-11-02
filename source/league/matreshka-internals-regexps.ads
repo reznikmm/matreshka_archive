@@ -189,7 +189,6 @@ package Matreshka.Internals.Regexps is
    type Shared_String_Array is
      array (Natural range <>)
        of aliased Matreshka.Internals.Strings.Shared_String_Access;
-   pragma Atomic_Components (Shared_String_Array);
 
    type Slice is record
       First_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
