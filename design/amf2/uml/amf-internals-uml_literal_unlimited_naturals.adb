@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
@@ -438,34 +436,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
       return Is_Computable (Self);
    end Is_Computable;
 
-   -------------------
-   -- Boolean_Value --
-   -------------------
-
-   overriding function Boolean_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Optional_Boolean is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Boolean_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Boolean_Value";
-      return Boolean_Value (Self);
-   end Boolean_Value;
-
-   -------------------
-   -- Integer_Value --
-   -------------------
-
-   overriding function Integer_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Optional_Integer is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Integer_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Integer_Value";
-      return Integer_Value (Self);
-   end Integer_Value;
-
    ------------------------
    -- Is_Compatible_With --
    ------------------------
@@ -480,48 +450,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
       raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Is_Compatible_With";
       return Is_Compatible_With (Self, P);
    end Is_Compatible_With;
-
-   -------------
-   -- Is_Null --
-   -------------
-
-   overriding function Is_Null
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return Boolean is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Is_Null unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Is_Null";
-      return Is_Null (Self);
-   end Is_Null;
-
-   ----------------
-   -- Real_Value --
-   ----------------
-
-   overriding function Real_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Optional_Real is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Real_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Real_Value";
-      return Real_Value (Self);
-   end Real_Value;
-
-   ------------------
-   -- String_Value --
-   ------------------
-
-   overriding function String_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Optional_String is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "String_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.String_Value";
-      return String_Value (Self);
-   end String_Value;
 
    --------------------
    -- All_Namespaces --

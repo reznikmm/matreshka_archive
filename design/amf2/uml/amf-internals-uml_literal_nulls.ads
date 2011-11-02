@@ -41,9 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Value_Specifications;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
@@ -59,7 +58,7 @@ with AMF.UML.Types;
 package AMF.Internals.UML_Literal_Nulls is
 
    type UML_Literal_Null_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Value_Specifications.UML_Value_Specification_Proxy
        and AMF.UML.Literal_Nulls.UML_Literal_Null with null record;
 
    overriding function Get_Type
@@ -225,22 +224,6 @@ package AMF.Internals.UML_Literal_Nulls is
    --
    --  The query isNull() returns true.
 
-   overriding function Boolean_Value
-    (Self : not null access constant UML_Literal_Null_Proxy)
-       return AMF.Optional_Boolean;
-   --  Operation ValueSpecification::booleanValue.
-   --
-   --  The query booleanValue() gives a single Boolean value when one can be 
-   --  computed.
-
-   overriding function Integer_Value
-    (Self : not null access constant UML_Literal_Null_Proxy)
-       return AMF.Optional_Integer;
-   --  Operation ValueSpecification::integerValue.
-   --
-   --  The query integerValue() gives a single Integer value when one can be 
-   --  computed.
-
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Literal_Null_Proxy;
      P : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access)
@@ -253,30 +236,6 @@ package AMF.Internals.UML_Literal_Nulls is
    --  the kind of P is the same or a subtype as the kind of Q. In addition, 
    --  for ValueSpecification, the type must be conformant with the type of 
    --  the specified parameterable element.
-
-   overriding function Real_Value
-    (Self : not null access constant UML_Literal_Null_Proxy)
-       return AMF.Optional_Real;
-   --  Operation ValueSpecification::realValue.
-   --
-   --  The query realValue() gives a single Real value when one can be 
-   --  computed.
-
-   overriding function String_Value
-    (Self : not null access constant UML_Literal_Null_Proxy)
-       return AMF.Optional_String;
-   --  Operation ValueSpecification::stringValue.
-   --
-   --  The query stringValue() gives a single String value when one can be 
-   --  computed.
-
-   overriding function Unlimited_Value
-    (Self : not null access constant UML_Literal_Null_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Operation ValueSpecification::unlimitedValue.
-   --
-   --  The query unlimitedValue() gives a single UnlimitedNatural value when 
-   --  one can be computed.
 
    overriding function All_Namespaces
     (Self : not null access constant UML_Literal_Null_Proxy)
