@@ -53,7 +53,7 @@ library project UML is
    for Library_Kind use "relocatable";
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnatW8", "-gnat12");
+      for Default_Switches ("Ada") use ("-g", "-gnatW8", "-gnat12", "-gnatyo");
    end Compiler;
 
 end UML;

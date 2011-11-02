@@ -52,60 +52,6 @@ with Matreshka.Internals.Strings;
 
 package body AMF.Internals.UML_Literal_Integers is
 
-   ---------------
-   -- Get_Value --
-   ---------------
-
-   overriding function Get_Value
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return Integer is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
-         (Self.Id);
-   end Get_Value;
-
-   ---------------
-   -- Set_Value --
-   ---------------
-
-   overriding procedure Set_Value
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : Integer) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
-       (Self.Id, To);
-   end Set_Value;
-
-   --------------
-   -- Get_Type --
-   --------------
-
-   overriding function Get_Type
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.UML.Types.UML_Type_Access is
-   begin
-      return
-        AMF.UML.Types.UML_Type_Access
-         (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Type
-             (Self.Id)));
-   end Get_Type;
-
-   --------------
-   -- Set_Type --
-   --------------
-
-   overriding procedure Set_Type
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.UML.Types.UML_Type_Access) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Type;
-
    ---------------------------
    -- Get_Client_Dependency --
    ---------------------------
@@ -145,25 +91,6 @@ package body AMF.Internals.UML_Literal_Integers is
       end;
    end Get_Name;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.Optional_String) is
-   begin
-      if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
-
-      else
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
-           League.Strings.Internals.Internal (To.Value));
-      end if;
-   end Set_Name;
-
    -------------------------
    -- Get_Name_Expression --
    -------------------------
@@ -179,20 +106,6 @@ package body AMF.Internals.UML_Literal_Integers is
              (Self.Id)));
    end Get_Name_Expression;
 
-   -------------------------
-   -- Set_Name_Expression --
-   -------------------------
-
-   overriding procedure Set_Name_Expression
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Name_Expression;
-
    -------------------
    -- Get_Namespace --
    -------------------
@@ -207,55 +120,6 @@ package body AMF.Internals.UML_Literal_Integers is
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
              (Self.Id)));
    end Get_Namespace;
-
-   ------------------------
-   -- Get_Qualified_Name --
-   ------------------------
-
-   overriding function Get_Qualified_Name
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.Optional_String is
-   begin
-      declare
-         use type Matreshka.Internals.Strings.Shared_String_Access;
-
-         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
-
-      begin
-         if Aux = null then
-            return (Is_Empty => True);
-
-         else
-            return (False, League.Strings.Internals.Create (Aux));
-         end if;
-      end;
-   end Get_Qualified_Name;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
-   end Set_Visibility;
 
    -----------------------
    -- Get_Owned_Comment --
@@ -302,31 +166,6 @@ package body AMF.Internals.UML_Literal_Integers is
              (Self.Id)));
    end Get_Owner;
 
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.UML.UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
-   end Set_Visibility;
-
    -----------------------------------
    -- Get_Owning_Template_Parameter --
    -----------------------------------
@@ -342,19 +181,29 @@ package body AMF.Internals.UML_Literal_Integers is
              (Self.Id)));
    end Get_Owning_Template_Parameter;
 
-   -----------------------------------
-   -- Set_Owning_Template_Parameter --
-   -----------------------------------
+   ------------------------
+   -- Get_Qualified_Name --
+   ------------------------
 
-   overriding procedure Set_Owning_Template_Parameter
-    (Self : not null access UML_Literal_Integer_Proxy;
-     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return AMF.Optional_String is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Owning_Template_Parameter;
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
+   end Get_Qualified_Name;
 
    ----------------------------
    -- Get_Template_Parameter --
@@ -371,6 +220,145 @@ package body AMF.Internals.UML_Literal_Integers is
              (Self.Id)));
    end Get_Template_Parameter;
 
+   --------------
+   -- Get_Type --
+   --------------
+
+   overriding function Get_Type
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return AMF.UML.Types.UML_Type_Access is
+   begin
+      return
+        AMF.UML.Types.UML_Type_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Type
+             (Self.Id)));
+   end Get_Type;
+
+   ---------------
+   -- Get_Value --
+   ---------------
+
+   overriding function Get_Value
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return Integer is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
+         (Self.Id);
+   end Get_Value;
+
+   --------------------
+   -- Get_Visibility --
+   --------------------
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
+   end Get_Visibility;
+
+   --------------------
+   -- Get_Visibility --
+   --------------------
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return AMF.UML.UML_Visibility_Kind is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
+   end Get_Visibility;
+
+   -------------------
+   -- Integer_Value --
+   -------------------
+
+   overriding function Integer_Value
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return Integer
+   is
+      --  7.3.27 LiteralInteger (from Kernel)
+      --
+      --  [2] The query integerValue() gives the value.
+      --
+      --  LiteralInteger::integerValue() : [Integer];
+      --  integerValue = value
+
+   begin
+      return UML_Literal_Integer_Proxy'Class (Self.all).Get_Value;
+   end Integer_Value;
+
+   -------------------
+   -- Integer_Value --
+   -------------------
+
+   overriding function Integer_Value
+    (Self : not null access constant UML_Literal_Integer_Proxy)
+       return AMF.Optional_Integer
+   is
+      --  7.3.27 LiteralInteger (from Kernel)
+      --
+      --  [2] The query integerValue() gives the value.
+      --
+      --  LiteralInteger::integerValue() : [Integer];
+      --  integerValue = value
+
+   begin
+      return (False, UML_Literal_Integer_Proxy'Class (Self.all).Get_Value);
+   end Integer_Value;
+
+   --------------
+   -- Set_Name --
+   --------------
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : AMF.Optional_String) is
+   begin
+      if To.Is_Empty then
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id, null);
+
+      else
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id,
+           League.Strings.Internals.Internal (To.Value));
+      end if;
+   end Set_Name;
+
+   -------------------------
+   -- Set_Name_Expression --
+   -------------------------
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Name_Expression;
+
+   -----------------------------------
+   -- Set_Owning_Template_Parameter --
+   -----------------------------------
+
+   overriding procedure Set_Owning_Template_Parameter
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Owning_Template_Parameter;
+
    ----------------------------
    -- Set_Template_Parameter --
    ----------------------------
@@ -385,19 +373,55 @@ package body AMF.Internals.UML_Literal_Integers is
          (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
-   -------------------
-   -- Integer_Value --
-   -------------------
+   --------------
+   -- Set_Type --
+   --------------
 
-   overriding function Integer_Value
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return Integer is
+   overriding procedure Set_Type
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : AMF.UML.Types.UML_Type_Access) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Integer_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Integer_Proxy.Integer_Value";
-      return Integer_Value (Self);
-   end Integer_Value;
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Type;
+
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   overriding procedure Set_Value
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : Integer) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
+       (Self.Id, To);
+   end Set_Value;
+
+   --------------------
+   -- Set_Visibility --
+   --------------------
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
+   end Set_Visibility;
+
+   --------------------
+   -- Set_Visibility --
+   --------------------
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Literal_Integer_Proxy;
+     To   : AMF.UML.UML_Visibility_Kind) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
+   end Set_Visibility;
 
    -------------------
    -- Is_Computable --
@@ -426,20 +450,6 @@ package body AMF.Internals.UML_Literal_Integers is
       raise Program_Error with "Unimplemented procedure UML_Literal_Integer_Proxy.Boolean_Value";
       return Boolean_Value (Self);
    end Boolean_Value;
-
-   -------------------
-   -- Integer_Value --
-   -------------------
-
-   overriding function Integer_Value
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return AMF.Optional_Integer is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Integer_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Integer_Proxy.Integer_Value";
-      return Integer_Value (Self);
-   end Integer_Value;
 
    ------------------------
    -- Is_Compatible_With --

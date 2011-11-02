@@ -42,8 +42,70 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.UML_Attributes;
+with AMF.UML.Value_Specifications;
 
 package body AMF.Internals.UML_Multiplicity_Elements is
+
+   use type AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+   --------------------
+   -- Is_Multivalued --
+   --------------------
+
+   overriding function Is_Multivalued
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return Boolean
+   is
+      --  7.3.33 MultiplicityElement (from Kernel)
+      --
+      --  [1] The query isMultivalued() checks whether this multiplicity has an
+      --  upper bound greater than one.
+      --
+      --  MultiplicityElement::isMultivalued() : Boolean;
+      --  pre: upperBound()->notEmpty()
+      --  isMultivalued = (upperBound() > 1)
+
+      Upper_Bound : constant Optional_Unlimited_Natural
+        := UML_Multiplicity_Element_Proxy'Class (Self.all).Upper_Bound;
+
+   begin
+      if Upper_Bound.Is_Empty then
+         raise Constraint_Error;
+      end if;
+
+      return Upper_Bound.Value > 1;
+   end Is_Multivalued;
+
+   -----------------
+   -- Lower_Bound --
+   -----------------
+
+   overriding function Lower_Bound
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Integer
+   is
+      --  7.3.33 MultiplicityElement (from Kernel)
+      --
+      --  [4] The query lowerBound() returns the lower bound of the
+      --  multiplicity as an integer.
+      --
+      --  MultiplicityElement::lowerBound() : [Integer];
+      --  lowerBound =
+      --    if lowerValue->isEmpty() then 1
+      --    else lowerValue.integerValue() endif
+
+      Lower_Value : constant
+        AMF.UML.Value_Specifications.UML_Value_Specification_Access
+         := UML_Multiplicity_Element_Proxy'Class (Self.all).Get_Lower_Value;
+
+   begin
+      if Lower_Value = null then
+         return (False, 1);
+
+      else
+         return Lower_Value.Integer_Value;
+      end if;
+   end Lower_Bound;
 
    --------------------
    -- Set_Is_Ordered --
@@ -67,5 +129,36 @@ package body AMF.Internals.UML_Multiplicity_Elements is
    begin
       AMF.Internals.Tables.UML_Attributes.Internal_Set_Is_Unique (Self.Id, To);
    end Set_Is_Unique;
+
+   -----------------
+   -- Upper_Bound --
+   -----------------
+
+   overriding function Upper_Bound
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Unlimited_Natural
+   is
+      --  7.3.33 MultiplicityElement (from Kernel)
+      --
+      --  [5] The query upperBound() returns the upper bound of the
+      --  multiplicity for a bounded multiplicity as an unlimited natural.
+      --
+      --  MultiplicityElement::upperBound() : [UnlimitedNatural];
+      --  upperBound =
+      --    if upperValue->isEmpty() then 1
+      --    else upperValue.unlimitedValue() endif
+
+      Upper_Value : constant
+        AMF.UML.Value_Specifications.UML_Value_Specification_Access
+          := UML_Multiplicity_Element_Proxy'Class (Self.all).Get_Upper_Value;
+
+   begin
+      if Upper_Value = null then
+         return (False, (False, 1));
+
+      else
+         return Upper_Value.Unlimited_Value;
+      end if;
+   end Upper_Bound;
 
 end AMF.Internals.UML_Multiplicity_Elements;

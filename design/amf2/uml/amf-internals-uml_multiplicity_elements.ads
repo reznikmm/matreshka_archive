@@ -55,6 +55,22 @@ package AMF.Internals.UML_Multiplicity_Elements is
        and AMF.UML.Multiplicity_Elements.UML_Multiplicity_Element
          with null record;
 
+   overriding function Is_Multivalued
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return Boolean;
+   --  Operation MultiplicityElement::isMultivalued.
+   --
+   --  The query isMultivalued() checks whether this multiplicity has an upper 
+   --  bound greater than one.
+
+   overriding function Lower_Bound
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Integer;
+   --  Operation MultiplicityElement::lowerBound.
+   --
+   --  The query lowerBound() returns the lower bound of the multiplicity as 
+   --  an integer.
+
    overriding procedure Set_Is_Ordered
     (Self : not null access UML_Multiplicity_Element_Proxy;
      To   : Boolean);
@@ -62,5 +78,13 @@ package AMF.Internals.UML_Multiplicity_Elements is
    overriding procedure Set_Is_Unique
     (Self : not null access UML_Multiplicity_Element_Proxy;
      To   : Boolean);
+
+   overriding function Upper_Bound
+    (Self : not null access constant UML_Multiplicity_Element_Proxy)
+       return AMF.Optional_Unlimited_Natural;
+   --  Operation MultiplicityElement::upperBound.
+   --
+   --  The query upperBound() returns the upper bound of the multiplicity for 
+   --  a bounded multiplicity as an unlimited natural.
 
 end AMF.Internals.UML_Multiplicity_Elements;

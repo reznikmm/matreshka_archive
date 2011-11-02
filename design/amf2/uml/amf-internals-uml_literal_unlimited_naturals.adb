@@ -52,60 +52,6 @@ with Matreshka.Internals.Strings;
 
 package body AMF.Internals.UML_Literal_Unlimited_Naturals is
 
-   ---------------
-   -- Get_Value --
-   ---------------
-
-   overriding function Get_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Unlimited_Natural is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
-         (Self.Id);
-   end Get_Value;
-
-   ---------------
-   -- Set_Value --
-   ---------------
-
-   overriding procedure Set_Value
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.Unlimited_Natural) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
-       (Self.Id, To);
-   end Set_Value;
-
-   --------------
-   -- Get_Type --
-   --------------
-
-   overriding function Get_Type
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.UML.Types.UML_Type_Access is
-   begin
-      return
-        AMF.UML.Types.UML_Type_Access
-         (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Type
-             (Self.Id)));
-   end Get_Type;
-
-   --------------
-   -- Set_Type --
-   --------------
-
-   overriding procedure Set_Type
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.UML.Types.UML_Type_Access) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Type;
-
    ---------------------------
    -- Get_Client_Dependency --
    ---------------------------
@@ -145,25 +91,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
       end;
    end Get_Name;
 
-   --------------
-   -- Set_Name --
-   --------------
-
-   overriding procedure Set_Name
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.Optional_String) is
-   begin
-      if To.Is_Empty then
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id, null);
-
-      else
-         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
-          (Self.Id,
-           League.Strings.Internals.Internal (To.Value));
-      end if;
-   end Set_Name;
-
    -------------------------
    -- Get_Name_Expression --
    -------------------------
@@ -179,20 +106,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
              (Self.Id)));
    end Get_Name_Expression;
 
-   -------------------------
-   -- Set_Name_Expression --
-   -------------------------
-
-   overriding procedure Set_Name_Expression
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Name_Expression;
-
    -------------------
    -- Get_Namespace --
    -------------------
@@ -207,55 +120,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
            (AMF.Internals.Tables.UML_Attributes.Internal_Get_Namespace
              (Self.Id)));
    end Get_Namespace;
-
-   ------------------------
-   -- Get_Qualified_Name --
-   ------------------------
-
-   overriding function Get_Qualified_Name
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Optional_String is
-   begin
-      declare
-         use type Matreshka.Internals.Strings.Shared_String_Access;
-
-         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
-           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
-
-      begin
-         if Aux = null then
-            return (Is_Empty => True);
-
-         else
-            return (False, League.Strings.Internals.Create (Aux));
-         end if;
-      end;
-   end Get_Qualified_Name;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
-   end Set_Visibility;
 
    -----------------------
    -- Get_Owned_Comment --
@@ -302,31 +166,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
              (Self.Id)));
    end Get_Owner;
 
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.UML.UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Id);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Id, To);
-   end Set_Visibility;
-
    -----------------------------------
    -- Get_Owning_Template_Parameter --
    -----------------------------------
@@ -342,19 +181,29 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
              (Self.Id)));
    end Get_Owning_Template_Parameter;
 
-   -----------------------------------
-   -- Set_Owning_Template_Parameter --
-   -----------------------------------
+   ------------------------
+   -- Get_Qualified_Name --
+   ------------------------
 
-   overriding procedure Set_Owning_Template_Parameter
-    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
-     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
+   overriding function Get_Qualified_Name
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_String is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
-   end Set_Owning_Template_Parameter;
+      declare
+         use type Matreshka.Internals.Strings.Shared_String_Access;
+
+         Aux : constant Matreshka.Internals.Strings.Shared_String_Access
+           := AMF.Internals.Tables.UML_Attributes.Internal_Get_Qualified_Name (Self.Id);
+
+      begin
+         if Aux = null then
+            return (Is_Empty => True);
+
+         else
+            return (False, League.Strings.Internals.Create (Aux));
+         end if;
+      end;
+   end Get_Qualified_Name;
 
    ----------------------------
    -- Get_Template_Parameter --
@@ -371,6 +220,107 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
              (Self.Id)));
    end Get_Template_Parameter;
 
+   --------------
+   -- Get_Type --
+   --------------
+
+   overriding function Get_Type
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Types.UML_Type_Access is
+   begin
+      return
+        AMF.UML.Types.UML_Type_Access
+         (AMF.Internals.Helpers.To_Element
+           (AMF.Internals.Tables.UML_Attributes.Internal_Get_Type
+             (Self.Id)));
+   end Get_Type;
+
+   ---------------
+   -- Get_Value --
+   ---------------
+
+   overriding function Get_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Unlimited_Natural is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Value
+         (Self.Id);
+   end Get_Value;
+
+   --------------------
+   -- Get_Visibility --
+   --------------------
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.Optional_UML_Visibility_Kind is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
+   end Get_Visibility;
+
+   --------------------
+   -- Get_Visibility --
+   --------------------
+
+   overriding function Get_Visibility
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.UML.UML_Visibility_Kind is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
+         (Self.Id);
+   end Get_Visibility;
+
+   --------------
+   -- Set_Name --
+   --------------
+
+   overriding procedure Set_Name
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.Optional_String) is
+   begin
+      if To.Is_Empty then
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id, null);
+
+      else
+         AMF.Internals.Tables.UML_Attributes.Internal_Set_Name
+          (Self.Id,
+           League.Strings.Internals.Internal (To.Value));
+      end if;
+   end Set_Name;
+
+   -------------------------
+   -- Set_Name_Expression --
+   -------------------------
+
+   overriding procedure Set_Name_Expression
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Name_Expression;
+
+   -----------------------------------
+   -- Set_Owning_Template_Parameter --
+   -----------------------------------
+
+   overriding procedure Set_Owning_Template_Parameter
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Owning_Template_Parameter;
+
    ----------------------------
    -- Set_Template_Parameter --
    ----------------------------
@@ -385,6 +335,95 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
          (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
+   --------------
+   -- Set_Type --
+   --------------
+
+   overriding procedure Set_Type
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Types.UML_Type_Access) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Type;
+
+   ---------------
+   -- Set_Value --
+   ---------------
+
+   overriding procedure Set_Value
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.Unlimited_Natural) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
+       (Self.Id, To);
+   end Set_Value;
+
+   --------------------
+   -- Set_Visibility --
+   --------------------
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.Optional_UML_Visibility_Kind) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
+   end Set_Visibility;
+
+   --------------------
+   -- Set_Visibility --
+   --------------------
+
+   overriding procedure Set_Visibility
+    (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
+     To   : AMF.UML.UML_Visibility_Kind) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
+       (Self.Id, To);
+   end Set_Visibility;
+
+   ---------------------
+   -- Unlimited_Value --
+   ---------------------
+
+   overriding function Unlimited_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Unlimited_Natural
+   is
+      --  7.3.32 LiteralUnlimitedNatural (from Kernel)
+      --
+      --  [2] The query unlimitedValue() gives the value.
+      --
+      --  LiteralUnlimitedNatural::unlimitedValue() : [UnlimitedNatural];
+      --  unlimitedValue = value
+
+   begin
+      return UML_Literal_Unlimited_Natural_Proxy'Class (Self.all).Get_Value;
+   end Unlimited_Value;
+
+   ---------------------
+   -- Unlimited_Value --
+   ---------------------
+
+   overriding function Unlimited_Value
+    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
+       return AMF.Optional_Unlimited_Natural
+   is
+      --  7.3.32 LiteralUnlimitedNatural (from Kernel)
+      --
+      --  [2] The query unlimitedValue() gives the value.
+      --
+      --  LiteralUnlimitedNatural::unlimitedValue() : [UnlimitedNatural];
+      --  unlimitedValue = value
+
+   begin
+      return
+       (False, UML_Literal_Unlimited_Natural_Proxy'Class (Self.all).Get_Value);
+   end Unlimited_Value;
+
    -------------------
    -- Is_Computable --
    -------------------
@@ -398,20 +437,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
       raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Is_Computable";
       return Is_Computable (Self);
    end Is_Computable;
-
-   ---------------------
-   -- Unlimited_Value --
-   ---------------------
-
-   overriding function Unlimited_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Unlimited_Natural is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Unlimited_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Unlimited_Value";
-      return Unlimited_Value (Self);
-   end Unlimited_Value;
 
    -------------------
    -- Boolean_Value --
@@ -497,20 +522,6 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
       raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.String_Value";
       return String_Value (Self);
    end String_Value;
-
-   ---------------------
-   -- Unlimited_Value --
-   ---------------------
-
-   overriding function Unlimited_Value
-    (Self : not null access constant UML_Literal_Unlimited_Natural_Proxy)
-       return AMF.Optional_Unlimited_Natural is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Unlimited_Value unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Literal_Unlimited_Natural_Proxy.Unlimited_Value";
-      return Unlimited_Value (Self);
-   end Unlimited_Value;
 
    --------------------
    -- All_Namespaces --
