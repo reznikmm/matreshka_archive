@@ -50,6 +50,7 @@ library project UML is
    for Source_Dirs use (".", "generated");
    for Library_Name use "matreshka-amf-uml";
    for Library_Dir use "../.libs";
+   for Library_ALI_Dir use "../.libs/amf";
    for Library_Kind use "relocatable";
 
    package Compiler is
