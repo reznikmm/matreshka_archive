@@ -48,6 +48,20 @@ package body AMF.Internals.CMOF_Associations is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------
+   -- Get_End_Type --
+   ------------------
+
+   overriding function Get_End_Type
+    (Self : not null access constant CMOF_Association_Proxy)
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is
+   begin
+      return
+        AMF.CMOF.Types.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_End_Type (Self.Id)));
+   end Get_End_Type;
+
    --------------------
    -- Get_Is_Derived --
    --------------------
@@ -71,6 +85,20 @@ package body AMF.Internals.CMOF_Associations is
          (AMF.Internals.Element_Collections.Wrap
            (Internal_Get_Member_End (Self.Id)));
    end Get_Member_End;
+
+   -----------------------------
+   -- Get_Navigable_Owned_End --
+   -----------------------------
+
+   overriding function Get_Navigable_Owned_End
+    (Self : not null access constant CMOF_Association_Proxy)
+       return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property is
+   begin
+      return
+        AMF.CMOF.Properties.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Navigable_Owned_End (Self.Id)));
+   end Get_Navigable_Owned_End;
 
    -------------------
    -- Get_Owned_End --
@@ -192,21 +220,6 @@ package body AMF.Internals.CMOF_Associations is
       raise Program_Error;
       return Qualified_Name (Self);
    end Qualified_Name;
-
-   -----------------
-   -- Get_Package --
-   -----------------
-
-   overriding function Get_Package
-     (Self : not null access constant CMOF_Association_Proxy)
-      return AMF.CMOF.Packages.CMOF_Package_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package unimplemented");
-      raise Program_Error;
-      return Get_Package (Self);
-   end Get_Package;
 
    -----------------
    -- Set_Package --
@@ -512,36 +525,6 @@ package body AMF.Internals.CMOF_Associations is
       pragma Compile_Time_Warning (Standard.True, "Set_Is_Derived unimplemented");
       raise Program_Error;
    end Set_Is_Derived;
-
-   ------------------
-   -- Get_End_Type --
-   ------------------
-
-   overriding function Get_End_Type
-     (Self : not null access constant CMOF_Association_Proxy)
-      return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_End_Type unimplemented");
-      raise Program_Error;
-      return Get_End_Type (Self);
-   end Get_End_Type;
-
-   -----------------------------
-   -- Get_Navigable_Owned_End --
-   -----------------------------
-
-   overriding function Get_Navigable_Owned_End
-     (Self : not null access constant CMOF_Association_Proxy)
-      return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Navigable_Owned_End unimplemented");
-      raise Program_Error;
-      return Get_Navigable_Owned_End (Self);
-   end Get_Navigable_Owned_End;
 
    --------------
    -- End_Type --

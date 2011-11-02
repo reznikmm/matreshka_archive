@@ -94,10 +94,6 @@ package AMF.Internals.CMOF_Data_Types is
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function Get_Package
-    (Self : not null access constant CMOF_Data_Type_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package_Access;
-
    overriding procedure Set_Package
     (Self : not null access CMOF_Data_Type_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);

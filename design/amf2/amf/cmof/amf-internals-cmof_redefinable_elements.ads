@@ -41,7 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Redefinable_Elements;
+with AMF.CMOF.Classifiers.Collections;
+with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.Internals.CMOF_Named_Elements;
 
 package AMF.Internals.CMOF_Redefinable_Elements is
@@ -55,5 +56,19 @@ package AMF.Internals.CMOF_Redefinable_Elements is
    overriding function Get_Is_Leaf
     (Self : not null access constant CMOF_Redefinable_Element_Proxy)
        return Boolean;
+
+   overriding function Get_Redefined_Element
+    (Self : not null access constant CMOF_Redefinable_Element_Proxy)
+       return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element;
+   --  Getter of RedefinableElement::redefinedElement.
+   --
+   --  The redefinable element that is being redefined by this element.
+
+   overriding function Get_Redefinition_Context
+    (Self : not null access constant CMOF_Redefinable_Element_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
+   --  Getter of RedefinableElement::redefinitionContext.
+   --
+   --  References the contexts that this element may be redefined from.
 
 end AMF.Internals.CMOF_Redefinable_Elements;

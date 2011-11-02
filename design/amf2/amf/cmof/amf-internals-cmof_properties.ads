@@ -50,9 +50,9 @@ with AMF.CMOF.Multiplicity_Elements;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Properties.Collections;
-with AMF.CMOF.Redefinable_Elements.Collections;
+with AMF.CMOF.Redefinable_Elements;
 with AMF.CMOF.Types;
-with AMF.Internals.CMOF_Redefinable_Elements;
+with AMF.Internals.CMOF_Features;
 with AMF.Internals.CMOF_Multiplicity_Elements;
 pragma Elaborate (AMF.Internals.CMOF_Multiplicity_Elements);
 with AMF.Internals.CMOF_Typed_Elements;
@@ -62,7 +62,7 @@ package AMF.Internals.CMOF_Properties is
 
    package Multiplicity_Elements is
      new AMF.Internals.CMOF_Multiplicity_Elements
-          (AMF.Internals.CMOF_Redefinable_Elements.CMOF_Redefinable_Element_Proxy);
+          (AMF.Internals.CMOF_Features.CMOF_Feature_Proxy);
 
    package Typed_Elements is
      new AMF.Internals.CMOF_Typed_Elements
@@ -127,14 +127,6 @@ package AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : AMF.CMOF.Types.CMOF_Type_Access);
 
-   overriding function Get_Redefinition_Context
-    (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
-
-   overriding function Get_Redefined_Element
-    (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element;
-
    overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Property_Proxy;
      To   : Boolean);
@@ -143,10 +135,6 @@ package AMF.Internals.CMOF_Properties is
     (Self : not null access constant CMOF_Property_Proxy;
      Redefined : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
        return Boolean;
-
-   overriding function Get_Featuring_Classifier
-    (Self : not null access constant CMOF_Property_Proxy)
-       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
 
    overriding function Get_Is_Read_Only
     (Self : not null access constant CMOF_Property_Proxy)
@@ -215,6 +203,10 @@ package AMF.Internals.CMOF_Properties is
    overriding function Get_Opposite
     (Self : not null access constant CMOF_Property_Proxy)
        return AMF.CMOF.Properties.CMOF_Property_Access;
+   --  Getter of Property::opposite.
+   --
+   --  In the case where the property is one navigable end of a binary 
+   --  association with both ends navigable, this gives the other end.
 
    overriding procedure Set_Opposite
     (Self : not null access CMOF_Property_Proxy;
@@ -223,6 +215,9 @@ package AMF.Internals.CMOF_Properties is
    overriding function Get_Datatype
     (Self : not null access constant CMOF_Property_Proxy)
        return AMF.CMOF.Data_Types.CMOF_Data_Type_Access;
+   --  Getter of Property::datatype.
+   --
+   --  The DataType that owns this Property.
 
    overriding procedure Set_Datatype
     (Self : not null access CMOF_Property_Proxy;

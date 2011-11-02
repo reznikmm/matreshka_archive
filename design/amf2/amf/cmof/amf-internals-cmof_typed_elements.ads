@@ -59,5 +59,9 @@ package AMF.Internals.CMOF_Typed_Elements is
    overriding function Get_Type
     (Self : not null access constant CMOF_Typed_Element_Proxy)
        return AMF.CMOF.Types.CMOF_Type_Access;
+   --  Getter of TypedElement::type.
+   --
+   --  This information is derived from the return result for this Operation.
+
 
 end AMF.Internals.CMOF_Typed_Elements;

@@ -183,21 +183,6 @@ package body AMF.Internals.CMOF_Data_Types is
    end Qualified_Name;
 
    -----------------
-   -- Get_Package --
-   -----------------
-
-   overriding function Get_Package
-     (Self : not null access constant CMOF_Data_Type_Proxy)
-      return AMF.CMOF.Packages.CMOF_Package_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Package unimplemented");
-      raise Program_Error;
-      return Get_Package (Self);
-   end Get_Package;
-
-   -----------------
    -- Set_Package --
    -----------------
 

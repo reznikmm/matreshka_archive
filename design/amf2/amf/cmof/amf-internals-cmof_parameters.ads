@@ -138,6 +138,9 @@ package AMF.Internals.CMOF_Parameters is
    overriding function Get_Operation
     (Self : not null access constant CMOF_Parameter_Proxy)
        return AMF.CMOF.Operations.CMOF_Operation_Access;
+   --  Getter of Parameter::operation.
+   --
+   --  References the Operation owning this parameter.
 
    overriding procedure Set_Operation
     (Self : not null access CMOF_Parameter_Proxy;

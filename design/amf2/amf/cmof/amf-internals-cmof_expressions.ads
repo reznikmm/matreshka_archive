@@ -47,12 +47,12 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Types;
 with AMF.CMOF.Value_Specifications.Collections;
-with AMF.Internals.CMOF_Named_Elements;
+with AMF.Internals.CMOF_Value_Specifications;
 
 package AMF.Internals.CMOF_Expressions is
 
    type CMOF_Expression_Proxy is
-     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
+     limited new AMF.Internals.CMOF_Value_Specifications.CMOF_Value_Specification_Proxy
        and AMF.CMOF.Expressions.CMOF_Expression
          with null record;
 
@@ -111,10 +111,6 @@ package AMF.Internals.CMOF_Expressions is
    overriding function Is_Null
     (Self : not null access constant CMOF_Expression_Proxy)
        return Boolean;
-
-   overriding function Get_Type
-    (Self : not null access constant CMOF_Expression_Proxy)
-       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Expression_Proxy;

@@ -41,8 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Constraints is
+
+   use AMF.Internals.Tables.CMOF_Attributes;
+
+   -----------------------------
+   -- Get_Constrained_Element --
+   -----------------------------
+
+   overriding function Get_Constrained_Element
+    (Self : not null access constant CMOF_Constraint_Proxy)
+       return AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element is
+   begin
+      return
+        AMF.CMOF.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Constrained_Element (Self.Id)));
+   end Get_Constrained_Element;
+
+   -----------------
+   -- Get_Context --
+   -----------------
+
+   overriding function Get_Context
+    (Self : not null access constant CMOF_Constraint_Proxy)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access is
+   begin
+      return
+        AMF.CMOF.Namespaces.CMOF_Namespace_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Context (Self.Id)));
+   end Get_Context;
+
+   -----------------------
+   -- Get_Specification --
+   -----------------------
+
+   overriding function Get_Specification
+    (Self : not null access constant CMOF_Constraint_Proxy)
+       return AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access is
+   begin
+      return
+        AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Specification (Self.Id)));
+   end Get_Specification;
 
    ------------------------
    -- All_Owned_Elements --
@@ -150,36 +196,6 @@ package body AMF.Internals.CMOF_Constraints is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   -----------------------------
-   -- Get_Constrained_Element --
-   -----------------------------
-
-   overriding function Get_Constrained_Element
-     (Self : not null access constant CMOF_Constraint_Proxy)
-      return AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Constrained_Element unimplemented");
-      raise Program_Error;
-      return Get_Constrained_Element (Self);
-   end Get_Constrained_Element;
-
-   -----------------------
-   -- Get_Specification --
-   -----------------------
-
-   overriding function Get_Specification
-     (Self : not null access constant CMOF_Constraint_Proxy)
-      return AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Specification unimplemented");
-      raise Program_Error;
-      return Get_Specification (Self);
-   end Get_Specification;
-
    -----------------------
    -- Set_Specification --
    -----------------------
@@ -193,21 +209,6 @@ package body AMF.Internals.CMOF_Constraints is
       pragma Compile_Time_Warning (Standard.True, "Set_Specification unimplemented");
       raise Program_Error;
    end Set_Specification;
-
-   -----------------
-   -- Get_Context --
-   -----------------
-
-   overriding function Get_Context
-     (Self : not null access constant CMOF_Constraint_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Context unimplemented");
-      raise Program_Error;
-      return Get_Context (Self);
-   end Get_Context;
 
    -----------------
    -- Set_Context --

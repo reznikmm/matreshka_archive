@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes;
-with AMF.CMOF.Classifiers.Collections;
 with AMF.CMOF.Constraints.Collections;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Elements.Collections;
@@ -51,18 +50,18 @@ with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Parameters.Collections;
-with AMF.CMOF.Redefinable_Elements.Collections;
+with AMF.CMOF.Redefinable_Elements;
 with AMF.CMOF.Types.Collections;
 with AMF.Internals.CMOF_Namespaces;
 pragma Elaborate (AMF.Internals.CMOF_Namespaces);
-with AMF.Internals.CMOF_Redefinable_Elements;
+with AMF.Internals.CMOF_Features;
 with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Operations is
 
    package Namespaces is
      new AMF.Internals.CMOF_Namespaces
-          (AMF.Internals.CMOF_Redefinable_Elements.CMOF_Redefinable_Element_Proxy);
+          (AMF.Internals.CMOF_Features.CMOF_Feature_Proxy);
 
    type CMOF_Operation_Proxy is limited
      new Namespaces.CMOF_Namespace_Proxy
@@ -124,14 +123,6 @@ package AMF.Internals.CMOF_Operations is
     (Self : not null access constant CMOF_Operation_Proxy)
        return Boolean;
 
-   overriding function Get_Redefinition_Context
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
-
-   overriding function Get_Redefined_Element
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element;
-
    overriding procedure Set_Is_Leaf
     (Self : not null access CMOF_Operation_Proxy;
      To   : Boolean);
@@ -140,10 +131,6 @@ package AMF.Internals.CMOF_Operations is
     (Self : not null access constant CMOF_Operation_Proxy;
      Redefined : AMF.CMOF.Redefinable_Elements.CMOF_Redefinable_Element_Access)
        return Boolean;
-
-   overriding function Get_Featuring_Classifier
-    (Self : not null access constant CMOF_Operation_Proxy)
-       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier;
 
    overriding function Get_Is_Query
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -196,6 +183,9 @@ package AMF.Internals.CMOF_Operations is
    overriding function Get_Datatype
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Data_Types.CMOF_Data_Type_Access;
+   --  Getter of Operation::datatype.
+   --
+   --  The DataType that owns this Operation.
 
    overriding procedure Set_Datatype
     (Self : not null access CMOF_Operation_Proxy;
@@ -204,6 +194,10 @@ package AMF.Internals.CMOF_Operations is
    overriding function Get_Raised_Exception
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type;
+   --  Getter of Operation::raisedException.
+   --
+   --  References the Types representing exceptions that may be raised during 
+   --  an invocation of this operation.
 
    overriding function Get_Redefined_Operation
     (Self : not null access constant CMOF_Operation_Proxy)
@@ -212,6 +206,9 @@ package AMF.Internals.CMOF_Operations is
    overriding function Get_Type
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Types.CMOF_Type_Access;
+   --  Getter of Operation::type.
+   --
+   --  This information is derived from the return result for this Operation.
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Operation_Proxy;
@@ -224,14 +221,17 @@ package AMF.Internals.CMOF_Operations is
    overriding function Get_Precondition
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
+   --  Getter of Operation::precondition.
 
    overriding function Get_Postcondition
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint;
+   --  Getter of Operation::postcondition.
 
    overriding function Get_Body_Condition
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Constraints.CMOF_Constraint_Access;
+   --  Getter of Operation::bodyCondition.
 
    overriding procedure Set_Body_Condition
     (Self : not null access CMOF_Operation_Proxy;

@@ -93,10 +93,6 @@ package AMF.Internals.CMOF_Associations is
     (Self : not null access constant CMOF_Association_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function Get_Package
-    (Self : not null access constant CMOF_Association_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package_Access;
-
    overriding procedure Set_Package
     (Self : not null access CMOF_Association_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);
@@ -197,6 +193,10 @@ package AMF.Internals.CMOF_Associations is
    overriding function Get_End_Type
     (Self : not null access constant CMOF_Association_Proxy)
        return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type;
+   --  Getter of Association::endType.
+   --
+   --  References the classifiers that are used as types of the ends of the 
+   --  association.
 
    overriding function Get_Member_End
     (Self : not null access constant CMOF_Association_Proxy)
@@ -205,6 +205,9 @@ package AMF.Internals.CMOF_Associations is
    overriding function Get_Navigable_Owned_End
     (Self : not null access constant CMOF_Association_Proxy)
        return AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property;
+   --  Getter of Association::navigableOwnedEnd.
+   --
+   --  The navigable ends that are owned by the association itself.
 
    overriding function End_Type
     (Self : not null access constant CMOF_Association_Proxy)

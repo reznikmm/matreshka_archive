@@ -90,10 +90,17 @@ package AMF.Internals.CMOF_Constraints is
    overriding function Get_Constrained_Element
     (Self : not null access constant CMOF_Constraint_Proxy)
        return AMF.CMOF.Elements.Collections.Ordered_Set_Of_CMOF_Element;
+   --  Getter of Constraint::constrainedElement.
+   --
+   --  The ordered set of Elements referenced by this Constraint.
 
    overriding function Get_Specification
     (Self : not null access constant CMOF_Constraint_Proxy)
        return AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access;
+   --  Getter of Constraint::specification.
+   --
+   --  A condition that must be true when evaluated in order for the 
+   --  constraint to be satisfied.
 
    overriding procedure Set_Specification
     (Self : not null access CMOF_Constraint_Proxy;
@@ -102,6 +109,7 @@ package AMF.Internals.CMOF_Constraints is
    overriding function Get_Context
     (Self : not null access constant CMOF_Constraint_Proxy)
        return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
+   --  Getter of Constraint::context.
 
    overriding procedure Set_Context
     (Self : not null access CMOF_Constraint_Proxy;

@@ -44,6 +44,7 @@
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Parameters is
@@ -81,6 +82,19 @@ package body AMF.Internals.CMOF_Parameters is
    begin
       return Internal_Get_Direction (Self.Id);
    end Get_Direction;
+
+   -------------------
+   -- Get_Operation --
+   -------------------
+
+   overriding function Get_Operation
+    (Self : not null access constant CMOF_Parameter_Proxy)
+       return AMF.CMOF.Operations.CMOF_Operation_Access is
+   begin
+      return
+        AMF.CMOF.Operations.CMOF_Operation_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Operation (Self.Id)));
+   end Get_Operation;
 
    -------------------
    -- Set_Direction --
@@ -275,21 +289,6 @@ package body AMF.Internals.CMOF_Parameters is
       pragma Compile_Time_Warning (Standard.True, "Set_Default unimplemented");
       raise Program_Error;
    end Set_Default;
-
-   -------------------
-   -- Get_Operation --
-   -------------------
-
-   overriding function Get_Operation
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return AMF.CMOF.Operations.CMOF_Operation_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Operation unimplemented");
-      raise Program_Error;
-      return Get_Operation (Self);
-   end Get_Operation;
 
    -------------------
    -- Set_Operation --

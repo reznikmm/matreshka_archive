@@ -81,6 +81,19 @@ package body AMF.Internals.CMOF_Properties is
          (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Id)));
    end Get_Class;
 
+   ------------------
+   -- Get_Datatype --
+   ------------------
+
+   overriding function Get_Datatype
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Data_Types.CMOF_Data_Type_Access is
+   begin
+      return
+        AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Datatype (Self.Id)));
+   end Get_Datatype;
+
    -----------------
    -- Get_Default --
    -----------------
@@ -141,6 +154,20 @@ package body AMF.Internals.CMOF_Properties is
    begin
       return Internal_Get_Is_Read_Only (Self.Id);
    end Get_Is_Read_Only;
+
+   ------------------
+   -- Get_Opposite --
+   ------------------
+
+   overriding function Get_Opposite
+    (Self : not null access constant CMOF_Property_Proxy)
+       return AMF.CMOF.Properties.CMOF_Property_Access is
+   begin
+      return
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Opposite (Self.Id)));
+   end Get_Opposite;
 
    ----------------------------
    -- Get_Owning_Association --
@@ -420,36 +447,6 @@ package body AMF.Internals.CMOF_Properties is
       raise Program_Error;
    end Set_Type;
 
-   ------------------------------
-   -- Get_Redefinition_Context --
-   ------------------------------
-
-   overriding function Get_Redefinition_Context
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefinition_Context unimplemented");
-      raise Program_Error;
-      return Get_Redefinition_Context (Self);
-   end Get_Redefinition_Context;
-
-   ---------------------------
-   -- Get_Redefined_Element --
-   ---------------------------
-
-   overriding function Get_Redefined_Element
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefined_Element unimplemented");
-      raise Program_Error;
-      return Get_Redefined_Element (Self);
-   end Get_Redefined_Element;
-
    -----------------
    -- Set_Is_Leaf --
    -----------------
@@ -480,21 +477,6 @@ package body AMF.Internals.CMOF_Properties is
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
 
-   ------------------------------
-   -- Get_Featuring_Classifier --
-   ------------------------------
-
-   overriding function Get_Featuring_Classifier
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Featuring_Classifier unimplemented");
-      raise Program_Error;
-      return Get_Featuring_Classifier (Self);
-   end Get_Featuring_Classifier;
-
    ---------------
    -- Set_Class --
    ---------------
@@ -524,21 +506,6 @@ package body AMF.Internals.CMOF_Properties is
    end Set_Owning_Association;
 
    ------------------
-   -- Get_Opposite --
-   ------------------
-
-   overriding function Get_Opposite
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Properties.CMOF_Property_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Opposite unimplemented");
-      raise Program_Error;
-      return Get_Opposite (Self);
-   end Get_Opposite;
-
-   ------------------
    -- Set_Opposite --
    ------------------
 
@@ -551,21 +518,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Opposite unimplemented");
       raise Program_Error;
    end Set_Opposite;
-
-   ------------------
-   -- Get_Datatype --
-   ------------------
-
-   overriding function Get_Datatype
-     (Self : not null access constant CMOF_Property_Proxy)
-      return AMF.CMOF.Data_Types.CMOF_Data_Type_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Datatype unimplemented");
-      raise Program_Error;
-      return Get_Datatype (Self);
-   end Get_Datatype;
 
    ------------------
    -- Set_Datatype --

@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Redefinable_Elements is
@@ -57,5 +58,33 @@ package body AMF.Internals.CMOF_Redefinable_Elements is
    begin
       return Internal_Get_Is_Leaf (Self.Id);
    end Get_Is_Leaf;
+
+   ---------------------------
+   -- Get_Redefined_Element --
+   ---------------------------
+
+   overriding function Get_Redefined_Element
+    (Self : not null access constant CMOF_Redefinable_Element_Proxy)
+       return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element is
+   begin
+      return
+        AMF.CMOF.Redefinable_Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Redefined_Element (Self.Id)));
+   end Get_Redefined_Element;
+
+   ------------------------------
+   -- Get_Redefinition_Context --
+   ------------------------------
+
+   overriding function Get_Redefinition_Context
+    (Self : not null access constant CMOF_Redefinable_Element_Proxy)
+       return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier is
+   begin
+      return
+        AMF.CMOF.Classifiers.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Redefinition_Context (Self.Id)));
+   end Get_Redefinition_Context;
 
 end AMF.Internals.CMOF_Redefinable_Elements;

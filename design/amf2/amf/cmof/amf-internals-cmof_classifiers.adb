@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Classifiers is
@@ -114,5 +115,18 @@ package body AMF.Internals.CMOF_Classifiers is
    begin
       return Internal_Get_Is_Final_Specialization (Self.Id);
    end Get_Is_Final_Specialization;
+
+   -----------------
+   -- Get_Package --
+   -----------------
+
+   overriding function Get_Package
+    (Self : not null access constant CMOF_Classifier_Proxy)
+       return AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Package (Self.Id)));
+   end Get_Package;
 
 end AMF.Internals.CMOF_Classifiers;

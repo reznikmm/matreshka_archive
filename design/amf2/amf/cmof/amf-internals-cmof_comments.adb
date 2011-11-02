@@ -44,12 +44,27 @@
 with Matreshka.Internals.Strings;
 with League.Strings.Internals;
 
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Comments is
 
    use AMF.Internals.Tables.CMOF_Attributes;
    use type Matreshka.Internals.Strings.Shared_String_Access;
+
+   ---------------------------
+   -- Get_Annotated_Element --
+   ---------------------------
+
+   overriding function Get_Annotated_Element
+    (Self : not null access constant CMOF_Comment_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is
+   begin
+      return
+        AMF.CMOF.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Annotated_Element (Self.Id)));
+   end Get_Annotated_Element;
 
    --------------
    -- Get_Body --
@@ -88,21 +103,6 @@ package body AMF.Internals.CMOF_Comments is
       end if;
    end Set_Body;
 
-   ---------------
-   -- Get_Owner --
-   ---------------
-
-   overriding function Get_Owner
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.CMOF_Element_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Owner unimplemented");
-      raise Program_Error;
-      return Get_Owner (Self);
-   end Get_Owner;
-
    ------------------------
    -- All_Owned_Elements --
    ------------------------
@@ -132,20 +132,5 @@ package body AMF.Internals.CMOF_Comments is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   ---------------------------
-   -- Get_Annotated_Element --
-   ---------------------------
-
-   overriding function Get_Annotated_Element
-     (Self : not null access constant CMOF_Comment_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Annotated_Element unimplemented");
-      raise Program_Error;
-      return Get_Annotated_Element (Self);
-   end Get_Annotated_Element;
 
 end AMF.Internals.CMOF_Comments;

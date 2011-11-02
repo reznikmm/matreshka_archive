@@ -46,13 +46,13 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Opaque_Expressions;
 with AMF.CMOF.Types;
-with AMF.Internals.CMOF_Named_Elements;
+with AMF.Internals.CMOF_Value_Specifications;
 with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Opaque_Expressions is
 
    type CMOF_Opaque_Expression_Proxy is
-     limited new AMF.Internals.CMOF_Named_Elements.CMOF_Named_Element_Proxy
+     limited new AMF.Internals.CMOF_Value_Specifications.CMOF_Value_Specification_Proxy
        and AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression
          with null record;
 
@@ -111,10 +111,6 @@ package AMF.Internals.CMOF_Opaque_Expressions is
    overriding function Is_Null
     (Self : not null access constant CMOF_Opaque_Expression_Proxy)
        return Boolean;
-
-   overriding function Get_Type
-    (Self : not null access constant CMOF_Opaque_Expression_Proxy)
-       return AMF.CMOF.Types.CMOF_Type_Access;
 
    overriding procedure Set_Type
     (Self : not null access CMOF_Opaque_Expression_Proxy;

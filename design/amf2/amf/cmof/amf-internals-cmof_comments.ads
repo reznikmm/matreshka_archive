@@ -54,10 +54,6 @@ package AMF.Internals.CMOF_Comments is
 
    --  XXX These subprograms are stubs
 
-   overriding function Get_Owner
-    (Self : not null access constant CMOF_Comment_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access;
-
    overriding function All_Owned_Elements
     (Self : not null access constant CMOF_Comment_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
@@ -77,5 +73,8 @@ package AMF.Internals.CMOF_Comments is
    overriding function Get_Annotated_Element
     (Self : not null access constant CMOF_Comment_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+   --  Getter of Comment::annotatedElement.
+   --
+   --  References the Element(s) being commented.
 
 end AMF.Internals.CMOF_Comments;

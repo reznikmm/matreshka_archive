@@ -94,10 +94,6 @@ package AMF.Internals.CMOF_Classes is
     (Self : not null access constant CMOF_Class_Proxy)
        return League.Strings.Universal_String;
 
-   overriding function Get_Package
-    (Self : not null access constant CMOF_Class_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package_Access;
-
    overriding procedure Set_Package
     (Self : not null access CMOF_Class_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);

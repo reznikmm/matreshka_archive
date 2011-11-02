@@ -241,21 +241,6 @@ package body AMF.Internals.CMOF_Expressions is
    end Is_Null;
 
    --------------
-   -- Get_Type --
-   --------------
-
-   overriding function Get_Type
-     (Self : not null access constant CMOF_Expression_Proxy)
-      return AMF.CMOF.Types.CMOF_Type_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Type unimplemented");
-      raise Program_Error;
-      return Get_Type (Self);
-   end Get_Type;
-
-   --------------
    -- Set_Type --
    --------------
 

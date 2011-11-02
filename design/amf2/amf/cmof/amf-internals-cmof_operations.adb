@@ -49,6 +49,20 @@ package body AMF.Internals.CMOF_Operations is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------------
+   -- Get_Body_Condition --
+   ------------------------
+
+   overriding function Get_Body_Condition
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Constraints.CMOF_Constraint_Access is
+   begin
+      return
+        AMF.CMOF.Constraints.CMOF_Constraint_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Body_Condition (Self.Id)));
+   end Get_Body_Condition;
+
    ---------------
    -- Get_Class --
    ---------------
@@ -61,6 +75,19 @@ package body AMF.Internals.CMOF_Operations is
         AMF.CMOF.Classes.CMOF_Class_Access
          (AMF.Internals.Helpers.To_Element (Internal_Get_Class (Self.Id)));
    end Get_Class;
+
+   ------------------
+   -- Get_Datatype --
+   ------------------
+
+   overriding function Get_Datatype
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Data_Types.CMOF_Data_Type_Access is
+   begin
+      return
+        AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Datatype (Self.Id)));
+   end Get_Datatype;
 
    ------------------
    -- Get_Is_Query --
@@ -91,6 +118,48 @@ package body AMF.Internals.CMOF_Operations is
            (Internal_Get_Owned_Parameter (Self.Id)));
    end Get_Owned_Parameter;
 
+   -----------------------
+   -- Get_Postcondition --
+   -----------------------
+
+   overriding function Get_Postcondition
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is
+   begin
+      return
+        AMF.CMOF.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Postcondition (Self.Id)));
+   end Get_Postcondition;
+
+   ----------------------
+   -- Get_Precondition --
+   ----------------------
+
+   overriding function Get_Precondition
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint is
+   begin
+      return
+        AMF.CMOF.Constraints.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Precondition (Self.Id)));
+   end Get_Precondition;
+
+   --------------------------
+   -- Get_Raised_Exception --
+   --------------------------
+
+   overriding function Get_Raised_Exception
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type is
+   begin
+      return
+        AMF.CMOF.Types.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Raised_Exception (Self.Id)));
+   end Get_Raised_Exception;
+
    -----------------------------
    -- Get_Redefined_Operation --
    -----------------------------
@@ -104,6 +173,19 @@ package body AMF.Internals.CMOF_Operations is
          (AMF.Internals.Element_Collections.Wrap
            (Internal_Get_Redefined_Operation (Self.Id)));
    end Get_Redefined_Operation;
+
+   --------------
+   -- Get_Type --
+   --------------
+
+   overriding function Get_Type
+    (Self : not null access constant CMOF_Operation_Proxy)
+       return AMF.CMOF.Types.CMOF_Type_Access is
+   begin
+      return
+        AMF.CMOF.Types.CMOF_Type_Access
+         (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Id)));
+   end Get_Type;
 
    ------------------
    -- Set_Is_Query --
@@ -302,36 +384,6 @@ package body AMF.Internals.CMOF_Operations is
       return Members_Are_Distinguishable (Self);
    end Members_Are_Distinguishable;
 
-   ------------------------------
-   -- Get_Redefinition_Context --
-   ------------------------------
-
-   overriding function Get_Redefinition_Context
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefinition_Context unimplemented");
-      raise Program_Error;
-      return Get_Redefinition_Context (Self);
-   end Get_Redefinition_Context;
-
-   ---------------------------
-   -- Get_Redefined_Element --
-   ---------------------------
-
-   overriding function Get_Redefined_Element
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Redefinable_Elements.Collections.Set_Of_CMOF_Redefinable_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Redefined_Element unimplemented");
-      raise Program_Error;
-      return Get_Redefined_Element (Self);
-   end Get_Redefined_Element;
-
    -----------------
    -- Set_Is_Leaf --
    -----------------
@@ -361,21 +413,6 @@ package body AMF.Internals.CMOF_Operations is
       raise Program_Error;
       return Is_Redefinition_Context_Valid (Self, Redefined);
    end Is_Redefinition_Context_Valid;
-
-   ------------------------------
-   -- Get_Featuring_Classifier --
-   ------------------------------
-
-   overriding function Get_Featuring_Classifier
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Featuring_Classifier unimplemented");
-      raise Program_Error;
-      return Get_Featuring_Classifier (Self);
-   end Get_Featuring_Classifier;
 
    --------------------
    -- Get_Is_Ordered --
@@ -508,21 +545,6 @@ package body AMF.Internals.CMOF_Operations is
    end Set_Class;
 
    ------------------
-   -- Get_Datatype --
-   ------------------
-
-   overriding function Get_Datatype
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Data_Types.CMOF_Data_Type_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Datatype unimplemented");
-      raise Program_Error;
-      return Get_Datatype (Self);
-   end Get_Datatype;
-
-   ------------------
    -- Set_Datatype --
    ------------------
 
@@ -535,36 +557,6 @@ package body AMF.Internals.CMOF_Operations is
       pragma Compile_Time_Warning (Standard.True, "Set_Datatype unimplemented");
       raise Program_Error;
    end Set_Datatype;
-
-   --------------------------
-   -- Get_Raised_Exception --
-   --------------------------
-
-   overriding function Get_Raised_Exception
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Types.Collections.Set_Of_CMOF_Type
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Raised_Exception unimplemented");
-      raise Program_Error;
-      return Get_Raised_Exception (Self);
-   end Get_Raised_Exception;
-
-   --------------
-   -- Get_Type --
-   --------------
-
-   overriding function Get_Type
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Types.CMOF_Type_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Type unimplemented");
-      raise Program_Error;
-      return Get_Type (Self);
-   end Get_Type;
 
    --------------
    -- Set_Type --
@@ -579,51 +571,6 @@ package body AMF.Internals.CMOF_Operations is
       pragma Compile_Time_Warning (Standard.True, "Set_Type unimplemented");
       raise Program_Error;
    end Set_Type;
-
-   ----------------------
-   -- Get_Precondition --
-   ----------------------
-
-   overriding function Get_Precondition
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Precondition unimplemented");
-      raise Program_Error;
-      return Get_Precondition (Self);
-   end Get_Precondition;
-
-   -----------------------
-   -- Get_Postcondition --
-   -----------------------
-
-   overriding function Get_Postcondition
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Constraints.Collections.Set_Of_CMOF_Constraint
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Postcondition unimplemented");
-      raise Program_Error;
-      return Get_Postcondition (Self);
-   end Get_Postcondition;
-
-   ------------------------
-   -- Get_Body_Condition --
-   ------------------------
-
-   overriding function Get_Body_Condition
-     (Self : not null access constant CMOF_Operation_Proxy)
-      return AMF.CMOF.Constraints.CMOF_Constraint_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Body_Condition unimplemented");
-      raise Program_Error;
-      return Get_Body_Condition (Self);
-   end Get_Body_Condition;
 
    ------------------------
    -- Set_Body_Condition --
