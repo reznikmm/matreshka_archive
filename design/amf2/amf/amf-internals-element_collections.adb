@@ -64,7 +64,7 @@ package body AMF.Internals.Element_Collections is
       Association : constant CMOF_Element
         := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Association
             (Property);
-      Member_End : constant AMF_Collection_Of_Element
+      Member_End  : constant AMF_Collection_Of_Element
         := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
             (Association);
 
