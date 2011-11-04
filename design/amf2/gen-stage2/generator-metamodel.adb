@@ -60,9 +60,10 @@ with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
-with AMF.Holders.Collections;
+with AMF.Holders.Reflective_Collections;
 with AMF.Holders.Elements;
 with AMF.Holders.Unlimited_Naturals;
+with AMF.Reflective_Collections;
 
 with Generator.Names;
 with Generator.Wide_Wide_Text_IO;
@@ -603,16 +604,21 @@ package body Generator.Metamodel is
               AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
 
             if Property.Is_Multivalued then
-               for J in 1 .. AMF.Holders.Collections.Element
-                              (Value).Length
-               loop
-                  Establish_Link
-                   (Association,
-                    Property,
-                    Element,
-                    AMF.CMOF.Elements.CMOF_Element_Access
-                     (AMF.Holders.Collections.Element (Value).Element (J)));
-               end loop;
+               declare
+                  Elements : constant
+                    AMF.Reflective_Collections.Reflective_Collection
+                      := AMF.Holders.Reflective_Collections.Element (Value);
+
+               begin
+                  for J in 1 .. Elements.Length loop
+                     Establish_Link
+                      (Association,
+                       Property,
+                       Element,
+                       AMF.CMOF.Elements.CMOF_Element_Access
+                        (AMF.Holders.Elements.Element (Elements.Element (J))));
+                  end loop;
+               end;
 
             else
                if AMF.Holders.Elements.Element (Value) /= null then
