@@ -62,7 +62,7 @@ procedure Gen2 is
    use Ada.Wide_Wide_Text_IO;
 
    Extent   : AMF.URI_Stores.URI_Store_Access;
-   Elements : AMF.Elements.Collections.Reflective_Collection;
+   Elements : AMF.Elements.Collections.Set_Of_Element;
 
 begin
    Generator.Metamodel_Name := League.Application.Arguments.Element (2);

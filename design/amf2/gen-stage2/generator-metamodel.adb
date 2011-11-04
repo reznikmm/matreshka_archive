@@ -108,7 +108,7 @@ package body Generator.Metamodel is
    First_Class : Positive;
    Last_Class  : Natural;
 
-   Elements : AMF.Elements.Collections.Reflective_Collection;
+   Elements : AMF.Elements.Collections.Set_Of_Element;
    --  XXX This collection need to be removed.
    Ordered  : Number_Element_Maps.Map;
 
@@ -182,7 +182,7 @@ package body Generator.Metamodel is
 
       procedure Assign_String (Position : String_Sets.Cursor);
 
-      Elements    : AMF.Elements.Collections.Reflective_Collection
+      Elements    : AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
       Last        : Natural := 0;
       Last_String : Natural := 0;

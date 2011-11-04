@@ -810,15 +810,11 @@ package body Generator.Reflection is
       end if;
 
       Put_Line ("with AMF.Elements;");
-      Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
       Put_Line ("with AMF.Internals." & Metamodel_Name & "_Elements;");
-      Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
       Put_Line ("with AMF.Internals.Holders;");
       Put_Line ("with AMF.Internals.Holders." & Metamodel_Name & "_Holders;");
-      Put_Line
-       ("with AMF.Internals.Tables." & Metamodel_Name & "_Attributes;");
       Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
       Put_Line
        ("with AMF.Internals.Tables." & Metamodel_Name & "_Element_Table;");
@@ -832,8 +828,6 @@ package body Generator.Reflection is
           & "_Reflection is");
       New_Line;
       Put_Line ("   use AMF.Internals.Tables;");
-      Put_Line
-       ("   use AMF.Internals.Tables." & Metamodel_Name & "_Attributes;");
       Put_Line
        ("   use AMF.Internals.Tables." & Metamodel_Name & "_Metamodel;");
       Put_Line ("   use AMF.Internals.Tables." & Metamodel_Name & "_Types;");

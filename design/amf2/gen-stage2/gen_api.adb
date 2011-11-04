@@ -1870,7 +1870,7 @@ procedure Gen_API is
    end Split_Text;
 
    Extent   : AMF.URI_Stores.URI_Store_Access;
-   Elements : AMF.Elements.Collections.Reflective_Collection;
+   Elements : AMF.Elements.Collections.Set_Of_Element;
 
    Generate_Public_API : Boolean := True;
    Generate_API_Stubs  : Boolean := False;

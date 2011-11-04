@@ -68,7 +68,7 @@ package body Generator.Analyzer is
    procedure Analyze_Model
     (Extent : not null AMF.URI_Stores.URI_Store_Access)
    is
-      Elements : constant AMF.Elements.Collections.Reflective_Collection
+      Elements : constant AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
 
    begin
@@ -231,7 +231,7 @@ package body Generator.Analyzer is
    procedure Compute_Metamodel_Names
     (Extent : not null AMF.URI_Stores.URI_Store_Access)
    is
-      Elements       : constant AMF.Elements.Collections.Reflective_Collection
+      Elements       : constant AMF.Elements.Collections.Set_Of_Element
         := Extent.Elements;
       Metamodel_Name : League.Strings.Universal_String;
 

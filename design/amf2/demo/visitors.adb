@@ -14,8 +14,7 @@ package body Visitors is
    is
       use type AMF.Elements.Element_Access;
 
-      Elements : AMF.Elements.Collections.Reflective_Collection
-        := Extent.Elements;
+      Elements : AMF.Elements.Collections.Set_Of_Element := Extent.Elements;
       Element  : AMF.Elements.Element_Access;
 
    begin
