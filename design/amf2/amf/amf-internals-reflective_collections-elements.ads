@@ -56,6 +56,9 @@ package AMF.Internals.Reflective_Collections.Elements is
    type Shared_Element_Collection is
      abstract new Shared_Collection with null record;
 
+   type Shared_Element_Collection_Access is
+     access all Shared_Element_Collection'Class;
+
    not overriding function Element
     (Self  : not null access constant Shared_Element_Collection;
      Index : Positive) return not null AMF.Elements.Element_Access is abstract;

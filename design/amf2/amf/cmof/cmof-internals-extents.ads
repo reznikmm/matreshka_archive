@@ -41,13 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
+with AMF.Internals.Reflective_Collections.Elements;
 
 package CMOF.Internals.Extents is
 
    function All_Elements
     (Self : CMOF_Extent)
-       return not null AMF.Internals.Collections.Collection_Access;
+       return not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access;
    --  Returns all elements in the specified extent.
 
    function Container (Self : CMOF_Element) return CMOF_Element;

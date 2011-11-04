@@ -43,8 +43,8 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 
-with AMF.Elements.Collections;
-with AMF.Holders.Collections;
+with AMF.Reflective_Collections.Internals;
+with AMF.Holders.Reflective_Collections;
 
 package body AMF.Internals.Holders is
 
@@ -89,31 +89,18 @@ package body AMF.Internals.Holders is
       end return;
    end To_Holder;
 
---   ---------------
---   -- To_Holder --
---   ---------------
---
---   function To_Holder
---    (Item : AMF.Internals.AMF_Collection_Of_Element)
---       return League.Holders.Holder is
---   begin
---      return
---        AMF.Holders.Collections.To_Holder
---         (AMF.Element_Collections.Wrap
---           (AMF.Internals.Element_Collections.Wrap (Item)));
---   end To_Holder;
-
    ---------------
    -- To_Holder --
    ---------------
 
    function To_Holder
-    (Item : AMF.Internals.Collections.Collection_Access)
+    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
        return League.Holders.Holder is
    begin
       return
-        AMF.Holders.Collections.To_Holder
-         (AMF.Elements.Collections.Wrap (Item));
+        AMF.Holders.Reflective_Collections.To_Holder
+         (AMF.Reflective_Collections.Internals.Wrap
+           (AMF.Internals.Reflective_Collections.Shared_Collection_Access (Item)));
    end To_Holder;
 
 end AMF.Internals.Holders;

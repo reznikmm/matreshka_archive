@@ -41,25 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Elements;
 
-package AMF.Internals.Collections is
+package body AMF.Reflective_Collections.Internals is
 
-   pragma Preelaborate;
+   ----------
+   -- Wrap --
+   ----------
 
-   type Abstract_Collection is abstract tagged null record;
-   type Collection_Access is access all Abstract_Collection'Class;
+   function Wrap
+    (Item : not null AMF.Internals.Reflective_Collections.Shared_Collection_Access)
+       return Reflective_Collection is
+   begin
+      return (Ada.Finalization.Controlled with Collection => Item);
+   end Wrap;
 
-   not overriding function Length
-    (Self : not null access constant Abstract_Collection)
-       return Natural is abstract;
-
-   not overriding function Element
-    (Self  : not null access constant Abstract_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access is abstract;
-
-   not overriding procedure Add
-    (Self : not null access Abstract_Collection;
-     Item : AMF.Elements.Element_Access) is abstract;
-
-end AMF.Internals.Collections;
+end AMF.Reflective_Collections.Internals;

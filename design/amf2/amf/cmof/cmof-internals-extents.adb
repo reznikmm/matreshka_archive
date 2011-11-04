@@ -41,9 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Containers;
 with AMF.Internals.Helpers;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Reflective_Collections.Elements.Containers;
 with AMF.Internals.Tables.AMF_Tables;
 with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
@@ -61,6 +61,32 @@ package body CMOF.Internals.Extents is
    use AMF.Internals.Element_Collections;
    use AMF.Internals.Tables.CMOF_Metamodel;
    use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
+
+   ------------------
+   -- All_Elements --
+   ------------------
+
+   function All_Elements
+    (Self : CMOF_Extent)
+       return not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access
+   is
+      Current  : AMF_Tables.Extent_Element_Identifier
+        := AMF_Tables.Extents.Table (Self).Head;
+      Result   : constant not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access
+        := new AMF.Internals.Reflective_Collections.Elements.Containers.Shared_Element_Collection_Container;
+      Elements : AMF.Internals.Reflective_Collections.Elements.Containers.Vectors.Vector
+        renames AMF.Internals.Reflective_Collections.Elements.Containers.Shared_Element_Collection_Container (Result.all).Elements;
+
+   begin
+      while Current /= 0 loop
+         Elements.Append
+          (AMF.Internals.Helpers.To_Element
+            (AMF_Tables.Extent_Elements.Table (Current).Element));
+         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
+      end loop;
+
+      return Result;
+   end All_Elements;
 
    ---------------
    -- Container --
@@ -95,7 +121,7 @@ package body CMOF.Internals.Extents is
            and then Internal_Get_Type (Current_Element) in CMOF_Meta_Class
            and then Is_Subclass
                      (Meta_Class, Internal_Get_Type (Current_Element))
-           and then Boolean (Internal_Get_Is_Composite (Current_Element))
+           and then Internal_Get_Is_Composite (Current_Element)
          then
             --  Find opposite property, it is at the element's side of the
             --  association.
@@ -185,31 +211,5 @@ package body CMOF.Internals.Extents is
 
       return Null_CMOF_Element;
    end Container;
-
-   ------------------
-   -- All_Elements --
-   ------------------
-
-   function All_Elements
-    (Self : CMOF_Extent)
-       return not null AMF.Internals.Collections.Collection_Access
-   is
-      Current  : AMF_Tables.Extent_Element_Identifier
-        := AMF_Tables.Extents.Table (Self).Head;
-      Result   : not null AMF.Internals.Collections.Collection_Access
-        := new AMF.Internals.Containers.Collection;
-      Elements : AMF.Internals.Containers.Vectors.Vector
-        renames AMF.Internals.Containers.Collection (Result.all).Elements;
-
-   begin
-      while Current /= 0 loop
-         Elements.Append
-          (AMF.Internals.Helpers.To_Element
-            (AMF_Tables.Extent_Elements.Table (Current).Element));
-         Current := AMF_Tables.Extent_Elements.Table (Current).Next;
-      end loop;
-
-      return Result;
-   end All_Elements;
 
 end CMOF.Internals.Extents;

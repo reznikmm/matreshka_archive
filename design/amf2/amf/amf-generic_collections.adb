@@ -41,11 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Elements.Collections;
+with AMF.Elements;
 
 package body AMF.Generic_Collections is
 
-   use type AMF.Internals.Collections.Collection_Access;
+   use type AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access;
 
    ---------
    -- Add --
@@ -66,7 +66,9 @@ package body AMF.Generic_Collections is
     (Self  : Collection'Class;
      Index : Positive) return not null Element_Access is
    begin
-      return Element_Access (Self.Collection.Element (Index));
+      return
+        Element_Access
+         (AMF.Elements.Element_Access'(Self.Collection.Element (Index)));
    end Element;
 
    --------------
@@ -75,7 +77,7 @@ package body AMF.Generic_Collections is
 
    function Internal
     (Self : Collection'Class)
-       return AMF.Internals.Collections.Collection_Access is
+       return AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access is
    begin
       return Self.Collection;
    end Internal;
@@ -108,7 +110,8 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access) return Bag is
+    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+       return Bag is
    begin
       return Bag'(Ada.Finalization.Controlled with Collection => Item);
    end Wrap;
@@ -118,7 +121,7 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access)
+    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
        return Ordered_Set is
    begin
       return Ordered_Set'(Ada.Finalization.Controlled with Collection => Item);
@@ -129,7 +132,7 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access)
+    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
        return Sequence is
    begin
       return Sequence'(Ada.Finalization.Controlled with Collection => Item);
@@ -140,7 +143,8 @@ package body AMF.Generic_Collections is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Collections.Collection_Access) return Set is
+    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+       return Set is
    begin
       return Set'(Ada.Finalization.Controlled with Collection => Item);
    end Wrap;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,43 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Elements;
-with AMF.Internals.Helpers;
+with AMF.Internals.Reflective_Collections;
 
-package body AMF.Internals.Element_Collections.Proxies is
+package AMF.Reflective_Collections.Internals is
 
-   ---------
-   -- Add --
-   ---------
+   function Wrap
+    (Item : not null AMF.Internals.Reflective_Collections.Shared_Collection_Access)
+       return Reflective_Collection;
 
-   overriding procedure Add
-    (Self : not null access Element_Collection_Proxy;
-     Item : AMF.Elements.Element_Access) is
-   begin
-      Add (Self.Collection, AMF.Internals.Helpers.To_Element (Item));
-   end Add;
-
-   -------------
-   -- Element --
-   -------------
-
-   function Element
-    (Self  : not null access constant Element_Collection_Proxy;
-     Index : Positive) return not null AMF.Elements.Element_Access is
-   begin
-      return
-        AMF.Internals.Helpers.To_Element (Element (Self.Collection, Index));
-   end Element;
-
-   ------------
-   -- Length --
-   ------------
-
-   function Length
-    (Self : not null access constant Element_Collection_Proxy)
-       return Natural is
-   begin
-      return Length (Self.Collection);
-   end Length;
-
-end AMF.Internals.Element_Collections.Proxies;
+end AMF.Reflective_Collections.Internals;

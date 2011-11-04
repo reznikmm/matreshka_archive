@@ -46,7 +46,7 @@
 with League.Holders;
 with Matreshka.Internals.Strings;
 
-with AMF.Internals.Collections;
+with AMF.Internals.Reflective_Collections.Elements;
 
 package AMF.Internals.Holders is
 
@@ -59,7 +59,8 @@ package AMF.Internals.Holders is
        return League.Holders.Holder;
 
    function To_Holder
-    (Item : AMF.Internals.Collections.Collection_Access)
+    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
        return League.Holders.Holder;
+   --  Wrap specified collection into holder of reflective collection.
 
 end AMF.Internals.Holders;

@@ -41,8 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Collections;
-with AMF.Internals.Element_Collections.Proxies;
+with AMF.Internals.Reflective_Collections.Elements.Proxies;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.AMF_Tables;
 with AMF.Internals.Tables.CMOF_Attributes;
@@ -177,9 +176,9 @@ package body AMF.Internals.Element_Collections is
         := AMF_Tables.Collections.Table (Collection).Head;
       Tail        : AMF_Tables.Collection_Element_Identifier
         := AMF_Tables.Collections.Table (Collection).Tail;
-      Previous    : AMF_Tables.Collection_Element_Identifier
+      Previous    : constant AMF_Tables.Collection_Element_Identifier
         := AMF_Tables.Collections.Table (Collection).Tail;
-      Next        : AMF_Tables.Collection_Element_Identifier := 0;
+      Next        : constant AMF_Tables.Collection_Element_Identifier := 0;
       New_Element : AMF_Tables.Collection_Element_Identifier;
 
    begin
@@ -230,12 +229,11 @@ package body AMF.Internals.Element_Collections is
 
    function Wrap
     (Collection : AMF_Collection_Of_Element)
-       return AMF.Internals.Collections.Collection_Access is
+       return AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access is
    begin
       return
-        new Proxies.Element_Collection_Proxy'
-             (AMF.Internals.Collections.Abstract_Collection with
-                Collection => Collection);
+        new AMF.Internals.Reflective_Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+             (Collection => Collection);
    end Wrap;
 
    ----------
@@ -248,9 +246,8 @@ package body AMF.Internals.Element_Collections is
    begin
       return
         AMF.Elements.Collections.Wrap
-         (new Proxies.Element_Collection_Proxy'
-               (AMF.Internals.Collections.Abstract_Collection with
-                  Collection => Collection));
+         (new AMF.Internals.Reflective_Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+               (Collection => Collection));
    end Wrap;
 
 end AMF.Internals.Element_Collections;
