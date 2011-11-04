@@ -283,13 +283,12 @@ with AMF.UML.Holders.Pseudostate_Kinds;
 with AMF.UML.Holders.Transition_Kinds;
 with AMF.UML.Holders.Visibility_Kinds;
 with League.Holders.Integers;
-with AMF.Holders.Boolean_Collections;
+with AMF.Boolean_Collections.Internals;
 with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Elements;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
-with AMF.Holders.String_Collections;
 with AMF.Internals.UML_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
@@ -299,7 +298,7 @@ with AMF.Internals.Tables.UML_Attributes;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Types;
-with AMF.String_Collections;
+with AMF.String_Collections.Internals;
 with League.Holders.Booleans;
 
 package body AMF.Internals.Tables.UML_Reflection is
@@ -15327,7 +15326,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  DurationConstraint::firstEvent : Boolean
 
             return
-              AMF.Holders.Boolean_Collections.To_Holder
+              AMF.Boolean_Collections.Internals.To_Holder
                (AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_First_Event);
 
@@ -15639,7 +15638,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  DurationObservation::firstEvent : Boolean
 
             return
-              AMF.Holders.Boolean_Collections.To_Holder
+              AMF.Boolean_Collections.Internals.To_Holder
                (AMF.UML.Duration_Observations.UML_Duration_Observation_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_First_Event);
 
@@ -19648,7 +19647,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueBehavior::body : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
@@ -19802,7 +19801,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueBehavior::language : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Language);
 
@@ -27762,7 +27761,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueAction::body : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
@@ -27868,7 +27867,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueAction::language : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Opaque_Actions.UML_Opaque_Action_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Language);
 
@@ -28026,7 +28025,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueBehavior::body : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
@@ -28180,7 +28179,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueBehavior::language : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Language);
 
@@ -28579,7 +28578,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueExpression::body : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
@@ -28595,7 +28594,7 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  OpaqueExpression::language : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Language);
 
