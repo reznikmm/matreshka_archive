@@ -42,6 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements;
+with AMF.Holders.Reflective_Collections;
+with AMF.Reflective_Collections.Internals;
 
 package body AMF.Generic_Collections is
 
@@ -81,6 +83,27 @@ package body AMF.Generic_Collections is
    begin
       return Self.Collection;
    end Internal;
+
+   ---------------
+   -- Internals --
+   ---------------
+
+   package body Internals is
+
+      ---------------
+      -- To_Holder --
+      ---------------
+
+      function To_Holder (Item : Collection'Class) return League.Holders.Holder is
+      begin
+         return
+           AMF.Holders.Reflective_Collections.To_Holder
+            (AMF.Reflective_Collections.Internals.Create
+              (AMF.Internals.Collections.Shared_Collection_Access
+                (Item.Collection)));
+      end To_Holder;
+
+   end Internals;
 
    --------------
    -- Is_Empty --

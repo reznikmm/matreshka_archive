@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+with League.Holders;
+
 with AMF.Internals.Collections.Elements;
 
 generic
@@ -98,6 +100,13 @@ package AMF.Generic_Collections is
    function Internal
     (Self : Collection'Class)
        return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
+
+   package Internals is
+
+      function To_Holder (Item : Collection'Class) return League.Holders.Holder;
+      --  Converts specified collection into holder of reflective collection type.
+
+   end Internals;
 
 private
 

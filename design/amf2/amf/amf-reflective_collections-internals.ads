@@ -45,6 +45,12 @@ with AMF.Internals.Collections;
 
 package AMF.Reflective_Collections.Internals is
 
+   pragma Preelaborate;
+
+   function Create
+    (Item : not null AMF.Internals.Collections.Shared_Collection_Access)
+       return Reflective_Collection;
+
    function Wrap
     (Item : not null AMF.Internals.Collections.Shared_Collection_Access)
        return Reflective_Collection;

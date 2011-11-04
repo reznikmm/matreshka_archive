@@ -44,6 +44,19 @@
 
 package body AMF.Reflective_Collections.Internals is
 
+   ------------
+   -- Create --
+   ------------
+
+   function Create
+    (Item : not null AMF.Internals.Collections.Shared_Collection_Access)
+       return Reflective_Collection is
+   begin
+      Item.Reference;
+
+      return (Ada.Finalization.Controlled with Collection => Item);
+   end Create;
+
    ----------
    -- Wrap --
    ----------
