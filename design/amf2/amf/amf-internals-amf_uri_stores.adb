@@ -181,7 +181,7 @@ package body AMF.Internals.AMF_URI_Stores is
 
    overriding function Elements
     (Self : not null access constant AMF_URI_Store)
-       return AMF.Elements.Collections.Reflective_Collection is
+       return AMF.Elements.Collections.Set_Of_Element is
    begin
       return
         AMF.Elements.Collections.Wrap

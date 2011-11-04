@@ -54,7 +54,7 @@ package AMF.Extents is
 
    not overriding function Elements
     (Self : not null access constant Extent)
-       return AMF.Elements.Collections.Reflective_Collection is abstract;
+       return AMF.Elements.Collections.Set_Of_Element is abstract;
    --  Returns a ReflectiveSequence of the elements directly referenced by this
    --  extent. If exclusive()==true, these elements must have
    --  container()==null. Extent.elements() is a reflective operation, not a

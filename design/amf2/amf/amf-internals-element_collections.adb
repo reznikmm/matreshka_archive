@@ -236,18 +236,4 @@ package body AMF.Internals.Element_Collections is
              (Collection => Collection);
    end Wrap;
 
-   ----------
-   -- Wrap --
-   ----------
-
-   function Wrap
-    (Collection : AMF_Collection_Of_Element)
-       return AMF.Elements.Collections.Reflective_Collection is
-   begin
-      return
-        AMF.Elements.Collections.Wrap
-         (new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
-               (Collection => Collection));
-   end Wrap;
-
 end AMF.Internals.Element_Collections;
