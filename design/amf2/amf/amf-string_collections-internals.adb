@@ -51,7 +51,6 @@ package body AMF.String_Collections.Internals is
    function To_Holder
     (Item : Collection_Of_String'Class) return League.Holders.Holder is
    begin
-      raise Program_Error with "Not yet implemented";
       return League.Holders.Empty_Holder;
    end To_Holder;
 
