@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
-with AMF.Internals;
-
 package AMF.String_Collections is
 
    pragma Preelaborate;
@@ -54,10 +52,6 @@ package AMF.String_Collections is
    subtype Set_Of_String is Collection_Of_String;
    subtype Ordered_Set_Of_String is Collection_Of_String;
    subtype Sequence_Of_String is Collection_Of_String;
-
-   function Wrap
-    (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String;
 
 private
 

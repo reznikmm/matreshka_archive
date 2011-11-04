@@ -41,18 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Holders;
 
-package body AMF.String_Collections is
+with AMF.Internals;
 
-   ----------
-   -- Wrap --
-   ----------
+package AMF.String_Collections.Internals is
+
+   pragma Preelaborate;
+
+   function To_Holder
+    (Item : Collection_Of_String'Class) return League.Holders.Holder;
+   --  Converts specified collection into holder of reflective collection type.
 
    function Wrap
     (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String is
-   begin
-      return X : Collection_Of_String;
-   end Wrap;
+       return Collection_Of_String;
 
-end AMF.String_Collections;
+end AMF.String_Collections.Internals;

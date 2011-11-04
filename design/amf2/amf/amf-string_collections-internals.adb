@@ -42,17 +42,28 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body AMF.Boolean_Collections is
+package body AMF.String_Collections.Internals is
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : Collection_Of_String'Class) return League.Holders.Holder is
+   begin
+      raise Program_Error with "Not yet implemented";
+      return League.Holders.Empty_Holder;
+   end To_Holder;
 
    ----------
    -- Wrap --
    ----------
 
    function Wrap
-    (Collection : AMF.Internals.AMF_Collection_Of_Boolean)
-       return Collection_Of_Boolean is
+    (Collection : AMF.Internals.AMF_Collection_Of_String)
+       return Collection_Of_String is
    begin
-      return X : Collection_Of_Boolean;
+      return X : Collection_Of_String;
    end Wrap;
 
-end AMF.Boolean_Collections;
+end AMF.String_Collections.Internals;

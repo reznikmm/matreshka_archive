@@ -70,7 +70,7 @@ with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Tags;
 with AMF.CMOF.Types.Collections;
 with AMF.CMOF.Value_Specifications.Collections;
-with AMF.String_Collections;
+with AMF.String_Collections.Internals;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Collections;
@@ -1332,7 +1332,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.Holders.String_Collections.To_Holder
-               (AMF.String_Collections.Wrap
+               (AMF.String_Collections.Internals.Wrap
                  (Internal_Get_Body (Self)));
 
          elsif Property = MP_CMOF_Opaque_Expression_Language then
@@ -1340,7 +1340,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.Holders.String_Collections.To_Holder
-               (AMF.String_Collections.Wrap
+               (AMF.String_Collections.Internals.Wrap
                  (Internal_Get_Language (Self)));
 
          elsif Property = MP_CMOF_Named_Element_Name then

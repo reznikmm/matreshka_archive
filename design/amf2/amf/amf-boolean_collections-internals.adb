@@ -41,10 +41,29 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Holders.Generic_Holders;
-with AMF.String_Collections;
 
-package AMF.Holders.String_Collections is
-  new League.Holders.Generic_Holders
-       (AMF.String_Collections.Collection_Of_String);
-pragma Preelaborate (AMF.Holders.String_Collections);
+package body AMF.Boolean_Collections.Internals is
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder
+    (Item : Collection_Of_Boolean'Class) return League.Holders.Holder is
+   begin
+      raise Program_Error with "Not yet implemented";
+      return League.Holders.Empty_Holder;
+   end To_Holder;
+
+   ----------
+   -- Wrap --
+   ----------
+
+   function Wrap
+    (Collection : AMF.Internals.AMF_Collection_Of_Boolean)
+       return Collection_Of_Boolean is
+   begin
+      return X : Collection_Of_Boolean;
+   end Wrap;
+
+end AMF.Boolean_Collections.Internals;

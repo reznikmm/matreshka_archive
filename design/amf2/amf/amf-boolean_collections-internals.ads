@@ -41,19 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
+with League.Holders;
 
-package AMF.Boolean_Collections is
+with AMF.Internals;
+
+package AMF.Boolean_Collections.Internals is
 
    pragma Preelaborate;
 
-   type Collection_Of_Boolean is tagged private;
+   function To_Holder
+    (Item : Collection_Of_Boolean'Class) return League.Holders.Holder;
+   --  Converts specified collection into holder of reflective collection type.
 
-   subtype Set_Of_Boolean is Collection_Of_Boolean;
+   function Wrap
+    (Collection : AMF.Internals.AMF_Collection_Of_Boolean)
+       return Collection_Of_Boolean;
 
-private
-
-   type Collection_Of_Boolean is
-     new Ada.Finalization.Controlled with null record;
-
-end AMF.Boolean_Collections;
+end AMF.Boolean_Collections.Internals;
