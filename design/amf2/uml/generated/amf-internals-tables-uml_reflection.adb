@@ -287,14 +287,11 @@ with AMF.Boolean_Collections.Internals;
 with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
 with AMF.Elements;
-with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Internals.UML_Elements;
-with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Holders;
 with AMF.Internals.Holders.UML_Holders;
-with AMF.Internals.Tables.UML_Attributes;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Types;
@@ -304,7 +301,6 @@ with League.Holders.Booleans;
 package body AMF.Internals.Tables.UML_Reflection is
 
    use AMF.Internals.Tables;
-   use AMF.Internals.Tables.UML_Attributes;
    use AMF.Internals.Tables.UML_Metamodel;
    use AMF.Internals.Tables.UML_Types;
    use type AMF.Internals.AMF_Element;

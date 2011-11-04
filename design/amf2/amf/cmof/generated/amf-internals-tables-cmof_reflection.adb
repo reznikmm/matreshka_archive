@@ -75,14 +75,11 @@ with AMF.String_Collections;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Elements;
-with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Internals.CMOF_Elements;
-with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Holders;
 with AMF.Internals.Holders.CMOF_Holders;
-with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Types;
@@ -92,7 +89,6 @@ with League.Holders.Booleans;
 package body AMF.Internals.Tables.CMOF_Reflection is
 
    use AMF.Internals.Tables;
-   use AMF.Internals.Tables.CMOF_Attributes;
    use AMF.Internals.Tables.CMOF_Metamodel;
    use AMF.Internals.Tables.CMOF_Types;
    use type AMF.Internals.AMF_Element;
