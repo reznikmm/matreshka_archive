@@ -42,56 +42,34 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Namespaces;
-with AMF.CMOF.Package_Imports;
-with AMF.CMOF.Packages;
-with AMF.Internals.CMOF_Directed_Relationships;
+with AMF.CMOF.Directed_Relationships;
+with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Relationships;
+pragma Elaborate (AMF.Internals.CMOF_Relationships);
 
-package AMF.Internals.CMOF_Package_Imports is
+package AMF.Internals.CMOF_Directed_Relationships is
 
-   type CMOF_Package_Import_proxy is
-     limited new AMF.Internals.CMOF_Directed_Relationships.CMOF_Directed_Relationship_Proxy
-       and AMF.CMOF.Package_Imports.CMOF_Package_Import
+   package Relationships is
+     new AMF.Internals.CMOF_Relationships
+          (AMF.Internals.CMOF_Elements.CMOF_Element_Proxy);
+
+   type CMOF_Directed_Relationship_Proxy is
+     abstract limited new Relationships.CMOF_Relationship_Proxy
+       and AMF.CMOF.Directed_Relationships.CMOF_Directed_Relationship
          with null record;
 
-   --  XXX These subprograms are stubs
-
-   overriding function All_Owned_Elements
-    (Self : not null access constant CMOF_Package_Import_Proxy)
+   overriding function Get_Source
+    (Self : not null access constant CMOF_Directed_Relationship_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Package_Import_Proxy)
-       return Boolean;
-
-   overriding function Get_Visibility
-    (Self : not null access constant CMOF_Package_Import_Proxy)
-       return CMOF.CMOF_Visibility_Kind;
-
-   overriding procedure Set_Visibility
-    (Self : not null access CMOF_Package_Import_Proxy;
-     To   : CMOF.CMOF_Visibility_Kind);
-
-   overriding function Get_Imported_Package
-    (Self : not null access constant CMOF_Package_Import_Proxy)
-       return AMF.CMOF.Packages.CMOF_Package_Access;
-   --  Getter of PackageImport::importedPackage.
+   --  Getter of DirectedRelationship::source.
    --
-   --  Specifies the Package whose members are imported into a Namespace.
+   --  Specifies the sources of the DirectedRelationship.
 
-   overriding procedure Set_Imported_Package
-    (Self : not null access CMOF_Package_Import_Proxy;
-     To   : AMF.CMOF.Packages.CMOF_Package_Access);
-
-   overriding function Get_Importing_Namespace
-    (Self : not null access constant CMOF_Package_Import_Proxy)
-       return AMF.CMOF.Namespaces.CMOF_Namespace_Access;
-   --  Getter of PackageImport::importingNamespace.
+   overriding function Get_Target
+    (Self : not null access constant CMOF_Directed_Relationship_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
+   --  Getter of DirectedRelationship::target.
    --
-   --  Specifies the Namespace that imports the members from a Package.
+   --  Specifies the targets of the DirectedRelationship.
 
-   overriding procedure Set_Importing_Namespace
-    (Self : not null access CMOF_Package_Import_Proxy;
-     To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access);
-
-end AMF.Internals.CMOF_Package_Imports;
+end AMF.Internals.CMOF_Directed_Relationships;

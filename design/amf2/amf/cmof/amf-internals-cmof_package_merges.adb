@@ -89,36 +89,6 @@ package body AMF.Internals.CMOF_Package_Merges is
       return Get_Related_Element (Self);
    end Get_Related_Element;
 
-   ----------------
-   -- Get_Source --
-   ----------------
-
-   overriding function Get_Source
-     (Self : not null access constant CMOF_Package_Merge_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Source unimplemented");
-      raise Program_Error;
-      return Get_Source (Self);
-   end Get_Source;
-
-   ----------------
-   -- Get_Target --
-   ----------------
-
-   overriding function Get_Target
-     (Self : not null access constant CMOF_Package_Merge_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Target unimplemented");
-      raise Program_Error;
-      return Get_Target (Self);
-   end Get_Target;
-
    ---------------------------
    -- Get_Receiving_Package --
    ---------------------------

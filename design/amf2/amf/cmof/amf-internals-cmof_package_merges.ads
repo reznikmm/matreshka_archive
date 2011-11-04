@@ -42,15 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements.Collections;
-with AMF.CMOF.Namespaces;
 with AMF.CMOF.Package_Merges;
 with AMF.CMOF.Packages;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Directed_Relationships;
 
 package AMF.Internals.CMOF_Package_Merges is
 
    type CMOF_Package_Merge_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Directed_Relationships.CMOF_Directed_Relationship_Proxy
        and AMF.CMOF.Package_Merges.CMOF_Package_Merge
          with null record;
 
@@ -65,14 +64,6 @@ package AMF.Internals.CMOF_Package_Merges is
        return Boolean;
 
    overriding function Get_Related_Element
-    (Self : not null access constant CMOF_Package_Merge_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Source
-    (Self : not null access constant CMOF_Package_Merge_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Target
     (Self : not null access constant CMOF_Package_Merge_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 

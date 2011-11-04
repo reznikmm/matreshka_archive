@@ -45,12 +45,12 @@ with AMF.CMOF.Element_Imports;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Namespaces;
 with AMF.CMOF.Packageable_Elements;
-with AMF.Internals.CMOF_Elements;
+with AMF.Internals.CMOF_Directed_Relationships;
 
 package AMF.Internals.CMOF_Element_Imports is
 
    type CMOF_Element_Import_Proxy is
-     limited new AMF.Internals.CMOF_Elements.CMOF_Element_Proxy
+     limited new AMF.Internals.CMOF_Directed_Relationships.CMOF_Directed_Relationship_Proxy
        and AMF.CMOF.Element_Imports.CMOF_Element_Import
          with null record;
 
@@ -65,14 +65,6 @@ package AMF.Internals.CMOF_Element_Imports is
        return Boolean;
 
    overriding function Get_Related_Element
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Source
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
-
-   overriding function Get_Target
     (Self : not null access constant CMOF_Element_Import_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
