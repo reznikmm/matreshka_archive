@@ -221,16 +221,13 @@ package body Generator.Reflection is
 
                else
                   Holder_Name :=
-                    League.Strings.To_Universal_String
-                     ("AMF.Internals.Holders.To_Holder");
-                  Convertor_Name :=
                     Type_Mapping.Public_Ada_Package_Name
                      (Attribute_Type, Representation (Attribute))
                       & "."
                       & Metamodel_Name
                       & "_"
                       & To_Ada_Identifier (Attribute_Type.Get_Name.Value)
-                      & "_Collections.Internal";
+                      & "_Collections.Internals.To_Holder";
                end if;
 
             elsif Attribute_Type.Get_Name = Boolean_Name then
