@@ -55,6 +55,7 @@ with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Facility;
+with AMF.Holders.Reflective_Collections;
 with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 --  XXX Direct use of AMF.Internals.Factories must be removed.
@@ -505,9 +506,12 @@ package body AMF.Internals.XMI_Handlers is
                       Self.Text));
 
                else
-                  Put_Line
-                   (Standard_Error,
-                    "Skip - multivalued attribute of DataType");
+                  AMF.Holders.Reflective_Collections.Element
+                   (Self.Current.Get (Self.Attribute)).Add
+                     (Self.Extent.Create_From_String
+                       (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                         (Attribute_Type),
+                        Self.Text));
                end if;
 
             else
