@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+private with AMF.Internals.Collections.Strings;
+
 package AMF.String_Collections is
 
    pragma Preelaborate;
@@ -55,7 +57,9 @@ package AMF.String_Collections is
 
 private
 
-   type Collection_Of_String is
-     new Ada.Finalization.Controlled with null record;
+   type Collection_Of_String is new Ada.Finalization.Controlled with record
+      Collection :
+        AMF.Internals.Collections.Strings.Shared_String_Collection_Access;
+   end record;
 
 end AMF.String_Collections;

@@ -41,39 +41,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Holders.Reflective_Collections;
-with AMF.Internals.Collections.Strings.Proxies;
-with AMF.Reflective_Collections.Internals;
 
-package body AMF.String_Collections.Internals is
+package body AMF.Internals.Collections.Strings.Proxies is
 
-   ---------------
-   -- To_Holder --
-   ---------------
+   -----------
+   -- Clear --
+   -----------
 
-   function To_Holder
-    (Item : Collection_Of_String'Class) return League.Holders.Holder is
+   overriding procedure Clear
+    (Self : not null access Shared_String_Collection_Proxy) is
    begin
-      return
-        AMF.Holders.Reflective_Collections.To_Holder
-         (AMF.Reflective_Collections.Internals.Create
-           (AMF.Internals.Collections.Shared_Collection_Access
-             (Item.Collection)));
-   end To_Holder;
+      null;
+   end Clear;
 
-   ----------
-   -- Wrap --
-   ----------
+   -------------
+   -- Element --
+   -------------
 
-   function Wrap
-    (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String is
+   overriding function Element
+    (Self  : not null access constant Shared_String_Collection_Proxy;
+     Index : Positive) return League.Strings.Universal_String is
    begin
-      return
-       (Ada.Finalization.Controlled with
-          Collection =>
-            new AMF.Internals.Collections.Strings.Proxies.Shared_String_Collection_Proxy'
-                 (Collection => Collection));
-   end Wrap;
+      raise Constraint_Error with "Index is out of range";
+      return League.Strings.Empty_Universal_String;
+   end Element;
 
-end AMF.String_Collections.Internals;
+   ------------
+   -- Length --
+   ------------
+
+   overriding function Length
+    (Self : not null access constant Shared_String_Collection_Proxy)
+       return Natural is
+   begin
+      return 0;
+   end Length;
+
+end AMF.Internals.Collections.Strings.Proxies;

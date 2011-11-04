@@ -41,39 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Holders.Reflective_Collections;
-with AMF.Internals.Collections.Strings.Proxies;
-with AMF.Reflective_Collections.Internals;
+with League.Strings;
 
-package body AMF.String_Collections.Internals is
+package AMF.Internals.Collections.Strings is
 
-   ---------------
-   -- To_Holder --
-   ---------------
+   pragma Preelaborate;
 
-   function To_Holder
-    (Item : Collection_Of_String'Class) return League.Holders.Holder is
-   begin
-      return
-        AMF.Holders.Reflective_Collections.To_Holder
-         (AMF.Reflective_Collections.Internals.Create
-           (AMF.Internals.Collections.Shared_Collection_Access
-             (Item.Collection)));
-   end To_Holder;
+   type Shared_String_Collection is
+     abstract new Shared_Collection with null record;
 
-   ----------
-   -- Wrap --
-   ----------
+   type Shared_String_Collection_Access is
+     access all Shared_String_Collection'Class;
 
-   function Wrap
-    (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String is
-   begin
-      return
-       (Ada.Finalization.Controlled with
-          Collection =>
-            new AMF.Internals.Collections.Strings.Proxies.Shared_String_Collection_Proxy'
-                 (Collection => Collection));
-   end Wrap;
+   not overriding function Element
+    (Self  : not null access constant Shared_String_Collection;
+     Index : Positive) return League.Strings.Universal_String is abstract;
 
-end AMF.String_Collections.Internals;
+   overriding function Element
+    (Self  : not null access constant Shared_String_Collection;
+     Index : Positive) return League.Holders.Holder;
+
+end AMF.Internals.Collections.Strings;

@@ -41,39 +41,31 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Holders.Reflective_Collections;
-with AMF.Internals.Collections.Strings.Proxies;
-with AMF.Reflective_Collections.Internals;
 
-package body AMF.String_Collections.Internals is
+package AMF.Internals.Collections.Strings.Proxies is
 
-   ---------------
-   -- To_Holder --
-   ---------------
+   pragma Preelaborate;
 
-   function To_Holder
-    (Item : Collection_Of_String'Class) return League.Holders.Holder is
-   begin
-      return
-        AMF.Holders.Reflective_Collections.To_Holder
-         (AMF.Reflective_Collections.Internals.Create
-           (AMF.Internals.Collections.Shared_Collection_Access
-             (Item.Collection)));
-   end To_Holder;
+   type Shared_String_Collection_Proxy is
+     new Shared_String_Collection with record
+      Collection : AMF.Internals.AMF_Collection_Of_String;
+   end record;
 
-   ----------
-   -- Wrap --
-   ----------
+   overriding procedure Reference
+    (Self : not null access Shared_String_Collection_Proxy) is null;
 
-   function Wrap
-    (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String is
-   begin
-      return
-       (Ada.Finalization.Controlled with
-          Collection =>
-            new AMF.Internals.Collections.Strings.Proxies.Shared_String_Collection_Proxy'
-                 (Collection => Collection));
-   end Wrap;
+   overriding procedure Unreference
+    (Self : not null access Shared_String_Collection_Proxy) is null;
 
-end AMF.String_Collections.Internals;
+   overriding function Length
+    (Self : not null access constant Shared_String_Collection_Proxy)
+       return Natural;
+
+   overriding procedure Clear
+    (Self : not null access Shared_String_Collection_Proxy);
+
+   overriding function Element
+    (Self  : not null access constant Shared_String_Collection_Proxy;
+     Index : Positive) return League.Strings.Universal_String;
+
+end AMF.Internals.Collections.Strings.Proxies;

@@ -41,39 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Holders.Reflective_Collections;
-with AMF.Internals.Collections.Strings.Proxies;
-with AMF.Reflective_Collections.Internals;
 
-package body AMF.String_Collections.Internals is
+package body AMF.Internals.Collections.Strings is
 
-   ---------------
-   -- To_Holder --
-   ---------------
+   -------------
+   -- Element --
+   -------------
 
-   function To_Holder
-    (Item : Collection_Of_String'Class) return League.Holders.Holder is
+   overriding function Element
+    (Self  : not null access constant Shared_String_Collection;
+     Index : Positive) return League.Holders.Holder is
    begin
       return
-        AMF.Holders.Reflective_Collections.To_Holder
-         (AMF.Reflective_Collections.Internals.Create
-           (AMF.Internals.Collections.Shared_Collection_Access
-             (Item.Collection)));
-   end To_Holder;
+        League.Holders.To_Holder
+         (Shared_String_Collection'Class (Self.all)'Access.Element (Index));
+   end Element;
 
-   ----------
-   -- Wrap --
-   ----------
-
-   function Wrap
-    (Collection : AMF.Internals.AMF_Collection_Of_String)
-       return Collection_Of_String is
-   begin
-      return
-       (Ada.Finalization.Controlled with
-          Collection =>
-            new AMF.Internals.Collections.Strings.Proxies.Shared_String_Collection_Proxy'
-                 (Collection => Collection));
-   end Wrap;
-
-end AMF.String_Collections.Internals;
+end AMF.Internals.Collections.Strings;
