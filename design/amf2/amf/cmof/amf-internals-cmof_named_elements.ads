@@ -66,12 +66,20 @@ package AMF.Internals.CMOF_Named_Elements is
     (Self : not null access constant CMOF_Named_Element_Proxy)
        return AMF.CMOF.Optional_CMOF_Visibility_Kind;
 
+   overriding function Separator
+    (Self : not null access constant CMOF_Named_Element_Proxy)
+       return League.Strings.Universal_String;
+
    overriding procedure Set_Name
     (Self : not null access CMOF_Named_Element_Proxy;
      To   : Optional_String);
 
-   overriding function Separator
-    (Self : not null access constant CMOF_Named_Element_Proxy)
-       return League.Strings.Universal_String;
+   overriding procedure Set_Visibility
+    (Self : not null access CMOF_Named_Element_Proxy;
+     To   : AMF.CMOF.Optional_CMOF_Visibility_Kind);
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
 end AMF.Internals.CMOF_Named_Elements;

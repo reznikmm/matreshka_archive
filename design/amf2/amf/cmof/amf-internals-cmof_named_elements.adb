@@ -125,4 +125,15 @@ package body AMF.Internals.CMOF_Named_Elements is
       end if;
    end Set_Name;
 
+   --------------------
+   -- Set_Visibility --
+   --------------------
+
+   overriding procedure Set_Visibility
+    (Self : not null access CMOF_Named_Element_Proxy;
+     To   : AMF.CMOF.Optional_CMOF_Visibility_Kind) is
+   begin
+      Internal_Set_Visibility (Self.Id, To);
+   end Set_Visibility;
+
 end AMF.Internals.CMOF_Named_Elements;

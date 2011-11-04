@@ -106,20 +106,6 @@ package body AMF.Internals.CMOF_Data_Types is
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
 
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-     (Self : not null access CMOF_Data_Type_Proxy;
-      To   : CMOF.Optional_CMOF_Visibility_Kind)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
-      raise Program_Error;
-   end Set_Visibility;
-
    ------------------------
    -- Get_Qualified_Name --
    ------------------------

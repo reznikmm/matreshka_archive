@@ -52,12 +52,18 @@ with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types.Collections;
 with AMF.Internals.CMOF_Classifiers;
+with AMF.Internals.CMOF_Relationships;
+pragma Elaborate (AMF.Internals.CMOF_Relationships);
 with AMF.String_Collections;
 
 package AMF.Internals.CMOF_Associations is
 
+   package Relationships is
+     new AMF.Internals.CMOF_Relationships
+          (AMF.Internals.CMOF_Classifiers.CMOF_Classifier_Proxy);
+
    type CMOF_Association_Proxy is
-     limited new AMF.Internals.CMOF_Classifiers.CMOF_Classifier_Proxy
+     limited new Relationships.CMOF_Relationship_Proxy
        and AMF.CMOF.Associations.CMOF_Association
          with null record;
 
@@ -70,10 +76,6 @@ package AMF.Internals.CMOF_Associations is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Association_Proxy)
        return Boolean;
-
-   overriding procedure Set_Visibility
-    (Self : not null access CMOF_Association_Proxy;
-     To   : CMOF.Optional_CMOF_Visibility_Kind);
 
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Association_Proxy)
@@ -101,10 +103,6 @@ package AMF.Internals.CMOF_Associations is
     (Self : not null access constant CMOF_Association_Proxy;
      Other : AMF.CMOF.Types.CMOF_Type_Access)
        return Boolean;
-
-   overriding function Get_Related_Element
-    (Self : not null access constant CMOF_Association_Proxy)
-       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
    overriding function Imported_Member
     (Self : not null access constant CMOF_Association_Proxy)
@@ -185,6 +183,10 @@ package AMF.Internals.CMOF_Associations is
    overriding procedure Set_Is_Derived
     (Self : not null access CMOF_Association_Proxy;
      To   : Boolean);
+   --  Setter of Association::isDerived.
+   --
+   --  Specifies whether the association is derived from other model elements 
+   --  such as other associations or constraints.
 
    overriding function Get_Owned_End
     (Self : not null access constant CMOF_Association_Proxy)

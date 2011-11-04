@@ -357,20 +357,6 @@ package body AMF.Internals.CMOF_Properties is
       return Includes_Cardinality (Self, C);
    end Includes_Cardinality;
 
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-     (Self : not null access CMOF_Property_Proxy;
-      To   : CMOF.Optional_CMOF_Visibility_Kind)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
-      raise Program_Error;
-   end Set_Visibility;
-
    ------------------------
    -- Get_Qualified_Name --
    ------------------------

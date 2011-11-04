@@ -41,11 +41,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Package_Imports is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+
+   --------------------------
+   -- Get_Imported_Package --
+   --------------------------
+
+   overriding function Get_Imported_Package
+    (Self : not null access constant CMOF_Package_Import_Proxy)
+       return AMF.CMOF.Packages.CMOF_Package_Access is
+   begin
+      return
+        AMF.CMOF.Packages.CMOF_Package_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Imported_Package (Self.Id)));
+   end Get_Imported_Package;
+
+   -----------------------------
+   -- Get_Importing_Namespace --
+   -----------------------------
+
+   overriding function Get_Importing_Namespace
+    (Self : not null access constant CMOF_Package_Import_Proxy)
+       return AMF.CMOF.Namespaces.CMOF_Namespace_Access is
+   begin
+      return
+        AMF.CMOF.Namespaces.CMOF_Namespace_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Importing_Namespace (Self.Id)));
+   end Get_Importing_Namespace;
 
    --------------------
    -- Get_Visibility --
@@ -87,21 +116,6 @@ package body AMF.Internals.CMOF_Package_Imports is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   -------------------------
-   -- Get_Related_Element --
-   -------------------------
-
-   overriding function Get_Related_Element
-     (Self : not null access constant CMOF_Package_Import_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Related_Element unimplemented");
-      raise Program_Error;
-      return Get_Related_Element (Self);
-   end Get_Related_Element;
 
    ----------------
    -- Get_Source --
@@ -148,21 +162,6 @@ package body AMF.Internals.CMOF_Package_Imports is
    end Set_Visibility;
 
    --------------------------
-   -- Get_Imported_Package --
-   --------------------------
-
-   overriding function Get_Imported_Package
-     (Self : not null access constant CMOF_Package_Import_Proxy)
-      return AMF.CMOF.Packages.CMOF_Package_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Imported_Package unimplemented");
-      raise Program_Error;
-      return Get_Imported_Package (Self);
-   end Get_Imported_Package;
-
-   --------------------------
    -- Set_Imported_Package --
    --------------------------
 
@@ -175,21 +174,6 @@ package body AMF.Internals.CMOF_Package_Imports is
       pragma Compile_Time_Warning (Standard.True, "Set_Imported_Package unimplemented");
       raise Program_Error;
    end Set_Imported_Package;
-
-   -----------------------------
-   -- Get_Importing_Namespace --
-   -----------------------------
-
-   overriding function Get_Importing_Namespace
-     (Self : not null access constant CMOF_Package_Import_Proxy)
-      return AMF.CMOF.Namespaces.CMOF_Namespace_Access
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Importing_Namespace unimplemented");
-      raise Program_Error;
-      return Get_Importing_Namespace (Self);
-   end Get_Importing_Namespace;
 
    -----------------------------
    -- Set_Importing_Namespace --

@@ -72,10 +72,6 @@ package AMF.Internals.CMOF_Classes is
     (Self : not null access constant CMOF_Class_Proxy)
        return Boolean;
 
-   overriding procedure Set_Visibility
-    (Self : not null access CMOF_Class_Proxy;
-     To   : CMOF.Optional_CMOF_Visibility_Kind);
-
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Class_Proxy)
        return Optional_String;

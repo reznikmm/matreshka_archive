@@ -43,11 +43,27 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Tags is
 
    use AMF.Internals.Tables.CMOF_Attributes;
+
+   -----------------
+   -- Get_Element --
+   -----------------
+
+   overriding function Get_Element
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element is
+   begin
+      return
+        AMF.CMOF.Elements.Collections.Wrap
+         (AMF.Internals.Element_Collections.Wrap
+           (Internal_Get_Element (Self.Id)));
+   end Get_Element;
 
    --------------
    -- Get_Name --
@@ -59,6 +75,20 @@ package body AMF.Internals.CMOF_Tags is
    begin
       return League.Strings.Internals.Create (Internal_Get_Name (Self.Id));
    end Get_Name;
+
+   -------------------
+   -- Get_Tag_Owner --
+   -------------------
+
+   overriding function Get_Tag_Owner
+    (Self : not null access constant CMOF_Tag_Proxy)
+       return AMF.CMOF.Elements.CMOF_Element_Access is
+   begin
+      return
+        AMF.CMOF.Elements.CMOF_Element_Access
+         (AMF.Internals.Helpers.To_Element
+           (Internal_Get_Tag_Owner (Self.Id)));
+   end Get_Tag_Owner;
 
    ---------------
    -- Get_Value --
@@ -92,33 +122,6 @@ package body AMF.Internals.CMOF_Tags is
    begin
       Internal_Set_Value (Self.Id, League.Strings.Internals.Internal (To));
    end Set_Value;
-
-   -----------------
-   -- Get_Element --
-   -----------------
-
-   overriding function Get_Element
-     (Self : not null access constant CMOF_Tag_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Element unimplemented");
-      raise Program_Error with "Unimplemented function Get_Element";
-      return Get_Element (Self);
-   end Get_Element;
-
-   -------------------
-   -- Get_Tag_Owner --
-   -------------------
-
-   overriding function Get_Tag_Owner
-    (Self : not null access constant CMOF_Tag_Proxy)
-       return AMF.CMOF.Elements.CMOF_Element_Access is
-   begin
-      raise Program_Error;
-      return null;
-   end Get_Tag_Owner;
 
    -------------------
    -- Set_Tag_Owner --

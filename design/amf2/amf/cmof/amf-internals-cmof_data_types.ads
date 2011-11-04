@@ -72,10 +72,6 @@ package AMF.Internals.CMOF_Data_Types is
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return Boolean;
 
-   overriding procedure Set_Visibility
-    (Self : not null access CMOF_Data_Type_Proxy;
-     To   : CMOF.Optional_CMOF_Visibility_Kind);
-
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return Optional_String;

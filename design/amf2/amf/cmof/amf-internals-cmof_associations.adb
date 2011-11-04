@@ -114,6 +114,17 @@ package body AMF.Internals.CMOF_Associations is
            (Internal_Get_Owned_End (Self.Id)));
    end Get_Owned_End;
 
+   --------------------
+   -- Set_Is_Derived --
+   --------------------
+
+   overriding procedure Set_Is_Derived
+    (Self : not null access CMOF_Association_Proxy;
+     To   : Boolean) is
+   begin
+      Internal_Set_Is_Derived (Self.Id, To);
+   end Set_Is_Derived;
+
 
    ------------------------
    -- All_Owned_Elements --
@@ -144,20 +155,6 @@ package body AMF.Internals.CMOF_Associations is
       raise Program_Error;
       return Must_Be_Owned (Self);
    end Must_Be_Owned;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-     (Self : not null access CMOF_Association_Proxy;
-      To   : CMOF.Optional_CMOF_Visibility_Kind)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Visibility unimplemented");
-      raise Program_Error;
-   end Set_Visibility;
 
    ------------------------
    -- Get_Qualified_Name --
@@ -250,21 +247,6 @@ package body AMF.Internals.CMOF_Associations is
       raise Program_Error;
       return Conforms_To (Self, Other);
    end Conforms_To;
-
-   -------------------------
-   -- Get_Related_Element --
-   -------------------------
-
-   overriding function Get_Related_Element
-     (Self : not null access constant CMOF_Association_Proxy)
-      return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Get_Related_Element unimplemented");
-      raise Program_Error;
-      return Get_Related_Element (Self);
-   end Get_Related_Element;
 
    ---------------------
    -- Imported_Member --
@@ -511,20 +493,6 @@ package body AMF.Internals.CMOF_Associations is
       raise Program_Error;
       return May_Specialize_Type (Self, C);
    end May_Specialize_Type;
-
-   --------------------
-   -- Set_Is_Derived --
-   --------------------
-
-   overriding procedure Set_Is_Derived
-     (Self : not null access CMOF_Association_Proxy;
-      To   : Boolean)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Is_Derived unimplemented");
-      raise Program_Error;
-   end Set_Is_Derived;
 
    --------------
    -- End_Type --
