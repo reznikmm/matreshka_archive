@@ -286,6 +286,8 @@ package AMF.Internals.Tables.CMOF_Metamodel is
      AMF.Internals.CMOF_Element range 1 .. 33;
 
 
+   function MB_CMOF return AMF.Internals.AMF_Element;
+
    procedure Initialize;
 
 end AMF.Internals.Tables.CMOF_Metamodel;
