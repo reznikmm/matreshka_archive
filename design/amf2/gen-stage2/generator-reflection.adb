@@ -245,7 +245,7 @@ package body Generator.Reflection is
                   when Set =>
                      Holder_Name :=
                        League.Strings.To_Universal_String
-                        ("AMF.Holders.Boolean_Collections.To_Holder");
+                        ("AMF.Boolean_Collections.Internals.To_Holder");
 
                   when Ordered_Set =>
                      raise Program_Error;
@@ -323,7 +323,7 @@ package body Generator.Reflection is
                   when Ordered_Set =>
                      Holder_Name :=
                        League.Strings.To_Universal_String
-                        ("AMF.Holders.String_Collections.To_Holder");
+                        ("AMF.String_Collections.Internals.To_Holder");
 
                   when Bag =>
                      raise Program_Error;
@@ -331,7 +331,7 @@ package body Generator.Reflection is
                   when Sequence =>
                      Holder_Name :=
                        League.Strings.To_Universal_String
-                        ("AMF.Holders.String_Collections.To_Holder");
+                        ("AMF.String_Collections.Internals.To_Holder");
                end case;
 
             elsif Attribute_Type.Get_Name = Unlimited_Natural_Name then
@@ -804,7 +804,7 @@ package body Generator.Reflection is
          Put_Line ("with AMF.UML.Holders.Transition_Kinds;");
          Put_Line ("with AMF.UML.Holders.Visibility_Kinds;");
          Put_Line ("with League.Holders.Integers;");
-         Put_Line ("with AMF.Holders.Boolean_Collections;");
+         Put_Line ("with AMF.Boolean_Collections.Internals;");
          Put_Line ("with AMF.Holders.Reals;");
          Put_Line ("with AMF.Holders.Unlimited_Naturals;");
       end if;
@@ -812,7 +812,6 @@ package body Generator.Reflection is
       Put_Line ("with AMF.Elements;");
       Put_Line ("with AMF.Holders.Collections;");
       Put_Line ("with AMF.Holders.Elements;");
-      Put_Line ("with AMF.Holders.String_Collections;");
       Put_Line ("with AMF.Internals." & Metamodel_Name & "_Elements;");
       Put_Line ("with AMF.Internals.Element_Collections;");
       Put_Line ("with AMF.Internals.Helpers;");
@@ -824,7 +823,7 @@ package body Generator.Reflection is
       Put_Line
        ("with AMF.Internals.Tables." & Metamodel_Name & "_Element_Table;");
       Put_Line ("with AMF.Internals.Tables." & Metamodel_Name & "_Types;");
-      Put_Line ("with AMF.String_Collections;");
+      Put_Line ("with AMF.String_Collections.Internals;");
       Put_Line ("with League.Holders.Booleans;");
       New_Line;
       Put_Line
