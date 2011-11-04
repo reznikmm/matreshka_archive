@@ -78,7 +78,7 @@
 private with Ada.Finalization;
 
 with League.Holders;
-private with AMF.Internals.Reflective_Collections;
+private with AMF.Internals.Collections;
 
 package AMF.Reflective_Collections is
 
@@ -145,8 +145,7 @@ package AMF.Reflective_Collections is
 private
 
    type Reflective_Collection is new Ada.Finalization.Controlled with record
-      Collection :
-        AMF.Internals.Reflective_Collections.Shared_Collection_Access;
+      Collection : AMF.Internals.Collections.Shared_Collection_Access;
    end record;
 
    overriding procedure Adjust (Self : in out Reflective_Collection);

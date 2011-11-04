@@ -41,36 +41,41 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides abstract root type for all reflective collections.
---
---  Children packages provides derived types for different types of items.
-------------------------------------------------------------------------------
-with League.Holders;
+with Ada.Containers.Vectors;
 
-package AMF.Internals.Reflective_Collections is
+with Matreshka.Atomics.Counters;
 
-   pragma Preelaborate;
+package AMF.Internals.Collections.Elements.Containers is
 
-   type Shared_Collection is abstract tagged limited null record;
+   package Vectors is
+     new Ada.Containers.Vectors
+          (Positive, AMF.Elements.Element_Access, AMF.Elements."=");
 
-   type Shared_Collection_Access is
-     access all Shared_Collection'Class;
+   type Shared_Element_Collection_Container is
+     new Shared_Element_Collection with record
+      Counter  : Matreshka.Atomics.Counters.Counter;
+      Elements : Vectors.Vector;
+   end record;
 
-   not overriding procedure Reference
-    (Self : not null access Shared_Collection) is abstract;
+   overriding procedure Reference
+    (Self : not null access Shared_Element_Collection_Container);
 
-   not overriding procedure Unreference
-    (Self : not null access Shared_Collection) is abstract;
+   overriding procedure Unreference
+    (Self : not null access Shared_Element_Collection_Container);
 
-   not overriding function Length
-    (Self : not null access constant Shared_Collection)
-       return Natural is abstract;
+   overriding function Length
+    (Self : not null access constant Shared_Element_Collection_Container)
+       return Natural;
 
-   not overriding function Element
-    (Self  : not null access constant Shared_Collection;
-     Index : Positive) return League.Holders.Holder is abstract;
+   overriding procedure Clear
+    (Self : not null access Shared_Element_Collection_Container);
 
-   not overriding procedure Clear
-    (Self : not null access Shared_Collection) is abstract;
+   overriding function Element
+    (Self  : not null access constant Shared_Element_Collection_Container;
+     Index : Positive) return not null AMF.Elements.Element_Access;
 
-end AMF.Internals.Reflective_Collections;
+   overriding procedure Add
+    (Self : not null access Shared_Element_Collection_Container;
+     Item : not null AMF.Elements.Element_Access);
+
+end AMF.Internals.Collections.Elements.Containers;

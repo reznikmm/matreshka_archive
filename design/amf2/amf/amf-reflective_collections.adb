@@ -78,7 +78,7 @@ package body AMF.Reflective_Collections is
    --------------
 
    overriding procedure Finalize (Self : in out Reflective_Collection) is
-      use type AMF.Internals.Reflective_Collections.Shared_Collection_Access;
+      use type AMF.Internals.Collections.Shared_Collection_Access;
 
    begin
       if Self.Collection /= null then

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,41 +41,55 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers.Vectors;
+with AMF.Internals.Element_Collections;
+with AMF.Internals.Helpers;
 
-with Matreshka.Atomics.Counters;
+package body AMF.Internals.Collections.Elements.Proxies is
 
-package AMF.Internals.Reflective_Collections.Elements.Containers is
-
-   package Vectors is
-     new Ada.Containers.Vectors
-          (Positive, AMF.Elements.Element_Access, AMF.Elements."=");
-
-   type Shared_Element_Collection_Container is
-     new Shared_Element_Collection with record
-      Counter  : Matreshka.Atomics.Counters.Counter;
-      Elements : Vectors.Vector;
-   end record;
-
-   overriding procedure Reference
-    (Self : not null access Shared_Element_Collection_Container);
-
-   overriding procedure Unreference
-    (Self : not null access Shared_Element_Collection_Container);
-
-   overriding function Length
-    (Self : not null access constant Shared_Element_Collection_Container)
-       return Natural;
-
-   overriding procedure Clear
-    (Self : not null access Shared_Element_Collection_Container);
-
-   overriding function Element
-    (Self  : not null access constant Shared_Element_Collection_Container;
-     Index : Positive) return not null AMF.Elements.Element_Access;
+   ---------
+   -- Add --
+   ---------
 
    overriding procedure Add
-    (Self : not null access Shared_Element_Collection_Container;
-     Item : not null AMF.Elements.Element_Access);
+    (Self : not null access Shared_Element_Collection_Proxy;
+     Item : not null AMF.Elements.Element_Access) is
+   begin
+      AMF.Internals.Element_Collections.Add
+       (Self.Collection, AMF.Internals.Helpers.To_Element (Item));
+   end Add;
 
-end AMF.Internals.Reflective_Collections.Elements.Containers;
+   -----------
+   -- Clear --
+   -----------
+
+   overriding procedure Clear
+    (Self : not null access Shared_Element_Collection_Proxy) is
+   begin
+      raise Program_Error with "Not yet implemented";
+   end Clear;
+
+   -------------
+   -- Element --
+   -------------
+
+   overriding function Element
+    (Self  : not null access constant Shared_Element_Collection_Proxy;
+     Index : Positive) return not null AMF.Elements.Element_Access is
+   begin
+      return
+        AMF.Internals.Helpers.To_Element
+         (AMF.Internals.Element_Collections.Element (Self.Collection, Index));
+   end Element;
+
+   ------------
+   -- Length --
+   ------------
+
+   overriding function Length
+    (Self : not null access constant Shared_Element_Collection_Proxy)
+       return Natural is
+   begin
+      return AMF.Internals.Element_Collections.Length (Self.Collection);
+   end Length;
+
+end AMF.Internals.Collections.Elements.Proxies;

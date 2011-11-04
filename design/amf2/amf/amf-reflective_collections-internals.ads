@@ -41,12 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Reflective_Collections;
+with AMF.Internals.Collections;
 
 package AMF.Reflective_Collections.Internals is
 
    function Wrap
-    (Item : not null AMF.Internals.Reflective_Collections.Shared_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Shared_Collection_Access)
        return Reflective_Collection;
 
 end AMF.Reflective_Collections.Internals;

@@ -49,7 +49,7 @@ package body AMF.Reflective_Collections.Internals is
    ----------
 
    function Wrap
-    (Item : not null AMF.Internals.Reflective_Collections.Shared_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Shared_Collection_Access)
        return Reflective_Collection is
    begin
       return (Ada.Finalization.Controlled with Collection => Item);

@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.Reflective_Collections.Elements.Proxies;
+with AMF.Internals.Collections.Elements.Proxies;
 with AMF.Internals.Links;
 with AMF.Internals.Tables.AMF_Tables;
 with AMF.Internals.Tables.CMOF_Attributes;
@@ -229,10 +229,10 @@ package body AMF.Internals.Element_Collections is
 
    function Wrap
     (Collection : AMF_Collection_Of_Element)
-       return AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access is
+       return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access is
    begin
       return
-        new AMF.Internals.Reflective_Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+        new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
              (Collection => Collection);
    end Wrap;
 
@@ -246,7 +246,7 @@ package body AMF.Internals.Element_Collections is
    begin
       return
         AMF.Elements.Collections.Wrap
-         (new AMF.Internals.Reflective_Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
+         (new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
                (Collection => Collection));
    end Wrap;
 

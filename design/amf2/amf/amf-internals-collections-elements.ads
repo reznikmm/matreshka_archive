@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,36 +41,34 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides implementation of proxy to map collection of elements
---  into internal representation used to represent value of object's attribute.
+--  Abstract collection of AMF.Element. It defines subprograms for direct
+--  manipulation on AMF.Elements.Element_Access and provides implementation
+--  of holder version of the same subprograms.
+--
+--  Children packages provides several implementations of it.
 ------------------------------------------------------------------------------
+with AMF.Elements;
 
-package AMF.Internals.Reflective_Collections.Elements.Proxies is
+package AMF.Internals.Collections.Elements is
 
-   type Shared_Element_Collection_Proxy is
-     new Shared_Element_Collection with record
-      Collection : AMF.Internals.AMF_Collection_Of_Element;
-   end record;
+   pragma Preelaborate;
 
-   overriding procedure Reference
-    (Self : not null access Shared_Element_Collection_Proxy) is null;
+   type Shared_Element_Collection is
+     abstract new Shared_Collection with null record;
 
-   overriding procedure Unreference
-    (Self : not null access Shared_Element_Collection_Proxy) is null;
+   type Shared_Element_Collection_Access is
+     access all Shared_Element_Collection'Class;
 
-   overriding function Length
-    (Self : not null access constant Shared_Element_Collection_Proxy)
-       return Natural;
+   not overriding function Element
+    (Self  : not null access constant Shared_Element_Collection;
+     Index : Positive) return not null AMF.Elements.Element_Access is abstract;
 
-   overriding procedure Clear
-    (Self : not null access Shared_Element_Collection_Proxy);
+   not overriding procedure Add
+    (Self : not null access Shared_Element_Collection;
+     Item : not null AMF.Elements.Element_Access) is abstract;
 
    overriding function Element
-    (Self  : not null access constant Shared_Element_Collection_Proxy;
-     Index : Positive) return not null AMF.Elements.Element_Access;
+    (Self  : not null access constant Shared_Element_Collection;
+     Index : Positive) return League.Holders.Holder;
 
-   overriding procedure Add
-    (Self : not null access Shared_Element_Collection_Proxy;
-     Item : not null AMF.Elements.Element_Access);
-
-end AMF.Internals.Reflective_Collections.Elements.Proxies;
+end AMF.Internals.Collections.Elements;

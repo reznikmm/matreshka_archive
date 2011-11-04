@@ -41,85 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Deallocation;
+--  This package provides abstract root type for all reflective collections.
+--
+--  Children packages provides derived types for different types of items.
+------------------------------------------------------------------------------
+with League.Holders;
 
-package body AMF.Internals.Reflective_Collections.Elements.Containers is
+package AMF.Internals.Collections is
 
-   type Shared_Element_Collection_Container_Access is
-     access all Shared_Element_Collection_Container'Class;
+   pragma Preelaborate;
 
-   ---------
-   -- Add --
-   ---------
+   type Shared_Collection is abstract tagged limited null record;
 
-   overriding procedure Add
-    (Self : not null access Shared_Element_Collection_Container;
-     Item : not null AMF.Elements.Element_Access) is
-   begin
-      Self.Elements.Append (Item);
-   end Add;
+   type Shared_Collection_Access is
+     access all Shared_Collection'Class;
 
-   -----------
-   -- Clear --
-   -----------
+   not overriding procedure Reference
+    (Self : not null access Shared_Collection) is abstract;
 
-   overriding procedure Clear
-    (Self : not null access Shared_Element_Collection_Container) is
-   begin
-      Self.Elements.Clear;
-   end Clear;
+   not overriding procedure Unreference
+    (Self : not null access Shared_Collection) is abstract;
 
-   -------------
-   -- Element --
-   -------------
+   not overriding function Length
+    (Self : not null access constant Shared_Collection)
+       return Natural is abstract;
 
-   overriding function Element
-    (Self  : not null access constant Shared_Element_Collection_Container;
-     Index : Positive) return not null AMF.Elements.Element_Access is
-   begin
-      return Self.Elements.Element (Index);
-   end Element;
+   not overriding function Element
+    (Self  : not null access constant Shared_Collection;
+     Index : Positive) return League.Holders.Holder is abstract;
 
-   ------------
-   -- Length --
-   ------------
+   not overriding procedure Clear
+    (Self : not null access Shared_Collection) is abstract;
 
-   overriding function Length
-    (Self : not null access constant Shared_Element_Collection_Container)
-       return Natural is
-   begin
-      return Natural (Self.Elements.Length);
-   end Length;
-
-   ---------------
-   -- Reference --
-   ---------------
-
-   overriding procedure Reference
-    (Self : not null access Shared_Element_Collection_Container) is
-   begin
-      Matreshka.Atomics.Counters.Increment (Self.Counter);
-   end Reference;
-
-   -----------------
-   -- Unreference --
-   -----------------
-
-   overriding procedure Unreference
-    (Self : not null access Shared_Element_Collection_Container)
-   is
-      procedure Free is
-        new Ada.Unchecked_Deallocation
-             (Shared_Element_Collection_Container'Class,
-              Shared_Element_Collection_Container_Access);
-
-      Aux : Shared_Element_Collection_Container_Access
-        := Self.all'Unchecked_Access;
-
-   begin
-      if Matreshka.Atomics.Counters.Decrement (Self.Counter) then
-         Free (Aux);
-      end if;
-   end Unreference;
-
-end AMF.Internals.Reflective_Collections.Elements.Containers;
+end AMF.Internals.Collections;

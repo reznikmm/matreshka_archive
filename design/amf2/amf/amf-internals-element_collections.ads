@@ -44,7 +44,7 @@
 --  Internal table based implementation of collections of elements.
 ------------------------------------------------------------------------------
 with AMF.Elements.Collections;
-with AMF.Internals.Reflective_Collections.Elements;
+with AMF.Internals.Collections.Elements;
 
 package AMF.Internals.Element_Collections is
 
@@ -63,7 +63,7 @@ package AMF.Internals.Element_Collections is
 
    function Wrap
     (Collection : AMF_Collection_Of_Element)
-       return AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access;
+       return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
 
    function Wrap
     (Collection : AMF_Collection_Of_Element)

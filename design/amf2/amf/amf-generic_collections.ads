@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
-with AMF.Internals.Reflective_Collections.Elements;
+with AMF.Internals.Collections.Elements;
 
 generic
    type Abstract_Element is limited interface;
@@ -80,30 +80,30 @@ package AMF.Generic_Collections is
    --  implementation.
 
    function Wrap
-    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
        return Set;
 
    function Wrap
-    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
        return Ordered_Set;
 
    function Wrap
-    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
        return Bag;
 
    function Wrap
-    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
        return Sequence;
 
    function Internal
     (Self : Collection'Class)
-       return AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access;
+       return AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
 
 private
 
    type Collection is
      abstract new Ada.Finalization.Controlled with record
-      Collection : AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access;
+      Collection : AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
    end record;
 
    type Set is new Collection with null record;

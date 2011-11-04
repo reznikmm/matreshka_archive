@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,21 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Holders.Elements;
+--  This package provides implementation of proxy to map collection of elements
+--  into internal representation used to represent value of object's attribute.
+------------------------------------------------------------------------------
 
-package body AMF.Internals.Reflective_Collections.Elements is
+package AMF.Internals.Collections.Elements.Proxies is
 
-   -------------
-   -- Element --
-   -------------
+   type Shared_Element_Collection_Proxy is
+     new Shared_Element_Collection with record
+      Collection : AMF.Internals.AMF_Collection_Of_Element;
+   end record;
+
+   overriding procedure Reference
+    (Self : not null access Shared_Element_Collection_Proxy) is null;
+
+   overriding procedure Unreference
+    (Self : not null access Shared_Element_Collection_Proxy) is null;
+
+   overriding function Length
+    (Self : not null access constant Shared_Element_Collection_Proxy)
+       return Natural;
+
+   overriding procedure Clear
+    (Self : not null access Shared_Element_Collection_Proxy);
 
    overriding function Element
-    (Self  : not null access constant Shared_Element_Collection;
-     Index : Positive) return League.Holders.Holder is
-   begin
-      return
-        AMF.Holders.Elements.To_Holder
-         (Element (Shared_Element_Collection'Class (Self.all)'Access, Index));
-   end Element;
+    (Self  : not null access constant Shared_Element_Collection_Proxy;
+     Index : Positive) return not null AMF.Elements.Element_Access;
 
-end AMF.Internals.Reflective_Collections.Elements;
+   overriding procedure Add
+    (Self : not null access Shared_Element_Collection_Proxy;
+     Item : not null AMF.Elements.Element_Access);
+
+end AMF.Internals.Collections.Elements.Proxies;

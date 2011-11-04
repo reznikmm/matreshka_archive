@@ -94,13 +94,13 @@ package body AMF.Internals.Holders is
    ---------------
 
    function To_Holder
-    (Item : not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access)
+    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
        return League.Holders.Holder is
    begin
       return
         AMF.Holders.Reflective_Collections.To_Holder
          (AMF.Reflective_Collections.Internals.Wrap
-           (AMF.Internals.Reflective_Collections.Shared_Collection_Access (Item)));
+           (AMF.Internals.Collections.Shared_Collection_Access (Item)));
    end To_Holder;
 
 end AMF.Internals.Holders;

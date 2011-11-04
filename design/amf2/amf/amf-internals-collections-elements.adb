@@ -41,34 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Abstract collection of AMF.Element. It defines subprograms for direct
---  manipulation on AMF.Elements.Element_Access and provides implementation
---  of holder version of the same subprograms.
---
---  Children packages provides several implementations of it.
-------------------------------------------------------------------------------
-with AMF.Elements;
+with AMF.Holders.Elements;
 
-package AMF.Internals.Reflective_Collections.Elements is
+package body AMF.Internals.Collections.Elements is
 
-   pragma Preelaborate;
-
-   type Shared_Element_Collection is
-     abstract new Shared_Collection with null record;
-
-   type Shared_Element_Collection_Access is
-     access all Shared_Element_Collection'Class;
-
-   not overriding function Element
-    (Self  : not null access constant Shared_Element_Collection;
-     Index : Positive) return not null AMF.Elements.Element_Access is abstract;
-
-   not overriding procedure Add
-    (Self : not null access Shared_Element_Collection;
-     Item : not null AMF.Elements.Element_Access) is abstract;
+   -------------
+   -- Element --
+   -------------
 
    overriding function Element
     (Self  : not null access constant Shared_Element_Collection;
-     Index : Positive) return League.Holders.Holder;
+     Index : Positive) return League.Holders.Holder is
+   begin
+      return
+        AMF.Holders.Elements.To_Holder
+         (Element (Shared_Element_Collection'Class (Self.all)'Access, Index));
+   end Element;
 
-end AMF.Internals.Reflective_Collections.Elements;
+end AMF.Internals.Collections.Elements;

@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Helpers;
 with AMF.Internals.Element_Collections;
-with AMF.Internals.Reflective_Collections.Elements.Containers;
+with AMF.Internals.Collections.Elements.Containers;
 with AMF.Internals.Tables.AMF_Tables;
 with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
@@ -68,14 +68,14 @@ package body CMOF.Internals.Extents is
 
    function All_Elements
     (Self : CMOF_Extent)
-       return not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access
+       return not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
    is
       Current  : AMF_Tables.Extent_Element_Identifier
         := AMF_Tables.Extents.Table (Self).Head;
-      Result   : constant not null AMF.Internals.Reflective_Collections.Elements.Shared_Element_Collection_Access
-        := new AMF.Internals.Reflective_Collections.Elements.Containers.Shared_Element_Collection_Container;
-      Elements : AMF.Internals.Reflective_Collections.Elements.Containers.Vectors.Vector
-        renames AMF.Internals.Reflective_Collections.Elements.Containers.Shared_Element_Collection_Container (Result.all).Elements;
+      Result   : constant not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
+        := new AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container;
+      Elements : AMF.Internals.Collections.Elements.Containers.Vectors.Vector
+        renames AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container (Result.all).Elements;
 
    begin
       while Current /= 0 loop
