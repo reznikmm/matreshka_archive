@@ -43,9 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
 
-with AMF.Reflective_Collections.Internals;
-with AMF.Holders.Reflective_Collections;
-
 package body AMF.Internals.Holders is
 
    use type Matreshka.Internals.Strings.Shared_String_Access;
@@ -87,20 +84,6 @@ package body AMF.Internals.Holders is
              (Result, League.Strings.Internals.Create (Item));
          end if;
       end return;
-   end To_Holder;
-
-   ---------------
-   -- To_Holder --
-   ---------------
-
-   function To_Holder
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return League.Holders.Holder is
-   begin
-      return
-        AMF.Holders.Reflective_Collections.To_Holder
-         (AMF.Reflective_Collections.Internals.Wrap
-           (AMF.Internals.Collections.Shared_Collection_Access (Item)));
    end To_Holder;
 
 end AMF.Internals.Holders;

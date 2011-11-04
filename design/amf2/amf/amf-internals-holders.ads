@@ -46,8 +46,6 @@
 with League.Holders;
 with Matreshka.Internals.Strings;
 
-with AMF.Internals.Collections.Elements;
-
 package AMF.Internals.Holders is
 
    function Element
@@ -57,10 +55,5 @@ package AMF.Internals.Holders is
    function To_Holder
     (Item : Matreshka.Internals.Strings.Shared_String_Access)
        return League.Holders.Holder;
-
-   function To_Holder
-    (Item : not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access)
-       return League.Holders.Holder;
-   --  Wrap specified collection into holder of reflective collection.
 
 end AMF.Internals.Holders;
