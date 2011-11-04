@@ -75,7 +75,6 @@ with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
-with AMF.Holders.String_Collections;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
@@ -1331,7 +1330,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  OpaqueExpression::body : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.String_Collections.Internals.Wrap
                  (Internal_Get_Body (Self)));
 
@@ -1339,7 +1338,7 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  OpaqueExpression::language : String
 
             return
-              AMF.Holders.String_Collections.To_Holder
+              AMF.String_Collections.Internals.To_Holder
                (AMF.String_Collections.Internals.Wrap
                  (Internal_Get_Language (Self)));
 
