@@ -44,6 +44,17 @@
 
 package body AMF.Reflective_Collections is
 
+   ---------
+   -- Add --
+   ---------
+
+   procedure Add
+    (Self : Reflective_Collection'Class;
+     Item : League.Holders.Holder) is
+   begin
+      null;
+   end Add;
+
    ------------
    -- Adjust --
    ------------
@@ -57,7 +68,7 @@ package body AMF.Reflective_Collections is
    -- Clear --
    -----------
 
-   procedure Clear (Self : in out Reflective_Collection) is
+   procedure Clear (Self : in out Reflective_Collection'Class) is
    begin
       Self.Collection.Clear;
    end Clear;
@@ -67,7 +78,7 @@ package body AMF.Reflective_Collections is
    -------------
 
    function Element
-    (Self  : Reflective_Collection;
+    (Self  : Reflective_Collection'Class;
      Index : Positive) return League.Holders.Holder is
    begin
       return Self.Collection.Element (Index);
@@ -91,7 +102,7 @@ package body AMF.Reflective_Collections is
    -- Length --
    ------------
 
-   function Length (Self : Reflective_Collection) return Natural is
+   function Length (Self : Reflective_Collection'Class) return Natural is
    begin
       return Self.Collection.Length;
    end Length;

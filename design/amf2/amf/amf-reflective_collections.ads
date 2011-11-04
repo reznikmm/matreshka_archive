@@ -86,26 +86,36 @@ package AMF.Reflective_Collections is
 
    type Reflective_Collection is tagged private;
 
-   function Length (Self : Reflective_Collection) return Natural;
+   function Length (Self : Reflective_Collection'Class) return Natural;
    --  size(): Integer
    --
    --  Returns the number of objects in the colleciton.
 
    function Element
-    (Self  : Reflective_Collection;
+    (Self  : Reflective_Collection'Class;
      Index : Positive) return League.Holders.Holder;
    --  get(index: Integer): Object
    --
    --  Returns the object at the given index in the sequence.
 
-   procedure Clear (Self : in out Reflective_Collection);
+   procedure Clear (Self : in out Reflective_Collection'Class);
    --  clear()
    --
    --  Removes all objects from the collection.
 
+   procedure Add
+    (Self : Reflective_Collection'Class;
+     Item : League.Holders.Holder);
    --  add(object: Object): Boolean
-   --  Adds object to the last position in the collection. Returns true if the object was added.
    --
+   --  Adds object to the last position in the collection. Returns true if the
+   --  object was added.
+   --
+   --  add(object: Object): Boolean
+   --
+   --  Adds object to the end of the sequence. Returns true if the object was
+   --  added.
+
    --  addAll(elements: ReflectiveSequence): Boolean
    --  Adds the objects to the end of the collection. Returns true if any elements were added.
    --
@@ -124,10 +134,6 @@ package AMF.Reflective_Collections is
    --
    --  Behavior of particular operations defined in ReflectiveCollection is the
    --  following when applied to a ReflectiveSequence:
-   --
-   --  add(object: Object): Boolean
-   --  Adds object to the end of the sequence. Returns true if the object was added.
-   --  Issue 6910: change type of parameter
    --
    --  addAll(objects: ReflectiveSequenceReflectiveCollection): Boolean
    --  issue 6907: clarify behavior
