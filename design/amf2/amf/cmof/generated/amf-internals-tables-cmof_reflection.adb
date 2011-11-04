@@ -70,20 +70,23 @@ with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Tags;
 with AMF.CMOF.Types.Collections;
 with AMF.CMOF.Value_Specifications.Collections;
-with AMF.String_Collections.Internals;
+with AMF.Internals.Holders.CMOF_Holders;
+with AMF.String_Collections;
 with AMF.CMOF.Holders.Parameter_Direction_Kinds;
 with AMF.CMOF.Holders.Visibility_Kinds;
+with AMF.Elements;
 with AMF.Holders.Collections;
 with AMF.Holders.Elements;
 with AMF.Internals.CMOF_Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Holders;
+with AMF.Internals.Holders.CMOF_Holders;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Types;
-with AMF.String_Collections;
+with AMF.String_Collections.Internals;
 with League.Holders.Booleans;
 
 package body AMF.Internals.Tables.CMOF_Reflection is
@@ -167,57 +170,57 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Classifier::attribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Association_End_Type then
             --  Association::endType : Type
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_End_Type (Self)));
+              AMF.CMOF.Types.Collections.CMOF_Type_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_End_Type);
 
          elsif Property = MP_CMOF_Classifier_Feature then
             --  Classifier::feature : Feature
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Feature (Self)));
+              AMF.CMOF.Features.Collections.CMOF_Feature_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
          elsif Property = MP_CMOF_Classifier_General then
             --  Classifier::general : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_General (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
             --  Classifier::inheritedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Inherited_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Inherited_Member);
 
          elsif Property = MP_CMOF_Association_Is_Derived then
             --  Association::isDerived : Boolean
@@ -239,17 +242,17 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Association_Member_End then
             --  Association::memberEnd : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member_End (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member_End);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -263,81 +266,84 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Associations.CMOF_Association_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Association_Navigable_Owned_End then
             --  Association::navigableOwnedEnd : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Navigable_Owned_End (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Navigable_Owned_End);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Association_Owned_End then
             --  Association::ownedEnd : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_End (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_End);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Associations.CMOF_Association_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Associations.CMOF_Association_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -351,9 +357,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Relationship::relatedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Related_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Related_Element);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
@@ -378,49 +384,49 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Classifier::attribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Classifier_Feature then
             --  Classifier::feature : Feature
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Feature (Self)));
+              AMF.CMOF.Features.Collections.CMOF_Feature_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
          elsif Property = MP_CMOF_Classifier_General then
             --  Classifier::general : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_General (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
             --  Classifier::inheritedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Inherited_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Inherited_Member);
 
          elsif Property = MP_CMOF_Class_Is_Abstract then
             --  Class::isAbstract : Boolean
@@ -442,9 +448,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -458,81 +464,84 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Classes.CMOF_Class_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Class_Owned_Attribute then
             --  Class::ownedAttribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Class_Owned_Operation then
             --  Class::ownedOperation : Operation
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Operation (Self)));
+              AMF.CMOF.Operations.Collections.CMOF_Operation_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Classes.CMOF_Class_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Classes.CMOF_Class_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -546,9 +555,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Class::superClass : Class
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Super_Class (Self)));
+              AMF.CMOF.Classes.Collections.CMOF_Class_Collections.Internals.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Super_Class);
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
@@ -573,9 +582,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Comment::annotatedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Annotated_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Comments.CMOF_Comment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Annotated_Element);
 
          elsif Property = MP_CMOF_Comment_Body then
             --  Comment::body : String
@@ -589,25 +598,26 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Comments.CMOF_Comment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Comments.CMOF_Comment_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Comments.CMOF_Comment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          else
             raise Program_Error;
@@ -624,17 +634,18 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Constraint::constrainedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Constrained_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Constrained_Element);
 
          elsif Property = MP_CMOF_Constraint_Context then
             --  Constraint::context : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Context (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Context));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -648,33 +659,35 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -688,9 +701,10 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Constraint::specification : ValueSpecification
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Specification (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access'
+                 (AMF.CMOF.Constraints.CMOF_Constraint_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Specification));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
@@ -715,49 +729,49 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Classifier::attribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Classifier_Feature then
             --  Classifier::feature : Feature
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Feature (Self)));
+              AMF.CMOF.Features.Collections.CMOF_Feature_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
          elsif Property = MP_CMOF_Classifier_General then
             --  Classifier::general : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_General (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
             --  Classifier::inheritedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Inherited_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Inherited_Member);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
@@ -771,9 +785,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -787,81 +801,84 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Attribute then
             --  DataType::ownedAttribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
             --  DataType::ownedOperation : Operation
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Operation (Self)));
+              AMF.CMOF.Operations.Collections.CMOF_Operation_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -902,65 +919,68 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  ElementImport::importedElement : PackageableElement
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Imported_Element (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access'
+                 (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Element));
 
          elsif Property = MP_CMOF_Element_Import_Importing_Namespace then
             --  ElementImport::importingNamespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Importing_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Importing_Namespace));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Related_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Related_Element);
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
             --  DirectedRelationship::source : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Source (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Source);
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
             --  DirectedRelationship::target : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Target (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Target);
 
          elsif Property = MP_CMOF_Element_Import_Visibility then
             --  ElementImport::visibility : VisibilityKind
@@ -985,49 +1005,49 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Classifier::attribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Classifier_Feature then
             --  Classifier::feature : Feature
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Feature (Self)));
+              AMF.CMOF.Features.Collections.CMOF_Feature_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
          elsif Property = MP_CMOF_Classifier_General then
             --  Classifier::general : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_General (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
             --  Classifier::inheritedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Inherited_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Inherited_Member);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
@@ -1041,9 +1061,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -1057,89 +1077,92 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Attribute then
             --  DataType::ownedAttribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Enumeration_Owned_Literal then
             --  Enumeration::ownedLiteral : EnumerationLiteral
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Literal (Self)));
+              AMF.CMOF.Enumeration_Literals.Collections.CMOF_Enumeration_Literal_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Literal);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
             --  DataType::ownedOperation : Operation
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Operation (Self)));
+              AMF.CMOF.Operations.Collections.CMOF_Operation_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -1172,9 +1195,10 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  EnumerationLiteral::enumeration : Enumeration
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Enumeration (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access'
+                 (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Enumeration));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -1188,33 +1212,35 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -1255,41 +1281,43 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Expressions.CMOF_Expression_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Expression_Operand then
             --  Expression::operand : ValueSpecification
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Operand (Self)));
+              AMF.CMOF.Value_Specifications.Collections.CMOF_Value_Specification_Collections.Internals.To_Holder
+               (AMF.CMOF.Expressions.CMOF_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Operand);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Expressions.CMOF_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Expressions.CMOF_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Expressions.CMOF_Expression_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -1303,9 +1331,10 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  TypedElement::type : Type
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Type (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Types.CMOF_Type_Access'
+                 (AMF.CMOF.Expressions.CMOF_Expression_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Type));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
@@ -1331,16 +1360,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
 
             return
               AMF.String_Collections.Internals.To_Holder
-               (AMF.String_Collections.Internals.Wrap
-                 (Internal_Get_Body (Self)));
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
          elsif Property = MP_CMOF_Opaque_Expression_Language then
             --  OpaqueExpression::language : String
 
             return
               AMF.String_Collections.Internals.To_Holder
-               (AMF.String_Collections.Internals.Wrap
-                 (Internal_Get_Language (Self)));
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Language);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -1354,33 +1383,35 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -1394,9 +1425,10 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  TypedElement::type : Type
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Type (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Types.CMOF_Type_Access'
+                 (AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Type));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
@@ -1421,49 +1453,52 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Operation::bodyCondition : Constraint
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Body_Condition (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access'
+                 (AMF.CMOF.Operations.CMOF_Operation_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Body_Condition));
 
          elsif Property = MP_CMOF_Operation_Class then
             --  Operation::class : Class
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Class (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access'
+                 (AMF.CMOF.Operations.CMOF_Operation_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Class));
 
          elsif Property = MP_CMOF_Operation_Datatype then
             --  Operation::datatype : DataType
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Datatype (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access'
+                 (AMF.CMOF.Operations.CMOF_Operation_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Datatype));
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Feature_Featuring_Classifier then
             --  Feature::featuringClassifier : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Featuring_Classifier (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Featuring_Classifier);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
@@ -1509,9 +1544,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -1525,89 +1560,91 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Operations.CMOF_Operation_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Operation_Owned_Parameter then
             --  Operation::ownedParameter : Parameter
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Parameter (Self)));
+              AMF.CMOF.Parameters.Collections.CMOF_Parameter_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Parameter);
 
          elsif Property = MP_CMOF_Behavioral_Feature_Owned_Parameter then
             --  BehavioralFeature::ownedParameter : Parameter
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Parameter (Self)));
+              AMF.CMOF.Parameters.Collections.CMOF_Parameter_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Parameter);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Operations.CMOF_Operation_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Operation_Postcondition then
             --  Operation::postcondition : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Postcondition (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Postcondition);
 
          elsif Property = MP_CMOF_Operation_Precondition then
             --  Operation::precondition : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Precondition (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Precondition);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -1621,49 +1658,50 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Operation::raisedException : Type
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Raised_Exception (Self)));
+              AMF.CMOF.Types.Collections.CMOF_Type_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Raised_Exception);
 
          elsif Property = MP_CMOF_Behavioral_Feature_Raised_Exception then
             --  BehavioralFeature::raisedException : Type
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Raised_Exception (Self)));
+              AMF.CMOF.Types.Collections.CMOF_Type_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Raised_Exception);
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefined_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Redefined_Element (Self)));
+              AMF.CMOF.Redefinable_Elements.Collections.CMOF_Redefinable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
          elsif Property = MP_CMOF_Operation_Redefined_Operation then
             --  Operation::redefinedOperation : Operation
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Redefined_Operation (Self)));
+              AMF.CMOF.Operations.Collections.CMOF_Operation_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Operation);
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefinition_Context then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Redefinition_Context (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
          elsif Property = MP_CMOF_Operation_Type then
             --  Operation::type : Type
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Type (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Types.CMOF_Type_Access'
+                 (AMF.CMOF.Operations.CMOF_Operation_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Type));
 
          elsif Property = MP_CMOF_Operation_Upper then
             --  Operation::upper : UnlimitedNatural
@@ -1696,25 +1734,25 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Namespace_Member then
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -1728,97 +1766,100 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Packages.CMOF_Package_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Package_Nested_Package then
             --  Package::nestedPackage : Package
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Nested_Package (Self)));
+              AMF.CMOF.Packages.Collections.CMOF_Package_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Nested_Package);
 
          elsif Property = MP_CMOF_Package_Nesting_Package then
             --  Package::nestingPackage : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Nesting_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Packages.CMOF_Package_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Nesting_Package));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Package_Owned_Type then
             --  Package::ownedType : Type
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Type (Self)));
+              AMF.CMOF.Types.Collections.CMOF_Type_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Type);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Packages.CMOF_Package_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Package_Package_Merge then
             --  Package::packageMerge : PackageMerge
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Merge (Self)));
+              AMF.CMOF.Package_Merges.Collections.CMOF_Package_Merge_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Merge);
 
          elsif Property = MP_CMOF_Package_Packaged_Element then
             --  Package::packagedElement : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Packaged_Element (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Packaged_Element);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -1859,65 +1900,68 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  PackageImport::importedPackage : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Imported_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Package));
 
          elsif Property = MP_CMOF_Package_Import_Importing_Namespace then
             --  PackageImport::importingNamespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Importing_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Importing_Namespace));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Related_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Related_Element);
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
             --  DirectedRelationship::source : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Source (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Source);
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
             --  DirectedRelationship::target : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Target (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Target);
 
          elsif Property = MP_CMOF_Package_Import_Visibility then
             --  PackageImport::visibility : VisibilityKind
@@ -1942,65 +1986,68 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  PackageMerge::mergedPackage : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Merged_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Merged_Package));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Package_Merge_Receiving_Package then
             --  PackageMerge::receivingPackage : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Receiving_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Receiving_Package));
 
          elsif Property = MP_CMOF_Relationship_Related_Element then
             --  Relationship::relatedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Related_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Related_Element);
 
          elsif Property = MP_CMOF_Directed_Relationship_Source then
             --  DirectedRelationship::source : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Source (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Source);
 
          elsif Property = MP_CMOF_Directed_Relationship_Target then
             --  DirectedRelationship::target : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Target (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Target);
 
          else
             raise Program_Error;
@@ -2065,41 +2112,44 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Parameter_Operation then
             --  Parameter::operation : Operation
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Operation (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Operations.CMOF_Operation_Access'
+                 (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Operation));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -2113,9 +2163,10 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  TypedElement::type : Type
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Type (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Types.CMOF_Type_Access'
+                 (AMF.CMOF.Parameters.CMOF_Parameter_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Type));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
             --  MultiplicityElement::upper : UnlimitedNatural
@@ -2148,49 +2199,49 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Classifier::attribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
          elsif Property = MP_CMOF_Namespace_Element_Import then
             --  Namespace::elementImport : ElementImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element_Import (Self)));
+              AMF.CMOF.Element_Imports.Collections.CMOF_Element_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
          elsif Property = MP_CMOF_Classifier_Feature then
             --  Classifier::feature : Feature
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Feature (Self)));
+              AMF.CMOF.Features.Collections.CMOF_Feature_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
          elsif Property = MP_CMOF_Classifier_General then
             --  Classifier::general : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_General (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
          elsif Property = MP_CMOF_Namespace_Imported_Member then
             --  Namespace::importedMember : PackageableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Imported_Member (Self)));
+              AMF.CMOF.Packageable_Elements.Collections.CMOF_Packageable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
          elsif Property = MP_CMOF_Classifier_Inherited_Member then
             --  Classifier::inheritedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Inherited_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Inherited_Member);
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
@@ -2204,9 +2255,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Namespace::member : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Member);
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
@@ -2220,81 +2271,84 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Data_Type_Owned_Attribute then
             --  DataType::ownedAttribute : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Attribute (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Namespace_Owned_Member then
             --  Namespace::ownedMember : NamedElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Member (Self)));
+              AMF.CMOF.Named_Elements.Collections.CMOF_Named_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
          elsif Property = MP_CMOF_Data_Type_Owned_Operation then
             --  DataType::ownedOperation : Operation
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Operation (Self)));
+              AMF.CMOF.Operations.Collections.CMOF_Operation_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
          elsif Property = MP_CMOF_Namespace_Owned_Rule then
             --  Namespace::ownedRule : Constraint
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Rule (Self)));
+              AMF.CMOF.Constraints.Collections.CMOF_Constraint_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Package (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Packages.CMOF_Package_Access'
+                 (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
          elsif Property = MP_CMOF_Namespace_Package_Import then
             --  Namespace::packageImport : PackageImport
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Package_Import (Self)));
+              AMF.CMOF.Package_Imports.Collections.CMOF_Package_Import_Collections.Internals.To_Holder
+               (AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -2327,25 +2381,28 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Property::association : Association
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Association (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Association));
 
          elsif Property = MP_CMOF_Property_Class then
             --  Property::class : Class
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Class (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Classes.CMOF_Class_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Class));
 
          elsif Property = MP_CMOF_Property_Datatype then
             --  Property::datatype : DataType
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Datatype (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Datatype));
 
          elsif Property = MP_CMOF_Property_Default then
             --  Property::default : String
@@ -2359,9 +2416,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Feature::featuringClassifier : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Featuring_Classifier (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Featuring_Classifier);
 
          elsif Property = MP_CMOF_Property_Is_Composite then
             --  Property::isComposite : Boolean
@@ -2439,49 +2496,53 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  NamedElement::namespace : Namespace
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Namespace (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
          elsif Property = MP_CMOF_Property_Opposite then
             --  Property::opposite : Property
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Opposite (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Opposite));
 
          elsif Property = MP_CMOF_Element_Owned_Comment then
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Property_Owning_Association then
             --  Property::owningAssociation : Association
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owning_Association (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Associations.CMOF_Association_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Association));
 
          elsif Property = MP_CMOF_Named_Element_Qualified_Name then
             --  NamedElement::qualifiedName : String
@@ -2495,41 +2556,42 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Redefined_Element (Self)));
+              AMF.CMOF.Redefinable_Elements.Collections.CMOF_Redefinable_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
          elsif Property = MP_CMOF_Property_Redefined_Property then
             --  Property::redefinedProperty : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Redefined_Property (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Property);
 
          elsif Property = MP_CMOF_Redefinable_Element_Redefinition_Context then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Redefinition_Context (Self)));
+              AMF.CMOF.Classifiers.Collections.CMOF_Classifier_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
          elsif Property = MP_CMOF_Property_Subsetted_Property then
             --  Property::subsettedProperty : Property
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Subsetted_Property (Self)));
+              AMF.CMOF.Properties.Collections.CMOF_Property_Collections.Internals.To_Holder
+               (AMF.CMOF.Properties.CMOF_Property_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Subsetted_Property);
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Type (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Types.CMOF_Type_Access'
+                 (AMF.CMOF.Properties.CMOF_Property_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Type));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
             --  MultiplicityElement::upper : UnlimitedNatural
@@ -2562,9 +2624,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Tag::element : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Tags.CMOF_Tag_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Element);
 
          elsif Property = MP_CMOF_Tag_Name then
             --  Tag::name : String
@@ -2578,33 +2640,35 @@ package body AMF.Internals.Tables.CMOF_Reflection is
             --  Element::ownedComment : Comment
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Comment (Self)));
+              AMF.CMOF.Comments.Collections.CMOF_Comment_Collections.Internals.To_Holder
+               (AMF.CMOF.Tags.CMOF_Tag_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
          elsif Property = MP_CMOF_Element_Owned_Element then
             --  Element::ownedElement : Element
 
             return
-              AMF.Holders.Collections.To_Holder
-               (AMF.Internals.Element_Collections.Wrap
-                 (Internal_Get_Owned_Element (Self)));
+              AMF.CMOF.Elements.Collections.CMOF_Element_Collections.Internals.To_Holder
+               (AMF.CMOF.Tags.CMOF_Tag_Access
+                 (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
          elsif Property = MP_CMOF_Element_Owner then
             --  Element::owner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Tags.CMOF_Tag_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
          elsif Property = MP_CMOF_Tag_Tag_Owner then
             --  Tag::tagOwner : Element
 
             return
-              AMF.Holders.Elements.To_Holder
-               (AMF.Internals.Helpers.To_Element
-                 (Internal_Get_Tag_Owner (Self)));
+              AMF.Internals.Holders.CMOF_Holders.To_Holder
+               (AMF.CMOF.Elements.CMOF_Element_Access'
+                 (AMF.CMOF.Tags.CMOF_Tag_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Tag_Owner));
 
          elsif Property = MP_CMOF_Tag_Value then
             --  Tag::value : String
@@ -2819,27 +2883,37 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Association_Is_Derived then
             --  Association::isDerived : Boolean
 
-            Internal_Set_Is_Derived (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Associations.CMOF_Association_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Derived
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Associations.CMOF_Association_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Final_Specialization
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Associations.CMOF_Association_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
-            Internal_Set_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Associations.CMOF_Association_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Associations.CMOF_Association_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -2855,27 +2929,37 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Class_Is_Abstract then
             --  Class::isAbstract : Boolean
 
-            Internal_Set_Is_Abstract (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Abstract
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Final_Specialization
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
-            Internal_Set_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Classes.CMOF_Class_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -2891,7 +2975,9 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Comment_Body then
             --  Comment::body : String
 
-            Internal_Set_Body (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Comments.CMOF_Comment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Body
+               (AMF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -2907,22 +2993,30 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Constraint_Context then
             --  Constraint::context : Namespace
 
-            Internal_Set_Context (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Constraints.CMOF_Constraint_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Context
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Constraints.CMOF_Constraint_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Constraint_Specification then
             --  Constraint::specification : ValueSpecification
 
-            Internal_Set_Specification (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Constraints.CMOF_Constraint_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Specification
+               (AMF.CMOF.Value_Specifications.CMOF_Value_Specification_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Constraints.CMOF_Constraint_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -2938,22 +3032,30 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Final_Specialization
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
-            Internal_Set_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Data_Types.CMOF_Data_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -2969,22 +3071,30 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Element_Import_Alias then
             --  ElementImport::alias : String
 
-            Internal_Set_Alias (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Alias
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Element_Import_Imported_Element then
             --  ElementImport::importedElement : PackageableElement
 
-            Internal_Set_Imported_Element (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Imported_Element
+               (AMF.CMOF.Packageable_Elements.CMOF_Packageable_Element_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Element_Import_Importing_Namespace then
             --  ElementImport::importingNamespace : Namespace
 
-            Internal_Set_Importing_Namespace (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Importing_Namespace
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Element_Import_Visibility then
             --  ElementImport::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Visibility_Kinds.Element (Value));
+            AMF.CMOF.Element_Imports.CMOF_Element_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -3000,22 +3110,30 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Final_Specialization
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
-            Internal_Set_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Enumerations.CMOF_Enumeration_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3031,17 +3149,23 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Enumeration_Literal_Enumeration then
             --  EnumerationLiteral::enumeration : Enumeration
 
-            Internal_Set_Enumeration (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Enumeration
+               (AMF.CMOF.Enumerations.CMOF_Enumeration_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Enumeration_Literals.CMOF_Enumeration_Literal_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3057,17 +3181,23 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Expressions.CMOF_Expression_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
 
-            Internal_Set_Type (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Expressions.CMOF_Expression_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Type
+               (AMF.CMOF.Types.CMOF_Type_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Expressions.CMOF_Expression_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3083,17 +3213,23 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
 
-            Internal_Set_Type (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Type
+               (AMF.CMOF.Types.CMOF_Type_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Opaque_Expressions.CMOF_Opaque_Expression_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3109,37 +3245,51 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Operation_Body_Condition then
             --  Operation::bodyCondition : Constraint
 
-            Internal_Set_Body_Condition (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Body_Condition
+               (AMF.CMOF.Constraints.CMOF_Constraint_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Operation_Class then
             --  Operation::class : Class
 
-            Internal_Set_Class (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Class
+               (AMF.CMOF.Classes.CMOF_Class_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Operation_Datatype then
             --  Operation::datatype : DataType
 
-            Internal_Set_Datatype (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Datatype
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
-            Internal_Set_Is_Leaf (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Leaf
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Operation_Is_Query then
             --  Operation::isQuery : Boolean
 
-            Internal_Set_Is_Query (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Query
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Operations.CMOF_Operation_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3155,22 +3305,30 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Packages.CMOF_Package_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Package_Nesting_Package then
             --  Package::nestingPackage : Package
 
-            Internal_Set_Nesting_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Packages.CMOF_Package_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Nesting_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Package_Uri then
             --  Package::uri : String
 
-            Internal_Set_Uri (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Packages.CMOF_Package_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Uri
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Packages.CMOF_Package_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3186,17 +3344,23 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Package_Import_Imported_Package then
             --  PackageImport::importedPackage : Package
 
-            Internal_Set_Imported_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Imported_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Package_Import_Importing_Namespace then
             --  PackageImport::importingNamespace : Namespace
 
-            Internal_Set_Importing_Namespace (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Importing_Namespace
+               (AMF.CMOF.Namespaces.CMOF_Namespace_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Package_Import_Visibility then
             --  PackageImport::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Visibility_Kinds.Element (Value));
+            AMF.CMOF.Package_Imports.CMOF_Package_Import_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Visibility_Kinds.Element (Value));
 
          else
             raise Program_Error;
@@ -3212,12 +3376,16 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Package_Merge_Merged_Package then
             --  PackageMerge::mergedPackage : Package
 
-            Internal_Set_Merged_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Merged_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Package_Merge_Receiving_Package then
             --  PackageMerge::receivingPackage : Package
 
-            Internal_Set_Receiving_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Package_Merges.CMOF_Package_Merge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Receiving_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          else
             raise Program_Error;
@@ -3233,52 +3401,72 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Parameter_Default then
             --  Parameter::default : String
 
-            Internal_Set_Default (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Default
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Parameter_Direction then
             --  Parameter::direction : ParameterDirectionKind
 
-            Internal_Set_Direction (Self, AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Direction
+               (AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
-            Internal_Set_Is_Ordered (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Ordered
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
-            Internal_Set_Is_Unique (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Unique
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
-            Internal_Set_Lower (Self, AMF.Holders.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Lower
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Parameter_Operation then
             --  Parameter::operation : Operation
 
-            Internal_Set_Operation (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Operation
+               (AMF.CMOF.Operations.CMOF_Operation_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
 
-            Internal_Set_Type (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Type
+               (AMF.CMOF.Types.CMOF_Type_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
             --  MultiplicityElement::upper : UnlimitedNatural
 
-            Internal_Set_Upper (Self, AMF.Holders.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Upper
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Parameters.CMOF_Parameter_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3294,22 +3482,30 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Classifier_Is_Final_Specialization then
             --  Classifier::isFinalSpecialization : Boolean
 
-            Internal_Set_Is_Final_Specialization (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Final_Specialization
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Type_Package then
             --  Type::package : Package
 
-            Internal_Set_Package (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Package
+               (AMF.CMOF.Packages.CMOF_Package_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Primitive_Types.CMOF_Primitive_Type_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3325,87 +3521,121 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Property_Association then
             --  Property::association : Association
 
-            Internal_Set_Association (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Association
+               (AMF.CMOF.Associations.CMOF_Association_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Property_Class then
             --  Property::class : Class
 
-            Internal_Set_Class (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Class
+               (AMF.CMOF.Classes.CMOF_Class_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Property_Datatype then
             --  Property::datatype : DataType
 
-            Internal_Set_Datatype (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Datatype
+               (AMF.CMOF.Data_Types.CMOF_Data_Type_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Property_Default then
             --  Property::default : String
 
-            Internal_Set_Default (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Default
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Property_Is_Composite then
             --  Property::isComposite : Boolean
 
-            Internal_Set_Is_Composite (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Composite
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Property_Is_Derived then
             --  Property::isDerived : Boolean
 
-            Internal_Set_Is_Derived (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Derived
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Property_Is_Derived_Union then
             --  Property::isDerivedUnion : Boolean
 
-            Internal_Set_Is_Derived_Union (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Derived_Union
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Redefinable_Element_Is_Leaf then
             --  RedefinableElement::isLeaf : Boolean
 
-            Internal_Set_Is_Leaf (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Leaf
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Ordered then
             --  MultiplicityElement::isOrdered : Boolean
 
-            Internal_Set_Is_Ordered (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Ordered
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Property_Is_Read_Only then
             --  Property::isReadOnly : Boolean
 
-            Internal_Set_Is_Read_Only (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Read_Only
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Is_Unique then
             --  MultiplicityElement::isUnique : Boolean
 
-            Internal_Set_Is_Unique (Self, League.Holders.Booleans.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Is_Unique
+               (League.Holders.Booleans.Element (Value));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Lower then
             --  MultiplicityElement::lower : Integer
 
-            Internal_Set_Lower (Self, AMF.Holders.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Lower
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Name then
             --  NamedElement::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Property_Owning_Association then
             --  Property::owningAssociation : Association
 
-            Internal_Set_Owning_Association (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Association
+               (AMF.CMOF.Associations.CMOF_Association_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Typed_Element_Type then
             --  TypedElement::type : Type
 
-            Internal_Set_Type (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Type
+               (AMF.CMOF.Types.CMOF_Type_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Multiplicity_Element_Upper then
             --  MultiplicityElement::upper : UnlimitedNatural
 
-            Internal_Set_Upper (Self, AMF.Holders.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Upper
+               (AMF.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Named_Element_Visibility then
             --  NamedElement::visibility : VisibilityKind
 
-            Internal_Set_Visibility (Self, AMF.CMOF.Holders.Element (Value));
+            AMF.CMOF.Properties.CMOF_Property_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
+               (AMF.CMOF.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -3421,17 +3651,23 @@ package body AMF.Internals.Tables.CMOF_Reflection is
          if Property = MP_CMOF_Tag_Name then
             --  Tag::name : String
 
-            Internal_Set_Name (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Tags.CMOF_Tag_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Name
+               (League.Holders.Element (Value));
 
          elsif Property = MP_CMOF_Tag_Tag_Owner then
             --  Tag::tagOwner : Element
 
-            Internal_Set_Tag_Owner (Self, AMF.Internals.CMOF_Elements.CMOF_Element_Proxy'Class (AMF.Holders.Elements.Element (Value).all).Id);
+            AMF.CMOF.Tags.CMOF_Tag_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Tag_Owner
+               (AMF.CMOF.Elements.CMOF_Element_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = MP_CMOF_Tag_Value then
             --  Tag::value : String
 
-            Internal_Set_Value (Self, AMF.Internals.Holders.Element (Value));
+            AMF.CMOF.Tags.CMOF_Tag_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Value
+               (League.Holders.Element (Value));
 
          else
             raise Program_Error;
