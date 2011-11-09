@@ -80,11 +80,6 @@ package AMF.Internals.AMF_URI_Stores is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String;
 
-   overriding function Element
-    (Self : not null access constant AMF_URI_Store;
-     URI  : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-
    overriding function Elements
     (Self : not null access constant AMF_URI_Store)
        return AMF.Elements.Collections.Set_Of_Element;
@@ -92,5 +87,27 @@ package AMF.Internals.AMF_URI_Stores is
    overriding function Get_Package
     (Self : not null access constant AMF_URI_Store)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
+
+   ------------------------------
+   --  URIExtent's operations  --
+   ------------------------------
+
+   overriding function Context_URI
+    (Self : not null access constant AMF_URI_Store)
+       return League.Strings.Universal_String;
+   --  Specifies an identifier for the extent that establishes a URI context
+   --  for identifying elements in the extent. An extent has an identifier if a
+   --  URI is assigned. URI is defined in IETF RFC-2396 available at
+   --  http://www.ietf.org/rfc/rfc2396.txt.
+
+   overriding function Element
+    (Self : not null access constant AMF_URI_Store;
+     URI  : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access;
+   --  Returns the Element identified by the given URI in the extent. Returns
+   --  Null if there is no element in the extent with the given URI. Note the
+   --  Element does not (necessarily) contain a property corresponding to the
+   --  URI. The URI identifies the element in the context of the extent. The
+   --  same element may have a different identifier in another extent.
 
 end AMF.Internals.AMF_URI_Stores;

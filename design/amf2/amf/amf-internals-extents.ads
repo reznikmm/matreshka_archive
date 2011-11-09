@@ -41,11 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
+
 with AMF.Elements;
 
 package AMF.Internals.Extents is
 
-   function Allocate_Extent return AMF_Extent;
+   function Allocate_Extent
+    (Context_URI : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return AMF_Extent;
    --  Allocates new empty extent.
 
    procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element);

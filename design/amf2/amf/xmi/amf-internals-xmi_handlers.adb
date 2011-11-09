@@ -755,7 +755,7 @@ package body AMF.Internals.XMI_Handlers is
       pragma Unreferenced (Success);
 
    begin
-      Self.Extent := AMF.Facility.Create_URI_Store;
+      Self.Extent := AMF.Facility.Create_URI_Store (Self.Locator.System_Id);
    end Start_Document;
 
    -------------------

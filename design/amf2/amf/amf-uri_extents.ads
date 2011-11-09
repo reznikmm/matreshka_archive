@@ -53,6 +53,14 @@ package AMF.URI_Extents is
    type URI_Extent_Access is access all URI_Extent'Class;
    for URI_Extent_Access'Storage_Size use 0;
 
+   not overriding function Context_URI
+    (Self : not null access constant URI_Extent)
+       return League.Strings.Universal_String is abstract;
+   --  Specifies an identifier for the extent that establishes a URI context
+   --  for identifying elements in the extent. An extent has an identifier if a
+   --  URI is assigned. URI is defined in IETF RFC-2396 available at
+   --  http://www.ietf.org/rfc/rfc2396.txt.
+
    not overriding function Element
     (Self : not null access constant URI_Extent;
      URI  : League.Strings.Universal_String)

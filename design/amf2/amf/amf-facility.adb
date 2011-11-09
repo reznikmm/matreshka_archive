@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+
 with AMF.Internals.Extents;
 with AMF.Internals.AMF_URI_Stores;
 
@@ -53,10 +55,15 @@ package body AMF.Facility is
    -- Create_URI_Store --
    ----------------------
 
-   function Create_URI_Store return AMF.URI_Stores.URI_Store_Access is
+   function Create_URI_Store
+    (Context_URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access
+   is
       Aux : constant AMF.Internals.AMF_URI_Stores.AMF_URI_Store_Access
         := new AMF.Internals.AMF_URI_Stores.AMF_URI_Store'
-                (Extent => AMF.Internals.Extents.Allocate_Extent);
+                (Extent =>
+                   AMF.Internals.Extents.Allocate_Extent
+                    (League.Strings.Internals.Internal (Context_URI)));
 
    begin
       return AMF.URI_Stores.URI_Store_Access (Aux);
@@ -70,5 +77,19 @@ package body AMF.Facility is
    begin
       null;
    end Initialize;
+
+   -----------------
+   -- Resolve_URI --
+   -----------------
+
+   function Resolve_URI
+    (Href      : League.Strings.Universal_String;
+     Base      : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Metamodel : Boolean := False)
+       return AMF.Elements.Element_Access is
+   begin
+      return null;
+   end Resolve_URI;
 
 end AMF.Facility;

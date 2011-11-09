@@ -84,6 +84,17 @@ package body AMF.Internals.AMF_URI_Stores is
         AMF.Internals.Factories.Get_Factory (Enclosing_Package.Get_URI.Value);
    end Factory;
 
+   -----------------
+   -- Context_URI --
+   -----------------
+
+   overriding function Context_URI
+    (Self : not null access constant AMF_URI_Store)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Context_URI;
+
    ------------
    -- Create --
    ------------

@@ -56,8 +56,9 @@ package AMF.Internals.Tables.AMF_Tables is
    type Extent_Element_Identifier is new Natural;
 
    type Extent_Record is record
-      Head : Extent_Element_Identifier;
-      Tail : Extent_Element_Identifier;
+      Context_URI : Matreshka.Internals.Strings.Shared_String_Access;
+      Head        : Extent_Element_Identifier;
+      Tail        : Extent_Element_Identifier;
    end record;
 
    type Extent_Element_Record is record
