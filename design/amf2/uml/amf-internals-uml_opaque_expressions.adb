@@ -41,12 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Elements;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attributes;
+with AMF.String_Collections.Internals;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
 
@@ -89,8 +88,9 @@ package body AMF.Internals.UML_Opaque_Expressions is
     (Self : not null access constant UML_Opaque_Expression_Proxy)
        return AMF.String_Collections.Sequence_Of_String is
    begin
-      raise Program_Error;
-      return Get_Body (Self);
+      return
+        AMF.String_Collections.Internals.Wrap
+         (AMF.Internals.Tables.UML_Attributes.Internal_Get_Body (Self.Id));
    end Get_Body;
 
    ------------------
@@ -101,8 +101,9 @@ package body AMF.Internals.UML_Opaque_Expressions is
     (Self : not null access constant UML_Opaque_Expression_Proxy)
        return AMF.String_Collections.Ordered_Set_Of_String is
    begin
-      raise Program_Error;
-      return Get_Language (Self);
+      return
+        AMF.String_Collections.Internals.Wrap
+         (AMF.Internals.Tables.UML_Attributes.Internal_Get_Language (Self.Id));
    end Get_Language;
 
    ----------------
