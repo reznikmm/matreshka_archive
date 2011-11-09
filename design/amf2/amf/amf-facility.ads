@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Packages;
+with AMF.Elements;
 with AMF.URI_Stores;
 
 package AMF.Facility is
@@ -49,7 +50,18 @@ package AMF.Facility is
    procedure Initialize;
    --  Initialize facility.
 
-   function Create_URI_Store return AMF.URI_Stores.URI_Store_Access;
+   function Create_URI_Store
+    (Context_URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access;
    --  Creates empty URIStore.
+
+   function Resolve_URI
+    (Href      : League.Strings.Universal_String;
+     Base      : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String;
+     Metamodel : Boolean := False)
+       return AMF.Elements.Element_Access;
+   --  Dereferences the supplied URI down to an element (if possible) which is
+   --  returned.
 
 end AMF.Facility;
