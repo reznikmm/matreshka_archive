@@ -111,13 +111,23 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       return Base + 10;
    end MC_Primitive_Types_Unlimited_Natural;
 
+   ------------------------
+   -- MB_Primitive_Types --
+   ------------------------
+
+   function MB_Primitive_Types return AMF.Internals.AMF_Element is
+   begin
+      return Base;
+   end MB_Primitive_Types;
+
    ----------------
    -- Initialize --
    ----------------
 
    procedure Initialize is
       Extent : constant AMF.Internals.AMF_Extent
-        := AMF.Internals.Extents.Allocate_Extent;
+        := AMF.Internals.Extents.Allocate_Extent
+            (AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access);
       Aux    : AMF.Internals.CMOF_Element;
 
    begin
@@ -173,10 +183,12 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 1,
          AMF.Internals.Tables.Primitive_Types_String_Data.MS_2'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 1, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
          AMF.Internals.Tables.Primitive_Types_String_Data.MS_10'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 2, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 3,
@@ -185,6 +197,7 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 4,
          AMF.Internals.Tables.Primitive_Types_String_Data.MS_4'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 4, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 5,
@@ -193,6 +206,7 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
          AMF.Internals.Tables.Primitive_Types_String_Data.MS_14'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 6, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 7,
@@ -201,6 +215,7 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
          AMF.Internals.Tables.Primitive_Types_String_Data.MS_18'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 8, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 9,
@@ -209,6 +224,7 @@ package body AMF.Internals.Tables.Primitive_Types_Metamodel is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
          AMF.Internals.Tables.Primitive_Types_String_Data.MS_3'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 10, (Is_Empty => True));
 
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Body
        (Base + 11,

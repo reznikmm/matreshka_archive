@@ -2151,7 +2151,8 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
 
    procedure Initialize is
       Extent : constant AMF.Internals.AMF_Extent
-        := AMF.Internals.Extents.Allocate_Extent;
+        := AMF.Internals.Extents.Allocate_Extent
+            (AMF.Internals.Tables.CMOF_String_Data.MS_112'Access);
       Aux    : AMF.Internals.CMOF_Element;
 
    begin
