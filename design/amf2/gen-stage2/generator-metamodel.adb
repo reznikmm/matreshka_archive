@@ -991,7 +991,15 @@ package body Generator.Metamodel is
       New_Line;
       Put_Line ("   procedure Initialize is");
       Put_Line ("      Extent : constant AMF.Internals.AMF_Extent");
-      Put_Line ("        := AMF.Internals.Extents.Allocate_Extent;");
+      Put_Line ("        := AMF.Internals.Extents.Allocate_Extent");
+      Put
+       ("            (AMF.Internals.Tables."
+          & Metamodel_Name.To_Wide_Wide_String
+          & "_String_Data.MS_");
+      Put
+       (String_Numbers.Element (Metamodel_Package.Get_Uri.Value),
+        Width => 0);
+      Put_Line ("'Access);");
       Put_Line ("      Aux    : AMF.Internals.CMOF_Element;");
       New_Line;
       Put_Line ("   begin");
