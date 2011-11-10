@@ -93,7 +93,7 @@ package body AMF.Internals.AMF_URI_Stores is
       --  Add element to the store.
 
       AMF.Internals.Extents.Internal_Append
-       (Self.Extent, AMF.Internals.Helpers.To_Element (Element));
+       (Self.Id, AMF.Internals.Helpers.To_Element (Element));
 
       --  Notify about creation of element.
 

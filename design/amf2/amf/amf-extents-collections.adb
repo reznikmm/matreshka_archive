@@ -55,8 +55,7 @@ package body AMF.Extents.Collections is
    begin
       return
         Ada.Containers.Hash_Type
-         (AMF.Internals.AMF_URI_Extents.AMF_URI_Extent'Class
-           (Item.all).Extent);
+         (AMF.Internals.AMF_URI_Extents.AMF_URI_Extent'Class (Item.all).Id);
    end Hash;
 
 end AMF.Extents.Collections;

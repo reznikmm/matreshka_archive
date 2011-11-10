@@ -47,7 +47,7 @@ with AMF.URI_Extents;
 package AMF.Internals.AMF_URI_Extents is
 
    type AMF_URI_Extent is limited new AMF.URI_Extents.URI_Extent with record
-      Extent : AMF_Extent;
+      Id : AMF_Extent;
    end record;
 
    type AMF_URI_Extent_Access is access all AMF_URI_Extent'Class;

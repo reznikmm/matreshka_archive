@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings.Internals;
+
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
+with AMF.Internals.Tables.AMF_Tables;
 with CMOF.Internals.Extents;
 
 package body AMF.Internals.AMF_URI_Extents is
@@ -55,7 +58,9 @@ package body AMF.Internals.AMF_URI_Extents is
     (Self : not null access constant AMF_URI_Extent)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return
+        League.Strings.Internals.Create
+         (AMF.Internals.Tables.AMF_Tables.Extents.Table (Self.Id).Context_URI);
    end Context_URI;
 
    -------------
@@ -69,7 +74,7 @@ package body AMF.Internals.AMF_URI_Extents is
    begin
       return
         AMF.Internals.Helpers.To_Element
-         (AMF.Internals.Extents.Element (Self.Extent, URI));
+         (AMF.Internals.Extents.Element (Self.Id, URI));
    end Element;
 
    --------------
@@ -82,7 +87,7 @@ package body AMF.Internals.AMF_URI_Extents is
    begin
       return
         AMF.Elements.Collections.Wrap
-         (Standard.CMOF.Internals.Extents.All_Elements (Self.Extent));
+         (Standard.CMOF.Internals.Extents.All_Elements (Self.Id));
    end Elements;
 
 end AMF.Internals.AMF_URI_Extents;

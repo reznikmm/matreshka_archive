@@ -80,7 +80,7 @@ package body AMF.Internals.Extents is
       AMF.Internals.Tables.AMF_Tables.Extents.Table
        (AMF.Internals.Tables.AMF_Tables.Extents.Last) :=
          (new AMF.Internals.AMF_URI_Extents.AMF_URI_Extent'
-               (Extent => AMF.Internals.Tables.AMF_Tables.Extents.Last),
+               (Id => AMF.Internals.Tables.AMF_Tables.Extents.Last),
           Context_URI,
           0,
           0);
@@ -102,7 +102,7 @@ package body AMF.Internals.Extents is
       AMF.Internals.Tables.AMF_Tables.Extents.Table
        (AMF.Internals.Tables.AMF_Tables.Extents.Last) :=
          (new AMF.Internals.AMF_URI_Stores.AMF_URI_Store'
-               (Extent => AMF.Internals.Tables.AMF_Tables.Extents.Last),
+               (Id => AMF.Internals.Tables.AMF_Tables.Extents.Last),
           Context_URI,
           0,
           0);
