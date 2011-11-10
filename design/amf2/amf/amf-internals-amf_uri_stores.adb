@@ -61,39 +61,21 @@ package body AMF.Internals.AMF_URI_Stores is
        return AMF.Internals.Factories.Factory_Access;
    --  Returns factory for the specified meta type.
 
-   -------------
-   -- Factory --
-   -------------
+   -----------------------
+   -- Convert_To_String --
+   -----------------------
 
-   function Factory
-    (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
-       return AMF.Internals.Factories.Factory_Access
+   overriding function Convert_To_String
+    (Self      : not null access AMF_URI_Store;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder)
+       return League.Strings.Universal_String
    is
-      Enclosing_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
-        := AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Internals.Helpers.To_Element
-              (Standard.CMOF.Internals.Extents.Container
-                (AMF.Internals.Helpers.To_Element
-                  (AMF.Elements.Element_Access (Meta_Type)))));
-      --  := Meta_Type.Get_Package;
-      --
-      --  XXX Type:getPackage is derived property, it is not implemented now.
+      pragma Unreferenced (Self);
 
    begin
-      return
-        AMF.Internals.Factories.Get_Factory (Enclosing_Package.Get_URI.Value);
-   end Factory;
-
-   -----------------
-   -- Context_URI --
-   -----------------
-
-   overriding function Context_URI
-    (Self : not null access constant AMF_URI_Store)
-       return League.Strings.Universal_String is
-   begin
-      return League.Strings.Empty_Universal_String;
-   end Context_URI;
+      return Factory (Data_Type).Convert_To_String (Data_Type, Value);
+   end Convert_To_String;
 
    ------------
    -- Create --
@@ -120,6 +102,22 @@ package body AMF.Internals.AMF_URI_Stores is
       return Element;
    end Create;
 
+   ------------------------
+   -- Create_From_String --
+   ------------------------
+
+   overriding function Create_From_String
+    (Self      : not null access AMF_URI_Store;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Image     : League.Strings.Universal_String)
+       return League.Holders.Holder
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return Factory (Data_Type).Create_From_String (Data_Type, Image);
+   end Create_From_String;
+
    -----------------
    -- Create_Link --
    -----------------
@@ -131,7 +129,9 @@ package body AMF.Internals.AMF_URI_Stores is
      First_Element  : not null AMF.Elements.Element_Access;
      Second_Element : not null AMF.Elements.Element_Access)
    is
-      A          : CMOF_Element
+      pragma Unreferenced (Self);
+
+      A          : constant CMOF_Element
         := AMF.Internals.Helpers.To_Element
             (AMF.Elements.Abstract_Element'Class (Association.all)'Access);
       Member_End : constant AMF_Collection_Of_Element
@@ -146,58 +146,28 @@ package body AMF.Internals.AMF_URI_Stores is
         AMF.Internals.Element_Collections.Element (Member_End, 2));
    end Create_Link;
 
-   ------------------------
-   -- Create_From_String --
-   ------------------------
-
-   overriding function Create_From_String
-    (Self      : not null access AMF_URI_Store;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Image     : League.Strings.Universal_String)
-       return League.Holders.Holder is
-   begin
-      return Factory (Data_Type).Create_From_String (Data_Type, Image);
-   end Create_From_String;
-
-   -----------------------
-   -- Convert_To_String --
-   -----------------------
-
-   overriding function Convert_To_String
-    (Self      : not null access AMF_URI_Store;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder)
-       return League.Strings.Universal_String is
-   begin
-      return Factory (Data_Type).Convert_To_String (Data_Type, Value);
-   end Convert_To_String;
-
    -------------
-   -- Element --
+   -- Factory --
    -------------
 
-   overriding function Element
-    (Self : not null access constant AMF_URI_Store;
-     URI  : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access is
+   function Factory
+    (Meta_Type : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
+       return AMF.Internals.Factories.Factory_Access
+   is
+      Enclosing_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
+        := AMF.CMOF.Packages.CMOF_Package_Access
+            (AMF.Internals.Helpers.To_Element
+              (Standard.CMOF.Internals.Extents.Container
+                (AMF.Internals.Helpers.To_Element
+                  (AMF.Elements.Element_Access (Meta_Type)))));
+      --  := Meta_Type.Get_Package;
+      --
+      --  XXX Type:getPackage is derived property, it is not implemented now.
+
    begin
       return
-        AMF.Internals.Helpers.To_Element
-         (AMF.Internals.Extents.Element (Self.Extent, URI));
-   end Element;
-
-   --------------
-   -- Elements --
-   --------------
-
-   overriding function Elements
-    (Self : not null access constant AMF_URI_Store)
-       return AMF.Elements.Collections.Set_Of_Element is
-   begin
-      return
-        AMF.Elements.Collections.Wrap
-         (Standard.CMOF.Internals.Extents.All_Elements (Self.Extent));
-   end Elements;
+        AMF.Internals.Factories.Get_Factory (Enclosing_Package.Get_URI.Value);
+   end Factory;
 
    -----------------
    -- Get_Package --
@@ -205,7 +175,10 @@ package body AMF.Internals.AMF_URI_Stores is
 
    overriding function Get_Package
     (Self : not null access constant AMF_URI_Store)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access is
+       return not null AMF.CMOF.Packages.CMOF_Package_Access
+   is
+      pragma Unreferenced (Self);
+
    begin
       --  XXX Should be reviewed!!!
 

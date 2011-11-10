@@ -47,21 +47,74 @@ with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages;
-with AMF.Elements.Collections;
+with AMF.Elements;
+with AMF.Internals.AMF_URI_Extents;
 with AMF.URI_Stores;
 
 package AMF.Internals.AMF_URI_Stores is
 
-   type AMF_URI_Store is limited new AMF.URI_Stores.URI_Store with record
-      Extent : AMF_Extent;
-   end record;
+   type AMF_URI_Store is
+     limited new AMF.Internals.AMF_URI_Extents.AMF_URI_Extent
+       and AMF.URI_Stores.URI_Store with null record;
 
-   type AMF_URI_Store_Access is access all AMF_URI_Store'Class;
+   ----------------------------
+   --  Factory's operations  --
+   ----------------------------
 
    overriding function Create
     (Self       : not null access AMF_URI_Store;
      Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class)
        return not null AMF.Elements.Element_Access;
+   --  Creates an element that is an instance of the metaClass.
+   --  Object::metaClass == metaClass and metaClass.isInstance(object) == true.
+   --
+   --  All properties of the element are considered unset. The values are the
+   --  same as if object.unset(property) was invoked for every property.
+   --
+   --  Returns null if the creation cannot be performed. Classes with abstract
+   --  = true always return null.
+   --
+   --  The created element’s metaClass == metaClass.
+   --
+   --  Exception: NullPointerException if class is null.
+   --
+   --  Exception: IllegalArgumentException if class is not a member of the
+   --  package returned by getPackage().
+   --
+   --  Constraints
+   --
+   --  The following conditions on metaClass: Class and all its Properties must
+   --  be satisfied before the metaClass: Class can be instantiated. If these
+   --  requirements are not met, create() throws exceptions as described above.
+   --
+   --  [1] Meta object must be set.
+   --
+   --  [2] Name must be 1 or more characters.
+   --
+   --  [3] Property type must be set.
+   --
+   --  [4] Property: 0 <= LowerBound <= UpperBound required.
+   --
+   --  [5] Property: 1 <= UpperBound required.
+   --
+   --  [6] Enforcement of read-only properties is optional in EMOF.
+   --
+   --  [8] Properties of type Class cannot have defaults.
+   --
+   --  [9] Multivalued properties cannot have defaults.
+   --
+   --  [10] Property: Container end must not have upperBound >1, a property can
+   --  only be contained in one container.
+   --
+   --  [11] Property: Only one end may be composite.
+   --
+   --  [12] Property: Bidirectional opposite ends must reference each other.
+   --
+   --  [13] Property and DataType: Default value must match type. Items 3-13
+   --  apply to all Properties of the Class.
+   --
+   --  These conditions also apply to all superclasses of the class being
+   --  instantiated.
 
    overriding procedure Create_Link
     (Self           : not null access AMF_URI_Store;
@@ -69,45 +122,41 @@ package AMF.Internals.AMF_URI_Stores is
        not null access AMF.CMOF.Associations.CMOF_Association'Class;
      First_Element  : not null AMF.Elements.Element_Access;
      Second_Element : not null AMF.Elements.Element_Access);
+   --  This creates a Link from 2 supplied Elements that is an instance of the
+   --  supplied Association. The firstElement is associated with the first end
+   --  (the properties comprising the association ends are ordered) and must
+   --  conform to its type. And correspondingly for the secondElement.
 
    overriding function Create_From_String
     (Self      : not null access AMF_URI_Store;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder;
+   --  Creates an Object initialized from the value of the String. Returns null
+   --  if the creation cannot be performed.
+   --
+   --  The format of the String is defined by the XML Schema SimpleType
+   --  corresponding to that datatype.
+   --
+   --  Exception: NullPointerException if datatype is null.
+   --
+   --  Exception: IllegalArgumentException if datatype is not a member of the
+   --  package returned by getPackage().
 
    overriding function Convert_To_String
     (Self      : not null access AMF_URI_Store;
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Value     : League.Holders.Holder) return League.Strings.Universal_String;
-
-   overriding function Elements
-    (Self : not null access constant AMF_URI_Store)
-       return AMF.Elements.Collections.Set_Of_Element;
+   --  Creates a String representation of the object. Returns null if the
+   --  creation cannot be performed. The format of the String is defined by the
+   --  XML Schema SimpleType corresponding to that dataType.
+   --
+   --  Exception: IllegalArgumentException if datatype is not a member of the
+   --  package returned by getPackage() or the supplied object is not a valid
+   --  instance of that datatype.
 
    overriding function Get_Package
     (Self : not null access constant AMF_URI_Store)
        return not null AMF.CMOF.Packages.CMOF_Package_Access;
-
-   ------------------------------
-   --  URIExtent's operations  --
-   ------------------------------
-
-   overriding function Context_URI
-    (Self : not null access constant AMF_URI_Store)
-       return League.Strings.Universal_String;
-   --  Specifies an identifier for the extent that establishes a URI context
-   --  for identifying elements in the extent. An extent has an identifier if a
-   --  URI is assigned. URI is defined in IETF RFC-2396 available at
-   --  http://www.ietf.org/rfc/rfc2396.txt.
-
-   overriding function Element
-    (Self : not null access constant AMF_URI_Store;
-     URI  : League.Strings.Universal_String)
-       return AMF.Elements.Element_Access;
-   --  Returns the Element identified by the given URI in the extent. Returns
-   --  Null if there is no element in the extent with the given URI. Note the
-   --  Element does not (necessarily) contain a property corresponding to the
-   --  URI. The URI identifies the element in the context of the extent. The
-   --  same element may have a different identifier in another extent.
+   --  Returns the package this is a factory for.
 
 end AMF.Internals.AMF_URI_Stores;

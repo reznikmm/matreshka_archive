@@ -47,6 +47,8 @@ with GNAT.Table;
 
 with Matreshka.Internals.Strings;
 
+with AMF.Internals.AMF_URI_Extents;
+
 package AMF.Internals.Tables.AMF_Tables is
 
    -------------
@@ -56,6 +58,7 @@ package AMF.Internals.Tables.AMF_Tables is
    type Extent_Element_Identifier is new Natural;
 
    type Extent_Record is record
+      Proxy       : AMF.Internals.AMF_URI_Extents.AMF_URI_Extent_Access;
       Context_URI : Matreshka.Internals.Strings.Shared_String_Access;
       Head        : Extent_Element_Identifier;
       Tail        : Extent_Element_Identifier;

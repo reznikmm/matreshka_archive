@@ -41,76 +41,48 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
-
 with AMF.Internals.Extents;
-with AMF.Internals.Tables.AMF_Tables;
-with AMF.Stores;
+with AMF.Internals.Helpers;
+with CMOF.Internals.Extents;
 
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
---  Dependency from CMOF factory is required to construct CMOF metamodel at
---  elaboration time.
-
-package body AMF.Facility is
-
-   ----------------------
-   -- Create_URI_Store --
-   ----------------------
-
-   function Create_URI_Store
-    (Context_URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access is
-   begin
-      return
-        AMF.Internals.Extents.Allocate_URI_Store
-         (League.Strings.Internals.Internal (Context_URI));
-   end Create_URI_Store;
-
-   ------------
-   -- Extent --
-   ------------
-
-   function Extent return AMF.Extents.Collections.Set_Of_Extent is
-      Extent : AMF.Extents.Extent_Access;
-
-   begin
-      return Result : AMF.Extents.Collections.Set_Of_Extent do
-         for J in 1 .. AMF.Internals.Tables.AMF_Tables.Extents.Last loop
-            Extent := AMF.Internals.Extents.Proxy (J);
-
-            if Extent.all in AMF.Stores.Store'Class then
-               --  By convention, all metamodel's extents are not stores to
-               --  prevent them from modification, so only stores are included
-               --  in the set.
-
-               Result.Insert (Extent);
-            end if;
-         end loop;
-      end return;
-   end Extent;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
+package body AMF.Internals.AMF_URI_Extents is
 
    -----------------
-   -- Resolve_URI --
+   -- Context_URI --
    -----------------
 
-   function Resolve_URI
-    (Href      : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Metamodel : Boolean := False)
+   overriding function Context_URI
+    (Self : not null access constant AMF_URI_Extent)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Empty_Universal_String;
+   end Context_URI;
+
+   -------------
+   -- Element --
+   -------------
+
+   overriding function Element
+    (Self : not null access constant AMF_URI_Extent;
+     URI  : League.Strings.Universal_String)
        return AMF.Elements.Element_Access is
    begin
-      return null;
-   end Resolve_URI;
+      return
+        AMF.Internals.Helpers.To_Element
+         (AMF.Internals.Extents.Element (Self.Extent, URI));
+   end Element;
 
-end AMF.Facility;
+   --------------
+   -- Elements --
+   --------------
+
+   overriding function Elements
+    (Self : not null access constant AMF_URI_Extent)
+       return AMF.Elements.Collections.Set_Of_Element is
+   begin
+      return
+        AMF.Elements.Collections.Wrap
+         (Standard.CMOF.Internals.Extents.All_Elements (Self.Extent));
+   end Elements;
+
+end AMF.Internals.AMF_URI_Extents;

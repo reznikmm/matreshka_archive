@@ -41,8 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.CMOF.Packages;
 with AMF.Elements;
+with AMF.Extents.Collections;
 with AMF.URI_Stores;
 
 package AMF.Facility is
@@ -63,5 +63,8 @@ package AMF.Facility is
        return AMF.Elements.Element_Access;
    --  Dereferences the supplied URI down to an element (if possible) which is
    --  returned.
+
+   function Extent return AMF.Extents.Collections.Set_Of_Extent;
+   --  Returns the set of Extents that the workspace provides access to.
 
 end AMF.Facility;

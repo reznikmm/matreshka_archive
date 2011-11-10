@@ -41,76 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
+with AMF.Elements.Collections;
+with AMF.URI_Extents;
 
-with AMF.Internals.Extents;
-with AMF.Internals.Tables.AMF_Tables;
-with AMF.Stores;
+package AMF.Internals.AMF_URI_Extents is
 
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
---  Dependency from CMOF factory is required to construct CMOF metamodel at
---  elaboration time.
+   type AMF_URI_Extent is limited new AMF.URI_Extents.URI_Extent with record
+      Extent : AMF_Extent;
+   end record;
 
-package body AMF.Facility is
+   type AMF_URI_Extent_Access is access all AMF_URI_Extent'Class;
 
-   ----------------------
-   -- Create_URI_Store --
-   ----------------------
+   ---------------------------
+   --  Extent's operations  --
+   ---------------------------
 
-   function Create_URI_Store
-    (Context_URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access is
-   begin
-      return
-        AMF.Internals.Extents.Allocate_URI_Store
-         (League.Strings.Internals.Internal (Context_URI));
-   end Create_URI_Store;
+   overriding function Elements
+    (Self : not null access constant AMF_URI_Extent)
+       return AMF.Elements.Collections.Set_Of_Element;
 
-   ------------
-   -- Extent --
-   ------------
+   ------------------------------
+   --  URIExtent's operations  --
+   ------------------------------
 
-   function Extent return AMF.Extents.Collections.Set_Of_Extent is
-      Extent : AMF.Extents.Extent_Access;
+   overriding function Context_URI
+    (Self : not null access constant AMF_URI_Extent)
+       return League.Strings.Universal_String;
+   --  Specifies an identifier for the extent that establishes a URI context
+   --  for identifying elements in the extent. An extent has an identifier if a
+   --  URI is assigned. URI is defined in IETF RFC-2396 available at
+   --  http://www.ietf.org/rfc/rfc2396.txt.
 
-   begin
-      return Result : AMF.Extents.Collections.Set_Of_Extent do
-         for J in 1 .. AMF.Internals.Tables.AMF_Tables.Extents.Last loop
-            Extent := AMF.Internals.Extents.Proxy (J);
+   overriding function Element
+    (Self : not null access constant AMF_URI_Extent;
+     URI  : League.Strings.Universal_String)
+       return AMF.Elements.Element_Access;
+   --  Returns the Element identified by the given URI in the extent. Returns
+   --  Null if there is no element in the extent with the given URI. Note the
+   --  Element does not (necessarily) contain a property corresponding to the
+   --  URI. The URI identifies the element in the context of the extent. The
+   --  same element may have a different identifier in another extent.
 
-            if Extent.all in AMF.Stores.Store'Class then
-               --  By convention, all metamodel's extents are not stores to
-               --  prevent them from modification, so only stores are included
-               --  in the set.
-
-               Result.Insert (Extent);
-            end if;
-         end loop;
-      end return;
-   end Extent;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
-
-   -----------------
-   -- Resolve_URI --
-   -----------------
-
-   function Resolve_URI
-    (Href      : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Metamodel : Boolean := False)
-       return AMF.Elements.Element_Access is
-   begin
-      return null;
-   end Resolve_URI;
-
-end AMF.Facility;
+end AMF.Internals.AMF_URI_Extents;

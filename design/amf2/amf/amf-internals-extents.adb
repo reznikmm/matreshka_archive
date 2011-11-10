@@ -45,6 +45,8 @@
 
 with League.Strings.Internals;
 
+with AMF.Internals.AMF_URI_Extents;
+with AMF.Internals.AMF_URI_Stores;
 --with AMF.Internals.Containers;
 with AMF.Internals.Helpers;
 --with AMF.Internals.Element_Collections;
@@ -62,6 +64,7 @@ package body AMF.Internals.Extents is
 --   use AMF.Internals.Tables;
 --   use type AMF.Internals.AMF_Element;
    use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
+   use type Matreshka.Internals.Strings.Shared_String_Access;
 
    ---------------------
    -- Allocate_Extent --
@@ -69,19 +72,46 @@ package body AMF.Internals.Extents is
 
    function Allocate_Extent
     (Context_URI : not null Matreshka.Internals.Strings.Shared_String_Access)
-       return AMF_Extent
-   is
-      use type Matreshka.Internals.Strings.Shared_String_Access;
-
+       return AMF_Extent is
    begin
+      Matreshka.Internals.Strings.Reference (Context_URI);
+
       AMF.Internals.Tables.AMF_Tables.Extents.Increment_Last;
       AMF.Internals.Tables.AMF_Tables.Extents.Table
-       (AMF.Internals.Tables.AMF_Tables.Extents.Last) := (Context_URI, 0, 0);
-
-      Matreshka.Internals.Strings.Reference (Context_URI);
+       (AMF.Internals.Tables.AMF_Tables.Extents.Last) :=
+         (new AMF.Internals.AMF_URI_Extents.AMF_URI_Extent'
+               (Extent => AMF.Internals.Tables.AMF_Tables.Extents.Last),
+          Context_URI,
+          0,
+          0);
 
       return AMF.Internals.Tables.AMF_Tables.Extents.Last;
    end Allocate_Extent;
+
+   ------------------------
+   -- Allocate_URI_Store --
+   ------------------------
+
+   function Allocate_URI_Store
+    (Context_URI : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return not null AMF.URI_Stores.URI_Store_Access is
+   begin
+      Matreshka.Internals.Strings.Reference (Context_URI);
+
+      AMF.Internals.Tables.AMF_Tables.Extents.Increment_Last;
+      AMF.Internals.Tables.AMF_Tables.Extents.Table
+       (AMF.Internals.Tables.AMF_Tables.Extents.Last) :=
+         (new AMF.Internals.AMF_URI_Stores.AMF_URI_Store'
+               (Extent => AMF.Internals.Tables.AMF_Tables.Extents.Last),
+          Context_URI,
+          0,
+          0);
+
+      return
+        AMF.URI_Stores.URI_Store_Access
+         (AMF.Internals.Tables.AMF_Tables.Extents.Table
+           (AMF.Internals.Tables.AMF_Tables.Extents.Last).Proxy);
+   end Allocate_URI_Store;
 
    ------------------
    -- Associate_Id --
@@ -332,9 +362,9 @@ package body AMF.Internals.Extents is
         := Tables.AMF_Tables.Extents.Table (Extent).Head;
       Tail     : Tables.AMF_Tables.Extent_Element_Identifier
         := Tables.AMF_Tables.Extents.Table (Extent).Tail;
-      Previous : Tables.AMF_Tables.Extent_Element_Identifier
+      Previous : constant Tables.AMF_Tables.Extent_Element_Identifier
         := Tables.AMF_Tables.Extents.Table (Extent).Tail;
-      Next     : Tables.AMF_Tables.Extent_Element_Identifier := 0;
+      Next     : constant Tables.AMF_Tables.Extent_Element_Identifier := 0;
 
    begin
       Tables.AMF_Tables.Extent_Elements.Increment_Last;
@@ -364,17 +394,18 @@ package body AMF.Internals.Extents is
         Next     => Next);
    end Internal_Append;
 
---   --------------------------------------
---   -- Initialize_CMOF_Metamodel_Extent --
---   --------------------------------------
---
---   procedure Initialize_CMOF_Metamodel_Extent is
---   begin
---      AMF.Internals.Tables.AMF_Tables.Extents.Set_Last (CMOF_Metamodel_Extent);
---      AMF.Internals.Tables.AMF_Tables.Extents.Table
---       (CMOF_Metamodel_Extent) := (0, 0);
---   end Initialize_CMOF_Metamodel_Extent;
---
+   -----------
+   -- Proxy --
+   -----------
+
+   function Proxy
+    (Extent : AMF_Extent) return not null AMF.Extents.Extent_Access is
+   begin
+      return
+        AMF.Extents.Extent_Access
+         (AMF.Internals.Tables.AMF_Tables.Extents.Table (Extent).Proxy);
+   end Proxy;
+
 --   ------------
 --   -- Length --
 --   ------------

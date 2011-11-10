@@ -2,7 +2,7 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                          Ada Modeling Framework                          --
+--                      Complete Meta Object Facility                       --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
@@ -41,76 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
+with AMF.Internals.AMF_URI_Extents;
 
-with AMF.Internals.Extents;
-with AMF.Internals.Tables.AMF_Tables;
-with AMF.Stores;
+package body AMF.Extents.Collections is
 
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
---  Dependency from CMOF factory is required to construct CMOF metamodel at
---  elaboration time.
+   ----------
+   -- Hash --
+   ----------
 
-package body AMF.Facility is
-
-   ----------------------
-   -- Create_URI_Store --
-   ----------------------
-
-   function Create_URI_Store
-    (Context_URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access is
+   function Hash
+    (Item : not null AMF.Extents.Extent_Access)
+       return Ada.Containers.Hash_Type is
    begin
       return
-        AMF.Internals.Extents.Allocate_URI_Store
-         (League.Strings.Internals.Internal (Context_URI));
-   end Create_URI_Store;
+        Ada.Containers.Hash_Type
+         (AMF.Internals.AMF_URI_Extents.AMF_URI_Extent'Class
+           (Item.all).Extent);
+   end Hash;
 
-   ------------
-   -- Extent --
-   ------------
-
-   function Extent return AMF.Extents.Collections.Set_Of_Extent is
-      Extent : AMF.Extents.Extent_Access;
-
-   begin
-      return Result : AMF.Extents.Collections.Set_Of_Extent do
-         for J in 1 .. AMF.Internals.Tables.AMF_Tables.Extents.Last loop
-            Extent := AMF.Internals.Extents.Proxy (J);
-
-            if Extent.all in AMF.Stores.Store'Class then
-               --  By convention, all metamodel's extents are not stores to
-               --  prevent them from modification, so only stores are included
-               --  in the set.
-
-               Result.Insert (Extent);
-            end if;
-         end loop;
-      end return;
-   end Extent;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
-
-   -----------------
-   -- Resolve_URI --
-   -----------------
-
-   function Resolve_URI
-    (Href      : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Metamodel : Boolean := False)
-       return AMF.Elements.Element_Access is
-   begin
-      return null;
-   end Resolve_URI;
-
-end AMF.Facility;
+end AMF.Extents.Collections;
