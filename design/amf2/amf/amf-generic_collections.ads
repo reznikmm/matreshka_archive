@@ -45,7 +45,7 @@ private with Ada.Finalization;
 
 with League.Holders;
 
-with AMF.Internals.Collections.Elements;
+with AMF.Internals.Collections.Elements.Containers;
 
 generic
    type Abstract_Element is limited interface;
@@ -112,7 +112,8 @@ private
 
    type Collection is
      abstract new Ada.Finalization.Controlled with record
-      Collection : AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
+      Collection : AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
+        := new AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container;
    end record;
 
    type Set is new Collection with null record;

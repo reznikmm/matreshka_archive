@@ -47,6 +47,8 @@ with Matreshka.Atomics.Counters;
 
 package AMF.Internals.Collections.Elements.Containers is
 
+   pragma Preelaborate;
+
    package Vectors is
      new Ada.Containers.Vectors
           (Positive, AMF.Elements.Element_Access, AMF.Elements."=");
