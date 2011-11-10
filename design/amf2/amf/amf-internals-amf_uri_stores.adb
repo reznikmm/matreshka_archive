@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  XXX Metamodel is hardcoded now to be CMOF for Get_Package.
-------------------------------------------------------------------------------
 with AMF.CMOF.Types;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Extents;
@@ -51,7 +49,6 @@ with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.CMOF_Attributes;
-with AMF.Internals.Tables.CMOF_Metamodel;
 with CMOF.Internals.Extents;
 
 package body AMF.Internals.AMF_URI_Stores is
@@ -175,17 +172,12 @@ package body AMF.Internals.AMF_URI_Stores is
 
    overriding function Get_Package
     (Self : not null access constant AMF_URI_Store)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package
    is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Should be reviewed!!!
-
-      return
-        AMF.CMOF.Packages.CMOF_Package_Access
-         (AMF.Internals.Helpers.To_Element
-           (AMF.Internals.Tables.CMOF_Metamodel.MM_CMOF_CMOF));
+      return AMF.Internals.Factories.Get_Packages;
    end Get_Package;
 
 end AMF.Internals.AMF_URI_Stores;

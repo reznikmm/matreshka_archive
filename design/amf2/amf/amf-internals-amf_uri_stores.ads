@@ -46,7 +46,7 @@ with League.Holders;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
-with AMF.CMOF.Packages;
+with AMF.CMOF.Packages.Collections;
 with AMF.Elements;
 with AMF.Internals.AMF_URI_Extents;
 with AMF.URI_Stores;
@@ -156,7 +156,7 @@ package AMF.Internals.AMF_URI_Stores is
 
    overriding function Get_Package
     (Self : not null access constant AMF_URI_Store)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access;
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
    --  Returns the package this is a factory for.
 
 end AMF.Internals.AMF_URI_Stores;

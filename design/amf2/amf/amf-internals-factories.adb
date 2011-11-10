@@ -68,7 +68,7 @@ package body AMF.Internals.Factories is
    function Get_Factory
     (URI : League.Strings.Universal_String) return Factory_Access
    is
-      Position : Universal_String_Factory_Maps.Cursor
+      Position : constant Universal_String_Factory_Maps.Cursor
         := URI_Registry.Find (URI);
 
    begin
@@ -89,6 +89,22 @@ package body AMF.Internals.Factories is
    begin
       return Metamodel_Registry (Metamodel);
    end Get_Factory;
+
+   ------------------
+   -- Get_Packages --
+   ------------------
+
+   function Get_Packages
+     return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is
+   begin
+      return Result : AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package do
+         for J in Metamodel_Registry'Range loop
+            if Metamodel_Registry (J) /= null then
+               Result.Add (Metamodel_Registry (J).Get_Package);
+            end if;
+         end loop;
+      end return;
+   end Get_Packages;
 
    --------------
    -- Register --

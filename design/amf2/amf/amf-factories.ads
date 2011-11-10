@@ -47,7 +47,7 @@ with League.Strings;
 with AMF.CMOF.Associations;
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
-with AMF.CMOF.Packages;
+with AMF.CMOF.Packages.Collections;
 with AMF.Elements;
 
 package AMF.Factories is
@@ -155,7 +155,7 @@ package AMF.Factories is
 
    not overriding function Get_Package
     (Self : not null access constant Factory)
-       return not null AMF.CMOF.Packages.CMOF_Package_Access is abstract;
+       return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package is abstract;
    --  Returns the package this is a factory for.
 
 end AMF.Factories;

@@ -50,7 +50,7 @@ with League.Strings;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
-with AMF.CMOF.Packages;
+with AMF.CMOF.Packages.Collections;
 with AMF.Elements;
 
 package AMF.Internals.Factories is
@@ -197,5 +197,9 @@ package AMF.Internals.Factories is
    --  Sets factory for CMOF metamodel to bootstrap internal CMOF metamodel.
    --  This subprogram must be called before initialization of CMOF metamodel
    --  package. CMOF factory must be registered later in usual way.
+
+   function Get_Packages
+     return AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package;
+   --  Returns packages for all registered factories.
 
 end AMF.Internals.Factories;
