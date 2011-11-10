@@ -525,22 +525,6 @@ package body AMF.Internals.XMI_Handlers is
       end if;
    end End_Element;
 
-   ------------
-   -- Extent --
-   ------------
-
-   function Extent
-    (URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access is
-   begin
-      if Documents.Contains (URI) then
-         return Documents.Element (URI);
-
-      else
-         return null;
-      end if;
-   end Extent;
-
 --   overriding procedure End_Prefix_Mapping
 --    (Self    : in out XMI_Handler;
 --     Prefix  : League.Strings.Universal_String;
@@ -598,6 +582,22 @@ package body AMF.Internals.XMI_Handlers is
          end if;
       end if;
    end Establish_Link;
+
+   ------------
+   -- Extent --
+   ------------
+
+   function Extent
+    (URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access is
+   begin
+      if Documents.Contains (URI) then
+         return Documents.Element (URI);
+
+      else
+         return null;
+      end if;
+   end Extent;
 
    -----------------
    -- Fatal_Error --
