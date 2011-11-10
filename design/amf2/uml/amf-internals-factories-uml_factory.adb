@@ -42,9 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
-with AMF.Internals.Factories.Primitive_Types_Factory;
-pragma Unreferenced (AMF.Internals.Factories.Primitive_Types_Factory);
---  Primitive_Types_Factory must be elaborated before eloboration of this unit.
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.UML_Attribute_Mappings;
 with AMF.Internals.Tables.UML_Constructors;
@@ -63,6 +60,18 @@ with AMF.UML.Holders.Parameter_Direction_Kinds;
 with AMF.UML.Holders.Pseudostate_Kinds;
 with AMF.UML.Holders.Transition_Kinds;
 with AMF.UML.Holders.Visibility_Kinds;
+
+with AMF.Internals.Factories.CMOF_Factory;
+pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
+pragma Elaborate_All (AMF.Internals.Factories.CMOF_Factory);
+--  CMOF factory package and all its dependencies must be elaborated before
+--  elaboration of this package.
+
+with AMF.Internals.Factories.Primitive_Types_Factory;
+pragma Unreferenced (AMF.Internals.Factories.Primitive_Types_Factory);
+pragma Elaborate_All (AMF.Internals.Factories.Primitive_Types_Factory);
+--  PrimitiveTypes factory package and all its dependencies must be elaborated
+--  before elaboration of this package.
 
 package body AMF.Internals.Factories.UML_Factory is
 

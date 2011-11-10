@@ -48,11 +48,14 @@ with League.Holders.Integers;
 
 with AMF.Holders.Reals;
 with AMF.Holders.Unlimited_Naturals;
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
---  CMOF_Factory must be elaborated before eloboration of this unit.
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.Primitive_Types_Metamodel;
+
+with AMF.Internals.Factories.CMOF_Factory;
+pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
+pragma Elaborate_All (AMF.Internals.Factories.CMOF_Factory);
+--  CMOF factory package and all its dependencies must be elaborated before
+--  elaboration of this package.
 
 package body AMF.Internals.Factories.Primitive_Types_Factory is
 
