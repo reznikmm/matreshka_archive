@@ -58,8 +58,7 @@ package AMF.Facility is
    function Resolve_URI
     (Href      : League.Strings.Universal_String;
      Base      : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String;
-     Metamodel : Boolean := False)
+       := League.Strings.Empty_Universal_String)
        return AMF.Elements.Element_Access;
    --  Dereferences the supplied URI down to an element (if possible) which is
    --  returned.
