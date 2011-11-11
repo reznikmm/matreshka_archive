@@ -56,9 +56,19 @@ package AMF.Internals.AMF_URI_Extents is
    --  Extent's operations  --
    ---------------------------
 
+   overriding function Use_Containment
+    (Self : not null access constant AMF_URI_Extent) return Boolean;
+   --  When true, recursively include all elements contained by members of the
+   --  elements().
+
    overriding function Elements
     (Self : not null access constant AMF_URI_Extent)
        return AMF.Elements.Collections.Set_Of_Element;
+   --  Returns a ReflectiveSequence of the elements directly referenced by this
+   --  extent. If exclusive()==true, these elements must have
+   --  container()==null. Extent.elements() is a reflective operation, not a
+   --  reference between Extent and Element. See Chapter 4, “Reflection” for a
+   --  definition of ReflectiveSequence.
 
    ------------------------------
    --  URIExtent's operations  --
@@ -71,6 +81,13 @@ package AMF.Internals.AMF_URI_Extents is
    --  for identifying elements in the extent. An extent has an identifier if a
    --  URI is assigned. URI is defined in IETF RFC-2396 available at
    --  http://www.ietf.org/rfc/rfc2396.txt.
+
+   overriding function URI
+    (Self    : not null access constant AMF_URI_Extent;
+     Element : not null access constant AMF.Elements.Abstract_Element'Class)
+       return League.Strings.Universal_String;
+   --  Returns the URI of the given element in the extent. Returns Null if the
+   --  element is not in the extent.
 
    overriding function Element
     (Self : not null access constant AMF_URI_Extent;

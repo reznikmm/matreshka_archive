@@ -61,6 +61,13 @@ package AMF.URI_Extents is
    --  URI is assigned. URI is defined in IETF RFC-2396 available at
    --  http://www.ietf.org/rfc/rfc2396.txt.
 
+   not overriding function URI
+    (Self    : not null access constant URI_Extent;
+     Element : not null access constant AMF.Elements.Abstract_Element'Class)
+       return League.Strings.Universal_String is abstract;
+   --  Returns the URI of the given element in the extent. Returns Null if the
+   --  element is not in the extent.
+
    not overriding function Element
     (Self : not null access constant URI_Extent;
      URI  : League.Strings.Universal_String)

@@ -52,6 +52,11 @@ package AMF.Extents is
    type Extent_Access is access all Extent'Class;
    for Extent_Access'Storage_Size use 0;
 
+   not overriding function Use_Containment
+    (Self : not null access constant Extent) return Boolean is abstract;
+   --  When true, recursively include all elements contained by members of the
+   --  elements().
+
    not overriding function Elements
     (Self : not null access constant Extent)
        return AMF.Elements.Collections.Set_Of_Element is abstract;

@@ -90,4 +90,29 @@ package body AMF.Internals.AMF_URI_Extents is
          (Standard.CMOF.Internals.Extents.All_Elements (Self.Id));
    end Elements;
 
+   ---------
+   -- URI --
+   ---------
+
+   overriding function URI
+    (Self    : not null access constant AMF_URI_Extent;
+     Element : not null access constant AMF.Elements.Abstract_Element'Class)
+       return League.Strings.Universal_String is
+   begin
+      return League.Strings.Empty_Universal_String;
+   end URI;
+
+   ---------------------
+   -- Use_Containment --
+   ---------------------
+
+   overriding function Use_Containment
+    (Self : not null access constant AMF_URI_Extent) return Boolean
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return True;
+   end Use_Containment;
+
 end AMF.Internals.AMF_URI_Extents;
