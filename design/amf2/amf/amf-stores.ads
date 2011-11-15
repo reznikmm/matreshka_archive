@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Classes;
+with AMF.Elements;
 with AMF.Extents;
 with AMF.Factories;
 
@@ -54,5 +56,13 @@ package AMF.Stores is
 
    type Store_Access is access all Store'Class;
    for Store_Access'Storage_Size use 0;
+
+   not overriding function Create
+    (Self       : not null access Store;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
+     Id         : League.Strings.Universal_String)
+       return not null AMF.Elements.Element_Access is abstract;
+   --  Creates an element that is an instance of the metaClass and assign
+   --  identifier to created element.
 
 end AMF.Stores;

@@ -57,7 +57,6 @@ with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
 with AMF.Facility;
 with AMF.Holders.Reflective_Collections;
-with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 --  XXX Direct use of AMF.Internals.Factories must be removed.
 with AMF.Internals.XMI_URI_Rewriter;
@@ -293,8 +292,7 @@ package body AMF.Internals.XMI_Handlers is
       else
          --  Create new element.
 
-         Self.Current := Self.Extent.Create (Meta_Class);
-         AMF.Internals.Extents.Associate_Id (Self.Current, Id);
+         Self.Current := Self.Extent.Create (Meta_Class, Id);
          Self.Mapping.Insert (Id, Self.Current);
       end if;
 

@@ -99,6 +99,34 @@ package body AMF.Internals.AMF_URI_Stores is
       return Element;
    end Create;
 
+   ------------
+   -- Create --
+   ------------
+
+   overriding function Create
+    (Self       : not null access AMF_URI_Store;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
+     Id         : League.Strings.Universal_String)
+       return not null AMF.Elements.Element_Access
+   is
+      Element    : constant AMF.Elements.Element_Access
+        := Factory (Meta_Class).Create (Meta_Class);
+      Element_Id : constant AMF.Internals.AMF_Element
+        := AMF.Internals.Helpers.To_Element (Element);
+
+   begin
+      --  Add element to the store.
+
+      AMF.Internals.Extents.Internal_Append (Self.Id, Element_Id);
+      AMF.Internals.Extents.Set_Id (Self.Id, Element_Id, Id);
+
+      --  Notify about creation of element.
+
+      AMF.Internals.Listener_Registry.Notify_Instance_Create (Element);
+
+      return Element;
+   end Create;
+
    ------------------------
    -- Create_From_String --
    ------------------------

@@ -116,6 +116,14 @@ package AMF.Internals.AMF_URI_Stores is
    --  These conditions also apply to all superclasses of the class being
    --  instantiated.
 
+   overriding function Create
+    (Self       : not null access AMF_URI_Store;
+     Meta_Class : not null access AMF.CMOF.Classes.CMOF_Class'Class;
+     Id         : League.Strings.Universal_String)
+       return not null AMF.Elements.Element_Access;
+   --  Creates an element that is an instance of the metaClass and assign
+   --  identifier to created element.
+
    overriding procedure Create_Link
     (Self           : not null access AMF_URI_Store;
      Association    :

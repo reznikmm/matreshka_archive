@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings;
 
-with AMF.Elements;
 with AMF.Extents;
 with AMF.URI_Stores;
 
@@ -67,12 +66,11 @@ package AMF.Internals.Extents is
    --  Adds specified element to the set of elements contained in the specified
    --  extent.
 
-   procedure Associate_Id
-    (Element : not null access constant AMF.Elements.Abstract_Element'Class;
+   procedure Set_Id
+    (Extent  : AMF_Extent;
+     Element : AMF_Element;
      Id      : League.Strings.Universal_String);
-   --  Associate specified identifier with the element.
-   --
-   --  XXX Access to Abstract_Element'Class should be replaced by AMF_Element.
+   --  Set specified identifier to the element.
 
    function Element
     (Self : AMF_Extent;
