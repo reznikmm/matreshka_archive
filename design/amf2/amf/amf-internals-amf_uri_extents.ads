@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements.Collections;
+with AMF.Extents;
 with AMF.URI_Extents;
 
 package AMF.Internals.AMF_URI_Extents is
@@ -69,6 +70,30 @@ package AMF.Internals.AMF_URI_Extents is
    --  container()==null. Extent.elements() is a reflective operation, not a
    --  reference between Extent and Element. See Chapter 4, “Reflection” for a
    --  definition of ReflectiveSequence.
+
+   overriding procedure Add_Element
+    (Self    : not null access AMF_URI_Extent;
+     Element : not null AMF.Elements.Element_Access);
+   --  Adds an existing Element to the extent. This is a null operation if the
+   --  Element is already in the Extent.
+
+   overriding procedure Remove_Element
+    (Self    : not null access AMF_URI_Extent;
+     Element : not null AMF.Elements.Element_Access);
+   --  Removes the Element from the extent. It is an error if the Element is
+   --  not a member. This may or may not result in it being deleted (see
+   --  Section 6.3.2, “Deletion Semantics”).
+
+   overriding procedure Move_Element
+    (Self    : not null access AMF_URI_Extent;
+     Element : not null AMF.Elements.Element_Access;
+     Target  : not null access AMF.Extents.Extent'Class);
+   --  An atomic combination of addElement and removeElement. targetExtent must
+   --  be different from the extent on which the operation is invoked.
+
+   overriding procedure Delete_Extent (Self : not null access AMF_URI_Extent);
+   --  Deletes the Extent, but not necessarily the Elements it contains (see
+   --  Section 6.3.2, “Deletion Semantics).
 
    ------------------------------
    --  URIExtent's operations  --

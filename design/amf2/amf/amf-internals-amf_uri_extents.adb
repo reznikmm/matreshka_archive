@@ -51,6 +51,17 @@ with CMOF.Internals.Extents;
 package body AMF.Internals.AMF_URI_Extents is
 
    -----------------
+   -- Add_Element --
+   -----------------
+
+   overriding procedure Add_Element
+    (Self    : not null access AMF_URI_Extent;
+     Element : not null AMF.Elements.Element_Access) is
+   begin
+      null;
+   end Add_Element;
+
+   -----------------
    -- Context_URI --
    -----------------
 
@@ -62,6 +73,15 @@ package body AMF.Internals.AMF_URI_Extents is
         League.Strings.Internals.Create
          (AMF.Internals.Tables.AMF_Tables.Extents.Table (Self.Id).Context_URI);
    end Context_URI;
+
+   -------------------
+   -- Delete_Extent --
+   -------------------
+
+   overriding procedure Delete_Extent (Self : not null access AMF_URI_Extent) is
+   begin
+      null;
+   end Delete_Extent;
 
    -------------
    -- Element --
@@ -89,6 +109,29 @@ package body AMF.Internals.AMF_URI_Extents is
         AMF.Elements.Collections.Wrap
          (Standard.CMOF.Internals.Extents.All_Elements (Self.Id));
    end Elements;
+
+   ------------------
+   -- Move_Element --
+   ------------------
+
+   overriding procedure Move_Element
+    (Self    : not null access AMF_URI_Extent;
+     Element : not null AMF.Elements.Element_Access;
+     Target  : not null access AMF.Extents.Extent'Class) is
+   begin
+      null;
+   end Move_Element;
+
+   --------------------
+   -- Remove_Element --
+   --------------------
+
+   overriding procedure Remove_Element
+    (Self    : not null access AMF_URI_Extent;
+     Element : not null AMF.Elements.Element_Access) is
+   begin
+      null;
+   end Remove_Element;
 
    ---------
    -- URI --

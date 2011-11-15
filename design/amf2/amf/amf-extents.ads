@@ -66,4 +66,29 @@ package AMF.Extents is
    --  reference between Extent and Element. See Chapter 4, “Reflection” for a
    --  definition of ReflectiveSequence.
 
+   not overriding procedure Add_Element
+    (Self    : not null access Extent;
+     Element : not null AMF.Elements.Element_Access) is abstract;
+   --  Adds an existing Element to the extent. This is a null operation if the
+   --  Element is already in the Extent.
+
+   not overriding procedure Remove_Element
+    (Self    : not null access Extent;
+     Element : not null AMF.Elements.Element_Access) is abstract;
+   --  Removes the Element from the extent. It is an error if the Element is
+   --  not a member. This may or may not result in it being deleted (see
+   --  Section 6.3.2, “Deletion Semantics”).
+
+   not overriding procedure Move_Element
+    (Self    : not null access Extent;
+     Element : not null AMF.Elements.Element_Access;
+     Target  : not null access Extent'Class) is abstract;
+   --  An atomic combination of addElement and removeElement. targetExtent must
+   --  be different from the extent on which the operation is invoked.
+
+   not overriding procedure Delete_Extent
+    (Self : not null access Extent) is abstract;
+   --  Deletes the Extent, but not necessarily the Elements it contains (see
+   --  Section 6.3.2, “Deletion Semantics).
+
 end AMF.Extents;
