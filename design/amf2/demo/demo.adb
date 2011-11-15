@@ -2,6 +2,9 @@
 with Ada.Wide_Wide_Text_IO;
 
 --  with AMF.Elements.Collections;
+with AMF.CMOF.Packages.Collections;
+with AMF.Extents.Collections;
+with AMF.Facility;
 with AMF.URI_Stores;
 with League.Application;
 with XMI.Reader;
@@ -21,9 +24,51 @@ procedure Demo is
    Generator : Generators.Generator;
 
 begin
+   AMF.Facility.Initialize;
+
    --  Loading specified model
 
-   Store := XMI.Reader (League.Application.Arguments.Element (1));
+   Store := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
+
+   --  Output list of all loaded models.
+
+   declare
+      Extents : AMF.Extents.Collections.Set_Of_Extent
+        := AMF.Facility.Extent;
+
+      procedure Process (Position : AMF.Extents.Collections.Extent_Sets.Cursor);
+
+      -------------
+      -- Process --
+      -------------
+
+      procedure Process (Position : AMF.Extents.Collections.Extent_Sets.Cursor) is
+         Extent : AMF.URI_Stores.URI_Store_Access
+           := AMF.URI_Stores.URI_Store_Access
+               (AMF.Extents.Collections.Extent_Sets.Element (Position));
+
+      begin
+         Put_Line (Extent.Context_URI.To_Wide_Wide_String);
+      end Process;
+
+   begin
+      Extents.Iterate (Process'Access);
+   end;
+
+   --  Output list of all known metamodels.
+
+   declare
+      Packages : constant AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package
+        := Store.Get_Package;
+
+   begin
+      for J in 1 .. Packages.Length loop
+         Put_Line
+          (Packages.Element (J).Get_Name.Value.To_Wide_Wide_String
+             & ' '
+             & Packages.Element (J).Get_Uri.Value.To_Wide_Wide_String);
+      end loop;
+   end;
 
    --  Generate code
 

@@ -42,63 +42,97 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.IRIs;
-with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
 with AMF.Internals.XMI_Handlers;
 with AMF.Internals.XMI_URI_Rewriter;
 
-function XMI.Reader
- (File_Name   : League.Strings.Universal_String;
-  Context_URI : League.Strings.Universal_String
-    := League.Strings.Empty_Universal_String)
-    return AMF.URI_Stores.URI_Store_Access
-is
-   use type League.Strings.Universal_String;
+package body XMI.Reader is
 
-   URI      : League.IRIs.IRI;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Input    : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
-   New_Name : League.Strings.Universal_String;
+   ---------------
+   -- Read_File --
+   ---------------
 
-begin
-   if Context_URI.Is_Empty then
-      --  Context URI is not defined, use mapping for documents.
+   function Read_File
+    (File_Name   : League.Strings.Universal_String;
+     Context_URI : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return AMF.URI_Stores.URI_Store_Access
+   is
+      use type League.Strings.Universal_String;
 
-      New_Name := AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (File_Name);
+      URI      : League.IRIs.IRI;
+      Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Input    : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+      Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
+      New_Name : League.Strings.Universal_String;
 
-      URI := League.IRIs.From_Universal_String (New_Name);
+   begin
+      if Context_URI.Is_Empty then
+         --  Context URI is not defined, use mapping for documents.
 
-      if New_Name /= File_Name then
-         --  File name was rewritten
+         New_Name :=
+           AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (File_Name);
 
-         Input.Open_By_URI (New_Name);
-         Input.Set_System_Id (File_Name);
+         URI := League.IRIs.From_Universal_String (New_Name);
 
-      elsif not URI.Scheme.Is_Empty then
-         --  File name has scheme name
+         if New_Name /= File_Name then
+            --  File name was rewritten
 
-         Input.Open_By_URI (New_Name);
+            Input.Open_By_URI (New_Name);
+            Input.Set_System_Id (File_Name);
+
+         elsif not URI.Scheme.Is_Empty then
+            --  File name has scheme name
+
+            Input.Open_By_URI (New_Name);
+
+         else
+            --  File name doesn't have scheme name
+
+            Input.Open_By_File_Name (New_Name);
+         end if;
 
       else
-         --  File name doesn't have scheme name
+         --  Context URI is defined, just open specified file and set its
+         --  system identifier.
 
-         Input.Open_By_File_Name (New_Name);
+         Input.Open_By_File_Name (File_Name);
+         Input.Set_System_Id (Context_URI);
       end if;
 
-   else
-      --  Context URI is defined, just open specified file and set its system
-      --  identifier.
+      Reader.Set_Content_Handler (Handler'Unchecked_Access);
+      Reader.Set_Error_Handler (Handler'Unchecked_Access);
+      Reader.Parse (Input'Unchecked_Access);
 
-      Input.Open_By_File_Name (File_Name);
-      Input.Set_System_Id (Context_URI);
-   end if;
+      return Handler.Root;
+   end Read_File;
 
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Reader.Set_Error_Handler (Handler'Unchecked_Access);
-   Reader.Parse (Input'Unchecked_Access);
+   --------------
+   -- Read_URI --
+   --------------
 
-   return Handler.Root;
+   function Read_URI
+    (URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access
+   is
+      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+      Handler : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
+      New_URI : League.Strings.Universal_String;
+
+   begin
+      New_URI := AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (URI);
+
+      Input.Open_By_URI (New_URI);
+      Input.Set_System_Id (URI);
+
+      Reader.Set_Content_Handler (Handler'Unchecked_Access);
+      Reader.Set_Error_Handler (Handler'Unchecked_Access);
+      Reader.Parse (Input'Unchecked_Access);
+
+      return Handler.Root;
+   end Read_URI;
+
 end XMI.Reader;

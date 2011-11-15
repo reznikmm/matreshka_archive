@@ -44,8 +44,18 @@
 with AMF.URI_Stores;
 with League.Strings;
 
-function XMI.Reader
- (File_Name   : League.Strings.Universal_String;
-  Context_URI : League.Strings.Universal_String
-    := League.Strings.Empty_Universal_String)
-    return AMF.URI_Stores.URI_Store_Access;
+package XMI.Reader is
+
+   function Read_URI
+    (URI : League.Strings.Universal_String)
+       return AMF.URI_Stores.URI_Store_Access;
+   --  Loads model from the specified URI.
+
+   function Read_File
+    (File_Name   : League.Strings.Universal_String;
+     Context_URI : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return AMF.URI_Stores.URI_Store_Access;
+   --  Loads model from the specified file.
+
+end XMI.Reader;

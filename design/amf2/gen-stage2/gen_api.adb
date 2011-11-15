@@ -1892,7 +1892,7 @@ begin
    end if;
 
    Extent :=
-     XMI.Reader
+     XMI.Reader.Read_File
       (League.Application.Arguments.Element (1),
        League.Application.Arguments.Element (2));
    Elements := Extent.Elements;

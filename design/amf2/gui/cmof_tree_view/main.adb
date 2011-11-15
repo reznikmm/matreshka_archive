@@ -74,7 +74,7 @@ begin
 
    AMF.Facility.Initialize;
 
-   Root := XMI.Reader (League.Application.Arguments.Element (1));
+   Root := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
 
    Model := CMOF_Tree_Models.Constructors.Create;
    Model.Set_Extent (Root);

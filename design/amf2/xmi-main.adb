@@ -8,5 +8,5 @@ procedure XMI.Main is
    X : AMF.URI_Stores.URI_Store_Access;
 
 begin
-   X := XMI.Reader (League.Application.Arguments.Element (1));
+   X := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
 end XMI.Main;
