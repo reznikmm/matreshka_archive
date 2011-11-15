@@ -440,7 +440,6 @@ package body AMF.Internals.XMI_Handlers is
          --  Register extent.
 
          Documents.Insert (Self.Locator.System_Id, Self.Extent);
-         Documents.Include (Self.Alias, Self.Extent);
 
          --  Load next document in queue.
 
@@ -719,16 +718,6 @@ package body AMF.Internals.XMI_Handlers is
    begin
       return Self.Extent;
    end Root;
-
-   ---------------
-   -- Set_Alias --
-   ---------------
-
-   procedure Set_Alias
-    (Self : in out XMI_Handler; Alias : League.Strings.Universal_String) is
-   begin
-      Self.Alias := Alias;
-   end Set_Alias;
 
    --------------------------
    -- Set_Document_Locator --

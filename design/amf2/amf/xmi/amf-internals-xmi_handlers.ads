@@ -68,12 +68,6 @@ package AMF.Internals.XMI_Handlers is
        return AMF.URI_Stores.URI_Store_Access;
    --  Returns extent with specified URI.
 
-   procedure Set_Alias
-    (Self : in out XMI_Handler; Alias : League.Strings.Universal_String);
-   --  Sets alias of document.
-   --
-   --  XXX This is workaround and should be removed.
-
    type Extent_Array is
      array (Positive range <>) of AMF.URI_Stores.URI_Store_Access;
 
@@ -122,7 +116,6 @@ private
       --  corresponding metamodel.
       Diagnosis          : League.Strings.Universal_String;
       Locator            : XML.SAX.Locators.SAX_Locator;
-      Alias              : League.Strings.Universal_String;
    end record;
 
    overriding procedure Characters

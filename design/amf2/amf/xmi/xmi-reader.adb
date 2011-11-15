@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.IRIs;
 with League.Strings;
 with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
@@ -56,6 +57,7 @@ function XMI.Reader
 is
    use type League.Strings.Universal_String;
 
+   URI      : League.IRIs.IRI;
    Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Input    : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
    Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
@@ -67,14 +69,23 @@ begin
 
       New_Name := AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (File_Name);
 
+      URI := League.IRIs.From_Universal_String (New_Name);
+
       if New_Name /= File_Name then
-         --  File name was rewritten.
+         --  File name was rewritten
 
          Input.Open_By_URI (New_Name);
          Input.Set_System_Id (File_Name);
 
+      elsif not URI.Scheme.Is_Empty then
+         --  File name has scheme name
+
+         Input.Open_By_URI (New_Name);
+
       else
-         Input.Open_By_File_Name (File_Name);
+         --  File name doesn't have scheme name
+
+         Input.Open_By_File_Name (New_Name);
       end if;
 
    else
@@ -85,7 +96,6 @@ begin
       Input.Set_System_Id (Context_URI);
    end if;
 
-   Handler.Set_Alias (File_Name);
    Reader.Set_Content_Handler (Handler'Unchecked_Access);
    Reader.Set_Error_Handler (Handler'Unchecked_Access);
    Reader.Parse (Input'Unchecked_Access);
