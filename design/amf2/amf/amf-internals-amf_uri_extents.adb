@@ -142,7 +142,9 @@ package body AMF.Internals.AMF_URI_Extents is
      Element : not null access constant AMF.Elements.Abstract_Element'Class)
        return League.Strings.Universal_String is
    begin
-      return League.Strings.Empty_Universal_String;
+      return
+        AMF.Internals.Extents.URI
+         (Self.Id, AMF.Internals.Helpers.To_Element (Element));
    end URI;
 
    ---------------------

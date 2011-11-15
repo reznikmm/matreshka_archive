@@ -66,6 +66,12 @@ package body AMF.Internals.Extents is
    use type AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
+   function Lookup
+    (Extent  : AMF_Extent;
+     Element : AMF_Element) return Tables.AMF_Tables.Extent_Element_Identifier;
+   --  Lookup for element in the extent. Returns identifier of element's record
+   --  in the extent.
+
    ---------------------
    -- Allocate_Extent --
    ---------------------
@@ -362,6 +368,28 @@ package body AMF.Internals.Extents is
         Next     => Next);
    end Internal_Append;
 
+   ------------
+   -- Lookup --
+   ------------
+
+   function Lookup
+    (Extent  : AMF_Extent;
+     Element : AMF_Element) return Tables.AMF_Tables.Extent_Element_Identifier
+   is
+      Current : Tables.AMF_Tables.Extent_Element_Identifier
+        := Tables.AMF_Tables.Extents.Table (Extent).Head;
+
+   begin
+      while Current /= 0 loop
+         exit when
+           Tables.AMF_Tables.Extent_Elements.Table (Current).Element = Element;
+
+         Current := Tables.AMF_Tables.Extent_Elements.Table (Current).Next;
+      end loop;
+
+      return Current;
+   end Lookup;
+
    -----------
    -- Proxy --
    -----------
@@ -401,26 +429,45 @@ package body AMF.Internals.Extents is
      Element : AMF_Element;
      Id      : League.Strings.Universal_String)
    is
-      Current : Tables.AMF_Tables.Extent_Element_Identifier
-        := Tables.AMF_Tables.Extents.Table (Extent).Head;
+      Current : constant Tables.AMF_Tables.Extent_Element_Identifier
+        := Lookup (Extent, Element);
 
    begin
-      while Current /= 0 loop
-         if Tables.AMF_Tables.Extent_Elements.Table (Current).Element
-              = Element
-         then
-            Matreshka.Internals.Strings.Dereference
-             (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
-            Tables.AMF_Tables.Extent_Elements.Table (Current).Id :=
-              League.Strings.Internals.Internal (Id);
-            Matreshka.Internals.Strings.Reference
-             (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
-
-            exit;
-         end if;
-
-         Current := Tables.AMF_Tables.Extent_Elements.Table (Current).Next;
-      end loop;
+      if Current /= 0 then
+         Matreshka.Internals.Strings.Dereference
+          (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+         Tables.AMF_Tables.Extent_Elements.Table (Current).Id :=
+           League.Strings.Internals.Internal (Id);
+         Matreshka.Internals.Strings.Reference
+          (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+      end if;
    end Set_Id;
+
+   ---------
+   -- URI --
+   ---------
+
+   function URI
+    (Extent  : AMF_Extent;
+     Element : AMF_Element) return League.Strings.Universal_String
+   is
+      use type League.Strings.Universal_String;
+
+      Current : constant Tables.AMF_Tables.Extent_Element_Identifier
+        := Lookup (Extent, Element);
+
+   begin
+      if Current /= 0 then
+         return
+           League.Strings.Internals.Create
+            (Tables.AMF_Tables.Extents.Table (Extent).Context_URI)
+             & '#'
+             & League.Strings.Internals.Create
+                (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+
+      else
+         return League.Strings.Empty_Universal_String;
+      end if;
+   end URI;
 
 end AMF.Internals.Extents;

@@ -81,4 +81,10 @@ package AMF.Internals.Extents is
    --  URI. The URI identifies the element in the context of the extent. The
    --  same element may have a different identifier in another extent.
 
+   function URI
+    (Extent  : AMF_Extent;
+     Element : AMF_Element) return League.Strings.Universal_String;
+   --  Returns the URI of the given element in the extent. Returns Null if the
+   --  element is not in the extent.
+
 end AMF.Internals.Extents;
