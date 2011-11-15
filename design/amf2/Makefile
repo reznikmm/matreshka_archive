@@ -15,7 +15,7 @@ all:
 #	(cd data/2.4 && ../../demo-viewer UML.cmof)
 
 sqldemo:
-	gprbuild -P demo/demo.gpr
+	gprbuild -p -j0 -P demo/demo.gpr
 	(cd demo && ../demo-gen DemoSQL.xml)
 
 gens:
