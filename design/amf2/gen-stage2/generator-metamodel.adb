@@ -305,23 +305,25 @@ package body Generator.Metamodel is
          Property_Type : constant AMF.CMOF.Types.CMOF_Type_Access
            := Property.Get_Type;
          Value         : League.Holders.Holder;
+         Collection    : AMF.Reflective_Collections.Reflective_Collection;
 
       begin
          if Is_String_Type (Property_Type)
            and then not Property.Get_Is_Derived
          then
+            Value :=
+              AMF.Elements.Abstract_Element'Class (Element.all).Get (Property);
+
             if Property.Is_Multivalued then
-               Put_Line
-                (Standard_Error,
-                 "warning: "
-                   & Property.Get_Name.Value.To_Wide_Wide_String
-                   & ": multivalued string value is not supported");
+               Collection :=
+                 AMF.Holders.Reflective_Collections.Element (Value);
+
+               for J in 1 .. Collection.Length loop
+                  Strings.Include
+                   (League.Holders.Element (Collection.Element (J)));
+               end loop;
 
             else
-               Value
-                 := AMF.Elements.Abstract_Element'Class
-                     (Element.all).Get (Property);
-
                if not League.Holders.Is_Empty (Value) then
                   Strings.Include (League.Holders.Element (Value));
                end if;
