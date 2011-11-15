@@ -65,10 +65,13 @@ procedure Gen2 is
    Elements : AMF.Elements.Collections.Set_Of_Element;
 
 begin
-   Generator.Metamodel_Name := League.Application.Arguments.Element (2);
+   Generator.Metamodel_Name := League.Application.Arguments.Element (3);
 
    AMF.Facility.Initialize;
-   Extent := XMI.Reader (League.Application.Arguments.Element (1));
+   Extent :=
+     XMI.Reader
+      (League.Application.Arguments.Element (1),
+       League.Application.Arguments.Element (2));
    Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;

@@ -48,7 +48,5 @@
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
 -->
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-  <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="CMOF.cmof"/>
-  <uri name="http://www.omg.org/spec/UML/20100901/" uri="UML24.cmof"/>
   <uri name="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi" uri="PrimitiveTypes24.cmof"/>
 </catalog>

@@ -1877,10 +1877,10 @@ procedure Gen_API is
 
 begin
    AMF.Facility.Initialize;
-   Generator.Metamodel_Name := League.Application.Arguments.Element (2);
+   Generator.Metamodel_Name := League.Application.Arguments.Element (3);
 
-   if League.Application.Arguments.Length = 3 then
-      if League.Application.Arguments.Element (3).To_Wide_Wide_String
+   if League.Application.Arguments.Length = 4 then
+      if League.Application.Arguments.Element (4).To_Wide_Wide_String
            = "--stubs"
       then
          Generate_Public_API := False;
@@ -1891,7 +1891,10 @@ begin
       end if;
    end if;
 
-   Extent := XMI.Reader (League.Application.Arguments.Element (1));
+   Extent :=
+     XMI.Reader
+      (League.Application.Arguments.Element (1),
+       League.Application.Arguments.Element (2));
    Elements := Extent.Elements;
 
    Generator.Type_Mapping.Load_Mapping;
