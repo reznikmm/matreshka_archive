@@ -41,55 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings.Internals;
+with League.Application;
+with Matreshka.XML_Catalogs.Entry_Files;
+with Matreshka.XML_Catalogs.Loader;
+with Matreshka.XML_Catalogs.Resolver;
 
-with AMF.Internals.Extents;
-with AMF.Internals.XMI_Metamodel_Rewriter;
-with AMF.Internals.Tables.AMF_Tables;
-with AMF.Stores;
+package body AMF.Internals.XMI_Metamodel_Rewriter is
 
-with AMF.Internals.Factories.CMOF_Factory;
-pragma Unreferenced (AMF.Internals.Factories.CMOF_Factory);
---  Dependency from CMOF factory is required to construct CMOF metamodel at
---  elaboration time.
+   use type League.Strings.Universal_String;
 
-package body AMF.Facility is
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
-   ----------------------
-   -- Create_URI_Store --
-   ----------------------
-
-   function Create_URI_Store
-    (Context_URI : League.Strings.Universal_String)
-       return AMF.URI_Stores.URI_Store_Access is
-   begin
-      return
-        AMF.Internals.Extents.Allocate_URI_Store
-         (League.Strings.Internals.Internal (Context_URI));
-   end Create_URI_Store;
-
-   ------------
-   -- Extent --
-   ------------
-
-   function Extent return AMF.Extents.Collections.Set_Of_Extent is
-      Extent : AMF.Extents.Extent_Access;
-
-   begin
-      return Result : AMF.Extents.Collections.Set_Of_Extent do
-         for J in 1 .. AMF.Internals.Tables.AMF_Tables.Extents.Last loop
-            Extent := AMF.Internals.Extents.Proxy (J);
-
-            if Extent.all in AMF.Stores.Store'Class then
-               --  By convention, all metamodel's extents are not stores to
-               --  prevent them from modification, so only stores are included
-               --  in the set.
-
-               Result.Insert (Extent);
-            end if;
-         end loop;
-      end return;
-   end Extent;
+   Rules : aliased Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
 
    ----------------
    -- Initialize --
@@ -97,20 +62,29 @@ package body AMF.Facility is
 
    procedure Initialize is
    begin
-      AMF.Internals.XMI_Metamodel_Rewriter.Initialize;
+      Rules.Catalog_Entry_Files.Append
+       (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
+         (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
+            & "/metamodel_mapping.xml",
+          Matreshka.XML_Catalogs.Entry_Files.System));
    end Initialize;
 
-   -----------------
-   -- Resolve_URI --
-   -----------------
+   ---------------------------
+   -- Rewrite_Namespace_URI --
+   ---------------------------
 
-   function Resolve_URI
-    (Href      : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String
-       := League.Strings.Empty_Universal_String)
-       return AMF.Elements.Element_Access is
+   function Rewrite_Namespace_URI
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+   is
+      Resolved : League.Strings.Universal_String;
+      Success  : Boolean;
+
    begin
-      return null;
-   end Resolve_URI;
+      Matreshka.XML_Catalogs.Resolver.Resolve_URI
+       (Rules'Access, URI, Resolved, Success);
 
-end AMF.Facility;
+      return Resolved;
+   end Rewrite_Namespace_URI;
+
+end AMF.Internals.XMI_Metamodel_Rewriter;

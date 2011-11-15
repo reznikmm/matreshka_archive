@@ -41,8 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "../../../gnat/matreshka_league.gpr";
 with "../../../gnat/matreshka_common.gpr";
+with "../../../gnat/matreshka_league.gpr";
+with "../../../gnat/matreshka_xml.gpr";
 
 library project AMF is
 

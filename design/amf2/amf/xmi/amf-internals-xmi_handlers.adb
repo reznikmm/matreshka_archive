@@ -59,6 +59,7 @@ with AMF.Holders.Reflective_Collections;
 with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 --  XXX Direct use of AMF.Internals.Factories must be removed.
+with AMF.Internals.XMI_Metamodel_Rewriter;
 
 package body AMF.Internals.XMI_Handlers is
 
@@ -72,12 +73,6 @@ package body AMF.Internals.XMI_Handlers is
    XMI_2_4_Namespace : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("http://www.omg.org/spec/XMI/20100901");
-   UML_2_3_Namespace : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String
-         ("http://www.omg.org/spec/UML/20090901");
-   UML_2_4_Namespace : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String
-         ("http://www.omg.org/spec/UML/20100901");
    XMI_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("XMI");
    Id_Name           : constant League.Strings.Universal_String
@@ -935,14 +930,10 @@ package body AMF.Internals.XMI_Handlers is
       else
          --  Resolve element's factory.
 
-         if Namespace_URI = UML_2_3_Namespace then
-            --  XXX Special handling for handling of UML 2.3 models as UML 2.4.
-
-            Factory := AMF.Internals.Factories.Get_Factory (UML_2_4_Namespace);
-
-         else
-            Factory := AMF.Internals.Factories.Get_Factory (Namespace_URI);
-         end if;
+         Factory :=
+           AMF.Internals.Factories.Get_Factory
+            (AMF.Internals.XMI_Metamodel_Rewriter.Rewrite_Namespace_URI
+              (Namespace_URI));
 
          --  Resolve root package of metamodel when factory is available.
 
