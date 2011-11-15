@@ -45,5 +45,7 @@ with AMF.URI_Stores;
 with League.Strings;
 
 function XMI.Reader
- (File_Name : League.Strings.Universal_String)
+ (File_Name   : League.Strings.Universal_String;
+  Context_URI : League.Strings.Universal_String
+    := League.Strings.Empty_Universal_String)
     return AMF.URI_Stores.URI_Store_Access;

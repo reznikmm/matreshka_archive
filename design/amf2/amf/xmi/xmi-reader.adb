@@ -46,46 +46,43 @@ with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
 with AMF.Internals.XMI_Handlers;
+with AMF.Internals.XMI_URI_Rewriter;
 
 function XMI.Reader
- (File_Name : League.Strings.Universal_String)
+ (File_Name   : League.Strings.Universal_String;
+  Context_URI : League.Strings.Universal_String
+    := League.Strings.Empty_Universal_String)
     return AMF.URI_Stores.URI_Store_Access
 is
    use type League.Strings.Universal_String;
 
-   function "+"
-    (Item : Wide_Wide_String) return League.Strings.Universal_String
-       renames League.Strings.To_Universal_String;
-
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Input   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Handler : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
+   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Input    : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+   Handler  : aliased AMF.Internals.XMI_Handlers.XMI_Handler;
+   New_Name : League.Strings.Universal_String;
 
 begin
-   --  XXX It would be nice to use XML Catalogs here, but it is not supported
-   --  by Matreshka XML Processor now; so, simple hack is used here.
+   if Context_URI.Is_Empty then
+      --  Context URI is not defined, use mapping for documents.
 
-   if File_Name = +"http://schema.omg.org/spec/MOF/2.0/cmof.xml" then
-      Input.Open_By_File_Name (+"data/CMOF.cmof");
-      Input.Set_System_Id (+"http://schema.omg.org/spec/MOF/2.0/cmof.xml");
+      New_Name := AMF.Internals.XMI_URI_Rewriter.Rewrite_Model_URI (File_Name);
 
-   elsif File_Name = +"http://www.omg.org/spec/UML/20100901/" then
-      Input.Open_By_File_Name (+"data/UML24.cmof");
-      Input.Set_System_Id (+"http://www.omg.org/spec/UML/20100901/");
+      if New_Name /= File_Name then
+         --  File name was rewritten.
 
-   elsif File_Name = +"http://www.omg.org/spec/UML/20100901/UML.xmi" then
-      Input.Open_By_File_Name (+"UML.xmi");
-      Input.Set_System_Id (+"http://www.omg.org/spec/UML/20100901/UML.xmi");
+         Input.Open_By_URI (New_Name);
+         Input.Set_System_Id (File_Name);
 
-   elsif File_Name
-           = +"http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi"
-   then
-      Input.Open_By_File_Name (+"data/PrimitiveTypes24.cmof");
-      Input.Set_System_Id
-       (+"http://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi");
+      else
+         Input.Open_By_File_Name (File_Name);
+      end if;
 
    else
+      --  Context URI is defined, just open specified file and set its system
+      --  identifier.
+
       Input.Open_By_File_Name (File_Name);
+      Input.Set_System_Id (Context_URI);
    end if;
 
    Handler.Set_Alias (File_Name);

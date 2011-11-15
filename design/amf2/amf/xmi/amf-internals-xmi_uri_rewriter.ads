@@ -41,18 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides capability to rewrite URIs of namespaces to URIs of
---  known element factories.
+--  This package provides capability to rewrite URIs:
+--   - URI of namespaces into URIs of known element factories;
+--   - URI of models into names of local files.
 ------------------------------------------------------------------------------
 
-package AMF.Internals.XMI_Metamodel_Rewriter is
+package AMF.Internals.XMI_URI_Rewriter is
 
    procedure Initialize;
-   --  Initialize internal data structures.
+   --  Initialize internal data structures and load mapping data.
 
    function Rewrite_Namespace_URI
     (URI : League.Strings.Universal_String)
        return League.Strings.Universal_String;
    --  Rewrites namespace URI.
 
-end AMF.Internals.XMI_Metamodel_Rewriter;
+   function Rewrite_Model_URI
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Rewrites model's URI.
+
+end AMF.Internals.XMI_URI_Rewriter;

@@ -46,7 +46,7 @@ with Matreshka.XML_Catalogs.Entry_Files;
 with Matreshka.XML_Catalogs.Loader;
 with Matreshka.XML_Catalogs.Resolver;
 
-package body AMF.Internals.XMI_Metamodel_Rewriter is
+package body AMF.Internals.XMI_URI_Rewriter is
 
    use type League.Strings.Universal_String;
 
@@ -54,7 +54,11 @@ package body AMF.Internals.XMI_Metamodel_Rewriter is
     (Item : Wide_Wide_String) return League.Strings.Universal_String
        renames League.Strings.To_Universal_String;
 
-   Rules : aliased Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
+   Namespace_Rules : aliased
+     Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
+   Document_Rules  : aliased
+     Matreshka.XML_Catalogs.Entry_Files.Catalog_Entry_File_List;
+   --  Rules to rewrite URIs of namespaces and documents.
 
    ----------------
    -- Initialize --
@@ -62,12 +66,35 @@ package body AMF.Internals.XMI_Metamodel_Rewriter is
 
    procedure Initialize is
    begin
-      Rules.Catalog_Entry_Files.Append
+      Namespace_Rules.Catalog_Entry_Files.Append
        (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
          (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
             & "/metamodel_mapping.xml",
           Matreshka.XML_Catalogs.Entry_Files.System));
+      Document_Rules.Catalog_Entry_Files.Append
+       (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
+         (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
+            & "/model_mapping.xml",
+          Matreshka.XML_Catalogs.Entry_Files.System));
    end Initialize;
+
+   -----------------------
+   -- Rewrite_Model_URI --
+   -----------------------
+
+   function Rewrite_Model_URI
+    (URI : League.Strings.Universal_String)
+       return League.Strings.Universal_String
+   is
+      Resolved : League.Strings.Universal_String;
+      Success  : Boolean;
+
+   begin
+      Matreshka.XML_Catalogs.Resolver.Resolve_URI
+       (Document_Rules'Access, URI, Resolved, Success);
+
+      return Resolved;
+   end Rewrite_Model_URI;
 
    ---------------------------
    -- Rewrite_Namespace_URI --
@@ -82,9 +109,9 @@ package body AMF.Internals.XMI_Metamodel_Rewriter is
 
    begin
       Matreshka.XML_Catalogs.Resolver.Resolve_URI
-       (Rules'Access, URI, Resolved, Success);
+       (Namespace_Rules'Access, URI, Resolved, Success);
 
       return Resolved;
    end Rewrite_Namespace_URI;
 
-end AMF.Internals.XMI_Metamodel_Rewriter;
+end AMF.Internals.XMI_URI_Rewriter;

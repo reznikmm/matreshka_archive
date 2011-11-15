@@ -59,7 +59,7 @@ with AMF.Holders.Reflective_Collections;
 with AMF.Internals.Extents;
 with AMF.Internals.Factories;
 --  XXX Direct use of AMF.Internals.Factories must be removed.
-with AMF.Internals.XMI_Metamodel_Rewriter;
+with AMF.Internals.XMI_URI_Rewriter;
 
 package body AMF.Internals.XMI_Handlers is
 
@@ -932,7 +932,7 @@ package body AMF.Internals.XMI_Handlers is
 
          Factory :=
            AMF.Internals.Factories.Get_Factory
-            (AMF.Internals.XMI_Metamodel_Rewriter.Rewrite_Namespace_URI
+            (AMF.Internals.XMI_URI_Rewriter.Rewrite_Namespace_URI
               (Namespace_URI));
 
          --  Resolve root package of metamodel when factory is available.

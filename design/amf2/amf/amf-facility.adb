@@ -44,7 +44,7 @@
 with League.Strings.Internals;
 
 with AMF.Internals.Extents;
-with AMF.Internals.XMI_Metamodel_Rewriter;
+with AMF.Internals.XMI_URI_Rewriter;
 with AMF.Internals.Tables.AMF_Tables;
 with AMF.Stores;
 
@@ -97,7 +97,7 @@ package body AMF.Facility is
 
    procedure Initialize is
    begin
-      AMF.Internals.XMI_Metamodel_Rewriter.Initialize;
+      AMF.Internals.XMI_URI_Rewriter.Initialize;
    end Initialize;
 
    -----------------
