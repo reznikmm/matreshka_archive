@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Tags;
 with Ada.Text_IO;
+with Ada.Wide_Wide_Text_IO;
 
 with League.Application;
 
@@ -80,7 +81,15 @@ procedure UMLProfile2CMOF is
    procedure Extension_To_Association
     (Source : not null AMF.UML.Extensions.UML_Extension_Access) is
    begin
-      null;
+      if Source.Get_Name.Is_Empty then
+         Ada.Wide_Wide_Text_IO.Put_Line ("Processing extension");
+
+      else
+         Ada.Wide_Wide_Text_IO.Put_Line
+          ("Processing extension '"
+             & Source.Get_Name.Value.To_Wide_Wide_String
+             & ''');
+      end if;
    end Extension_To_Association;
 
    ------------------------
@@ -96,6 +105,11 @@ procedure UMLProfile2CMOF is
       Element  : AMF.UML.Packageable_Elements.UML_Packageable_Element_Access;
 
    begin
+      Ada.Wide_Wide_Text_IO.Put_Line
+       ("Processing profile '"
+          & Source.Get_Name.Value.To_Wide_Wide_String
+          & ''');
+
       for J in 1 .. Elements.Length loop
          Element := Elements.Element (J);
 
@@ -120,7 +134,10 @@ procedure UMLProfile2CMOF is
    procedure Stereotype_To_Class
     (Source : not null AMF.UML.Stereotypes.UML_Stereotype_Access) is
    begin
-      null;
+      Ada.Wide_Wide_Text_IO.Put_Line
+       ("Processing stereotype '"
+          & Source.Get_Name.Value.To_Wide_Wide_String
+          & ''');
    end Stereotype_To_Class;
 
 begin
@@ -130,7 +147,7 @@ begin
 
    --  Load model.
 
-   Store := XMI.Reader (League.Application.Arguments.Element (1));
+   Store := XMI.Reader.Read_File (League.Application.Arguments.Element (1));
 
    --  Get all model's elements.
 
