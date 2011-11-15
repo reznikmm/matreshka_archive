@@ -67,11 +67,8 @@ package AMF.Internals.XMI_Handlers is
     (URI : League.Strings.Universal_String)
        return AMF.URI_Stores.URI_Store_Access;
    --  Returns extent with specified URI.
-
-   type Extent_Array is
-     array (Positive range <>) of AMF.URI_Stores.URI_Store_Access;
-
-   function All_Extents return Extent_Array;
+   --
+   --  XXX Should be removed
 
 private
 
