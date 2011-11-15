@@ -44,6 +44,7 @@
 with Ada.Containers.Hashed_Sets;
 with Ada.Wide_Wide_Text_IO;
 
+with League.IRIs;
 with League.String_Vectors;
 with XMI.Reader;
 
@@ -262,13 +263,17 @@ package body AMF.Internals.XMI_Handlers is
          --  Process XLink 'href' attribute if present.
 
          declare
-            URI       : constant League.Strings.Universal_String
+            URI          : constant League.Strings.Universal_String
               := Attributes.Value (Href_Index);
-            Separator : constant Positive := URI.Index ('#');
-            File_Name : constant League.Strings.Universal_String
+            Separator    : constant Positive := URI.Index ('#');
+            File_Name    : constant League.Strings.Universal_String
               := URI.Slice (1, Separator - 1);
-            Name      : constant League.Strings.Universal_String
+            Name         : constant League.Strings.Universal_String
               := URI.Slice (Separator + 1, URI.Length);
+            Resolved_URI : constant League.Strings.Universal_String
+              := Self.Locator.Base_URI.Resolve
+                  (League.IRIs.From_Universal_String
+                    (File_Name)).To_Universal_String;
 
          begin
             --  Check whether referenced document is already loaded.
@@ -286,10 +291,12 @@ package body AMF.Internals.XMI_Handlers is
                --  When document is not loaded queue it and register postponed
                --  cross link.
 
-               URI_Queue.Include (File_Name);
+               URI_Queue.Include (Resolved_URI);
 
                Postponed_Cross_Links.Append
-                ((Self.Stack.Last_Element, Attribute, URI));
+                ((Self.Stack.Last_Element,
+                  Attribute,
+                  Resolved_URI & '#' & Name));
 
                Self.Current := null;
 
