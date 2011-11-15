@@ -47,7 +47,8 @@ with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Redefinable_Elements.Collections;
 with AMF.CMOF.Types;
 with AMF.Elements.Collections;
-with AMF.Internals.XMI_Handlers;
+with AMF.Extents.Collections;
+with AMF.Facility;
 
 with Generator.Names;
 
@@ -89,13 +90,24 @@ package body Generator.Analyzer is
       --  Compute and assign metamodel names for all elements.
 
       declare
-         Extents : constant AMF.Internals.XMI_Handlers.Extent_Array
-           := AMF.Internals.XMI_Handlers.All_Extents;
+
+         procedure Process
+          (Position : AMF.Extents.Collections.Extent_Sets.Cursor);
+
+         -------------
+         -- Process --
+         -------------
+
+         procedure Process
+          (Position : AMF.Extents.Collections.Extent_Sets.Cursor) is
+         begin
+            Compute_Metamodel_Names
+             (AMF.URI_Stores.URI_Store_Access
+               (AMF.Extents.Collections.Extent_Sets.Element (Position)));
+         end Process;
 
       begin
-         for J in Extents'Range loop
-            Compute_Metamodel_Names (Extents (J));
-         end loop;
+         AMF.Facility.Extent.Iterate (Process'Access);
       end;
 
       --  Looking for root package of the metamodel.
