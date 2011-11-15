@@ -105,8 +105,8 @@ package body AMF.Facility is
    -----------------
 
    function Resolve_URI
-    (Href      : League.Strings.Universal_String;
-     Base      : League.Strings.Universal_String
+    (Href : League.Strings.Universal_String;
+     Base : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return AMF.Elements.Element_Access is
    begin
