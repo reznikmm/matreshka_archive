@@ -47,7 +47,7 @@ with "../../uml/uml.gpr";
 project UMLProfile2CMOF is
 
    for Main use ("umlprofile2cmof.adb");
-   for Object_Dir use "../.objs";
+   for Object_Dir use ".objs";
 
    package Compiler is
       for Default_Switches ("Ada")
