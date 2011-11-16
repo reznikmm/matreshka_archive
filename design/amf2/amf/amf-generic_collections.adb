@@ -74,6 +74,40 @@ package body AMF.Generic_Collections is
    end Element;
 
    --------------
+   -- Excludes --
+   --------------
+
+   function Excludes
+    (Self    : Collection'Class;
+     Element : not null access constant Abstract_Element'Class) return Boolean is
+   begin
+      for J in 1 .. Self.Length loop
+         if Self.Element (J) = Element then
+            return False;
+         end if;
+      end loop;
+
+      return True;
+   end Excludes;
+
+   --------------
+   -- Includes --
+   --------------
+
+   function Includes
+    (Self    : Collection'Class;
+     Element : not null access constant Abstract_Element'Class) return Boolean is
+   begin
+      for J in 1 .. Self.Length loop
+         if Self.Element (J) = Element then
+            return True;
+         end if;
+      end loop;
+
+      return False;
+   end Includes;
+
+   --------------
    -- Internal --
    --------------
 

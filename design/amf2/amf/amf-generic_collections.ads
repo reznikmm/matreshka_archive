@@ -78,6 +78,20 @@ package AMF.Generic_Collections is
    procedure Add
     (Self : Collection'Class; Item : not null access Abstract_Element'Class);
 
+   ----------------------
+   --  OCL Operations  --
+   ----------------------
+
+   function Includes
+    (Self    : Collection'Class;
+     Element : not null access constant Abstract_Element'Class) return Boolean;
+   --  True if object is an element of self, false otherwise.
+
+   function Excludes
+    (Self    : Collection'Class;
+     Element : not null access constant Abstract_Element'Class) return Boolean;
+   --  True if object is not an element of self, false otherwise.
+
    --  XXX These subprograms must be removed after complete of the
    --  implementation.
 
