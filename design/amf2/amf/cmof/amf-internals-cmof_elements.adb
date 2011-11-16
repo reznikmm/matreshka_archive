@@ -42,7 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Tables.CMOF_Attributes;
+with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.CMOF_Reflection;
 
@@ -60,6 +62,19 @@ package body AMF.Internals.CMOF_Elements is
    begin
       return Self.Id;
    end Element;
+
+   ------------
+   -- Extent --
+   ------------
+
+   overriding function Extent
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.Extents.Extent_Access is
+   begin
+      return
+        AMF.Internals.Extents.Proxy
+         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self.Id).Extent);
+   end Extent;
 
    ---------
    -- Get --

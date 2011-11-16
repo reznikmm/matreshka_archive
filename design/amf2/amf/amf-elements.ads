@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
+limited with AMF.Extents;
 with League.Holders;
 
 package AMF.Elements is
@@ -52,6 +53,10 @@ package AMF.Elements is
    type Abstract_Element is limited interface;
 
    type Element_Access is access all Abstract_Element'Class;
+
+   ----------------------
+   --  MOF Operations  --
+   ----------------------
 
    not overriding function Get_Meta_Class
     (Self : not null access constant Abstract_Element)
@@ -103,5 +108,14 @@ package AMF.Elements is
    --
    --  Exception: throws IllegalArgumentException if element is null, Property
    --  is of type Class, and the multiplicity upper bound > 1.
+
+   ----------------------
+   --  AMF Extensions  --
+   ----------------------
+
+   not overriding function Extent
+    (Self : not null access constant Abstract_Element)
+       return AMF.Extents.Extent_Access is abstract;
+   --  Returns extents which contains element.
 
 end AMF.Elements;

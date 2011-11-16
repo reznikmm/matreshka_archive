@@ -45,6 +45,7 @@ with League.Holders;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Properties;
+with AMF.Extents;
 with AMF.Internals.Elements;
 with AMF.UML.Elements;
 
@@ -74,5 +75,9 @@ package AMF.Internals.UML_Elements is
    overriding function Element
     (Self : not null access constant UML_Element_Proxy)
        return AMF.Internals.AMF_Element;
+
+   overriding function Extent
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.Extents.Extent_Access;
 
 end AMF.Internals.UML_Elements;

@@ -42,7 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements;
+with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
+with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Reflection;
 
 package body AMF.Internals.UML_Elements is
@@ -57,6 +59,19 @@ package body AMF.Internals.UML_Elements is
    begin
       return Self.Id;
    end Element;
+
+   ------------
+   -- Extent --
+   ------------
+
+   overriding function Extent
+    (Self : not null access constant UML_Element_Proxy)
+       return AMF.Extents.Extent_Access is
+   begin
+      return
+        AMF.Internals.Extents.Proxy
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self.Id).Extent);
+   end Extent;
 
    ---------
    -- Get --

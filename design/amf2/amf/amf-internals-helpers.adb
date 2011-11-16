@@ -80,17 +80,6 @@ package body AMF.Internals.Helpers is
    end Connect_Link_End;
 
    ----------------
-   -- Get_Extent --
-   ----------------
-
-   function Get_Extent (Element : AMF_Element) return AMF_Extent is
-   begin
-      return
-        AMF.Internals.Factories.Get_Factory
-         (AMF_Metamodel (U32 (Element) / 16#01000000#)).Get_Extent (Element);
-   end Get_Extent;
-
-   ----------------
    -- To_Element --
    ----------------
 

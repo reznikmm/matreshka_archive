@@ -230,19 +230,6 @@ package body AMF.Internals.Factories.Primitive_Types_Factory is
       raise Program_Error;
    end Convert_To_String;
 
-   ----------------
-   -- Get_Extent --
-   ----------------
-
-   overriding function Get_Extent
-    (Self    : not null access constant Primitive_Types_Factory;
-     Element : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Extent is
-   begin
-      raise Program_Error;
-      return 0;
-   end Get_Extent;
-
    -------------------
    -- Get_Metamodel --
    -------------------

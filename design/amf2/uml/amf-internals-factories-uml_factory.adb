@@ -252,6 +252,369 @@ package body AMF.Internals.Factories.UML_Factory is
       AMF.Internals.Tables.UML_Element_Table.Table (Element).Extent := Extent;
    end Connect_Extent;
 
+   ----------------------
+   -- Connect_Link_End --
+   ----------------------
+
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant UML_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element)
+   is
+      use AMF.Internals.Tables;
+      use AMF.Internals.Tables.UML_Attribute_Mappings;
+
+      PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
+
+   begin
+      if PO in Collection_Offset'Range (2) then
+         AMF.Internals.Element_Collections.Internal_Append
+          (UML_Element_Table.Table (Element).Member (0).Collection
+             + Collection_Offset
+                (UML_Element_Table.Table (Element).Kind, PO),
+           Other,
+           Link);
+
+      elsif PO in Member_Offset'Range (2)
+        and then Member_Offset (UML_Element_Table.Table (Element).Kind, PO)
+                   /= 0
+      then
+         UML_Element_Table.Table (Element).Member
+          (Member_Offset
+            (UML_Element_Table.Table (Element).Kind, PO)).Element := Other;
+
+      else
+         AMF.Internals.Element_Collections.Internal_Append
+          (UML_Element_Table.Table (Element).Member (0).Collection,
+           Other,
+           Link);
+      end if;
+   end Connect_Link_End;
+
+   -----------------------
+   -- Convert_To_String --
+   -----------------------
+
+   function Convert_To_String
+    (Self      : not null access UML_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String
+   is
+      DT : constant AMF.Internals.CMOF_Element
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (Data_Type));
+
+   begin
+      if DT = MC_UML_Aggregation_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Aggregation_Kind
+              := AMF.UML.Holders.Aggregation_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.None =>
+                  return None_Image;
+
+               when AMF.UML.Shared =>
+                  return Shared_Image;
+
+               when AMF.UML.Composite =>
+                  return Composite_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Call_Concurrency_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Call_Concurrency_Kind
+              := AMF.UML.Holders.Call_Concurrency_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Sequential =>
+                  return Sequential_Image;
+
+               when AMF.UML.Guarded =>
+                  return Guarded_Image;
+
+               when AMF.UML.Concurrent =>
+                  return Concurrent_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Connector_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Connector_Kind
+              := AMF.UML.Holders.Connector_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Assembly =>
+                  return Assembly_Image;
+
+               when AMF.UML.Delegation =>
+                  return Delegation_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Expansion_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Expansion_Kind
+              := AMF.UML.Holders.Expansion_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Parallel =>
+                  return Parallel_Image;
+
+               when AMF.UML.Iterative =>
+                  return Iterative_Image;
+
+               when AMF.UML.Stream =>
+                  return Stream_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Interaction_Operator_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Interaction_Operator_Kind
+              := AMF.UML.Holders.Interaction_Operator_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Alt_Operator =>
+                  return Alt_Image;
+
+               when AMF.UML.Opt_Operator =>
+                  return Opt_Image;
+
+               when AMF.UML.Par_Operator =>
+                  return Par_Image;
+
+               when AMF.UML.Loop_Operator =>
+                  return Loop_Image;
+
+               when AMF.UML.Critical_Operator =>
+                  return Critical_Image;
+
+               when AMF.UML.Neg_Operator =>
+                  return Neg_Image;
+
+               when AMF.UML.Assert_Operator =>
+                  return Assert_Image;
+
+               when AMF.UML.Strict_Operator =>
+                  return Strict_Image;
+
+               when AMF.UML.Seq_Operator =>
+                  return Seq_Image;
+
+               when AMF.UML.Ignore_Operator =>
+                  return Ignore_Image;
+
+               when AMF.UML.Consider_Operator =>
+                  return Consider_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Message_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Message_Kind
+              := AMF.UML.Holders.Message_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Complete =>
+                  return Complete_Image;
+
+               when AMF.UML.Lost =>
+                  return Lost_Image;
+
+               when AMF.UML.Found =>
+                  return Found_Image;
+
+               when AMF.UML.Unknown =>
+                  return Unknown_Image;
+
+            end case;
+         end;
+
+      elsif DT = MC_UML_Message_Sort then
+         declare
+            Kind : constant AMF.UML.UML_Message_Sort
+              := AMF.UML.Holders.Message_Sorts.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Synch_Call =>
+                  return Synch_Call_Image;
+
+               when AMF.UML.Asynch_Call =>
+                  return Asynch_Call_Image;
+
+               when AMF.UML.Asynch_Signal =>
+                  return Asynch_Signal_Image;
+
+               when AMF.UML.Create_Message =>
+                  return Create_Message_Image;
+
+               when AMF.UML.Delete_Message =>
+                  return Delete_Message_Image;
+
+               when AMF.UML.Reply =>
+                  return Reply_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Object_Node_Ordering_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Object_Node_Ordering_Kind
+              := AMF.UML.Holders.Object_Node_Ordering_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Unordered =>
+                  return Unordered_Image;
+
+               when AMF.UML.Ordered =>
+                  return Ordered_Image;
+
+               when AMF.UML.LIFO =>
+                  return LIFO_Image;
+
+               when AMF.UML.FIFO =>
+                  return FIFO_Image;
+
+            end case;
+         end;
+
+      elsif DT = MC_UML_Parameter_Direction_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Parameter_Direction_Kind
+              := AMF.UML.Holders.Parameter_Direction_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.In_Parameter =>
+                  return In_Image;
+
+               when AMF.UML.In_Out_Parameter =>
+                  return In_Out_Image;
+
+               when AMF.UML.Out_Parameter =>
+                  return Out_Image;
+
+               when AMF.UML.Return_Parameter =>
+                  return Return_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Parameter_Effect_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Parameter_Effect_Kind
+              := AMF.UML.Holders.Parameter_Effect_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Create =>
+                  return Create_Image;
+
+               when AMF.UML.Read =>
+                  return Read_Image;
+
+               when AMF.UML.Update =>
+                  return Update_Image;
+
+               when AMF.UML.Delete =>
+                  return Delete_Image;
+
+            end case;
+         end;
+
+      elsif DT = MC_UML_Pseudostate_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Pseudostate_Kind
+              := AMF.UML.Holders.Pseudostate_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Initial_Pseudostate =>
+                  return Initial_Image;
+
+               when AMF.UML.Deep_History_Pseudostate =>
+                  return Deep_History_Image;
+
+               when AMF.UML.Shallow_History_Pseudostate =>
+                  return Shallow_History_Image;
+
+               when AMF.UML.Join_Pseudostate =>
+                  return Join_Image;
+
+               when AMF.UML.Fork_Pseudostate =>
+                  return Fork_Image;
+
+               when AMF.UML.Junction_Pseudostate =>
+                  return Junction_Image;
+
+               when AMF.UML.Choice_Pseudostate =>
+                  return Choice_Image;
+
+               when AMF.UML.Entry_Point_Pseudostate =>
+                  return Entry_Point_Image;
+
+               when AMF.UML.Exit_Point_Pseudostate =>
+                  return Exit_Point_Image;
+
+               when AMF.UML.Terminate_Pseudostate =>
+                  return Terminate_Image;
+            end case;
+         end;
+
+      elsif DT = MC_UML_Transition_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Transition_Kind
+              := AMF.UML.Holders.Transition_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.External =>
+                  return External_Image;
+
+               when AMF.UML.Internal =>
+                  return Internal_Image;
+
+               when AMF.UML.Local =>
+                  return Local_Image;
+
+            end case;
+         end;
+
+      elsif DT = MC_UML_Visibility_Kind then
+         declare
+            Kind : constant AMF.UML.UML_Visibility_Kind
+              := AMF.UML.Holders.Visibility_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.UML.Public_Visibility =>
+                  return Public_Image;
+
+               when AMF.UML.Private_Visibility =>
+                  return Private_Image;
+
+               when AMF.UML.Protected_Visibility =>
+                  return Protected_Image;
+
+               when AMF.UML.Package_Visibility =>
+                  return Package_Image;
+            end case;
+         end;
+      end if;
+
+      raise Program_Error;
+   end Convert_To_String;
+
    ------------
    -- Create --
    ------------
@@ -1245,381 +1608,6 @@ package body AMF.Internals.Factories.UML_Factory is
 
       raise Program_Error;
    end Create_From_String;
-
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant UML_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element)
-   is
-      use AMF.Internals.Tables;
-      use AMF.Internals.Tables.UML_Attribute_Mappings;
-
-      PO : constant AMF.Internals.CMOF_Element := Property - MB_UML;
-
-   begin
-      if PO in Collection_Offset'Range (2) then
-         AMF.Internals.Element_Collections.Internal_Append
-          (UML_Element_Table.Table (Element).Member (0).Collection
-             + Collection_Offset
-                (UML_Element_Table.Table (Element).Kind, PO),
-           Other,
-           Link);
-
-      elsif PO in Member_Offset'Range (2)
-        and then Member_Offset (UML_Element_Table.Table (Element).Kind, PO)
-                   /= 0
-      then
-         UML_Element_Table.Table (Element).Member
-          (Member_Offset
-            (UML_Element_Table.Table (Element).Kind, PO)).Element := Other;
-
-      else
-         AMF.Internals.Element_Collections.Internal_Append
-          (UML_Element_Table.Table (Element).Member (0).Collection,
-           Other,
-           Link);
-      end if;
-   end Connect_Link_End;
-
-   -----------------------
-   -- Convert_To_String --
-   -----------------------
-
-   function Convert_To_String
-    (Self      : not null access UML_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String
-   is
-      DT : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Helpers.To_Element
-            (AMF.Elements.Element_Access (Data_Type));
-
-   begin
-      if DT = MC_UML_Aggregation_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Aggregation_Kind
-              := AMF.UML.Holders.Aggregation_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.None =>
-                  return None_Image;
-
-               when AMF.UML.Shared =>
-                  return Shared_Image;
-
-               when AMF.UML.Composite =>
-                  return Composite_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Call_Concurrency_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Call_Concurrency_Kind
-              := AMF.UML.Holders.Call_Concurrency_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Sequential =>
-                  return Sequential_Image;
-
-               when AMF.UML.Guarded =>
-                  return Guarded_Image;
-
-               when AMF.UML.Concurrent =>
-                  return Concurrent_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Connector_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Connector_Kind
-              := AMF.UML.Holders.Connector_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Assembly =>
-                  return Assembly_Image;
-
-               when AMF.UML.Delegation =>
-                  return Delegation_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Expansion_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Expansion_Kind
-              := AMF.UML.Holders.Expansion_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Parallel =>
-                  return Parallel_Image;
-
-               when AMF.UML.Iterative =>
-                  return Iterative_Image;
-
-               when AMF.UML.Stream =>
-                  return Stream_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Interaction_Operator_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Interaction_Operator_Kind
-              := AMF.UML.Holders.Interaction_Operator_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Alt_Operator =>
-                  return Alt_Image;
-
-               when AMF.UML.Opt_Operator =>
-                  return Opt_Image;
-
-               when AMF.UML.Par_Operator =>
-                  return Par_Image;
-
-               when AMF.UML.Loop_Operator =>
-                  return Loop_Image;
-
-               when AMF.UML.Critical_Operator =>
-                  return Critical_Image;
-
-               when AMF.UML.Neg_Operator =>
-                  return Neg_Image;
-
-               when AMF.UML.Assert_Operator =>
-                  return Assert_Image;
-
-               when AMF.UML.Strict_Operator =>
-                  return Strict_Image;
-
-               when AMF.UML.Seq_Operator =>
-                  return Seq_Image;
-
-               when AMF.UML.Ignore_Operator =>
-                  return Ignore_Image;
-
-               when AMF.UML.Consider_Operator =>
-                  return Consider_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Message_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Message_Kind
-              := AMF.UML.Holders.Message_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Complete =>
-                  return Complete_Image;
-
-               when AMF.UML.Lost =>
-                  return Lost_Image;
-
-               when AMF.UML.Found =>
-                  return Found_Image;
-
-               when AMF.UML.Unknown =>
-                  return Unknown_Image;
-
-            end case;
-         end;
-
-      elsif DT = MC_UML_Message_Sort then
-         declare
-            Kind : constant AMF.UML.UML_Message_Sort
-              := AMF.UML.Holders.Message_Sorts.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Synch_Call =>
-                  return Synch_Call_Image;
-
-               when AMF.UML.Asynch_Call =>
-                  return Asynch_Call_Image;
-
-               when AMF.UML.Asynch_Signal =>
-                  return Asynch_Signal_Image;
-
-               when AMF.UML.Create_Message =>
-                  return Create_Message_Image;
-
-               when AMF.UML.Delete_Message =>
-                  return Delete_Message_Image;
-
-               when AMF.UML.Reply =>
-                  return Reply_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Object_Node_Ordering_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Object_Node_Ordering_Kind
-              := AMF.UML.Holders.Object_Node_Ordering_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Unordered =>
-                  return Unordered_Image;
-
-               when AMF.UML.Ordered =>
-                  return Ordered_Image;
-
-               when AMF.UML.LIFO =>
-                  return LIFO_Image;
-
-               when AMF.UML.FIFO =>
-                  return FIFO_Image;
-
-            end case;
-         end;
-
-      elsif DT = MC_UML_Parameter_Direction_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Parameter_Direction_Kind
-              := AMF.UML.Holders.Parameter_Direction_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.In_Parameter =>
-                  return In_Image;
-
-               when AMF.UML.In_Out_Parameter =>
-                  return In_Out_Image;
-
-               when AMF.UML.Out_Parameter =>
-                  return Out_Image;
-
-               when AMF.UML.Return_Parameter =>
-                  return Return_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Parameter_Effect_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Parameter_Effect_Kind
-              := AMF.UML.Holders.Parameter_Effect_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Create =>
-                  return Create_Image;
-
-               when AMF.UML.Read =>
-                  return Read_Image;
-
-               when AMF.UML.Update =>
-                  return Update_Image;
-
-               when AMF.UML.Delete =>
-                  return Delete_Image;
-
-            end case;
-         end;
-
-      elsif DT = MC_UML_Pseudostate_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Pseudostate_Kind
-              := AMF.UML.Holders.Pseudostate_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Initial_Pseudostate =>
-                  return Initial_Image;
-
-               when AMF.UML.Deep_History_Pseudostate =>
-                  return Deep_History_Image;
-
-               when AMF.UML.Shallow_History_Pseudostate =>
-                  return Shallow_History_Image;
-
-               when AMF.UML.Join_Pseudostate =>
-                  return Join_Image;
-
-               when AMF.UML.Fork_Pseudostate =>
-                  return Fork_Image;
-
-               when AMF.UML.Junction_Pseudostate =>
-                  return Junction_Image;
-
-               when AMF.UML.Choice_Pseudostate =>
-                  return Choice_Image;
-
-               when AMF.UML.Entry_Point_Pseudostate =>
-                  return Entry_Point_Image;
-
-               when AMF.UML.Exit_Point_Pseudostate =>
-                  return Exit_Point_Image;
-
-               when AMF.UML.Terminate_Pseudostate =>
-                  return Terminate_Image;
-            end case;
-         end;
-
-      elsif DT = MC_UML_Transition_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Transition_Kind
-              := AMF.UML.Holders.Transition_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.External =>
-                  return External_Image;
-
-               when AMF.UML.Internal =>
-                  return Internal_Image;
-
-               when AMF.UML.Local =>
-                  return Local_Image;
-
-            end case;
-         end;
-
-      elsif DT = MC_UML_Visibility_Kind then
-         declare
-            Kind : constant AMF.UML.UML_Visibility_Kind
-              := AMF.UML.Holders.Visibility_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.UML.Public_Visibility =>
-                  return Public_Image;
-
-               when AMF.UML.Private_Visibility =>
-                  return Private_Image;
-
-               when AMF.UML.Protected_Visibility =>
-                  return Protected_Image;
-
-               when AMF.UML.Package_Visibility =>
-                  return Package_Image;
-            end case;
-         end;
-      end if;
-
-      raise Program_Error;
-   end Convert_To_String;
-
-   ----------------
-   -- Get_Extent --
-   ----------------
-
-   overriding function Get_Extent
-    (Self    : not null access constant UML_Factory;
-     Element : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Extent is
-   begin
-      return AMF.Internals.Tables.UML_Element_Table.Table (Element).Extent;
-   end Get_Extent;
 
    -------------------
    -- Get_Metamodel --

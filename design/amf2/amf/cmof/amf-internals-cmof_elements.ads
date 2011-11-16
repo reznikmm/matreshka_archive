@@ -45,6 +45,7 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Comments.Collections;
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Properties;
+with AMF.Extents;
 with AMF.Internals.Elements;
 with League.Holders;
 
@@ -86,5 +87,9 @@ package AMF.Internals.CMOF_Elements is
    overriding function Element
     (Self : not null access constant CMOF_Element_Proxy)
        return AMF_Element;
+
+   overriding function Extent
+    (Self : not null access constant CMOF_Element_Proxy)
+       return AMF.Extents.Extent_Access;
 
 end AMF.Internals.CMOF_Elements;

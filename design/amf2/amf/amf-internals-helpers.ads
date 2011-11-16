@@ -58,9 +58,6 @@ package AMF.Internals.Helpers is
     (Element : access AMF.Elements.Abstract_Element'Class) return AMF_Element;
    --  Converts element's object into element's identifier;
 
-   function Get_Extent (Element : AMF_Element) return AMF_Extent;
-   --  Returns extent witch contains specified element.
-
    procedure Connect_Link_End
     (Element  : AMF_Element;
      Property : CMOF_Element;

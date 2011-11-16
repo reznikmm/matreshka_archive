@@ -109,6 +109,149 @@ package body AMF.Internals.Factories.CMOF_Factory is
       AMF.Internals.Tables.CMOF_Element_Table.Table (Element).Extent := Extent;
    end Connect_Extent;
 
+   ----------------------
+   -- Connect_Link_End --
+   ----------------------
+
+   overriding procedure Connect_Link_End
+    (Self     : not null access constant CMOF_Factory;
+     Element  : AMF.Internals.AMF_Element;
+     Property : AMF.Internals.CMOF_Element;
+     Link     : AMF.Internals.AMF_Link;
+     Other    : AMF.Internals.AMF_Element)
+   is
+      use AMF.Internals.Tables;
+      use AMF.Internals.Tables.CMOF_Attribute_Mappings;
+
+   begin
+      if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
+          (Property).Value > 1
+      then
+         if Property in Collection_Offset'Range (2) then
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection
+                + Collection_Offset
+                   (CMOF_Element_Table.Table (Element).Kind, Property),
+              Other,
+              Link);
+
+         else
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
+              Other,
+              Link);
+         end if;
+
+      else
+         if Property in Member_Offset'Range (2) then
+            CMOF_Element_Table.Table (Element).Member
+             (Member_Offset
+               (CMOF_Element_Table.Table (Element).Kind,
+                Property)).Element := Other;
+
+         else
+            AMF.Internals.Element_Collections.Internal_Append
+             (CMOF_Element_Table.Table (Element).Member (0).Collection,
+              Other,
+              Link);
+         end if;
+      end if;
+   end Connect_Link_End;
+
+   -----------------------
+   -- Convert_To_String --
+   -----------------------
+
+   function Convert_To_String
+    (Self      : not null access CMOF_Factory;
+     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
+     Value     : League.Holders.Holder) return League.Strings.Universal_String
+   is
+      DT : constant AMF.Internals.CMOF_Element
+        := AMF.Internals.Elements.Element_Implementation'Class
+            (Data_Type.all).Element;
+--        := AMF.Internals.Helpers.To_Element
+--            (AMF.Elements.Element_Access (Data_Type));
+
+   begin
+      if DT = MC_CMOF_Boolean then
+         if League.Holders.Booleans.Element (Value) then
+            return True_Image;
+
+         else
+            return False_Image;
+         end if;
+
+      elsif DT = MC_CMOF_Integer then
+         return
+           League.Strings.To_Universal_String
+            (Ada.Strings.Wide_Wide_Fixed.Trim
+              (Integer'Wide_Wide_Image
+                (League.Holders.Integers.Element (Value)),
+               Ada.Strings.Both));
+
+      elsif DT = MC_CMOF_Unlimited_Natural then
+         if AMF.Holders.Unlimited_Naturals.Element (Value).Unlimited then
+            return Unlimited_Image;
+
+         else
+            return
+              League.Strings.To_Universal_String
+               (Ada.Strings.Wide_Wide_Fixed.Trim
+                 (Natural'Wide_Wide_Image
+                   (AMF.Holders.Unlimited_Naturals.Element (Value).Value),
+                  Ada.Strings.Both));
+         end if;
+
+      elsif DT = MC_CMOF_String then
+         return League.Holders.Element (Value);
+
+      elsif DT = MC_CMOF_Parameter_Direction_Kind then
+         declare
+            Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
+              := AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.CMOF.In_Parameter =>
+                  return In_Image;
+
+               when AMF.CMOF.In_Out_Parameter =>
+                  return In_Out_Image;
+
+               when AMF.CMOF.Out_Parameter =>
+                  return Out_Image;
+
+               when AMF.CMOF.Return_Parameter =>
+                  return Return_Image;
+            end case;
+         end;
+
+      elsif DT = MC_CMOF_Visibility_Kind then
+         declare
+            Kind : constant AMF.CMOF.CMOF_Visibility_Kind
+              := AMF.CMOF.Holders.Visibility_Kinds.Element (Value);
+
+         begin
+            case Kind is
+               when AMF.CMOF.Public_Visibility =>
+                  return Public_Image;
+
+               when AMF.CMOF.Private_Visibility =>
+                  return Private_Image;
+
+               when AMF.CMOF.Protected_Visibility =>
+                  return Protected_Image;
+
+               when AMF.CMOF.Package_Visibility =>
+                  return Package_Image;
+            end case;
+         end;
+      end if;
+
+      raise Program_Error;
+   end Convert_To_String;
+
    ------------
    -- Create --
    ------------
@@ -297,161 +440,6 @@ package body AMF.Internals.Factories.CMOF_Factory is
 
       raise Program_Error with "Unknown CMOF data type";
    end Create_From_String;
-
-   ----------------------
-   -- Connect_Link_End --
-   ----------------------
-
-   overriding procedure Connect_Link_End
-    (Self     : not null access constant CMOF_Factory;
-     Element  : AMF.Internals.AMF_Element;
-     Property : AMF.Internals.CMOF_Element;
-     Link     : AMF.Internals.AMF_Link;
-     Other    : AMF.Internals.AMF_Element)
-   is
-      use AMF.Internals.Tables;
-      use AMF.Internals.Tables.CMOF_Attribute_Mappings;
-
-   begin
-      if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
-          (Property).Value > 1
-      then
-         if Property in Collection_Offset'Range (2) then
-            AMF.Internals.Element_Collections.Internal_Append
-             (CMOF_Element_Table.Table (Element).Member (0).Collection
-                + Collection_Offset
-                   (CMOF_Element_Table.Table (Element).Kind, Property),
-              Other,
-              Link);
-
-         else
-            AMF.Internals.Element_Collections.Internal_Append
-             (CMOF_Element_Table.Table (Element).Member (0).Collection,
-              Other,
-              Link);
-         end if;
-
-      else
-         if Property in Member_Offset'Range (2) then
-            CMOF_Element_Table.Table (Element).Member
-             (Member_Offset
-               (CMOF_Element_Table.Table (Element).Kind,
-                Property)).Element := Other;
-
-         else
-            AMF.Internals.Element_Collections.Internal_Append
-             (CMOF_Element_Table.Table (Element).Member (0).Collection,
-              Other,
-              Link);
-         end if;
-      end if;
-   end Connect_Link_End;
-
-   -----------------------
-   -- Convert_To_String --
-   -----------------------
-
-   function Convert_To_String
-    (Self      : not null access CMOF_Factory;
-     Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
-     Value     : League.Holders.Holder) return League.Strings.Universal_String
-   is
-      DT : constant AMF.Internals.CMOF_Element
-        := AMF.Internals.Elements.Element_Implementation'Class
-            (Data_Type.all).Element;
---        := AMF.Internals.Helpers.To_Element
---            (AMF.Elements.Element_Access (Data_Type));
-
-   begin
-      if DT = MC_CMOF_Boolean then
-         if League.Holders.Booleans.Element (Value) then
-            return True_Image;
-
-         else
-            return False_Image;
-         end if;
-
-      elsif DT = MC_CMOF_Integer then
-         return
-           League.Strings.To_Universal_String
-            (Ada.Strings.Wide_Wide_Fixed.Trim
-              (Integer'Wide_Wide_Image
-                (League.Holders.Integers.Element (Value)),
-               Ada.Strings.Both));
-
-      elsif DT = MC_CMOF_Unlimited_Natural then
-         if AMF.Holders.Unlimited_Naturals.Element (Value).Unlimited then
-            return Unlimited_Image;
-
-         else
-            return
-              League.Strings.To_Universal_String
-               (Ada.Strings.Wide_Wide_Fixed.Trim
-                 (Natural'Wide_Wide_Image
-                   (AMF.Holders.Unlimited_Naturals.Element (Value).Value),
-                  Ada.Strings.Both));
-         end if;
-
-      elsif DT = MC_CMOF_String then
-         return League.Holders.Element (Value);
-
-      elsif DT = MC_CMOF_Parameter_Direction_Kind then
-         declare
-            Kind : constant AMF.CMOF.CMOF_Parameter_Direction_Kind
-              := AMF.CMOF.Holders.Parameter_Direction_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.CMOF.In_Parameter =>
-                  return In_Image;
-
-               when AMF.CMOF.In_Out_Parameter =>
-                  return In_Out_Image;
-
-               when AMF.CMOF.Out_Parameter =>
-                  return Out_Image;
-
-               when AMF.CMOF.Return_Parameter =>
-                  return Return_Image;
-            end case;
-         end;
-
-      elsif DT = MC_CMOF_Visibility_Kind then
-         declare
-            Kind : constant AMF.CMOF.CMOF_Visibility_Kind
-              := AMF.CMOF.Holders.Visibility_Kinds.Element (Value);
-
-         begin
-            case Kind is
-               when AMF.CMOF.Public_Visibility =>
-                  return Public_Image;
-
-               when AMF.CMOF.Private_Visibility =>
-                  return Private_Image;
-
-               when AMF.CMOF.Protected_Visibility =>
-                  return Protected_Image;
-
-               when AMF.CMOF.Package_Visibility =>
-                  return Package_Image;
-            end case;
-         end;
-      end if;
-
-      raise Program_Error;
-   end Convert_To_String;
-
-   ----------------
-   -- Get_Extent --
-   ----------------
-
-   overriding function Get_Extent
-    (Self    : not null access constant CMOF_Factory;
-     Element : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Extent is
-   begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Element).Extent;
-   end Get_Extent;
 
    -------------------
    -- Get_Metamodel --

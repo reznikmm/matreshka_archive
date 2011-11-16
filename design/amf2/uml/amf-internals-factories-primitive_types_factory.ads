@@ -80,11 +80,6 @@ package AMF.Internals.Factories.Primitive_Types_Factory is
      Data_Type : not null access AMF.CMOF.Data_Types.CMOF_Data_Type'Class;
      Image     : League.Strings.Universal_String) return League.Holders.Holder;
 
-   overriding function Get_Extent
-    (Self    : not null access constant Primitive_Types_Factory;
-     Element : AMF.Internals.AMF_Element)
-       return AMF.Internals.AMF_Extent;
-
    overriding function Get_Metamodel
     (Self : not null access constant Primitive_Types_Factory)
        return AMF.Internals.AMF_Metamodel;
