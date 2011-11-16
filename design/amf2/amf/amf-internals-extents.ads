@@ -44,6 +44,7 @@
 with Matreshka.Internals.Strings;
 
 with AMF.Extents;
+with AMF.Internals.Collections.Elements;
 with AMF.URI_Stores;
 
 package AMF.Internals.Extents is
@@ -61,6 +62,11 @@ package AMF.Internals.Extents is
    function Proxy
     (Extent : AMF_Extent) return not null AMF.Extents.Extent_Access;
    --  Returns proxy object for extent.
+
+   function All_Elements
+    (Self : AMF_Extent)
+       return not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access;
+   --  Returns all elements in the specified extent.
 
    procedure Internal_Append (Extent : AMF_Extent; Element : AMF_Element);
    --  Adds specified element to the set of elements contained in the specified

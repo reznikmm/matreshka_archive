@@ -46,7 +46,6 @@ with League.Strings.Internals;
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
 with AMF.Internals.Tables.AMF_Tables;
-with CMOF.Internals.Extents;
 
 package body AMF.Internals.AMF_URI_Extents is
 
@@ -107,7 +106,7 @@ package body AMF.Internals.AMF_URI_Extents is
    begin
       return
         AMF.Elements.Collections.Wrap
-         (Standard.CMOF.Internals.Extents.All_Elements (Self.Id));
+         (AMF.Internals.Extents.All_Elements (Self.Id));
    end Elements;
 
    ------------------

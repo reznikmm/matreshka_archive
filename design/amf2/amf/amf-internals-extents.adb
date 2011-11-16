@@ -41,13 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---with Ada.Text_IO;
-
 with League.Strings.Internals;
 
 with AMF.Internals.AMF_URI_Extents;
 with AMF.Internals.AMF_URI_Stores;
---with AMF.Internals.Containers;
+with AMF.Internals.Collections.Elements.Containers;
 with AMF.Internals.Helpers;
 --with AMF.Internals.Element_Collections;
 with AMF.Internals.Tables.AMF_Tables;
@@ -71,6 +69,32 @@ package body AMF.Internals.Extents is
      Element : AMF_Element) return Tables.AMF_Tables.Extent_Element_Identifier;
    --  Lookup for element in the extent. Returns identifier of element's record
    --  in the extent.
+
+   ------------------
+   -- All_Elements --
+   ------------------
+
+   function All_Elements
+    (Self : AMF_Extent)
+       return not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
+   is
+      Current  : AMF.Internals.Tables.AMF_Tables.Extent_Element_Identifier
+        := AMF.Internals.Tables.AMF_Tables.Extents.Table (Self).Head;
+      Result   : constant not null AMF.Internals.Collections.Elements.Shared_Element_Collection_Access
+        := new AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container;
+      Elements : AMF.Internals.Collections.Elements.Containers.Vectors.Vector
+        renames AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container (Result.all).Elements;
+
+   begin
+      while Current /= 0 loop
+         Elements.Append
+          (AMF.Internals.Helpers.To_Element
+            (AMF.Internals.Tables.AMF_Tables.Extent_Elements.Table (Current).Element));
+         Current := AMF.Internals.Tables.AMF_Tables.Extent_Elements.Table (Current).Next;
+      end loop;
+
+      return Result;
+   end All_Elements;
 
    ---------------------
    -- Allocate_Extent --
