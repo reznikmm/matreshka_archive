@@ -78,7 +78,17 @@ package body AMF.Internals.Elements is
       Metamodel_Element  : AMF.Elements.Element_Access;
 
    begin
-      --  Extract list of associations from metamodel's extent.
+      --  General algoriphm is:
+      --
+      --   - select all association in metamodel's extent;
+      --
+      --   - select all association where one member end is composite and
+      --     element's metaclass conforms to type of member end;
+      --
+      --   - select all links for association;
+      --
+      --   - check whether corresponding end is element itself and return
+      --     another end.
 
       for J in 1 .. Metamodel_Elements.Length loop
          Metamodel_Element := Metamodel_Elements.Element (J);
