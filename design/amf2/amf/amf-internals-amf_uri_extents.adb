@@ -45,9 +45,13 @@ with League.Strings.Internals;
 
 with AMF.Internals.Extents;
 with AMF.Internals.Helpers;
+with AMF.Internals.Links;
+with AMF.Internals.Tables.AMF_Link_Table;
 with AMF.Internals.Tables.AMF_Tables;
 
 package body AMF.Internals.AMF_URI_Extents is
+
+   use AMF.Internals.Tables;
 
    -----------------
    -- Add_Element --
@@ -163,10 +167,20 @@ package body AMF.Internals.AMF_URI_Extents is
    overriding function Links_Of_Type
     (Self     : not null access constant AMF_URI_Extent;
      The_Type : not null AMF.CMOF.Associations.CMOF_Association_Access)
-       return AMF.Links.Collections.Set_Of_Link is
+       return AMF.Links.Collections.Set_Of_Link
+   is
+      Association : constant AMF_Element
+        := AMF.Internals.Helpers.To_Element
+            (AMF.Elements.Element_Access (The_Type));
+
    begin
       return Result : AMF.Links.Collections.Set_Of_Link do
-         raise Program_Error;
+         for J in AMF_Link_Table.First .. AMF_Link_Table.Last loop
+            if AMF_Link_Table.Table (J).Association = Association then
+               Result.Append
+                (AMF.Links.Link_Access (AMF.Internals.Links.Proxy (J)));
+            end if;
+         end loop;
       end return;
    end Links_Of_Type;
 
