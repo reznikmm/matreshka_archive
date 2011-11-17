@@ -42,10 +42,12 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
-with AMF.Internals.Tables.CMOF_Attributes;
+with AMF.Internals.AMF_Links;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
-with AMF.Internals.Tables.AMF_Tables;
+with AMF.Internals.Tables.AMF_Link_Table;
+with AMF.Internals.Tables.AMF_Types;
+with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.Links is
 
@@ -55,12 +57,12 @@ package body AMF.Internals.Links is
    -- Internal_Create_Link --
    --------------------------
 
-   procedure Internal_Create_Link
+   function Internal_Create_Link
     (Association     : CMOF_Element;
      First_Element   : AMF_Element;
      First_Property  : CMOF_Element;
      Second_Element  : AMF_Element;
-     Second_Property : CMOF_Element)
+     Second_Property : CMOF_Element) return AMF_Link
    is
       procedure Create_Single_Single;
 
@@ -76,8 +78,10 @@ package body AMF.Internals.Links is
 
       procedure Create_Multiple_Multiple is
       begin
-         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
-          (AMF_Tables.L_Multiple_Multiple,
+         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+          (AMF_Types.L_Multiple_Multiple,
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
+                (Id => AMF_Link_Table.Last),
            Association,
            First_Element,
            Second_Element);
@@ -89,8 +93,10 @@ package body AMF.Internals.Links is
 
       procedure Create_Multiple_Single is
       begin
-         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
-          (AMF_Tables.L_Multiple_Single,
+         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+          (AMF_Types.L_Multiple_Single,
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
+                (Id => AMF_Link_Table.Last),
            Association,
            First_Element,
            Second_Element);
@@ -102,8 +108,10 @@ package body AMF.Internals.Links is
 
       procedure Create_Single_Multiple is
       begin
-         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
-          (AMF_Tables.L_Single_Multiple,
+         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+          (AMF_Types.L_Single_Multiple,
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
+                (Id => AMF_Link_Table.Last),
            Association,
            First_Element,
            Second_Element);
@@ -115,15 +123,17 @@ package body AMF.Internals.Links is
 
       procedure Create_Single_Single is
       begin
-         AMF_Tables.Links.Table (AMF_Tables.Links.Last) :=
-          (AMF_Tables.L_Single_Single,
+         AMF_Link_Table.Table (AMF_Link_Table.Last) :=
+          (AMF_Types.L_Single_Single,
+           new AMF.Internals.AMF_Links.AMF_Link_Proxy'
+                (Id => AMF_Link_Table.Last),
            Association,
            First_Element,
            Second_Element);
       end Create_Single_Single;
 
    begin
-      AMF_Tables.Links.Increment_Last;
+      AMF_Link_Table.Increment_Last;
 
       if AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Upper
           (First_Property).Value > 1
@@ -149,15 +159,49 @@ package body AMF.Internals.Links is
       end if;
 
       AMF.Internals.Helpers.Connect_Link_End
-       (First_Element, First_Property, AMF_Tables.Links.Last, Second_Element);
+       (First_Element, First_Property, AMF_Link_Table.Last, Second_Element);
       AMF.Internals.Helpers.Connect_Link_End
-       (Second_Element, Second_Property, AMF_Tables.Links.Last, First_Element);
+       (Second_Element, Second_Property, AMF_Link_Table.Last, First_Element);
 
       AMF.Internals.Listener_Registry.Notify_Link_Add
        (AMF.CMOF.Associations.CMOF_Association_Access
          (AMF.Internals.Helpers.To_Element (Association)),
         AMF.Internals.Helpers.To_Element (First_Element),
         AMF.Internals.Helpers.To_Element (Second_Element));
+
+      return AMF_Link_Table.Last;
    end Internal_Create_Link;
+
+   --------------------------
+   -- Internal_Create_Link --
+   --------------------------
+
+   procedure Internal_Create_Link
+    (Association     : CMOF_Element;
+     First_Element   : AMF_Element;
+     First_Property  : CMOF_Element;
+     Second_Element  : AMF_Element;
+     Second_Property : CMOF_Element)
+   is
+      Aux : constant AMF_Link
+        := Internal_Create_Link
+            (Association,
+             First_Element,
+             First_Property,
+             Second_Element,
+             Second_Property);
+
+   begin
+      null;
+   end Internal_Create_Link;
+
+   -----------
+   -- Proxy --
+   -----------
+
+   function Proxy (Self : AMF_Link) return not null AMF.Links.Link_Access is
+   begin
+      return AMF.Links.Link_Access (AMF_Link_Table.Table (Self).Proxy);
+   end Proxy;
 
 end AMF.Internals.Links;

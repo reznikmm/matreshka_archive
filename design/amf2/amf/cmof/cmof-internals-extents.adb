@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Tables.AMF_Link_Table;
 with AMF.Internals.Tables.AMF_Tables;
 with AMF.Internals.Tables.CMOF_Attribute_Mappings;
 with AMF.Internals.Tables.CMOF_Attributes;
@@ -136,14 +137,12 @@ package body CMOF.Internals.Extents is
                   Link :=
                     AMF_Tables.Collection_Elements.Table (Collection).Link;
 
-                  if AMF_Tables.Links.Table (Link).Association
-                       = Association
-                  then
-                     if AMF_Tables.Links.Table (Link).First_Element = Self then
-                        return AMF_Tables.Links.Table (Link).Second_Element;
+                  if AMF_Link_Table.Table (Link).Association = Association then
+                     if AMF_Link_Table.Table (Link).First_Element = Self then
+                        return AMF_Link_Table.Table (Link).Second_Element;
 
                      else
-                        return AMF_Tables.Links.Table (Link).First_Element;
+                        return AMF_Link_Table.Table (Link).First_Element;
                      end if;
                   end if;
 
@@ -161,14 +160,12 @@ package body CMOF.Internals.Extents is
                   Link :=
                     AMF_Tables.Collection_Elements.Table (Collection).Link;
 
-                  if AMF_Tables.Links.Table (Link).Association
-                       = Association
-                  then
-                     if AMF_Tables.Links.Table (Link).First_Element = Self then
-                        return AMF_Tables.Links.Table (Link).Second_Element;
+                  if AMF_Link_Table.Table (Link).Association = Association then
+                     if AMF_Link_Table.Table (Link).First_Element = Self then
+                        return AMF_Link_Table.Table (Link).Second_Element;
 
                      else
-                        return AMF_Tables.Links.Table (Link).First_Element;
+                        return AMF_Link_Table.Table (Link).First_Element;
                      end if;
                   end if;
 

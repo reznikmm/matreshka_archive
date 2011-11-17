@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,89 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Tables of AMF internals data structures.
+--  This class represents an instance of an Association, in the same way that
+--  Element represents an instance of a Class.
 ------------------------------------------------------------------------------
-with GNAT.Table;
+with AMF.CMOF.Associations;
+with AMF.Elements;
+with AMF.Links;
 
-with Matreshka.Internals.Strings;
+package AMF.Internals.AMF_Links is
 
-with AMF.Internals.AMF_URI_Extents;
-with AMF.Internals.AMF_Links;
-
-package AMF.Internals.Tables.AMF_Tables is
-
-   -------------
-   -- Extents --
-   -------------
-
-   type Extent_Element_Identifier is new Natural;
-
-   type Extent_Record is record
-      Proxy       : AMF.Internals.AMF_URI_Extents.AMF_URI_Extent_Access;
-      Context_URI : Matreshka.Internals.Strings.Shared_String_Access;
-      Head        : Extent_Element_Identifier;
-      Tail        : Extent_Element_Identifier;
+   type AMF_Link_Proxy is limited new AMF.Links.Link with record
+      Id : AMF.Internals.AMF_Link;
    end record;
 
-   type Extent_Element_Record is record
-      Id       : Matreshka.Internals.Strings.Shared_String_Access;
-      Element  : AMF_Element;
-      Previous : Extent_Element_Identifier;
-      Next     : Extent_Element_Identifier;
-   end record;
+   type AMF_Link_Proxy_Access is access all AMF_Link_Proxy'Class;
 
-   package Extents is
-     new GNAT.Table (Extent_Record, AMF_Extent, 1, 10, 100);
+   overriding function Get_Association
+    (Self : not null access constant AMF_Link_Proxy)
+       return not null AMF.CMOF.Associations.CMOF_Association_Access;
+   --  This is the Association of which the Link is an instance.
 
-   package Extent_Elements is
-     new GNAT.Table
-          (Extent_Element_Record, Extent_Element_Identifier, 1, 10_000, 100);
+   overriding function Get_First_End
+    (Self : not null access constant AMF_Link_Proxy)
+       return not null AMF.Elements.Element_Access;
+   --  This is the Element associated with the first end of the Association.
 
-   -----------------------------
-   -- Collections of Elements --
-   -----------------------------
+   overriding function Get_Second_End
+    (Self : not null access constant AMF_Link_Proxy)
+       return not null AMF.Elements.Element_Access;
+   --  This is the Element associated with the second end of the Association.
 
-   type Collection_Element_Identifier is new Natural;
+   overriding procedure Delete
+    (Self : not null access constant AMF_Link_Proxy);
+   --  Deletes the Link. This may leave the same elements associated by other
+   --  links for this Association.
 
-   type Collection_Kinds is (C_None, C_Set, C_Ordered_Set, C_Bag, C_Sequence);
-
-   type Collection_Record (Kind : Collection_Kinds := C_None) is record
-      Owner     : AMF_Element;
-      --  Owner of the collection.
-      Property  : CMOF_Element;
-      --  Property represented by collection.
-
---      Read_Only : Boolean;
-      Head      : Collection_Element_Identifier;
-      Tail      : Collection_Element_Identifier;
-      --  First and Last elements in the collection.
---      Size      : Natural;
-   end record;
-
---   type Collection_Element_Kinds is (CE_None, 
-
-   type Collection_Element_Record is record
---      Collection : Collection_Of_Cmof_Element;
-      Element    : AMF_Element;
-      Link       : AMF_Link;
-      Previous   : Collection_Element_Identifier;
-      Next       : Collection_Element_Identifier;
-   end record;
-
-   package Collections is
-     new GNAT.Table
-          (Collection_Record,
-           AMF_Collection_Of_Element,
-           1,
-           50_000,
-           100);
-
-   package Collection_Elements is
-     new GNAT.Table
-          (Collection_Element_Record,
-           Collection_Element_Identifier,
-           1,
-           20_000,
-           100);
-
-end AMF.Internals.Tables.AMF_Tables;
+end AMF.Internals.AMF_Links;

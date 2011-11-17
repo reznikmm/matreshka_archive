@@ -41,9 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Links;
 
 package AMF.Internals.Links is
 
+   function Internal_Create_Link
+    (Association     : CMOF_Element;
+     First_Element   : AMF_Element;
+     First_Property  : CMOF_Element;
+     Second_Element  : AMF_Element;
+     Second_Property : CMOF_Element) return AMF_Link;
    procedure Internal_Create_Link
     (Association     : CMOF_Element;
      First_Element   : AMF_Element;
@@ -53,5 +60,7 @@ package AMF.Internals.Links is
    --  Creates link between two elements. It uses only Property::upper
    --  attribute and intended to be used to construct initial CMOF
    --  metametamodel only.
+
+   function Proxy (Self : AMF_Link) return not null AMF.Links.Link_Access;
 
 end AMF.Internals.Links;

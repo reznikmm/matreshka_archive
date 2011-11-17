@@ -41,8 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.CMOF.Associations;
+with AMF.CMOF.Classes;
 with AMF.Elements.Collections;
 with AMF.Extents;
+with AMF.Links.Collections;
 with AMF.URI_Extents;
 
 package AMF.Internals.AMF_URI_Extents is
@@ -70,6 +73,44 @@ package AMF.Internals.AMF_URI_Extents is
    --  container()==null. Extent.elements() is a reflective operation, not a
    --  reference between Extent and Element. See Chapter 4, “Reflection” for a
    --  definition of ReflectiveSequence.
+
+   overriding function Elements_Of_Type
+    (Self             : not null access constant AMF_URI_Extent;
+     The_Type         : not null AMF.CMOF.Classes.CMOF_Class_Access;
+     Include_Subtypes : Boolean)
+       return AMF.Elements.Collections.Set_Of_Element;
+   --  This returns those elements in the extent that are instances of the
+   --  supplied Class. If includeSubtypes is true, then instances of any
+   --  subclasses are also returned.
+
+   overriding function Links_Of_Type
+    (Self     : not null access constant AMF_URI_Extent;
+     The_Type : not null AMF.CMOF.Associations.CMOF_Association_Access)
+       return AMF.Links.Collections.Set_Of_Link;
+   --  linksOfType(type : Association) : Link[0..*]
+   --  This returns those links in the extent that are instances of the
+   --  supplied Association.
+
+   overriding function Linked_Elements
+    (Self                     : not null access constant AMF_URI_Extent;
+     Association              :
+       not null AMF.CMOF.Associations.CMOF_Association_Access;
+     End_Element              : not null AMF.Elements.Element_Access;
+     End_1_To_End_2_Direction : Boolean)
+       return AMF.Elements.Collections.Set_Of_Element;
+   --  This navigates the supplied Association from the supplied Element. The
+   --  direction of navigation is given by the end1ToEnd2Direction parameter:
+   --  if true, then the supplied Element is treated as the first end of the
+   --  Association.
+
+   overriding function Link_Exists
+    (Self           : not null access constant AMF_URI_Extent;
+     Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access)
+       return Boolean;
+   --  This returns true if there exists at least one link for the association
+   --  between the supplied elements at their respective ends.
 
    overriding procedure Add_Element
     (Self    : not null access AMF_URI_Extent;

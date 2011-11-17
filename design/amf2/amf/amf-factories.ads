@@ -49,6 +49,7 @@ with AMF.CMOF.Classes;
 with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages.Collections;
 with AMF.Elements;
+with AMF.Links;
 
 package AMF.Factories is
 
@@ -113,12 +114,19 @@ package AMF.Factories is
    --  These conditions also apply to all superclasses of the class being
    --  instantiated.
 
-   not overriding procedure Create_Link
+   not overriding function Create_Link
     (Self           : not null access Factory;
      Association    :
        not null access AMF.CMOF.Associations.CMOF_Association'Class;
      First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access) is abstract;
+     Second_Element : not null AMF.Elements.Element_Access)
+       return not null AMF.Links.Link_Access is abstract;
+   procedure Create_Link
+    (Self           : not null access Factory'Class;
+     Association    :
+       not null access AMF.CMOF.Associations.CMOF_Association'Class;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access);
    --  This creates a Link from 2 supplied Elements that is an instance of the
    --  supplied Association. The firstElement is associated with the first end
    --  (the properties comprising the association ends are ordered) and must

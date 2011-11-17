@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,89 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Tables of AMF internals data structures.
-------------------------------------------------------------------------------
-with GNAT.Table;
+with Ada.Containers.Vectors;
 
-with Matreshka.Internals.Strings;
+package AMF.Links.Collections is
 
-with AMF.Internals.AMF_URI_Extents;
-with AMF.Internals.AMF_Links;
+   pragma Preelaborate;
 
-package AMF.Internals.Tables.AMF_Tables is
+   package Link_Vectors is new Ada.Containers.Vectors (Positive, Link_Access);
 
-   -------------
-   -- Extents --
-   -------------
+   type Set_Of_Link is new Link_Vectors.Vector with null record;
 
-   type Extent_Element_Identifier is new Natural;
-
-   type Extent_Record is record
-      Proxy       : AMF.Internals.AMF_URI_Extents.AMF_URI_Extent_Access;
-      Context_URI : Matreshka.Internals.Strings.Shared_String_Access;
-      Head        : Extent_Element_Identifier;
-      Tail        : Extent_Element_Identifier;
-   end record;
-
-   type Extent_Element_Record is record
-      Id       : Matreshka.Internals.Strings.Shared_String_Access;
-      Element  : AMF_Element;
-      Previous : Extent_Element_Identifier;
-      Next     : Extent_Element_Identifier;
-   end record;
-
-   package Extents is
-     new GNAT.Table (Extent_Record, AMF_Extent, 1, 10, 100);
-
-   package Extent_Elements is
-     new GNAT.Table
-          (Extent_Element_Record, Extent_Element_Identifier, 1, 10_000, 100);
-
-   -----------------------------
-   -- Collections of Elements --
-   -----------------------------
-
-   type Collection_Element_Identifier is new Natural;
-
-   type Collection_Kinds is (C_None, C_Set, C_Ordered_Set, C_Bag, C_Sequence);
-
-   type Collection_Record (Kind : Collection_Kinds := C_None) is record
-      Owner     : AMF_Element;
-      --  Owner of the collection.
-      Property  : CMOF_Element;
-      --  Property represented by collection.
-
---      Read_Only : Boolean;
-      Head      : Collection_Element_Identifier;
-      Tail      : Collection_Element_Identifier;
-      --  First and Last elements in the collection.
---      Size      : Natural;
-   end record;
-
---   type Collection_Element_Kinds is (CE_None, 
-
-   type Collection_Element_Record is record
---      Collection : Collection_Of_Cmof_Element;
-      Element    : AMF_Element;
-      Link       : AMF_Link;
-      Previous   : Collection_Element_Identifier;
-      Next       : Collection_Element_Identifier;
-   end record;
-
-   package Collections is
-     new GNAT.Table
-          (Collection_Record,
-           AMF_Collection_Of_Element,
-           1,
-           50_000,
-           100);
-
-   package Collection_Elements is
-     new GNAT.Table
-          (Collection_Element_Record,
-           Collection_Element_Identifier,
-           1,
-           20_000,
-           100);
-
-end AMF.Internals.Tables.AMF_Tables;
+end AMF.Links.Collections;

@@ -49,6 +49,7 @@ with AMF.CMOF.Data_Types;
 with AMF.CMOF.Packages.Collections;
 with AMF.Elements;
 with AMF.Internals.AMF_URI_Extents;
+with AMF.Links;
 with AMF.URI_Stores;
 
 package AMF.Internals.AMF_URI_Stores is
@@ -124,12 +125,13 @@ package AMF.Internals.AMF_URI_Stores is
    --  Creates an element that is an instance of the metaClass and assign
    --  identifier to created element.
 
-   overriding procedure Create_Link
+   overriding function Create_Link
     (Self           : not null access AMF_URI_Store;
      Association    :
        not null access AMF.CMOF.Associations.CMOF_Association'Class;
      First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access);
+     Second_Element : not null AMF.Elements.Element_Access)
+       return not null AMF.Links.Link_Access;
    --  This creates a Link from 2 supplied Elements that is an instance of the
    --  supplied Association. The firstElement is associated with the first end
    --  (the properties comprising the association ends are ordered) and must

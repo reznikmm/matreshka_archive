@@ -147,12 +147,13 @@ package body AMF.Internals.AMF_URI_Stores is
    -- Create_Link --
    -----------------
 
-   overriding procedure Create_Link
+   overriding function Create_Link
     (Self           : not null access AMF_URI_Store;
      Association    :
        not null access AMF.CMOF.Associations.CMOF_Association'Class;
      First_Element  : not null AMF.Elements.Element_Access;
      Second_Element : not null AMF.Elements.Element_Access)
+       return not null AMF.Links.Link_Access
    is
       pragma Unreferenced (Self);
 
@@ -163,12 +164,14 @@ package body AMF.Internals.AMF_URI_Stores is
         := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End (A);
 
    begin
-      AMF.Internals.Links.Internal_Create_Link
-       (A,
-        AMF.Internals.Helpers.To_Element (First_Element),
-        AMF.Internals.Element_Collections.Element (Member_End, 1),
-        AMF.Internals.Helpers.To_Element (Second_Element),
-        AMF.Internals.Element_Collections.Element (Member_End, 2));
+      return
+        AMF.Internals.Links.Proxy
+         (AMF.Internals.Links.Internal_Create_Link
+           (A,
+            AMF.Internals.Helpers.To_Element (First_Element),
+            AMF.Internals.Element_Collections.Element (Member_End, 1),
+            AMF.Internals.Helpers.To_Element (Second_Element),
+            AMF.Internals.Element_Collections.Element (Member_End, 2)));
    end Create_Link;
 
    -------------

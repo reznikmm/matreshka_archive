@@ -109,6 +109,67 @@ package body AMF.Internals.AMF_URI_Extents is
          (AMF.Internals.Extents.All_Elements (Self.Id));
    end Elements;
 
+   ----------------------
+   -- Elements_Of_Type --
+   ----------------------
+
+   overriding function Elements_Of_Type
+    (Self             : not null access constant AMF_URI_Extent;
+     The_Type         : not null AMF.CMOF.Classes.CMOF_Class_Access;
+     Include_Subtypes : Boolean)
+       return AMF.Elements.Collections.Set_Of_Element is
+   begin
+      return Result : AMF.Elements.Collections.Set_Of_Element do
+         raise Program_Error;
+      end return;
+   end Elements_Of_Type;
+
+   -----------------
+   -- Link_Exists --
+   -----------------
+
+   overriding function Link_Exists
+    (Self           : not null access constant AMF_URI_Extent;
+     Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
+     First_Element  : not null AMF.Elements.Element_Access;
+     Second_Element : not null AMF.Elements.Element_Access)
+       return Boolean is
+   begin
+      raise Program_Error;
+      return False;
+   end Link_Exists;
+
+   ---------------------
+   -- Linked_Elements --
+   ---------------------
+
+   overriding function Linked_Elements
+    (Self                     : not null access constant AMF_URI_Extent;
+     Association              :
+       not null AMF.CMOF.Associations.CMOF_Association_Access;
+     End_Element              : not null AMF.Elements.Element_Access;
+     End_1_To_End_2_Direction : Boolean)
+       return AMF.Elements.Collections.Set_Of_Element is
+   begin
+      return Result : AMF.Elements.Collections.Set_Of_Element do
+         raise Program_Error;
+      end return;
+   end Linked_Elements;
+
+   -------------------
+   -- Links_Of_Type --
+   -------------------
+
+   overriding function Links_Of_Type
+    (Self     : not null access constant AMF_URI_Extent;
+     The_Type : not null AMF.CMOF.Associations.CMOF_Association_Access)
+       return AMF.Links.Collections.Set_Of_Link is
+   begin
+      return Result : AMF.Links.Collections.Set_Of_Link do
+         raise Program_Error;
+      end return;
+   end Links_Of_Type;
+
    ------------------
    -- Move_Element --
    ------------------
