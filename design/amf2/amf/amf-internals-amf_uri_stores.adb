@@ -49,7 +49,6 @@ with AMF.Internals.Helpers;
 with AMF.Internals.Links;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.CMOF_Attributes;
-with CMOF.Internals.Extents;
 
 package body AMF.Internals.AMF_URI_Stores is
 
@@ -184,10 +183,7 @@ package body AMF.Internals.AMF_URI_Stores is
    is
       Enclosing_Package : constant AMF.CMOF.Packages.CMOF_Package_Access
         := AMF.CMOF.Packages.CMOF_Package_Access
-            (AMF.Internals.Helpers.To_Element
-              (Standard.CMOF.Internals.Extents.Container
-                (AMF.Internals.Helpers.To_Element
-                  (AMF.Elements.Element_Access (Meta_Type)))));
+            (AMF.Elements.Element_Access (Meta_Type).Container);
       --  := Meta_Type.Get_Package;
       --
       --  XXX Type:getPackage is derived property, it is not implemented now.

@@ -56,7 +56,6 @@ with AMF.Elements.Collections;
 with AMF.Holders.Reflective_Collections;
 with AMF.Holders.Elements;
 with AMF.Reflective_Collections;
-with CMOF.Internals.Extents;
 
 with CMOF_Tree_Models.MOC;
 pragma Unreferenced (CMOF_Tree_Models.MOC);
@@ -645,7 +644,7 @@ package body CMOF_Tree_Models is
     (Self : not null access CMOF_Tree_Model'Class;
      Root : AMF.URI_Stores.URI_Store_Access)
    is
-      use type CMOF.CMOF_Element;
+      use type AMF.Elements.Element_Access;
 
       E : constant AMF.Elements.Collections.Set_Of_Element
         := Root.Elements;
@@ -655,10 +654,7 @@ package body CMOF_Tree_Models is
       for J in 1 .. E.Length loop
          X := E.Element (J);
 
-         if CMOF.Internals.Extents.Container
-             (AMF.Internals.Helpers.To_Element (X))
-              = CMOF.Null_CMOF_Element
-         then
+         if X.Container = null then
             Self.Root :=
               new Root_Node'
                    (null,
