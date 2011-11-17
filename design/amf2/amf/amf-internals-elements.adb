@@ -41,22 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Holders;
-
 with AMF.CMOF.Associations;
-with AMF.CMOF.Classes.Collections;
+with AMF.CMOF.Classes;
 with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Types;
-with AMF.Holders.Elements;
+with AMF.Elements.Collections;
+with AMF.Extents;
+with AMF.Links.Collections;
 
 package body AMF.Internals.Elements is
-
-   procedure Internal_Container
-    (Element    : not null access constant Element_Implementation'Class;
-     Meta_Class : not null AMF.CMOF.Classes.CMOF_Class_Access;
-     Result     : out AMF.Elements.Element_Access);
-   --  Internal implementation of Element.Container operation to process
-   --  superclasses recursively.
 
    ---------------
    -- Container --
@@ -66,88 +59,75 @@ package body AMF.Internals.Elements is
     (Self : not null access constant Element_Implementation)
        return AMF.Elements.Element_Access
    is
-      Result : AMF.Elements.Element_Access;
-
-   begin
-      Internal_Container
-       (Self, Element_Implementation'Class (Self.all).Get_Meta_Class, Result);
-
-      return Result;
-   end Container;
-
-   ------------------------
-   -- Internal_Container --
-   ------------------------
-
-   procedure Internal_Container
-    (Element    : not null access constant Element_Implementation'Class;
-     Meta_Class : not null AMF.CMOF.Classes.CMOF_Class_Access;
-     Result     : out AMF.Elements.Element_Access)
-   is
-      use type AMF.CMOF.Properties.CMOF_Property_Access;
       use type AMF.Elements.Element_Access;
 
-      Super_Class    : constant AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class
-        := Meta_Class.Get_Super_Class;
-      Attributes     : constant
-        AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property
-          := Meta_Class.Get_Owned_Attribute;
-      Attribute      : AMF.CMOF.Properties.CMOF_Property_Access;
-      Attribute_Type : AMF.CMOF.Types.CMOF_Type_Access;
-      Association    : AMF.CMOF.Associations.CMOF_Association_Access;
-      Member_End     :
+      Model_Extent       : constant AMF.Extents.Extent_Access
+        := AMF.Elements.Element_Access (Self).Extent;
+      Meta_Class         : constant AMF.CMOF.Classes.CMOF_Class_Access
+        := Element_Implementation'Class (Self.all).Get_Meta_Class;
+      Metamodel_Extent   : constant AMF.Extents.Extent_Access
+        := AMF.Elements.Element_Access (Meta_Class).Extent;
+      Metamodel_Elements : constant AMF.Elements.Collections.Set_Of_Element
+        := Metamodel_Extent.Elements;
+      Links              : AMF.Links.Collections.Set_Of_Link;
+      Association        : AMF.CMOF.Associations.CMOF_Association_Access;
+      Member_Ends        :
         AMF.CMOF.Properties.Collections.Ordered_Set_Of_CMOF_Property;
-      Opposite       : AMF.CMOF.Properties.CMOF_Property_Access;
-      Value          : League.Holders.Holder;
+      End_Property       : AMF.CMOF.Properties.CMOF_Property_Access;
+      End_Type           : AMF.CMOF.Types.CMOF_Type_Access;
+      Metamodel_Element  : AMF.Elements.Element_Access;
 
    begin
-      --  Go through all attributes of the specified metaclass and try to
-      --  retrieve value for all attributes which opposite end of the
-      --  association is composite. Return retrieved value when it is not
-      --  empty.
+      --  Extract list of associations from metamodel's extent.
 
-      for J in 1 .. Attributes.Length loop
-         Attribute      := Attributes.Element (J);
-         Attribute_Type := Attribute.Get_Type;
-         Association    := Attribute.Get_Association;
+      for J in 1 .. Metamodel_Elements.Length loop
+         Metamodel_Element := Metamodel_Elements.Element (J);
 
-         if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-            --  Compute opposite end of association.
-            --
-            --  Note: CMOF::Property::opposite can't be used here because of
-            --  strong dependency from navigability, which is not needed here.
+         if Metamodel_Element.all
+              in AMF.CMOF.Associations.CMOF_Association'Class
+         then
+            Association :=
+              AMF.CMOF.Associations.CMOF_Association_Access
+               (Metamodel_Element);
+            Member_Ends := Association.Get_Member_End;
 
-            Member_End := Association.Get_Member_End;
+            End_Property := Member_Ends.Element (1);
+            End_Type := End_Property.Get_Type;
 
-            if Member_End.Element (1) = Attribute then
-               Opposite := Member_End.Element (2);
+            if End_Property.Get_Is_Composite
+              and then Meta_Class.Conforms_To (End_Type)
+            then
+               Links := Model_Extent.Links_Of_Type (Association);
 
-            else
-               Opposite := Member_End.Element (1);
+               for K in 1 .. Integer (Links.Length) loop
+                  if Links.Element (K).Get_First_End
+                       = AMF.Elements.Element_Access (Self)
+                  then
+                     return Links.Element (K).Get_Second_End;
+                  end if;
+               end loop;
             end if;
 
-            --  Retrieve value of attribute when opposite is composite end.
+            End_Property := Member_Ends.Element (2);
+            End_Type := End_Property.Get_Type;
 
-            if Opposite.Get_Is_Composite then
-               Value := Element.Get (Attribute);
-               Result := AMF.Holders.Elements.Element (Value);
+            if End_Property.Get_Is_Composite
+              and then Meta_Class.Conforms_To (End_Type)
+            then
+               Links := Model_Extent.Links_Of_Type (Association);
 
-               if Result /= null then
-                  return;
-               end if;
+               for K in 1 .. Integer (Links.Length) loop
+                  if Links.Element (K).Get_Second_End
+                       = AMF.Elements.Element_Access (Self)
+                  then
+                     return Links.Element (K).Get_First_End;
+                  end if;
+               end loop;
             end if;
          end if;
       end loop;
 
-      --  Go through all attributes of all superclasses.
-
-      for J in 1 .. Super_Class.Length loop
-         Internal_Container (Element, Super_Class.Element (J), Result);
-
-         if Result /= null then
-            return;
-         end if;
-      end loop;
-   end Internal_Container;
+      return null;
+   end Container;
 
 end AMF.Internals.Elements;

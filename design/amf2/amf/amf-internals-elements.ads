@@ -60,11 +60,8 @@ package AMF.Internals.Elements is
    --  Returns the parent container of this element if any. Return null if
    --  there is no containing element.
    --
-   --  This operation provides generic implementation based on reflection. It
-   --  can be overridden for elements of specific model, in this case please
-   --  remove comment below.
-   --
-   --  XXX It looks possible to generalize implementation of this subprogram
-   --  for any metamodels, so it can be made class wide but not dispatching.
+   --  This operation provides generic implementation based on MOF
+   --  capabilities. It can be overridden for elements of specific model to
+   --  provide more efficient implementation.
 
 end AMF.Internals.Elements;
