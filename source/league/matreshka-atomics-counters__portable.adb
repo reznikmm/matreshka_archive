@@ -47,8 +47,6 @@ pragma Ada_2012;
 
 package body Matreshka.Atomics.Counters is
 
-   use type Interfaces.C.int;
-
    protected Guard is
 
       procedure Increment (Self : in out Counter);

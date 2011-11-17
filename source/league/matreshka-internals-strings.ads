@@ -84,6 +84,7 @@ package Matreshka.Internals.Strings is
    --  type.
 
    type Index_Map_Access is access all Index_Map;
+   pragma Volatile (Index_Map_Access);
 
    type Shared_String (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
      is limited record

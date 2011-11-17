@@ -86,8 +86,11 @@ package Matreshka.Atomics.Counters is
 
 private
 
+   type Counter_Type is new Interfaces.Integer_32;
+   pragma Volatile (Counter_Type);
+
    type Counter is limited record
-      Value : aliased Interfaces.Integer_32 := 1;
+      Value : aliased Counter_Type := 1;
       pragma Volatile (Value);
    end record;
    --  Note: Record type is used for automatic initial value assignment.

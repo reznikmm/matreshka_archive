@@ -50,16 +50,14 @@ package body Matreshka.Atomics.Counters is
    use type Interfaces.Integer_32;
 
    procedure Sync_Add_And_Fetch_32
-     (Ptr   : not null access Interfaces.Integer_32;
-      Value : Interfaces.Integer_32);
+     (Ptr : not null access Counter_Type; Value : Counter_Type);
    pragma Import (Intrinsic, Sync_Add_And_Fetch_32, "__sync_add_and_fetch_4");
 
    function Sync_Sub_And_Fetch_32
-     (Ptr   : not null access Interfaces.Integer_32;
-      Value : Interfaces.Integer_32) return Interfaces.Integer_32;
+     (Ptr   : not null access Counter_Type;
+      Value : Counter_Type) return Counter_Type;
    procedure Sync_Sub_And_Fetch_32
-     (Ptr   : not null access Interfaces.Integer_32;
-      Value : Interfaces.Integer_32);
+     (Ptr : not null access Counter_Type; Value : Counter_Type);
    pragma Import (Intrinsic, Sync_Sub_And_Fetch_32, "__sync_sub_and_fetch_4");
 
    procedure Sync_Synchronize;
