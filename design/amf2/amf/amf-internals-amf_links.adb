@@ -82,7 +82,7 @@ package body AMF.Internals.AMF_Links is
       return
         AMF.Internals.Helpers.To_Element
          (AMF.Internals.Tables.AMF_Link_Table.Table
-           (Self.Id).First_Element);
+           (Self.Id).Second_Element);
    end Get_First_End;
 
    --------------------
@@ -96,7 +96,7 @@ package body AMF.Internals.AMF_Links is
       return
         AMF.Internals.Helpers.To_Element
          (AMF.Internals.Tables.AMF_Link_Table.Table
-           (Self.Id).Second_Element);
+           (Self.Id).First_Element);
    end Get_Second_End;
 
 end AMF.Internals.AMF_Links;
