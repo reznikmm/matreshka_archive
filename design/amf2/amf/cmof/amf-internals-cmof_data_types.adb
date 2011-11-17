@@ -182,22 +182,6 @@ package body AMF.Internals.CMOF_Data_Types is
       raise Program_Error;
    end Set_Package;
 
-   -----------------
-   -- Conforms_To --
-   -----------------
-
-   overriding function Conforms_To
-     (Self : not null access constant CMOF_Data_Type_Proxy;
-      Other : AMF.CMOF.Types.CMOF_Type_Access)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Conforms_To unimplemented");
-      raise Program_Error;
-      return Conforms_To (Self, Other);
-   end Conforms_To;
-
    ---------------------
    -- Imported_Member --
    ---------------------

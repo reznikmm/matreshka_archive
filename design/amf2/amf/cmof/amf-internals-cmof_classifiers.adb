@@ -49,6 +49,54 @@ package body AMF.Internals.CMOF_Classifiers is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   -----------------
+   -- Conforms_To --
+   -----------------
+
+   overriding function Conforms_To
+    (Self  : not null access constant CMOF_Classifier_Proxy;
+     Other : AMF.CMOF.Types.CMOF_Type_Access)
+       return Boolean
+   is
+      --  7.3.8  Classifier (from Kernel, Dependencies, PowerTypes, Interfaces)
+      --
+      --  [6] The query conformsTo() gives true for a classifier that defines a
+      --  type that conforms to another. This is used, for example, in the
+      --  specification of signature conformance for operations.
+      --
+      --  Classifier::conformsTo(other: Classifier): Boolean;
+      --
+      --  conformsTo = (self=other) or (self.allParents()->includes(other))
+
+      use type AMF.CMOF.Types.CMOF_Type_Access;
+
+      Generals : constant AMF.CMOF.Classifiers.Collections.Set_Of_CMOF_Classifier
+        := Self.Get_General;
+      General  : AMF.CMOF.Classifiers.CMOF_Classifier_Access;
+
+   begin
+      if AMF.CMOF.Types.CMOF_Type_Access (Self) = Other then
+         --  Class always conforms to itself.
+
+         return True;
+      end if;
+
+      for J in 1 .. Generals.Length loop
+         General := Generals.Element (J);
+
+         if General.Conforms_To (Other) then
+            --  If general classifier conforms to the specified type when
+            --  classifier conforms to is also.
+
+            return True;
+         end if;
+      end loop;
+
+      --  Otherwise, classifier doesn't conforms to the type.
+
+      return False;
+   end Conforms_To;
+
    -------------------
    -- Get_Attribute --
    -------------------

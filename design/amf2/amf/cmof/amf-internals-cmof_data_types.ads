@@ -51,7 +51,6 @@ with AMF.CMOF.Operations.Collections;
 with AMF.CMOF.Packageable_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
-with AMF.CMOF.Types;
 with AMF.Internals.CMOF_Classifiers;
 with AMF.String_Collections;
 
@@ -93,11 +92,6 @@ package AMF.Internals.CMOF_Data_Types is
    overriding procedure Set_Package
     (Self : not null access CMOF_Data_Type_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);
-
-   overriding function Conforms_To
-    (Self : not null access constant CMOF_Data_Type_Proxy;
-     Other : AMF.CMOF.Types.CMOF_Type_Access)
-       return Boolean;
 
    overriding function Imported_Member
     (Self : not null access constant CMOF_Data_Type_Proxy)

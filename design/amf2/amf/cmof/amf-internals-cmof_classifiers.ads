@@ -46,6 +46,7 @@ with AMF.CMOF.Features.Collections;
 with AMF.CMOF.Named_Elements.Collections;
 with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
+with AMF.CMOF.Types;
 with AMF.Internals.CMOF_Named_Elements;
 with AMF.Internals.CMOF_Namespaces;
 pragma Elaborate (AMF.Internals.CMOF_Namespaces);
@@ -103,5 +104,15 @@ package AMF.Internals.CMOF_Classifiers is
    --  Getter of Type::package.
    --
    --  Specifies the owning package of this classifier, if any.
+
+   overriding function Conforms_To
+    (Self : not null access constant CMOF_Classifier_Proxy;
+     Other : AMF.CMOF.Types.CMOF_Type_Access)
+       return Boolean;
+   --  Operation Type::conformsTo.
+   --
+   --  The query conformsTo() gives true for a type that conforms to another. 
+   --  By default, two types do not conform to each other. This query is 
+   --  intended to be redefined for specific conformance situations.
 
 end AMF.Internals.CMOF_Classifiers;

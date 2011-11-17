@@ -99,11 +99,6 @@ package AMF.Internals.CMOF_Associations is
     (Self : not null access CMOF_Association_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);
 
-   overriding function Conforms_To
-    (Self : not null access constant CMOF_Association_Proxy;
-     Other : AMF.CMOF.Types.CMOF_Type_Access)
-       return Boolean;
-
    overriding function Imported_Member
     (Self : not null access constant CMOF_Association_Proxy)
        return AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element;
