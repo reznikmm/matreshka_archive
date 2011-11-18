@@ -619,6 +619,7 @@ is
    Writer      : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
 
 begin
+   Writer.Set_Offset (2);
    Writer.Start_Document;
 
    --  Register used namespaces.
