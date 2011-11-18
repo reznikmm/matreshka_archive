@@ -130,6 +130,10 @@ private
         := new AMF.Internals.Collections.Elements.Containers.Shared_Element_Collection_Container;
    end record;
 
+   overriding procedure Adjust (Self : in out Collection);
+
+   overriding procedure Finalize (Self : in out Collection);
+
    type Set is new Collection with null record;
 
    type Ordered_Set is new Collection with null record;

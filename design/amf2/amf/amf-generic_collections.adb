@@ -60,6 +60,15 @@ package body AMF.Generic_Collections is
       Self.Collection.Add (AMF.Elements.Element_Access (Item));
    end Add;
 
+   ------------
+   -- Adjust --
+   ------------
+
+   overriding procedure Adjust (Self : in out Collection) is
+   begin
+      Self.Collection.Reference;
+   end Adjust;
+
    -------------
    -- Element --
    -------------
@@ -89,6 +98,18 @@ package body AMF.Generic_Collections is
 
       return True;
    end Excludes;
+
+   --------------
+   -- Finalize --
+   --------------
+
+   overriding procedure Finalize (Self : in out Collection) is
+   begin
+      if Self.Collection /= null then
+         Self.Collection.Unreference;
+         Self.Collection := null;
+      end if;
+   end Finalize;
 
    --------------
    -- Includes --
