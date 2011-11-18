@@ -48,7 +48,6 @@ with GNAT.Table;
 with Matreshka.Internals.Strings;
 
 with AMF.Internals.AMF_URI_Extents;
-with AMF.Internals.AMF_Links;
 
 package AMF.Internals.Tables.AMF_Tables is
 

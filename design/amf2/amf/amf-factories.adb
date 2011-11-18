@@ -57,6 +57,7 @@ package body AMF.Factories is
    is
       Aux : constant not null AMF.Links.Link_Access
         := Self.Create_Link (Association, First_Element, Second_Element);
+      pragma Unreferenced (Aux);
 
    begin
       null;

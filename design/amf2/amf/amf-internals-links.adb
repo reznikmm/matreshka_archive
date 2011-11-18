@@ -190,6 +190,7 @@ package body AMF.Internals.Links is
              First_Property,
              Second_Element,
              Second_Property);
+      pragma Unreferenced (Aux);
 
    begin
       null;
