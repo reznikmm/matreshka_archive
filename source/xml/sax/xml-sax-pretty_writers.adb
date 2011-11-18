@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Characters.Internals;
+with League.Characters.Latin;
 with Matreshka.Internals.Unicode;
 
 package body XML.SAX.Pretty_Writers is
@@ -101,6 +102,7 @@ package body XML.SAX.Pretty_Writers is
       end if;
 
       Self.Text.Append (Self.Escape (Text));
+      Self.Chars := True;
    end Characters;
 
    -------------
@@ -197,10 +199,32 @@ package body XML.SAX.Pretty_Writers is
          Self.Text.Append ("/>");
          Self.Tag_Opened := False;
 
+         --  Do automatic indentation then necessary.
+
+         if Self.Offset /= 0 then
+            Self.Indent := Self.Indent - Self.Offset;
+         end if;
+
       else
+         --  Do automatic indentation then necessary.
+
+         if Self.Offset /= 0 then
+            Self.Indent := Self.Indent - Self.Offset;
+
+            if Self.Chars then
+               Self.Chars := False;
+
+            else
+               Self.Text.Append (League.Characters.Latin.Line_Feed);
+
+               for J in 1 .. Self.Indent loop
+                  Self.Text.Append (' ');
+               end loop;
+            end if;
+         end if;
+
          Self.Text.Append ("</");
          Output_Name (Self, Namespace_URI, Local_Name, Qualified_Name, Success);
-
          Self.Text.Append ('>');
       end if;
 
@@ -460,6 +484,17 @@ package body XML.SAX.Pretty_Writers is
       Self.Destination := Destination;
    end Set_Destination;
 
+   ----------------
+   -- Set_Offset --
+   ----------------
+
+   not overriding procedure Set_Offset
+    (Self   : in out SAX_Pretty_Writer;
+     Offset : Natural) is
+   begin
+      Self.Offset := Offset;
+   end Set_Offset;
+
    -----------------
    -- Set_Version --
    -----------------
@@ -575,6 +610,23 @@ package body XML.SAX.Pretty_Writers is
          --  Append Bank and Current namespaces.
 
          Merge (Self.Current.Mapping, Self.Requested_NS);
+      end if;
+
+      if Self.Offset /= 0 then
+         --  Do automatic indentation when necessary.
+
+         if Self.Chars then
+            Self.Chars := False;
+
+         else
+            Self.Text.Append (League.Characters.Latin.Line_Feed);
+
+            for J in 1 .. Self.Indent loop
+               Self.Text.Append (' ');
+            end loop;
+         end if;
+
+         Self.Indent := Self.Indent + Self.Offset;
       end if;
 
       Self.Text.Append ('<');

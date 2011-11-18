@@ -66,6 +66,11 @@ package XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Version : XML_Version);
 
+   not overriding procedure Set_Offset
+    (Self   : in out SAX_Pretty_Writer;
+     Offset : Natural);
+   --  Sets offset for indentation.
+
    overriding procedure Set_Destination
     (Self        : in out SAX_Pretty_Writer;
      Destination : not null XML.SAX.Writers.SAX_Output_Destination_Access);
@@ -208,6 +213,11 @@ private
       DTD_Opened   : Boolean := False;
       Error        : League.Strings.Universal_String;
       Destination  : XML.SAX.Writers.SAX_Output_Destination_Access;
+
+      Indent       : Natural := 0;
+      Offset       : Natural := 0;
+      Chars        : Boolean := False;
+      --  Indent, offset and chars are used for automatic indentation.
 
       Stack       : Element_Vector.Vector;
       --  Stack of elements.
