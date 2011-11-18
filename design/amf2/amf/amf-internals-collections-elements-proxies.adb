@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Unchecked_Deallocation;
+
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 
@@ -91,5 +93,36 @@ package body AMF.Internals.Collections.Elements.Proxies is
    begin
       return AMF.Internals.Element_Collections.Length (Self.Collection);
    end Length;
+
+   ---------------
+   -- Reference --
+   ---------------
+
+   overriding procedure Reference
+    (Self : not null access Shared_Element_Collection_Proxy) is
+   begin
+      Matreshka.Atomics.Counters.Increment (Self.Counter);
+   end Reference;
+
+   -----------------
+   -- Unreference --
+   -----------------
+
+   overriding procedure Unreference
+    (Self : not null access Shared_Element_Collection_Proxy)
+   is
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Shared_Element_Collection_Proxy'Class,
+              Shared_Element_Collection_Proxy_Access);
+
+      Aux : Shared_Element_Collection_Proxy_Access
+        := Self.all'Unchecked_Access;
+
+   begin
+      if Matreshka.Atomics.Counters.Decrement (Self.Counter) then
+         Free (Aux);
+      end if;
+   end Unreference;
 
 end AMF.Internals.Collections.Elements.Proxies;

@@ -233,7 +233,7 @@ package body AMF.Internals.Element_Collections is
    begin
       return
         new AMF.Internals.Collections.Elements.Proxies.Shared_Element_Collection_Proxy'
-             (Collection => Collection);
+             (Counter => <>, Collection => Collection);
    end Wrap;
 
 end AMF.Internals.Element_Collections;

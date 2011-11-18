@@ -44,19 +44,30 @@
 --  This package provides implementation of proxy to map collection of elements
 --  into internal representation used to represent value of object's attribute.
 ------------------------------------------------------------------------------
+with Matreshka.Atomics.Counters;
 
 package AMF.Internals.Collections.Elements.Proxies is
 
    type Shared_Element_Collection_Proxy is
      new Shared_Element_Collection with record
+      Counter    : Matreshka.Atomics.Counters.Counter;
       Collection : AMF.Internals.AMF_Collection_Of_Element;
    end record;
 
+   type Shared_Element_Collection_Proxy_Access is
+     access all Shared_Element_Collection_Proxy'Class;
+
+--   overriding procedure Reference
+--    (Self : not null access Shared_Element_Collection_Proxy) is null;
+--
+--   overriding procedure Unreference
+--    (Self : not null access Shared_Element_Collection_Proxy) is null;
+
    overriding procedure Reference
-    (Self : not null access Shared_Element_Collection_Proxy) is null;
+    (Self : not null access Shared_Element_Collection_Proxy);
 
    overriding procedure Unreference
-    (Self : not null access Shared_Element_Collection_Proxy) is null;
+    (Self : not null access Shared_Element_Collection_Proxy);
 
    overriding function Length
     (Self : not null access constant Shared_Element_Collection_Proxy)
