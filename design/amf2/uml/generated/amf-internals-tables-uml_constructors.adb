@@ -267,23 +267,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Abstractions.UML_Abstraction_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mapping
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -366,13 +366,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Accept_Call_Actions.UML_Accept_Call_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -380,17 +380,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
                      12     => (M_Boolean, False),
                        --  isUnmarshall
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  returnInformation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -543,13 +543,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Accept_Event_Actions.UML_Accept_Event_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -557,11 +557,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -718,27 +718,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Action_Execution_Specifications.UML_Action_Execution_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  finish
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  start
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  action
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -800,13 +800,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Action_Input_Pins.UML_Action_Input_Pin_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -814,19 +814,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -834,16 +834,16 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      17     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      19     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      21     => (M_Boolean, False),
                        --  isControl
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  fromAction
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -954,25 +954,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Activities.UML_Activity_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -980,17 +980,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      18     => (M_Boolean, True),
                        --  isReentrant
-                     19     => (M_Element, UML_Element'First),
+                     19     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      20     => (M_Boolean, False),
                        --  isReadOnly
@@ -1336,13 +1336,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Activity_Final_Nodes.UML_Activity_Final_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -1350,9 +1350,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1456,13 +1456,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Activity_Parameter_Nodes.UML_Activity_Parameter_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -1470,21 +1470,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  parameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1595,29 +1595,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Activity_Partitions.UML_Activity_Partition_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      9      => (M_Boolean, False),
                        --  isDimension
                      10     => (M_Boolean, False),
                        --  isExternal
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  represents
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superPartition
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1707,25 +1707,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Actors.UML_Actor_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -1733,9 +1733,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -1937,13 +1937,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Add_Structural_Feature_Value_Actions.UML_Add_Structural_Feature_Value_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -1951,23 +1951,23 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  structuralFeature
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  insertAt
                      17     => (M_Boolean, False),
                        --  isReplaceAll
@@ -2108,13 +2108,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Add_Variable_Value_Actions.UML_Add_Variable_Value_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -2122,19 +2122,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  variable
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  insertAt
                      15     => (M_Boolean, False),
                        --  isReplaceAll
@@ -2275,21 +2275,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Any_Receive_Events.UML_Any_Receive_Event_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -2337,25 +2337,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Artifacts.UML_Artifact_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -2363,7 +2363,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      15     => (M_String, null),
                        --  fileName
@@ -2581,25 +2581,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Associations.UML_Association_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -2607,7 +2607,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      15     => (M_Boolean, False),
                        --  isDerived
@@ -2832,25 +2832,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Association_Classes.UML_Association_Class_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -2858,11 +2858,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      15     => (M_Boolean, False),
                        --  isDerived
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      17     => (M_Boolean, False),
                        --  isActive
@@ -3164,27 +3164,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Behavior_Execution_Specifications.UML_Behavior_Execution_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  finish
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  start
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  behavior
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3246,13 +3246,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Broadcast_Signal_Actions.UML_Broadcast_Signal_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -3260,17 +3260,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  onPort
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signal
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3416,13 +3416,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Call_Behavior_Actions.UML_Call_Behavior_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -3430,19 +3430,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  onPort
                      13     => (M_Boolean, True),
                        --  isSynchronous
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  behavior
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3595,23 +3595,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Call_Events.UML_Call_Event_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  operation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3659,13 +3659,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Call_Operation_Actions.UML_Call_Operation_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -3673,21 +3673,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  onPort
                      13     => (M_Boolean, True),
                        --  isSynchronous
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  operation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3840,13 +3840,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Central_Buffer_Nodes.UML_Central_Buffer_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -3854,19 +3854,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -3977,23 +3977,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Change_Events.UML_Change_Event_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  changeExpression
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4041,25 +4041,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Classes.UML_Class_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -4067,9 +4067,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
@@ -4336,17 +4336,17 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  default
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedDefault
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedParameteredElement
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  parameteredElement
-                     6      => (M_Element, UML_Element'First),
+                     6      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signature
                      7      => (M_Boolean, True),
                        --  allowSubstitutable
@@ -4396,9 +4396,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Clauses.UML_Clause_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  decider
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4474,13 +4474,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Clear_Association_Actions.UML_Clear_Association_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -4488,17 +4488,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  association
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4637,13 +4637,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Clear_Structural_Feature_Actions.UML_Clear_Structural_Feature_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -4651,19 +4651,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  structuralFeature
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4802,13 +4802,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Clear_Variable_Actions.UML_Clear_Variable_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -4816,15 +4816,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  variable
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -4963,25 +4963,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Collaborations.UML_Collaboration_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -4989,9 +4989,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5228,19 +5228,19 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Collaboration_Uses.UML_Collaboration_Use_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -5295,21 +5295,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Combined_Fragments.UML_Combined_Fragment_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      9      => (M_Interaction_Operator_Kind, AMF.UML.Seq_Operator),
                        --  interactionOperator
@@ -5387,7 +5387,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Comments.UML_Comment_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  body
@@ -5437,25 +5437,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Communication_Paths.UML_Communication_Path_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -5463,7 +5463,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      15     => (M_Boolean, False),
                        --  isDerived
@@ -5688,25 +5688,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Components.UML_Component_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -5714,9 +5714,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
@@ -6013,25 +6013,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Component_Realizations.UML_Component_Realization_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mapping
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  abstraction
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6121,29 +6121,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Conditional_Nodes.UML_Conditional_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      9      => (M_Boolean, False),
                        --  isLeaf
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      13     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -6395,17 +6395,17 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  default
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedDefault
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedParameteredElement
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  parameteredElement
-                     6      => (M_Element, UML_Element'First),
+                     6      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6446,21 +6446,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Connection_Point_References.UML_Connection_Point_Reference_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  container
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  state
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6536,13 +6536,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Connectors.UML_Connector_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -6554,7 +6554,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isStatic
                      9      => (M_Connector_Kind, AMF.UML.Assembly),
                        --  kind
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6644,7 +6644,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Connector_Ends.UML_Connector_End_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_Boolean, False),
                        --  isOrdered
@@ -6652,18 +6652,18 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      4      => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      6      =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  definingEnd
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  partWithPort
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  role
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6704,21 +6704,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Consider_Ignore_Fragments.UML_Consider_Ignore_Fragment_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      9      => (M_Interaction_Operator_Kind, AMF.UML.Seq_Operator),
                        --  interactionOperator
@@ -6803,25 +6803,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Constraints.UML_Constraint_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -6876,21 +6876,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Continuations.UML_Continuation_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      9      => (M_Boolean, True),
                        --  setting
@@ -6954,13 +6954,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Control_Flows.UML_Control_Flow_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -6968,19 +6968,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  guard
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interrupts
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  source
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  weight
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7063,13 +7063,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Create_Link_Actions.UML_Create_Link_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -7077,11 +7077,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -7236,13 +7236,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Create_Link_Object_Actions.UML_Create_Link_Object_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -7250,15 +7250,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7411,13 +7411,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Create_Object_Actions.UML_Create_Object_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -7425,17 +7425,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifier
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7574,13 +7574,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Data_Store_Nodes.UML_Data_Store_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -7588,19 +7588,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7711,25 +7711,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Data_Types.UML_Data_Type_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -7737,7 +7737,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -7939,13 +7939,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Decision_Nodes.UML_Decision_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -7953,13 +7953,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  decisionInput
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  decisionInputFlow
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8063,21 +8063,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Dependencies.UML_Dependency_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8160,23 +8160,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Deployments.UML_Deployment_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  location
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8273,25 +8273,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Deployment_Specifications.UML_Deployment_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -8299,11 +8299,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      15     => (M_String, null),
                        --  fileName
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  deployment
                      17     => (M_String, null),
                        --  deploymentLocation
@@ -8523,13 +8523,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Destroy_Link_Actions.UML_Destroy_Link_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -8537,11 +8537,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -8696,13 +8696,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Destroy_Object_Actions.UML_Destroy_Object_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -8710,11 +8710,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -8722,7 +8722,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isDestroyLinks
                      13     => (M_Boolean, False),
                        --  isDestroyOwnedObjects
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8861,23 +8861,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Destruction_Occurrence_Specifications.UML_Destruction_Occurrence_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  message
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -8953,25 +8953,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Devices.UML_Device_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -8979,9 +8979,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
@@ -9269,25 +9269,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Durations.UML_Duration_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  expr
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9342,25 +9342,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Duration_Constraints.UML_Duration_Constraint_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      11     => (M_Collection_Of_Boolean, 0),
                        --  firstEvent
@@ -9417,27 +9417,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Duration_Intervals.UML_Duration_Interval_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  max
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  min
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9485,21 +9485,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Duration_Observations.UML_Duration_Observation_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      9      => (M_Collection_Of_Boolean, 0),
                        --  firstEvent
@@ -9556,13 +9556,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Element_Imports.UML_Element_Import_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  alias
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  importedElement
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  importingNamespace
                      5      => (M_Visibility_Kind, AMF.UML.Public_Visibility),
                        --  visibility
@@ -9626,25 +9626,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Enumerations.UML_Enumeration_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -9652,7 +9652,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9861,25 +9861,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Enumeration_Literals.UML_Enumeration_Literal_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enumeration
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -9955,13 +9955,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Exception_Handlers.UML_Exception_Handler_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  exceptionInput
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  handlerBody
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  protectedNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10009,25 +10009,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Execution_Environments.UML_Execution_Environment_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -10035,9 +10035,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
@@ -10325,23 +10325,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Execution_Occurrence_Specifications.UML_Execution_Occurrence_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  execution
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10417,13 +10417,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Expansion_Nodes.UML_Expansion_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -10431,23 +10431,23 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  regionAsInput
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  regionAsOutput
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -10558,29 +10558,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Expansion_Regions.UML_Expansion_Region_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      9      => (M_Boolean, False),
                        --  isLeaf
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      13     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -10837,23 +10837,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Expressions.UML_Expression_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_String, null),
                        --  symbol
@@ -10910,23 +10910,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Extends.UML_Extend_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  condition
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  extendedCase
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  extension
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11002,25 +11002,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Extensions.UML_Extension_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -11028,13 +11028,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      15     => (M_Boolean, False),
                        --  isDerived
                      16     => (M_Boolean, False),
                        --  isRequired
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  metaclass
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11257,23 +11257,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Extension_Ends.UML_Extension_End_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Boolean, False),
                        --  isOrdered
@@ -11281,12 +11281,12 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      12     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      14     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      16     => (M_Boolean, False),
                        --  isLeaf
@@ -11296,19 +11296,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isReadOnly
                      19     => (M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  association
-                     21     => (M_Element, UML_Element'First),
+                     21     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  associationEnd
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  class
-                     23     => (M_Element, UML_Element'First),
+                     23     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  datatype
                      24     => (M_String, null),
                        --  default
-                     25     => (M_Element, UML_Element'First),
+                     25     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  defaultValue
-                     26     => (M_Element, UML_Element'First),
+                     26     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interface
                      27     => (M_Boolean, False),
                        --  isComposite
@@ -11318,9 +11318,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isDerivedUnion
                      30     => (M_Boolean, False),
                        --  isID
-                     31     => (M_Element, UML_Element'First),
+                     31     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  opposite
-                     32     => (M_Element, UML_Element'First),
+                     32     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningAssociation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11431,13 +11431,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Extension_Points.UML_Extension_Point_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -11445,7 +11445,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  useCase
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11507,13 +11507,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Final_States.UML_Final_State_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -11521,13 +11521,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  container
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  doActivity
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  entry
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  exit
                      12     => (M_Boolean, False),
                        --  isComposite
@@ -11537,11 +11537,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isSimple
                      15     => (M_Boolean, False),
                        --  isSubmachineState
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  redefinedState
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  stateInvariant
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  submachine
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11687,13 +11687,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Flow_Final_Nodes.UML_Flow_Final_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -11701,9 +11701,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11807,13 +11807,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Fork_Nodes.UML_Fork_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -11821,9 +11821,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -11927,25 +11927,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Function_Behaviors.UML_Function_Behavior_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -11953,17 +11953,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      18     => (M_Boolean, True),
                        --  isReentrant
-                     19     => (M_Element, UML_Element'First),
+                     19     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      20     => (M_Collection_Of_String, 0),
                        --  body
@@ -12267,19 +12267,19 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Gates.UML_Gate_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  message
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12327,21 +12327,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_General_Orderings.UML_General_Ordering_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  after
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  before
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12389,13 +12389,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Generalizations.UML_Generalization_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  general
                      3      => (M_Boolean_Holder, (Is_Empty => True)),
                        --  isSubstitutable
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specific
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12464,27 +12464,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Generalization_Sets.UML_Generalization_Set_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      9      => (M_Boolean, False),
                        --  isCovering
                      10     => (M_Boolean, False),
                        --  isDisjoint
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  powertype
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12539,7 +12539,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Images.UML_Image_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  content
@@ -12586,21 +12586,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Includes.UML_Include_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  addition
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  includingCase
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12669,21 +12669,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Information_Flows.UML_Information_Flow_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -12801,25 +12801,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Information_Items.UML_Information_Item_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -12827,7 +12827,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13022,13 +13022,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Initial_Nodes.UML_Initial_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -13036,9 +13036,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13142,13 +13142,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Input_Pins.UML_Input_Pin_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -13156,19 +13156,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -13176,12 +13176,12 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      17     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      19     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      21     => (M_Boolean, False),
                        --  isControl
@@ -13294,23 +13294,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Instance_Specifications.UML_Instance_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13386,25 +13386,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Instance_Values.UML_Instance_Value_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  instance
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13452,25 +13452,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interactions.UML_Interaction_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -13478,21 +13478,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      18     => (M_Boolean, True),
                        --  isReentrant
-                     19     => (M_Element, UML_Element'First),
+                     19     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     21     => (M_Element, UML_Element'First),
+                     21     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13841,29 +13841,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interaction_Constraints.UML_Interaction_Constraint_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  maxint
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  minint
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -13918,23 +13918,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interaction_Operands.UML_Interaction_Operand_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  guard
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14045,27 +14045,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interaction_Uses.UML_Interaction_Use_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  refersTo
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  returnValue
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  returnValueRecipient
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14141,25 +14141,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interfaces.UML_Interface_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -14167,9 +14167,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  protocol
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14392,27 +14392,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interface_Realizations.UML_Interface_Realization_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mapping
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  contract
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  implementingClassifier
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14495,21 +14495,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14592,27 +14592,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Intervals.UML_Interval_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  max
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  min
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14660,25 +14660,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Interval_Constraints.UML_Interval_Constraint_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14733,13 +14733,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Join_Nodes.UML_Join_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -14747,13 +14747,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
                      10     => (M_Boolean, True),
                        --  isCombineDuplicate
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  joinSpec
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14857,25 +14857,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Lifelines.UML_Lifeline_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  decomposedAs
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interaction
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  represents
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selector
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -14930,13 +14930,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Link_End_Creation_Datas.UML_Link_End_Creation_Data_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  end
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  insertAt
                      5      => (M_Boolean, False),
                        --  isReplaceAll
@@ -14986,11 +14986,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Link_End_Datas.UML_Link_End_Data_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  end
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15038,13 +15038,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Link_End_Destruction_Datas.UML_Link_End_Destruction_Data_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  end
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  destroyAt
                      5      => (M_Boolean, False),
                        --  isDestroyDuplicates
@@ -15094,23 +15094,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Literal_Booleans.UML_Literal_Boolean_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Boolean, False),
                        --  value
@@ -15160,23 +15160,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Literal_Integers.UML_Literal_Integer_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Integer, 0),
                        --  value
@@ -15226,23 +15226,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Literal_Nulls.UML_Literal_Null_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15290,23 +15290,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Literal_Reals.UML_Literal_Real_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Real, 0.0),
                        --  value
@@ -15356,23 +15356,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Literal_Strings.UML_Literal_String_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_String, null),
                        --  value
@@ -15422,23 +15422,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Unlimited_Natural, (False, 0)),
                        --  value
@@ -15488,35 +15488,35 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Loop_Nodes.UML_Loop_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      9      => (M_Boolean, False),
                        --  isLeaf
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      13     => (M_Boolean, False),
                        --  isLocallyReentrant
                      14     => (M_Boolean, False),
                        --  mustIsolate
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  decider
                      16     => (M_Boolean, False),
                        --  isTestedFirst
@@ -15790,25 +15790,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Manifestations.UML_Manifestation_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mapping
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  utilizedElement
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -15891,13 +15891,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Merge_Nodes.UML_Merge_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -15905,9 +15905,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16011,31 +16011,31 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Messages.UML_Message_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  connector
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interaction
                      9      => (M_Message_Kind, AMF.UML.Unknown),
                        --  messageKind
                      10     => (M_Message_Sort, AMF.UML.Synch_Call),
                        --  messageSort
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  receiveEvent
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  sendEvent
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16090,23 +16090,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Message_Occurrence_Specifications.UML_Message_Occurrence_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  message
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16182,27 +16182,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Models.UML_Model_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      10     => (M_String, null),
                        --  URI
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nestingPackage
                      12     => (M_String, null),
                        --  viewpoint
@@ -16343,25 +16343,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Nodes.UML_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -16369,9 +16369,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
@@ -16659,13 +16659,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Object_Flows.UML_Object_Flow_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -16673,27 +16673,27 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  guard
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interrupts
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  source
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  weight
                      15     => (M_Boolean, False),
                        --  isMulticast
                      16     => (M_Boolean, False),
                        --  isMultireceive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  transformation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16776,21 +16776,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Occurrence_Specifications.UML_Occurrence_Specification_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -16866,13 +16866,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Opaque_Actions.UML_Opaque_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -16880,11 +16880,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -17043,25 +17043,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Opaque_Behaviors.UML_Opaque_Behavior_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -17069,17 +17069,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      18     => (M_Boolean, True),
                        --  isReentrant
-                     19     => (M_Element, UML_Element'First),
+                     19     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      20     => (M_Collection_Of_String, 0),
                        --  body
@@ -17383,31 +17383,31 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Opaque_Expressions.UML_Opaque_Expression_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  behavior
                      11     => (M_Collection_Of_String, 0),
                        --  body
                      12     => (M_Collection_Of_String, 0),
                        --  language
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17455,13 +17455,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Operations.UML_Operation_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -17475,19 +17475,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  concurrency
                      10     => (M_Boolean, False),
                        --  isAbstract
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  bodyCondition
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  class
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  datatype
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interface
                      18     => (M_Boolean, False),
                        --  isOrdered
@@ -17497,7 +17497,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      21     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      23     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
@@ -17667,17 +17667,17 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Operation_Template_Parameters.UML_Operation_Template_Parameter_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  default
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedDefault
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedParameteredElement
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  parameteredElement
-                     6      => (M_Element, UML_Element'First),
+                     6      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -17718,13 +17718,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Output_Pins.UML_Output_Pin_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -17732,19 +17732,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -17752,12 +17752,12 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      17     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      19     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      21     => (M_Boolean, False),
                        --  isControl
@@ -17870,27 +17870,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Packages.UML_Package_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      10     => (M_String, null),
                        --  URI
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nestingPackage
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18029,11 +18029,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Package_Imports.UML_Package_Import_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  importedPackage
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  importingNamespace
                      4      => (M_Visibility_Kind, AMF.UML.Public_Visibility),
                        --  visibility
@@ -18097,11 +18097,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Package_Merges.UML_Package_Merge_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mergedPackage
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  receivingPackage
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18163,7 +18163,7 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Parameters.UML_Parameter_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_Boolean, False),
                        --  isOrdered
@@ -18171,32 +18171,32 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      4      => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      6      =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      8      => (M_String, null),
                        --  name
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      11     => (M_String, null),
                        --  qualifiedName
                      12     => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      16     => (M_String, null),
                        --  default
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  defaultValue
                      18     => (M_Parameter_Direction_Kind, AMF.UML.In_Parameter),
                        --  direction
@@ -18206,7 +18206,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isException
                      21     => (M_Boolean, False),
                        --  isStream
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  operation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18268,13 +18268,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Parameter_Sets.UML_Parameter_Set_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -18340,27 +18340,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Part_Decompositions.UML_Part_Decomposition_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  refersTo
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  returnValue
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  returnValueRecipient
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18436,23 +18436,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Ports.UML_Port_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Boolean, False),
                        --  isOrdered
@@ -18460,12 +18460,12 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      12     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      14     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      16     => (M_Boolean, False),
                        --  isLeaf
@@ -18475,19 +18475,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isReadOnly
                      19     => (M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  association
-                     21     => (M_Element, UML_Element'First),
+                     21     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  associationEnd
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  class
-                     23     => (M_Element, UML_Element'First),
+                     23     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  datatype
                      24     => (M_String, null),
                        --  default
-                     25     => (M_Element, UML_Element'First),
+                     25     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  defaultValue
-                     26     => (M_Element, UML_Element'First),
+                     26     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interface
                      27     => (M_Boolean, False),
                        --  isComposite
@@ -18497,9 +18497,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isDerivedUnion
                      30     => (M_Boolean, False),
                        --  isID
-                     31     => (M_Element, UML_Element'First),
+                     31     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  opposite
-                     32     => (M_Element, UML_Element'First),
+                     32     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningAssociation
                      33     => (M_Boolean, False),
                        --  isBehavior
@@ -18507,7 +18507,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isConjugated
                      35     => (M_Boolean, True),
                        --  isService
-                     36     => (M_Element, UML_Element'First),
+                     36     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  protocol
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18639,25 +18639,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Primitive_Types.UML_Primitive_Type_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -18665,7 +18665,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -18867,27 +18867,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Profiles.UML_Profile_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      10     => (M_String, null),
                        --  URI
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nestingPackage
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19040,11 +19040,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Profile_Applications.UML_Profile_Application_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  appliedProfile
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  applyingPackage
                      4      => (M_Boolean, False),
                        --  isStrict
@@ -19108,23 +19108,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Properties.UML_Property_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Boolean, False),
                        --  isOrdered
@@ -19132,12 +19132,12 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      12     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      14     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      16     => (M_Boolean, False),
                        --  isLeaf
@@ -19147,19 +19147,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isReadOnly
                      19     => (M_Aggregation_Kind, AMF.UML.None),
                        --  aggregation
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  association
-                     21     => (M_Element, UML_Element'First),
+                     21     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  associationEnd
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  class
-                     23     => (M_Element, UML_Element'First),
+                     23     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  datatype
                      24     => (M_String, null),
                        --  default
-                     25     => (M_Element, UML_Element'First),
+                     25     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  defaultValue
-                     26     => (M_Element, UML_Element'First),
+                     26     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  interface
                      27     => (M_Boolean, False),
                        --  isComposite
@@ -19169,9 +19169,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isDerivedUnion
                      30     => (M_Boolean, False),
                        --  isID
-                     31     => (M_Element, UML_Element'First),
+                     31     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  opposite
-                     32     => (M_Element, UML_Element'First),
+                     32     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningAssociation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19282,11 +19282,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Protocol_Conformances.UML_Protocol_Conformance_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  generalMachine
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specificMachine
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19348,25 +19348,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Protocol_State_Machines.UML_Protocol_State_Machine_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -19374,17 +19374,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      18     => (M_Boolean, True),
                        --  isReentrant
-                     19     => (M_Element, UML_Element'First),
+                     19     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19712,13 +19712,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Protocol_Transitions.UML_Protocol_Transition_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -19726,23 +19726,23 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  container
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  effect
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  guard
                      11     => (M_Transition_Kind, AMF.UML.External),
                        --  kind
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  redefinedTransition
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  source
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  postCondition
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  preCondition
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19860,25 +19860,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Pseudostates.UML_Pseudostate_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  container
                      8      => (M_Pseudostate_Kind, AMF.UML.Initial_Pseudostate),
                        --  kind
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  state
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  stateMachine
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19940,11 +19940,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Qualifier_Values.UML_Qualifier_Value_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  qualifier
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -19985,13 +19985,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Raise_Exception_Actions.UML_Raise_Exception_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -19999,15 +19999,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  exception
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20146,13 +20146,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Extent_Actions.UML_Read_Extent_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -20160,17 +20160,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifier
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20309,13 +20309,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Is_Classified_Object_Actions.UML_Read_Is_Classified_Object_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -20323,21 +20323,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifier
                      13     => (M_Boolean, False),
                        --  isDirect
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20476,13 +20476,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Link_Actions.UML_Read_Link_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -20490,15 +20490,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20651,13 +20651,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Link_Object_End_Actions.UML_Read_Link_Object_End_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -20665,19 +20665,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  end
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20816,13 +20816,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Link_Object_End_Qualifier_Actions.UML_Read_Link_Object_End_Qualifier_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -20830,19 +20830,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  qualifier
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -20981,13 +20981,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Self_Actions.UML_Read_Self_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -20995,15 +20995,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21142,13 +21142,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Structural_Feature_Actions.UML_Read_Structural_Feature_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -21156,19 +21156,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  structuralFeature
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21307,13 +21307,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Read_Variable_Actions.UML_Read_Variable_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -21321,17 +21321,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  variable
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21470,23 +21470,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Realizations.UML_Realization_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mapping
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21569,13 +21569,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Receptions.UML_Reception_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -21589,7 +21589,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  concurrency
                      10     => (M_Boolean, False),
                        --  isAbstract
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signal
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21728,13 +21728,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Reclassify_Object_Actions.UML_Reclassify_Object_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -21742,17 +21742,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
                      12     => (M_Boolean, False),
                        --  isReplaceAll
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -21905,13 +21905,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -21919,7 +21919,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  template
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22009,13 +22009,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Reduce_Actions.UML_Reduce_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -22023,21 +22023,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  collection
                      13     => (M_Boolean, False),
                        --  isOrdered
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  reducer
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22176,13 +22176,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Regions.UML_Region_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -22190,11 +22190,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  extendedRegion
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  state
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  stateMachine
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22312,13 +22312,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Remove_Structural_Feature_Value_Actions.UML_Remove_Structural_Feature_Value_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -22326,25 +22326,25 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  structuralFeature
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
                      16     => (M_Boolean, False),
                        --  isRemoveDuplicates
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  removeAt
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22483,13 +22483,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Remove_Variable_Value_Actions.UML_Remove_Variable_Value_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -22497,21 +22497,21 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  variable
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
                      14     => (M_Boolean, False),
                        --  isRemoveDuplicates
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  removeAt
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22650,13 +22650,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Reply_Actions.UML_Reply_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -22664,17 +22664,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  replyToCall
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  returnInformation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22820,13 +22820,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Send_Object_Actions.UML_Send_Object_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -22834,17 +22834,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  onPort
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -22990,13 +22990,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Send_Signal_Actions.UML_Send_Signal_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -23004,19 +23004,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  onPort
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signal
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23162,29 +23162,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Sequence_Nodes.UML_Sequence_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      9      => (M_Boolean, False),
                        --  isLeaf
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      13     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -23425,25 +23425,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Signals.UML_Signal_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -23451,7 +23451,7 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23646,23 +23646,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Signal_Events.UML_Signal_Event_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signal
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23710,11 +23710,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Slots.UML_Slot_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  definingFeature
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningInstance
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23762,13 +23762,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Start_Classifier_Behavior_Actions.UML_Start_Classifier_Behavior_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -23776,15 +23776,15 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -23923,13 +23923,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Start_Object_Behavior_Actions.UML_Start_Object_Behavior_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -23937,19 +23937,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  onPort
                      13     => (M_Boolean, True),
                        --  isSynchronous
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24102,13 +24102,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_States.UML_State_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -24116,13 +24116,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  container
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  doActivity
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  entry
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  exit
                      12     => (M_Boolean, False),
                        --  isComposite
@@ -24132,11 +24132,11 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isSimple
                      15     => (M_Boolean, False),
                        --  isSubmachineState
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  redefinedState
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  stateInvariant
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  submachine
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24282,23 +24282,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_State_Invariants.UML_State_Invariant_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingInteraction
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  enclosingOperand
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  invariant
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24360,25 +24360,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_State_Machines.UML_State_Machine_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -24386,17 +24386,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      18     => (M_Boolean, True),
                        --  isReentrant
-                     19     => (M_Element, UML_Element'First),
+                     19     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -24717,25 +24717,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Stereotypes.UML_Stereotype_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -24743,13 +24743,13 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      16     => (M_Boolean, False),
                        --  isActive
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  profile
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25021,29 +25021,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_String_Expressions.UML_String_Expression_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_String, null),
                        --  symbol
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningExpression
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25112,29 +25112,29 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Structured_Activity_Nodes.UML_Structured_Activity_Node_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inActivity
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  superGroup
                      9      => (M_Boolean, False),
                        --  isLeaf
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      13     => (M_Boolean, False),
                        --  isLocallyReentrant
@@ -25375,27 +25375,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Substitutions.UML_Substitution_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  mapping
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  contract
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  substitutingClassifier
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25478,11 +25478,11 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Template_Bindings.UML_Template_Binding_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  boundElement
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25551,17 +25551,17 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Template_Parameters.UML_Template_Parameter_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  default
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedDefault
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedParameteredElement
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  parameteredElement
-                     6      => (M_Element, UML_Element'First),
+                     6      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  signature
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25602,15 +25602,15 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Template_Parameter_Substitutions.UML_Template_Parameter_Substitution_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  actual
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  formal
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedActual
-                     5      => (M_Element, UML_Element'First),
+                     5      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateBinding
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25651,9 +25651,9 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Template_Signatures.UML_Template_Signature_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, UML_Element'First),
+                     2      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  template
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25708,13 +25708,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Test_Identity_Actions.UML_Test_Identity_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -25722,19 +25722,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  first
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  second
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -25873,25 +25873,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Time_Constraints.UML_Time_Constraint_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  specification
                      11     => (M_Boolean_Holder, (Is_Empty => True)),
                        --  firstEvent
@@ -25948,25 +25948,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Time_Events.UML_Time_Event_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      9      => (M_Boolean, False),
                        --  isRelative
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  when
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26014,25 +26014,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Time_Expressions.UML_Time_Expression_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  expr
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26087,27 +26087,27 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Time_Intervals.UML_Time_Interval_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  max
-                     11     => (M_Element, UML_Element'First),
+                     11     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  min
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26155,23 +26155,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Time_Observations.UML_Time_Observation_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  event
                      10     => (M_Boolean, False),
                        --  firstEvent
@@ -26221,13 +26221,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Transitions.UML_Transition_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -26235,19 +26235,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  container
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  effect
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  guard
                      11     => (M_Transition_Kind, AMF.UML.External),
                        --  kind
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  redefinedTransition
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  source
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  target
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26358,19 +26358,19 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Triggers.UML_Trigger_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  event
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26425,13 +26425,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Unmarshall_Actions.UML_Unmarshall_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -26439,17 +26439,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  object
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  unmarshallType
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26595,21 +26595,21 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Usages.UML_Usage_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26692,25 +26692,25 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Use_Cases.UML_Use_Case_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  package
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  ownedTemplateSignature
                      11     => (M_Boolean, False),
                        --  isLeaf
@@ -26718,9 +26718,9 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isAbstract
                      13     => (M_Boolean, False),
                        --  isFinalSpecialization
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  representation
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  classifierBehavior
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -26950,13 +26950,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Value_Pins.UML_Value_Pin_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -26964,19 +26964,19 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
                      11     => (M_Boolean, False),
                        --  isControlType
                      12     => (M_Object_Node_Ordering_Kind, AMF.UML.FIFO),
                        --  ordering
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  selection
-                     14     => (M_Element, UML_Element'First),
+                     14     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperBound
                      15     => (M_Boolean, False),
                        --  isOrdered
@@ -26984,16 +26984,16 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      17     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     18     => (M_Element, UML_Element'First),
+                     18     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      19     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     20     => (M_Element, UML_Element'First),
+                     20     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
                      21     => (M_Boolean, False),
                        --  isControl
-                     22     => (M_Element, UML_Element'First),
+                     22     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27104,13 +27104,13 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Value_Specification_Actions.UML_Value_Specification_Action_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -27118,17 +27118,17 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  visibility
                      7      => (M_Boolean, False),
                        --  isLeaf
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activity
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  inStructuredNode
-                     10     => (M_Element, UML_Element'First),
+                     10     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  context
                      11     => (M_Boolean, False),
                        --  isLocallyReentrant
-                     12     => (M_Element, UML_Element'First),
+                     12     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  result
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  value
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=
@@ -27267,23 +27267,23 @@ package body AMF.Internals.Tables.UML_Constructors is
         Proxy    =>
           new AMF.Internals.UML_Variables.UML_Variable_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, UML_Element'First),
+                     1      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
-                     3      => (M_Element, UML_Element'First),
+                     3      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  nameExpression
-                     4      => (M_Element, UML_Element'First),
+                     4      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
                      6      => (M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
-                     7      => (M_Element, UML_Element'First),
+                     7      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  type
-                     8      => (M_Element, UML_Element'First),
+                     8      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  owningTemplateParameter
-                     9      => (M_Element, UML_Element'First),
+                     9      => (M_Element, UML_Element'First, AMF_Link'First),
                        --  templateParameter
                      10     => (M_Boolean, False),
                        --  isOrdered
@@ -27291,16 +27291,16 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  isUnique
                      12     => (M_Integer_Holder, (False, 1)),
                        --  lower
-                     13     => (M_Element, UML_Element'First),
+                     13     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  lowerValue
                      14     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     15     => (M_Element, UML_Element'First),
+                     15     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  upperValue
-                     16     => (M_Element, UML_Element'First),
+                     16     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  activityScope
-                     17     => (M_Element, UML_Element'First),
+                     17     => (M_Element, UML_Element'First, AMF_Link'First),
                        --  scope
                      others => (Kind => M_None)));
       UML_Element_Table.Table (Self).Member (0) :=

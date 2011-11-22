@@ -100,6 +100,8 @@ package AMF.Internals.Tables.CMOF_Types is
 
          when M_Element =>
             Element : CMOF_Element;
+            --  XXX This memeber is for transition only.
+            Link    : AMF.Internals.AMF_Link;
 
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;

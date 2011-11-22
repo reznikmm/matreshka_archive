@@ -92,17 +92,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Associations.CMOF_Association_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  package
                      7      => (M_Boolean, False),
                        --  isFinalSpecialization
@@ -252,17 +252,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Classes.CMOF_Class_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  package
                      7      => (M_Boolean, False),
                        --  isFinalSpecialization
@@ -391,7 +391,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Comments.CMOF_Comment_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  body
@@ -441,19 +441,19 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Constraints.CMOF_Constraint_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  specification
-                     7      => (M_Element, CMOF_Element'First),
+                     7      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  context
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -501,17 +501,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Data_Types.CMOF_Data_Type_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  package
                      7      => (M_Boolean, False),
                        --  isFinalSpecialization
@@ -638,15 +638,15 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Element_Imports.CMOF_Element_Import_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_Visibility_Kind, AMF.CMOF.Public_Visibility),
                        --  visibility
                      3      => (M_String, null),
                        --  alias
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  importedElement
-                     5      => (M_Element, CMOF_Element'First),
+                     5      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  importingNamespace
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -708,17 +708,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Enumerations.CMOF_Enumeration_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  package
                      7      => (M_Boolean, False),
                        --  isFinalSpecialization
@@ -852,17 +852,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Enumeration_Literals.CMOF_Enumeration_Literal_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  enumeration
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -903,17 +903,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Expressions.CMOF_Expression_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  type
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -961,17 +961,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Opaque_Expressions.CMOF_Opaque_Expression_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  type
                      7      => (M_Collection_Of_String, 0),
                        --  body
@@ -1016,13 +1016,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Operations.CMOF_Operation_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -1039,13 +1039,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                      11     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     12     => (M_Element, CMOF_Element'First),
+                     12     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  class
-                     13     => (M_Element, CMOF_Element'First),
+                     13     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  datatype
-                     14     => (M_Element, CMOF_Element'First),
+                     14     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  type
-                     15     => (M_Element, CMOF_Element'First),
+                     15     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  bodyCondition
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1184,17 +1184,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Packages.CMOF_Package_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  nestingPackage
                      7      => (M_String, null),
                        --  uri
@@ -1307,13 +1307,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Package_Imports.CMOF_Package_Import_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_Visibility_Kind, AMF.CMOF.Public_Visibility),
                        --  visibility
-                     3      => (M_Element, CMOF_Element'First),
+                     3      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  importedPackage
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  importingNamespace
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1375,11 +1375,11 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Package_Merges.CMOF_Package_Merge_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
-                     2      => (M_Element, CMOF_Element'First),
+                     2      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  receivingPackage
-                     3      => (M_Element, CMOF_Element'First),
+                     3      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  mergedPackage
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1441,17 +1441,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Parameters.CMOF_Parameter_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  type
                      7      => (M_Boolean, False),
                        --  isOrdered
@@ -1466,7 +1466,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  default
                      12     => (M_Parameter_Direction_Kind, AMF.CMOF.In_Parameter),
                        --  direction
-                     13     => (M_Element, CMOF_Element'First),
+                     13     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  operation
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1507,17 +1507,17 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Primitive_Types.CMOF_Primitive_Type_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
-                     6      => (M_Element, CMOF_Element'First),
+                     6      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  package
                      7      => (M_Boolean, False),
                        --  isFinalSpecialization
@@ -1644,13 +1644,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Properties.CMOF_Property_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, null),
                        --  name
                      3      => (M_Visibility_Holder_Kind, (Is_Empty => True)),
                        --  visibility
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  namespace
                      5      => (M_String, null),
                        --  qualifiedName
@@ -1665,7 +1665,7 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                      10     =>
                       (M_Unlimited_Natural_Holder, (False, (False, 1))),
                        --  upper
-                     11     => (M_Element, CMOF_Element'First),
+                     11     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  type
                      12     => (M_Boolean, False),
                        --  isReadOnly
@@ -1677,15 +1677,15 @@ package body AMF.Internals.Tables.CMOF_Constructors is
                        --  isDerived
                      16     => (M_Boolean, False),
                        --  isDerivedUnion
-                     17     => (M_Element, CMOF_Element'First),
+                     17     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  class
-                     18     => (M_Element, CMOF_Element'First),
+                     18     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owningAssociation
-                     19     => (M_Element, CMOF_Element'First),
+                     19     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  opposite
-                     20     => (M_Element, CMOF_Element'First),
+                     20     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  datatype
-                     21     => (M_Element, CMOF_Element'First),
+                     21     => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  association
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
@@ -1761,13 +1761,13 @@ package body AMF.Internals.Tables.CMOF_Constructors is
         Proxy    =>
           new AMF.Internals.CMOF_Tags.CMOF_Tag_Proxy'(Id => Self),
         Member   => (0      => (Kind => M_None),
-                     1      => (M_Element, CMOF_Element'First),
+                     1      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  owner
                      2      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  name
                      3      => (M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  value
-                     4      => (M_Element, CMOF_Element'First),
+                     4      => (M_Element, CMOF_Element'First, AMF_Link'First),
                        --  tagOwner
                      others => (Kind => M_None)));
       CMOF_Element_Table.Table (Self).Member (0) :=
