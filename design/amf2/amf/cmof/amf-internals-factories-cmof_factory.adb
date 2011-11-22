@@ -148,6 +148,10 @@ package body AMF.Internals.Factories.CMOF_Factory is
              (Member_Offset
                (CMOF_Element_Table.Table (Element).Kind,
                 Property)).Element := Other;
+            CMOF_Element_Table.Table (Element).Member
+             (Member_Offset
+               (CMOF_Element_Table.Table (Element).Kind,
+                Property)).Link := Link;
 
          else
             AMF.Internals.Element_Collections.Internal_Append

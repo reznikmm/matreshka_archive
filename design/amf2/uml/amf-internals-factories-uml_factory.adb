@@ -284,6 +284,9 @@ package body AMF.Internals.Factories.UML_Factory is
          UML_Element_Table.Table (Element).Member
           (Member_Offset
             (UML_Element_Table.Table (Element).Kind, PO)).Element := Other;
+         UML_Element_Table.Table (Element).Member
+          (Member_Offset
+            (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
 
       else
          AMF.Internals.Element_Collections.Internal_Append
