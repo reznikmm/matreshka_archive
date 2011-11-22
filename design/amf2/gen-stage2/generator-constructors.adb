@@ -167,7 +167,7 @@ package body Generator.Constructors is
                         Put
                          (" (M_Element, "
                             & Metamodel_Name
-                            & "_Element'First),");
+                            & "_Element'First, AMF_Link'First),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
@@ -186,7 +186,7 @@ package body Generator.Constructors is
                         Put
                          (" (M_Element, "
                             & Metamodel_Name
-                            & "_Element'First),");
+                            & "_Element'First, AMF_Link'First),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
