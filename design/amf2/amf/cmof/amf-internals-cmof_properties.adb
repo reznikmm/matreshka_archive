@@ -44,6 +44,7 @@
 with Matreshka.Internals.Strings;
 with League.Strings.Internals;
 
+with AMF.Elements;
 with AMF.Internals.Tables.CMOF_Attributes;
 with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
@@ -210,6 +211,20 @@ package body AMF.Internals.CMOF_Properties is
          (AMF.Internals.Element_Collections.Wrap
            (Internal_Get_Subsetted_Property (Self.Id)));
    end Get_Subsetted_Property;
+
+   ---------------------
+   -- Set_Association --
+   ---------------------
+
+   overriding procedure Set_Association
+    (Self : not null access CMOF_Property_Proxy;
+     To   : AMF.CMOF.Associations.CMOF_Association_Access) is
+   begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Association
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
+   end Set_Association;
 
    -----------------
    -- Set_Default --
@@ -518,20 +533,6 @@ package body AMF.Internals.CMOF_Properties is
       pragma Compile_Time_Warning (Standard.True, "Set_Datatype unimplemented");
       raise Program_Error;
    end Set_Datatype;
-
-   ---------------------
-   -- Set_Association --
-   ---------------------
-
-   overriding procedure Set_Association
-     (Self : not null access CMOF_Property_Proxy;
-      To   : AMF.CMOF.Associations.CMOF_Association_Access)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Association unimplemented");
-      raise Program_Error;
-   end Set_Association;
 
    --------------
    -- Opposite --
