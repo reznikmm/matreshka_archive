@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Strings.Wide_Wide_Fixed;
+
 with League.Strings.Internals;
 
 with AMF.Internals.AMF_URI_Extents;
@@ -479,15 +481,28 @@ package body AMF.Internals.Extents is
 
       Current : constant Tables.AMF_Tables.Extent_Element_Identifier
         := Lookup (Extent, Element);
+      Id      : League.Strings.Universal_String;
 
    begin
       if Current /= 0 then
+         Id :=
+           League.Strings.Internals.Create
+            (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+
+         if Id.Is_Empty then
+            Id :=
+              League.Strings.To_Universal_String
+               (Ada.Strings.Wide_Wide_Fixed.Trim
+                 (AMF_Element'Wide_Wide_Image
+                   (Tables.AMF_Tables.Extent_Elements.Table (Current).Element),
+                  Ada.Strings.Both));
+         end if;
+
          return
            League.Strings.Internals.Create
             (Tables.AMF_Tables.Extents.Table (Extent).Context_URI)
              & '#'
-             & League.Strings.Internals.Create
-                (Tables.AMF_Tables.Extent_Elements.Table (Current).Id);
+             & Id;
 
       else
          return League.Strings.Empty_Universal_String;
