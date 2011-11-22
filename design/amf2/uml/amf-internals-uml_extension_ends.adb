@@ -1167,12 +1167,33 @@ package body AMF.Internals.UML_Extension_Ends is
 
    overriding function Lower_Bound
     (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.Optional_Integer is
+       return AMF.Optional_Integer
+   is
+      --  18.3.3 ExtensionEnd (from Profiles)
+      --
+      --  The query lowerBound() returns the lower bound of the multiplicity as
+      --  an Integer. This is a redefinition of the default lower bound, which,
+      --  if empty, normally evaluates to 1 for MulticplicityElements.
+      --
+      --  ExtensionEnd::lowerBound() : Set(Integer);
+      --
+      --  lowerBound =
+      --    if lowerValue->isEmpty() then 0
+      --      else lowerValue->IntegerValue() endif
+
+      use type AMF.UML.Value_Specifications.UML_Value_Specification_Access;
+
+      Lower_Value : constant
+        AMF.UML.Value_Specifications.UML_Value_Specification_Access
+          := UML_Extension_End_Proxy'Class (Self.all).Get_Lower_Value;
+
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Lower_Bound unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Extension_End_Proxy.Lower_Bound";
-      return Lower_Bound (Self);
+      if Lower_Value = null then
+         return (False, 0);
+
+      else
+         return Lower_Value.Integer_Value;
+      end if;
    end Lower_Bound;
 
    -------------
@@ -1548,20 +1569,6 @@ package body AMF.Internals.UML_Extension_Ends is
       raise Program_Error with "Unimplemented procedure UML_Extension_End_Proxy.Upper";
       return Upper (Self);
    end Upper;
-
-   -----------------
-   -- Upper_Bound --
-   -----------------
-
-   overriding function Upper_Bound
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.Optional_Unlimited_Natural is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Upper_Bound unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Extension_End_Proxy.Upper_Bound";
-      return Upper_Bound (Self);
-   end Upper_Bound;
 
    -----------------------------------
    -- Is_Redefinition_Context_Valid --

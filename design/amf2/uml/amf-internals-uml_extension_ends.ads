@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Properties;
 with AMF.UML.Associations;
 with AMF.UML.Classes;
 with AMF.UML.Classifiers.Collections;
@@ -73,7 +73,7 @@ with AMF.UML.Value_Specifications;
 package AMF.Internals.UML_Extension_Ends is
 
    type UML_Extension_End_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Properties.UML_Property_Proxy
        and AMF.UML.Extension_Ends.UML_Extension_End with null record;
 
    overriding function Get_Lower
@@ -931,14 +931,6 @@ package AMF.Internals.UML_Extension_Ends is
    --  Operation MultiplicityElement::upper.
    --
    --  The derived upper attribute must equal the upperBound.
-
-   overriding function Upper_Bound
-    (Self : not null access constant UML_Extension_End_Proxy)
-       return AMF.Optional_Unlimited_Natural;
-   --  Operation MultiplicityElement::upperBound.
-   --
-   --  The query upperBound() returns the upper bound of the multiplicity for 
-   --  a bounded multiplicity as an unlimited natural.
 
    overriding function Is_Redefinition_Context_Valid
     (Self : not null access constant UML_Extension_End_Proxy;

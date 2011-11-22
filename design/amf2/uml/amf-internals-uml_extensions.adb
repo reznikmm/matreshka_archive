@@ -86,10 +86,19 @@ package body AMF.Internals.UML_Extensions is
 
    overriding function Get_Owned_End
     (Self : not null access constant UML_Extension_Proxy)
-       return AMF.UML.Extension_Ends.UML_Extension_End_Access is
+       return AMF.UML.Extension_Ends.UML_Extension_End_Access
+   is
+      Aux : constant AMF.UML.Properties.Collections.Ordered_Set_Of_UML_Property
+        := Self.Get_Owned_End;
+
    begin
-      raise Program_Error;
-      return Get_Owned_End (Self);
+      if Aux.Is_Empty then
+         return null;
+
+      else
+         return
+           AMF.UML.Extension_Ends.UML_Extension_End_Access (Aux.Element (1));
+      end if;
    end Get_Owned_End;
 
    -------------------
