@@ -715,8 +715,6 @@ package body Generator.Attributes is
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String
           & "_Notification;");
-      Put_Line ("with League.Strings.Internals;");
-      Put_Line ("with Matreshka.Internals.Strings;");
       New_Line;
       Put_Line
        ("package body AMF.Internals.Tables."
