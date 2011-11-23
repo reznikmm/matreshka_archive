@@ -247,7 +247,10 @@ package body AMF.Internals.Factories.UML_Factory is
    overriding procedure Connect_Extent
     (Self    : not null access constant UML_Factory;
      Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent) is
+     Extent  : AMF.Internals.AMF_Extent)
+   is
+      pragma Unreferenced (Self);
+
    begin
       AMF.Internals.Tables.UML_Element_Table.Table (Element).Extent := Extent;
    end Connect_Extent;
