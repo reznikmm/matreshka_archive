@@ -286,9 +286,6 @@ package body AMF.Internals.Factories.UML_Factory is
       then
          UML_Element_Table.Table (Element).Member
           (Member_Offset
-            (UML_Element_Table.Table (Element).Kind, PO)).Element := Other;
-         UML_Element_Table.Table (Element).Member
-          (Member_Offset
             (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
 
       else
