@@ -48,8 +48,6 @@ with AMF.Internals.Tables.UML_Types;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
 with AMF.Internals.Tables.UML_Notification;
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
 
 package body AMF.Internals.Tables.UML_Attributes is
 

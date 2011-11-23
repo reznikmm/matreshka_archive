@@ -48,8 +48,6 @@ with AMF.Internals.Tables.CMOF_Types;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Notification;
-with League.Strings.Internals;
-with Matreshka.Internals.Strings;
 
 package body AMF.Internals.Tables.CMOF_Attributes is
 
