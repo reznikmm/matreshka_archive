@@ -289,6 +289,10 @@ package body AMF.Internals.XMI_Handlers is
 
          Set_Attribute (Attribute, Attributes.Value (Idref_Index));
 
+         Self.Current := null;
+
+         return;
+
       else
          --  Create new element.
 
