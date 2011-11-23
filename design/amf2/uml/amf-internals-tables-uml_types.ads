@@ -281,8 +281,7 @@ package AMF.Internals.Tables.UML_Types is
             null;
 
          when M_Element =>
-            Element : AMF.Internals.AMF_Element;
-            Link    : AMF.Internals.AMF_Link;
+            Link : AMF.Internals.AMF_Link;
 
          when M_Collection_Of_Element =>
             Collection : AMF.Internals.AMF_Collection_Of_Element;

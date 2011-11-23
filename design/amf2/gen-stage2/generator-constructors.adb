@@ -164,10 +164,7 @@ package body Generator.Constructors is
                case Representation (Attribute) is
                   when Value =>
                      if Default.Is_Empty then
-                        Put
-                         (" (M_Element, "
-                            & Metamodel_Name
-                            & "_Element'First, AMF_Link'First),");
+                        Put (" (M_Element, No_AMF_Link),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
@@ -183,10 +180,7 @@ package body Generator.Constructors is
 
                   when Holder =>
                      if Default.Is_Empty then
-                        Put
-                         (" (M_Element, "
-                            & Metamodel_Name
-                            & "_Element'First, AMF_Link'First),");
+                        Put (" (M_Element, No_AMF_Link),");
 
                      else
 --                        if Boolean'Wide_Wide_Value
