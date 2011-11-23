@@ -205,7 +205,7 @@ package body AMF.Internals.Links is
      Element    : AMF_Element;
      No_Element : AMF_Element) return AMF_Element is
    begin
-      if Self = No_Link then
+      if Self = No_AMF_Link then
          return No_Element;
 
       elsif AMF_Link_Table.Table (Self).First_Element = Element then

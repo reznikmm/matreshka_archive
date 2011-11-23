@@ -76,7 +76,7 @@ package AMF.Internals is
 
    type AMF_Link is range 0 .. 2 ** 31 - 1;
    for AMF_Link'Size use 32;
-   No_Link : constant AMF_Link := AMF_Link'First;
+   No_AMF_Link : constant AMF_Link := AMF_Link'First;
 
    type AMF_Collection_Of_Element is range 0 .. 2 ** 31 - 1;
    for AMF_Collection_Of_Element'Size use 32;
