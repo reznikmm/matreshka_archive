@@ -104,7 +104,10 @@ package body AMF.Internals.Factories.CMOF_Factory is
    overriding procedure Connect_Extent
     (Self    : not null access constant CMOF_Factory;
      Element : AMF.Internals.AMF_Element;
-     Extent  : AMF.Internals.AMF_Extent) is
+     Extent  : AMF.Internals.AMF_Extent)
+   is
+      pragma Unreferenced (Self);
+
    begin
       AMF.Internals.Tables.CMOF_Element_Table.Table (Element).Extent := Extent;
    end Connect_Extent;
