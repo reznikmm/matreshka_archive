@@ -47,7 +47,6 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Operations;
 with AMF.CMOF.Parameters;
-with AMF.CMOF.Types;
 with AMF.Internals.CMOF_Named_Elements;
 with AMF.Internals.CMOF_Multiplicity_Elements;
 pragma Elaborate (AMF.Internals.CMOF_Multiplicity_Elements);
@@ -110,10 +109,6 @@ package AMF.Internals.CMOF_Parameters is
    overriding function Qualified_Name
     (Self : not null access constant CMOF_Parameter_Proxy)
        return League.Strings.Universal_String;
-
-   overriding procedure Set_Type
-    (Self : not null access CMOF_Parameter_Proxy;
-     To   : AMF.CMOF.Types.CMOF_Type_Access);
 
    overriding function Get_Default
     (Self : not null access constant CMOF_Parameter_Proxy)

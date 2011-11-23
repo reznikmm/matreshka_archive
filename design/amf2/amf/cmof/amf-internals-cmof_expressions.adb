@@ -226,20 +226,6 @@ package body AMF.Internals.CMOF_Expressions is
       return Is_Null (Self);
    end Is_Null;
 
-   --------------
-   -- Set_Type --
-   --------------
-
-   overriding procedure Set_Type
-     (Self : not null access CMOF_Expression_Proxy;
-      To   : AMF.CMOF.Types.CMOF_Type_Access)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Type unimplemented");
-      raise Program_Error;
-   end Set_Type;
-
    -----------------
    -- Get_Operand --
    -----------------

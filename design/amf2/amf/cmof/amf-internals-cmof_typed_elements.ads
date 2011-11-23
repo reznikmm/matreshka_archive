@@ -63,5 +63,12 @@ package AMF.Internals.CMOF_Typed_Elements is
    --
    --  This information is derived from the return result for this Operation.
 
+   overriding procedure Set_Type
+    (Self : not null access CMOF_Typed_Element_Proxy;
+     To   : AMF.CMOF.Types.CMOF_Type_Access);
+   --  Setter of TypedElement::type.
+   --
+   --  This information is derived from the return result for this Operation.
+
 
 end AMF.Internals.CMOF_Typed_Elements;

@@ -41,7 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with AMF.Elements;
 with AMF.Internals.Helpers;
+with AMF.Internals.Links;
+with AMF.Internals.Tables.CMOF_Metamodel;
 with AMF.Internals.Tables.CMOF_Attributes;
 
 package body AMF.Internals.CMOF_Typed_Elements is
@@ -60,5 +63,19 @@ package body AMF.Internals.CMOF_Typed_Elements is
         AMF.CMOF.Types.CMOF_Type_Access
          (AMF.Internals.Helpers.To_Element (Internal_Get_Type (Self.Id)));
    end Get_Type;
+
+   --------------
+   -- Set_Type --
+   --------------
+
+   overriding procedure Set_Type
+    (Self : not null access CMOF_Typed_Element_Proxy;
+     To   : AMF.CMOF.Types.CMOF_Type_Access) is
+   begin
+      AMF.Internals.Links.Create_Link
+       (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
+        Self.Id,
+        AMF.Internals.Helpers.To_Element (AMF.Elements.Element_Access (To)));
+   end Set_Type;
 
 end AMF.Internals.CMOF_Typed_Elements;

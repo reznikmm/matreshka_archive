@@ -45,7 +45,6 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Expressions;
 with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
-with AMF.CMOF.Types;
 with AMF.CMOF.Value_Specifications.Collections;
 with AMF.Internals.CMOF_Value_Specifications;
 
@@ -107,10 +106,6 @@ package AMF.Internals.CMOF_Expressions is
    overriding function Is_Null
     (Self : not null access constant CMOF_Expression_Proxy)
        return Boolean;
-
-   overriding procedure Set_Type
-    (Self : not null access CMOF_Expression_Proxy;
-     To   : AMF.CMOF.Types.CMOF_Type_Access);
 
    overriding function Get_Operand
     (Self : not null access constant CMOF_Expression_Proxy)

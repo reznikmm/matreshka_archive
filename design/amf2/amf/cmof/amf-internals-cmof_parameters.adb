@@ -248,20 +248,6 @@ package body AMF.Internals.CMOF_Parameters is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   --------------
-   -- Set_Type --
-   --------------
-
-   overriding procedure Set_Type
-     (Self : not null access CMOF_Parameter_Proxy;
-      To   : AMF.CMOF.Types.CMOF_Type_Access)
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Type unimplemented");
-      raise Program_Error;
-   end Set_Type;
-
    -----------------
    -- Set_Default --
    -----------------
