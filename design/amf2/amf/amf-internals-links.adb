@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Associations;
 with AMF.Internals.AMF_Links;
+with AMF.Internals.Element_Collections;
 with AMF.Internals.Helpers;
 with AMF.Internals.Listener_Registry;
 with AMF.Internals.Tables.AMF_Link_Table;
@@ -52,6 +53,28 @@ with AMF.Internals.Tables.CMOF_Attributes;
 package body AMF.Internals.Links is
 
    use AMF.Internals.Tables;
+
+   -----------------
+   -- Create_Link --
+   -----------------
+
+   procedure Create_Link
+    (Association    : CMOF_Element;
+     First_Element  : AMF_Element;
+     Second_Element : AMF_Element)
+   is
+      Member_End : constant AMF_Collection_Of_Element
+        := AMF.Internals.Tables.CMOF_Attributes.Internal_Get_Member_End
+            (Association);
+
+   begin
+      AMF.Internals.Links.Internal_Create_Link
+       (Association,
+        First_Element,
+        AMF.Internals.Element_Collections.Element (Member_End, 1),
+        Second_Element,
+        AMF.Internals.Element_Collections.Element (Member_End, 2));
+   end Create_Link;
 
    --------------------------
    -- Internal_Create_Link --

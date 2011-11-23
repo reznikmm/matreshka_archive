@@ -61,6 +61,12 @@ package AMF.Internals.Links is
    --  attribute and intended to be used to construct initial CMOF
    --  metametamodel only.
 
+   procedure Create_Link
+    (Association    : CMOF_Element;
+     First_Element  : AMF_Element;
+     Second_Element : AMF_Element);
+   --  Creates link between two elements.
+
    function Proxy (Self : AMF_Link) return not null AMF.Links.Link_Access;
 
    function Opposite_Element
