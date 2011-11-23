@@ -56,6 +56,10 @@ package AMF.Internals is
    Primitive_Types_Metamodel : constant AMF_Metamodel := 1;
    UML_Metamodel             : constant AMF_Metamodel := 2;
 
+   --------------------------------------------------------------
+   --  Element identifier and its subtypes for each metamodel  --
+   --------------------------------------------------------------
+
    type AMF_Element is range 0 .. 2 ** 31 - 1;
    for AMF_Element'Size use 32;
    --  Identifier of the element inside metamodel.
@@ -63,9 +67,16 @@ package AMF.Internals is
    subtype CMOF_Element  is AMF_Element range 16#00000000# .. 16#00FFFFFF#;
    subtype UML_Element   is AMF_Element range 16#02000000# .. 16#02FFFFFF#;
 
+   No_CMOF_Element : constant CMOF_Element := CMOF_Element'First;
+   No_UML_Element  : constant UML_Element := UML_Element'First;
+
+   -----------------------
+   --  Link identifier  --
+   -----------------------
+
    type AMF_Link is range 0 .. 2 ** 31 - 1;
    for AMF_Link'Size use 32;
-   --  Identifier of the link between two elements.
+   No_Link : constant AMF_Link := AMF_Link'First;
 
    type AMF_Collection_Of_Element is range 0 .. 2 ** 31 - 1;
    for AMF_Collection_Of_Element'Size use 32;

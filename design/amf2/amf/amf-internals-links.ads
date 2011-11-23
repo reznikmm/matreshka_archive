@@ -63,4 +63,11 @@ package AMF.Internals.Links is
 
    function Proxy (Self : AMF_Link) return not null AMF.Links.Link_Access;
 
+   function Opposite_Element
+    (Self       : AMF_Link;
+     Element    : AMF_Element;
+     No_Element : AMF_Element) return AMF_Element;
+   --  Returns opposite element of the link or Null_Element when Link is
+   --  No_Link.
+
 end AMF.Internals.Links;

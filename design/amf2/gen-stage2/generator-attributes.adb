@@ -367,19 +367,29 @@ package body Generator.Attributes is
                end case;
 
             elsif Info.Slot.Contains (Attribute) then
-               Put
-                ("            return "
-                   & Metamodel_Name.To_Wide_Wide_String
-                   & "_Element_Table.Table (Self).Member ("
-                   & Trim
-                      (Integer'Wide_Wide_Image
-                        (Info.Slot.Element (Attribute)), Both)
-                   & ").");
-
                if Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
-                  Put ("Element");
+                  Put_Line ("            return");
+                  Put_Line ("              AMF.Internals.Links.Opposite_Element");
+                  Put
+                   ("               ("
+                      & Metamodel_Name.To_Wide_Wide_String
+                      & "_Element_Table.Table (Self).Member ("
+                      & Trim
+                         (Integer'Wide_Wide_Image
+                           (Info.Slot.Element (Attribute)), Both)
+                      & ").Link, Self, No_"
+                      & Metamodel_Name.To_Wide_Wide_String
+                      & "_Element)");
 
                else
+                  Put
+                   ("            return "
+                      & Metamodel_Name.To_Wide_Wide_String
+                      & "_Element_Table.Table (Self).Member ("
+                      & Trim
+                         (Integer'Wide_Wide_Image
+                           (Info.Slot.Element (Attribute)), Both)
+                      & ").");
                   Put
                    (Generator.Type_Mapping.Member_Name
                      (Attribute_Type,
@@ -688,6 +698,7 @@ package body Generator.Attributes is
 
    begin
       Put_Header;
+      Put_Line ("with AMF.Internals.Links;");
       Put_Line
        ("with AMF.Internals.Tables."
           & Metamodel_Name.To_Wide_Wide_String

@@ -196,6 +196,26 @@ package body AMF.Internals.Links is
       null;
    end Internal_Create_Link;
 
+   ----------------------
+   -- Opposite_Element --
+   ----------------------
+
+   function Opposite_Element
+    (Self       : AMF_Link;
+     Element    : AMF_Element;
+     No_Element : AMF_Element) return AMF_Element is
+   begin
+      if Self = No_Link then
+         return No_Element;
+
+      elsif AMF_Link_Table.Table (Self).First_Element = Element then
+         return AMF_Link_Table.Table (Self).Second_Element;
+
+      else
+         return AMF_Link_Table.Table (Self).First_Element;
+      end if;
+   end Opposite_Element;
+
    -----------
    -- Proxy --
    -----------

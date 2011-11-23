@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Internals.Links;
 with AMF.Internals.Tables.UML_Types;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
@@ -5907,7 +5908,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -5924,7 +5927,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -5958,181 +5963,299 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Accept_Event_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Activity_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Create_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Destroy_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Flow_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Fork_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Initial_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Join_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Merge_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Opaque_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6149,7 +6272,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6166,7 +6291,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Template_Parameter_Substitution =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6203,7 +6330,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Include =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6220,7 +6349,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_General_Ordering =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6312,7 +6443,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Profile_Application =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6329,7 +6462,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Profile_Application =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6387,16 +6522,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6413,13 +6556,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (21).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (21).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (21).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (21).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (21).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (21).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6531,7 +6680,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_General_Ordering =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6548,13 +6699,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6628,7 +6785,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6682,7 +6841,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Template_Binding =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6719,7 +6880,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6736,16 +6899,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6762,16 +6933,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Redefinable_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -6808,52 +6987,84 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -7564,7 +7775,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -7601,7 +7814,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extend =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -7715,7 +7930,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -7848,22 +8065,34 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Connection_Point_Reference =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Pseudostate =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -7898,163 +8127,269 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Accept_Event_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Create_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Destroy_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Opaque_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8088,10 +8423,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8198,16 +8537,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (23).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (23).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (23).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (23).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (23).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (23).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8224,10 +8571,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Clause =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8244,7 +8595,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8261,7 +8614,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8278,7 +8633,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8325,16 +8682,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Classifier_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Connectable_Element_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Operation_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8351,16 +8716,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (25).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (25).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (25).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (25).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (25).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (25).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8397,7 +8770,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8414,7 +8789,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Slot =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8486,7 +8863,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8559,7 +8938,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Link_End_Destruction_Data =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8593,10 +8974,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8665,10 +9050,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8828,46 +9217,74 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Combined_Fragment =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Consider_Ignore_Fragment =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Continuation =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Destruction_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Execution_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Interaction_Operand =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Message_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_State_Invariant =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8884,46 +9301,74 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Combined_Fragment =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Consider_Ignore_Fragment =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Continuation =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Destruction_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Execution_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (21).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (21).Link, Self, No_UML_Element);
 
          when E_Interaction_Operand =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Message_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_State_Invariant =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -8972,16 +9417,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Link_End_Creation_Data =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Link_End_Data =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Link_End_Destruction_Data =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9067,10 +9520,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9087,7 +9544,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9121,10 +9580,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Trigger =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9141,7 +9604,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9158,7 +9623,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Exception_Handler =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9209,7 +9676,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Execution_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9261,10 +9730,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9281,10 +9754,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9318,7 +9795,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extend =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9335,7 +9814,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Region =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9442,7 +9923,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extend =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9642,10 +10125,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9662,7 +10149,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9733,7 +10222,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Template_Parameter_Substitution =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9805,7 +10296,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9917,7 +10410,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Generalization =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -9934,7 +10429,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Protocol_Conformance =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10139,19 +10636,29 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interaction_Operand =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10308,7 +10815,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Exception_Handler =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10342,7 +10851,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10359,7 +10870,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10519,7 +11032,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Package_Import =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10536,10 +11051,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Package_Import =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -10556,25 +11075,39 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interruptible_Activity_Region =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -11196,181 +11729,299 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Accept_Event_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Activity_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Create_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Destroy_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Flow_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Fork_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Initial_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Join_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Merge_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Opaque_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -11404,7 +12055,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Include =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -11950,13 +12603,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Link_End_Creation_Data =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -11973,7 +12632,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -11990,10 +12651,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -12030,16 +12695,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (26).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (26).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (26).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (26).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (26).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (26).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -12135,10 +12808,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -12155,7 +12832,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_State_Invariant =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -13824,7 +14503,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Join_Node =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14214,7 +14895,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14330,34 +15013,54 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14394,22 +15097,34 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14426,13 +15141,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14449,7 +15170,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14635,7 +15358,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Package_Merge =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14672,13 +15397,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Destruction_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Gate =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Message_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14729,7 +15460,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14800,13 +15533,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -14823,7 +15562,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -15580,514 +16321,854 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Accept_Event_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Activity_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Any_Receive_Event =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Collaboration_Use =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Combined_Fragment =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Connection_Point_Reference =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Connector =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Consider_Ignore_Fragment =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Continuation =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Create_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Dependency =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Destroy_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Destruction_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Execution_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Extend =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Extension_Point =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Flow_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Fork_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Gate =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_General_Ordering =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Include =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Information_Flow =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Initial_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interaction_Operand =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interruptible_Activity_Region =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Join_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Merge_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Message_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Opaque_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Parameter_Set =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Pseudostate =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Reception =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Redefinable_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Region =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_State_Invariant =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Trigger =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Usage =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -16104,514 +17185,854 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Accept_Event_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Activity_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Any_Receive_Event =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Collaboration_Use =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Combined_Fragment =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Connection_Point_Reference =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Connector =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Consider_Ignore_Fragment =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Continuation =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Create_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Dependency =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Destroy_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Destruction_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Execution_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Extend =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Extension_Point =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Flow_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Fork_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Gate =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_General_Ordering =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Include =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Information_Flow =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Initial_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interaction_Operand =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interruptible_Activity_Region =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Join_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Merge_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Message_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Opaque_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Parameter_Set =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Pseudostate =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Reception =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Redefinable_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Region =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_State_Invariant =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Trigger =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Usage =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -16776,13 +18197,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -16854,40 +18281,64 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -16941,22 +18392,34 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -16999,13 +18462,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -17022,13 +18491,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (31).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (31).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (31).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (31).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (31).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (31).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -17454,7 +18929,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Template_Parameter_Substitution =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -18259,16 +19736,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Classifier_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Connectable_Element_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Operation_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -19217,16 +20702,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Classifier_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Connectable_Element_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Operation_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when E_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -19518,100 +21011,164 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -19746,583 +21303,969 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Accept_Event_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Activity_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Any_Receive_Event =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Call_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Classifier_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Clause =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Clear_Association_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Collaboration_Use =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Combined_Fragment =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Comment =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Connectable_Element_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Connection_Point_Reference =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Connector =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Consider_Ignore_Fragment =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Continuation =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Create_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Decision_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Dependency =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Destroy_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Destruction_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Element_Import =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Exception_Handler =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Execution_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Extend =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Extension_Point =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Flow_Final_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Fork_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Gate =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_General_Ordering =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Generalization =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Image =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Include =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Information_Flow =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Initial_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interaction_Operand =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interruptible_Activity_Region =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Join_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Link_End_Creation_Data =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Link_End_Data =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Link_End_Destruction_Data =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Merge_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Message_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Occurrence_Specification =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Opaque_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Operation_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Package_Import =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Package_Merge =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Parameter_Set =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Profile_Application =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Protocol_Conformance =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Pseudostate =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Qualifier_Value =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Raise_Exception_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Reception =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Reclassify_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Redefinable_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Region =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Slot =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Start_Classifier_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Start_Object_Behavior_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_State_Invariant =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Template_Binding =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Template_Parameter_Substitution =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Trigger =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Usage =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (1).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20339,13 +22282,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (32).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (32).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (32).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (32).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (32).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (32).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20362,7 +22311,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20379,7 +22330,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Slot =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20396,232 +22349,384 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Any_Receive_Event =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Dependency =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Information_Flow =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Usage =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20638,85 +22743,139 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20925,7 +23084,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -20999,16 +23160,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Classifier_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when E_Connectable_Element_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when E_Operation_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when E_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21081,7 +23250,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21132,7 +23303,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21184,7 +23357,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21296,7 +23471,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21365,7 +23542,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21405,7 +23584,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Exception_Handler =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -21422,10 +23603,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (36).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (36).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -22188,10 +24373,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Qualifier_Value =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -22316,7 +24505,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -22333,7 +24524,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Package_Merge =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23084,10 +25277,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23104,10 +25301,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23435,7 +25636,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23469,10 +25672,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23515,7 +25722,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23532,7 +25741,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (16).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (16).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23632,10 +25843,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23652,7 +25867,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23686,85 +25903,139 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23798,10 +26069,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23893,55 +26168,89 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Create_Link_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Create_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Read_Extent_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Read_Is_Classified_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Read_Link_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Read_Link_Object_End_Qualifier_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Read_Self_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Reduce_Action =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23958,10 +26267,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Accept_Call_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Reply_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23978,10 +26291,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -23998,10 +26315,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Interaction_Use =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Part_Decomposition =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24018,7 +26339,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24108,7 +26431,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24125,7 +26450,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Test_Identity_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24142,31 +26469,49 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24183,7 +26528,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Lifeline =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24200,7 +26547,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24251,16 +26600,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Broadcast_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Reception =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24277,22 +26634,34 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Classifier_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (6).Link, Self, No_UML_Element);
 
          when E_Connectable_Element_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (6).Link, Self, No_UML_Element);
 
          when E_Message =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Operation_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (6).Link, Self, No_UML_Element);
 
          when E_Template_Binding =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Template_Parameter =>
-            return UML_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (6).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24329,16 +26698,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24426,7 +26803,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Generalization =>
-            return UML_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (4).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24443,7 +26822,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Protocol_Conformance =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24460,43 +26841,69 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
 
          when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (19).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24513,10 +26920,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Behavior_Execution_Specification =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24533,13 +26944,19 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Connection_Point_Reference =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Pseudostate =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Region =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24556,10 +26973,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (17).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24576,10 +26997,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Pseudostate =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Region =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24596,16 +27021,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Clear_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Read_Structural_Feature_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24766,10 +27199,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Final_State =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when E_State =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -24846,7 +27283,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (11).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25045,25 +27484,39 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Conditional_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Expansion_Region =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interruptible_Activity_Region =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Loop_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Sequence_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Structured_Activity_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25080,7 +27533,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Activity_Partition =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25160,28 +27615,44 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Call_Operation_Action =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Destroy_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Protocol_Transition =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Send_Object_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Send_Signal_Action =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Transition =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25269,10 +27740,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Redefinable_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Template_Signature =>
-            return UML_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (2).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25289,7 +27764,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Template_Parameter_Substitution =>
-            return UML_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (5).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25416,232 +27893,384 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Abstraction =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Activity =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Actor =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Any_Receive_Event =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Artifact =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Association =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Association_Class =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Call_Event =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Change_Event =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Class =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Collaboration =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Communication_Path =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Component =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Component_Realization =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Constraint =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Data_Type =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Dependency =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Deployment =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Deployment_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Device =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Duration_Constraint =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Duration_Observation =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Enumeration =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Enumeration_Literal =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Execution_Environment =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Extension =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Function_Behavior =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Generalization_Set =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Information_Flow =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Information_Item =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Instance_Specification =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interaction =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interaction_Constraint =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interface =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interface_Realization =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Interval_Constraint =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Model =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Node =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Opaque_Behavior =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Package =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Primitive_Type =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Profile =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Protocol_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Realization =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Signal =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Signal_Event =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_State_Machine =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Stereotype =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Substitution =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Time_Constraint =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when E_Time_Observation =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Usage =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Use_Case =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (9).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (9).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25730,7 +28359,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (18).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25790,97 +28421,159 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Collaboration_Use =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Connector =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Duration =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Duration_Interval =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Expression =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Instance_Value =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Interval =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_Boolean =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_Integer =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_Null =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_Real =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_String =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Literal_Unlimited_Natural =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Opaque_Expression =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Operation =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_String_Expression =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Time_Expression =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Time_Interval =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25897,7 +28590,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Unmarshall_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25961,28 +28656,44 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Activity_Parameter_Node =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Central_Buffer_Node =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Data_Store_Node =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Expansion_Node =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -25999,34 +28710,54 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Action_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Connector_End =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Extension_End =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Input_Pin =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Output_Pin =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Parameter =>
-            return UML_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (7).Link, Self, No_UML_Element);
 
          when E_Port =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Property =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (20).Link, Self, No_UML_Element);
 
          when E_Variable =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -26138,7 +28869,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Extension_Point =>
-            return UML_Element_Table.Table (Self).Member (8).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (8).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -26155,7 +28888,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Manifestation =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -26275,34 +29010,54 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Add_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Link_End_Creation_Data =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Link_End_Data =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Link_End_Destruction_Data =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Qualifier_Value =>
-            return UML_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (3).Link, Self, No_UML_Element);
 
          when E_Remove_Structural_Feature_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (15).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when E_Value_Pin =>
-            return UML_Element_Table.Table (Self).Member (22).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (22).Link, Self, No_UML_Element);
 
          when E_Value_Specification_Action =>
-            return UML_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (13).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -26351,16 +29106,24 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Add_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Clear_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Read_Variable_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when E_Remove_Variable_Value_Action =>
-            return UML_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (12).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -26939,10 +29702,14 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Control_Flow =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when E_Object_Flow =>
-            return UML_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (14).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;
@@ -26959,7 +29726,9 @@ package body AMF.Internals.Tables.UML_Attributes is
    begin
       case UML_Element_Table.Table (Self).Kind is
          when E_Time_Event =>
-            return UML_Element_Table.Table (Self).Member (10).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (UML_Element_Table.Table (Self).Member (10).Link, Self, No_UML_Element);
 
          when others =>
             raise Program_Error;

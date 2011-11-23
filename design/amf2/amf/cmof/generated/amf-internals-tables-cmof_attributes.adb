@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 --  This file is generated, don't edit it.
 ------------------------------------------------------------------------------
+with AMF.Internals.Links;
 with AMF.Internals.Tables.CMOF_Types;
 with AMF.Internals.Tables.CMOF_Element_Table;
 with AMF.Internals.Tables.CMOF_Metamodel;
@@ -457,7 +458,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (21).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (21).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -537,7 +540,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Operation =>
-            return CMOF_Element_Table.Table (Self).Member (15).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (15).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -554,10 +559,14 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Operation =>
-            return CMOF_Element_Table.Table (Self).Member (12).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (12).Link, Self, No_CMOF_Element);
 
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (17).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (17).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -591,7 +600,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Constraint =>
-            return CMOF_Element_Table.Table (Self).Member (7).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (7).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -608,10 +619,14 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Operation =>
-            return CMOF_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (13).Link, Self, No_CMOF_Element);
 
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (20).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (20).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -736,7 +751,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Enumeration_Literal =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -831,7 +848,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -883,7 +902,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Package_Import =>
-            return CMOF_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -900,10 +921,14 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Element_Import =>
-            return CMOF_Element_Table.Table (Self).Member (5).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (5).Link, Self, No_CMOF_Element);
 
          when E_Package_Import =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1240,7 +1265,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Package_Merge =>
-            return CMOF_Element_Table.Table (Self).Member (3).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (3).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1327,43 +1354,69 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Association =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Class =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Constraint =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Data_Type =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Enumeration =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Enumeration_Literal =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Expression =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Opaque_Expression =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Operation =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Package =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Parameter =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Primitive_Type =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1414,7 +1467,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Package =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1448,7 +1503,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Parameter =>
-            return CMOF_Element_Table.Table (Self).Member (13).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (13).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1465,7 +1522,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (19).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (19).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1808,58 +1867,94 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Association =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Class =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Comment =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Constraint =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Data_Type =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Element_Import =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Enumeration =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Enumeration_Literal =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Expression =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Opaque_Expression =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Operation =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Package =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Package_Import =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Package_Merge =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Parameter =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Primitive_Type =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when E_Tag =>
-            return CMOF_Element_Table.Table (Self).Member (1).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (1).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1876,7 +1971,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (18).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (18).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -1893,19 +1990,29 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Association =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Class =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Data_Type =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Enumeration =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Primitive_Type =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -2108,7 +2215,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Package_Merge =>
-            return CMOF_Element_Table.Table (Self).Member (2).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (2).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -2248,7 +2357,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Constraint =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -2299,7 +2410,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Tag =>
-            return CMOF_Element_Table.Table (Self).Member (4).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (4).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
@@ -2339,19 +2452,29 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    begin
       case CMOF_Element_Table.Table (Self).Kind is
          when E_Expression =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Opaque_Expression =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Operation =>
-            return CMOF_Element_Table.Table (Self).Member (14).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (14).Link, Self, No_CMOF_Element);
 
          when E_Parameter =>
-            return CMOF_Element_Table.Table (Self).Member (6).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (6).Link, Self, No_CMOF_Element);
 
          when E_Property =>
-            return CMOF_Element_Table.Table (Self).Member (11).Element;
+            return
+              AMF.Internals.Links.Opposite_Element
+               (CMOF_Element_Table.Table (Self).Member (11).Link, Self, No_CMOF_Element);
 
          when others =>
             raise Program_Error;
