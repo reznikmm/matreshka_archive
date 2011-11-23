@@ -155,10 +155,11 @@ package body AMF.Internals.UML_Conditional_Nodes is
     (Self : not null access UML_Conditional_Node_Proxy;
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Activity;
 
    --------------
@@ -432,10 +433,11 @@ package body AMF.Internals.UML_Conditional_Nodes is
     (Self : not null access UML_Conditional_Node_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -600,10 +602,11 @@ package body AMF.Internals.UML_Conditional_Nodes is
     (Self : not null access UML_Conditional_Node_Proxy;
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Activity
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Activity
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_In_Activity;
 
    ------------------
@@ -819,10 +822,11 @@ package body AMF.Internals.UML_Conditional_Nodes is
     (Self : not null access UML_Conditional_Node_Proxy;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_In_Structured_Node;
 
    ------------------

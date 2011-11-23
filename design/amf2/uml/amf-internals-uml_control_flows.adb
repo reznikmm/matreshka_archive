@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Activity;
 
    ---------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Guard
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Guard
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Guard;
 
    ------------------
@@ -163,10 +165,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_In_Structured_Node;
 
    --------------------
@@ -192,10 +195,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Interruptible_Activity_Regions.UML_Interruptible_Activity_Region_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Interrupts
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Interrupts
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Interrupts;
 
    ------------------------
@@ -236,10 +240,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Activity_Nodes.UML_Activity_Node_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Source
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Source
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Source;
 
    ----------------
@@ -265,10 +270,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Activity_Nodes.UML_Activity_Node_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Target
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Target
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Target;
 
    ----------------
@@ -294,10 +300,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Weight
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Weight
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Weight;
 
    -----------------
@@ -436,10 +443,11 @@ package body AMF.Internals.UML_Control_Flows is
     (Self : not null access UML_Control_Flow_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

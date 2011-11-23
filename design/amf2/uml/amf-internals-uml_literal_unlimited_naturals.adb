@@ -299,10 +299,11 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
     (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -----------------------------------
@@ -313,10 +314,11 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
     (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
 
    ----------------------------
@@ -327,10 +329,11 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
     (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    --------------
@@ -341,10 +344,11 @@ package body AMF.Internals.UML_Literal_Unlimited_Naturals is
     (Self : not null access UML_Literal_Unlimited_Natural_Proxy;
      To   : AMF.UML.Types.UML_Type_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
    ---------------

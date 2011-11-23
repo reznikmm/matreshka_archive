@@ -120,10 +120,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Do_Activity
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Do_Activity
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Do_Activity;
 
    ---------------
@@ -149,10 +150,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Entry
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Entry
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Entry;
 
    --------------
@@ -178,10 +180,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Exit
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Exit
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Exit;
 
    ----------------------
@@ -259,10 +262,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.States.UML_State_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Redefined_State
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Redefined_State
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Redefined_State;
 
    ------------------------------
@@ -315,10 +319,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_State_Invariant
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_State_Invariant
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_State_Invariant;
 
    --------------------
@@ -344,10 +349,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.State_Machines.UML_State_Machine_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Submachine
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Submachine
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Submachine;
 
    -----------------
@@ -486,10 +492,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -714,10 +721,11 @@ package body AMF.Internals.UML_Final_States is
     (Self : not null access UML_Final_State_Proxy;
      To   : AMF.UML.Regions.UML_Region_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Container
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Container
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Container;
 
    ------------------

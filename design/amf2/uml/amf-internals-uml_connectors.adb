@@ -133,10 +133,11 @@ package body AMF.Internals.UML_Connectors is
     (Self : not null access UML_Connector_Proxy;
      To   : AMF.UML.Associations.UML_Association_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
    ------------------------------
@@ -315,10 +316,11 @@ package body AMF.Internals.UML_Connectors is
     (Self : not null access UML_Connector_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

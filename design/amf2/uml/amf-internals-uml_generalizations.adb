@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Generalizations is
     (Self : not null access UML_Generalization_Proxy;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_General
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_General
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_General;
 
    ----------------------------
@@ -144,10 +145,11 @@ package body AMF.Internals.UML_Generalizations is
     (Self : not null access UML_Generalization_Proxy;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Specific;
 
    ----------------

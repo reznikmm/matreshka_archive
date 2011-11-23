@@ -232,10 +232,12 @@ package Generator is
 
    type Subprogram_Kinds is (Public, Internal, Proxy);
 
-   function Has_Setter
+   function Has_Internal_Setter
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
        return Boolean;
-   --  Returns True when specified attribute has setter.
+   --  Returns True when specified attribute has internal setter. Note, it is
+   --  not needed for attributes of element type because their values are
+   --  represented by links.
 
    function Use_Member_Slot
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)

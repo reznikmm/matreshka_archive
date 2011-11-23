@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Package_Merges is
     (Self : not null access UML_Package_Merge_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Merged_Package
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Merged_Package
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Merged_Package;
 
    ---------------------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_Package_Merges is
     (Self : not null access UML_Package_Merge_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Receiving_Package
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Receiving_Package
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Receiving_Package;
 
    ----------------

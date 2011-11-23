@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
     (Self : not null access UML_Behavior_Execution_Specification_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Behavior
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Behavior
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Behavior;
 
    ----------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
     (Self : not null access UML_Behavior_Execution_Specification_Proxy;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Finish
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Finish
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Finish;
 
    ---------------
@@ -133,10 +135,11 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
     (Self : not null access UML_Behavior_Execution_Specification_Proxy;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Start
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Start
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Start;
 
    -----------------
@@ -177,10 +180,11 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
     (Self : not null access UML_Behavior_Execution_Specification_Proxy;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Interaction
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Interaction
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Enclosing_Interaction;
 
    ---------------------------
@@ -206,10 +210,11 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
     (Self : not null access UML_Behavior_Execution_Specification_Proxy;
      To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Operand
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Operand
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Enclosing_Operand;
 
    --------------------------
@@ -308,10 +313,11 @@ package body AMF.Internals.UML_Behavior_Execution_Specifications is
     (Self : not null access UML_Behavior_Execution_Specification_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

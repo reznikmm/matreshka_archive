@@ -651,7 +651,7 @@ package body Generator.Attributes is
            := "Internal_Set_" & To_Ada_Identifier (Attribute.Get_Name.Value);
 
       begin
-         if not Has_Setter (Attribute) then
+         if not Has_Internal_Setter (Attribute) then
             return;
          end if;
 
@@ -1032,7 +1032,7 @@ package body Generator.Attributes is
              & "_Element)");
          Put_Line ("       return " & Type_Name & ";");
 
-         if Has_Setter (Attribute) then
+         if Has_Internal_Setter (Attribute) then
             Put_Line ("   procedure " & Set_Name);
             Put_Line
              ("    (Self : AMF.Internals."

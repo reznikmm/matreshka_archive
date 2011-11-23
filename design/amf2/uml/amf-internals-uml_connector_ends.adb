@@ -90,10 +90,11 @@ package body AMF.Internals.UML_Connector_Ends is
     (Self : not null access UML_Connector_End_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Part_With_Port
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Part_With_Port
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Part_With_Port;
 
    --------------
@@ -119,10 +120,11 @@ package body AMF.Internals.UML_Connector_Ends is
     (Self : not null access UML_Connector_End_Proxy;
      To   : AMF.UML.Connectable_Elements.UML_Connectable_Element_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Role
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Role
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Role;
 
    --------------------
@@ -223,10 +225,11 @@ package body AMF.Internals.UML_Connector_Ends is
     (Self : not null access UML_Connector_End_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Lower_Value;
 
    ---------------
@@ -277,10 +280,11 @@ package body AMF.Internals.UML_Connector_Ends is
     (Self : not null access UML_Connector_End_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Upper_Value;
 
    -----------------------

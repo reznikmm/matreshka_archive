@@ -51,19 +51,24 @@ package body Generator is
    use type AMF.Optional_String;
    use type AMF.Internals.AMF_Element;
 
-   ----------------
-   -- Has_Setter --
-   ----------------
+   -------------------------
+   -- Has_Internal_Setter --
+   -------------------------
 
-   function Has_Setter
+   function Has_Internal_Setter
     (Attribute : not null AMF.CMOF.Properties.CMOF_Property_Access)
-       return Boolean is
+       return Boolean
+   is
+      The_Type : constant AMF.CMOF.Types.CMOF_Type_Access
+        := Attribute.Get_Type;
+
    begin
       return
         not Attribute.Get_Is_Read_Only
           and then not Attribute.Is_Multivalued
+          and then The_Type.all not in AMF.CMOF.Classes.CMOF_Class'Class
           and then Use_Member_Slot (Attribute);
-   end Has_Setter;
+   end Has_Internal_Setter;
 
    ----------
    -- Hash --

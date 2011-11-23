@@ -105,10 +105,11 @@ package body AMF.Internals.UML_Clauses is
     (Self : not null access UML_Clause_Proxy;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Decider
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Decider
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Decider;
 
    ----------------------------

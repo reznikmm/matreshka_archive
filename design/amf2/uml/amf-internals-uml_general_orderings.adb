@@ -75,10 +75,11 @@ package body AMF.Internals.UML_General_Orderings is
     (Self : not null access UML_General_Ordering_Proxy;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_After
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_After
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_After;
 
    ----------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_General_Orderings is
     (Self : not null access UML_General_Ordering_Proxy;
      To   : AMF.UML.Occurrence_Specifications.UML_Occurrence_Specification_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Before
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Before
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Before;
 
    ---------------------------
@@ -191,10 +193,11 @@ package body AMF.Internals.UML_General_Orderings is
     (Self : not null access UML_General_Ordering_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Package_Imports is
     (Self : not null access UML_Package_Import_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Imported_Package
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Imported_Package
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Imported_Package;
 
    -----------------------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_Package_Imports is
     (Self : not null access UML_Package_Import_Proxy;
      To   : AMF.UML.Namespaces.UML_Namespace_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Importing_Namespace
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Importing_Namespace
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Importing_Namespace;
 
    --------------------

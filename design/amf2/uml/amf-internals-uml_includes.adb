@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Includes is
     (Self : not null access UML_Include_Proxy;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Addition
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Addition
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Addition;
 
    ------------------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_Includes is
     (Self : not null access UML_Include_Proxy;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Including_Case
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Including_Case
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Including_Case;
 
    ----------------
@@ -281,10 +283,11 @@ package body AMF.Internals.UML_Includes is
     (Self : not null access UML_Include_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

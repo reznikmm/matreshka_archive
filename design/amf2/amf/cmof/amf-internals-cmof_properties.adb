@@ -220,10 +220,11 @@ package body AMF.Internals.CMOF_Properties is
     (Self : not null access CMOF_Property_Proxy;
      To   : AMF.CMOF.Associations.CMOF_Association_Access) is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Association
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Association
+--       (Self.Id,
+--        AMF.Internals.Helpers.To_Element
+--         (AMF.Elements.Element_Access (To)));
    end Set_Association;
 
    -----------------

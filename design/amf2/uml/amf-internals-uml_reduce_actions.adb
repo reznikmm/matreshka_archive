@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Reduce_Actions is
     (Self : not null access UML_Reduce_Action_Proxy;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Collection
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Collection
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Collection;
 
    --------------------
@@ -129,10 +130,11 @@ package body AMF.Internals.UML_Reduce_Actions is
     (Self : not null access UML_Reduce_Action_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Reducer
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Reducer
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Reducer;
 
    ----------------
@@ -158,10 +160,11 @@ package body AMF.Internals.UML_Reduce_Actions is
     (Self : not null access UML_Reduce_Action_Proxy;
      To   : AMF.UML.Output_Pins.UML_Output_Pin_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Result
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Result
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Result;
 
    -----------------
@@ -302,10 +305,11 @@ package body AMF.Internals.UML_Reduce_Actions is
     (Self : not null access UML_Reduce_Action_Proxy;
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Activity;
 
    ------------------
@@ -376,10 +380,11 @@ package body AMF.Internals.UML_Reduce_Actions is
     (Self : not null access UML_Reduce_Action_Proxy;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_In_Structured_Node;
 
    ------------------
@@ -563,10 +568,11 @@ package body AMF.Internals.UML_Reduce_Actions is
     (Self : not null access UML_Reduce_Action_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

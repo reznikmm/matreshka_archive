@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Protocol_Conformances is
     (Self : not null access UML_Protocol_Conformance_Proxy;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_General_Machine
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_General_Machine
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_General_Machine;
 
    --------------------------
@@ -104,10 +105,11 @@ package body AMF.Internals.UML_Protocol_Conformances is
     (Self : not null access UML_Protocol_Conformance_Proxy;
      To   : AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific_Machine
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Specific_Machine
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Specific_Machine;
 
    ----------------

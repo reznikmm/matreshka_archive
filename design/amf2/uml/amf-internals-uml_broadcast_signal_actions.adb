@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Broadcast_Signal_Actions is
     (Self : not null access UML_Broadcast_Signal_Action_Proxy;
      To   : AMF.UML.Signals.UML_Signal_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Signal
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Signal
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Signal;
 
    ------------------
@@ -119,10 +120,11 @@ package body AMF.Internals.UML_Broadcast_Signal_Actions is
     (Self : not null access UML_Broadcast_Signal_Action_Proxy;
      To   : AMF.UML.Ports.UML_Port_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_On_Port
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_On_Port
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_On_Port;
 
    -----------------
@@ -263,10 +265,11 @@ package body AMF.Internals.UML_Broadcast_Signal_Actions is
     (Self : not null access UML_Broadcast_Signal_Action_Proxy;
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Activity;
 
    ------------------
@@ -337,10 +340,11 @@ package body AMF.Internals.UML_Broadcast_Signal_Actions is
     (Self : not null access UML_Broadcast_Signal_Action_Proxy;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_In_Structured_Node;
 
    ------------------
@@ -524,10 +528,11 @@ package body AMF.Internals.UML_Broadcast_Signal_Actions is
     (Self : not null access UML_Broadcast_Signal_Action_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

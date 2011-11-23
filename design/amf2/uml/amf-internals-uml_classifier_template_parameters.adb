@@ -115,10 +115,11 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
     (Self : not null access UML_Classifier_Template_Parameter_Proxy;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Parametered_Element
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Parametered_Element
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Parametered_Element;
 
    -----------------
@@ -144,10 +145,11 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
     (Self : not null access UML_Classifier_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Default
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Default
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Default;
 
    -----------------------
@@ -173,10 +175,11 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
     (Self : not null access UML_Classifier_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Default
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Default
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Owned_Default;
 
    -----------------------------------
@@ -202,10 +205,11 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
     (Self : not null access UML_Classifier_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Parametered_Element
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Parametered_Element
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Owned_Parametered_Element;
 
    -----------------------------
@@ -231,10 +235,11 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
     (Self : not null access UML_Classifier_Template_Parameter_Proxy;
      To   : AMF.UML.Parameterable_Elements.UML_Parameterable_Element_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Parametered_Element
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Parametered_Element
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Parametered_Element;
 
    -------------------
@@ -260,10 +265,11 @@ package body AMF.Internals.UML_Classifier_Template_Parameters is
     (Self : not null access UML_Classifier_Template_Parameter_Proxy;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Signature;
 
    -----------------------

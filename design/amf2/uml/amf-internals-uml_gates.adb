@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Gates is
     (Self : not null access UML_Gate_Proxy;
      To   : AMF.UML.Messages.UML_Message_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Message
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Message
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Message;
 
    ---------------------------
@@ -162,10 +163,11 @@ package body AMF.Internals.UML_Gates is
     (Self : not null access UML_Gate_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

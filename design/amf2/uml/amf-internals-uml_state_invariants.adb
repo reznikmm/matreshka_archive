@@ -98,10 +98,11 @@ package body AMF.Internals.UML_State_Invariants is
     (Self : not null access UML_State_Invariant_Proxy;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Invariant
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Invariant
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Invariant;
 
    -----------------
@@ -142,10 +143,11 @@ package body AMF.Internals.UML_State_Invariants is
     (Self : not null access UML_State_Invariant_Proxy;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Interaction
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Interaction
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Enclosing_Interaction;
 
    ---------------------------
@@ -171,10 +173,11 @@ package body AMF.Internals.UML_State_Invariants is
     (Self : not null access UML_State_Invariant_Proxy;
      To   : AMF.UML.Interaction_Operands.UML_Interaction_Operand_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Operand
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Enclosing_Operand
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Enclosing_Operand;
 
    --------------------------
@@ -273,10 +276,11 @@ package body AMF.Internals.UML_State_Invariants is
     (Self : not null access UML_State_Invariant_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

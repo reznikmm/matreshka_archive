@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Classifier_Behavior
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Classifier_Behavior
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Classifier_Behavior;
 
    -------------------------------
@@ -274,10 +275,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Owned_Template_Signature;
 
    ------------------------
@@ -348,10 +350,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Representation
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Representation
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Representation;
 
    ----------------------
@@ -392,10 +395,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    ------------------
@@ -584,10 +588,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -722,10 +727,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Package
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Package
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Package;
 
    --------------------
@@ -776,10 +782,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
 
    ----------------------------
@@ -805,10 +812,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    ----------------------------------
@@ -834,10 +842,11 @@ package body AMF.Internals.UML_Actors is
     (Self : not null access UML_Actor_Proxy;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owned_Template_Signature
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Owned_Template_Signature;
 
    --------------------------

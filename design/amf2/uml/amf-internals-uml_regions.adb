@@ -75,10 +75,11 @@ package body AMF.Internals.UML_Regions is
     (Self : not null access UML_Region_Proxy;
      To   : AMF.UML.Regions.UML_Region_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Extended_Region
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Extended_Region
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Extended_Region;
 
    ------------------------------
@@ -116,10 +117,11 @@ package body AMF.Internals.UML_Regions is
     (Self : not null access UML_Region_Proxy;
      To   : AMF.UML.States.UML_State_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_State
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_State
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_State;
 
    -----------------------
@@ -145,10 +147,11 @@ package body AMF.Internals.UML_Regions is
     (Self : not null access UML_Region_Proxy;
      To   : AMF.UML.State_Machines.UML_State_Machine_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_State_Machine
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_State_Machine
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_State_Machine;
 
    -------------------
@@ -352,10 +355,11 @@ package body AMF.Internals.UML_Regions is
     (Self : not null access UML_Region_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
-       (Self.Id,
-        AMF.Internals.Helpers.To_Element
-         (AMF.Elements.Element_Access (To)));
+      raise Program_Error;
+--        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+--         (Self.Id,
+--          AMF.Internals.Helpers.To_Element
+--           (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
