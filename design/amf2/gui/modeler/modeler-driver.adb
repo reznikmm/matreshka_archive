@@ -47,7 +47,7 @@ with Qt4.Strings;
 
 with AMF.CMOF.Classes;
 with AMF.CMOF.Packageable_Elements.Collections;
-with AMF.CMOF.Packages;
+with AMF.CMOF.Packages.Collections;
 with AMF.Facility;
 with AMF.URI_Stores;
 with League.Strings;
@@ -55,6 +55,8 @@ with League.Strings;
 with Modeler.Main_Windows;
 
 procedure Modeler.Driver is
+
+   use type AMF.Optional_String;
 
    function "+" (Item : Wide_Wide_String) return Qt4.Strings.Q_String
      renames Qt4.Strings.From_Ucs_4;
@@ -68,6 +70,12 @@ procedure Modeler.Driver is
        return AMF.CMOF.Classes.CMOF_Class_Access;
    --  Resolves owned class by name.
 
+   function Resolve_CMOF_Metaclass
+    (Extent : not null AMF.URI_Stores.URI_Store_Access;
+     Name   : League.Strings.Universal_String)
+       return AMF.CMOF.Classes.CMOF_Class_Access;
+   --  Resolves CMOF metaclass by name.
+
    -------------------------
    -- Resolve_Owned_Class --
    -------------------------
@@ -77,8 +85,6 @@ procedure Modeler.Driver is
      Name : League.Strings.Universal_String)
        return AMF.CMOF.Classes.CMOF_Class_Access
    is
-      use type AMF.Optional_String;
-
       Packaged_Elements :
         AMF.CMOF.Packageable_Elements.Collections.Set_Of_CMOF_Packageable_Element
           := Root.Get_Packaged_Element;
@@ -107,6 +113,28 @@ procedure Modeler.Driver is
       return null;
    end Resolve_Owned_Class;
 
+   ----------------------------
+   -- Resolve_CMOF_Metaclass --
+   ----------------------------
+
+   function Resolve_CMOF_Metaclass
+    (Extent : not null AMF.URI_Stores.URI_Store_Access;
+     Name   : League.Strings.Universal_String)
+       return AMF.CMOF.Classes.CMOF_Class_Access
+   is
+      Packages : constant AMF.CMOF.Packages.Collections.Set_Of_CMOF_Package
+        := Extent.Get_Package;
+
+   begin
+      for J in 1 .. Packages.Length loop
+         if Packages.Element (J).Get_Name = +"CMOF" then
+            return Resolve_Owned_Class (Packages.Element (J), Name);
+         end if;
+      end loop;
+
+      return null;
+   end Resolve_CMOF_Metaclass;
+
    Window : Modeler.Main_Windows.Main_Window_Access;
 
 begin
@@ -127,19 +155,18 @@ begin
 
    declare
       Extent  : constant AMF.URI_Stores.URI_Store_Access
-        := AMF.Facility.Create_URI_Store;
+        := AMF.Facility.Create_URI_Store
+            (League.Strings.To_Universal_String ("my.xmi"));
       Pack    : AMF.CMOF.Packages.CMOF_Package_Access
         := AMF.CMOF.Packages.CMOF_Package_Access
-            (Extent.Create
-              (Resolve_Owned_Class (Extent.Get_Package, +"Package")));
+            (Extent.Create (Resolve_CMOF_Metaclass (Extent, +"Package")));
       Packed  :
         AMF.CMOF.Packageable_Elements.Collections.
           Set_Of_CMOF_Packageable_Element
             := Pack.Get_Packaged_Element;
       Class   : AMF.CMOF.Classes.CMOF_Class_Access
         := AMF.CMOF.Classes.CMOF_Class_Access
-            (Extent.Create
-              (Resolve_Owned_Class (Extent.Get_Package, +"Class")));
+            (Extent.Create (Resolve_CMOF_Metaclass (Extent, +"Class")));
 
    begin
       Pack.Set_Name ((False, +"Package one"));
