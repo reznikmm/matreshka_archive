@@ -2,18 +2,24 @@ with Ada.Wide_Wide_Text_IO;
 
 with AMF.UML.Properties.Collections;
 with AMF.UML.Types;
+with League.Strings;
 
 package body Generators is
 
    use Ada.Wide_Wide_Text_IO;
+   use type AMF.Optional_String;
+
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
    -----------------
-   -- Visit_Class --
+   -- Enter_Class --
    -----------------
 
-   overriding procedure Visit_Class
-     (Self    : in out Generator;
-      Element : not null AMF.UML.Classes.UML_Class_Access)
+   overriding procedure Enter_Class
+    (Self    : in out Generator;
+     Element : not null AMF.UML.Classes.UML_Class_Access)
    is
       use type AMF.Optional_Integer;
 
@@ -25,6 +31,12 @@ package body Generators is
       Attribute_Type  : AMF.UML.Types.UML_Type_Access;
 
    begin
+      if not Self.In_Model then
+         --  Return immediately when elements not belong to expected model.
+
+         return;
+      end if;
+
       Put ("CREATE TABLE " & Element.Get_Name.Value.To_Wide_Wide_String);
 
       for J in 1 .. Owned_Attribute.Length loop
@@ -54,6 +66,50 @@ package body Generators is
       end loop;
 
       Put_Line (");");
-   end Visit_Class;
+   end Enter_Class;
+
+   -----------------
+   -- Enter_Model --
+   -----------------
+
+   overriding procedure Enter_Model
+    (Self    : in out Generator;
+     Element : not null AMF.UML.Models.UML_Model_Access) is
+   begin
+      Self.In_Model := Element.Get_Name = +"Schema";
+   end Enter_Model;
+
+   -----------------
+   -- Leave_Model --
+   -----------------
+
+   overriding procedure Leave_Model
+    (Self    : in out Generator;
+     Element : not null AMF.UML.Models.UML_Model_Access) is
+   begin
+      Self.In_Model := False;
+   end Leave_Model;
+
+   -------------------
+   -- Enter_Package --
+   -------------------
+
+   overriding procedure Enter_Package
+     (Self    : in out Generator;
+      Element : not null AMF.UML.Packages.UML_Package_Access) is
+   begin
+      Self.In_Model := False;
+   end Enter_Package;
+
+   -------------------
+   -- Enter_Profile --
+   -------------------
+
+   overriding procedure Enter_Profile
+    (Self    : in out Generator;
+     Element : not null AMF.UML.Profiles.UML_Profile_Access) is
+   begin
+      Self.In_Model := False;
+   end Enter_Profile;
 
 end Generators;
