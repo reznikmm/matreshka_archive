@@ -46,6 +46,7 @@ with Ada.Integer_Wide_Wide_Text_IO;
 with Ada.Strings.Wide_Wide_Fixed;
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.CMOF.Associations;
 with AMF.CMOF.Types;
 with AMF.Elements;
 with AMF.CMOF.Properties.Collections;
@@ -461,6 +462,8 @@ package body Generator.Attributes is
 
       procedure Generate_Setter (Position : Homograph_Sets.Cursor) is
 
+         use type AMF.CMOF.Properties.CMOF_Property_Access;
+
          procedure Generate (Position : Pair_Vectors.Cursor);
 
          --------------
@@ -476,6 +479,8 @@ package body Generator.Attributes is
               := Class_Info.Element (Class);
             Attribute_Type  : constant AMF.CMOF.Types.CMOF_Type_Access
               := Attribute.Get_Type;
+            Association     : constant AMF.CMOF.Associations.CMOF_Association_Access
+              := Attribute.Get_Association;
 
             function Member_Name return Wide_Wide_String;
 
@@ -615,6 +620,25 @@ package body Generator.Attributes is
                   when Sequence =>
                      raise Program_Error;
                end case;
+
+            elsif Attribute_Type.all in AMF.CMOF.Classes.CMOF_Class'Class then
+               Put_Line ("            AMF.Internals.Links.Create_Link");
+               Put_Line
+                ("             ("
+                   & Association_Constant_Qualified_Name (Association)
+                   & ',');
+
+               if Association.Get_Member_End.Element (1) = Attribute then
+                  Put_Line ("              Self,");
+                  Put_Line ("              To);");
+
+               elsif Association.Get_Member_End.Element (2) = Attribute then
+                  Put_Line ("              To,");
+                  Put_Line ("              Self);");
+
+               else
+                  raise Program_Error;
+               end if;
 
             else
                Put_Line

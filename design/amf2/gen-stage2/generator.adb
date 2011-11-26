@@ -66,7 +66,7 @@ package body Generator is
       return
         not Attribute.Get_Is_Read_Only
           and then not Attribute.Is_Multivalued
-          and then The_Type.all not in AMF.CMOF.Classes.CMOF_Class'Class
+--          and then The_Type.all not in AMF.CMOF.Classes.CMOF_Class'Class
           and then Use_Member_Slot (Attribute);
    end Has_Internal_Setter;
 
