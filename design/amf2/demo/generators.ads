@@ -1,17 +1,18 @@
-with AMF.UML.Visitors;
-
 private with AMF.UML.Classes;
 private with AMF.UML.Models;
 private with AMF.UML.Packages;
 private with AMF.UML.Profiles;
+with AMF.Visitors.UML_Containment;
 
 package Generators is
 
-   type Generator is new AMF.UML.Visitors.UML_Visitor with private;
+   type Generator is
+     new AMF.Visitors.UML_Containment.UML_Containment_Visitor with private;
 
 private
 
-   type Generator is new AMF.UML.Visitors.UML_Visitor with record
+   type Generator is
+     new AMF.Visitors.UML_Containment.UML_Containment_Visitor with record
       In_Model : Boolean := False;
    end record;
 
