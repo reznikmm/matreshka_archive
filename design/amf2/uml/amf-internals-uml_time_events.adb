@@ -100,11 +100,10 @@ package body AMF.Internals.UML_Time_Events is
     (Self : not null access UML_Time_Event_Proxy;
      To   : AMF.UML.Time_Expressions.UML_Time_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_When
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_When
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_When;
 
    --------------------
@@ -213,11 +212,10 @@ package body AMF.Internals.UML_Time_Events is
     (Self : not null access UML_Time_Event_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -352,11 +350,10 @@ package body AMF.Internals.UML_Time_Events is
     (Self : not null access UML_Time_Event_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
 
    ----------------------------
@@ -382,11 +379,10 @@ package body AMF.Internals.UML_Time_Events is
     (Self : not null access UML_Time_Event_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    --------------------

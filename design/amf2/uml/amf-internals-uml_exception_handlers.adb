@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Exception_Handlers is
     (Self : not null access UML_Exception_Handler_Proxy;
      To   : AMF.UML.Object_Nodes.UML_Object_Node_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Exception_Input
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Exception_Input
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Exception_Input;
 
    ------------------------
@@ -120,11 +119,10 @@ package body AMF.Internals.UML_Exception_Handlers is
     (Self : not null access UML_Exception_Handler_Proxy;
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Handler_Body
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Handler_Body
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Handler_Body;
 
    ------------------------
@@ -150,11 +148,10 @@ package body AMF.Internals.UML_Exception_Handlers is
     (Self : not null access UML_Exception_Handler_Proxy;
      To   : AMF.UML.Executable_Nodes.UML_Executable_Node_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Protected_Node
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Protected_Node
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Protected_Node;
 
    -----------------------

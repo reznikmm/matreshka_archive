@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Link_End_Datas is
     (Self : not null access UML_Link_End_Data_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
-      raise Program_Error;
---      AMF.Internals.Tables.UML_Attributes.Internal_Set_End
---       (Self.Id,
---        AMF.Internals.Helpers.To_Element
---         (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_End
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_End;
 
    -------------------
@@ -120,11 +119,10 @@ package body AMF.Internals.UML_Link_End_Datas is
     (Self : not null access UML_Link_End_Data_Proxy;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is
    begin
-      raise Program_Error;
---      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
---       (Self.Id,
---        AMF.Internals.Helpers.To_Element
---         (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Value;
 
    -----------------------

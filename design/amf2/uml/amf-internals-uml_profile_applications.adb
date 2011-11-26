@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Profile_Applications is
     (Self : not null access UML_Profile_Application_Proxy;
      To   : AMF.UML.Profiles.UML_Profile_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Applied_Profile
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Applied_Profile
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Applied_Profile;
 
    --------------------------
@@ -105,11 +104,10 @@ package body AMF.Internals.UML_Profile_Applications is
     (Self : not null access UML_Profile_Application_Proxy;
      To   : AMF.UML.Packages.UML_Package_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Applying_Package
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Applying_Package
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Applying_Package;
 
    -------------------

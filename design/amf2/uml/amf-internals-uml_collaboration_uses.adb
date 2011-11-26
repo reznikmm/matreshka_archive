@@ -90,11 +90,10 @@ package body AMF.Internals.UML_Collaboration_Uses is
     (Self : not null access UML_Collaboration_Use_Proxy;
      To   : AMF.UML.Collaborations.UML_Collaboration_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
    ---------------------------
@@ -178,11 +177,10 @@ package body AMF.Internals.UML_Collaboration_Uses is
     (Self : not null access UML_Collaboration_Use_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

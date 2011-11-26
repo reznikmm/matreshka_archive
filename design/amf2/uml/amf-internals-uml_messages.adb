@@ -90,11 +90,10 @@ package body AMF.Internals.UML_Messages is
     (Self : not null access UML_Message_Proxy;
      To   : AMF.UML.Connectors.UML_Connector_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Connector
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Connector
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Connector;
 
    ---------------------
@@ -120,11 +119,10 @@ package body AMF.Internals.UML_Messages is
     (Self : not null access UML_Message_Proxy;
      To   : AMF.UML.Interactions.UML_Interaction_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Interaction
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Interaction
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Interaction;
 
    ----------------------
@@ -188,11 +186,10 @@ package body AMF.Internals.UML_Messages is
     (Self : not null access UML_Message_Proxy;
      To   : AMF.UML.Message_Ends.UML_Message_End_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Receive_Event
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Receive_Event
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Receive_Event;
 
    --------------------
@@ -218,11 +215,10 @@ package body AMF.Internals.UML_Messages is
     (Self : not null access UML_Message_Proxy;
      To   : AMF.UML.Message_Ends.UML_Message_End_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Send_Event
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Send_Event
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Send_Event;
 
    -------------------
@@ -248,11 +244,10 @@ package body AMF.Internals.UML_Messages is
     (Self : not null access UML_Message_Proxy;
      To   : AMF.UML.Named_Elements.UML_Named_Element_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Signature;
 
    ---------------------------
@@ -336,11 +331,10 @@ package body AMF.Internals.UML_Messages is
     (Self : not null access UML_Message_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Slots is
     (Self : not null access UML_Slot_Proxy;
      To   : AMF.UML.Structural_Features.UML_Structural_Feature_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Defining_Feature
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Defining_Feature
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Defining_Feature;
 
    -------------------------
@@ -105,11 +104,10 @@ package body AMF.Internals.UML_Slots is
     (Self : not null access UML_Slot_Proxy;
      To   : AMF.UML.Instance_Specifications.UML_Instance_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Instance
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Instance
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Instance;
 
    ---------------

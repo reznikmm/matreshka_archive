@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Redefinable_Template_Signatures is
     (Self : not null access UML_Redefinable_Template_Signature_Proxy;
      To   : AMF.UML.Classifiers.UML_Classifier_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Classifier
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Classifier
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Classifier;
 
    ----------------------------
@@ -248,11 +247,10 @@ package body AMF.Internals.UML_Redefinable_Template_Signatures is
     (Self : not null access UML_Redefinable_Template_Signature_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -417,11 +415,10 @@ package body AMF.Internals.UML_Redefinable_Template_Signatures is
     (Self : not null access UML_Redefinable_Template_Signature_Proxy;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template;
 
    -------------------------

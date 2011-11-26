@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Template_Bindings is
     (Self : not null access UML_Template_Binding_Proxy;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Bound_Element
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Bound_Element
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Bound_Element;
 
    --------------------------------
@@ -120,11 +119,10 @@ package body AMF.Internals.UML_Template_Bindings is
     (Self : not null access UML_Template_Binding_Proxy;
      To   : AMF.UML.Template_Signatures.UML_Template_Signature_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Signature
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Signature;
 
    ----------------

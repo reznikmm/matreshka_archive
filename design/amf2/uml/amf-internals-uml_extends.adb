@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Extends is
     (Self : not null access UML_Extend_Proxy;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Condition
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Condition
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Condition;
 
    -----------------------
@@ -105,11 +104,10 @@ package body AMF.Internals.UML_Extends is
     (Self : not null access UML_Extend_Proxy;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Extended_Case
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Extended_Case
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Extended_Case;
 
    -------------------
@@ -135,11 +133,10 @@ package body AMF.Internals.UML_Extends is
     (Self : not null access UML_Extend_Proxy;
      To   : AMF.UML.Use_Cases.UML_Use_Case_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Extension
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Extension
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Extension;
 
    ----------------------------
@@ -328,11 +325,10 @@ package body AMF.Internals.UML_Extends is
     (Self : not null access UML_Extend_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------

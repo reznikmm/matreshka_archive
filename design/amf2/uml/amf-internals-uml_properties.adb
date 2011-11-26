@@ -100,11 +100,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Associations.UML_Association_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Association
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Association
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Association;
 
    -------------------------
@@ -130,11 +129,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Association_End
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Association_End
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Association_End;
 
    ---------------
@@ -160,11 +158,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Classes.UML_Class_Access) is
    begin
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Class
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
-      raise Program_Error;
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Class
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Class;
 
    ------------------
@@ -190,11 +187,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Data_Types.UML_Data_Type_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Datatype
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Datatype
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Datatype;
 
    -----------------
@@ -263,11 +259,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Default_Value
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Default_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Default_Value;
 
    -------------------
@@ -293,11 +288,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Interfaces.UML_Interface_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Interface
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Interface
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Interface;
 
    ----------------------
@@ -448,11 +442,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Opposite
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Opposite
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Opposite;
 
    ----------------------------
@@ -478,11 +471,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Associations.UML_Association_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Association
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Association
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Association;
 
    -------------------
@@ -568,11 +560,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Connectable_Element_Template_Parameters.UML_Connectable_Element_Template_Parameter_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    --------------
@@ -598,11 +589,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Types.UML_Type_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
    ---------------------------
@@ -686,11 +676,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -825,11 +814,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Owning_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Owning_Template_Parameter;
 
    ----------------------------
@@ -855,11 +843,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Template_Parameters.UML_Template_Parameter_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template_Parameter
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template_Parameter;
 
    --------------------------
@@ -990,11 +977,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Lower_Value;
 
    ---------------
@@ -1045,11 +1031,10 @@ package body AMF.Internals.UML_Properties is
     (Self : not null access UML_Property_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Upper_Value;
 
    ------------------------------

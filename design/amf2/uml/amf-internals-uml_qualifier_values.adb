@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Qualifier_Values is
     (Self : not null access UML_Qualifier_Value_Proxy;
      To   : AMF.UML.Properties.UML_Property_Access) is
    begin
-      raise Program_Error;
---      AMF.Internals.Tables.UML_Attributes.Internal_Set_Qualifier
---       (Self.Id,
---        AMF.Internals.Helpers.To_Element
---         (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Qualifier
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Qualifier;
 
    ---------------
@@ -105,11 +104,10 @@ package body AMF.Internals.UML_Qualifier_Values is
     (Self : not null access UML_Qualifier_Value_Proxy;
      To   : AMF.UML.Input_Pins.UML_Input_Pin_Access) is
    begin
-      raise Program_Error;
---      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
---       (Self.Id,
---        AMF.Internals.Helpers.To_Element
---         (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Value;
 
    -----------------------

@@ -105,11 +105,10 @@ package body AMF.Internals.UML_Template_Signatures is
     (Self : not null access UML_Template_Signature_Proxy;
      To   : AMF.UML.Templateable_Elements.UML_Templateable_Element_Access) is
    begin
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Template
---         (Self.Id,
-      raise Program_Error;
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Template
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Template;
 
    -----------------------

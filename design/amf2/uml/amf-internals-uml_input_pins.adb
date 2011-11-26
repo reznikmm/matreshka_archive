@@ -165,11 +165,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Selection
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Selection
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Selection;
 
    ---------------------
@@ -195,11 +194,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Bound
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Bound
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Upper_Bound;
 
    ------------------
@@ -225,11 +223,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Activities.UML_Activity_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Activity
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Activity;
 
    ------------------
@@ -300,11 +297,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Structured_Activity_Nodes.UML_Structured_Activity_Node_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_In_Structured_Node
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_In_Structured_Node;
 
    ------------------
@@ -488,11 +484,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
@@ -627,11 +622,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Types.UML_Type_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Type
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Type;
 
    --------------------
@@ -732,11 +726,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Lower_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Lower_Value;
 
    ---------------
@@ -787,11 +780,10 @@ package body AMF.Internals.UML_Input_Pins is
     (Self : not null access UML_Input_Pin_Proxy;
      To   : AMF.UML.Value_Specifications.UML_Value_Specification_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Upper_Value
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Upper_Value;
 
    ------------------------

@@ -75,11 +75,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Post_Condition
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Post_Condition
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Post_Condition;
 
    -----------------------
@@ -105,11 +104,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Pre_Condition
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Pre_Condition
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Pre_Condition;
 
    ------------------
@@ -150,11 +148,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Regions.UML_Region_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Container
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Container
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Container;
 
    ----------------
@@ -180,11 +177,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Behaviors.UML_Behavior_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Effect
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Effect
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Effect;
 
    ---------------
@@ -210,11 +206,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Constraints.UML_Constraint_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Guard
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Guard
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Guard;
 
    --------------
@@ -265,11 +260,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Transitions.UML_Transition_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Redefined_Transition
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Redefined_Transition
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Redefined_Transition;
 
    ------------------------------
@@ -307,11 +301,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Vertexs.UML_Vertex_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Source
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Source
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Source;
 
    ----------------
@@ -337,11 +330,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.Vertexs.UML_Vertex_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Target
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Target
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Target;
 
    -----------------
@@ -530,11 +522,10 @@ package body AMF.Internals.UML_Protocol_Transitions is
     (Self : not null access UML_Protocol_Transition_Proxy;
      To   : AMF.UML.String_Expressions.UML_String_Expression_Access) is
    begin
-      raise Program_Error;
---        AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
---         (Self.Id,
---          AMF.Internals.Helpers.To_Element
---           (AMF.Elements.Element_Access (To)));
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Name_Expression
+       (Self.Id,
+        AMF.Internals.Helpers.To_Element
+         (AMF.Elements.Element_Access (To)));
    end Set_Name_Expression;
 
    -------------------
