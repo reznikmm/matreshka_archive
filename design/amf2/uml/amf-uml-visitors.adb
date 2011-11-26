@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements.Collections;
+with AMF.UML.Packageable_Elements.Collections;
 
 package body AMF.UML.Visitors is
 
@@ -51,7 +52,7 @@ package body AMF.UML.Visitors is
 
    procedure Visit
     (Self    : in out UML_Visitor'Class;
-     Element : not null AMF.UML.Elements.UML_Element_Access) is
+     Element : not null access AMF.UML.Elements.UML_Element'Class) is
    begin
       if Element.all in AMF.UML.Abstractions.UML_Abstraction'Class then
          Self.Enter_Abstraction
@@ -1061,6 +1062,16 @@ package body AMF.UML.Visitors is
          Self.Leave_Output_Pin
           (AMF.UML.Output_Pins.UML_Output_Pin_Access (Element));
 
+      elsif Element.all in AMF.UML.Profiles.UML_Profile'Class then
+         --  UML::Profile must be tested before UML::Package.
+
+         Self.Enter_Profile
+          (AMF.UML.Profiles.UML_Profile_Access (Element));
+         Self.Visit_Profile
+          (AMF.UML.Profiles.UML_Profile_Access (Element));
+         Self.Leave_Profile
+          (AMF.UML.Profiles.UML_Profile_Access (Element));
+
       elsif Element.all in AMF.UML.Packages.UML_Package'Class then
          Self.Enter_Package
           (AMF.UML.Packages.UML_Package_Access (Element));
@@ -1124,14 +1135,6 @@ package body AMF.UML.Visitors is
           (AMF.UML.Primitive_Types.UML_Primitive_Type_Access (Element));
          Self.Leave_Primitive_Type
           (AMF.UML.Primitive_Types.UML_Primitive_Type_Access (Element));
-
-      elsif Element.all in AMF.UML.Profiles.UML_Profile'Class then
-         Self.Enter_Profile
-          (AMF.UML.Profiles.UML_Profile_Access (Element));
-         Self.Visit_Profile
-          (AMF.UML.Profiles.UML_Profile_Access (Element));
-         Self.Leave_Profile
-          (AMF.UML.Profiles.UML_Profile_Access (Element));
 
       elsif Element.all in AMF.UML.Profile_Applications.UML_Profile_Application'Class then
          Self.Enter_Profile_Application
@@ -2903,9 +2906,16 @@ package body AMF.UML.Visitors is
 
    not overriding procedure Visit_Model
     (Self    : in out UML_Visitor;
-     Element : not null AMF.UML.Models.UML_Model_Access) is
+     Element : not null AMF.UML.Models.UML_Model_Access)
+   is
+      Packaged_Elements : constant
+        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
+          := Element.Get_Packaged_Element;
+
    begin
-      null;
+      for J in 1 .. Packaged_Elements.Length loop
+         Self.Visit (Packaged_Elements.Element (J));
+      end loop;
    end Visit_Model;
 
    ----------------
@@ -3013,9 +3023,16 @@ package body AMF.UML.Visitors is
 
    not overriding procedure Visit_Package
     (Self    : in out UML_Visitor;
-     Element : not null AMF.UML.Packages.UML_Package_Access) is
+     Element : not null AMF.UML.Packages.UML_Package_Access)
+   is
+      Packaged_Elements : constant
+        AMF.UML.Packageable_Elements.Collections.Set_Of_UML_Packageable_Element
+          := Element.Get_Packaged_Element;
+
    begin
-      null;
+      for J in 1 .. Packaged_Elements.Length loop
+         Self.Visit (Packaged_Elements.Element (J));
+      end loop;
    end Visit_Package;
 
    --------------------------
