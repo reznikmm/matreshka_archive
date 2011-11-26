@@ -64,6 +64,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Association
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Association
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Property => Property::association
 
    function Internal_Get_Attribute
@@ -91,11 +94,17 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Body_Condition
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Body_Condition
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Operation => Operation::bodyCondition
 
    function Internal_Get_Class
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Class
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Operation => Operation::class
    --  Property => Property::class
 
@@ -107,11 +116,17 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Context
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Context
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Constraint => Constraint::context
 
    function Internal_Get_Datatype
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Datatype
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Operation => Operation::datatype
    --  Property => Property::datatype
 
@@ -156,6 +171,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Enumeration
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Enumeration
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  EnumerationLiteral => EnumerationLiteral::enumeration
 
    function Internal_Get_Feature
@@ -185,6 +203,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Imported_Element
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Imported_Element
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  ElementImport => ElementImport::importedElement
 
    function Internal_Get_Imported_Member
@@ -201,11 +222,17 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Imported_Package
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Imported_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  PackageImport => PackageImport::importedPackage
 
    function Internal_Get_Importing_Namespace
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Importing_Namespace
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  ElementImport => ElementImport::importingNamespace
    --  PackageImport => PackageImport::importingNamespace
 
@@ -342,6 +369,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Merged_Package
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Merged_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  PackageMerge => PackageMerge::mergedPackage
 
    function Internal_Get_Name
@@ -395,6 +425,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Nesting_Package
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Nesting_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Package => Package::nestingPackage
 
    function Internal_Get_Operand
@@ -405,11 +438,17 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Operation
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Operation
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Parameter => Parameter::operation
 
    function Internal_Get_Opposite
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Opposite
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Property => Property::opposite
 
    function Internal_Get_Owned_Attribute
@@ -539,11 +578,17 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Owning_Association
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Owning_Association
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Property => Property::owningAssociation
 
    function Internal_Get_Package
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Association => Type::package
    --  Class => Type::package
    --  DataType => Type::package
@@ -606,6 +651,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Receiving_Package
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Receiving_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  PackageMerge => PackageMerge::receivingPackage
 
    function Internal_Get_Redefined_Element
@@ -648,6 +696,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Specification
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Specification
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Constraint => Constraint::specification
 
    function Internal_Get_Subsetted_Property
@@ -663,6 +714,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Tag_Owner
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Tag_Owner
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Tag => Tag::tagOwner
 
    function Internal_Get_Target
@@ -675,6 +729,9 @@ package AMF.Internals.Tables.CMOF_Attributes is
    function Internal_Get_Type
     (Self : AMF.Internals.CMOF_Element)
        return AMF.Internals.CMOF_Element;
+   procedure Internal_Set_Type
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element);
    --  Expression => TypedElement::type
    --  OpaqueExpression => TypedElement::type
    --  Operation => Operation::type

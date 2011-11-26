@@ -2645,6 +2645,29 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       end case;
    end Internal_Set_Alias;
 
+   ------------------------------
+   -- Internal_Set_Association --
+   ------------------------------
+
+   procedure Internal_Set_Association
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Member_End_Association,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Association;
+
    -----------------------
    -- Internal_Set_Body --
    -----------------------
@@ -2678,6 +2701,110 @@ package body AMF.Internals.Tables.CMOF_Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Body;
+
+   ---------------------------------
+   -- Internal_Set_Body_Condition --
+   ---------------------------------
+
+   procedure Internal_Set_Body_Condition
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Constraint_Body_Condition_Body_Context,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Body_Condition;
+
+   ------------------------
+   -- Internal_Set_Class --
+   ------------------------
+
+   procedure Internal_Set_Class
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Operation_Owned_Operation_Class,
+              To,
+              Self);
+
+         when E_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Owned_Attribute_Class,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Class;
+
+   --------------------------
+   -- Internal_Set_Context --
+   --------------------------
+
+   procedure Internal_Set_Context
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Constraint_Owned_Rule_Context,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Context;
+
+   ---------------------------
+   -- Internal_Set_Datatype --
+   ---------------------------
+
+   procedure Internal_Set_Datatype
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Operation_Owned_Operation_Datatype,
+              To,
+              Self);
+
+         when E_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Owned_Attribute_Datatype,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Datatype;
 
    --------------------------
    -- Internal_Set_Default --
@@ -2753,6 +2880,104 @@ package body AMF.Internals.Tables.CMOF_Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Direction;
+
+   ------------------------------
+   -- Internal_Set_Enumeration --
+   ------------------------------
+
+   procedure Internal_Set_Enumeration
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Enumeration_Literal =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Enumeration_Literal_Owned_Literal_Enumeration,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Enumeration;
+
+   -----------------------------------
+   -- Internal_Set_Imported_Element --
+   -----------------------------------
+
+   procedure Internal_Set_Imported_Element
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Element_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Packageable_Element_Imported_Element_Element_Import,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Imported_Element;
+
+   -----------------------------------
+   -- Internal_Set_Imported_Package --
+   -----------------------------------
+
+   procedure Internal_Set_Imported_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Package_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Imported_Package_Package_Import,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Imported_Package;
+
+   --------------------------------------
+   -- Internal_Set_Importing_Namespace --
+   --------------------------------------
+
+   procedure Internal_Set_Importing_Namespace
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Element_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Import_Element_Import_Importing_Namespace,
+              To,
+              Self);
+
+         when E_Package_Import =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Import_Package_Import_Importing_Namespace,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Importing_Namespace;
 
    ------------------------------
    -- Internal_Set_Is_Abstract --
@@ -3102,6 +3327,29 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       end case;
    end Internal_Set_Lower;
 
+   ---------------------------------
+   -- Internal_Set_Merged_Package --
+   ---------------------------------
+
+   procedure Internal_Set_Merged_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Package_Merge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Merged_Package_Package_Merge,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Merged_Package;
+
    -----------------------
    -- Internal_Set_Name --
    -----------------------
@@ -3351,6 +3599,261 @@ package body AMF.Internals.Tables.CMOF_Attributes is
             raise Program_Error;
       end case;
    end Internal_Set_Name;
+
+   ----------------------------------
+   -- Internal_Set_Nesting_Package --
+   ----------------------------------
+
+   procedure Internal_Set_Nesting_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Package =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Nested_Package_Nesting_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Nesting_Package;
+
+   ----------------------------
+   -- Internal_Set_Operation --
+   ----------------------------
+
+   procedure Internal_Set_Operation
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Parameter_Owned_Parameter_Operation,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Operation;
+
+   ---------------------------
+   -- Internal_Set_Opposite --
+   ---------------------------
+
+   procedure Internal_Set_Opposite
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Opposite_Property,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Opposite;
+
+   -------------------------------------
+   -- Internal_Set_Owning_Association --
+   -------------------------------------
+
+   procedure Internal_Set_Owning_Association
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Owned_End_Owning_Association,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Owning_Association;
+
+   --------------------------
+   -- Internal_Set_Package --
+   --------------------------
+
+   procedure Internal_Set_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Association =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when E_Class =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when E_Data_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when E_Enumeration =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when E_Primitive_Type =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Owned_Type_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Package;
+
+   ------------------------------------
+   -- Internal_Set_Receiving_Package --
+   ------------------------------------
+
+   procedure Internal_Set_Receiving_Package
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Package_Merge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Package_Merge_Package_Merge_Receiving_Package,
+              To,
+              Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Receiving_Package;
+
+   --------------------------------
+   -- Internal_Set_Specification --
+   --------------------------------
+
+   procedure Internal_Set_Specification
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Constraint =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Value_Specification_Specification_Owning_Constraint,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Specification;
+
+   ----------------------------
+   -- Internal_Set_Tag_Owner --
+   ----------------------------
+
+   procedure Internal_Set_Tag_Owner
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Tag =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Tag_Owner_Owned_Tag,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Tag_Owner;
+
+   -----------------------
+   -- Internal_Set_Type --
+   -----------------------
+
+   procedure Internal_Set_Type
+    (Self : AMF.Internals.CMOF_Element;
+     To   : AMF.Internals.CMOF_Element)
+   is
+      Old : AMF.Internals.CMOF_Element;
+
+   begin
+      case CMOF_Element_Table.Table (Self).Kind is
+         when E_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when E_Opaque_Expression =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when E_Operation =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Operation,
+              Self,
+              To);
+
+         when E_Parameter =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when E_Property =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Type_Type_Typed_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Type;
 
    ------------------------
    -- Internal_Set_Upper --
