@@ -1,5 +1,8 @@
 with Ada.Wide_Wide_Text_IO;
 
+with AMF.Elements;
+with AMF.UML.Elements;
+with AMF.UML.Models;
 with AMF.UML.Properties.Collections;
 with AMF.UML.Types;
 with League.Strings;
@@ -29,10 +32,18 @@ package body Generators is
       Attribute       : AMF.UML.Properties.UML_Property_Access;
       First           : Boolean := True;
       Attribute_Type  : AMF.UML.Types.UML_Type_Access;
+      Owner           : AMF.UML.Elements.UML_Element_Access;
 
    begin
-      if not Self.In_Model then
-         --  Return immediately when elements not belong to expected model.
+      Owner :=
+        AMF.UML.Elements.UML_Element_Access
+         (AMF.Elements.Element_Access (Element).Container);
+
+      if Owner.all not in AMF.UML.Models.UML_Model'Class
+        or else AMF.UML.Models.UML_Model_Access (Owner).Get_Name /= +"Schema"
+      then
+         --  Return immediately when owner of current UML::Class is not
+         --  UML::Model called "Schema".
 
          return;
       end if;
@@ -67,49 +78,5 @@ package body Generators is
 
       Put_Line (");");
    end Enter_Class;
-
-   -----------------
-   -- Enter_Model --
-   -----------------
-
-   overriding procedure Enter_Model
-    (Self    : in out Generator;
-     Element : not null AMF.UML.Models.UML_Model_Access) is
-   begin
-      Self.In_Model := Element.Get_Name = +"Schema";
-   end Enter_Model;
-
-   -----------------
-   -- Leave_Model --
-   -----------------
-
-   overriding procedure Leave_Model
-    (Self    : in out Generator;
-     Element : not null AMF.UML.Models.UML_Model_Access) is
-   begin
-      Self.In_Model := False;
-   end Leave_Model;
-
-   -------------------
-   -- Enter_Package --
-   -------------------
-
-   overriding procedure Enter_Package
-     (Self    : in out Generator;
-      Element : not null AMF.UML.Packages.UML_Package_Access) is
-   begin
-      Self.In_Model := False;
-   end Enter_Package;
-
-   -------------------
-   -- Enter_Profile --
-   -------------------
-
-   overriding procedure Enter_Profile
-    (Self    : in out Generator;
-     Element : not null AMF.UML.Profiles.UML_Profile_Access) is
-   begin
-      Self.In_Model := False;
-   end Enter_Profile;
 
 end Generators;
