@@ -1441,7 +1441,8 @@ package body League.Strings is
                raise Constraint_Error with "Illegal Unicode code point";
             end if;
 
-            Append (Destination, Wide_Wide_Character'Pos (Source (J)));
+            Unterminated_Append
+             (Destination, Wide_Wide_Character'Pos (Source (J)));
          end loop;
 
          String_Handler.Fill_Null_Terminator (Destination);
