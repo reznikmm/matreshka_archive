@@ -1432,7 +1432,13 @@ package body League.Strings is
          Destination := Shared_Empty'Access;
 
       else
-         Destination := Allocate (Source'Length);
+         Destination := Allocate (Source'Length + 1);
+         --  Check for string reallocation below doesn't take in sence size of
+         --  encoded character and assumes that it occupy two code unit always.
+         --  One additional code unit is allocated to prevent from reallocation
+         --  of shared data in corner case.
+
+         Destination.Length := Source'Length;
 
          for J in Source'Range loop
             if not Is_Valid
@@ -1441,8 +1447,29 @@ package body League.Strings is
                raise Constraint_Error with "Illegal Unicode code point";
             end if;
 
-            Unterminated_Append
-             (Destination, Wide_Wide_Character'Pos (Source (J)));
+            if Destination.Size < Destination.Unused + 2 then
+               --  For some improvement of performance this check ignores
+               --  actual number of code units which are occupied by encoded
+               --  code point. Additional code unit is allocated to prevent
+               --  from reallocation of shared data in corner case.
+
+               declare
+                  Old : not null Shared_String_Access := Destination;
+
+               begin
+                  Destination := Allocate (Destination.Unused + 2);
+                  Destination.Value (Old.Value'Range) := Old.Value;
+                  Destination.Unused := Old.Unused;
+                  Destination.Length := Old.Length;
+
+                  Dereference (Old);
+               end;
+            end if;
+
+            Unchecked_Store
+             (Destination.Value,
+              Destination.Unused,
+              Wide_Wide_Character'Pos (Source (J)));
          end loop;
 
          String_Handler.Fill_Null_Terminator (Destination);
