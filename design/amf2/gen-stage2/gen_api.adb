@@ -167,7 +167,7 @@ procedure Gen_API is
    begin
       return
         "AMF."
-          & Generator.Names.Metamodel_Name (Element)
+          & Owning_Metamodel_Name (Element)
           & "."
           & Plural (To_Ada_Identifier (Element.Get_Name.Value));
    end Ada_API_Package_Name;
@@ -181,7 +181,7 @@ procedure Gen_API is
        return League.Strings.Universal_String is
    begin
       return
-        Generator.Names.Metamodel_Name (Element)
+        Owning_Metamodel_Name (Element)
           & "_"
           & To_Ada_Identifier (Element.Get_Name.Value);
    end Ada_API_Type_Name;
@@ -279,7 +279,7 @@ procedure Gen_API is
                Put_Line ("        " & Type_Mapping.Public_Ada_Type_Qualified_Name (Attribute_Type, Representation (Attribute)));
                Put_Line ("         (AMF.Internals.Helpers.To_Element");
                Put_Line ("           (AMF.Internals.Tables."
-                   & Generator.Names.Metamodel_Name (Attribute)
+                   & Generator.Metamodel_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
                Put_Line ("             (Self.Id)));");
@@ -289,7 +289,7 @@ procedure Gen_API is
                Put_Line ("        " & Type_Mapping.Public_Ada_Package_Name (Attribute_Type, Representation (Attribute)) & ".Wrap");
                Put_Line ("         (AMF.Internals.Element_Collections.Wrap");
                Put_Line ("           (AMF.Internals.Tables."
-                   & Generator.Names.Metamodel_Name (Attribute)
+                   & Generator.Metamodel_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
                Put_Line ("             (Self.Id)));");
@@ -310,7 +310,7 @@ procedure Gen_API is
                 ("         Aux : constant"
                    & " Matreshka.Internals.Strings.Shared_String_Access");
                Put_Line ("           := AMF.Internals.Tables."
-                   & Generator.Names.Metamodel_Name (Attribute)
+                   & Generator.Metamodel_Name
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name
                    & " (Self.Id);");
@@ -335,7 +335,7 @@ procedure Gen_API is
           ("      return");
          Put_Line
           ("        AMF.Internals.Tables."
-             & Generator.Names.Metamodel_Name (Attribute)
+             & Generator.Metamodel_Name
              & "_Attributes.Internal_Get_"
              & Attribute_Name);
          Put_Line ("         (Self.Id);");
@@ -363,7 +363,7 @@ procedure Gen_API is
             when Value | Holder =>
                Put_Line
                 ("      AMF.Internals.Tables."
-                   & Generator.Names.Metamodel_Name (Attribute)
+                   & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Put_Line ("       (Self.Id,");
@@ -383,7 +383,7 @@ procedure Gen_API is
                Put_Line ("      if To.Is_Empty then");
                Put_Line
                 ("         AMF.Internals.Tables."
-                   & Generator.Names.Metamodel_Name (Attribute)
+                   & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Put_Line ("          (Self.Id, null);");
@@ -391,7 +391,7 @@ procedure Gen_API is
                Put_Line ("      else");
                Put_Line
                 ("         AMF.Internals.Tables."
-                   & Generator.Names.Metamodel_Name (Attribute)
+                   & Generator.Metamodel_Name
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Put_Line ("          (Self.Id,");
@@ -406,7 +406,7 @@ procedure Gen_API is
       else
          Put_Line
           ("      AMF.Internals.Tables."
-             & Generator.Names.Metamodel_Name (Attribute)
+             & Generator.Metamodel_Name
              & "_Attributes.Internal_Set_"
              & Attribute_Name);
          Put_Line ("       (Self.Id, To);");
@@ -1215,11 +1215,11 @@ procedure Gen_API is
    is
       Package_Name         : constant League.Strings.Universal_String
         := "AMF.Internals."
-             & Generator.Names.Metamodel_Name (Class)
+             & Generator.Names.Owning_Metamodel_Name (Class)
              & "_"
              & Plural (To_Ada_Identifier (Class.Get_Name.Value));
       Type_Name            : constant League.Strings.Universal_String
-        := Generator.Names.Metamodel_Name (Class)
+        := Generator.Names.Owning_Metamodel_Name (Class)
              & "_"
              & To_Ada_Identifier (Class.Get_Name.Value)
              & "_Proxy";
@@ -1480,11 +1480,11 @@ procedure Gen_API is
    is
       Package_Name         : constant League.Strings.Universal_String
         := "AMF.Internals."
-             & Generator.Names.Metamodel_Name (Class)
+             & Generator.Names.Owning_Metamodel_Name (Class)
              & "_"
              & Plural (To_Ada_Identifier (Class.Get_Name.Value));
       Type_Name            : constant League.Strings.Universal_String
-        := Generator.Names.Metamodel_Name (Class)
+        := Generator.Names.Owning_Metamodel_Name (Class)
              & "_"
              & To_Ada_Identifier (Class.Get_Name.Value)
              & "_Proxy";
@@ -1725,19 +1725,14 @@ procedure Gen_API is
       Put_Line ("   type " & Type_Name & " is");
       Put_Line
        ("     limited new AMF.Internals."
-          & Generator.Names.Metamodel_Name (Class)
+          & Generator.Names.Owning_Metamodel_Name (Class)
           & "_Elements."
-          & Generator.Names.Metamodel_Name (Class)
+          & Generator.Names.Owning_Metamodel_Name (Class)
           & "_Element_Proxy");
       Put_Line
-       ("       and AMF."
-          & Generator.Names.Metamodel_Name (Class)
-          & "."
-          & Plural (To_Ada_Identifier (Class.Get_Name.Value))
-          & "."
-          & Generator.Names.Metamodel_Name (Class)
-          & "_"
-          & To_Ada_Identifier (Class.Get_Name.Value)
+       ("       and "
+          & Generator.Type_Mapping.Public_Ada_Type_Qualified_Name
+             (Class, Value)
           & " with null record;");
 
       Generate_Attributes (Class);

@@ -167,11 +167,11 @@ package body Generator.Names is
       end if;
    end Element_Constant_Qualified_Name;
 
-   --------------------
-   -- Metamodel_Name --
-   --------------------
+   ---------------------------
+   -- Owning_Metamodel_Name --
+   ---------------------------
 
-   function Metamodel_Name
+   function Owning_Metamodel_Name
     (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
        return League.Strings.Universal_String
    is
@@ -192,7 +192,7 @@ package body Generator.Names is
       end loop;
 
       raise Program_Error;
-   end Metamodel_Name;
+   end Owning_Metamodel_Name;
 
    ---------------------------
    -- Package_Constant_Name --
