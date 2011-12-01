@@ -46,6 +46,7 @@ with Ada.Characters.Handling;
 with Ada.Tags;
 
 with AMF.CMOF.Properties.Collections;
+with AMF.Elements;
 
 package body Generator.Names is
 
@@ -165,6 +166,33 @@ package body Generator.Names is
          raise Program_Error with Ada.Tags.External_Tag (Element'Tag);
       end if;
    end Element_Constant_Qualified_Name;
+
+   --------------------
+   -- Metamodel_Name --
+   --------------------
+
+   function Metamodel_Name
+    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return League.Strings.Universal_String
+   is
+      use type AMF.Elements.Element_Access;
+
+      Current : AMF.Elements.Element_Access
+        := AMF.Elements.Element_Access (Element);
+
+   begin
+      while Current /= null loop
+         if Current.all in AMF.CMOF.Packages.CMOF_Package'Class then
+            return
+              AMF.CMOF.Packages.CMOF_Package'Class
+               (Current.all).Get_Name.Value;
+         end if;
+
+         Current := Current.Container;
+      end loop;
+
+      raise Program_Error;
+   end Metamodel_Name;
 
    ---------------------------
    -- Package_Constant_Name --

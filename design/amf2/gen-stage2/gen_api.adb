@@ -89,11 +89,6 @@ procedure Gen_API is
        return League.Strings.Universal_String;
    --  Returns name of interface package.
 
-   function Ada_API_Collections_Package_Name
-    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return League.Strings.Universal_String;
-   --  Returns name of collections package.
-
    function Ada_API_Type_Name
     (Element : not null access constant AMF.CMOF.Types.CMOF_Type'Class)
        return League.Strings.Universal_String;
@@ -162,22 +157,6 @@ procedure Gen_API is
      Class_Type_Name : League.Strings.Universal_String;
      Proxy           : Boolean);
 
-   --------------------------------------
-   -- Ada_API_Collections_Package_Name --
-   --------------------------------------
-
-   function Ada_API_Collections_Package_Name
-    (Element : not null AMF.CMOF.Classes.CMOF_Class_Access)
-       return League.Strings.Universal_String is
-   begin
-      return
-        "AMF."
-          & Metamodel_Name
-          & "."
-          & Plural (To_Ada_Identifier (Element.Get_Name.Value))
-          & ".Collections";
-   end Ada_API_Collections_Package_Name;
-
    --------------------------
    -- Ada_API_Package_Name --
    --------------------------
@@ -188,7 +167,7 @@ procedure Gen_API is
    begin
       return
         "AMF."
-          & Metamodel_Name
+          & Generator.Names.Metamodel_Name (Element)
           & "."
           & Plural (To_Ada_Identifier (Element.Get_Name.Value));
    end Ada_API_Package_Name;
@@ -202,7 +181,9 @@ procedure Gen_API is
        return League.Strings.Universal_String is
    begin
       return
-        Metamodel_Name & "_" & To_Ada_Identifier (Element.Get_Name.Value);
+        Generator.Names.Metamodel_Name (Element)
+          & "_"
+          & To_Ada_Identifier (Element.Get_Name.Value);
    end Ada_API_Type_Name;
 
    ---------------------------------------
@@ -298,7 +279,7 @@ procedure Gen_API is
                Put_Line ("        " & Type_Mapping.Public_Ada_Type_Qualified_Name (Attribute_Type, Representation (Attribute)));
                Put_Line ("         (AMF.Internals.Helpers.To_Element");
                Put_Line ("           (AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (Attribute)
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
                Put_Line ("             (Self.Id)));");
@@ -308,7 +289,7 @@ procedure Gen_API is
                Put_Line ("        " & Type_Mapping.Public_Ada_Package_Name (Attribute_Type, Representation (Attribute)) & ".Wrap");
                Put_Line ("         (AMF.Internals.Element_Collections.Wrap");
                Put_Line ("           (AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (Attribute)
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name);
                Put_Line ("             (Self.Id)));");
@@ -329,7 +310,7 @@ procedure Gen_API is
                 ("         Aux : constant"
                    & " Matreshka.Internals.Strings.Shared_String_Access");
                Put_Line ("           := AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (Attribute)
                    & "_Attributes.Internal_Get_"
                    & Attribute_Name
                    & " (Self.Id);");
@@ -354,7 +335,7 @@ procedure Gen_API is
           ("      return");
          Put_Line
           ("        AMF.Internals.Tables."
-             & Metamodel_Name
+             & Generator.Names.Metamodel_Name (Attribute)
              & "_Attributes.Internal_Get_"
              & Attribute_Name);
          Put_Line ("         (Self.Id);");
@@ -382,7 +363,7 @@ procedure Gen_API is
             when Value | Holder =>
                Put_Line
                 ("      AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (Attribute)
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Put_Line ("       (Self.Id,");
@@ -402,7 +383,7 @@ procedure Gen_API is
                Put_Line ("      if To.Is_Empty then");
                Put_Line
                 ("         AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (Attribute)
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Put_Line ("          (Self.Id, null);");
@@ -410,7 +391,7 @@ procedure Gen_API is
                Put_Line ("      else");
                Put_Line
                 ("         AMF.Internals.Tables."
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (Attribute)
                    & "_Attributes.Internal_Set_"
                    & Attribute_Name);
                Put_Line ("          (Self.Id,");
@@ -425,7 +406,7 @@ procedure Gen_API is
       else
          Put_Line
           ("      AMF.Internals.Tables."
-             & Metamodel_Name
+             & Generator.Names.Metamodel_Name (Attribute)
              & "_Attributes.Internal_Set_"
              & Attribute_Name);
          Put_Line ("       (Self.Id, To);");
@@ -1234,11 +1215,11 @@ procedure Gen_API is
    is
       Package_Name         : constant League.Strings.Universal_String
         := "AMF.Internals."
-             & Metamodel_Name
+             & Generator.Names.Metamodel_Name (Class)
              & "_"
              & Plural (To_Ada_Identifier (Class.Get_Name.Value));
       Type_Name            : constant League.Strings.Universal_String
-        := Metamodel_Name
+        := Generator.Names.Metamodel_Name (Class)
              & "_"
              & To_Ada_Identifier (Class.Get_Name.Value)
              & "_Proxy";
@@ -1470,7 +1451,7 @@ procedure Gen_API is
        (League.Strings.To_Universal_String ("AMF.Internals.Helpers"));
       Context.Add
        (League.Strings.To_Universal_String ("AMF.Elements"));
-      Context.Add ("AMF.Internals.Tables." & Metamodel_Name & "_Attributes");
+      Context.Add ("AMF.Internals.Tables." & Generator.Metamodel_Name & "_Attributes");
 
 --      Compute_With_For_Attributes (Class);
 --      Compute_With_For_Operations (Class);
@@ -1499,11 +1480,11 @@ procedure Gen_API is
    is
       Package_Name         : constant League.Strings.Universal_String
         := "AMF.Internals."
-             & Metamodel_Name
+             & Generator.Names.Metamodel_Name (Class)
              & "_"
              & Plural (To_Ada_Identifier (Class.Get_Name.Value));
       Type_Name            : constant League.Strings.Universal_String
-        := Metamodel_Name
+        := Generator.Names.Metamodel_Name (Class)
              & "_"
              & To_Ada_Identifier (Class.Get_Name.Value)
              & "_Proxy";
@@ -1723,10 +1704,10 @@ procedure Gen_API is
 
       --  Compute with clauses
 
-      Context.Add ("AMF.Internals." & Metamodel_Name & "_Elements");
+      Context.Add ("AMF.Internals." & Generator.Metamodel_Name & "_Elements");
       Context.Add
        ("AMF."
-          & Metamodel_Name
+          & Generator.Metamodel_Name
           & "."
           & Plural (To_Ada_Identifier (Class.Get_Name.Value)));
 
@@ -1744,17 +1725,17 @@ procedure Gen_API is
       Put_Line ("   type " & Type_Name & " is");
       Put_Line
        ("     limited new AMF.Internals."
-          & Metamodel_Name
+          & Generator.Names.Metamodel_Name (Class)
           & "_Elements."
-          & Metamodel_Name
+          & Generator.Names.Metamodel_Name (Class)
           & "_Element_Proxy");
       Put_Line
        ("       and AMF."
-          & Metamodel_Name
+          & Generator.Names.Metamodel_Name (Class)
           & "."
           & Plural (To_Ada_Identifier (Class.Get_Name.Value))
           & "."
-          & Metamodel_Name
+          & Generator.Names.Metamodel_Name (Class)
           & "_"
           & To_Ada_Identifier (Class.Get_Name.Value)
           & " with null record;");

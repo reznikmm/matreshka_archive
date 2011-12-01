@@ -117,14 +117,14 @@ package body Generator.Type_Mapping is
          if Representation in Value .. Holder then
             return
               "AMF."
-                & Metamodel_Name
+                & Generator.Names.Metamodel_Name (The_Type)
                 & "."
                 & Plural (To_Ada_Identifier (The_Type.Get_Name.Value));
 
          else
             return
               "AMF."
-                & Metamodel_Name
+                & Generator.Names.Metamodel_Name (The_Type)
                 & "."
                 & Plural (To_Ada_Identifier (The_Type.Get_Name.Value))
                 & ".Collections";
@@ -159,7 +159,7 @@ package body Generator.Type_Mapping is
          case Representation is
             when Value | Holder =>
                return
-                 Metamodel_Name
+                 Generator.Names.Metamodel_Name (The_Type)
                    & "_"
                    & To_Ada_Identifier (The_Type.Get_Name.Value)
                    & "_Access";
@@ -167,28 +167,28 @@ package body Generator.Type_Mapping is
             when Set =>
                return
                  "Set_Of_"
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (The_Type)
                    & "_"
                    & To_Ada_Identifier (The_Type.Get_Name.Value);
 
             when Ordered_Set =>
                return
                  "Ordered_Set_Of_"
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (The_Type)
                    & "_"
                    & To_Ada_Identifier (The_Type.Get_Name.Value);
 
             when Bag =>
                return
                  "Bag_Of_"
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (The_Type)
                    & "_"
                    & To_Ada_Identifier (The_Type.Get_Name.Value);
 
             when Sequence =>
                return
                  "Sequence_Of_"
-                   & Metamodel_Name
+                   & Generator.Names.Metamodel_Name (The_Type)
                    & "_"
                    & To_Ada_Identifier (The_Type.Get_Name.Value);
          end case;
@@ -213,14 +213,14 @@ package body Generator.Type_Mapping is
             case Representation is
                when Value =>
                   return
-                    Metamodel_Name
+                    Generator.Names.Metamodel_Name (The_Type)
                       & "_"
                       & To_Ada_Identifier (The_Type.Get_Name.Value);
 
                when Holder =>
                   return
                     "Optional_"
-                      & Metamodel_Name
+                      & Generator.Names.Metamodel_Name (The_Type)
                       & "_"
                       & To_Ada_Identifier (The_Type.Get_Name.Value);
 

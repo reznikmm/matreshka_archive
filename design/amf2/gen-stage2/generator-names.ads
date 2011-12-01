@@ -56,6 +56,11 @@ package Generator.Names is
    function To_Ada_Identifier
     (Name : League.Strings.Universal_String) return Wide_Wide_String;
 
+   function Metamodel_Name
+    (Element : not null access AMF.CMOF.Elements.CMOF_Element'Class)
+       return League.Strings.Universal_String;
+   --  Returns name of the enclosing metamodel.
+
    function Association_Constant_Name
     (Association : not null AMF.CMOF.Associations.CMOF_Association_Access)
        return Wide_Wide_String;
