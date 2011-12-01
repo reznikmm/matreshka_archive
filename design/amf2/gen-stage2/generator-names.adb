@@ -412,8 +412,10 @@ package body Generator.Names is
                                  and then
                                    not Is_Upper (To_Character (Name (J + 1)))))
             then
-               Last := Last + 1;
-               Aux (Last) := '_';
+               if Last > 0 and then Aux (Last) /= '_' then
+                  Last := Last + 1;
+                  Aux (Last) := '_';
+               end if;
             end if;
 
             Last := Last + 1;
