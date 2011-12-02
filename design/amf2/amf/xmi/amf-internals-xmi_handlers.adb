@@ -327,12 +327,14 @@ package body AMF.Internals.XMI_Handlers is
                          & ":"
                          & Attributes.Qualified_Name (J)
                          & ''';
-                     Success := False;
+--                     Success := False;
 
-                     return;
+--                     return;
+
+                  else
+                     Set_Attribute (Property, Attributes.Value (J));
                   end if;
 
-                  Set_Attribute (Property, Attributes.Value (J));
                end;
             end if;
 
@@ -802,7 +804,18 @@ package body AMF.Internals.XMI_Handlers is
                    Name.Slice (Name.Index (':') + 1, Name.Length));
 
                if Meta = null then
-                  raise Program_Error;
+                  --  Metaclass is not defined in metamodel, report warning and
+                  --  skip all nested elements.
+
+                  Put_Line
+                   (Standard_Error,
+                    "Unknown class '" & Name.To_Wide_Wide_String & ''');
+
+                  Self.Skip_Element := 1;
+
+                  --  Success := False;
+
+                  return;
                end if;
 
             else
