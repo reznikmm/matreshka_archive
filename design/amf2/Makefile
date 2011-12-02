@@ -90,3 +90,6 @@ gen-iats: gens
 	gnatchop -gnat12 -w iats/source.ada iats
 	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
 	gnatchop -gnat12 -w iats/source.ada iats
+
+build-iats:
+	gprbuild -p -j0 -Piats/iats.gpr
