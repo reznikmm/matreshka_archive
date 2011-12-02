@@ -46646,7 +46646,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Abstractions.UML_Abstraction_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -47142,7 +47142,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Activities.UML_Activity_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -47473,7 +47473,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Actors.UML_Actor_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -47716,7 +47716,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Any_Receive_Events.UML_Any_Receive_Event_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -47832,7 +47832,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Artifacts.UML_Artifact_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -47948,7 +47948,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Associations.UML_Association_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -48085,7 +48085,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Association_Classes.UML_Association_Class_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -48367,7 +48367,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Call_Events.UML_Call_Event_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -48603,7 +48603,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Change_Events.UML_Change_Event_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -48733,7 +48733,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Classes.UML_Class_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -49149,7 +49149,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Collaborations.UML_Collaboration_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -49375,7 +49375,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Communication_Paths.UML_Communication_Path_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -49512,7 +49512,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Components.UML_Component_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -49579,7 +49579,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Component_Realizations.UML_Component_Realization_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -49999,7 +49999,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Constraints.UML_Constraint_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -50538,7 +50538,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Data_Types.UML_Data_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -50658,7 +50658,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Dependencies.UML_Dependency_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -50718,7 +50718,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Deployments.UML_Deployment_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -50855,7 +50855,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Deployment_Specifications.UML_Deployment_Specification_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51186,7 +51186,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Devices.UML_Device_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51253,7 +51253,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Durations.UML_Duration_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51334,7 +51334,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Duration_Constraints.UML_Duration_Constraint_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51422,7 +51422,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Duration_Intervals.UML_Duration_Interval_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51475,7 +51475,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Duration_Observations.UML_Duration_Observation_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51623,7 +51623,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Enumerations.UML_Enumeration_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51690,7 +51690,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -51852,7 +51852,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Execution_Environments.UML_Execution_Environment_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -52169,7 +52169,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Expressions.UML_Expression_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -52345,7 +52345,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Extensions.UML_Extension_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -52929,7 +52929,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Function_Behaviors.UML_Function_Behavior_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53120,7 +53120,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Generalization_Sets.UML_Generalization_Set_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53251,7 +53251,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Information_Flows.UML_Information_Flow_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53360,7 +53360,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Information_Items.UML_Information_Item_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53596,7 +53596,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Instance_Specifications.UML_Instance_Specification_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53663,7 +53663,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Instance_Values.UML_Instance_Value_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53821,7 +53821,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Interactions.UML_Interaction_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -53902,7 +53902,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Interaction_Constraints.UML_Interaction_Constraint_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54138,7 +54138,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Interfaces.UML_Interface_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54212,7 +54212,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Interface_Realizations.UML_Interface_Realization_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54325,7 +54325,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Intervals.UML_Interval_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54399,7 +54399,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Interval_Constraints.UML_Interval_Constraint_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54696,7 +54696,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Literal_Booleans.UML_Literal_Boolean_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54763,7 +54763,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Literal_Integers.UML_Literal_Integer_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54823,7 +54823,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Literal_Nulls.UML_Literal_Null_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54890,7 +54890,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Literal_Reals.UML_Literal_Real_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -54957,7 +54957,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Literal_Strings.UML_Literal_String_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -55024,7 +55024,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Literal_Unlimited_Naturals.UML_Literal_Unlimited_Natural_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -55186,7 +55186,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Manifestations.UML_Manifestation_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -55454,7 +55454,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Models.UML_Model_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -55584,7 +55584,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Nodes.UML_Node_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -55957,7 +55957,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Opaque_Behaviors.UML_Opaque_Behavior_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -56024,7 +56024,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Opaque_Expressions.UML_Opaque_Expression_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -56397,7 +56397,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Packages.UML_Package_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -57013,7 +57013,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Primitive_Types.UML_Primitive_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -57087,7 +57087,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Profiles.UML_Profile_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -57481,7 +57481,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Protocol_State_Machines.UML_Protocol_State_Machine_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -58408,7 +58408,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Realizations.UML_Realization_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -59366,7 +59366,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Signals.UML_Signal_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -59426,7 +59426,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Signal_Events.UML_Signal_Event_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -59891,7 +59891,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.State_Machines.UML_State_Machine_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60021,7 +60021,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Stereotypes.UML_Stereotype_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60102,7 +60102,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.String_Expressions.UML_String_Expression_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60257,7 +60257,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Substitutions.UML_Substitution_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60554,7 +60554,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Time_Constraints.UML_Time_Constraint_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60614,7 +60614,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Time_Events.UML_Time_Event_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          elsif Property = MP_UML_Time_Event_When then
             --  TimeEvent::when : TimeExpression
@@ -60688,7 +60688,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Time_Expressions.UML_Time_Expression_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60776,7 +60776,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Time_Intervals.UML_Time_Interval_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -60843,7 +60843,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Time_Observations.UML_Time_Observation_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -61097,7 +61097,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Usages.UML_Usage_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
@@ -61213,7 +61213,7 @@ package body AMF.Internals.Tables.UML_Reflection is
 
             AMF.UML.Use_Cases.UML_Use_Case_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Visibility
-               (AMF.UML.Holders.Visibility_Kinds.Element (Value));
+               (AMF.UML.Holders.Element (Value));
 
          else
             raise Program_Error;
