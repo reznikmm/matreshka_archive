@@ -81,3 +81,12 @@ gen-uml: gens
 
 clean:
 	rm -rf .libs amf/.objs gen-stage1/.objs gen-stage2/.obj uml/.objs gui/cmof_tree_view/.objs gui/cmof_tree_view/.amoc demo-cmof demo-reader demo-viewer
+
+
+gen-iats: gens
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
+	gnatchop -gnat12 -w iats/source.ada iats
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen_api IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS --stubs > iats/source.ada
+	gnatchop -gnat12 -w iats/source.ada iats
+	AMF_DATA_DIR=data ./gen-stage2/.obj/gen2 IATS_Profile.cmof 'file:///home/godunko/Matreshka/matreshka/design/amf2/IATS_Profile.cmof' IATS > iats/source.ada
+	gnatchop -gnat12 -w iats/source.ada iats
