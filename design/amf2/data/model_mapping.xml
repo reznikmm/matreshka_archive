@@ -55,6 +55,8 @@
   <uri name="http://www.omg.org/spec/UML/20100901/StandardProfileL3.xmi" uri="UML24/StandardProfileL3.xmi"/>
   <uri name="http://www.omg.org/spec/UML/20100901/UML.xmi" uri="UML24/UML.xmi"/>
 
+  <uri name="http://schema.omg.org/spec/MOF/2.0/cmof.xml" uri="metamodels/CMOF24.cmof"/>
+
   <!--  For internal purposes only  -->
   <uri name="http://www.omg.org/spec/UML/20100901/PrimitiveTypes.cmof" uri="metamodels/PrimitiveTypes24.cmof"/>
 </catalog>
