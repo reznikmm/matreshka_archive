@@ -47,6 +47,7 @@ with Ada.Text_IO;
 with Ada.Wide_Wide_Text_IO;
 
 with AMF.CMOF.Enumerations;
+with AMF.CMOF.Properties.Collections;
 with AMF.CMOF.Visitors;
 with AMF.CMOF.Types;
 with League.Strings;
@@ -533,13 +534,18 @@ package body Generator.Reflection is
          procedure Generate_Attribute (Position : CMOF_Property_Sets.Cursor) is
             use type AMF.Optional_String;
 
-            Attribute       : constant
+            Attribute          : constant
               not null AMF.CMOF.Properties.CMOF_Property_Access
                 := CMOF_Property_Sets.Element (Position);
-            Attribute_Class : constant
+            Redefined_Property :
+              AMF.CMOF.Properties.Collections.Set_Of_CMOF_Property
+                := Attribute.Get_Redefined_Property;
+            Redefined          : AMF.CMOF.Properties.CMOF_Property_Access
+              := Attribute;
+            Attribute_Class    : constant
               not null AMF.CMOF.Classes.CMOF_Class_Access
                 := Attribute.Get_Class;
-            Attribute_Type  : constant not null AMF.CMOF.Types.CMOF_Type_Access
+            Attribute_Type     : constant not null AMF.CMOF.Types.CMOF_Type_Access
               := Attribute.Get_Type;
 
          begin
@@ -549,6 +555,13 @@ package body Generator.Reflection is
             then
                return;
             end if;
+
+            --  Unwind to original property definition.
+
+            while not Redefined_Property.Is_Empty loop
+               Redefined := Redefined_Property.Element (1);
+               Redefined_Property := Redefined.Get_Redefined_Property;
+            end loop;
 
             if First then
                Put ("         if");
@@ -704,7 +717,7 @@ package body Generator.Reflection is
             elsif Attribute_Type.all
                     in AMF.CMOF.Enumerations.CMOF_Enumeration'Class
             then
-               case Representation (Attribute) is
+               case Representation (Redefined) is
                   when Value =>
                      Put
                       ("AMF."
