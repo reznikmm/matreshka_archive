@@ -69,12 +69,12 @@ package body AMF.Internals.XMI_URI_Rewriter is
       Namespace_Rules.Catalog_Entry_Files.Append
        (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
          (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
-            & "/metamodel_mapping.xml",
+            & "/metamodels/mapping.xml",
           Matreshka.XML_Catalogs.Entry_Files.System));
       Document_Rules.Catalog_Entry_Files.Append
        (Matreshka.XML_Catalogs.Loader.Load_By_File_Name
          (League.Application.Environment.Value (+"AMF_DATA_DIR", +".")
-            & "/model_mapping.xml",
+            & "/models/mapping.xml",
           Matreshka.XML_Catalogs.Entry_Files.System));
    end Initialize;
 
