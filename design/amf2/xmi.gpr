@@ -1,6 +1,6 @@
 with "../../gnat/matreshka_xml.gpr";
-with "amf/amf.gpr";
-with "uml/uml.gpr";
+with "../../gnat/matreshka_amf.gpr";
+with "../../gnat/matreshka_amf_uml.gpr";
 
 project XMI is
 

@@ -1,6 +1,6 @@
 with "qt_gui.gpr";
 
-with "../../amf/amf.gpr";
+with "../../../../gnat/matreshka_amf.gpr";
 
 project Modeler is
 

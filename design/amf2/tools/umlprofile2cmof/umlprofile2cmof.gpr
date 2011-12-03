@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "../../../../gnat/matreshka_common.gpr";
-with "../../uml/uml.gpr";
+with "../../../../gnat/matreshka_amf_uml.gpr";
 
 project UMLProfile2CMOF is
 
