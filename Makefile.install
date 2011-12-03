@@ -2,12 +2,14 @@ include Makefile.config
 DESTDIR ?=
 INSTALL_PROJECT_DIR ?= $(DESTDIR)${PREFIX}/lib/gnat
 INSTALL_INCLUDE_DIR ?= $(DESTDIR)$(PREFIX)/include/matreshka
+INSTALL_SHARE_DIR   ?= $(DESTDIR)$(PREFIX)/share/matreshka
 INSTALL_EXEC_DIR    ?= $(DESTDIR)$(BINDIR)
 INSTALL_LIBRARY_DIR ?= $(DESTDIR)$(LIBDIR)
 INSTALL_ALI_DIR ?= ${INSTALL_LIBRARY_DIR}/matreshka
 INSTALL_ali = $(INSTALL) -m 444
 INSTALL_project = $(INSTALL) -m 644
 INSTALL_source = $(INSTALL) -m 644
+INSTALL_data = $(INSTALL) -m 644
 CHMOD = chmod
 LN_S = ln -sf
 MKDIR = mkdir -p 
@@ -193,11 +195,16 @@ endif
 
 amf:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf
+	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/metamodels
+	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/models
 	gnat ls -d -s -P gnat/matreshka_amf.gpr | sort | uniq | grep -v '^$$' > amf-src.aux
 	cat league-src.lst xml-src.lst | sort | diff -u - amf-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf-src.lst
 	gnat ls -o -P gnat/matreshka_amf.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf-ali.lst
 	cat amf-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf
 	cat amf-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_data) source/amf/mof/metamodels/mapping.xml $(INSTALL_SHARE_DIR)/amf/metamodels/mapping.xml
+	$(INSTALL_data) source/amf/mof/metamodels/CMOF24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/CMOF24.cmof
+	$(INSTALL_data) source/amf/mof/models/mapping.xml $(INSTALL_SHARE_DIR)/amf/models/mapping.xml
 	$(INSTALL_project) gnat/install/amf.gpr $(INSTALL_PROJECT_DIR)/amf.gpr
 ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-amf$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf$(RTL_VERSION).$(LIBEXT).$(VERSION)
@@ -209,16 +216,26 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat amf-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/{}" > .objs/amf-devel.files
 	cat amf-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf-devel.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/mapping.xml" >> .objs/amf-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/CMOF24.cmof" >> .objs/amf-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/mapping.xml" >> .objs/amf-lib.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf.gpr" >> .objs/amf-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf$(RTL_VERSION).$(LIBEXT)" >> .objs/amf-devel.files
 
 uml:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf/uml
+	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/models/UML24
 	gnat ls -d -s -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' > amf_uml-src.aux
 	cat league-src.lst xml-src.lst amf-src.lst | sort | diff -u - amf_uml-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf_uml-src.lst
 	gnat ls -o -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf_uml-ali.lst
 	cat amf_uml-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/uml
 	cat amf_uml-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_data) source/amf/uml/metamodels/PrimitiveTypes24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/PrimitiveTypes24.cmof
+	$(INSTALL_data) source/amf/uml/metamodels/UML24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/UML24.cmof
+	$(INSTALL_data) source/amf/uml/models/UML24/PrimitiveTypes.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/PrimitiveTypes.xmi
+	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL2.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL2.xmi
+	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL3.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL3.xmi
+	$(INSTALL_data) source/amf/uml/models/UML24/UML.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/UML.xmi
 	$(INSTALL_project) gnat/install/amf_uml.gpr $(INSTALL_PROJECT_DIR)/amf_uml.gpr
 ifeq ($(OPERATING_SYSTEM), POSIX)
 	$(INSTALL) .libs/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION)
@@ -230,6 +247,12 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat amf_uml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/uml{}" > .objs/amf_uml-devel.files
 	cat amf_uml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_uml-devel.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/PrimitiveTypes24.cmof" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/UML24.cmof" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/PrimitiveTypes.xmi" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL2.xmi" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL3.xmi" >> .objs/amf_uml-lib.files
+	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/UML.xmi" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf_uml.gpr" >> .objs/amf_uml-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_uml-devel.files
 
