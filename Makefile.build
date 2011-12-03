@@ -42,3 +42,4 @@ oci:
 
 amf:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_uml.gpr
