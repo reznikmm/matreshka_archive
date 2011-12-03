@@ -18,7 +18,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 LIBEXT = dll
 endif
 
-INSTALL_TARGETS = league fastcgi sql
+INSTALL_TARGETS = league fastcgi sql xml
 
 ifdef HAS_OCI
 INSTALL_TARGETS += oci
@@ -170,6 +170,27 @@ endif
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/sql_sqlite3.gpr" >> .objs/sql_sqlite3-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_sqlite3-devel.files
 
+xml:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/xml
+	gnat ls -d -s -P gnat/matreshka_xml.gpr | sort | uniq | grep -v '^$$' > xml-src.aux
+	diff -u league-src.lst xml-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > xml-src.lst
+	gnat ls -o -P gnat/matreshka_xml.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > xml-ali.lst
+	cat xml-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/xml
+	cat xml-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/xml.gpr $(INSTALL_PROJECT_DIR)/xml.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-xml$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/xml-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-xml$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-xml$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-xml$(RTL_VERSION).$(LIBEXT)" > .objs/xml-lib.files
+endif
+	cat xml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/xml/{}" > .objs/xml-devel.files
+	cat xml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/xml-devel.files
+	echo "%attr(-,root,root) %{_prefix}/lib/gnat/xml.gpr" >> .objs/xml-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-xml$(RTL_VERSION).$(LIBEXT)" >> .objs/xml-devel.files
+
 cleanup:
 	rm -f league-src.lst league-ali.lst
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
@@ -177,3 +198,4 @@ cleanup:
 	rm -f sql_oci-src.lst sql_oci-ali.lst sql_oci-src.aux
 	rm -f sql_postgresql-src.lst sql_postgresql-ali.lst sql_postgresql-src.aux
 	rm -f sql_sqlite3-src.lst sql_sqlite3-ali.lst sql_sqlite3-src.aux
+	rm -f xml-src.lst xml-ali.lst xml-src.aux
