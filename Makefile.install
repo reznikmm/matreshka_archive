@@ -220,3 +220,4 @@ cleanup:
 	rm -f sql_postgresql-src.lst sql_postgresql-ali.lst sql_postgresql-src.aux
 	rm -f sql_sqlite3-src.lst sql_sqlite3-ali.lst sql_sqlite3-src.aux
 	rm -f xml-src.lst xml-ali.lst xml-src.aux
+	rm -f amf-src.lst amf-ali.lst amf-src.aux
