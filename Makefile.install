@@ -245,7 +245,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 	$(INSTALL) .libs/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_bindir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)" > .objs/amf_uml-lib.files
 endif
-	cat amf_uml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/uml{}" > .objs/amf_uml-devel.files
+	cat amf_uml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/uml/{}" > .objs/amf_uml-devel.files
 	cat amf_uml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_uml-devel.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/PrimitiveTypes24.cmof" >> .objs/amf_uml-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/UML24.cmof" >> .objs/amf_uml-lib.files
