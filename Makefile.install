@@ -18,7 +18,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 LIBEXT = dll
 endif
 
-INSTALL_TARGETS = league fastcgi sql xml amf
+INSTALL_TARGETS = league fastcgi sql xml amf uml
 
 ifdef HAS_OCI
 INSTALL_TARGETS += oci
@@ -194,7 +194,7 @@ endif
 amf:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf
 	gnat ls -d -s -P gnat/matreshka_amf.gpr | sort | uniq | grep -v '^$$' > amf-src.aux
-	cat league-src.lst xml-src.aux | sort | diff -u - amf-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf-src.lst
+	cat league-src.lst xml-src.lst | sort | diff -u - amf-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf-src.lst
 	gnat ls -o -P gnat/matreshka_amf.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf-ali.lst
 	cat amf-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf
 	cat amf-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -212,6 +212,27 @@ endif
 	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf.gpr" >> .objs/amf-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf$(RTL_VERSION).$(LIBEXT)" >> .objs/amf-devel.files
 
+uml:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/amf/uml
+	gnat ls -d -s -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' > amf_uml-src.aux
+	cat league-src.lst xml-src.lst amf-src.lst | sort | diff -u - amf_uml-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf_uml-src.lst
+	gnat ls -o -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf_uml-ali.lst
+	cat amf_uml-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/uml
+	cat amf_uml-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/amf_uml.gpr $(INSTALL_PROJECT_DIR)/amf_uml.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/amf_uml-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)" > .objs/amf_uml-lib.files
+endif
+	cat amf_uml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/uml{}" > .objs/amf_uml-devel.files
+	cat amf_uml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_uml-devel.files
+	echo "%attr(-,root,root) %{_prefix}/lib/gnat/amf_uml.gpr" >> .objs/amf_uml-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_uml-devel.files
+
 cleanup:
 	rm -f league-src.lst league-ali.lst
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
@@ -221,3 +242,4 @@ cleanup:
 	rm -f sql_sqlite3-src.lst sql_sqlite3-ali.lst sql_sqlite3-src.aux
 	rm -f xml-src.lst xml-ali.lst xml-src.aux
 	rm -f amf-src.lst amf-ali.lst amf-src.aux
+	rm -f amf_uml-src.lst amf_uml-ali.lst amf_uml-src.aux
