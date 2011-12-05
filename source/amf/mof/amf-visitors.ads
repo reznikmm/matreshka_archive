@@ -46,4 +46,10 @@ package AMF.Visitors is
 
    pragma Preelaborate;
 
+   type Traverse_Control is
+    (Continue,
+     Abandon_Children,
+     Abandon_Sibling,
+     Terminate_Immediately);
+
 end AMF.Visitors;
