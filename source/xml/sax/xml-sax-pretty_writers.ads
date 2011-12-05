@@ -45,6 +45,7 @@ private with Ada.Containers.Hashed_Maps;
 private with Ada.Containers.Ordered_Maps;
 private with Ada.Containers.Vectors;
 
+with League.Characters;
 with League.Strings.Hash;
 with XML.SAX.Attributes;
 with XML.SAX.Writers;
@@ -70,6 +71,12 @@ package XML.SAX.Pretty_Writers is
     (Self   : in out SAX_Pretty_Writer;
      Offset : Natural);
    --  Sets offset for indentation.
+
+   not overriding procedure Set_Value_Delimiter
+    (Self      : in out SAX_Pretty_Writer;
+     Delimiter : League.Characters.Universal_Character);
+   --  Sets value delimiter for attributes.
+   --  '"' (apostrophe) is used by default
 
    overriding procedure Set_Destination
     (Self        : in out SAX_Pretty_Writer;
@@ -227,6 +234,10 @@ private
 
       Current      : Element_Record;
       --  Current processing element including effective namespace mapping.
+
+      Delimiter    : League.Characters.Universal_Character
+        := League.Characters.To_Universal_Character (''');
+      -- Delimiter for atribute='value'.
    end record;
 
    function Escape

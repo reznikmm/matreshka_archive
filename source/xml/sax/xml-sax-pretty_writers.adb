@@ -118,12 +118,12 @@ package body XML.SAX.Pretty_Writers is
 
    begin
       --  Closing DTD, which was opened before.
-      
+
       if Self.DTD_Opened then
          Self.Text.Append ('>');
          Self.DTD_Opened := False;
       end if;
-      
+
       Self.Text.Append ("<!-- ");
       Self.Text.Append (Text);
       Self.Text.Append (" -->");
@@ -457,7 +457,7 @@ package body XML.SAX.Pretty_Writers is
      Success : in out Boolean) is
    begin
       --  Closing DTD, which was opened before.
-      
+
       if Self.DTD_Opened then
          Self.Text.Append ('>');
          Self.DTD_Opened := False;
@@ -494,6 +494,16 @@ package body XML.SAX.Pretty_Writers is
    begin
       Self.Offset := Offset;
    end Set_Offset;
+
+   -------------------------
+   -- Set_Value_Delimiter --
+   -------------------------
+   not overriding procedure Set_Value_Delimiter
+    (Self      : in out SAX_Pretty_Writer;
+     Delimiter : League.Characters.Universal_Character) is
+   begin
+      Self.Delimiter := Delimiter;
+   end Set_Value_Delimiter;
 
    -----------------
    -- Set_Version --
@@ -562,13 +572,13 @@ package body XML.SAX.Pretty_Writers is
      Success   : in out Boolean) is
    begin
       Self.Text.Append ("<!DOCTYPE " & Name);
-      
+
       if not Public_Id.Is_Empty then
          Self.Text.Append (" PUBLIC " & Public_Id & " " & System_Id);
       elsif not System_Id.Is_Empty then
          Self.Text.Append (" SYSTEM' " & System_Id);
       end if;
-      
+
       Self.DTD_Opened := True;
    end Start_DTD;
 
@@ -585,12 +595,12 @@ package body XML.SAX.Pretty_Writers is
      Success        : in out Boolean) is
    begin
       --  Closing DTD, which was opened before.
-      
+
       if Self.DTD_Opened then
          Self.Text.Append ('>');
          Self.DTD_Opened := False;
       end if;
-      
+
       --  Closing Tag, which was opened before.
 
       if Self.Tag_Opened then
@@ -654,9 +664,9 @@ package body XML.SAX.Pretty_Writers is
             end if;
 
             Self.Text.Append ('=');
-            Self.Text.Append ('"');
+            Self.Text.Append (Self.Delimiter);
             Self.Text.Append (Banks.Key (Position));
-            Self.Text.Append ('"');
+            Self.Text.Append (Self.Delimiter);
 
             Banks.Next (Position);
          end loop;
@@ -677,9 +687,10 @@ package body XML.SAX.Pretty_Writers is
             return;
          end if;
 
-         Self.Text.Append ("=""");
+         Self.Text.Append ("=");
+         Self.Text.Append (Self.Delimiter);
          Self.Text.Append (Attributes.Value (J));
-         Self.Text.Append ('"');
+         Self.Text.Append (Self.Delimiter);
       end loop;
 
       Self.Nesting := Self.Nesting + 1;
