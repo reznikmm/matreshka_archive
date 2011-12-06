@@ -70,6 +70,7 @@ package body Matreshka.Internals.Code_Point_Set_Constructors is
       P      : constant Core_First_Stage_Access := Core.Property'Access;
    begin
       Result.First_Stage := First_Stage_Map (Indexes.Group_Index);
+      Result.Second_Stages := (others => All_Off);
 
       for J in Result.Second_Stages'Range loop
          for K in Code_Point_Sets.Second_Stage_Index loop

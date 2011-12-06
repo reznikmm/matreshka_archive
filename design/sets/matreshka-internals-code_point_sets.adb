@@ -102,6 +102,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
             if Is_All_On then
                if not Has_All_On then
+                  Has_All_On := True;
                   All_On_Index := Last;
                   Last := Last + 1;
                end if;
@@ -110,6 +111,7 @@ package body Matreshka.Internals.Code_Point_Sets is
                  All_On_Index;
             elsif Is_All_Off then
                if not Has_All_Off then
+                  Has_All_Off := True;
                   All_Off_Index := Last;
                   Last := Last + 1;
                end if;

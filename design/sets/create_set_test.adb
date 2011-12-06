@@ -6,6 +6,7 @@ with League.Strings;
 with League.Strings.Internals;
 
 with League.Character_Sets.Internals;
+with Ada.Text_IO;
 
 procedure Create_Set_Test is
    Input : constant League.Strings.Universal_String :=
@@ -106,10 +107,16 @@ procedure Create_Set_Test is
       end case;
    end Compile;
    
+   use type League.Character_Sets.Universal_Character_Set;
+   
    Set : League.Character_Sets.Universal_Character_Set :=
      Compile (AST, AST.List (Ast.Start).Head);
+   Set2 : League.Character_Sets.Universal_Character_Set :=
+     League.Character_Sets.To_Set ("ZzФф1");
+   Set3 : League.Character_Sets.Universal_Character_Set := Set and Set2;
 begin
    --  case Head.Kind is
-      
-   null;
+   if Set3 = League.Character_Sets.To_Set ("ZzФф") then
+      Ada.Text_IO.Put_Line ("aaa");
+   end if;
 end Create_Set_Test;
