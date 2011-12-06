@@ -145,6 +145,20 @@ package body Matreshka.Internals.Code_Point_Sets is
    function Apply_Minus is new Apply_Binary_Operator (Minus);
 
    ---------
+   -- "+" --
+   ---------
+
+   function "+"
+     (Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set is
+   begin
+      return (Last          => Right.Last,
+              Counter       => <>,
+              First_Stage   => Right.First_Stage,
+              Second_Stages => Right.Second_Stages);
+   end "+";
+   
+   ---------
    -- "-" --
    ---------
 

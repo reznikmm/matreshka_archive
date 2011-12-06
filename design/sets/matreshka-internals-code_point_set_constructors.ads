@@ -47,12 +47,21 @@ with Matreshka.Internals.Unicode.Ucd.Indexes;
 with Matreshka.Internals.Code_Point_Sets;
 use Matreshka.Internals.Code_Point_Sets;
 
+with Matreshka.Internals.Regexps;
 package Matreshka.Internals.Code_Point_Set_Constructors is
 
    pragma Preelaborate;
+   
+   type Descriptor_Kinds is (General_Category, Binary);
 
-   type Code_Point_Set_Descriptor is record
-      Category : Matreshka.Internals.Unicode.Ucd.General_Category;
+   type Code_Point_Set_Descriptor (Kind : Descriptor_Kinds := Binary) is record
+      case Kind is
+         when General_Category =>
+            GC_Flags : Matreshka.Internals.Regexps.General_Category_Flags;
+
+         when Binary =>
+            Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      end case;
    end record;
 
    function Match

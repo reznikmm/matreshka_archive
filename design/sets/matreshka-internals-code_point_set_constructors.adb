@@ -53,7 +53,12 @@ package body Matreshka.Internals.Code_Point_Set_Constructors is
    is
       use type Matreshka.Internals.Unicode.Ucd.General_Category;
    begin
-      return Value.GC = Descriptor.Category;
+      case Descriptor.Kind is
+         when General_Category =>
+            return Descriptor.GC_Flags (Value.GC);
+         when Binary =>
+            return Value.B (Descriptor.Property);
+      end case;
    end Match;
 
    procedure To_Set

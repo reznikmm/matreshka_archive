@@ -65,6 +65,7 @@ procedure Gen_Props (Source_Directory : String) is
    type Group_Info is record
       Share : First_Stage_Index;
       Count : Natural;
+      Index : First_Stage_Index;
    end record;
 
    type Constant_String_Access is access constant String;
@@ -608,12 +609,12 @@ procedure Gen_Props (Source_Directory : String) is
       end if;
    end Put;
 
-   Groups    : array (First_Stage_Index) of Group_Info := (others => (0, 0));
+   Groups    : array (First_Stage_Index) of Group_Info
+     := (others => (0, 0, 0));
    Generated : array (First_Stage_Index) of Boolean    := (others => False);
    File      : Ada.Text_IO.File_Type;
    Default   : First_Stage_Index := 0;
-   
-   Group_Count : First_Stage_Index := 0;
+   Index     : First_Stage_Index := 0;
    
 begin
    Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
@@ -627,7 +628,12 @@ begin
          then
             Groups (J).Share := K;
             Groups (K).Count := Groups (K).Count + 1;
-
+            
+            if J = K then
+               Groups (K).Index := Index;
+               Index := Index + 1;
+            end if;
+            
             exit;
          end if;
       end loop;
@@ -818,7 +824,6 @@ begin
             Put (File, Default);
             Ada.Text_IO.Put_Line (File, ");");
             
-            Group_Count := Group_Count + 1;
             Generated (J) := True;
          end;
       end if;
@@ -913,7 +918,7 @@ begin
               "16#"
                 & First_Stage_Image (J)
                 & "# => 16#"
-                & First_Stage_Image (Groups (J).Share)
+                & First_Stage_Image (Groups (Groups (J).Share).Index)
                 & "#,");
 
             case N mod 3 is
@@ -937,7 +942,9 @@ begin
 
       Ada.Text_IO.Put_Line
        (File,
-        "others   => 16#" & First_Stage_Image (Default) & "#);");
+        "others   => 16#"
+          & First_Stage_Image (Groups (Default).Index)
+          & "#);");
    end;
    
    declare

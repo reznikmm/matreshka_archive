@@ -87,6 +87,11 @@ package Matreshka.Internals.Code_Point_Sets is
 
    function "=" (Left, Right : Shared_Code_Point_Set) return Boolean;
 
+   function "+"
+     (Right : Shared_Code_Point_Set)
+     return Shared_Code_Point_Set;
+   --  Return the same set of character
+   
    function "not"
      (Right : Shared_Code_Point_Set)
      return Shared_Code_Point_Set;
