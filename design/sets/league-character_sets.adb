@@ -42,6 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
+with Matreshka.Internals.Code_Point_Set_Constructors;
+
 package body League.Character_Sets is
 
    use Matreshka.Internals.Code_Point_Sets;

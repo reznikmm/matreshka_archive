@@ -55,8 +55,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    generic
       with function Operator
-        (Left, Right : Boolean_Second_Stage)
-        return Boolean_Second_Stage;
+        (Left, Right : Boolean_Second_Stage) return Boolean_Second_Stage;
    function Apply_Binary_Operator
      (Left, Right : Shared_Code_Point_Set)
       return Shared_Code_Point_Set;
@@ -69,9 +68,19 @@ package body Matreshka.Internals.Code_Point_Sets is
      (Left, Right : Shared_Code_Point_Set)
       return Shared_Code_Point_Set
    is
+      use type First_Stage_Index;
+
       Last          : Second_Stage_Array_Index := 0;
       First_Stage   : First_Stage_Map;
-      Second_Stages : Boolean_Second_Stage_Array
+
+      Has_All_On    : Boolean := False;
+      Has_All_Off   : Boolean := False;
+      All_On_Index  : Second_Stage_Array_Index;
+      All_Off_Index : Second_Stage_Array_Index;
+      Is_All_On     : Boolean;
+      Is_All_Off    : Boolean;
+
+      Second_Stages : Second_Stage_Array
         (0 .. Max_Result_Last (Left, Right));
 
       Set : array (Left.Second_Stages'Range, Right.Second_Stages'Range)
@@ -83,13 +92,34 @@ package body Matreshka.Internals.Code_Point_Sets is
       for J in First_Stage'Range loop
          if not Set (Left.First_Stage (J), Right.First_Stage (J)) then
             Set (Left.First_Stage (J), Right.First_Stage (J)) := True;
-            Map (Left.First_Stage (J), Right.First_Stage (J)) := Last;
 
             Second_Stages (Last) := Operator
               (Left.Second_Stages (Left.First_Stage (J)),
                Right.Second_Stages (Right.First_Stage (J)));
 
-            Last := Last + 1;
+            Is_All_On := Second_Stages (Last) = All_On;
+            Is_All_Off := Second_Stages (Last) = All_Off;
+
+            if Is_All_On then
+               if not Has_All_On then
+                  All_On_Index := Last;
+                  Last := Last + 1;
+               end if;
+
+               Map (Left.First_Stage (J), Right.First_Stage (J)) :=
+                 All_On_Index;
+            elsif Is_All_Off then
+               if not Has_All_Off then
+                  All_Off_Index := Last;
+                  Last := Last + 1;
+               end if;
+
+               Map (Left.First_Stage (J), Right.First_Stage (J)) :=
+                 All_Off_Index;
+            else
+               Map (Left.First_Stage (J), Right.First_Stage (J)) := Last;
+               Last := Last + 1;
+            end if;
          end if;
 
          First_Stage (J) := Map (Left.First_Stage (J), Right.First_Stage (J));
@@ -197,8 +227,7 @@ package body Matreshka.Internals.Code_Point_Sets is
 
    begin
       if Self /= Shared_Empty'Access
-        and then Matreshka.Internals.Atomics.Counters.Decrement
-                  (Self.Counter'Access)
+        and then Matreshka.Atomics.Counters.Decrement (Self.Counter)
       then
          Free (Self);
       end if;
@@ -239,7 +268,7 @@ package body Matreshka.Internals.Code_Point_Sets is
    function Is_Empty (Set : Shared_Code_Point_Set) return Boolean is
    begin
       for J in Set.Second_Stages'Range loop
-         if Set.Second_Stages (J) /= (Second_Stage_Index => False) then
+         if Set.Second_Stages (J) /= All_Off then
             return False;
          end if;
       end loop;
@@ -293,7 +322,7 @@ package body Matreshka.Internals.Code_Point_Sets is
    procedure Reference (Self : Shared_Code_Point_Set_Access) is
    begin
       if Self /= Shared_Empty'Access then
-         Matreshka.Internals.Atomics.Counters.Increment (Self.Counter'Access);
+         Matreshka.Atomics.Counters.Increment (Self.Counter);
       end if;
    end Reference;
 
@@ -306,14 +335,11 @@ package body Matreshka.Internals.Code_Point_Sets is
       return Shared_Code_Point_Set
    is
       use type First_Stage_Index;
+      use type Matreshka.Internals.Unicode.Code_Unit_32;
 
       function To_First_Index
         (X : Wide_Wide_Character)
         return First_Stage_Index;
-
-      function To_Second_Index
-        (X : Wide_Wide_Character)
-        return Second_Stage_Index;
 
       procedure Sort is new Ada.Containers.Generic_Array_Sort
         (Index_Type   => Positive,
@@ -333,38 +359,28 @@ package body Matreshka.Internals.Code_Point_Sets is
          return First_Stage_Index (Pos / Second_Stage_Index'Modulus);
       end To_First_Index;
 
-      ---------------------
-      -- To_Second_Index --
-      ---------------------
-
-      function To_Second_Index
-        (X : Wide_Wide_Character)
-        return Second_Stage_Index
-      is
-         Pos : constant Natural := Wide_Wide_Character'Pos (X);
-      begin
-         return Second_Stage_Index (Pos mod Second_Stage_Index'Modulus);
-      end To_Second_Index;
-
-      Last    : Second_Stage_Array_Index := 1;
-      Code    : First_Stage_Index;
+      Invalid : constant First_Stage_Index := First_Stage_Index
+        (Internals.Unicode.Surrogate_First / Second_Stage_Index'Modulus);
+      Last    : Second_Stage_Array_Index := 0;
+      First   : First_Stage_Index;
+      Second  : Second_Stage_Index;
+      Counted : First_Stage_Index := Invalid;
+      --  Set Counted to something invalid
+      Code    : Matreshka.Internals.Unicode.Code_Unit_32;
       Ordered : Wide_Wide_String := Sequence;
    begin
-      if Ordered'Length = 0 then
-         return (Last          => 0,
-                 Counter       => <>,
-                 First_Stage   => (others => 0),
-                 Second_Stages => (others => (others => False)));
-      end if;
-
       Sort (Ordered);
 
-      Code := To_First_Index (Ordered (Ordered'First));
-
       for J in Ordered'Range loop
-         if Code /= To_First_Index (Ordered (J)) then
-            Code := To_First_Index (Ordered (J));
-            Last := Last + 1;
+         Code := Wide_Wide_Character'Pos (Ordered (J));
+
+         if Matreshka.Internals.Unicode.Is_Valid (Code) then
+            First := To_First_Index (Ordered (J));
+
+            if Counted /= First then
+               Counted := First;
+               Last := Last + 1;
+            end if;
          end if;
       end loop;
 
@@ -372,21 +388,28 @@ package body Matreshka.Internals.Code_Point_Sets is
         (Last          => Last,
          Counter       => <>,
          First_Stage   => (others => 0),
-         Second_Stages => (others => (others => False)))
+         Second_Stages => (others => All_Off))
       do
-         Code := To_First_Index (Ordered (Ordered'First));
-         Last := 1;
-         Result.First_Stage (Code) := Last;
+         Counted := Invalid;
+         Last := 0;
 
          for J in Ordered'Range loop
-            if Code /= To_First_Index (Ordered (J)) then
-               Code := To_First_Index (Ordered (J));
-               Last := Last + 1;
-               Result.First_Stage (Code) := Last;
-            end if;
+            Code := Wide_Wide_Character'Pos (Ordered (J));
 
-            Result.Second_Stages (Last) (To_Second_Index (Ordered (J))) :=
-              True;
+            if Matreshka.Internals.Unicode.Is_Valid (Code) then
+               First := To_First_Index (Ordered (J));
+
+               if Counted /= First then
+                  Counted := First;
+                  Last := Last + 1;
+                  Result.First_Stage (Counted) := Last;
+               end if;
+
+               Second := Second_Stage_Index
+                 (Code mod Second_Stage_Index'Modulus);
+
+               Result.Second_Stages (Last) (Second) := True;
+            end if;
          end loop;
       end return;
    end To_Set;

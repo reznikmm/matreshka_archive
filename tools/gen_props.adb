@@ -59,6 +59,9 @@ procedure Gen_Props (Source_Directory : String) is
    Generated_Name : constant String
      := "matreshka-internals-unicode-ucd-core.ads";
 
+   Indexes_Name : constant String
+     := "matreshka-internals-unicode-ucd-indexes.ads";
+   
    type Group_Info is record
       Share : First_Stage_Index;
       Count : Natural;
@@ -608,7 +611,10 @@ procedure Gen_Props (Source_Directory : String) is
    Groups    : array (First_Stage_Index) of Group_Info := (others => (0, 0));
    Generated : array (First_Stage_Index) of Boolean    := (others => False);
    File      : Ada.Text_IO.File_Type;
-
+   Default   : First_Stage_Index := 0;
+   
+   Group_Count : First_Stage_Index := 0;
+   
 begin
    Ada.Text_IO.Put_Line ("   ... " & Generated_Name);
 
@@ -811,14 +817,14 @@ begin
             Ada.Text_IO.Set_Col (File, 11);
             Put (File, Default);
             Ada.Text_IO.Put_Line (File, ");");
-
+            
+            Group_Count := Group_Count + 1;
             Generated (J) := True;
          end;
       end if;
    end loop;
 
    declare
-      Default : First_Stage_Index := 0;
       Maximum : Natural           := 0;
       N       : Natural           := 0;
 
@@ -868,4 +874,109 @@ begin
 
    Ada.Text_IO.New_Line (File);
    Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Unicode.Ucd.Core;");
+   Ada.Text_IO.Close (File);
+   
+   Ada.Text_IO.Put_Line ("   ... " & Indexes_Name);
+   
+   Ada.Text_IO.Create
+     (File, Ada.Text_IO.Out_File, Source_Directory & '/' & Indexes_Name);
+   Put_File_Header
+     (File,
+      "Localization, Internationalization, Globalization for Ada",
+      2011,
+      2011);
+   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line (File, "pragma Restrictions (No_Elaboration_Code);");
+   Ada.Text_IO.Put_Line
+    (File,
+     "--  GNAT: enforce generation of preinitialized data section instead of");
+   Ada.Text_IO.Put_Line (File, "--  generation of elaboration code.");
+   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line
+     (File, "package Matreshka.Internals.Unicode.Ucd.Indexes is");
+   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line (File, "   pragma Preelaborate;");
+
+   declare
+      N       : Natural           := 0;
+   begin
+      Ada.Text_IO.New_Line (File);
+      Ada.Text_IO.Put_Line
+        (File, "   Group_Index : constant array (First_Stage_Index) "
+           & "of First_Stage_Index");
+      Ada.Text_IO.Put (File, "     := (");
+
+      for J in Groups'Range loop
+         if Groups (J).Share /= Default then
+            Ada.Text_IO.Put
+             (File,
+              "16#"
+                & First_Stage_Image (J)
+                & "# => 16#"
+                & First_Stage_Image (Groups (J).Share)
+                & "#,");
+
+            case N mod 3 is
+               when 0 =>
+                  Ada.Text_IO.Set_Col (File, 32);
+
+               when 1 =>
+                  Ada.Text_IO.Set_Col (File, 54);
+                  
+               when 2 =>
+                  Ada.Text_IO.New_Line (File);
+                  Ada.Text_IO.Set_Col (File, 10);
+
+               when others =>
+                  raise Program_Error;
+            end case;
+
+            N := N + 1;
+         end if;
+      end loop;
+
+      Ada.Text_IO.Put_Line
+       (File,
+        "others   => 16#" & First_Stage_Image (Default) & "#);");
+   end;
+   
+   declare
+      Count : Natural := 0;
+   begin
+      Ada.Text_IO.New_Line (File);
+      Ada.Text_IO.Put_Line
+        (File, "   Base : constant array (First_Stage_Index range <>)"
+           & " of First_Stage_Index");
+      Ada.Text_IO.Put (File, "     := (");
+   
+      for J in Groups'Range loop
+         if Groups (J).Share = J then
+            if J /= 0 then
+               Ada.Text_IO.Put (File, ',');
+               
+               if Count mod 7 = 0 then
+                  Ada.Text_IO.New_Line (File);
+                  Ada.Text_IO.Put (File, "         ");
+               else
+                  Ada.Text_IO.Put (File, ' ');
+               end if;
+            end if;
+            
+            Ada.Text_IO.Put
+              (File, "16#" & First_Stage_Image (J) & "#");
+            Count := Count + 1;
+         end if;
+      end loop;
+      
+      Ada.Text_IO.Put_Line (File, ");");
+      
+      Ada.Text_IO.New_Line (File);
+      Ada.Text_IO.Put_Line
+        (File, "   Base_Last : constant First_Stage_Index :="
+           & Natural'Image (Count - 1) & ";");
+   end;
+   
+   Ada.Text_IO.New_Line (File);
+   Ada.Text_IO.Put_Line (File, "end Matreshka.Internals.Unicode.Ucd.Indexes;");
+   
 end Gen_Props;

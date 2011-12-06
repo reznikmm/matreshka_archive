@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 --  Internal representation of code point sets.
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Atomics.Counters;
+with Matreshka.Atomics.Counters;
 with Matreshka.Internals.Unicode.Ucd;
 with League.Characters;
 
@@ -52,29 +52,32 @@ package Matreshka.Internals.Code_Point_Sets is
    pragma Preelaborate;
 
    subtype First_Stage_Index is
-     Matreshka.Internals.Unicode.Ucd.First_Stage_Index;
+     Matreshka.Internals.Unicode.UCD.First_Stage_Index;
 
    subtype Second_Stage_Index is
-     Matreshka.Internals.Unicode.Ucd.Second_Stage_Index;
+      Matreshka.Internals.Unicode.Ucd.Second_Stage_Index;
 
    type Boolean_Second_Stage is array (Second_Stage_Index) of Boolean;
    pragma Pack (Boolean_Second_Stage);
 
-   type Second_Stage_Array_Index is new First_Stage_Index;
+   All_Off : constant Boolean_Second_Stage := (others => False);
+   All_On  : constant Boolean_Second_Stage := (others => True);
 
-   type Boolean_Second_Stage_Array is array (Second_Stage_Array_Index range <>)
-     of Boolean_Second_Stage;
+   subtype Second_Stage_Array_Index is First_Stage_Index;
+
+   type Second_Stage_Array is
+     array (Second_Stage_Array_Index range <>) of Boolean_Second_Stage;
 
    type First_Stage_Map is array (First_Stage_Index)
      of Second_Stage_Array_Index;
 
    type Shared_Code_Point_Set (Last : Second_Stage_Array_Index) is limited
    record
-      Counter   : aliased Matreshka.Internals.Atomics.Counters.Counter;
+      Counter   : aliased Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
 
       First_Stage   : First_Stage_Map;
-      Second_Stages : Boolean_Second_Stage_Array (0 .. Last);
+      Second_Stages : Second_Stage_Array (0 .. Last);
    end record;
 
    function To_Set
@@ -126,7 +129,7 @@ package Matreshka.Internals.Code_Point_Sets is
      (Last => 0,
       Counter => <>,
       First_Stage => (others => 0),
-      Second_Stages => (others => (others => False)));
+      Second_Stages => (0 => (others => False)));
 
    --  Globally defined empty shared code point set to be used as default value
    --  Reference and Dereference subprograms known about this object and
