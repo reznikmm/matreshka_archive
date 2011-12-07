@@ -84,6 +84,11 @@ package Matreshka.Internals.Code_Point_Sets is
      (Sequence : Wide_Wide_String)
      return Shared_Code_Point_Set;
    --  Return set containing all characters from Sequence
+   
+   function To_Set
+     (Low  : Matreshka.Internals.Unicode.Code_Point;
+      High : Matreshka.Internals.Unicode.Code_Point)
+     return Shared_Code_Point_Set;
 
    function "=" (Left, Right : Shared_Code_Point_Set) return Boolean;
 

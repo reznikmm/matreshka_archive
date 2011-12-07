@@ -11,7 +11,7 @@ with Ada.Text_IO;
 procedure Create_Set_Test is
    Input : constant League.Strings.Universal_String :=
      League.Strings.To_Universal_String
-       ("[\p{Lowercase_Letter}\p{Uppercase_Letter}]");
+       ("[\p{Lowercase_Letter}\p{Uppercase_Letter}1-3]");
    
    Shared_String : constant Matreshka.Internals.Strings.Shared_String_Access :=
      League.Strings.Internals.Internal (Input);
@@ -34,6 +34,7 @@ procedure Create_Set_Test is
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Node : Positive) return League.Character_Sets.Universal_Character_Set
    is
+      use Matreshka.Internals.Code_Point_Sets;
    begin
       case AST.AST (Node).Kind is
          when Matreshka.Internals.Regexps.N_None =>
@@ -45,7 +46,6 @@ procedure Create_Set_Test is
                
          when Matreshka.Internals.Regexps.N_Member_Property =>
             declare
-               use Matreshka.Internals.Code_Point_Sets;
                use Matreshka.Internals.Code_Point_Set_Constructors;
                Result : Core_Shared_Code_Point_Set;
             begin
@@ -75,7 +75,10 @@ procedure Create_Set_Test is
                end if;
             end;
 
-         --  when N_Member_Range =>
+         when Matreshka.Internals.Regexps.N_Member_Range =>
+            return League.Character_Sets.Internals.Wrap
+              (new Shared_Code_Point_Set'(To_Set (AST.AST (Node).Low,
+                                                  AST.AST (Node).High)));
             --  Low  : Matreshka.Internals.Unicode.Code_Point;
             --  High : Matreshka.Internals.Unicode.Code_Point;
             --  Range of code points as member of character class
@@ -116,7 +119,7 @@ procedure Create_Set_Test is
    Set3 : League.Character_Sets.Universal_Character_Set := Set and Set2;
 begin
    --  case Head.Kind is
-   if Set3 = League.Character_Sets.To_Set ("ZzФф") then
+   if Set3 = League.Character_Sets.To_Set ("ZzФф1") then
       Ada.Text_IO.Put_Line ("aaa");
    end if;
 end Create_Set_Test;

@@ -429,5 +429,116 @@ package body Matreshka.Internals.Code_Point_Sets is
          end loop;
       end return;
    end To_Set;
+   
+   ------------
+   -- To_Set --
+   ------------
+   
+   function To_Set
+     (Low  : Matreshka.Internals.Unicode.Code_Point;
+      High : Matreshka.Internals.Unicode.Code_Point)
+     return Shared_Code_Point_Set
+   is
+      use Matreshka.Internals.Unicode;
+      use type Second_Stage_Index;
+      use type Second_Stage_Array_Index;
+      
+      Before_Surrogate : constant First_Stage_Index :=
+        First_Stage_Index (Surrogate_First / 256 - 1);
+      After_Surrogate  : constant First_Stage_Index :=
+        First_Stage_Index (Surrogate_Last / 256 + 1);
 
+      H          : Code_Point := High;
+      HF         : First_Stage_Index := First_Stage_Index (H / 256);
+      HS         : Second_Stage_Index := Second_Stage_Index (H mod 256);
+      L          : Code_Point := Low; 
+      LF         : First_Stage_Index := First_Stage_Index (L / 256);
+      LS         : Second_Stage_Index := Second_Stage_Index (L mod 256);
+      
+      Last       : Second_Stage_Array_Index := 0;
+      Has_All_On : Boolean := False;
+      Has_L      : Boolean := False;
+      Has_H      : Boolean := False;
+   begin
+      if L in Surrogate_First .. Surrogate_Last then
+         L := Surrogate_Last + 1;
+         LF := First_Stage_Index (L / 256);
+         LS := Second_Stage_Index (L mod 256);
+      end if;
+      
+      if H in Surrogate_First .. Surrogate_Last then
+         H := Surrogate_First - 1;
+         HF := First_Stage_Index (H / 256);
+         HS := Second_Stage_Index (H mod 256);
+      end if;
+      
+      if L > H then
+         Last := 0;
+      elsif LF = HF then
+         Last := 1;
+      else
+         if Surrogate_First in L .. H then
+            Has_All_On := LF < Before_Surrogate or HF > After_Surrogate;
+         else
+            Has_All_On := HF - LF > 1;
+         end if;
+         
+         if LS = 0 then
+            Has_All_On := True;
+         else
+            Has_L := True;
+         end if;
+         
+         if H mod 256 = 255 then
+            Has_All_On := True;
+         else
+            Has_H := True;
+         end if;
+         
+         Last := Boolean'Pos (Has_L)
+           + Boolean'Pos (Has_H)
+           + Boolean'Pos (Has_All_On);
+      end if;
+      
+      return Result : Shared_Code_Point_Set :=
+        (Last          => Last,
+         Counter       => <>,
+         First_Stage   => (others => 0),
+         Second_Stages => (others => All_Off))
+      do
+         if L > H then
+            null;
+         elsif (LF) = (HF) then
+            Result.First_Stage (LF) := 1;
+            Result.Second_Stages (1) (LS .. HS) := (LS .. HS => True);
+         else
+            if Has_All_On then
+               Result.Second_Stages (Last) := All_On;
+            end if;
+            
+            if Surrogate_First in L .. H then
+               Result.First_Stage (LF .. Before_Surrogate) := (others => Last);
+               Result.First_Stage (After_Surrogate .. HF) := (others => Last);
+            else
+               Result.First_Stage (LF .. HF) := (others => Last);
+            end if;
+         
+            if LS /= 0 then
+               Result.First_Stage (LF) := 1;
+               Result.Second_Stages (1) (LS .. 255) := (LS .. 255 => True);
+            end if;
+         
+            if H mod 256 /= 255 then
+               if Has_L then
+                  Result.First_Stage (HF) := 2;
+                  Result.Second_Stages (2) (0 .. HS) := (0 .. HS => True);
+               else
+                  Result.First_Stage (HF) := 1;
+                  Result.Second_Stages (1) (0 .. HS) := (0 .. HS => True);
+               end if;
+            end if;
+         end if;
+      end return;
+   end To_Set;
+   
 end Matreshka.Internals.Code_Point_Sets;
