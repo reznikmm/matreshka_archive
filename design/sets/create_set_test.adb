@@ -1,7 +1,6 @@
 with Matreshka.Internals.Regexps.Compiler;
 with Matreshka.Internals.Strings;
 with Matreshka.Internals.Code_Point_Sets;
-with Matreshka.Internals.Code_Point_Set_Constructors;
 with League.Strings;
 with League.Strings.Internals;
 
@@ -46,7 +45,7 @@ procedure Create_Set_Test is
                
          when Matreshka.Internals.Regexps.N_Member_Property =>
             declare
-               use Matreshka.Internals.Code_Point_Set_Constructors;
+               use Matreshka.Internals.Code_Point_Sets;
                Result : Core_Shared_Code_Point_Set;
             begin
                case AST.AST (Node).Value.Kind is

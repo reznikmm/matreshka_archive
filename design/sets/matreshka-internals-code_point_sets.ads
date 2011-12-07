@@ -44,7 +44,9 @@
 --  Internal representation of code point sets.
 ------------------------------------------------------------------------------
 with Matreshka.Atomics.Counters;
+with Matreshka.Internals.Regexps;
 with Matreshka.Internals.Unicode.Ucd;
+with Matreshka.Internals.Unicode.Ucd.Indexes;
 with League.Characters;
 
 package Matreshka.Internals.Code_Point_Sets is
@@ -89,6 +91,31 @@ package Matreshka.Internals.Code_Point_Sets is
      (Low  : Matreshka.Internals.Unicode.Code_Point;
       High : Matreshka.Internals.Unicode.Code_Point)
      return Shared_Code_Point_Set;
+   
+   type Descriptor_Kinds is (General_Category, Binary);
+
+   type Code_Point_Set_Descriptor (Kind : Descriptor_Kinds := Binary) is record
+      case Kind is
+         when General_Category =>
+            GC_Flags : Matreshka.Internals.Regexps.General_Category_Flags;
+
+         when Binary =>
+            Property : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+      end case;
+   end record;
+
+   function Match
+     (Descriptor : Code_Point_Set_Descriptor;
+      Value      : Matreshka.Internals.Unicode.Ucd.Core_Values)
+     return Boolean;
+   pragma Inline (Match);
+
+   subtype Core_Shared_Code_Point_Set is Shared_Code_Point_Set
+     (Last => Matreshka.Internals.Unicode.Ucd.Indexes.Base_Last);
+
+   procedure To_Set
+     (Descriptor : Code_Point_Set_Descriptor;
+      Result     : in out Core_Shared_Code_Point_Set);
 
    function "=" (Left, Right : Shared_Code_Point_Set) return Boolean;
 

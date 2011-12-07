@@ -46,6 +46,7 @@ with Ada.Containers.Generic_Array_Sort;
 with Ada.Unchecked_Deallocation;
 with League.Characters.Internals;
 with Matreshka.Internals.Unicode;
+with Matreshka.Internals.Unicode.Ucd.Core;
 
 package body Matreshka.Internals.Code_Point_Sets is
 
@@ -304,6 +305,21 @@ package body Matreshka.Internals.Code_Point_Sets is
       return Is_Empty (Elements - Set);
    end Is_Subset;
 
+   function Match
+     (Descriptor : Code_Point_Set_Descriptor;
+      Value      : Matreshka.Internals.Unicode.Ucd.Core_Values)
+     return Boolean
+   is
+      use type Matreshka.Internals.Unicode.Ucd.General_Category;
+   begin
+      case Descriptor.Kind is
+         when General_Category =>
+            return Descriptor.GC_Flags (Value.GC);
+         when Binary =>
+            return Value.B (Descriptor.Property);
+      end case;
+   end Match;
+
    ---------------------
    -- Max_Result_Last --
    ---------------------
@@ -541,4 +557,28 @@ package body Matreshka.Internals.Code_Point_Sets is
       end return;
    end To_Set;
    
+   ------------
+   -- To_Set --
+   ------------
+   
+   procedure To_Set
+     (Descriptor : Code_Point_Set_Descriptor;
+      Result     : in out Core_Shared_Code_Point_Set)
+   is
+      use Matreshka.Internals.Unicode.Ucd;
+
+      P      : constant Core_First_Stage_Access := Core.Property'Access;
+   begin
+      Result.First_Stage := First_Stage_Map (Indexes.Group_Index);
+      Result.Second_Stages := (others => All_Off);
+
+      for J in Result.Second_Stages'Range loop
+         for K in Code_Point_Sets.Second_Stage_Index loop
+            if Match (Descriptor, P (Indexes.Base (J)) (K)) then
+               Result.Second_Stages (J) (K) := True;
+            end if;
+         end loop;
+      end loop;
+   end To_Set;
+
 end Matreshka.Internals.Code_Point_Sets;
