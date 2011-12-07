@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.String_Collections;
 with AMF.UML.Activities;
@@ -71,6 +69,7 @@ with AMF.UML.Redefinable_Elements.Collections;
 with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
 with AMF.UML.Variables.Collections;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Expansion_Regions is
 
@@ -682,5 +681,17 @@ package AMF.Internals.UML_Expansion_Regions is
    --  allow this element to redefine the other. By default at least one of 
    --  the redefinition contexts of this element must be a specialization of 
    --  at least one of the redefinition contexts of the specified element.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Expansion_Region_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Expansion_Region_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Expansion_Regions;

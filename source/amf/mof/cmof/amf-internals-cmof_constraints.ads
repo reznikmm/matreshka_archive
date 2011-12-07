@@ -47,6 +47,7 @@ with AMF.CMOF.Named_Elements;
 with AMF.CMOF.Namespaces.Collections;
 with AMF.CMOF.Value_Specifications;
 with AMF.Internals.CMOF_Named_Elements;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Constraints is
 
@@ -110,5 +111,17 @@ package AMF.Internals.CMOF_Constraints is
    overriding procedure Set_Context
     (Self : not null access CMOF_Constraint_Proxy;
      To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access);
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Constraint_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Constraint_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Constraints;

@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
@@ -55,6 +53,7 @@ with AMF.UML.Signal_Events;
 with AMF.UML.Signals;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Signal_Events is
 
@@ -298,5 +297,17 @@ package AMF.Internals.UML_Signal_Events is
    --
    --  The query isTemplateParameter() determines if this parameterable 
    --  element is exposed as a formal template parameter.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Signal_Event_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Signal_Event_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Signal_Events;

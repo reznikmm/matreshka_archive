@@ -82,6 +82,7 @@ with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types.Collections;
 with AMF.UML.Use_Cases.Collections;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Association_Classes is
 
@@ -1043,5 +1044,17 @@ package AMF.Internals.UML_Association_Classes is
    --  Operation StructuredClassifier::part.
    --
    --  Missing derivation for StructuredClassifier::/part : Property
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Association_Class_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Association_Class_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Association_Classes;

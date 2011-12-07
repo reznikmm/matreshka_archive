@@ -52,6 +52,22 @@ package body AMF.Internals.CMOF_Elements is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant CMOF_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor.all in AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class then
+         CMOF_Element_Proxy'Class (Self.all).Enter_CMOF_Element
+          (AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class (Visitor.all)'Access,
+           Control);
+      end if;
+   end Enter_Element;
+
    -------------
    -- Element --
    -------------
@@ -145,6 +161,22 @@ package body AMF.Internals.CMOF_Elements is
          (AMF.Internals.Helpers.To_Element
            (Internal_Get_Owner (Self.Id)));
    end Get_Owner;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant CMOF_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor.all in AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class then
+         CMOF_Element_Proxy'Class (Self.all).Leave_CMOF_Element
+          (AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class (Visitor.all)'Access,
+           Control);
+      end if;
+   end Leave_Element;
 
    ---------
    -- Set --

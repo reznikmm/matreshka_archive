@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.String_Collections;
 with AMF.UML.Behaviors;
@@ -58,6 +56,7 @@ with AMF.UML.Parameters;
 with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Types;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Opaque_Expressions is
 
@@ -444,5 +443,17 @@ package AMF.Internals.UML_Opaque_Expressions is
    --
    --  The query isTemplateParameter() determines if this parameterable 
    --  element is exposed as a formal template parameter.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Opaque_Expression_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Opaque_Expression_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Opaque_Expressions;

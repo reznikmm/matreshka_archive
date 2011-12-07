@@ -48,6 +48,30 @@ package body AMF.Internals.CMOF_Classes is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Class_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Class (Self, Control);
+   end Enter_CMOF_Element;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Class_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Class (Self, Control);
+   end Leave_CMOF_Element;
+
    -------------------------
    -- Get_Owned_Attribute --
    -------------------------

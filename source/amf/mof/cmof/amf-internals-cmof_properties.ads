@@ -56,6 +56,7 @@ with AMF.Internals.CMOF_Multiplicity_Elements;
 pragma Elaborate (AMF.Internals.CMOF_Multiplicity_Elements);
 with AMF.Internals.CMOF_Typed_Elements;
 pragma Elaborate (AMF.Internals.CMOF_Typed_Elements);
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Properties is
 
@@ -243,5 +244,17 @@ package AMF.Internals.CMOF_Properties is
     (Self : not null access constant CMOF_Property_Proxy;
      P : AMF.CMOF.Properties.CMOF_Property_Access)
        return Boolean;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Property_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Property_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Properties;

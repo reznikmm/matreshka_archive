@@ -44,6 +44,7 @@
 with AMF.CMOF.Enumeration_Literals.Collections;
 with AMF.CMOF.Enumerations;
 with AMF.Internals.CMOF_Data_Types;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Enumerations is
 
@@ -58,5 +59,17 @@ package AMF.Internals.CMOF_Enumerations is
     (Self : not null access constant CMOF_Enumeration_Proxy)
        return
          AMF.CMOF.Enumeration_Literals.Collections.Ordered_Set_Of_CMOF_Enumeration_Literal;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Enumeration_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Enumeration_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Enumerations;

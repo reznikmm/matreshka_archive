@@ -47,6 +47,7 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Properties;
 with AMF.Extents;
 with AMF.Internals.Elements;
+with AMF.Visitors.CMOF_Visitors;
 with League.Holders;
 
 package AMF.Internals.CMOF_Elements is
@@ -91,5 +92,29 @@ package AMF.Internals.CMOF_Elements is
    overriding function Extent
     (Self : not null access constant CMOF_Element_Proxy)
        return AMF.Extents.Extent_Access;
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant CMOF_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant CMOF_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   not overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Element_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   not overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Element_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Elements;

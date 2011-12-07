@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Elements;
+with AMF.Visitors;
 
 package AMF.Internals.Elements is
 
@@ -63,5 +64,17 @@ package AMF.Internals.Elements is
    --  This operation provides generic implementation based on MOF
    --  capabilities. It can be overridden for elements of specific model to
    --  provide more efficient implementation.
+
+   not overriding procedure Enter_Element
+    (Self    : not null access constant Element_Implementation;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   not overriding procedure Leave_Element
+    (Self    : not null access constant Element_Implementation;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.Elements;

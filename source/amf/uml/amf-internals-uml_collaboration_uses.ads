@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Collaboration_Uses;
 with AMF.UML.Collaborations;
@@ -53,6 +51,7 @@ with AMF.UML.Named_Elements;
 with AMF.UML.Namespaces.Collections;
 with AMF.UML.Packages.Collections;
 with AMF.UML.String_Expressions;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Collaboration_Uses is
 
@@ -246,5 +245,17 @@ package AMF.Internals.UML_Collaboration_Uses is
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner. Subclasses of Element that do not require an owner must 
    --  override this operation.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Collaboration_Use_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Collaboration_Use_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Collaboration_Uses;

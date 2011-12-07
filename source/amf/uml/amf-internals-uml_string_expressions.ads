@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
@@ -57,6 +55,7 @@ with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types;
 with AMF.UML.Value_Specifications.Collections;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_String_Expressions is
 
@@ -456,5 +455,17 @@ package AMF.Internals.UML_String_Expressions is
    --  templateable element. By default, this set includes all the owned 
    --  elements. Subclasses may override this operation if they choose to 
    --  restrict the set of parameterable elements.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_String_Expression_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_String_Expression_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_String_Expressions;

@@ -42,17 +42,30 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package AMF.Visitors is
+package body AMF.Internals.CMOF_Primitive_Types is
 
-   pragma Preelaborate;
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
 
-   type Traverse_Control is
-    (Continue,
-     Abandon_Children,
-     Abandon_Sibling,
-     Terminate_Immediately);
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Primitive_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Primitive_Type (Self, Control);
+   end Enter_CMOF_Element;
 
-   type Abstract_Visitor is limited interface;
-   --  Root interface for all metamodel specific visitor interfaces.
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
 
-end AMF.Visitors;
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Primitive_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Primitive_Type (Self, Control);
+   end Leave_CMOF_Element;
+
+end AMF.Internals.CMOF_Primitive_Types;

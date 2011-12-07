@@ -50,6 +50,30 @@ with Matreshka.Internals.Strings;
 
 package body AMF.Internals.UML_Literal_Integers is
 
+   -----------------------
+   -- Enter_UML_Element --
+   -----------------------
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Literal_Integer_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Literal_Integer (Self, Control);
+   end Enter_UML_Element;
+
+   -----------------------
+   -- Leave_UML_Element --
+   -----------------------
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Literal_Integer_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Literal_Integer (Self, Control);
+   end Leave_UML_Element;
+
    ---------------------------
    -- Get_Client_Dependency --
    ---------------------------

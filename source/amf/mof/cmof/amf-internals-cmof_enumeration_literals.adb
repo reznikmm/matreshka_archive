@@ -48,6 +48,18 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Enumeration_Literal_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Enumeration_Literal (Self, Control);
+   end Enter_CMOF_Element;
+
    ---------------------
    -- Get_Enumeration --
    ---------------------
@@ -61,6 +73,18 @@ package body AMF.Internals.CMOF_Enumeration_Literals is
          (AMF.Internals.Helpers.To_Element
            (Internal_Get_Enumeration (Self.Id)));
    end Get_Enumeration;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Enumeration_Literal_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Enumeration_Literal (Self, Control);
+   end Leave_CMOF_Element;
 
    ------------------------
    -- All_Owned_Elements --

@@ -49,6 +49,18 @@ package body AMF.Internals.CMOF_Constraints is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Constraint_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Constraint (Self, Control);
+   end Enter_CMOF_Element;
+
    -----------------------------
    -- Get_Constrained_Element --
    -----------------------------
@@ -89,6 +101,18 @@ package body AMF.Internals.CMOF_Constraints is
          (AMF.Internals.Helpers.To_Element
            (Internal_Get_Specification (Self.Id)));
    end Get_Specification;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Constraint_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Constraint (Self, Control);
+   end Leave_CMOF_Element;
 
    ------------------------
    -- All_Owned_Elements --

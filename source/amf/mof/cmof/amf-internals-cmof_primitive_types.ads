@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with AMF.CMOF.Primitive_Types;
 with AMF.Internals.CMOF_Data_Types;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Primitive_Types is
 
@@ -50,5 +51,17 @@ package AMF.Internals.CMOF_Primitive_Types is
      limited new AMF.Internals.CMOF_Data_Types.CMOF_Data_Type_Proxy
        and AMF.CMOF.Primitive_Types.CMOF_Primitive_Type
          with null record;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Primitive_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Primitive_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Primitive_Types;

@@ -48,6 +48,7 @@ with AMF.CMOF.Properties;
 with AMF.Extents;
 with AMF.Internals.Elements;
 with AMF.UML.Elements;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Elements is
 
@@ -79,5 +80,29 @@ package AMF.Internals.UML_Elements is
    overriding function Extent
     (Self : not null access constant UML_Element_Proxy)
        return AMF.Extents.Extent_Access;
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant UML_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant UML_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   not overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Element_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   not overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Element_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is abstract;
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Elements;

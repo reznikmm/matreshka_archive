@@ -52,6 +52,18 @@ package body AMF.Internals.CMOF_Comments is
    use AMF.Internals.Tables.CMOF_Attributes;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Comment_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Comment (Self, Control);
+   end Enter_CMOF_Element;
+
    ---------------------------
    -- Get_Annotated_Element --
    ---------------------------
@@ -85,6 +97,18 @@ package body AMF.Internals.CMOF_Comments is
          return (False, League.Strings.Internals.Create (Aux));
       end if;
    end Get_Body;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Comment_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Comment (Self, Control);
+   end Leave_CMOF_Element;
 
    --------------
    -- Set_Body --

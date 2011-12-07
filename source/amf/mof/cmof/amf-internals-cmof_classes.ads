@@ -53,6 +53,7 @@ with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.Internals.CMOF_Classifiers;
 with AMF.String_Collections;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Classes is
 
@@ -184,5 +185,17 @@ package AMF.Internals.CMOF_Classes is
    overriding function Get_Super_Class
     (Self : not null access constant CMOF_Class_Proxy)
        return AMF.CMOF.Classes.Collections.Set_Of_CMOF_Class;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Class_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Class_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Classes;

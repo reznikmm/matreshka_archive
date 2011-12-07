@@ -56,6 +56,7 @@ with AMF.Internals.CMOF_Namespaces;
 pragma Elaborate (AMF.Internals.CMOF_Namespaces);
 with AMF.Internals.CMOF_Features;
 with AMF.String_Collections;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Operations is
 
@@ -261,5 +262,17 @@ package AMF.Internals.CMOF_Operations is
    overriding function Types
     (Self : not null access constant CMOF_Operation_Proxy)
        return AMF.CMOF.Types.CMOF_Type_Access;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Operation_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Operation_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Operations;

@@ -53,6 +53,7 @@ with AMF.CMOF.Packages;
 with AMF.CMOF.Properties.Collections;
 with AMF.Internals.CMOF_Classifiers;
 with AMF.String_Collections;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Data_Types is
 
@@ -172,5 +173,17 @@ package AMF.Internals.CMOF_Data_Types is
    overriding function Get_Owned_Operation
     (Self : not null access constant CMOF_Data_Type_Proxy)
        return AMF.CMOF.Operations.Collections.Ordered_Set_Of_CMOF_Operation;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Data_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Data_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Data_Types;

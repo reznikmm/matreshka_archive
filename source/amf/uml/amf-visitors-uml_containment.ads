@@ -254,7 +254,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Visitors.UML_Containment is
 
    type UML_Containment_Visitor is
-     abstract limited new AMF.Visitors.UML_Visitors.UML_Element_Handler
+     abstract limited new AMF.Visitors.UML_Visitors.UML_Visitor
        with private;
 
    procedure Visit
@@ -1236,7 +1236,7 @@ package AMF.Visitors.UML_Containment is
 private
 
    type UML_Containment_Visitor is
-     abstract limited new AMF.Visitors.UML_Visitors.UML_Element_Handler
+     abstract limited new AMF.Visitors.UML_Visitors.UML_Visitor
        with null record;
 
 end AMF.Visitors.UML_Containment;

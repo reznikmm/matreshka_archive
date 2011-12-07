@@ -46,6 +46,7 @@ with AMF.CMOF.Namespaces;
 with AMF.CMOF.Package_Imports;
 with AMF.CMOF.Packages;
 with AMF.Internals.CMOF_Directed_Relationships;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Package_Imports is
 
@@ -93,5 +94,17 @@ package AMF.Internals.CMOF_Package_Imports is
    overriding procedure Set_Importing_Namespace
     (Self : not null access CMOF_Package_Import_Proxy;
      To   : AMF.CMOF.Namespaces.CMOF_Namespace_Access);
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Package_Import_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Package_Import_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Package_Imports;

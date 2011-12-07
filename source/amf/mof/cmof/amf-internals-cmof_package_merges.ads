@@ -45,6 +45,7 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Package_Merges;
 with AMF.CMOF.Packages;
 with AMF.Internals.CMOF_Directed_Relationships;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Package_Merges is
 
@@ -82,5 +83,17 @@ package AMF.Internals.CMOF_Package_Merges is
    overriding procedure Set_Merged_Package
     (Self : not null access CMOF_Package_Merge_Proxy;
      To   : AMF.CMOF.Packages.CMOF_Package_Access);
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Package_Merge_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Package_Merge_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Package_Merges;

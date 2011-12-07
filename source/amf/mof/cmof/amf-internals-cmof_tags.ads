@@ -44,6 +44,7 @@
 with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Tags;
 with AMF.Internals.CMOF_Elements;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Tags is
 
@@ -85,5 +86,17 @@ package AMF.Internals.CMOF_Tags is
    overriding procedure Set_Value
     (Self : not null access CMOF_Tag_Proxy;
      To   : League.Strings.Universal_String);
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Tag_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Tag_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Tags;

@@ -48,6 +48,18 @@ package body AMF.Internals.CMOF_Associations is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Association_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Association (Self, Control);
+   end Enter_CMOF_Element;
+
    ------------------
    -- Get_End_Type --
    ------------------
@@ -113,6 +125,18 @@ package body AMF.Internals.CMOF_Associations is
          (AMF.Internals.Element_Collections.Wrap
            (Internal_Get_Owned_End (Self.Id)));
    end Get_Owned_End;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Association_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Association (Self, Control);
+   end Leave_CMOF_Element;
 
    --------------------
    -- Set_Is_Derived --

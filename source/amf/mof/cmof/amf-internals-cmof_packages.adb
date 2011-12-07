@@ -54,6 +54,18 @@ package body AMF.Internals.CMOF_Packages is
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
    ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Package_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Package (Self, Control);
+   end Enter_CMOF_Element;
+
+   ------------------------
    -- Get_Nested_Package --
    ------------------------
 
@@ -144,6 +156,18 @@ package body AMF.Internals.CMOF_Packages is
          return (False, League.Strings.Internals.Create (Aux));
       end if;
    end Get_Uri;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Package_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Package (Self, Control);
+   end Leave_CMOF_Element;
 
    -------------
    -- Set_Uri --

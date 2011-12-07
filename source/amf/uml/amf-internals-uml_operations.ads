@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.String_Collections;
 with AMF.UML.Behaviors.Collections;
@@ -71,6 +69,7 @@ with AMF.UML.Template_Bindings.Collections;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Template_Signatures;
 with AMF.UML.Types.Collections;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Operations is
 
@@ -805,5 +804,17 @@ package AMF.Internals.UML_Operations is
    --
    --  The query isTemplateParameter() determines if this parameterable 
    --  element is exposed as a formal template parameter.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Operation_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Operation_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Operations;

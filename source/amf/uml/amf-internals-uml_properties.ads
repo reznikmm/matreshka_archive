@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.Internals.UML_Multiplicity_Elements;
 with AMF.UML.Associations;
@@ -68,6 +66,7 @@ with AMF.UML.String_Expressions;
 with AMF.UML.Template_Parameters;
 with AMF.UML.Types.Collections;
 with AMF.UML.Value_Specifications;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Properties is
 
@@ -910,5 +909,17 @@ package AMF.Internals.UML_Properties is
    --  allow this element to redefine the other. By default at least one of 
    --  the redefinition contexts of this element must be a specialization of 
    --  at least one of the redefinition contexts of the specified element.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Property_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Property_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Properties;

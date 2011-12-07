@@ -48,6 +48,18 @@ package body AMF.Internals.CMOF_Data_Types is
 
    use AMF.Internals.Tables.CMOF_Attributes;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Data_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Data_Type (Self, Control);
+   end Enter_CMOF_Element;
+
    -------------------------
    -- Get_Owned_Attribute --
    -------------------------
@@ -75,6 +87,18 @@ package body AMF.Internals.CMOF_Data_Types is
          (AMF.Internals.Element_Collections.Wrap
            (Internal_Get_Owned_Operation (Self.Id)));
    end Get_Owned_Operation;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Data_Type_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Data_Type (Self, Control);
+   end Leave_CMOF_Element;
 
    ------------------------
    -- All_Owned_Elements --

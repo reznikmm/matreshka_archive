@@ -60,6 +60,22 @@ package body AMF.Internals.UML_Elements is
       return Self.Id;
    end Element;
 
+   -------------------
+   -- Enter_Element --
+   -------------------
+
+   overriding procedure Enter_Element
+    (Self    : not null access constant UML_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor.all in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+         UML_Element_Proxy'Class (Self.all).Enter_UML_Element
+          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor.all)'Access,
+           Control);
+      end if;
+   end Enter_Element;
+
    ------------
    -- Extent --
    ------------
@@ -102,6 +118,22 @@ package body AMF.Internals.UML_Elements is
          (AMF.Internals.Helpers.To_Element
            (AMF.Internals.Tables.UML_Reflection.Get_Meta_Class (Self.Id)));
    end Get_Meta_Class;
+
+   -------------------
+   -- Leave_Element --
+   -------------------
+
+   overriding procedure Leave_Element
+    (Self    : not null access constant UML_Element_Proxy;
+     Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      if Visitor.all in AMF.Visitors.UML_Visitors.UML_Visitor'Class then
+         UML_Element_Proxy'Class (Self.all).Leave_UML_Element
+          (AMF.Visitors.UML_Visitors.UML_Visitor'Class (Visitor.all)'Access,
+           Control);
+      end if;
+   end Leave_Element;
 
    ---------
    -- Set --

@@ -52,6 +52,18 @@ package body AMF.Internals.CMOF_Parameters is
    use AMF.Internals.Tables.CMOF_Attributes;
    use type Matreshka.Internals.Strings.Shared_String_Access;
 
+   ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Parameter_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Parameter (Self, Control);
+   end Enter_CMOF_Element;
+
    -----------------
    -- Get_Default --
    -----------------
@@ -95,6 +107,18 @@ package body AMF.Internals.CMOF_Parameters is
         AMF.CMOF.Operations.CMOF_Operation_Access
          (AMF.Internals.Helpers.To_Element (Internal_Get_Operation (Self.Id)));
    end Get_Operation;
+
+   ------------------------
+   -- Leave_CMOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Parameter_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Parameter (Self, Control);
+   end Leave_CMOF_Element;
 
    -------------------
    -- Set_Direction --

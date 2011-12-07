@@ -46,6 +46,7 @@ with AMF.CMOF.Elements.Collections;
 with AMF.CMOF.Namespaces;
 with AMF.CMOF.Packageable_Elements;
 with AMF.Internals.CMOF_Directed_Relationships;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Element_Imports is
 
@@ -103,5 +104,17 @@ package AMF.Internals.CMOF_Element_Imports is
    overriding function Get_Name
     (Self : not null access constant CMOF_Element_Import_Proxy)
        return League.Strings.Universal_String;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Element_Import_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Element_Import_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Element_Imports;

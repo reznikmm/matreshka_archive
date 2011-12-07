@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Edges.Collections;
@@ -66,6 +64,7 @@ with AMF.UML.Remove_Structural_Feature_Value_Actions;
 with AMF.UML.String_Expressions;
 with AMF.UML.Structural_Features;
 with AMF.UML.Structured_Activity_Nodes;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Remove_Structural_Feature_Value_Actions is
 
@@ -534,5 +533,17 @@ package AMF.Internals.UML_Remove_Structural_Feature_Value_Actions is
    --  The query mustBeOwned() indicates whether elements of this type must 
    --  have an owner. Subclasses of Element that do not require an owner must 
    --  override this operation.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Remove_Structural_Feature_Value_Action_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Remove_Structural_Feature_Value_Action_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Remove_Structural_Feature_Value_Actions;

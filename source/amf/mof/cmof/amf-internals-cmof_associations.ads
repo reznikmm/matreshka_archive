@@ -55,6 +55,7 @@ with AMF.Internals.CMOF_Classifiers;
 with AMF.Internals.CMOF_Relationships;
 pragma Elaborate (AMF.Internals.CMOF_Relationships);
 with AMF.String_Collections;
+with AMF.Visitors.CMOF_Visitors;
 
 package AMF.Internals.CMOF_Associations is
 
@@ -209,5 +210,17 @@ package AMF.Internals.CMOF_Associations is
    overriding function End_Type
     (Self : not null access constant CMOF_Association_Proxy)
        return AMF.CMOF.Types.Collections.Ordered_Set_Of_CMOF_Type;
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Association_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Association_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.CMOF_Associations;

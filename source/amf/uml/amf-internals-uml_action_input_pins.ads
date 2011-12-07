@@ -67,6 +67,7 @@ with AMF.UML.String_Expressions;
 with AMF.UML.Structured_Activity_Nodes;
 with AMF.UML.Types;
 with AMF.UML.Value_Specifications;
+with AMF.Visitors.UML_Visitors;
 
 package AMF.Internals.UML_Action_Input_Pins is
 
@@ -648,5 +649,17 @@ package AMF.Internals.UML_Action_Input_Pins is
    --
    --  The query upperBound() returns the upper bound of the multiplicity for 
    --  a bounded multiplicity as an unlimited natural.
+
+   overriding procedure Enter_UML_Element
+    (Self    : not null access constant UML_Action_Input_Pin_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
+
+   overriding procedure Leave_UML_Element
+    (Self    : not null access constant UML_Action_Input_Pin_Proxy;
+     Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control);
+   --  Dispatch call to corresponding subprogram of visitor interface.
 
 end AMF.Internals.UML_Action_Input_Pins;

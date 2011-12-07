@@ -45,6 +45,30 @@
 package body AMF.Internals.CMOF_Expressions is
 
    ------------------------
+   -- Enter_CMOF_Element --
+   ------------------------
+
+   overriding procedure Enter_CMOF_Element
+    (Self    : not null access constant CMOF_Expression_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Enter_Expression (Self, Control);
+   end Enter_CMOF_Element;
+
+   ------------------------
+   -- Leave_CNOF_Element --
+   ------------------------
+
+   overriding procedure Leave_CMOF_Element
+    (Self    : not null access constant CMOF_Expression_Proxy;
+     Visitor : not null access AMF.Visitors.CMOF_Visitors.CMOF_Visitor'Class;
+     Control : in out AMF.Visitors.Traverse_Control) is
+   begin
+      Visitor.Leave_Expression (Self, Control);
+   end Leave_CMOF_Element;
+
+   ------------------------
    -- All_Owned_Elements --
    ------------------------
 
