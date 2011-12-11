@@ -1085,15 +1085,6 @@ package AMF.Internals.UML_State_Machines is
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_State_Machine_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
-
    overriding function Conforms_To
     (Self : not null access constant UML_State_Machine_Proxy;
      Other : AMF.UML.Types.UML_Type_Access)

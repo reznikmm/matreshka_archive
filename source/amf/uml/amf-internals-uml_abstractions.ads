@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Abstractions;
 with AMF.UML.Comments.Collections;
@@ -271,15 +269,6 @@ package AMF.Internals.UML_Abstractions is
    --
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
-
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Abstraction_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
 
    overriding function All_Namespaces
     (Self : not null access constant UML_Abstraction_Proxy)

@@ -367,15 +367,6 @@ package AMF.Internals.UML_Time_Expressions is
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Time_Expression_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
-
    overriding function Is_Template_Parameter
     (Self : not null access constant UML_Time_Expression_Proxy)
        return Boolean;

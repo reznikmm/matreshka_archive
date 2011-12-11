@@ -135,6 +135,28 @@ package body AMF.Internals.UML_Elements is
       end if;
    end Leave_Element;
 
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Element_Proxy) return Boolean
+   is
+      pragma Unreferenced (Self);
+
+      --  [UML241] 7.3.14 Element (from Kernel)
+      --
+      --  The query mustBeOwned() indicates whether elements of this type must
+      --  have an owner. Subclasses of Element that do not require an owner
+      --  must override this operation.
+      --
+      --  Element::mustBeOwned() : Boolean;
+      --  mustBeOwned = true
+
+   begin
+      return True;
+   end Must_Be_Owned;
+
    ---------
    -- Set --
    ---------

@@ -81,6 +81,14 @@ package AMF.Internals.UML_Elements is
     (Self : not null access constant UML_Element_Proxy)
        return AMF.Extents.Extent_Access;
 
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Element_Proxy) return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
+
    overriding procedure Enter_Element
     (Self    : not null access constant UML_Element_Proxy;
      Visitor : not null access AMF.Visitors.Abstract_Visitor'Class;

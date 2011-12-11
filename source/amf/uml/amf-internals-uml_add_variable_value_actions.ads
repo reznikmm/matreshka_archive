@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Edges.Collections;
@@ -496,15 +494,6 @@ package AMF.Internals.UML_Add_Variable_Value_Actions is
    --
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
-
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Add_Variable_Value_Action_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
 
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Add_Variable_Value_Action_Proxy;

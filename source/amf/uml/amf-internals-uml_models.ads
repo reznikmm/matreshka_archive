@@ -395,14 +395,6 @@ package AMF.Internals.UML_Models is
    --  visible outside itself. Elements with no visibility and elements with 
    --  public visibility are made visible.
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Model_Proxy)
-       return Boolean;
-   --  Operation Package::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner.
-
    overriding function Nested_Package
     (Self : not null access constant UML_Model_Proxy)
        return AMF.UML.Packages.Collections.Set_Of_UML_Package;

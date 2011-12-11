@@ -74,6 +74,27 @@ package body AMF.Internals.UML_Packages is
       Visitor.Leave_Package (Self, Control);
    end Leave_UML_Element;
 
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant UML_Package_Proxy) return Boolean
+   is
+      pragma Unreferenced (Self);
+
+      --  [UML241] 7.3.38 Package (from Kernel)
+      --
+      --   The query mustBeOwned() indicates whether elements of this type must
+      --   have an owner.
+      --
+      --   Package::mustBeOwned() : Boolean
+      --   mustBeOwned = false
+
+   begin
+      return False;
+   end Must_Be_Owned;
+
    -------------
    -- Get_URI --
    -------------
@@ -691,20 +712,6 @@ package body AMF.Internals.UML_Packages is
       raise Program_Error with "Unimplemented procedure UML_Package_Proxy.Makes_Visible";
       return Makes_Visible (Self, El);
    end Makes_Visible;
-
-   -------------------
-   -- Must_Be_Owned --
-   -------------------
-
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Package_Proxy)
-       return Boolean is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Package_Proxy.Must_Be_Owned";
-      return Must_Be_Owned (Self);
-   end Must_Be_Owned;
 
    --------------------
    -- Nested_Package --

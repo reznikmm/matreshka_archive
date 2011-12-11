@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.Internals.UML_Elements;
 with AMF.UML.Action_Input_Pins;
 with AMF.UML.Actions;
@@ -565,15 +563,6 @@ package AMF.Internals.UML_Action_Input_Pins is
    --
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
-
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Action_Input_Pin_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
 
    overriding function Compatible_With
     (Self : not null access constant UML_Action_Input_Pin_Proxy;

@@ -303,15 +303,6 @@ package AMF.Internals.UML_Behavior_Execution_Specifications is
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Behavior_Execution_Specification_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
-
    overriding procedure Enter_UML_Element
     (Self    : not null access constant UML_Behavior_Execution_Specification_Proxy;
      Visitor : not null access AMF.Visitors.UML_Visitors.UML_Visitor'Class;

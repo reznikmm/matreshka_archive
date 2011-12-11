@@ -805,18 +805,4 @@ package body AMF.Internals.UML_Unmarshall_Actions is
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
 
-   -------------------
-   -- Must_Be_Owned --
-   -------------------
-
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Unmarshall_Action_Proxy)
-       return Boolean is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Unmarshall_Action_Proxy.Must_Be_Owned";
-      return Must_Be_Owned (Self);
-   end Must_Be_Owned;
-
 end AMF.Internals.UML_Unmarshall_Actions;

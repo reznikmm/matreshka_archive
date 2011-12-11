@@ -244,15 +244,6 @@ package AMF.Internals.UML_Dependencies is
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Dependency_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
-
    overriding function All_Namespaces
     (Self : not null access constant UML_Dependency_Proxy)
        return AMF.UML.Namespaces.Collections.Ordered_Set_Of_UML_Namespace;

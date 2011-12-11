@@ -585,15 +585,6 @@ package AMF.Internals.UML_Communication_Paths is
    --  The query allOwnedElements() gives all of the direct and indirect owned 
    --  elements of an element.
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant UML_Communication_Path_Proxy)
-       return Boolean;
-   --  Operation Element::mustBeOwned.
-   --
-   --  The query mustBeOwned() indicates whether elements of this type must 
-   --  have an owner. Subclasses of Element that do not require an owner must 
-   --  override this operation.
-
    overriding function All_Features
     (Self : not null access constant UML_Communication_Path_Proxy)
        return AMF.UML.Features.Collections.Set_Of_UML_Feature;
