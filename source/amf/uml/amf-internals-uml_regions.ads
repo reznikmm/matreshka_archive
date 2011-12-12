@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.String_Collections;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
@@ -66,7 +66,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Regions is
 
    type UML_Region_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Regions.UML_Region with null record;
 
    overriding function Get_Extended_Region
@@ -469,14 +469,6 @@ package AMF.Internals.UML_Regions is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Region_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Region_Proxy)

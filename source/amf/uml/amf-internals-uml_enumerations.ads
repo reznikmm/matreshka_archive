@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Data_Types;
 with AMF.String_Collections;
 with AMF.UML.Classifier_Template_Parameters;
 with AMF.UML.Classifiers.Collections;
@@ -78,7 +78,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Enumerations is
 
    type UML_Enumeration_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Data_Types.UML_Data_Type_Proxy
        and AMF.UML.Enumerations.UML_Enumeration with null record;
 
    overriding function Get_Owned_Literal
@@ -747,14 +747,6 @@ package AMF.Internals.UML_Enumerations is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Enumeration_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Enumeration_Proxy)

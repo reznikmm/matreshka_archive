@@ -47,6 +47,28 @@ with AMF.Internals.Tables.UML_Attributes;
 
 package body AMF.Internals.UML_Named_Elements is
 
+   ---------------
+   -- Separator --
+   ---------------
+
+   overriding function Separator
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
+      --  [UML241] 7.3.34 NamedElement (from Kernel, Dependencies)
+      --
+      --  The query separator() gives the string that is used to separate names
+      --  when constructing a qualified name.
+      --
+      --  NamedElement::separator(): String;
+      --  separator = ‘::’
+
+   begin
+      return League.Strings.To_Universal_String ("::");
+   end Separator;
+
    --------------
    -- Set_Name --
    --------------

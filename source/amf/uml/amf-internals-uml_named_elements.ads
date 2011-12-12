@@ -50,12 +50,27 @@ package AMF.Internals.UML_Named_Elements is
      abstract limited new AMF.Internals.UML_Elements.UML_Element_Proxy
        and AMF.UML.Named_Elements.UML_Named_Element with null record;
 
+   overriding function Separator
+    (Self : not null access constant UML_Named_Element_Proxy)
+       return League.Strings.Universal_String;
+   --  Operation NamedElement::separator.
+   --
+   --  The query separator() gives the string that is used to separate names 
+   --  when constructing a qualified name.
+
    overriding procedure Set_Name
     (Self : not null access UML_Named_Element_Proxy;
      To   : AMF.Optional_String);
+   --  Setter of NamedElement::name.
+   --
+   --  The name of the NamedElement.
 
    overriding procedure Set_Visibility
     (Self : not null access UML_Named_Element_Proxy;
      To   : AMF.UML.Optional_UML_Visibility_Kind);
+   --  Setter of NamedElement::visibility.
+   --
+   --  Determines where the NamedElement appears within different Namespaces 
+   --  within the overall model, and its accessibility.
 
 end AMF.Internals.UML_Named_Elements;

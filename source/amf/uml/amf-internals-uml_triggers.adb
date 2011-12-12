@@ -386,20 +386,6 @@ package body AMF.Internals.UML_Triggers is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-    (Self : not null access constant UML_Trigger_Proxy)
-       return League.Strings.Universal_String is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Trigger_Proxy.Separator";
-      return Separator (Self);
-   end Separator;
-
    ------------------------
    -- All_Owned_Elements --
    ------------------------

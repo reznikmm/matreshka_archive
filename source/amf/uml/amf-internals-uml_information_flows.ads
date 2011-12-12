@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
@@ -62,7 +62,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Information_Flows is
 
    type UML_Information_Flow_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Information_Flows.UML_Information_Flow with null record;
 
    overriding function Get_Conveyed
@@ -320,14 +320,6 @@ package AMF.Internals.UML_Information_Flows is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Information_Flow_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Information_Flow_Proxy;

@@ -41,13 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Value_Specifications;
 
 package AMF.Internals.UML_Value_Specifications is
 
    type UML_Value_Specification_Proxy is
-     abstract limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     abstract limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Value_Specifications.UML_Value_Specification with null record;
 
    overriding function Boolean_Value

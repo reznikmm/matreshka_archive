@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Combined_Fragments;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
@@ -60,7 +60,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Combined_Fragments is
 
    type UML_Combined_Fragment_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Combined_Fragments.UML_Combined_Fragment with null record;
 
    overriding function Get_Cfragment_Gate
@@ -270,14 +270,6 @@ package AMF.Internals.UML_Combined_Fragments is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Combined_Fragment_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Combined_Fragment_Proxy)

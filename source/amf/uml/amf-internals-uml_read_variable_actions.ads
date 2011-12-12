@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Activities;
 with AMF.UML.Activity_Edges.Collections;
 with AMF.UML.Activity_Groups.Collections;
@@ -69,7 +69,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Read_Variable_Actions is
 
    type UML_Read_Variable_Action_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Read_Variable_Actions.UML_Read_Variable_Action with null record;
 
    overriding function Get_Result
@@ -444,14 +444,6 @@ package AMF.Internals.UML_Read_Variable_Actions is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Read_Variable_Action_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Read_Variable_Action_Proxy)

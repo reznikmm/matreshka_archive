@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Classifiers.Collections;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Component_Realizations;
@@ -60,7 +60,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Component_Realizations is
 
    type UML_Component_Realization_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Component_Realizations.UML_Component_Realization with null record;
 
    overriding function Get_Abstraction
@@ -339,14 +339,6 @@ package AMF.Internals.UML_Component_Realizations is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Component_Realization_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Component_Realization_Proxy;

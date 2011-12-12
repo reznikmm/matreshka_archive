@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.String_Collections;
 with AMF.UML.Associations;
 with AMF.UML.Classifier_Template_Parameters;
@@ -76,7 +76,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Associations is
 
    type UML_Association_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Associations.UML_Association with null record;
 
    overriding function Get_End_Type
@@ -796,14 +796,6 @@ package AMF.Internals.UML_Associations is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Association_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function Conforms_To
     (Self : not null access constant UML_Association_Proxy;

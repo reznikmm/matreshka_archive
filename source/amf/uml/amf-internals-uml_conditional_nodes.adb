@@ -1106,20 +1106,6 @@ package body AMF.Internals.UML_Conditional_Nodes is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-    (Self : not null access constant UML_Conditional_Node_Proxy)
-       return League.Strings.Universal_String is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Conditional_Node_Proxy.Separator";
-      return Separator (Self);
-   end Separator;
-
    ------------------------
    -- All_Owned_Elements --
    ------------------------

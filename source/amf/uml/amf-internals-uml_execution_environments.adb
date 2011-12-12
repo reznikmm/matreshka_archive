@@ -1498,20 +1498,6 @@ package body AMF.Internals.UML_Execution_Environments is
       return Qualified_Name (Self);
    end Qualified_Name;
 
-   ---------------
-   -- Separator --
-   ---------------
-
-   overriding function Separator
-    (Self : not null access constant UML_Execution_Environment_Proxy)
-       return League.Strings.Universal_String is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Separator unimplemented");
-      raise Program_Error with "Unimplemented procedure UML_Execution_Environment_Proxy.Separator";
-      return Separator (Self);
-   end Separator;
-
    ------------------------
    -- All_Owned_Elements --
    ------------------------

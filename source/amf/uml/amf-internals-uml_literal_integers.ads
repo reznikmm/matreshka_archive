@@ -303,14 +303,6 @@ package AMF.Internals.UML_Literal_Integers is
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
 
-   overriding function Separator
-    (Self : not null access constant UML_Literal_Integer_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
-
    overriding function All_Owned_Elements
     (Self : not null access constant UML_Literal_Integer_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element;

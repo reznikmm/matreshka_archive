@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Named_Elements;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Connectable_Element_Template_Parameters;
 with AMF.UML.Connector_Ends.Collections;
@@ -64,7 +64,7 @@ with AMF.Visitors.UML_Visitors;
 package AMF.Internals.UML_Parameters is
 
    type UML_Parameter_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Named_Elements.UML_Named_Element_Proxy
        and AMF.UML.Parameters.UML_Parameter with null record;
 
    overriding function Get_Default
@@ -571,14 +571,6 @@ package AMF.Internals.UML_Parameters is
    --  When there is a name, and all of the containing namespaces have a name, 
    --  the qualified name is constructed from the names of the containing 
    --  namespaces.
-
-   overriding function Separator
-    (Self : not null access constant UML_Parameter_Proxy)
-       return League.Strings.Universal_String;
-   --  Operation NamedElement::separator.
-   --
-   --  The query separator() gives the string that is used to separate names 
-   --  when constructing a qualified name.
 
    overriding function Is_Compatible_With
     (Self : not null access constant UML_Parameter_Proxy;
