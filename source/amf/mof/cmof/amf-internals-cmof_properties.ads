@@ -79,10 +79,6 @@ package AMF.Internals.CMOF_Properties is
     (Self : not null access constant CMOF_Property_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Property_Proxy)
-       return Boolean;
-
    overriding procedure Set_Lower
     (Self : not null access CMOF_Property_Proxy;
      To   : Optional_Integer);

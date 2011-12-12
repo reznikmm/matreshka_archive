@@ -169,6 +169,27 @@ package body AMF.Internals.CMOF_Packages is
       Visitor.Leave_Package (Self, Control);
    end Leave_CMOF_Element;
 
+   -------------------
+   -- Must_Be_Owned --
+   -------------------
+
+   overriding function Must_Be_Owned
+    (Self : not null access constant CMOF_Package_Proxy) return Boolean
+   is
+      pragma Unreferenced (Self);
+
+      --  [UML241] 7.3.38 Package (from Kernel)
+      --
+      --   The query mustBeOwned() indicates whether elements of this type must
+      --   have an owner.
+      --
+      --   Package::mustBeOwned() : Boolean
+      --   mustBeOwned = false
+
+   begin
+      return False;
+   end Must_Be_Owned;
+
    -------------
    -- Set_Uri --
    -------------
@@ -200,21 +221,6 @@ package body AMF.Internals.CMOF_Packages is
       raise Program_Error;
       return All_Owned_Elements (Self);
    end All_Owned_Elements;
-
-   -------------------
-   -- Must_Be_Owned --
-   -------------------
-
-   overriding function Must_Be_Owned
-     (Self : not null access constant CMOF_Package_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error;
-      return Must_Be_Owned (Self);
-   end Must_Be_Owned;
 
    ------------------------
    -- Get_Qualified_Name --

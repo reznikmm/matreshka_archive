@@ -75,10 +75,6 @@ package AMF.Internals.CMOF_Parameters is
     (Self : not null access constant CMOF_Parameter_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Parameter_Proxy)
-       return Boolean;
-
    overriding procedure Set_Is_Unique
     (Self : not null access CMOF_Parameter_Proxy;
      To   : Boolean);

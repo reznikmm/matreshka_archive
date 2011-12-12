@@ -60,10 +60,6 @@ package AMF.Internals.CMOF_Package_Merges is
     (Self : not null access constant CMOF_Package_Merge_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Package_Merge_Proxy)
-       return Boolean;
-
    overriding function Get_Related_Element
     (Self : not null access constant CMOF_Package_Merge_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;

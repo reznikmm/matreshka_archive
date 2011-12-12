@@ -61,10 +61,6 @@ package AMF.Internals.CMOF_Element_Imports is
     (Self : not null access constant CMOF_Element_Import_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Element_Import_Proxy)
-       return Boolean;
-
    overriding function Get_Related_Element
     (Self : not null access constant CMOF_Element_Import_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;

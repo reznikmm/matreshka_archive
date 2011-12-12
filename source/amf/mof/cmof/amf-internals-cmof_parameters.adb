@@ -150,21 +150,6 @@ package body AMF.Internals.CMOF_Parameters is
    end All_Owned_Elements;
 
    -------------------
-   -- Must_Be_Owned --
-   -------------------
-
-   overriding function Must_Be_Owned
-     (Self : not null access constant CMOF_Parameter_Proxy)
-      return Boolean
-   is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Must_Be_Owned unimplemented");
-      raise Program_Error;
-      return Must_Be_Owned (Self);
-   end Must_Be_Owned;
-
-   -------------------
    -- Set_Is_Unique --
    -------------------
 

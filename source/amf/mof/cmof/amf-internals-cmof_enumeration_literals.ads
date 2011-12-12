@@ -62,10 +62,6 @@ package AMF.Internals.CMOF_Enumeration_Literals is
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
-       return Boolean;
-
    overriding function Get_Qualified_Name
     (Self : not null access constant CMOF_Enumeration_Literal_Proxy)
        return Optional_String;

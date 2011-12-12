@@ -59,10 +59,6 @@ package AMF.Internals.CMOF_Comments is
     (Self : not null access constant CMOF_Comment_Proxy)
        return AMF.CMOF.Elements.Collections.Set_Of_CMOF_Element;
 
-   overriding function Must_Be_Owned
-    (Self : not null access constant CMOF_Comment_Proxy)
-       return Boolean;
-
    overriding function Get_Body
     (Self : not null access constant CMOF_Comment_Proxy)
        return Optional_String;

@@ -177,8 +177,11 @@ package body AMF.Internals.CMOF_Tags is
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Tag_Proxy) return Boolean is
    begin
-      raise Program_Error;
-      return Must_Be_Owned (Self);
+      --  Behavior of this function is not defined by CMOF specification, and
+      --  it returns False in our implementation because CMOF:Tags are usually
+      --  is not owned by other elements.
+
+      return False;
    end Must_Be_Owned;
 
 end AMF.Internals.CMOF_Tags;

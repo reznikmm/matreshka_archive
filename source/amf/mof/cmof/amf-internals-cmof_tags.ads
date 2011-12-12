@@ -74,6 +74,11 @@ package AMF.Internals.CMOF_Tags is
 
    overriding function Must_Be_Owned
     (Self : not null access constant CMOF_Tag_Proxy) return Boolean;
+   --  Operation Element::mustBeOwned.
+   --
+   --  The query mustBeOwned() indicates whether elements of this type must 
+   --  have an owner. Subclasses of Element that do not require an owner must 
+   --  override this operation.
 
    overriding procedure Set_Name
     (Self : not null access CMOF_Tag_Proxy;
