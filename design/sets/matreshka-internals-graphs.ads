@@ -41,110 +41,107 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides sets of Unicode characters (code points).
-------------------------------------------------------------------------------
-with League.Strings;
-with League.Characters;
 
-private with Ada.Streams;
-private with Ada.Finalization;
-private with Matreshka.Internals.Code_Point_Sets;
-
-package League.Character_Sets is
+package Matreshka.Internals.Graphs is
 
    pragma Preelaborate;
-   pragma Remote_Types;
 
-   type Universal_Character_Set is tagged private;
+   type Graph is tagged limited private;
 
-   Empty_Universal_Character_Set : constant Universal_Character_Set;
+   type Node is tagged private;
+   type Node_Index is new Positive;
+   subtype Node_List_Length is Node_Index'Base range 0 .. Node_Index'Last;
+   type Node_Array is array (Node_Index range <>) of Node;
+   type Node_Array_Access is access Node_Array;
 
-   function To_Set
-     (Sequence : Wide_Wide_String)
-     return Universal_Character_Set;
-   --  Return set containing all characters from Sequence
+   type Edge is tagged private;
+   type Edge_Index is new Positive;
+   subtype Edge_List_Length is Edge_Index'Base range 0 .. Edge_Index'Last;
+   type Edge_Array is array (Edge_Index range <>) of Edge;
+   type Edge_Array_Access is access Edge_Array;
 
-   function To_Set
-     (Sequence : League.Strings.Universal_String)
-     return Universal_Character_Set;
-   --  Return set containing all characters from Sequence
+   function Node_Count (Self : Graph) return Node_List_Length;
+   function Get_Nodes  (Self : Graph) return Node_Array;
+   function Edge_Count (Self : Graph) return Edge_List_Length;
+   function Get_Edges  (Self : Graph) return Edge_Array;
 
-   function To_Set
-     (Low, High : Wide_Wide_Character)
-     return Universal_Character_Set;
-   --  Return set containing all characters between Low and High
-   
-   function "=" (Left, Right : Universal_Character_Set) return Boolean;
+   function Edge_Count (Self : Node) return Edge_List_Length;
+   function Outgoing_Edges  (Self : Node) return Edge_Array;
 
-   function "not"
-     (Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return complementing set of character
+   function Source_Node (Self : Edge'Class) return Node;
+   function Target_Node (Self : Edge'Class) return Node;
 
-   function "and"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return intersection of Left and Right
+   function Index (Self : Node) return Node_Index;
+   function Index (Self : Edge) return Edge_Index;
 
-   function "or"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return union of Left and Right
+   function Get_Node (Self : Graph'Class; Index : Node_Index) return Node;
+   function Get_Edge (Self : Graph'Class; Index : Edge_Index) return Edge;
+   function Get_Edge (Self : Node'Class;  Index : Edge_Index) return Edge;
 
-   function "xor"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
+   function First_Edge_Index (Self : Node) return Edge_Index;
+   function Last_Edge_Index  (Self : Node) return Edge_List_Length;
 
-   function "-"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return difference
+   procedure Clear (Self : in out Graph);
 
-   function Has
-     (Set     : Universal_Character_Set;
-      Element : Wide_Wide_Character)
-     return Boolean;
+   package Constructor is
 
-   function Has
-     (Set     : Universal_Character_Set;
-      Element : League.Characters.Universal_Character)
-     return Boolean;
+      type Graph is tagged limited private;
+      type Node is tagged private;
 
-   function Is_Subset
-     (Elements : Universal_Character_Set;
-      Set      : Universal_Character_Set)
-     return Boolean;
+      function New_Node (Self : Graph'Class) return Node;
 
-   function "<="
-     (Left  : Universal_Character_Set;
-      Right : Universal_Character_Set)
-     return Boolean renames Is_Subset;
+      function Index (Self : Node) return Node_Index;
 
-   function Is_Empty (Set : Universal_Character_Set) return Boolean;
+      procedure New_Edge (From, To : Node);
+
+      procedure Complete
+        (Input  : in out Graph'Class;
+         Output : out Graphs.Graph);
+      --  Convert Input to Output and clear Input
+
+      procedure Clear (Self : in out Graph);
+   private
+
+      type Graph_Access is access all Graph;
+
+      type Node is tagged record
+         Graph : Graph_Access;
+         Index : Node_Index;
+      end record;
+
+      type Graph is tagged limited record
+         Self      : Graph_Access := Graph'Unchecked_Access;
+         Last_Node : Node_List_Length := 0;
+         Last_Edge : Edge_List_Length := 0;
+         Nodes     : Node_Array_Access;
+         Edges     : Edge_Array_Access;
+      end record;
+   end Constructor;
 
 private
+   type Graph_Access is access all Graph;
 
-   procedure Read
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : out Universal_Character_Set);
-
-   procedure Write
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : Universal_Character_Set);
-
-   type Universal_Character_Set is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.Code_Point_Sets.Shared_Code_Point_Set_Access
-        := Matreshka.Internals.Code_Point_Sets.Shared_Empty'Access;
+   type Edge is tagged record
+      Graph  : Graph_Access;
+      Index  : Edge_Index;
+      Source : Node_Index;
+      Target : Node_Index;
    end record;
-   for Universal_Character_Set'Read use Read;
-   for Universal_Character_Set'Write use Write;
 
-   overriding procedure Adjust (Self : in out Universal_Character_Set);
+   type Node is tagged record
+      Graph  : Graph_Access;
+      Index  : Node_Index;
+      First  : Edge_Index;
+      Last   : Edge_List_Length;
+   end record;
 
-   overriding procedure Finalize (Self : in out Universal_Character_Set);
+   type Graph is tagged limited record
+      Self      : Graph_Access := Graph'Unchecked_Access;
+      Sorted    : Boolean := False;
+      Last_Node : Node_List_Length := 0;
+      Last_Edge : Edge_List_Length := 0;
+      Nodes     : Node_Array_Access;
+      Edges     : Edge_Array_Access;
+   end record;
 
-   Empty_Universal_Character_Set : constant Universal_Character_Set :=
-     (Ada.Finalization.Controlled with
-        Data => Matreshka.Internals.Code_Point_Sets.Shared_Empty'Access);
-
-end League.Character_Sets;
+end Matreshka.Internals.Graphs;

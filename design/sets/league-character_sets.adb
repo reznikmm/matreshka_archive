@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-with Matreshka.Internals.Code_Point_Set_Constructors;
+with Matreshka.Internals.Unicode;
 
 package body League.Character_Sets is
 
@@ -226,6 +226,26 @@ package body League.Character_Sets is
       return To_Set (League.Strings.To_Wide_Wide_String (Sequence));
    end To_Set;
 
+   ------------
+   -- To_Set --
+   ------------
+
+   function To_Set
+     (Low, High : Wide_Wide_Character)
+     return Universal_Character_Set 
+   is
+      use Matreshka.Internals.Unicode;
+
+      Lo : constant Code_Unit_32 := Wide_Wide_Character'Pos (Low);
+      Hi : constant Code_Unit_32 := Wide_Wide_Character'Pos (High);
+   begin
+      if Is_Valid (Lo) or Is_Valid (Hi) then
+         return Wrap (new Shared_Code_Point_Set'(To_Set (Lo, Hi)));
+      else
+         raise Constraint_Error;
+      end if;
+   end To_Set;
+   
    ----------
    -- Wrap --
    ----------
