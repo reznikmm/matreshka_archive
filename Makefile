@@ -18,10 +18,10 @@ PARSER_TRANSFORMER = ../../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../../tools/scanner_transformer/scanner_transformer
 
 all: Makefile.config
-	${MAKE} -f Makefile.build SMP_MFLAGS=$(SMP_MFLAGS)
+	${MAKE} -f Makefile.build SMP_MFLAGS="$(SMP_MFLAGS)"
 
 check: all
-	${MAKE} -f Makefile.check SMP_MFLAGS=$(SMP_MFLAGS) UNIDATA=$(UNIDATA) UCADATA=$(UCADATA)
+	${MAKE} -f Makefile.check SMP_MFLAGS="$(SMP_MFLAGS)" UNIDATA=$(UNIDATA) UCADATA=$(UCADATA)
 
 ucd:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
