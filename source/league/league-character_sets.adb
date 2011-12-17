@@ -199,9 +199,16 @@ package body League.Character_Sets is
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
       Item   : out Universal_Character_Set)
    is
+      Last : Second_Stage_Array_Index;
    begin
-      pragma Compile_Time_Warning (Standard.True, "Read unimplemented");
-      Item := Empty_Universal_Character_Set;
+      Second_Stage_Array_Index'Read (Stream, Last);
+
+      Dereference (Item.Data);
+
+      Item.Data := new Shared_Code_Point_Set (Last);
+
+      First_Stage_Map'Read (Stream, Item.Data.First_Stage);
+      Second_Stage_Array'Read (Stream, Item.Data.Second_Stages);
    end Read;
 
    ------------
@@ -232,7 +239,7 @@ package body League.Character_Sets is
 
    function To_Set
      (Low, High : Wide_Wide_Character)
-     return Universal_Character_Set 
+     return Universal_Character_Set
    is
       use Matreshka.Internals.Unicode;
 
@@ -245,7 +252,7 @@ package body League.Character_Sets is
          raise Constraint_Error;
       end if;
    end To_Set;
-   
+
    ----------
    -- Wrap --
    ----------
@@ -267,9 +274,9 @@ package body League.Character_Sets is
       Item   : Universal_Character_Set)
    is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Write unimplemented");
-      raise Program_Error;
+      Second_Stage_Array_Index'Write (Stream, Item.Data.Last);
+      First_Stage_Map'Write (Stream, Item.Data.First_Stage);
+      Second_Stage_Array'Write (Stream, Item.Data.Second_Stages);
    end Write;
 
 end League.Character_Sets;

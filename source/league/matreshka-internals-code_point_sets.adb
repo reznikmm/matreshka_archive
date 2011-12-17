@@ -160,7 +160,7 @@ package body Matreshka.Internals.Code_Point_Sets is
               First_Stage   => Right.First_Stage,
               Second_Stages => Right.Second_Stages);
    end "+";
-   
+
    ---------
    -- "-" --
    ---------
@@ -174,10 +174,15 @@ package body Matreshka.Internals.Code_Point_Sets is
    ---------
 
    function "=" (Left, Right : Shared_Code_Point_Set) return Boolean is
+      SF : constant First_Stage_Index := First_Stage_Index
+        (Internals.Unicode.Surrogate_First / Second_Stage_Index'Modulus);
+      SL : constant First_Stage_Index := First_Stage_Index
+        (Internals.Unicode.Surrogate_Last / Second_Stage_Index'Modulus);
    begin
       for J in Left.First_Stage'Range loop
          if Left.Second_Stages (Left.First_Stage (J)) /=
            Right.Second_Stages (Right.First_Stage (J))
+           and then J not in  SF .. SL
          then
             return False;
          end if;
@@ -445,11 +450,11 @@ package body Matreshka.Internals.Code_Point_Sets is
          end loop;
       end return;
    end To_Set;
-   
+
    ------------
    -- To_Set --
    ------------
-   
+
    function To_Set
      (Low  : Matreshka.Internals.Unicode.Code_Point;
       High : Matreshka.Internals.Unicode.Code_Point)
@@ -458,7 +463,7 @@ package body Matreshka.Internals.Code_Point_Sets is
       use Matreshka.Internals.Unicode;
       use type Second_Stage_Index;
       use type Second_Stage_Array_Index;
-      
+
       Before_Surrogate : constant First_Stage_Index :=
         First_Stage_Index (Surrogate_First / 256 - 1);
       After_Surrogate  : constant First_Stage_Index :=
@@ -467,10 +472,10 @@ package body Matreshka.Internals.Code_Point_Sets is
       H          : Code_Point := High;
       HF         : First_Stage_Index := First_Stage_Index (H / 256);
       HS         : Second_Stage_Index := Second_Stage_Index (H mod 256);
-      L          : Code_Point := Low; 
+      L          : Code_Point := Low;
       LF         : First_Stage_Index := First_Stage_Index (L / 256);
       LS         : Second_Stage_Index := Second_Stage_Index (L mod 256);
-      
+
       Last       : Second_Stage_Array_Index := 0;
       Has_All_On : Boolean := False;
       Has_L      : Boolean := False;
@@ -481,13 +486,13 @@ package body Matreshka.Internals.Code_Point_Sets is
          LF := First_Stage_Index (L / 256);
          LS := Second_Stage_Index (L mod 256);
       end if;
-      
+
       if H in Surrogate_First .. Surrogate_Last then
          H := Surrogate_First - 1;
          HF := First_Stage_Index (H / 256);
          HS := Second_Stage_Index (H mod 256);
       end if;
-      
+
       if L > H then
          Last := 0;
       elsif LF = HF then
@@ -498,24 +503,24 @@ package body Matreshka.Internals.Code_Point_Sets is
          else
             Has_All_On := HF - LF > 1;
          end if;
-         
+
          if LS = 0 then
             Has_All_On := True;
          else
             Has_L := True;
          end if;
-         
+
          if H mod 256 = 255 then
             Has_All_On := True;
          else
             Has_H := True;
          end if;
-         
+
          Last := Boolean'Pos (Has_L)
            + Boolean'Pos (Has_H)
            + Boolean'Pos (Has_All_On);
       end if;
-      
+
       return Result : Shared_Code_Point_Set :=
         (Last          => Last,
          Counter       => <>,
@@ -531,19 +536,19 @@ package body Matreshka.Internals.Code_Point_Sets is
             if Has_All_On then
                Result.Second_Stages (Last) := All_On;
             end if;
-            
+
             if Surrogate_First in L .. H then
                Result.First_Stage (LF .. Before_Surrogate) := (others => Last);
                Result.First_Stage (After_Surrogate .. HF) := (others => Last);
             else
                Result.First_Stage (LF .. HF) := (others => Last);
             end if;
-         
+
             if LS /= 0 then
                Result.First_Stage (LF) := 1;
                Result.Second_Stages (1) (LS .. 255) := (LS .. 255 => True);
             end if;
-         
+
             if H mod 256 /= 255 then
                if Has_L then
                   Result.First_Stage (HF) := 2;
@@ -556,29 +561,31 @@ package body Matreshka.Internals.Code_Point_Sets is
          end if;
       end return;
    end To_Set;
-   
+
    ------------
    -- To_Set --
    ------------
-   
-   procedure To_Set
-     (Descriptor : Code_Point_Set_Descriptor;
-      Result     : in out Core_Shared_Code_Point_Set)
+
+   function To_Set
+     (Descriptor : Code_Point_Set_Descriptor)
+     return Core_Shared_Code_Point_Set
    is
       use Matreshka.Internals.Unicode.Ucd;
 
       P      : constant Core_First_Stage_Access := Core.Property'Access;
    begin
-      Result.First_Stage := First_Stage_Map (Indexes.Group_Index);
-      Result.Second_Stages := (others => All_Off);
+      return Result : Core_Shared_Code_Point_Set do
+         Result.First_Stage := First_Stage_Map (Indexes.Group_Index);
+         Result.Second_Stages := (others => All_Off);
 
-      for J in Result.Second_Stages'Range loop
-         for K in Code_Point_Sets.Second_Stage_Index loop
-            if Match (Descriptor, P (Indexes.Base (J)) (K)) then
-               Result.Second_Stages (J) (K) := True;
-            end if;
+         for J in Result.Second_Stages'Range loop
+            for K in Code_Point_Sets.Second_Stage_Index loop
+               if Match (Descriptor, P (Indexes.Base (J)) (K)) then
+                  Result.Second_Stages (J) (K) := True;
+               end if;
+            end loop;
          end loop;
-      end loop;
+      end return;
    end To_Set;
 
 end Matreshka.Internals.Code_Point_Sets;

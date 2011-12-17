@@ -86,12 +86,12 @@ package Matreshka.Internals.Code_Point_Sets is
      (Sequence : Wide_Wide_String)
      return Shared_Code_Point_Set;
    --  Return set containing all characters from Sequence
-   
+
    function To_Set
      (Low  : Matreshka.Internals.Unicode.Code_Point;
       High : Matreshka.Internals.Unicode.Code_Point)
      return Shared_Code_Point_Set;
-   
+
    type Descriptor_Kinds is (General_Category, Binary);
 
    type Code_Point_Set_Descriptor (Kind : Descriptor_Kinds := Binary) is record
@@ -104,18 +104,18 @@ package Matreshka.Internals.Code_Point_Sets is
       end case;
    end record;
 
+   subtype Core_Shared_Code_Point_Set is Shared_Code_Point_Set
+     (Last => Matreshka.Internals.Unicode.Ucd.Indexes.Base_Last);
+
+   function To_Set
+     (Descriptor : Code_Point_Set_Descriptor)
+     return Core_Shared_Code_Point_Set;
+
    function Match
      (Descriptor : Code_Point_Set_Descriptor;
       Value      : Matreshka.Internals.Unicode.Ucd.Core_Values)
      return Boolean;
    pragma Inline (Match);
-
-   subtype Core_Shared_Code_Point_Set is Shared_Code_Point_Set
-     (Last => Matreshka.Internals.Unicode.Ucd.Indexes.Base_Last);
-
-   procedure To_Set
-     (Descriptor : Code_Point_Set_Descriptor;
-      Result     : in out Core_Shared_Code_Point_Set);
 
    function "=" (Left, Right : Shared_Code_Point_Set) return Boolean;
 
@@ -123,7 +123,7 @@ package Matreshka.Internals.Code_Point_Sets is
      (Right : Shared_Code_Point_Set)
      return Shared_Code_Point_Set;
    --  Return the same set of character
-   
+
    function "not"
      (Right : Shared_Code_Point_Set)
      return Shared_Code_Point_Set;

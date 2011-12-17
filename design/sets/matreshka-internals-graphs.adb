@@ -131,6 +131,16 @@ package body Matreshka.Internals.Graphs is
       --------------
 
       procedure New_Edge (From, To : Node) is
+         Ignore : constant Edge_Identifier := New_Edge (From, To);
+      begin
+         null;
+      end New_Edge;
+      
+      --------------
+      -- New_Edge --
+      --------------
+
+      function New_Edge (From, To : Node) return Edge_Identifier is
          Self : constant Graph_Access := From.Graph;
 
          procedure Resize is
@@ -165,8 +175,11 @@ package body Matreshka.Internals.Graphs is
          Self.Edges (Self.Last_Edge) :=
            (Graph  => <>,
             Index  => Self.Last_Edge,
+            Id     => Edge_Identifier (Self.Last_Edge),
             Source => From.Index,
             Target => To.Index);
+         
+         return Edge_Identifier (Self.Last_Edge);
       end New_Edge;
 
       procedure Complete
@@ -233,7 +246,16 @@ package body Matreshka.Internals.Graphs is
    begin
       return Self.Last - Self.First + 1;
    end Edge_Count;
-
+   
+   -------------
+   -- Edge_Id --
+   -------------
+   
+   function Edge_Id (Self : Edge) return Edge_Identifier is
+   begin
+      return Self.Id;
+   end Edge_Id;
+   
    ----------------------
    -- First_Edge_Index --
    ----------------------

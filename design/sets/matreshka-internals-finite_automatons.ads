@@ -41,110 +41,35 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides sets of Unicode characters (code points).
-------------------------------------------------------------------------------
-with League.Strings;
-with League.Characters;
 
-private with Ada.Streams;
-private with Ada.Finalization;
-private with Matreshka.Internals.Code_Point_Sets;
+with Ada.Containers.Ordered_Sets;
+with Ada.Containers.Vectors;
+with League.Character_Sets;
+with Matreshka.Internals.Graphs;
+with Matreshka.Internals.Regexps;
 
-package League.Character_Sets is
-
-   pragma Preelaborate;
-   pragma Remote_Types;
-
-   type Universal_Character_Set is tagged private;
-
-   Empty_Universal_Character_Set : constant Universal_Character_Set;
-
-   function To_Set
-     (Sequence : Wide_Wide_String)
-     return Universal_Character_Set;
-   --  Return set containing all characters from Sequence
-
-   function To_Set
-     (Sequence : League.Strings.Universal_String)
-     return Universal_Character_Set;
-   --  Return set containing all characters from Sequence
-
-   function To_Set
-     (Low, High : Wide_Wide_Character)
-     return Universal_Character_Set;
-   --  Return set containing all characters between Low and High
+package Matreshka.Internals.Finite_Automatons is
    
-   function "=" (Left, Right : Universal_Character_Set) return Boolean;
-
-   function "not"
-     (Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return complementing set of character
-
-   function "and"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return intersection of Left and Right
-
-   function "or"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return union of Left and Right
-
-   function "xor"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-
-   function "-"
-     (Left, Right : Universal_Character_Set)
-     return Universal_Character_Set;
-   --  Return difference
-
-   function Has
-     (Set     : Universal_Character_Set;
-      Element : Wide_Wide_Character)
-     return Boolean;
-
-   function Has
-     (Set     : Universal_Character_Set;
-      Element : League.Characters.Universal_Character)
-     return Boolean;
-
-   function Is_Subset
-     (Elements : Universal_Character_Set;
-      Set      : Universal_Character_Set)
-     return Boolean;
-
-   function "<="
-     (Left  : Universal_Character_Set;
-      Right : Universal_Character_Set)
-     return Boolean renames Is_Subset;
-
-   function Is_Empty (Set : Universal_Character_Set) return Boolean;
-
-private
-
-   procedure Read
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : out Universal_Character_Set);
-
-   procedure Write
-    (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-     Item   : Universal_Character_Set);
-
-   type Universal_Character_Set is new Ada.Finalization.Controlled with record
-      Data : Matreshka.Internals.Code_Point_Sets.Shared_Code_Point_Set_Access
-        := Matreshka.Internals.Code_Point_Sets.Shared_Empty'Access;
+   subtype State is Matreshka.Internals.Graphs.Node_Index;
+   use type State;
+     
+   package Vectors is new Ada.Containers.Vectors
+     (Index_Type   => Matreshka.Internals.Graphs.Edge_Identifier,
+      Element_Type => League.Character_Sets.Universal_Character_Set,
+      "="          => League.Character_Sets."=");
+   
+   package State_Sets is new Ada.Containers.Ordered_Sets
+     (Element_Type => State);
+   
+   type DFA is limited record
+      Start         : State;
+      Graph         : Matreshka.Internals.Graphs.Graph;
+      Edge_Char_Set : Vectors.Vector;
+      Final         : State_Sets.Set;
    end record;
-   for Universal_Character_Set'Read use Read;
-   for Universal_Character_Set'Write use Write;
+   
+   function Compile
+     (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access)
+     return DFA;
 
-   overriding procedure Adjust (Self : in out Universal_Character_Set);
-
-   overriding procedure Finalize (Self : in out Universal_Character_Set);
-
-   Empty_Universal_Character_Set : constant Universal_Character_Set :=
-     (Ada.Finalization.Controlled with
-        Data => Matreshka.Internals.Code_Point_Sets.Shared_Empty'Access);
-
-end League.Character_Sets;
+end Matreshka.Internals.Finite_Automatons;
