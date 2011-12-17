@@ -72,4 +72,6 @@ package Matreshka.Internals.Finite_Automatons is
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access)
      return DFA;
 
+   procedure Minimize (Self : in out DFA);
+
 end Matreshka.Internals.Finite_Automatons;

@@ -569,6 +569,171 @@ package body Matreshka.Internals.Finite_Automatons is
    end Count_Positions_In_List;
    
    --------------
+   -- Minimize --
+   --------------
+   
+   procedure Minimize (Self : in out DFA) is
+      
+      package Graphs renames Matreshka.Internals.Graphs;
+      
+      function Check_Equive_Class (X, Y : State) return Boolean;
+      
+      Last         : constant State := Self.Graph.Node_Count;
+      Error_State  : constant State := Last + 1;
+      Second_State : constant State := 2;
+
+      type Equive_Array is array (1 .. Error_State) of State;
+      Equive       : Equive_Array := (others => 1);
+      Next_Equive  : Equive_Array := (others => 1);
+
+      function Check_Equive_Class (X, Y : State) return Boolean is
+         Node_X : constant Graphs.Node := Self.Graph.Get_Node (X);
+         Node_Y : constant Graphs.Node := Self.Graph.Get_Node (Y);
+      begin
+         for I in Node_X.First_Edge_Index .. Node_X.Last_Edge_Index loop
+            declare
+               use type League.Character_Sets.Universal_Character_Set;
+
+               Edge_X : constant Graphs.Edge := Self.Graph.Get_Edge (I);
+               Jump_X : constant State := Edge_X.Target_Node.Index;
+               Sym_X  : League.Character_Sets.Universal_Character_Set :=
+                 Self.Edge_Char_Set (Edge_X.Edge_Id);
+            begin
+               for J in Node_Y.First_Edge_Index .. Node_Y.Last_Edge_Index loop
+                  declare
+                     Edge_Y : constant Graphs.Edge := Self.Graph.Get_Edge (J);
+                     Sym_Y  : League.Character_Sets.Universal_Character_Set :=
+                       Self.Edge_Char_Set (Edge_Y.Edge_Id);
+                     Jump_Y : constant State := Edge_Y.Target_Node.Index;
+                  begin
+                     if not
+                       League.Character_Sets.Is_Empty (Sym_X and Sym_Y)
+                     then
+                        if Equive (Jump_X) /= Equive (Jump_Y) then
+                           return False;
+                        else
+                           Sym_X := Sym_X - Sym_Y;
+                        end if;
+                     end if;
+                  end;
+               end loop;
+
+               if not Sym_X.Is_Empty
+                 and Equive (Jump_X) /= Equive (Error_State)
+               then
+                  return False;
+               end if;
+            end;
+         end loop;
+
+         return True;
+      end Check_Equive_Class;
+
+      Current_Equive_Class : State'Base;
+      Prev_Equive_Class    : State := Second_State;
+      Found                : Boolean;
+
+   begin
+      Init_Equive_Classes :
+         for J in 1 .. Last loop
+            if Self.Final.Contains (J) then
+               Equive (J) := Second_State;
+            end if;
+         end loop Init_Equive_Classes;
+
+      Try_Split_Equive_Classes :
+         loop
+            Current_Equive_Class := 0;
+
+            Set_Equive_Classes :
+               for I in 1 .. Last loop
+                  Found := False;
+
+                  Find_Existent_Class :
+                     for J in 1 .. I - 1 loop
+                        if Equive (I) = Equive (J)
+                          and then
+                          Self.Final.Contains (I) = Self.Final.Contains (J)
+                        then
+                           Found := Check_Equive_Class (I, J)
+                             and then Check_Equive_Class (J, I);
+
+                           if Found then
+                              Next_Equive (I) := Next_Equive (J);
+                              exit Find_Existent_Class;
+                           end if;
+                        end if;
+                     end loop Find_Existent_Class;
+
+                  if not Found then
+                     Current_Equive_Class := Current_Equive_Class + 1;
+                     Next_Equive (I) := Current_Equive_Class;
+                  end if;
+               end loop Set_Equive_Classes;
+
+            Current_Equive_Class := Current_Equive_Class + 1;
+            Next_Equive (Error_State) := Current_Equive_Class;
+
+            exit Try_Split_Equive_Classes
+              when Prev_Equive_Class = Current_Equive_Class;
+
+            Prev_Equive_Class := Current_Equive_Class;
+            Equive := Next_Equive;
+         end loop Try_Split_Equive_Classes;
+
+      --  Create_DFA
+         
+      declare
+         use Matreshka.Internals.Graphs.Constructor;
+         Start  : State;
+         Result : Graph;
+         Edges  : Vectors.Vector;
+         Final  : State_Sets.Set;
+         Nodes  : array (1 .. Current_Equive_Class - 1) of Node;
+      begin
+         for K in Nodes'Range loop
+            Nodes (K) := Result.New_Node;
+         end loop;
+
+         for I in 1 .. Last loop
+            declare
+               use type Ada.Containers.Count_Type;
+
+               Node_X : Graphs.Node := Self.Graph.Get_Node (I);
+               Edge_J : Graphs.Edge;
+               Edge   : Graphs.Edge_Identifier;
+            begin
+               for J in Node_X.First_Edge_Index .. Node_X.Last_Edge_Index loop
+                  Edge_J := Self.Graph.Get_Edge (J);
+                  Edge := Nodes (Equive (I)).New_Edge
+                    (Nodes (Equive (Edge_J.Target_Node.Index)));
+                  
+                  Edges.Set_Length (Edges.Length + 1);
+                  
+                  Edges.Replace_Element
+                    (Edge,
+                     Self.Edge_Char_Set.Element (Edge_J.Edge_Id));
+               end loop;
+               
+               if Self.Start = I then
+                  Start := Nodes (Equive (I)).Index;
+               end if;
+               
+               if Self.Final.Contains (I) then
+                  Final.Insert (Nodes (Equive (I)).Index);
+               end if;
+            end;
+         end loop;
+         
+         Self.Start := Start;
+         Self.Graph.Clear;
+         Result.Complete (Output => Self.Graph);
+         Self.Edge_Char_Set := Edges;
+         Self.Final := Final;
+      end;
+   end Minimize;
+   
+   --------------
    -- Nullable --
    --------------
    

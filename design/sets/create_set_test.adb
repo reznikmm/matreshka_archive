@@ -25,10 +25,11 @@ procedure Create_Set_Test is
    AST : constant Matreshka.Internals.Regexps.Shared_Pattern_Access :=
      Regexp_Compiler.Compile (Shared_String);
    
-   DFA : constant Matreshka.Internals.Finite_Automatons.DFA :=
+   DFA : Matreshka.Internals.Finite_Automatons.DFA :=
      Matreshka.Internals.Finite_Automatons.Compile (AST);
 
 begin
+   Matreshka.Internals.Finite_Automatons.Minimize (DFA);
    Ada.Text_IO.Put_Line
      (Matreshka.Internals.Finite_Automatons.State'Image (DFA.Start));
 end Create_Set_Test;
