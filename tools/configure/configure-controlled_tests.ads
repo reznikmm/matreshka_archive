@@ -39,45 +39,56 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$ $Date$
+--  $Revision: $ $Date:  $
 ------------------------------------------------------------------------------
---  This test detects parameters to link with OCI (Oracle Call Interface)
---  library.
---
---  It sets following substitution variables:
---   - HAS_OCI
---   - OCI_LIBRARY_OPTIONS
+--  Controlled_Test is base tagged type to implement tests, that support
+--  --enable-NAME and --disable-NAME configure arguments.
 ------------------------------------------------------------------------------
 
-with Configure.Controlled_Tests;
+with Configure.Abstract_Tests;
 
-package Configure.Tests.OCI is
+package Configure.Controlled_Tests is
 
-   type OCI_Test is new Configure.Controlled_Tests.Controlled_Test
+   type Controlled_Test is abstract new Configure.Abstract_Tests.Abstract_Test
      with private;
 
-   overriding function Name (Self : OCI_Test) return String;
-   --  Returns name of the test to be used in reports.
-
-   overriding function Nested_Help
-     (Self : OCI_Test) return Unbounded_String_Vector;
+   overriding function Help
+    (Self : Controlled_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
 
-   overriding procedure Execute
-    (Self      : in out OCI_Test;
+   not overriding function Nested_Help
+    (Self : Controlled_Test) return Unbounded_String_Vector is abstract;
+   --  Returns help information for test.
+
+   not overriding procedure Execute
+    (Self      : in out Controlled_Test;
      Arguments : in out Unbounded_String_Vector;
-     Success   : out Boolean);
+     Success   : out Boolean) is abstract;
    --  Executes test's actions. All used arguments must be removed from
    --  Arguments.
 
-   overriding procedure Drop_Known_Arguments
-    (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector);
+   not overriding procedure Drop_Known_Arguments
+    (Self      : in out Controlled_Test;
+     Arguments : in out Unbounded_String_Vector) is abstract;
    --  Remove all test specific arguments from Arguments.
 
+   overriding procedure Execute
+    (Self      : in out Controlled_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
+
+   not overriding function Enable_Switch
+     (Self : Controlled_Test) return String;
+   --  Returns --enable-NAME.
+   
+   not overriding function Disable_Switch
+     (Self : Controlled_Test) return String;
+   --  Returns --disable-NAME.
+   
 private
 
-   type OCI_Test is
-     new Configure.Controlled_Tests.Controlled_Test with null record;
+   type Controlled_Test is abstract new Configure.Abstract_Tests.Abstract_Test
+     with null record;
 
-end Configure.Tests.OCI;
+end Configure.Controlled_Tests;

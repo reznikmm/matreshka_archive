@@ -51,14 +51,26 @@ package body Configure.Tests.OCI is
 
    Has_OCI             : constant Unbounded_String := +"HAS_OCI";
    OCI_Library_Options : constant Unbounded_String := +"OCI_LIBRARY_OPTIONS";
-
+   
+   --------------------------
+   -- Drop_Known_Arguments --
+   --------------------------
+   
+   overriding procedure Drop_Known_Arguments
+    (Self      : in out OCI_Test;
+     Arguments : in out Unbounded_String_Vector) is
+   begin
+      Remove_Parameter (Arguments, OCI_LibDir_Switch);
+   end Drop_Known_Arguments;
+   
    -------------
    -- Execute --
    -------------
 
    overriding procedure Execute
     (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector)
+     Arguments : in out Unbounded_String_Vector;
+     Success   : out Boolean)
    is
 
       function OCI_Library_Name return String;
@@ -115,17 +127,19 @@ package body Configure.Tests.OCI is
          Information ("OCI driver module is disabled");
          Substitutions.Insert (OCI_Library_Options, Null_Unbounded_String);
          Substitutions.Insert (Has_OCI, Null_Unbounded_String);
-
+         Success := False;
       else
          Substitutions.Insert (Has_OCI, To_Unbounded_String ("true"));
+         Success := True;
       end if;
    end Execute;
 
-   ----------
-   -- Help --
-   ----------
+   -----------------
+   -- Nested_Help --
+   -----------------
 
-   overriding function Help (Self : OCI_Test) return Unbounded_String_Vector is
+   overriding function Nested_Help
+     (Self : OCI_Test) return Unbounded_String_Vector is
    begin
       return Result : Unbounded_String_Vector do
          Result.Append
@@ -134,7 +148,7 @@ package body Configure.Tests.OCI is
               & "[=ARG] "
               & "enable Oracle support, lookup for libraries in ARG");
       end return;
-   end Help;
+   end Nested_Help;
 
    ----------
    -- Name --

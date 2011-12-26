@@ -39,45 +39,87 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$ $Date$
-------------------------------------------------------------------------------
---  This test detects parameters to link with OCI (Oracle Call Interface)
---  library.
---
---  It sets following substitution variables:
---   - HAS_OCI
---   - OCI_LIBRARY_OPTIONS
+--  $Revision: $ $Date: $
 ------------------------------------------------------------------------------
 
-with Configure.Controlled_Tests;
-
-package Configure.Tests.OCI is
-
-   type OCI_Test is new Configure.Controlled_Tests.Controlled_Test
-     with private;
-
-   overriding function Name (Self : OCI_Test) return String;
-   --  Returns name of the test to be used in reports.
-
-   overriding function Nested_Help
-     (Self : OCI_Test) return Unbounded_String_Vector;
-   --  Returns help information for test.
+package body Configure.Controlled_Tests is
+   
+   --------------------
+   -- Disable_Switch --
+   --------------------
+   
+   function Disable_Switch (Self : Controlled_Test) return String is
+   begin
+      return "--disable-" & Controlled_Test'Class (Self).Name;
+   end Disable_Switch;
+   
+   -------------------
+   -- Enable_Switch --
+   -------------------
+   
+   function Enable_Switch (Self : Controlled_Test) return String is
+   begin
+      return "--enable-" & Controlled_Test'Class (Self).Name;
+   end Enable_Switch;
+   
+   -------------
+   -- Execute --
+   -------------
 
    overriding procedure Execute
-    (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector;
-     Success   : out Boolean);
-   --  Executes test's actions. All used arguments must be removed from
-   --  Arguments.
+     (Self      : in out Controlled_Test;
+      Arguments : in out Unbounded_String_Vector)
+   is
+      Success : Boolean;
+   begin
+      if Has_Parameter (Arguments, Self.Disable_Switch) then
+         Controlled_Test'Class (Self).Drop_Known_Arguments (Arguments);
+      else
+         Controlled_Test'Class (Self).Execute (Arguments, Success);
+         
+         if not Success 
+           and Has_Parameter (Arguments, Self.Enable_Switch)
+         then
+            Self.Report_Check
+              ("Support requested by "
+                 & Self.Enable_Switch
+                 & " but failed");
+            
+            Self.Report_Status ("Exiting");
+            
+            raise Internal_Error;
+         end if;
+      end if;
+   end Execute;
 
-   overriding procedure Drop_Known_Arguments
-    (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector);
-   --  Remove all test specific arguments from Arguments.
+   ----------
+   -- Help --
+   ----------
 
-private
+   overriding function Help
+     (Self : Controlled_Test)
+      return Unbounded_String_Vector
+   is
+      Result : Unbounded_String_Vector
+        := Controlled_Test'Class (Self).Nested_Help;
+   begin
+      Result.Append
+        (+"  "
+           & Self.Enable_Switch
+           & " "
+           & "enable "
+           & Controlled_Test'Class (Self).Name
+           &" support or fail execution");
+      
+      Result.Append
+        (+"  "
+           & Self.Disable_Switch
+           & " "
+           & "disable "
+           & Controlled_Test'Class (Self).Name
+           &" support");
+      
+      return Result;
+   end Help;
 
-   type OCI_Test is
-     new Configure.Controlled_Tests.Controlled_Test with null record;
-
-end Configure.Tests.OCI;
+end Configure.Controlled_Tests;
