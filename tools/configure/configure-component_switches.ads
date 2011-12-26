@@ -47,7 +47,7 @@
 --      aliases '--with-<component>' and '--without-<component>' are handled
 --      always; Is_Enabled returns corresponding value;
 --
---    - switch '--with-<component>-libdir=<path>' is recognized.
+--    - switch '--with-<component>-libdir=<path>' is recognized then enabled.
 ------------------------------------------------------------------------------
 
 package Configure.Component_Switches is
@@ -76,6 +76,11 @@ package Configure.Component_Switches is
    --  '--disable-<component>' or '--without-<component>' switches and enabled
    --  by default.
 
+   function Is_Enabled_Specified
+    (Self : Component_Switches'Class) return Boolean;
+   --  Returns True when '--enable-<component>' or '--with-<component>' is
+   --  specified explicitly.
+
    procedure Enable_Libdir
     (Self    : in out Component_Switches'Class;
      Enabled : Boolean);
@@ -86,6 +91,11 @@ package Configure.Component_Switches is
    --  Returns value of '--with-<component>-libdir=<path>' switchs of
    --  constructs synthetic value on base of value of
    --  '--with-<component>=<path>' switch.
+
+   function Is_Libdir_Specified
+    (Self : Component_Switches'Class) return Boolean;
+   --  Returns True when '--with-<component>-libdir=<path>' switch is
+   --  specified.
 
 private
 
