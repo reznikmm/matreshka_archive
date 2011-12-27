@@ -52,11 +52,19 @@
 
 package Configure.Component_Switches is
 
-   type Component_Switches (<>) is tagged limited private;
+   type Component_Switches is tagged limited private;
 
-   function Create (Component_Name : String) return Component_Switches;
+   function Create
+    (Name           : String;
+     Description    : String;
+     Enabled        : Boolean := True;
+     Libdir_Enabled : Boolean := False) return Component_Switches;
    --  Creates initialize component's switches parser and initialize it to
    --  handle specified component name.
+
+   function Help
+    (Self : Component_Switches'Class) return Unbounded_String_Vector;
+   --  Returns help information.
 
    procedure Parse_Switches
     (Self      : in out Component_Switches'Class;
@@ -65,18 +73,13 @@ package Configure.Component_Switches is
    --
    --  XXX Error reporting interface should be added.
 
-   procedure Set_Enabled_Default
-    (Self    : in out Component_Switches'Class;
-     Default : Boolean);
-   --  Set default state of component: enabled or disabled.
-
    function Is_Enabled (Self : Component_Switches'Class) return Boolean;
    --  Returns True when component is enabled by '--enable-<component>' or
    --  '--with-<component>' switch; or is not disabled explicitly by
    --  '--disable-<component>' or '--without-<component>' switches and enabled
    --  by default.
 
-   function Is_Enabled_Specified
+   function Is_Enable_Specified
     (Self : Component_Switches'Class) return Boolean;
    --  Returns True when '--enable-<component>' or '--with-<component>' is
    --  specified explicitly.
@@ -87,7 +90,7 @@ package Configure.Component_Switches is
    --  Enables recognizing of '--with-<component>-libdir=<path>' and
    --  '--with-<component>=<path>' switches.
 
-   function Libdir (Self : Component_Switches'Class) return String;
+   function Libdir (Self : Component_Switches'Class) return Unbounded_String;
    --  Returns value of '--with-<component>-libdir=<path>' switchs of
    --  constructs synthetic value on base of value of
    --  '--with-<component>=<path>' switch.
@@ -99,6 +102,14 @@ package Configure.Component_Switches is
 
 private
 
-   type Component_Switches is tagged limited null record;
+   type Component_Switches is tagged limited record
+      Name             : Unbounded_String;
+      Description      : Unbounded_String;
+      Enable           : Boolean := True;
+      Enable_Specified : Boolean := False;
+      Libdir_Enabled   : Boolean := False;
+      Libdir           : Unbounded_String;
+      Libdir_Specified : Boolean := False;
+   end record;
 
 end Configure.Component_Switches;

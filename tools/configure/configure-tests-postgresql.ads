@@ -48,6 +48,7 @@
 --   - POSTGRESQL_LIBRARY_OPTIONS
 ------------------------------------------------------------------------------
 with Configure.Abstract_Tests;
+private with Configure.Component_Switches;
 
 package Configure.Tests.PostgreSQL is
 
@@ -70,6 +71,12 @@ package Configure.Tests.PostgreSQL is
 private
 
    type PostgreSQL_Test is
-     new Configure.Abstract_Tests.Abstract_Test with null record;
+     new Configure.Abstract_Tests.Abstract_Test with record
+      Switches : Configure.Component_Switches.Component_Switches
+        := Configure.Component_Switches.Create
+            (Name           => "postgresql",
+             Description    => "PostgreSQL support",
+             Libdir_Enabled => True);
+   end record;
 
 end Configure.Tests.PostgreSQL;

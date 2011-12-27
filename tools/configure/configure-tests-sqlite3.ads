@@ -48,6 +48,7 @@
 --   - SQLITE3_LIBRARY_OPTIONS
 ------------------------------------------------------------------------------
 with Configure.Abstract_Tests;
+private with Configure.Component_Switches;
 
 package Configure.Tests.SQLite3 is
 
@@ -70,6 +71,12 @@ package Configure.Tests.SQLite3 is
 private
 
    type SQLite3_Test is
-     new Configure.Abstract_Tests.Abstract_Test with null record;
+     new Configure.Abstract_Tests.Abstract_Test with record
+      Switches : Configure.Component_Switches.Component_Switches
+        := Configure.Component_Switches.Create
+            (Name           => "sqlite3",
+             Description    => "SQLite3 support",
+             Libdir_Enabled => True);
+   end record;
 
 end Configure.Tests.SQLite3;

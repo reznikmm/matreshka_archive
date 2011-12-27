@@ -48,8 +48,6 @@ with Configure.Builder;
 
 package body Configure.Tests.PostgreSQL is
 
-   PostgreSQL_LibDir_Switch : constant String := "--with-postgresql-libdir";
-
    Has_PostgreSQL             : constant Unbounded_String := +"HAS_POSTGRESQL";
    PostgreSQL_Library_Options : constant Unbounded_String
      := +"POSTGRESQL_LIBRARY_OPTIONS";
@@ -179,27 +177,49 @@ package body Configure.Tests.PostgreSQL is
    begin
       --  Command line parameter has preference other automatic detection.
 
-      if Has_Parameter (Arguments, PostgreSQL_LibDir_Switch) then
-         Substitutions.Insert
-          (PostgreSQL_Library_Options,
-           +"""-L"
-              & Parameter_Value (Arguments, PostgreSQL_LibDir_Switch)
-              & """, ""-lpq""");
-         Remove_Parameter (Arguments, PostgreSQL_LibDir_Switch);
+      Self.Report_Check ("checking whether to build PostgreSQL module");
 
-      --  When pg_config is installed, it is used to check whether PostgreSQL
-      --  is installed and to retrieve linker switches to link with it.
+      Self.Switches.Parse_Switches (Arguments);
 
-      elsif Has_Pg_Config then
-         Substitutions.Insert
-          (PostgreSQL_Library_Options, +"""-L" & Pg_Libdir & """, ""-lpq""");
+      if Self.Switches.Is_Enabled then
+         if Self.Switches.Is_Libdir_Specified then
+            Substitutions.Insert
+             (PostgreSQL_Library_Options,
+              +"""-L"
+                 & Self.Switches.Libdir
+                 & """, ""-lpq""");
+
+            Self.Report_Status ("yes (command line)");
+
+         --  When pg_config is installed, it is used to check whether
+         --  PostgreSQL is installed and to retrieve linker switches to link
+
+         elsif Has_Pg_Config then
+            Self.Report_Status ("yes (pg_config)");
+            Substitutions.Insert
+             (PostgreSQL_Library_Options, +"""-L" & Pg_Libdir & """, ""-lpq""");
+
+         else
+            Self.Report_Status ("no (pg_config not found)");
+         end if;
+
+      else
+         Self.Report_Status ("no (command line)");
       end if;
 
       --  Check that PostgreSQL application can be linked with
       --  specified/detected set of options.
 
       if Substitutions.Contains (PostgreSQL_Library_Options) then
-         if not Configure.Builder.Build ("config.tests/postgresql/") then
+         Self.Report_Check
+          ("checking whether PostgreSQL library is usable");
+
+         if Configure.Builder.Build ("config.tests/postgresql/") then
+            Self.Report_Status ("yes");
+
+         else
+            Self.Report_Status ("no");
+
             --  Switches don't allow to build application, remove them.
 
             Substitutions.Delete (PostgreSQL_Library_Options);
@@ -210,10 +230,19 @@ package body Configure.Tests.PostgreSQL is
       --  module is disabled.
 
       if not Substitutions.Contains (PostgreSQL_Library_Options) then
-         Information ("PostgreSQL driver module is disabled");
          Substitutions.Insert
           (PostgreSQL_Library_Options, Null_Unbounded_String);
          Substitutions.Insert (Has_PostgreSQL, Null_Unbounded_String);
+
+         if Self.Switches.Is_Enabled
+           and Self.Switches.Is_Enable_Specified
+         then
+            Fatal_Error
+             ("PostgreSQL library is not found but support is requested");
+
+         else
+            Information ("PostgreSQL driver module is disabled");
+         end if;
 
       else
          Substitutions.Insert (Has_PostgreSQL, To_Unbounded_String ("true"));
@@ -227,18 +256,7 @@ package body Configure.Tests.PostgreSQL is
    overriding function Help
     (Self : PostgreSQL_Test) return Unbounded_String_Vector is
    begin
-      return Result : Unbounded_String_Vector do
-         Result.Append
-          (+"  "
-              & PostgreSQL_LibDir_Switch
-              & "[=ARG]");
-         Result.Append
-          (+"                          "
-              & "enable PostgreSQL support, lookup for libraries in");
-         Result.Append
-          (+"                          "
-              & "ARG");
-      end return;
+      return Self.Switches.Help;
    end Help;
 
    ----------

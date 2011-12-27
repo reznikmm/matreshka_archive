@@ -47,21 +47,8 @@ with Configure.Builder;
 
 package body Configure.Tests.OCI is
 
-   OCI_LibDir_Switch : constant String := "--with-oci-libdir";
-
    Has_OCI             : constant Unbounded_String := +"HAS_OCI";
    OCI_Library_Options : constant Unbounded_String := +"OCI_LIBRARY_OPTIONS";
-   
-   --------------------------
-   -- Drop_Known_Arguments --
-   --------------------------
-   
-   overriding procedure Drop_Known_Arguments
-    (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector) is
-   begin
-      Remove_Parameter (Arguments, OCI_LibDir_Switch);
-   end Drop_Known_Arguments;
    
    -------------
    -- Execute --
@@ -69,8 +56,7 @@ package body Configure.Tests.OCI is
 
    overriding procedure Execute
     (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector;
-     Success   : out Boolean)
+     Arguments : in out Unbounded_String_Vector)
    is
 
       function OCI_Library_Name return String;
@@ -93,27 +79,50 @@ package body Configure.Tests.OCI is
    begin
       --  Command line parameter has preference other automatic detection.
 
-      if Has_Parameter (Arguments, OCI_LibDir_Switch) then
-         Substitutions.Insert
-          (OCI_Library_Options,
-           """-L"
-             & Parameter_Value (Arguments, OCI_LibDir_Switch)
-             & """, ""-l" & OCI_Library_Name & '"');
-         Remove_Parameter (Arguments, OCI_LibDir_Switch);
+      Self.Switches.Parse_Switches (Arguments);
 
-      elsif Ada.Environment_Variables.Exists ("ORACLE_HOME") then
-         Substitutions.Insert
-          (OCI_Library_Options,
-           +"""-L"
-              & Ada.Environment_Variables.Value ("ORACLE_HOME")
-              & "/lib"", ""-l" & OCI_Library_Name & '"');
+      Self.Report_Check ("checking whether to build OCI module");
+
+      if Self.Switches.Is_Enabled then
+         if Self.Switches.Is_Libdir_Specified then
+            Substitutions.Insert
+             (OCI_Library_Options,
+              """-L"
+                & Self.Switches.Libdir
+                & """, ""-l" & OCI_Library_Name & '"');
+
+            Self.Report_Status ("yes (command line)");
+
+         elsif Ada.Environment_Variables.Exists ("ORACLE_HOME") then
+            Substitutions.Insert
+             (OCI_Library_Options,
+              +"""-L"
+                 & Ada.Environment_Variables.Value ("ORACLE_HOME")
+                 & "/lib"", ""-l" & OCI_Library_Name & '"');
+
+            Self.Report_Status ("yes (environment variable)");
+
+         else
+            Self.Report_Status ("no (not found)");
+         end if;
+
+      else
+         Self.Report_Status ("no (command line)");
       end if;
 
       --  Check that OCI application can be linked with specified/detected set
       --  of options.
 
       if Substitutions.Contains (OCI_Library_Options) then
-         if not Configure.Builder.Build ("config.tests/oci/") then
+         Self.Report_Check
+          ("checking whether OCI library is usable");
+
+         if Configure.Builder.Build ("config.tests/oci/") then
+            Self.Report_Status ("yes");
+
+         else
+            Self.Report_Status ("no");
+
             --  Switches don't allow to build application, remove them.
 
             Substitutions.Delete (OCI_Library_Options);
@@ -124,31 +133,31 @@ package body Configure.Tests.OCI is
       --  is disabled.
 
       if not Substitutions.Contains (OCI_Library_Options) then
-         Information ("OCI driver module is disabled");
          Substitutions.Insert (OCI_Library_Options, Null_Unbounded_String);
          Substitutions.Insert (Has_OCI, Null_Unbounded_String);
-         Success := False;
+
+         if Self.Switches.Is_Enabled
+           and Self.Switches.Is_Enable_Specified
+         then
+            Fatal_Error ("OCI library is not found but support is requested");
+
+         else
+            Information ("OCI driver module is disabled");
+         end if;
+
       else
          Substitutions.Insert (Has_OCI, To_Unbounded_String ("true"));
-         Success := True;
       end if;
    end Execute;
 
-   -----------------
-   -- Nested_Help --
-   -----------------
+   ----------
+   -- Help --
+   ----------
 
-   overriding function Nested_Help
-     (Self : OCI_Test) return Unbounded_String_Vector is
+   overriding function Help (Self : OCI_Test) return Unbounded_String_Vector is
    begin
-      return Result : Unbounded_String_Vector do
-         Result.Append
-          (+"  "
-              & OCI_LibDir_Switch
-              & "[=ARG] "
-              & "enable Oracle support, lookup for libraries in ARG");
-      end return;
-   end Nested_Help;
+      return Self.Switches.Help;
+   end Help;
 
    ----------
    -- Name --

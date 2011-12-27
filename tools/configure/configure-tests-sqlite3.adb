@@ -50,8 +50,6 @@ with Configure.Pkg_Config;
 
 package body Configure.Tests.SQLite3 is
 
-   SQLite3_LibDir_Switch : constant String := "--with-sqlite3-libdir";
-
    SQLite3_Package_Name : constant String := "sqlite3";
 
    Has_SQLite3             : constant Unbounded_String := +"HAS_SQLITE3";
@@ -70,67 +68,73 @@ package body Configure.Tests.SQLite3 is
 
       Self.Report_Check ("checking whether to build SQLite3 module");
 
-      if Has_Parameter (Arguments, SQLite3_LibDir_Switch) then
-         Substitutions.Insert
-          (SQLite3_Library_Options,
-           +"""-L"
-              & Parameter_Value (Arguments, SQLite3_LibDir_Switch)
-              & """, ""-lsqlite3""");
-         Remove_Parameter (Arguments, SQLite3_LibDir_Switch);
+      Self.Switches.Parse_Switches (Arguments);
 
-         Self.Report_Status ("yes (command line)");
+      if Self.Switches.Is_Enabled then
+         if Self.Switches.Is_Libdir_Specified then
+            Substitutions.Insert
+             (SQLite3_Library_Options,
+              +"""-L"
+                 & Self.Switches.Libdir
+                 & """, ""-lsqlite3""");
 
-      --  When pkg-config is installed, it is used to check whether SQLite3 is
-      --  installed and to retrieve linker switches to link with it.
+            Self.Report_Status ("yes (command line)");
 
-      elsif Configure.Pkg_Config.Has_Pkg_Config then
-         if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
-            Self.Report_Status ("yes (pkg-config)");
+         elsif Configure.Pkg_Config.Has_Pkg_Config then
+            if Configure.Pkg_Config.Has_Package (SQLite3_Package_Name) then
+               Self.Report_Status ("yes (pkg-config)");
 
-            --  Check for SQLite3 version using pkg-config.
+               --  Check for SQLite3 version using pkg-config.
 
-            Self.Report_Check ("checking for SQLite3 version");
+               Self.Report_Check ("checking for SQLite3 version");
 
-            declare
-               Version : aliased Unbounded_String;
+               declare
+                  Version : aliased Unbounded_String;
 
-            begin
-               if Configure.Pkg_Config.Package_Version_At_Least
-                   (SQLite3_Package_Name, "3.6", Version'Access)
-               then
-                  Self.Report_Status (+Version);
-                  Self.Report_Check ("checking for linker switches");
+               begin
+                  if Configure.Pkg_Config.Package_Version_At_Least
+                      (SQLite3_Package_Name, "3.6", Version'Access)
+                  then
+                     Self.Report_Status (+Version);
+                     Self.Report_Check ("checking for linker switches");
 
-                  declare
-                     Libs : constant String_Vectors.Vector
-                       := Configure.Pkg_Config.Package_Libs
-                           (SQLite3_Package_Name);
-                     Opts : Unbounded_String;
+                     declare
+                        Libs : constant String_Vectors.Vector
+                          := Configure.Pkg_Config.Package_Libs
+                              (SQLite3_Package_Name);
+                        Opts : Unbounded_String;
 
-                  begin
-                     for J in Libs.First_Index .. Libs.Last_Index loop
-                        if Ada.Strings.Unbounded.Length (Opts) /= 0 then
-                           Ada.Strings.Unbounded.Append (Opts, ", ");
-                        end if;
+                     begin
+                        for J in Libs.First_Index .. Libs.Last_Index loop
+                           if Length (Opts) /= 0 then
+                              Append (Opts, ", ");
+                           end if;
 
-                        Ada.Strings.Unbounded.Append (Opts, '"');
-                        Ada.Strings.Unbounded.Append (Opts, Libs.Element (J));
-                        Ada.Strings.Unbounded.Append (Opts, '"');
-                     end loop;
+                           Append (Opts, '"');
+                           Append (Opts, Libs.Element (J));
+                           Append (Opts, '"');
+                        end loop;
 
-                     Substitutions.Insert (SQLite3_Library_Options, Opts);
+                        Substitutions.Insert (SQLite3_Library_Options, Opts);
 
-                     Self.Report_Status (+Opts);
-                  end;
+                        Self.Report_Status (+Opts);
+                     end;
 
-               else
-                  Self.Report_Status (+Version & " (unsupported)");
-               end if;
-            end;
+                  else
+                     Self.Report_Status (+Version & " (unsupported)");
+                  end if;
+               end;
+
+            else
+               Self.Report_Status ("no (not found)");
+            end if;
 
          else
-            Self.Report_Status ("not found");
+            Self.Report_Status ("no (pkg-config not found)");
          end if;
+
+      else
+         Self.Report_Status ("no (command line)");
       end if;
 
       --  Check that SQLite3 application can be linked with specified/detected
@@ -145,6 +149,7 @@ package body Configure.Tests.SQLite3 is
 
          else
             Self.Report_Status ("no");
+
             --  Switches don't allow to build application, remove them.
 
             Substitutions.Delete (SQLite3_Library_Options);
@@ -155,9 +160,18 @@ package body Configure.Tests.SQLite3 is
       --  module is disabled.
 
       if not Substitutions.Contains (SQLite3_Library_Options) then
-         Information ("SQLite3 driver module is disabled");
          Substitutions.Insert (SQLite3_Library_Options, Null_Unbounded_String);
          Substitutions.Insert (Has_SQLite3, Null_Unbounded_String);
+
+         if Self.Switches.Is_Enabled
+           and Self.Switches.Is_Enable_Specified
+         then
+            Fatal_Error
+             ("SQLite3 library is not found but support is requested");
+
+         else
+            Information ("SQLite3 driver module is disabled");
+         end if;
 
       else
          Substitutions.Insert (Has_SQLite3, To_Unbounded_String ("true"));
@@ -171,15 +185,7 @@ package body Configure.Tests.SQLite3 is
    overriding function Help
     (Self : SQLite3_Test) return Unbounded_String_Vector is
    begin
-      return Result : Unbounded_String_Vector do
-         Result.Append
-          (+"  "
-              & SQLite3_LibDir_Switch
-              & "[=ARG]");
-         Result.Append
-          (+"                          "
-              & "enable SQLite3 support, lookup for libraries in ARG");
-      end return;
+      return Self.Switches.Help;
    end Help;
 
    ----------

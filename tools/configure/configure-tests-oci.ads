@@ -48,36 +48,34 @@
 --   - HAS_OCI
 --   - OCI_LIBRARY_OPTIONS
 ------------------------------------------------------------------------------
-
-with Configure.Controlled_Tests;
+with Configure.Abstract_Tests;
+private with Configure.Component_Switches;
 
 package Configure.Tests.OCI is
 
-   type OCI_Test is new Configure.Controlled_Tests.Controlled_Test
-     with private;
+   type OCI_Test is new Configure.Abstract_Tests.Abstract_Test with private;
 
    overriding function Name (Self : OCI_Test) return String;
    --  Returns name of the test to be used in reports.
 
-   overriding function Nested_Help
-     (Self : OCI_Test) return Unbounded_String_Vector;
+   overriding function Help (Self : OCI_Test) return Unbounded_String_Vector;
    --  Returns help information for test.
 
    overriding procedure Execute
     (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector;
-     Success   : out Boolean);
+     Arguments : in out Unbounded_String_Vector);
    --  Executes test's actions. All used arguments must be removed from
    --  Arguments.
-
-   overriding procedure Drop_Known_Arguments
-    (Self      : in out OCI_Test;
-     Arguments : in out Unbounded_String_Vector);
-   --  Remove all test specific arguments from Arguments.
 
 private
 
    type OCI_Test is
-     new Configure.Controlled_Tests.Controlled_Test with null record;
+     new Configure.Abstract_Tests.Abstract_Test with record
+      Switches : Configure.Component_Switches.Component_Switches
+        := Configure.Component_Switches.Create
+            (Name           => "oci",
+             Description    => "Oracle support",
+             Libdir_Enabled => True);
+   end record;
 
 end Configure.Tests.OCI;
