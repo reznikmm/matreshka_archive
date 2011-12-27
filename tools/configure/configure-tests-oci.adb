@@ -49,7 +49,7 @@ package body Configure.Tests.OCI is
 
    Has_OCI             : constant Unbounded_String := +"HAS_OCI";
    OCI_Library_Options : constant Unbounded_String := +"OCI_LIBRARY_OPTIONS";
-   
+
    -------------
    -- Execute --
    -------------
@@ -81,7 +81,7 @@ package body Configure.Tests.OCI is
 
       Self.Switches.Parse_Switches (Arguments);
 
-      Self.Report_Check ("checking whether to build OCI module");
+      Self.Report_Check ("checking whether to build Oracle module");
 
       if Self.Switches.Is_Enabled then
          if Self.Switches.Is_Libdir_Specified then
@@ -142,7 +142,7 @@ package body Configure.Tests.OCI is
             Fatal_Error ("OCI library is not found but support is requested");
 
          else
-            Information ("OCI driver module is disabled");
+            Information ("Oracle driver module is disabled");
          end if;
 
       else

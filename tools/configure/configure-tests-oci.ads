@@ -73,7 +73,7 @@ private
      new Configure.Abstract_Tests.Abstract_Test with record
       Switches : Configure.Component_Switches.Component_Switches
         := Configure.Component_Switches.Create
-            (Name           => "oci",
+            (Name           => "oracle",
              Description    => "Oracle support",
              Libdir_Enabled => True);
    end record;

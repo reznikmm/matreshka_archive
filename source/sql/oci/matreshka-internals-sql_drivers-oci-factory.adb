@@ -68,5 +68,5 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Factory is
    Factory : aliased OCI_Factory;
 
 begin
-   Register (League.Strings.To_Universal_String ("OCI"), Factory'Access);
+   Register (League.Strings.To_Universal_String ("ORACLE"), Factory'Access);
 end Matreshka.Internals.SQL_Drivers.OCI.Factory;

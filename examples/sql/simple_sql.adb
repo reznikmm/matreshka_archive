@@ -60,7 +60,7 @@ procedure Simple_SQL is
 
    --  Oracle
 
---   DB_Type : constant League.Strings.Universal_String := +"OCI";
+--   DB_Type : constant League.Strings.Universal_String := +"ORACLE";
 --   DB_Name : constant League.Strings.Universal_String := +"scott/tiger@db";
 
    --  PostgreSQL
