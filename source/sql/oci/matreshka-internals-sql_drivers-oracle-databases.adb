@@ -42,10 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings.Internals;
-with Matreshka.Internals.SQL_Drivers.OCI.Queries;
+with Matreshka.Internals.SQL_Drivers.Oracle.Queries;
 with Matreshka.Internals.Strings.C;
 
-package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
+package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
    use type Interfaces.Unsigned_32;
    use type Matreshka.Internals.Strings.Shared_String_Access;
@@ -405,4 +405,4 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Databases is
       Matreshka.Internals.Strings.Reference (Self.Error_Text);
    end Set_Error;
 
-end Matreshka.Internals.SQL_Drivers.OCI.Databases;
+end Matreshka.Internals.SQL_Drivers.Oracle.Databases;

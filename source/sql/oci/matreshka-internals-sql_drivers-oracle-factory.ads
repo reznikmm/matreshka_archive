@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Maxim Reznik <reznikmm@gmail.com>                      --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,34 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common";
-with "matreshka_config";
-with "matreshka_league";
-with "matreshka_sql";
 
-library project Matreshka_SQL_OCI is
+package Matreshka.Internals.SQL_Drivers.Oracle.Factory is
 
-   Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
+   pragma Elaborate_Body;
 
-   for Source_Dirs use ("../source/sql/oci");
-   for Object_Dir use "../.objs/sql/oci";
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Library_Dir use "../.libs";
-   for Library_ALI_Dir use "../.libs/matreshka";
-   for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
-   for Library_Options use Matreshka_Config.OCI_Library_Options;
-
-   -------------
-   -- Builder --
-   -------------
-
-   package Builder renames Matreshka_Common.Builder;
-
-   --------------
-   -- Compiler --
-   --------------
-
-   package Compiler renames Matreshka_Common.Compiler;
-
-end Matreshka_SQL_OCI;
+end Matreshka.Internals.SQL_Drivers.Oracle.Factory;

@@ -41,32 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SQL_Drivers.OCI.Databases;
+--  Implementation of Abstract_Database type for Oracle database.
+------------------------------------------------------------------------------
+with Matreshka.Internals.Strings;
 
-package body Matreshka.Internals.SQL_Drivers.OCI.Factory is
+package Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
-   type OCI_Factory is new Abstract_Factory with null record;
+   type OCI_Database is new Abstract_Database with record
+      Error      : aliased Error_Handle;
+      Service    : aliased Service_Handle;
+      Error_Text : Matreshka.Internals.Strings.Shared_String_Access;
+   end record;
 
-   overriding function Create
-    (Self : not null access OCI_Factory) return not null Database_Access;
+   overriding procedure Close (Self : not null access OCI_Database);
 
-   ------------
-   -- Create --
-   ------------
+   overriding procedure Commit (Self : not null access OCI_Database);
 
-   overriding function Create
-     (Self : not null access OCI_Factory) return not null Database_Access
-   is
-      pragma Unreferenced (Self);
+   overriding function Error_Message
+    (Self : not null access OCI_Database)
+       return League.Strings.Universal_String;
 
-   begin
-      return new Databases.OCI_Database;
-   end Create;
+   overriding function Query
+    (Self : not null access OCI_Database) return not null Query_Access;
 
-   use type Interfaces.C.int;
+   overriding procedure Finalize (Self : not null access OCI_Database);
 
-   Factory : aliased OCI_Factory;
+   overriding function Open
+    (Self    : not null access OCI_Database;
+     Options : League.Strings.Universal_String) return Boolean;
 
-begin
-   Register (League.Strings.To_Universal_String ("ORACLE"), Factory'Access);
-end Matreshka.Internals.SQL_Drivers.OCI.Factory;
+   function Check_Error
+     (Self : not null access OCI_Database;
+      Code : Error_Code) return Boolean;
+
+   Env : aliased Environment;
+   --  This is an OCI environment shared between all connections.
+   --  Because the environment initialized in thread mode, all threads
+   --  can safely use it.
+
+   --  XXX Reasons of use of global object must be here, as well as all kind of
+   --  considerations of its use.
+
+end Matreshka.Internals.SQL_Drivers.Oracle.Databases;

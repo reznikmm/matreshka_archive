@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---with "../../gnat/matreshka_sql_oci.gpr";
+--with "../../gnat/matreshka_sql_oracle.gpr";
 --with "../../gnat/matreshka_sql_postgresql.gpr";
 with "../../gnat/matreshka_sql_sqlite3.gpr";
 

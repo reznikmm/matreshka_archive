@@ -111,9 +111,9 @@ endif
 
 oci:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/oci
-	gnat ls -d -s -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' > sql_oci-src.aux
+	gnat ls -d -s -P gnat/matreshka_sql_oracle.gpr | sort | uniq | grep -v '^$$' > sql_oci-src.aux
 	cat league-src.lst sql-src.aux | diff -u - sql_oci-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_oci-src.lst
-	gnat ls -o -P gnat/matreshka_sql_oci.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
+	gnat ls -o -P gnat/matreshka_sql_oracle.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
 	cat sql_oci-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
 	cat sql_oci-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/sql_oci.gpr $(INSTALL_PROJECT_DIR)/sql_oci.gpr

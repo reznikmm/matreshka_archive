@@ -38,7 +38,7 @@ postgresql:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
 
 oci:
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oci.gpr
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oracle.gpr
 
 amf:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf.gpr

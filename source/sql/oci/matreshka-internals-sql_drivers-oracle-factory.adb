@@ -41,18 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka/matreshka_config.gpr";
-with "league.gpr";
+with Matreshka.Internals.SQL_Drivers.Oracle.Databases;
 
-library project SQL_OCI is
+package body Matreshka.Internals.SQL_Drivers.Oracle.Factory is
 
-   Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
+   type OCI_Factory is new Abstract_Factory with null record;
 
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Source_Dirs use ("../../include/matreshka/sql/oci");
-   for Library_Dir use Matreshka_Config.Library_Dir;
-   for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
-   for Externally_Built use "True";
+   overriding function Create
+    (Self : not null access OCI_Factory) return not null Database_Access;
 
-end SQL_OCI;
+   ------------
+   -- Create --
+   ------------
+
+   overriding function Create
+     (Self : not null access OCI_Factory) return not null Database_Access
+   is
+      pragma Unreferenced (Self);
+
+   begin
+      return new Databases.OCI_Database;
+   end Create;
+
+   use type Interfaces.C.int;
+
+   Factory : aliased OCI_Factory;
+
+begin
+   Register (League.Strings.To_Universal_String ("ORACLE"), Factory'Access);
+end Matreshka.Internals.SQL_Drivers.Oracle.Factory;

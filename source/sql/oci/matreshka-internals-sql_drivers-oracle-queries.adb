@@ -47,7 +47,7 @@ with League.Strings.Internals;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Strings.C;
 
-package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
+package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
    use type Interfaces.Unsigned_32;
    use type Interfaces.Unsigned_16;
@@ -66,7 +66,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    function OCICallbackInBind
      (ictxp  : Bound_Value_Access;
-      bindp  : OCI.Bind;
+      bindp  : Oracle.Bind;
       iter   : Ub4;
       index  : Ub4;
       bufpp  : access Utf16_Code_Unit_Access;
@@ -79,7 +79,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    function OCICallbackOutBind
      (octxp   : Bound_Value_Access;
-      bindp   : OCI.Bind;
+      bindp   : Oracle.Bind;
       iter    : Ub4;
       index   : Ub4;
       bufpp   : access Utf16_Code_Unit_Access;
@@ -717,7 +717,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    function OCICallbackInBind
     (ictxp  : Bound_Value_Access;
-     bindp  : OCI.Bind;
+     bindp  : Oracle.Bind;
      iter   : Ub4;
      index  : Ub4;
      bufpp  : access Utf16_Code_Unit_Access;
@@ -757,7 +757,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
 
    function OCICallbackOutBind
      (octxp   : Bound_Value_Access;
-      bindp   : OCI.Bind;
+      bindp   : Oracle.Bind;
       iter    : Ub4;
       index   : Ub4;
       bufpp   : access Utf16_Code_Unit_Access;
@@ -771,7 +771,7 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       pragma Unreferenced (iter);
       pragma Unreferenced (index);
       pragma Unreferenced (Rcodepp);
-      
+
       use Matreshka.Internals.Strings;
       use type Ub1;
       use type Matreshka.Internals.Utf16.Utf16_String_Index;
@@ -910,4 +910,4 @@ package body Matreshka.Internals.SQL_Drivers.OCI.Queries is
       return Value;
    end Value;
 
-end Matreshka.Internals.SQL_Drivers.OCI.Queries;
+end Matreshka.Internals.SQL_Drivers.Oracle.Queries;

@@ -44,10 +44,10 @@
 private with Ada.Containers.Hashed_Maps;
 
 private with League.Strings.Hash;
-with Matreshka.Internals.SQL_Drivers.OCI.Databases;
+with Matreshka.Internals.SQL_Drivers.Oracle.Databases;
 private with Matreshka.Internals.Strings;
 
-package Matreshka.Internals.SQL_Drivers.OCI.Queries is
+package Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
    type OCI_Database_Access is access all Databases.OCI_Database;
 
@@ -58,7 +58,7 @@ private
 
    type Bound_Value_Node is limited record
       Value       : League.Holders.Holder;
-      Bind        : aliased OCI.Bind;
+      Bind        : aliased Oracle.Bind;
       Is_Null     : aliased Sb2;
       String_Size : aliased Ub4;
       String      : Matreshka.Internals.Strings.Shared_String_Access;
@@ -81,7 +81,7 @@ private
 
    type Defined_Value is limited record
       Column_Type : Column_Types;
-      Define      : aliased OCI.Define;
+      Define      : aliased Oracle.Define;
       Is_Null     : aliased Sb2;
       Size        : Utf16.Utf16_String_Index;
       String      : Matreshka.Internals.Strings.Shared_String_Access;
@@ -145,4 +145,4 @@ private
     (Self  : not null access OCI_Query;
      Index : Positive) return League.Holders.Holder;
 
-end Matreshka.Internals.SQL_Drivers.OCI.Queries;
+end Matreshka.Internals.SQL_Drivers.Oracle.Queries;

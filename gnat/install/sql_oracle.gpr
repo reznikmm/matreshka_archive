@@ -41,45 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Implementation of Abstract_Database type for Oracle database.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings;
+with "matreshka/matreshka_config.gpr";
+with "league.gpr";
 
-package Matreshka.Internals.SQL_Drivers.OCI.Databases is
+library project SQL_Oracle is
 
-   type OCI_Database is new Abstract_Database with record
-      Error      : aliased Error_Handle;
-      Service    : aliased Service_Handle;
-      Error_Text : Matreshka.Internals.Strings.Shared_String_Access;
-   end record;
+   Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
 
-   overriding procedure Close (Self : not null access OCI_Database);
+   for Library_Kind use "dynamic";
+   for Library_Name use Library_Name;
+   for Source_Dirs use ("../../include/matreshka/sql/oci");
+   for Library_Dir use Matreshka_Config.Library_Dir;
+   for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+   for Externally_Built use "True";
 
-   overriding procedure Commit (Self : not null access OCI_Database);
-
-   overriding function Error_Message
-    (Self : not null access OCI_Database)
-       return League.Strings.Universal_String;
-
-   overriding function Query
-    (Self : not null access OCI_Database) return not null Query_Access;
-
-   overriding procedure Finalize (Self : not null access OCI_Database);
-
-   overriding function Open
-    (Self    : not null access OCI_Database;
-     Options : League.Strings.Universal_String) return Boolean;
-
-   function Check_Error
-     (Self : not null access OCI_Database;
-      Code : Error_Code) return Boolean;
-
-   Env : aliased Environment;
-   --  This is an OCI environment shared between all connections.
-   --  Because the environment initialized in thread mode, all threads
-   --  can safely use it.
-
-   --  XXX Reasons of use of global object must be here, as well as all kind of
-   --  considerations of its use.
-
-end Matreshka.Internals.SQL_Drivers.OCI.Databases;
+end SQL_Oracle;
