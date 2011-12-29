@@ -3,7 +3,7 @@ set -e
 
 VERSION=0.2.0
 
-svn export svn://adaforge.qtada.com/matreshka/trunk/matreshka matreshka-$VERSION
+svn export svn://forge.ada-ru.org/matreshka/trunk/matreshka matreshka-$VERSION
 # full distribution
 (cd matreshka-$VERSION
  rm -rf design maintainer-tools templates source/opm)
