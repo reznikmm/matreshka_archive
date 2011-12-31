@@ -38,18 +38,12 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision$ $Date$
+--  $Revision: 2365 $ $Date: 2011-12-30 21:36:06 +0200 (Птн, 30 Дек 2011) $
 ------------------------------------------------------------------------------
 
-with yyparse;
-with scanner_io;
-with Debug;
-with Expand;
-
-procedure UAFLEX is
-begin
-   scanner_io.Open_Input ("test");
-   yyparse;
-   Expand.RegExps;
-   Debug.Print;
-end UAFLEX;
+package Expand is
+   
+   procedure RegExps;
+   --  Expand macros inside regexp. Convert uaflex regexp to League.Regexps
+   
+end Expand;

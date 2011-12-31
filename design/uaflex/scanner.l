@@ -41,8 +41,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-%s SECT2 RULE
-%x DEF NAMELIST
+%x RULE SECT2 DEF NAMELIST
 
 NAME           [a-zA-Z][a-zA-Z0-9_]*
 SPACE          [\t ]+
@@ -95,6 +94,11 @@ ADA_STRING     \"([^"]+|\"\")*\"
 <SECT2>^({NO_SPACE}|{CLASS}|{STRING}|{MASKED_SPACE})+  {
    Enter (RULE);
    return Regexp;
+}
+
+<SECT2>^"%%".*\n   {
+  Enter (INITIAL);
+  return Section_End; 
 }
 
 {SPACE}|\n {null;}
