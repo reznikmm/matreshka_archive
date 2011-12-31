@@ -3,7 +3,7 @@ UNIDATA = unicode/6.0.0/ucd
 UCADATA = unicode/UCA/6.0.0
 CLDR = unicode/cldr/1.9.0
 
-override SMP_MFLAGS ?=
+override SMP_MFLAGS ?= -j0
 ## Distribution-specific OPTFLAGS
 ## %{GNAT_optflags} for Fedora
 GNAT_OPTFLAGS ?=
