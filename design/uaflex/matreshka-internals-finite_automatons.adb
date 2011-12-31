@@ -44,11 +44,16 @@
 
 with Ada.Containers.Ordered_Maps;
 with League.Character_Sets.Internals;
+with League.Strings.Internals;
 with Matreshka.Internals.Regexps.Compiler;
 
 package body Matreshka.Internals.Finite_Automatons is
    
    package Compiler renames Matreshka.Internals.Regexps.Compiler;
+   
+   type Shared_Pattern_Array is array (Positive range <>) of
+     Matreshka.Internals.Regexps.Shared_Pattern_Access;
+   --  List of regexp
    
    type Position is new Natural;
    --  Position is index of a literal element of regexp
@@ -81,6 +86,10 @@ package body Matreshka.Internals.Finite_Automatons is
      return Position;
    --  Return count of literal elements in given regexp subexpression sequence
 
+   function Count_Positions_In_Array
+     (List  : Shared_Pattern_Array)
+     return Position;
+   
    function Nullable
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Root : Positive) return Boolean;
@@ -90,26 +99,49 @@ package body Matreshka.Internals.Finite_Automatons is
      (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access;
       Head : Positive) return Boolean;
    --  Check if given regexp subexpression sequence can match empty string
-
+   
+   function Compile (List : Shared_Pattern_Array) return DFA;
+   
    -------------
    -- Compile --
    -------------
 
    function Compile
-     (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access)
-      return DFA
+     (List : League.String_Vectors.Universal_String_Vector)
+     return DFA
    is
-      Head    : constant Positive := AST.List (Ast.Start).Head;
-      Max_Pos : constant Position := Count_Positions_In_List (AST, Head) + 1;
+      Data : Shared_Pattern_Array (1 .. List.Length);
+   begin
+      for J in Data'Range loop
+         Data (J) := Compiler.Compile
+           (League.Strings.Internals.Internal (List.Element (J)));
+      end loop;
+      
+      return Compile (Data);
+   end Compile;
+   
+   -------------
+   -- Compile --
+   -------------
+
+   function Compile (List : Shared_Pattern_Array) return DFA
+   --  (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access)
+   is
+      Max_Pos : constant Position := Count_Positions_In_Array (List);
       type Position_Set is array (1 .. Max_Pos) of Boolean;
       pragma Pack (Position_Set);
 
-      Empty : constant Position_Set := (others => False);
-
+      Empty  : constant Position_Set := (others => False);
+      
+      subtype Finish_Position is Position range 1 .. List'Length;
+      
       type Position_Set_Array is array (1 .. Max_Pos) of Position_Set;
 
       Follow  : Position_Set_Array := (others => Empty);
       Chars   : Character_Set_Map (1 .. Max_Pos);
+      
+      function Head (Index : Positive) return Positive;
+      --  Return Head for List (Index)
       
       procedure Add_To_Follow
         (First : in out Position_Set;
@@ -117,23 +149,25 @@ package body Matreshka.Internals.Finite_Automatons is
       --  Update Follow array according to First and Last position sets
       
       procedure Walk
-        (Root  : Positive;
+        (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
+         Root  : Positive;
          Pos   : in out Position;
          First : in out Position_Set;
          Last  : in out Position_Set);
       --  Walk regexp subexpression and update Follow array for each literal
 
       procedure Walk_List
-        (Head  : Positive;
+        (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
+         Head  : Positive;
          Pos   : in out Position;
          First : in out Position_Set;
          Last  : in out Position_Set);
       --  Walk regexp subexpressions and update Follow array for each literal
       
-      procedure Walk_Root_List
-        (Head  : Positive;
+      procedure Walk_Array
+        (List  : Shared_Pattern_Array;
          First : in out Position_Set);
-      --  Walk whole regexp and add surogate final position
+      --  Walk regexp array and add fictive symbols in final positions
       
       function Get_Follows
         (Set  : Position_Set;
@@ -154,7 +188,7 @@ package body Matreshka.Internals.Finite_Automatons is
         (Graph : in out Matreshka.Internals.Graphs.Constructor.Graph;
          Start : out State;
          Edges : in out Vectors.Vector;
-         Final : in out State_Sets.Set;
+         Final : in out State_Maps.Map;
          First : Position_Set;
          Map   : Character_Set_Map);
 
@@ -198,6 +232,15 @@ package body Matreshka.Internals.Finite_Automatons is
          return Result;
       end Get_Follows;
       
+      ----------
+      -- Head --
+      ----------
+      
+      function Head (Index : Positive) return Positive is
+      begin
+         return List (Index).List (List (Index).Start).Head;
+      end Head;
+      
       --------------
       -- Make_DFA --
       --------------
@@ -206,7 +249,7 @@ package body Matreshka.Internals.Finite_Automatons is
         (Graph : in out Matreshka.Internals.Graphs.Constructor.Graph;
          Start : out State;
          Edges : in out Vectors.Vector;
-         Final : in out State_Sets.Set;
+         Final : in out State_Maps.Map;
          First : Position_Set;
          Map   : Character_Set_Map) 
       is
@@ -227,9 +270,17 @@ package body Matreshka.Internals.Finite_Automatons is
          
          function New_Node (Set : Position_Set) return Node is
             Result : constant Node := Graph.New_Node;
+            Index  : Positive;
          begin
-            if Set (Max_Pos) then
-               Final.Insert (Result.Index);
+            if Set (Finish_Position) /= (Finish_Position => False) then
+               for J in Finish_Position loop
+                  if Set (J) then
+                     Index := Positive (J);
+                     exit;
+                  end if;
+               end loop;
+               
+               Final.Insert (Result.Index, Index);
             end if;
             
             return Result;
@@ -366,7 +417,8 @@ package body Matreshka.Internals.Finite_Automatons is
       ----------
       
       procedure Walk
-        (Root  : Positive;
+        (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
+         Root  : Positive;
          Pos   : in out Position;
          First : in out Position_Set;
          Last  : in out Position_Set)
@@ -380,7 +432,7 @@ package body Matreshka.Internals.Finite_Automatons is
 
             when Matreshka.Internals.Regexps.N_Subexpression =>
                Walk
-                 (Compiler.Get_Expression (AST, Root), Pos, First, Last);
+                 (AST, Compiler.Get_Expression (AST, Root), Pos, First, Last);
 
             when Matreshka.Internals.Regexps.N_Match_Any |
               Matreshka.Internals.Regexps.N_Match_Code |
@@ -404,7 +456,8 @@ package body Matreshka.Internals.Finite_Automatons is
                   Result_First : Position_Set := Empty;
                   Result_Last  : Position_Set := Empty;
                begin
-                  Walk (Compiler.Get_Expression (AST, Root),
+                  Walk (AST,
+                        Compiler.Get_Expression (AST, Root),
                         Pos,
                         Result_First,
                         Result_Last);
@@ -416,13 +469,15 @@ package body Matreshka.Internals.Finite_Automatons is
 
             when Matreshka.Internals.Regexps.N_Alternation =>
                Walk_List
-                 (Compiler.Get_Preferred (AST, Root),
+                 (AST,
+                  Compiler.Get_Preferred (AST, Root),
                   Pos,
                   First,
                   Last);
 
                Walk_List
-                 (Compiler.Get_Fallback (AST, Root),
+                 (AST,
+                  Compiler.Get_Fallback (AST, Root),
                   Pos,
                   First,
                   Last);
@@ -434,7 +489,8 @@ package body Matreshka.Internals.Finite_Automatons is
       ---------------
       
       procedure Walk_List
-        (Head  : Positive;
+        (AST   : Matreshka.Internals.Regexps.Shared_Pattern_Access;
+         Head  : Positive;
          Pos   : in out Position;
          First : in out Position_Set;
          Last  : in out Position_Set)
@@ -442,14 +498,14 @@ package body Matreshka.Internals.Finite_Automatons is
          Next : Natural := Compiler.Get_Next_Sibling (AST, Head);
       begin
          if Next = 0 then
-            Walk (Head, Pos, First, Last);
+            Walk (AST, Head, Pos, First, Last);
          else
             declare
                Result_First : Position_Set := Empty;
                Result_Last  : Position_Set := Empty;
             begin
-               Walk (Head, Pos, First, Result_Last);
-               Walk_List (Next, Pos, Result_First, Last);
+               Walk (AST, Head, Pos, First, Result_Last);
+               Walk_List (AST, Next, Pos, Result_First, Last);
                Add_To_Follow (Result_First, Result_Last);
 
                if Nullable (AST, Head) then
@@ -463,34 +519,44 @@ package body Matreshka.Internals.Finite_Automatons is
          end if;
       end Walk_List;
       
-      --------------------
-      -- Walk_Root_List --
-      --------------------
+      ----------------
+      -- Walk_Array --
+      ----------------
       
-      procedure Walk_Root_List
-        (Head  : Positive;
+      procedure Walk_Array
+        (List  : Shared_Pattern_Array;
          First : in out Position_Set)
       is
-         Pos          : Position := 1;
-         Result_First : Position_Set := Empty;
-         Result_Last  : Position_Set := Empty;
+         Pos          : Position := List'Length + 1;
+         Result_First : Position_Set;
+         Result_Last  : Position_Set;
       begin
-         Walk_List (Head, Pos, First, Result_Last);
-         --  Walk (Next, Pos, Result_First, Last);
-         Result_First (Pos) := True;
-         Add_To_Follow (Result_First, Result_Last);
-
-         if Nullable_List (AST, Head) then
-            First := First or Result_First;
-         end if;
-      end Walk_Root_List;
+         for J in List'Range loop
+            Result_First := Empty;
+            Result_Last  := Empty;
+            Walk_List
+              (List (J),
+               Head (J),
+               Pos, 
+               First,
+               Result_Last);
+            --  Walk (Next, Pos, Result_First, Last);
+            --  Fictive termination symbol:
+            Result_First (Finish_Position (J)) := True;
+            Add_To_Follow (Result_First, Result_Last);
+            
+            if Nullable_List (List (J), Head (J)) then
+               First := First or Result_First;
+            end if;
+         end loop;
+      end Walk_Array;
 
       First  : Position_Set := Empty;
       Last   : Position_Set := Empty;
       Graph  : Matreshka.Internals.Graphs.Constructor.Graph;
       
    begin
-      Walk_Root_List (Head, First);
+      Walk_Array (List, First);
       
       return Result : DFA do
          Make_DFA
@@ -500,7 +566,6 @@ package body Matreshka.Internals.Finite_Automatons is
             Result.Final,
             First,
             Chars);
-         Result.Start := 1;
          Graph.Complete (Output => Result.Graph);
       end return;
    end Compile;
@@ -547,6 +612,25 @@ package body Matreshka.Internals.Finite_Automatons is
             return 1;
       end case;
    end Count_Positions;
+   
+   ------------------------------
+   -- Count_Positions_In_Array --
+   ------------------------------
+   
+   function Count_Positions_In_Array
+     (List  : Shared_Pattern_Array)
+     return Position
+   is
+      --  Terminate each regexp with fictive symbol
+      Result : Position := Position (List'Length);
+   begin
+      for J in List'Range loop
+         Result := Result + Count_Positions_In_List
+           (List (J), List (J).List (List (J).Start).Head);
+      end loop;
+      
+      return Result;
+   end Count_Positions_In_Array;
    
    -----------------------------
    -- Count_Positions_In_List --
@@ -688,7 +772,7 @@ package body Matreshka.Internals.Finite_Automatons is
          Start  : State;
          Result : Graph;
          Edges  : Vectors.Vector;
-         Final  : State_Sets.Set;
+         Final  : State_Maps.Map;
          Nodes  : array (1 .. Current_Equive_Class - 1) of Node;
       begin
          for K in Nodes'Range loop
@@ -720,7 +804,9 @@ package body Matreshka.Internals.Finite_Automatons is
                end if;
                
                if Self.Final.Contains (I) then
-                  Final.Insert (Nodes (Equive (I)).Index);
+                  Final.Insert
+                    (Nodes (Equive (I)).Index,
+                     Self.Final.Element (I));
                end if;
             end;
          end loop;

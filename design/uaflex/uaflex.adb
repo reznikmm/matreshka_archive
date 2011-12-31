@@ -43,8 +43,11 @@
 
 with yyparse;
 with scanner_io;
+
 with Debug;
 with Expand;
+with Nodes;
+with Matreshka.Internals.Finite_Automatons;
 
 procedure UAFLEX is
 begin
@@ -52,4 +55,11 @@ begin
    yyparse;
    Expand.RegExps;
    Debug.Print;
+   
+   declare
+      use Matreshka.Internals.Finite_Automatons;
+      X : DFA := Compile (Nodes.Rules);
+   begin
+      Minimize (X);
+   end;
 end UAFLEX;

@@ -42,9 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-with Ada.Containers.Ordered_Sets;
+with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Vectors;
 with League.Character_Sets;
+with League.String_Vectors;
 with Matreshka.Internals.Graphs;
 with Matreshka.Internals.Regexps;
 
@@ -58,20 +59,21 @@ package Matreshka.Internals.Finite_Automatons is
       Element_Type => League.Character_Sets.Universal_Character_Set,
       "="          => League.Character_Sets."=");
    
-   package State_Sets is new Ada.Containers.Ordered_Sets
-     (Element_Type => State);
+   package State_Maps is new Ada.Containers.Ordered_Maps
+     (Key_Type     => State,
+      Element_Type => Positive);  --  Rule index
    
    type DFA is limited record
       Start         : State;
       Graph         : Matreshka.Internals.Graphs.Graph;
       Edge_Char_Set : Vectors.Vector;
-      Final         : State_Sets.Set;
+      Final         : State_Maps.Map;
    end record;
    
    function Compile
-     (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access)
+     (List : League.String_Vectors.Universal_String_Vector)
      return DFA;
-
+   
    procedure Minimize (Self : in out DFA);
 
 end Matreshka.Internals.Finite_Automatons;
