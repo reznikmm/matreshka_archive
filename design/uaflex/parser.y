@@ -64,11 +64,11 @@ macro: Name_Token Regexp_Token
 }
   | Start name_list Name_List_End
 {
-  Nodes.Starts.Prepend ($2.List);
+  Nodes.Add_Start_Conditions ($2.List, False);
 }
   | Excl_Start name_list Name_List_End
 {
-  Nodes.Exclusive.Prepend ($2.List);
+  Nodes.Add_Start_Conditions ($2.List, True);
 }
 ;
 
@@ -92,8 +92,7 @@ rule_list:
   |
   rule_list rule
 {
-  Nodes.Rules.Append ($2.Regexp);
-  Nodes.Actions.Append ($2.Action);
+  Nodes.Add_Rule ($2.Regexp, $2.Action);
 }
 
 ;

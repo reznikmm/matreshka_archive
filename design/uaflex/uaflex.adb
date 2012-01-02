@@ -47,19 +47,63 @@ with scanner_io;
 with Debug;
 with Expand;
 with Nodes;
+with League.String_Vectors;
+with League.Strings;
 with Matreshka.Internals.Finite_Automatons;
 
 procedure UAFLEX is
+   procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor);
+   procedure Each
+     (Name : League.Strings.Universal_String;
+      Condition : Nodes.Start_Condition);
+   
+   DFA : Matreshka.Internals.Finite_Automatons.DFA_Constructor;
+   
+   ----------
+   -- Each --
+   ----------
+   
+   procedure Each
+     (Name : League.Strings.Universal_String;
+      Condition : Nodes.Start_Condition)
+   is
+      Actions : Matreshka.Internals.Finite_Automatons.Rule_Index_Array
+        (1 .. Condition.Rules.Last_Index);
+      Reg_Exp_List : League.String_Vectors.Universal_String_Vector;
+   begin
+      for J in Actions'Range loop
+         Actions (J) := Condition.Rules.Element (J);
+         Reg_Exp_List.Append (Nodes.Rules.Element (Actions (J)));
+      end loop;
+      
+      DFA.Compile (Name, Reg_Exp_List, Actions);
+   end Each;
+   
+   --------------------
+   -- Each_Condition --
+   --------------------
+   
+   procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor) is
+   begin
+      Nodes.Start_Condition_Maps.Query_Element (Cursor, Each'Access);
+   end Each_Condition;
+   
+   Initial : League.String_Vectors.Universal_String_Vector;
 begin
+   Initial.Append (League.Strings.To_Universal_String ("INITIAL"));
+   Nodes.Add_Start_Conditions (Initial, False);
+   
    scanner_io.Open_Input ("test");
    yyparse;
    Expand.RegExps;
    Debug.Print;
    
+   Nodes.Conditions.Iterate (Each_Condition'Access);
+   
    declare
-      use Matreshka.Internals.Finite_Automatons;
-      X : DFA := Compile (Nodes.Rules);
+      X : Matreshka.Internals.Finite_Automatons.DFA;
    begin
-      Minimize (X);
+      DFA.Complete (Output => X);
+      Matreshka.Internals.Finite_Automatons.Minimize (X);
    end;
 end UAFLEX;

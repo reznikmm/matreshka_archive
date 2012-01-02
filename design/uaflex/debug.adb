@@ -50,6 +50,23 @@ package body Debug is
    procedure Print is
       use Ada.Wide_Wide_Text_IO;
       
+      procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor);
+      
+      procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor) is
+         Item : constant Nodes.Start_Condition :=
+           Nodes.Start_Condition_Maps.Element (Cursor);
+      begin
+         if Item.Exclusive then
+            Put_Line
+              ("%x " & Nodes.Start_Condition_Maps.Key (Cursor).
+                 To_Wide_Wide_String);
+         else
+            Put_Line
+              ("%s " & Nodes.Start_Condition_Maps.Key (Cursor).
+                 To_Wide_Wide_String);
+         end if;
+      end Each_Condition;
+
       procedure Print_Macro (Position : Nodes.Macro_Maps.Cursor) is
       begin
          Put_Line (Nodes.Macro_Maps.Key (Position).To_Wide_Wide_String & " " &
@@ -57,23 +74,7 @@ package body Debug is
       end Print_Macro;
       
    begin
-      for J in 1 .. Nodes.Starts.Length loop
-         if J = 1 then
-            Put ("%s");
-         end if;
-         Put (" " & Nodes.Starts.Element (J).To_Wide_Wide_String);
-      end loop;
-      
-      New_Line;
-      
-      for J in 1 .. Nodes.Exclusive.Length loop
-         if J = 1 then
-            Put ("%x");
-         end if;
-         Put (" " & Nodes.Exclusive.Element (J).To_Wide_Wide_String);
-      end loop;
-      
-      New_Line;
+      Nodes.Conditions.Iterate (Each_Condition'Access);
       
       Nodes.Macros.Iterate (Print_Macro'Access);
       

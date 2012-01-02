@@ -46,6 +46,7 @@ with Ada.Containers.Ordered_Maps;
 with Ada.Containers.Vectors;
 with League.Character_Sets;
 with League.String_Vectors;
+with League.Strings;
 with Matreshka.Internals.Graphs;
 with Matreshka.Internals.Regexps;
 
@@ -59,21 +60,47 @@ package Matreshka.Internals.Finite_Automatons is
       Element_Type => League.Character_Sets.Universal_Character_Set,
       "="          => League.Character_Sets."=");
    
+   subtype Rule_Index is Positive;
+   
    package State_Maps is new Ada.Containers.Ordered_Maps
      (Key_Type     => State,
-      Element_Type => Positive);  --  Rule index
+      Element_Type => Rule_Index);
+   
+   package Start_Maps is new Ada.Containers.Ordered_Maps
+     (Key_Type     => League.Strings.Universal_String,
+      Element_Type => State,
+      "<"          => League.Strings."<");
    
    type DFA is limited record
-      Start         : State;
+      Start         : Start_Maps.Map;
       Graph         : Matreshka.Internals.Graphs.Graph;
       Edge_Char_Set : Vectors.Vector;
       Final         : State_Maps.Map;
    end record;
    
-   function Compile
-     (List : League.String_Vectors.Universal_String_Vector)
-     return DFA;
+   type Rule_Index_Array is array (Positive range <>) of Rule_Index;
+   
+   type DFA_Constructor is tagged limited private;
+   
+   procedure Compile
+     (Self    : in out DFA_Constructor;
+      Start   : League.Strings.Universal_String;
+      List    : League.String_Vectors.Universal_String_Vector;
+      Actions : Rule_Index_Array);
+   
+   procedure Complete
+     (Input  : in out DFA_Constructor;
+      Output : out DFA);
    
    procedure Minimize (Self : in out DFA);
+   
+private
+   
+   type DFA_Constructor is tagged limited record
+      Start         : Start_Maps.Map;
+      Graph         : Matreshka.Internals.Graphs.Constructor.Graph;
+      Edge_Char_Set : Vectors.Vector;
+      Final         : State_Maps.Map;
+   end record;
 
 end Matreshka.Internals.Finite_Automatons;

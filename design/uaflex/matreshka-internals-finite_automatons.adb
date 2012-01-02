@@ -100,32 +100,45 @@ package body Matreshka.Internals.Finite_Automatons is
       Head : Positive) return Boolean;
    --  Check if given regexp subexpression sequence can match empty string
    
-   function Compile (List : Shared_Pattern_Array) return DFA;
+   procedure Compile
+     (Self    : in out DFA_Constructor;
+      Start   : League.Strings.Universal_String;
+      List    : Shared_Pattern_Array;
+      Actions : Rule_Index_Array);
    
    -------------
    -- Compile --
    -------------
 
-   function Compile
-     (List : League.String_Vectors.Universal_String_Vector)
-     return DFA
+   procedure Compile
+     (Self    : in out DFA_Constructor;
+      Start   : League.Strings.Universal_String;
+      List    : League.String_Vectors.Universal_String_Vector;
+      Actions : Rule_Index_Array)
    is
       Data : Shared_Pattern_Array (1 .. List.Length);
    begin
+      if Data'Length = 0 then
+         return;
+      end if;
+
       for J in Data'Range loop
          Data (J) := Compiler.Compile
            (League.Strings.Internals.Internal (List.Element (J)));
       end loop;
       
-      return Compile (Data);
+      Compile (Self, Start, Data, Actions);
    end Compile;
    
    -------------
    -- Compile --
    -------------
 
-   function Compile (List : Shared_Pattern_Array) return DFA
-   --  (AST  : Matreshka.Internals.Regexps.Shared_Pattern_Access)
+   procedure Compile
+     (Self    : in out DFA_Constructor;
+      Start   : League.Strings.Universal_String;
+      List    : Shared_Pattern_Array;
+      Actions : Rule_Index_Array)
    is
       Max_Pos : constant Position := Count_Positions_In_Array (List);
       type Position_Set is array (1 .. Max_Pos) of Boolean;
@@ -270,12 +283,12 @@ package body Matreshka.Internals.Finite_Automatons is
          
          function New_Node (Set : Position_Set) return Node is
             Result : constant Node := Graph.New_Node;
-            Index  : Positive;
+            Index  : Rule_Index;
          begin
             if Set (Finish_Position) /= (Finish_Position => False) then
                for J in Finish_Position loop
                   if Set (J) then
-                     Index := Positive (J);
+                     Index := Actions (Positive (J));
                      exit;
                   end if;
                end loop;
@@ -553,23 +566,35 @@ package body Matreshka.Internals.Finite_Automatons is
 
       First  : Position_Set := Empty;
       Last   : Position_Set := Empty;
-      Graph  : Matreshka.Internals.Graphs.Constructor.Graph;
-      
+      Result : State;
    begin
       Walk_Array (List, First);
       
-      return Result : DFA do
-         Make_DFA
-           (Graph, 
-            Result.Start, 
-            Result.Edge_Char_Set,
-            Result.Final,
-            First,
-            Chars);
-         Graph.Complete (Output => Result.Graph);
-      end return;
+      Make_DFA
+        (Self.Graph, 
+         Result, 
+         Self.Edge_Char_Set,
+         Self.Final,
+         First,
+         Chars);
+      
+      Self.Start.Insert (Start, Result);
    end Compile;
-
+   
+   --------------
+   -- Complete --
+   --------------
+   
+   procedure Complete
+     (Input  : in out DFA_Constructor;
+      Output : out DFA) is
+   begin
+      Output.Start := Input.Start;
+      Input.Graph.Complete (Output => Output.Graph);
+      Output.Edge_Char_Set := Input.Edge_Char_Set;
+      Output.Final := Input.Final;
+   end Complete;
+   
    ---------------------
    -- Count_Positions --
    ---------------------
@@ -664,7 +689,6 @@ package body Matreshka.Internals.Finite_Automatons is
       
       Last         : constant State := Self.Graph.Node_Count;
       Error_State  : constant State := Last + 1;
-      Second_State : constant State := 2;
 
       type Equive_Array is array (1 .. Error_State) of State;
       Equive       : Equive_Array := (others => 1);
@@ -712,16 +736,17 @@ package body Matreshka.Internals.Finite_Automatons is
 
          return True;
       end Check_Equive_Class;
-
+      
       Current_Equive_Class : State'Base;
-      Prev_Equive_Class    : State := Second_State;
+      Prev_Equive_Class    : State := 1;
       Found                : Boolean;
 
    begin
       Init_Equive_Classes :
          for J in 1 .. Last loop
             if Self.Final.Contains (J) then
-               Equive (J) := Second_State;
+               Equive (J) := State (Self.Final.Element (J) + 1);
+               Prev_Equive_Class := State'Max (Prev_Equive_Class, Equive (J));
             end if;
          end loop Init_Equive_Classes;
 
@@ -768,12 +793,25 @@ package body Matreshka.Internals.Finite_Automatons is
       --  Create_DFA
          
       declare
+         procedure Each_Start (Cursor : Start_Maps.Cursor);
+      
          use Matreshka.Internals.Graphs.Constructor;
-         Start  : State;
          Result : Graph;
          Edges  : Vectors.Vector;
          Final  : State_Maps.Map;
          Nodes  : array (1 .. Current_Equive_Class - 1) of Node;
+         
+         ----------------
+         -- Each_Start --
+         ----------------
+         
+         procedure Each_Start (Cursor : Start_Maps.Cursor) is
+            Old : constant State := Start_Maps.Element (Cursor);
+         begin
+            Self.Start.Replace_Element
+              (Cursor, Nodes (Equive (Old)).Index);
+         end Each_Start;
+         
       begin
          for K in Nodes'Range loop
             Nodes (K) := Result.New_Node;
@@ -799,19 +837,15 @@ package body Matreshka.Internals.Finite_Automatons is
                      Self.Edge_Char_Set.Element (Edge_J.Edge_Id));
                end loop;
                
-               if Self.Start = I then
-                  Start := Nodes (Equive (I)).Index;
-               end if;
-               
                if Self.Final.Contains (I) then
-                  Final.Insert
+                  Final.Include
                     (Nodes (Equive (I)).Index,
                      Self.Final.Element (I));
                end if;
             end;
          end loop;
          
-         Self.Start := Start;
+         Self.Start.Iterate (Each_Start'Access);
          Self.Graph.Clear;
          Result.Complete (Output => Self.Graph);
          Self.Edge_Char_Set := Edges;

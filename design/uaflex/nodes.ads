@@ -44,6 +44,7 @@
 with League.String_Vectors;
 with League.Strings;
 with Ada.Containers.Ordered_Maps;
+with Ada.Containers.Vectors;
 
 package Nodes is
    
@@ -74,13 +75,33 @@ package Nodes is
    use type League.Strings.Universal_String;
    
    package Macro_Maps is new Ada.Containers.Ordered_Maps
-     (League.Strings.Universal_String,
-      League.Strings.Universal_String);
+     (League.Strings.Universal_String,   --  Macro name
+      League.Strings.Universal_String);  --  Macro value
    
-   Rules     : League.String_Vectors.Universal_String_Vector;
-   Actions   : League.String_Vectors.Universal_String_Vector;
-   Starts    : League.String_Vectors.Universal_String_Vector;
-   Exclusive : League.String_Vectors.Universal_String_Vector;
-   Macros    : Macro_Maps.Map;
+   package Rule_Index_Vectors is new Ada.Containers.Vectors
+     (Index_Type   => Positive,
+      Element_Type => Positive);
+   
+   type Start_Condition is record
+      Exclusive : Boolean;
+      Rules     : Rule_Index_Vectors.Vector;
+   end record;
+   
+   package Start_Condition_Maps is new Ada.Containers.Ordered_Maps
+     (League.Strings.Universal_String,   --  Condition name
+      Start_Condition);
+   
+   Rules      : League.String_Vectors.Universal_String_Vector;
+   Actions    : League.String_Vectors.Universal_String_Vector;
+   Conditions : Start_Condition_Maps.Map;
+   Macros     : Macro_Maps.Map;
+   
+   procedure Add_Start_Conditions
+     (List      : League.String_Vectors.Universal_String_Vector;
+      Exclusive : Boolean);
+   
+   procedure Add_Rule
+     (RegExp : League.Strings.Universal_String;
+      Action : League.Strings.Universal_String);
 
 end Nodes;
