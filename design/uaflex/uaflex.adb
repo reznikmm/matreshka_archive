@@ -7,7 +7,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,7 @@ with scanner_io;
 
 with Debug;
 with Expand;
+with Generator.Tables;
 with Nodes;
 with League.String_Vectors;
 with League.Strings;
@@ -105,5 +106,6 @@ begin
    begin
       DFA.Complete (Output => X);
       Matreshka.Internals.Finite_Automatons.Minimize (X);
+      Generator.Tables.Go (X, "aaa", "Aaa");
    end;
 end UAFLEX;
