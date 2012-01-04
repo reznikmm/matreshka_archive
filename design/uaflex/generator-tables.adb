@@ -56,6 +56,7 @@ package body Generator.Tables is
      Matreshka.Internals.Finite_Automatons.Vectors;
 
    package Start_Maps renames Matreshka.Internals.Finite_Automatons.Start_Maps;
+   package State_Maps renames Matreshka.Internals.Finite_Automatons.State_Maps;
 
    subtype State is Matreshka.Internals.Finite_Automatons.State;
    use type State;
@@ -94,6 +95,7 @@ package body Generator.Tables is
       procedure Print_Start (Cursor : Start_Maps.Cursor);
       procedure Print_Char_Classes;
       procedure Print_Switch;
+      procedure Print_Rules;
       procedure Print_Classes
         (Id    : Matreshka.Internals.Graphs.Edge_Identifier;
          Count : in out Natural);
@@ -234,6 +236,32 @@ package body Generator.Tables is
          end loop;
       end Print_Classes;
 
+      procedure Print_Rules is
+         Count : Natural := 0;
+
+         procedure Each_Rule (Cursor : State_Maps.Cursor) is
+         begin
+            if Count = 0 then
+               N ("     (");
+            elsif Count mod 6 = 0 then
+               P (",");
+               N ("      ");
+            else
+               N (", ");
+            end if;
+
+            N (Image (Natural (State_Maps.Key (Cursor)) - 1) &
+                 " => " & Image (State_Maps.Element (Cursor)));
+
+            Count := Count + 1;
+         end Each_Rule;
+      begin
+         P ("   Rule_Table : constant array (State) of Rule_Index :=");
+         DFA.Final.Iterate (Each_Rule'Access);
+         P (", others => 0);");
+         P ("");
+      end Print_Rules;
+
       procedure Print_Start (Cursor : Start_Maps.Cursor) is
       begin
          P ("   " & Start_Maps.Key (Cursor).To_Wide_Wide_String &
@@ -288,7 +316,7 @@ package body Generator.Tables is
                   end if;
                end loop;
 
-               if Count /= Positive (Classes.Length) then
+               if Count /= Positive (Classes.Length) + 1 then
                   N (", others =>" &
                        State'Wide_Wide_Image (DFA.Graph.Node_Count));
                end if;
@@ -336,6 +364,9 @@ package body Generator.Tables is
            " return State;");
       P ("   pragma Inline (Switch);");
       P ("");
+      P ("   function Rule (S : State) return Rule_Index;");
+      P ("   pragma Inline (Rule);");
+      P ("");
       P ("end " & Unit & ";");
 
       P ("with Matreshka.Internals.Unicode.Ucd;");
@@ -357,6 +388,7 @@ package body Generator.Tables is
       P ("");
       Print_Char_Classes;
       Print_Switch;
+      Print_Rules;
       P ("   function To_Class (Value : " &
            "Matreshka.Internals.Unicode.Code_Point)");
       P ("     return Character_Class");
@@ -368,6 +400,11 @@ package body Generator.Tables is
       P ("   begin");
       P ("      return Element (First, Value);");
       P ("   end To_Class;");
+      P ("");
+      P ("   function Rule (S : State) return Rule_Index is");
+      P ("   begin");
+      P ("      return Rule_Table (S);");
+      P ("   end Rule;");
       P ("");
       P ("   function Switch (S : State; Class : Character_Class) " &
            "return State is");

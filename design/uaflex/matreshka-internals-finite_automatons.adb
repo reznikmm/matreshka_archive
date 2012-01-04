@@ -687,6 +687,13 @@ package body Matreshka.Internals.Finite_Automatons is
       
       function Check_Equive_Class (X, Y : State) return Boolean;
       
+      type State_Pair is array (1 .. 2) of State;
+      
+      use type Matreshka.Internals.Graphs.Edge_Identifier;
+      
+      package State_Pair_Maps is new Ada.Containers.Ordered_Maps
+        (State_Pair, Matreshka.Internals.Graphs.Edge_Identifier);
+      
       Last         : constant State := Self.Graph.Node_Count;
       Error_State  : constant State := Last + 1;
 
@@ -798,6 +805,7 @@ package body Matreshka.Internals.Finite_Automatons is
          use Matreshka.Internals.Graphs.Constructor;
          Result : Graph;
          Edges  : Vectors.Vector;
+         Map    : State_Pair_Maps.Map;
          Final  : State_Maps.Map;
          Nodes  : array (1 .. Current_Equive_Class - 1) of Node;
          
@@ -820,21 +828,48 @@ package body Matreshka.Internals.Finite_Automatons is
          for I in 1 .. Last loop
             declare
                use type Ada.Containers.Count_Type;
-
-               Node_X : Graphs.Node := Self.Graph.Get_Node (I);
+               
+               procedure Append_Chars
+                 (X : in out League.Character_Sets.Universal_Character_Set);
+               
                Edge_J : Graphs.Edge;
+               
+               ------------------
+               -- Append_Chars --
+               ------------------
+               
+               procedure Append_Chars
+                 (X : in out League.Character_Sets.Universal_Character_Set)
+               is
+                  use type League.Character_Sets.Universal_Character_Set;
+               begin
+                  X := X or Self.Edge_Char_Set.Element (Edge_J.Edge_Id);
+               end Append_Chars;
+               
+               Node_X : Graphs.Node := Self.Graph.Get_Node (I);
                Edge   : Graphs.Edge_Identifier;
+               Pair   : State_Pair;
+               Cursor : State_Pair_Maps.Cursor;
             begin
                for J in Node_X.First_Edge_Index .. Node_X.Last_Edge_Index loop
                   Edge_J := Self.Graph.Get_Edge (J);
-                  Edge := Nodes (Equive (I)).New_Edge
-                    (Nodes (Equive (Edge_J.Target_Node.Index)));
+                  Pair (1) := Equive (I);
+                  Pair (2) := Equive (Edge_J.Target_Node.Index);
+                  Cursor := Map.Find (Pair);
                   
-                  Edges.Set_Length (Edges.Length + 1);
+                  if State_Pair_Maps.Has_Element (Cursor) then
+                     Edges.Update_Element
+                       (State_Pair_Maps.Element (Cursor),
+                        Append_Chars'Access);
+                  else
+                     Edge := Nodes (Pair (1)).New_Edge (Nodes (Pair (2)));
+                     Map.Insert (Pair, Edge);
+                     Edges.Set_Length (Edges.Length + 1);
                   
-                  Edges.Replace_Element
-                    (Edge,
-                     Self.Edge_Char_Set.Element (Edge_J.Edge_Id));
+                     Edges.Replace_Element
+                       (Edge,
+                        Self.Edge_Char_Set.Element (Edge_J.Edge_Id));
+                  end if;
                end loop;
                
                if Self.Final.Contains (I) then
