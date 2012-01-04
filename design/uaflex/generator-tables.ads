@@ -44,10 +44,10 @@
 with Matreshka.Internals.Finite_Automatons;
 
 package Generator.Tables is
-   
+
    procedure Go
      (DFA  : Matreshka.Internals.Finite_Automatons.DFA;
       File : String;
       Unit : Wide_Wide_String);
-   
+
 end Generator.Tables;

@@ -80,11 +80,11 @@ package Matreshka.Internals.Graphs is
 
    function First_Edge_Index (Self : Node) return Edge_Index;
    function Last_Edge_Index  (Self : Node) return Edge_List_Length;
-   
+
    type Edge_Identifier is new Positive;
-   
+
    function Edge_Id (Self : Edge) return Edge_Identifier;
-   
+
    procedure Clear (Self : in out Graph);
 
    package Constructor is
@@ -98,7 +98,7 @@ package Matreshka.Internals.Graphs is
 
       procedure New_Edge (From, To : Node);
 
-      function New_Edge (From, To : Node) return Edge_Identifier; 
+      function New_Edge (From, To : Node) return Edge_Identifier;
 
       procedure Complete
         (Input  : in out Graph'Class;
@@ -106,7 +106,7 @@ package Matreshka.Internals.Graphs is
       --  Convert Input to Output and clear Input
 
       procedure Clear (Self : in out Graph);
-      
+
    private
 
       type Graph_Access is access all Graph;

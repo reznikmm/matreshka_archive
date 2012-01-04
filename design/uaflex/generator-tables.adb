@@ -51,38 +51,38 @@ with Matreshka.Internals.Unicode.Ucd;
 with Matreshka.Internals.Graphs;
 
 package body Generator.Tables is
-   
+
    package Char_Set_Vectors renames
      Matreshka.Internals.Finite_Automatons.Vectors;
-   
+
    package Start_Maps renames Matreshka.Internals.Finite_Automatons.Start_Maps;
-   
+
    subtype State is Matreshka.Internals.Finite_Automatons.State;
    use type State;
-   
+
    subtype Character_Class is Matreshka.Internals.Graphs.Edge_Identifier'Base;
-   
+
    subtype First_Stage_Index is
      Matreshka.Internals.Unicode.Ucd.First_Stage_Index;
-   
+
    subtype Second_Stage_Index is
      Matreshka.Internals.Unicode.Ucd.Second_Stage_Index;
-   
+
    type First_Stage_Array is array (First_Stage_Index) of Natural;
-   
+
    type Second_Stage_Array is array (Second_Stage_Index) of Character_Class;
-   
+
    package Second_Stage_Array_Maps is new Ada.Containers.Ordered_Maps
      (Second_Stage_Array, Natural);
-   
+
    procedure Split_To_Distinct
      (List   : Char_Set_Vectors.Vector;
       Result : out Char_Set_Vectors.Vector);
-   
+
    --------
    -- Go --
    --------
-   
+
    procedure Go
      (DFA  : Matreshka.Internals.Finite_Automatons.DFA;
       File : String;
@@ -93,24 +93,28 @@ package body Generator.Tables is
       procedure N (Text : Wide_Wide_String);
       procedure Print_Start (Cursor : Start_Maps.Cursor);
       procedure Print_Char_Classes;
+      procedure Print_Switch;
+      procedure Print_Classes
+        (Id    : Matreshka.Internals.Graphs.Edge_Identifier;
+         Count : in out Natural);
       function Get_Second (X : First_Stage_Index) return Second_Stage_Array;
       function Image (X : Natural) return Wide_Wide_String;
-      
-      
+
+
       Output  : Ada.Wide_Wide_Text_IO.File_Type;
       Classes : Char_Set_Vectors.Vector;
-      
+
       ----------------
       -- Get_Second --
       ----------------
-      
+
       function Get_Second (X : First_Stage_Index) return Second_Stage_Array is
          Result : Second_Stage_Array := (others => 0);
          Char   : Wide_Wide_Character;
       begin
          for J in Result'Range loop
             Char := Wide_Wide_Character'Val (Natural (X) * 256 + Natural (J));
-            
+
             for C in Classes.First_Index .. Classes.Last_Index loop
                if Classes.Element (C).Has (Char) then
                   Result (J) := C;
@@ -118,28 +122,28 @@ package body Generator.Tables is
                end if;
             end loop;
          end loop;
-         
+
          return Result;
       end Get_Second;
-      
+
       function Image (X : Natural) return Wide_Wide_String is
          Text : constant Wide_Wide_String := Natural'Wide_Wide_Image (X);
       begin
          return Text (2 .. Text'Last);
       end Image;
-      
+
       procedure N (Text : Wide_Wide_String) is
       begin
          Ada.Wide_Wide_Text_IO.Put (Text);
          --  Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
       end N;
-      
+
       procedure P (Text : Wide_Wide_String) is
       begin
          Ada.Wide_Wide_Text_IO.Put_Line (Text);
          --  Ada.Wide_Wide_Text_IO.Put_Line (Output, Text);
       end P;
-      
+
       procedure Print_Char_Classes is
          use Second_Stage_Array_Maps;
          use type First_Stage_Index;
@@ -151,18 +155,18 @@ package body Generator.Tables is
       begin
          for F in First_Stage_Index loop
             Second := Get_Second (F);
-            
+
             Pos := Known.Find (Second);
-            
+
             if Has_Element (Pos) then
                First (F) := Element (Pos);
             else
                First (F) := Natural (Known.Length);
                Known.Insert (Second, First (F));
-               
+
                P ("   Second_" & Image (First (F)) &
                     " : aliased constant Second_Stage_Array :=");
-               
+
                for J in Second_Stage_Index'Range loop
                   if J = 0 then
                      N ("     (");
@@ -172,9 +176,9 @@ package body Generator.Tables is
                   else
                      N (" ");
                   end if;
-                  
+
                   N (Image (Natural (Second (J))));
-                  
+
                   if J = Second_Stage_Index'Last then
                      P (");");
                      P ("");
@@ -184,9 +188,9 @@ package body Generator.Tables is
                end loop;
             end if;
          end loop;
-         
+
          P ("   First : constant First_Stage_Array :=");
-         
+
          for F in First_Stage_Index loop
             if F = 0 then
                N ("     (");
@@ -196,9 +200,9 @@ package body Generator.Tables is
             else
                N (" ");
             end if;
-            
+
             N ("Second_" & Image (First (F)) & "'Access");
-            
+
             if F = First_Stage_Index'Last then
                P (");");
                P ("");
@@ -207,7 +211,29 @@ package body Generator.Tables is
             end if;
          end loop;
       end Print_Char_Classes;
-      
+
+      procedure Print_Classes
+        (Id    : Matreshka.Internals.Graphs.Edge_Identifier;
+         Count : in out Natural)
+      is
+         Set : constant League.Character_Sets.Universal_Character_Set :=
+           DFA.Edge_Char_Set.Element (Id);
+         First : Boolean := True;
+      begin
+         for J in Classes.First_Index .. Classes.Last_Index loop
+            if Classes.Element (J).Is_Subset (Set) then
+               if First then
+                  First := False;
+               else
+                  N (" | ");
+               end if;
+
+               N (Image (Positive (J)));
+               Count := Count + 1;
+            end if;
+         end loop;
+      end Print_Classes;
+
       procedure Print_Start (Cursor : Start_Maps.Cursor) is
       begin
          P ("   " & Start_Maps.Key (Cursor).To_Wide_Wide_String &
@@ -215,45 +241,103 @@ package body Generator.Tables is
               State'Wide_Wide_Image (Start_Maps.Element (Cursor) - 1) &
               ";");
       end Print_Start;
-      
+
+      procedure Print_Switch is
+      begin
+         P ("   Switch_Table : constant array " &
+              "(Valid_State, Character_Class) of State :=");
+
+         for J in 1 .. DFA.Graph.Node_Count loop
+            declare
+               use type Matreshka.Internals.Graphs.Edge_Index;
+
+               Count : Natural := 0;
+               Edge : Matreshka.Internals.Graphs.Edge;
+               Item : constant Matreshka.Internals.Graphs.Node :=
+                 DFA.Graph.Get_Node (J);
+               F : constant Matreshka.Internals.Graphs.Edge_Index :=
+                 Item.First_Edge_Index;
+               L : constant Matreshka.Internals.Graphs.Edge_List_Length :=
+                 Item.Last_Edge_Index;
+            begin
+               if J = 1 then
+                  N ("     (");
+               else
+                  P (",");
+                  N ("      ");
+               end if;
+
+               P (Image (Positive (J) - 1) & " =>");
+
+               for K in F .. L loop
+                  Edge := DFA.Graph.Get_Edge (K);
+
+                  if K = F then
+                     N ("        (");
+                  else
+                     N (" ");
+                  end if;
+
+                  Print_Classes (Edge.Edge_Id, Count);
+
+                  N (" =>" &
+                       State'Wide_Wide_Image (Edge.Target_Node.Index - 1));
+
+                  if K /= L then
+                     N (",");
+                  end if;
+               end loop;
+
+               if Count /= Positive (Classes.Length) then
+                  N (", others =>" &
+                       State'Wide_Wide_Image (DFA.Graph.Node_Count));
+               end if;
+               N (")");
+            end;
+         end loop;
+
+         P (");");
+         P ("");
+      end Print_Switch;
+
    begin
       Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
       Split_To_Distinct (DFA.Edge_Char_Set, Classes);
-      
+
       P ("with Matreshka.Internals.Unicode;");
       P ("package " & Unit & " is");
-      
+
       P ("   type State is mod" &
            State'Wide_Wide_Image (DFA.Graph.Node_Count + 1) &
            ";");
-      
+
       P ("   subtype Valid_State is State range 0 .. State'Last - 1;");
-      
+
       DFA.Start.Iterate (Print_Start'Access);
-      
+
       P ("");
       P ("   type Character_Class is mod" &
            Ada.Containers.Count_Type'Wide_Wide_Image (Classes.Length + 1) &
            ";");
-      
+
       P ("");
       P ("   type Rule_Index is range 0 .." &
-           Natural'Wide_Wide_Image (Nodes.Actions.Length) & 
+           Natural'Wide_Wide_Image (Nodes.Actions.Length) &
            ";");
-      
+
       P ("");
       P ("   function To_Class" &
            " (Value : Matreshka.Internals.Unicode.Code_Point)");
       P ("     return Character_Class;");
       P ("   pragma Inline (To_Class);");
-      
+
       P ("");
       P ("   function Switch (S : State; Class : Character_Class)" &
            " return State;");
       P ("   pragma Inline (Switch);");
       P ("");
       P ("end " & Unit & ";");
-      
+
       P ("with Matreshka.Internals.Unicode.Ucd;");
       P ("package body " & Unit & " is");
       P ("   subtype First_Stage_Index is");
@@ -272,6 +356,7 @@ package body Generator.Tables is
            "of Second_Stage_Array_Access;");
       P ("");
       Print_Char_Classes;
+      Print_Switch;
       P ("   function To_Class (Value : " &
            "Matreshka.Internals.Unicode.Code_Point)");
       P ("     return Character_Class");
@@ -287,16 +372,16 @@ package body Generator.Tables is
       P ("   function Switch (S : State; Class : Character_Class) " &
            "return State is");
       P ("   begin");
-      P ("      return 0;");
+      P ("      return Switch_Table (S, Class);");
       P ("   end Switch;");
       P ("");
       P ("end " & Unit & ";");
    end Go;
-   
+
    -----------------------
    -- Split_To_Distinct --
    -----------------------
-   
+
    procedure Split_To_Distinct
      (List   : Char_Set_Vectors.Vector;
       Result : out Char_Set_Vectors.Vector) is
@@ -324,18 +409,18 @@ package body Generator.Tables is
 
                         Result.Replace_Element (K, Intersection);
                         Rest := Rest - Item;
-                        
+
                         exit when Rest.Is_Empty;
                      end;
                   end if;
                end;
             end loop;
-                  
+
             if not Rest.Is_Empty then
                Result.Append (Rest);
             end if;
          end;
       end loop;
    end Split_To_Distinct;
-   
+
 end Generator.Tables;
