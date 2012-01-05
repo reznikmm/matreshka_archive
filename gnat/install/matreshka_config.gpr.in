@@ -44,7 +44,7 @@
 
 abstract project Matreshka_Config is
 
-   Version := "0.2.0";
+   Version := "0.3.0";
 
    --  Architecture and Operating System
 
